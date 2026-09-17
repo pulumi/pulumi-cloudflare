@@ -30,6 +30,10 @@ public final class GetPipelineStreamResult {
      */
     private String endpoint;
     private @Nullable GetPipelineStreamFilter filter;
+    /**
+     * @return Defines the data format of the events.
+     * 
+     */
     private GetPipelineStreamFormat format;
     private GetPipelineStreamHttp http;
     /**
@@ -43,6 +47,10 @@ public final class GetPipelineStreamResult {
      * 
      */
     private String name;
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     private GetPipelineStreamSchema schema;
     /**
      * @return Specifies the public ID of the stream.
@@ -77,6 +85,10 @@ public final class GetPipelineStreamResult {
     public Optional<GetPipelineStreamFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
+    /**
+     * @return Defines the data format of the events.
+     * 
+     */
     public GetPipelineStreamFormat format() {
         return this.format;
     }
@@ -100,6 +112,10 @@ public final class GetPipelineStreamResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     public GetPipelineStreamSchema schema() {
         return this.schema;
     }

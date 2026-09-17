@@ -157,6 +157,9 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetPipelineSinkConfigResult Config;
         public readonly string CreatedAt;
         public readonly Outputs.GetPipelineSinkFilterResult? Filter;
+        /// <summary>
+        /// Defines the output data format of a sink.
+        /// </summary>
         public readonly Outputs.GetPipelineSinkFormatResult Format;
         /// <summary>
         /// Specifies the publid ID of the sink.
@@ -167,6 +170,9 @@ namespace Pulumi.Cloudflare
         /// Defines the name of the Sink.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         public readonly Outputs.GetPipelineSinkSchemaResult Schema;
         /// <summary>
         /// Specifies the publid ID of the sink.

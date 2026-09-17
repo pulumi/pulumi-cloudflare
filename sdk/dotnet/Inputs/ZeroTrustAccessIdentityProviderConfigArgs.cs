@@ -125,6 +125,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("enableEncryption")]
         public Input<bool>? EnableEncryption { get; set; }
 
+        /// <summary>
+        /// Asks the IdP to reauthenticate the user for each SAML authentication request.
+        /// </summary>
+        [Input("forceAuthn")]
+        public Input<bool>? ForceAuthn { get; set; }
+
         [Input("headerAttributes")]
         private InputList<Inputs.ZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs>? _headerAttributes;
 
@@ -154,6 +160,15 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("issuerUrl")]
         public Input<string>? IssuerUrl { get; set; }
+
+        /// <summary>
+        /// The maximum URL length the IdP accepts for the SSO redirect URL.
+        /// When the constructed SSO URL would exceed this length, the RelayState
+        /// is stored server-side and a short nonce is passed to the IdP instead.
+        /// Set this if your IdP enforces a URL length limit.
+        /// </summary>
+        [Input("maxSsoUrlLength")]
+        public Input<int>? MaxSsoUrlLength { get; set; }
 
         /// <summary>
         /// Your okta account url

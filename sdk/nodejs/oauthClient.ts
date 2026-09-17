@@ -32,6 +32,7 @@ import * as utilities from "./utilities";
  *     allowedCorsOrigins: ["https://example.com"],
  *     clientUri: "https://example.com",
  *     logoUri: "https://example.com/logo.png",
+ *     optionalScopes: ["account.write"],
  *     policyUri: "https://example.com/privacy",
  *     postLogoutRedirectUris: ["https://example.com/logout"],
  *     tosUri: "https://example.com/tos",
@@ -119,6 +120,10 @@ export class OauthClient extends pulumi.CustomResource {
      */
     declare public readonly oauthClientId: pulumi.Output<string | undefined>;
     /**
+     * Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     */
+    declare public readonly optionalScopes: pulumi.Output<string[] | undefined>;
+    /**
      * URL that points to a privacy policy document.
      */
     declare public readonly policyUri: pulumi.Output<string | undefined>;
@@ -186,6 +191,7 @@ export class OauthClient extends pulumi.CustomResource {
             resourceInputs["hasRotatedSecret"] = state?.hasRotatedSecret;
             resourceInputs["logoUri"] = state?.logoUri;
             resourceInputs["oauthClientId"] = state?.oauthClientId;
+            resourceInputs["optionalScopes"] = state?.optionalScopes;
             resourceInputs["policyUri"] = state?.policyUri;
             resourceInputs["postLogoutRedirectUris"] = state?.postLogoutRedirectUris;
             resourceInputs["promotedAt"] = state?.promotedAt;
@@ -226,6 +232,7 @@ export class OauthClient extends pulumi.CustomResource {
             resourceInputs["grantTypes"] = args?.grantTypes;
             resourceInputs["logoUri"] = args?.logoUri;
             resourceInputs["oauthClientId"] = args?.oauthClientId;
+            resourceInputs["optionalScopes"] = args?.optionalScopes;
             resourceInputs["policyUri"] = args?.policyUri;
             resourceInputs["postLogoutRedirectUris"] = args?.postLogoutRedirectUris;
             resourceInputs["redirectUris"] = args?.redirectUris;
@@ -302,6 +309,10 @@ export interface OauthClientState {
      */
     oauthClientId?: pulumi.Input<string | undefined>;
     /**
+     * Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     */
+    optionalScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * URL that points to a privacy policy document.
      */
     policyUri?: pulumi.Input<string | undefined>;
@@ -377,6 +388,10 @@ export interface OauthClientArgs {
      * The unique identifier for an OAuth client.
      */
     oauthClientId?: pulumi.Input<string | undefined>;
+    /**
+     * Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     */
+    optionalScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL that points to a privacy policy document.
      */

@@ -8,19 +8,17 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs Empty = new AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs();
 
-    @Import(name="r2Jurisdiction")
-    private @Nullable Output<String> r2Jurisdiction;
+    @Import(name="r2Jurisdiction", required=true)
+    private Output<String> r2Jurisdiction;
 
-    public Optional<Output<String>> r2Jurisdiction() {
-        return Optional.ofNullable(this.r2Jurisdiction);
+    public Output<String> r2Jurisdiction() {
+        return this.r2Jurisdiction;
     }
 
     @Import(name="storageId", required=true)
@@ -30,19 +28,11 @@ public final class AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs extend
         return this.storageId;
     }
 
-    /**
-     * Available values: &#34;r2&#34;.
-     * 
-     */
-    @Import(name="storageType")
-    private @Nullable Output<String> storageType;
+    @Import(name="storageType", required=true)
+    private Output<String> storageType;
 
-    /**
-     * @return Available values: &#34;r2&#34;.
-     * 
-     */
-    public Optional<Output<String>> storageType() {
-        return Optional.ofNullable(this.storageType);
+    public Output<String> storageType() {
+        return this.storageType;
     }
 
     private AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs() {}
@@ -71,7 +61,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs extend
             $ = new AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder r2Jurisdiction(@Nullable Output<String> r2Jurisdiction) {
+        public Builder r2Jurisdiction(Output<String> r2Jurisdiction) {
             $.r2Jurisdiction = r2Jurisdiction;
             return this;
         }
@@ -89,30 +79,24 @@ public final class AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs extend
             return storageId(Output.of(storageId));
         }
 
-        /**
-         * @param storageType Available values: &#34;r2&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder storageType(@Nullable Output<String> storageType) {
+        public Builder storageType(Output<String> storageType) {
             $.storageType = storageType;
             return this;
         }
 
-        /**
-         * @param storageType Available values: &#34;r2&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageType(String storageType) {
             return storageType(Output.of(storageType));
         }
 
         public AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs build() {
+            if ($.r2Jurisdiction == null) {
+                throw new MissingRequiredPropertyException("AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs", "r2Jurisdiction");
+            }
             if ($.storageId == null) {
                 throw new MissingRequiredPropertyException("AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs", "storageId");
+            }
+            if ($.storageType == null) {
+                throw new MissingRequiredPropertyException("AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs", "storageType");
             }
             return $;
         }

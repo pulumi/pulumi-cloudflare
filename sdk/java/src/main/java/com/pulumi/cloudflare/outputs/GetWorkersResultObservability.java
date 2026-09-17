@@ -29,6 +29,11 @@ public final class GetWorkersResultObservability {
      */
     private GetWorkersResultObservabilityLogs logs;
     /**
+     * @return Whether query strings are removed from request URLs in logs and traces.
+     * 
+     */
+    private Boolean redactQueryString;
+    /**
      * @return Trace settings for the Worker.
      * 
      */
@@ -57,6 +62,13 @@ public final class GetWorkersResultObservability {
         return this.logs;
     }
     /**
+     * @return Whether query strings are removed from request URLs in logs and traces.
+     * 
+     */
+    public Boolean redactQueryString() {
+        return this.redactQueryString;
+    }
+    /**
      * @return Trace settings for the Worker.
      * 
      */
@@ -76,6 +88,7 @@ public final class GetWorkersResultObservability {
         private Boolean enabled;
         private Double headSamplingRate;
         private GetWorkersResultObservabilityLogs logs;
+        private Boolean redactQueryString;
         private GetWorkersResultObservabilityTraces traces;
         public Builder() {}
         public Builder(GetWorkersResultObservability defaults) {
@@ -83,6 +96,7 @@ public final class GetWorkersResultObservability {
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
     	      this.logs = defaults.logs;
+    	      this.redactQueryString = defaults.redactQueryString;
     	      this.traces = defaults.traces;
         }
 
@@ -111,6 +125,14 @@ public final class GetWorkersResultObservability {
             return this;
         }
         @CustomType.Setter
+        public Builder redactQueryString(Boolean redactQueryString) {
+            if (redactQueryString == null) {
+              throw new MissingRequiredPropertyException("GetWorkersResultObservability", "redactQueryString");
+            }
+            this.redactQueryString = redactQueryString;
+            return this;
+        }
+        @CustomType.Setter
         public Builder traces(GetWorkersResultObservabilityTraces traces) {
             if (traces == null) {
               throw new MissingRequiredPropertyException("GetWorkersResultObservability", "traces");
@@ -123,6 +145,7 @@ public final class GetWorkersResultObservability {
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
             _resultValue.logs = logs;
+            _resultValue.redactQueryString = redactQueryString;
             _resultValue.traces = traces;
             return _resultValue;
         }

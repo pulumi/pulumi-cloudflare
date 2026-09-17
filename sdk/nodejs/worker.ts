@@ -33,6 +33,7 @@ import * as utilities from "./utilities";
  *             invocationLogs: true,
  *             persist: true,
  *         },
+ *         redactQueryString: true,
  *         traces: {
  *             destinations: ["string"],
  *             enabled: true,

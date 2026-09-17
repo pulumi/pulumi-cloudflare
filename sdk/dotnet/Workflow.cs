@@ -32,6 +32,10 @@ namespace Pulumi.Cloudflare
     ///         WorkflowName = "x",
     ///         ClassName = "x",
     ///         ScriptName = "x",
+    ///         Concurrency = new Cloudflare.Inputs.WorkflowConcurrencyArgs
+    ///         {
+    ///             Limit = 1,
+    ///         },
     ///         DefaultRetention = new Cloudflare.Inputs.WorkflowDefaultRetentionArgs
     ///         {
     ///             ErrorRetention = "5 minutes",
@@ -68,6 +72,9 @@ namespace Pulumi.Cloudflare
         [Output("className")]
         public Output<string> ClassName { get; private set; } = null!;
 
+        [Output("concurrency")]
+        public Output<Outputs.WorkflowConcurrency?> Concurrency { get; private set; } = null!;
+
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
@@ -78,7 +85,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.WorkflowDefaultRetention?> DefaultRetention { get; private set; } = null!;
 
         [Output("instances")]
-        public Output<Outputs.WorkflowInstances> Instances { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, double>> Instances { get; private set; } = null!;
 
         [Output("isDeleted")]
         public Output<double> IsDeleted { get; private set; } = null!;
@@ -162,6 +169,9 @@ namespace Pulumi.Cloudflare
         [Input("className", required: true)]
         public Input<string> ClassName { get; set; } = null!;
 
+        [Input("concurrency")]
+        public Input<Inputs.WorkflowConcurrencyArgs>? Concurrency { get; set; }
+
         /// <summary>
         /// Default retention applied to instances of this version when they do not set their own retention.
         /// </summary>
@@ -199,6 +209,9 @@ namespace Pulumi.Cloudflare
         [Input("className")]
         public Input<string>? ClassName { get; set; }
 
+        [Input("concurrency")]
+        public Input<Inputs.WorkflowConcurrencyGetArgs>? Concurrency { get; set; }
+
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
@@ -209,7 +222,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkflowDefaultRetentionGetArgs>? DefaultRetention { get; set; }
 
         [Input("instances")]
-        public Input<Inputs.WorkflowInstancesGetArgs>? Instances { get; set; }
+        private InputMap<double>? _instances;
+        public InputMap<double> Instances
+        {
+            get => _instances ?? (_instances = new InputMap<double>());
+            set => _instances = value;
+        }
 
         [Input("isDeleted")]
         public Input<double>? IsDeleted { get; set; }

@@ -199,6 +199,21 @@ public final class OauthClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     * 
+     */
+    @Import(name="optionalScopes")
+    private @Nullable Output<List<String>> optionalScopes;
+
+    /**
+     * @return Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     * 
+     */
+    public Optional<Output<List<String>>> optionalScopes() {
+        return Optional.ofNullable(this.optionalScopes);
+    }
+
+    /**
      * URL that points to a privacy policy document.
      * 
      */
@@ -367,6 +382,7 @@ public final class OauthClientState extends com.pulumi.resources.ResourceArgs {
         this.hasRotatedSecret = $.hasRotatedSecret;
         this.logoUri = $.logoUri;
         this.oauthClientId = $.oauthClientId;
+        this.optionalScopes = $.optionalScopes;
         this.policyUri = $.policyUri;
         this.postLogoutRedirectUris = $.postLogoutRedirectUris;
         this.promotedAt = $.promotedAt;
@@ -667,6 +683,37 @@ public final class OauthClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder oauthClientId(String oauthClientId) {
             return oauthClientId(Output.of(oauthClientId));
+        }
+
+        /**
+         * @param optionalScopes Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalScopes(@Nullable Output<List<String>> optionalScopes) {
+            $.optionalScopes = optionalScopes;
+            return this;
+        }
+
+        /**
+         * @param optionalScopes Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalScopes(List<String> optionalScopes) {
+            return optionalScopes(Output.of(optionalScopes));
+        }
+
+        /**
+         * @param optionalScopes Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalScopes(String... optionalScopes) {
+            return optionalScopes(List.of(optionalScopes));
         }
 
         /**

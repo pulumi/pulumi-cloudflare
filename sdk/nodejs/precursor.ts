@@ -63,10 +63,14 @@ export class Precursor extends pulumi.CustomResource {
      * The zone-level Precursor enforcement mode applied to requests that do
      * not match a more specific enforcement rule.
      * Available values: "off", "min-friction", "max-security".
+     *
+     * @deprecated This attribute is deprecated.
      */
     declare public readonly defaultMode: pulumi.Output<string>;
     /**
      * The ordered list of enforcement rules for the zone.
+     *
+     * @deprecated This attribute is deprecated.
      */
     declare public readonly enforcementRules: pulumi.Output<outputs.PrecursorEnforcementRule[]>;
     /**
@@ -112,10 +116,14 @@ export interface PrecursorState {
      * The zone-level Precursor enforcement mode applied to requests that do
      * not match a more specific enforcement rule.
      * Available values: "off", "min-friction", "max-security".
+     *
+     * @deprecated This attribute is deprecated.
      */
     defaultMode?: pulumi.Input<string | undefined>;
     /**
      * The ordered list of enforcement rules for the zone.
+     *
+     * @deprecated This attribute is deprecated.
      */
     enforcementRules?: pulumi.Input<pulumi.Input<inputs.PrecursorEnforcementRule>[] | undefined>;
     /**
@@ -132,10 +140,14 @@ export interface PrecursorArgs {
      * The zone-level Precursor enforcement mode applied to requests that do
      * not match a more specific enforcement rule.
      * Available values: "off", "min-friction", "max-security".
+     *
+     * @deprecated This attribute is deprecated.
      */
     defaultMode?: pulumi.Input<string | undefined>;
     /**
      * The ordered list of enforcement rules for the zone.
+     *
+     * @deprecated This attribute is deprecated.
      */
     enforcementRules?: pulumi.Input<pulumi.Input<inputs.PrecursorEnforcementRule>[] | undefined>;
     /**

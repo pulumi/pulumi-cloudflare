@@ -68,7 +68,7 @@ class GetZeroTrustResourceLibraryCategoryResult:
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        The ID of this resource.
+        Returns the category ID.
         """
         return pulumi.get(self, "id")
 
@@ -109,7 +109,7 @@ def get_zero_trust_resource_library_category(account_id: Optional[_builtins.str]
     ```
 
 
-    :param _builtins.int id: The ID of this resource.
+    :param _builtins.int id: Returns the category ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -138,7 +138,7 @@ def get_zero_trust_resource_library_category_output(account_id: pulumi.Input[Opt
     ```
 
 
-    :param _builtins.int id: The ID of this resource.
+    :param _builtins.int id: Returns the category ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

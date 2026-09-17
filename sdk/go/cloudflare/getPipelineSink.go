@@ -69,12 +69,14 @@ type LookupPipelineSinkResult struct {
 	Config    GetPipelineSinkConfig  `pulumi:"config"`
 	CreatedAt string                 `pulumi:"createdAt"`
 	Filter    *GetPipelineSinkFilter `pulumi:"filter"`
-	Format    GetPipelineSinkFormat  `pulumi:"format"`
+	// Defines the output data format of a sink.
+	Format GetPipelineSinkFormat `pulumi:"format"`
 	// Specifies the publid ID of the sink.
 	Id         string `pulumi:"id"`
 	ModifiedAt string `pulumi:"modifiedAt"`
 	// Defines the name of the Sink.
-	Name   string                `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema GetPipelineSinkSchema `pulumi:"schema"`
 	// Specifies the publid ID of the sink.
 	SinkId *string `pulumi:"sinkId"`
@@ -134,6 +136,7 @@ func (o LookupPipelineSinkResultOutput) Filter() GetPipelineSinkFilterPtrOutput 
 	return o.ApplyT(func(v LookupPipelineSinkResult) *GetPipelineSinkFilter { return v.Filter }).(GetPipelineSinkFilterPtrOutput)
 }
 
+// Defines the output data format of a sink.
 func (o LookupPipelineSinkResultOutput) Format() GetPipelineSinkFormatOutput {
 	return o.ApplyT(func(v LookupPipelineSinkResult) GetPipelineSinkFormat { return v.Format }).(GetPipelineSinkFormatOutput)
 }
@@ -152,6 +155,7 @@ func (o LookupPipelineSinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineSinkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the schema of the events in the data stream.
 func (o LookupPipelineSinkResultOutput) Schema() GetPipelineSinkSchemaOutput {
 	return o.ApplyT(func(v LookupPipelineSinkResult) GetPipelineSinkSchema { return v.Schema }).(GetPipelineSinkSchemaOutput)
 }

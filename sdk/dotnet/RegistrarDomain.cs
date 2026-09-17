@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
     public partial class RegistrarDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -52,10 +52,10 @@ namespace Pulumi.Cloudflare
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Fully qualified domain name (FQDN) including the extension
-        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-        /// identifies a registration — the same domain cannot be registered
-        /// twice, making it a natural idempotency key for registration requests.
+        /// Provides a fully qualified domain name (FQDN), including the extension
+        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+        /// a registration. Cloudflare permits only one registration per domain, making
+        /// the domain name a natural idempotency key for registration requests.
         /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.Cloudflare
     public sealed class RegistrarDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -131,10 +131,10 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Fully qualified domain name (FQDN) including the extension
-        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-        /// identifies a registration — the same domain cannot be registered
-        /// twice, making it a natural idempotency key for registration requests.
+        /// Provides a fully qualified domain name (FQDN), including the extension
+        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+        /// a registration. Cloudflare permits only one registration per domain, making
+        /// the domain name a natural idempotency key for registration requests.
         /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Cloudflare
     public sealed class RegistrarDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -172,10 +172,10 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Fully qualified domain name (FQDN) including the extension
-        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-        /// identifies a registration — the same domain cannot be registered
-        /// twice, making it a natural idempotency key for registration requests.
+        /// Provides a fully qualified domain name (FQDN), including the extension
+        /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+        /// a registration. Cloudflare permits only one registration per domain, making
+        /// the domain name a natural idempotency key for registration requests.
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }

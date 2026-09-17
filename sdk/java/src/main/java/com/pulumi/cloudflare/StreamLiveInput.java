@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.StreamLiveInputArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.StreamLiveInputState;
+import com.pulumi.cloudflare.outputs.StreamLiveInputPlayback;
 import com.pulumi.cloudflare.outputs.StreamLiveInputRecording;
 import com.pulumi.cloudflare.outputs.StreamLiveInputRtmps;
 import com.pulumi.cloudflare.outputs.StreamLiveInputRtmpsPlayback;
@@ -163,6 +164,20 @@ public class StreamLiveInput extends com.pulumi.resources.CustomResource {
      */
     public Output<String> modified() {
         return this.modified;
+    }
+    /**
+     * Details for playing a live input&#39;s broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     * 
+     */
+    @Export(name="playback", refs={StreamLiveInputPlayback.class}, tree="[0]")
+    private Output<StreamLiveInputPlayback> playback;
+
+    /**
+     * @return Details for playing a live input&#39;s broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     * 
+     */
+    public Output<StreamLiveInputPlayback> playback() {
+        return this.playback;
     }
     /**
      * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.

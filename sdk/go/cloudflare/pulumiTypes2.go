@@ -13,555 +13,9 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type ZeroTrustAccessGroupExcludeAzureAd struct {
-	// The ID of an Azure group.
-	Id string `pulumi:"id"`
-	// The ID of your Azure identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// ZeroTrustAccessGroupExcludeAzureAdInput is an input type that accepts ZeroTrustAccessGroupExcludeAzureAdArgs and ZeroTrustAccessGroupExcludeAzureAdOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeAzureAdInput` via:
-//
-//	ZeroTrustAccessGroupExcludeAzureAdArgs{...}
-type ZeroTrustAccessGroupExcludeAzureAdInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput
-	ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput
-}
-
-type ZeroTrustAccessGroupExcludeAzureAdArgs struct {
-	// The ID of an Azure group.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of your Azure identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (ZeroTrustAccessGroupExcludeAzureAdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput {
-	return i.ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdOutput)
-}
-
-func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
-	return i.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdOutput).ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessGroupExcludeAzureAdPtrInput is an input type that accepts ZeroTrustAccessGroupExcludeAzureAdArgs, ZeroTrustAccessGroupExcludeAzureAdPtr and ZeroTrustAccessGroupExcludeAzureAdPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeAzureAdPtrInput` via:
-//
-//	        ZeroTrustAccessGroupExcludeAzureAdArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessGroupExcludeAzureAdPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput
-	ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput
-}
-
-type zeroTrustAccessGroupExcludeAzureAdPtrType ZeroTrustAccessGroupExcludeAzureAdArgs
-
-func ZeroTrustAccessGroupExcludeAzureAdPtr(v *ZeroTrustAccessGroupExcludeAzureAdArgs) ZeroTrustAccessGroupExcludeAzureAdPtrInput {
-	return (*zeroTrustAccessGroupExcludeAzureAdPtrType)(v)
-}
-
-func (*zeroTrustAccessGroupExcludeAzureAdPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessGroupExcludeAzureAdPtrType) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
-	return i.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessGroupExcludeAzureAdPtrType) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdPtrOutput)
-}
-
-type ZeroTrustAccessGroupExcludeAzureAdOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessGroupExcludeAzureAdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
-	return o.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeAzureAd) *ZeroTrustAccessGroupExcludeAzureAd {
-		return &v
-	}).(ZeroTrustAccessGroupExcludeAzureAdPtrOutput)
-}
-
-// The ID of an Azure group.
-func (o ZeroTrustAccessGroupExcludeAzureAdOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAzureAd) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The ID of your Azure identity provider.
-func (o ZeroTrustAccessGroupExcludeAzureAdOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessGroupExcludeAzureAdPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) Elem() ZeroTrustAccessGroupExcludeAzureAdOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) ZeroTrustAccessGroupExcludeAzureAd {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessGroupExcludeAzureAd
-		return ret
-	}).(ZeroTrustAccessGroupExcludeAzureAdOutput)
-}
-
-// The ID of an Azure group.
-func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of your Azure identity provider.
-func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IdentityProviderId
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCertificate struct {
-}
-
-// ZeroTrustAccessGroupExcludeCertificateInput is an input type that accepts ZeroTrustAccessGroupExcludeCertificateArgs and ZeroTrustAccessGroupExcludeCertificateOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCertificateInput` via:
-//
-//	ZeroTrustAccessGroupExcludeCertificateArgs{...}
-type ZeroTrustAccessGroupExcludeCertificateInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput
-	ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCertificateOutput
-}
-
-type ZeroTrustAccessGroupExcludeCertificateArgs struct {
-}
-
-func (ZeroTrustAccessGroupExcludeCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput {
-	return i.ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificateOutput)
-}
-
-func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
-	return i.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificateOutput).ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessGroupExcludeCertificatePtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCertificateArgs, ZeroTrustAccessGroupExcludeCertificatePtr and ZeroTrustAccessGroupExcludeCertificatePtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCertificatePtrInput` via:
-//
-//	        ZeroTrustAccessGroupExcludeCertificateArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessGroupExcludeCertificatePtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput
-	ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput
-}
-
-type zeroTrustAccessGroupExcludeCertificatePtrType ZeroTrustAccessGroupExcludeCertificateArgs
-
-func ZeroTrustAccessGroupExcludeCertificatePtr(v *ZeroTrustAccessGroupExcludeCertificateArgs) ZeroTrustAccessGroupExcludeCertificatePtrInput {
-	return (*zeroTrustAccessGroupExcludeCertificatePtrType)(v)
-}
-
-func (*zeroTrustAccessGroupExcludeCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessGroupExcludeCertificatePtrType) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
-	return i.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessGroupExcludeCertificatePtrType) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificatePtrOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCertificateOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessGroupExcludeCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificateOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
-	return o.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCertificate) *ZeroTrustAccessGroupExcludeCertificate {
-		return &v
-	}).(ZeroTrustAccessGroupExcludeCertificatePtrOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessGroupExcludeCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) Elem() ZeroTrustAccessGroupExcludeCertificateOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCertificate) ZeroTrustAccessGroupExcludeCertificate {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessGroupExcludeCertificate
-		return ret
-	}).(ZeroTrustAccessGroupExcludeCertificateOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCloudflareAccountMember struct {
-	// Identifier.
-	AccountId *string `pulumi:"accountId"`
-}
-
-// ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput is an input type that accepts ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs and ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput` via:
-//
-//	ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{...}
-type ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput
-	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput
-}
-
-type ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs struct {
-	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-}
-
-func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
-	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput)
-}
-
-func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
-	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput).ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs, ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtr and ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput` via:
-//
-//	        ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput
-	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput
-}
-
-type zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs
-
-func ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtr(v *ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput {
-	return (*zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType)(v)
-}
-
-func (*zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
-	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
-	return o.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCloudflareAccountMember) *ZeroTrustAccessGroupExcludeCloudflareAccountMember {
-		return &v
-	}).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput)
-}
-
-// Identifier.
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeCloudflareAccountMember) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) Elem() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCloudflareAccountMember) ZeroTrustAccessGroupExcludeCloudflareAccountMember {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessGroupExcludeCloudflareAccountMember
-		return ret
-	}).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput)
-}
-
-// Identifier.
-func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCloudflareAccountMember) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AccountId
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCommonName struct {
-	// The common name to match.
-	CommonName string `pulumi:"commonName"`
-}
-
-// ZeroTrustAccessGroupExcludeCommonNameInput is an input type that accepts ZeroTrustAccessGroupExcludeCommonNameArgs and ZeroTrustAccessGroupExcludeCommonNameOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCommonNameInput` via:
-//
-//	ZeroTrustAccessGroupExcludeCommonNameArgs{...}
-type ZeroTrustAccessGroupExcludeCommonNameInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput
-	ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput
-}
-
-type ZeroTrustAccessGroupExcludeCommonNameArgs struct {
-	// The common name to match.
-	CommonName pulumi.StringInput `pulumi:"commonName"`
-}
-
-func (ZeroTrustAccessGroupExcludeCommonNameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput {
-	return i.ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNameOutput)
-}
-
-func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
-	return i.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNameOutput).ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessGroupExcludeCommonNamePtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCommonNameArgs, ZeroTrustAccessGroupExcludeCommonNamePtr and ZeroTrustAccessGroupExcludeCommonNamePtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCommonNamePtrInput` via:
-//
-//	        ZeroTrustAccessGroupExcludeCommonNameArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessGroupExcludeCommonNamePtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput
-	ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput
-}
-
-type zeroTrustAccessGroupExcludeCommonNamePtrType ZeroTrustAccessGroupExcludeCommonNameArgs
-
-func ZeroTrustAccessGroupExcludeCommonNamePtr(v *ZeroTrustAccessGroupExcludeCommonNameArgs) ZeroTrustAccessGroupExcludeCommonNamePtrInput {
-	return (*zeroTrustAccessGroupExcludeCommonNamePtrType)(v)
-}
-
-func (*zeroTrustAccessGroupExcludeCommonNamePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessGroupExcludeCommonNamePtrType) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
-	return i.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessGroupExcludeCommonNamePtrType) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNamePtrOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCommonNameOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessGroupExcludeCommonNameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
-	return o.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCommonName) *ZeroTrustAccessGroupExcludeCommonName {
-		return &v
-	}).(ZeroTrustAccessGroupExcludeCommonNamePtrOutput)
-}
-
-// The common name to match.
-func (o ZeroTrustAccessGroupExcludeCommonNameOutput) CommonName() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeCommonName) string { return v.CommonName }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessGroupExcludeCommonNamePtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) Elem() ZeroTrustAccessGroupExcludeCommonNameOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCommonName) ZeroTrustAccessGroupExcludeCommonName {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessGroupExcludeCommonName
-		return ret
-	}).(ZeroTrustAccessGroupExcludeCommonNameOutput)
-}
-
-// The common name to match.
-func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCommonName) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CommonName
-	}).(pulumi.StringPtrOutput)
-}
-
 type ZeroTrustAccessGroupExcludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -578,6 +32,8 @@ type ZeroTrustAccessGroupExcludeDevicePostureInput interface {
 }
 
 type ZeroTrustAccessGroupExcludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -659,6 +115,11 @@ func (o ZeroTrustAccessGroupExcludeDevicePostureOutput) ToZeroTrustAccessGroupEx
 	}).(ZeroTrustAccessGroupExcludeDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessGroupExcludeDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o ZeroTrustAccessGroupExcludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -686,6 +147,16 @@ func (o ZeroTrustAccessGroupExcludeDevicePosturePtrOutput) Elem() ZeroTrustAcces
 		var ret ZeroTrustAccessGroupExcludeDevicePosture
 		return ret
 	}).(ZeroTrustAccessGroupExcludeDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessGroupExcludeDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -4555,6 +4026,8 @@ func (o ZeroTrustAccessGroupIncludeCommonNamePtrOutput) CommonName() pulumi.Stri
 }
 
 type ZeroTrustAccessGroupIncludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -4571,6 +4044,8 @@ type ZeroTrustAccessGroupIncludeDevicePostureInput interface {
 }
 
 type ZeroTrustAccessGroupIncludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -4652,6 +4127,11 @@ func (o ZeroTrustAccessGroupIncludeDevicePostureOutput) ToZeroTrustAccessGroupIn
 	}).(ZeroTrustAccessGroupIncludeDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessGroupIncludeDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o ZeroTrustAccessGroupIncludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupIncludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -4679,6 +4159,16 @@ func (o ZeroTrustAccessGroupIncludeDevicePosturePtrOutput) Elem() ZeroTrustAcces
 		var ret ZeroTrustAccessGroupIncludeDevicePosture
 		return ret
 	}).(ZeroTrustAccessGroupIncludeDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessGroupIncludeDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupIncludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -8548,6 +8038,8 @@ func (o ZeroTrustAccessGroupRequireCommonNamePtrOutput) CommonName() pulumi.Stri
 }
 
 type ZeroTrustAccessGroupRequireDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -8564,6 +8056,8 @@ type ZeroTrustAccessGroupRequireDevicePostureInput interface {
 }
 
 type ZeroTrustAccessGroupRequireDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -8645,6 +8139,11 @@ func (o ZeroTrustAccessGroupRequireDevicePostureOutput) ToZeroTrustAccessGroupRe
 	}).(ZeroTrustAccessGroupRequireDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessGroupRequireDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupRequireDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o ZeroTrustAccessGroupRequireDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessGroupRequireDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -8672,6 +8171,16 @@ func (o ZeroTrustAccessGroupRequireDevicePosturePtrOutput) Elem() ZeroTrustAcces
 		var ret ZeroTrustAccessGroupRequireDevicePosture
 		return ret
 	}).(ZeroTrustAccessGroupRequireDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessGroupRequireDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupRequireDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -11334,12 +10843,19 @@ type ZeroTrustAccessIdentityProviderConfig struct {
 	// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
 	// SAML assertions using the certificate from the assigned certificate set.
 	EnableEncryption *bool `pulumi:"enableEncryption"`
+	// Asks the IdP to reauthenticate the user for each SAML authentication request.
+	ForceAuthn *bool `pulumi:"forceAuthn"`
 	// Add a list of attribute names that will be returned in the response header from the Access callback.
 	HeaderAttributes []ZeroTrustAccessIdentityProviderConfigHeaderAttribute `pulumi:"headerAttributes"`
 	// X509 certificate to verify the signature in the SAML authentication response
 	IdpPublicCerts []string `pulumi:"idpPublicCerts"`
 	// IdP Entity ID or Issuer URL
 	IssuerUrl *string `pulumi:"issuerUrl"`
+	// The maximum URL length the IdP accepts for the SSO redirect URL.
+	// When the constructed SSO URL would exceed this length, the RelayState
+	// is stored server-side and a short nonce is passed to the IdP instead.
+	// Set this if your IdP enforces a URL length limit.
+	MaxSsoUrlLength *int `pulumi:"maxSsoUrlLength"`
 	// Your okta account url
 	OktaAccount *string `pulumi:"oktaAccount"`
 	// Your OneLogin account url
@@ -11409,12 +10925,19 @@ type ZeroTrustAccessIdentityProviderConfigArgs struct {
 	// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
 	// SAML assertions using the certificate from the assigned certificate set.
 	EnableEncryption pulumi.BoolPtrInput `pulumi:"enableEncryption"`
+	// Asks the IdP to reauthenticate the user for each SAML authentication request.
+	ForceAuthn pulumi.BoolPtrInput `pulumi:"forceAuthn"`
 	// Add a list of attribute names that will be returned in the response header from the Access callback.
 	HeaderAttributes ZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayInput `pulumi:"headerAttributes"`
 	// X509 certificate to verify the signature in the SAML authentication response
 	IdpPublicCerts pulumi.StringArrayInput `pulumi:"idpPublicCerts"`
 	// IdP Entity ID or Issuer URL
 	IssuerUrl pulumi.StringPtrInput `pulumi:"issuerUrl"`
+	// The maximum URL length the IdP accepts for the SSO redirect URL.
+	// When the constructed SSO URL would exceed this length, the RelayState
+	// is stored server-side and a short nonce is passed to the IdP instead.
+	// Set this if your IdP enforces a URL length limit.
+	MaxSsoUrlLength pulumi.IntPtrInput `pulumi:"maxSsoUrlLength"`
 	// Your okta account url
 	OktaAccount pulumi.StringPtrInput `pulumi:"oktaAccount"`
 	// Your OneLogin account url
@@ -11594,6 +11117,11 @@ func (o ZeroTrustAccessIdentityProviderConfigOutput) EnableEncryption() pulumi.B
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderConfig) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
 }
 
+// Asks the IdP to reauthenticate the user for each SAML authentication request.
+func (o ZeroTrustAccessIdentityProviderConfigOutput) ForceAuthn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderConfig) *bool { return v.ForceAuthn }).(pulumi.BoolPtrOutput)
+}
+
 // Add a list of attribute names that will be returned in the response header from the Access callback.
 func (o ZeroTrustAccessIdentityProviderConfigOutput) HeaderAttributes() ZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderConfig) []ZeroTrustAccessIdentityProviderConfigHeaderAttribute {
@@ -11609,6 +11137,14 @@ func (o ZeroTrustAccessIdentityProviderConfigOutput) IdpPublicCerts() pulumi.Str
 // IdP Entity ID or Issuer URL
 func (o ZeroTrustAccessIdentityProviderConfigOutput) IssuerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderConfig) *string { return v.IssuerUrl }).(pulumi.StringPtrOutput)
+}
+
+// The maximum URL length the IdP accepts for the SSO redirect URL.
+// When the constructed SSO URL would exceed this length, the RelayState
+// is stored server-side and a short nonce is passed to the IdP instead.
+// Set this if your IdP enforces a URL length limit.
+func (o ZeroTrustAccessIdentityProviderConfigOutput) MaxSsoUrlLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessIdentityProviderConfig) *int { return v.MaxSsoUrlLength }).(pulumi.IntPtrOutput)
 }
 
 // Your okta account url
@@ -11846,6 +11382,16 @@ func (o ZeroTrustAccessIdentityProviderConfigPtrOutput) EnableEncryption() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Asks the IdP to reauthenticate the user for each SAML authentication request.
+func (o ZeroTrustAccessIdentityProviderConfigPtrOutput) ForceAuthn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessIdentityProviderConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceAuthn
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Add a list of attribute names that will be returned in the response header from the Access callback.
 func (o ZeroTrustAccessIdentityProviderConfigPtrOutput) HeaderAttributes() ZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessIdentityProviderConfig) []ZeroTrustAccessIdentityProviderConfigHeaderAttribute {
@@ -11874,6 +11420,19 @@ func (o ZeroTrustAccessIdentityProviderConfigPtrOutput) IssuerUrl() pulumi.Strin
 		}
 		return v.IssuerUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum URL length the IdP accepts for the SSO redirect URL.
+// When the constructed SSO URL would exceed this length, the RelayState
+// is stored server-side and a short nonce is passed to the IdP instead.
+// Set this if your IdP enforces a URL length limit.
+func (o ZeroTrustAccessIdentityProviderConfigPtrOutput) MaxSsoUrlLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessIdentityProviderConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSsoUrlLength
+	}).(pulumi.IntPtrOutput)
 }
 
 // Your okta account url
@@ -14995,6 +14554,8 @@ func (o ZeroTrustAccessPolicyExcludeCommonNamePtrOutput) CommonName() pulumi.Str
 }
 
 type ZeroTrustAccessPolicyExcludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -15011,6 +14572,8 @@ type ZeroTrustAccessPolicyExcludeDevicePostureInput interface {
 }
 
 type ZeroTrustAccessPolicyExcludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -15092,6 +14655,11 @@ func (o ZeroTrustAccessPolicyExcludeDevicePostureOutput) ToZeroTrustAccessPolicy
 	}).(ZeroTrustAccessPolicyExcludeDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessPolicyExcludeDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o ZeroTrustAccessPolicyExcludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyExcludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -15119,6 +14687,16 @@ func (o ZeroTrustAccessPolicyExcludeDevicePosturePtrOutput) Elem() ZeroTrustAcce
 		var ret ZeroTrustAccessPolicyExcludeDevicePosture
 		return ret
 	}).(ZeroTrustAccessPolicyExcludeDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessPolicyExcludeDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyExcludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -18992,6 +18570,8 @@ func (o ZeroTrustAccessPolicyIncludeCommonNamePtrOutput) CommonName() pulumi.Str
 }
 
 type ZeroTrustAccessPolicyIncludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -19008,6 +18588,8 @@ type ZeroTrustAccessPolicyIncludeDevicePostureInput interface {
 }
 
 type ZeroTrustAccessPolicyIncludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -19089,6 +18671,11 @@ func (o ZeroTrustAccessPolicyIncludeDevicePostureOutput) ToZeroTrustAccessPolicy
 	}).(ZeroTrustAccessPolicyIncludeDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessPolicyIncludeDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o ZeroTrustAccessPolicyIncludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyIncludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -19116,6 +18703,16 @@ func (o ZeroTrustAccessPolicyIncludeDevicePosturePtrOutput) Elem() ZeroTrustAcce
 		var ret ZeroTrustAccessPolicyIncludeDevicePosture
 		return ret
 	}).(ZeroTrustAccessPolicyIncludeDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessPolicyIncludeDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyIncludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -23164,6 +22761,8 @@ func (o ZeroTrustAccessPolicyRequireCommonNamePtrOutput) CommonName() pulumi.Str
 }
 
 type ZeroTrustAccessPolicyRequireDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -23180,6 +22779,8 @@ type ZeroTrustAccessPolicyRequireDevicePostureInput interface {
 }
 
 type ZeroTrustAccessPolicyRequireDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -23261,6 +22862,11 @@ func (o ZeroTrustAccessPolicyRequireDevicePostureOutput) ToZeroTrustAccessPolicy
 	}).(ZeroTrustAccessPolicyRequireDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessPolicyRequireDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o ZeroTrustAccessPolicyRequireDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustAccessPolicyRequireDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -23288,6 +22894,16 @@ func (o ZeroTrustAccessPolicyRequireDevicePosturePtrOutput) Elem() ZeroTrustAcce
 		var ret ZeroTrustAccessPolicyRequireDevicePosture
 		return ret
 	}).(ZeroTrustAccessPolicyRequireDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o ZeroTrustAccessPolicyRequireDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicyRequireDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -47003,6 +46619,10 @@ type ZeroTrustTunnelWarpConnectorConnection struct {
 	ColoName *string `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id *string `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect *bool `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt *string `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -47031,6 +46651,10 @@ type ZeroTrustTunnelWarpConnectorConnectionArgs struct {
 	ColoName pulumi.StringPtrInput `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect pulumi.BoolPtrInput `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt pulumi.StringPtrInput `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -47108,6 +46732,13 @@ func (o ZeroTrustTunnelWarpConnectorConnectionOutput) ColoName() pulumi.StringPt
 // UUID of the Cloudflare Tunnel connection.
 func (o ZeroTrustTunnelWarpConnectorConnectionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustTunnelWarpConnectorConnection) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+//
+// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+func (o ZeroTrustTunnelWarpConnectorConnectionOutput) IsPendingReconnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustTunnelWarpConnectorConnection) *bool { return v.IsPendingReconnect }).(pulumi.BoolPtrOutput)
 }
 
 // Timestamp of when the connection was established.
@@ -66509,15 +66140,295 @@ func (o GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsOutput) Stor
 	return o.ApplyT(func(v GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions) string { return v.StorageType }).(pulumi.StringOutput)
 }
 
+type GetAiSearchNamespacePublicEndpointParams struct {
+	AuthorizedHosts         []string                                                        `pulumi:"authorizedHosts"`
+	ChatCompletionsEndpoint GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint `pulumi:"chatCompletionsEndpoint"`
+	// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+	CustomDomains []string `pulumi:"customDomains"`
+	// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+	DefaultDomainEnabled bool `pulumi:"defaultDomainEnabled"`
+	Enabled              bool `pulumi:"enabled"`
+	// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+	InstancesAlloweds []string                                               `pulumi:"instancesAlloweds"`
+	Mcp               GetAiSearchNamespacePublicEndpointParamsMcp            `pulumi:"mcp"`
+	RateLimit         GetAiSearchNamespacePublicEndpointParamsRateLimit      `pulumi:"rateLimit"`
+	SearchEndpoint    GetAiSearchNamespacePublicEndpointParamsSearchEndpoint `pulumi:"searchEndpoint"`
+}
+
+// GetAiSearchNamespacePublicEndpointParamsInput is an input type that accepts GetAiSearchNamespacePublicEndpointParamsArgs and GetAiSearchNamespacePublicEndpointParamsOutput values.
+// You can construct a concrete instance of `GetAiSearchNamespacePublicEndpointParamsInput` via:
+//
+//	GetAiSearchNamespacePublicEndpointParamsArgs{...}
+type GetAiSearchNamespacePublicEndpointParamsInput interface {
+	pulumi.Input
+
+	ToGetAiSearchNamespacePublicEndpointParamsOutput() GetAiSearchNamespacePublicEndpointParamsOutput
+	ToGetAiSearchNamespacePublicEndpointParamsOutputWithContext(context.Context) GetAiSearchNamespacePublicEndpointParamsOutput
+}
+
+type GetAiSearchNamespacePublicEndpointParamsArgs struct {
+	AuthorizedHosts         pulumi.StringArrayInput                                              `pulumi:"authorizedHosts"`
+	ChatCompletionsEndpoint GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput `pulumi:"chatCompletionsEndpoint"`
+	// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+	CustomDomains pulumi.StringArrayInput `pulumi:"customDomains"`
+	// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+	DefaultDomainEnabled pulumi.BoolInput `pulumi:"defaultDomainEnabled"`
+	Enabled              pulumi.BoolInput `pulumi:"enabled"`
+	// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+	InstancesAlloweds pulumi.StringArrayInput                                     `pulumi:"instancesAlloweds"`
+	Mcp               GetAiSearchNamespacePublicEndpointParamsMcpInput            `pulumi:"mcp"`
+	RateLimit         GetAiSearchNamespacePublicEndpointParamsRateLimitInput      `pulumi:"rateLimit"`
+	SearchEndpoint    GetAiSearchNamespacePublicEndpointParamsSearchEndpointInput `pulumi:"searchEndpoint"`
+}
+
+func (GetAiSearchNamespacePublicEndpointParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParams)(nil)).Elem()
+}
+
+func (i GetAiSearchNamespacePublicEndpointParamsArgs) ToGetAiSearchNamespacePublicEndpointParamsOutput() GetAiSearchNamespacePublicEndpointParamsOutput {
+	return i.ToGetAiSearchNamespacePublicEndpointParamsOutputWithContext(context.Background())
+}
+
+func (i GetAiSearchNamespacePublicEndpointParamsArgs) ToGetAiSearchNamespacePublicEndpointParamsOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacePublicEndpointParamsOutput)
+}
+
+type GetAiSearchNamespacePublicEndpointParamsOutput struct{ *pulumi.OutputState }
+
+func (GetAiSearchNamespacePublicEndpointParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParams)(nil)).Elem()
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) ToGetAiSearchNamespacePublicEndpointParamsOutput() GetAiSearchNamespacePublicEndpointParamsOutput {
+	return o
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) ToGetAiSearchNamespacePublicEndpointParamsOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsOutput {
+	return o
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) AuthorizedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) []string { return v.AuthorizedHosts }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) ChatCompletionsEndpoint() GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
+		return v.ChatCompletionsEndpoint
+	}).(GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput)
+}
+
+// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) CustomDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) []string { return v.CustomDomains }).(pulumi.StringArrayOutput)
+}
+
+// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) DefaultDomainEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) bool { return v.DefaultDomainEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) InstancesAlloweds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) []string { return v.InstancesAlloweds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) Mcp() GetAiSearchNamespacePublicEndpointParamsMcpOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) GetAiSearchNamespacePublicEndpointParamsMcp {
+		return v.Mcp
+	}).(GetAiSearchNamespacePublicEndpointParamsMcpOutput)
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) RateLimit() GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) GetAiSearchNamespacePublicEndpointParamsRateLimit {
+		return v.RateLimit
+	}).(GetAiSearchNamespacePublicEndpointParamsRateLimitOutput)
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsOutput) SearchEndpoint() GetAiSearchNamespacePublicEndpointParamsSearchEndpointOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) GetAiSearchNamespacePublicEndpointParamsSearchEndpoint {
+		return v.SearchEndpoint
+	}).(GetAiSearchNamespacePublicEndpointParamsSearchEndpointOutput)
+}
+
+type GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint struct {
+	// Disable chat completions endpoint for this public endpoint
+	Disabled bool `pulumi:"disabled"`
+}
+
+// GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput is an input type that accepts GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs and GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput values.
+// You can construct a concrete instance of `GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput` via:
+//
+//	GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs{...}
+type GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput interface {
+	pulumi.Input
+
+	ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput
+	ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(context.Context) GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput
+}
+
+type GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs struct {
+	// Disable chat completions endpoint for this public endpoint
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (i GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return i.ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(context.Background())
+}
+
+func (i GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput)
+}
+
+type GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
+	return o
+}
+
+// Disable chat completions endpoint for this public endpoint
+func (o GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type GetAiSearchNamespacePublicEndpointParamsMcp struct {
+	Description string `pulumi:"description"`
+	// Disable MCP endpoint for this public endpoint
+	Disabled bool `pulumi:"disabled"`
+}
+
+// GetAiSearchNamespacePublicEndpointParamsMcpInput is an input type that accepts GetAiSearchNamespacePublicEndpointParamsMcpArgs and GetAiSearchNamespacePublicEndpointParamsMcpOutput values.
+// You can construct a concrete instance of `GetAiSearchNamespacePublicEndpointParamsMcpInput` via:
+//
+//	GetAiSearchNamespacePublicEndpointParamsMcpArgs{...}
+type GetAiSearchNamespacePublicEndpointParamsMcpInput interface {
+	pulumi.Input
+
+	ToGetAiSearchNamespacePublicEndpointParamsMcpOutput() GetAiSearchNamespacePublicEndpointParamsMcpOutput
+	ToGetAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(context.Context) GetAiSearchNamespacePublicEndpointParamsMcpOutput
+}
+
+type GetAiSearchNamespacePublicEndpointParamsMcpArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	// Disable MCP endpoint for this public endpoint
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (GetAiSearchNamespacePublicEndpointParamsMcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (i GetAiSearchNamespacePublicEndpointParamsMcpArgs) ToGetAiSearchNamespacePublicEndpointParamsMcpOutput() GetAiSearchNamespacePublicEndpointParamsMcpOutput {
+	return i.ToGetAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(context.Background())
+}
+
+func (i GetAiSearchNamespacePublicEndpointParamsMcpArgs) ToGetAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsMcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacePublicEndpointParamsMcpOutput)
+}
+
+type GetAiSearchNamespacePublicEndpointParamsMcpOutput struct{ *pulumi.OutputState }
+
+func (GetAiSearchNamespacePublicEndpointParamsMcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsMcp)(nil)).Elem()
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsMcpOutput) ToGetAiSearchNamespacePublicEndpointParamsMcpOutput() GetAiSearchNamespacePublicEndpointParamsMcpOutput {
+	return o
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsMcpOutput) ToGetAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsMcpOutput {
+	return o
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsMcpOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsMcp) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Disable MCP endpoint for this public endpoint
+func (o GetAiSearchNamespacePublicEndpointParamsMcpOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsMcp) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type GetAiSearchNamespacePublicEndpointParamsRateLimit struct {
+	PeriodMs int `pulumi:"periodMs"`
+	Requests int `pulumi:"requests"`
+	// Available values: "fixed", "sliding".
+	Technique string `pulumi:"technique"`
+}
+
+// GetAiSearchNamespacePublicEndpointParamsRateLimitInput is an input type that accepts GetAiSearchNamespacePublicEndpointParamsRateLimitArgs and GetAiSearchNamespacePublicEndpointParamsRateLimitOutput values.
+// You can construct a concrete instance of `GetAiSearchNamespacePublicEndpointParamsRateLimitInput` via:
+//
+//	GetAiSearchNamespacePublicEndpointParamsRateLimitArgs{...}
+type GetAiSearchNamespacePublicEndpointParamsRateLimitInput interface {
+	pulumi.Input
+
+	ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutput() GetAiSearchNamespacePublicEndpointParamsRateLimitOutput
+	ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(context.Context) GetAiSearchNamespacePublicEndpointParamsRateLimitOutput
+}
+
+type GetAiSearchNamespacePublicEndpointParamsRateLimitArgs struct {
+	PeriodMs pulumi.IntInput `pulumi:"periodMs"`
+	Requests pulumi.IntInput `pulumi:"requests"`
+	// Available values: "fixed", "sliding".
+	Technique pulumi.StringInput `pulumi:"technique"`
+}
+
+func (GetAiSearchNamespacePublicEndpointParamsRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (i GetAiSearchNamespacePublicEndpointParamsRateLimitArgs) ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutput() GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return i.ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(context.Background())
+}
+
+func (i GetAiSearchNamespacePublicEndpointParamsRateLimitArgs) ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacePublicEndpointParamsRateLimitOutput)
+}
+
+type GetAiSearchNamespacePublicEndpointParamsRateLimitOutput struct{ *pulumi.OutputState }
+
+func (GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsRateLimit)(nil)).Elem()
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutput() GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return o
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
+	return o
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) PeriodMs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsRateLimit) int { return v.PeriodMs }).(pulumi.IntOutput)
+}
+
+func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) Requests() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsRateLimit) int { return v.Requests }).(pulumi.IntOutput)
+}
+
+// Available values: "fixed", "sliding".
+func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) Technique() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsRateLimit) string { return v.Technique }).(pulumi.StringOutput)
+}
+
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAdInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAzureAdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAdPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAzureAdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificateInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificatePtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonNameInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCommonNameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonNamePtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCommonNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeDevicePostureInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeDevicePostureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeDevicePosturePtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeDevicePostureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeEmailInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeEmailArgs{})
@@ -67377,14 +67288,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorArrayInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsInput)(nil)).Elem(), GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsArgs{})
-	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAzureAdOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAzureAdPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCertificateOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCertificatePtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCommonNameOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCommonNamePtrOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsMcpInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsMcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsRateLimitInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsRateLimitArgs{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeDevicePostureOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeDevicePosturePtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeEmailOutput{})
@@ -68244,4 +68151,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorArrayOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptionsOutput{})
+	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsOutput{})
+	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput{})
+	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsMcpOutput{})
+	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsRateLimitOutput{})
 }

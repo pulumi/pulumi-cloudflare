@@ -62,20 +62,20 @@ import (
 //					RequiredAaguids:            pulumi.String("2fc0579f-8113-47ea-b116-bb5a8db9202a"),
 //					SessionDuration:            pulumi.String("24h"),
 //				},
-//				MfaRequiredForAllApps: pulumi.Bool(false),
-//				MfaSshPivKeyRequirements: &cloudflare.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs{
-//					PinPolicy:         pulumi.String("always"),
-//					RequireFipsDevice: pulumi.Bool(true),
-//					SshKeySizes: pulumi.IntArray{
-//						pulumi.Int(256),
-//						pulumi.Int(2048),
+//				MfaPivKeyRequirements: map[string]interface{}{
+//					"pinPolicy":         "always",
+//					"requireFipsDevice": true,
+//					"sshKeySize": []int{
+//						256,
+//						2048,
 //					},
-//					SshKeyTypes: pulumi.StringArray{
-//						pulumi.String("ecdsa"),
-//						pulumi.String("rsa"),
+//					"sshKeyType": []string{
+//						"ecdsa",
+//						"rsa",
 //					},
-//					TouchPolicy: pulumi.String("always"),
+//					"touchPolicy": "always",
 //				},
+//				MfaRequiredForAllApps:          pulumi.Bool(false),
 //				Name:                           pulumi.String("Widget Corps Internal Applications"),
 //				SessionDuration:                pulumi.String("24h"),
 //				UiReadOnlyToggleReason:         pulumi.String("Temporarily turn off the UI read only lock to make a change via the UI"),

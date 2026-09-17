@@ -69,13 +69,15 @@ type LookupPipelineStreamResult struct {
 	// Indicates the endpoint URL of this stream.
 	Endpoint string                   `pulumi:"endpoint"`
 	Filter   *GetPipelineStreamFilter `pulumi:"filter"`
-	Format   GetPipelineStreamFormat  `pulumi:"format"`
-	Http     GetPipelineStreamHttp    `pulumi:"http"`
+	// Defines the data format of the events.
+	Format GetPipelineStreamFormat `pulumi:"format"`
+	Http   GetPipelineStreamHttp   `pulumi:"http"`
 	// Specifies the public ID of the stream.
 	Id         string `pulumi:"id"`
 	ModifiedAt string `pulumi:"modifiedAt"`
 	// Indicates the name of the Stream.
-	Name   string                  `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema GetPipelineStreamSchema `pulumi:"schema"`
 	// Specifies the public ID of the stream.
 	StreamId *string `pulumi:"streamId"`
@@ -135,6 +137,7 @@ func (o LookupPipelineStreamResultOutput) Filter() GetPipelineStreamFilterPtrOut
 	return o.ApplyT(func(v LookupPipelineStreamResult) *GetPipelineStreamFilter { return v.Filter }).(GetPipelineStreamFilterPtrOutput)
 }
 
+// Defines the data format of the events.
 func (o LookupPipelineStreamResultOutput) Format() GetPipelineStreamFormatOutput {
 	return o.ApplyT(func(v LookupPipelineStreamResult) GetPipelineStreamFormat { return v.Format }).(GetPipelineStreamFormatOutput)
 }
@@ -157,6 +160,7 @@ func (o LookupPipelineStreamResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineStreamResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the schema of the events in the data stream.
 func (o LookupPipelineStreamResultOutput) Schema() GetPipelineStreamSchemaOutput {
 	return o.ApplyT(func(v LookupPipelineStreamResult) GetPipelineStreamSchema { return v.Schema }).(GetPipelineStreamSchemaOutput)
 }

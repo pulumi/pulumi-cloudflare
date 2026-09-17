@@ -55,6 +55,8 @@ type ContentScanningExpression struct {
 	pulumi.CustomResourceState
 
 	Bodies ContentScanningExpressionBodyArrayOutput `pulumi:"bodies"`
+	// Defines the custom content extraction expression used to reach content objects in the request.
+	Payload pulumi.StringPtrOutput `pulumi:"payload"`
 	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -96,12 +98,16 @@ func GetContentScanningExpression(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ContentScanningExpression resources.
 type contentScanningExpressionState struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
+	// Defines the custom content extraction expression used to reach content objects in the request.
+	Payload *string `pulumi:"payload"`
 	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ContentScanningExpressionState struct {
 	Bodies ContentScanningExpressionBodyArrayInput
+	// Defines the custom content extraction expression used to reach content objects in the request.
+	Payload pulumi.StringPtrInput
 	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -112,6 +118,8 @@ func (ContentScanningExpressionState) ElementType() reflect.Type {
 
 type contentScanningExpressionArgs struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
+	// Defines the custom content extraction expression used to reach content objects in the request.
+	Payload *string `pulumi:"payload"`
 	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -119,6 +127,8 @@ type contentScanningExpressionArgs struct {
 // The set of arguments for constructing a ContentScanningExpression resource.
 type ContentScanningExpressionArgs struct {
 	Bodies ContentScanningExpressionBodyArrayInput
+	// Defines the custom content extraction expression used to reach content objects in the request.
+	Payload pulumi.StringPtrInput
 	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
@@ -212,6 +222,11 @@ func (o ContentScanningExpressionOutput) ToContentScanningExpressionOutputWithCo
 
 func (o ContentScanningExpressionOutput) Bodies() ContentScanningExpressionBodyArrayOutput {
 	return o.ApplyT(func(v *ContentScanningExpression) ContentScanningExpressionBodyArrayOutput { return v.Bodies }).(ContentScanningExpressionBodyArrayOutput)
+}
+
+// Defines the custom content extraction expression used to reach content objects in the request.
+func (o ContentScanningExpressionOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringPtrOutput { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
 // Defines an identifier.

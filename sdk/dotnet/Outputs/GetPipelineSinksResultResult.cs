@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetPipelineSinksResultConfigResult Config;
         public readonly string CreatedAt;
+        /// <summary>
+        /// Defines the output data format of a sink.
+        /// </summary>
         public readonly Outputs.GetPipelineSinksResultFormatResult Format;
         /// <summary>
         /// Indicates a unique identifier for this sink.
@@ -28,6 +31,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Defines the name of the Sink.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         public readonly Outputs.GetPipelineSinksResultSchemaResult Schema;
         /// <summary>
         /// Specifies the type of sink.

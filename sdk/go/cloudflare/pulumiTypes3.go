@@ -13,294 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type GetAiSearchNamespacePublicEndpointParams struct {
-	AuthorizedHosts         []string                                                        `pulumi:"authorizedHosts"`
-	ChatCompletionsEndpoint GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint `pulumi:"chatCompletionsEndpoint"`
-	// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-	CustomDomains []string `pulumi:"customDomains"`
-	// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
-	DefaultDomainEnabled bool `pulumi:"defaultDomainEnabled"`
-	Enabled              bool `pulumi:"enabled"`
-	// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
-	InstancesAlloweds []string                                               `pulumi:"instancesAlloweds"`
-	Mcp               GetAiSearchNamespacePublicEndpointParamsMcp            `pulumi:"mcp"`
-	RateLimit         GetAiSearchNamespacePublicEndpointParamsRateLimit      `pulumi:"rateLimit"`
-	SearchEndpoint    GetAiSearchNamespacePublicEndpointParamsSearchEndpoint `pulumi:"searchEndpoint"`
-}
-
-// GetAiSearchNamespacePublicEndpointParamsInput is an input type that accepts GetAiSearchNamespacePublicEndpointParamsArgs and GetAiSearchNamespacePublicEndpointParamsOutput values.
-// You can construct a concrete instance of `GetAiSearchNamespacePublicEndpointParamsInput` via:
-//
-//	GetAiSearchNamespacePublicEndpointParamsArgs{...}
-type GetAiSearchNamespacePublicEndpointParamsInput interface {
-	pulumi.Input
-
-	ToGetAiSearchNamespacePublicEndpointParamsOutput() GetAiSearchNamespacePublicEndpointParamsOutput
-	ToGetAiSearchNamespacePublicEndpointParamsOutputWithContext(context.Context) GetAiSearchNamespacePublicEndpointParamsOutput
-}
-
-type GetAiSearchNamespacePublicEndpointParamsArgs struct {
-	AuthorizedHosts         pulumi.StringArrayInput                                              `pulumi:"authorizedHosts"`
-	ChatCompletionsEndpoint GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput `pulumi:"chatCompletionsEndpoint"`
-	// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-	CustomDomains pulumi.StringArrayInput `pulumi:"customDomains"`
-	// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
-	DefaultDomainEnabled pulumi.BoolInput `pulumi:"defaultDomainEnabled"`
-	Enabled              pulumi.BoolInput `pulumi:"enabled"`
-	// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
-	InstancesAlloweds pulumi.StringArrayInput                                     `pulumi:"instancesAlloweds"`
-	Mcp               GetAiSearchNamespacePublicEndpointParamsMcpInput            `pulumi:"mcp"`
-	RateLimit         GetAiSearchNamespacePublicEndpointParamsRateLimitInput      `pulumi:"rateLimit"`
-	SearchEndpoint    GetAiSearchNamespacePublicEndpointParamsSearchEndpointInput `pulumi:"searchEndpoint"`
-}
-
-func (GetAiSearchNamespacePublicEndpointParamsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParams)(nil)).Elem()
-}
-
-func (i GetAiSearchNamespacePublicEndpointParamsArgs) ToGetAiSearchNamespacePublicEndpointParamsOutput() GetAiSearchNamespacePublicEndpointParamsOutput {
-	return i.ToGetAiSearchNamespacePublicEndpointParamsOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchNamespacePublicEndpointParamsArgs) ToGetAiSearchNamespacePublicEndpointParamsOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacePublicEndpointParamsOutput)
-}
-
-type GetAiSearchNamespacePublicEndpointParamsOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchNamespacePublicEndpointParamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParams)(nil)).Elem()
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) ToGetAiSearchNamespacePublicEndpointParamsOutput() GetAiSearchNamespacePublicEndpointParamsOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) ToGetAiSearchNamespacePublicEndpointParamsOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) AuthorizedHosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) []string { return v.AuthorizedHosts }).(pulumi.StringArrayOutput)
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) ChatCompletionsEndpoint() GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint {
-		return v.ChatCompletionsEndpoint
-	}).(GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput)
-}
-
-// Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) CustomDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) []string { return v.CustomDomains }).(pulumi.StringArrayOutput)
-}
-
-// When false, the instance is reachable only via a registered custom domain and the default \n\n.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public*endpoint*params is replaced wholesale on update, so resend default*domain*enabled on every update to keep the default host off — omitting it resets to true.
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) DefaultDomainEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) bool { return v.DefaultDomainEnabled }).(pulumi.BoolOutput)
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit.
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) InstancesAlloweds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) []string { return v.InstancesAlloweds }).(pulumi.StringArrayOutput)
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) Mcp() GetAiSearchNamespacePublicEndpointParamsMcpOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) GetAiSearchNamespacePublicEndpointParamsMcp {
-		return v.Mcp
-	}).(GetAiSearchNamespacePublicEndpointParamsMcpOutput)
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) RateLimit() GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) GetAiSearchNamespacePublicEndpointParamsRateLimit {
-		return v.RateLimit
-	}).(GetAiSearchNamespacePublicEndpointParamsRateLimitOutput)
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsOutput) SearchEndpoint() GetAiSearchNamespacePublicEndpointParamsSearchEndpointOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParams) GetAiSearchNamespacePublicEndpointParamsSearchEndpoint {
-		return v.SearchEndpoint
-	}).(GetAiSearchNamespacePublicEndpointParamsSearchEndpointOutput)
-}
-
-type GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint struct {
-	// Disable chat completions endpoint for this public endpoint
-	Disabled bool `pulumi:"disabled"`
-}
-
-// GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput is an input type that accepts GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs and GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput values.
-// You can construct a concrete instance of `GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput` via:
-//
-//	GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs{...}
-type GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput interface {
-	pulumi.Input
-
-	ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput
-	ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(context.Context) GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput
-}
-
-type GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs struct {
-	// Disable chat completions endpoint for this public endpoint
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
-}
-
-func (GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
-}
-
-func (i GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
-	return i.ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs) ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput)
-}
-
-type GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint)(nil)).Elem()
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput() GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) ToGetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput {
-	return o
-}
-
-// Disable chat completions endpoint for this public endpoint
-func (o GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpoint) bool { return v.Disabled }).(pulumi.BoolOutput)
-}
-
-type GetAiSearchNamespacePublicEndpointParamsMcp struct {
-	Description string `pulumi:"description"`
-	// Disable MCP endpoint for this public endpoint
-	Disabled bool `pulumi:"disabled"`
-}
-
-// GetAiSearchNamespacePublicEndpointParamsMcpInput is an input type that accepts GetAiSearchNamespacePublicEndpointParamsMcpArgs and GetAiSearchNamespacePublicEndpointParamsMcpOutput values.
-// You can construct a concrete instance of `GetAiSearchNamespacePublicEndpointParamsMcpInput` via:
-//
-//	GetAiSearchNamespacePublicEndpointParamsMcpArgs{...}
-type GetAiSearchNamespacePublicEndpointParamsMcpInput interface {
-	pulumi.Input
-
-	ToGetAiSearchNamespacePublicEndpointParamsMcpOutput() GetAiSearchNamespacePublicEndpointParamsMcpOutput
-	ToGetAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(context.Context) GetAiSearchNamespacePublicEndpointParamsMcpOutput
-}
-
-type GetAiSearchNamespacePublicEndpointParamsMcpArgs struct {
-	Description pulumi.StringInput `pulumi:"description"`
-	// Disable MCP endpoint for this public endpoint
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
-}
-
-func (GetAiSearchNamespacePublicEndpointParamsMcpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsMcp)(nil)).Elem()
-}
-
-func (i GetAiSearchNamespacePublicEndpointParamsMcpArgs) ToGetAiSearchNamespacePublicEndpointParamsMcpOutput() GetAiSearchNamespacePublicEndpointParamsMcpOutput {
-	return i.ToGetAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchNamespacePublicEndpointParamsMcpArgs) ToGetAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsMcpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacePublicEndpointParamsMcpOutput)
-}
-
-type GetAiSearchNamespacePublicEndpointParamsMcpOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchNamespacePublicEndpointParamsMcpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsMcp)(nil)).Elem()
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsMcpOutput) ToGetAiSearchNamespacePublicEndpointParamsMcpOutput() GetAiSearchNamespacePublicEndpointParamsMcpOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsMcpOutput) ToGetAiSearchNamespacePublicEndpointParamsMcpOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsMcpOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsMcpOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsMcp) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Disable MCP endpoint for this public endpoint
-func (o GetAiSearchNamespacePublicEndpointParamsMcpOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsMcp) bool { return v.Disabled }).(pulumi.BoolOutput)
-}
-
-type GetAiSearchNamespacePublicEndpointParamsRateLimit struct {
-	PeriodMs int `pulumi:"periodMs"`
-	Requests int `pulumi:"requests"`
-	// Available values: "fixed", "sliding".
-	Technique string `pulumi:"technique"`
-}
-
-// GetAiSearchNamespacePublicEndpointParamsRateLimitInput is an input type that accepts GetAiSearchNamespacePublicEndpointParamsRateLimitArgs and GetAiSearchNamespacePublicEndpointParamsRateLimitOutput values.
-// You can construct a concrete instance of `GetAiSearchNamespacePublicEndpointParamsRateLimitInput` via:
-//
-//	GetAiSearchNamespacePublicEndpointParamsRateLimitArgs{...}
-type GetAiSearchNamespacePublicEndpointParamsRateLimitInput interface {
-	pulumi.Input
-
-	ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutput() GetAiSearchNamespacePublicEndpointParamsRateLimitOutput
-	ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(context.Context) GetAiSearchNamespacePublicEndpointParamsRateLimitOutput
-}
-
-type GetAiSearchNamespacePublicEndpointParamsRateLimitArgs struct {
-	PeriodMs pulumi.IntInput `pulumi:"periodMs"`
-	Requests pulumi.IntInput `pulumi:"requests"`
-	// Available values: "fixed", "sliding".
-	Technique pulumi.StringInput `pulumi:"technique"`
-}
-
-func (GetAiSearchNamespacePublicEndpointParamsRateLimitArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsRateLimit)(nil)).Elem()
-}
-
-func (i GetAiSearchNamespacePublicEndpointParamsRateLimitArgs) ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutput() GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
-	return i.ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(context.Background())
-}
-
-func (i GetAiSearchNamespacePublicEndpointParamsRateLimitArgs) ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchNamespacePublicEndpointParamsRateLimitOutput)
-}
-
-type GetAiSearchNamespacePublicEndpointParamsRateLimitOutput struct{ *pulumi.OutputState }
-
-func (GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsRateLimit)(nil)).Elem()
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutput() GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) ToGetAiSearchNamespacePublicEndpointParamsRateLimitOutputWithContext(ctx context.Context) GetAiSearchNamespacePublicEndpointParamsRateLimitOutput {
-	return o
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) PeriodMs() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsRateLimit) int { return v.PeriodMs }).(pulumi.IntOutput)
-}
-
-func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) Requests() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsRateLimit) int { return v.Requests }).(pulumi.IntOutput)
-}
-
-// Available values: "fixed", "sliding".
-func (o GetAiSearchNamespacePublicEndpointParamsRateLimitOutput) Technique() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAiSearchNamespacePublicEndpointParamsRateLimit) string { return v.Technique }).(pulumi.StringOutput)
-}
-
 type GetAiSearchNamespacePublicEndpointParamsSearchEndpoint struct {
 	// Disable search endpoint for this public endpoint
 	Disabled bool `pulumi:"disabled"`
@@ -2143,8 +1855,6 @@ func (o GetApiShieldOperationFeaturesParameterSchemasParameterSchemasOutput) Res
 type GetApiShieldOperationFeaturesSchemaInfo struct {
 	// Schema active on endpoint.
 	ActiveSchema GetApiShieldOperationFeaturesSchemaInfoActiveSchema `pulumi:"activeSchema"`
-	// Deprecated. Always false.
-	LearnedAvailable bool `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
 	MitigationAction string `pulumi:"mitigationAction"`
@@ -2164,8 +1874,6 @@ type GetApiShieldOperationFeaturesSchemaInfoInput interface {
 type GetApiShieldOperationFeaturesSchemaInfoArgs struct {
 	// Schema active on endpoint.
 	ActiveSchema GetApiShieldOperationFeaturesSchemaInfoActiveSchemaInput `pulumi:"activeSchema"`
-	// Deprecated. Always false.
-	LearnedAvailable pulumi.BoolInput `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
 	MitigationAction pulumi.StringInput `pulumi:"mitigationAction"`
@@ -2204,11 +1912,6 @@ func (o GetApiShieldOperationFeaturesSchemaInfoOutput) ActiveSchema() GetApiShie
 	}).(GetApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput)
 }
 
-// Deprecated. Always false.
-func (o GetApiShieldOperationFeaturesSchemaInfoOutput) LearnedAvailable() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeaturesSchemaInfo) bool { return v.LearnedAvailable }).(pulumi.BoolOutput)
-}
-
 // Action taken on requests failing validation.
 // Available values: "none", "log", "block".
 func (o GetApiShieldOperationFeaturesSchemaInfoOutput) MitigationAction() pulumi.StringOutput {
@@ -2219,8 +1922,6 @@ type GetApiShieldOperationFeaturesSchemaInfoActiveSchema struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// UUID.
 	Id string `pulumi:"id"`
-	// True if schema is Cloudflare-provided.
-	IsLearned bool `pulumi:"isLearned"`
 	// Schema file name.
 	Name string `pulumi:"name"`
 }
@@ -2240,8 +1941,6 @@ type GetApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// UUID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// True if schema is Cloudflare-provided.
-	IsLearned pulumi.BoolInput `pulumi:"isLearned"`
 	// Schema file name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -2279,11 +1978,6 @@ func (o GetApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput) CreatedAt() p
 // UUID.
 func (o GetApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApiShieldOperationFeaturesSchemaInfoActiveSchema) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// True if schema is Cloudflare-provided.
-func (o GetApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput) IsLearned() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApiShieldOperationFeaturesSchemaInfoActiveSchema) bool { return v.IsLearned }).(pulumi.BoolOutput)
 }
 
 // Schema file name.
@@ -3645,8 +3339,6 @@ func (o GetApiShieldOperationsResultFeaturesParameterSchemasParameterSchemasOutp
 type GetApiShieldOperationsResultFeaturesSchemaInfo struct {
 	// Schema active on endpoint.
 	ActiveSchema GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema `pulumi:"activeSchema"`
-	// Deprecated. Always false.
-	LearnedAvailable bool `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
 	MitigationAction string `pulumi:"mitigationAction"`
@@ -3666,8 +3358,6 @@ type GetApiShieldOperationsResultFeaturesSchemaInfoInput interface {
 type GetApiShieldOperationsResultFeaturesSchemaInfoArgs struct {
 	// Schema active on endpoint.
 	ActiveSchema GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaInput `pulumi:"activeSchema"`
-	// Deprecated. Always false.
-	LearnedAvailable pulumi.BoolInput `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
 	MitigationAction pulumi.StringInput `pulumi:"mitigationAction"`
@@ -3706,11 +3396,6 @@ func (o GetApiShieldOperationsResultFeaturesSchemaInfoOutput) ActiveSchema() Get
 	}).(GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaOutput)
 }
 
-// Deprecated. Always false.
-func (o GetApiShieldOperationsResultFeaturesSchemaInfoOutput) LearnedAvailable() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApiShieldOperationsResultFeaturesSchemaInfo) bool { return v.LearnedAvailable }).(pulumi.BoolOutput)
-}
-
 // Action taken on requests failing validation.
 // Available values: "none", "log", "block".
 func (o GetApiShieldOperationsResultFeaturesSchemaInfoOutput) MitigationAction() pulumi.StringOutput {
@@ -3721,8 +3406,6 @@ type GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// UUID.
 	Id string `pulumi:"id"`
-	// True if schema is Cloudflare-provided.
-	IsLearned bool `pulumi:"isLearned"`
 	// Schema file name.
 	Name string `pulumi:"name"`
 }
@@ -3742,8 +3425,6 @@ type GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// UUID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// True if schema is Cloudflare-provided.
-	IsLearned pulumi.BoolInput `pulumi:"isLearned"`
 	// Schema file name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -3781,11 +3462,6 @@ func (o GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaOutput) Create
 // UUID.
 func (o GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// True if schema is Cloudflare-provided.
-func (o GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaOutput) IsLearned() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema) bool { return v.IsLearned }).(pulumi.BoolOutput)
 }
 
 // Schema file name.
@@ -8547,189 +8223,56 @@ func (o GetClientCertificatesResultCertificateAuthorityOutput) Name() pulumi.Str
 	return o.ApplyT(func(v GetClientCertificatesResultCertificateAuthority) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetCloudConnectorRulesRule struct {
-	Description string `pulumi:"description"`
-	Enabled     bool   `pulumi:"enabled"`
-	Expression  string `pulumi:"expression"`
-	Id          string `pulumi:"id"`
-	// Parameters of Cloud Connector Rule
-	Parameters GetCloudConnectorRulesRuleParameters `pulumi:"parameters"`
-	// Cloud Provider type
-	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
-	Provider string `pulumi:"provider"`
-}
-
-// GetCloudConnectorRulesRuleInput is an input type that accepts GetCloudConnectorRulesRuleArgs and GetCloudConnectorRulesRuleOutput values.
-// You can construct a concrete instance of `GetCloudConnectorRulesRuleInput` via:
-//
-//	GetCloudConnectorRulesRuleArgs{...}
-type GetCloudConnectorRulesRuleInput interface {
-	pulumi.Input
-
-	ToGetCloudConnectorRulesRuleOutput() GetCloudConnectorRulesRuleOutput
-	ToGetCloudConnectorRulesRuleOutputWithContext(context.Context) GetCloudConnectorRulesRuleOutput
-}
-
-type GetCloudConnectorRulesRuleArgs struct {
-	Description pulumi.StringInput `pulumi:"description"`
-	Enabled     pulumi.BoolInput   `pulumi:"enabled"`
-	Expression  pulumi.StringInput `pulumi:"expression"`
-	Id          pulumi.StringInput `pulumi:"id"`
-	// Parameters of Cloud Connector Rule
-	Parameters GetCloudConnectorRulesRuleParametersInput `pulumi:"parameters"`
-	// Cloud Provider type
-	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
-	Provider pulumi.StringInput `pulumi:"provider"`
-}
-
-func (GetCloudConnectorRulesRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudConnectorRulesRule)(nil)).Elem()
-}
-
-func (i GetCloudConnectorRulesRuleArgs) ToGetCloudConnectorRulesRuleOutput() GetCloudConnectorRulesRuleOutput {
-	return i.ToGetCloudConnectorRulesRuleOutputWithContext(context.Background())
-}
-
-func (i GetCloudConnectorRulesRuleArgs) ToGetCloudConnectorRulesRuleOutputWithContext(ctx context.Context) GetCloudConnectorRulesRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudConnectorRulesRuleOutput)
-}
-
-// GetCloudConnectorRulesRuleArrayInput is an input type that accepts GetCloudConnectorRulesRuleArray and GetCloudConnectorRulesRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudConnectorRulesRuleArrayInput` via:
-//
-//	GetCloudConnectorRulesRuleArray{ GetCloudConnectorRulesRuleArgs{...} }
-type GetCloudConnectorRulesRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetCloudConnectorRulesRuleArrayOutput() GetCloudConnectorRulesRuleArrayOutput
-	ToGetCloudConnectorRulesRuleArrayOutputWithContext(context.Context) GetCloudConnectorRulesRuleArrayOutput
-}
-
-type GetCloudConnectorRulesRuleArray []GetCloudConnectorRulesRuleInput
-
-func (GetCloudConnectorRulesRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudConnectorRulesRule)(nil)).Elem()
-}
-
-func (i GetCloudConnectorRulesRuleArray) ToGetCloudConnectorRulesRuleArrayOutput() GetCloudConnectorRulesRuleArrayOutput {
-	return i.ToGetCloudConnectorRulesRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetCloudConnectorRulesRuleArray) ToGetCloudConnectorRulesRuleArrayOutputWithContext(ctx context.Context) GetCloudConnectorRulesRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudConnectorRulesRuleArrayOutput)
-}
-
-type GetCloudConnectorRulesRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudConnectorRulesRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudConnectorRulesRule)(nil)).Elem()
-}
-
-func (o GetCloudConnectorRulesRuleOutput) ToGetCloudConnectorRulesRuleOutput() GetCloudConnectorRulesRuleOutput {
-	return o
-}
-
-func (o GetCloudConnectorRulesRuleOutput) ToGetCloudConnectorRulesRuleOutputWithContext(ctx context.Context) GetCloudConnectorRulesRuleOutput {
-	return o
-}
-
-func (o GetCloudConnectorRulesRuleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudConnectorRulesRule) string { return v.Description }).(pulumi.StringOutput)
-}
-
-func (o GetCloudConnectorRulesRuleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetCloudConnectorRulesRule) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-func (o GetCloudConnectorRulesRuleOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudConnectorRulesRule) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-func (o GetCloudConnectorRulesRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudConnectorRulesRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Parameters of Cloud Connector Rule
-func (o GetCloudConnectorRulesRuleOutput) Parameters() GetCloudConnectorRulesRuleParametersOutput {
-	return o.ApplyT(func(v GetCloudConnectorRulesRule) GetCloudConnectorRulesRuleParameters { return v.Parameters }).(GetCloudConnectorRulesRuleParametersOutput)
-}
-
-// Cloud Provider type
-// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
-func (o GetCloudConnectorRulesRuleOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudConnectorRulesRule) string { return v.Provider }).(pulumi.StringOutput)
-}
-
-type GetCloudConnectorRulesRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudConnectorRulesRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudConnectorRulesRule)(nil)).Elem()
-}
-
-func (o GetCloudConnectorRulesRuleArrayOutput) ToGetCloudConnectorRulesRuleArrayOutput() GetCloudConnectorRulesRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudConnectorRulesRuleArrayOutput) ToGetCloudConnectorRulesRuleArrayOutputWithContext(ctx context.Context) GetCloudConnectorRulesRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudConnectorRulesRuleArrayOutput) Index(i pulumi.IntInput) GetCloudConnectorRulesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudConnectorRulesRule {
-		return vs[0].([]GetCloudConnectorRulesRule)[vs[1].(int)]
-	}).(GetCloudConnectorRulesRuleOutput)
-}
-
-type GetCloudConnectorRulesRuleParameters struct {
+type GetCloudConnectorRulesParameters struct {
 	// Host to perform Cloud Connection to
 	Host string `pulumi:"host"`
 }
 
-// GetCloudConnectorRulesRuleParametersInput is an input type that accepts GetCloudConnectorRulesRuleParametersArgs and GetCloudConnectorRulesRuleParametersOutput values.
-// You can construct a concrete instance of `GetCloudConnectorRulesRuleParametersInput` via:
+// GetCloudConnectorRulesParametersInput is an input type that accepts GetCloudConnectorRulesParametersArgs and GetCloudConnectorRulesParametersOutput values.
+// You can construct a concrete instance of `GetCloudConnectorRulesParametersInput` via:
 //
-//	GetCloudConnectorRulesRuleParametersArgs{...}
-type GetCloudConnectorRulesRuleParametersInput interface {
+//	GetCloudConnectorRulesParametersArgs{...}
+type GetCloudConnectorRulesParametersInput interface {
 	pulumi.Input
 
-	ToGetCloudConnectorRulesRuleParametersOutput() GetCloudConnectorRulesRuleParametersOutput
-	ToGetCloudConnectorRulesRuleParametersOutputWithContext(context.Context) GetCloudConnectorRulesRuleParametersOutput
+	ToGetCloudConnectorRulesParametersOutput() GetCloudConnectorRulesParametersOutput
+	ToGetCloudConnectorRulesParametersOutputWithContext(context.Context) GetCloudConnectorRulesParametersOutput
 }
 
-type GetCloudConnectorRulesRuleParametersArgs struct {
+type GetCloudConnectorRulesParametersArgs struct {
 	// Host to perform Cloud Connection to
 	Host pulumi.StringInput `pulumi:"host"`
 }
 
-func (GetCloudConnectorRulesRuleParametersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudConnectorRulesRuleParameters)(nil)).Elem()
+func (GetCloudConnectorRulesParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudConnectorRulesParameters)(nil)).Elem()
 }
 
-func (i GetCloudConnectorRulesRuleParametersArgs) ToGetCloudConnectorRulesRuleParametersOutput() GetCloudConnectorRulesRuleParametersOutput {
-	return i.ToGetCloudConnectorRulesRuleParametersOutputWithContext(context.Background())
+func (i GetCloudConnectorRulesParametersArgs) ToGetCloudConnectorRulesParametersOutput() GetCloudConnectorRulesParametersOutput {
+	return i.ToGetCloudConnectorRulesParametersOutputWithContext(context.Background())
 }
 
-func (i GetCloudConnectorRulesRuleParametersArgs) ToGetCloudConnectorRulesRuleParametersOutputWithContext(ctx context.Context) GetCloudConnectorRulesRuleParametersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudConnectorRulesRuleParametersOutput)
+func (i GetCloudConnectorRulesParametersArgs) ToGetCloudConnectorRulesParametersOutputWithContext(ctx context.Context) GetCloudConnectorRulesParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudConnectorRulesParametersOutput)
 }
 
-type GetCloudConnectorRulesRuleParametersOutput struct{ *pulumi.OutputState }
+type GetCloudConnectorRulesParametersOutput struct{ *pulumi.OutputState }
 
-func (GetCloudConnectorRulesRuleParametersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudConnectorRulesRuleParameters)(nil)).Elem()
+func (GetCloudConnectorRulesParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudConnectorRulesParameters)(nil)).Elem()
 }
 
-func (o GetCloudConnectorRulesRuleParametersOutput) ToGetCloudConnectorRulesRuleParametersOutput() GetCloudConnectorRulesRuleParametersOutput {
+func (o GetCloudConnectorRulesParametersOutput) ToGetCloudConnectorRulesParametersOutput() GetCloudConnectorRulesParametersOutput {
 	return o
 }
 
-func (o GetCloudConnectorRulesRuleParametersOutput) ToGetCloudConnectorRulesRuleParametersOutputWithContext(ctx context.Context) GetCloudConnectorRulesRuleParametersOutput {
+func (o GetCloudConnectorRulesParametersOutput) ToGetCloudConnectorRulesParametersOutputWithContext(ctx context.Context) GetCloudConnectorRulesParametersOutput {
 	return o
 }
 
 // Host to perform Cloud Connection to
-func (o GetCloudConnectorRulesRuleParametersOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudConnectorRulesRuleParameters) string { return v.Host }).(pulumi.StringOutput)
+func (o GetCloudConnectorRulesParametersOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudConnectorRulesParameters) string { return v.Host }).(pulumi.StringOutput)
 }
 
 type GetCloudforceOneRequestFilter struct {
@@ -10021,9 +9564,9 @@ func (o GetConnectivityDirectoryServicesResultTlsSettingsOutput) CertVerificatio
 }
 
 type GetContentScanningExpressionsResult struct {
-	// defines the unique ID for this custom scan expression.
+	// Defines the unique ID for this Content Scanning custom expression.
 	Id string `pulumi:"id"`
-	// Defines the ruleset expression to use in matching content objects.
+	// Defines the custom content extraction expression used to reach content objects in the request.
 	Payload string `pulumi:"payload"`
 }
 
@@ -10039,9 +9582,9 @@ type GetContentScanningExpressionsResultInput interface {
 }
 
 type GetContentScanningExpressionsResultArgs struct {
-	// defines the unique ID for this custom scan expression.
+	// Defines the unique ID for this Content Scanning custom expression.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Defines the ruleset expression to use in matching content objects.
+	// Defines the custom content extraction expression used to reach content objects in the request.
 	Payload pulumi.StringInput `pulumi:"payload"`
 }
 
@@ -10096,12 +9639,12 @@ func (o GetContentScanningExpressionsResultOutput) ToGetContentScanningExpressio
 	return o
 }
 
-// defines the unique ID for this custom scan expression.
+// Defines the unique ID for this Content Scanning custom expression.
 func (o GetContentScanningExpressionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContentScanningExpressionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Defines the ruleset expression to use in matching content objects.
+// Defines the custom content extraction expression used to reach content objects in the request.
 func (o GetContentScanningExpressionsResultOutput) Payload() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContentScanningExpressionsResult) string { return v.Payload }).(pulumi.StringOutput)
 }
@@ -19612,535 +19155,7 @@ func (o GetEmailRoutingCatchAllMatcherArrayOutput) Index(i pulumi.IntInput) GetE
 	}).(GetEmailRoutingCatchAllMatcherOutput)
 }
 
-type GetEmailRoutingDnsError struct {
-	Code             int                           `pulumi:"code"`
-	DocumentationUrl string                        `pulumi:"documentationUrl"`
-	Message          string                        `pulumi:"message"`
-	Source           GetEmailRoutingDnsErrorSource `pulumi:"source"`
-}
-
-// GetEmailRoutingDnsErrorInput is an input type that accepts GetEmailRoutingDnsErrorArgs and GetEmailRoutingDnsErrorOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsErrorInput` via:
-//
-//	GetEmailRoutingDnsErrorArgs{...}
-type GetEmailRoutingDnsErrorInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsErrorOutput() GetEmailRoutingDnsErrorOutput
-	ToGetEmailRoutingDnsErrorOutputWithContext(context.Context) GetEmailRoutingDnsErrorOutput
-}
-
-type GetEmailRoutingDnsErrorArgs struct {
-	Code             pulumi.IntInput                    `pulumi:"code"`
-	DocumentationUrl pulumi.StringInput                 `pulumi:"documentationUrl"`
-	Message          pulumi.StringInput                 `pulumi:"message"`
-	Source           GetEmailRoutingDnsErrorSourceInput `pulumi:"source"`
-}
-
-func (GetEmailRoutingDnsErrorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsError)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsErrorArgs) ToGetEmailRoutingDnsErrorOutput() GetEmailRoutingDnsErrorOutput {
-	return i.ToGetEmailRoutingDnsErrorOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsErrorArgs) ToGetEmailRoutingDnsErrorOutputWithContext(ctx context.Context) GetEmailRoutingDnsErrorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsErrorOutput)
-}
-
-// GetEmailRoutingDnsErrorArrayInput is an input type that accepts GetEmailRoutingDnsErrorArray and GetEmailRoutingDnsErrorArrayOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsErrorArrayInput` via:
-//
-//	GetEmailRoutingDnsErrorArray{ GetEmailRoutingDnsErrorArgs{...} }
-type GetEmailRoutingDnsErrorArrayInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsErrorArrayOutput() GetEmailRoutingDnsErrorArrayOutput
-	ToGetEmailRoutingDnsErrorArrayOutputWithContext(context.Context) GetEmailRoutingDnsErrorArrayOutput
-}
-
-type GetEmailRoutingDnsErrorArray []GetEmailRoutingDnsErrorInput
-
-func (GetEmailRoutingDnsErrorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEmailRoutingDnsError)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsErrorArray) ToGetEmailRoutingDnsErrorArrayOutput() GetEmailRoutingDnsErrorArrayOutput {
-	return i.ToGetEmailRoutingDnsErrorArrayOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsErrorArray) ToGetEmailRoutingDnsErrorArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsErrorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsErrorArrayOutput)
-}
-
-type GetEmailRoutingDnsErrorOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsError)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsErrorOutput) ToGetEmailRoutingDnsErrorOutput() GetEmailRoutingDnsErrorOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsErrorOutput) ToGetEmailRoutingDnsErrorOutputWithContext(ctx context.Context) GetEmailRoutingDnsErrorOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsErrorOutput) Code() pulumi.IntOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsError) int { return v.Code }).(pulumi.IntOutput)
-}
-
-func (o GetEmailRoutingDnsErrorOutput) DocumentationUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsError) string { return v.DocumentationUrl }).(pulumi.StringOutput)
-}
-
-func (o GetEmailRoutingDnsErrorOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsError) string { return v.Message }).(pulumi.StringOutput)
-}
-
-func (o GetEmailRoutingDnsErrorOutput) Source() GetEmailRoutingDnsErrorSourceOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsError) GetEmailRoutingDnsErrorSource { return v.Source }).(GetEmailRoutingDnsErrorSourceOutput)
-}
-
-type GetEmailRoutingDnsErrorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsErrorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEmailRoutingDnsError)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsErrorArrayOutput) ToGetEmailRoutingDnsErrorArrayOutput() GetEmailRoutingDnsErrorArrayOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsErrorArrayOutput) ToGetEmailRoutingDnsErrorArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsErrorArrayOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsErrorArrayOutput) Index(i pulumi.IntInput) GetEmailRoutingDnsErrorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailRoutingDnsError {
-		return vs[0].([]GetEmailRoutingDnsError)[vs[1].(int)]
-	}).(GetEmailRoutingDnsErrorOutput)
-}
-
-type GetEmailRoutingDnsErrorSource struct {
-	Pointer string `pulumi:"pointer"`
-}
-
-// GetEmailRoutingDnsErrorSourceInput is an input type that accepts GetEmailRoutingDnsErrorSourceArgs and GetEmailRoutingDnsErrorSourceOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsErrorSourceInput` via:
-//
-//	GetEmailRoutingDnsErrorSourceArgs{...}
-type GetEmailRoutingDnsErrorSourceInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsErrorSourceOutput() GetEmailRoutingDnsErrorSourceOutput
-	ToGetEmailRoutingDnsErrorSourceOutputWithContext(context.Context) GetEmailRoutingDnsErrorSourceOutput
-}
-
-type GetEmailRoutingDnsErrorSourceArgs struct {
-	Pointer pulumi.StringInput `pulumi:"pointer"`
-}
-
-func (GetEmailRoutingDnsErrorSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsErrorSource)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsErrorSourceArgs) ToGetEmailRoutingDnsErrorSourceOutput() GetEmailRoutingDnsErrorSourceOutput {
-	return i.ToGetEmailRoutingDnsErrorSourceOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsErrorSourceArgs) ToGetEmailRoutingDnsErrorSourceOutputWithContext(ctx context.Context) GetEmailRoutingDnsErrorSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsErrorSourceOutput)
-}
-
-type GetEmailRoutingDnsErrorSourceOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsErrorSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsErrorSource)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsErrorSourceOutput) ToGetEmailRoutingDnsErrorSourceOutput() GetEmailRoutingDnsErrorSourceOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsErrorSourceOutput) ToGetEmailRoutingDnsErrorSourceOutputWithContext(ctx context.Context) GetEmailRoutingDnsErrorSourceOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsErrorSourceOutput) Pointer() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsErrorSource) string { return v.Pointer }).(pulumi.StringOutput)
-}
-
-type GetEmailRoutingDnsMessage struct {
-	Code             int                             `pulumi:"code"`
-	DocumentationUrl string                          `pulumi:"documentationUrl"`
-	Message          string                          `pulumi:"message"`
-	Source           GetEmailRoutingDnsMessageSource `pulumi:"source"`
-}
-
-// GetEmailRoutingDnsMessageInput is an input type that accepts GetEmailRoutingDnsMessageArgs and GetEmailRoutingDnsMessageOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsMessageInput` via:
-//
-//	GetEmailRoutingDnsMessageArgs{...}
-type GetEmailRoutingDnsMessageInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsMessageOutput() GetEmailRoutingDnsMessageOutput
-	ToGetEmailRoutingDnsMessageOutputWithContext(context.Context) GetEmailRoutingDnsMessageOutput
-}
-
-type GetEmailRoutingDnsMessageArgs struct {
-	Code             pulumi.IntInput                      `pulumi:"code"`
-	DocumentationUrl pulumi.StringInput                   `pulumi:"documentationUrl"`
-	Message          pulumi.StringInput                   `pulumi:"message"`
-	Source           GetEmailRoutingDnsMessageSourceInput `pulumi:"source"`
-}
-
-func (GetEmailRoutingDnsMessageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsMessage)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsMessageArgs) ToGetEmailRoutingDnsMessageOutput() GetEmailRoutingDnsMessageOutput {
-	return i.ToGetEmailRoutingDnsMessageOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsMessageArgs) ToGetEmailRoutingDnsMessageOutputWithContext(ctx context.Context) GetEmailRoutingDnsMessageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsMessageOutput)
-}
-
-// GetEmailRoutingDnsMessageArrayInput is an input type that accepts GetEmailRoutingDnsMessageArray and GetEmailRoutingDnsMessageArrayOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsMessageArrayInput` via:
-//
-//	GetEmailRoutingDnsMessageArray{ GetEmailRoutingDnsMessageArgs{...} }
-type GetEmailRoutingDnsMessageArrayInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsMessageArrayOutput() GetEmailRoutingDnsMessageArrayOutput
-	ToGetEmailRoutingDnsMessageArrayOutputWithContext(context.Context) GetEmailRoutingDnsMessageArrayOutput
-}
-
-type GetEmailRoutingDnsMessageArray []GetEmailRoutingDnsMessageInput
-
-func (GetEmailRoutingDnsMessageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEmailRoutingDnsMessage)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsMessageArray) ToGetEmailRoutingDnsMessageArrayOutput() GetEmailRoutingDnsMessageArrayOutput {
-	return i.ToGetEmailRoutingDnsMessageArrayOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsMessageArray) ToGetEmailRoutingDnsMessageArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsMessageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsMessageArrayOutput)
-}
-
-type GetEmailRoutingDnsMessageOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsMessageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsMessage)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsMessageOutput) ToGetEmailRoutingDnsMessageOutput() GetEmailRoutingDnsMessageOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsMessageOutput) ToGetEmailRoutingDnsMessageOutputWithContext(ctx context.Context) GetEmailRoutingDnsMessageOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsMessageOutput) Code() pulumi.IntOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsMessage) int { return v.Code }).(pulumi.IntOutput)
-}
-
-func (o GetEmailRoutingDnsMessageOutput) DocumentationUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsMessage) string { return v.DocumentationUrl }).(pulumi.StringOutput)
-}
-
-func (o GetEmailRoutingDnsMessageOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsMessage) string { return v.Message }).(pulumi.StringOutput)
-}
-
-func (o GetEmailRoutingDnsMessageOutput) Source() GetEmailRoutingDnsMessageSourceOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsMessage) GetEmailRoutingDnsMessageSource { return v.Source }).(GetEmailRoutingDnsMessageSourceOutput)
-}
-
-type GetEmailRoutingDnsMessageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsMessageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEmailRoutingDnsMessage)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsMessageArrayOutput) ToGetEmailRoutingDnsMessageArrayOutput() GetEmailRoutingDnsMessageArrayOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsMessageArrayOutput) ToGetEmailRoutingDnsMessageArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsMessageArrayOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsMessageArrayOutput) Index(i pulumi.IntInput) GetEmailRoutingDnsMessageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailRoutingDnsMessage {
-		return vs[0].([]GetEmailRoutingDnsMessage)[vs[1].(int)]
-	}).(GetEmailRoutingDnsMessageOutput)
-}
-
-type GetEmailRoutingDnsMessageSource struct {
-	Pointer string `pulumi:"pointer"`
-}
-
-// GetEmailRoutingDnsMessageSourceInput is an input type that accepts GetEmailRoutingDnsMessageSourceArgs and GetEmailRoutingDnsMessageSourceOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsMessageSourceInput` via:
-//
-//	GetEmailRoutingDnsMessageSourceArgs{...}
-type GetEmailRoutingDnsMessageSourceInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsMessageSourceOutput() GetEmailRoutingDnsMessageSourceOutput
-	ToGetEmailRoutingDnsMessageSourceOutputWithContext(context.Context) GetEmailRoutingDnsMessageSourceOutput
-}
-
-type GetEmailRoutingDnsMessageSourceArgs struct {
-	Pointer pulumi.StringInput `pulumi:"pointer"`
-}
-
-func (GetEmailRoutingDnsMessageSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsMessageSource)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsMessageSourceArgs) ToGetEmailRoutingDnsMessageSourceOutput() GetEmailRoutingDnsMessageSourceOutput {
-	return i.ToGetEmailRoutingDnsMessageSourceOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsMessageSourceArgs) ToGetEmailRoutingDnsMessageSourceOutputWithContext(ctx context.Context) GetEmailRoutingDnsMessageSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsMessageSourceOutput)
-}
-
-type GetEmailRoutingDnsMessageSourceOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsMessageSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsMessageSource)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsMessageSourceOutput) ToGetEmailRoutingDnsMessageSourceOutput() GetEmailRoutingDnsMessageSourceOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsMessageSourceOutput) ToGetEmailRoutingDnsMessageSourceOutputWithContext(ctx context.Context) GetEmailRoutingDnsMessageSourceOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsMessageSourceOutput) Pointer() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsMessageSource) string { return v.Pointer }).(pulumi.StringOutput)
-}
-
-type GetEmailRoutingDnsResult struct {
-	// DNS record content.
-	Content string                          `pulumi:"content"`
-	Errors  []GetEmailRoutingDnsResultError `pulumi:"errors"`
-	// DNS record name (or @ for the zone apex).
-	Name string `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority float64                          `pulumi:"priority"`
-	Records  []GetEmailRoutingDnsResultRecord `pulumi:"records"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl float64 `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type string `pulumi:"type"`
-}
-
-// GetEmailRoutingDnsResultInput is an input type that accepts GetEmailRoutingDnsResultArgs and GetEmailRoutingDnsResultOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsResultInput` via:
-//
-//	GetEmailRoutingDnsResultArgs{...}
-type GetEmailRoutingDnsResultInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsResultOutput() GetEmailRoutingDnsResultOutput
-	ToGetEmailRoutingDnsResultOutputWithContext(context.Context) GetEmailRoutingDnsResultOutput
-}
-
-type GetEmailRoutingDnsResultArgs struct {
-	// DNS record content.
-	Content pulumi.StringInput                      `pulumi:"content"`
-	Errors  GetEmailRoutingDnsResultErrorArrayInput `pulumi:"errors"`
-	// DNS record name (or @ for the zone apex).
-	Name pulumi.StringInput `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority pulumi.Float64Input                      `pulumi:"priority"`
-	Records  GetEmailRoutingDnsResultRecordArrayInput `pulumi:"records"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl pulumi.Float64Input `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetEmailRoutingDnsResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResult)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsResultArgs) ToGetEmailRoutingDnsResultOutput() GetEmailRoutingDnsResultOutput {
-	return i.ToGetEmailRoutingDnsResultOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsResultArgs) ToGetEmailRoutingDnsResultOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsResultOutput)
-}
-
-type GetEmailRoutingDnsResultOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResult)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsResultOutput) ToGetEmailRoutingDnsResultOutput() GetEmailRoutingDnsResultOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsResultOutput) ToGetEmailRoutingDnsResultOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultOutput {
-	return o
-}
-
-// DNS record content.
-func (o GetEmailRoutingDnsResultOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResult) string { return v.Content }).(pulumi.StringOutput)
-}
-
-func (o GetEmailRoutingDnsResultOutput) Errors() GetEmailRoutingDnsResultErrorArrayOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResult) []GetEmailRoutingDnsResultError { return v.Errors }).(GetEmailRoutingDnsResultErrorArrayOutput)
-}
-
-// DNS record name (or @ for the zone apex).
-func (o GetEmailRoutingDnsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-func (o GetEmailRoutingDnsResultOutput) Priority() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResult) float64 { return v.Priority }).(pulumi.Float64Output)
-}
-
-func (o GetEmailRoutingDnsResultOutput) Records() GetEmailRoutingDnsResultRecordArrayOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResult) []GetEmailRoutingDnsResultRecord { return v.Records }).(GetEmailRoutingDnsResultRecordArrayOutput)
-}
-
-// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-func (o GetEmailRoutingDnsResultOutput) Ttl() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResult) float64 { return v.Ttl }).(pulumi.Float64Output)
-}
-
-// DNS record type.
-// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-func (o GetEmailRoutingDnsResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetEmailRoutingDnsResultError struct {
-	Code string `pulumi:"code"`
-	// List of records needed to enable an Email Routing zone.
-	Missing GetEmailRoutingDnsResultErrorMissing `pulumi:"missing"`
-}
-
-// GetEmailRoutingDnsResultErrorInput is an input type that accepts GetEmailRoutingDnsResultErrorArgs and GetEmailRoutingDnsResultErrorOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsResultErrorInput` via:
-//
-//	GetEmailRoutingDnsResultErrorArgs{...}
-type GetEmailRoutingDnsResultErrorInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsResultErrorOutput() GetEmailRoutingDnsResultErrorOutput
-	ToGetEmailRoutingDnsResultErrorOutputWithContext(context.Context) GetEmailRoutingDnsResultErrorOutput
-}
-
-type GetEmailRoutingDnsResultErrorArgs struct {
-	Code pulumi.StringInput `pulumi:"code"`
-	// List of records needed to enable an Email Routing zone.
-	Missing GetEmailRoutingDnsResultErrorMissingInput `pulumi:"missing"`
-}
-
-func (GetEmailRoutingDnsResultErrorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResultError)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsResultErrorArgs) ToGetEmailRoutingDnsResultErrorOutput() GetEmailRoutingDnsResultErrorOutput {
-	return i.ToGetEmailRoutingDnsResultErrorOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsResultErrorArgs) ToGetEmailRoutingDnsResultErrorOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultErrorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsResultErrorOutput)
-}
-
-// GetEmailRoutingDnsResultErrorArrayInput is an input type that accepts GetEmailRoutingDnsResultErrorArray and GetEmailRoutingDnsResultErrorArrayOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsResultErrorArrayInput` via:
-//
-//	GetEmailRoutingDnsResultErrorArray{ GetEmailRoutingDnsResultErrorArgs{...} }
-type GetEmailRoutingDnsResultErrorArrayInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsResultErrorArrayOutput() GetEmailRoutingDnsResultErrorArrayOutput
-	ToGetEmailRoutingDnsResultErrorArrayOutputWithContext(context.Context) GetEmailRoutingDnsResultErrorArrayOutput
-}
-
-type GetEmailRoutingDnsResultErrorArray []GetEmailRoutingDnsResultErrorInput
-
-func (GetEmailRoutingDnsResultErrorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEmailRoutingDnsResultError)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsResultErrorArray) ToGetEmailRoutingDnsResultErrorArrayOutput() GetEmailRoutingDnsResultErrorArrayOutput {
-	return i.ToGetEmailRoutingDnsResultErrorArrayOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsResultErrorArray) ToGetEmailRoutingDnsResultErrorArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultErrorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsResultErrorArrayOutput)
-}
-
-type GetEmailRoutingDnsResultErrorOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsResultErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResultError)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsResultErrorOutput) ToGetEmailRoutingDnsResultErrorOutput() GetEmailRoutingDnsResultErrorOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsResultErrorOutput) ToGetEmailRoutingDnsResultErrorOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultErrorOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsResultErrorOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultError) string { return v.Code }).(pulumi.StringOutput)
-}
-
-// List of records needed to enable an Email Routing zone.
-func (o GetEmailRoutingDnsResultErrorOutput) Missing() GetEmailRoutingDnsResultErrorMissingOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultError) GetEmailRoutingDnsResultErrorMissing { return v.Missing }).(GetEmailRoutingDnsResultErrorMissingOutput)
-}
-
-type GetEmailRoutingDnsResultErrorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsResultErrorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEmailRoutingDnsResultError)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsResultErrorArrayOutput) ToGetEmailRoutingDnsResultErrorArrayOutput() GetEmailRoutingDnsResultErrorArrayOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsResultErrorArrayOutput) ToGetEmailRoutingDnsResultErrorArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultErrorArrayOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsResultErrorArrayOutput) Index(i pulumi.IntInput) GetEmailRoutingDnsResultErrorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailRoutingDnsResultError {
-		return vs[0].([]GetEmailRoutingDnsResultError)[vs[1].(int)]
-	}).(GetEmailRoutingDnsResultErrorOutput)
-}
-
-type GetEmailRoutingDnsResultErrorMissing struct {
+type GetEmailRoutingDnsDn struct {
 	// DNS record content.
 	Content string `pulumi:"content"`
 	// DNS record name (or @ for the zone apex).
@@ -20154,18 +19169,18 @@ type GetEmailRoutingDnsResultErrorMissing struct {
 	Type string `pulumi:"type"`
 }
 
-// GetEmailRoutingDnsResultErrorMissingInput is an input type that accepts GetEmailRoutingDnsResultErrorMissingArgs and GetEmailRoutingDnsResultErrorMissingOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsResultErrorMissingInput` via:
+// GetEmailRoutingDnsDnInput is an input type that accepts GetEmailRoutingDnsDnArgs and GetEmailRoutingDnsDnOutput values.
+// You can construct a concrete instance of `GetEmailRoutingDnsDnInput` via:
 //
-//	GetEmailRoutingDnsResultErrorMissingArgs{...}
-type GetEmailRoutingDnsResultErrorMissingInput interface {
+//	GetEmailRoutingDnsDnArgs{...}
+type GetEmailRoutingDnsDnInput interface {
 	pulumi.Input
 
-	ToGetEmailRoutingDnsResultErrorMissingOutput() GetEmailRoutingDnsResultErrorMissingOutput
-	ToGetEmailRoutingDnsResultErrorMissingOutputWithContext(context.Context) GetEmailRoutingDnsResultErrorMissingOutput
+	ToGetEmailRoutingDnsDnOutput() GetEmailRoutingDnsDnOutput
+	ToGetEmailRoutingDnsDnOutputWithContext(context.Context) GetEmailRoutingDnsDnOutput
 }
 
-type GetEmailRoutingDnsResultErrorMissingArgs struct {
+type GetEmailRoutingDnsDnArgs struct {
 	// DNS record content.
 	Content pulumi.StringInput `pulumi:"content"`
 	// DNS record name (or @ for the zone apex).
@@ -20179,280 +19194,101 @@ type GetEmailRoutingDnsResultErrorMissingArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetEmailRoutingDnsResultErrorMissingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResultErrorMissing)(nil)).Elem()
+func (GetEmailRoutingDnsDnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailRoutingDnsDn)(nil)).Elem()
 }
 
-func (i GetEmailRoutingDnsResultErrorMissingArgs) ToGetEmailRoutingDnsResultErrorMissingOutput() GetEmailRoutingDnsResultErrorMissingOutput {
-	return i.ToGetEmailRoutingDnsResultErrorMissingOutputWithContext(context.Background())
+func (i GetEmailRoutingDnsDnArgs) ToGetEmailRoutingDnsDnOutput() GetEmailRoutingDnsDnOutput {
+	return i.ToGetEmailRoutingDnsDnOutputWithContext(context.Background())
 }
 
-func (i GetEmailRoutingDnsResultErrorMissingArgs) ToGetEmailRoutingDnsResultErrorMissingOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultErrorMissingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsResultErrorMissingOutput)
+func (i GetEmailRoutingDnsDnArgs) ToGetEmailRoutingDnsDnOutputWithContext(ctx context.Context) GetEmailRoutingDnsDnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsDnOutput)
 }
 
-type GetEmailRoutingDnsResultErrorMissingOutput struct{ *pulumi.OutputState }
+// GetEmailRoutingDnsDnArrayInput is an input type that accepts GetEmailRoutingDnsDnArray and GetEmailRoutingDnsDnArrayOutput values.
+// You can construct a concrete instance of `GetEmailRoutingDnsDnArrayInput` via:
+//
+//	GetEmailRoutingDnsDnArray{ GetEmailRoutingDnsDnArgs{...} }
+type GetEmailRoutingDnsDnArrayInput interface {
+	pulumi.Input
 
-func (GetEmailRoutingDnsResultErrorMissingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResultErrorMissing)(nil)).Elem()
+	ToGetEmailRoutingDnsDnArrayOutput() GetEmailRoutingDnsDnArrayOutput
+	ToGetEmailRoutingDnsDnArrayOutputWithContext(context.Context) GetEmailRoutingDnsDnArrayOutput
 }
 
-func (o GetEmailRoutingDnsResultErrorMissingOutput) ToGetEmailRoutingDnsResultErrorMissingOutput() GetEmailRoutingDnsResultErrorMissingOutput {
+type GetEmailRoutingDnsDnArray []GetEmailRoutingDnsDnInput
+
+func (GetEmailRoutingDnsDnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEmailRoutingDnsDn)(nil)).Elem()
+}
+
+func (i GetEmailRoutingDnsDnArray) ToGetEmailRoutingDnsDnArrayOutput() GetEmailRoutingDnsDnArrayOutput {
+	return i.ToGetEmailRoutingDnsDnArrayOutputWithContext(context.Background())
+}
+
+func (i GetEmailRoutingDnsDnArray) ToGetEmailRoutingDnsDnArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsDnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsDnArrayOutput)
+}
+
+type GetEmailRoutingDnsDnOutput struct{ *pulumi.OutputState }
+
+func (GetEmailRoutingDnsDnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailRoutingDnsDn)(nil)).Elem()
+}
+
+func (o GetEmailRoutingDnsDnOutput) ToGetEmailRoutingDnsDnOutput() GetEmailRoutingDnsDnOutput {
 	return o
 }
 
-func (o GetEmailRoutingDnsResultErrorMissingOutput) ToGetEmailRoutingDnsResultErrorMissingOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultErrorMissingOutput {
+func (o GetEmailRoutingDnsDnOutput) ToGetEmailRoutingDnsDnOutputWithContext(ctx context.Context) GetEmailRoutingDnsDnOutput {
 	return o
 }
 
 // DNS record content.
-func (o GetEmailRoutingDnsResultErrorMissingOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultErrorMissing) string { return v.Content }).(pulumi.StringOutput)
+func (o GetEmailRoutingDnsDnOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailRoutingDnsDn) string { return v.Content }).(pulumi.StringOutput)
 }
 
 // DNS record name (or @ for the zone apex).
-func (o GetEmailRoutingDnsResultErrorMissingOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultErrorMissing) string { return v.Name }).(pulumi.StringOutput)
+func (o GetEmailRoutingDnsDnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailRoutingDnsDn) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-func (o GetEmailRoutingDnsResultErrorMissingOutput) Priority() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultErrorMissing) float64 { return v.Priority }).(pulumi.Float64Output)
+func (o GetEmailRoutingDnsDnOutput) Priority() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEmailRoutingDnsDn) float64 { return v.Priority }).(pulumi.Float64Output)
 }
 
 // Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-func (o GetEmailRoutingDnsResultErrorMissingOutput) Ttl() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultErrorMissing) float64 { return v.Ttl }).(pulumi.Float64Output)
+func (o GetEmailRoutingDnsDnOutput) Ttl() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEmailRoutingDnsDn) float64 { return v.Ttl }).(pulumi.Float64Output)
 }
 
 // DNS record type.
 // Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-func (o GetEmailRoutingDnsResultErrorMissingOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultErrorMissing) string { return v.Type }).(pulumi.StringOutput)
+func (o GetEmailRoutingDnsDnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailRoutingDnsDn) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetEmailRoutingDnsResultInfo struct {
-	// Total number of results for the requested service.
-	EmailRoutingDnsCount float64 `pulumi:"emailRoutingDnsCount"`
-	// Current page within paginated list of results.
-	Page float64 `pulumi:"page"`
-	// Number of results per page of results.
-	PerPage float64 `pulumi:"perPage"`
-	// Total results available without any search parameters.
-	TotalCount float64 `pulumi:"totalCount"`
-	// The number of total pages in the entire result set.
-	TotalPages float64 `pulumi:"totalPages"`
+type GetEmailRoutingDnsDnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEmailRoutingDnsDnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEmailRoutingDnsDn)(nil)).Elem()
 }
 
-// GetEmailRoutingDnsResultInfoInput is an input type that accepts GetEmailRoutingDnsResultInfoArgs and GetEmailRoutingDnsResultInfoOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsResultInfoInput` via:
-//
-//	GetEmailRoutingDnsResultInfoArgs{...}
-type GetEmailRoutingDnsResultInfoInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsResultInfoOutput() GetEmailRoutingDnsResultInfoOutput
-	ToGetEmailRoutingDnsResultInfoOutputWithContext(context.Context) GetEmailRoutingDnsResultInfoOutput
-}
-
-type GetEmailRoutingDnsResultInfoArgs struct {
-	// Total number of results for the requested service.
-	EmailRoutingDnsCount pulumi.Float64Input `pulumi:"emailRoutingDnsCount"`
-	// Current page within paginated list of results.
-	Page pulumi.Float64Input `pulumi:"page"`
-	// Number of results per page of results.
-	PerPage pulumi.Float64Input `pulumi:"perPage"`
-	// Total results available without any search parameters.
-	TotalCount pulumi.Float64Input `pulumi:"totalCount"`
-	// The number of total pages in the entire result set.
-	TotalPages pulumi.Float64Input `pulumi:"totalPages"`
-}
-
-func (GetEmailRoutingDnsResultInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResultInfo)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsResultInfoArgs) ToGetEmailRoutingDnsResultInfoOutput() GetEmailRoutingDnsResultInfoOutput {
-	return i.ToGetEmailRoutingDnsResultInfoOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsResultInfoArgs) ToGetEmailRoutingDnsResultInfoOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsResultInfoOutput)
-}
-
-type GetEmailRoutingDnsResultInfoOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsResultInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResultInfo)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsResultInfoOutput) ToGetEmailRoutingDnsResultInfoOutput() GetEmailRoutingDnsResultInfoOutput {
+func (o GetEmailRoutingDnsDnArrayOutput) ToGetEmailRoutingDnsDnArrayOutput() GetEmailRoutingDnsDnArrayOutput {
 	return o
 }
 
-func (o GetEmailRoutingDnsResultInfoOutput) ToGetEmailRoutingDnsResultInfoOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultInfoOutput {
+func (o GetEmailRoutingDnsDnArrayOutput) ToGetEmailRoutingDnsDnArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsDnArrayOutput {
 	return o
 }
 
-// Total number of results for the requested service.
-func (o GetEmailRoutingDnsResultInfoOutput) EmailRoutingDnsCount() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultInfo) float64 { return v.EmailRoutingDnsCount }).(pulumi.Float64Output)
-}
-
-// Current page within paginated list of results.
-func (o GetEmailRoutingDnsResultInfoOutput) Page() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultInfo) float64 { return v.Page }).(pulumi.Float64Output)
-}
-
-// Number of results per page of results.
-func (o GetEmailRoutingDnsResultInfoOutput) PerPage() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultInfo) float64 { return v.PerPage }).(pulumi.Float64Output)
-}
-
-// Total results available without any search parameters.
-func (o GetEmailRoutingDnsResultInfoOutput) TotalCount() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultInfo) float64 { return v.TotalCount }).(pulumi.Float64Output)
-}
-
-// The number of total pages in the entire result set.
-func (o GetEmailRoutingDnsResultInfoOutput) TotalPages() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultInfo) float64 { return v.TotalPages }).(pulumi.Float64Output)
-}
-
-type GetEmailRoutingDnsResultRecord struct {
-	// DNS record content.
-	Content string `pulumi:"content"`
-	// DNS record name (or @ for the zone apex).
-	Name string `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority float64 `pulumi:"priority"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl float64 `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type string `pulumi:"type"`
-}
-
-// GetEmailRoutingDnsResultRecordInput is an input type that accepts GetEmailRoutingDnsResultRecordArgs and GetEmailRoutingDnsResultRecordOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsResultRecordInput` via:
-//
-//	GetEmailRoutingDnsResultRecordArgs{...}
-type GetEmailRoutingDnsResultRecordInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsResultRecordOutput() GetEmailRoutingDnsResultRecordOutput
-	ToGetEmailRoutingDnsResultRecordOutputWithContext(context.Context) GetEmailRoutingDnsResultRecordOutput
-}
-
-type GetEmailRoutingDnsResultRecordArgs struct {
-	// DNS record content.
-	Content pulumi.StringInput `pulumi:"content"`
-	// DNS record name (or @ for the zone apex).
-	Name pulumi.StringInput `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority pulumi.Float64Input `pulumi:"priority"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl pulumi.Float64Input `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetEmailRoutingDnsResultRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResultRecord)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsResultRecordArgs) ToGetEmailRoutingDnsResultRecordOutput() GetEmailRoutingDnsResultRecordOutput {
-	return i.ToGetEmailRoutingDnsResultRecordOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsResultRecordArgs) ToGetEmailRoutingDnsResultRecordOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsResultRecordOutput)
-}
-
-// GetEmailRoutingDnsResultRecordArrayInput is an input type that accepts GetEmailRoutingDnsResultRecordArray and GetEmailRoutingDnsResultRecordArrayOutput values.
-// You can construct a concrete instance of `GetEmailRoutingDnsResultRecordArrayInput` via:
-//
-//	GetEmailRoutingDnsResultRecordArray{ GetEmailRoutingDnsResultRecordArgs{...} }
-type GetEmailRoutingDnsResultRecordArrayInput interface {
-	pulumi.Input
-
-	ToGetEmailRoutingDnsResultRecordArrayOutput() GetEmailRoutingDnsResultRecordArrayOutput
-	ToGetEmailRoutingDnsResultRecordArrayOutputWithContext(context.Context) GetEmailRoutingDnsResultRecordArrayOutput
-}
-
-type GetEmailRoutingDnsResultRecordArray []GetEmailRoutingDnsResultRecordInput
-
-func (GetEmailRoutingDnsResultRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEmailRoutingDnsResultRecord)(nil)).Elem()
-}
-
-func (i GetEmailRoutingDnsResultRecordArray) ToGetEmailRoutingDnsResultRecordArrayOutput() GetEmailRoutingDnsResultRecordArrayOutput {
-	return i.ToGetEmailRoutingDnsResultRecordArrayOutputWithContext(context.Background())
-}
-
-func (i GetEmailRoutingDnsResultRecordArray) ToGetEmailRoutingDnsResultRecordArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetEmailRoutingDnsResultRecordArrayOutput)
-}
-
-type GetEmailRoutingDnsResultRecordOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsResultRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetEmailRoutingDnsResultRecord)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsResultRecordOutput) ToGetEmailRoutingDnsResultRecordOutput() GetEmailRoutingDnsResultRecordOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsResultRecordOutput) ToGetEmailRoutingDnsResultRecordOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultRecordOutput {
-	return o
-}
-
-// DNS record content.
-func (o GetEmailRoutingDnsResultRecordOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultRecord) string { return v.Content }).(pulumi.StringOutput)
-}
-
-// DNS record name (or @ for the zone apex).
-func (o GetEmailRoutingDnsResultRecordOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultRecord) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-func (o GetEmailRoutingDnsResultRecordOutput) Priority() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultRecord) float64 { return v.Priority }).(pulumi.Float64Output)
-}
-
-// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-func (o GetEmailRoutingDnsResultRecordOutput) Ttl() pulumi.Float64Output {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultRecord) float64 { return v.Ttl }).(pulumi.Float64Output)
-}
-
-// DNS record type.
-// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-func (o GetEmailRoutingDnsResultRecordOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetEmailRoutingDnsResultRecord) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetEmailRoutingDnsResultRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (GetEmailRoutingDnsResultRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetEmailRoutingDnsResultRecord)(nil)).Elem()
-}
-
-func (o GetEmailRoutingDnsResultRecordArrayOutput) ToGetEmailRoutingDnsResultRecordArrayOutput() GetEmailRoutingDnsResultRecordArrayOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsResultRecordArrayOutput) ToGetEmailRoutingDnsResultRecordArrayOutputWithContext(ctx context.Context) GetEmailRoutingDnsResultRecordArrayOutput {
-	return o
-}
-
-func (o GetEmailRoutingDnsResultRecordArrayOutput) Index(i pulumi.IntInput) GetEmailRoutingDnsResultRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailRoutingDnsResultRecord {
-		return vs[0].([]GetEmailRoutingDnsResultRecord)[vs[1].(int)]
-	}).(GetEmailRoutingDnsResultRecordOutput)
+func (o GetEmailRoutingDnsDnArrayOutput) Index(i pulumi.IntInput) GetEmailRoutingDnsDnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailRoutingDnsDn {
+		return vs[0].([]GetEmailRoutingDnsDn)[vs[1].(int)]
+	}).(GetEmailRoutingDnsDnOutput)
 }
 
 type GetEmailRoutingRuleAction struct {
@@ -21203,6 +20039,569 @@ func (o GetEmailRoutingRulesResultMatcherArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetEmailRoutingRulesResultMatcherOutput)
 }
 
+type GetEmailSecurityAllowPoliciesResult struct {
+	Comments  string `pulumi:"comments"`
+	CreatedAt string `pulumi:"createdAt"`
+	// Allow policy identifier.
+	Id string `pulumi:"id"`
+	// Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
+	IsAcceptableSender bool `pulumi:"isAcceptableSender"`
+	// Bypasses all detections for messages to this recipient.
+	IsExemptRecipient bool `pulumi:"isExemptRecipient"`
+	// Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
+	//
+	// Deprecated: Use `isExemptRecipient` instead.
+	IsRecipient bool `pulumi:"isRecipient"`
+	IsRegex     bool `pulumi:"isRegex"`
+	// Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
+	//
+	// Deprecated: Use `isTrustedSender` instead.
+	IsSender bool `pulumi:"isSender"`
+	// Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
+	//
+	// Deprecated: Use `isAcceptableSender` instead.
+	IsSpoof bool `pulumi:"isSpoof"`
+	// Bypasses all detections and link following for messages from this sender.
+	IsTrustedSender bool `pulumi:"isTrustedSender"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: Use `modifiedAt` instead.
+	LastModified string `pulumi:"lastModified"`
+	ModifiedAt   string `pulumi:"modifiedAt"`
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	Pattern string `pulumi:"pattern"`
+	// Type of pattern matching.
+	// - EMAIL: matches a full email address (e.g. `user@example.com`)
+	// - DOMAIN: matches a domain name (e.g. `example.com`)
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	PatternType string `pulumi:"patternType"`
+	// Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.
+	VerifySender bool `pulumi:"verifySender"`
+}
+
+// GetEmailSecurityAllowPoliciesResultInput is an input type that accepts GetEmailSecurityAllowPoliciesResultArgs and GetEmailSecurityAllowPoliciesResultOutput values.
+// You can construct a concrete instance of `GetEmailSecurityAllowPoliciesResultInput` via:
+//
+//	GetEmailSecurityAllowPoliciesResultArgs{...}
+type GetEmailSecurityAllowPoliciesResultInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityAllowPoliciesResultOutput() GetEmailSecurityAllowPoliciesResultOutput
+	ToGetEmailSecurityAllowPoliciesResultOutputWithContext(context.Context) GetEmailSecurityAllowPoliciesResultOutput
+}
+
+type GetEmailSecurityAllowPoliciesResultArgs struct {
+	Comments  pulumi.StringInput `pulumi:"comments"`
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Allow policy identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
+	IsAcceptableSender pulumi.BoolInput `pulumi:"isAcceptableSender"`
+	// Bypasses all detections for messages to this recipient.
+	IsExemptRecipient pulumi.BoolInput `pulumi:"isExemptRecipient"`
+	// Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
+	//
+	// Deprecated: Use `isExemptRecipient` instead.
+	IsRecipient pulumi.BoolInput `pulumi:"isRecipient"`
+	IsRegex     pulumi.BoolInput `pulumi:"isRegex"`
+	// Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
+	//
+	// Deprecated: Use `isTrustedSender` instead.
+	IsSender pulumi.BoolInput `pulumi:"isSender"`
+	// Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
+	//
+	// Deprecated: Use `isAcceptableSender` instead.
+	IsSpoof pulumi.BoolInput `pulumi:"isSpoof"`
+	// Bypasses all detections and link following for messages from this sender.
+	IsTrustedSender pulumi.BoolInput `pulumi:"isTrustedSender"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: Use `modifiedAt` instead.
+	LastModified pulumi.StringInput `pulumi:"lastModified"`
+	ModifiedAt   pulumi.StringInput `pulumi:"modifiedAt"`
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+	// Type of pattern matching.
+	// - EMAIL: matches a full email address (e.g. `user@example.com`)
+	// - DOMAIN: matches a domain name (e.g. `example.com`)
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	PatternType pulumi.StringInput `pulumi:"patternType"`
+	// Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.
+	VerifySender pulumi.BoolInput `pulumi:"verifySender"`
+}
+
+func (GetEmailSecurityAllowPoliciesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityAllowPoliciesResult)(nil)).Elem()
+}
+
+func (i GetEmailSecurityAllowPoliciesResultArgs) ToGetEmailSecurityAllowPoliciesResultOutput() GetEmailSecurityAllowPoliciesResultOutput {
+	return i.ToGetEmailSecurityAllowPoliciesResultOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityAllowPoliciesResultArgs) ToGetEmailSecurityAllowPoliciesResultOutputWithContext(ctx context.Context) GetEmailSecurityAllowPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityAllowPoliciesResultOutput)
+}
+
+// GetEmailSecurityAllowPoliciesResultArrayInput is an input type that accepts GetEmailSecurityAllowPoliciesResultArray and GetEmailSecurityAllowPoliciesResultArrayOutput values.
+// You can construct a concrete instance of `GetEmailSecurityAllowPoliciesResultArrayInput` via:
+//
+//	GetEmailSecurityAllowPoliciesResultArray{ GetEmailSecurityAllowPoliciesResultArgs{...} }
+type GetEmailSecurityAllowPoliciesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityAllowPoliciesResultArrayOutput() GetEmailSecurityAllowPoliciesResultArrayOutput
+	ToGetEmailSecurityAllowPoliciesResultArrayOutputWithContext(context.Context) GetEmailSecurityAllowPoliciesResultArrayOutput
+}
+
+type GetEmailSecurityAllowPoliciesResultArray []GetEmailSecurityAllowPoliciesResultInput
+
+func (GetEmailSecurityAllowPoliciesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEmailSecurityAllowPoliciesResult)(nil)).Elem()
+}
+
+func (i GetEmailSecurityAllowPoliciesResultArray) ToGetEmailSecurityAllowPoliciesResultArrayOutput() GetEmailSecurityAllowPoliciesResultArrayOutput {
+	return i.ToGetEmailSecurityAllowPoliciesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityAllowPoliciesResultArray) ToGetEmailSecurityAllowPoliciesResultArrayOutputWithContext(ctx context.Context) GetEmailSecurityAllowPoliciesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityAllowPoliciesResultArrayOutput)
+}
+
+type GetEmailSecurityAllowPoliciesResultOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityAllowPoliciesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityAllowPoliciesResult)(nil)).Elem()
+}
+
+func (o GetEmailSecurityAllowPoliciesResultOutput) ToGetEmailSecurityAllowPoliciesResultOutput() GetEmailSecurityAllowPoliciesResultOutput {
+	return o
+}
+
+func (o GetEmailSecurityAllowPoliciesResultOutput) ToGetEmailSecurityAllowPoliciesResultOutputWithContext(ctx context.Context) GetEmailSecurityAllowPoliciesResultOutput {
+	return o
+}
+
+func (o GetEmailSecurityAllowPoliciesResultOutput) Comments() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) string { return v.Comments }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityAllowPoliciesResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Allow policy identifier.
+func (o GetEmailSecurityAllowPoliciesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
+func (o GetEmailSecurityAllowPoliciesResultOutput) IsAcceptableSender() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) bool { return v.IsAcceptableSender }).(pulumi.BoolOutput)
+}
+
+// Bypasses all detections for messages to this recipient.
+func (o GetEmailSecurityAllowPoliciesResultOutput) IsExemptRecipient() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) bool { return v.IsExemptRecipient }).(pulumi.BoolOutput)
+}
+
+// Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
+//
+// Deprecated: Use `isExemptRecipient` instead.
+func (o GetEmailSecurityAllowPoliciesResultOutput) IsRecipient() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) bool { return v.IsRecipient }).(pulumi.BoolOutput)
+}
+
+func (o GetEmailSecurityAllowPoliciesResultOutput) IsRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) bool { return v.IsRegex }).(pulumi.BoolOutput)
+}
+
+// Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
+//
+// Deprecated: Use `isTrustedSender` instead.
+func (o GetEmailSecurityAllowPoliciesResultOutput) IsSender() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) bool { return v.IsSender }).(pulumi.BoolOutput)
+}
+
+// Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
+//
+// Deprecated: Use `isAcceptableSender` instead.
+func (o GetEmailSecurityAllowPoliciesResultOutput) IsSpoof() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) bool { return v.IsSpoof }).(pulumi.BoolOutput)
+}
+
+// Bypasses all detections and link following for messages from this sender.
+func (o GetEmailSecurityAllowPoliciesResultOutput) IsTrustedSender() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) bool { return v.IsTrustedSender }).(pulumi.BoolOutput)
+}
+
+// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+//
+// Deprecated: Use `modifiedAt` instead.
+func (o GetEmailSecurityAllowPoliciesResultOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityAllowPoliciesResultOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+func (o GetEmailSecurityAllowPoliciesResultOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+// Type of pattern matching.
+//   - EMAIL: matches a full email address (e.g. `user@example.com`)
+//   - DOMAIN: matches a domain name (e.g. `example.com`)
+//   - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+//   - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+//     Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+func (o GetEmailSecurityAllowPoliciesResultOutput) PatternType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) string { return v.PatternType }).(pulumi.StringOutput)
+}
+
+// Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.
+func (o GetEmailSecurityAllowPoliciesResultOutput) VerifySender() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPoliciesResult) bool { return v.VerifySender }).(pulumi.BoolOutput)
+}
+
+type GetEmailSecurityAllowPoliciesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityAllowPoliciesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEmailSecurityAllowPoliciesResult)(nil)).Elem()
+}
+
+func (o GetEmailSecurityAllowPoliciesResultArrayOutput) ToGetEmailSecurityAllowPoliciesResultArrayOutput() GetEmailSecurityAllowPoliciesResultArrayOutput {
+	return o
+}
+
+func (o GetEmailSecurityAllowPoliciesResultArrayOutput) ToGetEmailSecurityAllowPoliciesResultArrayOutputWithContext(ctx context.Context) GetEmailSecurityAllowPoliciesResultArrayOutput {
+	return o
+}
+
+func (o GetEmailSecurityAllowPoliciesResultArrayOutput) Index(i pulumi.IntInput) GetEmailSecurityAllowPoliciesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailSecurityAllowPoliciesResult {
+		return vs[0].([]GetEmailSecurityAllowPoliciesResult)[vs[1].(int)]
+	}).(GetEmailSecurityAllowPoliciesResultOutput)
+}
+
+type GetEmailSecurityAllowPolicyFilter struct {
+	// The sorting direction.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
+	// Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
+	IsAcceptableSender *bool `pulumi:"isAcceptableSender"`
+	// Filter to show only policies where messages to the recipient bypass all detections.
+	IsExemptRecipient *bool `pulumi:"isExemptRecipient"`
+	// Filter to show only policies where messages from the sender bypass all detections and link following.
+	IsTrustedSender *bool `pulumi:"isTrustedSender"`
+	// Field to sort by.
+	// Available values: "pattern", "createdAt".
+	Order   *string `pulumi:"order"`
+	Pattern *string `pulumi:"pattern"`
+	// Type of pattern matching.
+	// - EMAIL: matches a full email address (e.g. `user@example.com`)
+	// - DOMAIN: matches a domain name (e.g. `example.com`)
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	PatternType *string `pulumi:"patternType"`
+	// Search term for filtering records. Behavior may change.
+	Search *string `pulumi:"search"`
+	// Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.
+	VerifySender *bool `pulumi:"verifySender"`
+}
+
+// GetEmailSecurityAllowPolicyFilterInput is an input type that accepts GetEmailSecurityAllowPolicyFilterArgs and GetEmailSecurityAllowPolicyFilterOutput values.
+// You can construct a concrete instance of `GetEmailSecurityAllowPolicyFilterInput` via:
+//
+//	GetEmailSecurityAllowPolicyFilterArgs{...}
+type GetEmailSecurityAllowPolicyFilterInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityAllowPolicyFilterOutput() GetEmailSecurityAllowPolicyFilterOutput
+	ToGetEmailSecurityAllowPolicyFilterOutputWithContext(context.Context) GetEmailSecurityAllowPolicyFilterOutput
+}
+
+type GetEmailSecurityAllowPolicyFilterArgs struct {
+	// The sorting direction.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
+	IsAcceptableSender pulumi.BoolPtrInput `pulumi:"isAcceptableSender"`
+	// Filter to show only policies where messages to the recipient bypass all detections.
+	IsExemptRecipient pulumi.BoolPtrInput `pulumi:"isExemptRecipient"`
+	// Filter to show only policies where messages from the sender bypass all detections and link following.
+	IsTrustedSender pulumi.BoolPtrInput `pulumi:"isTrustedSender"`
+	// Field to sort by.
+	// Available values: "pattern", "createdAt".
+	Order   pulumi.StringPtrInput `pulumi:"order"`
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Type of pattern matching.
+	// - EMAIL: matches a full email address (e.g. `user@example.com`)
+	// - DOMAIN: matches a domain name (e.g. `example.com`)
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+	PatternType pulumi.StringPtrInput `pulumi:"patternType"`
+	// Search term for filtering records. Behavior may change.
+	Search pulumi.StringPtrInput `pulumi:"search"`
+	// Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.
+	VerifySender pulumi.BoolPtrInput `pulumi:"verifySender"`
+}
+
+func (GetEmailSecurityAllowPolicyFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityAllowPolicyFilter)(nil)).Elem()
+}
+
+func (i GetEmailSecurityAllowPolicyFilterArgs) ToGetEmailSecurityAllowPolicyFilterOutput() GetEmailSecurityAllowPolicyFilterOutput {
+	return i.ToGetEmailSecurityAllowPolicyFilterOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityAllowPolicyFilterArgs) ToGetEmailSecurityAllowPolicyFilterOutputWithContext(ctx context.Context) GetEmailSecurityAllowPolicyFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityAllowPolicyFilterOutput)
+}
+
+func (i GetEmailSecurityAllowPolicyFilterArgs) ToGetEmailSecurityAllowPolicyFilterPtrOutput() GetEmailSecurityAllowPolicyFilterPtrOutput {
+	return i.ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityAllowPolicyFilterArgs) ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(ctx context.Context) GetEmailSecurityAllowPolicyFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityAllowPolicyFilterOutput).ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(ctx)
+}
+
+// GetEmailSecurityAllowPolicyFilterPtrInput is an input type that accepts GetEmailSecurityAllowPolicyFilterArgs, GetEmailSecurityAllowPolicyFilterPtr and GetEmailSecurityAllowPolicyFilterPtrOutput values.
+// You can construct a concrete instance of `GetEmailSecurityAllowPolicyFilterPtrInput` via:
+//
+//	        GetEmailSecurityAllowPolicyFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetEmailSecurityAllowPolicyFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityAllowPolicyFilterPtrOutput() GetEmailSecurityAllowPolicyFilterPtrOutput
+	ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(context.Context) GetEmailSecurityAllowPolicyFilterPtrOutput
+}
+
+type getEmailSecurityAllowPolicyFilterPtrType GetEmailSecurityAllowPolicyFilterArgs
+
+func GetEmailSecurityAllowPolicyFilterPtr(v *GetEmailSecurityAllowPolicyFilterArgs) GetEmailSecurityAllowPolicyFilterPtrInput {
+	return (*getEmailSecurityAllowPolicyFilterPtrType)(v)
+}
+
+func (*getEmailSecurityAllowPolicyFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetEmailSecurityAllowPolicyFilter)(nil)).Elem()
+}
+
+func (i *getEmailSecurityAllowPolicyFilterPtrType) ToGetEmailSecurityAllowPolicyFilterPtrOutput() GetEmailSecurityAllowPolicyFilterPtrOutput {
+	return i.ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getEmailSecurityAllowPolicyFilterPtrType) ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(ctx context.Context) GetEmailSecurityAllowPolicyFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityAllowPolicyFilterPtrOutput)
+}
+
+type GetEmailSecurityAllowPolicyFilterOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityAllowPolicyFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityAllowPolicyFilter)(nil)).Elem()
+}
+
+func (o GetEmailSecurityAllowPolicyFilterOutput) ToGetEmailSecurityAllowPolicyFilterOutput() GetEmailSecurityAllowPolicyFilterOutput {
+	return o
+}
+
+func (o GetEmailSecurityAllowPolicyFilterOutput) ToGetEmailSecurityAllowPolicyFilterOutputWithContext(ctx context.Context) GetEmailSecurityAllowPolicyFilterOutput {
+	return o
+}
+
+func (o GetEmailSecurityAllowPolicyFilterOutput) ToGetEmailSecurityAllowPolicyFilterPtrOutput() GetEmailSecurityAllowPolicyFilterPtrOutput {
+	return o.ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetEmailSecurityAllowPolicyFilterOutput) ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(ctx context.Context) GetEmailSecurityAllowPolicyFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetEmailSecurityAllowPolicyFilter) *GetEmailSecurityAllowPolicyFilter {
+		return &v
+	}).(GetEmailSecurityAllowPolicyFilterPtrOutput)
+}
+
+// The sorting direction.
+// Available values: "asc", "desc".
+func (o GetEmailSecurityAllowPolicyFilterOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
+func (o GetEmailSecurityAllowPolicyFilterOutput) IsAcceptableSender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *bool { return v.IsAcceptableSender }).(pulumi.BoolPtrOutput)
+}
+
+// Filter to show only policies where messages to the recipient bypass all detections.
+func (o GetEmailSecurityAllowPolicyFilterOutput) IsExemptRecipient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *bool { return v.IsExemptRecipient }).(pulumi.BoolPtrOutput)
+}
+
+// Filter to show only policies where messages from the sender bypass all detections and link following.
+func (o GetEmailSecurityAllowPolicyFilterOutput) IsTrustedSender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *bool { return v.IsTrustedSender }).(pulumi.BoolPtrOutput)
+}
+
+// Field to sort by.
+// Available values: "pattern", "createdAt".
+func (o GetEmailSecurityAllowPolicyFilterOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEmailSecurityAllowPolicyFilterOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// Type of pattern matching.
+//   - EMAIL: matches a full email address (e.g. `user@example.com`)
+//   - DOMAIN: matches a domain name (e.g. `example.com`)
+//   - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+//   - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+//     Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+func (o GetEmailSecurityAllowPolicyFilterOutput) PatternType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *string { return v.PatternType }).(pulumi.StringPtrOutput)
+}
+
+// Search term for filtering records. Behavior may change.
+func (o GetEmailSecurityAllowPolicyFilterOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
+// Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.
+func (o GetEmailSecurityAllowPolicyFilterOutput) VerifySender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityAllowPolicyFilter) *bool { return v.VerifySender }).(pulumi.BoolPtrOutput)
+}
+
+type GetEmailSecurityAllowPolicyFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityAllowPolicyFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetEmailSecurityAllowPolicyFilter)(nil)).Elem()
+}
+
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) ToGetEmailSecurityAllowPolicyFilterPtrOutput() GetEmailSecurityAllowPolicyFilterPtrOutput {
+	return o
+}
+
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) ToGetEmailSecurityAllowPolicyFilterPtrOutputWithContext(ctx context.Context) GetEmailSecurityAllowPolicyFilterPtrOutput {
+	return o
+}
+
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) Elem() GetEmailSecurityAllowPolicyFilterOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) GetEmailSecurityAllowPolicyFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetEmailSecurityAllowPolicyFilter
+		return ret
+	}).(GetEmailSecurityAllowPolicyFilterOutput)
+}
+
+// The sorting direction.
+// Available values: "asc", "desc".
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) IsAcceptableSender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAcceptableSender
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Filter to show only policies where messages to the recipient bypass all detections.
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) IsExemptRecipient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsExemptRecipient
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Filter to show only policies where messages from the sender bypass all detections and link following.
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) IsTrustedSender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsTrustedSender
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Field to sort by.
+// Available values: "pattern", "createdAt".
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of pattern matching.
+//   - EMAIL: matches a full email address (e.g. `user@example.com`)
+//   - DOMAIN: matches a domain name (e.g. `example.com`)
+//   - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+//   - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+//     Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) PatternType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PatternType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Search term for filtering records. Behavior may change.
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Search
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.
+func (o GetEmailSecurityAllowPolicyFilterPtrOutput) VerifySender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityAllowPolicyFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.VerifySender
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetEmailSecurityBlockSenderFilter struct {
 	// The sorting direction.
 	// Available values: "asc", "desc".
@@ -21431,7 +20830,7 @@ func (o GetEmailSecurityBlockSenderFilterPtrOutput) Search() pulumi.StringPtrOut
 type GetEmailSecurityBlockSendersResult struct {
 	Comments  string `pulumi:"comments"`
 	CreatedAt string `pulumi:"createdAt"`
-	// Blocked sender pattern identifier
+	// Blocked sender pattern identifier.
 	Id      string `pulumi:"id"`
 	IsRegex bool   `pulumi:"isRegex"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -21439,16 +20838,13 @@ type GetEmailSecurityBlockSendersResult struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified string `pulumi:"lastModified"`
 	ModifiedAt   string `pulumi:"modifiedAt"`
-	// The pattern value to match against. Format depends on `patternType`:
-	// - EMAIL: a valid email address, e.g. `user@example.com`
-	// - DOMAIN: a valid domain name, e.g. `example.com`
-	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 	Pattern string `pulumi:"pattern"`
 	// Type of pattern matching.
 	// - EMAIL: matches a full email address (e.g. `user@example.com`)
 	// - DOMAIN: matches a domain name (e.g. `example.com`)
-	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType string `pulumi:"patternType"`
 }
@@ -21467,7 +20863,7 @@ type GetEmailSecurityBlockSendersResultInput interface {
 type GetEmailSecurityBlockSendersResultArgs struct {
 	Comments  pulumi.StringInput `pulumi:"comments"`
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Blocked sender pattern identifier
+	// Blocked sender pattern identifier.
 	Id      pulumi.StringInput `pulumi:"id"`
 	IsRegex pulumi.BoolInput   `pulumi:"isRegex"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -21475,16 +20871,13 @@ type GetEmailSecurityBlockSendersResultArgs struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified pulumi.StringInput `pulumi:"lastModified"`
 	ModifiedAt   pulumi.StringInput `pulumi:"modifiedAt"`
-	// The pattern value to match against. Format depends on `patternType`:
-	// - EMAIL: a valid email address, e.g. `user@example.com`
-	// - DOMAIN: a valid domain name, e.g. `example.com`
-	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 	Pattern pulumi.StringInput `pulumi:"pattern"`
 	// Type of pattern matching.
 	// - EMAIL: matches a full email address (e.g. `user@example.com`)
 	// - DOMAIN: matches a domain name (e.g. `example.com`)
-	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringInput `pulumi:"patternType"`
 }
@@ -21548,7 +20941,7 @@ func (o GetEmailSecurityBlockSendersResultOutput) CreatedAt() pulumi.StringOutpu
 	return o.ApplyT(func(v GetEmailSecurityBlockSendersResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Blocked sender pattern identifier
+// Blocked sender pattern identifier.
 func (o GetEmailSecurityBlockSendersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEmailSecurityBlockSendersResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -21568,10 +20961,7 @@ func (o GetEmailSecurityBlockSendersResultOutput) ModifiedAt() pulumi.StringOutp
 	return o.ApplyT(func(v GetEmailSecurityBlockSendersResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
-// The pattern value to match against. Format depends on `patternType`:
-// - EMAIL: a valid email address, e.g. `user@example.com`
-// - DOMAIN: a valid domain name, e.g. `example.com`
-// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 func (o GetEmailSecurityBlockSendersResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEmailSecurityBlockSendersResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
@@ -21579,8 +20969,8 @@ func (o GetEmailSecurityBlockSendersResultOutput) Pattern() pulumi.StringOutput 
 // Type of pattern matching.
 //   - EMAIL: matches a full email address (e.g. `user@example.com`)
 //   - DOMAIN: matches a domain name (e.g. `example.com`)
-//   - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-//   - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+//   - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+//   - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 //     Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o GetEmailSecurityBlockSendersResultOutput) PatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEmailSecurityBlockSendersResult) string { return v.PatternType }).(pulumi.StringOutput)
@@ -21604,6 +20994,791 @@ func (o GetEmailSecurityBlockSendersResultArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailSecurityBlockSendersResult {
 		return vs[0].([]GetEmailSecurityBlockSendersResult)[vs[1].(int)]
 	}).(GetEmailSecurityBlockSendersResultOutput)
+}
+
+type GetEmailSecurityDomainAuthorization struct {
+	Authorized    bool   `pulumi:"authorized"`
+	StatusMessage string `pulumi:"statusMessage"`
+	Timestamp     string `pulumi:"timestamp"`
+}
+
+// GetEmailSecurityDomainAuthorizationInput is an input type that accepts GetEmailSecurityDomainAuthorizationArgs and GetEmailSecurityDomainAuthorizationOutput values.
+// You can construct a concrete instance of `GetEmailSecurityDomainAuthorizationInput` via:
+//
+//	GetEmailSecurityDomainAuthorizationArgs{...}
+type GetEmailSecurityDomainAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityDomainAuthorizationOutput() GetEmailSecurityDomainAuthorizationOutput
+	ToGetEmailSecurityDomainAuthorizationOutputWithContext(context.Context) GetEmailSecurityDomainAuthorizationOutput
+}
+
+type GetEmailSecurityDomainAuthorizationArgs struct {
+	Authorized    pulumi.BoolInput   `pulumi:"authorized"`
+	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
+	Timestamp     pulumi.StringInput `pulumi:"timestamp"`
+}
+
+func (GetEmailSecurityDomainAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainAuthorization)(nil)).Elem()
+}
+
+func (i GetEmailSecurityDomainAuthorizationArgs) ToGetEmailSecurityDomainAuthorizationOutput() GetEmailSecurityDomainAuthorizationOutput {
+	return i.ToGetEmailSecurityDomainAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityDomainAuthorizationArgs) ToGetEmailSecurityDomainAuthorizationOutputWithContext(ctx context.Context) GetEmailSecurityDomainAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainAuthorizationOutput)
+}
+
+type GetEmailSecurityDomainAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityDomainAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainAuthorization)(nil)).Elem()
+}
+
+func (o GetEmailSecurityDomainAuthorizationOutput) ToGetEmailSecurityDomainAuthorizationOutput() GetEmailSecurityDomainAuthorizationOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainAuthorizationOutput) ToGetEmailSecurityDomainAuthorizationOutputWithContext(ctx context.Context) GetEmailSecurityDomainAuthorizationOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainAuthorizationOutput) Authorized() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainAuthorization) bool { return v.Authorized }).(pulumi.BoolOutput)
+}
+
+func (o GetEmailSecurityDomainAuthorizationOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainAuthorization) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainAuthorizationOutput) Timestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainAuthorization) string { return v.Timestamp }).(pulumi.StringOutput)
+}
+
+type GetEmailSecurityDomainEmailsProcessed struct {
+	Timestamp                    string `pulumi:"timestamp"`
+	TotalEmailsProcessed         int    `pulumi:"totalEmailsProcessed"`
+	TotalEmailsProcessedPrevious int    `pulumi:"totalEmailsProcessedPrevious"`
+}
+
+// GetEmailSecurityDomainEmailsProcessedInput is an input type that accepts GetEmailSecurityDomainEmailsProcessedArgs and GetEmailSecurityDomainEmailsProcessedOutput values.
+// You can construct a concrete instance of `GetEmailSecurityDomainEmailsProcessedInput` via:
+//
+//	GetEmailSecurityDomainEmailsProcessedArgs{...}
+type GetEmailSecurityDomainEmailsProcessedInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityDomainEmailsProcessedOutput() GetEmailSecurityDomainEmailsProcessedOutput
+	ToGetEmailSecurityDomainEmailsProcessedOutputWithContext(context.Context) GetEmailSecurityDomainEmailsProcessedOutput
+}
+
+type GetEmailSecurityDomainEmailsProcessedArgs struct {
+	Timestamp                    pulumi.StringInput `pulumi:"timestamp"`
+	TotalEmailsProcessed         pulumi.IntInput    `pulumi:"totalEmailsProcessed"`
+	TotalEmailsProcessedPrevious pulumi.IntInput    `pulumi:"totalEmailsProcessedPrevious"`
+}
+
+func (GetEmailSecurityDomainEmailsProcessedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainEmailsProcessed)(nil)).Elem()
+}
+
+func (i GetEmailSecurityDomainEmailsProcessedArgs) ToGetEmailSecurityDomainEmailsProcessedOutput() GetEmailSecurityDomainEmailsProcessedOutput {
+	return i.ToGetEmailSecurityDomainEmailsProcessedOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityDomainEmailsProcessedArgs) ToGetEmailSecurityDomainEmailsProcessedOutputWithContext(ctx context.Context) GetEmailSecurityDomainEmailsProcessedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainEmailsProcessedOutput)
+}
+
+type GetEmailSecurityDomainEmailsProcessedOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityDomainEmailsProcessedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainEmailsProcessed)(nil)).Elem()
+}
+
+func (o GetEmailSecurityDomainEmailsProcessedOutput) ToGetEmailSecurityDomainEmailsProcessedOutput() GetEmailSecurityDomainEmailsProcessedOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainEmailsProcessedOutput) ToGetEmailSecurityDomainEmailsProcessedOutputWithContext(ctx context.Context) GetEmailSecurityDomainEmailsProcessedOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainEmailsProcessedOutput) Timestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainEmailsProcessed) string { return v.Timestamp }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainEmailsProcessedOutput) TotalEmailsProcessed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainEmailsProcessed) int { return v.TotalEmailsProcessed }).(pulumi.IntOutput)
+}
+
+func (o GetEmailSecurityDomainEmailsProcessedOutput) TotalEmailsProcessedPrevious() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainEmailsProcessed) int { return v.TotalEmailsProcessedPrevious }).(pulumi.IntOutput)
+}
+
+type GetEmailSecurityDomainFilter struct {
+	// Currently active delivery mode to filter by.
+	// Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+	ActiveDeliveryMode *string `pulumi:"activeDeliveryMode"`
+	// Delivery mode to filter by.
+	// Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+	AllowedDeliveryMode *string `pulumi:"allowedDeliveryMode"`
+	// The sorting direction.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
+	// Domain names to filter by.
+	Domains []string `pulumi:"domains"`
+	// Integration ID to filter by.
+	IntegrationId *string `pulumi:"integrationId"`
+	// Field to sort by.
+	// Available values: "domain", "createdAt".
+	Order *string `pulumi:"order"`
+	// Search term for filtering records. Behavior may change.
+	Search *string `pulumi:"search"`
+	// Filters response to domains with the provided status.
+	// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+	Status *string `pulumi:"status"`
+}
+
+// GetEmailSecurityDomainFilterInput is an input type that accepts GetEmailSecurityDomainFilterArgs and GetEmailSecurityDomainFilterOutput values.
+// You can construct a concrete instance of `GetEmailSecurityDomainFilterInput` via:
+//
+//	GetEmailSecurityDomainFilterArgs{...}
+type GetEmailSecurityDomainFilterInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityDomainFilterOutput() GetEmailSecurityDomainFilterOutput
+	ToGetEmailSecurityDomainFilterOutputWithContext(context.Context) GetEmailSecurityDomainFilterOutput
+}
+
+type GetEmailSecurityDomainFilterArgs struct {
+	// Currently active delivery mode to filter by.
+	// Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+	ActiveDeliveryMode pulumi.StringPtrInput `pulumi:"activeDeliveryMode"`
+	// Delivery mode to filter by.
+	// Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+	AllowedDeliveryMode pulumi.StringPtrInput `pulumi:"allowedDeliveryMode"`
+	// The sorting direction.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Domain names to filter by.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Integration ID to filter by.
+	IntegrationId pulumi.StringPtrInput `pulumi:"integrationId"`
+	// Field to sort by.
+	// Available values: "domain", "createdAt".
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Search term for filtering records. Behavior may change.
+	Search pulumi.StringPtrInput `pulumi:"search"`
+	// Filters response to domains with the provided status.
+	// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetEmailSecurityDomainFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainFilter)(nil)).Elem()
+}
+
+func (i GetEmailSecurityDomainFilterArgs) ToGetEmailSecurityDomainFilterOutput() GetEmailSecurityDomainFilterOutput {
+	return i.ToGetEmailSecurityDomainFilterOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityDomainFilterArgs) ToGetEmailSecurityDomainFilterOutputWithContext(ctx context.Context) GetEmailSecurityDomainFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainFilterOutput)
+}
+
+func (i GetEmailSecurityDomainFilterArgs) ToGetEmailSecurityDomainFilterPtrOutput() GetEmailSecurityDomainFilterPtrOutput {
+	return i.ToGetEmailSecurityDomainFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityDomainFilterArgs) ToGetEmailSecurityDomainFilterPtrOutputWithContext(ctx context.Context) GetEmailSecurityDomainFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainFilterOutput).ToGetEmailSecurityDomainFilterPtrOutputWithContext(ctx)
+}
+
+// GetEmailSecurityDomainFilterPtrInput is an input type that accepts GetEmailSecurityDomainFilterArgs, GetEmailSecurityDomainFilterPtr and GetEmailSecurityDomainFilterPtrOutput values.
+// You can construct a concrete instance of `GetEmailSecurityDomainFilterPtrInput` via:
+//
+//	        GetEmailSecurityDomainFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetEmailSecurityDomainFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityDomainFilterPtrOutput() GetEmailSecurityDomainFilterPtrOutput
+	ToGetEmailSecurityDomainFilterPtrOutputWithContext(context.Context) GetEmailSecurityDomainFilterPtrOutput
+}
+
+type getEmailSecurityDomainFilterPtrType GetEmailSecurityDomainFilterArgs
+
+func GetEmailSecurityDomainFilterPtr(v *GetEmailSecurityDomainFilterArgs) GetEmailSecurityDomainFilterPtrInput {
+	return (*getEmailSecurityDomainFilterPtrType)(v)
+}
+
+func (*getEmailSecurityDomainFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetEmailSecurityDomainFilter)(nil)).Elem()
+}
+
+func (i *getEmailSecurityDomainFilterPtrType) ToGetEmailSecurityDomainFilterPtrOutput() GetEmailSecurityDomainFilterPtrOutput {
+	return i.ToGetEmailSecurityDomainFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getEmailSecurityDomainFilterPtrType) ToGetEmailSecurityDomainFilterPtrOutputWithContext(ctx context.Context) GetEmailSecurityDomainFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainFilterPtrOutput)
+}
+
+type GetEmailSecurityDomainFilterOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityDomainFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainFilter)(nil)).Elem()
+}
+
+func (o GetEmailSecurityDomainFilterOutput) ToGetEmailSecurityDomainFilterOutput() GetEmailSecurityDomainFilterOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainFilterOutput) ToGetEmailSecurityDomainFilterOutputWithContext(ctx context.Context) GetEmailSecurityDomainFilterOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainFilterOutput) ToGetEmailSecurityDomainFilterPtrOutput() GetEmailSecurityDomainFilterPtrOutput {
+	return o.ToGetEmailSecurityDomainFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetEmailSecurityDomainFilterOutput) ToGetEmailSecurityDomainFilterPtrOutputWithContext(ctx context.Context) GetEmailSecurityDomainFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetEmailSecurityDomainFilter) *GetEmailSecurityDomainFilter {
+		return &v
+	}).(GetEmailSecurityDomainFilterPtrOutput)
+}
+
+// Currently active delivery mode to filter by.
+// Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+func (o GetEmailSecurityDomainFilterOutput) ActiveDeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainFilter) *string { return v.ActiveDeliveryMode }).(pulumi.StringPtrOutput)
+}
+
+// Delivery mode to filter by.
+// Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+func (o GetEmailSecurityDomainFilterOutput) AllowedDeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainFilter) *string { return v.AllowedDeliveryMode }).(pulumi.StringPtrOutput)
+}
+
+// The sorting direction.
+// Available values: "asc", "desc".
+func (o GetEmailSecurityDomainFilterOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Domain names to filter by.
+func (o GetEmailSecurityDomainFilterOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainFilter) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// Integration ID to filter by.
+func (o GetEmailSecurityDomainFilterOutput) IntegrationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainFilter) *string { return v.IntegrationId }).(pulumi.StringPtrOutput)
+}
+
+// Field to sort by.
+// Available values: "domain", "createdAt".
+func (o GetEmailSecurityDomainFilterOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainFilter) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+// Search term for filtering records. Behavior may change.
+func (o GetEmailSecurityDomainFilterOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainFilter) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
+// Filters response to domains with the provided status.
+// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+func (o GetEmailSecurityDomainFilterOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainFilter) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type GetEmailSecurityDomainFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityDomainFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetEmailSecurityDomainFilter)(nil)).Elem()
+}
+
+func (o GetEmailSecurityDomainFilterPtrOutput) ToGetEmailSecurityDomainFilterPtrOutput() GetEmailSecurityDomainFilterPtrOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainFilterPtrOutput) ToGetEmailSecurityDomainFilterPtrOutputWithContext(ctx context.Context) GetEmailSecurityDomainFilterPtrOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainFilterPtrOutput) Elem() GetEmailSecurityDomainFilterOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) GetEmailSecurityDomainFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetEmailSecurityDomainFilter
+		return ret
+	}).(GetEmailSecurityDomainFilterOutput)
+}
+
+// Currently active delivery mode to filter by.
+// Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+func (o GetEmailSecurityDomainFilterPtrOutput) ActiveDeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDeliveryMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Delivery mode to filter by.
+// Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+func (o GetEmailSecurityDomainFilterPtrOutput) AllowedDeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedDeliveryMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The sorting direction.
+// Available values: "asc", "desc".
+func (o GetEmailSecurityDomainFilterPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Domain names to filter by.
+func (o GetEmailSecurityDomainFilterPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+// Integration ID to filter by.
+func (o GetEmailSecurityDomainFilterPtrOutput) IntegrationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field to sort by.
+// Available values: "domain", "createdAt".
+func (o GetEmailSecurityDomainFilterPtrOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
+// Search term for filtering records. Behavior may change.
+func (o GetEmailSecurityDomainFilterPtrOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Search
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filters response to domains with the provided status.
+// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+func (o GetEmailSecurityDomainFilterPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityDomainFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetEmailSecurityDomainsResult struct {
+	AllowedDeliveryModes []string                                   `pulumi:"allowedDeliveryModes"`
+	Authorization        GetEmailSecurityDomainsResultAuthorization `pulumi:"authorization"`
+	CreatedAt            string                                     `pulumi:"createdAt"`
+	// Available values: "none", "good", "invalid".
+	DmarcStatus      string                                       `pulumi:"dmarcStatus"`
+	Domain           string                                       `pulumi:"domain"`
+	DropDispositions []string                                     `pulumi:"dropDispositions"`
+	EmailsProcessed  GetEmailSecurityDomainsResultEmailsProcessed `pulumi:"emailsProcessed"`
+	// Available values: "AllItems", "Inbox".
+	Folder string `pulumi:"folder"`
+	// Domain identifier.
+	Id string `pulumi:"id"`
+	// Available values: "Microsoft", "Google".
+	InboxProvider  string   `pulumi:"inboxProvider"`
+	IntegrationId  string   `pulumi:"integrationId"`
+	IpRestrictions []string `pulumi:"ipRestrictions"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: Use `modifiedAt` instead.
+	LastModified       string   `pulumi:"lastModified"`
+	LookbackHops       int      `pulumi:"lookbackHops"`
+	ModifiedAt         string   `pulumi:"modifiedAt"`
+	O365TenantId       string   `pulumi:"o365TenantId"`
+	Regions            []string `pulumi:"regions"`
+	RequireTlsInbound  bool     `pulumi:"requireTlsInbound"`
+	RequireTlsOutbound bool     `pulumi:"requireTlsOutbound"`
+	// Available values: "none", "good", "neutral", "open", "invalid".
+	SpfStatus string `pulumi:"spfStatus"`
+	// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+	Status    string `pulumi:"status"`
+	Transport string `pulumi:"transport"`
+}
+
+// GetEmailSecurityDomainsResultInput is an input type that accepts GetEmailSecurityDomainsResultArgs and GetEmailSecurityDomainsResultOutput values.
+// You can construct a concrete instance of `GetEmailSecurityDomainsResultInput` via:
+//
+//	GetEmailSecurityDomainsResultArgs{...}
+type GetEmailSecurityDomainsResultInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityDomainsResultOutput() GetEmailSecurityDomainsResultOutput
+	ToGetEmailSecurityDomainsResultOutputWithContext(context.Context) GetEmailSecurityDomainsResultOutput
+}
+
+type GetEmailSecurityDomainsResultArgs struct {
+	AllowedDeliveryModes pulumi.StringArrayInput                         `pulumi:"allowedDeliveryModes"`
+	Authorization        GetEmailSecurityDomainsResultAuthorizationInput `pulumi:"authorization"`
+	CreatedAt            pulumi.StringInput                              `pulumi:"createdAt"`
+	// Available values: "none", "good", "invalid".
+	DmarcStatus      pulumi.StringInput                                `pulumi:"dmarcStatus"`
+	Domain           pulumi.StringInput                                `pulumi:"domain"`
+	DropDispositions pulumi.StringArrayInput                           `pulumi:"dropDispositions"`
+	EmailsProcessed  GetEmailSecurityDomainsResultEmailsProcessedInput `pulumi:"emailsProcessed"`
+	// Available values: "AllItems", "Inbox".
+	Folder pulumi.StringInput `pulumi:"folder"`
+	// Domain identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Available values: "Microsoft", "Google".
+	InboxProvider  pulumi.StringInput      `pulumi:"inboxProvider"`
+	IntegrationId  pulumi.StringInput      `pulumi:"integrationId"`
+	IpRestrictions pulumi.StringArrayInput `pulumi:"ipRestrictions"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: Use `modifiedAt` instead.
+	LastModified       pulumi.StringInput      `pulumi:"lastModified"`
+	LookbackHops       pulumi.IntInput         `pulumi:"lookbackHops"`
+	ModifiedAt         pulumi.StringInput      `pulumi:"modifiedAt"`
+	O365TenantId       pulumi.StringInput      `pulumi:"o365TenantId"`
+	Regions            pulumi.StringArrayInput `pulumi:"regions"`
+	RequireTlsInbound  pulumi.BoolInput        `pulumi:"requireTlsInbound"`
+	RequireTlsOutbound pulumi.BoolInput        `pulumi:"requireTlsOutbound"`
+	// Available values: "none", "good", "neutral", "open", "invalid".
+	SpfStatus pulumi.StringInput `pulumi:"spfStatus"`
+	// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+	Status    pulumi.StringInput `pulumi:"status"`
+	Transport pulumi.StringInput `pulumi:"transport"`
+}
+
+func (GetEmailSecurityDomainsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainsResult)(nil)).Elem()
+}
+
+func (i GetEmailSecurityDomainsResultArgs) ToGetEmailSecurityDomainsResultOutput() GetEmailSecurityDomainsResultOutput {
+	return i.ToGetEmailSecurityDomainsResultOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityDomainsResultArgs) ToGetEmailSecurityDomainsResultOutputWithContext(ctx context.Context) GetEmailSecurityDomainsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainsResultOutput)
+}
+
+// GetEmailSecurityDomainsResultArrayInput is an input type that accepts GetEmailSecurityDomainsResultArray and GetEmailSecurityDomainsResultArrayOutput values.
+// You can construct a concrete instance of `GetEmailSecurityDomainsResultArrayInput` via:
+//
+//	GetEmailSecurityDomainsResultArray{ GetEmailSecurityDomainsResultArgs{...} }
+type GetEmailSecurityDomainsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityDomainsResultArrayOutput() GetEmailSecurityDomainsResultArrayOutput
+	ToGetEmailSecurityDomainsResultArrayOutputWithContext(context.Context) GetEmailSecurityDomainsResultArrayOutput
+}
+
+type GetEmailSecurityDomainsResultArray []GetEmailSecurityDomainsResultInput
+
+func (GetEmailSecurityDomainsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEmailSecurityDomainsResult)(nil)).Elem()
+}
+
+func (i GetEmailSecurityDomainsResultArray) ToGetEmailSecurityDomainsResultArrayOutput() GetEmailSecurityDomainsResultArrayOutput {
+	return i.ToGetEmailSecurityDomainsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityDomainsResultArray) ToGetEmailSecurityDomainsResultArrayOutputWithContext(ctx context.Context) GetEmailSecurityDomainsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainsResultArrayOutput)
+}
+
+type GetEmailSecurityDomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityDomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainsResult)(nil)).Elem()
+}
+
+func (o GetEmailSecurityDomainsResultOutput) ToGetEmailSecurityDomainsResultOutput() GetEmailSecurityDomainsResultOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainsResultOutput) ToGetEmailSecurityDomainsResultOutputWithContext(ctx context.Context) GetEmailSecurityDomainsResultOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainsResultOutput) AllowedDeliveryModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) []string { return v.AllowedDeliveryModes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) Authorization() GetEmailSecurityDomainsResultAuthorizationOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) GetEmailSecurityDomainsResultAuthorization {
+		return v.Authorization
+	}).(GetEmailSecurityDomainsResultAuthorizationOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Available values: "none", "good", "invalid".
+func (o GetEmailSecurityDomainsResultOutput) DmarcStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.DmarcStatus }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) DropDispositions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) []string { return v.DropDispositions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) EmailsProcessed() GetEmailSecurityDomainsResultEmailsProcessedOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) GetEmailSecurityDomainsResultEmailsProcessed {
+		return v.EmailsProcessed
+	}).(GetEmailSecurityDomainsResultEmailsProcessedOutput)
+}
+
+// Available values: "AllItems", "Inbox".
+func (o GetEmailSecurityDomainsResultOutput) Folder() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.Folder }).(pulumi.StringOutput)
+}
+
+// Domain identifier.
+func (o GetEmailSecurityDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Available values: "Microsoft", "Google".
+func (o GetEmailSecurityDomainsResultOutput) InboxProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.InboxProvider }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.IntegrationId }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) IpRestrictions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) []string { return v.IpRestrictions }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+//
+// Deprecated: Use `modifiedAt` instead.
+func (o GetEmailSecurityDomainsResultOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) LookbackHops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) int { return v.LookbackHops }).(pulumi.IntOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) O365TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.O365TenantId }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) RequireTlsInbound() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) bool { return v.RequireTlsInbound }).(pulumi.BoolOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) RequireTlsOutbound() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) bool { return v.RequireTlsOutbound }).(pulumi.BoolOutput)
+}
+
+// Available values: "none", "good", "neutral", "open", "invalid".
+func (o GetEmailSecurityDomainsResultOutput) SpfStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.SpfStatus }).(pulumi.StringOutput)
+}
+
+// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+func (o GetEmailSecurityDomainsResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultOutput) Transport() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResult) string { return v.Transport }).(pulumi.StringOutput)
+}
+
+type GetEmailSecurityDomainsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityDomainsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEmailSecurityDomainsResult)(nil)).Elem()
+}
+
+func (o GetEmailSecurityDomainsResultArrayOutput) ToGetEmailSecurityDomainsResultArrayOutput() GetEmailSecurityDomainsResultArrayOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainsResultArrayOutput) ToGetEmailSecurityDomainsResultArrayOutputWithContext(ctx context.Context) GetEmailSecurityDomainsResultArrayOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainsResultArrayOutput) Index(i pulumi.IntInput) GetEmailSecurityDomainsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailSecurityDomainsResult {
+		return vs[0].([]GetEmailSecurityDomainsResult)[vs[1].(int)]
+	}).(GetEmailSecurityDomainsResultOutput)
+}
+
+type GetEmailSecurityDomainsResultAuthorization struct {
+	Authorized    bool   `pulumi:"authorized"`
+	StatusMessage string `pulumi:"statusMessage"`
+	Timestamp     string `pulumi:"timestamp"`
+}
+
+// GetEmailSecurityDomainsResultAuthorizationInput is an input type that accepts GetEmailSecurityDomainsResultAuthorizationArgs and GetEmailSecurityDomainsResultAuthorizationOutput values.
+// You can construct a concrete instance of `GetEmailSecurityDomainsResultAuthorizationInput` via:
+//
+//	GetEmailSecurityDomainsResultAuthorizationArgs{...}
+type GetEmailSecurityDomainsResultAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityDomainsResultAuthorizationOutput() GetEmailSecurityDomainsResultAuthorizationOutput
+	ToGetEmailSecurityDomainsResultAuthorizationOutputWithContext(context.Context) GetEmailSecurityDomainsResultAuthorizationOutput
+}
+
+type GetEmailSecurityDomainsResultAuthorizationArgs struct {
+	Authorized    pulumi.BoolInput   `pulumi:"authorized"`
+	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
+	Timestamp     pulumi.StringInput `pulumi:"timestamp"`
+}
+
+func (GetEmailSecurityDomainsResultAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainsResultAuthorization)(nil)).Elem()
+}
+
+func (i GetEmailSecurityDomainsResultAuthorizationArgs) ToGetEmailSecurityDomainsResultAuthorizationOutput() GetEmailSecurityDomainsResultAuthorizationOutput {
+	return i.ToGetEmailSecurityDomainsResultAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityDomainsResultAuthorizationArgs) ToGetEmailSecurityDomainsResultAuthorizationOutputWithContext(ctx context.Context) GetEmailSecurityDomainsResultAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainsResultAuthorizationOutput)
+}
+
+type GetEmailSecurityDomainsResultAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityDomainsResultAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainsResultAuthorization)(nil)).Elem()
+}
+
+func (o GetEmailSecurityDomainsResultAuthorizationOutput) ToGetEmailSecurityDomainsResultAuthorizationOutput() GetEmailSecurityDomainsResultAuthorizationOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainsResultAuthorizationOutput) ToGetEmailSecurityDomainsResultAuthorizationOutputWithContext(ctx context.Context) GetEmailSecurityDomainsResultAuthorizationOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainsResultAuthorizationOutput) Authorized() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResultAuthorization) bool { return v.Authorized }).(pulumi.BoolOutput)
+}
+
+func (o GetEmailSecurityDomainsResultAuthorizationOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResultAuthorization) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultAuthorizationOutput) Timestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResultAuthorization) string { return v.Timestamp }).(pulumi.StringOutput)
+}
+
+type GetEmailSecurityDomainsResultEmailsProcessed struct {
+	Timestamp                    string `pulumi:"timestamp"`
+	TotalEmailsProcessed         int    `pulumi:"totalEmailsProcessed"`
+	TotalEmailsProcessedPrevious int    `pulumi:"totalEmailsProcessedPrevious"`
+}
+
+// GetEmailSecurityDomainsResultEmailsProcessedInput is an input type that accepts GetEmailSecurityDomainsResultEmailsProcessedArgs and GetEmailSecurityDomainsResultEmailsProcessedOutput values.
+// You can construct a concrete instance of `GetEmailSecurityDomainsResultEmailsProcessedInput` via:
+//
+//	GetEmailSecurityDomainsResultEmailsProcessedArgs{...}
+type GetEmailSecurityDomainsResultEmailsProcessedInput interface {
+	pulumi.Input
+
+	ToGetEmailSecurityDomainsResultEmailsProcessedOutput() GetEmailSecurityDomainsResultEmailsProcessedOutput
+	ToGetEmailSecurityDomainsResultEmailsProcessedOutputWithContext(context.Context) GetEmailSecurityDomainsResultEmailsProcessedOutput
+}
+
+type GetEmailSecurityDomainsResultEmailsProcessedArgs struct {
+	Timestamp                    pulumi.StringInput `pulumi:"timestamp"`
+	TotalEmailsProcessed         pulumi.IntInput    `pulumi:"totalEmailsProcessed"`
+	TotalEmailsProcessedPrevious pulumi.IntInput    `pulumi:"totalEmailsProcessedPrevious"`
+}
+
+func (GetEmailSecurityDomainsResultEmailsProcessedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainsResultEmailsProcessed)(nil)).Elem()
+}
+
+func (i GetEmailSecurityDomainsResultEmailsProcessedArgs) ToGetEmailSecurityDomainsResultEmailsProcessedOutput() GetEmailSecurityDomainsResultEmailsProcessedOutput {
+	return i.ToGetEmailSecurityDomainsResultEmailsProcessedOutputWithContext(context.Background())
+}
+
+func (i GetEmailSecurityDomainsResultEmailsProcessedArgs) ToGetEmailSecurityDomainsResultEmailsProcessedOutputWithContext(ctx context.Context) GetEmailSecurityDomainsResultEmailsProcessedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSecurityDomainsResultEmailsProcessedOutput)
+}
+
+type GetEmailSecurityDomainsResultEmailsProcessedOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSecurityDomainsResultEmailsProcessedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSecurityDomainsResultEmailsProcessed)(nil)).Elem()
+}
+
+func (o GetEmailSecurityDomainsResultEmailsProcessedOutput) ToGetEmailSecurityDomainsResultEmailsProcessedOutput() GetEmailSecurityDomainsResultEmailsProcessedOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainsResultEmailsProcessedOutput) ToGetEmailSecurityDomainsResultEmailsProcessedOutputWithContext(ctx context.Context) GetEmailSecurityDomainsResultEmailsProcessedOutput {
+	return o
+}
+
+func (o GetEmailSecurityDomainsResultEmailsProcessedOutput) Timestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResultEmailsProcessed) string { return v.Timestamp }).(pulumi.StringOutput)
+}
+
+func (o GetEmailSecurityDomainsResultEmailsProcessedOutput) TotalEmailsProcessed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResultEmailsProcessed) int { return v.TotalEmailsProcessed }).(pulumi.IntOutput)
+}
+
+func (o GetEmailSecurityDomainsResultEmailsProcessedOutput) TotalEmailsProcessedPrevious() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEmailSecurityDomainsResultEmailsProcessed) int { return v.TotalEmailsProcessedPrevious }).(pulumi.IntOutput)
 }
 
 type GetEmailSecurityImpersonationRegistriesResult struct {
@@ -22380,6 +22555,190 @@ func (o GetEmailSecurityTrustedDomainsListResultArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailSecurityTrustedDomainsListResult {
 		return vs[0].([]GetEmailSecurityTrustedDomainsListResult)[vs[1].(int)]
 	}).(GetEmailSecurityTrustedDomainsListResultOutput)
+}
+
+type GetEmailSendingSubdomainsResult struct {
+	// The date and time the destination address has been created.
+	Created string `pulumi:"created"`
+	// The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`.
+	DkimSelector string `pulumi:"dkimSelector"`
+	// Whether a send request that includes a recipient suppressed on
+	// this subdomain drops that recipient and still delivers to the
+	// rest, instead of failing the entire request.
+	DropSuppressedRecipients bool `pulumi:"dropSuppressedRecipients"`
+	// Whether Email Sending is enabled on this subdomain.
+	Enabled bool `pulumi:"enabled"`
+	// Sending subdomain identifier.
+	Id string `pulumi:"id"`
+	// The date and time the destination address was last modified.
+	Modified string `pulumi:"modified"`
+	// The exact domain name or a leftmost wildcard such as `*.example.com`.
+	Name string `pulumi:"name"`
+	// Whether sent messages from this subdomain can be previewed in the activity log.
+	PreviewEnabled bool `pulumi:"previewEnabled"`
+	// The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.
+	ReturnPathDomain string `pulumi:"returnPathDomain"`
+	// Sending subdomain identifier.
+	Tag string `pulumi:"tag"`
+}
+
+// GetEmailSendingSubdomainsResultInput is an input type that accepts GetEmailSendingSubdomainsResultArgs and GetEmailSendingSubdomainsResultOutput values.
+// You can construct a concrete instance of `GetEmailSendingSubdomainsResultInput` via:
+//
+//	GetEmailSendingSubdomainsResultArgs{...}
+type GetEmailSendingSubdomainsResultInput interface {
+	pulumi.Input
+
+	ToGetEmailSendingSubdomainsResultOutput() GetEmailSendingSubdomainsResultOutput
+	ToGetEmailSendingSubdomainsResultOutputWithContext(context.Context) GetEmailSendingSubdomainsResultOutput
+}
+
+type GetEmailSendingSubdomainsResultArgs struct {
+	// The date and time the destination address has been created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`.
+	DkimSelector pulumi.StringInput `pulumi:"dkimSelector"`
+	// Whether a send request that includes a recipient suppressed on
+	// this subdomain drops that recipient and still delivers to the
+	// rest, instead of failing the entire request.
+	DropSuppressedRecipients pulumi.BoolInput `pulumi:"dropSuppressedRecipients"`
+	// Whether Email Sending is enabled on this subdomain.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Sending subdomain identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The date and time the destination address was last modified.
+	Modified pulumi.StringInput `pulumi:"modified"`
+	// The exact domain name or a leftmost wildcard such as `*.example.com`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether sent messages from this subdomain can be previewed in the activity log.
+	PreviewEnabled pulumi.BoolInput `pulumi:"previewEnabled"`
+	// The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.
+	ReturnPathDomain pulumi.StringInput `pulumi:"returnPathDomain"`
+	// Sending subdomain identifier.
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetEmailSendingSubdomainsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSendingSubdomainsResult)(nil)).Elem()
+}
+
+func (i GetEmailSendingSubdomainsResultArgs) ToGetEmailSendingSubdomainsResultOutput() GetEmailSendingSubdomainsResultOutput {
+	return i.ToGetEmailSendingSubdomainsResultOutputWithContext(context.Background())
+}
+
+func (i GetEmailSendingSubdomainsResultArgs) ToGetEmailSendingSubdomainsResultOutputWithContext(ctx context.Context) GetEmailSendingSubdomainsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSendingSubdomainsResultOutput)
+}
+
+// GetEmailSendingSubdomainsResultArrayInput is an input type that accepts GetEmailSendingSubdomainsResultArray and GetEmailSendingSubdomainsResultArrayOutput values.
+// You can construct a concrete instance of `GetEmailSendingSubdomainsResultArrayInput` via:
+//
+//	GetEmailSendingSubdomainsResultArray{ GetEmailSendingSubdomainsResultArgs{...} }
+type GetEmailSendingSubdomainsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetEmailSendingSubdomainsResultArrayOutput() GetEmailSendingSubdomainsResultArrayOutput
+	ToGetEmailSendingSubdomainsResultArrayOutputWithContext(context.Context) GetEmailSendingSubdomainsResultArrayOutput
+}
+
+type GetEmailSendingSubdomainsResultArray []GetEmailSendingSubdomainsResultInput
+
+func (GetEmailSendingSubdomainsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEmailSendingSubdomainsResult)(nil)).Elem()
+}
+
+func (i GetEmailSendingSubdomainsResultArray) ToGetEmailSendingSubdomainsResultArrayOutput() GetEmailSendingSubdomainsResultArrayOutput {
+	return i.ToGetEmailSendingSubdomainsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetEmailSendingSubdomainsResultArray) ToGetEmailSendingSubdomainsResultArrayOutputWithContext(ctx context.Context) GetEmailSendingSubdomainsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEmailSendingSubdomainsResultArrayOutput)
+}
+
+type GetEmailSendingSubdomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSendingSubdomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEmailSendingSubdomainsResult)(nil)).Elem()
+}
+
+func (o GetEmailSendingSubdomainsResultOutput) ToGetEmailSendingSubdomainsResultOutput() GetEmailSendingSubdomainsResultOutput {
+	return o
+}
+
+func (o GetEmailSendingSubdomainsResultOutput) ToGetEmailSendingSubdomainsResultOutputWithContext(ctx context.Context) GetEmailSendingSubdomainsResultOutput {
+	return o
+}
+
+// The date and time the destination address has been created.
+func (o GetEmailSendingSubdomainsResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`.
+func (o GetEmailSendingSubdomainsResultOutput) DkimSelector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) string { return v.DkimSelector }).(pulumi.StringOutput)
+}
+
+// Whether a send request that includes a recipient suppressed on
+// this subdomain drops that recipient and still delivers to the
+// rest, instead of failing the entire request.
+func (o GetEmailSendingSubdomainsResultOutput) DropSuppressedRecipients() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) bool { return v.DropSuppressedRecipients }).(pulumi.BoolOutput)
+}
+
+// Whether Email Sending is enabled on this subdomain.
+func (o GetEmailSendingSubdomainsResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Sending subdomain identifier.
+func (o GetEmailSendingSubdomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The date and time the destination address was last modified.
+func (o GetEmailSendingSubdomainsResultOutput) Modified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) string { return v.Modified }).(pulumi.StringOutput)
+}
+
+// The exact domain name or a leftmost wildcard such as `*.example.com`.
+func (o GetEmailSendingSubdomainsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether sent messages from this subdomain can be previewed in the activity log.
+func (o GetEmailSendingSubdomainsResultOutput) PreviewEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) bool { return v.PreviewEnabled }).(pulumi.BoolOutput)
+}
+
+// The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.
+func (o GetEmailSendingSubdomainsResultOutput) ReturnPathDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) string { return v.ReturnPathDomain }).(pulumi.StringOutput)
+}
+
+// Sending subdomain identifier.
+func (o GetEmailSendingSubdomainsResultOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEmailSendingSubdomainsResult) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetEmailSendingSubdomainsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEmailSendingSubdomainsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEmailSendingSubdomainsResult)(nil)).Elem()
+}
+
+func (o GetEmailSendingSubdomainsResultArrayOutput) ToGetEmailSendingSubdomainsResultArrayOutput() GetEmailSendingSubdomainsResultArrayOutput {
+	return o
+}
+
+func (o GetEmailSendingSubdomainsResultArrayOutput) ToGetEmailSendingSubdomainsResultArrayOutputWithContext(ctx context.Context) GetEmailSendingSubdomainsResultArrayOutput {
+	return o
+}
+
+func (o GetEmailSendingSubdomainsResultArrayOutput) Index(i pulumi.IntInput) GetEmailSendingSubdomainsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEmailSendingSubdomainsResult {
+		return vs[0].([]GetEmailSendingSubdomainsResult)[vs[1].(int)]
+	}).(GetEmailSendingSubdomainsResultOutput)
 }
 
 type GetFilterFilter struct {
@@ -32885,7 +33244,7 @@ func (o GetLogpushJobOutputOptionsOutput) TimestampFormat() pulumi.StringOutput 
 
 type GetLogpushJobsResult struct {
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
 	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf string `pulumi:"destinationConf"`
@@ -32936,7 +33295,7 @@ type GetLogpushJobsResultInput interface {
 
 type GetLogpushJobsResultArgs struct {
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
 	Dataset pulumi.StringInput `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringInput `pulumi:"destinationConf"`
@@ -33026,7 +33385,7 @@ func (o GetLogpushJobsResultOutput) ToGetLogpushJobsResultOutputWithContext(ctx 
 }
 
 // Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+// Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
 func (o GetLogpushJobsResultOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -34100,6 +34459,8 @@ type GetMagicTransitConnectorsResult struct {
 	LastUpdated                 string   `pulumi:"lastUpdated"`
 	LicenseKey                  string   `pulumi:"licenseKey"`
 	Notes                       string   `pulumi:"notes"`
+	Primary                     bool     `pulumi:"primary"`
+	SiteId                      string   `pulumi:"siteId"`
 	Timezone                    string   `pulumi:"timezone"`
 }
 
@@ -34129,6 +34490,8 @@ type GetMagicTransitConnectorsResultArgs struct {
 	LastUpdated                 pulumi.StringInput      `pulumi:"lastUpdated"`
 	LicenseKey                  pulumi.StringInput      `pulumi:"licenseKey"`
 	Notes                       pulumi.StringInput      `pulumi:"notes"`
+	Primary                     pulumi.BoolInput        `pulumi:"primary"`
+	SiteId                      pulumi.StringInput      `pulumi:"siteId"`
 	Timezone                    pulumi.StringInput      `pulumi:"timezone"`
 }
 
@@ -34231,6 +34594,14 @@ func (o GetMagicTransitConnectorsResultOutput) LicenseKey() pulumi.StringOutput 
 
 func (o GetMagicTransitConnectorsResultOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMagicTransitConnectorsResult) string { return v.Notes }).(pulumi.StringOutput)
+}
+
+func (o GetMagicTransitConnectorsResultOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMagicTransitConnectorsResult) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+func (o GetMagicTransitConnectorsResultOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMagicTransitConnectorsResult) string { return v.SiteId }).(pulumi.StringOutput)
 }
 
 func (o GetMagicTransitConnectorsResultOutput) Timezone() pulumi.StringOutput {
@@ -35323,6 +35694,8 @@ type GetMagicTransitSiteLanStaticAddressingDhcpServer struct {
 	// A valid IPv4 address.
 	DhcpPoolStart string `pulumi:"dhcpPoolStart"`
 	// A valid IPv4 address.
+	//
+	// Deprecated: This attribute is deprecated.
 	DnsServer  string   `pulumi:"dnsServer"`
 	DnsServers []string `pulumi:"dnsServers"`
 	// Mapping of MAC addresses to IP addresses
@@ -35348,6 +35721,8 @@ type GetMagicTransitSiteLanStaticAddressingDhcpServerArgs struct {
 	// A valid IPv4 address.
 	DhcpPoolStart pulumi.StringInput `pulumi:"dhcpPoolStart"`
 	// A valid IPv4 address.
+	//
+	// Deprecated: This attribute is deprecated.
 	DnsServer  pulumi.StringInput      `pulumi:"dnsServer"`
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// Mapping of MAC addresses to IP addresses
@@ -35398,6 +35773,8 @@ func (o GetMagicTransitSiteLanStaticAddressingDhcpServerOutput) DhcpPoolStart() 
 }
 
 // A valid IPv4 address.
+//
+// Deprecated: This attribute is deprecated.
 func (o GetMagicTransitSiteLanStaticAddressingDhcpServerOutput) DnsServer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMagicTransitSiteLanStaticAddressingDhcpServer) string { return v.DnsServer }).(pulumi.StringOutput)
 }
@@ -36078,6 +36455,8 @@ type GetMagicTransitSiteLansResultStaticAddressingDhcpServer struct {
 	// A valid IPv4 address.
 	DhcpPoolStart string `pulumi:"dhcpPoolStart"`
 	// A valid IPv4 address.
+	//
+	// Deprecated: This attribute is deprecated.
 	DnsServer  string   `pulumi:"dnsServer"`
 	DnsServers []string `pulumi:"dnsServers"`
 	// Mapping of MAC addresses to IP addresses
@@ -36103,6 +36482,8 @@ type GetMagicTransitSiteLansResultStaticAddressingDhcpServerArgs struct {
 	// A valid IPv4 address.
 	DhcpPoolStart pulumi.StringInput `pulumi:"dhcpPoolStart"`
 	// A valid IPv4 address.
+	//
+	// Deprecated: This attribute is deprecated.
 	DnsServer  pulumi.StringInput      `pulumi:"dnsServer"`
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// Mapping of MAC addresses to IP addresses
@@ -36153,6 +36534,8 @@ func (o GetMagicTransitSiteLansResultStaticAddressingDhcpServerOutput) DhcpPoolS
 }
 
 // A valid IPv4 address.
+//
+// Deprecated: This attribute is deprecated.
 func (o GetMagicTransitSiteLansResultStaticAddressingDhcpServerOutput) DnsServer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMagicTransitSiteLansResultStaticAddressingDhcpServer) string { return v.DnsServer }).(pulumi.StringOutput)
 }
@@ -39159,6 +39542,58 @@ func (o GetMtlsCertificatesResultArrayOutput) Index(i pulumi.IntInput) GetMtlsCe
 	}).(GetMtlsCertificatesResultOutput)
 }
 
+type GetNelSettingValue struct {
+	// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetNelSettingValueInput is an input type that accepts GetNelSettingValueArgs and GetNelSettingValueOutput values.
+// You can construct a concrete instance of `GetNelSettingValueInput` via:
+//
+//	GetNelSettingValueArgs{...}
+type GetNelSettingValueInput interface {
+	pulumi.Input
+
+	ToGetNelSettingValueOutput() GetNelSettingValueOutput
+	ToGetNelSettingValueOutputWithContext(context.Context) GetNelSettingValueOutput
+}
+
+type GetNelSettingValueArgs struct {
+	// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetNelSettingValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNelSettingValue)(nil)).Elem()
+}
+
+func (i GetNelSettingValueArgs) ToGetNelSettingValueOutput() GetNelSettingValueOutput {
+	return i.ToGetNelSettingValueOutputWithContext(context.Background())
+}
+
+func (i GetNelSettingValueArgs) ToGetNelSettingValueOutputWithContext(ctx context.Context) GetNelSettingValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNelSettingValueOutput)
+}
+
+type GetNelSettingValueOutput struct{ *pulumi.OutputState }
+
+func (GetNelSettingValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNelSettingValue)(nil)).Elem()
+}
+
+func (o GetNelSettingValueOutput) ToGetNelSettingValueOutput() GetNelSettingValueOutput {
+	return o
+}
+
+func (o GetNelSettingValueOutput) ToGetNelSettingValueOutputWithContext(ctx context.Context) GetNelSettingValueOutput {
+	return o
+}
+
+// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+func (o GetNelSettingValueOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNelSettingValue) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 type GetNotificationPoliciesResult struct {
 	// Optional specification of how often to re-alert from the same incident, not support on all alert types.
 	AlertInterval string `pulumi:"alertInterval"`
@@ -41152,6 +41587,8 @@ type GetOauthClientsResult struct {
 	HasRotatedSecret bool `pulumi:"hasRotatedSecret"`
 	// URL of the client's logo.
 	LogoUri string `pulumi:"logoUri"`
+	// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+	OptionalScopes []string `pulumi:"optionalScopes"`
 	// URL that points to a privacy policy document.
 	PolicyUri string `pulumi:"policyUri"`
 	// Array of allowed post-logout redirect URIs.
@@ -41206,6 +41643,8 @@ type GetOauthClientsResultArgs struct {
 	HasRotatedSecret pulumi.BoolInput `pulumi:"hasRotatedSecret"`
 	// URL of the client's logo.
 	LogoUri pulumi.StringInput `pulumi:"logoUri"`
+	// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+	OptionalScopes pulumi.StringArrayInput `pulumi:"optionalScopes"`
 	// URL that points to a privacy policy document.
 	PolicyUri pulumi.StringInput `pulumi:"policyUri"`
 	// Array of allowed post-logout redirect URIs.
@@ -41326,6 +41765,11 @@ func (o GetOauthClientsResultOutput) HasRotatedSecret() pulumi.BoolOutput {
 // URL of the client's logo.
 func (o GetOauthClientsResultOutput) LogoUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOauthClientsResult) string { return v.LogoUri }).(pulumi.StringOutput)
+}
+
+// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+func (o GetOauthClientsResultOutput) OptionalScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOauthClientsResult) []string { return v.OptionalScopes }).(pulumi.StringArrayOutput)
 }
 
 // URL that points to a privacy policy document.
@@ -42414,13 +42858,14 @@ func (o GetOrganizationMetaOutput) TenantFlags() GetOrganizationMetaTenantFlagsO
 }
 
 type GetOrganizationMetaTenantFlags struct {
-	AccountCreation      string `pulumi:"accountCreation"`
-	AccountDeletion      string `pulumi:"accountDeletion"`
-	AccountMigration     string `pulumi:"accountMigration"`
-	AccountMobility      string `pulumi:"accountMobility"`
-	EnterpriseCapability string `pulumi:"enterpriseCapability"`
-	MemberManagement     string `pulumi:"memberManagement"`
-	SubOrgCreation       string `pulumi:"subOrgCreation"`
+	AccountCreation                      string `pulumi:"accountCreation"`
+	AccountCreationAppliesTenantDefaults string `pulumi:"accountCreationAppliesTenantDefaults"`
+	AccountDeletion                      string `pulumi:"accountDeletion"`
+	AccountMigration                     string `pulumi:"accountMigration"`
+	AccountMobility                      string `pulumi:"accountMobility"`
+	EnterpriseCapability                 string `pulumi:"enterpriseCapability"`
+	MemberManagement                     string `pulumi:"memberManagement"`
+	SubOrgCreation                       string `pulumi:"subOrgCreation"`
 }
 
 // GetOrganizationMetaTenantFlagsInput is an input type that accepts GetOrganizationMetaTenantFlagsArgs and GetOrganizationMetaTenantFlagsOutput values.
@@ -42435,13 +42880,14 @@ type GetOrganizationMetaTenantFlagsInput interface {
 }
 
 type GetOrganizationMetaTenantFlagsArgs struct {
-	AccountCreation      pulumi.StringInput `pulumi:"accountCreation"`
-	AccountDeletion      pulumi.StringInput `pulumi:"accountDeletion"`
-	AccountMigration     pulumi.StringInput `pulumi:"accountMigration"`
-	AccountMobility      pulumi.StringInput `pulumi:"accountMobility"`
-	EnterpriseCapability pulumi.StringInput `pulumi:"enterpriseCapability"`
-	MemberManagement     pulumi.StringInput `pulumi:"memberManagement"`
-	SubOrgCreation       pulumi.StringInput `pulumi:"subOrgCreation"`
+	AccountCreation                      pulumi.StringInput `pulumi:"accountCreation"`
+	AccountCreationAppliesTenantDefaults pulumi.StringInput `pulumi:"accountCreationAppliesTenantDefaults"`
+	AccountDeletion                      pulumi.StringInput `pulumi:"accountDeletion"`
+	AccountMigration                     pulumi.StringInput `pulumi:"accountMigration"`
+	AccountMobility                      pulumi.StringInput `pulumi:"accountMobility"`
+	EnterpriseCapability                 pulumi.StringInput `pulumi:"enterpriseCapability"`
+	MemberManagement                     pulumi.StringInput `pulumi:"memberManagement"`
+	SubOrgCreation                       pulumi.StringInput `pulumi:"subOrgCreation"`
 }
 
 func (GetOrganizationMetaTenantFlagsArgs) ElementType() reflect.Type {
@@ -42472,6 +42918,10 @@ func (o GetOrganizationMetaTenantFlagsOutput) ToGetOrganizationMetaTenantFlagsOu
 
 func (o GetOrganizationMetaTenantFlagsOutput) AccountCreation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationMetaTenantFlags) string { return v.AccountCreation }).(pulumi.StringOutput)
+}
+
+func (o GetOrganizationMetaTenantFlagsOutput) AccountCreationAppliesTenantDefaults() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationMetaTenantFlags) string { return v.AccountCreationAppliesTenantDefaults }).(pulumi.StringOutput)
 }
 
 func (o GetOrganizationMetaTenantFlagsOutput) AccountDeletion() pulumi.StringOutput {
@@ -43348,13 +43798,14 @@ func (o GetOrganizationsResultMetaOutput) TenantFlags() GetOrganizationsResultMe
 }
 
 type GetOrganizationsResultMetaTenantFlags struct {
-	AccountCreation      string `pulumi:"accountCreation"`
-	AccountDeletion      string `pulumi:"accountDeletion"`
-	AccountMigration     string `pulumi:"accountMigration"`
-	AccountMobility      string `pulumi:"accountMobility"`
-	EnterpriseCapability string `pulumi:"enterpriseCapability"`
-	MemberManagement     string `pulumi:"memberManagement"`
-	SubOrgCreation       string `pulumi:"subOrgCreation"`
+	AccountCreation                      string `pulumi:"accountCreation"`
+	AccountCreationAppliesTenantDefaults string `pulumi:"accountCreationAppliesTenantDefaults"`
+	AccountDeletion                      string `pulumi:"accountDeletion"`
+	AccountMigration                     string `pulumi:"accountMigration"`
+	AccountMobility                      string `pulumi:"accountMobility"`
+	EnterpriseCapability                 string `pulumi:"enterpriseCapability"`
+	MemberManagement                     string `pulumi:"memberManagement"`
+	SubOrgCreation                       string `pulumi:"subOrgCreation"`
 }
 
 // GetOrganizationsResultMetaTenantFlagsInput is an input type that accepts GetOrganizationsResultMetaTenantFlagsArgs and GetOrganizationsResultMetaTenantFlagsOutput values.
@@ -43369,13 +43820,14 @@ type GetOrganizationsResultMetaTenantFlagsInput interface {
 }
 
 type GetOrganizationsResultMetaTenantFlagsArgs struct {
-	AccountCreation      pulumi.StringInput `pulumi:"accountCreation"`
-	AccountDeletion      pulumi.StringInput `pulumi:"accountDeletion"`
-	AccountMigration     pulumi.StringInput `pulumi:"accountMigration"`
-	AccountMobility      pulumi.StringInput `pulumi:"accountMobility"`
-	EnterpriseCapability pulumi.StringInput `pulumi:"enterpriseCapability"`
-	MemberManagement     pulumi.StringInput `pulumi:"memberManagement"`
-	SubOrgCreation       pulumi.StringInput `pulumi:"subOrgCreation"`
+	AccountCreation                      pulumi.StringInput `pulumi:"accountCreation"`
+	AccountCreationAppliesTenantDefaults pulumi.StringInput `pulumi:"accountCreationAppliesTenantDefaults"`
+	AccountDeletion                      pulumi.StringInput `pulumi:"accountDeletion"`
+	AccountMigration                     pulumi.StringInput `pulumi:"accountMigration"`
+	AccountMobility                      pulumi.StringInput `pulumi:"accountMobility"`
+	EnterpriseCapability                 pulumi.StringInput `pulumi:"enterpriseCapability"`
+	MemberManagement                     pulumi.StringInput `pulumi:"memberManagement"`
+	SubOrgCreation                       pulumi.StringInput `pulumi:"subOrgCreation"`
 }
 
 func (GetOrganizationsResultMetaTenantFlagsArgs) ElementType() reflect.Type {
@@ -43406,6 +43858,10 @@ func (o GetOrganizationsResultMetaTenantFlagsOutput) ToGetOrganizationsResultMet
 
 func (o GetOrganizationsResultMetaTenantFlagsOutput) AccountCreation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationsResultMetaTenantFlags) string { return v.AccountCreation }).(pulumi.StringOutput)
+}
+
+func (o GetOrganizationsResultMetaTenantFlagsOutput) AccountCreationAppliesTenantDefaults() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationsResultMetaTenantFlags) string { return v.AccountCreationAppliesTenantDefaults }).(pulumi.StringOutput)
 }
 
 func (o GetOrganizationsResultMetaTenantFlagsOutput) AccountDeletion() pulumi.StringOutput {
@@ -57600,7 +58056,8 @@ func (o GetPipelineSinkFilterPtrOutput) PipelineId() pulumi.StringPtrOutput {
 }
 
 type GetPipelineSinkFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+	// Specifies the compression applied to JSON sink output.
+	// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 	Compression string `pulumi:"compression"`
 	// Available values: "number", "string", "bytes".
 	DecimalEncoding string `pulumi:"decimalEncoding"`
@@ -57624,7 +58081,8 @@ type GetPipelineSinkFormatInput interface {
 }
 
 type GetPipelineSinkFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+	// Specifies the compression applied to JSON sink output.
+	// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 	Compression pulumi.StringInput `pulumi:"compression"`
 	// Available values: "number", "string", "bytes".
 	DecimalEncoding pulumi.StringInput `pulumi:"decimalEncoding"`
@@ -57662,7 +58120,8 @@ func (o GetPipelineSinkFormatOutput) ToGetPipelineSinkFormatOutputWithContext(ct
 	return o
 }
 
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+// Specifies the compression applied to JSON sink output.
+// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 func (o GetPipelineSinkFormatOutput) Compression() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineSinkFormat) string { return v.Compression }).(pulumi.StringOutput)
 }
@@ -57692,7 +58151,6 @@ func (o GetPipelineSinkFormatOutput) Unstructured() pulumi.BoolOutput {
 
 type GetPipelineSinkSchema struct {
 	Fields   []GetPipelineSinkSchemaField `pulumi:"fields"`
-	Format   GetPipelineSinkSchemaFormat  `pulumi:"format"`
 	Inferred bool                         `pulumi:"inferred"`
 }
 
@@ -57709,7 +58167,6 @@ type GetPipelineSinkSchemaInput interface {
 
 type GetPipelineSinkSchemaArgs struct {
 	Fields   GetPipelineSinkSchemaFieldArrayInput `pulumi:"fields"`
-	Format   GetPipelineSinkSchemaFormatInput     `pulumi:"format"`
 	Inferred pulumi.BoolInput                     `pulumi:"inferred"`
 }
 
@@ -57741,10 +58198,6 @@ func (o GetPipelineSinkSchemaOutput) ToGetPipelineSinkSchemaOutputWithContext(ct
 
 func (o GetPipelineSinkSchemaOutput) Fields() GetPipelineSinkSchemaFieldArrayOutput {
 	return o.ApplyT(func(v GetPipelineSinkSchema) []GetPipelineSinkSchemaField { return v.Fields }).(GetPipelineSinkSchemaFieldArrayOutput)
-}
-
-func (o GetPipelineSinkSchemaOutput) Format() GetPipelineSinkSchemaFormatOutput {
-	return o.ApplyT(func(v GetPipelineSinkSchema) GetPipelineSinkSchemaFormat { return v.Format }).(GetPipelineSinkSchemaFormatOutput)
 }
 
 func (o GetPipelineSinkSchemaOutput) Inferred() pulumi.BoolOutput {
@@ -57881,102 +58334,413 @@ func (o GetPipelineSinkSchemaFieldArrayOutput) Index(i pulumi.IntInput) GetPipel
 	}).(GetPipelineSinkSchemaFieldOutput)
 }
 
-type GetPipelineSinkSchemaFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression string `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding string `pulumi:"decimalEncoding"`
-	RowGroupBytes   int    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat string `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         string `pulumi:"type"`
-	Unstructured bool   `pulumi:"unstructured"`
+type GetPipelineSinksResult struct {
+	// Defines the configuration of the R2 Sink.
+	Config    GetPipelineSinksResultConfig `pulumi:"config"`
+	CreatedAt string                       `pulumi:"createdAt"`
+	// Defines the output data format of a sink.
+	Format GetPipelineSinksResultFormat `pulumi:"format"`
+	// Indicates a unique identifier for this sink.
+	Id         string `pulumi:"id"`
+	ModifiedAt string `pulumi:"modifiedAt"`
+	// Defines the name of the Sink.
+	Name string `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
+	Schema GetPipelineSinksResultSchema `pulumi:"schema"`
+	// Specifies the type of sink.
+	// Available values: "r2", "r2*data*catalog".
+	Type string `pulumi:"type"`
 }
 
-// GetPipelineSinkSchemaFormatInput is an input type that accepts GetPipelineSinkSchemaFormatArgs and GetPipelineSinkSchemaFormatOutput values.
-// You can construct a concrete instance of `GetPipelineSinkSchemaFormatInput` via:
+// GetPipelineSinksResultInput is an input type that accepts GetPipelineSinksResultArgs and GetPipelineSinksResultOutput values.
+// You can construct a concrete instance of `GetPipelineSinksResultInput` via:
 //
-//	GetPipelineSinkSchemaFormatArgs{...}
-type GetPipelineSinkSchemaFormatInput interface {
+//	GetPipelineSinksResultArgs{...}
+type GetPipelineSinksResultInput interface {
 	pulumi.Input
 
-	ToGetPipelineSinkSchemaFormatOutput() GetPipelineSinkSchemaFormatOutput
-	ToGetPipelineSinkSchemaFormatOutputWithContext(context.Context) GetPipelineSinkSchemaFormatOutput
+	ToGetPipelineSinksResultOutput() GetPipelineSinksResultOutput
+	ToGetPipelineSinksResultOutputWithContext(context.Context) GetPipelineSinksResultOutput
 }
 
-type GetPipelineSinkSchemaFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression pulumi.StringInput `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding pulumi.StringInput `pulumi:"decimalEncoding"`
-	RowGroupBytes   pulumi.IntInput    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat pulumi.StringInput `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         pulumi.StringInput `pulumi:"type"`
-	Unstructured pulumi.BoolInput   `pulumi:"unstructured"`
+type GetPipelineSinksResultArgs struct {
+	// Defines the configuration of the R2 Sink.
+	Config    GetPipelineSinksResultConfigInput `pulumi:"config"`
+	CreatedAt pulumi.StringInput                `pulumi:"createdAt"`
+	// Defines the output data format of a sink.
+	Format GetPipelineSinksResultFormatInput `pulumi:"format"`
+	// Indicates a unique identifier for this sink.
+	Id         pulumi.StringInput `pulumi:"id"`
+	ModifiedAt pulumi.StringInput `pulumi:"modifiedAt"`
+	// Defines the name of the Sink.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
+	Schema GetPipelineSinksResultSchemaInput `pulumi:"schema"`
+	// Specifies the type of sink.
+	// Available values: "r2", "r2*data*catalog".
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetPipelineSinkSchemaFormatArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinkSchemaFormat)(nil)).Elem()
+func (GetPipelineSinksResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSinksResult)(nil)).Elem()
 }
 
-func (i GetPipelineSinkSchemaFormatArgs) ToGetPipelineSinkSchemaFormatOutput() GetPipelineSinkSchemaFormatOutput {
-	return i.ToGetPipelineSinkSchemaFormatOutputWithContext(context.Background())
+func (i GetPipelineSinksResultArgs) ToGetPipelineSinksResultOutput() GetPipelineSinksResultOutput {
+	return i.ToGetPipelineSinksResultOutputWithContext(context.Background())
 }
 
-func (i GetPipelineSinkSchemaFormatArgs) ToGetPipelineSinkSchemaFormatOutputWithContext(ctx context.Context) GetPipelineSinkSchemaFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinkSchemaFormatOutput)
+func (i GetPipelineSinksResultArgs) ToGetPipelineSinksResultOutputWithContext(ctx context.Context) GetPipelineSinksResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultOutput)
 }
 
-type GetPipelineSinkSchemaFormatOutput struct{ *pulumi.OutputState }
+// GetPipelineSinksResultArrayInput is an input type that accepts GetPipelineSinksResultArray and GetPipelineSinksResultArrayOutput values.
+// You can construct a concrete instance of `GetPipelineSinksResultArrayInput` via:
+//
+//	GetPipelineSinksResultArray{ GetPipelineSinksResultArgs{...} }
+type GetPipelineSinksResultArrayInput interface {
+	pulumi.Input
 
-func (GetPipelineSinkSchemaFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinkSchemaFormat)(nil)).Elem()
+	ToGetPipelineSinksResultArrayOutput() GetPipelineSinksResultArrayOutput
+	ToGetPipelineSinksResultArrayOutputWithContext(context.Context) GetPipelineSinksResultArrayOutput
 }
 
-func (o GetPipelineSinkSchemaFormatOutput) ToGetPipelineSinkSchemaFormatOutput() GetPipelineSinkSchemaFormatOutput {
+type GetPipelineSinksResultArray []GetPipelineSinksResultInput
+
+func (GetPipelineSinksResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineSinksResult)(nil)).Elem()
+}
+
+func (i GetPipelineSinksResultArray) ToGetPipelineSinksResultArrayOutput() GetPipelineSinksResultArrayOutput {
+	return i.ToGetPipelineSinksResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetPipelineSinksResultArray) ToGetPipelineSinksResultArrayOutputWithContext(ctx context.Context) GetPipelineSinksResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultArrayOutput)
+}
+
+type GetPipelineSinksResultOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineSinksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSinksResult)(nil)).Elem()
+}
+
+func (o GetPipelineSinksResultOutput) ToGetPipelineSinksResultOutput() GetPipelineSinksResultOutput {
 	return o
 }
 
-func (o GetPipelineSinkSchemaFormatOutput) ToGetPipelineSinkSchemaFormatOutputWithContext(ctx context.Context) GetPipelineSinkSchemaFormatOutput {
+func (o GetPipelineSinksResultOutput) ToGetPipelineSinksResultOutputWithContext(ctx context.Context) GetPipelineSinksResultOutput {
 	return o
 }
 
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o GetPipelineSinkSchemaFormatOutput) Compression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinkSchemaFormat) string { return v.Compression }).(pulumi.StringOutput)
+// Defines the configuration of the R2 Sink.
+func (o GetPipelineSinksResultOutput) Config() GetPipelineSinksResultConfigOutput {
+	return o.ApplyT(func(v GetPipelineSinksResult) GetPipelineSinksResultConfig { return v.Config }).(GetPipelineSinksResultConfigOutput)
 }
 
-// Available values: "number", "string", "bytes".
-func (o GetPipelineSinkSchemaFormatOutput) DecimalEncoding() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinkSchemaFormat) string { return v.DecimalEncoding }).(pulumi.StringOutput)
+func (o GetPipelineSinksResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-func (o GetPipelineSinkSchemaFormatOutput) RowGroupBytes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPipelineSinkSchemaFormat) int { return v.RowGroupBytes }).(pulumi.IntOutput)
+// Defines the output data format of a sink.
+func (o GetPipelineSinksResultOutput) Format() GetPipelineSinksResultFormatOutput {
+	return o.ApplyT(func(v GetPipelineSinksResult) GetPipelineSinksResultFormat { return v.Format }).(GetPipelineSinksResultFormatOutput)
 }
 
-// Available values: "rfc3339", "unixMillis".
-func (o GetPipelineSinkSchemaFormatOutput) TimestampFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinkSchemaFormat) string { return v.TimestampFormat }).(pulumi.StringOutput)
+// Indicates a unique identifier for this sink.
+func (o GetPipelineSinksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Available values: "json", "parquet".
-func (o GetPipelineSinkSchemaFormatOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinkSchemaFormat) string { return v.Type }).(pulumi.StringOutput)
+func (o GetPipelineSinksResultOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
-func (o GetPipelineSinkSchemaFormatOutput) Unstructured() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPipelineSinkSchemaFormat) bool { return v.Unstructured }).(pulumi.BoolOutput)
+// Defines the name of the Sink.
+func (o GetPipelineSinksResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Defines the schema of the events in the data stream.
+func (o GetPipelineSinksResultOutput) Schema() GetPipelineSinksResultSchemaOutput {
+	return o.ApplyT(func(v GetPipelineSinksResult) GetPipelineSinksResultSchema { return v.Schema }).(GetPipelineSinksResultSchemaOutput)
+}
+
+// Specifies the type of sink.
+// Available values: "r2", "r2*data*catalog".
+func (o GetPipelineSinksResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPipelineSinksResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineSinksResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPipelineSinksResult)(nil)).Elem()
+}
+
+func (o GetPipelineSinksResultArrayOutput) ToGetPipelineSinksResultArrayOutput() GetPipelineSinksResultArrayOutput {
+	return o
+}
+
+func (o GetPipelineSinksResultArrayOutput) ToGetPipelineSinksResultArrayOutputWithContext(ctx context.Context) GetPipelineSinksResultArrayOutput {
+	return o
+}
+
+func (o GetPipelineSinksResultArrayOutput) Index(i pulumi.IntInput) GetPipelineSinksResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineSinksResult {
+		return vs[0].([]GetPipelineSinksResult)[vs[1].(int)]
+	}).(GetPipelineSinksResultOutput)
+}
+
+type GetPipelineSinksResultConfig struct {
+	// Cloudflare Account ID for the bucket
+	AccountId string `pulumi:"accountId"`
+	// R2 Bucket to write to
+	Bucket string `pulumi:"bucket"`
+	// Controls filename prefix/suffix and strategy.
+	FileNaming GetPipelineSinksResultConfigFileNaming `pulumi:"fileNaming"`
+	// Jurisdiction this bucket is hosted in
+	Jurisdiction string `pulumi:"jurisdiction"`
+	// Table namespace
+	Namespace string `pulumi:"namespace"`
+	// Data-layout partitioning for sinks.
+	Partitioning GetPipelineSinksResultConfigPartitioning `pulumi:"partitioning"`
+	// Subpath within the bucket to write to
+	Path string `pulumi:"path"`
+	// Rolling policy for file sinks (when & why to close a file and open a new one).
+	RollingPolicy GetPipelineSinksResultConfigRollingPolicy `pulumi:"rollingPolicy"`
+	// Table name
+	TableName string `pulumi:"tableName"`
+}
+
+// GetPipelineSinksResultConfigInput is an input type that accepts GetPipelineSinksResultConfigArgs and GetPipelineSinksResultConfigOutput values.
+// You can construct a concrete instance of `GetPipelineSinksResultConfigInput` via:
+//
+//	GetPipelineSinksResultConfigArgs{...}
+type GetPipelineSinksResultConfigInput interface {
+	pulumi.Input
+
+	ToGetPipelineSinksResultConfigOutput() GetPipelineSinksResultConfigOutput
+	ToGetPipelineSinksResultConfigOutputWithContext(context.Context) GetPipelineSinksResultConfigOutput
+}
+
+type GetPipelineSinksResultConfigArgs struct {
+	// Cloudflare Account ID for the bucket
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// R2 Bucket to write to
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Controls filename prefix/suffix and strategy.
+	FileNaming GetPipelineSinksResultConfigFileNamingInput `pulumi:"fileNaming"`
+	// Jurisdiction this bucket is hosted in
+	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
+	// Table namespace
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Data-layout partitioning for sinks.
+	Partitioning GetPipelineSinksResultConfigPartitioningInput `pulumi:"partitioning"`
+	// Subpath within the bucket to write to
+	Path pulumi.StringInput `pulumi:"path"`
+	// Rolling policy for file sinks (when & why to close a file and open a new one).
+	RollingPolicy GetPipelineSinksResultConfigRollingPolicyInput `pulumi:"rollingPolicy"`
+	// Table name
+	TableName pulumi.StringInput `pulumi:"tableName"`
+}
+
+func (GetPipelineSinksResultConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSinksResultConfig)(nil)).Elem()
+}
+
+func (i GetPipelineSinksResultConfigArgs) ToGetPipelineSinksResultConfigOutput() GetPipelineSinksResultConfigOutput {
+	return i.ToGetPipelineSinksResultConfigOutputWithContext(context.Background())
+}
+
+func (i GetPipelineSinksResultConfigArgs) ToGetPipelineSinksResultConfigOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultConfigOutput)
+}
+
+type GetPipelineSinksResultConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineSinksResultConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSinksResultConfig)(nil)).Elem()
+}
+
+func (o GetPipelineSinksResultConfigOutput) ToGetPipelineSinksResultConfigOutput() GetPipelineSinksResultConfigOutput {
+	return o
+}
+
+func (o GetPipelineSinksResultConfigOutput) ToGetPipelineSinksResultConfigOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigOutput {
+	return o
+}
+
+// Cloudflare Account ID for the bucket
+func (o GetPipelineSinksResultConfigOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// R2 Bucket to write to
+func (o GetPipelineSinksResultConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Controls filename prefix/suffix and strategy.
+func (o GetPipelineSinksResultConfigOutput) FileNaming() GetPipelineSinksResultConfigFileNamingOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) GetPipelineSinksResultConfigFileNaming { return v.FileNaming }).(GetPipelineSinksResultConfigFileNamingOutput)
+}
+
+// Jurisdiction this bucket is hosted in
+func (o GetPipelineSinksResultConfigOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.Jurisdiction }).(pulumi.StringOutput)
+}
+
+// Table namespace
+func (o GetPipelineSinksResultConfigOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Data-layout partitioning for sinks.
+func (o GetPipelineSinksResultConfigOutput) Partitioning() GetPipelineSinksResultConfigPartitioningOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) GetPipelineSinksResultConfigPartitioning { return v.Partitioning }).(GetPipelineSinksResultConfigPartitioningOutput)
+}
+
+// Subpath within the bucket to write to
+func (o GetPipelineSinksResultConfigOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Rolling policy for file sinks (when & why to close a file and open a new one).
+func (o GetPipelineSinksResultConfigOutput) RollingPolicy() GetPipelineSinksResultConfigRollingPolicyOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) GetPipelineSinksResultConfigRollingPolicy { return v.RollingPolicy }).(GetPipelineSinksResultConfigRollingPolicyOutput)
+}
+
+// Table name
+func (o GetPipelineSinksResultConfigOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+type GetPipelineSinksResultConfigFileNaming struct {
+	// The prefix to use in file name. i.e prefix-\n\n.parquet
+	Prefix string `pulumi:"prefix"`
+	// Filename generation strategy.
+	// Available values: "serial", "uuid", "uuidV7", "ulid".
+	Strategy string `pulumi:"strategy"`
+	// This will overwrite the default file suffix. i.e .parquet, use with caution
+	Suffix string `pulumi:"suffix"`
+}
+
+// GetPipelineSinksResultConfigFileNamingInput is an input type that accepts GetPipelineSinksResultConfigFileNamingArgs and GetPipelineSinksResultConfigFileNamingOutput values.
+// You can construct a concrete instance of `GetPipelineSinksResultConfigFileNamingInput` via:
+//
+//	GetPipelineSinksResultConfigFileNamingArgs{...}
+type GetPipelineSinksResultConfigFileNamingInput interface {
+	pulumi.Input
+
+	ToGetPipelineSinksResultConfigFileNamingOutput() GetPipelineSinksResultConfigFileNamingOutput
+	ToGetPipelineSinksResultConfigFileNamingOutputWithContext(context.Context) GetPipelineSinksResultConfigFileNamingOutput
+}
+
+type GetPipelineSinksResultConfigFileNamingArgs struct {
+	// The prefix to use in file name. i.e prefix-\n\n.parquet
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Filename generation strategy.
+	// Available values: "serial", "uuid", "uuidV7", "ulid".
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+	// This will overwrite the default file suffix. i.e .parquet, use with caution
+	Suffix pulumi.StringInput `pulumi:"suffix"`
+}
+
+func (GetPipelineSinksResultConfigFileNamingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSinksResultConfigFileNaming)(nil)).Elem()
+}
+
+func (i GetPipelineSinksResultConfigFileNamingArgs) ToGetPipelineSinksResultConfigFileNamingOutput() GetPipelineSinksResultConfigFileNamingOutput {
+	return i.ToGetPipelineSinksResultConfigFileNamingOutputWithContext(context.Background())
+}
+
+func (i GetPipelineSinksResultConfigFileNamingArgs) ToGetPipelineSinksResultConfigFileNamingOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigFileNamingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultConfigFileNamingOutput)
+}
+
+type GetPipelineSinksResultConfigFileNamingOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineSinksResultConfigFileNamingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSinksResultConfigFileNaming)(nil)).Elem()
+}
+
+func (o GetPipelineSinksResultConfigFileNamingOutput) ToGetPipelineSinksResultConfigFileNamingOutput() GetPipelineSinksResultConfigFileNamingOutput {
+	return o
+}
+
+func (o GetPipelineSinksResultConfigFileNamingOutput) ToGetPipelineSinksResultConfigFileNamingOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigFileNamingOutput {
+	return o
+}
+
+// The prefix to use in file name. i.e prefix-\n\n.parquet
+func (o GetPipelineSinksResultConfigFileNamingOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfigFileNaming) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Filename generation strategy.
+// Available values: "serial", "uuid", "uuidV7", "ulid".
+func (o GetPipelineSinksResultConfigFileNamingOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfigFileNaming) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+// This will overwrite the default file suffix. i.e .parquet, use with caution
+func (o GetPipelineSinksResultConfigFileNamingOutput) Suffix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfigFileNaming) string { return v.Suffix }).(pulumi.StringOutput)
+}
+
+type GetPipelineSinksResultConfigPartitioning struct {
+	// The pattern of the date string
+	TimePattern string `pulumi:"timePattern"`
+}
+
+// GetPipelineSinksResultConfigPartitioningInput is an input type that accepts GetPipelineSinksResultConfigPartitioningArgs and GetPipelineSinksResultConfigPartitioningOutput values.
+// You can construct a concrete instance of `GetPipelineSinksResultConfigPartitioningInput` via:
+//
+//	GetPipelineSinksResultConfigPartitioningArgs{...}
+type GetPipelineSinksResultConfigPartitioningInput interface {
+	pulumi.Input
+
+	ToGetPipelineSinksResultConfigPartitioningOutput() GetPipelineSinksResultConfigPartitioningOutput
+	ToGetPipelineSinksResultConfigPartitioningOutputWithContext(context.Context) GetPipelineSinksResultConfigPartitioningOutput
+}
+
+type GetPipelineSinksResultConfigPartitioningArgs struct {
+	// The pattern of the date string
+	TimePattern pulumi.StringInput `pulumi:"timePattern"`
+}
+
+func (GetPipelineSinksResultConfigPartitioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSinksResultConfigPartitioning)(nil)).Elem()
+}
+
+func (i GetPipelineSinksResultConfigPartitioningArgs) ToGetPipelineSinksResultConfigPartitioningOutput() GetPipelineSinksResultConfigPartitioningOutput {
+	return i.ToGetPipelineSinksResultConfigPartitioningOutputWithContext(context.Background())
+}
+
+func (i GetPipelineSinksResultConfigPartitioningArgs) ToGetPipelineSinksResultConfigPartitioningOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigPartitioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultConfigPartitioningOutput)
+}
+
+type GetPipelineSinksResultConfigPartitioningOutput struct{ *pulumi.OutputState }
+
+func (GetPipelineSinksResultConfigPartitioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPipelineSinksResultConfigPartitioning)(nil)).Elem()
+}
+
+func (o GetPipelineSinksResultConfigPartitioningOutput) ToGetPipelineSinksResultConfigPartitioningOutput() GetPipelineSinksResultConfigPartitioningOutput {
+	return o
+}
+
+func (o GetPipelineSinksResultConfigPartitioningOutput) ToGetPipelineSinksResultConfigPartitioningOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigPartitioningOutput {
+	return o
+}
+
+// The pattern of the date string
+func (o GetPipelineSinksResultConfigPartitioningOutput) TimePattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPipelineSinksResultConfigPartitioning) string { return v.TimePattern }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsMcpInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsMcpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsRateLimitInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacePublicEndpointParamsSearchEndpointInput)(nil)).Elem(), GetAiSearchNamespacePublicEndpointParamsSearchEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacesResultInput)(nil)).Elem(), GetAiSearchNamespacesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchNamespacesResultArrayInput)(nil)).Elem(), GetAiSearchNamespacesResultArray{})
@@ -58089,9 +58853,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientCertificatesResultInput)(nil)).Elem(), GetClientCertificatesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientCertificatesResultArrayInput)(nil)).Elem(), GetClientCertificatesResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientCertificatesResultCertificateAuthorityInput)(nil)).Elem(), GetClientCertificatesResultCertificateAuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorRulesRuleInput)(nil)).Elem(), GetCloudConnectorRulesRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorRulesRuleArrayInput)(nil)).Elem(), GetCloudConnectorRulesRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorRulesRuleParametersInput)(nil)).Elem(), GetCloudConnectorRulesRuleParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudConnectorRulesParametersInput)(nil)).Elem(), GetCloudConnectorRulesParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudforceOneRequestFilterInput)(nil)).Elem(), GetCloudforceOneRequestFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudforceOneRequestFilterPtrInput)(nil)).Elem(), GetCloudforceOneRequestFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudforceOneRequestsResultInput)(nil)).Elem(), GetCloudforceOneRequestsResultArgs{})
@@ -58210,19 +58972,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingCatchAllActionArrayInput)(nil)).Elem(), GetEmailRoutingCatchAllActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingCatchAllMatcherInput)(nil)).Elem(), GetEmailRoutingCatchAllMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingCatchAllMatcherArrayInput)(nil)).Elem(), GetEmailRoutingCatchAllMatcherArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsErrorInput)(nil)).Elem(), GetEmailRoutingDnsErrorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsErrorArrayInput)(nil)).Elem(), GetEmailRoutingDnsErrorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsErrorSourceInput)(nil)).Elem(), GetEmailRoutingDnsErrorSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsMessageInput)(nil)).Elem(), GetEmailRoutingDnsMessageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsMessageArrayInput)(nil)).Elem(), GetEmailRoutingDnsMessageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsMessageSourceInput)(nil)).Elem(), GetEmailRoutingDnsMessageSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsResultInput)(nil)).Elem(), GetEmailRoutingDnsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsResultErrorInput)(nil)).Elem(), GetEmailRoutingDnsResultErrorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsResultErrorArrayInput)(nil)).Elem(), GetEmailRoutingDnsResultErrorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsResultErrorMissingInput)(nil)).Elem(), GetEmailRoutingDnsResultErrorMissingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsResultInfoInput)(nil)).Elem(), GetEmailRoutingDnsResultInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsResultRecordInput)(nil)).Elem(), GetEmailRoutingDnsResultRecordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsResultRecordArrayInput)(nil)).Elem(), GetEmailRoutingDnsResultRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsDnInput)(nil)).Elem(), GetEmailRoutingDnsDnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingDnsDnArrayInput)(nil)).Elem(), GetEmailRoutingDnsDnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingRuleActionInput)(nil)).Elem(), GetEmailRoutingRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingRuleActionArrayInput)(nil)).Elem(), GetEmailRoutingRuleActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingRuleFilterInput)(nil)).Elem(), GetEmailRoutingRuleFilterArgs{})
@@ -58235,10 +58986,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingRulesResultActionArrayInput)(nil)).Elem(), GetEmailRoutingRulesResultActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingRulesResultMatcherInput)(nil)).Elem(), GetEmailRoutingRulesResultMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailRoutingRulesResultMatcherArrayInput)(nil)).Elem(), GetEmailRoutingRulesResultMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityAllowPoliciesResultInput)(nil)).Elem(), GetEmailSecurityAllowPoliciesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityAllowPoliciesResultArrayInput)(nil)).Elem(), GetEmailSecurityAllowPoliciesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityAllowPolicyFilterInput)(nil)).Elem(), GetEmailSecurityAllowPolicyFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityAllowPolicyFilterPtrInput)(nil)).Elem(), GetEmailSecurityAllowPolicyFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityBlockSenderFilterInput)(nil)).Elem(), GetEmailSecurityBlockSenderFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityBlockSenderFilterPtrInput)(nil)).Elem(), GetEmailSecurityBlockSenderFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityBlockSendersResultInput)(nil)).Elem(), GetEmailSecurityBlockSendersResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityBlockSendersResultArrayInput)(nil)).Elem(), GetEmailSecurityBlockSendersResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityDomainAuthorizationInput)(nil)).Elem(), GetEmailSecurityDomainAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityDomainEmailsProcessedInput)(nil)).Elem(), GetEmailSecurityDomainEmailsProcessedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityDomainFilterInput)(nil)).Elem(), GetEmailSecurityDomainFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityDomainFilterPtrInput)(nil)).Elem(), GetEmailSecurityDomainFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityDomainsResultInput)(nil)).Elem(), GetEmailSecurityDomainsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityDomainsResultArrayInput)(nil)).Elem(), GetEmailSecurityDomainsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityDomainsResultAuthorizationInput)(nil)).Elem(), GetEmailSecurityDomainsResultAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityDomainsResultEmailsProcessedInput)(nil)).Elem(), GetEmailSecurityDomainsResultEmailsProcessedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityImpersonationRegistriesResultInput)(nil)).Elem(), GetEmailSecurityImpersonationRegistriesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityImpersonationRegistriesResultArrayInput)(nil)).Elem(), GetEmailSecurityImpersonationRegistriesResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityImpersonationRegistryFilterInput)(nil)).Elem(), GetEmailSecurityImpersonationRegistryFilterArgs{})
@@ -58247,6 +59010,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityTrustedDomainsFilterPtrInput)(nil)).Elem(), GetEmailSecurityTrustedDomainsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityTrustedDomainsListResultInput)(nil)).Elem(), GetEmailSecurityTrustedDomainsListResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSecurityTrustedDomainsListResultArrayInput)(nil)).Elem(), GetEmailSecurityTrustedDomainsListResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSendingSubdomainsResultInput)(nil)).Elem(), GetEmailSendingSubdomainsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEmailSendingSubdomainsResultArrayInput)(nil)).Elem(), GetEmailSendingSubdomainsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFilterFilterInput)(nil)).Elem(), GetFilterFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFilterFilterPtrInput)(nil)).Elem(), GetFilterFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFiltersResultInput)(nil)).Elem(), GetFiltersResultArgs{})
@@ -58464,6 +59229,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMoqRelaysResultArrayInput)(nil)).Elem(), GetMoqRelaysResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMtlsCertificatesResultInput)(nil)).Elem(), GetMtlsCertificatesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMtlsCertificatesResultArrayInput)(nil)).Elem(), GetMtlsCertificatesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNelSettingValueInput)(nil)).Elem(), GetNelSettingValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationPoliciesResultInput)(nil)).Elem(), GetNotificationPoliciesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationPoliciesResultArrayInput)(nil)).Elem(), GetNotificationPoliciesResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationPoliciesResultFiltersInput)(nil)).Elem(), GetNotificationPoliciesResultFiltersArgs{})
@@ -58716,11 +59482,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinkSchemaInput)(nil)).Elem(), GetPipelineSinkSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinkSchemaFieldInput)(nil)).Elem(), GetPipelineSinkSchemaFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinkSchemaFieldArrayInput)(nil)).Elem(), GetPipelineSinkSchemaFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinkSchemaFormatInput)(nil)).Elem(), GetPipelineSinkSchemaFormatArgs{})
-	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsOutput{})
-	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsChatCompletionsEndpointOutput{})
-	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsMcpOutput{})
-	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsRateLimitOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultInput)(nil)).Elem(), GetPipelineSinksResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultArrayInput)(nil)).Elem(), GetPipelineSinksResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultConfigInput)(nil)).Elem(), GetPipelineSinksResultConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultConfigFileNamingInput)(nil)).Elem(), GetPipelineSinksResultConfigFileNamingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultConfigPartitioningInput)(nil)).Elem(), GetPipelineSinksResultConfigPartitioningArgs{})
 	pulumi.RegisterOutputType(GetAiSearchNamespacePublicEndpointParamsSearchEndpointOutput{})
 	pulumi.RegisterOutputType(GetAiSearchNamespacesResultOutput{})
 	pulumi.RegisterOutputType(GetAiSearchNamespacesResultArrayOutput{})
@@ -58833,9 +59599,7 @@ func init() {
 	pulumi.RegisterOutputType(GetClientCertificatesResultOutput{})
 	pulumi.RegisterOutputType(GetClientCertificatesResultArrayOutput{})
 	pulumi.RegisterOutputType(GetClientCertificatesResultCertificateAuthorityOutput{})
-	pulumi.RegisterOutputType(GetCloudConnectorRulesRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudConnectorRulesRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetCloudConnectorRulesRuleParametersOutput{})
+	pulumi.RegisterOutputType(GetCloudConnectorRulesParametersOutput{})
 	pulumi.RegisterOutputType(GetCloudforceOneRequestFilterOutput{})
 	pulumi.RegisterOutputType(GetCloudforceOneRequestFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetCloudforceOneRequestsResultOutput{})
@@ -58954,19 +59718,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEmailRoutingCatchAllActionArrayOutput{})
 	pulumi.RegisterOutputType(GetEmailRoutingCatchAllMatcherOutput{})
 	pulumi.RegisterOutputType(GetEmailRoutingCatchAllMatcherArrayOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsErrorOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsErrorArrayOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsErrorSourceOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsMessageOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsMessageArrayOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsMessageSourceOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsResultOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsResultErrorOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsResultErrorArrayOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsResultErrorMissingOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsResultInfoOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsResultRecordOutput{})
-	pulumi.RegisterOutputType(GetEmailRoutingDnsResultRecordArrayOutput{})
+	pulumi.RegisterOutputType(GetEmailRoutingDnsDnOutput{})
+	pulumi.RegisterOutputType(GetEmailRoutingDnsDnArrayOutput{})
 	pulumi.RegisterOutputType(GetEmailRoutingRuleActionOutput{})
 	pulumi.RegisterOutputType(GetEmailRoutingRuleActionArrayOutput{})
 	pulumi.RegisterOutputType(GetEmailRoutingRuleFilterOutput{})
@@ -58979,10 +59732,22 @@ func init() {
 	pulumi.RegisterOutputType(GetEmailRoutingRulesResultActionArrayOutput{})
 	pulumi.RegisterOutputType(GetEmailRoutingRulesResultMatcherOutput{})
 	pulumi.RegisterOutputType(GetEmailRoutingRulesResultMatcherArrayOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityAllowPoliciesResultOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityAllowPoliciesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityAllowPolicyFilterOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityAllowPolicyFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityBlockSenderFilterOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityBlockSenderFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityBlockSendersResultOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityBlockSendersResultArrayOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityDomainAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityDomainEmailsProcessedOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityDomainFilterOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityDomainFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityDomainsResultOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityDomainsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityDomainsResultAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetEmailSecurityDomainsResultEmailsProcessedOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityImpersonationRegistriesResultOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityImpersonationRegistriesResultArrayOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityImpersonationRegistryFilterOutput{})
@@ -58991,6 +59756,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEmailSecurityTrustedDomainsFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityTrustedDomainsListResultOutput{})
 	pulumi.RegisterOutputType(GetEmailSecurityTrustedDomainsListResultArrayOutput{})
+	pulumi.RegisterOutputType(GetEmailSendingSubdomainsResultOutput{})
+	pulumi.RegisterOutputType(GetEmailSendingSubdomainsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetFilterFilterOutput{})
 	pulumi.RegisterOutputType(GetFilterFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetFiltersResultOutput{})
@@ -59208,6 +59975,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMoqRelaysResultArrayOutput{})
 	pulumi.RegisterOutputType(GetMtlsCertificatesResultOutput{})
 	pulumi.RegisterOutputType(GetMtlsCertificatesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetNelSettingValueOutput{})
 	pulumi.RegisterOutputType(GetNotificationPoliciesResultOutput{})
 	pulumi.RegisterOutputType(GetNotificationPoliciesResultArrayOutput{})
 	pulumi.RegisterOutputType(GetNotificationPoliciesResultFiltersOutput{})
@@ -59460,5 +60228,9 @@ func init() {
 	pulumi.RegisterOutputType(GetPipelineSinkSchemaOutput{})
 	pulumi.RegisterOutputType(GetPipelineSinkSchemaFieldOutput{})
 	pulumi.RegisterOutputType(GetPipelineSinkSchemaFieldArrayOutput{})
-	pulumi.RegisterOutputType(GetPipelineSinkSchemaFormatOutput{})
+	pulumi.RegisterOutputType(GetPipelineSinksResultOutput{})
+	pulumi.RegisterOutputType(GetPipelineSinksResultArrayOutput{})
+	pulumi.RegisterOutputType(GetPipelineSinksResultConfigOutput{})
+	pulumi.RegisterOutputType(GetPipelineSinksResultConfigFileNamingOutput{})
+	pulumi.RegisterOutputType(GetPipelineSinksResultConfigPartitioningOutput{})
 }

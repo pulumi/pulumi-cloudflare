@@ -70,6 +70,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PortProtocols;
         /// <summary>
+        /// The account-specific Gateway review status. Applications with no assigned review status are returned as `Unreviewed`.
+        /// Available values: "approved", "unapproved", "InReview", "unreviewed".
+        /// </summary>
+        public readonly string ReviewStatus;
+        /// <summary>
         /// Support domains matched by the application.
         /// </summary>
         public readonly ImmutableArray<string> SupportDomains;
@@ -116,6 +121,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> portProtocols,
 
+            string reviewStatus,
+
             ImmutableArray<string> supportDomains,
 
             ImmutableArray<string> supporteds,
@@ -138,6 +145,7 @@ namespace Pulumi.Cloudflare.Outputs
             IpSubnets = ipSubnets;
             Name = name;
             PortProtocols = portProtocols;
+            ReviewStatus = reviewStatus;
             SupportDomains = supportDomains;
             Supporteds = supporteds;
             UpdatedAt = updatedAt;

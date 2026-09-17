@@ -19,14 +19,16 @@ public final class PipelineSinkFormatArgs extends com.pulumi.resources.ResourceA
     public static final PipelineSinkFormatArgs Empty = new PipelineSinkFormatArgs();
 
     /**
-     * Available values: &#34;uncompressed&#34;, &#34;snappy&#34;, &#34;gzip&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
+     * Specifies the compression applied to JSON sink output.
+     * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
      * 
      */
     @Import(name="compression")
     private @Nullable Output<String> compression;
 
     /**
-     * @return Available values: &#34;uncompressed&#34;, &#34;snappy&#34;, &#34;gzip&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
+     * @return Specifies the compression applied to JSON sink output.
+     * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
      * 
      */
     public Optional<Output<String>> compression() {
@@ -122,7 +124,8 @@ public final class PipelineSinkFormatArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param compression Available values: &#34;uncompressed&#34;, &#34;snappy&#34;, &#34;gzip&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
+         * @param compression Specifies the compression applied to JSON sink output.
+         * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
          * 
          * @return builder
          * 
@@ -133,7 +136,8 @@ public final class PipelineSinkFormatArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param compression Available values: &#34;uncompressed&#34;, &#34;snappy&#34;, &#34;gzip&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
+         * @param compression Specifies the compression applied to JSON sink output.
+         * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
          * 
          * @return builder
          * 

@@ -48,7 +48,7 @@ public final class GetShareResourcesPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * Filter share resources by resource_type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     @Import(name="resourceType")
@@ -56,7 +56,7 @@ public final class GetShareResourcesPlainArgs extends com.pulumi.resources.Invok
 
     /**
      * @return Filter share resources by resource_type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     public Optional<String> resourceType() {
@@ -147,7 +147,7 @@ public final class GetShareResourcesPlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param resourceType Filter share resources by resource_type.
-         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
          * 
          * @return builder
          * 

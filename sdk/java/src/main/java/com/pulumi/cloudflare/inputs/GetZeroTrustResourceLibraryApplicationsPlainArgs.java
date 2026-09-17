@@ -23,6 +23,27 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
         return this.accountId;
     }
 
+    /**
+     * Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     * 
+     */
+    @Import(name="fields")
+    private @Nullable String fields;
+
+    /**
+     * @return Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     * 
+     */
+    public Optional<String> fields() {
+        return Optional.ofNullable(this.fields);
+    }
+
     @Import(name="filter")
     private @Nullable String filter;
 
@@ -69,6 +90,7 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
 
     private GetZeroTrustResourceLibraryApplicationsPlainArgs(GetZeroTrustResourceLibraryApplicationsPlainArgs $) {
         this.accountId = $.accountId;
+        this.fields = $.fields;
         this.filter = $.filter;
         this.limit = $.limit;
         this.maxItems = $.maxItems;
@@ -97,6 +119,20 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
 
         public Builder accountId(String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param fields Return only the listed properties on each application, as a comma-separated list.
+         * Use this to keep responses small when you only need part of each application — for
+         * example populating a picker with `fields=id,name` instead of downloading every
+         * hostname and IP subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(@Nullable String fields) {
+            $.fields = fields;
             return this;
         }
 

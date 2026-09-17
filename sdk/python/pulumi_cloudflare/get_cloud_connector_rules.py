@@ -27,16 +27,52 @@ class GetCloudConnectorRulesResult:
     """
     A collection of values returned by getCloudConnectorRules.
     """
-    def __init__(__self__, id=None, rules=None, zone_id=None):
+    def __init__(__self__, cloud_connector_rules_provider=None, description=None, enabled=None, expression=None, id=None, parameters=None, zone_id=None):
+        if cloud_connector_rules_provider and not isinstance(cloud_connector_rules_provider, str):
+            raise TypeError("Expected argument 'cloud_connector_rules_provider' to be a str")
+        pulumi.set(__self__, "cloud_connector_rules_provider", cloud_connector_rules_provider)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
+        if expression and not isinstance(expression, str):
+            raise TypeError("Expected argument 'expression' to be a str")
+        pulumi.set(__self__, "expression", expression)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if rules and not isinstance(rules, list):
-            raise TypeError("Expected argument 'rules' to be a list")
-        pulumi.set(__self__, "rules", rules)
+        if parameters and not isinstance(parameters, dict):
+            raise TypeError("Expected argument 'parameters' to be a dict")
+        pulumi.set(__self__, "parameters", parameters)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudConnectorRulesProvider")
+    def cloud_connector_rules_provider(self) -> _builtins.str:
+        """
+        Cloud Provider type
+        Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "oci_storage".
+        """
+        return pulumi.get(self, "cloud_connector_rules_provider")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
 
     @_builtins.property
     @pulumi.getter
@@ -48,12 +84,15 @@ class GetCloudConnectorRulesResult:
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Sequence['outputs.GetCloudConnectorRulesRuleResult']:
-        return pulumi.get(self, "rules")
+    def parameters(self) -> 'outputs.GetCloudConnectorRulesParametersResult':
+        """
+        Parameters of Cloud Connector Rule
+        """
+        return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[_builtins.str]:
+    def zone_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -66,8 +105,12 @@ class AwaitableGetCloudConnectorRulesResult(GetCloudConnectorRulesResult):
         if False:
             yield self
         return GetCloudConnectorRulesResult(
+            cloud_connector_rules_provider=self.cloud_connector_rules_provider,
+            description=self.description,
+            enabled=self.enabled,
+            expression=self.expression,
             id=self.id,
-            rules=self.rules,
+            parameters=self.parameters,
             zone_id=self.zone_id)
 
 
@@ -97,10 +140,14 @@ def get_cloud_connector_rules(zone_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCloudConnectorRules:getCloudConnectorRules', __args__, opts=opts, typ=GetCloudConnectorRulesResult).value
 
     return AwaitableGetCloudConnectorRulesResult(
+        cloud_connector_rules_provider=pulumi.get(__ret__, 'cloud_connector_rules_provider'),
+        description=pulumi.get(__ret__, 'description'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        expression=pulumi.get(__ret__, 'expression'),
         id=pulumi.get(__ret__, 'id'),
-        rules=pulumi.get(__ret__, 'rules'),
+        parameters=pulumi.get(__ret__, 'parameters'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_cloud_connector_rules_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_cloud_connector_rules_output(zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudConnectorRulesResult]:
     """
     Accepted Permissions
@@ -125,6 +172,10 @@ def get_cloud_connector_rules_output(zone_id: pulumi.Input[Optional[Optional[_bu
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCloudConnectorRules:getCloudConnectorRules', __args__, opts=opts, typ=GetCloudConnectorRulesResult)
     return __ret__.apply(lambda __response__: GetCloudConnectorRulesResult(
+        cloud_connector_rules_provider=pulumi.get(__response__, 'cloud_connector_rules_provider'),
+        description=pulumi.get(__response__, 'description'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        expression=pulumi.get(__response__, 'expression'),
         id=pulumi.get(__response__, 'id'),
-        rules=pulumi.get(__response__, 'rules'),
+        parameters=pulumi.get(__response__, 'parameters'),
         zone_id=pulumi.get(__response__, 'zone_id')))

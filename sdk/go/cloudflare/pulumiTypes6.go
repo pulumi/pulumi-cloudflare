@@ -13,570 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type GetZeroTrustDeviceCustomProfilesResultFallbackDomain struct {
-	// A description of the fallback domain, displayed in the client UI.
-	Description string `pulumi:"description"`
-	// A list of IP addresses to handle domain resolution.
-	DnsServers []string `pulumi:"dnsServers"`
-	// The domain suffix to match when resolving locally.
-	Suffix string `pulumi:"suffix"`
-}
-
-// GetZeroTrustDeviceCustomProfilesResultFallbackDomainInput is an input type that accepts GetZeroTrustDeviceCustomProfilesResultFallbackDomainArgs and GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceCustomProfilesResultFallbackDomainInput` via:
-//
-//	GetZeroTrustDeviceCustomProfilesResultFallbackDomainArgs{...}
-type GetZeroTrustDeviceCustomProfilesResultFallbackDomainInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput() GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput
-	ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainOutputWithContext(context.Context) GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput
-}
-
-type GetZeroTrustDeviceCustomProfilesResultFallbackDomainArgs struct {
-	// A description of the fallback domain, displayed in the client UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// A list of IP addresses to handle domain resolution.
-	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
-	// The domain suffix to match when resolving locally.
-	Suffix pulumi.StringInput `pulumi:"suffix"`
-}
-
-func (GetZeroTrustDeviceCustomProfilesResultFallbackDomainArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultFallbackDomain)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultFallbackDomainArgs) ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput() GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput {
-	return i.ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultFallbackDomainArgs) ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput)
-}
-
-// GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayInput is an input type that accepts GetZeroTrustDeviceCustomProfilesResultFallbackDomainArray and GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayInput` via:
-//
-//	GetZeroTrustDeviceCustomProfilesResultFallbackDomainArray{ GetZeroTrustDeviceCustomProfilesResultFallbackDomainArgs{...} }
-type GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput() GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput
-	ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutputWithContext(context.Context) GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput
-}
-
-type GetZeroTrustDeviceCustomProfilesResultFallbackDomainArray []GetZeroTrustDeviceCustomProfilesResultFallbackDomainInput
-
-func (GetZeroTrustDeviceCustomProfilesResultFallbackDomainArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDeviceCustomProfilesResultFallbackDomain)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultFallbackDomainArray) ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput() GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput {
-	return i.ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultFallbackDomainArray) ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultFallbackDomain)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput) ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput() GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput) ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput {
-	return o
-}
-
-// A description of the fallback domain, displayed in the client UI.
-func (o GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultFallbackDomain) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// A list of IP addresses to handle domain resolution.
-func (o GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput) DnsServers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultFallbackDomain) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
-}
-
-// The domain suffix to match when resolving locally.
-func (o GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput) Suffix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultFallbackDomain) string { return v.Suffix }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDeviceCustomProfilesResultFallbackDomain)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput) ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput() GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput) ToGetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDeviceCustomProfilesResultFallbackDomain {
-		return vs[0].([]GetZeroTrustDeviceCustomProfilesResultFallbackDomain)[vs[1].(int)]
-	}).(GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultInclude struct {
-	// The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
-	Address string `pulumi:"address"`
-	// A description of the Split Tunnel item, displayed in the client UI.
-	Description string `pulumi:"description"`
-	// The domain name to include in the tunnel. If `host` is present, `address` must not be present.
-	Host string `pulumi:"host"`
-}
-
-// GetZeroTrustDeviceCustomProfilesResultIncludeInput is an input type that accepts GetZeroTrustDeviceCustomProfilesResultIncludeArgs and GetZeroTrustDeviceCustomProfilesResultIncludeOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceCustomProfilesResultIncludeInput` via:
-//
-//	GetZeroTrustDeviceCustomProfilesResultIncludeArgs{...}
-type GetZeroTrustDeviceCustomProfilesResultIncludeInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceCustomProfilesResultIncludeOutput() GetZeroTrustDeviceCustomProfilesResultIncludeOutput
-	ToGetZeroTrustDeviceCustomProfilesResultIncludeOutputWithContext(context.Context) GetZeroTrustDeviceCustomProfilesResultIncludeOutput
-}
-
-type GetZeroTrustDeviceCustomProfilesResultIncludeArgs struct {
-	// The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
-	Address pulumi.StringInput `pulumi:"address"`
-	// A description of the Split Tunnel item, displayed in the client UI.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The domain name to include in the tunnel. If `host` is present, `address` must not be present.
-	Host pulumi.StringInput `pulumi:"host"`
-}
-
-func (GetZeroTrustDeviceCustomProfilesResultIncludeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultInclude)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultIncludeArgs) ToGetZeroTrustDeviceCustomProfilesResultIncludeOutput() GetZeroTrustDeviceCustomProfilesResultIncludeOutput {
-	return i.ToGetZeroTrustDeviceCustomProfilesResultIncludeOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultIncludeArgs) ToGetZeroTrustDeviceCustomProfilesResultIncludeOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultIncludeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceCustomProfilesResultIncludeOutput)
-}
-
-// GetZeroTrustDeviceCustomProfilesResultIncludeArrayInput is an input type that accepts GetZeroTrustDeviceCustomProfilesResultIncludeArray and GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceCustomProfilesResultIncludeArrayInput` via:
-//
-//	GetZeroTrustDeviceCustomProfilesResultIncludeArray{ GetZeroTrustDeviceCustomProfilesResultIncludeArgs{...} }
-type GetZeroTrustDeviceCustomProfilesResultIncludeArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput() GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput
-	ToGetZeroTrustDeviceCustomProfilesResultIncludeArrayOutputWithContext(context.Context) GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput
-}
-
-type GetZeroTrustDeviceCustomProfilesResultIncludeArray []GetZeroTrustDeviceCustomProfilesResultIncludeInput
-
-func (GetZeroTrustDeviceCustomProfilesResultIncludeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDeviceCustomProfilesResultInclude)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultIncludeArray) ToGetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput() GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput {
-	return i.ToGetZeroTrustDeviceCustomProfilesResultIncludeArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultIncludeArray) ToGetZeroTrustDeviceCustomProfilesResultIncludeArrayOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultIncludeOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceCustomProfilesResultIncludeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultInclude)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultIncludeOutput) ToGetZeroTrustDeviceCustomProfilesResultIncludeOutput() GetZeroTrustDeviceCustomProfilesResultIncludeOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultIncludeOutput) ToGetZeroTrustDeviceCustomProfilesResultIncludeOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultIncludeOutput {
-	return o
-}
-
-// The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
-func (o GetZeroTrustDeviceCustomProfilesResultIncludeOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultInclude) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// A description of the Split Tunnel item, displayed in the client UI.
-func (o GetZeroTrustDeviceCustomProfilesResultIncludeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultInclude) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The domain name to include in the tunnel. If `host` is present, `address` must not be present.
-func (o GetZeroTrustDeviceCustomProfilesResultIncludeOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultInclude) string { return v.Host }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDeviceCustomProfilesResultInclude)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput) ToGetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput() GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput) ToGetZeroTrustDeviceCustomProfilesResultIncludeArrayOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDeviceCustomProfilesResultIncludeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDeviceCustomProfilesResultInclude {
-		return vs[0].([]GetZeroTrustDeviceCustomProfilesResultInclude)[vs[1].(int)]
-	}).(GetZeroTrustDeviceCustomProfilesResultIncludeOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultServiceModeV2 struct {
-	// The mode to run the WARP client under.
-	Mode string `pulumi:"mode"`
-	// The port number when used with proxy mode.
-	Port float64 `pulumi:"port"`
-}
-
-// GetZeroTrustDeviceCustomProfilesResultServiceModeV2Input is an input type that accepts GetZeroTrustDeviceCustomProfilesResultServiceModeV2Args and GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output values.
-// You can construct a concrete instance of `GetZeroTrustDeviceCustomProfilesResultServiceModeV2Input` via:
-//
-//	GetZeroTrustDeviceCustomProfilesResultServiceModeV2Args{...}
-type GetZeroTrustDeviceCustomProfilesResultServiceModeV2Input interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceCustomProfilesResultServiceModeV2Output() GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output
-	ToGetZeroTrustDeviceCustomProfilesResultServiceModeV2OutputWithContext(context.Context) GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output
-}
-
-type GetZeroTrustDeviceCustomProfilesResultServiceModeV2Args struct {
-	// The mode to run the WARP client under.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// The port number when used with proxy mode.
-	Port pulumi.Float64Input `pulumi:"port"`
-}
-
-func (GetZeroTrustDeviceCustomProfilesResultServiceModeV2Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultServiceModeV2)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultServiceModeV2Args) ToGetZeroTrustDeviceCustomProfilesResultServiceModeV2Output() GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output {
-	return i.ToGetZeroTrustDeviceCustomProfilesResultServiceModeV2OutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultServiceModeV2Args) ToGetZeroTrustDeviceCustomProfilesResultServiceModeV2OutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultServiceModeV2)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output) ToGetZeroTrustDeviceCustomProfilesResultServiceModeV2Output() GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output) ToGetZeroTrustDeviceCustomProfilesResultServiceModeV2OutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output {
-	return o
-}
-
-// The mode to run the WARP client under.
-func (o GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultServiceModeV2) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-// The port number when used with proxy mode.
-func (o GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output) Port() pulumi.Float64Output {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultServiceModeV2) float64 { return v.Port }).(pulumi.Float64Output)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultTargetTest struct {
-	// The id of the DEX test targeting this policy.
-	Id string `pulumi:"id"`
-	// The name of the DEX test targeting this policy.
-	Name string `pulumi:"name"`
-}
-
-// GetZeroTrustDeviceCustomProfilesResultTargetTestInput is an input type that accepts GetZeroTrustDeviceCustomProfilesResultTargetTestArgs and GetZeroTrustDeviceCustomProfilesResultTargetTestOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceCustomProfilesResultTargetTestInput` via:
-//
-//	GetZeroTrustDeviceCustomProfilesResultTargetTestArgs{...}
-type GetZeroTrustDeviceCustomProfilesResultTargetTestInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceCustomProfilesResultTargetTestOutput() GetZeroTrustDeviceCustomProfilesResultTargetTestOutput
-	ToGetZeroTrustDeviceCustomProfilesResultTargetTestOutputWithContext(context.Context) GetZeroTrustDeviceCustomProfilesResultTargetTestOutput
-}
-
-type GetZeroTrustDeviceCustomProfilesResultTargetTestArgs struct {
-	// The id of the DEX test targeting this policy.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the DEX test targeting this policy.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetZeroTrustDeviceCustomProfilesResultTargetTestArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultTargetTest)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultTargetTestArgs) ToGetZeroTrustDeviceCustomProfilesResultTargetTestOutput() GetZeroTrustDeviceCustomProfilesResultTargetTestOutput {
-	return i.ToGetZeroTrustDeviceCustomProfilesResultTargetTestOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultTargetTestArgs) ToGetZeroTrustDeviceCustomProfilesResultTargetTestOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultTargetTestOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceCustomProfilesResultTargetTestOutput)
-}
-
-// GetZeroTrustDeviceCustomProfilesResultTargetTestArrayInput is an input type that accepts GetZeroTrustDeviceCustomProfilesResultTargetTestArray and GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceCustomProfilesResultTargetTestArrayInput` via:
-//
-//	GetZeroTrustDeviceCustomProfilesResultTargetTestArray{ GetZeroTrustDeviceCustomProfilesResultTargetTestArgs{...} }
-type GetZeroTrustDeviceCustomProfilesResultTargetTestArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput() GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput
-	ToGetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutputWithContext(context.Context) GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput
-}
-
-type GetZeroTrustDeviceCustomProfilesResultTargetTestArray []GetZeroTrustDeviceCustomProfilesResultTargetTestInput
-
-func (GetZeroTrustDeviceCustomProfilesResultTargetTestArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDeviceCustomProfilesResultTargetTest)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultTargetTestArray) ToGetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput() GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput {
-	return i.ToGetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultTargetTestArray) ToGetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultTargetTestOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceCustomProfilesResultTargetTestOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultTargetTest)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultTargetTestOutput) ToGetZeroTrustDeviceCustomProfilesResultTargetTestOutput() GetZeroTrustDeviceCustomProfilesResultTargetTestOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultTargetTestOutput) ToGetZeroTrustDeviceCustomProfilesResultTargetTestOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultTargetTestOutput {
-	return o
-}
-
-// The id of the DEX test targeting this policy.
-func (o GetZeroTrustDeviceCustomProfilesResultTargetTestOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultTargetTest) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the DEX test targeting this policy.
-func (o GetZeroTrustDeviceCustomProfilesResultTargetTestOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultTargetTest) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDeviceCustomProfilesResultTargetTest)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput) ToGetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput() GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput) ToGetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDeviceCustomProfilesResultTargetTestOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDeviceCustomProfilesResultTargetTest {
-		return vs[0].([]GetZeroTrustDeviceCustomProfilesResultTargetTest)[vs[1].(int)]
-	}).(GetZeroTrustDeviceCustomProfilesResultTargetTestOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultVirtualNetworks struct {
-	// List of virtual network IDs the device is allowed to access. When virtualNetworks is set, at least one entry is required.
-	Alloweds []string `pulumi:"alloweds"`
-	// The default virtual network ID. Must be included in the `allowed` list.
-	Default string `pulumi:"default"`
-}
-
-// GetZeroTrustDeviceCustomProfilesResultVirtualNetworksInput is an input type that accepts GetZeroTrustDeviceCustomProfilesResultVirtualNetworksArgs and GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceCustomProfilesResultVirtualNetworksInput` via:
-//
-//	GetZeroTrustDeviceCustomProfilesResultVirtualNetworksArgs{...}
-type GetZeroTrustDeviceCustomProfilesResultVirtualNetworksInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput() GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput
-	ToGetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutputWithContext(context.Context) GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput
-}
-
-type GetZeroTrustDeviceCustomProfilesResultVirtualNetworksArgs struct {
-	// List of virtual network IDs the device is allowed to access. When virtualNetworks is set, at least one entry is required.
-	Alloweds pulumi.StringArrayInput `pulumi:"alloweds"`
-	// The default virtual network ID. Must be included in the `allowed` list.
-	Default pulumi.StringInput `pulumi:"default"`
-}
-
-func (GetZeroTrustDeviceCustomProfilesResultVirtualNetworksArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultVirtualNetworks)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultVirtualNetworksArgs) ToGetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput() GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput {
-	return i.ToGetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceCustomProfilesResultVirtualNetworksArgs) ToGetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput)
-}
-
-type GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultVirtualNetworks)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput) ToGetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput() GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput) ToGetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutputWithContext(ctx context.Context) GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput {
-	return o
-}
-
-// List of virtual network IDs the device is allowed to access. When virtualNetworks is set, at least one entry is required.
-func (o GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput) Alloweds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultVirtualNetworks) []string { return v.Alloweds }).(pulumi.StringArrayOutput)
-}
-
-// The default virtual network ID. Must be included in the `allowed` list.
-func (o GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput) Default() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResultVirtualNetworks) string { return v.Default }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustDeviceDefaultProfileDnsSearchSuffix struct {
-	// A description of the DNS search suffix.
-	Description string `pulumi:"description"`
-	// The DNS search suffix to append when resolving short hostnames.
-	Suffix string `pulumi:"suffix"`
-}
-
-// GetZeroTrustDeviceDefaultProfileDnsSearchSuffixInput is an input type that accepts GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs and GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceDefaultProfileDnsSearchSuffixInput` via:
-//
-//	GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs{...}
-type GetZeroTrustDeviceDefaultProfileDnsSearchSuffixInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput() GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput
-	ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutputWithContext(context.Context) GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput
-}
-
-type GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs struct {
-	// A description of the DNS search suffix.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The DNS search suffix to append when resolving short hostnames.
-	Suffix pulumi.StringInput `pulumi:"suffix"`
-}
-
-func (GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceDefaultProfileDnsSearchSuffix)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs) ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput() GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput {
-	return i.ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs) ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutputWithContext(ctx context.Context) GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput)
-}
-
-// GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayInput is an input type that accepts GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArray and GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayInput` via:
-//
-//	GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArray{ GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs{...} }
-type GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput() GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput
-	ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutputWithContext(context.Context) GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput
-}
-
-type GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArray []GetZeroTrustDeviceDefaultProfileDnsSearchSuffixInput
-
-func (GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDeviceDefaultProfileDnsSearchSuffix)(nil)).Elem()
-}
-
-func (i GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArray) ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput() GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput {
-	return i.ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArray) ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutputWithContext(ctx context.Context) GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput)
-}
-
-type GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustDeviceDefaultProfileDnsSearchSuffix)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput) ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput() GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput) ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutputWithContext(ctx context.Context) GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput {
-	return o
-}
-
-// A description of the DNS search suffix.
-func (o GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceDefaultProfileDnsSearchSuffix) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The DNS search suffix to append when resolving short hostnames.
-func (o GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput) Suffix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDeviceDefaultProfileDnsSearchSuffix) string { return v.Suffix }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustDeviceDefaultProfileDnsSearchSuffix)(nil)).Elem()
-}
-
-func (o GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput) ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput() GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput) ToGetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutputWithContext(ctx context.Context) GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput) Index(i pulumi.IntInput) GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustDeviceDefaultProfileDnsSearchSuffix {
-		return vs[0].([]GetZeroTrustDeviceDefaultProfileDnsSearchSuffix)[vs[1].(int)]
-	}).(GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput)
-}
-
 type GetZeroTrustDeviceDefaultProfileExclude struct {
 	// The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
 	Address string `pulumi:"address"`
@@ -20546,6 +19982,306 @@ func (o GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) TouchPolicy() pu
 	return o.ApplyT(func(v GetZeroTrustOrganizationMfaSshPivKeyRequirements) string { return v.TouchPolicy }).(pulumi.StringOutput)
 }
 
+type GetZeroTrustResourceLibraryApplicationFilter struct {
+	// Return only the listed properties on each application, as a comma-separated list.
+	// Use this to keep responses small when you only need part of each application — for
+	// example populating a picker with `fields=id,name` instead of downloading every
+	// hostname and IP subnet.
+	Fields *string `pulumi:"fields"`
+	// Filter applications using key:value format. Supported filter keys:
+	// - name: Filter by application name (e.g., name:HR)
+	// - id: Filter by application ID (e.g., id:498)
+	// - human_id: Filter by human-readable ID (e.g., human_id:HR)
+	// - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
+	// - source: Filter by application source name (e.g., source:cloudflare)
+	// - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
+	// - category_id: Filter by category ID (e.g., category_id:12).
+	// - category_name: Filter by category name (e.g., category_name:HR).
+	// - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
+	// - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
+	//   .
+	Filter *string `pulumi:"filter"`
+	// Limit of number of results to return (max 250).
+	Limit int `pulumi:"limit"`
+	// Offset of results to return.
+	Offset int `pulumi:"offset"`
+	// Order results using field:direction format. Supported fields are name, id, human_id,
+	// category_id, application_type, application_confidence_score, and gen_ai_score.
+	// Supported directions are asc and desc. Ignored when search is provided; results are
+	// ranked by relevance instead.
+	OrderBy *string `pulumi:"orderBy"`
+	// Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
+	Search *string `pulumi:"search"`
+}
+
+// GetZeroTrustResourceLibraryApplicationFilterInput is an input type that accepts GetZeroTrustResourceLibraryApplicationFilterArgs and GetZeroTrustResourceLibraryApplicationFilterOutput values.
+// You can construct a concrete instance of `GetZeroTrustResourceLibraryApplicationFilterInput` via:
+//
+//	GetZeroTrustResourceLibraryApplicationFilterArgs{...}
+type GetZeroTrustResourceLibraryApplicationFilterInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustResourceLibraryApplicationFilterOutput() GetZeroTrustResourceLibraryApplicationFilterOutput
+	ToGetZeroTrustResourceLibraryApplicationFilterOutputWithContext(context.Context) GetZeroTrustResourceLibraryApplicationFilterOutput
+}
+
+type GetZeroTrustResourceLibraryApplicationFilterArgs struct {
+	// Return only the listed properties on each application, as a comma-separated list.
+	// Use this to keep responses small when you only need part of each application — for
+	// example populating a picker with `fields=id,name` instead of downloading every
+	// hostname and IP subnet.
+	Fields pulumi.StringPtrInput `pulumi:"fields"`
+	// Filter applications using key:value format. Supported filter keys:
+	// - name: Filter by application name (e.g., name:HR)
+	// - id: Filter by application ID (e.g., id:498)
+	// - human_id: Filter by human-readable ID (e.g., human_id:HR)
+	// - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
+	// - source: Filter by application source name (e.g., source:cloudflare)
+	// - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
+	// - category_id: Filter by category ID (e.g., category_id:12).
+	// - category_name: Filter by category name (e.g., category_name:HR).
+	// - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
+	// - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
+	//   .
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Limit of number of results to return (max 250).
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// Offset of results to return.
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// Order results using field:direction format. Supported fields are name, id, human_id,
+	// category_id, application_type, application_confidence_score, and gen_ai_score.
+	// Supported directions are asc and desc. Ignored when search is provided; results are
+	// ranked by relevance instead.
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	// Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
+	Search pulumi.StringPtrInput `pulumi:"search"`
+}
+
+func (GetZeroTrustResourceLibraryApplicationFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationFilter)(nil)).Elem()
+}
+
+func (i GetZeroTrustResourceLibraryApplicationFilterArgs) ToGetZeroTrustResourceLibraryApplicationFilterOutput() GetZeroTrustResourceLibraryApplicationFilterOutput {
+	return i.ToGetZeroTrustResourceLibraryApplicationFilterOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustResourceLibraryApplicationFilterArgs) ToGetZeroTrustResourceLibraryApplicationFilterOutputWithContext(ctx context.Context) GetZeroTrustResourceLibraryApplicationFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustResourceLibraryApplicationFilterOutput)
+}
+
+func (i GetZeroTrustResourceLibraryApplicationFilterArgs) ToGetZeroTrustResourceLibraryApplicationFilterPtrOutput() GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return i.ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustResourceLibraryApplicationFilterArgs) ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustResourceLibraryApplicationFilterOutput).ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(ctx)
+}
+
+// GetZeroTrustResourceLibraryApplicationFilterPtrInput is an input type that accepts GetZeroTrustResourceLibraryApplicationFilterArgs, GetZeroTrustResourceLibraryApplicationFilterPtr and GetZeroTrustResourceLibraryApplicationFilterPtrOutput values.
+// You can construct a concrete instance of `GetZeroTrustResourceLibraryApplicationFilterPtrInput` via:
+//
+//	        GetZeroTrustResourceLibraryApplicationFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetZeroTrustResourceLibraryApplicationFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustResourceLibraryApplicationFilterPtrOutput() GetZeroTrustResourceLibraryApplicationFilterPtrOutput
+	ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(context.Context) GetZeroTrustResourceLibraryApplicationFilterPtrOutput
+}
+
+type getZeroTrustResourceLibraryApplicationFilterPtrType GetZeroTrustResourceLibraryApplicationFilterArgs
+
+func GetZeroTrustResourceLibraryApplicationFilterPtr(v *GetZeroTrustResourceLibraryApplicationFilterArgs) GetZeroTrustResourceLibraryApplicationFilterPtrInput {
+	return (*getZeroTrustResourceLibraryApplicationFilterPtrType)(v)
+}
+
+func (*getZeroTrustResourceLibraryApplicationFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetZeroTrustResourceLibraryApplicationFilter)(nil)).Elem()
+}
+
+func (i *getZeroTrustResourceLibraryApplicationFilterPtrType) ToGetZeroTrustResourceLibraryApplicationFilterPtrOutput() GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return i.ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getZeroTrustResourceLibraryApplicationFilterPtrType) ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustResourceLibraryApplicationFilterPtrOutput)
+}
+
+type GetZeroTrustResourceLibraryApplicationFilterOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustResourceLibraryApplicationFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationFilter)(nil)).Elem()
+}
+
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) ToGetZeroTrustResourceLibraryApplicationFilterOutput() GetZeroTrustResourceLibraryApplicationFilterOutput {
+	return o
+}
+
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) ToGetZeroTrustResourceLibraryApplicationFilterOutputWithContext(ctx context.Context) GetZeroTrustResourceLibraryApplicationFilterOutput {
+	return o
+}
+
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) ToGetZeroTrustResourceLibraryApplicationFilterPtrOutput() GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return o.ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetZeroTrustResourceLibraryApplicationFilter) *GetZeroTrustResourceLibraryApplicationFilter {
+		return &v
+	}).(GetZeroTrustResourceLibraryApplicationFilterPtrOutput)
+}
+
+// Return only the listed properties on each application, as a comma-separated list.
+// Use this to keep responses small when you only need part of each application — for
+// example populating a picker with `fields=id,name` instead of downloading every
+// hostname and IP subnet.
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Fields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) *string { return v.Fields }).(pulumi.StringPtrOutput)
+}
+
+// Filter applications using key:value format. Supported filter keys:
+//   - name: Filter by application name (e.g., name:HR)
+//   - id: Filter by application ID (e.g., id:498)
+//   - human_id: Filter by human-readable ID (e.g., human_id:HR)
+//   - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
+//   - source: Filter by application source name (e.g., source:cloudflare)
+//   - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
+//   - category_id: Filter by category ID (e.g., category_id:12).
+//   - category_name: Filter by category name (e.g., category_name:HR).
+//   - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
+//   - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
+//     .
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Limit of number of results to return (max 250).
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// Offset of results to return.
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// Order results using field:direction format. Supported fields are name, id, human_id,
+// category_id, application_type, application_confidence_score, and gen_ai_score.
+// Supported directions are asc and desc. Ignored when search is provided; results are
+// ranked by relevance instead.
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+// Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
+type GetZeroTrustResourceLibraryApplicationFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustResourceLibraryApplicationFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetZeroTrustResourceLibraryApplicationFilter)(nil)).Elem()
+}
+
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) ToGetZeroTrustResourceLibraryApplicationFilterPtrOutput() GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return o
+}
+
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) ToGetZeroTrustResourceLibraryApplicationFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return o
+}
+
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Elem() GetZeroTrustResourceLibraryApplicationFilterOutput {
+	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) GetZeroTrustResourceLibraryApplicationFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetZeroTrustResourceLibraryApplicationFilter
+		return ret
+	}).(GetZeroTrustResourceLibraryApplicationFilterOutput)
+}
+
+// Return only the listed properties on each application, as a comma-separated list.
+// Use this to keep responses small when you only need part of each application — for
+// example populating a picker with `fields=id,name` instead of downloading every
+// hostname and IP subnet.
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Fields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fields
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter applications using key:value format. Supported filter keys:
+//   - name: Filter by application name (e.g., name:HR)
+//   - id: Filter by application ID (e.g., id:498)
+//   - human_id: Filter by human-readable ID (e.g., human_id:HR)
+//   - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
+//   - source: Filter by application source name (e.g., source:cloudflare)
+//   - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
+//   - category_id: Filter by category ID (e.g., category_id:12).
+//   - category_name: Filter by category name (e.g., category_name:HR).
+//   - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
+//   - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
+//     .
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Limit of number of results to return (max 250).
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Offset of results to return.
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.IntPtrOutput)
+}
+
+// Order results using field:direction format. Supported fields are name, id, human_id,
+// category_id, application_type, application_confidence_score, and gen_ai_score.
+// Supported directions are asc and desc. Ignored when search is provided; results are
+// ranked by relevance instead.
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Search
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetZeroTrustResourceLibraryApplicationsResult struct {
 	// Confidence score for the application. Returns -1 when no score is available.
 	ApplicationConfidenceScore float64 `pulumi:"applicationConfidenceScore"`
@@ -20575,6 +20311,9 @@ type GetZeroTrustResourceLibraryApplicationsResult struct {
 	Name string `pulumi:"name"`
 	// Port and protocol pairs matched by the application.
 	PortProtocols []string `pulumi:"portProtocols"`
+	// The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+	// Available values: "approved", "unapproved", "inReview", "unreviewed".
+	ReviewStatus string `pulumi:"reviewStatus"`
 	// Support domains matched by the application.
 	SupportDomains []string `pulumi:"supportDomains"`
 	// Cloudflare products that support this application.
@@ -20625,6 +20364,9 @@ type GetZeroTrustResourceLibraryApplicationsResultArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Port and protocol pairs matched by the application.
 	PortProtocols pulumi.StringArrayInput `pulumi:"portProtocols"`
+	// The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+	// Available values: "approved", "unapproved", "inReview", "unreviewed".
+	ReviewStatus pulumi.StringInput `pulumi:"reviewStatus"`
 	// Support domains matched by the application.
 	SupportDomains pulumi.StringArrayInput `pulumi:"supportDomains"`
 	// Cloudflare products that support this application.
@@ -20754,6 +20496,12 @@ func (o GetZeroTrustResourceLibraryApplicationsResultOutput) Name() pulumi.Strin
 // Port and protocol pairs matched by the application.
 func (o GetZeroTrustResourceLibraryApplicationsResultOutput) PortProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) []string { return v.PortProtocols }).(pulumi.StringArrayOutput)
+}
+
+// The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+// Available values: "approved", "unapproved", "inReview", "unreviewed".
+func (o GetZeroTrustResourceLibraryApplicationsResultOutput) ReviewStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) string { return v.ReviewStatus }).(pulumi.StringOutput)
 }
 
 // Support domains matched by the application.
@@ -21901,6 +21649,10 @@ type GetZeroTrustTunnelCloudflaredConnection struct {
 	ColoName string `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id string `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect bool `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt string `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -21929,6 +21681,10 @@ type GetZeroTrustTunnelCloudflaredConnectionArgs struct {
 	ColoName pulumi.StringInput `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect pulumi.BoolInput `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt pulumi.StringInput `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -22006,6 +21762,13 @@ func (o GetZeroTrustTunnelCloudflaredConnectionOutput) ColoName() pulumi.StringO
 // UUID of the Cloudflare Tunnel connection.
 func (o GetZeroTrustTunnelCloudflaredConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustTunnelCloudflaredConnection) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+//
+// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+func (o GetZeroTrustTunnelCloudflaredConnectionOutput) IsPendingReconnect() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustTunnelCloudflaredConnection) bool { return v.IsPendingReconnect }).(pulumi.BoolOutput)
 }
 
 // Timestamp of when the connection was established.
@@ -23363,6 +23126,10 @@ type GetZeroTrustTunnelCloudflaredsResultConnection struct {
 	ColoName string `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id string `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect bool `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt string `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -23391,6 +23158,10 @@ type GetZeroTrustTunnelCloudflaredsResultConnectionArgs struct {
 	ColoName pulumi.StringInput `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect pulumi.BoolInput `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt pulumi.StringInput `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -23468,6 +23239,13 @@ func (o GetZeroTrustTunnelCloudflaredsResultConnectionOutput) ColoName() pulumi.
 // UUID of the Cloudflare Tunnel connection.
 func (o GetZeroTrustTunnelCloudflaredsResultConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustTunnelCloudflaredsResultConnection) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+//
+// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+func (o GetZeroTrustTunnelCloudflaredsResultConnectionOutput) IsPendingReconnect() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustTunnelCloudflaredsResultConnection) bool { return v.IsPendingReconnect }).(pulumi.BoolOutput)
 }
 
 // Timestamp of when the connection was established.
@@ -23782,6 +23560,10 @@ type GetZeroTrustTunnelWarpConnectorConnection struct {
 	ColoName string `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id string `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect bool `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt string `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -23810,6 +23592,10 @@ type GetZeroTrustTunnelWarpConnectorConnectionArgs struct {
 	ColoName pulumi.StringInput `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect pulumi.BoolInput `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt pulumi.StringInput `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -23887,6 +23673,13 @@ func (o GetZeroTrustTunnelWarpConnectorConnectionOutput) ColoName() pulumi.Strin
 // UUID of the Cloudflare Tunnel connection.
 func (o GetZeroTrustTunnelWarpConnectorConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorConnection) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+//
+// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+func (o GetZeroTrustTunnelWarpConnectorConnectionOutput) IsPendingReconnect() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorConnection) bool { return v.IsPendingReconnect }).(pulumi.BoolOutput)
 }
 
 // Timestamp of when the connection was established.
@@ -24411,6 +24204,10 @@ type GetZeroTrustTunnelWarpConnectorsResultConnection struct {
 	ColoName string `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id string `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect bool `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt string `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -24439,6 +24236,10 @@ type GetZeroTrustTunnelWarpConnectorsResultConnectionArgs struct {
 	ColoName pulumi.StringInput `pulumi:"coloName"`
 	// UUID of the Cloudflare Tunnel connection.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+	//
+	// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+	IsPendingReconnect pulumi.BoolInput `pulumi:"isPendingReconnect"`
 	// Timestamp of when the connection was established.
 	OpenedAt pulumi.StringInput `pulumi:"openedAt"`
 	// The public IP address of the host running cloudflared.
@@ -24516,6 +24317,13 @@ func (o GetZeroTrustTunnelWarpConnectorsResultConnectionOutput) ColoName() pulum
 // UUID of the Cloudflare Tunnel connection.
 func (o GetZeroTrustTunnelWarpConnectorsResultConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorsResultConnection) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+//
+// Deprecated: This functionality has been removed. The isPendingReconnect field will now always report false.
+func (o GetZeroTrustTunnelWarpConnectorsResultConnectionOutput) IsPendingReconnect() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorsResultConnection) bool { return v.IsPendingReconnect }).(pulumi.BoolOutput)
 }
 
 // Timestamp of when the connection was established.
@@ -27659,16 +27467,6 @@ func (o GetZonesResultTenantUnitOutput) Id() pulumi.StringOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultFallbackDomainInput)(nil)).Elem(), GetZeroTrustDeviceCustomProfilesResultFallbackDomainArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayInput)(nil)).Elem(), GetZeroTrustDeviceCustomProfilesResultFallbackDomainArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultIncludeInput)(nil)).Elem(), GetZeroTrustDeviceCustomProfilesResultIncludeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultIncludeArrayInput)(nil)).Elem(), GetZeroTrustDeviceCustomProfilesResultIncludeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultServiceModeV2Input)(nil)).Elem(), GetZeroTrustDeviceCustomProfilesResultServiceModeV2Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultTargetTestInput)(nil)).Elem(), GetZeroTrustDeviceCustomProfilesResultTargetTestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultTargetTestArrayInput)(nil)).Elem(), GetZeroTrustDeviceCustomProfilesResultTargetTestArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceCustomProfilesResultVirtualNetworksInput)(nil)).Elem(), GetZeroTrustDeviceCustomProfilesResultVirtualNetworksArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceDefaultProfileDnsSearchSuffixInput)(nil)).Elem(), GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayInput)(nil)).Elem(), GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceDefaultProfileExcludeInput)(nil)).Elem(), GetZeroTrustDeviceDefaultProfileExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceDefaultProfileExcludeArrayInput)(nil)).Elem(), GetZeroTrustDeviceDefaultProfileExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustDeviceDefaultProfileFallbackDomainInput)(nil)).Elem(), GetZeroTrustDeviceDefaultProfileFallbackDomainArgs{})
@@ -27942,6 +27740,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationLoginDesignInput)(nil)).Elem(), GetZeroTrustOrganizationLoginDesignArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationMfaConfigInput)(nil)).Elem(), GetZeroTrustOrganizationMfaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationMfaSshPivKeyRequirementsInput)(nil)).Elem(), GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationFilterInput)(nil)).Elem(), GetZeroTrustResourceLibraryApplicationFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationFilterPtrInput)(nil)).Elem(), GetZeroTrustResourceLibraryApplicationFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationsResultInput)(nil)).Elem(), GetZeroTrustResourceLibraryApplicationsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationsResultArrayInput)(nil)).Elem(), GetZeroTrustResourceLibraryApplicationsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustResourceLibraryCategoriesResultInput)(nil)).Elem(), GetZeroTrustResourceLibraryCategoriesResultArgs{})
@@ -28019,16 +27819,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultPlanInput)(nil)).Elem(), GetZonesResultPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantInput)(nil)).Elem(), GetZonesResultTenantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantUnitInput)(nil)).Elem(), GetZonesResultTenantUnitArgs{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceCustomProfilesResultFallbackDomainOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceCustomProfilesResultFallbackDomainArrayOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceCustomProfilesResultIncludeOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceCustomProfilesResultIncludeArrayOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceCustomProfilesResultServiceModeV2Output{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceCustomProfilesResultTargetTestOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceCustomProfilesResultVirtualNetworksOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceDefaultProfileDnsSearchSuffixOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustDeviceDefaultProfileExcludeOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustDeviceDefaultProfileExcludeArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustDeviceDefaultProfileFallbackDomainOutput{})
@@ -28302,6 +28092,8 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustOrganizationLoginDesignOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustOrganizationMfaConfigOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustResourceLibraryApplicationFilterOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustResourceLibraryApplicationFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustResourceLibraryApplicationsResultOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustResourceLibraryApplicationsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustResourceLibraryCategoriesResultOutput{})

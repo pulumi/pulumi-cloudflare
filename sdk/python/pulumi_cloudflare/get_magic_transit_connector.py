@@ -28,7 +28,7 @@ class GetMagicTransitConnectorResult:
     """
     A collection of values returned by getMagicTransitConnector.
     """
-    def __init__(__self__, account_id=None, activated=None, connector_id=None, device=None, filter=None, id=None, interrupt_window_days_of_weeks=None, interrupt_window_duration_hours=None, interrupt_window_embargo_dates=None, interrupt_window_hour_of_day=None, last_heartbeat=None, last_seen_version=None, last_updated=None, license_key=None, notes=None, timezone=None):
+    def __init__(__self__, account_id=None, activated=None, connector_id=None, device=None, filter=None, id=None, interrupt_window_days_of_weeks=None, interrupt_window_duration_hours=None, interrupt_window_embargo_dates=None, interrupt_window_hour_of_day=None, last_heartbeat=None, last_seen_version=None, last_updated=None, license_key=None, notes=None, primary=None, site_id=None, timezone=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -74,16 +74,19 @@ class GetMagicTransitConnectorResult:
         if notes and not isinstance(notes, str):
             raise TypeError("Expected argument 'notes' to be a str")
         pulumi.set(__self__, "notes", notes)
+        if primary and not isinstance(primary, bool):
+            raise TypeError("Expected argument 'primary' to be a bool")
+        pulumi.set(__self__, "primary", primary)
+        if site_id and not isinstance(site_id, str):
+            raise TypeError("Expected argument 'site_id' to be a str")
+        pulumi.set(__self__, "site_id", site_id)
         if timezone and not isinstance(timezone, str):
             raise TypeError("Expected argument 'timezone' to be a str")
         pulumi.set(__self__, "timezone", timezone)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
-        """
-        Account identifier
-        """
+    def account_id(self) -> _builtins.str:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -167,6 +170,16 @@ class GetMagicTransitConnectorResult:
 
     @_builtins.property
     @pulumi.getter
+    def primary(self) -> _builtins.bool:
+        return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> _builtins.str:
+        return pulumi.get(self, "site_id")
+
+    @_builtins.property
+    @pulumi.getter
     def timezone(self) -> _builtins.str:
         return pulumi.get(self, "timezone")
 
@@ -192,6 +205,8 @@ class AwaitableGetMagicTransitConnectorResult(GetMagicTransitConnectorResult):
             last_updated=self.last_updated,
             license_key=self.license_key,
             notes=self.notes,
+            primary=self.primary,
+            site_id=self.site_id,
             timezone=self.timezone)
 
 
@@ -214,9 +229,6 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
     example_magic_transit_connector = cloudflare.get_magic_transit_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         connector_id="connector_id")
     ```
-
-
-    :param _builtins.str account_id: Account identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -241,8 +253,10 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         last_updated=pulumi.get(__ret__, 'last_updated'),
         license_key=pulumi.get(__ret__, 'license_key'),
         notes=pulumi.get(__ret__, 'notes'),
+        primary=pulumi.get(__ret__, 'primary'),
+        site_id=pulumi.get(__ret__, 'site_id'),
         timezone=pulumi.get(__ret__, 'timezone'))
-def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        connector_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        filter: pulumi.Input[Optional[Optional[Union['GetMagicTransitConnectorFilterArgs', 'GetMagicTransitConnectorFilterArgsDict']]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitConnectorResult]:
@@ -261,9 +275,6 @@ def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[Optiona
     example_magic_transit_connector = cloudflare.get_magic_transit_connector(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         connector_id="connector_id")
     ```
-
-
-    :param _builtins.str account_id: Account identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -287,4 +298,6 @@ def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[Optiona
         last_updated=pulumi.get(__response__, 'last_updated'),
         license_key=pulumi.get(__response__, 'license_key'),
         notes=pulumi.get(__response__, 'notes'),
+        primary=pulumi.get(__response__, 'primary'),
+        site_id=pulumi.get(__response__, 'site_id'),
         timezone=pulumi.get(__response__, 'timezone')))

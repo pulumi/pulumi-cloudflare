@@ -172,13 +172,6 @@ namespace Pulumi.Cloudflare
         /// When the widget was created.
         /// </summary>
         public readonly string CreatedOn;
-        /// <summary>
-        /// Origin that created this widget, recorded at creation time and
-        /// immutable afterward. Server-derived from the create request; not
-        /// client-settable. Omitted from the response for widgets created
-        /// before this field existed.
-        /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-        /// </summary>
         public readonly string DeployedVia;
         public readonly ImmutableArray<string> Domains;
         /// <summary>
@@ -190,12 +183,6 @@ namespace Pulumi.Cloudflare
         /// Widget item identifier tag.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Origin of the most recent mutation (create, update, delete, or
-        /// secret rotation). Server-derived; not client-settable. Omitted for
-        /// widgets last mutated before this field existed.
-        /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-        /// </summary>
         public readonly string LastModifiedVia;
         /// <summary>
         /// Widget Mode

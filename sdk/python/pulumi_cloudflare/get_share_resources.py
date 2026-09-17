@@ -68,7 +68,7 @@ class GetShareResourcesResult:
     def resource_type(self) -> Optional[_builtins.str]:
         """
         Filter share resources by resource_type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 
@@ -135,7 +135,7 @@ def get_share_resources(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Account identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str resource_type: Filter share resources by resource_type.
-           Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+           Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
     :param _builtins.str share_id: Share identifier tag.
     :param _builtins.str status: Filter share resources by status.
            Available values: "active", "deleting", "deleted".
@@ -179,7 +179,7 @@ def get_share_resources_output(account_id: pulumi.Input[Optional[_builtins.str]]
     :param _builtins.str account_id: Account identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str resource_type: Filter share resources by resource_type.
-           Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+           Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
     :param _builtins.str share_id: Share identifier tag.
     :param _builtins.str status: Filter share resources by status.
            Available values: "active", "deleting", "deleted".

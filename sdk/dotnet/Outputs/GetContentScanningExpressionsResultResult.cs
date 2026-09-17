@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetContentScanningExpressionsResultResult
     {
         /// <summary>
-        /// defines the unique ID for this custom scan expression.
+        /// Defines the unique ID for this Content Scanning custom expression.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Defines the ruleset expression to use in matching content objects.
+        /// Defines the custom content extraction expression used to reach content objects in the request.
         /// </summary>
         public readonly string Payload;
 

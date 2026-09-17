@@ -405,10 +405,20 @@ export type EmailRoutingSettings = import("./emailRoutingSettings").EmailRouting
 export const EmailRoutingSettings: typeof import("./emailRoutingSettings").EmailRoutingSettings = null as any;
 utilities.lazyLoad(exports, ["EmailRoutingSettings"], () => require("./emailRoutingSettings"));
 
+export { EmailSecurityAllowPolicyArgs, EmailSecurityAllowPolicyState } from "./emailSecurityAllowPolicy";
+export type EmailSecurityAllowPolicy = import("./emailSecurityAllowPolicy").EmailSecurityAllowPolicy;
+export const EmailSecurityAllowPolicy: typeof import("./emailSecurityAllowPolicy").EmailSecurityAllowPolicy = null as any;
+utilities.lazyLoad(exports, ["EmailSecurityAllowPolicy"], () => require("./emailSecurityAllowPolicy"));
+
 export { EmailSecurityBlockSenderArgs, EmailSecurityBlockSenderState } from "./emailSecurityBlockSender";
 export type EmailSecurityBlockSender = import("./emailSecurityBlockSender").EmailSecurityBlockSender;
 export const EmailSecurityBlockSender: typeof import("./emailSecurityBlockSender").EmailSecurityBlockSender = null as any;
 utilities.lazyLoad(exports, ["EmailSecurityBlockSender"], () => require("./emailSecurityBlockSender"));
+
+export { EmailSecurityDomainArgs, EmailSecurityDomainState } from "./emailSecurityDomain";
+export type EmailSecurityDomain = import("./emailSecurityDomain").EmailSecurityDomain;
+export const EmailSecurityDomain: typeof import("./emailSecurityDomain").EmailSecurityDomain = null as any;
+utilities.lazyLoad(exports, ["EmailSecurityDomain"], () => require("./emailSecurityDomain"));
 
 export { EmailSecurityImpersonationRegistryArgs, EmailSecurityImpersonationRegistryState } from "./emailSecurityImpersonationRegistry";
 export type EmailSecurityImpersonationRegistry = import("./emailSecurityImpersonationRegistry").EmailSecurityImpersonationRegistry;
@@ -419,6 +429,11 @@ export { EmailSecurityTrustedDomainsArgs, EmailSecurityTrustedDomainsState } fro
 export type EmailSecurityTrustedDomains = import("./emailSecurityTrustedDomains").EmailSecurityTrustedDomains;
 export const EmailSecurityTrustedDomains: typeof import("./emailSecurityTrustedDomains").EmailSecurityTrustedDomains = null as any;
 utilities.lazyLoad(exports, ["EmailSecurityTrustedDomains"], () => require("./emailSecurityTrustedDomains"));
+
+export { EmailSendingSubdomainArgs, EmailSendingSubdomainState } from "./emailSendingSubdomain";
+export type EmailSendingSubdomain = import("./emailSendingSubdomain").EmailSendingSubdomain;
+export const EmailSendingSubdomain: typeof import("./emailSendingSubdomain").EmailSendingSubdomain = null as any;
+utilities.lazyLoad(exports, ["EmailSendingSubdomain"], () => require("./emailSendingSubdomain"));
 
 export { FilterArgs, FilterState } from "./filter";
 export type Filter = import("./filter").Filter;
@@ -985,6 +1000,16 @@ export const getEmailRoutingSettings: typeof import("./getEmailRoutingSettings")
 export const getEmailRoutingSettingsOutput: typeof import("./getEmailRoutingSettings").getEmailRoutingSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getEmailRoutingSettings","getEmailRoutingSettingsOutput"], () => require("./getEmailRoutingSettings"));
 
+export { GetEmailSecurityAllowPoliciesArgs, GetEmailSecurityAllowPoliciesResult, GetEmailSecurityAllowPoliciesOutputArgs } from "./getEmailSecurityAllowPolicies";
+export const getEmailSecurityAllowPolicies: typeof import("./getEmailSecurityAllowPolicies").getEmailSecurityAllowPolicies = null as any;
+export const getEmailSecurityAllowPoliciesOutput: typeof import("./getEmailSecurityAllowPolicies").getEmailSecurityAllowPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getEmailSecurityAllowPolicies","getEmailSecurityAllowPoliciesOutput"], () => require("./getEmailSecurityAllowPolicies"));
+
+export { GetEmailSecurityAllowPolicyArgs, GetEmailSecurityAllowPolicyResult, GetEmailSecurityAllowPolicyOutputArgs } from "./getEmailSecurityAllowPolicy";
+export const getEmailSecurityAllowPolicy: typeof import("./getEmailSecurityAllowPolicy").getEmailSecurityAllowPolicy = null as any;
+export const getEmailSecurityAllowPolicyOutput: typeof import("./getEmailSecurityAllowPolicy").getEmailSecurityAllowPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEmailSecurityAllowPolicy","getEmailSecurityAllowPolicyOutput"], () => require("./getEmailSecurityAllowPolicy"));
+
 export { GetEmailSecurityBlockSenderArgs, GetEmailSecurityBlockSenderResult, GetEmailSecurityBlockSenderOutputArgs } from "./getEmailSecurityBlockSender";
 export const getEmailSecurityBlockSender: typeof import("./getEmailSecurityBlockSender").getEmailSecurityBlockSender = null as any;
 export const getEmailSecurityBlockSenderOutput: typeof import("./getEmailSecurityBlockSender").getEmailSecurityBlockSenderOutput = null as any;
@@ -994,6 +1019,16 @@ export { GetEmailSecurityBlockSendersArgs, GetEmailSecurityBlockSendersResult, G
 export const getEmailSecurityBlockSenders: typeof import("./getEmailSecurityBlockSenders").getEmailSecurityBlockSenders = null as any;
 export const getEmailSecurityBlockSendersOutput: typeof import("./getEmailSecurityBlockSenders").getEmailSecurityBlockSendersOutput = null as any;
 utilities.lazyLoad(exports, ["getEmailSecurityBlockSenders","getEmailSecurityBlockSendersOutput"], () => require("./getEmailSecurityBlockSenders"));
+
+export { GetEmailSecurityDomainArgs, GetEmailSecurityDomainResult, GetEmailSecurityDomainOutputArgs } from "./getEmailSecurityDomain";
+export const getEmailSecurityDomain: typeof import("./getEmailSecurityDomain").getEmailSecurityDomain = null as any;
+export const getEmailSecurityDomainOutput: typeof import("./getEmailSecurityDomain").getEmailSecurityDomainOutput = null as any;
+utilities.lazyLoad(exports, ["getEmailSecurityDomain","getEmailSecurityDomainOutput"], () => require("./getEmailSecurityDomain"));
+
+export { GetEmailSecurityDomainsArgs, GetEmailSecurityDomainsResult, GetEmailSecurityDomainsOutputArgs } from "./getEmailSecurityDomains";
+export const getEmailSecurityDomains: typeof import("./getEmailSecurityDomains").getEmailSecurityDomains = null as any;
+export const getEmailSecurityDomainsOutput: typeof import("./getEmailSecurityDomains").getEmailSecurityDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getEmailSecurityDomains","getEmailSecurityDomainsOutput"], () => require("./getEmailSecurityDomains"));
 
 export { GetEmailSecurityImpersonationRegistriesArgs, GetEmailSecurityImpersonationRegistriesResult, GetEmailSecurityImpersonationRegistriesOutputArgs } from "./getEmailSecurityImpersonationRegistries";
 export const getEmailSecurityImpersonationRegistries: typeof import("./getEmailSecurityImpersonationRegistries").getEmailSecurityImpersonationRegistries = null as any;
@@ -1014,6 +1049,16 @@ export { GetEmailSecurityTrustedDomainsListArgs, GetEmailSecurityTrustedDomainsL
 export const getEmailSecurityTrustedDomainsList: typeof import("./getEmailSecurityTrustedDomainsList").getEmailSecurityTrustedDomainsList = null as any;
 export const getEmailSecurityTrustedDomainsListOutput: typeof import("./getEmailSecurityTrustedDomainsList").getEmailSecurityTrustedDomainsListOutput = null as any;
 utilities.lazyLoad(exports, ["getEmailSecurityTrustedDomainsList","getEmailSecurityTrustedDomainsListOutput"], () => require("./getEmailSecurityTrustedDomainsList"));
+
+export { GetEmailSendingSubdomainArgs, GetEmailSendingSubdomainResult, GetEmailSendingSubdomainOutputArgs } from "./getEmailSendingSubdomain";
+export const getEmailSendingSubdomain: typeof import("./getEmailSendingSubdomain").getEmailSendingSubdomain = null as any;
+export const getEmailSendingSubdomainOutput: typeof import("./getEmailSendingSubdomain").getEmailSendingSubdomainOutput = null as any;
+utilities.lazyLoad(exports, ["getEmailSendingSubdomain","getEmailSendingSubdomainOutput"], () => require("./getEmailSendingSubdomain"));
+
+export { GetEmailSendingSubdomainsArgs, GetEmailSendingSubdomainsResult, GetEmailSendingSubdomainsOutputArgs } from "./getEmailSendingSubdomains";
+export const getEmailSendingSubdomains: typeof import("./getEmailSendingSubdomains").getEmailSendingSubdomains = null as any;
+export const getEmailSendingSubdomainsOutput: typeof import("./getEmailSendingSubdomains").getEmailSendingSubdomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getEmailSendingSubdomains","getEmailSendingSubdomainsOutput"], () => require("./getEmailSendingSubdomains"));
 
 export { GetFilterArgs, GetFilterResult, GetFilterOutputArgs } from "./getFilter";
 export const getFilter: typeof import("./getFilter").getFilter = null as any;
@@ -1339,6 +1384,11 @@ export { GetMtlsCertificatesArgs, GetMtlsCertificatesResult, GetMtlsCertificates
 export const getMtlsCertificates: typeof import("./getMtlsCertificates").getMtlsCertificates = null as any;
 export const getMtlsCertificatesOutput: typeof import("./getMtlsCertificates").getMtlsCertificatesOutput = null as any;
 utilities.lazyLoad(exports, ["getMtlsCertificates","getMtlsCertificatesOutput"], () => require("./getMtlsCertificates"));
+
+export { GetNelSettingArgs, GetNelSettingResult, GetNelSettingOutputArgs } from "./getNelSetting";
+export const getNelSetting: typeof import("./getNelSetting").getNelSetting = null as any;
+export const getNelSettingOutput: typeof import("./getNelSetting").getNelSettingOutput = null as any;
+utilities.lazyLoad(exports, ["getNelSetting","getNelSettingOutput"], () => require("./getNelSetting"));
 
 export { GetNotificationPoliciesArgs, GetNotificationPoliciesResult, GetNotificationPoliciesOutputArgs } from "./getNotificationPolicies";
 export const getNotificationPolicies: typeof import("./getNotificationPolicies").getNotificationPolicies = null as any;
@@ -1744,6 +1794,11 @@ export { GetSpectrumApplicationsArgs, GetSpectrumApplicationsResult, GetSpectrum
 export const getSpectrumApplications: typeof import("./getSpectrumApplications").getSpectrumApplications = null as any;
 export const getSpectrumApplicationsOutput: typeof import("./getSpectrumApplications").getSpectrumApplicationsOutput = null as any;
 utilities.lazyLoad(exports, ["getSpectrumApplications","getSpectrumApplicationsOutput"], () => require("./getSpectrumApplications"));
+
+export { GetSpectrumProtocolsArgs, GetSpectrumProtocolsResult, GetSpectrumProtocolsOutputArgs } from "./getSpectrumProtocols";
+export const getSpectrumProtocols: typeof import("./getSpectrumProtocols").getSpectrumProtocols = null as any;
+export const getSpectrumProtocolsOutput: typeof import("./getSpectrumProtocols").getSpectrumProtocolsOutput = null as any;
+utilities.lazyLoad(exports, ["getSpectrumProtocols","getSpectrumProtocolsOutput"], () => require("./getSpectrumProtocols"));
 
 export { GetSsoConnectorArgs, GetSsoConnectorResult, GetSsoConnectorOutputArgs } from "./getSsoConnector";
 export const getSsoConnector: typeof import("./getSsoConnector").getSsoConnector = null as any;
@@ -2850,6 +2905,11 @@ export type MtlsCertificate = import("./mtlsCertificate").MtlsCertificate;
 export const MtlsCertificate: typeof import("./mtlsCertificate").MtlsCertificate = null as any;
 utilities.lazyLoad(exports, ["MtlsCertificate"], () => require("./mtlsCertificate"));
 
+export { NelSettingArgs, NelSettingState } from "./nelSetting";
+export type NelSetting = import("./nelSetting").NelSetting;
+export const NelSetting: typeof import("./nelSetting").NelSetting = null as any;
+utilities.lazyLoad(exports, ["NelSetting"], () => require("./nelSetting"));
+
 export { NotificationPolicyArgs, NotificationPolicyState } from "./notificationPolicy";
 export type NotificationPolicy = import("./notificationPolicy").NotificationPolicy;
 export const NotificationPolicy: typeof import("./notificationPolicy").NotificationPolicy = null as any;
@@ -3633,6 +3693,11 @@ export type ZeroTrustOrganization = import("./zeroTrustOrganization").ZeroTrustO
 export const ZeroTrustOrganization: typeof import("./zeroTrustOrganization").ZeroTrustOrganization = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustOrganization"], () => require("./zeroTrustOrganization"));
 
+export { ZeroTrustResourceLibraryApplicationArgs, ZeroTrustResourceLibraryApplicationState } from "./zeroTrustResourceLibraryApplication";
+export type ZeroTrustResourceLibraryApplication = import("./zeroTrustResourceLibraryApplication").ZeroTrustResourceLibraryApplication;
+export const ZeroTrustResourceLibraryApplication: typeof import("./zeroTrustResourceLibraryApplication").ZeroTrustResourceLibraryApplication = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustResourceLibraryApplication"], () => require("./zeroTrustResourceLibraryApplication"));
+
 export { ZeroTrustRiskBehaviorArgs, ZeroTrustRiskBehaviorState } from "./zeroTrustRiskBehavior";
 export type ZeroTrustRiskBehavior = import("./zeroTrustRiskBehavior").ZeroTrustRiskBehavior;
 export const ZeroTrustRiskBehavior: typeof import("./zeroTrustRiskBehavior").ZeroTrustRiskBehavior = null as any;
@@ -3897,12 +3962,18 @@ const _module = {
                 return new EmailRoutingRule(name, <any>undefined, { urn })
             case "cloudflare:index/emailRoutingSettings:EmailRoutingSettings":
                 return new EmailRoutingSettings(name, <any>undefined, { urn })
+            case "cloudflare:index/emailSecurityAllowPolicy:EmailSecurityAllowPolicy":
+                return new EmailSecurityAllowPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender":
                 return new EmailSecurityBlockSender(name, <any>undefined, { urn })
+            case "cloudflare:index/emailSecurityDomain:EmailSecurityDomain":
+                return new EmailSecurityDomain(name, <any>undefined, { urn })
             case "cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry":
                 return new EmailSecurityImpersonationRegistry(name, <any>undefined, { urn })
             case "cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains":
                 return new EmailSecurityTrustedDomains(name, <any>undefined, { urn })
+            case "cloudflare:index/emailSendingSubdomain:EmailSendingSubdomain":
+                return new EmailSendingSubdomain(name, <any>undefined, { urn })
             case "cloudflare:index/filter:Filter":
                 return new Filter(name, <any>undefined, { urn })
             case "cloudflare:index/firewallRule:FirewallRule":
@@ -3977,6 +4048,8 @@ const _module = {
                 return new MoqRelay(name, <any>undefined, { urn })
             case "cloudflare:index/mtlsCertificate:MtlsCertificate":
                 return new MtlsCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/nelSetting:NelSetting":
+                return new NelSetting(name, <any>undefined, { urn })
             case "cloudflare:index/notificationPolicy:NotificationPolicy":
                 return new NotificationPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
@@ -4289,6 +4362,8 @@ const _module = {
                 return new ZeroTrustNetworkHostnameRoute(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization":
                 return new ZeroTrustOrganization(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustResourceLibraryApplication:ZeroTrustResourceLibraryApplication":
+                return new ZeroTrustResourceLibraryApplication(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
                 return new ZeroTrustRiskBehavior(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration":
@@ -4410,9 +4485,12 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingCatchAll"
 pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingDns", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/emailRoutingSettings", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/emailSecurityAllowPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/emailSecurityBlockSender", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/emailSecurityDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/emailSecurityImpersonationRegistry", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/emailSecurityTrustedDomains", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/emailSendingSubdomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/filter", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/firewallRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/flagshipApp", _module)
@@ -4450,6 +4528,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/managedHeaders", _mod
 pulumi.runtime.registerResourceModule("cloudflare", "index/managedTransforms", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/moqRelay", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/mtlsCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/nelSetting", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicyWebhooks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/oauthClient", _module)
@@ -4606,6 +4685,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustList", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustLocalFallbackDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustNetworkHostnameRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustOrganization", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustResourceLibraryApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustRiskBehavior", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustRiskScoringIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustTunnelCloudflared", _module)

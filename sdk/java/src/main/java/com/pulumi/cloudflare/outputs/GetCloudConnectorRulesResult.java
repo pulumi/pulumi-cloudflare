@@ -3,30 +3,58 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetCloudConnectorRulesRule;
+import com.pulumi.cloudflare.outputs.GetCloudConnectorRulesParameters;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCloudConnectorRulesResult {
+    /**
+     * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
+     * 
+     */
+    private String cloudConnectorRulesProvider;
+    private String description;
+    private Boolean enabled;
+    private String expression;
     /**
      * @return Identifier.
      * 
      */
     private String id;
-    private List<GetCloudConnectorRulesRule> rules;
+    /**
+     * @return Parameters of Cloud Connector Rule
+     * 
+     */
+    private GetCloudConnectorRulesParameters parameters;
     /**
      * @return Identifier.
      * 
      */
-    private @Nullable String zoneId;
+    private String zoneId;
 
     private GetCloudConnectorRulesResult() {}
+    /**
+     * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
+     * 
+     */
+    public String cloudConnectorRulesProvider() {
+        return this.cloudConnectorRulesProvider;
+    }
+    public String description() {
+        return this.description;
+    }
+    public Boolean enabled() {
+        return this.enabled;
+    }
+    public String expression() {
+        return this.expression;
+    }
     /**
      * @return Identifier.
      * 
@@ -34,15 +62,19 @@ public final class GetCloudConnectorRulesResult {
     public String id() {
         return this.id;
     }
-    public List<GetCloudConnectorRulesRule> rules() {
-        return this.rules;
+    /**
+     * @return Parameters of Cloud Connector Rule
+     * 
+     */
+    public GetCloudConnectorRulesParameters parameters() {
+        return this.parameters;
     }
     /**
      * @return Identifier.
      * 
      */
-    public Optional<String> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public String zoneId() {
+        return this.zoneId;
     }
 
     public static Builder builder() {
@@ -54,17 +86,57 @@ public final class GetCloudConnectorRulesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String cloudConnectorRulesProvider;
+        private String description;
+        private Boolean enabled;
+        private String expression;
         private String id;
-        private List<GetCloudConnectorRulesRule> rules;
-        private @Nullable String zoneId;
+        private GetCloudConnectorRulesParameters parameters;
+        private String zoneId;
         public Builder() {}
         public Builder(GetCloudConnectorRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cloudConnectorRulesProvider = defaults.cloudConnectorRulesProvider;
+    	      this.description = defaults.description;
+    	      this.enabled = defaults.enabled;
+    	      this.expression = defaults.expression;
     	      this.id = defaults.id;
-    	      this.rules = defaults.rules;
+    	      this.parameters = defaults.parameters;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder cloudConnectorRulesProvider(String cloudConnectorRulesProvider) {
+            if (cloudConnectorRulesProvider == null) {
+              throw new MissingRequiredPropertyException("GetCloudConnectorRulesResult", "cloudConnectorRulesProvider");
+            }
+            this.cloudConnectorRulesProvider = cloudConnectorRulesProvider;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCloudConnectorRulesResult", "description");
+            }
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetCloudConnectorRulesResult", "enabled");
+            }
+            this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder expression(String expression) {
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("GetCloudConnectorRulesResult", "expression");
+            }
+            this.expression = expression;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -74,26 +146,29 @@ public final class GetCloudConnectorRulesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder rules(List<GetCloudConnectorRulesRule> rules) {
-            if (rules == null) {
-              throw new MissingRequiredPropertyException("GetCloudConnectorRulesResult", "rules");
+        public Builder parameters(GetCloudConnectorRulesParameters parameters) {
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetCloudConnectorRulesResult", "parameters");
             }
-            this.rules = rules;
+            this.parameters = parameters;
             return this;
         }
-        public Builder rules(GetCloudConnectorRulesRule... rules) {
-            return rules(List.of(rules));
-        }
         @CustomType.Setter
-        public Builder zoneId(@Nullable String zoneId) {
-
+        public Builder zoneId(String zoneId) {
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetCloudConnectorRulesResult", "zoneId");
+            }
             this.zoneId = zoneId;
             return this;
         }
         public GetCloudConnectorRulesResult build() {
             final var _resultValue = new GetCloudConnectorRulesResult();
+            _resultValue.cloudConnectorRulesProvider = cloudConnectorRulesProvider;
+            _resultValue.description = description;
+            _resultValue.enabled = enabled;
+            _resultValue.expression = expression;
             _resultValue.id = id;
-            _resultValue.rules = rules;
+            _resultValue.parameters = parameters;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

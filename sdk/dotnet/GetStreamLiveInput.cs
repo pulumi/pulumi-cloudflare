@@ -174,6 +174,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Modified;
         /// <summary>
+        /// Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+        /// </summary>
+        public readonly Outputs.GetStreamLiveInputPlaybackResult Playback;
+        /// <summary>
         /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
         /// </summary>
         public readonly bool PreferLowLatency;
@@ -233,6 +237,8 @@ namespace Pulumi.Cloudflare
 
             string modified,
 
+            Outputs.GetStreamLiveInputPlaybackResult playback,
+
             bool preferLowLatency,
 
             Outputs.GetStreamLiveInputRecordingResult recording,
@@ -261,6 +267,7 @@ namespace Pulumi.Cloudflare
             LiveInputIdentifier = liveInputIdentifier;
             Meta = meta;
             Modified = modified;
+            Playback = playback;
             PreferLowLatency = preferLowLatency;
             Recording = recording;
             Rtmps = rtmps;

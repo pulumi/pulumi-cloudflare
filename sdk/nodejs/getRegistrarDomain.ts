@@ -30,14 +30,14 @@ export function getRegistrarDomain(args: GetRegistrarDomainArgs, opts?: pulumi.I
  */
 export interface GetRegistrarDomainArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
-     * Fully qualified domain name (FQDN) including the extension
-     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-     * identifies a registration — the same domain cannot be registered
-     * twice, making it a natural idempotency key for registration requests.
+     * Provides a fully qualified domain name (FQDN), including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+     * a registration. Cloudflare permits only one registration per domain, making
+     * the domain name a natural idempotency key for registration requests.
      */
     domainName: string;
 }
@@ -47,14 +47,14 @@ export interface GetRegistrarDomainArgs {
  */
 export interface GetRegistrarDomainResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
-     * Fully qualified domain name (FQDN) including the extension
-     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-     * identifies a registration — the same domain cannot be registered
-     * twice, making it a natural idempotency key for registration requests.
+     * Provides a fully qualified domain name (FQDN), including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+     * a registration. Cloudflare permits only one registration per domain, making
+     * the domain name a natural idempotency key for registration requests.
      */
     readonly domainName: string;
 }
@@ -84,14 +84,14 @@ export function getRegistrarDomainOutput(args: GetRegistrarDomainOutputArgs, opt
  */
 export interface GetRegistrarDomainOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Fully qualified domain name (FQDN) including the extension
-     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-     * identifies a registration — the same domain cannot be registered
-     * twice, making it a natural idempotency key for registration requests.
+     * Provides a fully qualified domain name (FQDN), including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+     * a registration. Cloudflare permits only one registration per domain, making
+     * the domain name a natural idempotency key for registration requests.
      */
     domainName: pulumi.Input<string>;
 }

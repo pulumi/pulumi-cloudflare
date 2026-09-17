@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.PipelineStreamSchemaField;
-import com.pulumi.cloudflare.outputs.PipelineStreamSchemaFormat;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.List;
@@ -15,15 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineStreamSchema {
     private @Nullable List<PipelineStreamSchemaField> fields;
-    private @Nullable PipelineStreamSchemaFormat format;
     private @Nullable Boolean inferred;
 
     private PipelineStreamSchema() {}
     public List<PipelineStreamSchemaField> fields() {
         return this.fields == null ? List.of() : this.fields;
-    }
-    public Optional<PipelineStreamSchemaFormat> format() {
-        return Optional.ofNullable(this.format);
     }
     public Optional<Boolean> inferred() {
         return Optional.ofNullable(this.inferred);
@@ -39,13 +34,11 @@ public final class PipelineStreamSchema {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PipelineStreamSchemaField> fields;
-        private @Nullable PipelineStreamSchemaFormat format;
         private @Nullable Boolean inferred;
         public Builder() {}
         public Builder(PipelineStreamSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fields = defaults.fields;
-    	      this.format = defaults.format;
     	      this.inferred = defaults.inferred;
         }
 
@@ -59,12 +52,6 @@ public final class PipelineStreamSchema {
             return fields(List.of(fields));
         }
         @CustomType.Setter
-        public Builder format(@Nullable PipelineStreamSchemaFormat format) {
-
-            this.format = format;
-            return this;
-        }
-        @CustomType.Setter
         public Builder inferred(@Nullable Boolean inferred) {
 
             this.inferred = inferred;
@@ -73,7 +60,6 @@ public final class PipelineStreamSchema {
         public PipelineStreamSchema build() {
             final var _resultValue = new PipelineStreamSchema();
             _resultValue.fields = fields;
-            _resultValue.format = format;
             _resultValue.inferred = inferred;
             return _resultValue;
         }

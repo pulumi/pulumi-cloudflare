@@ -116,6 +116,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+        /// Available values: "runtime-email-alpha".
+        /// </summary>
+        [Input("identity")]
+        public Input<string>? Identity { get; set; }
+
+        /// <summary>
         /// Name of the Vectorize index to bind to.
         /// </summary>
         [Input("indexName")]
@@ -135,7 +142,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-        /// Available values: "eu", "fedramp", "fedramp-high".
+        /// Available values: "eu", "fedramp", "fedramp-high", "us".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustResourceLibraryApplications = cloudflare.getZeroTrustResourceLibraryApplications({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     fields: "fields",
  *     filter: "filter",
  *     orderBy: "order_by",
  *     search: "xx",
@@ -25,6 +26,7 @@ export function getZeroTrustResourceLibraryApplications(args: GetZeroTrustResour
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustResourceLibraryApplications:getZeroTrustResourceLibraryApplications", {
         "accountId": args.accountId,
+        "fields": args.fields,
         "filter": args.filter,
         "limit": args.limit,
         "maxItems": args.maxItems,
@@ -39,6 +41,13 @@ export function getZeroTrustResourceLibraryApplications(args: GetZeroTrustResour
  */
 export interface GetZeroTrustResourceLibraryApplicationsArgs {
     accountId: string;
+    /**
+     * Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     */
+    fields?: string;
     filter?: string;
     limit?: number;
     maxItems?: number;
@@ -52,6 +61,13 @@ export interface GetZeroTrustResourceLibraryApplicationsArgs {
  */
 export interface GetZeroTrustResourceLibraryApplicationsResult {
     readonly accountId: string;
+    /**
+     * Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     */
+    readonly fields?: string;
     readonly filter?: string;
     readonly limit: number;
     readonly maxItems?: number;
@@ -69,6 +85,7 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
  *
  * const exampleZeroTrustResourceLibraryApplications = cloudflare.getZeroTrustResourceLibraryApplications({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     fields: "fields",
  *     filter: "filter",
  *     orderBy: "order_by",
  *     search: "xx",
@@ -79,6 +96,7 @@ export function getZeroTrustResourceLibraryApplicationsOutput(args: GetZeroTrust
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustResourceLibraryApplications:getZeroTrustResourceLibraryApplications", {
         "accountId": args.accountId,
+        "fields": args.fields,
         "filter": args.filter,
         "limit": args.limit,
         "maxItems": args.maxItems,
@@ -93,6 +111,13 @@ export function getZeroTrustResourceLibraryApplicationsOutput(args: GetZeroTrust
  */
 export interface GetZeroTrustResourceLibraryApplicationsOutputArgs {
     accountId: pulumi.Input<string>;
+    /**
+     * Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     */
+    fields?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<string | undefined>;
     limit?: pulumi.Input<number | undefined>;
     maxItems?: pulumi.Input<number | undefined>;

@@ -53,6 +53,9 @@ import (
 //				},
 //				ClientUri: pulumi.String("https://example.com"),
 //				LogoUri:   pulumi.String("https://example.com/logo.png"),
+//				OptionalScopes: pulumi.StringArray{
+//					pulumi.String("account.write"),
+//				},
 //				PolicyUri: pulumi.String("https://example.com/privacy"),
 //				PostLogoutRedirectUris: pulumi.StringArray{
 //					pulumi.String("https://example.com/logout"),
@@ -98,6 +101,8 @@ type OauthClient struct {
 	LogoUri pulumi.StringPtrOutput `pulumi:"logoUri"`
 	// The unique identifier for an OAuth client.
 	OauthClientId pulumi.StringPtrOutput `pulumi:"oauthClientId"`
+	// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+	OptionalScopes pulumi.StringArrayOutput `pulumi:"optionalScopes"`
 	// URL that points to a privacy policy document.
 	PolicyUri pulumi.StringPtrOutput `pulumi:"policyUri"`
 	// Array of allowed post-logout redirect URIs.
@@ -201,6 +206,8 @@ type oauthClientState struct {
 	LogoUri *string `pulumi:"logoUri"`
 	// The unique identifier for an OAuth client.
 	OauthClientId *string `pulumi:"oauthClientId"`
+	// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+	OptionalScopes []string `pulumi:"optionalScopes"`
 	// URL that points to a privacy policy document.
 	PolicyUri *string `pulumi:"policyUri"`
 	// Array of allowed post-logout redirect URIs.
@@ -250,6 +257,8 @@ type OauthClientState struct {
 	LogoUri pulumi.StringPtrInput
 	// The unique identifier for an OAuth client.
 	OauthClientId pulumi.StringPtrInput
+	// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+	OptionalScopes pulumi.StringArrayInput
 	// URL that points to a privacy policy document.
 	PolicyUri pulumi.StringPtrInput
 	// Array of allowed post-logout redirect URIs.
@@ -293,6 +302,8 @@ type oauthClientArgs struct {
 	LogoUri *string `pulumi:"logoUri"`
 	// The unique identifier for an OAuth client.
 	OauthClientId *string `pulumi:"oauthClientId"`
+	// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+	OptionalScopes []string `pulumi:"optionalScopes"`
 	// URL that points to a privacy policy document.
 	PolicyUri *string `pulumi:"policyUri"`
 	// Array of allowed post-logout redirect URIs.
@@ -329,6 +340,8 @@ type OauthClientArgs struct {
 	LogoUri pulumi.StringPtrInput
 	// The unique identifier for an OAuth client.
 	OauthClientId pulumi.StringPtrInput
+	// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+	OptionalScopes pulumi.StringArrayInput
 	// URL that points to a privacy policy document.
 	PolicyUri pulumi.StringPtrInput
 	// Array of allowed post-logout redirect URIs.
@@ -494,6 +507,11 @@ func (o OauthClientOutput) LogoUri() pulumi.StringPtrOutput {
 // The unique identifier for an OAuth client.
 func (o OauthClientOutput) OauthClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OauthClient) pulumi.StringPtrOutput { return v.OauthClientId }).(pulumi.StringPtrOutput)
+}
+
+// Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+func (o OauthClientOutput) OptionalScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OauthClient) pulumi.StringArrayOutput { return v.OptionalScopes }).(pulumi.StringArrayOutput)
 }
 
 // URL that points to a privacy policy document.

@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailRoutingDns(ctx, &cloudflare.LookupEmailRoutingDnsArgs{
-//				ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				Subdomain: pulumi.StringRef("example.net"),
 //			}, nil)
 //			if err != nil {
@@ -54,26 +54,21 @@ func LookupEmailRoutingDns(ctx *pulumi.Context, args *LookupEmailRoutingDnsArgs,
 
 // A collection of arguments for invoking getEmailRoutingDns.
 type LookupEmailRoutingDnsArgs struct {
-	// Domain of your zone.
+	// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
 	Subdomain *string `pulumi:"subdomain"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getEmailRoutingDns.
 type LookupEmailRoutingDnsResult struct {
-	Errors []GetEmailRoutingDnsError `pulumi:"errors"`
+	Dns []GetEmailRoutingDnsDn `pulumi:"dns"`
 	// Identifier.
-	Id         string                       `pulumi:"id"`
-	Messages   []GetEmailRoutingDnsMessage  `pulumi:"messages"`
-	Result     GetEmailRoutingDnsResult     `pulumi:"result"`
-	ResultInfo GetEmailRoutingDnsResultInfo `pulumi:"resultInfo"`
-	// Domain of your zone.
+	Id string `pulumi:"id"`
+	// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
 	Subdomain *string `pulumi:"subdomain"`
-	// Whether the API call was successful.
-	Success bool `pulumi:"success"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 func LookupEmailRoutingDnsOutput(ctx *pulumi.Context, args LookupEmailRoutingDnsOutputArgs, opts ...pulumi.InvokeOption) LookupEmailRoutingDnsResultOutput {
@@ -83,10 +78,10 @@ func LookupEmailRoutingDnsOutput(ctx *pulumi.Context, args LookupEmailRoutingDns
 
 // A collection of arguments for invoking getEmailRoutingDns.
 type LookupEmailRoutingDnsOutputArgs struct {
-	// Domain of your zone.
+	// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Identifier.
-	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (LookupEmailRoutingDnsOutputArgs) ElementType() reflect.Type {
@@ -108,8 +103,8 @@ func (o LookupEmailRoutingDnsResultOutput) ToLookupEmailRoutingDnsResultOutputWi
 	return o
 }
 
-func (o LookupEmailRoutingDnsResultOutput) Errors() GetEmailRoutingDnsErrorArrayOutput {
-	return o.ApplyT(func(v LookupEmailRoutingDnsResult) []GetEmailRoutingDnsError { return v.Errors }).(GetEmailRoutingDnsErrorArrayOutput)
+func (o LookupEmailRoutingDnsResultOutput) Dns() GetEmailRoutingDnsDnArrayOutput {
+	return o.ApplyT(func(v LookupEmailRoutingDnsResult) []GetEmailRoutingDnsDn { return v.Dns }).(GetEmailRoutingDnsDnArrayOutput)
 }
 
 // Identifier.
@@ -117,31 +112,14 @@ func (o LookupEmailRoutingDnsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingDnsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupEmailRoutingDnsResultOutput) Messages() GetEmailRoutingDnsMessageArrayOutput {
-	return o.ApplyT(func(v LookupEmailRoutingDnsResult) []GetEmailRoutingDnsMessage { return v.Messages }).(GetEmailRoutingDnsMessageArrayOutput)
-}
-
-func (o LookupEmailRoutingDnsResultOutput) Result() GetEmailRoutingDnsResultOutput {
-	return o.ApplyT(func(v LookupEmailRoutingDnsResult) GetEmailRoutingDnsResult { return v.Result }).(GetEmailRoutingDnsResultOutput)
-}
-
-func (o LookupEmailRoutingDnsResultOutput) ResultInfo() GetEmailRoutingDnsResultInfoOutput {
-	return o.ApplyT(func(v LookupEmailRoutingDnsResult) GetEmailRoutingDnsResultInfo { return v.ResultInfo }).(GetEmailRoutingDnsResultInfoOutput)
-}
-
-// Domain of your zone.
+// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
 func (o LookupEmailRoutingDnsResultOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailRoutingDnsResult) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
-// Whether the API call was successful.
-func (o LookupEmailRoutingDnsResultOutput) Success() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupEmailRoutingDnsResult) bool { return v.Success }).(pulumi.BoolOutput)
-}
-
 // Identifier.
-func (o LookupEmailRoutingDnsResultOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEmailRoutingDnsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o LookupEmailRoutingDnsResultOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailRoutingDnsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 func init() {

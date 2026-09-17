@@ -184,6 +184,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool OriginErrorPagePassthru;
         /// <summary>
+        /// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+        /// </summary>
+        public readonly Outputs.GetRulesetRuleActionParametersOriginRangeRequestsResult OriginRangeRequests;
+        /// <summary>
         /// A set of overrides to apply to the target ruleset.
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersOverridesResult Overrides;
@@ -426,6 +430,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool originErrorPagePassthru,
 
+            Outputs.GetRulesetRuleActionParametersOriginRangeRequestsResult originRangeRequests,
+
             Outputs.GetRulesetRuleActionParametersOverridesResult overrides,
 
             ImmutableArray<string> phases,
@@ -542,6 +548,7 @@ namespace Pulumi.Cloudflare.Outputs
             Origin = origin;
             OriginCacheControl = originCacheControl;
             OriginErrorPagePassthru = originErrorPagePassthru;
+            OriginRangeRequests = originRangeRequests;
             Overrides = overrides;
             Phases = phases;
             Polish = polish;

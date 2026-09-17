@@ -434,17 +434,10 @@ __all__ = [
     'DnsRecordSettings',
     'EmailRoutingCatchAllAction',
     'EmailRoutingCatchAllMatcher',
-    'EmailRoutingDnsError',
-    'EmailRoutingDnsErrorSource',
-    'EmailRoutingDnsMessage',
-    'EmailRoutingDnsMessageSource',
-    'EmailRoutingDnsResult',
-    'EmailRoutingDnsResultError',
-    'EmailRoutingDnsResultErrorMissing',
-    'EmailRoutingDnsResultInfo',
-    'EmailRoutingDnsResultRecord',
     'EmailRoutingRuleAction',
     'EmailRoutingRuleMatcher',
+    'EmailSecurityDomainAuthorization',
+    'EmailSecurityDomainEmailsProcessed',
     'FilterBody',
     'FirewallRuleAction',
     'FirewallRuleActionResponse',
@@ -522,6 +515,7 @@ __all__ = [
     'MoqRelayConfigLingeringSubscribe',
     'MoqRelayConfigUpstreams',
     'MoqRelayConfigUpstreamsUpstream',
+    'NelSettingValue',
     'NotificationPolicyFilters',
     'NotificationPolicyMechanisms',
     'NotificationPolicyMechanismsEmail',
@@ -611,13 +605,11 @@ __all__ = [
     'PipelineSinkFormat',
     'PipelineSinkSchema',
     'PipelineSinkSchemaField',
-    'PipelineSinkSchemaFormat',
     'PipelineStreamFormat',
     'PipelineStreamHttp',
     'PipelineStreamHttpCors',
     'PipelineStreamSchema',
     'PipelineStreamSchemaField',
-    'PipelineStreamSchemaFormat',
     'PipelineStreamWorkerBinding',
     'PipelineTable',
     'PrecursorEnforcementRule',
@@ -686,6 +678,7 @@ __all__ = [
     'RulesetRuleActionParametersNoStore',
     'RulesetRuleActionParametersNoTransform',
     'RulesetRuleActionParametersOrigin',
+    'RulesetRuleActionParametersOriginRangeRequests',
     'RulesetRuleActionParametersOverrides',
     'RulesetRuleActionParametersOverridesCategory',
     'RulesetRuleActionParametersOverridesRule',
@@ -727,6 +720,7 @@ __all__ = [
     'StreamDownloadAudio',
     'StreamDownloadDefault',
     'StreamInput',
+    'StreamLiveInputPlayback',
     'StreamLiveInputRecording',
     'StreamLiveInputRtmps',
     'StreamLiveInputRtmpsPlayback',
@@ -829,6 +823,7 @@ __all__ = [
     'WorkerScriptCacheOptions',
     'WorkerScriptExports',
     'WorkerScriptExportsCache',
+    'WorkerScriptFiles',
     'WorkerScriptLimits',
     'WorkerScriptMigrations',
     'WorkerScriptMigrationsRenamedClass',
@@ -882,6 +877,7 @@ __all__ = [
     'WorkersScriptCacheOptions',
     'WorkersScriptExports',
     'WorkersScriptExportsCache',
+    'WorkersScriptFiles',
     'WorkersScriptLimits',
     'WorkersScriptMigrations',
     'WorkersScriptMigrationsRenamedClass',
@@ -897,8 +893,8 @@ __all__ = [
     'WorkersScriptPlacement',
     'WorkersScriptPlacementTarget',
     'WorkersScriptTailConsumer',
+    'WorkflowConcurrency',
     'WorkflowDefaultRetention',
-    'WorkflowInstances',
     'WorkflowLimits',
     'WorkflowSchedule',
     'ZeroTrustAccessAiControlsMcpPortalServer',
@@ -1600,8 +1596,7 @@ __all__ = [
     'GetClientCertificateFilterResult',
     'GetClientCertificatesResultResult',
     'GetClientCertificatesResultCertificateAuthorityResult',
-    'GetCloudConnectorRulesRuleResult',
-    'GetCloudConnectorRulesRuleParametersResult',
+    'GetCloudConnectorRulesParametersResult',
     'GetCloudforceOneRequestFilterResult',
     'GetCloudforceOneRequestsResultResult',
     'GetConnectivityDirectoryServiceFilterResult',
@@ -1676,27 +1671,28 @@ __all__ = [
     'GetEmailRoutingAddressesResultResult',
     'GetEmailRoutingCatchAllActionResult',
     'GetEmailRoutingCatchAllMatcherResult',
-    'GetEmailRoutingDnsErrorResult',
-    'GetEmailRoutingDnsErrorSourceResult',
-    'GetEmailRoutingDnsMessageResult',
-    'GetEmailRoutingDnsMessageSourceResult',
-    'GetEmailRoutingDnsResultResult',
-    'GetEmailRoutingDnsResultErrorResult',
-    'GetEmailRoutingDnsResultErrorMissingResult',
-    'GetEmailRoutingDnsResultInfoResult',
-    'GetEmailRoutingDnsResultRecordResult',
+    'GetEmailRoutingDnsDnResult',
     'GetEmailRoutingRuleActionResult',
     'GetEmailRoutingRuleFilterResult',
     'GetEmailRoutingRuleMatcherResult',
     'GetEmailRoutingRulesResultResult',
     'GetEmailRoutingRulesResultActionResult',
     'GetEmailRoutingRulesResultMatcherResult',
+    'GetEmailSecurityAllowPoliciesResultResult',
+    'GetEmailSecurityAllowPolicyFilterResult',
     'GetEmailSecurityBlockSenderFilterResult',
     'GetEmailSecurityBlockSendersResultResult',
+    'GetEmailSecurityDomainAuthorizationResult',
+    'GetEmailSecurityDomainEmailsProcessedResult',
+    'GetEmailSecurityDomainFilterResult',
+    'GetEmailSecurityDomainsResultResult',
+    'GetEmailSecurityDomainsResultAuthorizationResult',
+    'GetEmailSecurityDomainsResultEmailsProcessedResult',
     'GetEmailSecurityImpersonationRegistriesResultResult',
     'GetEmailSecurityImpersonationRegistryFilterResult',
     'GetEmailSecurityTrustedDomainsFilterResult',
     'GetEmailSecurityTrustedDomainsListResultResult',
+    'GetEmailSendingSubdomainsResultResult',
     'GetFilterFilterResult',
     'GetFiltersResultResult',
     'GetFirewallRulesResultResult',
@@ -1853,6 +1849,7 @@ __all__ = [
     'GetMoqRelayFilterResult',
     'GetMoqRelaysResultResult',
     'GetMtlsCertificatesResultResult',
+    'GetNelSettingValueResult',
     'GetNotificationPoliciesResultResult',
     'GetNotificationPoliciesResultFiltersResult',
     'GetNotificationPoliciesResultMechanismsResult',
@@ -2015,7 +2012,6 @@ __all__ = [
     'GetPipelineSinkFormatResult',
     'GetPipelineSinkSchemaResult',
     'GetPipelineSinkSchemaFieldResult',
-    'GetPipelineSinkSchemaFormatResult',
     'GetPipelineSinksResultResult',
     'GetPipelineSinksResultConfigResult',
     'GetPipelineSinksResultConfigFileNamingResult',
@@ -2024,14 +2020,12 @@ __all__ = [
     'GetPipelineSinksResultFormatResult',
     'GetPipelineSinksResultSchemaResult',
     'GetPipelineSinksResultSchemaFieldResult',
-    'GetPipelineSinksResultSchemaFormatResult',
     'GetPipelineStreamFilterResult',
     'GetPipelineStreamFormatResult',
     'GetPipelineStreamHttpResult',
     'GetPipelineStreamHttpCorsResult',
     'GetPipelineStreamSchemaResult',
     'GetPipelineStreamSchemaFieldResult',
-    'GetPipelineStreamSchemaFormatResult',
     'GetPipelineStreamWorkerBindingResult',
     'GetPipelineStreamsResultResult',
     'GetPipelineStreamsResultFormatResult',
@@ -2039,7 +2033,6 @@ __all__ = [
     'GetPipelineStreamsResultHttpCorsResult',
     'GetPipelineStreamsResultSchemaResult',
     'GetPipelineStreamsResultSchemaFieldResult',
-    'GetPipelineStreamsResultSchemaFormatResult',
     'GetPipelineStreamsResultWorkerBindingResult',
     'GetPipelineTableResult',
     'GetPrecursorEnforcementRuleResult',
@@ -2131,6 +2124,7 @@ __all__ = [
     'GetRulesetRuleActionParametersNoStoreResult',
     'GetRulesetRuleActionParametersNoTransformResult',
     'GetRulesetRuleActionParametersOriginResult',
+    'GetRulesetRuleActionParametersOriginRangeRequestsResult',
     'GetRulesetRuleActionParametersOverridesResult',
     'GetRulesetRuleActionParametersOverridesCategoryResult',
     'GetRulesetRuleActionParametersOverridesRuleResult',
@@ -2185,11 +2179,13 @@ __all__ = [
     'GetSpectrumApplicationsResultDnsResult',
     'GetSpectrumApplicationsResultEdgeIpsResult',
     'GetSpectrumApplicationsResultOriginDnsResult',
+    'GetSpectrumProtocolsResultResult',
     'GetSsoConnectorVerificationResult',
     'GetSsoConnectorsResultResult',
     'GetSsoConnectorsResultVerificationResult',
     'GetStreamAudioTrackAudioResult',
     'GetStreamInputResult',
+    'GetStreamLiveInputPlaybackResult',
     'GetStreamLiveInputRecordingResult',
     'GetStreamLiveInputRtmpsResult',
     'GetStreamLiveInputRtmpsPlaybackResult',
@@ -2357,10 +2353,8 @@ __all__ = [
     'GetWorkersScriptsResultRouteResult',
     'GetWorkersScriptsResultTailConsumerResult',
     'GetWorkflowFilterResult',
-    'GetWorkflowInstancesResult',
     'GetWorkflowScheduleResult',
     'GetWorkflowsResultResult',
-    'GetWorkflowsResultInstancesResult',
     'GetWorkflowsResultScheduleResult',
     'GetZeroTrustAccessAiControlsMcpPortalFilterResult',
     'GetZeroTrustAccessAiControlsMcpPortalServerResult',
@@ -3219,6 +3213,7 @@ __all__ = [
     'GetZeroTrustOrganizationLoginDesignResult',
     'GetZeroTrustOrganizationMfaConfigResult',
     'GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult',
+    'GetZeroTrustResourceLibraryApplicationFilterResult',
     'GetZeroTrustResourceLibraryApplicationsResultResult',
     'GetZeroTrustResourceLibraryCategoriesResultResult',
     'GetZeroTrustRiskBehaviorBehaviorsResult',
@@ -8994,6 +8989,8 @@ class AccessGroupExcludeDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessGroupExcludeDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -9007,11 +9004,15 @@ class AccessGroupExcludeDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -9020,6 +9021,14 @@ class AccessGroupExcludeDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -10114,6 +10123,8 @@ class AccessGroupIncludeDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessGroupIncludeDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -10127,11 +10138,15 @@ class AccessGroupIncludeDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -10140,6 +10155,14 @@ class AccessGroupIncludeDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -11234,6 +11257,8 @@ class AccessGroupRequireDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequireDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -11247,11 +11272,15 @@ class AccessGroupRequireDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -11260,6 +11289,14 @@ class AccessGroupRequireDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -11885,12 +11922,16 @@ class AccessIdentityProviderConfig(dict):
             suggest = "email_claim_name"
         elif key == "enableEncryption":
             suggest = "enable_encryption"
+        elif key == "forceAuthn":
+            suggest = "force_authn"
         elif key == "headerAttributes":
             suggest = "header_attributes"
         elif key == "idpPublicCerts":
             suggest = "idp_public_certs"
         elif key == "issuerUrl":
             suggest = "issuer_url"
+        elif key == "maxSsoUrlLength":
+            suggest = "max_sso_url_length"
         elif key == "oktaAccount":
             suggest = "okta_account"
         elif key == "oneloginAccount":
@@ -11939,9 +11980,11 @@ class AccessIdentityProviderConfig(dict):
                  email_attribute_name: Optional[_builtins.str] = None,
                  email_claim_name: Optional[_builtins.str] = None,
                  enable_encryption: Optional[_builtins.bool] = None,
+                 force_authn: Optional[_builtins.bool] = None,
                  header_attributes: Optional[Sequence['outputs.AccessIdentityProviderConfigHeaderAttribute']] = None,
                  idp_public_certs: Optional[Sequence[_builtins.str]] = None,
                  issuer_url: Optional[_builtins.str] = None,
+                 max_sso_url_length: Optional[_builtins.int] = None,
                  okta_account: Optional[_builtins.str] = None,
                  onelogin_account: Optional[_builtins.str] = None,
                  ping_env_id: Optional[_builtins.str] = None,
@@ -11971,9 +12014,14 @@ class AccessIdentityProviderConfig(dict):
         :param _builtins.str email_claim_name: The claim name for email in the id_token response.
         :param _builtins.bool enable_encryption: Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
                SAML assertions using the certificate from the assigned certificate set.
+        :param _builtins.bool force_authn: Asks the IdP to reauthenticate the user for each SAML authentication request.
         :param Sequence['AccessIdentityProviderConfigHeaderAttributeArgs'] header_attributes: Add a list of attribute names that will be returned in the response header from the Access callback.
         :param Sequence[_builtins.str] idp_public_certs: X509 certificate to verify the signature in the SAML authentication response
         :param _builtins.str issuer_url: IdP Entity ID or Issuer URL
+        :param _builtins.int max_sso_url_length: The maximum URL length the IdP accepts for the SSO redirect URL.
+               When the constructed SSO URL would exceed this length, the RelayState
+               is stored server-side and a short nonce is passed to the IdP instead.
+               Set this if your IdP enforces a URL length limit.
         :param _builtins.str okta_account: Your okta account url
         :param _builtins.str onelogin_account: Your OneLogin account url
         :param _builtins.str ping_env_id: Your PingOne environment identifier
@@ -12017,12 +12065,16 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "email_claim_name", email_claim_name)
         if enable_encryption is not None:
             pulumi.set(__self__, "enable_encryption", enable_encryption)
+        if force_authn is not None:
+            pulumi.set(__self__, "force_authn", force_authn)
         if header_attributes is not None:
             pulumi.set(__self__, "header_attributes", header_attributes)
         if idp_public_certs is not None:
             pulumi.set(__self__, "idp_public_certs", idp_public_certs)
         if issuer_url is not None:
             pulumi.set(__self__, "issuer_url", issuer_url)
+        if max_sso_url_length is not None:
+            pulumi.set(__self__, "max_sso_url_length", max_sso_url_length)
         if okta_account is not None:
             pulumi.set(__self__, "okta_account", okta_account)
         if onelogin_account is not None:
@@ -12170,6 +12222,14 @@ class AccessIdentityProviderConfig(dict):
         return pulumi.get(self, "enable_encryption")
 
     @_builtins.property
+    @pulumi.getter(name="forceAuthn")
+    def force_authn(self) -> Optional[_builtins.bool]:
+        """
+        Asks the IdP to reauthenticate the user for each SAML authentication request.
+        """
+        return pulumi.get(self, "force_authn")
+
+    @_builtins.property
     @pulumi.getter(name="headerAttributes")
     def header_attributes(self) -> Optional[Sequence['outputs.AccessIdentityProviderConfigHeaderAttribute']]:
         """
@@ -12192,6 +12252,17 @@ class AccessIdentityProviderConfig(dict):
         IdP Entity ID or Issuer URL
         """
         return pulumi.get(self, "issuer_url")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSsoUrlLength")
+    def max_sso_url_length(self) -> Optional[_builtins.int]:
+        """
+        The maximum URL length the IdP accepts for the SSO redirect URL.
+        When the constructed SSO URL would exceed this length, the RelayState
+        is stored server-side and a short nonce is passed to the IdP instead.
+        Set this if your IdP enforces a URL length limit.
+        """
+        return pulumi.get(self, "max_sso_url_length")
 
     @_builtins.property
     @pulumi.getter(name="oktaAccount")
@@ -13615,6 +13686,8 @@ class AccessPolicyExcludeDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExcludeDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -13628,11 +13701,15 @@ class AccessPolicyExcludeDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -13641,6 +13718,14 @@ class AccessPolicyExcludeDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -14735,6 +14820,8 @@ class AccessPolicyIncludeDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessPolicyIncludeDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -14748,11 +14835,15 @@ class AccessPolicyIncludeDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -14761,6 +14852,14 @@ class AccessPolicyIncludeDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -15919,6 +16018,8 @@ class AccessPolicyRequireDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequireDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -15932,11 +16033,15 @@ class AccessPolicyRequireDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -15945,6 +16050,14 @@ class AccessPolicyRequireDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -19910,14 +20023,14 @@ class AiSearchInstanceSourceParamsWebCrawler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "discoverOptions":
+        if key == "storeOptions":
+            suggest = "store_options"
+        elif key == "discoverOptions":
             suggest = "discover_options"
         elif key == "parseOptions":
             suggest = "parse_options"
         elif key == "parseType":
             suggest = "parse_type"
-        elif key == "storeOptions":
-            suggest = "store_options"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AiSearchInstanceSourceParamsWebCrawler. Access the value via the '{suggest}' property getter instead.")
@@ -19931,23 +20044,27 @@ class AiSearchInstanceSourceParamsWebCrawler(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 store_options: 'outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions',
                  discover_options: Optional['outputs.AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions'] = None,
                  parse_options: Optional['outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions'] = None,
-                 parse_type: Optional[_builtins.str] = None,
-                 store_options: Optional['outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions'] = None):
+                 parse_type: Optional[_builtins.str] = None):
         """
         :param 'AiSearchInstanceSourceParamsWebCrawlerDiscoverOptionsArgs' discover_options: Options for parse*type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'.
         :param _builtins.str parse_type: How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
                Available values: "sitemap", "discover".
         """
+        pulumi.set(__self__, "store_options", store_options)
         if discover_options is not None:
             pulumi.set(__self__, "discover_options", discover_options)
         if parse_options is not None:
             pulumi.set(__self__, "parse_options", parse_options)
         if parse_type is not None:
             pulumi.set(__self__, "parse_type", parse_type)
-        if store_options is not None:
-            pulumi.set(__self__, "store_options", store_options)
+
+    @_builtins.property
+    @pulumi.getter(name="storeOptions")
+    def store_options(self) -> 'outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions':
+        return pulumi.get(self, "store_options")
 
     @_builtins.property
     @pulumi.getter(name="discoverOptions")
@@ -19970,11 +20087,6 @@ class AiSearchInstanceSourceParamsWebCrawler(dict):
         Available values: "sitemap", "discover".
         """
         return pulumi.get(self, "parse_type")
-
-    @_builtins.property
-    @pulumi.getter(name="storeOptions")
-    def store_options(self) -> Optional['outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions']:
-        return pulumi.get(self, "store_options")
 
 
 @pulumi.output_type
@@ -20197,10 +20309,10 @@ class AiSearchInstanceSourceParamsWebCrawlerStoreOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "storageId":
-            suggest = "storage_id"
-        elif key == "r2Jurisdiction":
+        if key == "r2Jurisdiction":
             suggest = "r2_jurisdiction"
+        elif key == "storageId":
+            suggest = "storage_id"
         elif key == "storageType":
             suggest = "storage_type"
 
@@ -20216,17 +20328,17 @@ class AiSearchInstanceSourceParamsWebCrawlerStoreOptions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 r2_jurisdiction: _builtins.str,
                  storage_id: _builtins.str,
-                 r2_jurisdiction: Optional[_builtins.str] = None,
-                 storage_type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str storage_type: Available values: "r2".
-        """
+                 storage_type: _builtins.str):
+        pulumi.set(__self__, "r2_jurisdiction", r2_jurisdiction)
         pulumi.set(__self__, "storage_id", storage_id)
-        if r2_jurisdiction is not None:
-            pulumi.set(__self__, "r2_jurisdiction", r2_jurisdiction)
-        if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "storage_type", storage_type)
+
+    @_builtins.property
+    @pulumi.getter(name="r2Jurisdiction")
+    def r2_jurisdiction(self) -> _builtins.str:
+        return pulumi.get(self, "r2_jurisdiction")
 
     @_builtins.property
     @pulumi.getter(name="storageId")
@@ -20234,16 +20346,8 @@ class AiSearchInstanceSourceParamsWebCrawlerStoreOptions(dict):
         return pulumi.get(self, "storage_id")
 
     @_builtins.property
-    @pulumi.getter(name="r2Jurisdiction")
-    def r2_jurisdiction(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "r2_jurisdiction")
-
-    @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[_builtins.str]:
-        """
-        Available values: "r2".
-        """
+    def storage_type(self) -> _builtins.str:
         return pulumi.get(self, "storage_type")
 
 
@@ -20937,8 +21041,6 @@ class ApiShieldOperationFeaturesSchemaInfo(dict):
         suggest = None
         if key == "activeSchema":
             suggest = "active_schema"
-        elif key == "learnedAvailable":
-            suggest = "learned_available"
         elif key == "mitigationAction":
             suggest = "mitigation_action"
 
@@ -20955,18 +21057,14 @@ class ApiShieldOperationFeaturesSchemaInfo(dict):
 
     def __init__(__self__, *,
                  active_schema: Optional['outputs.ApiShieldOperationFeaturesSchemaInfoActiveSchema'] = None,
-                 learned_available: Optional[_builtins.bool] = None,
                  mitigation_action: Optional[_builtins.str] = None):
         """
         :param 'ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs' active_schema: Schema active on endpoint.
-        :param _builtins.bool learned_available: Deprecated. Always false.
         :param _builtins.str mitigation_action: Action taken on requests failing validation.
                Available values: "none", "log", "block".
         """
         if active_schema is not None:
             pulumi.set(__self__, "active_schema", active_schema)
-        if learned_available is not None:
-            pulumi.set(__self__, "learned_available", learned_available)
         if mitigation_action is not None:
             pulumi.set(__self__, "mitigation_action", mitigation_action)
 
@@ -20977,14 +21075,6 @@ class ApiShieldOperationFeaturesSchemaInfo(dict):
         Schema active on endpoint.
         """
         return pulumi.get(self, "active_schema")
-
-    @_builtins.property
-    @pulumi.getter(name="learnedAvailable")
-    def learned_available(self) -> Optional[_builtins.bool]:
-        """
-        Deprecated. Always false.
-        """
-        return pulumi.get(self, "learned_available")
 
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
@@ -21003,8 +21093,6 @@ class ApiShieldOperationFeaturesSchemaInfoActiveSchema(dict):
         suggest = None
         if key == "createdAt":
             suggest = "created_at"
-        elif key == "isLearned":
-            suggest = "is_learned"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ApiShieldOperationFeaturesSchemaInfoActiveSchema. Access the value via the '{suggest}' property getter instead.")
@@ -21020,19 +21108,15 @@ class ApiShieldOperationFeaturesSchemaInfoActiveSchema(dict):
     def __init__(__self__, *,
                  created_at: Optional[_builtins.str] = None,
                  id: Optional[_builtins.str] = None,
-                 is_learned: Optional[_builtins.bool] = None,
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str id: UUID.
-        :param _builtins.bool is_learned: True if schema is Cloudflare-provided.
         :param _builtins.str name: Schema file name.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if is_learned is not None:
-            pulumi.set(__self__, "is_learned", is_learned)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -21048,14 +21132,6 @@ class ApiShieldOperationFeaturesSchemaInfoActiveSchema(dict):
         UUID.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="isLearned")
-    def is_learned(self) -> Optional[_builtins.bool]:
-        """
-        True if schema is Cloudflare-provided.
-        """
-        return pulumi.get(self, "is_learned")
 
     @_builtins.property
     @pulumi.getter
@@ -22325,18 +22401,37 @@ class ClientCertificateCertificateAuthority(dict):
 
 @pulumi.output_type
 class CloudConnectorRulesRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudConnectorRulesProvider":
+            suggest = "cloud_connector_rules_provider"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudConnectorRulesRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudConnectorRulesRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudConnectorRulesRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 cloud_connector_rules_provider: Optional[_builtins.str] = None,
                  description: Optional[_builtins.str] = None,
                  enabled: Optional[_builtins.bool] = None,
                  expression: Optional[_builtins.str] = None,
                  id: Optional[_builtins.str] = None,
-                 parameters: Optional['outputs.CloudConnectorRulesRuleParameters'] = None,
-                 provider: Optional[_builtins.str] = None):
+                 parameters: Optional['outputs.CloudConnectorRulesRuleParameters'] = None):
         """
-        :param 'CloudConnectorRulesRuleParametersArgs' parameters: Parameters of Cloud Connector Rule
-        :param _builtins.str provider: Cloud Provider type
+        :param _builtins.str cloud_connector_rules_provider: Cloud Provider type
                Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "oci_storage".
+        :param 'CloudConnectorRulesRuleParametersArgs' parameters: Parameters of Cloud Connector Rule
         """
+        if cloud_connector_rules_provider is not None:
+            pulumi.set(__self__, "cloud_connector_rules_provider", cloud_connector_rules_provider)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
@@ -22347,8 +22442,15 @@ class CloudConnectorRulesRule(dict):
             pulumi.set(__self__, "id", id)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
-        if provider is not None:
-            pulumi.set(__self__, "provider", provider)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudConnectorRulesProvider")
+    def cloud_connector_rules_provider(self) -> Optional[_builtins.str]:
+        """
+        Cloud Provider type
+        Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "oci_storage".
+        """
+        return pulumi.get(self, "cloud_connector_rules_provider")
 
     @_builtins.property
     @pulumi.getter
@@ -22377,15 +22479,6 @@ class CloudConnectorRulesRule(dict):
         Parameters of Cloud Connector Rule
         """
         return pulumi.get(self, "parameters")
-
-    @_builtins.property
-    @pulumi.getter
-    def provider(self) -> Optional[_builtins.str]:
-        """
-        Cloud Provider type
-        Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "oci_storage".
-        """
-        return pulumi.get(self, "provider")
 
 
 @pulumi.output_type
@@ -22577,7 +22670,7 @@ class ContentScanningExpressionBody(dict):
     def __init__(__self__, *,
                  payload: _builtins.str):
         """
-        :param _builtins.str payload: Defines the ruleset expression to use in matching content objects.
+        :param _builtins.str payload: Defines the custom content extraction expression used to reach content objects in the request.
         """
         pulumi.set(__self__, "payload", payload)
 
@@ -22585,7 +22678,7 @@ class ContentScanningExpressionBody(dict):
     @pulumi.getter
     def payload(self) -> _builtins.str:
         """
-        Defines the ruleset expression to use in matching content objects.
+        Defines the custom content extraction expression used to reach content objects in the request.
         """
         return pulumi.get(self, "payload")
 
@@ -24987,480 +25080,6 @@ class EmailRoutingCatchAllMatcher(dict):
 
 
 @pulumi.output_type
-class EmailRoutingDnsError(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "documentationUrl":
-            suggest = "documentation_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EmailRoutingDnsError. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EmailRoutingDnsError.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EmailRoutingDnsError.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 code: Optional[_builtins.int] = None,
-                 documentation_url: Optional[_builtins.str] = None,
-                 message: Optional[_builtins.str] = None,
-                 source: Optional['outputs.EmailRoutingDnsErrorSource'] = None):
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if documentation_url is not None:
-            pulumi.set(__self__, "documentation_url", documentation_url)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-
-    @_builtins.property
-    @pulumi.getter
-    def code(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "code")
-
-    @_builtins.property
-    @pulumi.getter(name="documentationUrl")
-    def documentation_url(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "documentation_url")
-
-    @_builtins.property
-    @pulumi.getter
-    def message(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "message")
-
-    @_builtins.property
-    @pulumi.getter
-    def source(self) -> Optional['outputs.EmailRoutingDnsErrorSource']:
-        return pulumi.get(self, "source")
-
-
-@pulumi.output_type
-class EmailRoutingDnsErrorSource(dict):
-    def __init__(__self__, *,
-                 pointer: Optional[_builtins.str] = None):
-        if pointer is not None:
-            pulumi.set(__self__, "pointer", pointer)
-
-    @_builtins.property
-    @pulumi.getter
-    def pointer(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "pointer")
-
-
-@pulumi.output_type
-class EmailRoutingDnsMessage(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "documentationUrl":
-            suggest = "documentation_url"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EmailRoutingDnsMessage. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EmailRoutingDnsMessage.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EmailRoutingDnsMessage.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 code: Optional[_builtins.int] = None,
-                 documentation_url: Optional[_builtins.str] = None,
-                 message: Optional[_builtins.str] = None,
-                 source: Optional['outputs.EmailRoutingDnsMessageSource'] = None):
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if documentation_url is not None:
-            pulumi.set(__self__, "documentation_url", documentation_url)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-
-    @_builtins.property
-    @pulumi.getter
-    def code(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "code")
-
-    @_builtins.property
-    @pulumi.getter(name="documentationUrl")
-    def documentation_url(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "documentation_url")
-
-    @_builtins.property
-    @pulumi.getter
-    def message(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "message")
-
-    @_builtins.property
-    @pulumi.getter
-    def source(self) -> Optional['outputs.EmailRoutingDnsMessageSource']:
-        return pulumi.get(self, "source")
-
-
-@pulumi.output_type
-class EmailRoutingDnsMessageSource(dict):
-    def __init__(__self__, *,
-                 pointer: Optional[_builtins.str] = None):
-        if pointer is not None:
-            pulumi.set(__self__, "pointer", pointer)
-
-    @_builtins.property
-    @pulumi.getter
-    def pointer(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "pointer")
-
-
-@pulumi.output_type
-class EmailRoutingDnsResult(dict):
-    def __init__(__self__, *,
-                 content: Optional[_builtins.str] = None,
-                 errors: Optional[Sequence['outputs.EmailRoutingDnsResultError']] = None,
-                 name: Optional[_builtins.str] = None,
-                 priority: Optional[_builtins.float] = None,
-                 records: Optional[Sequence['outputs.EmailRoutingDnsResultRecord']] = None,
-                 ttl: Optional[_builtins.float] = None,
-                 type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str content: DNS record content.
-        :param _builtins.str name: DNS record name (or @ for the zone apex).
-        :param _builtins.float priority: Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        :param _builtins.float ttl: Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        :param _builtins.str type: DNS record type.
-               Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        if content is not None:
-            pulumi.set(__self__, "content", content)
-        if errors is not None:
-            pulumi.set(__self__, "errors", errors)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-        if records is not None:
-            pulumi.set(__self__, "records", records)
-        if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def content(self) -> Optional[_builtins.str]:
-        """
-        DNS record content.
-        """
-        return pulumi.get(self, "content")
-
-    @_builtins.property
-    @pulumi.getter
-    def errors(self) -> Optional[Sequence['outputs.EmailRoutingDnsResultError']]:
-        return pulumi.get(self, "errors")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        DNS record name (or @ for the zone apex).
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> Optional[_builtins.float]:
-        """
-        Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        """
-        return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter
-    def records(self) -> Optional[Sequence['outputs.EmailRoutingDnsResultRecord']]:
-        return pulumi.get(self, "records")
-
-    @_builtins.property
-    @pulumi.getter
-    def ttl(self) -> Optional[_builtins.float]:
-        """
-        Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        """
-        return pulumi.get(self, "ttl")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[_builtins.str]:
-        """
-        DNS record type.
-        Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class EmailRoutingDnsResultError(dict):
-    def __init__(__self__, *,
-                 code: Optional[_builtins.str] = None,
-                 missing: Optional['outputs.EmailRoutingDnsResultErrorMissing'] = None):
-        """
-        :param 'EmailRoutingDnsResultErrorMissingArgs' missing: List of records needed to enable an Email Routing zone.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if missing is not None:
-            pulumi.set(__self__, "missing", missing)
-
-    @_builtins.property
-    @pulumi.getter
-    def code(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "code")
-
-    @_builtins.property
-    @pulumi.getter
-    def missing(self) -> Optional['outputs.EmailRoutingDnsResultErrorMissing']:
-        """
-        List of records needed to enable an Email Routing zone.
-        """
-        return pulumi.get(self, "missing")
-
-
-@pulumi.output_type
-class EmailRoutingDnsResultErrorMissing(dict):
-    def __init__(__self__, *,
-                 content: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None,
-                 priority: Optional[_builtins.float] = None,
-                 ttl: Optional[_builtins.float] = None,
-                 type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str content: DNS record content.
-        :param _builtins.str name: DNS record name (or @ for the zone apex).
-        :param _builtins.float priority: Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        :param _builtins.float ttl: Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        :param _builtins.str type: DNS record type.
-               Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        if content is not None:
-            pulumi.set(__self__, "content", content)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-        if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def content(self) -> Optional[_builtins.str]:
-        """
-        DNS record content.
-        """
-        return pulumi.get(self, "content")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        DNS record name (or @ for the zone apex).
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> Optional[_builtins.float]:
-        """
-        Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        """
-        return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter
-    def ttl(self) -> Optional[_builtins.float]:
-        """
-        Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        """
-        return pulumi.get(self, "ttl")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[_builtins.str]:
-        """
-        DNS record type.
-        Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class EmailRoutingDnsResultInfo(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailRoutingDnsCount":
-            suggest = "email_routing_dns_count"
-        elif key == "perPage":
-            suggest = "per_page"
-        elif key == "totalCount":
-            suggest = "total_count"
-        elif key == "totalPages":
-            suggest = "total_pages"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EmailRoutingDnsResultInfo. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EmailRoutingDnsResultInfo.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EmailRoutingDnsResultInfo.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 email_routing_dns_count: Optional[_builtins.float] = None,
-                 page: Optional[_builtins.float] = None,
-                 per_page: Optional[_builtins.float] = None,
-                 total_count: Optional[_builtins.float] = None,
-                 total_pages: Optional[_builtins.float] = None):
-        """
-        :param _builtins.float email_routing_dns_count: Total number of results for the requested service.
-        :param _builtins.float page: Current page within paginated list of results.
-        :param _builtins.float per_page: Number of results per page of results.
-        :param _builtins.float total_count: Total results available without any search parameters.
-        :param _builtins.float total_pages: The number of total pages in the entire result set.
-        """
-        if email_routing_dns_count is not None:
-            pulumi.set(__self__, "email_routing_dns_count", email_routing_dns_count)
-        if page is not None:
-            pulumi.set(__self__, "page", page)
-        if per_page is not None:
-            pulumi.set(__self__, "per_page", per_page)
-        if total_count is not None:
-            pulumi.set(__self__, "total_count", total_count)
-        if total_pages is not None:
-            pulumi.set(__self__, "total_pages", total_pages)
-
-    @_builtins.property
-    @pulumi.getter(name="emailRoutingDnsCount")
-    def email_routing_dns_count(self) -> Optional[_builtins.float]:
-        """
-        Total number of results for the requested service.
-        """
-        return pulumi.get(self, "email_routing_dns_count")
-
-    @_builtins.property
-    @pulumi.getter
-    def page(self) -> Optional[_builtins.float]:
-        """
-        Current page within paginated list of results.
-        """
-        return pulumi.get(self, "page")
-
-    @_builtins.property
-    @pulumi.getter(name="perPage")
-    def per_page(self) -> Optional[_builtins.float]:
-        """
-        Number of results per page of results.
-        """
-        return pulumi.get(self, "per_page")
-
-    @_builtins.property
-    @pulumi.getter(name="totalCount")
-    def total_count(self) -> Optional[_builtins.float]:
-        """
-        Total results available without any search parameters.
-        """
-        return pulumi.get(self, "total_count")
-
-    @_builtins.property
-    @pulumi.getter(name="totalPages")
-    def total_pages(self) -> Optional[_builtins.float]:
-        """
-        The number of total pages in the entire result set.
-        """
-        return pulumi.get(self, "total_pages")
-
-
-@pulumi.output_type
-class EmailRoutingDnsResultRecord(dict):
-    def __init__(__self__, *,
-                 content: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None,
-                 priority: Optional[_builtins.float] = None,
-                 ttl: Optional[_builtins.float] = None,
-                 type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str content: DNS record content.
-        :param _builtins.str name: DNS record name (or @ for the zone apex).
-        :param _builtins.float priority: Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        :param _builtins.float ttl: Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        :param _builtins.str type: DNS record type.
-               Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        if content is not None:
-            pulumi.set(__self__, "content", content)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-        if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def content(self) -> Optional[_builtins.str]:
-        """
-        DNS record content.
-        """
-        return pulumi.get(self, "content")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        DNS record name (or @ for the zone apex).
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> Optional[_builtins.float]:
-        """
-        Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        """
-        return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter
-    def ttl(self) -> Optional[_builtins.float]:
-        """
-        Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        """
-        return pulumi.get(self, "ttl")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[_builtins.str]:
-        """
-        DNS record type.
-        Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
 class EmailRoutingRuleAction(dict):
     def __init__(__self__, *,
                  type: _builtins.str,
@@ -25532,6 +25151,100 @@ class EmailRoutingRuleMatcher(dict):
         Value for matcher.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class EmailSecurityDomainAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusMessage":
+            suggest = "status_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EmailSecurityDomainAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EmailSecurityDomainAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EmailSecurityDomainAuthorization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorized: Optional[_builtins.bool] = None,
+                 status_message: Optional[_builtins.str] = None,
+                 timestamp: Optional[_builtins.str] = None):
+        if authorized is not None:
+            pulumi.set(__self__, "authorized", authorized)
+        if status_message is not None:
+            pulumi.set(__self__, "status_message", status_message)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter
+    def authorized(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "authorized")
+
+    @_builtins.property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "status_message")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class EmailSecurityDomainEmailsProcessed(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEmailsProcessed":
+            suggest = "total_emails_processed"
+        elif key == "totalEmailsProcessedPrevious":
+            suggest = "total_emails_processed_previous"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EmailSecurityDomainEmailsProcessed. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EmailSecurityDomainEmailsProcessed.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EmailSecurityDomainEmailsProcessed.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 timestamp: Optional[_builtins.str] = None,
+                 total_emails_processed: Optional[_builtins.int] = None,
+                 total_emails_processed_previous: Optional[_builtins.int] = None):
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+        if total_emails_processed is not None:
+            pulumi.set(__self__, "total_emails_processed", total_emails_processed)
+        if total_emails_processed_previous is not None:
+            pulumi.set(__self__, "total_emails_processed_previous", total_emails_processed_previous)
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEmailsProcessed")
+    def total_emails_processed(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "total_emails_processed")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEmailsProcessedPrevious")
+    def total_emails_processed_previous(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "total_emails_processed_previous")
 
 
 @pulumi.output_type
@@ -29346,6 +29059,7 @@ class MagicTransitSiteLanStaticAddressingDhcpServer(dict):
 
     @_builtins.property
     @pulumi.getter(name="dnsServer")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def dns_server(self) -> Optional[_builtins.str]:
         """
         A valid IPv4 address.
@@ -30423,6 +30137,24 @@ class MoqRelayConfigUpstreamsUpstream(dict):
         (WebTransport). Validated on update (PUT); rejected with 21013.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class NelSettingValue(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -31871,6 +31603,8 @@ class OrganizationMetaTenantFlags(dict):
         suggest = None
         if key == "accountCreation":
             suggest = "account_creation"
+        elif key == "accountCreationAppliesTenantDefaults":
+            suggest = "account_creation_applies_tenant_defaults"
         elif key == "accountDeletion":
             suggest = "account_deletion"
         elif key == "accountMigration":
@@ -31897,6 +31631,7 @@ class OrganizationMetaTenantFlags(dict):
 
     def __init__(__self__, *,
                  account_creation: Optional[_builtins.str] = None,
+                 account_creation_applies_tenant_defaults: Optional[_builtins.str] = None,
                  account_deletion: Optional[_builtins.str] = None,
                  account_migration: Optional[_builtins.str] = None,
                  account_mobility: Optional[_builtins.str] = None,
@@ -31905,6 +31640,8 @@ class OrganizationMetaTenantFlags(dict):
                  sub_org_creation: Optional[_builtins.str] = None):
         if account_creation is not None:
             pulumi.set(__self__, "account_creation", account_creation)
+        if account_creation_applies_tenant_defaults is not None:
+            pulumi.set(__self__, "account_creation_applies_tenant_defaults", account_creation_applies_tenant_defaults)
         if account_deletion is not None:
             pulumi.set(__self__, "account_deletion", account_deletion)
         if account_migration is not None:
@@ -31922,6 +31659,11 @@ class OrganizationMetaTenantFlags(dict):
     @pulumi.getter(name="accountCreation")
     def account_creation(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_creation")
+
+    @_builtins.property
+    @pulumi.getter(name="accountCreationAppliesTenantDefaults")
+    def account_creation_applies_tenant_defaults(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "account_creation_applies_tenant_defaults")
 
     @_builtins.property
     @pulumi.getter(name="accountDeletion")
@@ -36719,7 +36461,8 @@ class PipelineSinkFormat(dict):
                  unstructured: Optional[_builtins.bool] = None):
         """
         :param _builtins.str type: Available values: "json", "parquet".
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+        :param _builtins.str compression: Specifies the compression applied to JSON sink output.
+               Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
         :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
         """
@@ -36747,7 +36490,8 @@ class PipelineSinkFormat(dict):
     @pulumi.getter
     def compression(self) -> Optional[_builtins.str]:
         """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+        Specifies the compression applied to JSON sink output.
+        Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         """
         return pulumi.get(self, "compression")
 
@@ -36782,12 +36526,9 @@ class PipelineSinkFormat(dict):
 class PipelineSinkSchema(dict):
     def __init__(__self__, *,
                  fields: Optional[Sequence['outputs.PipelineSinkSchemaField']] = None,
-                 format: Optional['outputs.PipelineSinkSchemaFormat'] = None,
                  inferred: Optional[_builtins.bool] = None):
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
-        if format is not None:
-            pulumi.set(__self__, "format", format)
         if inferred is not None:
             pulumi.set(__self__, "inferred", inferred)
 
@@ -36795,11 +36536,6 @@ class PipelineSinkSchema(dict):
     @pulumi.getter
     def fields(self) -> Optional[Sequence['outputs.PipelineSinkSchemaField']]:
         return pulumi.get(self, "fields")
-
-    @_builtins.property
-    @pulumi.getter
-    def format(self) -> Optional['outputs.PipelineSinkSchemaFormat']:
-        return pulumi.get(self, "format")
 
     @_builtins.property
     @pulumi.getter
@@ -36886,97 +36622,6 @@ class PipelineSinkSchemaField(dict):
         Available values: "second", "millisecond", "microsecond", "nanosecond".
         """
         return pulumi.get(self, "unit")
-
-
-@pulumi.output_type
-class PipelineSinkSchemaFormat(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "decimalEncoding":
-            suggest = "decimal_encoding"
-        elif key == "rowGroupBytes":
-            suggest = "row_group_bytes"
-        elif key == "timestampFormat":
-            suggest = "timestamp_format"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PipelineSinkSchemaFormat. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PipelineSinkSchemaFormat.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PipelineSinkSchemaFormat.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 type: _builtins.str,
-                 compression: Optional[_builtins.str] = None,
-                 decimal_encoding: Optional[_builtins.str] = None,
-                 row_group_bytes: Optional[_builtins.int] = None,
-                 timestamp_format: Optional[_builtins.str] = None,
-                 unstructured: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.str type: Available values: "json", "parquet".
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
-        :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
-        """
-        pulumi.set(__self__, "type", type)
-        if compression is not None:
-            pulumi.set(__self__, "compression", compression)
-        if decimal_encoding is not None:
-            pulumi.set(__self__, "decimal_encoding", decimal_encoding)
-        if row_group_bytes is not None:
-            pulumi.set(__self__, "row_group_bytes", row_group_bytes)
-        if timestamp_format is not None:
-            pulumi.set(__self__, "timestamp_format", timestamp_format)
-        if unstructured is not None:
-            pulumi.set(__self__, "unstructured", unstructured)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Available values: "json", "parquet".
-        """
-        return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def compression(self) -> Optional[_builtins.str]:
-        """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        """
-        return pulumi.get(self, "compression")
-
-    @_builtins.property
-    @pulumi.getter(name="decimalEncoding")
-    def decimal_encoding(self) -> Optional[_builtins.str]:
-        """
-        Available values: "number", "string", "bytes".
-        """
-        return pulumi.get(self, "decimal_encoding")
-
-    @_builtins.property
-    @pulumi.getter(name="rowGroupBytes")
-    def row_group_bytes(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "row_group_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="timestampFormat")
-    def timestamp_format(self) -> Optional[_builtins.str]:
-        """
-        Available values: "rfc3339", "unix_millis".
-        """
-        return pulumi.get(self, "timestamp_format")
-
-    @_builtins.property
-    @pulumi.getter
-    def unstructured(self) -> Optional[_builtins.bool]:
-        return pulumi.get(self, "unstructured")
 
 
 @pulumi.output_type
@@ -37128,12 +36773,9 @@ class PipelineStreamHttpCors(dict):
 class PipelineStreamSchema(dict):
     def __init__(__self__, *,
                  fields: Optional[Sequence['outputs.PipelineStreamSchemaField']] = None,
-                 format: Optional['outputs.PipelineStreamSchemaFormat'] = None,
                  inferred: Optional[_builtins.bool] = None):
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
-        if format is not None:
-            pulumi.set(__self__, "format", format)
         if inferred is not None:
             pulumi.set(__self__, "inferred", inferred)
 
@@ -37141,11 +36783,6 @@ class PipelineStreamSchema(dict):
     @pulumi.getter
     def fields(self) -> Optional[Sequence['outputs.PipelineStreamSchemaField']]:
         return pulumi.get(self, "fields")
-
-    @_builtins.property
-    @pulumi.getter
-    def format(self) -> Optional['outputs.PipelineStreamSchemaFormat']:
-        return pulumi.get(self, "format")
 
     @_builtins.property
     @pulumi.getter
@@ -37232,97 +36869,6 @@ class PipelineStreamSchemaField(dict):
         Available values: "second", "millisecond", "microsecond", "nanosecond".
         """
         return pulumi.get(self, "unit")
-
-
-@pulumi.output_type
-class PipelineStreamSchemaFormat(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "decimalEncoding":
-            suggest = "decimal_encoding"
-        elif key == "rowGroupBytes":
-            suggest = "row_group_bytes"
-        elif key == "timestampFormat":
-            suggest = "timestamp_format"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PipelineStreamSchemaFormat. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PipelineStreamSchemaFormat.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PipelineStreamSchemaFormat.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 type: _builtins.str,
-                 compression: Optional[_builtins.str] = None,
-                 decimal_encoding: Optional[_builtins.str] = None,
-                 row_group_bytes: Optional[_builtins.int] = None,
-                 timestamp_format: Optional[_builtins.str] = None,
-                 unstructured: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.str type: Available values: "json", "parquet".
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
-        :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
-        """
-        pulumi.set(__self__, "type", type)
-        if compression is not None:
-            pulumi.set(__self__, "compression", compression)
-        if decimal_encoding is not None:
-            pulumi.set(__self__, "decimal_encoding", decimal_encoding)
-        if row_group_bytes is not None:
-            pulumi.set(__self__, "row_group_bytes", row_group_bytes)
-        if timestamp_format is not None:
-            pulumi.set(__self__, "timestamp_format", timestamp_format)
-        if unstructured is not None:
-            pulumi.set(__self__, "unstructured", unstructured)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Available values: "json", "parquet".
-        """
-        return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def compression(self) -> Optional[_builtins.str]:
-        """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        """
-        return pulumi.get(self, "compression")
-
-    @_builtins.property
-    @pulumi.getter(name="decimalEncoding")
-    def decimal_encoding(self) -> Optional[_builtins.str]:
-        """
-        Available values: "number", "string", "bytes".
-        """
-        return pulumi.get(self, "decimal_encoding")
-
-    @_builtins.property
-    @pulumi.getter(name="rowGroupBytes")
-    def row_group_bytes(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "row_group_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="timestampFormat")
-    def timestamp_format(self) -> Optional[_builtins.str]:
-        """
-        Available values: "rfc3339", "unix_millis".
-        """
-        return pulumi.get(self, "timestamp_format")
-
-    @_builtins.property
-    @pulumi.getter
-    def unstructured(self) -> Optional[_builtins.bool]:
-        return pulumi.get(self, "unstructured")
 
 
 @pulumi.output_type
@@ -39970,6 +39516,8 @@ class RulesetRuleActionParameters(dict):
             suggest = "origin_cache_control"
         elif key == "originErrorPagePassthru":
             suggest = "origin_error_page_passthru"
+        elif key == "originRangeRequests":
+            suggest = "origin_range_requests"
         elif key == "proxyRevalidate":
             suggest = "proxy_revalidate"
         elif key == "rawResponseFields":
@@ -40067,6 +39615,7 @@ class RulesetRuleActionParameters(dict):
                  origin: Optional['outputs.RulesetRuleActionParametersOrigin'] = None,
                  origin_cache_control: Optional[_builtins.bool] = None,
                  origin_error_page_passthru: Optional[_builtins.bool] = None,
+                 origin_range_requests: Optional['outputs.RulesetRuleActionParametersOriginRangeRequests'] = None,
                  overrides: Optional['outputs.RulesetRuleActionParametersOverrides'] = None,
                  phases: Optional[Sequence[_builtins.str]] = None,
                  polish: Optional[_builtins.str] = None,
@@ -40149,6 +39698,7 @@ class RulesetRuleActionParameters(dict):
         :param 'RulesetRuleActionParametersOriginArgs' origin: An origin to route to.
         :param _builtins.bool origin_cache_control: Whether Cloudflare will aim to strictly adhere to RFC 7234.
         :param _builtins.bool origin_error_page_passthru: Whether to generate Cloudflare error pages for issues from the origin server.
+        :param 'RulesetRuleActionParametersOriginRangeRequestsArgs' origin_range_requests: Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
         :param 'RulesetRuleActionParametersOverridesArgs' overrides: A set of overrides to apply to the target ruleset.
         :param Sequence[_builtins.str] phases: A list of phases to skip the execution of. This option is incompatible with the rulesets option.
                Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
@@ -40279,6 +39829,8 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "origin_cache_control", origin_cache_control)
         if origin_error_page_passthru is not None:
             pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
+        if origin_range_requests is not None:
+            pulumi.set(__self__, "origin_range_requests", origin_range_requests)
         if overrides is not None:
             pulumi.set(__self__, "overrides", overrides)
         if phases is not None:
@@ -40691,6 +40243,14 @@ class RulesetRuleActionParameters(dict):
         Whether to generate Cloudflare error pages for issues from the origin server.
         """
         return pulumi.get(self, "origin_error_page_passthru")
+
+    @_builtins.property
+    @pulumi.getter(name="originRangeRequests")
+    def origin_range_requests(self) -> Optional['outputs.RulesetRuleActionParametersOriginRangeRequests']:
+        """
+        Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+        """
+        return pulumi.get(self, "origin_range_requests")
 
     @_builtins.property
     @pulumi.getter
@@ -42385,6 +41945,26 @@ class RulesetRuleActionParametersOrigin(dict):
 
 
 @pulumi.output_type
+class RulesetRuleActionParametersOriginRangeRequests(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str):
+        """
+        :param _builtins.str mode: Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+               Available values: "on", "off", "default".
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+        Available values: "on", "off", "default".
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
 class RulesetRuleActionParametersOverrides(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -43771,7 +43351,7 @@ class ShareResource(dict):
         :param _builtins.str resource_account_id: Account identifier.
         :param _builtins.str resource_id: Share Resource identifier.
         :param _builtins.str resource_type: Resource Type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         pulumi.set(__self__, "meta", meta)
         pulumi.set(__self__, "resource_account_id", resource_account_id)
@@ -43807,7 +43387,7 @@ class ShareResource(dict):
     def resource_type(self) -> _builtins.str:
         """
         Resource Type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 
@@ -44415,6 +43995,37 @@ class StreamInput(dict):
         The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.
         """
         return pulumi.get(self, "width")
+
+
+@pulumi.output_type
+class StreamLiveInputPlayback(dict):
+    def __init__(__self__, *,
+                 dash: Optional[_builtins.str] = None,
+                 hls: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str dash: The DASH manifest URL used to play live video, referencing the live input ID.
+        :param _builtins.str hls: The HLS manifest URL used to play live video, referencing the live input ID.
+        """
+        if dash is not None:
+            pulumi.set(__self__, "dash", dash)
+        if hls is not None:
+            pulumi.set(__self__, "hls", hls)
+
+    @_builtins.property
+    @pulumi.getter
+    def dash(self) -> Optional[_builtins.str]:
+        """
+        The DASH manifest URL used to play live video, referencing the live input ID.
+        """
+        return pulumi.get(self, "dash")
+
+    @_builtins.property
+    @pulumi.getter
+    def hls(self) -> Optional[_builtins.str]:
+        """
+        The HLS manifest URL used to play live video, referencing the live input ID.
+        """
+        return pulumi.get(self, "hls")
 
 
 @pulumi.output_type
@@ -51243,6 +50854,83 @@ class WorkerScriptExportsCache(dict):
 
 
 @pulumi.output_type
+class WorkerScriptFiles(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+        elif key == "contentBase64":
+            suggest = "content_base64"
+        elif key == "contentFile":
+            suggest = "content_file"
+        elif key == "contentSha256":
+            suggest = "content_sha256"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerScriptFiles. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerScriptFiles.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerScriptFiles.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_type: _builtins.str,
+                 content_base64: Optional[_builtins.str] = None,
+                 content_file: Optional[_builtins.str] = None,
+                 content_sha256: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str content_type: Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+        :param _builtins.str content_base64: Base64-encoded file content.
+        :param _builtins.str content_file: Path to the file content.
+        :param _builtins.str content_sha256: SHA-256 hash of the file content, used to detect changes and remote drift.
+        """
+        pulumi.set(__self__, "content_type", content_type)
+        if content_base64 is not None:
+            pulumi.set(__self__, "content_base64", content_base64)
+        if content_file is not None:
+            pulumi.set(__self__, "content_file", content_file)
+        if content_sha256 is not None:
+            pulumi.set(__self__, "content_sha256", content_sha256)
+
+    @_builtins.property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> _builtins.str:
+        """
+        Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+        """
+        return pulumi.get(self, "content_type")
+
+    @_builtins.property
+    @pulumi.getter(name="contentBase64")
+    def content_base64(self) -> Optional[_builtins.str]:
+        """
+        Base64-encoded file content.
+        """
+        return pulumi.get(self, "content_base64")
+
+    @_builtins.property
+    @pulumi.getter(name="contentFile")
+    def content_file(self) -> Optional[_builtins.str]:
+        """
+        Path to the file content.
+        """
+        return pulumi.get(self, "content_file")
+
+    @_builtins.property
+    @pulumi.getter(name="contentSha256")
+    def content_sha256(self) -> Optional[_builtins.str]:
+        """
+        SHA-256 hash of the file content, used to detect changes and remote drift.
+        """
+        return pulumi.get(self, "content_sha256")
+
+
+@pulumi.output_type
 class WorkerScriptLimits(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -52595,6 +52283,7 @@ class WorkerVersionBinding(dict):
                  environment: Optional[_builtins.str] = None,
                  format: Optional[_builtins.str] = None,
                  id: Optional[_builtins.str] = None,
+                 identity: Optional[_builtins.str] = None,
                  index_name: Optional[_builtins.str] = None,
                  instance_name: Optional[_builtins.str] = None,
                  json: Optional[_builtins.str] = None,
@@ -52640,11 +52329,13 @@ class WorkerVersionBinding(dict):
         :param _builtins.str format: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
                Available values: "raw", "pkcs8", "spki", "jwk".
         :param _builtins.str id: Identifier of the D1 database to bind to.
+        :param _builtins.str identity: Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+               Available values: "runtime-email-alpha".
         :param _builtins.str index_name: Name of the Vectorize index to bind to.
         :param _builtins.str instance_name: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
         :param _builtins.str json: JSON data to use.
         :param _builtins.str jurisdiction: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-               Available values: "eu", "fedramp", "fedramp-high".
+               Available values: "eu", "fedramp", "fedramp-high", "us".
         :param _builtins.str key_base64: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
         :param _builtins.str key_jwk: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
         :param _builtins.str namespace: The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
@@ -52699,6 +52390,8 @@ class WorkerVersionBinding(dict):
             pulumi.set(__self__, "format", format)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
         if index_name is not None:
             pulumi.set(__self__, "index_name", index_name)
         if instance_name is not None:
@@ -52889,6 +52582,15 @@ class WorkerVersionBinding(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def identity(self) -> Optional[_builtins.str]:
+        """
+        Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+        Available values: "runtime-email-alpha".
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
     @pulumi.getter(name="indexName")
     def index_name(self) -> Optional[_builtins.str]:
         """
@@ -52917,7 +52619,7 @@ class WorkerVersionBinding(dict):
     def jurisdiction(self) -> Optional[_builtins.str]:
         """
         The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-        Available values: "eu", "fedramp", "fedramp-high".
+        Available values: "eu", "fedramp", "fedramp-high", "us".
         """
         return pulumi.get(self, "jurisdiction")
 
@@ -55370,6 +55072,83 @@ class WorkersScriptExportsCache(dict):
 
 
 @pulumi.output_type
+class WorkersScriptFiles(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+        elif key == "contentBase64":
+            suggest = "content_base64"
+        elif key == "contentFile":
+            suggest = "content_file"
+        elif key == "contentSha256":
+            suggest = "content_sha256"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkersScriptFiles. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkersScriptFiles.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkersScriptFiles.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_type: _builtins.str,
+                 content_base64: Optional[_builtins.str] = None,
+                 content_file: Optional[_builtins.str] = None,
+                 content_sha256: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str content_type: Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+        :param _builtins.str content_base64: Base64-encoded file content.
+        :param _builtins.str content_file: Path to the file content.
+        :param _builtins.str content_sha256: SHA-256 hash of the file content, used to detect changes and remote drift.
+        """
+        pulumi.set(__self__, "content_type", content_type)
+        if content_base64 is not None:
+            pulumi.set(__self__, "content_base64", content_base64)
+        if content_file is not None:
+            pulumi.set(__self__, "content_file", content_file)
+        if content_sha256 is not None:
+            pulumi.set(__self__, "content_sha256", content_sha256)
+
+    @_builtins.property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> _builtins.str:
+        """
+        Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+        """
+        return pulumi.get(self, "content_type")
+
+    @_builtins.property
+    @pulumi.getter(name="contentBase64")
+    def content_base64(self) -> Optional[_builtins.str]:
+        """
+        Base64-encoded file content.
+        """
+        return pulumi.get(self, "content_base64")
+
+    @_builtins.property
+    @pulumi.getter(name="contentFile")
+    def content_file(self) -> Optional[_builtins.str]:
+        """
+        Path to the file content.
+        """
+        return pulumi.get(self, "content_file")
+
+    @_builtins.property
+    @pulumi.getter(name="contentSha256")
+    def content_sha256(self) -> Optional[_builtins.str]:
+        """
+        SHA-256 hash of the file content, used to detect changes and remote drift.
+        """
+        return pulumi.get(self, "content_sha256")
+
+
+@pulumi.output_type
 class WorkersScriptLimits(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -56344,6 +56123,25 @@ class WorkersScriptTailConsumer(dict):
 
 
 @pulumi.output_type
+class WorkflowConcurrency(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int limit: Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit.
+        """
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit.
+        """
+        return pulumi.get(self, "limit")
+
+
+@pulumi.output_type
 class WorkflowDefaultRetention(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -56391,102 +56189,6 @@ class WorkflowDefaultRetention(dict):
         Specifies the duration in milliseconds or as a string like '5 minutes'.
         """
         return pulumi.get(self, "success_retention")
-
-
-@pulumi.output_type
-class WorkflowInstances(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "rollingBack":
-            suggest = "rolling_back"
-        elif key == "waitingForPause":
-            suggest = "waiting_for_pause"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WorkflowInstances. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WorkflowInstances.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WorkflowInstances.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 complete: Optional[_builtins.float] = None,
-                 errored: Optional[_builtins.float] = None,
-                 paused: Optional[_builtins.float] = None,
-                 queued: Optional[_builtins.float] = None,
-                 rolling_back: Optional[_builtins.float] = None,
-                 running: Optional[_builtins.float] = None,
-                 terminated: Optional[_builtins.float] = None,
-                 waiting: Optional[_builtins.float] = None,
-                 waiting_for_pause: Optional[_builtins.float] = None):
-        if complete is not None:
-            pulumi.set(__self__, "complete", complete)
-        if errored is not None:
-            pulumi.set(__self__, "errored", errored)
-        if paused is not None:
-            pulumi.set(__self__, "paused", paused)
-        if queued is not None:
-            pulumi.set(__self__, "queued", queued)
-        if rolling_back is not None:
-            pulumi.set(__self__, "rolling_back", rolling_back)
-        if running is not None:
-            pulumi.set(__self__, "running", running)
-        if terminated is not None:
-            pulumi.set(__self__, "terminated", terminated)
-        if waiting is not None:
-            pulumi.set(__self__, "waiting", waiting)
-        if waiting_for_pause is not None:
-            pulumi.set(__self__, "waiting_for_pause", waiting_for_pause)
-
-    @_builtins.property
-    @pulumi.getter
-    def complete(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "complete")
-
-    @_builtins.property
-    @pulumi.getter
-    def errored(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "errored")
-
-    @_builtins.property
-    @pulumi.getter
-    def paused(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "paused")
-
-    @_builtins.property
-    @pulumi.getter
-    def queued(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "queued")
-
-    @_builtins.property
-    @pulumi.getter(name="rollingBack")
-    def rolling_back(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "rolling_back")
-
-    @_builtins.property
-    @pulumi.getter
-    def running(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "running")
-
-    @_builtins.property
-    @pulumi.getter
-    def terminated(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "terminated")
-
-    @_builtins.property
-    @pulumi.getter
-    def waiting(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "waiting")
-
-    @_builtins.property
-    @pulumi.getter(name="waitingForPause")
-    def waiting_for_pause(self) -> Optional[_builtins.float]:
-        return pulumi.get(self, "waiting_for_pause")
 
 
 @pulumi.output_type
@@ -62830,6 +62532,8 @@ class ZeroTrustAccessGroupExcludeDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupExcludeDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -62843,11 +62547,15 @@ class ZeroTrustAccessGroupExcludeDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -62856,6 +62564,14 @@ class ZeroTrustAccessGroupExcludeDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -63950,6 +63666,8 @@ class ZeroTrustAccessGroupIncludeDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupIncludeDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -63963,11 +63681,15 @@ class ZeroTrustAccessGroupIncludeDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -63976,6 +63698,14 @@ class ZeroTrustAccessGroupIncludeDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -65070,6 +64800,8 @@ class ZeroTrustAccessGroupRequireDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessGroupRequireDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -65083,11 +64815,15 @@ class ZeroTrustAccessGroupRequireDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -65096,6 +64832,14 @@ class ZeroTrustAccessGroupRequireDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -65721,12 +65465,16 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
             suggest = "email_claim_name"
         elif key == "enableEncryption":
             suggest = "enable_encryption"
+        elif key == "forceAuthn":
+            suggest = "force_authn"
         elif key == "headerAttributes":
             suggest = "header_attributes"
         elif key == "idpPublicCerts":
             suggest = "idp_public_certs"
         elif key == "issuerUrl":
             suggest = "issuer_url"
+        elif key == "maxSsoUrlLength":
+            suggest = "max_sso_url_length"
         elif key == "oktaAccount":
             suggest = "okta_account"
         elif key == "oneloginAccount":
@@ -65775,9 +65523,11 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
                  email_attribute_name: Optional[_builtins.str] = None,
                  email_claim_name: Optional[_builtins.str] = None,
                  enable_encryption: Optional[_builtins.bool] = None,
+                 force_authn: Optional[_builtins.bool] = None,
                  header_attributes: Optional[Sequence['outputs.ZeroTrustAccessIdentityProviderConfigHeaderAttribute']] = None,
                  idp_public_certs: Optional[Sequence[_builtins.str]] = None,
                  issuer_url: Optional[_builtins.str] = None,
+                 max_sso_url_length: Optional[_builtins.int] = None,
                  okta_account: Optional[_builtins.str] = None,
                  onelogin_account: Optional[_builtins.str] = None,
                  ping_env_id: Optional[_builtins.str] = None,
@@ -65807,9 +65557,14 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
         :param _builtins.str email_claim_name: The claim name for email in the id_token response.
         :param _builtins.bool enable_encryption: Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
                SAML assertions using the certificate from the assigned certificate set.
+        :param _builtins.bool force_authn: Asks the IdP to reauthenticate the user for each SAML authentication request.
         :param Sequence['ZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs'] header_attributes: Add a list of attribute names that will be returned in the response header from the Access callback.
         :param Sequence[_builtins.str] idp_public_certs: X509 certificate to verify the signature in the SAML authentication response
         :param _builtins.str issuer_url: IdP Entity ID or Issuer URL
+        :param _builtins.int max_sso_url_length: The maximum URL length the IdP accepts for the SSO redirect URL.
+               When the constructed SSO URL would exceed this length, the RelayState
+               is stored server-side and a short nonce is passed to the IdP instead.
+               Set this if your IdP enforces a URL length limit.
         :param _builtins.str okta_account: Your okta account url
         :param _builtins.str onelogin_account: Your OneLogin account url
         :param _builtins.str ping_env_id: Your PingOne environment identifier
@@ -65853,12 +65608,16 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "email_claim_name", email_claim_name)
         if enable_encryption is not None:
             pulumi.set(__self__, "enable_encryption", enable_encryption)
+        if force_authn is not None:
+            pulumi.set(__self__, "force_authn", force_authn)
         if header_attributes is not None:
             pulumi.set(__self__, "header_attributes", header_attributes)
         if idp_public_certs is not None:
             pulumi.set(__self__, "idp_public_certs", idp_public_certs)
         if issuer_url is not None:
             pulumi.set(__self__, "issuer_url", issuer_url)
+        if max_sso_url_length is not None:
+            pulumi.set(__self__, "max_sso_url_length", max_sso_url_length)
         if okta_account is not None:
             pulumi.set(__self__, "okta_account", okta_account)
         if onelogin_account is not None:
@@ -66006,6 +65765,14 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
         return pulumi.get(self, "enable_encryption")
 
     @_builtins.property
+    @pulumi.getter(name="forceAuthn")
+    def force_authn(self) -> Optional[_builtins.bool]:
+        """
+        Asks the IdP to reauthenticate the user for each SAML authentication request.
+        """
+        return pulumi.get(self, "force_authn")
+
+    @_builtins.property
     @pulumi.getter(name="headerAttributes")
     def header_attributes(self) -> Optional[Sequence['outputs.ZeroTrustAccessIdentityProviderConfigHeaderAttribute']]:
         """
@@ -66028,6 +65795,17 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
         IdP Entity ID or Issuer URL
         """
         return pulumi.get(self, "issuer_url")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSsoUrlLength")
+    def max_sso_url_length(self) -> Optional[_builtins.int]:
+        """
+        The maximum URL length the IdP accepts for the SSO redirect URL.
+        When the constructed SSO URL would exceed this length, the RelayState
+        is stored server-side and a short nonce is passed to the IdP instead.
+        Set this if your IdP enforces a URL length limit.
+        """
+        return pulumi.get(self, "max_sso_url_length")
 
     @_builtins.property
     @pulumi.getter(name="oktaAccount")
@@ -67268,6 +67046,8 @@ class ZeroTrustAccessPolicyExcludeDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyExcludeDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -67281,11 +67061,15 @@ class ZeroTrustAccessPolicyExcludeDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -67294,6 +67078,14 @@ class ZeroTrustAccessPolicyExcludeDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -68388,6 +68180,8 @@ class ZeroTrustAccessPolicyIncludeDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyIncludeDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -68401,11 +68195,15 @@ class ZeroTrustAccessPolicyIncludeDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -68414,6 +68212,14 @@ class ZeroTrustAccessPolicyIncludeDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -69572,6 +69378,8 @@ class ZeroTrustAccessPolicyRequireDevicePosture(dict):
         suggest = None
         if key == "integrationUid":
             suggest = "integration_uid"
+        elif key == "accountId":
+            suggest = "account_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessPolicyRequireDevicePosture. Access the value via the '{suggest}' property getter instead.")
@@ -69585,11 +69393,15 @@ class ZeroTrustAccessPolicyRequireDevicePosture(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 integration_uid: _builtins.str):
+                 integration_uid: _builtins.str,
+                 account_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str integration_uid: The ID of a device posture integration.
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         """
         pulumi.set(__self__, "integration_uid", integration_uid)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -69598,6 +69410,14 @@ class ZeroTrustAccessPolicyRequireDevicePosture(dict):
         The ID of a device posture integration.
         """
         return pulumi.get(self, "integration_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
 
 @pulumi.output_type
@@ -77865,6 +77685,8 @@ class ZeroTrustTunnelWarpConnectorConnection(dict):
             suggest = "client_version"
         elif key == "coloName":
             suggest = "colo_name"
+        elif key == "isPendingReconnect":
+            suggest = "is_pending_reconnect"
         elif key == "openedAt":
             suggest = "opened_at"
         elif key == "originIp":
@@ -77886,6 +77708,7 @@ class ZeroTrustTunnelWarpConnectorConnection(dict):
                  client_version: Optional[_builtins.str] = None,
                  colo_name: Optional[_builtins.str] = None,
                  id: Optional[_builtins.str] = None,
+                 is_pending_reconnect: Optional[_builtins.bool] = None,
                  opened_at: Optional[_builtins.str] = None,
                  origin_ip: Optional[_builtins.str] = None,
                  uuid: Optional[_builtins.str] = None):
@@ -77894,6 +77717,7 @@ class ZeroTrustTunnelWarpConnectorConnection(dict):
         :param _builtins.str client_version: The cloudflared version used to establish this connection.
         :param _builtins.str colo_name: The Cloudflare data center used for this connection.
         :param _builtins.str id: UUID of the Cloudflare Tunnel connection.
+        :param _builtins.bool is_pending_reconnect: Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
         :param _builtins.str opened_at: Timestamp of when the connection was established.
         :param _builtins.str origin_ip: The public IP address of the host running cloudflared.
         :param _builtins.str uuid: UUID of the Cloudflare Tunnel connection.
@@ -77906,6 +77730,8 @@ class ZeroTrustTunnelWarpConnectorConnection(dict):
             pulumi.set(__self__, "colo_name", colo_name)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if is_pending_reconnect is not None:
+            pulumi.set(__self__, "is_pending_reconnect", is_pending_reconnect)
         if opened_at is not None:
             pulumi.set(__self__, "opened_at", opened_at)
         if origin_ip is not None:
@@ -77944,6 +77770,15 @@ class ZeroTrustTunnelWarpConnectorConnection(dict):
         UUID of the Cloudflare Tunnel connection.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isPendingReconnect")
+    @_utilities.deprecated("""This functionality has been removed. The is_pending_reconnect field will now always report false.""")
+    def is_pending_reconnect(self) -> Optional[_builtins.bool]:
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        return pulumi.get(self, "is_pending_reconnect")
 
     @_builtins.property
     @pulumi.getter(name="openedAt")
@@ -87325,16 +87160,13 @@ class GetApiShieldOperationFeaturesParameterSchemasParameterSchemasResult(dict):
 class GetApiShieldOperationFeaturesSchemaInfoResult(dict):
     def __init__(__self__, *,
                  active_schema: 'outputs.GetApiShieldOperationFeaturesSchemaInfoActiveSchemaResult',
-                 learned_available: _builtins.bool,
                  mitigation_action: _builtins.str):
         """
         :param 'GetApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs' active_schema: Schema active on endpoint.
-        :param _builtins.bool learned_available: Deprecated. Always false.
         :param _builtins.str mitigation_action: Action taken on requests failing validation.
                Available values: "none", "log", "block".
         """
         pulumi.set(__self__, "active_schema", active_schema)
-        pulumi.set(__self__, "learned_available", learned_available)
         pulumi.set(__self__, "mitigation_action", mitigation_action)
 
     @_builtins.property
@@ -87344,14 +87176,6 @@ class GetApiShieldOperationFeaturesSchemaInfoResult(dict):
         Schema active on endpoint.
         """
         return pulumi.get(self, "active_schema")
-
-    @_builtins.property
-    @pulumi.getter(name="learnedAvailable")
-    def learned_available(self) -> _builtins.bool:
-        """
-        Deprecated. Always false.
-        """
-        return pulumi.get(self, "learned_available")
 
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
@@ -87368,16 +87192,13 @@ class GetApiShieldOperationFeaturesSchemaInfoActiveSchemaResult(dict):
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  id: _builtins.str,
-                 is_learned: _builtins.bool,
                  name: _builtins.str):
         """
         :param _builtins.str id: UUID.
-        :param _builtins.bool is_learned: True if schema is Cloudflare-provided.
         :param _builtins.str name: Schema file name.
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_learned", is_learned)
         pulumi.set(__self__, "name", name)
 
     @_builtins.property
@@ -87392,14 +87213,6 @@ class GetApiShieldOperationFeaturesSchemaInfoActiveSchemaResult(dict):
         UUID.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="isLearned")
-    def is_learned(self) -> _builtins.bool:
-        """
-        True if schema is Cloudflare-provided.
-        """
-        return pulumi.get(self, "is_learned")
 
     @_builtins.property
     @pulumi.getter
@@ -88060,16 +87873,13 @@ class GetApiShieldOperationsResultFeaturesParameterSchemasParameterSchemasResult
 class GetApiShieldOperationsResultFeaturesSchemaInfoResult(dict):
     def __init__(__self__, *,
                  active_schema: 'outputs.GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaResult',
-                 learned_available: _builtins.bool,
                  mitigation_action: _builtins.str):
         """
         :param 'GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaArgs' active_schema: Schema active on endpoint.
-        :param _builtins.bool learned_available: Deprecated. Always false.
         :param _builtins.str mitigation_action: Action taken on requests failing validation.
                Available values: "none", "log", "block".
         """
         pulumi.set(__self__, "active_schema", active_schema)
-        pulumi.set(__self__, "learned_available", learned_available)
         pulumi.set(__self__, "mitigation_action", mitigation_action)
 
     @_builtins.property
@@ -88079,14 +87889,6 @@ class GetApiShieldOperationsResultFeaturesSchemaInfoResult(dict):
         Schema active on endpoint.
         """
         return pulumi.get(self, "active_schema")
-
-    @_builtins.property
-    @pulumi.getter(name="learnedAvailable")
-    def learned_available(self) -> _builtins.bool:
-        """
-        Deprecated. Always false.
-        """
-        return pulumi.get(self, "learned_available")
 
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
@@ -88103,16 +87905,13 @@ class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaResult(dict):
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  id: _builtins.str,
-                 is_learned: _builtins.bool,
                  name: _builtins.str):
         """
         :param _builtins.str id: UUID.
-        :param _builtins.bool is_learned: True if schema is Cloudflare-provided.
         :param _builtins.str name: Schema file name.
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_learned", is_learned)
         pulumi.set(__self__, "name", name)
 
     @_builtins.property
@@ -88127,14 +87926,6 @@ class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaResult(dict):
         UUID.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="isLearned")
-    def is_learned(self) -> _builtins.bool:
-        """
-        True if schema is Cloudflare-provided.
-        """
-        return pulumi.get(self, "is_learned")
 
     @_builtins.property
     @pulumi.getter
@@ -90620,66 +90411,7 @@ class GetClientCertificatesResultCertificateAuthorityResult(dict):
 
 
 @pulumi.output_type
-class GetCloudConnectorRulesRuleResult(dict):
-    def __init__(__self__, *,
-                 description: _builtins.str,
-                 enabled: _builtins.bool,
-                 expression: _builtins.str,
-                 id: _builtins.str,
-                 parameters: 'outputs.GetCloudConnectorRulesRuleParametersResult',
-                 provider: _builtins.str):
-        """
-        :param 'GetCloudConnectorRulesRuleParametersArgs' parameters: Parameters of Cloud Connector Rule
-        :param _builtins.str provider: Cloud Provider type
-               Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
-        """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "provider", provider)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> _builtins.str:
-        return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> _builtins.bool:
-        return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def expression(self) -> _builtins.str:
-        return pulumi.get(self, "expression")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def parameters(self) -> 'outputs.GetCloudConnectorRulesRuleParametersResult':
-        """
-        Parameters of Cloud Connector Rule
-        """
-        return pulumi.get(self, "parameters")
-
-    @_builtins.property
-    @pulumi.getter
-    def provider(self) -> _builtins.str:
-        """
-        Cloud Provider type
-        Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
-        """
-        return pulumi.get(self, "provider")
-
-
-@pulumi.output_type
-class GetCloudConnectorRulesRuleParametersResult(dict):
+class GetCloudConnectorRulesParametersResult(dict):
     def __init__(__self__, *,
                  host: _builtins.str):
         """
@@ -91267,8 +90999,8 @@ class GetContentScanningExpressionsResultResult(dict):
                  id: _builtins.str,
                  payload: _builtins.str):
         """
-        :param _builtins.str id: defines the unique ID for this custom scan expression.
-        :param _builtins.str payload: Defines the ruleset expression to use in matching content objects.
+        :param _builtins.str id: Defines the unique ID for this Content Scanning custom expression.
+        :param _builtins.str payload: Defines the custom content extraction expression used to reach content objects in the request.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "payload", payload)
@@ -91277,7 +91009,7 @@ class GetContentScanningExpressionsResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        defines the unique ID for this custom scan expression.
+        Defines the unique ID for this Content Scanning custom expression.
         """
         return pulumi.get(self, "id")
 
@@ -91285,7 +91017,7 @@ class GetContentScanningExpressionsResultResult(dict):
     @pulumi.getter
     def payload(self) -> _builtins.str:
         """
-        Defines the ruleset expression to use in matching content objects.
+        Defines the custom content extraction expression used to reach content objects in the request.
         """
         return pulumi.get(self, "payload")
 
@@ -96314,326 +96046,7 @@ class GetEmailRoutingCatchAllMatcherResult(dict):
 
 
 @pulumi.output_type
-class GetEmailRoutingDnsErrorResult(dict):
-    def __init__(__self__, *,
-                 code: _builtins.int,
-                 documentation_url: _builtins.str,
-                 message: _builtins.str,
-                 source: 'outputs.GetEmailRoutingDnsErrorSourceResult'):
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "documentation_url", documentation_url)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "source", source)
-
-    @_builtins.property
-    @pulumi.getter
-    def code(self) -> _builtins.int:
-        return pulumi.get(self, "code")
-
-    @_builtins.property
-    @pulumi.getter(name="documentationUrl")
-    def documentation_url(self) -> _builtins.str:
-        return pulumi.get(self, "documentation_url")
-
-    @_builtins.property
-    @pulumi.getter
-    def message(self) -> _builtins.str:
-        return pulumi.get(self, "message")
-
-    @_builtins.property
-    @pulumi.getter
-    def source(self) -> 'outputs.GetEmailRoutingDnsErrorSourceResult':
-        return pulumi.get(self, "source")
-
-
-@pulumi.output_type
-class GetEmailRoutingDnsErrorSourceResult(dict):
-    def __init__(__self__, *,
-                 pointer: _builtins.str):
-        pulumi.set(__self__, "pointer", pointer)
-
-    @_builtins.property
-    @pulumi.getter
-    def pointer(self) -> _builtins.str:
-        return pulumi.get(self, "pointer")
-
-
-@pulumi.output_type
-class GetEmailRoutingDnsMessageResult(dict):
-    def __init__(__self__, *,
-                 code: _builtins.int,
-                 documentation_url: _builtins.str,
-                 message: _builtins.str,
-                 source: 'outputs.GetEmailRoutingDnsMessageSourceResult'):
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "documentation_url", documentation_url)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "source", source)
-
-    @_builtins.property
-    @pulumi.getter
-    def code(self) -> _builtins.int:
-        return pulumi.get(self, "code")
-
-    @_builtins.property
-    @pulumi.getter(name="documentationUrl")
-    def documentation_url(self) -> _builtins.str:
-        return pulumi.get(self, "documentation_url")
-
-    @_builtins.property
-    @pulumi.getter
-    def message(self) -> _builtins.str:
-        return pulumi.get(self, "message")
-
-    @_builtins.property
-    @pulumi.getter
-    def source(self) -> 'outputs.GetEmailRoutingDnsMessageSourceResult':
-        return pulumi.get(self, "source")
-
-
-@pulumi.output_type
-class GetEmailRoutingDnsMessageSourceResult(dict):
-    def __init__(__self__, *,
-                 pointer: _builtins.str):
-        pulumi.set(__self__, "pointer", pointer)
-
-    @_builtins.property
-    @pulumi.getter
-    def pointer(self) -> _builtins.str:
-        return pulumi.get(self, "pointer")
-
-
-@pulumi.output_type
-class GetEmailRoutingDnsResultResult(dict):
-    def __init__(__self__, *,
-                 content: _builtins.str,
-                 errors: Sequence['outputs.GetEmailRoutingDnsResultErrorResult'],
-                 name: _builtins.str,
-                 priority: _builtins.float,
-                 records: Sequence['outputs.GetEmailRoutingDnsResultRecordResult'],
-                 ttl: _builtins.float,
-                 type: _builtins.str):
-        """
-        :param _builtins.str content: DNS record content.
-        :param _builtins.str name: DNS record name (or @ for the zone apex).
-        :param _builtins.float priority: Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        :param _builtins.float ttl: Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        :param _builtins.str type: DNS record type.
-               Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "errors", errors)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "records", records)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def content(self) -> _builtins.str:
-        """
-        DNS record content.
-        """
-        return pulumi.get(self, "content")
-
-    @_builtins.property
-    @pulumi.getter
-    def errors(self) -> Sequence['outputs.GetEmailRoutingDnsResultErrorResult']:
-        return pulumi.get(self, "errors")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        DNS record name (or @ for the zone apex).
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> _builtins.float:
-        """
-        Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        """
-        return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter
-    def records(self) -> Sequence['outputs.GetEmailRoutingDnsResultRecordResult']:
-        return pulumi.get(self, "records")
-
-    @_builtins.property
-    @pulumi.getter
-    def ttl(self) -> _builtins.float:
-        """
-        Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        """
-        return pulumi.get(self, "ttl")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        DNS record type.
-        Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class GetEmailRoutingDnsResultErrorResult(dict):
-    def __init__(__self__, *,
-                 code: _builtins.str,
-                 missing: 'outputs.GetEmailRoutingDnsResultErrorMissingResult'):
-        """
-        :param 'GetEmailRoutingDnsResultErrorMissingArgs' missing: List of records needed to enable an Email Routing zone.
-        """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "missing", missing)
-
-    @_builtins.property
-    @pulumi.getter
-    def code(self) -> _builtins.str:
-        return pulumi.get(self, "code")
-
-    @_builtins.property
-    @pulumi.getter
-    def missing(self) -> 'outputs.GetEmailRoutingDnsResultErrorMissingResult':
-        """
-        List of records needed to enable an Email Routing zone.
-        """
-        return pulumi.get(self, "missing")
-
-
-@pulumi.output_type
-class GetEmailRoutingDnsResultErrorMissingResult(dict):
-    def __init__(__self__, *,
-                 content: _builtins.str,
-                 name: _builtins.str,
-                 priority: _builtins.float,
-                 ttl: _builtins.float,
-                 type: _builtins.str):
-        """
-        :param _builtins.str content: DNS record content.
-        :param _builtins.str name: DNS record name (or @ for the zone apex).
-        :param _builtins.float priority: Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        :param _builtins.float ttl: Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        :param _builtins.str type: DNS record type.
-               Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def content(self) -> _builtins.str:
-        """
-        DNS record content.
-        """
-        return pulumi.get(self, "content")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        DNS record name (or @ for the zone apex).
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> _builtins.float:
-        """
-        Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-        """
-        return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter
-    def ttl(self) -> _builtins.float:
-        """
-        Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-        """
-        return pulumi.get(self, "ttl")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        DNS record type.
-        Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class GetEmailRoutingDnsResultInfoResult(dict):
-    def __init__(__self__, *,
-                 email_routing_dns_count: _builtins.float,
-                 page: _builtins.float,
-                 per_page: _builtins.float,
-                 total_count: _builtins.float,
-                 total_pages: _builtins.float):
-        """
-        :param _builtins.float email_routing_dns_count: Total number of results for the requested service.
-        :param _builtins.float page: Current page within paginated list of results.
-        :param _builtins.float per_page: Number of results per page of results.
-        :param _builtins.float total_count: Total results available without any search parameters.
-        :param _builtins.float total_pages: The number of total pages in the entire result set.
-        """
-        pulumi.set(__self__, "email_routing_dns_count", email_routing_dns_count)
-        pulumi.set(__self__, "page", page)
-        pulumi.set(__self__, "per_page", per_page)
-        pulumi.set(__self__, "total_count", total_count)
-        pulumi.set(__self__, "total_pages", total_pages)
-
-    @_builtins.property
-    @pulumi.getter(name="emailRoutingDnsCount")
-    def email_routing_dns_count(self) -> _builtins.float:
-        """
-        Total number of results for the requested service.
-        """
-        return pulumi.get(self, "email_routing_dns_count")
-
-    @_builtins.property
-    @pulumi.getter
-    def page(self) -> _builtins.float:
-        """
-        Current page within paginated list of results.
-        """
-        return pulumi.get(self, "page")
-
-    @_builtins.property
-    @pulumi.getter(name="perPage")
-    def per_page(self) -> _builtins.float:
-        """
-        Number of results per page of results.
-        """
-        return pulumi.get(self, "per_page")
-
-    @_builtins.property
-    @pulumi.getter(name="totalCount")
-    def total_count(self) -> _builtins.float:
-        """
-        Total results available without any search parameters.
-        """
-        return pulumi.get(self, "total_count")
-
-    @_builtins.property
-    @pulumi.getter(name="totalPages")
-    def total_pages(self) -> _builtins.float:
-        """
-        The number of total pages in the entire result set.
-        """
-        return pulumi.get(self, "total_pages")
-
-
-@pulumi.output_type
-class GetEmailRoutingDnsResultRecordResult(dict):
+class GetEmailRoutingDnsDnResult(dict):
     def __init__(__self__, *,
                  content: _builtins.str,
                  name: _builtins.str,
@@ -96943,6 +96356,301 @@ class GetEmailRoutingRulesResultMatcherResult(dict):
 
 
 @pulumi.output_type
+class GetEmailSecurityAllowPoliciesResultResult(dict):
+    def __init__(__self__, *,
+                 comments: _builtins.str,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 is_acceptable_sender: _builtins.bool,
+                 is_exempt_recipient: _builtins.bool,
+                 is_recipient: _builtins.bool,
+                 is_regex: _builtins.bool,
+                 is_sender: _builtins.bool,
+                 is_spoof: _builtins.bool,
+                 is_trusted_sender: _builtins.bool,
+                 last_modified: _builtins.str,
+                 modified_at: _builtins.str,
+                 pattern: _builtins.str,
+                 pattern_type: _builtins.str,
+                 verify_sender: _builtins.bool):
+        """
+        :param _builtins.str id: Allow policy identifier.
+        :param _builtins.bool is_acceptable_sender: Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
+        :param _builtins.bool is_exempt_recipient: Bypasses all detections for messages to this recipient.
+        :param _builtins.bool is_recipient: Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.
+        :param _builtins.bool is_sender: Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.
+        :param _builtins.bool is_spoof: Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.
+        :param _builtins.bool is_trusted_sender: Bypasses all detections and link following for messages from this sender.
+        :param _builtins.str last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param _builtins.str pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        :param _builtins.str pattern_type: Type of pattern matching.
+               - EMAIL: matches a full email address (e.g. `user@example.com`)
+               - DOMAIN: matches a domain name (e.g. `example.com`)
+               - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+               - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+                 Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        :param _builtins.bool verify_sender: Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.
+        """
+        pulumi.set(__self__, "comments", comments)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_acceptable_sender", is_acceptable_sender)
+        pulumi.set(__self__, "is_exempt_recipient", is_exempt_recipient)
+        pulumi.set(__self__, "is_recipient", is_recipient)
+        pulumi.set(__self__, "is_regex", is_regex)
+        pulumi.set(__self__, "is_sender", is_sender)
+        pulumi.set(__self__, "is_spoof", is_spoof)
+        pulumi.set(__self__, "is_trusted_sender", is_trusted_sender)
+        pulumi.set(__self__, "last_modified", last_modified)
+        pulumi.set(__self__, "modified_at", modified_at)
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "pattern_type", pattern_type)
+        pulumi.set(__self__, "verify_sender", verify_sender)
+
+    @_builtins.property
+    @pulumi.getter
+    def comments(self) -> _builtins.str:
+        return pulumi.get(self, "comments")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Allow policy identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isAcceptableSender")
+    def is_acceptable_sender(self) -> _builtins.bool:
+        """
+        Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
+        """
+        return pulumi.get(self, "is_acceptable_sender")
+
+    @_builtins.property
+    @pulumi.getter(name="isExemptRecipient")
+    def is_exempt_recipient(self) -> _builtins.bool:
+        """
+        Bypasses all detections for messages to this recipient.
+        """
+        return pulumi.get(self, "is_exempt_recipient")
+
+    @_builtins.property
+    @pulumi.getter(name="isRecipient")
+    @_utilities.deprecated("""Use `is_exempt_recipient` instead.""")
+    def is_recipient(self) -> _builtins.bool:
+        """
+        Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.
+        """
+        return pulumi.get(self, "is_recipient")
+
+    @_builtins.property
+    @pulumi.getter(name="isRegex")
+    def is_regex(self) -> _builtins.bool:
+        return pulumi.get(self, "is_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="isSender")
+    @_utilities.deprecated("""Use `is_trusted_sender` instead.""")
+    def is_sender(self) -> _builtins.bool:
+        """
+        Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.
+        """
+        return pulumi.get(self, "is_sender")
+
+    @_builtins.property
+    @pulumi.getter(name="isSpoof")
+    @_utilities.deprecated("""Use `is_acceptable_sender` instead.""")
+    def is_spoof(self) -> _builtins.bool:
+        """
+        Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.
+        """
+        return pulumi.get(self, "is_spoof")
+
+    @_builtins.property
+    @pulumi.getter(name="isTrustedSender")
+    def is_trusted_sender(self) -> _builtins.bool:
+        """
+        Bypasses all detections and link following for messages from this sender.
+        """
+        return pulumi.get(self, "is_trusted_sender")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""Use `modified_at` instead.""")
+    def last_modified(self) -> _builtins.str:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
+        return pulumi.get(self, "last_modified")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> _builtins.str:
+        return pulumi.get(self, "modified_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> _builtins.str:
+        """
+        The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        """
+        return pulumi.get(self, "pattern")
+
+    @_builtins.property
+    @pulumi.getter(name="patternType")
+    def pattern_type(self) -> _builtins.str:
+        """
+        Type of pattern matching.
+        - EMAIL: matches a full email address (e.g. `user@example.com`)
+        - DOMAIN: matches a domain name (e.g. `example.com`)
+        - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+          Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        """
+        return pulumi.get(self, "pattern_type")
+
+    @_builtins.property
+    @pulumi.getter(name="verifySender")
+    def verify_sender(self) -> _builtins.bool:
+        """
+        Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.
+        """
+        return pulumi.get(self, "verify_sender")
+
+
+@pulumi.output_type
+class GetEmailSecurityAllowPolicyFilterResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 is_acceptable_sender: Optional[_builtins.bool] = None,
+                 is_exempt_recipient: Optional[_builtins.bool] = None,
+                 is_trusted_sender: Optional[_builtins.bool] = None,
+                 order: Optional[_builtins.str] = None,
+                 pattern: Optional[_builtins.str] = None,
+                 pattern_type: Optional[_builtins.str] = None,
+                 search: Optional[_builtins.str] = None,
+                 verify_sender: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str direction: The sorting direction.
+               Available values: "asc", "desc".
+        :param _builtins.bool is_acceptable_sender: Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
+        :param _builtins.bool is_exempt_recipient: Filter to show only policies where messages to the recipient bypass all detections.
+        :param _builtins.bool is_trusted_sender: Filter to show only policies where messages from the sender bypass all detections and link following.
+        :param _builtins.str order: Field to sort by.
+               Available values: "pattern", "created_at".
+        :param _builtins.str pattern_type: Type of pattern matching.
+               - EMAIL: matches a full email address (e.g. `user@example.com`)
+               - DOMAIN: matches a domain name (e.g. `example.com`)
+               - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+               - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+                 Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        :param _builtins.str search: Search term for filtering records. Behavior may change.
+        :param _builtins.bool verify_sender: Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if is_acceptable_sender is not None:
+            pulumi.set(__self__, "is_acceptable_sender", is_acceptable_sender)
+        if is_exempt_recipient is not None:
+            pulumi.set(__self__, "is_exempt_recipient", is_exempt_recipient)
+        if is_trusted_sender is not None:
+            pulumi.set(__self__, "is_trusted_sender", is_trusted_sender)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if pattern_type is not None:
+            pulumi.set(__self__, "pattern_type", pattern_type)
+        if search is not None:
+            pulumi.set(__self__, "search", search)
+        if verify_sender is not None:
+            pulumi.set(__self__, "verify_sender", verify_sender)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sorting direction.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="isAcceptableSender")
+    def is_acceptable_sender(self) -> Optional[_builtins.bool]:
+        """
+        Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
+        """
+        return pulumi.get(self, "is_acceptable_sender")
+
+    @_builtins.property
+    @pulumi.getter(name="isExemptRecipient")
+    def is_exempt_recipient(self) -> Optional[_builtins.bool]:
+        """
+        Filter to show only policies where messages to the recipient bypass all detections.
+        """
+        return pulumi.get(self, "is_exempt_recipient")
+
+    @_builtins.property
+    @pulumi.getter(name="isTrustedSender")
+    def is_trusted_sender(self) -> Optional[_builtins.bool]:
+        """
+        Filter to show only policies where messages from the sender bypass all detections and link following.
+        """
+        return pulumi.get(self, "is_trusted_sender")
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> Optional[_builtins.str]:
+        """
+        Field to sort by.
+        Available values: "pattern", "created_at".
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "pattern")
+
+    @_builtins.property
+    @pulumi.getter(name="patternType")
+    def pattern_type(self) -> Optional[_builtins.str]:
+        """
+        Type of pattern matching.
+        - EMAIL: matches a full email address (e.g. `user@example.com`)
+        - DOMAIN: matches a domain name (e.g. `example.com`)
+        - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+          Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        """
+        return pulumi.get(self, "pattern_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Search term for filtering records. Behavior may change.
+        """
+        return pulumi.get(self, "search")
+
+    @_builtins.property
+    @pulumi.getter(name="verifySender")
+    def verify_sender(self) -> Optional[_builtins.bool]:
+        """
+        Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.
+        """
+        return pulumi.get(self, "verify_sender")
+
+
+@pulumi.output_type
 class GetEmailSecurityBlockSenderFilterResult(dict):
     def __init__(__self__, *,
                  direction: Optional[_builtins.str] = None,
@@ -97027,17 +96735,14 @@ class GetEmailSecurityBlockSendersResultResult(dict):
                  pattern: _builtins.str,
                  pattern_type: _builtins.str):
         """
-        :param _builtins.str id: Blocked sender pattern identifier
+        :param _builtins.str id: Blocked sender pattern identifier.
         :param _builtins.str last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
-        :param _builtins.str pattern: The pattern value to match against. Format depends on `pattern_type`:
-               - EMAIL: a valid email address, e.g. `user@example.com`
-               - DOMAIN: a valid domain name, e.g. `example.com`
-               - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+        :param _builtins.str pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
         :param _builtins.str pattern_type: Type of pattern matching.
                - EMAIL: matches a full email address (e.g. `user@example.com`)
                - DOMAIN: matches a domain name (e.g. `example.com`)
-               - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-               - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+               - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+               - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
                  Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         pulumi.set(__self__, "comments", comments)
@@ -97063,7 +96768,7 @@ class GetEmailSecurityBlockSendersResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Blocked sender pattern identifier
+        Blocked sender pattern identifier.
         """
         return pulumi.get(self, "id")
 
@@ -97090,10 +96795,7 @@ class GetEmailSecurityBlockSendersResultResult(dict):
     @pulumi.getter
     def pattern(self) -> _builtins.str:
         """
-        The pattern value to match against. Format depends on `pattern_type`:
-        - EMAIL: a valid email address, e.g. `user@example.com`
-        - DOMAIN: a valid domain name, e.g. `example.com`
-        - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+        The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
         """
         return pulumi.get(self, "pattern")
 
@@ -97104,11 +96806,418 @@ class GetEmailSecurityBlockSendersResultResult(dict):
         Type of pattern matching.
         - EMAIL: matches a full email address (e.g. `user@example.com`)
         - DOMAIN: matches a domain name (e.g. `example.com`)
-        - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-        - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+        - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+        - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
           Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         return pulumi.get(self, "pattern_type")
+
+
+@pulumi.output_type
+class GetEmailSecurityDomainAuthorizationResult(dict):
+    def __init__(__self__, *,
+                 authorized: _builtins.bool,
+                 status_message: _builtins.str,
+                 timestamp: _builtins.str):
+        pulumi.set(__self__, "authorized", authorized)
+        pulumi.set(__self__, "status_message", status_message)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter
+    def authorized(self) -> _builtins.bool:
+        return pulumi.get(self, "authorized")
+
+    @_builtins.property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> _builtins.str:
+        return pulumi.get(self, "status_message")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class GetEmailSecurityDomainEmailsProcessedResult(dict):
+    def __init__(__self__, *,
+                 timestamp: _builtins.str,
+                 total_emails_processed: _builtins.int,
+                 total_emails_processed_previous: _builtins.int):
+        pulumi.set(__self__, "timestamp", timestamp)
+        pulumi.set(__self__, "total_emails_processed", total_emails_processed)
+        pulumi.set(__self__, "total_emails_processed_previous", total_emails_processed_previous)
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        return pulumi.get(self, "timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEmailsProcessed")
+    def total_emails_processed(self) -> _builtins.int:
+        return pulumi.get(self, "total_emails_processed")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEmailsProcessedPrevious")
+    def total_emails_processed_previous(self) -> _builtins.int:
+        return pulumi.get(self, "total_emails_processed_previous")
+
+
+@pulumi.output_type
+class GetEmailSecurityDomainFilterResult(dict):
+    def __init__(__self__, *,
+                 active_delivery_mode: Optional[_builtins.str] = None,
+                 allowed_delivery_mode: Optional[_builtins.str] = None,
+                 direction: Optional[_builtins.str] = None,
+                 domains: Optional[Sequence[_builtins.str]] = None,
+                 integration_id: Optional[_builtins.str] = None,
+                 order: Optional[_builtins.str] = None,
+                 search: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str active_delivery_mode: Currently active delivery mode to filter by.
+               Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+        :param _builtins.str allowed_delivery_mode: Delivery mode to filter by.
+               Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+        :param _builtins.str direction: The sorting direction.
+               Available values: "asc", "desc".
+        :param Sequence[_builtins.str] domains: Domain names to filter by.
+        :param _builtins.str integration_id: Integration ID to filter by.
+        :param _builtins.str order: Field to sort by.
+               Available values: "domain", "created_at".
+        :param _builtins.str search: Search term for filtering records. Behavior may change.
+        :param _builtins.str status: Filters response to domains with the provided status.
+               Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+        """
+        if active_delivery_mode is not None:
+            pulumi.set(__self__, "active_delivery_mode", active_delivery_mode)
+        if allowed_delivery_mode is not None:
+            pulumi.set(__self__, "allowed_delivery_mode", allowed_delivery_mode)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if integration_id is not None:
+            pulumi.set(__self__, "integration_id", integration_id)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if search is not None:
+            pulumi.set(__self__, "search", search)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="activeDeliveryMode")
+    def active_delivery_mode(self) -> Optional[_builtins.str]:
+        """
+        Currently active delivery mode to filter by.
+        Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+        """
+        return pulumi.get(self, "active_delivery_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedDeliveryMode")
+    def allowed_delivery_mode(self) -> Optional[_builtins.str]:
+        """
+        Delivery mode to filter by.
+        Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+        """
+        return pulumi.get(self, "allowed_delivery_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sorting direction.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def domains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Domain names to filter by.
+        """
+        return pulumi.get(self, "domains")
+
+    @_builtins.property
+    @pulumi.getter(name="integrationId")
+    def integration_id(self) -> Optional[_builtins.str]:
+        """
+        Integration ID to filter by.
+        """
+        return pulumi.get(self, "integration_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> Optional[_builtins.str]:
+        """
+        Field to sort by.
+        Available values: "domain", "created_at".
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Search term for filtering records. Behavior may change.
+        """
+        return pulumi.get(self, "search")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Filters response to domains with the provided status.
+        Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEmailSecurityDomainsResultResult(dict):
+    def __init__(__self__, *,
+                 allowed_delivery_modes: Sequence[_builtins.str],
+                 authorization: 'outputs.GetEmailSecurityDomainsResultAuthorizationResult',
+                 created_at: _builtins.str,
+                 dmarc_status: _builtins.str,
+                 domain: _builtins.str,
+                 drop_dispositions: Sequence[_builtins.str],
+                 emails_processed: 'outputs.GetEmailSecurityDomainsResultEmailsProcessedResult',
+                 folder: _builtins.str,
+                 id: _builtins.str,
+                 inbox_provider: _builtins.str,
+                 integration_id: _builtins.str,
+                 ip_restrictions: Sequence[_builtins.str],
+                 last_modified: _builtins.str,
+                 lookback_hops: _builtins.int,
+                 modified_at: _builtins.str,
+                 o365_tenant_id: _builtins.str,
+                 regions: Sequence[_builtins.str],
+                 require_tls_inbound: _builtins.bool,
+                 require_tls_outbound: _builtins.bool,
+                 spf_status: _builtins.str,
+                 status: _builtins.str,
+                 transport: _builtins.str):
+        """
+        :param _builtins.str dmarc_status: Available values: "none", "good", "invalid".
+        :param _builtins.str folder: Available values: "AllItems", "Inbox".
+        :param _builtins.str id: Domain identifier.
+        :param _builtins.str inbox_provider: Available values: "Microsoft", "Google".
+        :param _builtins.str last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param _builtins.str spf_status: Available values: "none", "good", "neutral", "open", "invalid".
+        :param _builtins.str status: Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+        """
+        pulumi.set(__self__, "allowed_delivery_modes", allowed_delivery_modes)
+        pulumi.set(__self__, "authorization", authorization)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "dmarc_status", dmarc_status)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "drop_dispositions", drop_dispositions)
+        pulumi.set(__self__, "emails_processed", emails_processed)
+        pulumi.set(__self__, "folder", folder)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "inbox_provider", inbox_provider)
+        pulumi.set(__self__, "integration_id", integration_id)
+        pulumi.set(__self__, "ip_restrictions", ip_restrictions)
+        pulumi.set(__self__, "last_modified", last_modified)
+        pulumi.set(__self__, "lookback_hops", lookback_hops)
+        pulumi.set(__self__, "modified_at", modified_at)
+        pulumi.set(__self__, "o365_tenant_id", o365_tenant_id)
+        pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "require_tls_inbound", require_tls_inbound)
+        pulumi.set(__self__, "require_tls_outbound", require_tls_outbound)
+        pulumi.set(__self__, "spf_status", spf_status)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transport", transport)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedDeliveryModes")
+    def allowed_delivery_modes(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "allowed_delivery_modes")
+
+    @_builtins.property
+    @pulumi.getter
+    def authorization(self) -> 'outputs.GetEmailSecurityDomainsResultAuthorizationResult':
+        return pulumi.get(self, "authorization")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dmarcStatus")
+    def dmarc_status(self) -> _builtins.str:
+        """
+        Available values: "none", "good", "invalid".
+        """
+        return pulumi.get(self, "dmarc_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="dropDispositions")
+    def drop_dispositions(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "drop_dispositions")
+
+    @_builtins.property
+    @pulumi.getter(name="emailsProcessed")
+    def emails_processed(self) -> 'outputs.GetEmailSecurityDomainsResultEmailsProcessedResult':
+        return pulumi.get(self, "emails_processed")
+
+    @_builtins.property
+    @pulumi.getter
+    def folder(self) -> _builtins.str:
+        """
+        Available values: "AllItems", "Inbox".
+        """
+        return pulumi.get(self, "folder")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Domain identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="inboxProvider")
+    def inbox_provider(self) -> _builtins.str:
+        """
+        Available values: "Microsoft", "Google".
+        """
+        return pulumi.get(self, "inbox_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="integrationId")
+    def integration_id(self) -> _builtins.str:
+        return pulumi.get(self, "integration_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipRestrictions")
+    def ip_restrictions(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "ip_restrictions")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""Use `modified_at` instead.""")
+    def last_modified(self) -> _builtins.str:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
+        return pulumi.get(self, "last_modified")
+
+    @_builtins.property
+    @pulumi.getter(name="lookbackHops")
+    def lookback_hops(self) -> _builtins.int:
+        return pulumi.get(self, "lookback_hops")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> _builtins.str:
+        return pulumi.get(self, "modified_at")
+
+    @_builtins.property
+    @pulumi.getter(name="o365TenantId")
+    def o365_tenant_id(self) -> _builtins.str:
+        return pulumi.get(self, "o365_tenant_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "regions")
+
+    @_builtins.property
+    @pulumi.getter(name="requireTlsInbound")
+    def require_tls_inbound(self) -> _builtins.bool:
+        return pulumi.get(self, "require_tls_inbound")
+
+    @_builtins.property
+    @pulumi.getter(name="requireTlsOutbound")
+    def require_tls_outbound(self) -> _builtins.bool:
+        return pulumi.get(self, "require_tls_outbound")
+
+    @_builtins.property
+    @pulumi.getter(name="spfStatus")
+    def spf_status(self) -> _builtins.str:
+        """
+        Available values: "none", "good", "neutral", "open", "invalid".
+        """
+        return pulumi.get(self, "spf_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def transport(self) -> _builtins.str:
+        return pulumi.get(self, "transport")
+
+
+@pulumi.output_type
+class GetEmailSecurityDomainsResultAuthorizationResult(dict):
+    def __init__(__self__, *,
+                 authorized: _builtins.bool,
+                 status_message: _builtins.str,
+                 timestamp: _builtins.str):
+        pulumi.set(__self__, "authorized", authorized)
+        pulumi.set(__self__, "status_message", status_message)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter
+    def authorized(self) -> _builtins.bool:
+        return pulumi.get(self, "authorized")
+
+    @_builtins.property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> _builtins.str:
+        return pulumi.get(self, "status_message")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class GetEmailSecurityDomainsResultEmailsProcessedResult(dict):
+    def __init__(__self__, *,
+                 timestamp: _builtins.str,
+                 total_emails_processed: _builtins.int,
+                 total_emails_processed_previous: _builtins.int):
+        pulumi.set(__self__, "timestamp", timestamp)
+        pulumi.set(__self__, "total_emails_processed", total_emails_processed)
+        pulumi.set(__self__, "total_emails_processed_previous", total_emails_processed_previous)
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        return pulumi.get(self, "timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEmailsProcessed")
+    def total_emails_processed(self) -> _builtins.int:
+        return pulumi.get(self, "total_emails_processed")
+
+    @_builtins.property
+    @pulumi.getter(name="totalEmailsProcessedPrevious")
+    def total_emails_processed_previous(self) -> _builtins.int:
+        return pulumi.get(self, "total_emails_processed_previous")
 
 
 @pulumi.output_type
@@ -97439,6 +97548,127 @@ class GetEmailSecurityTrustedDomainsListResultResult(dict):
     @pulumi.getter
     def pattern(self) -> _builtins.str:
         return pulumi.get(self, "pattern")
+
+
+@pulumi.output_type
+class GetEmailSendingSubdomainsResultResult(dict):
+    def __init__(__self__, *,
+                 created: _builtins.str,
+                 dkim_selector: _builtins.str,
+                 drop_suppressed_recipients: _builtins.bool,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 modified: _builtins.str,
+                 name: _builtins.str,
+                 preview_enabled: _builtins.bool,
+                 return_path_domain: _builtins.str,
+                 tag: _builtins.str):
+        """
+        :param _builtins.str created: The date and time the destination address has been created.
+        :param _builtins.str dkim_selector: The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`.
+        :param _builtins.bool drop_suppressed_recipients: Whether a send request that includes a recipient suppressed on
+               this subdomain drops that recipient and still delivers to the
+               rest, instead of failing the entire request.
+        :param _builtins.bool enabled: Whether Email Sending is enabled on this subdomain.
+        :param _builtins.str id: Sending subdomain identifier.
+        :param _builtins.str modified: The date and time the destination address was last modified.
+        :param _builtins.str name: The exact domain name or a leftmost wildcard such as `*.example.com`.
+        :param _builtins.bool preview_enabled: Whether sent messages from this subdomain can be previewed in the activity log.
+        :param _builtins.str return_path_domain: The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.
+        :param _builtins.str tag: Sending subdomain identifier.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "dkim_selector", dkim_selector)
+        pulumi.set(__self__, "drop_suppressed_recipients", drop_suppressed_recipients)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modified", modified)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "preview_enabled", preview_enabled)
+        pulumi.set(__self__, "return_path_domain", return_path_domain)
+        pulumi.set(__self__, "tag", tag)
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        The date and time the destination address has been created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter(name="dkimSelector")
+    def dkim_selector(self) -> _builtins.str:
+        """
+        The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`.
+        """
+        return pulumi.get(self, "dkim_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="dropSuppressedRecipients")
+    def drop_suppressed_recipients(self) -> _builtins.bool:
+        """
+        Whether a send request that includes a recipient suppressed on
+        this subdomain drops that recipient and still delivers to the
+        rest, instead of failing the entire request.
+        """
+        return pulumi.get(self, "drop_suppressed_recipients")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether Email Sending is enabled on this subdomain.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Sending subdomain identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def modified(self) -> _builtins.str:
+        """
+        The date and time the destination address was last modified.
+        """
+        return pulumi.get(self, "modified")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The exact domain name or a leftmost wildcard such as `*.example.com`.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="previewEnabled")
+    def preview_enabled(self) -> _builtins.bool:
+        """
+        Whether sent messages from this subdomain can be previewed in the activity log.
+        """
+        return pulumi.get(self, "preview_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="returnPathDomain")
+    def return_path_domain(self) -> _builtins.str:
+        """
+        The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.
+        """
+        return pulumi.get(self, "return_path_domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> _builtins.str:
+        """
+        Sending subdomain identifier.
+        """
+        return pulumi.get(self, "tag")
 
 
 @pulumi.output_type
@@ -103479,7 +103709,7 @@ class GetLogpushJobsResultResult(dict):
                  output_options: 'outputs.GetLogpushJobsResultOutputOptionsResult'):
         """
         :param _builtins.str dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+               Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
         :param _builtins.str destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         :param _builtins.bool enabled: Flag that indicates if the job is enabled.
         :param _builtins.str error_message: If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
@@ -103518,7 +103748,7 @@ class GetLogpushJobsResultResult(dict):
     def dataset(self) -> _builtins.str:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-        Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+        Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
         """
         return pulumi.get(self, "dataset")
 
@@ -104176,6 +104406,8 @@ class GetMagicTransitConnectorsResultResult(dict):
                  last_updated: _builtins.str,
                  license_key: _builtins.str,
                  notes: _builtins.str,
+                 primary: _builtins.bool,
+                 site_id: _builtins.str,
                  timezone: _builtins.str):
         """
         :param Sequence[_builtins.str] interrupt_window_days_of_weeks: Allowed days of the week for upgrades. Default is all days.
@@ -104193,6 +104425,8 @@ class GetMagicTransitConnectorsResultResult(dict):
         pulumi.set(__self__, "last_updated", last_updated)
         pulumi.set(__self__, "license_key", license_key)
         pulumi.set(__self__, "notes", notes)
+        pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "site_id", site_id)
         pulumi.set(__self__, "timezone", timezone)
 
     @_builtins.property
@@ -104260,6 +104494,16 @@ class GetMagicTransitConnectorsResultResult(dict):
     @pulumi.getter
     def notes(self) -> _builtins.str:
         return pulumi.get(self, "notes")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> _builtins.bool:
+        return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> _builtins.str:
+        return pulumi.get(self, "site_id")
 
     @_builtins.property
     @pulumi.getter
@@ -104842,6 +105086,7 @@ class GetMagicTransitSiteLanStaticAddressingDhcpServerResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="dnsServer")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def dns_server(self) -> _builtins.str:
         """
         A valid IPv4 address.
@@ -105216,6 +105461,7 @@ class GetMagicTransitSiteLansResultStaticAddressingDhcpServerResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="dnsServer")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def dns_server(self) -> _builtins.str:
         """
         A valid IPv4 address.
@@ -106877,6 +107123,24 @@ class GetMtlsCertificatesResultResult(dict):
 
 
 @pulumi.output_type
+class GetNelSettingValueResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetNotificationPoliciesResultResult(dict):
     def __init__(__self__, *,
                  alert_interval: _builtins.str,
@@ -108247,6 +108511,7 @@ class GetOauthClientsResultResult(dict):
                  grant_types: Sequence[_builtins.str],
                  has_rotated_secret: _builtins.bool,
                  logo_uri: _builtins.str,
+                 optional_scopes: Sequence[_builtins.str],
                  policy_uri: _builtins.str,
                  post_logout_redirect_uris: Sequence[_builtins.str],
                  promoted_at: _builtins.str,
@@ -108267,6 +108532,7 @@ class GetOauthClientsResultResult(dict):
         :param Sequence[_builtins.str] grant_types: Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.
         :param _builtins.bool has_rotated_secret: Indicates whether the client has a rotated secret that has not yet been deleted.
         :param _builtins.str logo_uri: URL of the client's logo.
+        :param Sequence[_builtins.str] optional_scopes: Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
         :param _builtins.str policy_uri: URL that points to a privacy policy document.
         :param Sequence[_builtins.str] post_logout_redirect_uris: Array of allowed post-logout redirect URIs.
         :param _builtins.str promoted_at: Timestamp when the OAuth client was promoted to public visibility.
@@ -108289,6 +108555,7 @@ class GetOauthClientsResultResult(dict):
         pulumi.set(__self__, "grant_types", grant_types)
         pulumi.set(__self__, "has_rotated_secret", has_rotated_secret)
         pulumi.set(__self__, "logo_uri", logo_uri)
+        pulumi.set(__self__, "optional_scopes", optional_scopes)
         pulumi.set(__self__, "policy_uri", policy_uri)
         pulumi.set(__self__, "post_logout_redirect_uris", post_logout_redirect_uris)
         pulumi.set(__self__, "promoted_at", promoted_at)
@@ -108371,6 +108638,14 @@ class GetOauthClientsResultResult(dict):
         URL of the client's logo.
         """
         return pulumi.get(self, "logo_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="optionalScopes")
+    def optional_scopes(self) -> Sequence[_builtins.str]:
+        """
+        Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
+        """
+        return pulumi.get(self, "optional_scopes")
 
     @_builtins.property
     @pulumi.getter(name="policyUri")
@@ -108777,6 +109052,7 @@ class GetOrganizationMetaResult(dict):
 class GetOrganizationMetaTenantFlagsResult(dict):
     def __init__(__self__, *,
                  account_creation: _builtins.str,
+                 account_creation_applies_tenant_defaults: _builtins.str,
                  account_deletion: _builtins.str,
                  account_migration: _builtins.str,
                  account_mobility: _builtins.str,
@@ -108784,6 +109060,7 @@ class GetOrganizationMetaTenantFlagsResult(dict):
                  member_management: _builtins.str,
                  sub_org_creation: _builtins.str):
         pulumi.set(__self__, "account_creation", account_creation)
+        pulumi.set(__self__, "account_creation_applies_tenant_defaults", account_creation_applies_tenant_defaults)
         pulumi.set(__self__, "account_deletion", account_deletion)
         pulumi.set(__self__, "account_migration", account_migration)
         pulumi.set(__self__, "account_mobility", account_mobility)
@@ -108795,6 +109072,11 @@ class GetOrganizationMetaTenantFlagsResult(dict):
     @pulumi.getter(name="accountCreation")
     def account_creation(self) -> _builtins.str:
         return pulumi.get(self, "account_creation")
+
+    @_builtins.property
+    @pulumi.getter(name="accountCreationAppliesTenantDefaults")
+    def account_creation_applies_tenant_defaults(self) -> _builtins.str:
+        return pulumi.get(self, "account_creation_applies_tenant_defaults")
 
     @_builtins.property
     @pulumi.getter(name="accountDeletion")
@@ -109101,6 +109383,7 @@ class GetOrganizationsResultMetaResult(dict):
 class GetOrganizationsResultMetaTenantFlagsResult(dict):
     def __init__(__self__, *,
                  account_creation: _builtins.str,
+                 account_creation_applies_tenant_defaults: _builtins.str,
                  account_deletion: _builtins.str,
                  account_migration: _builtins.str,
                  account_mobility: _builtins.str,
@@ -109108,6 +109391,7 @@ class GetOrganizationsResultMetaTenantFlagsResult(dict):
                  member_management: _builtins.str,
                  sub_org_creation: _builtins.str):
         pulumi.set(__self__, "account_creation", account_creation)
+        pulumi.set(__self__, "account_creation_applies_tenant_defaults", account_creation_applies_tenant_defaults)
         pulumi.set(__self__, "account_deletion", account_deletion)
         pulumi.set(__self__, "account_migration", account_migration)
         pulumi.set(__self__, "account_mobility", account_mobility)
@@ -109119,6 +109403,11 @@ class GetOrganizationsResultMetaTenantFlagsResult(dict):
     @pulumi.getter(name="accountCreation")
     def account_creation(self) -> _builtins.str:
         return pulumi.get(self, "account_creation")
+
+    @_builtins.property
+    @pulumi.getter(name="accountCreationAppliesTenantDefaults")
+    def account_creation_applies_tenant_defaults(self) -> _builtins.str:
+        return pulumi.get(self, "account_creation_applies_tenant_defaults")
 
     @_builtins.property
     @pulumi.getter(name="accountDeletion")
@@ -116075,7 +116364,8 @@ class GetPipelineSinkFormatResult(dict):
                  type: _builtins.str,
                  unstructured: _builtins.bool):
         """
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+        :param _builtins.str compression: Specifies the compression applied to JSON sink output.
+               Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
         :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
         :param _builtins.str type: Available values: "json", "parquet".
@@ -116091,7 +116381,8 @@ class GetPipelineSinkFormatResult(dict):
     @pulumi.getter
     def compression(self) -> _builtins.str:
         """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+        Specifies the compression applied to JSON sink output.
+        Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         """
         return pulumi.get(self, "compression")
 
@@ -116134,21 +116425,14 @@ class GetPipelineSinkFormatResult(dict):
 class GetPipelineSinkSchemaResult(dict):
     def __init__(__self__, *,
                  fields: Sequence['outputs.GetPipelineSinkSchemaFieldResult'],
-                 format: 'outputs.GetPipelineSinkSchemaFormatResult',
                  inferred: _builtins.bool):
         pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "inferred", inferred)
 
     @_builtins.property
     @pulumi.getter
     def fields(self) -> Sequence['outputs.GetPipelineSinkSchemaFieldResult']:
         return pulumi.get(self, "fields")
-
-    @_builtins.property
-    @pulumi.getter
-    def format(self) -> 'outputs.GetPipelineSinkSchemaFormatResult':
-        return pulumi.get(self, "format")
 
     @_builtins.property
     @pulumi.getter
@@ -116214,71 +116498,6 @@ class GetPipelineSinkSchemaFieldResult(dict):
 
 
 @pulumi.output_type
-class GetPipelineSinkSchemaFormatResult(dict):
-    def __init__(__self__, *,
-                 compression: _builtins.str,
-                 decimal_encoding: _builtins.str,
-                 row_group_bytes: _builtins.int,
-                 timestamp_format: _builtins.str,
-                 type: _builtins.str,
-                 unstructured: _builtins.bool):
-        """
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
-        :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
-        :param _builtins.str type: Available values: "json", "parquet".
-        """
-        pulumi.set(__self__, "compression", compression)
-        pulumi.set(__self__, "decimal_encoding", decimal_encoding)
-        pulumi.set(__self__, "row_group_bytes", row_group_bytes)
-        pulumi.set(__self__, "timestamp_format", timestamp_format)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "unstructured", unstructured)
-
-    @_builtins.property
-    @pulumi.getter
-    def compression(self) -> _builtins.str:
-        """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        """
-        return pulumi.get(self, "compression")
-
-    @_builtins.property
-    @pulumi.getter(name="decimalEncoding")
-    def decimal_encoding(self) -> _builtins.str:
-        """
-        Available values: "number", "string", "bytes".
-        """
-        return pulumi.get(self, "decimal_encoding")
-
-    @_builtins.property
-    @pulumi.getter(name="rowGroupBytes")
-    def row_group_bytes(self) -> _builtins.int:
-        return pulumi.get(self, "row_group_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="timestampFormat")
-    def timestamp_format(self) -> _builtins.str:
-        """
-        Available values: "rfc3339", "unix_millis".
-        """
-        return pulumi.get(self, "timestamp_format")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Available values: "json", "parquet".
-        """
-        return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def unstructured(self) -> _builtins.bool:
-        return pulumi.get(self, "unstructured")
-
-
-@pulumi.output_type
 class GetPipelineSinksResultResult(dict):
     def __init__(__self__, *,
                  config: 'outputs.GetPipelineSinksResultConfigResult',
@@ -116291,8 +116510,10 @@ class GetPipelineSinksResultResult(dict):
                  type: _builtins.str):
         """
         :param 'GetPipelineSinksResultConfigArgs' config: Defines the configuration of the R2 Sink.
+        :param 'GetPipelineSinksResultFormatArgs' format: Defines the output data format of a sink.
         :param _builtins.str id: Indicates a unique identifier for this sink.
         :param _builtins.str name: Defines the name of the Sink.
+        :param 'GetPipelineSinksResultSchemaArgs' schema: Defines the schema of the events in the data stream.
         :param _builtins.str type: Specifies the type of sink.
                Available values: "r2", "r2*data*catalog".
         """
@@ -116321,6 +116542,9 @@ class GetPipelineSinksResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def format(self) -> 'outputs.GetPipelineSinksResultFormatResult':
+        """
+        Defines the output data format of a sink.
+        """
         return pulumi.get(self, "format")
 
     @_builtins.property
@@ -116347,6 +116571,9 @@ class GetPipelineSinksResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def schema(self) -> 'outputs.GetPipelineSinksResultSchemaResult':
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @_builtins.property
@@ -116575,7 +116802,8 @@ class GetPipelineSinksResultFormatResult(dict):
                  type: _builtins.str,
                  unstructured: _builtins.bool):
         """
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+        :param _builtins.str compression: Specifies the compression applied to JSON sink output.
+               Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
         :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
         :param _builtins.str type: Available values: "json", "parquet".
@@ -116591,7 +116819,8 @@ class GetPipelineSinksResultFormatResult(dict):
     @pulumi.getter
     def compression(self) -> _builtins.str:
         """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+        Specifies the compression applied to JSON sink output.
+        Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         """
         return pulumi.get(self, "compression")
 
@@ -116634,21 +116863,14 @@ class GetPipelineSinksResultFormatResult(dict):
 class GetPipelineSinksResultSchemaResult(dict):
     def __init__(__self__, *,
                  fields: Sequence['outputs.GetPipelineSinksResultSchemaFieldResult'],
-                 format: 'outputs.GetPipelineSinksResultSchemaFormatResult',
                  inferred: _builtins.bool):
         pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "inferred", inferred)
 
     @_builtins.property
     @pulumi.getter
     def fields(self) -> Sequence['outputs.GetPipelineSinksResultSchemaFieldResult']:
         return pulumi.get(self, "fields")
-
-    @_builtins.property
-    @pulumi.getter
-    def format(self) -> 'outputs.GetPipelineSinksResultSchemaFormatResult':
-        return pulumi.get(self, "format")
 
     @_builtins.property
     @pulumi.getter
@@ -116711,71 +116933,6 @@ class GetPipelineSinksResultSchemaFieldResult(dict):
         Available values: "second", "millisecond", "microsecond", "nanosecond".
         """
         return pulumi.get(self, "unit")
-
-
-@pulumi.output_type
-class GetPipelineSinksResultSchemaFormatResult(dict):
-    def __init__(__self__, *,
-                 compression: _builtins.str,
-                 decimal_encoding: _builtins.str,
-                 row_group_bytes: _builtins.int,
-                 timestamp_format: _builtins.str,
-                 type: _builtins.str,
-                 unstructured: _builtins.bool):
-        """
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
-        :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
-        :param _builtins.str type: Available values: "json", "parquet".
-        """
-        pulumi.set(__self__, "compression", compression)
-        pulumi.set(__self__, "decimal_encoding", decimal_encoding)
-        pulumi.set(__self__, "row_group_bytes", row_group_bytes)
-        pulumi.set(__self__, "timestamp_format", timestamp_format)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "unstructured", unstructured)
-
-    @_builtins.property
-    @pulumi.getter
-    def compression(self) -> _builtins.str:
-        """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        """
-        return pulumi.get(self, "compression")
-
-    @_builtins.property
-    @pulumi.getter(name="decimalEncoding")
-    def decimal_encoding(self) -> _builtins.str:
-        """
-        Available values: "number", "string", "bytes".
-        """
-        return pulumi.get(self, "decimal_encoding")
-
-    @_builtins.property
-    @pulumi.getter(name="rowGroupBytes")
-    def row_group_bytes(self) -> _builtins.int:
-        return pulumi.get(self, "row_group_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="timestampFormat")
-    def timestamp_format(self) -> _builtins.str:
-        """
-        Available values: "rfc3339", "unix_millis".
-        """
-        return pulumi.get(self, "timestamp_format")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Available values: "json", "parquet".
-        """
-        return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def unstructured(self) -> _builtins.bool:
-        return pulumi.get(self, "unstructured")
 
 
 @pulumi.output_type
@@ -116930,21 +117087,14 @@ class GetPipelineStreamHttpCorsResult(dict):
 class GetPipelineStreamSchemaResult(dict):
     def __init__(__self__, *,
                  fields: Sequence['outputs.GetPipelineStreamSchemaFieldResult'],
-                 format: 'outputs.GetPipelineStreamSchemaFormatResult',
                  inferred: _builtins.bool):
         pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "inferred", inferred)
 
     @_builtins.property
     @pulumi.getter
     def fields(self) -> Sequence['outputs.GetPipelineStreamSchemaFieldResult']:
         return pulumi.get(self, "fields")
-
-    @_builtins.property
-    @pulumi.getter
-    def format(self) -> 'outputs.GetPipelineStreamSchemaFormatResult':
-        return pulumi.get(self, "format")
 
     @_builtins.property
     @pulumi.getter
@@ -117010,71 +117160,6 @@ class GetPipelineStreamSchemaFieldResult(dict):
 
 
 @pulumi.output_type
-class GetPipelineStreamSchemaFormatResult(dict):
-    def __init__(__self__, *,
-                 compression: _builtins.str,
-                 decimal_encoding: _builtins.str,
-                 row_group_bytes: _builtins.int,
-                 timestamp_format: _builtins.str,
-                 type: _builtins.str,
-                 unstructured: _builtins.bool):
-        """
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
-        :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
-        :param _builtins.str type: Available values: "json", "parquet".
-        """
-        pulumi.set(__self__, "compression", compression)
-        pulumi.set(__self__, "decimal_encoding", decimal_encoding)
-        pulumi.set(__self__, "row_group_bytes", row_group_bytes)
-        pulumi.set(__self__, "timestamp_format", timestamp_format)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "unstructured", unstructured)
-
-    @_builtins.property
-    @pulumi.getter
-    def compression(self) -> _builtins.str:
-        """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        """
-        return pulumi.get(self, "compression")
-
-    @_builtins.property
-    @pulumi.getter(name="decimalEncoding")
-    def decimal_encoding(self) -> _builtins.str:
-        """
-        Available values: "number", "string", "bytes".
-        """
-        return pulumi.get(self, "decimal_encoding")
-
-    @_builtins.property
-    @pulumi.getter(name="rowGroupBytes")
-    def row_group_bytes(self) -> _builtins.int:
-        return pulumi.get(self, "row_group_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="timestampFormat")
-    def timestamp_format(self) -> _builtins.str:
-        """
-        Available values: "rfc3339", "unix_millis".
-        """
-        return pulumi.get(self, "timestamp_format")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Available values: "json", "parquet".
-        """
-        return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def unstructured(self) -> _builtins.bool:
-        return pulumi.get(self, "unstructured")
-
-
-@pulumi.output_type
 class GetPipelineStreamWorkerBindingResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
@@ -117107,8 +117192,10 @@ class GetPipelineStreamsResultResult(dict):
                  worker_binding: 'outputs.GetPipelineStreamsResultWorkerBindingResult'):
         """
         :param _builtins.str endpoint: Indicates the endpoint URL of this stream.
+        :param 'GetPipelineStreamsResultFormatArgs' format: Defines the data format of the events.
         :param _builtins.str id: Indicates a unique identifier for this stream.
         :param _builtins.str name: Indicates the name of the Stream.
+        :param 'GetPipelineStreamsResultSchemaArgs' schema: Defines the schema of the events in the data stream.
         :param _builtins.int version: Indicates the current version of this stream.
         """
         pulumi.set(__self__, "created_at", created_at)
@@ -117138,6 +117225,9 @@ class GetPipelineStreamsResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def format(self) -> 'outputs.GetPipelineStreamsResultFormatResult':
+        """
+        Defines the data format of the events.
+        """
         return pulumi.get(self, "format")
 
     @_builtins.property
@@ -117169,6 +117259,9 @@ class GetPipelineStreamsResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def schema(self) -> 'outputs.GetPipelineStreamsResultSchemaResult':
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @_builtins.property
@@ -117306,21 +117399,14 @@ class GetPipelineStreamsResultHttpCorsResult(dict):
 class GetPipelineStreamsResultSchemaResult(dict):
     def __init__(__self__, *,
                  fields: Sequence['outputs.GetPipelineStreamsResultSchemaFieldResult'],
-                 format: 'outputs.GetPipelineStreamsResultSchemaFormatResult',
                  inferred: _builtins.bool):
         pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "inferred", inferred)
 
     @_builtins.property
     @pulumi.getter
     def fields(self) -> Sequence['outputs.GetPipelineStreamsResultSchemaFieldResult']:
         return pulumi.get(self, "fields")
-
-    @_builtins.property
-    @pulumi.getter
-    def format(self) -> 'outputs.GetPipelineStreamsResultSchemaFormatResult':
-        return pulumi.get(self, "format")
 
     @_builtins.property
     @pulumi.getter
@@ -117383,71 +117469,6 @@ class GetPipelineStreamsResultSchemaFieldResult(dict):
         Available values: "second", "millisecond", "microsecond", "nanosecond".
         """
         return pulumi.get(self, "unit")
-
-
-@pulumi.output_type
-class GetPipelineStreamsResultSchemaFormatResult(dict):
-    def __init__(__self__, *,
-                 compression: _builtins.str,
-                 decimal_encoding: _builtins.str,
-                 row_group_bytes: _builtins.int,
-                 timestamp_format: _builtins.str,
-                 type: _builtins.str,
-                 unstructured: _builtins.bool):
-        """
-        :param _builtins.str compression: Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        :param _builtins.str decimal_encoding: Available values: "number", "string", "bytes".
-        :param _builtins.str timestamp_format: Available values: "rfc3339", "unix_millis".
-        :param _builtins.str type: Available values: "json", "parquet".
-        """
-        pulumi.set(__self__, "compression", compression)
-        pulumi.set(__self__, "decimal_encoding", decimal_encoding)
-        pulumi.set(__self__, "row_group_bytes", row_group_bytes)
-        pulumi.set(__self__, "timestamp_format", timestamp_format)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "unstructured", unstructured)
-
-    @_builtins.property
-    @pulumi.getter
-    def compression(self) -> _builtins.str:
-        """
-        Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-        """
-        return pulumi.get(self, "compression")
-
-    @_builtins.property
-    @pulumi.getter(name="decimalEncoding")
-    def decimal_encoding(self) -> _builtins.str:
-        """
-        Available values: "number", "string", "bytes".
-        """
-        return pulumi.get(self, "decimal_encoding")
-
-    @_builtins.property
-    @pulumi.getter(name="rowGroupBytes")
-    def row_group_bytes(self) -> _builtins.int:
-        return pulumi.get(self, "row_group_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="timestampFormat")
-    def timestamp_format(self) -> _builtins.str:
-        """
-        Available values: "rfc3339", "unix_millis".
-        """
-        return pulumi.get(self, "timestamp_format")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        Available values: "json", "parquet".
-        """
-        return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def unstructured(self) -> _builtins.bool:
-        return pulumi.get(self, "unstructured")
 
 
 @pulumi.output_type
@@ -119636,15 +119657,15 @@ class GetRegistrarDomainsResultResult(dict):
                  updated_at: _builtins.str):
         """
         :param _builtins.bool available: Shows if a domain is available for transferring into Cloudflare Registrar.
-        :param _builtins.bool can_register: Indicates if the domain can be registered as a new domain.
+        :param _builtins.bool can_register: Indicates eligibility to register the domain as a new domain.
         :param _builtins.str created_at: Shows time of creation.
         :param _builtins.str current_registrar: Shows name of current registrar.
         :param _builtins.str expires_at: Shows when domain name registration expires.
         :param _builtins.str id: Domain identifier.
         :param _builtins.bool locked: Shows whether a registrar lock is in place for a domain.
         :param 'GetRegistrarDomainsResultRegistrantContactArgs' registrant_contact: Shows contact information for domain registrant.
-        :param _builtins.str registry_statuses: A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
-        :param _builtins.bool supported_tld: Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+        :param _builtins.str registry_statuses: A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
+        :param _builtins.bool supported_tld: Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
         :param 'GetRegistrarDomainsResultTransferInArgs' transfer_in: Statuses for domain transfers into Cloudflare Registrar.
         :param _builtins.str updated_at: Last updated.
         """
@@ -119673,7 +119694,7 @@ class GetRegistrarDomainsResultResult(dict):
     @pulumi.getter(name="canRegister")
     def can_register(self) -> _builtins.bool:
         """
-        Indicates if the domain can be registered as a new domain.
+        Indicates eligibility to register the domain as a new domain.
         """
         return pulumi.get(self, "can_register")
 
@@ -119729,7 +119750,7 @@ class GetRegistrarDomainsResultResult(dict):
     @pulumi.getter(name="registryStatuses")
     def registry_statuses(self) -> _builtins.str:
         """
-        A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+        A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
         """
         return pulumi.get(self, "registry_statuses")
 
@@ -119737,7 +119758,7 @@ class GetRegistrarDomainsResultResult(dict):
     @pulumi.getter(name="supportedTld")
     def supported_tld(self) -> _builtins.bool:
         """
-        Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+        Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
         """
         return pulumi.get(self, "supported_tld")
 
@@ -119781,11 +119802,11 @@ class GetRegistrarDomainsResultRegistrantContactResult(dict):
         :param _builtins.str country: The country in which the user lives.
         :param _builtins.str email: The contact email address of the user.
         :param _builtins.str fax: Contact fax number.
-        :param _builtins.str first_name: User's first name
+        :param _builtins.str first_name: User's first name.
         :param _builtins.str id: Contact Identifier.
-        :param _builtins.str last_name: User's last name
+        :param _builtins.str last_name: User's last name.
         :param _builtins.str organization: Name of organization.
-        :param _builtins.str phone: User's telephone number
+        :param _builtins.str phone: User's telephone number.
         :param _builtins.str state: State.
         :param _builtins.str zip: The zipcode or postal code where the user lives.
         """
@@ -119855,7 +119876,7 @@ class GetRegistrarDomainsResultRegistrantContactResult(dict):
     @pulumi.getter(name="firstName")
     def first_name(self) -> _builtins.str:
         """
-        User's first name
+        User's first name.
         """
         return pulumi.get(self, "first_name")
 
@@ -119871,7 +119892,7 @@ class GetRegistrarDomainsResultRegistrantContactResult(dict):
     @pulumi.getter(name="lastName")
     def last_name(self) -> _builtins.str:
         """
-        User's last name
+        User's last name.
         """
         return pulumi.get(self, "last_name")
 
@@ -119887,7 +119908,7 @@ class GetRegistrarDomainsResultRegistrantContactResult(dict):
     @pulumi.getter
     def phone(self) -> _builtins.str:
         """
-        User's telephone number
+        User's telephone number.
         """
         return pulumi.get(self, "phone")
 
@@ -119918,16 +119939,16 @@ class GetRegistrarDomainsResultTransferInResult(dict):
                  enter_auth_code: _builtins.str,
                  unlock_domain: _builtins.str):
         """
-        :param _builtins.str accept_foa: Form of authorization has been accepted by the registrant.
+        :param _builtins.str accept_foa: Status of the registrant authorization step.
                Available values: "needed", "ok".
-        :param _builtins.str approve_transfer: Shows transfer status with the registry.
+        :param _builtins.str approve_transfer: Status of the registry transfer-approval step.
                Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
         :param _builtins.bool can_cancel_transfer: Indicates if cancellation is still possible.
-        :param _builtins.str disable_privacy: Privacy guards are disabled at the foreign registrar.
+        :param _builtins.str disable_privacy: Status of the privacy-guard disabling step at the foreign registrar.
                Available values: "needed", "ok", "unknown".
-        :param _builtins.str enter_auth_code: Auth code has been entered and verified.
+        :param _builtins.str enter_auth_code: Status of the auth-code entry and verification step.
                Available values: "needed", "ok", "pending", "trying", "rejected".
-        :param _builtins.str unlock_domain: Domain is unlocked at the foreign registrar.
+        :param _builtins.str unlock_domain: Status of the domain-unlock step at the foreign registrar.
                Available values: "needed", "ok", "pending", "trying", "unknown".
         """
         pulumi.set(__self__, "accept_foa", accept_foa)
@@ -119941,7 +119962,7 @@ class GetRegistrarDomainsResultTransferInResult(dict):
     @pulumi.getter(name="acceptFoa")
     def accept_foa(self) -> _builtins.str:
         """
-        Form of authorization has been accepted by the registrant.
+        Status of the registrant authorization step.
         Available values: "needed", "ok".
         """
         return pulumi.get(self, "accept_foa")
@@ -119950,7 +119971,7 @@ class GetRegistrarDomainsResultTransferInResult(dict):
     @pulumi.getter(name="approveTransfer")
     def approve_transfer(self) -> _builtins.str:
         """
-        Shows transfer status with the registry.
+        Status of the registry transfer-approval step.
         Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
         """
         return pulumi.get(self, "approve_transfer")
@@ -119967,7 +119988,7 @@ class GetRegistrarDomainsResultTransferInResult(dict):
     @pulumi.getter(name="disablePrivacy")
     def disable_privacy(self) -> _builtins.str:
         """
-        Privacy guards are disabled at the foreign registrar.
+        Status of the privacy-guard disabling step at the foreign registrar.
         Available values: "needed", "ok", "unknown".
         """
         return pulumi.get(self, "disable_privacy")
@@ -119976,7 +119997,7 @@ class GetRegistrarDomainsResultTransferInResult(dict):
     @pulumi.getter(name="enterAuthCode")
     def enter_auth_code(self) -> _builtins.str:
         """
-        Auth code has been entered and verified.
+        Status of the auth-code entry and verification step.
         Available values: "needed", "ok", "pending", "trying", "rejected".
         """
         return pulumi.get(self, "enter_auth_code")
@@ -119985,7 +120006,7 @@ class GetRegistrarDomainsResultTransferInResult(dict):
     @pulumi.getter(name="unlockDomain")
     def unlock_domain(self) -> _builtins.str:
         """
-        Domain is unlocked at the foreign registrar.
+        Status of the domain-unlock step at the foreign registrar.
         Available values: "needed", "ok", "pending", "trying", "unknown".
         """
         return pulumi.get(self, "unlock_domain")
@@ -120349,6 +120370,7 @@ class GetRulesetRuleActionParametersResult(dict):
                  origin: 'outputs.GetRulesetRuleActionParametersOriginResult',
                  origin_cache_control: _builtins.bool,
                  origin_error_page_passthru: _builtins.bool,
+                 origin_range_requests: 'outputs.GetRulesetRuleActionParametersOriginRangeRequestsResult',
                  overrides: 'outputs.GetRulesetRuleActionParametersOverridesResult',
                  phases: Sequence[_builtins.str],
                  polish: _builtins.str,
@@ -120431,6 +120453,7 @@ class GetRulesetRuleActionParametersResult(dict):
         :param 'GetRulesetRuleActionParametersOriginArgs' origin: An origin to route to.
         :param _builtins.bool origin_cache_control: Whether Cloudflare will aim to strictly adhere to RFC 7234.
         :param _builtins.bool origin_error_page_passthru: Whether to generate Cloudflare error pages for issues from the origin server.
+        :param 'GetRulesetRuleActionParametersOriginRangeRequestsArgs' origin_range_requests: Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
         :param 'GetRulesetRuleActionParametersOverridesArgs' overrides: A set of overrides to apply to the target ruleset.
         :param Sequence[_builtins.str] phases: A list of phases to skip the execution of. This option is incompatible with the rulesets option.
                Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
@@ -120519,6 +120542,7 @@ class GetRulesetRuleActionParametersResult(dict):
         pulumi.set(__self__, "origin", origin)
         pulumi.set(__self__, "origin_cache_control", origin_cache_control)
         pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
+        pulumi.set(__self__, "origin_range_requests", origin_range_requests)
         pulumi.set(__self__, "overrides", overrides)
         pulumi.set(__self__, "phases", phases)
         pulumi.set(__self__, "polish", polish)
@@ -120894,6 +120918,14 @@ class GetRulesetRuleActionParametersResult(dict):
         Whether to generate Cloudflare error pages for issues from the origin server.
         """
         return pulumi.get(self, "origin_error_page_passthru")
+
+    @_builtins.property
+    @pulumi.getter(name="originRangeRequests")
+    def origin_range_requests(self) -> 'outputs.GetRulesetRuleActionParametersOriginRangeRequestsResult':
+        """
+        Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+        """
+        return pulumi.get(self, "origin_range_requests")
 
     @_builtins.property
     @pulumi.getter
@@ -122211,6 +122243,26 @@ class GetRulesetRuleActionParametersOriginResult(dict):
         A destination port to route to.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetRulesetRuleActionParametersOriginRangeRequestsResult(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str):
+        """
+        :param _builtins.str mode: Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+               Available values: "on", "off", "default".
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+        Available values: "on", "off", "default".
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -123989,7 +124041,7 @@ class GetShareResourceResult(dict):
         :param _builtins.str resource_account_id: Account identifier.
         :param _builtins.str resource_id: Share Resource identifier.
         :param _builtins.str resource_type: Resource Type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param _builtins.int resource_version: Resource Version.
         :param _builtins.str status: Resource Status.
                Available values: "active", "deleting", "deleted".
@@ -124057,7 +124109,7 @@ class GetShareResourceResult(dict):
     def resource_type(self) -> _builtins.str:
         """
         Resource Type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 
@@ -124086,7 +124138,7 @@ class GetShareResourceFilterResult(dict):
                  status: Optional[_builtins.str] = None):
         """
         :param _builtins.str resource_type: Filter share resources by resource_type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param _builtins.str status: Filter share resources by status.
                Available values: "active", "deleting", "deleted".
         """
@@ -124100,7 +124152,7 @@ class GetShareResourceFilterResult(dict):
     def resource_type(self) -> Optional[_builtins.str]:
         """
         Filter share resources by resource_type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 
@@ -124134,7 +124186,7 @@ class GetShareResourcesResultResult(dict):
         :param _builtins.str resource_account_id: Account identifier.
         :param _builtins.str resource_id: Share Resource identifier.
         :param _builtins.str resource_type: Resource Type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param _builtins.int resource_version: Resource Version.
         :param _builtins.str status: Resource Status.
                Available values: "active", "deleting", "deleted".
@@ -124202,7 +124254,7 @@ class GetShareResourcesResultResult(dict):
     def resource_type(self) -> _builtins.str:
         """
         Resource Type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 
@@ -124416,7 +124468,7 @@ class GetSharesResultResourceResult(dict):
         :param _builtins.str resource_account_id: Account identifier.
         :param _builtins.str resource_id: Share Resource identifier.
         :param _builtins.str resource_type: Resource Type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param _builtins.int resource_version: Resource Version.
         :param _builtins.str status: Resource Status.
                Available values: "active", "deleting", "deleted".
@@ -124484,7 +124536,7 @@ class GetSharesResultResourceResult(dict):
     def resource_type(self) -> _builtins.str:
         """
         Resource Type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 
@@ -125111,6 +125163,57 @@ class GetSpectrumApplicationsResultOriginDnsResult(dict):
 
 
 @pulumi.output_type
+class GetSpectrumProtocolsResultResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 ports: Sequence[_builtins.int],
+                 transport: _builtins.str):
+        """
+        :param _builtins.str description: The full name of the application protocol.
+        :param _builtins.str name: The short name of the application protocol.
+        :param Sequence[_builtins.int] ports: The available listening ports for the given protocol.
+        :param _builtins.str transport: The transport layer protocol used by the application protocol
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "transport", transport)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The full name of the application protocol.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The short name of the application protocol.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Sequence[_builtins.int]:
+        """
+        The available listening ports for the given protocol.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def transport(self) -> _builtins.str:
+        """
+        The transport layer protocol used by the application protocol
+        """
+        return pulumi.get(self, "transport")
+
+
+@pulumi.output_type
 class GetSsoConnectorVerificationResult(dict):
     def __init__(__self__, *,
                  code: _builtins.str,
@@ -125324,6 +125427,35 @@ class GetStreamInputResult(dict):
         The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.
         """
         return pulumi.get(self, "width")
+
+
+@pulumi.output_type
+class GetStreamLiveInputPlaybackResult(dict):
+    def __init__(__self__, *,
+                 dash: _builtins.str,
+                 hls: _builtins.str):
+        """
+        :param _builtins.str dash: The DASH manifest URL used to play live video, referencing the live input ID.
+        :param _builtins.str hls: The HLS manifest URL used to play live video, referencing the live input ID.
+        """
+        pulumi.set(__self__, "dash", dash)
+        pulumi.set(__self__, "hls", hls)
+
+    @_builtins.property
+    @pulumi.getter
+    def dash(self) -> _builtins.str:
+        """
+        The DASH manifest URL used to play live video, referencing the live input ID.
+        """
+        return pulumi.get(self, "dash")
+
+    @_builtins.property
+    @pulumi.getter
+    def hls(self) -> _builtins.str:
+        """
+        The HLS manifest URL used to play live video, referencing the live input ID.
+        """
+        return pulumi.get(self, "hls")
 
 
 @pulumi.output_type
@@ -127169,11 +127301,9 @@ class GetTurnstileWidgetsResultResult(dict):
                  bot_fight_mode: _builtins.bool,
                  clearance_level: _builtins.str,
                  created_on: _builtins.str,
-                 deployed_via: _builtins.str,
                  domains: Sequence[_builtins.str],
                  ephemeral_id: _builtins.bool,
                  id: _builtins.str,
-                 last_modified_via: _builtins.str,
                  mode: _builtins.str,
                  modified_on: _builtins.str,
                  name: _builtins.str,
@@ -127187,17 +127317,8 @@ class GetTurnstileWidgetsResultResult(dict):
                this setting can determine the clearance level to be set
                Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param _builtins.str created_on: When the widget was created.
-        :param _builtins.str deployed_via: Origin that created this widget, recorded at creation time and
-               immutable afterward. Server-derived from the create request; not
-               client-settable. Omitted from the response for widgets created
-               before this field existed.
-               Available values: "wrangler", "dashboard", "spin", "api", "unknown".
         :param _builtins.bool ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
         :param _builtins.str id: Widget item identifier tag.
-        :param _builtins.str last_modified_via: Origin of the most recent mutation (create, update, delete, or
-               secret rotation). Server-derived; not client-settable. Omitted for
-               widgets last mutated before this field existed.
-               Available values: "wrangler", "dashboard", "spin", "api", "unknown".
         :param _builtins.str mode: Widget Mode
                Available values: "non-interactive", "invisible", "managed".
         :param _builtins.str modified_on: When the widget was modified.
@@ -127212,11 +127333,9 @@ class GetTurnstileWidgetsResultResult(dict):
         pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
         pulumi.set(__self__, "clearance_level", clearance_level)
         pulumi.set(__self__, "created_on", created_on)
-        pulumi.set(__self__, "deployed_via", deployed_via)
         pulumi.set(__self__, "domains", domains)
         pulumi.set(__self__, "ephemeral_id", ephemeral_id)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_modified_via", last_modified_via)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "modified_on", modified_on)
         pulumi.set(__self__, "name", name)
@@ -127252,18 +127371,6 @@ class GetTurnstileWidgetsResultResult(dict):
         return pulumi.get(self, "created_on")
 
     @_builtins.property
-    @pulumi.getter(name="deployedVia")
-    def deployed_via(self) -> _builtins.str:
-        """
-        Origin that created this widget, recorded at creation time and
-        immutable afterward. Server-derived from the create request; not
-        client-settable. Omitted from the response for widgets created
-        before this field existed.
-        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-        """
-        return pulumi.get(self, "deployed_via")
-
-    @_builtins.property
     @pulumi.getter
     def domains(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "domains")
@@ -127283,17 +127390,6 @@ class GetTurnstileWidgetsResultResult(dict):
         Widget item identifier tag.
         """
         return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="lastModifiedVia")
-    def last_modified_via(self) -> _builtins.str:
-        """
-        Origin of the most recent mutation (create, update, delete, or
-        secret rotation). Server-derived; not client-settable. Omitted for
-        widgets last mutated before this field existed.
-        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-        """
-        return pulumi.get(self, "last_modified_via")
 
     @_builtins.property
     @pulumi.getter
@@ -128693,7 +128789,7 @@ class GetWaitingRoomsResultResult(dict):
         :param _builtins.str cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
         :param _builtins.str custom_page_html: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
         :param _builtins.str default_template_language: The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.
-               Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+               Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
         :param _builtins.str description: A note that you can use to add more details about the waiting room.
         :param _builtins.bool disable_session_renewal: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.
         :param Sequence[_builtins.str] enabled_origin_commands: A list of enabled origin commands.
@@ -128888,7 +128984,7 @@ class GetWaitingRoomsResultResult(dict):
     def default_template_language(self) -> _builtins.str:
         """
         The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.
-        Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+        Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
         """
         return pulumi.get(self, "default_template_language")
 
@@ -129819,7 +129915,7 @@ class GetWorkerObservabilityTracesResult(dict):
         :param _builtins.bool enabled: Whether traces are enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
         :param _builtins.bool persist: Whether trace persistence is enabled for the Worker.
-        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
                Available values: "authenticated", "accept".
         """
         pulumi.set(__self__, "destinations", destinations)
@@ -129864,7 +129960,7 @@ class GetWorkerObservabilityTracesResult(dict):
     @pulumi.getter(name="propagationPolicy")
     def propagation_policy(self) -> _builtins.str:
         """
-        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
         Available values: "authenticated", "accept".
         """
         return pulumi.get(self, "propagation_policy")
@@ -130365,6 +130461,7 @@ class GetWorkerVersionBindingResult(dict):
                  environment: _builtins.str,
                  format: _builtins.str,
                  id: _builtins.str,
+                 identity: _builtins.str,
                  index_name: _builtins.str,
                  instance_name: _builtins.str,
                  json: _builtins.str,
@@ -130409,11 +130506,13 @@ class GetWorkerVersionBindingResult(dict):
         :param _builtins.str format: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
                Available values: "raw", "pkcs8", "spki", "jwk".
         :param _builtins.str id: Identifier of the D1 database to bind to.
+        :param _builtins.str identity: Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+               Available values: "runtime-email-alpha".
         :param _builtins.str index_name: Name of the Vectorize index to bind to.
         :param _builtins.str instance_name: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
         :param _builtins.str json: JSON data to use.
         :param _builtins.str jurisdiction: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-               Available values: "eu", "fedramp", "fedramp-high".
+               Available values: "eu", "fedramp", "fedramp-high", "us".
         :param _builtins.str key_base64: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
         :param _builtins.str key_jwk: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
         :param _builtins.str name: A JavaScript variable name for the binding.
@@ -130454,6 +130553,7 @@ class GetWorkerVersionBindingResult(dict):
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity", identity)
         pulumi.set(__self__, "index_name", index_name)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "json", json)
@@ -130604,6 +130704,15 @@ class GetWorkerVersionBindingResult(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+        Available values: "runtime-email-alpha".
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
     @pulumi.getter(name="indexName")
     def index_name(self) -> _builtins.str:
         """
@@ -130632,7 +130741,7 @@ class GetWorkerVersionBindingResult(dict):
     def jurisdiction(self) -> _builtins.str:
         """
         The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-        Available values: "eu", "fedramp", "fedramp-high".
+        Available values: "eu", "fedramp", "fedramp-high", "us".
         """
         return pulumi.get(self, "jurisdiction")
 
@@ -132018,6 +132127,7 @@ class GetWorkerVersionsResultBindingResult(dict):
                  environment: _builtins.str,
                  format: _builtins.str,
                  id: _builtins.str,
+                 identity: _builtins.str,
                  index_name: _builtins.str,
                  instance_name: _builtins.str,
                  json: _builtins.str,
@@ -132062,11 +132172,13 @@ class GetWorkerVersionsResultBindingResult(dict):
         :param _builtins.str format: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
                Available values: "raw", "pkcs8", "spki", "jwk".
         :param _builtins.str id: Identifier of the D1 database to bind to.
+        :param _builtins.str identity: Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+               Available values: "runtime-email-alpha".
         :param _builtins.str index_name: Name of the Vectorize index to bind to.
         :param _builtins.str instance_name: The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
         :param _builtins.str json: JSON data to use.
         :param _builtins.str jurisdiction: The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-               Available values: "eu", "fedramp", "fedramp-high".
+               Available values: "eu", "fedramp", "fedramp-high", "us".
         :param _builtins.str key_base64: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
         :param _builtins.str key_jwk: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
         :param _builtins.str name: A JavaScript variable name for the binding.
@@ -132107,6 +132219,7 @@ class GetWorkerVersionsResultBindingResult(dict):
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity", identity)
         pulumi.set(__self__, "index_name", index_name)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "json", json)
@@ -132257,6 +132370,15 @@ class GetWorkerVersionsResultBindingResult(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+        Available values: "runtime-email-alpha".
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
     @pulumi.getter(name="indexName")
     def index_name(self) -> _builtins.str:
         """
@@ -132285,7 +132407,7 @@ class GetWorkerVersionsResultBindingResult(dict):
     def jurisdiction(self) -> _builtins.str:
         """
         The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-        Available values: "eu", "fedramp", "fedramp-high".
+        Available values: "eu", "fedramp", "fedramp-high", "us".
         """
         return pulumi.get(self, "jurisdiction")
 
@@ -133609,14 +133731,18 @@ class GetWorkersKvNamespaceFilterResult(dict):
 class GetWorkersKvNamespacesResultResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
+                 jurisdiction: _builtins.str,
                  supports_url_encoding: _builtins.bool,
                  title: _builtins.str):
         """
         :param _builtins.str id: Namespace identifier tag.
+        :param _builtins.str jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+               Available values: "eu", "fedramp", "us".
         :param _builtins.bool supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param _builtins.str title: A human-readable string name for a Namespace.
         """
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "jurisdiction", jurisdiction)
         pulumi.set(__self__, "supports_url_encoding", supports_url_encoding)
         pulumi.set(__self__, "title", title)
 
@@ -133627,6 +133753,15 @@ class GetWorkersKvNamespacesResultResult(dict):
         Namespace identifier tag.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> _builtins.str:
+        """
+        Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter(name="supportsUrlEncoding")
@@ -133779,16 +133914,19 @@ class GetWorkersResultObservabilityResult(dict):
                  enabled: _builtins.bool,
                  head_sampling_rate: _builtins.float,
                  logs: 'outputs.GetWorkersResultObservabilityLogsResult',
+                 redact_query_string: _builtins.bool,
                  traces: 'outputs.GetWorkersResultObservabilityTracesResult'):
         """
         :param _builtins.bool enabled: Whether observability is enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
         :param 'GetWorkersResultObservabilityLogsArgs' logs: Log settings for the Worker.
+        :param _builtins.bool redact_query_string: Whether query strings are removed from request URLs in logs and traces.
         :param 'GetWorkersResultObservabilityTracesArgs' traces: Trace settings for the Worker.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
         pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "redact_query_string", redact_query_string)
         pulumi.set(__self__, "traces", traces)
 
     @_builtins.property
@@ -133814,6 +133952,14 @@ class GetWorkersResultObservabilityResult(dict):
         Log settings for the Worker.
         """
         return pulumi.get(self, "logs")
+
+    @_builtins.property
+    @pulumi.getter(name="redactQueryString")
+    def redact_query_string(self) -> _builtins.bool:
+        """
+        Whether query strings are removed from request URLs in logs and traces.
+        """
+        return pulumi.get(self, "redact_query_string")
 
     @_builtins.property
     @pulumi.getter
@@ -133899,7 +134045,7 @@ class GetWorkersResultObservabilityTracesResult(dict):
         :param _builtins.bool enabled: Whether traces are enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
         :param _builtins.bool persist: Whether trace persistence is enabled for the Worker.
-        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
                Available values: "authenticated", "accept".
         """
         pulumi.set(__self__, "destinations", destinations)
@@ -133944,7 +134090,7 @@ class GetWorkersResultObservabilityTracesResult(dict):
     @pulumi.getter(name="propagationPolicy")
     def propagation_policy(self) -> _builtins.str:
         """
-        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
         Available values: "authenticated", "accept".
         """
         return pulumi.get(self, "propagation_policy")
@@ -134866,16 +135012,19 @@ class GetWorkersScriptsResultObservabilityResult(dict):
                  enabled: _builtins.bool,
                  head_sampling_rate: _builtins.float,
                  logs: 'outputs.GetWorkersScriptsResultObservabilityLogsResult',
+                 redact_query_string: _builtins.bool,
                  traces: 'outputs.GetWorkersScriptsResultObservabilityTracesResult'):
         """
         :param _builtins.bool enabled: Whether observability is enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
         :param 'GetWorkersScriptsResultObservabilityLogsArgs' logs: Log settings for the Worker.
+        :param _builtins.bool redact_query_string: Whether query strings are removed from request URLs in logs and traces.
         :param 'GetWorkersScriptsResultObservabilityTracesArgs' traces: Trace settings for the Worker.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
         pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "redact_query_string", redact_query_string)
         pulumi.set(__self__, "traces", traces)
 
     @_builtins.property
@@ -134901,6 +135050,14 @@ class GetWorkersScriptsResultObservabilityResult(dict):
         Log settings for the Worker.
         """
         return pulumi.get(self, "logs")
+
+    @_builtins.property
+    @pulumi.getter(name="redactQueryString")
+    def redact_query_string(self) -> _builtins.bool:
+        """
+        Whether query strings are removed from request URLs in logs and traces.
+        """
+        return pulumi.get(self, "redact_query_string")
 
     @_builtins.property
     @pulumi.getter
@@ -134986,7 +135143,7 @@ class GetWorkersScriptsResultObservabilityTracesResult(dict):
         :param _builtins.bool enabled: Whether traces are enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
         :param _builtins.bool persist: Whether trace persistence is enabled for the Worker.
-        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
                Available values: "authenticated", "accept".
         """
         pulumi.set(__self__, "destinations", destinations)
@@ -135031,7 +135188,7 @@ class GetWorkersScriptsResultObservabilityTracesResult(dict):
     @pulumi.getter(name="propagationPolicy")
     def propagation_policy(self) -> _builtins.str:
         """
-        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
         Available values: "authenticated", "accept".
         """
         return pulumi.get(self, "propagation_policy")
@@ -135265,74 +135422,6 @@ class GetWorkflowFilterResult(dict):
 
 
 @pulumi.output_type
-class GetWorkflowInstancesResult(dict):
-    def __init__(__self__, *,
-                 complete: _builtins.float,
-                 errored: _builtins.float,
-                 paused: _builtins.float,
-                 queued: _builtins.float,
-                 rolling_back: _builtins.float,
-                 running: _builtins.float,
-                 terminated: _builtins.float,
-                 waiting: _builtins.float,
-                 waiting_for_pause: _builtins.float):
-        pulumi.set(__self__, "complete", complete)
-        pulumi.set(__self__, "errored", errored)
-        pulumi.set(__self__, "paused", paused)
-        pulumi.set(__self__, "queued", queued)
-        pulumi.set(__self__, "rolling_back", rolling_back)
-        pulumi.set(__self__, "running", running)
-        pulumi.set(__self__, "terminated", terminated)
-        pulumi.set(__self__, "waiting", waiting)
-        pulumi.set(__self__, "waiting_for_pause", waiting_for_pause)
-
-    @_builtins.property
-    @pulumi.getter
-    def complete(self) -> _builtins.float:
-        return pulumi.get(self, "complete")
-
-    @_builtins.property
-    @pulumi.getter
-    def errored(self) -> _builtins.float:
-        return pulumi.get(self, "errored")
-
-    @_builtins.property
-    @pulumi.getter
-    def paused(self) -> _builtins.float:
-        return pulumi.get(self, "paused")
-
-    @_builtins.property
-    @pulumi.getter
-    def queued(self) -> _builtins.float:
-        return pulumi.get(self, "queued")
-
-    @_builtins.property
-    @pulumi.getter(name="rollingBack")
-    def rolling_back(self) -> _builtins.float:
-        return pulumi.get(self, "rolling_back")
-
-    @_builtins.property
-    @pulumi.getter
-    def running(self) -> _builtins.float:
-        return pulumi.get(self, "running")
-
-    @_builtins.property
-    @pulumi.getter
-    def terminated(self) -> _builtins.float:
-        return pulumi.get(self, "terminated")
-
-    @_builtins.property
-    @pulumi.getter
-    def waiting(self) -> _builtins.float:
-        return pulumi.get(self, "waiting")
-
-    @_builtins.property
-    @pulumi.getter(name="waitingForPause")
-    def waiting_for_pause(self) -> _builtins.float:
-        return pulumi.get(self, "waiting_for_pause")
-
-
-@pulumi.output_type
 class GetWorkflowScheduleResult(dict):
     def __init__(__self__, *,
                  cron: _builtins.str,
@@ -135357,7 +135446,7 @@ class GetWorkflowsResultResult(dict):
                  class_name: _builtins.str,
                  created_on: _builtins.str,
                  id: _builtins.str,
-                 instances: 'outputs.GetWorkflowsResultInstancesResult',
+                 instances: Mapping[str, _builtins.float],
                  modified_on: _builtins.str,
                  name: _builtins.str,
                  schedules: Sequence['outputs.GetWorkflowsResultScheduleResult'],
@@ -135390,7 +135479,7 @@ class GetWorkflowsResultResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> 'outputs.GetWorkflowsResultInstancesResult':
+    def instances(self) -> Mapping[str, _builtins.float]:
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -135417,74 +135506,6 @@ class GetWorkflowsResultResult(dict):
     @pulumi.getter(name="triggeredOn")
     def triggered_on(self) -> _builtins.str:
         return pulumi.get(self, "triggered_on")
-
-
-@pulumi.output_type
-class GetWorkflowsResultInstancesResult(dict):
-    def __init__(__self__, *,
-                 complete: _builtins.float,
-                 errored: _builtins.float,
-                 paused: _builtins.float,
-                 queued: _builtins.float,
-                 rolling_back: _builtins.float,
-                 running: _builtins.float,
-                 terminated: _builtins.float,
-                 waiting: _builtins.float,
-                 waiting_for_pause: _builtins.float):
-        pulumi.set(__self__, "complete", complete)
-        pulumi.set(__self__, "errored", errored)
-        pulumi.set(__self__, "paused", paused)
-        pulumi.set(__self__, "queued", queued)
-        pulumi.set(__self__, "rolling_back", rolling_back)
-        pulumi.set(__self__, "running", running)
-        pulumi.set(__self__, "terminated", terminated)
-        pulumi.set(__self__, "waiting", waiting)
-        pulumi.set(__self__, "waiting_for_pause", waiting_for_pause)
-
-    @_builtins.property
-    @pulumi.getter
-    def complete(self) -> _builtins.float:
-        return pulumi.get(self, "complete")
-
-    @_builtins.property
-    @pulumi.getter
-    def errored(self) -> _builtins.float:
-        return pulumi.get(self, "errored")
-
-    @_builtins.property
-    @pulumi.getter
-    def paused(self) -> _builtins.float:
-        return pulumi.get(self, "paused")
-
-    @_builtins.property
-    @pulumi.getter
-    def queued(self) -> _builtins.float:
-        return pulumi.get(self, "queued")
-
-    @_builtins.property
-    @pulumi.getter(name="rollingBack")
-    def rolling_back(self) -> _builtins.float:
-        return pulumi.get(self, "rolling_back")
-
-    @_builtins.property
-    @pulumi.getter
-    def running(self) -> _builtins.float:
-        return pulumi.get(self, "running")
-
-    @_builtins.property
-    @pulumi.getter
-    def terminated(self) -> _builtins.float:
-        return pulumi.get(self, "terminated")
-
-    @_builtins.property
-    @pulumi.getter
-    def waiting(self) -> _builtins.float:
-        return pulumi.get(self, "waiting")
-
-    @_builtins.property
-    @pulumi.getter(name="waitingForPause")
-    def waiting_for_pause(self) -> _builtins.float:
-        return pulumi.get(self, "waiting_for_pause")
 
 
 @pulumi.output_type
@@ -145645,11 +145666,22 @@ class GetZeroTrustAccessGroupExcludeCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessGroupExcludeDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -146437,11 +146469,22 @@ class GetZeroTrustAccessGroupIncludeCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessGroupIncludeDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -147198,11 +147241,22 @@ class GetZeroTrustAccessGroupIsDefaultCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessGroupIsDefaultDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -147959,11 +148013,22 @@ class GetZeroTrustAccessGroupRequireCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessGroupRequireDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -148793,11 +148858,22 @@ class GetZeroTrustAccessGroupsResultExcludeCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessGroupsResultExcludeDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -149554,11 +149630,22 @@ class GetZeroTrustAccessGroupsResultIncludeCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessGroupsResultIncludeDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -150315,11 +150402,22 @@ class GetZeroTrustAccessGroupsResultIsDefaultCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessGroupsResultIsDefaultDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -151076,11 +151174,22 @@ class GetZeroTrustAccessGroupsResultRequireCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessGroupsResultRequireDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -151520,9 +151629,11 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
                  email_attribute_name: _builtins.str,
                  email_claim_name: _builtins.str,
                  enable_encryption: _builtins.bool,
+                 force_authn: _builtins.bool,
                  header_attributes: Sequence['outputs.GetZeroTrustAccessIdentityProviderConfigHeaderAttributeResult'],
                  idp_public_certs: Sequence[_builtins.str],
                  issuer_url: _builtins.str,
+                 max_sso_url_length: _builtins.int,
                  okta_account: _builtins.str,
                  onelogin_account: _builtins.str,
                  ping_env_id: _builtins.str,
@@ -151552,9 +151663,14 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
         :param _builtins.str email_claim_name: The claim name for email in the id_token response.
         :param _builtins.bool enable_encryption: Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
                SAML assertions using the certificate from the assigned certificate set.
+        :param _builtins.bool force_authn: Asks the IdP to reauthenticate the user for each SAML authentication request.
         :param Sequence['GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs'] header_attributes: Add a list of attribute names that will be returned in the response header from the Access callback.
         :param Sequence[_builtins.str] idp_public_certs: X509 certificate to verify the signature in the SAML authentication response
         :param _builtins.str issuer_url: IdP Entity ID or Issuer URL
+        :param _builtins.int max_sso_url_length: The maximum URL length the IdP accepts for the SSO redirect URL.
+               When the constructed SSO URL would exceed this length, the RelayState
+               is stored server-side and a short nonce is passed to the IdP instead.
+               Set this if your IdP enforces a URL length limit.
         :param _builtins.str okta_account: Your okta account url
         :param _builtins.str onelogin_account: Your OneLogin account url
         :param _builtins.str ping_env_id: Your PingOne environment identifier
@@ -151583,9 +151699,11 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
         pulumi.set(__self__, "email_attribute_name", email_attribute_name)
         pulumi.set(__self__, "email_claim_name", email_claim_name)
         pulumi.set(__self__, "enable_encryption", enable_encryption)
+        pulumi.set(__self__, "force_authn", force_authn)
         pulumi.set(__self__, "header_attributes", header_attributes)
         pulumi.set(__self__, "idp_public_certs", idp_public_certs)
         pulumi.set(__self__, "issuer_url", issuer_url)
+        pulumi.set(__self__, "max_sso_url_length", max_sso_url_length)
         pulumi.set(__self__, "okta_account", okta_account)
         pulumi.set(__self__, "onelogin_account", onelogin_account)
         pulumi.set(__self__, "ping_env_id", ping_env_id)
@@ -151721,6 +151839,14 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
         return pulumi.get(self, "enable_encryption")
 
     @_builtins.property
+    @pulumi.getter(name="forceAuthn")
+    def force_authn(self) -> _builtins.bool:
+        """
+        Asks the IdP to reauthenticate the user for each SAML authentication request.
+        """
+        return pulumi.get(self, "force_authn")
+
+    @_builtins.property
     @pulumi.getter(name="headerAttributes")
     def header_attributes(self) -> Sequence['outputs.GetZeroTrustAccessIdentityProviderConfigHeaderAttributeResult']:
         """
@@ -151743,6 +151869,17 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
         IdP Entity ID or Issuer URL
         """
         return pulumi.get(self, "issuer_url")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSsoUrlLength")
+    def max_sso_url_length(self) -> _builtins.int:
+        """
+        The maximum URL length the IdP accepts for the SSO redirect URL.
+        When the constructed SSO URL would exceed this length, the RelayState
+        is stored server-side and a short nonce is passed to the IdP instead.
+        Set this if your IdP enforces a URL length limit.
+        """
+        return pulumi.get(self, "max_sso_url_length")
 
     @_builtins.property
     @pulumi.getter(name="oktaAccount")
@@ -152198,9 +152335,11 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
                  email_attribute_name: _builtins.str,
                  email_claim_name: _builtins.str,
                  enable_encryption: _builtins.bool,
+                 force_authn: _builtins.bool,
                  header_attributes: Sequence['outputs.GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeResult'],
                  idp_public_certs: Sequence[_builtins.str],
                  issuer_url: _builtins.str,
+                 max_sso_url_length: _builtins.int,
                  okta_account: _builtins.str,
                  onelogin_account: _builtins.str,
                  ping_env_id: _builtins.str,
@@ -152230,9 +152369,14 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
         :param _builtins.str email_claim_name: The claim name for email in the id_token response.
         :param _builtins.bool enable_encryption: Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
                SAML assertions using the certificate from the assigned certificate set.
+        :param _builtins.bool force_authn: Asks the IdP to reauthenticate the user for each SAML authentication request.
         :param Sequence['GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs'] header_attributes: Add a list of attribute names that will be returned in the response header from the Access callback.
         :param Sequence[_builtins.str] idp_public_certs: X509 certificate to verify the signature in the SAML authentication response
         :param _builtins.str issuer_url: IdP Entity ID or Issuer URL
+        :param _builtins.int max_sso_url_length: The maximum URL length the IdP accepts for the SSO redirect URL.
+               When the constructed SSO URL would exceed this length, the RelayState
+               is stored server-side and a short nonce is passed to the IdP instead.
+               Set this if your IdP enforces a URL length limit.
         :param _builtins.str okta_account: Your okta account url
         :param _builtins.str onelogin_account: Your OneLogin account url
         :param _builtins.str ping_env_id: Your PingOne environment identifier
@@ -152261,9 +152405,11 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
         pulumi.set(__self__, "email_attribute_name", email_attribute_name)
         pulumi.set(__self__, "email_claim_name", email_claim_name)
         pulumi.set(__self__, "enable_encryption", enable_encryption)
+        pulumi.set(__self__, "force_authn", force_authn)
         pulumi.set(__self__, "header_attributes", header_attributes)
         pulumi.set(__self__, "idp_public_certs", idp_public_certs)
         pulumi.set(__self__, "issuer_url", issuer_url)
+        pulumi.set(__self__, "max_sso_url_length", max_sso_url_length)
         pulumi.set(__self__, "okta_account", okta_account)
         pulumi.set(__self__, "onelogin_account", onelogin_account)
         pulumi.set(__self__, "ping_env_id", ping_env_id)
@@ -152399,6 +152545,14 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
         return pulumi.get(self, "enable_encryption")
 
     @_builtins.property
+    @pulumi.getter(name="forceAuthn")
+    def force_authn(self) -> _builtins.bool:
+        """
+        Asks the IdP to reauthenticate the user for each SAML authentication request.
+        """
+        return pulumi.get(self, "force_authn")
+
+    @_builtins.property
     @pulumi.getter(name="headerAttributes")
     def header_attributes(self) -> Sequence['outputs.GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeResult']:
         """
@@ -152421,6 +152575,17 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
         IdP Entity ID or Issuer URL
         """
         return pulumi.get(self, "issuer_url")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSsoUrlLength")
+    def max_sso_url_length(self) -> _builtins.int:
+        """
+        The maximum URL length the IdP accepts for the SSO redirect URL.
+        When the constructed SSO URL would exceed this length, the RelayState
+        is stored server-side and a short nonce is passed to the IdP instead.
+        Set this if your IdP enforces a URL length limit.
+        """
+        return pulumi.get(self, "max_sso_url_length")
 
     @_builtins.property
     @pulumi.getter(name="oktaAccount")
@@ -153276,6 +153441,7 @@ class GetZeroTrustAccessMtlsCertificatesResultResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessPoliciesResultResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  app_count: _builtins.int,
                  approval_groups: Sequence['outputs.GetZeroTrustAccessPoliciesResultApprovalGroupResult'],
                  approval_required: _builtins.bool,
@@ -153295,6 +153461,7 @@ class GetZeroTrustAccessPoliciesResultResult(dict):
                  session_duration: _builtins.str,
                  updated_at: _builtins.str):
         """
+        :param _builtins.str account_id: Identifier.
         :param _builtins.int app_count: Number of access applications currently using this policy.
         :param Sequence['GetZeroTrustAccessPoliciesResultApprovalGroupArgs'] approval_groups: Administrators who can approve a temporary authentication request.
         :param _builtins.bool approval_required: Requires the user to request access from an administrator at the start of each session.
@@ -153312,6 +153479,7 @@ class GetZeroTrustAccessPoliciesResultResult(dict):
         :param Sequence['GetZeroTrustAccessPoliciesResultRequireArgs'] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         :param _builtins.str session_duration: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "app_count", app_count)
         pulumi.set(__self__, "approval_groups", approval_groups)
         pulumi.set(__self__, "approval_required", approval_required)
@@ -153330,6 +153498,14 @@ class GetZeroTrustAccessPoliciesResultResult(dict):
         pulumi.set(__self__, "reusable", reusable)
         pulumi.set(__self__, "session_duration", session_duration)
         pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="appCount")
@@ -153890,11 +154066,22 @@ class GetZeroTrustAccessPoliciesResultExcludeCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessPoliciesResultExcludeDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -154651,11 +154838,22 @@ class GetZeroTrustAccessPoliciesResultIncludeCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessPoliciesResultIncludeDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -155452,11 +155650,22 @@ class GetZeroTrustAccessPoliciesResultRequireCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessPoliciesResultRequireDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -156300,11 +156509,22 @@ class GetZeroTrustAccessPolicyExcludeCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessPolicyExcludeDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -157061,11 +157281,22 @@ class GetZeroTrustAccessPolicyIncludeCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessPolicyIncludeDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -157862,11 +158093,22 @@ class GetZeroTrustAccessPolicyRequireCommonNameResult(dict):
 @pulumi.output_type
 class GetZeroTrustAccessPolicyRequireDevicePostureResult(dict):
     def __init__(__self__, *,
+                 account_id: _builtins.str,
                  integration_uid: _builtins.str):
         """
+        :param _builtins.str account_id: The ID of the account that owns the device posture integration.
         :param _builtins.str integration_uid: The ID of a device posture integration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_uid", integration_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The ID of the account that owns the device posture integration.
+        """
+        return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="integrationUid")
@@ -169682,6 +169924,117 @@ class GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustResourceLibraryApplicationFilterResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 offset: _builtins.int,
+                 fields: Optional[_builtins.str] = None,
+                 filter: Optional[_builtins.str] = None,
+                 order_by: Optional[_builtins.str] = None,
+                 search: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int limit: Limit of number of results to return (max 250).
+        :param _builtins.int offset: Offset of results to return.
+        :param _builtins.str fields: Return only the listed properties on each application, as a comma-separated list.
+               Use this to keep responses small when you only need part of each application — for
+               example populating a picker with `fields=id,name` instead of downloading every
+               hostname and IP subnet.
+        :param _builtins.str filter: Filter applications using key:value format. Supported filter keys:
+               - name: Filter by application name (e.g., name:HR)
+               - id: Filter by application ID (e.g., id:498)
+               - human_id: Filter by human-readable ID (e.g., human_id:HR)
+               - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
+               - source: Filter by application source name (e.g., source:cloudflare)
+               - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
+               - category_id: Filter by category ID (e.g., category_id:12).
+               - category_name: Filter by category name (e.g., category_name:HR).
+               - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
+               - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
+                 .
+        :param _builtins.str order_by: Order results using field:direction format. Supported fields are name, id, human_id,
+               category_id, application_type, application_confidence_score, and gen_ai_score.
+               Supported directions are asc and desc. Ignored when search is provided; results are
+               ranked by relevance instead.
+        :param _builtins.str search: Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "offset", offset)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if order_by is not None:
+            pulumi.set(__self__, "order_by", order_by)
+        if search is not None:
+            pulumi.set(__self__, "search", search)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Limit of number of results to return (max 250).
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> _builtins.int:
+        """
+        Offset of results to return.
+        """
+        return pulumi.get(self, "offset")
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Optional[_builtins.str]:
+        """
+        Return only the listed properties on each application, as a comma-separated list.
+        Use this to keep responses small when you only need part of each application — for
+        example populating a picker with `fields=id,name` instead of downloading every
+        hostname and IP subnet.
+        """
+        return pulumi.get(self, "fields")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional[_builtins.str]:
+        """
+        Filter applications using key:value format. Supported filter keys:
+        - name: Filter by application name (e.g., name:HR)
+        - id: Filter by application ID (e.g., id:498)
+        - human_id: Filter by human-readable ID (e.g., human_id:HR)
+        - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
+        - source: Filter by application source name (e.g., source:cloudflare)
+        - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
+        - category_id: Filter by category ID (e.g., category_id:12).
+        - category_name: Filter by category name (e.g., category_name:HR).
+        - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
+        - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
+          .
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Order results using field:direction format. Supported fields are name, id, human_id,
+        category_id, application_type, application_confidence_score, and gen_ai_score.
+        Supported directions are asc and desc. Ignored when search is provided; results are
+        ranked by relevance instead.
+        """
+        return pulumi.get(self, "order_by")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
+        """
+        return pulumi.get(self, "search")
+
+
+@pulumi.output_type
 class GetZeroTrustResourceLibraryApplicationsResultResult(dict):
     def __init__(__self__, *,
                  application_confidence_score: _builtins.float,
@@ -169698,6 +170051,7 @@ class GetZeroTrustResourceLibraryApplicationsResultResult(dict):
                  ip_subnets: Sequence[_builtins.str],
                  name: _builtins.str,
                  port_protocols: Sequence[_builtins.str],
+                 review_status: _builtins.str,
                  support_domains: Sequence[_builtins.str],
                  supporteds: Sequence[_builtins.str],
                  updated_at: _builtins.str,
@@ -169717,6 +170071,8 @@ class GetZeroTrustResourceLibraryApplicationsResultResult(dict):
         :param Sequence[_builtins.str] ip_subnets: IP subnets matched by the application.
         :param _builtins.str name: Returns the application name.
         :param Sequence[_builtins.str] port_protocols: Port and protocol pairs matched by the application.
+        :param _builtins.str review_status: The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+               Available values: "approved", "unapproved", "in_review", "unreviewed".
         :param Sequence[_builtins.str] support_domains: Support domains matched by the application.
         :param Sequence[_builtins.str] supporteds: Cloudflare products that support this application.
         :param _builtins.str updated_at: Returns the application update time.
@@ -169736,6 +170092,7 @@ class GetZeroTrustResourceLibraryApplicationsResultResult(dict):
         pulumi.set(__self__, "ip_subnets", ip_subnets)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port_protocols", port_protocols)
+        pulumi.set(__self__, "review_status", review_status)
         pulumi.set(__self__, "support_domains", support_domains)
         pulumi.set(__self__, "supporteds", supporteds)
         pulumi.set(__self__, "updated_at", updated_at)
@@ -169852,6 +170209,15 @@ class GetZeroTrustResourceLibraryApplicationsResultResult(dict):
         Port and protocol pairs matched by the application.
         """
         return pulumi.get(self, "port_protocols")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewStatus")
+    def review_status(self) -> _builtins.str:
+        """
+        The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+        Available values: "approved", "unapproved", "in_review", "unreviewed".
+        """
+        return pulumi.get(self, "review_status")
 
     @_builtins.property
     @pulumi.getter(name="supportDomains")
@@ -170578,6 +170944,7 @@ class GetZeroTrustTunnelCloudflaredConnectionResult(dict):
                  client_version: _builtins.str,
                  colo_name: _builtins.str,
                  id: _builtins.str,
+                 is_pending_reconnect: _builtins.bool,
                  opened_at: _builtins.str,
                  origin_ip: _builtins.str,
                  uuid: _builtins.str):
@@ -170586,6 +170953,7 @@ class GetZeroTrustTunnelCloudflaredConnectionResult(dict):
         :param _builtins.str client_version: The cloudflared version used to establish this connection.
         :param _builtins.str colo_name: The Cloudflare data center used for this connection.
         :param _builtins.str id: UUID of the Cloudflare Tunnel connection.
+        :param _builtins.bool is_pending_reconnect: Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
         :param _builtins.str opened_at: Timestamp of when the connection was established.
         :param _builtins.str origin_ip: The public IP address of the host running cloudflared.
         :param _builtins.str uuid: UUID of the Cloudflare Tunnel connection.
@@ -170594,6 +170962,7 @@ class GetZeroTrustTunnelCloudflaredConnectionResult(dict):
         pulumi.set(__self__, "client_version", client_version)
         pulumi.set(__self__, "colo_name", colo_name)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_pending_reconnect", is_pending_reconnect)
         pulumi.set(__self__, "opened_at", opened_at)
         pulumi.set(__self__, "origin_ip", origin_ip)
         pulumi.set(__self__, "uuid", uuid)
@@ -170629,6 +170998,15 @@ class GetZeroTrustTunnelCloudflaredConnectionResult(dict):
         UUID of the Cloudflare Tunnel connection.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isPendingReconnect")
+    @_utilities.deprecated("""This functionality has been removed. The is_pending_reconnect field will now always report false.""")
+    def is_pending_reconnect(self) -> _builtins.bool:
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        return pulumi.get(self, "is_pending_reconnect")
 
     @_builtins.property
     @pulumi.getter(name="openedAt")
@@ -171282,6 +171660,7 @@ class GetZeroTrustTunnelCloudflaredsResultConnectionResult(dict):
                  client_version: _builtins.str,
                  colo_name: _builtins.str,
                  id: _builtins.str,
+                 is_pending_reconnect: _builtins.bool,
                  opened_at: _builtins.str,
                  origin_ip: _builtins.str,
                  uuid: _builtins.str):
@@ -171290,6 +171669,7 @@ class GetZeroTrustTunnelCloudflaredsResultConnectionResult(dict):
         :param _builtins.str client_version: The cloudflared version used to establish this connection.
         :param _builtins.str colo_name: The Cloudflare data center used for this connection.
         :param _builtins.str id: UUID of the Cloudflare Tunnel connection.
+        :param _builtins.bool is_pending_reconnect: Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
         :param _builtins.str opened_at: Timestamp of when the connection was established.
         :param _builtins.str origin_ip: The public IP address of the host running cloudflared.
         :param _builtins.str uuid: UUID of the Cloudflare Tunnel connection.
@@ -171298,6 +171678,7 @@ class GetZeroTrustTunnelCloudflaredsResultConnectionResult(dict):
         pulumi.set(__self__, "client_version", client_version)
         pulumi.set(__self__, "colo_name", colo_name)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_pending_reconnect", is_pending_reconnect)
         pulumi.set(__self__, "opened_at", opened_at)
         pulumi.set(__self__, "origin_ip", origin_ip)
         pulumi.set(__self__, "uuid", uuid)
@@ -171333,6 +171714,15 @@ class GetZeroTrustTunnelCloudflaredsResultConnectionResult(dict):
         UUID of the Cloudflare Tunnel connection.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isPendingReconnect")
+    @_utilities.deprecated("""This functionality has been removed. The is_pending_reconnect field will now always report false.""")
+    def is_pending_reconnect(self) -> _builtins.bool:
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        return pulumi.get(self, "is_pending_reconnect")
 
     @_builtins.property
     @pulumi.getter(name="openedAt")
@@ -171442,6 +171832,7 @@ class GetZeroTrustTunnelWarpConnectorConnectionResult(dict):
                  client_version: _builtins.str,
                  colo_name: _builtins.str,
                  id: _builtins.str,
+                 is_pending_reconnect: _builtins.bool,
                  opened_at: _builtins.str,
                  origin_ip: _builtins.str,
                  uuid: _builtins.str):
@@ -171450,6 +171841,7 @@ class GetZeroTrustTunnelWarpConnectorConnectionResult(dict):
         :param _builtins.str client_version: The cloudflared version used to establish this connection.
         :param _builtins.str colo_name: The Cloudflare data center used for this connection.
         :param _builtins.str id: UUID of the Cloudflare Tunnel connection.
+        :param _builtins.bool is_pending_reconnect: Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
         :param _builtins.str opened_at: Timestamp of when the connection was established.
         :param _builtins.str origin_ip: The public IP address of the host running cloudflared.
         :param _builtins.str uuid: UUID of the Cloudflare Tunnel connection.
@@ -171458,6 +171850,7 @@ class GetZeroTrustTunnelWarpConnectorConnectionResult(dict):
         pulumi.set(__self__, "client_version", client_version)
         pulumi.set(__self__, "colo_name", colo_name)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_pending_reconnect", is_pending_reconnect)
         pulumi.set(__self__, "opened_at", opened_at)
         pulumi.set(__self__, "origin_ip", origin_ip)
         pulumi.set(__self__, "uuid", uuid)
@@ -171493,6 +171886,15 @@ class GetZeroTrustTunnelWarpConnectorConnectionResult(dict):
         UUID of the Cloudflare Tunnel connection.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isPendingReconnect")
+    @_utilities.deprecated("""This functionality has been removed. The is_pending_reconnect field will now always report false.""")
+    def is_pending_reconnect(self) -> _builtins.bool:
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        return pulumi.get(self, "is_pending_reconnect")
 
     @_builtins.property
     @pulumi.getter(name="openedAt")
@@ -171760,6 +172162,7 @@ class GetZeroTrustTunnelWarpConnectorsResultConnectionResult(dict):
                  client_version: _builtins.str,
                  colo_name: _builtins.str,
                  id: _builtins.str,
+                 is_pending_reconnect: _builtins.bool,
                  opened_at: _builtins.str,
                  origin_ip: _builtins.str,
                  uuid: _builtins.str):
@@ -171768,6 +172171,7 @@ class GetZeroTrustTunnelWarpConnectorsResultConnectionResult(dict):
         :param _builtins.str client_version: The cloudflared version used to establish this connection.
         :param _builtins.str colo_name: The Cloudflare data center used for this connection.
         :param _builtins.str id: UUID of the Cloudflare Tunnel connection.
+        :param _builtins.bool is_pending_reconnect: Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
         :param _builtins.str opened_at: Timestamp of when the connection was established.
         :param _builtins.str origin_ip: The public IP address of the host running cloudflared.
         :param _builtins.str uuid: UUID of the Cloudflare Tunnel connection.
@@ -171776,6 +172180,7 @@ class GetZeroTrustTunnelWarpConnectorsResultConnectionResult(dict):
         pulumi.set(__self__, "client_version", client_version)
         pulumi.set(__self__, "colo_name", colo_name)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_pending_reconnect", is_pending_reconnect)
         pulumi.set(__self__, "opened_at", opened_at)
         pulumi.set(__self__, "origin_ip", origin_ip)
         pulumi.set(__self__, "uuid", uuid)
@@ -171811,6 +172216,15 @@ class GetZeroTrustTunnelWarpConnectorsResultConnectionResult(dict):
         UUID of the Cloudflare Tunnel connection.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isPendingReconnect")
+    @_utilities.deprecated("""This functionality has been removed. The is_pending_reconnect field will now always report false.""")
+    def is_pending_reconnect(self) -> _builtins.bool:
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        return pulumi.get(self, "is_pending_reconnect")
 
     @_builtins.property
     @pulumi.getter(name="openedAt")

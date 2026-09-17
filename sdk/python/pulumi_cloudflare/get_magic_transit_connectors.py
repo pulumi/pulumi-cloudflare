@@ -43,10 +43,7 @@ class GetMagicTransitConnectorsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
-        """
-        Account identifier
-        """
+    def account_id(self) -> _builtins.str:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -107,7 +104,6 @@ def get_magic_transit_connectors(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Account identifier
     :param _builtins.str device_type: Filter connectors by device type.
            Available values: "MANAGED", "LICENSED".
     :param _builtins.int max_items: Max items to fetch, default: 1000
@@ -124,7 +120,7 @@ def get_magic_transit_connectors(account_id: Optional[_builtins.str] = None,
         device_type=pulumi.get(__ret__, 'device_type'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
-def get_magic_transit_connectors_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_magic_transit_connectors_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         device_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitConnectorsResult]:
@@ -144,7 +140,6 @@ def get_magic_transit_connectors_output(account_id: pulumi.Input[Optional[Option
     ```
 
 
-    :param _builtins.str account_id: Account identifier
     :param _builtins.str device_type: Filter connectors by device type.
            Available values: "MANAGED", "LICENSED".
     :param _builtins.int max_items: Max items to fetch, default: 1000

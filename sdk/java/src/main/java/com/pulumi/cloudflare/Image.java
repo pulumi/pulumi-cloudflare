@@ -22,45 +22,12 @@ import javax.annotation.Nullable;
  * - `Images Read`
  * - `Images Write`
  * 
- * ## Example Usage
+ * &gt; Set either `file` (base64-encoded image data, e.g. from
+ *   `filebase64`)
+ *   or `url` (fetched server-side), not both.
  * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Image;
- * import com.pulumi.cloudflare.ImageArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleImage = new Image("exampleImage", ImageArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .imageId("id")
- *             .creator("creator")
- *             .file("Example data")
- *             .metadata(Map.ofEntries(
- *             ))
- *             .requireSignedUrls(true)
- *             .url("https://example.com/path/to/logo.png")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
+ * &gt; `requireSignedUrls = true` is rejected for images with a custom `id` (API
+ *   error 5410). Since `id` is required here, leave it unset or `false`.
  * 
  * ## Import
  * 

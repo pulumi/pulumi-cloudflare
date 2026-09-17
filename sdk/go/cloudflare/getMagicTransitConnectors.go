@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitConnectors(ctx, &cloudflare.LookupMagicTransitConnectorsArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,8 +53,7 @@ func LookupMagicTransitConnectors(ctx *pulumi.Context, args *LookupMagicTransitC
 
 // A collection of arguments for invoking getMagicTransitConnectors.
 type LookupMagicTransitConnectorsArgs struct {
-	// Account identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Filter connectors by device type.
 	// Available values: "MANAGED", "LICENSED".
 	DeviceType *string `pulumi:"deviceType"`
@@ -64,8 +63,7 @@ type LookupMagicTransitConnectorsArgs struct {
 
 // A collection of values returned by getMagicTransitConnectors.
 type LookupMagicTransitConnectorsResult struct {
-	// Account identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Filter connectors by device type.
 	// Available values: "MANAGED", "LICENSED".
 	DeviceType *string `pulumi:"deviceType"`
@@ -82,8 +80,7 @@ func LookupMagicTransitConnectorsOutput(ctx *pulumi.Context, args LookupMagicTra
 
 // A collection of arguments for invoking getMagicTransitConnectors.
 type LookupMagicTransitConnectorsOutputArgs struct {
-	// Account identifier
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Filter connectors by device type.
 	// Available values: "MANAGED", "LICENSED".
 	DeviceType pulumi.StringPtrInput `pulumi:"deviceType"`
@@ -110,9 +107,8 @@ func (o LookupMagicTransitConnectorsResultOutput) ToLookupMagicTransitConnectors
 	return o
 }
 
-// Account identifier
-func (o LookupMagicTransitConnectorsResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitConnectorsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupMagicTransitConnectorsResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Filter connectors by device type.

@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class CloudConnectorRulesRuleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cloud Provider type
+        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "OciStorage".
+        /// </summary>
+        [Input("cloudConnectorRulesProvider")]
+        public Input<string>? CloudConnectorRulesProvider { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -29,13 +36,6 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("parameters")]
         public Input<Inputs.CloudConnectorRulesRuleParametersGetArgs>? Parameters { get; set; }
-
-        /// <summary>
-        /// Cloud Provider type
-        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "OciStorage".
-        /// </summary>
-        [Input("provider")]
-        public Input<string>? Provider { get; set; }
 
         public CloudConnectorRulesRuleGetArgs()
         {

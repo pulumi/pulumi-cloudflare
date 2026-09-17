@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  * const exampleWorkersKvNamespace = new cloudflare.WorkersKvNamespace("example_workers_kv_namespace", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     title: "My Own Namespace",
+ *     jurisdiction: "eu",
  * });
  * ```
  *
@@ -61,6 +62,11 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
+     * Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: "eu", "fedramp", "us".
+     */
+    declare public readonly jurisdiction: pulumi.Output<string | undefined>;
+    /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
     declare public /*out*/ readonly supportsUrlEncoding: pulumi.Output<boolean>;
@@ -83,6 +89,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkersKvNamespaceState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
             resourceInputs["supportsUrlEncoding"] = state?.supportsUrlEncoding;
             resourceInputs["title"] = state?.title;
         } else {
@@ -94,6 +101,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
             resourceInputs["title"] = args?.title;
             resourceInputs["supportsUrlEncoding"] = undefined /*out*/;
         }
@@ -110,6 +118,11 @@ export interface WorkersKvNamespaceState {
      * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: "eu", "fedramp", "us".
+     */
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
@@ -128,6 +141,11 @@ export interface WorkersKvNamespaceArgs {
      * Identifier.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: "eu", "fedramp", "us".
+     */
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * A human-readable string name for a Namespace.
      */

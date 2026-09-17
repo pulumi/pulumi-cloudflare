@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -48,6 +49,7 @@ import javax.annotation.Nullable;
  *         var exampleBotManagement = new BotManagement("exampleBotManagement", BotManagementArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .aiBotsProtection("block")
+ *             .botPreferenceSyncEnabled(true)
  *             .cfRobotsVariant("policy_only")
  *             .contentBotsProtection("disabled")
  *             .crawlerProtection("enabled")
@@ -113,6 +115,20 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> bmCookieEnabled() {
         return this.bmCookieEnabled;
+    }
+    /**
+     * Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone&#39;s AI Search, AI User, and AI Training preferences.
+     * 
+     */
+    @Export(name="botPreferenceSyncEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> botPreferenceSyncEnabled;
+
+    /**
+     * @return Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone&#39;s AI Search, AI User, and AI Training preferences.
+     * 
+     */
+    public Output<Optional<Boolean>> botPreferenceSyncEnabled() {
+        return Codegen.optional(this.botPreferenceSyncEnabled);
     }
     /**
      * Specifies the Robots Access Control License variant to use.

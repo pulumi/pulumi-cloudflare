@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// | `ImageResizing` | `"on"`, `"off"`, `"open"` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
         /// | `IpGeolocation` | `"on"` / `"off"` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
         /// | `Ipv6` | `"on"` / `"off"` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-        /// | `MaxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+        /// | `MaxUpload` | Number (26 values) | Maximum size of an allowable upload. |
         /// | `MinTlsVersion` | `"1.0"`, `"1.1"`, `"1.2"`, `"1.3"` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
         /// | `Mirage` | `"on"` / `"off"` | Automatically optimize image loading for website visitors on mobile devices. ... |
         /// | `Nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -63,6 +63,7 @@ namespace Pulumi.Cloudflare
         /// | `OriginH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
         /// | `OriginMaxHttpVersion` | `"2"`, `"1"` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
         /// | `Polish` | `"off"`, `"lossless"`, `"lossy"` | Removes metadata and compresses your images for faster page load times. Basic... |
+        /// | `PreRender` | `"on"` / `"off"` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
         /// | `PrefetchPreload` | `"on"` / `"off"` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
         /// | `PrivacyPass` | `"on"` / `"off"` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
         /// | `ProxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -156,7 +157,7 @@ namespace Pulumi.Cloudflare
         /// | `ImageResizing` | `"on"`, `"off"`, `"open"` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
         /// | `IpGeolocation` | `"on"` / `"off"` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
         /// | `Ipv6` | `"on"` / `"off"` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-        /// | `MaxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+        /// | `MaxUpload` | Number (26 values) | Maximum size of an allowable upload. |
         /// | `MinTlsVersion` | `"1.0"`, `"1.1"`, `"1.2"`, `"1.3"` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
         /// | `Mirage` | `"on"` / `"off"` | Automatically optimize image loading for website visitors on mobile devices. ... |
         /// | `Nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -167,6 +168,7 @@ namespace Pulumi.Cloudflare
         /// | `OriginH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
         /// | `OriginMaxHttpVersion` | `"2"`, `"1"` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
         /// | `Polish` | `"off"`, `"lossless"`, `"lossy"` | Removes metadata and compresses your images for faster page load times. Basic... |
+        /// | `PreRender` | `"on"` / `"off"` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
         /// | `PrefetchPreload` | `"on"` / `"off"` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
         /// | `PrivacyPass` | `"on"` / `"off"` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
         /// | `ProxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -260,7 +262,7 @@ namespace Pulumi.Cloudflare
         /// | `ImageResizing` | `"on"`, `"off"`, `"open"` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
         /// | `IpGeolocation` | `"on"` / `"off"` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
         /// | `Ipv6` | `"on"` / `"off"` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-        /// | `MaxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+        /// | `MaxUpload` | Number (26 values) | Maximum size of an allowable upload. |
         /// | `MinTlsVersion` | `"1.0"`, `"1.1"`, `"1.2"`, `"1.3"` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
         /// | `Mirage` | `"on"` / `"off"` | Automatically optimize image loading for website visitors on mobile devices. ... |
         /// | `Nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -271,6 +273,7 @@ namespace Pulumi.Cloudflare
         /// | `OriginH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
         /// | `OriginMaxHttpVersion` | `"2"`, `"1"` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
         /// | `Polish` | `"off"`, `"lossless"`, `"lossy"` | Removes metadata and compresses your images for faster page load times. Basic... |
+        /// | `PreRender` | `"on"` / `"off"` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
         /// | `PrefetchPreload` | `"on"` / `"off"` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
         /// | `PrivacyPass` | `"on"` / `"off"` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
         /// | `ProxyReadTimeout` | Number | Maximum time between two read operations from origin. |

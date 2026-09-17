@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessGroupIncludeDevicePostureGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID of the account that owns the device posture integration.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
         /// The ID of a device posture integration.
         /// </summary>
         [Input("integrationUid", required: true)]

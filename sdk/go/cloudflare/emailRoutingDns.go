@@ -55,22 +55,18 @@ type EmailRoutingDns struct {
 	// The date and time the settings have been created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// State of the zone settings for Email Routing.
-	Enabled  pulumi.BoolOutput                 `pulumi:"enabled"`
-	Errors   EmailRoutingDnsErrorArrayOutput   `pulumi:"errors"`
-	Messages EmailRoutingDnsMessageArrayOutput `pulumi:"messages"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The date and time the settings have been modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// Domain of your zone.
-	Name       pulumi.StringPtrOutput          `pulumi:"name"`
-	Result     EmailRoutingDnsResultOutput     `pulumi:"result"`
-	ResultInfo EmailRoutingDnsResultInfoOutput `pulumi:"resultInfo"`
+	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard pulumi.BoolOutput `pulumi:"skipWizard"`
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Whether the API call was successful.
-	Success pulumi.BoolOutput `pulumi:"success"`
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	SupportSubaddress pulumi.BoolOutput `pulumi:"supportSubaddress"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -115,22 +111,18 @@ type emailRoutingDnsState struct {
 	// The date and time the settings have been created.
 	Created *string `pulumi:"created"`
 	// State of the zone settings for Email Routing.
-	Enabled  *bool                    `pulumi:"enabled"`
-	Errors   []EmailRoutingDnsError   `pulumi:"errors"`
-	Messages []EmailRoutingDnsMessage `pulumi:"messages"`
+	Enabled *bool `pulumi:"enabled"`
 	// The date and time the settings have been modified.
 	Modified *string `pulumi:"modified"`
 	// Domain of your zone.
-	Name       *string                    `pulumi:"name"`
-	Result     *EmailRoutingDnsResult     `pulumi:"result"`
-	ResultInfo *EmailRoutingDnsResultInfo `pulumi:"resultInfo"`
+	Name *string `pulumi:"name"`
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard *bool `pulumi:"skipWizard"`
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status *string `pulumi:"status"`
-	// Whether the API call was successful.
-	Success *bool `pulumi:"success"`
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	SupportSubaddress *bool `pulumi:"supportSubaddress"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -143,22 +135,18 @@ type EmailRoutingDnsState struct {
 	// The date and time the settings have been created.
 	Created pulumi.StringPtrInput
 	// State of the zone settings for Email Routing.
-	Enabled  pulumi.BoolPtrInput
-	Errors   EmailRoutingDnsErrorArrayInput
-	Messages EmailRoutingDnsMessageArrayInput
+	Enabled pulumi.BoolPtrInput
 	// The date and time the settings have been modified.
 	Modified pulumi.StringPtrInput
 	// Domain of your zone.
-	Name       pulumi.StringPtrInput
-	Result     EmailRoutingDnsResultPtrInput
-	ResultInfo EmailRoutingDnsResultInfoPtrInput
+	Name pulumi.StringPtrInput
 	// Flag to check if the user skipped the configuration wizard.
 	SkipWizard pulumi.BoolPtrInput
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringPtrInput
-	// Whether the API call was successful.
-	Success pulumi.BoolPtrInput
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	SupportSubaddress pulumi.BoolPtrInput
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -283,14 +271,6 @@ func (o EmailRoutingDnsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o EmailRoutingDnsOutput) Errors() EmailRoutingDnsErrorArrayOutput {
-	return o.ApplyT(func(v *EmailRoutingDns) EmailRoutingDnsErrorArrayOutput { return v.Errors }).(EmailRoutingDnsErrorArrayOutput)
-}
-
-func (o EmailRoutingDnsOutput) Messages() EmailRoutingDnsMessageArrayOutput {
-	return o.ApplyT(func(v *EmailRoutingDns) EmailRoutingDnsMessageArrayOutput { return v.Messages }).(EmailRoutingDnsMessageArrayOutput)
-}
-
 // The date and time the settings have been modified.
 func (o EmailRoutingDnsOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
@@ -299,14 +279,6 @@ func (o EmailRoutingDnsOutput) Modified() pulumi.StringOutput {
 // Domain of your zone.
 func (o EmailRoutingDnsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o EmailRoutingDnsOutput) Result() EmailRoutingDnsResultOutput {
-	return o.ApplyT(func(v *EmailRoutingDns) EmailRoutingDnsResultOutput { return v.Result }).(EmailRoutingDnsResultOutput)
-}
-
-func (o EmailRoutingDnsOutput) ResultInfo() EmailRoutingDnsResultInfoOutput {
-	return o.ApplyT(func(v *EmailRoutingDns) EmailRoutingDnsResultInfoOutput { return v.ResultInfo }).(EmailRoutingDnsResultInfoOutput)
 }
 
 // Flag to check if the user skipped the configuration wizard.
@@ -320,9 +292,9 @@ func (o EmailRoutingDnsOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Whether the API call was successful.
-func (o EmailRoutingDnsOutput) Success() pulumi.BoolOutput {
-	return o.ApplyT(func(v *EmailRoutingDns) pulumi.BoolOutput { return v.Success }).(pulumi.BoolOutput)
+// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+func (o EmailRoutingDnsOutput) SupportSubaddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EmailRoutingDns) pulumi.BoolOutput { return v.SupportSubaddress }).(pulumi.BoolOutput)
 }
 
 // Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

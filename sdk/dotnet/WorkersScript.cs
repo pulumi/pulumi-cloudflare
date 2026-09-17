@@ -18,6 +18,202 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleWorkersScript = new Cloudflare.WorkersScript("example_workers_script", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         ScriptName = "this-is_my_script-01",
+    ///         Assets = new Cloudflare.Inputs.WorkersScriptAssetsArgs
+    ///         {
+    ///             Config = new Cloudflare.Inputs.WorkersScriptAssetsConfigArgs
+    ///             {
+    ///                 Headers = @"        /dashboard/*
+    ///         X-Frame-Options: DENY
+    /// 
+    ///         /static/*
+    ///         Access-Control-Allow-Origin: *
+    /// ",
+    ///                 Redirects = @"        /foo /bar 301
+    ///         /news/* /blog/:splat
+    /// ",
+    ///                 HtmlHandling = "auto-trailing-slash",
+    ///                 NotFoundHandling = "404-page",
+    ///                 RunWorkerFirst = new() { },
+    ///                 ServeDirectly = true,
+    ///             },
+    ///             Jwt = "jwt",
+    ///         },
+    ///         Bindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkersScriptBindingArgs
+    ///             {
+    ///                 Name = "MY_ENV_VAR",
+    ///                 Text = "my_data",
+    ///                 Type = "plain_text",
+    ///             },
+    ///         },
+    ///         BodyPart = "worker.js",
+    ///         CacheOptions = new Cloudflare.Inputs.WorkersScriptCacheOptionsArgs
+    ///         {
+    ///             Enabled = true,
+    ///             CrossVersionCache = true,
+    ///         },
+    ///         CompatibilityDate = "2021-01-01T00:00:00Z",
+    ///         CompatibilityFlags = new[]
+    ///         {
+    ///             "nodejs_compat",
+    ///         },
+    ///         Exports = 
+    ///         {
+    ///             { "Admin", new Cloudflare.Inputs.WorkersScriptExportsArgs
+    ///             {
+    ///                 Type = "worker",
+    ///                 Cache = new Cloudflare.Inputs.WorkersScriptExportsCacheArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                 },
+    ///                 RenamedTo = "renamed_to",
+    ///                 State = "created",
+    ///                 Storage = "sqlite",
+    ///                 TransferFrom = "transfer_from",
+    ///                 TransferredTo = "transferred_to",
+    ///             } },
+    ///             { "default", new Cloudflare.Inputs.WorkersScriptExportsArgs
+    ///             {
+    ///                 Type = "worker",
+    ///                 Cache = new Cloudflare.Inputs.WorkersScriptExportsCacheArgs
+    ///                 {
+    ///                     Enabled = false,
+    ///                 },
+    ///                 RenamedTo = "renamed_to",
+    ///                 State = "created",
+    ///                 Storage = "sqlite",
+    ///                 TransferFrom = "transfer_from",
+    ///                 TransferredTo = "transferred_to",
+    ///             } },
+    ///         },
+    ///         KeepAssets = false,
+    ///         KeepBindings = new[]
+    ///         {
+    ///             "string",
+    ///         },
+    ///         Limits = new Cloudflare.Inputs.WorkersScriptLimitsArgs
+    ///         {
+    ///             CpuMs = 50,
+    ///             Subrequests = 1000,
+    ///         },
+    ///         Logpush = false,
+    ///         MainModule = "worker.js",
+    ///         Migrations = new Cloudflare.Inputs.WorkersScriptMigrationsArgs
+    ///         {
+    ///             DeletedClasses = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             NewClasses = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             NewSqliteClasses = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             NewTag = "v2",
+    ///             OldTag = "v1",
+    ///             RenamedClasses = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkersScriptMigrationsRenamedClassArgs
+    ///                 {
+    ///                     From = "from",
+    ///                     To = "to",
+    ///                 },
+    ///             },
+    ///             TransferredClasses = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkersScriptMigrationsTransferredClassArgs
+    ///                 {
+    ///                     From = "from",
+    ///                     FromScript = "from_script",
+    ///                     To = "to",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Observability = new Cloudflare.Inputs.WorkersScriptObservabilityArgs
+    ///         {
+    ///             Enabled = true,
+    ///             HeadSamplingRate = 0.1,
+    ///             Logs = new Cloudflare.Inputs.WorkersScriptObservabilityLogsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 InvocationLogs = true,
+    ///                 Destinations = new[]
+    ///                 {
+    ///                     "cloudflare",
+    ///                 },
+    ///                 HeadSamplingRate = 0.1,
+    ///                 Persist = true,
+    ///             },
+    ///             RedactQueryString = false,
+    ///             Traces = new Cloudflare.Inputs.WorkersScriptObservabilityTracesArgs
+    ///             {
+    ///                 Destinations = new[]
+    ///                 {
+    ///                     "cloudflare",
+    ///                 },
+    ///                 Enabled = true,
+    ///                 HeadSamplingRate = 0.1,
+    ///                 Persist = true,
+    ///             },
+    ///         },
+    ///         PackageDependencies = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkersScriptPackageDependencyArgs
+    ///             {
+    ///                 InstalledVersion = "4.17.22",
+    ///                 Name = "lodash",
+    ///                 PackageJsonVersion = "^4.17.21",
+    ///             },
+    ///         },
+    ///         Placement = new Cloudflare.Inputs.WorkersScriptPlacementArgs
+    ///         {
+    ///             Mode = "smart",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "string",
+    ///         },
+    ///         TailConsumers = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkersScriptTailConsumerArgs
+    ///             {
+    ///                 Service = "my-log-consumer",
+    ///                 Environment = "production",
+    ///                 Namespace = "my-namespace",
+    ///             },
+    ///         },
+    ///         UsageModel = "standard",
+    ///         Files = 
+    ///         {
+    ///             { "module.wasm", new Cloudflare.Inputs.WorkersScriptFilesArgs
+    ///             {
+    ///                 ContentBase64 = "AGFzbQEAAAA=",
+    ///                 ContentType = "application/wasm",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -55,7 +251,7 @@ namespace Pulumi.Cloudflare
         /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `Fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Output("bodyPart")]
-        public Output<string?> BodyPart { get; private set; } = null!;
+        public Output<string> BodyPart { get; private set; } = null!;
 
         /// <summary>
         /// Global CacheW configuration for the Worker. When caching is on,
@@ -119,6 +315,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("exports")]
         public Output<ImmutableDictionary<string, Outputs.WorkersScriptExports>?> Exports { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `Part` values and module imports.
+        /// </summary>
+        [Output("files")]
+        public Output<ImmutableDictionary<string, Outputs.WorkersScriptFiles>?> Files { get; private set; } = null!;
 
         /// <summary>
         /// The names of handlers exported as part of the default export.
@@ -399,6 +601,18 @@ namespace Pulumi.Cloudflare
             set => _exports = value;
         }
 
+        [Input("files")]
+        private InputMap<Inputs.WorkersScriptFilesArgs>? _files;
+
+        /// <summary>
+        /// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `Part` values and module imports.
+        /// </summary>
+        public InputMap<Inputs.WorkersScriptFilesArgs> Files
+        {
+            get => _files ?? (_files = new InputMap<Inputs.WorkersScriptFilesArgs>());
+            set => _files = value;
+        }
+
         /// <summary>
         /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `Assets` upload takes precedence over `KeepAssets`.
         /// </summary>
@@ -607,6 +821,18 @@ namespace Pulumi.Cloudflare
         {
             get => _exports ?? (_exports = new InputMap<Inputs.WorkersScriptExportsGetArgs>());
             set => _exports = value;
+        }
+
+        [Input("files")]
+        private InputMap<Inputs.WorkersScriptFilesGetArgs>? _files;
+
+        /// <summary>
+        /// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `Part` values and module imports.
+        /// </summary>
+        public InputMap<Inputs.WorkersScriptFilesGetArgs> Files
+        {
+            get => _files ?? (_files = new InputMap<Inputs.WorkersScriptFilesGetArgs>());
+            set => _files = value;
         }
 
         [Input("handlers")]

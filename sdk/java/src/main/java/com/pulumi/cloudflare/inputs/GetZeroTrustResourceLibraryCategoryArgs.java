@@ -23,14 +23,14 @@ public final class GetZeroTrustResourceLibraryCategoryArgs extends com.pulumi.re
     }
 
     /**
-     * The ID of this resource.
+     * Returns the category ID.
      * 
      */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
     /**
-     * @return The ID of this resource.
+     * @return Returns the category ID.
      * 
      */
     public Output<Integer> id() {
@@ -72,7 +72,7 @@ public final class GetZeroTrustResourceLibraryCategoryArgs extends com.pulumi.re
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id Returns the category ID.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetZeroTrustResourceLibraryCategoryArgs extends com.pulumi.re
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id Returns the category ID.
          * 
          * @return builder
          * 

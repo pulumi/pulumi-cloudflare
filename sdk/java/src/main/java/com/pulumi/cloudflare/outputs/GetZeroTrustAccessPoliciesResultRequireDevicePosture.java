@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustAccessPoliciesResultRequireDevicePosture {
     /**
+     * @return The ID of the account that owns the device posture integration.
+     * 
+     */
+    private String accountId;
+    /**
      * @return The ID of a device posture integration.
      * 
      */
     private String integrationUid;
 
     private GetZeroTrustAccessPoliciesResultRequireDevicePosture() {}
+    /**
+     * @return The ID of the account that owns the device posture integration.
+     * 
+     */
+    public String accountId() {
+        return this.accountId;
+    }
     /**
      * @return The ID of a device posture integration.
      * 
@@ -34,13 +46,23 @@ public final class GetZeroTrustAccessPoliciesResultRequireDevicePosture {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String accountId;
         private String integrationUid;
         public Builder() {}
         public Builder(GetZeroTrustAccessPoliciesResultRequireDevicePosture defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accountId = defaults.accountId;
     	      this.integrationUid = defaults.integrationUid;
         }
 
+        @CustomType.Setter
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResultRequireDevicePosture", "accountId");
+            }
+            this.accountId = accountId;
+            return this;
+        }
         @CustomType.Setter
         public Builder integrationUid(String integrationUid) {
             if (integrationUid == null) {
@@ -51,6 +73,7 @@ public final class GetZeroTrustAccessPoliciesResultRequireDevicePosture {
         }
         public GetZeroTrustAccessPoliciesResultRequireDevicePosture build() {
             final var _resultValue = new GetZeroTrustAccessPoliciesResultRequireDevicePosture();
+            _resultValue.accountId = accountId;
             _resultValue.integrationUid = integrationUid;
             return _resultValue;
         }

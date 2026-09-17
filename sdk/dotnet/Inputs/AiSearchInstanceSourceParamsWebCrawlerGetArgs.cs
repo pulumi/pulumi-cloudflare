@@ -28,8 +28,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("parseType")]
         public Input<string>? ParseType { get; set; }
 
-        [Input("storeOptions")]
-        public Input<Inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptionsGetArgs>? StoreOptions { get; set; }
+        [Input("storeOptions", required: true)]
+        public Input<Inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptionsGetArgs> StoreOptions { get; set; } = null!;
 
         public AiSearchInstanceSourceParamsWebCrawlerGetArgs()
         {

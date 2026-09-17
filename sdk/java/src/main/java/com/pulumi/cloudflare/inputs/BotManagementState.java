@@ -65,6 +65,21 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone&#39;s AI Search, AI User, and AI Training preferences.
+     * 
+     */
+    @Import(name="botPreferenceSyncEnabled")
+    private @Nullable Output<Boolean> botPreferenceSyncEnabled;
+
+    /**
+     * @return Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone&#39;s AI Search, AI User, and AI Training preferences.
+     * 
+     */
+    public Optional<Output<Boolean>> botPreferenceSyncEnabled() {
+        return Optional.ofNullable(this.botPreferenceSyncEnabled);
+    }
+
+    /**
      * Specifies the Robots Access Control License variant to use.
      * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
      * 
@@ -311,6 +326,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         this.aiBotsProtection = $.aiBotsProtection;
         this.autoUpdateModel = $.autoUpdateModel;
         this.bmCookieEnabled = $.bmCookieEnabled;
+        this.botPreferenceSyncEnabled = $.botPreferenceSyncEnabled;
         this.cfRobotsVariant = $.cfRobotsVariant;
         this.contentBotsProtection = $.contentBotsProtection;
         this.crawlerProtection = $.crawlerProtection;
@@ -409,6 +425,27 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder bmCookieEnabled(Boolean bmCookieEnabled) {
             return bmCookieEnabled(Output.of(bmCookieEnabled));
+        }
+
+        /**
+         * @param botPreferenceSyncEnabled Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone&#39;s AI Search, AI User, and AI Training preferences.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder botPreferenceSyncEnabled(@Nullable Output<Boolean> botPreferenceSyncEnabled) {
+            $.botPreferenceSyncEnabled = botPreferenceSyncEnabled;
+            return this;
+        }
+
+        /**
+         * @param botPreferenceSyncEnabled Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone&#39;s AI Search, AI User, and AI Training preferences.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder botPreferenceSyncEnabled(Boolean botPreferenceSyncEnabled) {
+            return botPreferenceSyncEnabled(Output.of(botPreferenceSyncEnabled));
         }
 
         /**

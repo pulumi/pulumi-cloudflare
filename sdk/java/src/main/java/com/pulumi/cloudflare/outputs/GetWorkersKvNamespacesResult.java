@@ -17,6 +17,12 @@ public final class GetWorkersKvNamespacesResult {
      */
     private String id;
     /**
+     * @return Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    private String jurisdiction;
+    /**
      * @return True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
      * 
      */
@@ -34,6 +40,14 @@ public final class GetWorkersKvNamespacesResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    public String jurisdiction() {
+        return this.jurisdiction;
     }
     /**
      * @return True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
@@ -60,12 +74,14 @@ public final class GetWorkersKvNamespacesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private String jurisdiction;
         private Boolean supportsUrlEncoding;
         private String title;
         public Builder() {}
         public Builder(GetWorkersKvNamespacesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.supportsUrlEncoding = defaults.supportsUrlEncoding;
     	      this.title = defaults.title;
         }
@@ -76,6 +92,14 @@ public final class GetWorkersKvNamespacesResult {
               throw new MissingRequiredPropertyException("GetWorkersKvNamespacesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jurisdiction(String jurisdiction) {
+            if (jurisdiction == null) {
+              throw new MissingRequiredPropertyException("GetWorkersKvNamespacesResult", "jurisdiction");
+            }
+            this.jurisdiction = jurisdiction;
             return this;
         }
         @CustomType.Setter
@@ -97,6 +121,7 @@ public final class GetWorkersKvNamespacesResult {
         public GetWorkersKvNamespacesResult build() {
             final var _resultValue = new GetWorkersKvNamespacesResult();
             _resultValue.id = id;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.supportsUrlEncoding = supportsUrlEncoding;
             _resultValue.title = title;
             return _resultValue;

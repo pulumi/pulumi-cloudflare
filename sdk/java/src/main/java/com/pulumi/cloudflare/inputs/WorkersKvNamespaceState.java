@@ -32,6 +32,23 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
+    /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
      * 
      */
@@ -65,6 +82,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
 
     private WorkersKvNamespaceState(WorkersKvNamespaceState $) {
         this.accountId = $.accountId;
+        this.jurisdiction = $.jurisdiction;
         this.supportsUrlEncoding = $.supportsUrlEncoding;
         this.title = $.title;
     }
@@ -106,6 +124,29 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param jurisdiction Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         /**

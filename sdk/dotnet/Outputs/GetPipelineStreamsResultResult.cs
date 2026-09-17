@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Indicates the endpoint URL of this stream.
         /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// Defines the data format of the events.
+        /// </summary>
         public readonly Outputs.GetPipelineStreamsResultFormatResult Format;
         public readonly Outputs.GetPipelineStreamsResultHttpResult Http;
         /// <summary>
@@ -29,6 +32,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Indicates the name of the Stream.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         public readonly Outputs.GetPipelineStreamsResultSchemaResult Schema;
         /// <summary>
         /// Indicates the current version of this stream.

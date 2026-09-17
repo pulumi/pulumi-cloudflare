@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *                 .enabled(true)
  *                 .crossVersionCache(true)
  *                 .build())
- *             .compatibilityDate("2021-01-01")
+ *             .compatibilityDate("2021-01-01T00:00:00Z")
  *             .compatibilityFlags("nodejs_compat")
  *             .containers(WorkerVersionContainerArgs.builder()
  *                 .className("MyDurableObject")

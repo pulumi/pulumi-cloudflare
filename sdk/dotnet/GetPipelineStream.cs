@@ -157,6 +157,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Endpoint;
         public readonly Outputs.GetPipelineStreamFilterResult? Filter;
+        /// <summary>
+        /// Defines the data format of the events.
+        /// </summary>
         public readonly Outputs.GetPipelineStreamFormatResult Format;
         public readonly Outputs.GetPipelineStreamHttpResult Http;
         /// <summary>
@@ -168,6 +171,9 @@ namespace Pulumi.Cloudflare
         /// Indicates the name of the Stream.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         public readonly Outputs.GetPipelineStreamSchemaResult Schema;
         /// <summary>
         /// Specifies the public ID of the stream.

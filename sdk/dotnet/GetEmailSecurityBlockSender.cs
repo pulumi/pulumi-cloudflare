@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetEmailSecurityBlockSenderResult> InvokeAsync(GetEmailSecurityBlockSenderArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetEmailSecurityBlockSenderResult> InvokeAsync(GetEmailSecurityBlockSenderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEmailSecurityBlockSenderResult>("cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender", args ?? new GetEmailSecurityBlockSenderArgs(), options.WithDefaults());
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetEmailSecurityBlockSenderResult> Invoke(GetEmailSecurityBlockSenderInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetEmailSecurityBlockSenderResult> Invoke(GetEmailSecurityBlockSenderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailSecurityBlockSenderResult>("cloudflare:index/getEmailSecurityBlockSender:getEmailSecurityBlockSender", args ?? new GetEmailSecurityBlockSenderInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -99,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetEmailSecurityBlockSenderArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         [Input("filter")]
         public Inputs.GetEmailSecurityBlockSenderFilterArgs? Filter { get; set; }
@@ -116,8 +116,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetEmailSecurityBlockSenderInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("filter")]
         public Input<Inputs.GetEmailSecurityBlockSenderFilterInputArgs>? Filter { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetEmailSecurityBlockSenderResult
     {
-        public readonly string? AccountId;
+        public readonly string AccountId;
         public readonly string Comments;
         public readonly string CreatedAt;
         public readonly Outputs.GetEmailSecurityBlockSenderFilterResult? Filter;
@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetEmailSecurityBlockSenderResult(
-            string? accountId,
+            string accountId,
 
             string comments,
 

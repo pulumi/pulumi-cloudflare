@@ -13,406 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type GetPipelineSinksResult struct {
-	// Defines the configuration of the R2 Sink.
-	Config    GetPipelineSinksResultConfig `pulumi:"config"`
-	CreatedAt string                       `pulumi:"createdAt"`
-	Format    GetPipelineSinksResultFormat `pulumi:"format"`
-	// Indicates a unique identifier for this sink.
-	Id         string `pulumi:"id"`
-	ModifiedAt string `pulumi:"modifiedAt"`
-	// Defines the name of the Sink.
-	Name   string                       `pulumi:"name"`
-	Schema GetPipelineSinksResultSchema `pulumi:"schema"`
-	// Specifies the type of sink.
-	// Available values: "r2", "r2*data*catalog".
-	Type string `pulumi:"type"`
-}
-
-// GetPipelineSinksResultInput is an input type that accepts GetPipelineSinksResultArgs and GetPipelineSinksResultOutput values.
-// You can construct a concrete instance of `GetPipelineSinksResultInput` via:
-//
-//	GetPipelineSinksResultArgs{...}
-type GetPipelineSinksResultInput interface {
-	pulumi.Input
-
-	ToGetPipelineSinksResultOutput() GetPipelineSinksResultOutput
-	ToGetPipelineSinksResultOutputWithContext(context.Context) GetPipelineSinksResultOutput
-}
-
-type GetPipelineSinksResultArgs struct {
-	// Defines the configuration of the R2 Sink.
-	Config    GetPipelineSinksResultConfigInput `pulumi:"config"`
-	CreatedAt pulumi.StringInput                `pulumi:"createdAt"`
-	Format    GetPipelineSinksResultFormatInput `pulumi:"format"`
-	// Indicates a unique identifier for this sink.
-	Id         pulumi.StringInput `pulumi:"id"`
-	ModifiedAt pulumi.StringInput `pulumi:"modifiedAt"`
-	// Defines the name of the Sink.
-	Name   pulumi.StringInput                `pulumi:"name"`
-	Schema GetPipelineSinksResultSchemaInput `pulumi:"schema"`
-	// Specifies the type of sink.
-	// Available values: "r2", "r2*data*catalog".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetPipelineSinksResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResult)(nil)).Elem()
-}
-
-func (i GetPipelineSinksResultArgs) ToGetPipelineSinksResultOutput() GetPipelineSinksResultOutput {
-	return i.ToGetPipelineSinksResultOutputWithContext(context.Background())
-}
-
-func (i GetPipelineSinksResultArgs) ToGetPipelineSinksResultOutputWithContext(ctx context.Context) GetPipelineSinksResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultOutput)
-}
-
-// GetPipelineSinksResultArrayInput is an input type that accepts GetPipelineSinksResultArray and GetPipelineSinksResultArrayOutput values.
-// You can construct a concrete instance of `GetPipelineSinksResultArrayInput` via:
-//
-//	GetPipelineSinksResultArray{ GetPipelineSinksResultArgs{...} }
-type GetPipelineSinksResultArrayInput interface {
-	pulumi.Input
-
-	ToGetPipelineSinksResultArrayOutput() GetPipelineSinksResultArrayOutput
-	ToGetPipelineSinksResultArrayOutputWithContext(context.Context) GetPipelineSinksResultArrayOutput
-}
-
-type GetPipelineSinksResultArray []GetPipelineSinksResultInput
-
-func (GetPipelineSinksResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPipelineSinksResult)(nil)).Elem()
-}
-
-func (i GetPipelineSinksResultArray) ToGetPipelineSinksResultArrayOutput() GetPipelineSinksResultArrayOutput {
-	return i.ToGetPipelineSinksResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetPipelineSinksResultArray) ToGetPipelineSinksResultArrayOutputWithContext(ctx context.Context) GetPipelineSinksResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultArrayOutput)
-}
-
-type GetPipelineSinksResultOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineSinksResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResult)(nil)).Elem()
-}
-
-func (o GetPipelineSinksResultOutput) ToGetPipelineSinksResultOutput() GetPipelineSinksResultOutput {
-	return o
-}
-
-func (o GetPipelineSinksResultOutput) ToGetPipelineSinksResultOutputWithContext(ctx context.Context) GetPipelineSinksResultOutput {
-	return o
-}
-
-// Defines the configuration of the R2 Sink.
-func (o GetPipelineSinksResultOutput) Config() GetPipelineSinksResultConfigOutput {
-	return o.ApplyT(func(v GetPipelineSinksResult) GetPipelineSinksResultConfig { return v.Config }).(GetPipelineSinksResultConfigOutput)
-}
-
-func (o GetPipelineSinksResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineSinksResultOutput) Format() GetPipelineSinksResultFormatOutput {
-	return o.ApplyT(func(v GetPipelineSinksResult) GetPipelineSinksResultFormat { return v.Format }).(GetPipelineSinksResultFormatOutput)
-}
-
-// Indicates a unique identifier for this sink.
-func (o GetPipelineSinksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineSinksResultOutput) ModifiedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
-}
-
-// Defines the name of the Sink.
-func (o GetPipelineSinksResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineSinksResultOutput) Schema() GetPipelineSinksResultSchemaOutput {
-	return o.ApplyT(func(v GetPipelineSinksResult) GetPipelineSinksResultSchema { return v.Schema }).(GetPipelineSinksResultSchemaOutput)
-}
-
-// Specifies the type of sink.
-// Available values: "r2", "r2*data*catalog".
-func (o GetPipelineSinksResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetPipelineSinksResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineSinksResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPipelineSinksResult)(nil)).Elem()
-}
-
-func (o GetPipelineSinksResultArrayOutput) ToGetPipelineSinksResultArrayOutput() GetPipelineSinksResultArrayOutput {
-	return o
-}
-
-func (o GetPipelineSinksResultArrayOutput) ToGetPipelineSinksResultArrayOutputWithContext(ctx context.Context) GetPipelineSinksResultArrayOutput {
-	return o
-}
-
-func (o GetPipelineSinksResultArrayOutput) Index(i pulumi.IntInput) GetPipelineSinksResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineSinksResult {
-		return vs[0].([]GetPipelineSinksResult)[vs[1].(int)]
-	}).(GetPipelineSinksResultOutput)
-}
-
-type GetPipelineSinksResultConfig struct {
-	// Cloudflare Account ID for the bucket
-	AccountId string `pulumi:"accountId"`
-	// R2 Bucket to write to
-	Bucket string `pulumi:"bucket"`
-	// Controls filename prefix/suffix and strategy.
-	FileNaming GetPipelineSinksResultConfigFileNaming `pulumi:"fileNaming"`
-	// Jurisdiction this bucket is hosted in
-	Jurisdiction string `pulumi:"jurisdiction"`
-	// Table namespace
-	Namespace string `pulumi:"namespace"`
-	// Data-layout partitioning for sinks.
-	Partitioning GetPipelineSinksResultConfigPartitioning `pulumi:"partitioning"`
-	// Subpath within the bucket to write to
-	Path string `pulumi:"path"`
-	// Rolling policy for file sinks (when & why to close a file and open a new one).
-	RollingPolicy GetPipelineSinksResultConfigRollingPolicy `pulumi:"rollingPolicy"`
-	// Table name
-	TableName string `pulumi:"tableName"`
-}
-
-// GetPipelineSinksResultConfigInput is an input type that accepts GetPipelineSinksResultConfigArgs and GetPipelineSinksResultConfigOutput values.
-// You can construct a concrete instance of `GetPipelineSinksResultConfigInput` via:
-//
-//	GetPipelineSinksResultConfigArgs{...}
-type GetPipelineSinksResultConfigInput interface {
-	pulumi.Input
-
-	ToGetPipelineSinksResultConfigOutput() GetPipelineSinksResultConfigOutput
-	ToGetPipelineSinksResultConfigOutputWithContext(context.Context) GetPipelineSinksResultConfigOutput
-}
-
-type GetPipelineSinksResultConfigArgs struct {
-	// Cloudflare Account ID for the bucket
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// R2 Bucket to write to
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// Controls filename prefix/suffix and strategy.
-	FileNaming GetPipelineSinksResultConfigFileNamingInput `pulumi:"fileNaming"`
-	// Jurisdiction this bucket is hosted in
-	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
-	// Table namespace
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// Data-layout partitioning for sinks.
-	Partitioning GetPipelineSinksResultConfigPartitioningInput `pulumi:"partitioning"`
-	// Subpath within the bucket to write to
-	Path pulumi.StringInput `pulumi:"path"`
-	// Rolling policy for file sinks (when & why to close a file and open a new one).
-	RollingPolicy GetPipelineSinksResultConfigRollingPolicyInput `pulumi:"rollingPolicy"`
-	// Table name
-	TableName pulumi.StringInput `pulumi:"tableName"`
-}
-
-func (GetPipelineSinksResultConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResultConfig)(nil)).Elem()
-}
-
-func (i GetPipelineSinksResultConfigArgs) ToGetPipelineSinksResultConfigOutput() GetPipelineSinksResultConfigOutput {
-	return i.ToGetPipelineSinksResultConfigOutputWithContext(context.Background())
-}
-
-func (i GetPipelineSinksResultConfigArgs) ToGetPipelineSinksResultConfigOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultConfigOutput)
-}
-
-type GetPipelineSinksResultConfigOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineSinksResultConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResultConfig)(nil)).Elem()
-}
-
-func (o GetPipelineSinksResultConfigOutput) ToGetPipelineSinksResultConfigOutput() GetPipelineSinksResultConfigOutput {
-	return o
-}
-
-func (o GetPipelineSinksResultConfigOutput) ToGetPipelineSinksResultConfigOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigOutput {
-	return o
-}
-
-// Cloudflare Account ID for the bucket
-func (o GetPipelineSinksResultConfigOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// R2 Bucket to write to
-func (o GetPipelineSinksResultConfigOutput) Bucket() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.Bucket }).(pulumi.StringOutput)
-}
-
-// Controls filename prefix/suffix and strategy.
-func (o GetPipelineSinksResultConfigOutput) FileNaming() GetPipelineSinksResultConfigFileNamingOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) GetPipelineSinksResultConfigFileNaming { return v.FileNaming }).(GetPipelineSinksResultConfigFileNamingOutput)
-}
-
-// Jurisdiction this bucket is hosted in
-func (o GetPipelineSinksResultConfigOutput) Jurisdiction() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.Jurisdiction }).(pulumi.StringOutput)
-}
-
-// Table namespace
-func (o GetPipelineSinksResultConfigOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.Namespace }).(pulumi.StringOutput)
-}
-
-// Data-layout partitioning for sinks.
-func (o GetPipelineSinksResultConfigOutput) Partitioning() GetPipelineSinksResultConfigPartitioningOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) GetPipelineSinksResultConfigPartitioning { return v.Partitioning }).(GetPipelineSinksResultConfigPartitioningOutput)
-}
-
-// Subpath within the bucket to write to
-func (o GetPipelineSinksResultConfigOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.Path }).(pulumi.StringOutput)
-}
-
-// Rolling policy for file sinks (when & why to close a file and open a new one).
-func (o GetPipelineSinksResultConfigOutput) RollingPolicy() GetPipelineSinksResultConfigRollingPolicyOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) GetPipelineSinksResultConfigRollingPolicy { return v.RollingPolicy }).(GetPipelineSinksResultConfigRollingPolicyOutput)
-}
-
-// Table name
-func (o GetPipelineSinksResultConfigOutput) TableName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfig) string { return v.TableName }).(pulumi.StringOutput)
-}
-
-type GetPipelineSinksResultConfigFileNaming struct {
-	// The prefix to use in file name. i.e prefix-\n\n.parquet
-	Prefix string `pulumi:"prefix"`
-	// Filename generation strategy.
-	// Available values: "serial", "uuid", "uuidV7", "ulid".
-	Strategy string `pulumi:"strategy"`
-	// This will overwrite the default file suffix. i.e .parquet, use with caution
-	Suffix string `pulumi:"suffix"`
-}
-
-// GetPipelineSinksResultConfigFileNamingInput is an input type that accepts GetPipelineSinksResultConfigFileNamingArgs and GetPipelineSinksResultConfigFileNamingOutput values.
-// You can construct a concrete instance of `GetPipelineSinksResultConfigFileNamingInput` via:
-//
-//	GetPipelineSinksResultConfigFileNamingArgs{...}
-type GetPipelineSinksResultConfigFileNamingInput interface {
-	pulumi.Input
-
-	ToGetPipelineSinksResultConfigFileNamingOutput() GetPipelineSinksResultConfigFileNamingOutput
-	ToGetPipelineSinksResultConfigFileNamingOutputWithContext(context.Context) GetPipelineSinksResultConfigFileNamingOutput
-}
-
-type GetPipelineSinksResultConfigFileNamingArgs struct {
-	// The prefix to use in file name. i.e prefix-\n\n.parquet
-	Prefix pulumi.StringInput `pulumi:"prefix"`
-	// Filename generation strategy.
-	// Available values: "serial", "uuid", "uuidV7", "ulid".
-	Strategy pulumi.StringInput `pulumi:"strategy"`
-	// This will overwrite the default file suffix. i.e .parquet, use with caution
-	Suffix pulumi.StringInput `pulumi:"suffix"`
-}
-
-func (GetPipelineSinksResultConfigFileNamingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResultConfigFileNaming)(nil)).Elem()
-}
-
-func (i GetPipelineSinksResultConfigFileNamingArgs) ToGetPipelineSinksResultConfigFileNamingOutput() GetPipelineSinksResultConfigFileNamingOutput {
-	return i.ToGetPipelineSinksResultConfigFileNamingOutputWithContext(context.Background())
-}
-
-func (i GetPipelineSinksResultConfigFileNamingArgs) ToGetPipelineSinksResultConfigFileNamingOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigFileNamingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultConfigFileNamingOutput)
-}
-
-type GetPipelineSinksResultConfigFileNamingOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineSinksResultConfigFileNamingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResultConfigFileNaming)(nil)).Elem()
-}
-
-func (o GetPipelineSinksResultConfigFileNamingOutput) ToGetPipelineSinksResultConfigFileNamingOutput() GetPipelineSinksResultConfigFileNamingOutput {
-	return o
-}
-
-func (o GetPipelineSinksResultConfigFileNamingOutput) ToGetPipelineSinksResultConfigFileNamingOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigFileNamingOutput {
-	return o
-}
-
-// The prefix to use in file name. i.e prefix-\n\n.parquet
-func (o GetPipelineSinksResultConfigFileNamingOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfigFileNaming) string { return v.Prefix }).(pulumi.StringOutput)
-}
-
-// Filename generation strategy.
-// Available values: "serial", "uuid", "uuidV7", "ulid".
-func (o GetPipelineSinksResultConfigFileNamingOutput) Strategy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfigFileNaming) string { return v.Strategy }).(pulumi.StringOutput)
-}
-
-// This will overwrite the default file suffix. i.e .parquet, use with caution
-func (o GetPipelineSinksResultConfigFileNamingOutput) Suffix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfigFileNaming) string { return v.Suffix }).(pulumi.StringOutput)
-}
-
-type GetPipelineSinksResultConfigPartitioning struct {
-	// The pattern of the date string
-	TimePattern string `pulumi:"timePattern"`
-}
-
-// GetPipelineSinksResultConfigPartitioningInput is an input type that accepts GetPipelineSinksResultConfigPartitioningArgs and GetPipelineSinksResultConfigPartitioningOutput values.
-// You can construct a concrete instance of `GetPipelineSinksResultConfigPartitioningInput` via:
-//
-//	GetPipelineSinksResultConfigPartitioningArgs{...}
-type GetPipelineSinksResultConfigPartitioningInput interface {
-	pulumi.Input
-
-	ToGetPipelineSinksResultConfigPartitioningOutput() GetPipelineSinksResultConfigPartitioningOutput
-	ToGetPipelineSinksResultConfigPartitioningOutputWithContext(context.Context) GetPipelineSinksResultConfigPartitioningOutput
-}
-
-type GetPipelineSinksResultConfigPartitioningArgs struct {
-	// The pattern of the date string
-	TimePattern pulumi.StringInput `pulumi:"timePattern"`
-}
-
-func (GetPipelineSinksResultConfigPartitioningArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResultConfigPartitioning)(nil)).Elem()
-}
-
-func (i GetPipelineSinksResultConfigPartitioningArgs) ToGetPipelineSinksResultConfigPartitioningOutput() GetPipelineSinksResultConfigPartitioningOutput {
-	return i.ToGetPipelineSinksResultConfigPartitioningOutputWithContext(context.Background())
-}
-
-func (i GetPipelineSinksResultConfigPartitioningArgs) ToGetPipelineSinksResultConfigPartitioningOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigPartitioningOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultConfigPartitioningOutput)
-}
-
-type GetPipelineSinksResultConfigPartitioningOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineSinksResultConfigPartitioningOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResultConfigPartitioning)(nil)).Elem()
-}
-
-func (o GetPipelineSinksResultConfigPartitioningOutput) ToGetPipelineSinksResultConfigPartitioningOutput() GetPipelineSinksResultConfigPartitioningOutput {
-	return o
-}
-
-func (o GetPipelineSinksResultConfigPartitioningOutput) ToGetPipelineSinksResultConfigPartitioningOutputWithContext(ctx context.Context) GetPipelineSinksResultConfigPartitioningOutput {
-	return o
-}
-
-// The pattern of the date string
-func (o GetPipelineSinksResultConfigPartitioningOutput) TimePattern() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultConfigPartitioning) string { return v.TimePattern }).(pulumi.StringOutput)
-}
-
 type GetPipelineSinksResultConfigRollingPolicy struct {
 	// Files will be rolled after reaching this number of bytes
 	FileSizeBytes int `pulumi:"fileSizeBytes"`
@@ -484,7 +84,8 @@ func (o GetPipelineSinksResultConfigRollingPolicyOutput) IntervalSeconds() pulum
 }
 
 type GetPipelineSinksResultFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+	// Specifies the compression applied to JSON sink output.
+	// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 	Compression string `pulumi:"compression"`
 	// Available values: "number", "string", "bytes".
 	DecimalEncoding string `pulumi:"decimalEncoding"`
@@ -508,7 +109,8 @@ type GetPipelineSinksResultFormatInput interface {
 }
 
 type GetPipelineSinksResultFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+	// Specifies the compression applied to JSON sink output.
+	// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 	Compression pulumi.StringInput `pulumi:"compression"`
 	// Available values: "number", "string", "bytes".
 	DecimalEncoding pulumi.StringInput `pulumi:"decimalEncoding"`
@@ -546,7 +148,8 @@ func (o GetPipelineSinksResultFormatOutput) ToGetPipelineSinksResultFormatOutput
 	return o
 }
 
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+// Specifies the compression applied to JSON sink output.
+// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 func (o GetPipelineSinksResultFormatOutput) Compression() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineSinksResultFormat) string { return v.Compression }).(pulumi.StringOutput)
 }
@@ -576,7 +179,6 @@ func (o GetPipelineSinksResultFormatOutput) Unstructured() pulumi.BoolOutput {
 
 type GetPipelineSinksResultSchema struct {
 	Fields   []GetPipelineSinksResultSchemaField `pulumi:"fields"`
-	Format   GetPipelineSinksResultSchemaFormat  `pulumi:"format"`
 	Inferred bool                                `pulumi:"inferred"`
 }
 
@@ -593,7 +195,6 @@ type GetPipelineSinksResultSchemaInput interface {
 
 type GetPipelineSinksResultSchemaArgs struct {
 	Fields   GetPipelineSinksResultSchemaFieldArrayInput `pulumi:"fields"`
-	Format   GetPipelineSinksResultSchemaFormatInput     `pulumi:"format"`
 	Inferred pulumi.BoolInput                            `pulumi:"inferred"`
 }
 
@@ -625,10 +226,6 @@ func (o GetPipelineSinksResultSchemaOutput) ToGetPipelineSinksResultSchemaOutput
 
 func (o GetPipelineSinksResultSchemaOutput) Fields() GetPipelineSinksResultSchemaFieldArrayOutput {
 	return o.ApplyT(func(v GetPipelineSinksResultSchema) []GetPipelineSinksResultSchemaField { return v.Fields }).(GetPipelineSinksResultSchemaFieldArrayOutput)
-}
-
-func (o GetPipelineSinksResultSchemaOutput) Format() GetPipelineSinksResultSchemaFormatOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultSchema) GetPipelineSinksResultSchemaFormat { return v.Format }).(GetPipelineSinksResultSchemaFormatOutput)
 }
 
 func (o GetPipelineSinksResultSchemaOutput) Inferred() pulumi.BoolOutput {
@@ -763,97 +360,6 @@ func (o GetPipelineSinksResultSchemaFieldArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineSinksResultSchemaField {
 		return vs[0].([]GetPipelineSinksResultSchemaField)[vs[1].(int)]
 	}).(GetPipelineSinksResultSchemaFieldOutput)
-}
-
-type GetPipelineSinksResultSchemaFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression string `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding string `pulumi:"decimalEncoding"`
-	RowGroupBytes   int    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat string `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         string `pulumi:"type"`
-	Unstructured bool   `pulumi:"unstructured"`
-}
-
-// GetPipelineSinksResultSchemaFormatInput is an input type that accepts GetPipelineSinksResultSchemaFormatArgs and GetPipelineSinksResultSchemaFormatOutput values.
-// You can construct a concrete instance of `GetPipelineSinksResultSchemaFormatInput` via:
-//
-//	GetPipelineSinksResultSchemaFormatArgs{...}
-type GetPipelineSinksResultSchemaFormatInput interface {
-	pulumi.Input
-
-	ToGetPipelineSinksResultSchemaFormatOutput() GetPipelineSinksResultSchemaFormatOutput
-	ToGetPipelineSinksResultSchemaFormatOutputWithContext(context.Context) GetPipelineSinksResultSchemaFormatOutput
-}
-
-type GetPipelineSinksResultSchemaFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression pulumi.StringInput `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding pulumi.StringInput `pulumi:"decimalEncoding"`
-	RowGroupBytes   pulumi.IntInput    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat pulumi.StringInput `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         pulumi.StringInput `pulumi:"type"`
-	Unstructured pulumi.BoolInput   `pulumi:"unstructured"`
-}
-
-func (GetPipelineSinksResultSchemaFormatArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResultSchemaFormat)(nil)).Elem()
-}
-
-func (i GetPipelineSinksResultSchemaFormatArgs) ToGetPipelineSinksResultSchemaFormatOutput() GetPipelineSinksResultSchemaFormatOutput {
-	return i.ToGetPipelineSinksResultSchemaFormatOutputWithContext(context.Background())
-}
-
-func (i GetPipelineSinksResultSchemaFormatArgs) ToGetPipelineSinksResultSchemaFormatOutputWithContext(ctx context.Context) GetPipelineSinksResultSchemaFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineSinksResultSchemaFormatOutput)
-}
-
-type GetPipelineSinksResultSchemaFormatOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineSinksResultSchemaFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineSinksResultSchemaFormat)(nil)).Elem()
-}
-
-func (o GetPipelineSinksResultSchemaFormatOutput) ToGetPipelineSinksResultSchemaFormatOutput() GetPipelineSinksResultSchemaFormatOutput {
-	return o
-}
-
-func (o GetPipelineSinksResultSchemaFormatOutput) ToGetPipelineSinksResultSchemaFormatOutputWithContext(ctx context.Context) GetPipelineSinksResultSchemaFormatOutput {
-	return o
-}
-
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o GetPipelineSinksResultSchemaFormatOutput) Compression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultSchemaFormat) string { return v.Compression }).(pulumi.StringOutput)
-}
-
-// Available values: "number", "string", "bytes".
-func (o GetPipelineSinksResultSchemaFormatOutput) DecimalEncoding() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultSchemaFormat) string { return v.DecimalEncoding }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineSinksResultSchemaFormatOutput) RowGroupBytes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultSchemaFormat) int { return v.RowGroupBytes }).(pulumi.IntOutput)
-}
-
-// Available values: "rfc3339", "unixMillis".
-func (o GetPipelineSinksResultSchemaFormatOutput) TimestampFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultSchemaFormat) string { return v.TimestampFormat }).(pulumi.StringOutput)
-}
-
-// Available values: "json", "parquet".
-func (o GetPipelineSinksResultSchemaFormatOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultSchemaFormat) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineSinksResultSchemaFormatOutput) Unstructured() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPipelineSinksResultSchemaFormat) bool { return v.Unstructured }).(pulumi.BoolOutput)
 }
 
 type GetPipelineStreamFilter struct {
@@ -1224,7 +730,6 @@ func (o GetPipelineStreamHttpCorsOutput) Origins() pulumi.StringArrayOutput {
 
 type GetPipelineStreamSchema struct {
 	Fields   []GetPipelineStreamSchemaField `pulumi:"fields"`
-	Format   GetPipelineStreamSchemaFormat  `pulumi:"format"`
 	Inferred bool                           `pulumi:"inferred"`
 }
 
@@ -1241,7 +746,6 @@ type GetPipelineStreamSchemaInput interface {
 
 type GetPipelineStreamSchemaArgs struct {
 	Fields   GetPipelineStreamSchemaFieldArrayInput `pulumi:"fields"`
-	Format   GetPipelineStreamSchemaFormatInput     `pulumi:"format"`
 	Inferred pulumi.BoolInput                       `pulumi:"inferred"`
 }
 
@@ -1273,10 +777,6 @@ func (o GetPipelineStreamSchemaOutput) ToGetPipelineStreamSchemaOutputWithContex
 
 func (o GetPipelineStreamSchemaOutput) Fields() GetPipelineStreamSchemaFieldArrayOutput {
 	return o.ApplyT(func(v GetPipelineStreamSchema) []GetPipelineStreamSchemaField { return v.Fields }).(GetPipelineStreamSchemaFieldArrayOutput)
-}
-
-func (o GetPipelineStreamSchemaOutput) Format() GetPipelineStreamSchemaFormatOutput {
-	return o.ApplyT(func(v GetPipelineStreamSchema) GetPipelineStreamSchemaFormat { return v.Format }).(GetPipelineStreamSchemaFormatOutput)
 }
 
 func (o GetPipelineStreamSchemaOutput) Inferred() pulumi.BoolOutput {
@@ -1413,97 +913,6 @@ func (o GetPipelineStreamSchemaFieldArrayOutput) Index(i pulumi.IntInput) GetPip
 	}).(GetPipelineStreamSchemaFieldOutput)
 }
 
-type GetPipelineStreamSchemaFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression string `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding string `pulumi:"decimalEncoding"`
-	RowGroupBytes   int    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat string `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         string `pulumi:"type"`
-	Unstructured bool   `pulumi:"unstructured"`
-}
-
-// GetPipelineStreamSchemaFormatInput is an input type that accepts GetPipelineStreamSchemaFormatArgs and GetPipelineStreamSchemaFormatOutput values.
-// You can construct a concrete instance of `GetPipelineStreamSchemaFormatInput` via:
-//
-//	GetPipelineStreamSchemaFormatArgs{...}
-type GetPipelineStreamSchemaFormatInput interface {
-	pulumi.Input
-
-	ToGetPipelineStreamSchemaFormatOutput() GetPipelineStreamSchemaFormatOutput
-	ToGetPipelineStreamSchemaFormatOutputWithContext(context.Context) GetPipelineStreamSchemaFormatOutput
-}
-
-type GetPipelineStreamSchemaFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression pulumi.StringInput `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding pulumi.StringInput `pulumi:"decimalEncoding"`
-	RowGroupBytes   pulumi.IntInput    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat pulumi.StringInput `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         pulumi.StringInput `pulumi:"type"`
-	Unstructured pulumi.BoolInput   `pulumi:"unstructured"`
-}
-
-func (GetPipelineStreamSchemaFormatArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamSchemaFormat)(nil)).Elem()
-}
-
-func (i GetPipelineStreamSchemaFormatArgs) ToGetPipelineStreamSchemaFormatOutput() GetPipelineStreamSchemaFormatOutput {
-	return i.ToGetPipelineStreamSchemaFormatOutputWithContext(context.Background())
-}
-
-func (i GetPipelineStreamSchemaFormatArgs) ToGetPipelineStreamSchemaFormatOutputWithContext(ctx context.Context) GetPipelineStreamSchemaFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineStreamSchemaFormatOutput)
-}
-
-type GetPipelineStreamSchemaFormatOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineStreamSchemaFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamSchemaFormat)(nil)).Elem()
-}
-
-func (o GetPipelineStreamSchemaFormatOutput) ToGetPipelineStreamSchemaFormatOutput() GetPipelineStreamSchemaFormatOutput {
-	return o
-}
-
-func (o GetPipelineStreamSchemaFormatOutput) ToGetPipelineStreamSchemaFormatOutputWithContext(ctx context.Context) GetPipelineStreamSchemaFormatOutput {
-	return o
-}
-
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o GetPipelineStreamSchemaFormatOutput) Compression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamSchemaFormat) string { return v.Compression }).(pulumi.StringOutput)
-}
-
-// Available values: "number", "string", "bytes".
-func (o GetPipelineStreamSchemaFormatOutput) DecimalEncoding() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamSchemaFormat) string { return v.DecimalEncoding }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineStreamSchemaFormatOutput) RowGroupBytes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPipelineStreamSchemaFormat) int { return v.RowGroupBytes }).(pulumi.IntOutput)
-}
-
-// Available values: "rfc3339", "unixMillis".
-func (o GetPipelineStreamSchemaFormatOutput) TimestampFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamSchemaFormat) string { return v.TimestampFormat }).(pulumi.StringOutput)
-}
-
-// Available values: "json", "parquet".
-func (o GetPipelineStreamSchemaFormatOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamSchemaFormat) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineStreamSchemaFormatOutput) Unstructured() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPipelineStreamSchemaFormat) bool { return v.Unstructured }).(pulumi.BoolOutput)
-}
-
 type GetPipelineStreamWorkerBinding struct {
 	// Indicates that the worker binding is enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -1559,14 +968,16 @@ func (o GetPipelineStreamWorkerBindingOutput) Enabled() pulumi.BoolOutput {
 type GetPipelineStreamsResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Indicates the endpoint URL of this stream.
-	Endpoint string                         `pulumi:"endpoint"`
-	Format   GetPipelineStreamsResultFormat `pulumi:"format"`
-	Http     GetPipelineStreamsResultHttp   `pulumi:"http"`
+	Endpoint string `pulumi:"endpoint"`
+	// Defines the data format of the events.
+	Format GetPipelineStreamsResultFormat `pulumi:"format"`
+	Http   GetPipelineStreamsResultHttp   `pulumi:"http"`
 	// Indicates a unique identifier for this stream.
 	Id         string `pulumi:"id"`
 	ModifiedAt string `pulumi:"modifiedAt"`
 	// Indicates the name of the Stream.
-	Name   string                         `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema GetPipelineStreamsResultSchema `pulumi:"schema"`
 	// Indicates the current version of this stream.
 	Version       int                                   `pulumi:"version"`
@@ -1587,14 +998,16 @@ type GetPipelineStreamsResultInput interface {
 type GetPipelineStreamsResultArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Indicates the endpoint URL of this stream.
-	Endpoint pulumi.StringInput                  `pulumi:"endpoint"`
-	Format   GetPipelineStreamsResultFormatInput `pulumi:"format"`
-	Http     GetPipelineStreamsResultHttpInput   `pulumi:"http"`
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Defines the data format of the events.
+	Format GetPipelineStreamsResultFormatInput `pulumi:"format"`
+	Http   GetPipelineStreamsResultHttpInput   `pulumi:"http"`
 	// Indicates a unique identifier for this stream.
 	Id         pulumi.StringInput `pulumi:"id"`
 	ModifiedAt pulumi.StringInput `pulumi:"modifiedAt"`
 	// Indicates the name of the Stream.
-	Name   pulumi.StringInput                  `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema GetPipelineStreamsResultSchemaInput `pulumi:"schema"`
 	// Indicates the current version of this stream.
 	Version       pulumi.IntInput                            `pulumi:"version"`
@@ -1661,6 +1074,7 @@ func (o GetPipelineStreamsResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineStreamsResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// Defines the data format of the events.
 func (o GetPipelineStreamsResultOutput) Format() GetPipelineStreamsResultFormatOutput {
 	return o.ApplyT(func(v GetPipelineStreamsResult) GetPipelineStreamsResultFormat { return v.Format }).(GetPipelineStreamsResultFormatOutput)
 }
@@ -1683,6 +1097,7 @@ func (o GetPipelineStreamsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineStreamsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the schema of the events in the data stream.
 func (o GetPipelineStreamsResultOutput) Schema() GetPipelineStreamsResultSchemaOutput {
 	return o.ApplyT(func(v GetPipelineStreamsResult) GetPipelineStreamsResultSchema { return v.Schema }).(GetPipelineStreamsResultSchemaOutput)
 }
@@ -1928,7 +1343,6 @@ func (o GetPipelineStreamsResultHttpCorsOutput) Origins() pulumi.StringArrayOutp
 
 type GetPipelineStreamsResultSchema struct {
 	Fields   []GetPipelineStreamsResultSchemaField `pulumi:"fields"`
-	Format   GetPipelineStreamsResultSchemaFormat  `pulumi:"format"`
 	Inferred bool                                  `pulumi:"inferred"`
 }
 
@@ -1945,7 +1359,6 @@ type GetPipelineStreamsResultSchemaInput interface {
 
 type GetPipelineStreamsResultSchemaArgs struct {
 	Fields   GetPipelineStreamsResultSchemaFieldArrayInput `pulumi:"fields"`
-	Format   GetPipelineStreamsResultSchemaFormatInput     `pulumi:"format"`
 	Inferred pulumi.BoolInput                              `pulumi:"inferred"`
 }
 
@@ -1977,10 +1390,6 @@ func (o GetPipelineStreamsResultSchemaOutput) ToGetPipelineStreamsResultSchemaOu
 
 func (o GetPipelineStreamsResultSchemaOutput) Fields() GetPipelineStreamsResultSchemaFieldArrayOutput {
 	return o.ApplyT(func(v GetPipelineStreamsResultSchema) []GetPipelineStreamsResultSchemaField { return v.Fields }).(GetPipelineStreamsResultSchemaFieldArrayOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaOutput) Format() GetPipelineStreamsResultSchemaFormatOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchema) GetPipelineStreamsResultSchemaFormat { return v.Format }).(GetPipelineStreamsResultSchemaFormatOutput)
 }
 
 func (o GetPipelineStreamsResultSchemaOutput) Inferred() pulumi.BoolOutput {
@@ -2115,97 +1524,6 @@ func (o GetPipelineStreamsResultSchemaFieldArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPipelineStreamsResultSchemaField {
 		return vs[0].([]GetPipelineStreamsResultSchemaField)[vs[1].(int)]
 	}).(GetPipelineStreamsResultSchemaFieldOutput)
-}
-
-type GetPipelineStreamsResultSchemaFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression string `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding string `pulumi:"decimalEncoding"`
-	RowGroupBytes   int    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat string `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         string `pulumi:"type"`
-	Unstructured bool   `pulumi:"unstructured"`
-}
-
-// GetPipelineStreamsResultSchemaFormatInput is an input type that accepts GetPipelineStreamsResultSchemaFormatArgs and GetPipelineStreamsResultSchemaFormatOutput values.
-// You can construct a concrete instance of `GetPipelineStreamsResultSchemaFormatInput` via:
-//
-//	GetPipelineStreamsResultSchemaFormatArgs{...}
-type GetPipelineStreamsResultSchemaFormatInput interface {
-	pulumi.Input
-
-	ToGetPipelineStreamsResultSchemaFormatOutput() GetPipelineStreamsResultSchemaFormatOutput
-	ToGetPipelineStreamsResultSchemaFormatOutputWithContext(context.Context) GetPipelineStreamsResultSchemaFormatOutput
-}
-
-type GetPipelineStreamsResultSchemaFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression pulumi.StringInput `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding pulumi.StringInput `pulumi:"decimalEncoding"`
-	RowGroupBytes   pulumi.IntInput    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat pulumi.StringInput `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         pulumi.StringInput `pulumi:"type"`
-	Unstructured pulumi.BoolInput   `pulumi:"unstructured"`
-}
-
-func (GetPipelineStreamsResultSchemaFormatArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultSchemaFormat)(nil)).Elem()
-}
-
-func (i GetPipelineStreamsResultSchemaFormatArgs) ToGetPipelineStreamsResultSchemaFormatOutput() GetPipelineStreamsResultSchemaFormatOutput {
-	return i.ToGetPipelineStreamsResultSchemaFormatOutputWithContext(context.Background())
-}
-
-func (i GetPipelineStreamsResultSchemaFormatArgs) ToGetPipelineStreamsResultSchemaFormatOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPipelineStreamsResultSchemaFormatOutput)
-}
-
-type GetPipelineStreamsResultSchemaFormatOutput struct{ *pulumi.OutputState }
-
-func (GetPipelineStreamsResultSchemaFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPipelineStreamsResultSchemaFormat)(nil)).Elem()
-}
-
-func (o GetPipelineStreamsResultSchemaFormatOutput) ToGetPipelineStreamsResultSchemaFormatOutput() GetPipelineStreamsResultSchemaFormatOutput {
-	return o
-}
-
-func (o GetPipelineStreamsResultSchemaFormatOutput) ToGetPipelineStreamsResultSchemaFormatOutputWithContext(ctx context.Context) GetPipelineStreamsResultSchemaFormatOutput {
-	return o
-}
-
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o GetPipelineStreamsResultSchemaFormatOutput) Compression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) string { return v.Compression }).(pulumi.StringOutput)
-}
-
-// Available values: "number", "string", "bytes".
-func (o GetPipelineStreamsResultSchemaFormatOutput) DecimalEncoding() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) string { return v.DecimalEncoding }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaFormatOutput) RowGroupBytes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) int { return v.RowGroupBytes }).(pulumi.IntOutput)
-}
-
-// Available values: "rfc3339", "unixMillis".
-func (o GetPipelineStreamsResultSchemaFormatOutput) TimestampFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) string { return v.TimestampFormat }).(pulumi.StringOutput)
-}
-
-// Available values: "json", "parquet".
-func (o GetPipelineStreamsResultSchemaFormatOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o GetPipelineStreamsResultSchemaFormatOutput) Unstructured() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPipelineStreamsResultSchemaFormat) bool { return v.Unstructured }).(pulumi.BoolOutput)
 }
 
 type GetPipelineStreamsResultWorkerBinding struct {
@@ -6728,7 +6046,7 @@ func (o GetRegionalHostnamesResultArrayOutput) Index(i pulumi.IntInput) GetRegio
 type GetRegistrarDomainsResult struct {
 	// Shows if a domain is available for transferring into Cloudflare Registrar.
 	Available bool `pulumi:"available"`
-	// Indicates if the domain can be registered as a new domain.
+	// Indicates eligibility to register the domain as a new domain.
 	CanRegister bool `pulumi:"canRegister"`
 	// Shows time of creation.
 	CreatedAt string `pulumi:"createdAt"`
@@ -6742,9 +6060,9 @@ type GetRegistrarDomainsResult struct {
 	Locked bool `pulumi:"locked"`
 	// Shows contact information for domain registrant.
 	RegistrantContact GetRegistrarDomainsResultRegistrantContact `pulumi:"registrantContact"`
-	// A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+	// A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
 	RegistryStatuses string `pulumi:"registryStatuses"`
-	// Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+	// Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
 	SupportedTld bool `pulumi:"supportedTld"`
 	// Statuses for domain transfers into Cloudflare Registrar.
 	TransferIn GetRegistrarDomainsResultTransferIn `pulumi:"transferIn"`
@@ -6766,7 +6084,7 @@ type GetRegistrarDomainsResultInput interface {
 type GetRegistrarDomainsResultArgs struct {
 	// Shows if a domain is available for transferring into Cloudflare Registrar.
 	Available pulumi.BoolInput `pulumi:"available"`
-	// Indicates if the domain can be registered as a new domain.
+	// Indicates eligibility to register the domain as a new domain.
 	CanRegister pulumi.BoolInput `pulumi:"canRegister"`
 	// Shows time of creation.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
@@ -6780,9 +6098,9 @@ type GetRegistrarDomainsResultArgs struct {
 	Locked pulumi.BoolInput `pulumi:"locked"`
 	// Shows contact information for domain registrant.
 	RegistrantContact GetRegistrarDomainsResultRegistrantContactInput `pulumi:"registrantContact"`
-	// A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+	// A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
 	RegistryStatuses pulumi.StringInput `pulumi:"registryStatuses"`
-	// Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+	// Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
 	SupportedTld pulumi.BoolInput `pulumi:"supportedTld"`
 	// Statuses for domain transfers into Cloudflare Registrar.
 	TransferIn GetRegistrarDomainsResultTransferInInput `pulumi:"transferIn"`
@@ -6846,7 +6164,7 @@ func (o GetRegistrarDomainsResultOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResult) bool { return v.Available }).(pulumi.BoolOutput)
 }
 
-// Indicates if the domain can be registered as a new domain.
+// Indicates eligibility to register the domain as a new domain.
 func (o GetRegistrarDomainsResultOutput) CanRegister() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResult) bool { return v.CanRegister }).(pulumi.BoolOutput)
 }
@@ -6883,12 +6201,12 @@ func (o GetRegistrarDomainsResultOutput) RegistrantContact() GetRegistrarDomains
 	}).(GetRegistrarDomainsResultRegistrantContactOutput)
 }
 
-// A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+// A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
 func (o GetRegistrarDomainsResultOutput) RegistryStatuses() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResult) string { return v.RegistryStatuses }).(pulumi.StringOutput)
 }
 
-// Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+// Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
 func (o GetRegistrarDomainsResultOutput) SupportedTld() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResult) bool { return v.SupportedTld }).(pulumi.BoolOutput)
 }
@@ -6936,15 +6254,15 @@ type GetRegistrarDomainsResultRegistrantContact struct {
 	Email string `pulumi:"email"`
 	// Contact fax number.
 	Fax string `pulumi:"fax"`
-	// User's first name
+	// User's first name.
 	FirstName string `pulumi:"firstName"`
 	// Contact Identifier.
 	Id string `pulumi:"id"`
-	// User's last name
+	// User's last name.
 	LastName string `pulumi:"lastName"`
 	// Name of organization.
 	Organization string `pulumi:"organization"`
-	// User's telephone number
+	// User's telephone number.
 	Phone string `pulumi:"phone"`
 	// State.
 	State string `pulumi:"state"`
@@ -6976,15 +6294,15 @@ type GetRegistrarDomainsResultRegistrantContactArgs struct {
 	Email pulumi.StringInput `pulumi:"email"`
 	// Contact fax number.
 	Fax pulumi.StringInput `pulumi:"fax"`
-	// User's first name
+	// User's first name.
 	FirstName pulumi.StringInput `pulumi:"firstName"`
 	// Contact Identifier.
 	Id pulumi.StringInput `pulumi:"id"`
-	// User's last name
+	// User's last name.
 	LastName pulumi.StringInput `pulumi:"lastName"`
 	// Name of organization.
 	Organization pulumi.StringInput `pulumi:"organization"`
-	// User's telephone number
+	// User's telephone number.
 	Phone pulumi.StringInput `pulumi:"phone"`
 	// State.
 	State pulumi.StringInput `pulumi:"state"`
@@ -7048,7 +6366,7 @@ func (o GetRegistrarDomainsResultRegistrantContactOutput) Fax() pulumi.StringOut
 	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Fax }).(pulumi.StringOutput)
 }
 
-// User's first name
+// User's first name.
 func (o GetRegistrarDomainsResultRegistrantContactOutput) FirstName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.FirstName }).(pulumi.StringOutput)
 }
@@ -7058,7 +6376,7 @@ func (o GetRegistrarDomainsResultRegistrantContactOutput) Id() pulumi.StringOutp
 	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// User's last name
+// User's last name.
 func (o GetRegistrarDomainsResultRegistrantContactOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.LastName }).(pulumi.StringOutput)
 }
@@ -7068,7 +6386,7 @@ func (o GetRegistrarDomainsResultRegistrantContactOutput) Organization() pulumi.
 	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Organization }).(pulumi.StringOutput)
 }
 
-// User's telephone number
+// User's telephone number.
 func (o GetRegistrarDomainsResultRegistrantContactOutput) Phone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Phone }).(pulumi.StringOutput)
 }
@@ -7084,21 +6402,21 @@ func (o GetRegistrarDomainsResultRegistrantContactOutput) Zip() pulumi.StringOut
 }
 
 type GetRegistrarDomainsResultTransferIn struct {
-	// Form of authorization has been accepted by the registrant.
+	// Status of the registrant authorization step.
 	// Available values: "needed", "ok".
 	AcceptFoa string `pulumi:"acceptFoa"`
-	// Shows transfer status with the registry.
+	// Status of the registry transfer-approval step.
 	// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
 	ApproveTransfer string `pulumi:"approveTransfer"`
 	// Indicates if cancellation is still possible.
 	CanCancelTransfer bool `pulumi:"canCancelTransfer"`
-	// Privacy guards are disabled at the foreign registrar.
+	// Status of the privacy-guard disabling step at the foreign registrar.
 	// Available values: "needed", "ok", "unknown".
 	DisablePrivacy string `pulumi:"disablePrivacy"`
-	// Auth code has been entered and verified.
+	// Status of the auth-code entry and verification step.
 	// Available values: "needed", "ok", "pending", "trying", "rejected".
 	EnterAuthCode string `pulumi:"enterAuthCode"`
-	// Domain is unlocked at the foreign registrar.
+	// Status of the domain-unlock step at the foreign registrar.
 	// Available values: "needed", "ok", "pending", "trying", "unknown".
 	UnlockDomain string `pulumi:"unlockDomain"`
 }
@@ -7115,21 +6433,21 @@ type GetRegistrarDomainsResultTransferInInput interface {
 }
 
 type GetRegistrarDomainsResultTransferInArgs struct {
-	// Form of authorization has been accepted by the registrant.
+	// Status of the registrant authorization step.
 	// Available values: "needed", "ok".
 	AcceptFoa pulumi.StringInput `pulumi:"acceptFoa"`
-	// Shows transfer status with the registry.
+	// Status of the registry transfer-approval step.
 	// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
 	ApproveTransfer pulumi.StringInput `pulumi:"approveTransfer"`
 	// Indicates if cancellation is still possible.
 	CanCancelTransfer pulumi.BoolInput `pulumi:"canCancelTransfer"`
-	// Privacy guards are disabled at the foreign registrar.
+	// Status of the privacy-guard disabling step at the foreign registrar.
 	// Available values: "needed", "ok", "unknown".
 	DisablePrivacy pulumi.StringInput `pulumi:"disablePrivacy"`
-	// Auth code has been entered and verified.
+	// Status of the auth-code entry and verification step.
 	// Available values: "needed", "ok", "pending", "trying", "rejected".
 	EnterAuthCode pulumi.StringInput `pulumi:"enterAuthCode"`
-	// Domain is unlocked at the foreign registrar.
+	// Status of the domain-unlock step at the foreign registrar.
 	// Available values: "needed", "ok", "pending", "trying", "unknown".
 	UnlockDomain pulumi.StringInput `pulumi:"unlockDomain"`
 }
@@ -7160,13 +6478,13 @@ func (o GetRegistrarDomainsResultTransferInOutput) ToGetRegistrarDomainsResultTr
 	return o
 }
 
-// Form of authorization has been accepted by the registrant.
+// Status of the registrant authorization step.
 // Available values: "needed", "ok".
 func (o GetRegistrarDomainsResultTransferInOutput) AcceptFoa() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.AcceptFoa }).(pulumi.StringOutput)
 }
 
-// Shows transfer status with the registry.
+// Status of the registry transfer-approval step.
 // Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
 func (o GetRegistrarDomainsResultTransferInOutput) ApproveTransfer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.ApproveTransfer }).(pulumi.StringOutput)
@@ -7177,19 +6495,19 @@ func (o GetRegistrarDomainsResultTransferInOutput) CanCancelTransfer() pulumi.Bo
 	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) bool { return v.CanCancelTransfer }).(pulumi.BoolOutput)
 }
 
-// Privacy guards are disabled at the foreign registrar.
+// Status of the privacy-guard disabling step at the foreign registrar.
 // Available values: "needed", "ok", "unknown".
 func (o GetRegistrarDomainsResultTransferInOutput) DisablePrivacy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.DisablePrivacy }).(pulumi.StringOutput)
 }
 
-// Auth code has been entered and verified.
+// Status of the auth-code entry and verification step.
 // Available values: "needed", "ok", "pending", "trying", "rejected".
 func (o GetRegistrarDomainsResultTransferInOutput) EnterAuthCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.EnterAuthCode }).(pulumi.StringOutput)
 }
 
-// Domain is unlocked at the foreign registrar.
+// Status of the domain-unlock step at the foreign registrar.
 // Available values: "needed", "ok", "pending", "trying", "unknown".
 func (o GetRegistrarDomainsResultTransferInOutput) UnlockDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.UnlockDomain }).(pulumi.StringOutput)
@@ -8112,6 +7430,8 @@ type GetRulesetRuleActionParameters struct {
 	OriginCacheControl bool `pulumi:"originCacheControl"`
 	// Whether to generate Cloudflare error pages for issues from the origin server.
 	OriginErrorPagePassthru bool `pulumi:"originErrorPagePassthru"`
+	// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+	OriginRangeRequests GetRulesetRuleActionParametersOriginRangeRequests `pulumi:"originRangeRequests"`
 	// A set of overrides to apply to the target ruleset.
 	Overrides GetRulesetRuleActionParametersOverrides `pulumi:"overrides"`
 	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -8294,6 +7614,8 @@ type GetRulesetRuleActionParametersArgs struct {
 	OriginCacheControl pulumi.BoolInput `pulumi:"originCacheControl"`
 	// Whether to generate Cloudflare error pages for issues from the origin server.
 	OriginErrorPagePassthru pulumi.BoolInput `pulumi:"originErrorPagePassthru"`
+	// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+	OriginRangeRequests GetRulesetRuleActionParametersOriginRangeRequestsInput `pulumi:"originRangeRequests"`
 	// A set of overrides to apply to the target ruleset.
 	Overrides GetRulesetRuleActionParametersOverridesInput `pulumi:"overrides"`
 	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -8624,6 +7946,13 @@ func (o GetRulesetRuleActionParametersOutput) OriginCacheControl() pulumi.BoolOu
 // Whether to generate Cloudflare error pages for issues from the origin server.
 func (o GetRulesetRuleActionParametersOutput) OriginErrorPagePassthru() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.OriginErrorPagePassthru }).(pulumi.BoolOutput)
+}
+
+// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+func (o GetRulesetRuleActionParametersOutput) OriginRangeRequests() GetRulesetRuleActionParametersOriginRangeRequestsOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersOriginRangeRequests {
+		return v.OriginRangeRequests
+	}).(GetRulesetRuleActionParametersOriginRangeRequestsOutput)
 }
 
 // A set of overrides to apply to the target ruleset.
@@ -10995,6 +10324,61 @@ func (o GetRulesetRuleActionParametersOriginOutput) Host() pulumi.StringOutput {
 // A destination port to route to.
 func (o GetRulesetRuleActionParametersOriginOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRulesetRuleActionParametersOrigin) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetRulesetRuleActionParametersOriginRangeRequests struct {
+	// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+	// Available values: "on", "off", "default".
+	Mode string `pulumi:"mode"`
+}
+
+// GetRulesetRuleActionParametersOriginRangeRequestsInput is an input type that accepts GetRulesetRuleActionParametersOriginRangeRequestsArgs and GetRulesetRuleActionParametersOriginRangeRequestsOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersOriginRangeRequestsInput` via:
+//
+//	GetRulesetRuleActionParametersOriginRangeRequestsArgs{...}
+type GetRulesetRuleActionParametersOriginRangeRequestsInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersOriginRangeRequestsOutput() GetRulesetRuleActionParametersOriginRangeRequestsOutput
+	ToGetRulesetRuleActionParametersOriginRangeRequestsOutputWithContext(context.Context) GetRulesetRuleActionParametersOriginRangeRequestsOutput
+}
+
+type GetRulesetRuleActionParametersOriginRangeRequestsArgs struct {
+	// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+	// Available values: "on", "off", "default".
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetRulesetRuleActionParametersOriginRangeRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersOriginRangeRequests)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersOriginRangeRequestsArgs) ToGetRulesetRuleActionParametersOriginRangeRequestsOutput() GetRulesetRuleActionParametersOriginRangeRequestsOutput {
+	return i.ToGetRulesetRuleActionParametersOriginRangeRequestsOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersOriginRangeRequestsArgs) ToGetRulesetRuleActionParametersOriginRangeRequestsOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersOriginRangeRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersOriginRangeRequestsOutput)
+}
+
+type GetRulesetRuleActionParametersOriginRangeRequestsOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersOriginRangeRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersOriginRangeRequests)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersOriginRangeRequestsOutput) ToGetRulesetRuleActionParametersOriginRangeRequestsOutput() GetRulesetRuleActionParametersOriginRangeRequestsOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersOriginRangeRequestsOutput) ToGetRulesetRuleActionParametersOriginRangeRequestsOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersOriginRangeRequestsOutput {
+	return o
+}
+
+// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+// Available values: "on", "off", "default".
+func (o GetRulesetRuleActionParametersOriginRangeRequestsOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersOriginRangeRequests) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 type GetRulesetRuleActionParametersOverrides struct {
@@ -15104,7 +14488,7 @@ type GetShareResourceType struct {
 	// Share Resource identifier.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType string `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion int `pulumi:"resourceVersion"`
@@ -15138,7 +14522,7 @@ type GetShareResourceTypeArgs struct {
 	// Share Resource identifier.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion pulumi.IntInput `pulumi:"resourceVersion"`
@@ -15229,7 +14613,7 @@ func (o GetShareResourceTypeOutput) ResourceId() pulumi.StringOutput {
 }
 
 // Resource Type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o GetShareResourceTypeOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareResourceType) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -15267,7 +14651,7 @@ func (o GetShareResourceTypeArrayOutput) Index(i pulumi.IntInput) GetShareResour
 
 type GetShareResourceFilter struct {
 	// Filter share resources by resource_type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType *string `pulumi:"resourceType"`
 	// Filter share resources by status.
 	// Available values: "active", "deleting", "deleted".
@@ -15287,7 +14671,7 @@ type GetShareResourceFilterInput interface {
 
 type GetShareResourceFilterArgs struct {
 	// Filter share resources by resource_type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// Filter share resources by status.
 	// Available values: "active", "deleting", "deleted".
@@ -15372,7 +14756,7 @@ func (o GetShareResourceFilterOutput) ToGetShareResourceFilterPtrOutputWithConte
 }
 
 // Filter share resources by resource_type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o GetShareResourceFilterOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetShareResourceFilter) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
@@ -15408,7 +14792,7 @@ func (o GetShareResourceFilterPtrOutput) Elem() GetShareResourceFilterOutput {
 }
 
 // Filter share resources by resource_type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o GetShareResourceFilterPtrOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetShareResourceFilter) *string {
 		if v == nil {
@@ -15443,7 +14827,7 @@ type GetShareResourcesResult struct {
 	// Share Resource identifier.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType string `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion int `pulumi:"resourceVersion"`
@@ -15477,7 +14861,7 @@ type GetShareResourcesResultArgs struct {
 	// Share Resource identifier.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion pulumi.IntInput `pulumi:"resourceVersion"`
@@ -15568,7 +14952,7 @@ func (o GetShareResourcesResultOutput) ResourceId() pulumi.StringOutput {
 }
 
 // Resource Type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o GetShareResourcesResultOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareResourcesResult) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -15841,7 +15225,7 @@ type GetSharesResultResource struct {
 	// Share Resource identifier.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType string `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion int `pulumi:"resourceVersion"`
@@ -15875,7 +15259,7 @@ type GetSharesResultResourceArgs struct {
 	// Share Resource identifier.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion pulumi.IntInput `pulumi:"resourceVersion"`
@@ -15966,7 +15350,7 @@ func (o GetSharesResultResourceOutput) ResourceId() pulumi.StringOutput {
 }
 
 // Resource Type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o GetSharesResultResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharesResultResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -17205,6 +16589,130 @@ func (o GetSpectrumApplicationsResultOriginDnsOutput) Type() pulumi.StringOutput
 	return o.ApplyT(func(v GetSpectrumApplicationsResultOriginDns) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type GetSpectrumProtocolsResult struct {
+	// The full name of the application protocol.
+	Description string `pulumi:"description"`
+	// The short name of the application protocol.
+	Name string `pulumi:"name"`
+	// The available listening ports for the given protocol.
+	Ports []int `pulumi:"ports"`
+	// The transport layer protocol used by the application protocol
+	Transport string `pulumi:"transport"`
+}
+
+// GetSpectrumProtocolsResultInput is an input type that accepts GetSpectrumProtocolsResultArgs and GetSpectrumProtocolsResultOutput values.
+// You can construct a concrete instance of `GetSpectrumProtocolsResultInput` via:
+//
+//	GetSpectrumProtocolsResultArgs{...}
+type GetSpectrumProtocolsResultInput interface {
+	pulumi.Input
+
+	ToGetSpectrumProtocolsResultOutput() GetSpectrumProtocolsResultOutput
+	ToGetSpectrumProtocolsResultOutputWithContext(context.Context) GetSpectrumProtocolsResultOutput
+}
+
+type GetSpectrumProtocolsResultArgs struct {
+	// The full name of the application protocol.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The short name of the application protocol.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The available listening ports for the given protocol.
+	Ports pulumi.IntArrayInput `pulumi:"ports"`
+	// The transport layer protocol used by the application protocol
+	Transport pulumi.StringInput `pulumi:"transport"`
+}
+
+func (GetSpectrumProtocolsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpectrumProtocolsResult)(nil)).Elem()
+}
+
+func (i GetSpectrumProtocolsResultArgs) ToGetSpectrumProtocolsResultOutput() GetSpectrumProtocolsResultOutput {
+	return i.ToGetSpectrumProtocolsResultOutputWithContext(context.Background())
+}
+
+func (i GetSpectrumProtocolsResultArgs) ToGetSpectrumProtocolsResultOutputWithContext(ctx context.Context) GetSpectrumProtocolsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpectrumProtocolsResultOutput)
+}
+
+// GetSpectrumProtocolsResultArrayInput is an input type that accepts GetSpectrumProtocolsResultArray and GetSpectrumProtocolsResultArrayOutput values.
+// You can construct a concrete instance of `GetSpectrumProtocolsResultArrayInput` via:
+//
+//	GetSpectrumProtocolsResultArray{ GetSpectrumProtocolsResultArgs{...} }
+type GetSpectrumProtocolsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetSpectrumProtocolsResultArrayOutput() GetSpectrumProtocolsResultArrayOutput
+	ToGetSpectrumProtocolsResultArrayOutputWithContext(context.Context) GetSpectrumProtocolsResultArrayOutput
+}
+
+type GetSpectrumProtocolsResultArray []GetSpectrumProtocolsResultInput
+
+func (GetSpectrumProtocolsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpectrumProtocolsResult)(nil)).Elem()
+}
+
+func (i GetSpectrumProtocolsResultArray) ToGetSpectrumProtocolsResultArrayOutput() GetSpectrumProtocolsResultArrayOutput {
+	return i.ToGetSpectrumProtocolsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpectrumProtocolsResultArray) ToGetSpectrumProtocolsResultArrayOutputWithContext(ctx context.Context) GetSpectrumProtocolsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpectrumProtocolsResultArrayOutput)
+}
+
+type GetSpectrumProtocolsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSpectrumProtocolsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpectrumProtocolsResult)(nil)).Elem()
+}
+
+func (o GetSpectrumProtocolsResultOutput) ToGetSpectrumProtocolsResultOutput() GetSpectrumProtocolsResultOutput {
+	return o
+}
+
+func (o GetSpectrumProtocolsResultOutput) ToGetSpectrumProtocolsResultOutputWithContext(ctx context.Context) GetSpectrumProtocolsResultOutput {
+	return o
+}
+
+// The full name of the application protocol.
+func (o GetSpectrumProtocolsResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpectrumProtocolsResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The short name of the application protocol.
+func (o GetSpectrumProtocolsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpectrumProtocolsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The available listening ports for the given protocol.
+func (o GetSpectrumProtocolsResultOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetSpectrumProtocolsResult) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+// The transport layer protocol used by the application protocol
+func (o GetSpectrumProtocolsResultOutput) Transport() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpectrumProtocolsResult) string { return v.Transport }).(pulumi.StringOutput)
+}
+
+type GetSpectrumProtocolsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpectrumProtocolsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpectrumProtocolsResult)(nil)).Elem()
+}
+
+func (o GetSpectrumProtocolsResultArrayOutput) ToGetSpectrumProtocolsResultArrayOutput() GetSpectrumProtocolsResultArrayOutput {
+	return o
+}
+
+func (o GetSpectrumProtocolsResultArrayOutput) ToGetSpectrumProtocolsResultArrayOutputWithContext(ctx context.Context) GetSpectrumProtocolsResultArrayOutput {
+	return o
+}
+
+func (o GetSpectrumProtocolsResultArrayOutput) Index(i pulumi.IntInput) GetSpectrumProtocolsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpectrumProtocolsResult {
+		return vs[0].([]GetSpectrumProtocolsResult)[vs[1].(int)]
+	}).(GetSpectrumProtocolsResultOutput)
+}
+
 type GetSsoConnectorVerification struct {
 	// DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.
 	Code string `pulumi:"code"`
@@ -17661,6 +17169,67 @@ func (o GetStreamInputOutput) Height() pulumi.IntOutput {
 // The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.
 func (o GetStreamInputOutput) Width() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStreamInput) int { return v.Width }).(pulumi.IntOutput)
+}
+
+type GetStreamLiveInputPlayback struct {
+	// The DASH manifest URL used to play live video, referencing the live input ID.
+	Dash string `pulumi:"dash"`
+	// The HLS manifest URL used to play live video, referencing the live input ID.
+	Hls string `pulumi:"hls"`
+}
+
+// GetStreamLiveInputPlaybackInput is an input type that accepts GetStreamLiveInputPlaybackArgs and GetStreamLiveInputPlaybackOutput values.
+// You can construct a concrete instance of `GetStreamLiveInputPlaybackInput` via:
+//
+//	GetStreamLiveInputPlaybackArgs{...}
+type GetStreamLiveInputPlaybackInput interface {
+	pulumi.Input
+
+	ToGetStreamLiveInputPlaybackOutput() GetStreamLiveInputPlaybackOutput
+	ToGetStreamLiveInputPlaybackOutputWithContext(context.Context) GetStreamLiveInputPlaybackOutput
+}
+
+type GetStreamLiveInputPlaybackArgs struct {
+	// The DASH manifest URL used to play live video, referencing the live input ID.
+	Dash pulumi.StringInput `pulumi:"dash"`
+	// The HLS manifest URL used to play live video, referencing the live input ID.
+	Hls pulumi.StringInput `pulumi:"hls"`
+}
+
+func (GetStreamLiveInputPlaybackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamLiveInputPlayback)(nil)).Elem()
+}
+
+func (i GetStreamLiveInputPlaybackArgs) ToGetStreamLiveInputPlaybackOutput() GetStreamLiveInputPlaybackOutput {
+	return i.ToGetStreamLiveInputPlaybackOutputWithContext(context.Background())
+}
+
+func (i GetStreamLiveInputPlaybackArgs) ToGetStreamLiveInputPlaybackOutputWithContext(ctx context.Context) GetStreamLiveInputPlaybackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStreamLiveInputPlaybackOutput)
+}
+
+type GetStreamLiveInputPlaybackOutput struct{ *pulumi.OutputState }
+
+func (GetStreamLiveInputPlaybackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStreamLiveInputPlayback)(nil)).Elem()
+}
+
+func (o GetStreamLiveInputPlaybackOutput) ToGetStreamLiveInputPlaybackOutput() GetStreamLiveInputPlaybackOutput {
+	return o
+}
+
+func (o GetStreamLiveInputPlaybackOutput) ToGetStreamLiveInputPlaybackOutputWithContext(ctx context.Context) GetStreamLiveInputPlaybackOutput {
+	return o
+}
+
+// The DASH manifest URL used to play live video, referencing the live input ID.
+func (o GetStreamLiveInputPlaybackOutput) Dash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamLiveInputPlayback) string { return v.Dash }).(pulumi.StringOutput)
+}
+
+// The HLS manifest URL used to play live video, referencing the live input ID.
+func (o GetStreamLiveInputPlaybackOutput) Hls() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStreamLiveInputPlayback) string { return v.Hls }).(pulumi.StringOutput)
 }
 
 type GetStreamLiveInputRecording struct {
@@ -21097,23 +20666,12 @@ type GetTurnstileWidgetsResult struct {
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel string `pulumi:"clearanceLevel"`
 	// When the widget was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// Origin that created this widget, recorded at creation time and
-	// immutable afterward. Server-derived from the create request; not
-	// client-settable. Omitted from the response for widgets created
-	// before this field existed.
-	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-	DeployedVia string   `pulumi:"deployedVia"`
-	Domains     []string `pulumi:"domains"`
+	CreatedOn string   `pulumi:"createdOn"`
+	Domains   []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId bool `pulumi:"ephemeralId"`
 	// Widget item identifier tag.
 	Id string `pulumi:"id"`
-	// Origin of the most recent mutation (create, update, delete, or
-	// secret rotation). Server-derived; not client-settable. Omitted for
-	// widgets last mutated before this field existed.
-	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-	LastModifiedVia string `pulumi:"lastModifiedVia"`
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode string `pulumi:"mode"`
@@ -21152,23 +20710,12 @@ type GetTurnstileWidgetsResultArgs struct {
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel pulumi.StringInput `pulumi:"clearanceLevel"`
 	// When the widget was created.
-	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
-	// Origin that created this widget, recorded at creation time and
-	// immutable afterward. Server-derived from the create request; not
-	// client-settable. Omitted from the response for widgets created
-	// before this field existed.
-	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-	DeployedVia pulumi.StringInput      `pulumi:"deployedVia"`
-	Domains     pulumi.StringArrayInput `pulumi:"domains"`
+	CreatedOn pulumi.StringInput      `pulumi:"createdOn"`
+	Domains   pulumi.StringArrayInput `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolInput `pulumi:"ephemeralId"`
 	// Widget item identifier tag.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Origin of the most recent mutation (create, update, delete, or
-	// secret rotation). Server-derived; not client-settable. Omitted for
-	// widgets last mutated before this field existed.
-	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-	LastModifiedVia pulumi.StringInput `pulumi:"lastModifiedVia"`
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -21256,15 +20803,6 @@ func (o GetTurnstileWidgetsResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurnstileWidgetsResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Origin that created this widget, recorded at creation time and
-// immutable afterward. Server-derived from the create request; not
-// client-settable. Omitted from the response for widgets created
-// before this field existed.
-// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-func (o GetTurnstileWidgetsResultOutput) DeployedVia() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTurnstileWidgetsResult) string { return v.DeployedVia }).(pulumi.StringOutput)
-}
-
 func (o GetTurnstileWidgetsResultOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTurnstileWidgetsResult) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
@@ -21277,14 +20815,6 @@ func (o GetTurnstileWidgetsResultOutput) EphemeralId() pulumi.BoolOutput {
 // Widget item identifier tag.
 func (o GetTurnstileWidgetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurnstileWidgetsResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Origin of the most recent mutation (create, update, delete, or
-// secret rotation). Server-derived; not client-settable. Omitted for
-// widgets last mutated before this field existed.
-// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-func (o GetTurnstileWidgetsResultOutput) LastModifiedVia() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTurnstileWidgetsResult) string { return v.LastModifiedVia }).(pulumi.StringOutput)
 }
 
 // Widget Mode
@@ -24655,7 +24185,7 @@ type GetWaitingRoomsResult struct {
 	// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
 	CustomPageHtml string `pulumi:"customPageHtml"`
 	// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-	// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+	// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
 	DefaultTemplateLanguage string `pulumi:"defaultTemplateLanguage"`
 	// A note that you can use to add more details about the waiting room.
 	Description string `pulumi:"description"`
@@ -24825,7 +24355,7 @@ type GetWaitingRoomsResultArgs struct {
 	// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
 	CustomPageHtml pulumi.StringInput `pulumi:"customPageHtml"`
 	// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-	// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+	// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
 	DefaultTemplateLanguage pulumi.StringInput `pulumi:"defaultTemplateLanguage"`
 	// A note that you can use to add more details about the waiting room.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -25049,7 +24579,7 @@ func (o GetWaitingRoomsResultOutput) CustomPageHtml() pulumi.StringOutput {
 }
 
 // The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
 func (o GetWaitingRoomsResultOutput) DefaultTemplateLanguage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWaitingRoomsResult) string { return v.DefaultTemplateLanguage }).(pulumi.StringOutput)
 }
@@ -26688,7 +26218,7 @@ type GetWorkerObservabilityTraces struct {
 	HeadSamplingRate float64 `pulumi:"headSamplingRate"`
 	// Whether trace persistence is enabled for the Worker.
 	Persist bool `pulumi:"persist"`
-	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 	// Available values: "authenticated", "accept".
 	PropagationPolicy string `pulumi:"propagationPolicy"`
 }
@@ -26713,7 +26243,7 @@ type GetWorkerObservabilityTracesArgs struct {
 	HeadSamplingRate pulumi.Float64Input `pulumi:"headSamplingRate"`
 	// Whether trace persistence is enabled for the Worker.
 	Persist pulumi.BoolInput `pulumi:"persist"`
-	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 	// Available values: "authenticated", "accept".
 	PropagationPolicy pulumi.StringInput `pulumi:"propagationPolicy"`
 }
@@ -26764,7 +26294,7 @@ func (o GetWorkerObservabilityTracesOutput) Persist() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWorkerObservabilityTraces) bool { return v.Persist }).(pulumi.BoolOutput)
 }
 
-// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 // Available values: "authenticated", "accept".
 func (o GetWorkerObservabilityTracesOutput) PropagationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerObservabilityTraces) string { return v.PropagationPolicy }).(pulumi.StringOutput)
@@ -27877,6 +27407,9 @@ type GetWorkerVersionBinding struct {
 	Format string `pulumi:"format"`
 	// Identifier of the D1 database to bind to.
 	Id string `pulumi:"id"`
+	// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+	// Available values: "runtime-email-alpha".
+	Identity string `pulumi:"identity"`
 	// Name of the Vectorize index to bind to.
 	IndexName string `pulumi:"indexName"`
 	// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -27884,7 +27417,7 @@ type GetWorkerVersionBinding struct {
 	// JSON data to use.
 	Json string `pulumi:"json"`
 	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-	// Available values: "eu", "fedramp", "fedramp-high".
+	// Available values: "eu", "fedramp", "fedramp-high", "us".
 	Jurisdiction string `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 string `pulumi:"keyBase64"`
@@ -27978,6 +27511,9 @@ type GetWorkerVersionBindingArgs struct {
 	Format pulumi.StringInput `pulumi:"format"`
 	// Identifier of the D1 database to bind to.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+	// Available values: "runtime-email-alpha".
+	Identity pulumi.StringInput `pulumi:"identity"`
 	// Name of the Vectorize index to bind to.
 	IndexName pulumi.StringInput `pulumi:"indexName"`
 	// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -27985,7 +27521,7 @@ type GetWorkerVersionBindingArgs struct {
 	// JSON data to use.
 	Json pulumi.StringInput `pulumi:"json"`
 	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-	// Available values: "eu", "fedramp", "fedramp-high".
+	// Available values: "eu", "fedramp", "fedramp-high", "us".
 	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 pulumi.StringInput `pulumi:"keyBase64"`
@@ -28163,6 +27699,12 @@ func (o GetWorkerVersionBindingOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+// Available values: "runtime-email-alpha".
+func (o GetWorkerVersionBindingOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Identity }).(pulumi.StringOutput)
+}
+
 // Name of the Vectorize index to bind to.
 func (o GetWorkerVersionBindingOutput) IndexName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.IndexName }).(pulumi.StringOutput)
@@ -28179,7 +27721,7 @@ func (o GetWorkerVersionBindingOutput) Json() pulumi.StringOutput {
 }
 
 // The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-// Available values: "eu", "fedramp", "fedramp-high".
+// Available values: "eu", "fedramp", "fedramp-high", "us".
 func (o GetWorkerVersionBindingOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
@@ -30786,6 +30328,9 @@ type GetWorkerVersionsResultBinding struct {
 	Format string `pulumi:"format"`
 	// Identifier of the D1 database to bind to.
 	Id string `pulumi:"id"`
+	// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+	// Available values: "runtime-email-alpha".
+	Identity string `pulumi:"identity"`
 	// Name of the Vectorize index to bind to.
 	IndexName string `pulumi:"indexName"`
 	// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -30793,7 +30338,7 @@ type GetWorkerVersionsResultBinding struct {
 	// JSON data to use.
 	Json string `pulumi:"json"`
 	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-	// Available values: "eu", "fedramp", "fedramp-high".
+	// Available values: "eu", "fedramp", "fedramp-high", "us".
 	Jurisdiction string `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 string `pulumi:"keyBase64"`
@@ -30887,6 +30432,9 @@ type GetWorkerVersionsResultBindingArgs struct {
 	Format pulumi.StringInput `pulumi:"format"`
 	// Identifier of the D1 database to bind to.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+	// Available values: "runtime-email-alpha".
+	Identity pulumi.StringInput `pulumi:"identity"`
 	// Name of the Vectorize index to bind to.
 	IndexName pulumi.StringInput `pulumi:"indexName"`
 	// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -30894,7 +30442,7 @@ type GetWorkerVersionsResultBindingArgs struct {
 	// JSON data to use.
 	Json pulumi.StringInput `pulumi:"json"`
 	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-	// Available values: "eu", "fedramp", "fedramp-high".
+	// Available values: "eu", "fedramp", "fedramp-high", "us".
 	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 pulumi.StringInput `pulumi:"keyBase64"`
@@ -31072,6 +30620,12 @@ func (o GetWorkerVersionsResultBindingOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+// Available values: "runtime-email-alpha".
+func (o GetWorkerVersionsResultBindingOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Identity }).(pulumi.StringOutput)
+}
+
 // Name of the Vectorize index to bind to.
 func (o GetWorkerVersionsResultBindingOutput) IndexName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.IndexName }).(pulumi.StringOutput)
@@ -31088,7 +30642,7 @@ func (o GetWorkerVersionsResultBindingOutput) Json() pulumi.StringOutput {
 }
 
 // The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-// Available values: "eu", "fedramp", "fedramp-high".
+// Available values: "eu", "fedramp", "fedramp-high", "us".
 func (o GetWorkerVersionsResultBindingOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
@@ -34078,6 +33632,9 @@ func (o GetWorkersKvNamespaceFilterPtrOutput) Order() pulumi.StringPtrOutput {
 type GetWorkersKvNamespacesResult struct {
 	// Namespace identifier tag.
 	Id string `pulumi:"id"`
+	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction string `pulumi:"jurisdiction"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding bool `pulumi:"supportsUrlEncoding"`
 	// A human-readable string name for a Namespace.
@@ -34098,6 +33655,9 @@ type GetWorkersKvNamespacesResultInput interface {
 type GetWorkersKvNamespacesResultArgs struct {
 	// Namespace identifier tag.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolInput `pulumi:"supportsUrlEncoding"`
 	// A human-readable string name for a Namespace.
@@ -34158,6 +33718,12 @@ func (o GetWorkersKvNamespacesResultOutput) ToGetWorkersKvNamespacesResultOutput
 // Namespace identifier tag.
 func (o GetWorkersKvNamespacesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersKvNamespacesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+// Available values: "eu", "fedramp", "us".
+func (o GetWorkersKvNamespacesResultOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkersKvNamespacesResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -34384,6 +33950,8 @@ type GetWorkersResultObservability struct {
 	HeadSamplingRate float64 `pulumi:"headSamplingRate"`
 	// Log settings for the Worker.
 	Logs GetWorkersResultObservabilityLogs `pulumi:"logs"`
+	// Whether query strings are removed from request URLs in logs and traces.
+	RedactQueryString bool `pulumi:"redactQueryString"`
 	// Trace settings for the Worker.
 	Traces GetWorkersResultObservabilityTraces `pulumi:"traces"`
 }
@@ -34406,6 +33974,8 @@ type GetWorkersResultObservabilityArgs struct {
 	HeadSamplingRate pulumi.Float64Input `pulumi:"headSamplingRate"`
 	// Log settings for the Worker.
 	Logs GetWorkersResultObservabilityLogsInput `pulumi:"logs"`
+	// Whether query strings are removed from request URLs in logs and traces.
+	RedactQueryString pulumi.BoolInput `pulumi:"redactQueryString"`
 	// Trace settings for the Worker.
 	Traces GetWorkersResultObservabilityTracesInput `pulumi:"traces"`
 }
@@ -34449,6 +34019,11 @@ func (o GetWorkersResultObservabilityOutput) HeadSamplingRate() pulumi.Float64Ou
 // Log settings for the Worker.
 func (o GetWorkersResultObservabilityOutput) Logs() GetWorkersResultObservabilityLogsOutput {
 	return o.ApplyT(func(v GetWorkersResultObservability) GetWorkersResultObservabilityLogs { return v.Logs }).(GetWorkersResultObservabilityLogsOutput)
+}
+
+// Whether query strings are removed from request URLs in logs and traces.
+func (o GetWorkersResultObservabilityOutput) RedactQueryString() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkersResultObservability) bool { return v.RedactQueryString }).(pulumi.BoolOutput)
 }
 
 // Trace settings for the Worker.
@@ -34553,7 +34128,7 @@ type GetWorkersResultObservabilityTraces struct {
 	HeadSamplingRate float64 `pulumi:"headSamplingRate"`
 	// Whether trace persistence is enabled for the Worker.
 	Persist bool `pulumi:"persist"`
-	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 	// Available values: "authenticated", "accept".
 	PropagationPolicy string `pulumi:"propagationPolicy"`
 }
@@ -34578,7 +34153,7 @@ type GetWorkersResultObservabilityTracesArgs struct {
 	HeadSamplingRate pulumi.Float64Input `pulumi:"headSamplingRate"`
 	// Whether trace persistence is enabled for the Worker.
 	Persist pulumi.BoolInput `pulumi:"persist"`
-	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 	// Available values: "authenticated", "accept".
 	PropagationPolicy pulumi.StringInput `pulumi:"propagationPolicy"`
 }
@@ -34629,7 +34204,7 @@ func (o GetWorkersResultObservabilityTracesOutput) Persist() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWorkersResultObservabilityTraces) bool { return v.Persist }).(pulumi.BoolOutput)
 }
 
-// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 // Available values: "authenticated", "accept".
 func (o GetWorkersResultObservabilityTracesOutput) PropagationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersResultObservabilityTraces) string { return v.PropagationPolicy }).(pulumi.StringOutput)
@@ -36529,6 +36104,8 @@ type GetWorkersScriptsResultObservability struct {
 	HeadSamplingRate float64 `pulumi:"headSamplingRate"`
 	// Log settings for the Worker.
 	Logs GetWorkersScriptsResultObservabilityLogs `pulumi:"logs"`
+	// Whether query strings are removed from request URLs in logs and traces.
+	RedactQueryString bool `pulumi:"redactQueryString"`
 	// Trace settings for the Worker.
 	Traces GetWorkersScriptsResultObservabilityTraces `pulumi:"traces"`
 }
@@ -36551,6 +36128,8 @@ type GetWorkersScriptsResultObservabilityArgs struct {
 	HeadSamplingRate pulumi.Float64Input `pulumi:"headSamplingRate"`
 	// Log settings for the Worker.
 	Logs GetWorkersScriptsResultObservabilityLogsInput `pulumi:"logs"`
+	// Whether query strings are removed from request URLs in logs and traces.
+	RedactQueryString pulumi.BoolInput `pulumi:"redactQueryString"`
 	// Trace settings for the Worker.
 	Traces GetWorkersScriptsResultObservabilityTracesInput `pulumi:"traces"`
 }
@@ -36594,6 +36173,11 @@ func (o GetWorkersScriptsResultObservabilityOutput) HeadSamplingRate() pulumi.Fl
 // Log settings for the Worker.
 func (o GetWorkersScriptsResultObservabilityOutput) Logs() GetWorkersScriptsResultObservabilityLogsOutput {
 	return o.ApplyT(func(v GetWorkersScriptsResultObservability) GetWorkersScriptsResultObservabilityLogs { return v.Logs }).(GetWorkersScriptsResultObservabilityLogsOutput)
+}
+
+// Whether query strings are removed from request URLs in logs and traces.
+func (o GetWorkersScriptsResultObservabilityOutput) RedactQueryString() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkersScriptsResultObservability) bool { return v.RedactQueryString }).(pulumi.BoolOutput)
 }
 
 // Trace settings for the Worker.
@@ -36700,7 +36284,7 @@ type GetWorkersScriptsResultObservabilityTraces struct {
 	HeadSamplingRate float64 `pulumi:"headSamplingRate"`
 	// Whether trace persistence is enabled for the Worker.
 	Persist bool `pulumi:"persist"`
-	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 	// Available values: "authenticated", "accept".
 	PropagationPolicy string `pulumi:"propagationPolicy"`
 }
@@ -36725,7 +36309,7 @@ type GetWorkersScriptsResultObservabilityTracesArgs struct {
 	HeadSamplingRate pulumi.Float64Input `pulumi:"headSamplingRate"`
 	// Whether trace persistence is enabled for the Worker.
 	Persist pulumi.BoolInput `pulumi:"persist"`
-	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+	// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 	// Available values: "authenticated", "accept".
 	PropagationPolicy pulumi.StringInput `pulumi:"propagationPolicy"`
 }
@@ -36776,7 +36360,7 @@ func (o GetWorkersScriptsResultObservabilityTracesOutput) Persist() pulumi.BoolO
 	return o.ApplyT(func(v GetWorkersScriptsResultObservabilityTraces) bool { return v.Persist }).(pulumi.BoolOutput)
 }
 
-// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
 // Available values: "authenticated", "accept".
 func (o GetWorkersScriptsResultObservabilityTracesOutput) PropagationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersScriptsResultObservabilityTraces) string { return v.PropagationPolicy }).(pulumi.StringOutput)
@@ -37376,103 +36960,6 @@ func (o GetWorkflowFilterPtrOutput) Search() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetWorkflowInstances struct {
-	Complete        float64 `pulumi:"complete"`
-	Errored         float64 `pulumi:"errored"`
-	Paused          float64 `pulumi:"paused"`
-	Queued          float64 `pulumi:"queued"`
-	RollingBack     float64 `pulumi:"rollingBack"`
-	Running         float64 `pulumi:"running"`
-	Terminated      float64 `pulumi:"terminated"`
-	Waiting         float64 `pulumi:"waiting"`
-	WaitingForPause float64 `pulumi:"waitingForPause"`
-}
-
-// GetWorkflowInstancesInput is an input type that accepts GetWorkflowInstancesArgs and GetWorkflowInstancesOutput values.
-// You can construct a concrete instance of `GetWorkflowInstancesInput` via:
-//
-//	GetWorkflowInstancesArgs{...}
-type GetWorkflowInstancesInput interface {
-	pulumi.Input
-
-	ToGetWorkflowInstancesOutput() GetWorkflowInstancesOutput
-	ToGetWorkflowInstancesOutputWithContext(context.Context) GetWorkflowInstancesOutput
-}
-
-type GetWorkflowInstancesArgs struct {
-	Complete        pulumi.Float64Input `pulumi:"complete"`
-	Errored         pulumi.Float64Input `pulumi:"errored"`
-	Paused          pulumi.Float64Input `pulumi:"paused"`
-	Queued          pulumi.Float64Input `pulumi:"queued"`
-	RollingBack     pulumi.Float64Input `pulumi:"rollingBack"`
-	Running         pulumi.Float64Input `pulumi:"running"`
-	Terminated      pulumi.Float64Input `pulumi:"terminated"`
-	Waiting         pulumi.Float64Input `pulumi:"waiting"`
-	WaitingForPause pulumi.Float64Input `pulumi:"waitingForPause"`
-}
-
-func (GetWorkflowInstancesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkflowInstances)(nil)).Elem()
-}
-
-func (i GetWorkflowInstancesArgs) ToGetWorkflowInstancesOutput() GetWorkflowInstancesOutput {
-	return i.ToGetWorkflowInstancesOutputWithContext(context.Background())
-}
-
-func (i GetWorkflowInstancesArgs) ToGetWorkflowInstancesOutputWithContext(ctx context.Context) GetWorkflowInstancesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowInstancesOutput)
-}
-
-type GetWorkflowInstancesOutput struct{ *pulumi.OutputState }
-
-func (GetWorkflowInstancesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkflowInstances)(nil)).Elem()
-}
-
-func (o GetWorkflowInstancesOutput) ToGetWorkflowInstancesOutput() GetWorkflowInstancesOutput {
-	return o
-}
-
-func (o GetWorkflowInstancesOutput) ToGetWorkflowInstancesOutputWithContext(ctx context.Context) GetWorkflowInstancesOutput {
-	return o
-}
-
-func (o GetWorkflowInstancesOutput) Complete() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Complete }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowInstancesOutput) Errored() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Errored }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowInstancesOutput) Paused() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Paused }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowInstancesOutput) Queued() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Queued }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowInstancesOutput) RollingBack() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.RollingBack }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowInstancesOutput) Running() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Running }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowInstancesOutput) Terminated() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Terminated }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowInstancesOutput) Waiting() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Waiting }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowInstancesOutput) WaitingForPause() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.WaitingForPause }).(pulumi.Float64Output)
-}
-
 type GetWorkflowSchedule struct {
 	Cron         string `pulumi:"cron"`
 	NextInstance string `pulumi:"nextInstance"`
@@ -37577,7 +37064,7 @@ type GetWorkflowsResult struct {
 	ClassName   string                       `pulumi:"className"`
 	CreatedOn   string                       `pulumi:"createdOn"`
 	Id          string                       `pulumi:"id"`
-	Instances   GetWorkflowsResultInstances  `pulumi:"instances"`
+	Instances   map[string]float64           `pulumi:"instances"`
 	ModifiedOn  string                       `pulumi:"modifiedOn"`
 	Name        string                       `pulumi:"name"`
 	Schedules   []GetWorkflowsResultSchedule `pulumi:"schedules"`
@@ -37600,7 +37087,7 @@ type GetWorkflowsResultArgs struct {
 	ClassName   pulumi.StringInput                   `pulumi:"className"`
 	CreatedOn   pulumi.StringInput                   `pulumi:"createdOn"`
 	Id          pulumi.StringInput                   `pulumi:"id"`
-	Instances   GetWorkflowsResultInstancesInput     `pulumi:"instances"`
+	Instances   pulumi.Float64MapInput               `pulumi:"instances"`
 	ModifiedOn  pulumi.StringInput                   `pulumi:"modifiedOn"`
 	Name        pulumi.StringInput                   `pulumi:"name"`
 	Schedules   GetWorkflowsResultScheduleArrayInput `pulumi:"schedules"`
@@ -37671,8 +37158,8 @@ func (o GetWorkflowsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkflowsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetWorkflowsResultOutput) Instances() GetWorkflowsResultInstancesOutput {
-	return o.ApplyT(func(v GetWorkflowsResult) GetWorkflowsResultInstances { return v.Instances }).(GetWorkflowsResultInstancesOutput)
+func (o GetWorkflowsResultOutput) Instances() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) map[string]float64 { return v.Instances }).(pulumi.Float64MapOutput)
 }
 
 func (o GetWorkflowsResultOutput) ModifiedOn() pulumi.StringOutput {
@@ -37713,103 +37200,6 @@ func (o GetWorkflowsResultArrayOutput) Index(i pulumi.IntInput) GetWorkflowsResu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkflowsResult {
 		return vs[0].([]GetWorkflowsResult)[vs[1].(int)]
 	}).(GetWorkflowsResultOutput)
-}
-
-type GetWorkflowsResultInstances struct {
-	Complete        float64 `pulumi:"complete"`
-	Errored         float64 `pulumi:"errored"`
-	Paused          float64 `pulumi:"paused"`
-	Queued          float64 `pulumi:"queued"`
-	RollingBack     float64 `pulumi:"rollingBack"`
-	Running         float64 `pulumi:"running"`
-	Terminated      float64 `pulumi:"terminated"`
-	Waiting         float64 `pulumi:"waiting"`
-	WaitingForPause float64 `pulumi:"waitingForPause"`
-}
-
-// GetWorkflowsResultInstancesInput is an input type that accepts GetWorkflowsResultInstancesArgs and GetWorkflowsResultInstancesOutput values.
-// You can construct a concrete instance of `GetWorkflowsResultInstancesInput` via:
-//
-//	GetWorkflowsResultInstancesArgs{...}
-type GetWorkflowsResultInstancesInput interface {
-	pulumi.Input
-
-	ToGetWorkflowsResultInstancesOutput() GetWorkflowsResultInstancesOutput
-	ToGetWorkflowsResultInstancesOutputWithContext(context.Context) GetWorkflowsResultInstancesOutput
-}
-
-type GetWorkflowsResultInstancesArgs struct {
-	Complete        pulumi.Float64Input `pulumi:"complete"`
-	Errored         pulumi.Float64Input `pulumi:"errored"`
-	Paused          pulumi.Float64Input `pulumi:"paused"`
-	Queued          pulumi.Float64Input `pulumi:"queued"`
-	RollingBack     pulumi.Float64Input `pulumi:"rollingBack"`
-	Running         pulumi.Float64Input `pulumi:"running"`
-	Terminated      pulumi.Float64Input `pulumi:"terminated"`
-	Waiting         pulumi.Float64Input `pulumi:"waiting"`
-	WaitingForPause pulumi.Float64Input `pulumi:"waitingForPause"`
-}
-
-func (GetWorkflowsResultInstancesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkflowsResultInstances)(nil)).Elem()
-}
-
-func (i GetWorkflowsResultInstancesArgs) ToGetWorkflowsResultInstancesOutput() GetWorkflowsResultInstancesOutput {
-	return i.ToGetWorkflowsResultInstancesOutputWithContext(context.Background())
-}
-
-func (i GetWorkflowsResultInstancesArgs) ToGetWorkflowsResultInstancesOutputWithContext(ctx context.Context) GetWorkflowsResultInstancesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowsResultInstancesOutput)
-}
-
-type GetWorkflowsResultInstancesOutput struct{ *pulumi.OutputState }
-
-func (GetWorkflowsResultInstancesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkflowsResultInstances)(nil)).Elem()
-}
-
-func (o GetWorkflowsResultInstancesOutput) ToGetWorkflowsResultInstancesOutput() GetWorkflowsResultInstancesOutput {
-	return o
-}
-
-func (o GetWorkflowsResultInstancesOutput) ToGetWorkflowsResultInstancesOutputWithContext(ctx context.Context) GetWorkflowsResultInstancesOutput {
-	return o
-}
-
-func (o GetWorkflowsResultInstancesOutput) Complete() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Complete }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowsResultInstancesOutput) Errored() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Errored }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowsResultInstancesOutput) Paused() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Paused }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowsResultInstancesOutput) Queued() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Queued }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowsResultInstancesOutput) RollingBack() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.RollingBack }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowsResultInstancesOutput) Running() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Running }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowsResultInstancesOutput) Terminated() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Terminated }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowsResultInstancesOutput) Waiting() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Waiting }).(pulumi.Float64Output)
-}
-
-func (o GetWorkflowsResultInstancesOutput) WaitingForPause() pulumi.Float64Output {
-	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.WaitingForPause }).(pulumi.Float64Output)
 }
 
 type GetWorkflowsResultSchedule struct {
@@ -51670,18 +51060,333 @@ func (o GetZeroTrustAccessApplicationsResultPolicyExcludeGithubOrganizationOutpu
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyExcludeGithubOrganization) string { return v.Team }).(pulumi.StringOutput)
 }
 
+type GetZeroTrustAccessApplicationsResultPolicyExcludeGroup struct {
+	// The ID of a previously created Access group.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyExcludeGroupInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyExcludeGroupArgs and GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyExcludeGroupInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyExcludeGroupArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyExcludeGroupInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeGroupArgs struct {
+	// The ID of a previously created Access group.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeGroup)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeGroupArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeGroupArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeGroup)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput {
+	return o
+}
+
+// The ID of a previously created Access group.
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyExcludeGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeGsuite struct {
+	// The email of the Google Workspace group.
+	Email string `pulumi:"email"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteArgs and GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteArgs struct {
+	// The email of the Google Workspace group.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeGsuite)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeGsuite)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput {
+	return o
+}
+
+// The email of the Google Workspace group.
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyExcludeGsuite) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The ID of your Google Workspace identity provider.
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeIp struct {
+	// An IPv4 or IPv6 CIDR block.
+	Ip string `pulumi:"ip"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyExcludeIpInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyExcludeIpArgs and GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyExcludeIpInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyExcludeIpArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyExcludeIpInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeIpArgs struct {
+	// An IPv4 or IPv6 CIDR block.
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeIp)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeIpArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeIpArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeIp)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput {
+	return o
+}
+
+// An IPv4 or IPv6 CIDR block.
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyExcludeIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeIpList struct {
+	// The ID of a previously created IP list.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyExcludeIpListInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyExcludeIpListArgs and GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyExcludeIpListInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyExcludeIpListArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyExcludeIpListInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeIpListArgs struct {
+	// The ID of a previously created IP list.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeIpListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeIpList)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeIpListArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeIpListArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeIpList)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput {
+	return o
+}
+
+// The ID of a previously created IP list.
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyExcludeIpList) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenArgs and GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput {
+	return o
+}
+
+// The ID of an Access OIDC SaaS application
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethod struct {
+	// The ID of an identity provider.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodInput is an input type that accepts GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodArgs and GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodInput` via:
+//
+//	GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodArgs{...}
+type GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput
+	ToGetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutputWithContext(context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodArgs struct {
+	// The ID of an identity provider.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethod)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput {
+	return i.ToGetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodArgs) ToGetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput)
+}
+
+type GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethod)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput() GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput) ToGetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput {
+	return o
+}
+
+// The ID of an identity provider.
+func (o GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethod) string { return v.Id }).(pulumi.StringOutput)
+}
+
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultInput)(nil)).Elem(), GetPipelineSinksResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultArrayInput)(nil)).Elem(), GetPipelineSinksResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultConfigInput)(nil)).Elem(), GetPipelineSinksResultConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultConfigFileNamingInput)(nil)).Elem(), GetPipelineSinksResultConfigFileNamingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultConfigPartitioningInput)(nil)).Elem(), GetPipelineSinksResultConfigPartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultConfigRollingPolicyInput)(nil)).Elem(), GetPipelineSinksResultConfigRollingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultFormatInput)(nil)).Elem(), GetPipelineSinksResultFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultSchemaInput)(nil)).Elem(), GetPipelineSinksResultSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultSchemaFieldInput)(nil)).Elem(), GetPipelineSinksResultSchemaFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultSchemaFieldArrayInput)(nil)).Elem(), GetPipelineSinksResultSchemaFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineSinksResultSchemaFormatInput)(nil)).Elem(), GetPipelineSinksResultSchemaFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamFilterInput)(nil)).Elem(), GetPipelineStreamFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamFilterPtrInput)(nil)).Elem(), GetPipelineStreamFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamFormatInput)(nil)).Elem(), GetPipelineStreamFormatArgs{})
@@ -51690,7 +51395,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamSchemaInput)(nil)).Elem(), GetPipelineStreamSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamSchemaFieldInput)(nil)).Elem(), GetPipelineStreamSchemaFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamSchemaFieldArrayInput)(nil)).Elem(), GetPipelineStreamSchemaFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamSchemaFormatInput)(nil)).Elem(), GetPipelineStreamSchemaFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamWorkerBindingInput)(nil)).Elem(), GetPipelineStreamWorkerBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultInput)(nil)).Elem(), GetPipelineStreamsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultArrayInput)(nil)).Elem(), GetPipelineStreamsResultArray{})
@@ -51700,7 +51404,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultSchemaInput)(nil)).Elem(), GetPipelineStreamsResultSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultSchemaFieldInput)(nil)).Elem(), GetPipelineStreamsResultSchemaFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultSchemaFieldArrayInput)(nil)).Elem(), GetPipelineStreamsResultSchemaFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultSchemaFormatInput)(nil)).Elem(), GetPipelineStreamsResultSchemaFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineStreamsResultWorkerBindingInput)(nil)).Elem(), GetPipelineStreamsResultWorkerBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineTableInput)(nil)).Elem(), GetPipelineTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineTableArrayInput)(nil)).Elem(), GetPipelineTableArray{})
@@ -51822,6 +51525,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersNoStoreInput)(nil)).Elem(), GetRulesetRuleActionParametersNoStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersNoTransformInput)(nil)).Elem(), GetRulesetRuleActionParametersNoTransformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersOriginInput)(nil)).Elem(), GetRulesetRuleActionParametersOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersOriginRangeRequestsInput)(nil)).Elem(), GetRulesetRuleActionParametersOriginRangeRequestsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersOverridesInput)(nil)).Elem(), GetRulesetRuleActionParametersOverridesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersOverridesCategoryInput)(nil)).Elem(), GetRulesetRuleActionParametersOverridesCategoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersOverridesCategoryArrayInput)(nil)).Elem(), GetRulesetRuleActionParametersOverridesCategoryArray{})
@@ -51906,6 +51610,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpectrumApplicationsResultDnsInput)(nil)).Elem(), GetSpectrumApplicationsResultDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpectrumApplicationsResultEdgeIpsInput)(nil)).Elem(), GetSpectrumApplicationsResultEdgeIpsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpectrumApplicationsResultOriginDnsInput)(nil)).Elem(), GetSpectrumApplicationsResultOriginDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpectrumProtocolsResultInput)(nil)).Elem(), GetSpectrumProtocolsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpectrumProtocolsResultArrayInput)(nil)).Elem(), GetSpectrumProtocolsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoConnectorVerificationInput)(nil)).Elem(), GetSsoConnectorVerificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoConnectorsResultInput)(nil)).Elem(), GetSsoConnectorsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSsoConnectorsResultArrayInput)(nil)).Elem(), GetSsoConnectorsResultArray{})
@@ -51913,6 +51619,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAudioTrackAudioInput)(nil)).Elem(), GetStreamAudioTrackAudioArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamAudioTrackAudioArrayInput)(nil)).Elem(), GetStreamAudioTrackAudioArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamInputInput)(nil)).Elem(), GetStreamInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamLiveInputPlaybackInput)(nil)).Elem(), GetStreamLiveInputPlaybackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamLiveInputRecordingInput)(nil)).Elem(), GetStreamLiveInputRecordingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamLiveInputRtmpsInput)(nil)).Elem(), GetStreamLiveInputRtmpsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStreamLiveInputRtmpsPlaybackInput)(nil)).Elem(), GetStreamLiveInputRtmpsPlaybackArgs{})
@@ -52176,12 +51883,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerArrayInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowFilterInput)(nil)).Elem(), GetWorkflowFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowFilterPtrInput)(nil)).Elem(), GetWorkflowFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowInstancesInput)(nil)).Elem(), GetWorkflowInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowScheduleInput)(nil)).Elem(), GetWorkflowScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowScheduleArrayInput)(nil)).Elem(), GetWorkflowScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowsResultInput)(nil)).Elem(), GetWorkflowsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowsResultArrayInput)(nil)).Elem(), GetWorkflowsResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowsResultInstancesInput)(nil)).Elem(), GetWorkflowsResultInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowsResultScheduleInput)(nil)).Elem(), GetWorkflowsResultScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowsResultScheduleArrayInput)(nil)).Elem(), GetWorkflowsResultScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessAiControlsMcpPortalFilterInput)(nil)).Elem(), GetZeroTrustAccessAiControlsMcpPortalFilterArgs{})
@@ -52371,17 +52076,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeExternalEvaluationInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeExternalEvaluationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeGeoInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeGeoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeGithubOrganizationInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeGithubOrganizationArgs{})
-	pulumi.RegisterOutputType(GetPipelineSinksResultOutput{})
-	pulumi.RegisterOutputType(GetPipelineSinksResultArrayOutput{})
-	pulumi.RegisterOutputType(GetPipelineSinksResultConfigOutput{})
-	pulumi.RegisterOutputType(GetPipelineSinksResultConfigFileNamingOutput{})
-	pulumi.RegisterOutputType(GetPipelineSinksResultConfigPartitioningOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeGroupInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeIpInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeIpListInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodInput)(nil)).Elem(), GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodArgs{})
 	pulumi.RegisterOutputType(GetPipelineSinksResultConfigRollingPolicyOutput{})
 	pulumi.RegisterOutputType(GetPipelineSinksResultFormatOutput{})
 	pulumi.RegisterOutputType(GetPipelineSinksResultSchemaOutput{})
 	pulumi.RegisterOutputType(GetPipelineSinksResultSchemaFieldOutput{})
 	pulumi.RegisterOutputType(GetPipelineSinksResultSchemaFieldArrayOutput{})
-	pulumi.RegisterOutputType(GetPipelineSinksResultSchemaFormatOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamFilterOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamFormatOutput{})
@@ -52390,7 +52095,6 @@ func init() {
 	pulumi.RegisterOutputType(GetPipelineStreamSchemaOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamSchemaFieldOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamSchemaFieldArrayOutput{})
-	pulumi.RegisterOutputType(GetPipelineStreamSchemaFormatOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamWorkerBindingOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamsResultOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamsResultArrayOutput{})
@@ -52400,7 +52104,6 @@ func init() {
 	pulumi.RegisterOutputType(GetPipelineStreamsResultSchemaOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamsResultSchemaFieldOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamsResultSchemaFieldArrayOutput{})
-	pulumi.RegisterOutputType(GetPipelineStreamsResultSchemaFormatOutput{})
 	pulumi.RegisterOutputType(GetPipelineStreamsResultWorkerBindingOutput{})
 	pulumi.RegisterOutputType(GetPipelineTableOutput{})
 	pulumi.RegisterOutputType(GetPipelineTableArrayOutput{})
@@ -52522,6 +52225,7 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersNoStoreOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersNoTransformOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersOriginOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersOriginRangeRequestsOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersOverridesOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersOverridesCategoryOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersOverridesCategoryArrayOutput{})
@@ -52606,6 +52310,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSpectrumApplicationsResultDnsOutput{})
 	pulumi.RegisterOutputType(GetSpectrumApplicationsResultEdgeIpsOutput{})
 	pulumi.RegisterOutputType(GetSpectrumApplicationsResultOriginDnsOutput{})
+	pulumi.RegisterOutputType(GetSpectrumProtocolsResultOutput{})
+	pulumi.RegisterOutputType(GetSpectrumProtocolsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetSsoConnectorVerificationOutput{})
 	pulumi.RegisterOutputType(GetSsoConnectorsResultOutput{})
 	pulumi.RegisterOutputType(GetSsoConnectorsResultArrayOutput{})
@@ -52613,6 +52319,7 @@ func init() {
 	pulumi.RegisterOutputType(GetStreamAudioTrackAudioOutput{})
 	pulumi.RegisterOutputType(GetStreamAudioTrackAudioArrayOutput{})
 	pulumi.RegisterOutputType(GetStreamInputOutput{})
+	pulumi.RegisterOutputType(GetStreamLiveInputPlaybackOutput{})
 	pulumi.RegisterOutputType(GetStreamLiveInputRecordingOutput{})
 	pulumi.RegisterOutputType(GetStreamLiveInputRtmpsOutput{})
 	pulumi.RegisterOutputType(GetStreamLiveInputRtmpsPlaybackOutput{})
@@ -52876,12 +52583,10 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkflowFilterOutput{})
 	pulumi.RegisterOutputType(GetWorkflowFilterPtrOutput{})
-	pulumi.RegisterOutputType(GetWorkflowInstancesOutput{})
 	pulumi.RegisterOutputType(GetWorkflowScheduleOutput{})
 	pulumi.RegisterOutputType(GetWorkflowScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkflowsResultOutput{})
 	pulumi.RegisterOutputType(GetWorkflowsResultArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkflowsResultInstancesOutput{})
 	pulumi.RegisterOutputType(GetWorkflowsResultScheduleOutput{})
 	pulumi.RegisterOutputType(GetWorkflowsResultScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessAiControlsMcpPortalFilterOutput{})
@@ -53071,4 +52776,10 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeExternalEvaluationOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeGeoOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeGithubOrganizationOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeGroupOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeGsuiteOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeIpOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeIpListOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationsResultPolicyExcludeLoginMethodOutput{})
 }

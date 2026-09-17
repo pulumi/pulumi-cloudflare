@@ -57,8 +57,12 @@ type LookupPrecursorResult struct {
 	// The zone-level Precursor enforcement mode applied to requests that do
 	// not match a more specific enforcement rule.
 	// Available values: "off", "min-friction", "max-security".
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultMode string `pulumi:"defaultMode"`
 	// The ordered list of enforcement rules for the zone.
+	//
+	// Deprecated: This attribute is deprecated.
 	EnforcementRules []GetPrecursorEnforcementRule `pulumi:"enforcementRules"`
 	// Identifier.
 	Id string `pulumi:"id"`
@@ -99,11 +103,15 @@ func (o LookupPrecursorResultOutput) ToLookupPrecursorResultOutputWithContext(ct
 // The zone-level Precursor enforcement mode applied to requests that do
 // not match a more specific enforcement rule.
 // Available values: "off", "min-friction", "max-security".
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupPrecursorResultOutput) DefaultMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrecursorResult) string { return v.DefaultMode }).(pulumi.StringOutput)
 }
 
 // The ordered list of enforcement rules for the zone.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupPrecursorResultOutput) EnforcementRules() GetPrecursorEnforcementRuleArrayOutput {
 	return o.ApplyT(func(v LookupPrecursorResult) []GetPrecursorEnforcementRule { return v.EnforcementRules }).(GetPrecursorEnforcementRuleArrayOutput)
 }

@@ -15,14 +15,14 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
     public static final GetRegistrarDomainArgs Empty = new GetRegistrarDomainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -30,20 +30,20 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Fully qualified domain name (FQDN) including the extension
-     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-     * identifies a registration — the same domain cannot be registered
-     * twice, making it a natural idempotency key for registration requests.
+     * Provides a fully qualified domain name (FQDN), including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+     * a registration. Cloudflare permits only one registration per domain, making
+     * the domain name a natural idempotency key for registration requests.
      * 
      */
     @Import(name="domainName", required=true)
     private Output<String> domainName;
 
     /**
-     * @return Fully qualified domain name (FQDN) including the extension
-     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-     * identifies a registration — the same domain cannot be registered
-     * twice, making it a natural idempotency key for registration requests.
+     * @return Provides a fully qualified domain name (FQDN), including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+     * a registration. Cloudflare permits only one registration per domain, making
+     * the domain name a natural idempotency key for registration requests.
      * 
      */
     public Output<String> domainName() {
@@ -76,7 +76,7 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -87,7 +87,7 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -97,10 +97,10 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param domainName Fully qualified domain name (FQDN) including the extension
-         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-         * identifies a registration — the same domain cannot be registered
-         * twice, making it a natural idempotency key for registration requests.
+         * @param domainName Provides a fully qualified domain name (FQDN), including the extension
+         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+         * a registration. Cloudflare permits only one registration per domain, making
+         * the domain name a natural idempotency key for registration requests.
          * 
          * @return builder
          * 
@@ -111,10 +111,10 @@ public final class GetRegistrarDomainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param domainName Fully qualified domain name (FQDN) including the extension
-         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-         * identifies a registration — the same domain cannot be registered
-         * twice, making it a natural idempotency key for registration requests.
+         * @param domainName Provides a fully qualified domain name (FQDN), including the extension
+         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+         * a registration. Cloudflare permits only one registration per domain, making
+         * the domain name a natural idempotency key for registration requests.
          * 
          * @return builder
          * 

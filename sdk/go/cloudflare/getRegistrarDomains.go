@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRegistrarDomains(ctx, &cloudflare.LookupRegistrarDomainsArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,16 +48,16 @@ func LookupRegistrarDomains(ctx *pulumi.Context, args *LookupRegistrarDomainsArg
 
 // A collection of arguments for invoking getRegistrarDomains.
 type LookupRegistrarDomainsArgs struct {
-	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getRegistrarDomains.
 type LookupRegistrarDomainsResult struct {
-	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -71,8 +71,8 @@ func LookupRegistrarDomainsOutput(ctx *pulumi.Context, args LookupRegistrarDomai
 
 // A collection of arguments for invoking getRegistrarDomains.
 type LookupRegistrarDomainsOutputArgs struct {
-	// Identifier
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Identifier.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -96,9 +96,9 @@ func (o LookupRegistrarDomainsResultOutput) ToLookupRegistrarDomainsResultOutput
 	return o
 }
 
-// Identifier
-func (o LookupRegistrarDomainsResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupRegistrarDomainsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+// Identifier.
+func (o LookupRegistrarDomainsResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrarDomainsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Max items to fetch, default: 1000

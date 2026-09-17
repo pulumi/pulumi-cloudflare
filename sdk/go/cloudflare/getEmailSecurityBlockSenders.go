@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityBlockSenders(ctx, &cloudflare.LookupEmailSecurityBlockSendersArgs{
-//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				Direction:   pulumi.StringRef("asc"),
 //				Order:       pulumi.StringRef("pattern"),
 //				Pattern:     pulumi.StringRef("pattern"),
@@ -58,7 +58,7 @@ func LookupEmailSecurityBlockSenders(ctx *pulumi.Context, args *LookupEmailSecur
 
 // A collection of arguments for invoking getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersArgs struct {
-	AccountId   *string `pulumi:"accountId"`
+	AccountId   string  `pulumi:"accountId"`
 	Direction   *string `pulumi:"direction"`
 	MaxItems    *int    `pulumi:"maxItems"`
 	Order       *string `pulumi:"order"`
@@ -69,7 +69,7 @@ type LookupEmailSecurityBlockSendersArgs struct {
 
 // A collection of values returned by getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersResult struct {
-	AccountId   *string                              `pulumi:"accountId"`
+	AccountId   string                               `pulumi:"accountId"`
 	Direction   *string                              `pulumi:"direction"`
 	MaxItems    *int                                 `pulumi:"maxItems"`
 	Order       *string                              `pulumi:"order"`
@@ -86,7 +86,7 @@ func LookupEmailSecurityBlockSendersOutput(ctx *pulumi.Context, args LookupEmail
 
 // A collection of arguments for invoking getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersOutputArgs struct {
-	AccountId   pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId   pulumi.StringInput    `pulumi:"accountId"`
 	Direction   pulumi.StringPtrInput `pulumi:"direction"`
 	MaxItems    pulumi.IntPtrInput    `pulumi:"maxItems"`
 	Order       pulumi.StringPtrInput `pulumi:"order"`
@@ -114,8 +114,8 @@ func (o LookupEmailSecurityBlockSendersResultOutput) ToLookupEmailSecurityBlockS
 	return o
 }
 
-func (o LookupEmailSecurityBlockSendersResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupEmailSecurityBlockSendersResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o LookupEmailSecurityBlockSendersResultOutput) Direction() pulumi.StringPtrOutput {

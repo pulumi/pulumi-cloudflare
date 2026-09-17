@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,6 +77,29 @@ public final class ZeroTrustTunnelWarpConnectorConnectionArgs extends com.pulumi
     }
 
     /**
+     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     * 
+     * @deprecated
+     * This functionality has been removed. The isPendingReconnect field will now always report false.
+     * 
+     */
+    @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+    @Import(name="isPendingReconnect")
+    private @Nullable Output<Boolean> isPendingReconnect;
+
+    /**
+     * @return Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     * 
+     * @deprecated
+     * This functionality has been removed. The isPendingReconnect field will now always report false.
+     * 
+     */
+    @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+    public Optional<Output<Boolean>> isPendingReconnect() {
+        return Optional.ofNullable(this.isPendingReconnect);
+    }
+
+    /**
      * Timestamp of when the connection was established.
      * 
      */
@@ -127,6 +151,7 @@ public final class ZeroTrustTunnelWarpConnectorConnectionArgs extends com.pulumi
         this.clientVersion = $.clientVersion;
         this.coloName = $.coloName;
         this.id = $.id;
+        this.isPendingReconnect = $.isPendingReconnect;
         this.openedAt = $.openedAt;
         this.originIp = $.originIp;
         this.uuid = $.uuid;
@@ -232,6 +257,35 @@ public final class ZeroTrustTunnelWarpConnectorConnectionArgs extends com.pulumi
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        /**
+         * @param isPendingReconnect Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This functionality has been removed. The isPendingReconnect field will now always report false.
+         * 
+         */
+        @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+        public Builder isPendingReconnect(@Nullable Output<Boolean> isPendingReconnect) {
+            $.isPendingReconnect = isPendingReconnect;
+            return this;
+        }
+
+        /**
+         * @param isPendingReconnect Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This functionality has been removed. The isPendingReconnect field will now always report false.
+         * 
+         */
+        @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+        public Builder isPendingReconnect(Boolean isPendingReconnect) {
+            return isPendingReconnect(Output.of(isPendingReconnect));
         }
 
         /**

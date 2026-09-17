@@ -20,15 +20,20 @@ __all__ = ['WorkersKvNamespaceArgs', 'WorkersKvNamespace']
 class WorkersKvNamespaceArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 title: pulumi.Input[_builtins.str]):
+                 title: pulumi.Input[_builtins.str],
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersKvNamespace resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
+        :param pulumi.Input[_builtins.str] jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+               Available values: "eu", "fedramp", "us".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "title", title)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -54,22 +59,40 @@ class WorkersKvNamespaceArgs:
     def title(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "title", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
+
 
 @pulumi.input_type
 class _WorkersKvNamespaceState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  supports_url_encoding: pulumi.Input[Optional[_builtins.bool]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersKvNamespace resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if supports_url_encoding is not None:
             pulumi.set(__self__, "supports_url_encoding", supports_url_encoding)
         if title is not None:
@@ -86,6 +109,19 @@ class _WorkersKvNamespaceState:
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter(name="supportsUrlEncoding")
@@ -119,6 +155,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -135,7 +172,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
 
         example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            title="My Own Namespace")
+            title="My Own Namespace",
+            jurisdiction="eu")
         ```
 
         ## Import
@@ -148,6 +186,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
         """
         ...
@@ -170,7 +210,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
 
         example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            title="My Own Namespace")
+            title="My Own Namespace",
+            jurisdiction="eu")
         ```
 
         ## Import
@@ -196,6 +237,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -209,6 +251,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["jurisdiction"] = jurisdiction
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
@@ -224,6 +267,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             supports_url_encoding: pulumi.Input[Optional[_builtins.bool]] = None,
             title: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkersKvNamespace':
         """
@@ -234,6 +278,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+               Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
         """
@@ -242,6 +288,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         __props__ = _WorkersKvNamespaceState.__new__(_WorkersKvNamespaceState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["supports_url_encoding"] = supports_url_encoding
         __props__.__dict__["title"] = title
         return WorkersKvNamespace(resource_name, opts=opts, __props__=__props__)
@@ -253,6 +300,15 @@ class WorkersKvNamespace(pulumi.CustomResource):
         Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter(name="supportsUrlEncoding")

@@ -79,6 +79,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Modified { get; private set; } = null!;
 
         /// <summary>
+        /// Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+        /// </summary>
+        [Output("playback")]
+        public Output<Outputs.StreamLiveInputPlayback> Playback { get; private set; } = null!;
+
+        /// <summary>
         /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
         /// </summary>
         [Output("preferLowLatency")]
@@ -294,6 +300,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("modified")]
         public Input<string>? Modified { get; set; }
+
+        /// <summary>
+        /// Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+        /// </summary>
+        [Input("playback")]
+        public Input<Inputs.StreamLiveInputPlaybackGetArgs>? Playback { get; set; }
 
         /// <summary>
         /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.

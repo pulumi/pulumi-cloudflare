@@ -11,6 +11,7 @@ import com.pulumi.cloudflare.outputs.WorkersScriptAssets;
 import com.pulumi.cloudflare.outputs.WorkersScriptBinding;
 import com.pulumi.cloudflare.outputs.WorkersScriptCacheOptions;
 import com.pulumi.cloudflare.outputs.WorkersScriptExports;
+import com.pulumi.cloudflare.outputs.WorkersScriptFiles;
 import com.pulumi.cloudflare.outputs.WorkersScriptLimits;
 import com.pulumi.cloudflare.outputs.WorkersScriptMigrations;
 import com.pulumi.cloudflare.outputs.WorkersScriptNamedHandler;
@@ -39,6 +40,174 @@ import javax.annotation.Nullable;
  * - `Workers Tail Read`
  * 
  * &gt; For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.WorkersScript;
+ * import com.pulumi.cloudflare.WorkersScriptArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptAssetsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptAssetsConfigArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptCacheOptionsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptExportsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptExportsCacheArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptLimitsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptMigrationsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptMigrationsRenamedClassArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptMigrationsTransferredClassArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityLogsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityTracesArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptPackageDependencyArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptPlacementArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptTailConsumerArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptFilesArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleWorkersScript = new WorkersScript("exampleWorkersScript", WorkersScriptArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .scriptName("this-is_my_script-01")
+ *             .assets(WorkersScriptAssetsArgs.builder()
+ *                 .config(WorkersScriptAssetsConfigArgs.builder()
+ *                     .headers("""
+ *         /dashboard/*
+ *         X-Frame-Options: DENY
+ * 
+ *         /static/*
+ *         Access-Control-Allow-Origin: *
+ *                     """)
+ *                     .redirects("""
+ *         /foo /bar 301
+ *         /news/* /blog/:splat
+ *                     """)
+ *                     .htmlHandling("auto-trailing-slash")
+ *                     .notFoundHandling("404-page")
+ *                     .runWorkerFirst()
+ *                     .serveDirectly(true)
+ *                     .build())
+ *                 .jwt("jwt")
+ *                 .build())
+ *             .bindings(WorkersScriptBindingArgs.builder()
+ *                 .name("MY_ENV_VAR")
+ *                 .text("my_data")
+ *                 .type("plain_text")
+ *                 .build())
+ *             .bodyPart("worker.js")
+ *             .cacheOptions(WorkersScriptCacheOptionsArgs.builder()
+ *                 .enabled(true)
+ *                 .crossVersionCache(true)
+ *                 .build())
+ *             .compatibilityDate("2021-01-01T00:00:00Z")
+ *             .compatibilityFlags("nodejs_compat")
+ *             .exports(Map.ofEntries(
+ *                 Map.entry("Admin", WorkersScriptExportsArgs.builder()
+ *                     .type("worker")
+ *                     .cache(WorkersScriptExportsCacheArgs.builder()
+ *                         .enabled(true)
+ *                         .build())
+ *                     .renamedTo("renamed_to")
+ *                     .state("created")
+ *                     .storage("sqlite")
+ *                     .transferFrom("transfer_from")
+ *                     .transferredTo("transferred_to")
+ *                     .build()),
+ *                 Map.entry("default", WorkersScriptExportsArgs.builder()
+ *                     .type("worker")
+ *                     .cache(WorkersScriptExportsCacheArgs.builder()
+ *                         .enabled(false)
+ *                         .build())
+ *                     .renamedTo("renamed_to")
+ *                     .state("created")
+ *                     .storage("sqlite")
+ *                     .transferFrom("transfer_from")
+ *                     .transferredTo("transferred_to")
+ *                     .build())
+ *             ))
+ *             .keepAssets(false)
+ *             .keepBindings("string")
+ *             .limits(WorkersScriptLimitsArgs.builder()
+ *                 .cpuMs(50)
+ *                 .subrequests(1000)
+ *                 .build())
+ *             .logpush(false)
+ *             .mainModule("worker.js")
+ *             .migrations(WorkersScriptMigrationsArgs.builder()
+ *                 .deletedClasses("string")
+ *                 .newClasses("string")
+ *                 .newSqliteClasses("string")
+ *                 .newTag("v2")
+ *                 .oldTag("v1")
+ *                 .renamedClasses(WorkersScriptMigrationsRenamedClassArgs.builder()
+ *                     .from("from")
+ *                     .to("to")
+ *                     .build())
+ *                 .transferredClasses(WorkersScriptMigrationsTransferredClassArgs.builder()
+ *                     .from("from")
+ *                     .fromScript("from_script")
+ *                     .to("to")
+ *                     .build())
+ *                 .build())
+ *             .observability(WorkersScriptObservabilityArgs.builder()
+ *                 .enabled(true)
+ *                 .headSamplingRate(0.1)
+ *                 .logs(WorkersScriptObservabilityLogsArgs.builder()
+ *                     .enabled(true)
+ *                     .invocationLogs(true)
+ *                     .destinations("cloudflare")
+ *                     .headSamplingRate(0.1)
+ *                     .persist(true)
+ *                     .build())
+ *                 .redactQueryString(false)
+ *                 .traces(WorkersScriptObservabilityTracesArgs.builder()
+ *                     .destinations("cloudflare")
+ *                     .enabled(true)
+ *                     .headSamplingRate(0.1)
+ *                     .persist(true)
+ *                     .build())
+ *                 .build())
+ *             .packageDependencies(WorkersScriptPackageDependencyArgs.builder()
+ *                 .installedVersion("4.17.22")
+ *                 .name("lodash")
+ *                 .packageJsonVersion("^4.17.21")
+ *                 .build())
+ *             .placement(WorkersScriptPlacementArgs.builder()
+ *                 .mode("smart")
+ *                 .build())
+ *             .tags(Arrays.asList("string"))
+ *             .tailConsumers(WorkersScriptTailConsumerArgs.builder()
+ *                 .service("my-log-consumer")
+ *                 .environment("production")
+ *                 .namespace("my-namespace")
+ *                 .build())
+ *             .usageModel("standard")
+ *             .files(Map.of("module.wasm", WorkersScriptFilesArgs.builder()
+ *                 .contentBase64("AGFzbQEAAAA=")
+ *                 .contentType("application/wasm")
+ *                 .build()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -110,14 +279,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bodyPart", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> bodyPart;
+    private Output<String> bodyPart;
 
     /**
      * @return Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      * 
      */
-    public Output<Optional<String>> bodyPart() {
-        return Codegen.optional(this.bodyPart);
+    public Output<String> bodyPart() {
+        return this.bodyPart;
     }
     /**
      * Global CacheW configuration for the Worker. When caching is on,
@@ -264,6 +433,20 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,WorkersScriptExports>>> exports() {
         return Codegen.optional(this.exports);
+    }
+    /**
+     * Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+     * 
+     */
+    @Export(name="files", refs={Map.class,String.class,WorkersScriptFiles.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,WorkersScriptFiles>> files;
+
+    /**
+     * @return Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+     * 
+     */
+    public Output<Optional<Map<String,WorkersScriptFiles>>> files() {
+        return Codegen.optional(this.files);
     }
     /**
      * The names of handlers exported as part of the default export.

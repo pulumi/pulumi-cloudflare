@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ContentScanningExpressionBodyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines the ruleset expression to use in matching content objects.
+        /// Defines the custom content extraction expression used to reach content objects in the request.
         /// </summary>
         [Input("payload", required: true)]
         public Input<string> Payload { get; set; } = null!;

@@ -16,10 +16,10 @@ Three bugs in the same conditional:
   to the User-Agent instead of falling back to terraform/<version>.
 
 diff --git a/internal/provider.go b/internal/provider.go
-index cdf35e1f6943..b8d61b661c36 100644
+index fcf680dc13e7..b4d4ecc3342a 100644
 --- a/internal/provider.go
 +++ b/internal/provider.go
-@@ -434,8 +434,9 @@ func (p *CloudflareProvider) Configure(ctx context.Context, req provider.Configu
+@@ -439,8 +439,9 @@ func (p *CloudflareProvider) Configure(ctx context.Context, req provider.Configu
  		PluginVersion:   pluginVersion,
  	}
  

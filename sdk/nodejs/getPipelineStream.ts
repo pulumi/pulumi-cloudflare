@@ -63,6 +63,9 @@ export interface GetPipelineStreamResult {
      */
     readonly endpoint: string;
     readonly filter?: outputs.GetPipelineStreamFilter;
+    /**
+     * Defines the data format of the events.
+     */
     readonly format: outputs.GetPipelineStreamFormat;
     readonly http: outputs.GetPipelineStreamHttp;
     /**
@@ -74,6 +77,9 @@ export interface GetPipelineStreamResult {
      * Indicates the name of the Stream.
      */
     readonly name: string;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     readonly schema: outputs.GetPipelineStreamSchema;
     /**
      * Specifies the public ID of the stream.

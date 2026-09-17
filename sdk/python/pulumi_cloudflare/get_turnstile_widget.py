@@ -119,13 +119,6 @@ class GetTurnstileWidgetResult:
     @_builtins.property
     @pulumi.getter(name="deployedVia")
     def deployed_via(self) -> _builtins.str:
-        """
-        Origin that created this widget, recorded at creation time and
-        immutable afterward. Server-derived from the create request; not
-        client-settable. Omitted from the response for widgets created
-        before this field existed.
-        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-        """
         return pulumi.get(self, "deployed_via")
 
     @_builtins.property
@@ -157,12 +150,6 @@ class GetTurnstileWidgetResult:
     @_builtins.property
     @pulumi.getter(name="lastModifiedVia")
     def last_modified_via(self) -> _builtins.str:
-        """
-        Origin of the most recent mutation (create, update, delete, or
-        secret rotation). Server-derived; not client-settable. Omitted for
-        widgets last mutated before this field existed.
-        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-        """
         return pulumi.get(self, "last_modified_via")
 
     @_builtins.property

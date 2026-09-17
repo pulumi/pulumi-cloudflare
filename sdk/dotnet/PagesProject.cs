@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
     ///                     { "BROWSER", null },
     ///                 },
     ///                 BuildImageMajorVersion = 3,
-    ///                 CompatibilityDate = "2025-01-01",
+    ///                 CompatibilityDate = "2025-01-01T00:00:00Z",
     ///                 CompatibilityFlags = new[]
     ///                 {
     ///                     "url_standard",
@@ -181,7 +181,7 @@ namespace Pulumi.Cloudflare
     ///                     { "BROWSER", null },
     ///                 },
     ///                 BuildImageMajorVersion = 3,
-    ///                 CompatibilityDate = "2025-01-01",
+    ///                 CompatibilityDate = "2025-01-01T00:00:00Z",
     ///                 CompatibilityFlags = new[]
     ///                 {
     ///                     "url_standard",

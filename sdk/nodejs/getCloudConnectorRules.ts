@@ -23,8 +23,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCloudConnectorRules(args?: GetCloudConnectorRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorRulesResult> {
-    args = args || {};
+export function getCloudConnectorRules(args: GetCloudConnectorRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", {
         "zoneId": args.zoneId,
@@ -38,7 +37,7 @@ export interface GetCloudConnectorRulesArgs {
     /**
      * Identifier.
      */
-    zoneId?: string;
+    zoneId: string;
 }
 
 /**
@@ -46,14 +45,25 @@ export interface GetCloudConnectorRulesArgs {
  */
 export interface GetCloudConnectorRulesResult {
     /**
-     * Identifier.
+     * Cloud Provider type
+     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
      */
-    readonly id: string;
-    readonly rules: outputs.GetCloudConnectorRulesRule[];
+    readonly cloudConnectorRulesProvider: string;
+    readonly description: string;
+    readonly enabled: boolean;
+    readonly expression: string;
     /**
      * Identifier.
      */
-    readonly zoneId?: string;
+    readonly id: string;
+    /**
+     * Parameters of Cloud Connector Rule
+     */
+    readonly parameters: outputs.GetCloudConnectorRulesParameters;
+    /**
+     * Identifier.
+     */
+    readonly zoneId: string;
 }
 /**
  * Accepted Permissions
@@ -72,8 +82,7 @@ export interface GetCloudConnectorRulesResult {
  * });
  * ```
  */
-export function getCloudConnectorRulesOutput(args?: GetCloudConnectorRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudConnectorRulesResult> {
-    args = args || {};
+export function getCloudConnectorRulesOutput(args: GetCloudConnectorRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudConnectorRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", {
         "zoneId": args.zoneId,
@@ -87,5 +96,5 @@ export interface GetCloudConnectorRulesOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

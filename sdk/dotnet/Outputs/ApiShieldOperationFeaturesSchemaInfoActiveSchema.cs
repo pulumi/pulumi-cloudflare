@@ -19,10 +19,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// True if schema is Cloudflare-provided.
-        /// </summary>
-        public readonly bool? IsLearned;
-        /// <summary>
         /// Schema file name.
         /// </summary>
         public readonly string? Name;
@@ -33,13 +29,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? id,
 
-            bool? isLearned,
-
             string? name)
         {
             CreatedAt = createdAt;
             Id = id;
-            IsLearned = isLearned;
             Name = name;
         }
     }

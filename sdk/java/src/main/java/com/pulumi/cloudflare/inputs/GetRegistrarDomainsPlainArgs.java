@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,18 +17,18 @@ public final class GetRegistrarDomainsPlainArgs extends com.pulumi.resources.Inv
     public static final GetRegistrarDomainsPlainArgs Empty = new GetRegistrarDomainsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable String accountId;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
 
     /**
@@ -71,12 +72,12 @@ public final class GetRegistrarDomainsPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable String accountId) {
+        public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -93,6 +94,9 @@ public final class GetRegistrarDomainsPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetRegistrarDomainsPlainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetRegistrarDomainsPlainArgs", "accountId");
+            }
             return $;
         }
     }

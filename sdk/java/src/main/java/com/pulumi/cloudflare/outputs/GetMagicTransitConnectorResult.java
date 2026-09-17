@@ -17,11 +17,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitConnectorResult {
-    /**
-     * @return Account identifier
-     * 
-     */
-    private @Nullable String accountId;
+    private String accountId;
     private Boolean activated;
     private @Nullable String connectorId;
     private GetMagicTransitConnectorDevice device;
@@ -48,15 +44,13 @@ public final class GetMagicTransitConnectorResult {
     private String lastUpdated;
     private String licenseKey;
     private String notes;
+    private Boolean primary;
+    private String siteId;
     private String timezone;
 
     private GetMagicTransitConnectorResult() {}
-    /**
-     * @return Account identifier
-     * 
-     */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     public Boolean activated() {
         return this.activated;
@@ -112,6 +106,12 @@ public final class GetMagicTransitConnectorResult {
     public String notes() {
         return this.notes;
     }
+    public Boolean primary() {
+        return this.primary;
+    }
+    public String siteId() {
+        return this.siteId;
+    }
     public String timezone() {
         return this.timezone;
     }
@@ -125,7 +125,7 @@ public final class GetMagicTransitConnectorResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private Boolean activated;
         private @Nullable String connectorId;
         private GetMagicTransitConnectorDevice device;
@@ -140,6 +140,8 @@ public final class GetMagicTransitConnectorResult {
         private String lastUpdated;
         private String licenseKey;
         private String notes;
+        private Boolean primary;
+        private String siteId;
         private String timezone;
         public Builder() {}
         public Builder(GetMagicTransitConnectorResult defaults) {
@@ -159,12 +161,16 @@ public final class GetMagicTransitConnectorResult {
     	      this.lastUpdated = defaults.lastUpdated;
     	      this.licenseKey = defaults.licenseKey;
     	      this.notes = defaults.notes;
+    	      this.primary = defaults.primary;
+    	      this.siteId = defaults.siteId;
     	      this.timezone = defaults.timezone;
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }
@@ -283,6 +289,22 @@ public final class GetMagicTransitConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder primary(Boolean primary) {
+            if (primary == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "primary");
+            }
+            this.primary = primary;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder siteId(String siteId) {
+            if (siteId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "siteId");
+            }
+            this.siteId = siteId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder timezone(String timezone) {
             if (timezone == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "timezone");
@@ -307,6 +329,8 @@ public final class GetMagicTransitConnectorResult {
             _resultValue.lastUpdated = lastUpdated;
             _resultValue.licenseKey = licenseKey;
             _resultValue.notes = notes;
+            _resultValue.primary = primary;
+            _resultValue.siteId = siteId;
             _resultValue.timezone = timezone;
             return _resultValue;
         }

@@ -12,11 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetDlsPrefixBindings
     {
         /// <summary>
-        /// Accepted Permissions
-        /// 
-        /// - `DLS: Read`
-        /// - `DLS: Write`
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,11 +34,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDlsPrefixBindingsResult>("cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings", args ?? new GetDlsPrefixBindingsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Accepted Permissions
-        /// 
-        /// - `DLS: Read`
-        /// - `DLS: Write`
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -66,11 +56,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetDlsPrefixBindingsResult>("cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings", args ?? new GetDlsPrefixBindingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Accepted Permissions
-        /// 
-        /// - `DLS: Read`
-        /// - `DLS: Write`
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

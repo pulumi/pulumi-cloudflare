@@ -43,10 +43,14 @@ export interface GetPrecursorResult {
      * The zone-level Precursor enforcement mode applied to requests that do
      * not match a more specific enforcement rule.
      * Available values: "off", "min-friction", "max-security".
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly defaultMode: string;
     /**
      * The ordered list of enforcement rules for the zone.
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly enforcementRules: outputs.GetPrecursorEnforcementRule[];
     /**

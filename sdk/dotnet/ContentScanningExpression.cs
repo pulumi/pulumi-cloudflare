@@ -51,6 +51,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ContentScanningExpressionBody>> Bodies { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the custom content extraction expression used to reach content objects in the request.
+        /// </summary>
+        [Output("payload")]
+        public Output<string?> Payload { get; private set; } = null!;
+
+        /// <summary>
         /// Defines an identifier.
         /// </summary>
         [Output("zoneId")]
@@ -111,6 +117,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Defines the custom content extraction expression used to reach content objects in the request.
+        /// </summary>
+        [Input("payload")]
+        public Input<string>? Payload { get; set; }
+
+        /// <summary>
         /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
@@ -131,6 +143,12 @@ namespace Pulumi.Cloudflare
             get => _bodies ?? (_bodies = new InputList<Inputs.ContentScanningExpressionBodyGetArgs>());
             set => _bodies = value;
         }
+
+        /// <summary>
+        /// Defines the custom content extraction expression used to reach content objects in the request.
+        /// </summary>
+        [Input("payload")]
+        public Input<string>? Payload { get; set; }
 
         /// <summary>
         /// Defines an identifier.

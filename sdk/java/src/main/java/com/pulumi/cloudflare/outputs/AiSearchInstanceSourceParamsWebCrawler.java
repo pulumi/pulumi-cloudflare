@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerDisco
 import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions;
 import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,7 +27,7 @@ public final class AiSearchInstanceSourceParamsWebCrawler {
      * 
      */
     private @Nullable String parseType;
-    private @Nullable AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
+    private AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
 
     private AiSearchInstanceSourceParamsWebCrawler() {}
     /**
@@ -47,8 +48,8 @@ public final class AiSearchInstanceSourceParamsWebCrawler {
     public Optional<String> parseType() {
         return Optional.ofNullable(this.parseType);
     }
-    public Optional<AiSearchInstanceSourceParamsWebCrawlerStoreOptions> storeOptions() {
-        return Optional.ofNullable(this.storeOptions);
+    public AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions() {
+        return this.storeOptions;
     }
 
     public static Builder builder() {
@@ -63,7 +64,7 @@ public final class AiSearchInstanceSourceParamsWebCrawler {
         private @Nullable AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions discoverOptions;
         private @Nullable AiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions;
         private @Nullable String parseType;
-        private @Nullable AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
+        private AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
         public Builder() {}
         public Builder(AiSearchInstanceSourceParamsWebCrawler defaults) {
     	      Objects.requireNonNull(defaults);
@@ -92,8 +93,10 @@ public final class AiSearchInstanceSourceParamsWebCrawler {
             return this;
         }
         @CustomType.Setter
-        public Builder storeOptions(@Nullable AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions) {
-
+        public Builder storeOptions(AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions) {
+            if (storeOptions == null) {
+              throw new MissingRequiredPropertyException("AiSearchInstanceSourceParamsWebCrawler", "storeOptions");
+            }
             this.storeOptions = storeOptions;
             return this;
         }

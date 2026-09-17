@@ -94,6 +94,10 @@ export interface GetOauthClientResult {
      */
     readonly oauthClientId: string;
     /**
+     * Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     */
+    readonly optionalScopes: string[];
+    /**
      * URL that points to a privacy policy document.
      */
     readonly policyUri: string;

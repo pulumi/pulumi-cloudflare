@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ContentScanningExpressionBody
     {
         /// <summary>
-        /// Defines the ruleset expression to use in matching content objects.
+        /// Defines the custom content extraction expression used to reach content objects in the request.
         /// </summary>
         public readonly string Payload;
 

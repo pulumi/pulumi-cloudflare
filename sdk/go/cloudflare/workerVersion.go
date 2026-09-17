@@ -58,7 +58,7 @@ import (
 //					Enabled:           pulumi.Bool(true),
 //					CrossVersionCache: pulumi.Bool(true),
 //				},
-//				CompatibilityDate: pulumi.String("2021-01-01"),
+//				CompatibilityDate: pulumi.String("2021-01-01T00:00:00Z"),
 //				CompatibilityFlags: pulumi.StringArray{
 //					pulumi.String("nodejs_compat"),
 //				},

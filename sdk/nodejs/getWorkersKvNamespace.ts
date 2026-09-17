@@ -63,6 +63,11 @@ export interface GetWorkersKvNamespaceResult {
      */
     readonly id: string;
     /**
+     * Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: "eu", "fedramp", "us".
+     */
+    readonly jurisdiction: string;
+    /**
      * Namespace identifier tag.
      */
     readonly namespaceId?: string;

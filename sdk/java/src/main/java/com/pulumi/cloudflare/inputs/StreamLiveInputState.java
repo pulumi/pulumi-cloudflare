@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.StreamLiveInputPlaybackArgs;
 import com.pulumi.cloudflare.inputs.StreamLiveInputRecordingArgs;
 import com.pulumi.cloudflare.inputs.StreamLiveInputRtmpsArgs;
 import com.pulumi.cloudflare.inputs.StreamLiveInputRtmpsPlaybackArgs;
@@ -157,6 +158,21 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> modified() {
         return Optional.ofNullable(this.modified);
+    }
+
+    /**
+     * Details for playing a live input&#39;s broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     * 
+     */
+    @Import(name="playback")
+    private @Nullable Output<StreamLiveInputPlaybackArgs> playback;
+
+    /**
+     * @return Details for playing a live input&#39;s broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     * 
+     */
+    public Optional<Output<StreamLiveInputPlaybackArgs>> playback() {
+        return Optional.ofNullable(this.playback);
     }
 
     /**
@@ -323,6 +339,7 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
         this.liveInputIdentifier = $.liveInputIdentifier;
         this.meta = $.meta;
         this.modified = $.modified;
+        this.playback = $.playback;
         this.preferLowLatency = $.preferLowLatency;
         this.recording = $.recording;
         this.rtmps = $.rtmps;
@@ -540,6 +557,27 @@ public final class StreamLiveInputState extends com.pulumi.resources.ResourceArg
          */
         public Builder modified(String modified) {
             return modified(Output.of(modified));
+        }
+
+        /**
+         * @param playback Details for playing a live input&#39;s broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder playback(@Nullable Output<StreamLiveInputPlaybackArgs> playback) {
+            $.playback = playback;
+            return this;
+        }
+
+        /**
+         * @param playback Details for playing a live input&#39;s broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder playback(StreamLiveInputPlaybackArgs playback) {
+            return playback(Output.of(playback));
         }
 
         /**

@@ -60,6 +60,7 @@ import (
 //				},
 //				Format: &cloudflare.PipelineSinkFormatArgs{
 //					Type:            pulumi.String("json"),
+//					Compression:     pulumi.String("uncompressed"),
 //					DecimalEncoding: pulumi.String("number"),
 //					TimestampFormat: pulumi.String("rfc3339"),
 //					Unstructured:    pulumi.Bool(true),
@@ -73,12 +74,6 @@ import (
 //							Required:    pulumi.Bool(true),
 //							SqlName:     pulumi.String("sql_name"),
 //						},
-//					},
-//					Format: &cloudflare.PipelineSinkSchemaFormatArgs{
-//						Type:            pulumi.String("json"),
-//						DecimalEncoding: pulumi.String("number"),
-//						TimestampFormat: pulumi.String("rfc3339"),
-//						Unstructured:    pulumi.Bool(true),
 //					},
 //					Inferred: pulumi.Bool(true),
 //				},
@@ -103,12 +98,14 @@ type PipelineSink struct {
 	// Specifies the public ID of the account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Defines the configuration of the R2 Sink.
-	Config     PipelineSinkConfigPtrOutput `pulumi:"config"`
-	CreatedAt  pulumi.StringOutput         `pulumi:"createdAt"`
+	Config    PipelineSinkConfigPtrOutput `pulumi:"config"`
+	CreatedAt pulumi.StringOutput         `pulumi:"createdAt"`
+	// Defines the output data format of a sink.
 	Format     PipelineSinkFormatPtrOutput `pulumi:"format"`
 	ModifiedAt pulumi.StringOutput         `pulumi:"modifiedAt"`
 	// Defines the name of the Sink.
-	Name   pulumi.StringOutput         `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema PipelineSinkSchemaPtrOutput `pulumi:"schema"`
 	// Specifies the type of sink.
 	// Available values: "r2", "r2*data*catalog".
@@ -157,12 +154,14 @@ type pipelineSinkState struct {
 	// Specifies the public ID of the account.
 	AccountId *string `pulumi:"accountId"`
 	// Defines the configuration of the R2 Sink.
-	Config     *PipelineSinkConfig `pulumi:"config"`
-	CreatedAt  *string             `pulumi:"createdAt"`
+	Config    *PipelineSinkConfig `pulumi:"config"`
+	CreatedAt *string             `pulumi:"createdAt"`
+	// Defines the output data format of a sink.
 	Format     *PipelineSinkFormat `pulumi:"format"`
 	ModifiedAt *string             `pulumi:"modifiedAt"`
 	// Defines the name of the Sink.
-	Name   *string             `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema *PipelineSinkSchema `pulumi:"schema"`
 	// Specifies the type of sink.
 	// Available values: "r2", "r2*data*catalog".
@@ -173,12 +172,14 @@ type PipelineSinkState struct {
 	// Specifies the public ID of the account.
 	AccountId pulumi.StringPtrInput
 	// Defines the configuration of the R2 Sink.
-	Config     PipelineSinkConfigPtrInput
-	CreatedAt  pulumi.StringPtrInput
+	Config    PipelineSinkConfigPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Defines the output data format of a sink.
 	Format     PipelineSinkFormatPtrInput
 	ModifiedAt pulumi.StringPtrInput
 	// Defines the name of the Sink.
-	Name   pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Defines the schema of the events in the data stream.
 	Schema PipelineSinkSchemaPtrInput
 	// Specifies the type of sink.
 	// Available values: "r2", "r2*data*catalog".
@@ -194,9 +195,11 @@ type pipelineSinkArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Defines the configuration of the R2 Sink.
 	Config *PipelineSinkConfig `pulumi:"config"`
+	// Defines the output data format of a sink.
 	Format *PipelineSinkFormat `pulumi:"format"`
 	// Defines the name of the Sink.
-	Name   string              `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema *PipelineSinkSchema `pulumi:"schema"`
 	// Specifies the type of sink.
 	// Available values: "r2", "r2*data*catalog".
@@ -209,9 +212,11 @@ type PipelineSinkArgs struct {
 	AccountId pulumi.StringInput
 	// Defines the configuration of the R2 Sink.
 	Config PipelineSinkConfigPtrInput
+	// Defines the output data format of a sink.
 	Format PipelineSinkFormatPtrInput
 	// Defines the name of the Sink.
-	Name   pulumi.StringInput
+	Name pulumi.StringInput
+	// Defines the schema of the events in the data stream.
 	Schema PipelineSinkSchemaPtrInput
 	// Specifies the type of sink.
 	// Available values: "r2", "r2*data*catalog".
@@ -319,6 +324,7 @@ func (o PipelineSinkOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSink) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Defines the output data format of a sink.
 func (o PipelineSinkOutput) Format() PipelineSinkFormatPtrOutput {
 	return o.ApplyT(func(v *PipelineSink) PipelineSinkFormatPtrOutput { return v.Format }).(PipelineSinkFormatPtrOutput)
 }
@@ -332,6 +338,7 @@ func (o PipelineSinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSink) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the schema of the events in the data stream.
 func (o PipelineSinkOutput) Schema() PipelineSinkSchemaPtrOutput {
 	return o.ApplyT(func(v *PipelineSink) PipelineSinkSchemaPtrOutput { return v.Schema }).(PipelineSinkSchemaPtrOutput)
 }

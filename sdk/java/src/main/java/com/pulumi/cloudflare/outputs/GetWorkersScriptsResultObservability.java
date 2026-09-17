@@ -29,6 +29,11 @@ public final class GetWorkersScriptsResultObservability {
      */
     private GetWorkersScriptsResultObservabilityLogs logs;
     /**
+     * @return Whether query strings are removed from request URLs in logs and traces.
+     * 
+     */
+    private Boolean redactQueryString;
+    /**
      * @return Trace settings for the Worker.
      * 
      */
@@ -57,6 +62,13 @@ public final class GetWorkersScriptsResultObservability {
         return this.logs;
     }
     /**
+     * @return Whether query strings are removed from request URLs in logs and traces.
+     * 
+     */
+    public Boolean redactQueryString() {
+        return this.redactQueryString;
+    }
+    /**
      * @return Trace settings for the Worker.
      * 
      */
@@ -76,6 +88,7 @@ public final class GetWorkersScriptsResultObservability {
         private Boolean enabled;
         private Double headSamplingRate;
         private GetWorkersScriptsResultObservabilityLogs logs;
+        private Boolean redactQueryString;
         private GetWorkersScriptsResultObservabilityTraces traces;
         public Builder() {}
         public Builder(GetWorkersScriptsResultObservability defaults) {
@@ -83,6 +96,7 @@ public final class GetWorkersScriptsResultObservability {
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
     	      this.logs = defaults.logs;
+    	      this.redactQueryString = defaults.redactQueryString;
     	      this.traces = defaults.traces;
         }
 
@@ -111,6 +125,14 @@ public final class GetWorkersScriptsResultObservability {
             return this;
         }
         @CustomType.Setter
+        public Builder redactQueryString(Boolean redactQueryString) {
+            if (redactQueryString == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResultObservability", "redactQueryString");
+            }
+            this.redactQueryString = redactQueryString;
+            return this;
+        }
+        @CustomType.Setter
         public Builder traces(GetWorkersScriptsResultObservabilityTraces traces) {
             if (traces == null) {
               throw new MissingRequiredPropertyException("GetWorkersScriptsResultObservability", "traces");
@@ -123,6 +145,7 @@ public final class GetWorkersScriptsResultObservability {
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
             _resultValue.logs = logs;
+            _resultValue.redactQueryString = redactQueryString;
             _resultValue.traces = traces;
             return _resultValue;
         }

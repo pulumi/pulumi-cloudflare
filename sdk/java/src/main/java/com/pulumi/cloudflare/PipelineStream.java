@@ -41,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.PipelineStreamHttpCorsArgs;
  * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaArgs;
  * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFieldArgs;
- * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFormatArgs;
  * import com.pulumi.cloudflare.inputs.PipelineStreamWorkerBindingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -79,12 +78,6 @@ import javax.annotation.Nullable;
  *                     .name("name")
  *                     .required(true)
  *                     .sqlName("sql_name")
- *                     .build())
- *                 .format(PipelineStreamSchemaFormatArgs.builder()
- *                     .type("json")
- *                     .decimalEncoding("number")
- *                     .timestampFormat("rfc3339")
- *                     .unstructured(true)
  *                     .build())
  *                 .inferred(true)
  *                 .build())
@@ -141,9 +134,17 @@ public class PipelineStream extends com.pulumi.resources.CustomResource {
     public Output<String> endpoint() {
         return this.endpoint;
     }
+    /**
+     * Defines the data format of the events.
+     * 
+     */
     @Export(name="format", refs={PipelineStreamFormat.class}, tree="[0]")
     private Output</* @Nullable */ PipelineStreamFormat> format;
 
+    /**
+     * @return Defines the data format of the events.
+     * 
+     */
     public Output<Optional<PipelineStreamFormat>> format() {
         return Codegen.optional(this.format);
     }
@@ -173,9 +174,17 @@ public class PipelineStream extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Defines the schema of the events in the data stream.
+     * 
+     */
     @Export(name="schema", refs={PipelineStreamSchema.class}, tree="[0]")
     private Output</* @Nullable */ PipelineStreamSchema> schema;
 
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     public Output<Optional<PipelineStreamSchema>> schema() {
         return Codegen.optional(this.schema);
     }

@@ -32,6 +32,8 @@ class PipelineStreamArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the Stream.
+        :param pulumi.Input['PipelineStreamFormatArgs'] format: Defines the data format of the events.
+        :param pulumi.Input['PipelineStreamSchemaArgs'] schema: Defines the schema of the events in the data stream.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -71,6 +73,9 @@ class PipelineStreamArgs:
     @_builtins.property
     @pulumi.getter
     def format(self) -> pulumi.Input[Optional['PipelineStreamFormatArgs']]:
+        """
+        Defines the data format of the events.
+        """
         return pulumi.get(self, "format")
 
     @format.setter
@@ -89,6 +94,9 @@ class PipelineStreamArgs:
     @_builtins.property
     @pulumi.getter
     def schema(self) -> pulumi.Input[Optional['PipelineStreamSchemaArgs']]:
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -123,7 +131,9 @@ class _PipelineStreamState:
 
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[_builtins.str] endpoint: Indicates the endpoint URL of this stream.
+        :param pulumi.Input['PipelineStreamFormatArgs'] format: Defines the data format of the events.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the Stream.
+        :param pulumi.Input['PipelineStreamSchemaArgs'] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.int] version: Indicates the current version of this stream.
         """
         if account_id is not None:
@@ -183,6 +193,9 @@ class _PipelineStreamState:
     @_builtins.property
     @pulumi.getter
     def format(self) -> pulumi.Input[Optional['PipelineStreamFormatArgs']]:
+        """
+        Defines the data format of the events.
+        """
         return pulumi.get(self, "format")
 
     @format.setter
@@ -222,6 +235,9 @@ class _PipelineStreamState:
     @_builtins.property
     @pulumi.getter
     def schema(self) -> pulumi.Input[Optional['PipelineStreamSchemaArgs']]:
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -299,12 +315,6 @@ class PipelineStream(pulumi.CustomResource):
                     "required": True,
                     "sql_name": "sql_name",
                 }],
-                "format": {
-                    "type": "json",
-                    "decimal_encoding": "number",
-                    "timestamp_format": "rfc3339",
-                    "unstructured": True,
-                },
                 "inferred": True,
             },
             worker_binding={
@@ -322,7 +332,9 @@ class PipelineStream(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
+        :param pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']] format: Defines the data format of the events.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the Stream.
+        :param pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']] schema: Defines the schema of the events in the data stream.
         """
         ...
     @overload
@@ -366,12 +378,6 @@ class PipelineStream(pulumi.CustomResource):
                     "required": True,
                     "sql_name": "sql_name",
                 }],
-                "format": {
-                    "type": "json",
-                    "decimal_encoding": "number",
-                    "timestamp_format": "rfc3339",
-                    "unstructured": True,
-                },
                 "inferred": True,
             },
             worker_binding={
@@ -459,7 +465,9 @@ class PipelineStream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[_builtins.str] endpoint: Indicates the endpoint URL of this stream.
+        :param pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']] format: Defines the data format of the events.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the Stream.
+        :param pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.int] version: Indicates the current version of this stream.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -502,6 +510,9 @@ class PipelineStream(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def format(self) -> pulumi.Output[Optional['outputs.PipelineStreamFormat']]:
+        """
+        Defines the data format of the events.
+        """
         return pulumi.get(self, "format")
 
     @_builtins.property
@@ -525,6 +536,9 @@ class PipelineStream(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional['outputs.PipelineStreamSchema']]:
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @_builtins.property

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetMagicTransitConnectorFilter;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,19 +16,11 @@ public final class GetMagicTransitConnectorPlainArgs extends com.pulumi.resource
 
     public static final GetMagicTransitConnectorPlainArgs Empty = new GetMagicTransitConnectorPlainArgs();
 
-    /**
-     * Account identifier
-     * 
-     */
-    @Import(name="accountId")
-    private @Nullable String accountId;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
-    /**
-     * @return Account identifier
-     * 
-     */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
 
     @Import(name="connectorId")
@@ -70,13 +63,7 @@ public final class GetMagicTransitConnectorPlainArgs extends com.pulumi.resource
             $ = new GetMagicTransitConnectorPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(@Nullable String accountId) {
+        public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -92,6 +79,9 @@ public final class GetMagicTransitConnectorPlainArgs extends com.pulumi.resource
         }
 
         public GetMagicTransitConnectorPlainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetMagicTransitConnectorPlainArgs", "accountId");
+            }
             return $;
         }
     }

@@ -363,6 +363,7 @@ class Worker(pulumi.CustomResource):
                     "invocation_logs": True,
                     "persist": True,
                 },
+                "redact_query_string": True,
                 "traces": {
                     "destinations": ["string"],
                     "enabled": True,
@@ -433,6 +434,7 @@ class Worker(pulumi.CustomResource):
                     "invocation_logs": True,
                     "persist": True,
                 },
+                "redact_query_string": True,
                 "traces": {
                     "destinations": ["string"],
                     "enabled": True,

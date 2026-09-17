@@ -55,12 +55,6 @@ namespace Pulumi.Cloudflare
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
-        [Output("errors")]
-        public Output<ImmutableArray<Outputs.EmailRoutingDnsError>> Errors { get; private set; } = null!;
-
-        [Output("messages")]
-        public Output<ImmutableArray<Outputs.EmailRoutingDnsMessage>> Messages { get; private set; } = null!;
-
         /// <summary>
         /// The date and time the settings have been modified.
         /// </summary>
@@ -72,12 +66,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
-
-        [Output("result")]
-        public Output<Outputs.EmailRoutingDnsResult> Result { get; private set; } = null!;
-
-        [Output("resultInfo")]
-        public Output<Outputs.EmailRoutingDnsResultInfo> ResultInfo { get; private set; } = null!;
 
         /// <summary>
         /// Flag to check if the user skipped the configuration wizard.
@@ -93,10 +81,10 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the API call was successful.
+        /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         /// </summary>
-        [Output("success")]
-        public Output<bool> Success { get; private set; } = null!;
+        [Output("supportSubaddress")]
+        public Output<bool> SupportSubaddress { get; private set; } = null!;
 
         /// <summary>
         /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
@@ -188,22 +176,6 @@ namespace Pulumi.Cloudflare
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("errors")]
-        private InputList<Inputs.EmailRoutingDnsErrorGetArgs>? _errors;
-        public InputList<Inputs.EmailRoutingDnsErrorGetArgs> Errors
-        {
-            get => _errors ?? (_errors = new InputList<Inputs.EmailRoutingDnsErrorGetArgs>());
-            set => _errors = value;
-        }
-
-        [Input("messages")]
-        private InputList<Inputs.EmailRoutingDnsMessageGetArgs>? _messages;
-        public InputList<Inputs.EmailRoutingDnsMessageGetArgs> Messages
-        {
-            get => _messages ?? (_messages = new InputList<Inputs.EmailRoutingDnsMessageGetArgs>());
-            set => _messages = value;
-        }
-
         /// <summary>
         /// The date and time the settings have been modified.
         /// </summary>
@@ -215,12 +187,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("result")]
-        public Input<Inputs.EmailRoutingDnsResultGetArgs>? Result { get; set; }
-
-        [Input("resultInfo")]
-        public Input<Inputs.EmailRoutingDnsResultInfoGetArgs>? ResultInfo { get; set; }
 
         /// <summary>
         /// Flag to check if the user skipped the configuration wizard.
@@ -236,10 +202,10 @@ namespace Pulumi.Cloudflare
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether the API call was successful.
+        /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         /// </summary>
-        [Input("success")]
-        public Input<bool>? Success { get; set; }
+        [Input("supportSubaddress")]
+        public Input<bool>? SupportSubaddress { get; set; }
 
         /// <summary>
         /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

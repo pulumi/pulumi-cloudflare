@@ -38,7 +38,7 @@ class GetRegistrarDomainResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -46,10 +46,10 @@ class GetRegistrarDomainResult:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> _builtins.str:
         """
-        Fully qualified domain name (FQDN) including the extension
-        (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-        identifies a registration — the same domain cannot be registered
-        twice, making it a natural idempotency key for registration requests.
+        Provides a fully qualified domain name (FQDN), including the extension
+        (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+        a registration. Cloudflare permits only one registration per domain, making
+        the domain name a natural idempotency key for registration requests.
         """
         return pulumi.get(self, "domain_name")
 
@@ -79,11 +79,11 @@ def get_registrar_domain(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
-    :param _builtins.str domain_name: Fully qualified domain name (FQDN) including the extension
-           (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-           identifies a registration — the same domain cannot be registered
-           twice, making it a natural idempotency key for registration requests.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str domain_name: Provides a fully qualified domain name (FQDN), including the extension
+           (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+           a registration. Cloudflare permits only one registration per domain, making
+           the domain name a natural idempotency key for registration requests.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -109,11 +109,11 @@ def get_registrar_domain_output(account_id: pulumi.Input[Optional[_builtins.str]
     ```
 
 
-    :param _builtins.str account_id: Identifier
-    :param _builtins.str domain_name: Fully qualified domain name (FQDN) including the extension
-           (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-           identifies a registration — the same domain cannot be registered
-           twice, making it a natural idempotency key for registration requests.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str domain_name: Provides a fully qualified domain name (FQDN), including the extension
+           (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+           a registration. Cloudflare permits only one registration per domain, making
+           the domain name a natural idempotency key for registration requests.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     ///                 InvocationLogs = true,
     ///                 Persist = true,
     ///             },
+    ///             RedactQueryString = true,
     ///             Traces = new Cloudflare.Inputs.WorkerObservabilityTracesArgs
     ///             {
     ///                 Destinations = new[]

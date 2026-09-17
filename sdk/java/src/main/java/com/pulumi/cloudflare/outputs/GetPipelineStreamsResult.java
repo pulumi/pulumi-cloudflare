@@ -21,6 +21,10 @@ public final class GetPipelineStreamsResult {
      * 
      */
     private String endpoint;
+    /**
+     * @return Defines the data format of the events.
+     * 
+     */
     private GetPipelineStreamsResultFormat format;
     private GetPipelineStreamsResultHttp http;
     /**
@@ -34,6 +38,10 @@ public final class GetPipelineStreamsResult {
      * 
      */
     private String name;
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     private GetPipelineStreamsResultSchema schema;
     /**
      * @return Indicates the current version of this stream.
@@ -53,6 +61,10 @@ public final class GetPipelineStreamsResult {
     public String endpoint() {
         return this.endpoint;
     }
+    /**
+     * @return Defines the data format of the events.
+     * 
+     */
     public GetPipelineStreamsResultFormat format() {
         return this.format;
     }
@@ -76,6 +88,10 @@ public final class GetPipelineStreamsResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     public GetPipelineStreamsResultSchema schema() {
         return this.schema;
     }

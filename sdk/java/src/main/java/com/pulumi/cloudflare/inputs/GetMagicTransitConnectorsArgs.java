@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,19 +17,11 @@ public final class GetMagicTransitConnectorsArgs extends com.pulumi.resources.In
 
     public static final GetMagicTransitConnectorsArgs Empty = new GetMagicTransitConnectorsArgs();
 
-    /**
-     * Account identifier
-     * 
-     */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    /**
-     * @return Account identifier
-     * 
-     */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -89,23 +82,11 @@ public final class GetMagicTransitConnectorsArgs extends com.pulumi.resources.In
             $ = new GetMagicTransitConnectorsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Account identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -155,6 +136,9 @@ public final class GetMagicTransitConnectorsArgs extends com.pulumi.resources.In
         }
 
         public GetMagicTransitConnectorsArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetMagicTransitConnectorsArgs", "accountId");
+            }
             return $;
         }
     }

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZeroTrustResourceLibraryApplicationResult',
@@ -26,7 +28,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     """
     A collection of values returned by getZeroTrustResourceLibraryApplication.
     """
-    def __init__(__self__, account_id=None, application_confidence_score=None, application_score_composition=None, application_source=None, application_type=None, application_type_description=None, category_id=None, created_at=None, gen_ai_score=None, hostnames=None, human_id=None, id=None, ip_subnets=None, name=None, port_protocols=None, support_domains=None, supporteds=None, updated_at=None, version=None):
+    def __init__(__self__, account_id=None, application_confidence_score=None, application_score_composition=None, application_source=None, application_type=None, application_type_description=None, category_id=None, created_at=None, filter=None, gen_ai_score=None, hostnames=None, human_id=None, id=None, ip_subnets=None, name=None, port_protocols=None, support_domains=None, supporteds=None, updated_at=None, version=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -51,6 +53,9 @@ class GetZeroTrustResourceLibraryApplicationResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if gen_ai_score and not isinstance(gen_ai_score, float):
             raise TypeError("Expected argument 'gen_ai_score' to be a float")
         pulumi.set(__self__, "gen_ai_score", gen_ai_score)
@@ -147,6 +152,11 @@ class GetZeroTrustResourceLibraryApplicationResult:
         return pulumi.get(self, "created_at")
 
     @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetZeroTrustResourceLibraryApplicationFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
     @pulumi.getter(name="genAiScore")
     def gen_ai_score(self) -> _builtins.float:
         """
@@ -174,7 +184,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        The ID of this resource.
+        Returns the application ID.
         """
         return pulumi.get(self, "id")
 
@@ -249,6 +259,7 @@ class AwaitableGetZeroTrustResourceLibraryApplicationResult(GetZeroTrustResource
             application_type_description=self.application_type_description,
             category_id=self.category_id,
             created_at=self.created_at,
+            filter=self.filter,
             gen_ai_score=self.gen_ai_score,
             hostnames=self.hostnames,
             human_id=self.human_id,
@@ -263,6 +274,7 @@ class AwaitableGetZeroTrustResourceLibraryApplicationResult(GetZeroTrustResource
 
 
 def get_zero_trust_resource_library_application(account_id: Optional[_builtins.str] = None,
+                                                filter: Optional[Union['GetZeroTrustResourceLibraryApplicationFilterArgs', 'GetZeroTrustResourceLibraryApplicationFilterArgsDict']] = None,
                                                 id: Optional[_builtins.int] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustResourceLibraryApplicationResult:
     """
@@ -277,10 +289,11 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
     ```
 
 
-    :param _builtins.int id: The ID of this resource.
+    :param _builtins.int id: Returns the application ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication', __args__, opts=opts, typ=GetZeroTrustResourceLibraryApplicationResult).value
@@ -294,6 +307,7 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
         application_type_description=pulumi.get(__ret__, 'application_type_description'),
         category_id=pulumi.get(__ret__, 'category_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        filter=pulumi.get(__ret__, 'filter'),
         gen_ai_score=pulumi.get(__ret__, 'gen_ai_score'),
         hostnames=pulumi.get(__ret__, 'hostnames'),
         human_id=pulumi.get(__ret__, 'human_id'),
@@ -306,7 +320,8 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
         updated_at=pulumi.get(__ret__, 'updated_at'),
         version=pulumi.get(__ret__, 'version'))
 def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                       id: pulumi.Input[Optional[_builtins.int]] = None,
+                                                       filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustResourceLibraryApplicationFilterArgs', 'GetZeroTrustResourceLibraryApplicationFilterArgsDict']]]] = None,
+                                                       id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustResourceLibraryApplicationResult]:
     """
     ## Example Usage
@@ -320,10 +335,11 @@ def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[
     ```
 
 
-    :param _builtins.int id: The ID of this resource.
+    :param _builtins.int id: Returns the application ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['id'] = id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication', __args__, opts=opts, typ=GetZeroTrustResourceLibraryApplicationResult)
@@ -336,6 +352,7 @@ def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[
         application_type_description=pulumi.get(__response__, 'application_type_description'),
         category_id=pulumi.get(__response__, 'category_id'),
         created_at=pulumi.get(__response__, 'created_at'),
+        filter=pulumi.get(__response__, 'filter'),
         gen_ai_score=pulumi.get(__response__, 'gen_ai_score'),
         hostnames=pulumi.get(__response__, 'hostnames'),
         human_id=pulumi.get(__response__, 'human_id'),

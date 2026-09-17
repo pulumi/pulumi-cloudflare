@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -39,21 +38,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs extends 
     }
 
     /**
-     * True if schema is Cloudflare-provided.
-     * 
-     */
-    @Import(name="isLearned")
-    private @Nullable Output<Boolean> isLearned;
-
-    /**
-     * @return True if schema is Cloudflare-provided.
-     * 
-     */
-    public Optional<Output<Boolean>> isLearned() {
-        return Optional.ofNullable(this.isLearned);
-    }
-
-    /**
      * Schema file name.
      * 
      */
@@ -73,7 +57,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs extends 
     private ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs(ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs $) {
         this.createdAt = $.createdAt;
         this.id = $.id;
-        this.isLearned = $.isLearned;
         this.name = $.name;
     }
 
@@ -123,27 +106,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs extends 
          */
         public Builder id(String id) {
             return id(Output.of(id));
-        }
-
-        /**
-         * @param isLearned True if schema is Cloudflare-provided.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isLearned(@Nullable Output<Boolean> isLearned) {
-            $.isLearned = isLearned;
-            return this;
-        }
-
-        /**
-         * @param isLearned True if schema is Cloudflare-provided.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder isLearned(Boolean isLearned) {
-            return isLearned(Output.of(isLearned));
         }
 
         /**

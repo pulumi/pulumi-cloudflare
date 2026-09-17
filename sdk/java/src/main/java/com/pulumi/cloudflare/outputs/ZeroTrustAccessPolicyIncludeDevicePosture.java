@@ -7,9 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessPolicyIncludeDevicePosture {
+    /**
+     * @return The ID of the account that owns the device posture integration.
+     * 
+     */
+    private @Nullable String accountId;
     /**
      * @return The ID of a device posture integration.
      * 
@@ -17,6 +24,13 @@ public final class ZeroTrustAccessPolicyIncludeDevicePosture {
     private String integrationUid;
 
     private ZeroTrustAccessPolicyIncludeDevicePosture() {}
+    /**
+     * @return The ID of the account that owns the device posture integration.
+     * 
+     */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
     /**
      * @return The ID of a device posture integration.
      * 
@@ -34,13 +48,21 @@ public final class ZeroTrustAccessPolicyIncludeDevicePosture {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String accountId;
         private String integrationUid;
         public Builder() {}
         public Builder(ZeroTrustAccessPolicyIncludeDevicePosture defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accountId = defaults.accountId;
     	      this.integrationUid = defaults.integrationUid;
         }
 
+        @CustomType.Setter
+        public Builder accountId(@Nullable String accountId) {
+
+            this.accountId = accountId;
+            return this;
+        }
         @CustomType.Setter
         public Builder integrationUid(String integrationUid) {
             if (integrationUid == null) {
@@ -51,6 +73,7 @@ public final class ZeroTrustAccessPolicyIncludeDevicePosture {
         }
         public ZeroTrustAccessPolicyIncludeDevicePosture build() {
             final var _resultValue = new ZeroTrustAccessPolicyIncludeDevicePosture();
+            _resultValue.accountId = accountId;
             _resultValue.integrationUid = integrationUid;
             return _resultValue;
         }

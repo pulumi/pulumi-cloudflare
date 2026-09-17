@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -66,8 +64,6 @@ export class EmailRoutingDns extends pulumi.CustomResource {
      * State of the zone settings for Email Routing.
      */
     declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
-    declare public /*out*/ readonly errors: pulumi.Output<outputs.EmailRoutingDnsError[]>;
-    declare public /*out*/ readonly messages: pulumi.Output<outputs.EmailRoutingDnsMessage[]>;
     /**
      * The date and time the settings have been modified.
      */
@@ -76,8 +72,6 @@ export class EmailRoutingDns extends pulumi.CustomResource {
      * Domain of your zone.
      */
     declare public readonly name: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly result: pulumi.Output<outputs.EmailRoutingDnsResult>;
-    declare public /*out*/ readonly resultInfo: pulumi.Output<outputs.EmailRoutingDnsResultInfo>;
     /**
      * Flag to check if the user skipped the configuration wizard.
      */
@@ -88,9 +82,9 @@ export class EmailRoutingDns extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Whether the API call was successful.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      */
-    declare public /*out*/ readonly success: pulumi.Output<boolean>;
+    declare public /*out*/ readonly supportSubaddress: pulumi.Output<boolean>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      *
@@ -117,15 +111,11 @@ export class EmailRoutingDns extends pulumi.CustomResource {
             const state = argsOrState as EmailRoutingDnsState | undefined;
             resourceInputs["created"] = state?.created;
             resourceInputs["enabled"] = state?.enabled;
-            resourceInputs["errors"] = state?.errors;
-            resourceInputs["messages"] = state?.messages;
             resourceInputs["modified"] = state?.modified;
             resourceInputs["name"] = state?.name;
-            resourceInputs["result"] = state?.result;
-            resourceInputs["resultInfo"] = state?.resultInfo;
             resourceInputs["skipWizard"] = state?.skipWizard;
             resourceInputs["status"] = state?.status;
-            resourceInputs["success"] = state?.success;
+            resourceInputs["supportSubaddress"] = state?.supportSubaddress;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -137,14 +127,10 @@ export class EmailRoutingDns extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
-            resourceInputs["errors"] = undefined /*out*/;
-            resourceInputs["messages"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
-            resourceInputs["result"] = undefined /*out*/;
-            resourceInputs["resultInfo"] = undefined /*out*/;
             resourceInputs["skipWizard"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["success"] = undefined /*out*/;
+            resourceInputs["supportSubaddress"] = undefined /*out*/;
             resourceInputs["tag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -164,8 +150,6 @@ export interface EmailRoutingDnsState {
      * State of the zone settings for Email Routing.
      */
     enabled?: pulumi.Input<boolean | undefined>;
-    errors?: pulumi.Input<pulumi.Input<inputs.EmailRoutingDnsError>[] | undefined>;
-    messages?: pulumi.Input<pulumi.Input<inputs.EmailRoutingDnsMessage>[] | undefined>;
     /**
      * The date and time the settings have been modified.
      */
@@ -174,8 +158,6 @@ export interface EmailRoutingDnsState {
      * Domain of your zone.
      */
     name?: pulumi.Input<string | undefined>;
-    result?: pulumi.Input<inputs.EmailRoutingDnsResult | undefined>;
-    resultInfo?: pulumi.Input<inputs.EmailRoutingDnsResultInfo | undefined>;
     /**
      * Flag to check if the user skipped the configuration wizard.
      */
@@ -186,9 +168,9 @@ export interface EmailRoutingDnsState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * Whether the API call was successful.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      */
-    success?: pulumi.Input<boolean | undefined>;
+    supportSubaddress?: pulumi.Input<boolean | undefined>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      *

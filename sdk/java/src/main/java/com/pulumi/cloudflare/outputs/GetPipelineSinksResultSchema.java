@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetPipelineSinksResultSchemaField;
-import com.pulumi.cloudflare.outputs.GetPipelineSinksResultSchemaFormat;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -14,15 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetPipelineSinksResultSchema {
     private List<GetPipelineSinksResultSchemaField> fields;
-    private GetPipelineSinksResultSchemaFormat format;
     private Boolean inferred;
 
     private GetPipelineSinksResultSchema() {}
     public List<GetPipelineSinksResultSchemaField> fields() {
         return this.fields;
-    }
-    public GetPipelineSinksResultSchemaFormat format() {
-        return this.format;
     }
     public Boolean inferred() {
         return this.inferred;
@@ -38,13 +33,11 @@ public final class GetPipelineSinksResultSchema {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPipelineSinksResultSchemaField> fields;
-        private GetPipelineSinksResultSchemaFormat format;
         private Boolean inferred;
         public Builder() {}
         public Builder(GetPipelineSinksResultSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fields = defaults.fields;
-    	      this.format = defaults.format;
     	      this.inferred = defaults.inferred;
         }
 
@@ -60,14 +53,6 @@ public final class GetPipelineSinksResultSchema {
             return fields(List.of(fields));
         }
         @CustomType.Setter
-        public Builder format(GetPipelineSinksResultSchemaFormat format) {
-            if (format == null) {
-              throw new MissingRequiredPropertyException("GetPipelineSinksResultSchema", "format");
-            }
-            this.format = format;
-            return this;
-        }
-        @CustomType.Setter
         public Builder inferred(Boolean inferred) {
             if (inferred == null) {
               throw new MissingRequiredPropertyException("GetPipelineSinksResultSchema", "inferred");
@@ -78,7 +63,6 @@ public final class GetPipelineSinksResultSchema {
         public GetPipelineSinksResultSchema build() {
             final var _resultValue = new GetPipelineSinksResultSchema();
             _resultValue.fields = fields;
-            _resultValue.format = format;
             _resultValue.inferred = inferred;
             return _resultValue;
         }

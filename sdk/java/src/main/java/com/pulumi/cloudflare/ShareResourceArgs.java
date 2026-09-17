@@ -76,7 +76,7 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Resource Type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     @Import(name="resourceType", required=true)
@@ -84,7 +84,7 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Resource Type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     public Output<String> resourceType() {
@@ -221,7 +221,7 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceType Resource Type.
-         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ShareResourceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceType Resource Type.
-         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
          * 
          * @return builder
          * 

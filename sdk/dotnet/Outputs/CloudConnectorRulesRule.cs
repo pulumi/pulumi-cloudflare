@@ -13,6 +13,11 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class CloudConnectorRulesRule
     {
+        /// <summary>
+        /// Cloud Provider type
+        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "OciStorage".
+        /// </summary>
+        public readonly string? CloudConnectorRulesProvider;
         public readonly string? Description;
         public readonly bool? Enabled;
         public readonly string? Expression;
@@ -21,14 +26,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// Parameters of Cloud Connector Rule
         /// </summary>
         public readonly Outputs.CloudConnectorRulesRuleParameters? Parameters;
-        /// <summary>
-        /// Cloud Provider type
-        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "OciStorage".
-        /// </summary>
-        public readonly string? Provider;
 
         [OutputConstructor]
         private CloudConnectorRulesRule(
+            string? cloudConnectorRulesProvider,
+
             string? description,
 
             bool? enabled,
@@ -37,16 +39,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? id,
 
-            Outputs.CloudConnectorRulesRuleParameters? parameters,
-
-            string? provider)
+            Outputs.CloudConnectorRulesRuleParameters? parameters)
         {
+            CloudConnectorRulesProvider = cloudConnectorRulesProvider;
             Description = description;
             Enabled = enabled;
             Expression = expression;
             Id = id;
             Parameters = parameters;
-            Provider = provider;
         }
     }
 }

@@ -35,9 +35,17 @@ public final class PipelineStreamArgs extends com.pulumi.resources.ResourceArgs 
         return this.accountId;
     }
 
+    /**
+     * Defines the data format of the events.
+     * 
+     */
     @Import(name="format")
     private @Nullable Output<PipelineStreamFormatArgs> format;
 
+    /**
+     * @return Defines the data format of the events.
+     * 
+     */
     public Optional<Output<PipelineStreamFormatArgs>> format() {
         return Optional.ofNullable(this.format);
     }
@@ -64,9 +72,17 @@ public final class PipelineStreamArgs extends com.pulumi.resources.ResourceArgs 
         return this.name;
     }
 
+    /**
+     * Defines the schema of the events in the data stream.
+     * 
+     */
     @Import(name="schema")
     private @Nullable Output<PipelineStreamSchemaArgs> schema;
 
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     public Optional<Output<PipelineStreamSchemaArgs>> schema() {
         return Optional.ofNullable(this.schema);
     }
@@ -128,11 +144,23 @@ public final class PipelineStreamArgs extends com.pulumi.resources.ResourceArgs 
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param format Defines the data format of the events.
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(@Nullable Output<PipelineStreamFormatArgs> format) {
             $.format = format;
             return this;
         }
 
+        /**
+         * @param format Defines the data format of the events.
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(PipelineStreamFormatArgs format) {
             return format(Output.of(format));
         }
@@ -167,11 +195,23 @@ public final class PipelineStreamArgs extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
+        /**
+         * @param schema Defines the schema of the events in the data stream.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(@Nullable Output<PipelineStreamSchemaArgs> schema) {
             $.schema = schema;
             return this;
         }
 
+        /**
+         * @param schema Defines the schema of the events in the data stream.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(PipelineStreamSchemaArgs schema) {
             return schema(Output.of(schema));
         }

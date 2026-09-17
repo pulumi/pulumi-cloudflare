@@ -31,6 +31,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string LastUpdated;
         public readonly string LicenseKey;
         public readonly string Notes;
+        public readonly bool Primary;
+        public readonly string SiteId;
         public readonly string Timezone;
 
         [OutputConstructor]
@@ -59,6 +61,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             string notes,
 
+            bool primary,
+
+            string siteId,
+
             string timezone)
         {
             Activated = activated;
@@ -73,6 +79,8 @@ namespace Pulumi.Cloudflare.Outputs
             LastUpdated = lastUpdated;
             LicenseKey = licenseKey;
             Notes = notes;
+            Primary = primary;
+            SiteId = siteId;
             Timezone = timezone;
         }
     }

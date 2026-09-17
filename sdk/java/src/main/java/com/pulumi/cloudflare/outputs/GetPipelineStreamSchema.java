@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetPipelineStreamSchemaField;
-import com.pulumi.cloudflare.outputs.GetPipelineStreamSchemaFormat;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -14,15 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetPipelineStreamSchema {
     private List<GetPipelineStreamSchemaField> fields;
-    private GetPipelineStreamSchemaFormat format;
     private Boolean inferred;
 
     private GetPipelineStreamSchema() {}
     public List<GetPipelineStreamSchemaField> fields() {
         return this.fields;
-    }
-    public GetPipelineStreamSchemaFormat format() {
-        return this.format;
     }
     public Boolean inferred() {
         return this.inferred;
@@ -38,13 +33,11 @@ public final class GetPipelineStreamSchema {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPipelineStreamSchemaField> fields;
-        private GetPipelineStreamSchemaFormat format;
         private Boolean inferred;
         public Builder() {}
         public Builder(GetPipelineStreamSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fields = defaults.fields;
-    	      this.format = defaults.format;
     	      this.inferred = defaults.inferred;
         }
 
@@ -60,14 +53,6 @@ public final class GetPipelineStreamSchema {
             return fields(List.of(fields));
         }
         @CustomType.Setter
-        public Builder format(GetPipelineStreamSchemaFormat format) {
-            if (format == null) {
-              throw new MissingRequiredPropertyException("GetPipelineStreamSchema", "format");
-            }
-            this.format = format;
-            return this;
-        }
-        @CustomType.Setter
         public Builder inferred(Boolean inferred) {
             if (inferred == null) {
               throw new MissingRequiredPropertyException("GetPipelineStreamSchema", "inferred");
@@ -78,7 +63,6 @@ public final class GetPipelineStreamSchema {
         public GetPipelineStreamSchema build() {
             final var _resultValue = new GetPipelineStreamSchema();
             _resultValue.fields = fields;
-            _resultValue.format = format;
             _resultValue.inferred = inferred;
             return _resultValue;
         }

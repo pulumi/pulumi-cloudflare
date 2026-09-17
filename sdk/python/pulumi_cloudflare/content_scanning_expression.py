@@ -22,14 +22,18 @@ __all__ = ['ContentScanningExpressionArgs', 'ContentScanningExpression']
 class ContentScanningExpressionArgs:
     def __init__(__self__, *,
                  bodies: pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: pulumi.Input[_builtins.str],
+                 payload: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContentScanningExpression resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] payload: Defines the custom content extraction expression used to reach content objects in the request.
         """
         pulumi.set(__self__, "bodies", bodies)
         pulumi.set(__self__, "zone_id", zone_id)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
 
     @_builtins.property
     @pulumi.getter
@@ -52,19 +56,35 @@ class ContentScanningExpressionArgs:
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def payload(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines the custom content extraction expression used to reach content objects in the request.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "payload", value)
+
 
 @pulumi.input_type
 class _ContentScanningExpressionState:
     def __init__(__self__, *,
                  bodies: pulumi.Input[Optional[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]] = None,
+                 payload: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContentScanningExpression resources.
 
+        :param pulumi.Input[_builtins.str] payload: Defines the custom content extraction expression used to reach content objects in the request.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         if bodies is not None:
             pulumi.set(__self__, "bodies", bodies)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -76,6 +96,18 @@ class _ContentScanningExpressionState:
     @bodies.setter
     def bodies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]):
         pulumi.set(self, "bodies", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def payload(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines the custom content extraction expression used to reach content objects in the request.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "payload", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -97,6 +129,7 @@ class ContentScanningExpression(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+                 payload: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -125,6 +158,7 @@ class ContentScanningExpression(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] payload: Defines the custom content extraction expression used to reach content objects in the request.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         ...
@@ -173,6 +207,7 @@ class ContentScanningExpression(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+                 payload: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -186,6 +221,7 @@ class ContentScanningExpression(pulumi.CustomResource):
             if bodies is None and not opts.urn:
                 raise TypeError("Missing required property 'bodies'")
             __props__.__dict__["bodies"] = bodies
+            __props__.__dict__["payload"] = payload
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -200,6 +236,7 @@ class ContentScanningExpression(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+            payload: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContentScanningExpression':
         """
         Get an existing ContentScanningExpression resource's state with the given name, id, and optional extra
@@ -208,6 +245,7 @@ class ContentScanningExpression(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] payload: Defines the custom content extraction expression used to reach content objects in the request.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -215,6 +253,7 @@ class ContentScanningExpression(pulumi.CustomResource):
         __props__ = _ContentScanningExpressionState.__new__(_ContentScanningExpressionState)
 
         __props__.__dict__["bodies"] = bodies
+        __props__.__dict__["payload"] = payload
         __props__.__dict__["zone_id"] = zone_id
         return ContentScanningExpression(resource_name, opts=opts, __props__=__props__)
 
@@ -222,6 +261,14 @@ class ContentScanningExpression(pulumi.CustomResource):
     @pulumi.getter
     def bodies(self) -> pulumi.Output[Sequence['outputs.ContentScanningExpressionBody']]:
         return pulumi.get(self, "bodies")
+
+    @_builtins.property
+    @pulumi.getter
+    def payload(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Defines the custom content extraction expression used to reach content objects in the request.
+        """
+        return pulumi.get(self, "payload")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

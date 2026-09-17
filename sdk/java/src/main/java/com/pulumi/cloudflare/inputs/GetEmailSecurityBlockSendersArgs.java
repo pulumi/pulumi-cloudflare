@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,11 +17,11 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
 
     public static final GetEmailSecurityBlockSendersArgs Empty = new GetEmailSecurityBlockSendersArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="direction")
@@ -95,7 +96,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
             $ = new GetEmailSecurityBlockSendersArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -159,6 +160,9 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
         }
 
         public GetEmailSecurityBlockSendersArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetEmailSecurityBlockSendersArgs", "accountId");
+            }
             return $;
         }
     }

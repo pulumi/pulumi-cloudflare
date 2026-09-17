@@ -11,6 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetOrganizationsResultMetaTenantFlags {
     private String accountCreation;
+    private String accountCreationAppliesTenantDefaults;
     private String accountDeletion;
     private String accountMigration;
     private String accountMobility;
@@ -21,6 +22,9 @@ public final class GetOrganizationsResultMetaTenantFlags {
     private GetOrganizationsResultMetaTenantFlags() {}
     public String accountCreation() {
         return this.accountCreation;
+    }
+    public String accountCreationAppliesTenantDefaults() {
+        return this.accountCreationAppliesTenantDefaults;
     }
     public String accountDeletion() {
         return this.accountDeletion;
@@ -51,6 +55,7 @@ public final class GetOrganizationsResultMetaTenantFlags {
     @CustomType.Builder
     public static final class Builder {
         private String accountCreation;
+        private String accountCreationAppliesTenantDefaults;
         private String accountDeletion;
         private String accountMigration;
         private String accountMobility;
@@ -61,6 +66,7 @@ public final class GetOrganizationsResultMetaTenantFlags {
         public Builder(GetOrganizationsResultMetaTenantFlags defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountCreation = defaults.accountCreation;
+    	      this.accountCreationAppliesTenantDefaults = defaults.accountCreationAppliesTenantDefaults;
     	      this.accountDeletion = defaults.accountDeletion;
     	      this.accountMigration = defaults.accountMigration;
     	      this.accountMobility = defaults.accountMobility;
@@ -75,6 +81,14 @@ public final class GetOrganizationsResultMetaTenantFlags {
               throw new MissingRequiredPropertyException("GetOrganizationsResultMetaTenantFlags", "accountCreation");
             }
             this.accountCreation = accountCreation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accountCreationAppliesTenantDefaults(String accountCreationAppliesTenantDefaults) {
+            if (accountCreationAppliesTenantDefaults == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationsResultMetaTenantFlags", "accountCreationAppliesTenantDefaults");
+            }
+            this.accountCreationAppliesTenantDefaults = accountCreationAppliesTenantDefaults;
             return this;
         }
         @CustomType.Setter
@@ -128,6 +142,7 @@ public final class GetOrganizationsResultMetaTenantFlags {
         public GetOrganizationsResultMetaTenantFlags build() {
             final var _resultValue = new GetOrganizationsResultMetaTenantFlags();
             _resultValue.accountCreation = accountCreation;
+            _resultValue.accountCreationAppliesTenantDefaults = accountCreationAppliesTenantDefaults;
             _resultValue.accountDeletion = accountDeletion;
             _resultValue.accountMigration = accountMigration;
             _resultValue.accountMobility = accountMobility;

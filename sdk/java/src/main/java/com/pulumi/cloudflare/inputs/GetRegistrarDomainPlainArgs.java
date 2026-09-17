@@ -14,14 +14,14 @@ public final class GetRegistrarDomainPlainArgs extends com.pulumi.resources.Invo
     public static final GetRegistrarDomainPlainArgs Empty = new GetRegistrarDomainPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -29,20 +29,20 @@ public final class GetRegistrarDomainPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Fully qualified domain name (FQDN) including the extension
-     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-     * identifies a registration — the same domain cannot be registered
-     * twice, making it a natural idempotency key for registration requests.
+     * Provides a fully qualified domain name (FQDN), including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+     * a registration. Cloudflare permits only one registration per domain, making
+     * the domain name a natural idempotency key for registration requests.
      * 
      */
     @Import(name="domainName", required=true)
     private String domainName;
 
     /**
-     * @return Fully qualified domain name (FQDN) including the extension
-     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-     * identifies a registration — the same domain cannot be registered
-     * twice, making it a natural idempotency key for registration requests.
+     * @return Provides a fully qualified domain name (FQDN), including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+     * a registration. Cloudflare permits only one registration per domain, making
+     * the domain name a natural idempotency key for registration requests.
      * 
      */
     public String domainName() {
@@ -75,7 +75,7 @@ public final class GetRegistrarDomainPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -86,10 +86,10 @@ public final class GetRegistrarDomainPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param domainName Fully qualified domain name (FQDN) including the extension
-         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-         * identifies a registration — the same domain cannot be registered
-         * twice, making it a natural idempotency key for registration requests.
+         * @param domainName Provides a fully qualified domain name (FQDN), including the extension
+         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+         * a registration. Cloudflare permits only one registration per domain, making
+         * the domain name a natural idempotency key for registration requests.
          * 
          * @return builder
          * 

@@ -38,14 +38,6 @@ public final class GetTurnstileWidgetResult {
      * 
      */
     private String createdOn;
-    /**
-     * @return Origin that created this widget, recorded at creation time and
-     * immutable afterward. Server-derived from the create request; not
-     * client-settable. Omitted from the response for widgets created
-     * before this field existed.
-     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
-     * 
-     */
     private String deployedVia;
     private List<String> domains;
     /**
@@ -59,13 +51,6 @@ public final class GetTurnstileWidgetResult {
      * 
      */
     private String id;
-    /**
-     * @return Origin of the most recent mutation (create, update, delete, or
-     * secret rotation). Server-derived; not client-settable. Omitted for
-     * widgets last mutated before this field existed.
-     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
-     * 
-     */
     private String lastModifiedVia;
     /**
      * @return Widget Mode
@@ -139,14 +124,6 @@ public final class GetTurnstileWidgetResult {
     public String createdOn() {
         return this.createdOn;
     }
-    /**
-     * @return Origin that created this widget, recorded at creation time and
-     * immutable afterward. Server-derived from the create request; not
-     * client-settable. Omitted from the response for widgets created
-     * before this field existed.
-     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
-     * 
-     */
     public String deployedVia() {
         return this.deployedVia;
     }
@@ -170,13 +147,6 @@ public final class GetTurnstileWidgetResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Origin of the most recent mutation (create, update, delete, or
-     * secret rotation). Server-derived; not client-settable. Omitted for
-     * widgets last mutated before this field existed.
-     * Available values: &#34;wrangler&#34;, &#34;dashboard&#34;, &#34;spin&#34;, &#34;api&#34;, &#34;unknown&#34;.
-     * 
-     */
     public String lastModifiedVia() {
         return this.lastModifiedVia;
     }

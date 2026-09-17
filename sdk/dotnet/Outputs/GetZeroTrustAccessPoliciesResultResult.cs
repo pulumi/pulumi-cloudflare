@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustAccessPoliciesResultResult
     {
         /// <summary>
+        /// Identifier.
+        /// </summary>
+        public readonly string AccountId;
+        /// <summary>
         /// Number of access applications currently using this policy.
         /// </summary>
         public readonly int AppCount;
@@ -80,6 +84,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetZeroTrustAccessPoliciesResultResult(
+            string accountId,
+
             int appCount,
 
             ImmutableArray<Outputs.GetZeroTrustAccessPoliciesResultApprovalGroupResult> approvalGroups,
@@ -116,6 +122,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string updatedAt)
         {
+            AccountId = accountId;
             AppCount = appCount;
             ApprovalGroups = approvalGroups;
             ApprovalRequired = approvalRequired;

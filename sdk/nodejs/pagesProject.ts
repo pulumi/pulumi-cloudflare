@@ -52,7 +52,7 @@ import * as utilities from "./utilities";
  *                 BROWSER: {},
  *             },
  *             buildImageMajorVersion: 3,
- *             compatibilityDate: "2025-01-01",
+ *             compatibilityDate: "2025-01-01T00:00:00Z",
  *             compatibilityFlags: ["url_standard"],
  *             d1Databases: {
  *                 D1_BINDING: {
@@ -134,7 +134,7 @@ import * as utilities from "./utilities";
  *                 BROWSER: {},
  *             },
  *             buildImageMajorVersion: 3,
- *             compatibilityDate: "2025-01-01",
+ *             compatibilityDate: "2025-01-01T00:00:00Z",
  *             compatibilityFlags: ["url_standard"],
  *             d1Databases: {
  *                 D1_BINDING: {

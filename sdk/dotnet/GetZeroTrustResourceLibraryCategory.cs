@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of this resource.
+        /// Returns the category ID.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of this resource.
+        /// Returns the category ID.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The ID of this resource.
+        /// Returns the category ID.
         /// </summary>
         public readonly int Id;
         /// <summary>

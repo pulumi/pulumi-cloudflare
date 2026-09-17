@@ -22,6 +22,7 @@ import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersNoCache;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersNoStore;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersNoTransform;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOrigin;
+import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOriginRangeRequests;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersOverrides;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersPrivate;
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersProxyRevalidate;
@@ -262,6 +263,11 @@ public final class RulesetRuleActionParameters {
      * 
      */
     private @Nullable Boolean originErrorPagePassthru;
+    /**
+     * @return Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+     * 
+     */
+    private @Nullable RulesetRuleActionParametersOriginRangeRequests originRangeRequests;
     /**
      * @return A set of overrides to apply to the target ruleset.
      * 
@@ -754,6 +760,13 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.originErrorPagePassthru);
     }
     /**
+     * @return Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+     * 
+     */
+    public Optional<RulesetRuleActionParametersOriginRangeRequests> originRangeRequests() {
+        return Optional.ofNullable(this.originRangeRequests);
+    }
+    /**
      * @return A set of overrides to apply to the target ruleset.
      * 
      */
@@ -1072,6 +1085,7 @@ public final class RulesetRuleActionParameters {
         private @Nullable RulesetRuleActionParametersOrigin origin;
         private @Nullable Boolean originCacheControl;
         private @Nullable Boolean originErrorPagePassthru;
+        private @Nullable RulesetRuleActionParametersOriginRangeRequests originRangeRequests;
         private @Nullable RulesetRuleActionParametersOverrides overrides;
         private @Nullable List<String> phases;
         private @Nullable String polish;
@@ -1154,6 +1168,7 @@ public final class RulesetRuleActionParameters {
     	      this.origin = defaults.origin;
     	      this.originCacheControl = defaults.originCacheControl;
     	      this.originErrorPagePassthru = defaults.originErrorPagePassthru;
+    	      this.originRangeRequests = defaults.originRangeRequests;
     	      this.overrides = defaults.overrides;
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
@@ -1455,6 +1470,12 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder originRangeRequests(@Nullable RulesetRuleActionParametersOriginRangeRequests originRangeRequests) {
+
+            this.originRangeRequests = originRangeRequests;
+            return this;
+        }
+        @CustomType.Setter
         public Builder overrides(@Nullable RulesetRuleActionParametersOverrides overrides) {
 
             this.overrides = overrides;
@@ -1744,6 +1765,7 @@ public final class RulesetRuleActionParameters {
             _resultValue.origin = origin;
             _resultValue.originCacheControl = originCacheControl;
             _resultValue.originErrorPagePassthru = originErrorPagePassthru;
+            _resultValue.originRangeRequests = originRangeRequests;
             _resultValue.overrides = overrides;
             _resultValue.phases = phases;
             _resultValue.polish = polish;

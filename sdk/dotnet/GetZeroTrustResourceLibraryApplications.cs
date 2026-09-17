@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryApplications = Cloudflare.GetZeroTrustResourceLibraryApplications.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Fields = "fields",
         ///         Filter = "filter",
         ///         OrderBy = "order_by",
         ///         Search = "xx",
@@ -50,6 +51,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryApplications = Cloudflare.GetZeroTrustResourceLibraryApplications.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Fields = "fields",
         ///         Filter = "filter",
         ///         OrderBy = "order_by",
         ///         Search = "xx",
@@ -75,6 +77,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustResourceLibraryApplications = Cloudflare.GetZeroTrustResourceLibraryApplications.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Fields = "fields",
         ///         Filter = "filter",
         ///         OrderBy = "order_by",
         ///         Search = "xx",
@@ -92,6 +95,15 @@ namespace Pulumi.Cloudflare
     {
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Return only the listed properties on each application, as a comma-separated list.
+        /// Use this to keep responses small when you only need part of each application — for
+        /// example populating a picker with `fields=id,name` instead of downloading every
+        /// hostname and IP subnet.
+        /// </summary>
+        [Input("fields")]
+        public string? Fields { get; set; }
 
         [Input("filter")]
         public string? Filter { get; set; }
@@ -122,6 +134,15 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Return only the listed properties on each application, as a comma-separated list.
+        /// Use this to keep responses small when you only need part of each application — for
+        /// example populating a picker with `fields=id,name` instead of downloading every
+        /// hostname and IP subnet.
+        /// </summary>
+        [Input("fields")]
+        public Input<string>? Fields { get; set; }
+
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
@@ -151,6 +172,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustResourceLibraryApplicationsResult
     {
         public readonly string AccountId;
+        /// <summary>
+        /// Return only the listed properties on each application, as a comma-separated list.
+        /// Use this to keep responses small when you only need part of each application — for
+        /// example populating a picker with `fields=id,name` instead of downloading every
+        /// hostname and IP subnet.
+        /// </summary>
+        public readonly string? Fields;
         public readonly string? Filter;
         public readonly int Limit;
         public readonly int? MaxItems;
@@ -162,6 +190,8 @@ namespace Pulumi.Cloudflare
         [OutputConstructor]
         private GetZeroTrustResourceLibraryApplicationsResult(
             string accountId,
+
+            string? fields,
 
             string? filter,
 
@@ -178,6 +208,7 @@ namespace Pulumi.Cloudflare
             string? search)
         {
             AccountId = accountId;
+            Fields = fields;
             Filter = filter;
             Limit = limit;
             MaxItems = maxItems;

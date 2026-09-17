@@ -19,7 +19,7 @@ public final class GetRegistrarDomainsResult {
      */
     private Boolean available;
     /**
-     * @return Indicates if the domain can be registered as a new domain.
+     * @return Indicates eligibility to register the domain as a new domain.
      * 
      */
     private Boolean canRegister;
@@ -54,12 +54,12 @@ public final class GetRegistrarDomainsResult {
      */
     private GetRegistrarDomainsResultRegistrantContact registrantContact;
     /**
-     * @return A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+     * @return A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
      * 
      */
     private String registryStatuses;
     /**
-     * @return Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+     * @return Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
      * 
      */
     private Boolean supportedTld;
@@ -83,7 +83,7 @@ public final class GetRegistrarDomainsResult {
         return this.available;
     }
     /**
-     * @return Indicates if the domain can be registered as a new domain.
+     * @return Indicates eligibility to register the domain as a new domain.
      * 
      */
     public Boolean canRegister() {
@@ -132,14 +132,14 @@ public final class GetRegistrarDomainsResult {
         return this.registrantContact;
     }
     /**
-     * @return A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+     * @return A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
      * 
      */
     public String registryStatuses() {
         return this.registryStatuses;
     }
     /**
-     * @return Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+     * @return Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
      * 
      */
     public Boolean supportedTld() {

@@ -84,6 +84,12 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
      */
     private List<String> portProtocols;
     /**
+     * @return The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+     * Available values: &#34;approved&#34;, &#34;unapproved&#34;, &#34;inReview&#34;, &#34;unreviewed&#34;.
+     * 
+     */
+    private String reviewStatus;
+    /**
      * @return Support domains matched by the application.
      * 
      */
@@ -204,6 +210,14 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
         return this.portProtocols;
     }
     /**
+     * @return The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+     * Available values: &#34;approved&#34;, &#34;unapproved&#34;, &#34;inReview&#34;, &#34;unreviewed&#34;.
+     * 
+     */
+    public String reviewStatus() {
+        return this.reviewStatus;
+    }
+    /**
      * @return Support domains matched by the application.
      * 
      */
@@ -255,6 +269,7 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
         private List<String> ipSubnets;
         private String name;
         private List<String> portProtocols;
+        private String reviewStatus;
         private List<String> supportDomains;
         private List<String> supporteds;
         private String updatedAt;
@@ -276,6 +291,7 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
     	      this.ipSubnets = defaults.ipSubnets;
     	      this.name = defaults.name;
     	      this.portProtocols = defaults.portProtocols;
+    	      this.reviewStatus = defaults.reviewStatus;
     	      this.supportDomains = defaults.supportDomains;
     	      this.supporteds = defaults.supporteds;
     	      this.updatedAt = defaults.updatedAt;
@@ -404,6 +420,14 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
             return portProtocols(List.of(portProtocols));
         }
         @CustomType.Setter
+        public Builder reviewStatus(String reviewStatus) {
+            if (reviewStatus == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsResult", "reviewStatus");
+            }
+            this.reviewStatus = reviewStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder supportDomains(List<String> supportDomains) {
             if (supportDomains == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsResult", "supportDomains");
@@ -457,6 +481,7 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
             _resultValue.ipSubnets = ipSubnets;
             _resultValue.name = name;
             _resultValue.portProtocols = portProtocols;
+            _resultValue.reviewStatus = reviewStatus;
             _resultValue.supportDomains = supportDomains;
             _resultValue.supporteds = supporteds;
             _resultValue.updatedAt = updatedAt;

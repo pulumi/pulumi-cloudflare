@@ -42,12 +42,6 @@ import * as utilities from "./utilities";
  *             required: true,
  *             sqlName: "sql_name",
  *         }],
- *         format: {
- *             type: "json",
- *             decimalEncoding: "number",
- *             timestampFormat: "rfc3339",
- *             unstructured: true,
- *         },
  *         inferred: true,
  *     },
  *     workerBinding: {
@@ -99,6 +93,9 @@ export class PipelineStream extends pulumi.CustomResource {
      * Indicates the endpoint URL of this stream.
      */
     declare public /*out*/ readonly endpoint: pulumi.Output<string>;
+    /**
+     * Defines the data format of the events.
+     */
     declare public readonly format: pulumi.Output<outputs.PipelineStreamFormat | undefined>;
     declare public readonly http: pulumi.Output<outputs.PipelineStreamHttp>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
@@ -106,6 +103,9 @@ export class PipelineStream extends pulumi.CustomResource {
      * Specifies the name of the Stream.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     declare public readonly schema: pulumi.Output<outputs.PipelineStreamSchema | undefined>;
     /**
      * Indicates the current version of this stream.
@@ -173,6 +173,9 @@ export interface PipelineStreamState {
      * Indicates the endpoint URL of this stream.
      */
     endpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Defines the data format of the events.
+     */
     format?: pulumi.Input<inputs.PipelineStreamFormat | undefined>;
     http?: pulumi.Input<inputs.PipelineStreamHttp | undefined>;
     modifiedAt?: pulumi.Input<string | undefined>;
@@ -180,6 +183,9 @@ export interface PipelineStreamState {
      * Specifies the name of the Stream.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     schema?: pulumi.Input<inputs.PipelineStreamSchema | undefined>;
     /**
      * Indicates the current version of this stream.
@@ -196,12 +202,18 @@ export interface PipelineStreamArgs {
      * Specifies the public ID of the account.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Defines the data format of the events.
+     */
     format?: pulumi.Input<inputs.PipelineStreamFormat | undefined>;
     http?: pulumi.Input<inputs.PipelineStreamHttp | undefined>;
     /**
      * Specifies the name of the Stream.
      */
     name: pulumi.Input<string>;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     schema?: pulumi.Input<inputs.PipelineStreamSchema | undefined>;
     workerBinding?: pulumi.Input<inputs.PipelineStreamWorkerBinding | undefined>;
 }

@@ -22,12 +22,6 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// True if schema is Cloudflare-provided.
-        /// </summary>
-        [Input("isLearned")]
-        public Input<bool>? IsLearned { get; set; }
-
-        /// <summary>
         /// Schema file name.
         /// </summary>
         [Input("name")]

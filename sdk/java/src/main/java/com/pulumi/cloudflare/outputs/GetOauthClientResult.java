@@ -69,6 +69,11 @@ public final class GetOauthClientResult {
      */
     private String oauthClientId;
     /**
+     * @return Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     * 
+     */
+    private List<String> optionalScopes;
+    /**
      * @return URL that points to a privacy policy document.
      * 
      */
@@ -200,6 +205,13 @@ public final class GetOauthClientResult {
         return this.oauthClientId;
     }
     /**
+     * @return Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     * 
+     */
+    public List<String> optionalScopes() {
+        return this.optionalScopes;
+    }
+    /**
      * @return URL that points to a privacy policy document.
      * 
      */
@@ -292,6 +304,7 @@ public final class GetOauthClientResult {
         private Boolean hasRotatedSecret;
         private String logoUri;
         private String oauthClientId;
+        private List<String> optionalScopes;
         private String policyUri;
         private List<String> postLogoutRedirectUris;
         private String promotedAt;
@@ -316,6 +329,7 @@ public final class GetOauthClientResult {
     	      this.hasRotatedSecret = defaults.hasRotatedSecret;
     	      this.logoUri = defaults.logoUri;
     	      this.oauthClientId = defaults.oauthClientId;
+    	      this.optionalScopes = defaults.optionalScopes;
     	      this.policyUri = defaults.policyUri;
     	      this.postLogoutRedirectUris = defaults.postLogoutRedirectUris;
     	      this.promotedAt = defaults.promotedAt;
@@ -423,6 +437,17 @@ public final class GetOauthClientResult {
             return this;
         }
         @CustomType.Setter
+        public Builder optionalScopes(List<String> optionalScopes) {
+            if (optionalScopes == null) {
+              throw new MissingRequiredPropertyException("GetOauthClientResult", "optionalScopes");
+            }
+            this.optionalScopes = optionalScopes;
+            return this;
+        }
+        public Builder optionalScopes(String... optionalScopes) {
+            return optionalScopes(List.of(optionalScopes));
+        }
+        @CustomType.Setter
         public Builder policyUri(String policyUri) {
             if (policyUri == null) {
               throw new MissingRequiredPropertyException("GetOauthClientResult", "policyUri");
@@ -527,6 +552,7 @@ public final class GetOauthClientResult {
             _resultValue.hasRotatedSecret = hasRotatedSecret;
             _resultValue.logoUri = logoUri;
             _resultValue.oauthClientId = oauthClientId;
+            _resultValue.optionalScopes = optionalScopes;
             _resultValue.policyUri = policyUri;
             _resultValue.postLogoutRedirectUris = postLogoutRedirectUris;
             _resultValue.promotedAt = promotedAt;

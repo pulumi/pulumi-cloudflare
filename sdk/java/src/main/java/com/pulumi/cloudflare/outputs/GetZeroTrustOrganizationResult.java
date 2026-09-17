@@ -65,10 +65,6 @@ public final class GetZeroTrustOrganizationResult {
      * 
      */
     private Boolean mfaRequiredForAllApps;
-    /**
-     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
-     * 
-     */
     private GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements;
     /**
      * @return The name of your Zero Trust organization.
@@ -176,10 +172,6 @@ public final class GetZeroTrustOrganizationResult {
     public Boolean mfaRequiredForAllApps() {
         return this.mfaRequiredForAllApps;
     }
-    /**
-     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
-     * 
-     */
     public GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements() {
         return this.mfaSshPivKeyRequirements;
     }

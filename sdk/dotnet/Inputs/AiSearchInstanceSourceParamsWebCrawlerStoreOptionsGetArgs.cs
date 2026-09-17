@@ -12,17 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AiSearchInstanceSourceParamsWebCrawlerStoreOptionsGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("r2Jurisdiction")]
-        public Input<string>? R2Jurisdiction { get; set; }
+        [Input("r2Jurisdiction", required: true)]
+        public Input<string> R2Jurisdiction { get; set; } = null!;
 
         [Input("storageId", required: true)]
         public Input<string> StorageId { get; set; } = null!;
 
-        /// <summary>
-        /// Available values: "r2".
-        /// </summary>
-        [Input("storageType")]
-        public Input<string>? StorageType { get; set; }
+        [Input("storageType", required: true)]
+        public Input<string> StorageType { get; set; } = null!;
 
         public AiSearchInstanceSourceParamsWebCrawlerStoreOptionsGetArgs()
         {

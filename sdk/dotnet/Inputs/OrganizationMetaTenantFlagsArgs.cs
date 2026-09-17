@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("accountCreation")]
         public Input<string>? AccountCreation { get; set; }
 
+        [Input("accountCreationAppliesTenantDefaults")]
+        public Input<string>? AccountCreationAppliesTenantDefaults { get; set; }
+
         [Input("accountDeletion")]
         public Input<string>? AccountDeletion { get; set; }
 

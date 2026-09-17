@@ -90,6 +90,12 @@ public final class GetWorkerVersionBinding {
      */
     private String id;
     /**
+     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * Available values: &#34;runtime-email-alpha&#34;.
+     * 
+     */
+    private String identity;
+    /**
      * @return Name of the Vectorize index to bind to.
      * 
      */
@@ -106,7 +112,7 @@ public final class GetWorkerVersionBinding {
     private String json;
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     private String jurisdiction;
@@ -335,6 +341,14 @@ public final class GetWorkerVersionBinding {
         return this.id;
     }
     /**
+     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * Available values: &#34;runtime-email-alpha&#34;.
+     * 
+     */
+    public String identity() {
+        return this.identity;
+    }
+    /**
      * @return Name of the Vectorize index to bind to.
      * 
      */
@@ -357,7 +371,7 @@ public final class GetWorkerVersionBinding {
     }
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     public String jurisdiction() {
@@ -550,6 +564,7 @@ public final class GetWorkerVersionBinding {
         private String environment;
         private String format;
         private String id;
+        private String identity;
         private String indexName;
         private String instanceName;
         private String json;
@@ -595,6 +610,7 @@ public final class GetWorkerVersionBinding {
     	      this.environment = defaults.environment;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
+    	      this.identity = defaults.identity;
     	      this.indexName = defaults.indexName;
     	      this.instanceName = defaults.instanceName;
     	      this.json = defaults.json;
@@ -748,6 +764,14 @@ public final class GetWorkerVersionBinding {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identity(String identity) {
+            if (identity == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "identity");
+            }
+            this.identity = identity;
             return this;
         }
         @CustomType.Setter
@@ -986,6 +1010,7 @@ public final class GetWorkerVersionBinding {
             _resultValue.environment = environment;
             _resultValue.format = format;
             _resultValue.id = id;
+            _resultValue.identity = identity;
             _resultValue.indexName = indexName;
             _resultValue.instanceName = instanceName;
             _resultValue.json = json;

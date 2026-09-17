@@ -27,7 +27,7 @@ class GetBotManagementResult:
     """
     A collection of values returned by getBotManagement.
     """
-    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, bm_cookie_enabled=None, cf_robots_variant=None, content_bots_protection=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, bm_cookie_enabled=None, bot_preference_sync_enabled=None, cf_robots_variant=None, content_bots_protection=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
         if ai_bots_protection and not isinstance(ai_bots_protection, str):
             raise TypeError("Expected argument 'ai_bots_protection' to be a str")
         pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
@@ -37,6 +37,9 @@ class GetBotManagementResult:
         if bm_cookie_enabled and not isinstance(bm_cookie_enabled, bool):
             raise TypeError("Expected argument 'bm_cookie_enabled' to be a bool")
         pulumi.set(__self__, "bm_cookie_enabled", bm_cookie_enabled)
+        if bot_preference_sync_enabled and not isinstance(bot_preference_sync_enabled, bool):
+            raise TypeError("Expected argument 'bot_preference_sync_enabled' to be a bool")
+        pulumi.set(__self__, "bot_preference_sync_enabled", bot_preference_sync_enabled)
         if cf_robots_variant and not isinstance(cf_robots_variant, str):
             raise TypeError("Expected argument 'cf_robots_variant' to be a str")
         pulumi.set(__self__, "cf_robots_variant", cf_robots_variant)
@@ -110,6 +113,14 @@ class GetBotManagementResult:
         Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         """
         return pulumi.get(self, "bm_cookie_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="botPreferenceSyncEnabled")
+    def bot_preference_sync_enabled(self) -> _builtins.bool:
+        """
+        Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+        """
+        return pulumi.get(self, "bot_preference_sync_enabled")
 
     @_builtins.property
     @pulumi.getter(name="cfRobotsVariant")
@@ -257,6 +268,7 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
             ai_bots_protection=self.ai_bots_protection,
             auto_update_model=self.auto_update_model,
             bm_cookie_enabled=self.bm_cookie_enabled,
+            bot_preference_sync_enabled=self.bot_preference_sync_enabled,
             cf_robots_variant=self.cf_robots_variant,
             content_bots_protection=self.content_bots_protection,
             crawler_protection=self.crawler_protection,
@@ -304,6 +316,7 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
         ai_bots_protection=pulumi.get(__ret__, 'ai_bots_protection'),
         auto_update_model=pulumi.get(__ret__, 'auto_update_model'),
         bm_cookie_enabled=pulumi.get(__ret__, 'bm_cookie_enabled'),
+        bot_preference_sync_enabled=pulumi.get(__ret__, 'bot_preference_sync_enabled'),
         cf_robots_variant=pulumi.get(__ret__, 'cf_robots_variant'),
         content_bots_protection=pulumi.get(__ret__, 'content_bots_protection'),
         crawler_protection=pulumi.get(__ret__, 'crawler_protection'),
@@ -348,6 +361,7 @@ def get_bot_management_output(zone_id: pulumi.Input[Optional[Optional[_builtins.
         ai_bots_protection=pulumi.get(__response__, 'ai_bots_protection'),
         auto_update_model=pulumi.get(__response__, 'auto_update_model'),
         bm_cookie_enabled=pulumi.get(__response__, 'bm_cookie_enabled'),
+        bot_preference_sync_enabled=pulumi.get(__response__, 'bot_preference_sync_enabled'),
         cf_robots_variant=pulumi.get(__response__, 'cf_robots_variant'),
         content_bots_protection=pulumi.get(__response__, 'content_bots_protection'),
         crawler_protection=pulumi.get(__response__, 'crawler_protection'),

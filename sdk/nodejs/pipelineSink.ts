@@ -47,6 +47,7 @@ import * as utilities from "./utilities";
  *     },
  *     format: {
  *         type: "json",
+ *         compression: "uncompressed",
  *         decimalEncoding: "number",
  *         timestampFormat: "rfc3339",
  *         unstructured: true,
@@ -59,12 +60,6 @@ import * as utilities from "./utilities";
  *             required: true,
  *             sqlName: "sql_name",
  *         }],
- *         format: {
- *             type: "json",
- *             decimalEncoding: "number",
- *             timestampFormat: "rfc3339",
- *             unstructured: true,
- *         },
  *         inferred: true,
  *     },
  * });
@@ -113,12 +108,18 @@ export class PipelineSink extends pulumi.CustomResource {
      */
     declare public readonly config: pulumi.Output<outputs.PipelineSinkConfig | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Defines the output data format of a sink.
+     */
     declare public readonly format: pulumi.Output<outputs.PipelineSinkFormat | undefined>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     /**
      * Defines the name of the Sink.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     declare public readonly schema: pulumi.Output<outputs.PipelineSinkSchema | undefined>;
     /**
      * Specifies the type of sink.
@@ -185,12 +186,18 @@ export interface PipelineSinkState {
      */
     config?: pulumi.Input<inputs.PipelineSinkConfig | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Defines the output data format of a sink.
+     */
     format?: pulumi.Input<inputs.PipelineSinkFormat | undefined>;
     modifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Defines the name of the Sink.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     schema?: pulumi.Input<inputs.PipelineSinkSchema | undefined>;
     /**
      * Specifies the type of sink.
@@ -211,11 +218,17 @@ export interface PipelineSinkArgs {
      * Defines the configuration of the R2 Sink.
      */
     config?: pulumi.Input<inputs.PipelineSinkConfig | undefined>;
+    /**
+     * Defines the output data format of a sink.
+     */
     format?: pulumi.Input<inputs.PipelineSinkFormat | undefined>;
     /**
      * Defines the name of the Sink.
      */
     name: pulumi.Input<string>;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     schema?: pulumi.Input<inputs.PipelineSinkSchema | undefined>;
     /**
      * Specifies the type of sink.

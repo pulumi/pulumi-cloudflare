@@ -181,12 +181,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmailRoutingRule{}
 	case "cloudflare:index/emailRoutingSettings:EmailRoutingSettings":
 		r = &EmailRoutingSettings{}
+	case "cloudflare:index/emailSecurityAllowPolicy:EmailSecurityAllowPolicy":
+		r = &EmailSecurityAllowPolicy{}
 	case "cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender":
 		r = &EmailSecurityBlockSender{}
+	case "cloudflare:index/emailSecurityDomain:EmailSecurityDomain":
+		r = &EmailSecurityDomain{}
 	case "cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry":
 		r = &EmailSecurityImpersonationRegistry{}
 	case "cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains":
 		r = &EmailSecurityTrustedDomains{}
+	case "cloudflare:index/emailSendingSubdomain:EmailSendingSubdomain":
+		r = &EmailSendingSubdomain{}
 	case "cloudflare:index/filter:Filter":
 		r = &Filter{}
 	case "cloudflare:index/firewallRule:FirewallRule":
@@ -261,6 +267,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MoqRelay{}
 	case "cloudflare:index/mtlsCertificate:MtlsCertificate":
 		r = &MtlsCertificate{}
+	case "cloudflare:index/nelSetting:NelSetting":
+		r = &NelSetting{}
 	case "cloudflare:index/notificationPolicy:NotificationPolicy":
 		r = &NotificationPolicy{}
 	case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
@@ -573,6 +581,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustNetworkHostnameRoute{}
 	case "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization":
 		r = &ZeroTrustOrganization{}
+	case "cloudflare:index/zeroTrustResourceLibraryApplication:ZeroTrustResourceLibraryApplication":
+		r = &ZeroTrustResourceLibraryApplication{}
 	case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
 		r = &ZeroTrustRiskBehavior{}
 	case "cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration":
@@ -1042,7 +1052,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/emailSecurityAllowPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/emailSecurityBlockSender",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/emailSecurityDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1053,6 +1073,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/emailSecurityTrustedDomains",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/emailSendingSubdomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1238,6 +1263,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/mtlsCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/nelSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -2018,6 +2048,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustOrganization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustResourceLibraryApplication",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

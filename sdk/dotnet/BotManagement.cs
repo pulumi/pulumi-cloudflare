@@ -29,6 +29,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AiBotsProtection = "block",
+    ///         BotPreferenceSyncEnabled = true,
     ///         CfRobotsVariant = "policy_only",
     ///         ContentBotsProtection = "disabled",
     ///         CrawlerProtection = "enabled",
@@ -67,6 +68,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("bmCookieEnabled")]
         public Output<bool> BmCookieEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+        /// </summary>
+        [Output("botPreferenceSyncEnabled")]
+        public Output<bool?> BotPreferenceSyncEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the Robots Access Control License variant to use.
@@ -232,6 +239,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? BmCookieEnabled { get; set; }
 
         /// <summary>
+        /// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+        /// </summary>
+        [Input("botPreferenceSyncEnabled")]
+        public Input<bool>? BotPreferenceSyncEnabled { get; set; }
+
+        /// <summary>
         /// Specifies the Robots Access Control License variant to use.
         /// Available values: "off", "PolicyOnly".
         /// </summary>
@@ -343,6 +356,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bmCookieEnabled")]
         public Input<bool>? BmCookieEnabled { get; set; }
+
+        /// <summary>
+        /// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+        /// </summary>
+        [Input("botPreferenceSyncEnabled")]
+        public Input<bool>? BotPreferenceSyncEnabled { get; set; }
 
         /// <summary>
         /// Specifies the Robots Access Control License variant to use.

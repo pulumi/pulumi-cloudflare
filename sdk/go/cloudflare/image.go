@@ -17,37 +17,14 @@ import (
 // - `Images Read`
 // - `Images Write`
 //
-// ## Example Usage
+// > Set either `file` (base64-encoded image data, e.g. from
 //
-// ```go
-// package main
+//	`filebase64`)
+//	or `url` (fetched server-side), not both.
 //
-// import (
+// > `requireSignedUrls = true` is rejected for images with a custom `id` (API
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewImage(ctx, "example_image", &cloudflare.ImageArgs{
-//				AccountId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				ImageId:           pulumi.String("id"),
-//				Creator:           pulumi.String("creator"),
-//				File:              pulumi.String("Example data"),
-//				Metadata:          pulumi.String{},
-//				RequireSignedUrls: pulumi.Bool(true),
-//				Url:               pulumi.String("https://example.com/path/to/logo.png"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+//	error 5410). Since `id` is required here, leave it unset or `false`.
 //
 // ## Import
 //

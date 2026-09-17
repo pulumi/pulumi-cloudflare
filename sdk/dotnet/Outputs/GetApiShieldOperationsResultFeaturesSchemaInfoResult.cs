@@ -18,10 +18,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaResult ActiveSchema;
         /// <summary>
-        /// Deprecated. Always false.
-        /// </summary>
-        public readonly bool LearnedAvailable;
-        /// <summary>
         /// Action taken on requests failing validation.
         /// Available values: "none", "log", "block".
         /// </summary>
@@ -31,12 +27,9 @@ namespace Pulumi.Cloudflare.Outputs
         private GetApiShieldOperationsResultFeaturesSchemaInfoResult(
             Outputs.GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchemaResult activeSchema,
 
-            bool learnedAvailable,
-
             string mitigationAction)
         {
             ActiveSchema = activeSchema;
-            LearnedAvailable = learnedAvailable;
             MitigationAction = mitigationAction;
         }
     }

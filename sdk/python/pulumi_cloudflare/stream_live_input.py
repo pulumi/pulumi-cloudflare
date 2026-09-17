@@ -166,6 +166,7 @@ class _StreamLiveInputState:
                  live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
                  modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 playback: pulumi.Input[Optional['StreamLiveInputPlaybackArgs']] = None,
                  prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
                  recording: pulumi.Input[Optional['StreamLiveInputRecordingArgs']] = None,
                  rtmps: pulumi.Input[Optional['StreamLiveInputRtmpsArgs']] = None,
@@ -188,6 +189,7 @@ class _StreamLiveInputState:
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input[_builtins.str] modified: The date and time the live input was last modified.
+        :param pulumi.Input['StreamLiveInputPlaybackArgs'] playback: Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
         :param pulumi.Input[_builtins.bool] prefer_low_latency: When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
         :param pulumi.Input['StreamLiveInputRecordingArgs'] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         :param pulumi.Input['StreamLiveInputRtmpsArgs'] rtmps: Details for streaming to an live input using RTMPS.
@@ -218,6 +220,8 @@ class _StreamLiveInputState:
             pulumi.set(__self__, "meta", meta)
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
+        if playback is not None:
+            pulumi.set(__self__, "playback", playback)
         if prefer_low_latency is not None:
             pulumi.set(__self__, "prefer_low_latency", prefer_low_latency)
         if recording is not None:
@@ -346,6 +350,18 @@ class _StreamLiveInputState:
     @modified.setter
     def modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def playback(self) -> pulumi.Input[Optional['StreamLiveInputPlaybackArgs']]:
+        """
+        Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+        """
+        return pulumi.get(self, "playback")
+
+    @playback.setter
+    def playback(self, value: pulumi.Input[Optional['StreamLiveInputPlaybackArgs']]):
+        pulumi.set(self, "playback", value)
 
     @_builtins.property
     @pulumi.getter(name="preferLowLatency")
@@ -572,6 +588,7 @@ class StreamLiveInput(pulumi.CustomResource):
             __props__.__dict__["created"] = None
             __props__.__dict__["keys_rotated_at"] = None
             __props__.__dict__["modified"] = None
+            __props__.__dict__["playback"] = None
             __props__.__dict__["rtmps"] = None
             __props__.__dict__["rtmps_playback"] = None
             __props__.__dict__["srt"] = None
@@ -599,6 +616,7 @@ class StreamLiveInput(pulumi.CustomResource):
             live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             meta: pulumi.Input[Optional[_builtins.str]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
+            playback: pulumi.Input[Optional[Union['StreamLiveInputPlaybackArgs', 'StreamLiveInputPlaybackArgsDict']]] = None,
             prefer_low_latency: pulumi.Input[Optional[_builtins.bool]] = None,
             recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
             rtmps: pulumi.Input[Optional[Union['StreamLiveInputRtmpsArgs', 'StreamLiveInputRtmpsArgsDict']]] = None,
@@ -625,6 +643,7 @@ class StreamLiveInput(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] live_input_identifier: A unique identifier for a live input.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input[_builtins.str] modified: The date and time the live input was last modified.
+        :param pulumi.Input[Union['StreamLiveInputPlaybackArgs', 'StreamLiveInputPlaybackArgsDict']] playback: Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
         :param pulumi.Input[_builtins.bool] prefer_low_latency: When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
         :param pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         :param pulumi.Input[Union['StreamLiveInputRtmpsArgs', 'StreamLiveInputRtmpsArgsDict']] rtmps: Details for streaming to an live input using RTMPS.
@@ -650,6 +669,7 @@ class StreamLiveInput(pulumi.CustomResource):
         __props__.__dict__["live_input_identifier"] = live_input_identifier
         __props__.__dict__["meta"] = meta
         __props__.__dict__["modified"] = modified
+        __props__.__dict__["playback"] = playback
         __props__.__dict__["prefer_low_latency"] = prefer_low_latency
         __props__.__dict__["recording"] = recording
         __props__.__dict__["rtmps"] = rtmps
@@ -733,6 +753,14 @@ class StreamLiveInput(pulumi.CustomResource):
         The date and time the live input was last modified.
         """
         return pulumi.get(self, "modified")
+
+    @_builtins.property
+    @pulumi.getter
+    def playback(self) -> pulumi.Output['outputs.StreamLiveInputPlayback']:
+        """
+        Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+        """
+        return pulumi.get(self, "playback")
 
     @_builtins.property
     @pulumi.getter(name="preferLowLatency")

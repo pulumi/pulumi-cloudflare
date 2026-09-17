@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,21 +32,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
     }
 
     /**
-     * Deprecated. Always false.
-     * 
-     */
-    @Import(name="learnedAvailable")
-    private @Nullable Output<Boolean> learnedAvailable;
-
-    /**
-     * @return Deprecated. Always false.
-     * 
-     */
-    public Optional<Output<Boolean>> learnedAvailable() {
-        return Optional.ofNullable(this.learnedAvailable);
-    }
-
-    /**
      * Action taken on requests failing validation.
      * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
@@ -68,7 +52,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
 
     private ApiShieldOperationFeaturesSchemaInfoArgs(ApiShieldOperationFeaturesSchemaInfoArgs $) {
         this.activeSchema = $.activeSchema;
-        this.learnedAvailable = $.learnedAvailable;
         this.mitigationAction = $.mitigationAction;
     }
 
@@ -109,27 +92,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoArgs extends com.pulumi.r
          */
         public Builder activeSchema(ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs activeSchema) {
             return activeSchema(Output.of(activeSchema));
-        }
-
-        /**
-         * @param learnedAvailable Deprecated. Always false.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder learnedAvailable(@Nullable Output<Boolean> learnedAvailable) {
-            $.learnedAvailable = learnedAvailable;
-            return this;
-        }
-
-        /**
-         * @param learnedAvailable Deprecated. Always false.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder learnedAvailable(Boolean learnedAvailable) {
-            return learnedAvailable(Output.of(learnedAvailable));
         }
 
         /**

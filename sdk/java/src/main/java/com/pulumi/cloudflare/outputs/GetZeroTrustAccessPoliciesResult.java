@@ -20,6 +20,11 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustAccessPoliciesResult {
     /**
+     * @return Identifier.
+     * 
+     */
+    private String accountId;
+    /**
      * @return Number of access applications currently using this policy.
      * 
      */
@@ -100,6 +105,13 @@ public final class GetZeroTrustAccessPoliciesResult {
     private String updatedAt;
 
     private GetZeroTrustAccessPoliciesResult() {}
+    /**
+     * @return Identifier.
+     * 
+     */
+    public String accountId() {
+        return this.accountId;
+    }
     /**
      * @return Number of access applications currently using this policy.
      * 
@@ -225,6 +237,7 @@ public final class GetZeroTrustAccessPoliciesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String accountId;
         private Integer appCount;
         private List<GetZeroTrustAccessPoliciesResultApprovalGroup> approvalGroups;
         private Boolean approvalRequired;
@@ -246,6 +259,7 @@ public final class GetZeroTrustAccessPoliciesResult {
         public Builder() {}
         public Builder(GetZeroTrustAccessPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accountId = defaults.accountId;
     	      this.appCount = defaults.appCount;
     	      this.approvalGroups = defaults.approvalGroups;
     	      this.approvalRequired = defaults.approvalRequired;
@@ -266,6 +280,14 @@ public final class GetZeroTrustAccessPoliciesResult {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResult", "accountId");
+            }
+            this.accountId = accountId;
+            return this;
+        }
         @CustomType.Setter
         public Builder appCount(Integer appCount) {
             if (appCount == null) {
@@ -424,6 +446,7 @@ public final class GetZeroTrustAccessPoliciesResult {
         }
         public GetZeroTrustAccessPoliciesResult build() {
             final var _resultValue = new GetZeroTrustAccessPoliciesResult();
+            _resultValue.accountId = accountId;
             _resultValue.appCount = appCount;
             _resultValue.approvalGroups = approvalGroups;
             _resultValue.approvalRequired = approvalRequired;

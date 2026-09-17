@@ -98,6 +98,9 @@ class GetPipelineStreamResult:
     @_builtins.property
     @pulumi.getter
     def format(self) -> 'outputs.GetPipelineStreamFormatResult':
+        """
+        Defines the data format of the events.
+        """
         return pulumi.get(self, "format")
 
     @_builtins.property
@@ -129,6 +132,9 @@ class GetPipelineStreamResult:
     @_builtins.property
     @pulumi.getter
     def schema(self) -> 'outputs.GetPipelineStreamSchemaResult':
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @_builtins.property

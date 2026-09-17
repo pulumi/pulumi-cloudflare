@@ -24,6 +24,27 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
         return this.accountId;
     }
 
+    /**
+     * Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     * 
+     */
+    @Import(name="fields")
+    private @Nullable Output<String> fields;
+
+    /**
+     * @return Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     * 
+     */
+    public Optional<Output<String>> fields() {
+        return Optional.ofNullable(this.fields);
+    }
+
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
@@ -70,6 +91,7 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
 
     private GetZeroTrustResourceLibraryApplicationsArgs(GetZeroTrustResourceLibraryApplicationsArgs $) {
         this.accountId = $.accountId;
+        this.fields = $.fields;
         this.filter = $.filter;
         this.limit = $.limit;
         this.maxItems = $.maxItems;
@@ -103,6 +125,33 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param fields Return only the listed properties on each application, as a comma-separated list.
+         * Use this to keep responses small when you only need part of each application — for
+         * example populating a picker with `fields=id,name` instead of downloading every
+         * hostname and IP subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(@Nullable Output<String> fields) {
+            $.fields = fields;
+            return this;
+        }
+
+        /**
+         * @param fields Return only the listed properties on each application, as a comma-separated list.
+         * Use this to keep responses small when you only need part of each application — for
+         * example populating a picker with `fields=id,name` instead of downloading every
+         * hostname and IP subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(String fields) {
+            return fields(Output.of(fields));
         }
 
         public Builder filter(@Nullable Output<String> filter) {

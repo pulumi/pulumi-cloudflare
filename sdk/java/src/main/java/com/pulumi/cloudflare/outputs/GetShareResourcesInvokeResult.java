@@ -27,7 +27,7 @@ public final class GetShareResourcesInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return Filter share resources by resource_type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     private @Nullable String resourceType;
@@ -65,7 +65,7 @@ public final class GetShareResourcesInvokeResult {
     }
     /**
      * @return Filter share resources by resource_type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     public Optional<String> resourceType() {

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.WorkflowConcurrencyArgs;
 import com.pulumi.cloudflare.inputs.WorkflowDefaultRetentionArgs;
 import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
@@ -32,6 +33,13 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
     public Output<String> className() {
         return this.className;
+    }
+
+    @Import(name="concurrency")
+    private @Nullable Output<WorkflowConcurrencyArgs> concurrency;
+
+    public Optional<Output<WorkflowConcurrencyArgs>> concurrency() {
+        return Optional.ofNullable(this.concurrency);
     }
 
     /**
@@ -82,6 +90,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     private WorkflowArgs(WorkflowArgs $) {
         this.accountId = $.accountId;
         this.className = $.className;
+        this.concurrency = $.concurrency;
         this.defaultRetention = $.defaultRetention;
         this.limits = $.limits;
         this.schedules = $.schedules;
@@ -123,6 +132,15 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder className(String className) {
             return className(Output.of(className));
+        }
+
+        public Builder concurrency(@Nullable Output<WorkflowConcurrencyArgs> concurrency) {
+            $.concurrency = concurrency;
+            return this;
+        }
+
+        public Builder concurrency(WorkflowConcurrencyArgs concurrency) {
+            return concurrency(Output.of(concurrency));
         }
 
         /**

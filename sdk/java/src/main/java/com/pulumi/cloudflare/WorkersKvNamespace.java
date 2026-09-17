@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -47,6 +48,7 @@ import javax.annotation.Nullable;
  *         var exampleWorkersKvNamespace = new WorkersKvNamespace("exampleWorkersKvNamespace", WorkersKvNamespaceArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .title("My Own Namespace")
+ *             .jurisdiction("eu")
  *             .build());
  * 
  *     }
@@ -76,6 +78,22 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> jurisdiction;
+
+    /**
+     * @return Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    public Output<Optional<String>> jurisdiction() {
+        return Codegen.optional(this.jurisdiction);
     }
     /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.

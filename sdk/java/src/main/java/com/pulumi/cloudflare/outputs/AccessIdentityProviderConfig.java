@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderConfigHeaderAttribute;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -91,6 +92,11 @@ public final class AccessIdentityProviderConfig {
      */
     private @Nullable Boolean enableEncryption;
     /**
+     * @return Asks the IdP to reauthenticate the user for each SAML authentication request.
+     * 
+     */
+    private @Nullable Boolean forceAuthn;
+    /**
      * @return Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -105,6 +111,14 @@ public final class AccessIdentityProviderConfig {
      * 
      */
     private @Nullable String issuerUrl;
+    /**
+     * @return The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     * 
+     */
+    private @Nullable Integer maxSsoUrlLength;
     /**
      * @return Your okta account url
      * 
@@ -271,6 +285,13 @@ public final class AccessIdentityProviderConfig {
         return Optional.ofNullable(this.enableEncryption);
     }
     /**
+     * @return Asks the IdP to reauthenticate the user for each SAML authentication request.
+     * 
+     */
+    public Optional<Boolean> forceAuthn() {
+        return Optional.ofNullable(this.forceAuthn);
+    }
+    /**
      * @return Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -290,6 +311,16 @@ public final class AccessIdentityProviderConfig {
      */
     public Optional<String> issuerUrl() {
         return Optional.ofNullable(this.issuerUrl);
+    }
+    /**
+     * @return The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     * 
+     */
+    public Optional<Integer> maxSsoUrlLength() {
+        return Optional.ofNullable(this.maxSsoUrlLength);
     }
     /**
      * @return Your okta account url
@@ -397,9 +428,11 @@ public final class AccessIdentityProviderConfig {
         private @Nullable String emailAttributeName;
         private @Nullable String emailClaimName;
         private @Nullable Boolean enableEncryption;
+        private @Nullable Boolean forceAuthn;
         private @Nullable List<AccessIdentityProviderConfigHeaderAttribute> headerAttributes;
         private @Nullable List<String> idpPublicCerts;
         private @Nullable String issuerUrl;
+        private @Nullable Integer maxSsoUrlLength;
         private @Nullable String oktaAccount;
         private @Nullable String oneloginAccount;
         private @Nullable String pingEnvId;
@@ -430,9 +463,11 @@ public final class AccessIdentityProviderConfig {
     	      this.emailAttributeName = defaults.emailAttributeName;
     	      this.emailClaimName = defaults.emailClaimName;
     	      this.enableEncryption = defaults.enableEncryption;
+    	      this.forceAuthn = defaults.forceAuthn;
     	      this.headerAttributes = defaults.headerAttributes;
     	      this.idpPublicCerts = defaults.idpPublicCerts;
     	      this.issuerUrl = defaults.issuerUrl;
+    	      this.maxSsoUrlLength = defaults.maxSsoUrlLength;
     	      this.oktaAccount = defaults.oktaAccount;
     	      this.oneloginAccount = defaults.oneloginAccount;
     	      this.pingEnvId = defaults.pingEnvId;
@@ -544,6 +579,12 @@ public final class AccessIdentityProviderConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder forceAuthn(@Nullable Boolean forceAuthn) {
+
+            this.forceAuthn = forceAuthn;
+            return this;
+        }
+        @CustomType.Setter
         public Builder headerAttributes(@Nullable List<AccessIdentityProviderConfigHeaderAttribute> headerAttributes) {
 
             this.headerAttributes = headerAttributes;
@@ -565,6 +606,12 @@ public final class AccessIdentityProviderConfig {
         public Builder issuerUrl(@Nullable String issuerUrl) {
 
             this.issuerUrl = issuerUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxSsoUrlLength(@Nullable Integer maxSsoUrlLength) {
+
+            this.maxSsoUrlLength = maxSsoUrlLength;
             return this;
         }
         @CustomType.Setter
@@ -659,9 +706,11 @@ public final class AccessIdentityProviderConfig {
             _resultValue.emailAttributeName = emailAttributeName;
             _resultValue.emailClaimName = emailClaimName;
             _resultValue.enableEncryption = enableEncryption;
+            _resultValue.forceAuthn = forceAuthn;
             _resultValue.headerAttributes = headerAttributes;
             _resultValue.idpPublicCerts = idpPublicCerts;
             _resultValue.issuerUrl = issuerUrl;
+            _resultValue.maxSsoUrlLength = maxSsoUrlLength;
             _resultValue.oktaAccount = oktaAccount;
             _resultValue.oneloginAccount = oneloginAccount;
             _resultValue.pingEnvId = pingEnvId;

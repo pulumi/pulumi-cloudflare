@@ -25,6 +25,7 @@ class WorkflowArgs:
                  class_name: pulumi.Input[_builtins.str],
                  script_name: pulumi.Input[_builtins.str],
                  workflow_name: pulumi.Input[_builtins.str],
+                 concurrency: pulumi.Input[Optional['WorkflowConcurrencyArgs']] = None,
                  default_retention: pulumi.Input[Optional['WorkflowDefaultRetentionArgs']] = None,
                  limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]] = None):
@@ -37,6 +38,8 @@ class WorkflowArgs:
         pulumi.set(__self__, "class_name", class_name)
         pulumi.set(__self__, "script_name", script_name)
         pulumi.set(__self__, "workflow_name", workflow_name)
+        if concurrency is not None:
+            pulumi.set(__self__, "concurrency", concurrency)
         if default_retention is not None:
             pulumi.set(__self__, "default_retention", default_retention)
         if limits is not None:
@@ -81,6 +84,15 @@ class WorkflowArgs:
         pulumi.set(self, "workflow_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def concurrency(self) -> pulumi.Input[Optional['WorkflowConcurrencyArgs']]:
+        return pulumi.get(self, "concurrency")
+
+    @concurrency.setter
+    def concurrency(self, value: pulumi.Input[Optional['WorkflowConcurrencyArgs']]):
+        pulumi.set(self, "concurrency", value)
+
+    @_builtins.property
     @pulumi.getter(name="defaultRetention")
     def default_retention(self) -> pulumi.Input[Optional['WorkflowDefaultRetentionArgs']]:
         """
@@ -116,9 +128,10 @@ class _WorkflowState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 concurrency: pulumi.Input[Optional['WorkflowConcurrencyArgs']] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
                  default_retention: pulumi.Input[Optional['WorkflowDefaultRetentionArgs']] = None,
-                 instances: pulumi.Input[Optional['WorkflowInstancesArgs']] = None,
+                 instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None,
                  is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
                  limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None,
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -138,6 +151,8 @@ class _WorkflowState:
             pulumi.set(__self__, "account_id", account_id)
         if class_name is not None:
             pulumi.set(__self__, "class_name", class_name)
+        if concurrency is not None:
+            pulumi.set(__self__, "concurrency", concurrency)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if default_retention is not None:
@@ -184,6 +199,15 @@ class _WorkflowState:
         pulumi.set(self, "class_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def concurrency(self) -> pulumi.Input[Optional['WorkflowConcurrencyArgs']]:
+        return pulumi.get(self, "concurrency")
+
+    @concurrency.setter
+    def concurrency(self, value: pulumi.Input[Optional['WorkflowConcurrencyArgs']]):
+        pulumi.set(self, "concurrency", value)
+
+    @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
@@ -206,11 +230,11 @@ class _WorkflowState:
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> pulumi.Input[Optional['WorkflowInstancesArgs']]:
+    def instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]]:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: pulumi.Input[Optional['WorkflowInstancesArgs']]):
+    def instances(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
@@ -312,6 +336,7 @@ class Workflow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict']]] = None,
                  default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
                  limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
@@ -336,6 +361,9 @@ class Workflow(pulumi.CustomResource):
             workflow_name="x",
             class_name="x",
             script_name="x",
+            concurrency={
+                "limit": 1,
+            },
             default_retention={
                 "error_retention": "5 minutes",
                 "success_retention": "5 minutes",
@@ -383,6 +411,9 @@ class Workflow(pulumi.CustomResource):
             workflow_name="x",
             class_name="x",
             script_name="x",
+            concurrency={
+                "limit": 1,
+            },
             default_retention={
                 "error_retention": "5 minutes",
                 "success_retention": "5 minutes",
@@ -419,6 +450,7 @@ class Workflow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict']]] = None,
                  default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
                  limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
@@ -439,6 +471,7 @@ class Workflow(pulumi.CustomResource):
             if class_name is None and not opts.urn:
                 raise TypeError("Missing required property 'class_name'")
             __props__.__dict__["class_name"] = class_name
+            __props__.__dict__["concurrency"] = concurrency
             __props__.__dict__["default_retention"] = default_retention
             __props__.__dict__["limits"] = limits
             __props__.__dict__["schedules"] = schedules
@@ -468,9 +501,10 @@ class Workflow(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             class_name: pulumi.Input[Optional[_builtins.str]] = None,
+            concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
-            instances: pulumi.Input[Optional[Union['WorkflowInstancesArgs', 'WorkflowInstancesArgsDict']]] = None,
+            instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None,
             is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
             limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -496,6 +530,7 @@ class Workflow(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["class_name"] = class_name
+        __props__.__dict__["concurrency"] = concurrency
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["default_retention"] = default_retention
         __props__.__dict__["instances"] = instances
@@ -522,6 +557,11 @@ class Workflow(pulumi.CustomResource):
         return pulumi.get(self, "class_name")
 
     @_builtins.property
+    @pulumi.getter
+    def concurrency(self) -> pulumi.Output[Optional['outputs.WorkflowConcurrency']]:
+        return pulumi.get(self, "concurrency")
+
+    @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_on")
@@ -536,7 +576,7 @@ class Workflow(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> pulumi.Output['outputs.WorkflowInstances']:
+    def instances(self) -> pulumi.Output[Mapping[str, _builtins.float]]:
         return pulumi.get(self, "instances")
 
     @_builtins.property

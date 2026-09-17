@@ -49,7 +49,7 @@ public final class GetShareResourcesArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * Filter share resources by resource_type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     @Import(name="resourceType")
@@ -57,7 +57,7 @@ public final class GetShareResourcesArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * @return Filter share resources by resource_type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -168,7 +168,7 @@ public final class GetShareResourcesArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param resourceType Filter share resources by resource_type.
-         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class GetShareResourcesArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param resourceType Filter share resources by resource_type.
-         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+         * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
          * 
          * @return builder
          * 

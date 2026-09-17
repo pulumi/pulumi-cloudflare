@@ -19,12 +19,6 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ApiShieldOperationFeaturesSchemaInfoActiveSchemaGetArgs>? ActiveSchema { get; set; }
 
         /// <summary>
-        /// Deprecated. Always false.
-        /// </summary>
-        [Input("learnedAvailable")]
-        public Input<bool>? LearnedAvailable { get; set; }
-
-        /// <summary>
         /// Action taken on requests failing validation.
         /// Available values: "none", "log", "block".
         /// </summary>

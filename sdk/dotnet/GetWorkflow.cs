@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetWorkflowInstancesResult Instances;
+        public readonly ImmutableDictionary<string, double> Instances;
         public readonly string ModifiedOn;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetWorkflowScheduleResult> Schedules;
@@ -166,7 +166,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            Outputs.GetWorkflowInstancesResult instances,
+            ImmutableDictionary<string, double> instances,
 
             string modifiedOn,
 

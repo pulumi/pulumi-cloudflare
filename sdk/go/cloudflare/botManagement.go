@@ -32,14 +32,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
-//				ZoneId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				AiBotsProtection:      pulumi.String("block"),
-//				CfRobotsVariant:       pulumi.String("policy_only"),
-//				ContentBotsProtection: pulumi.String("disabled"),
-//				CrawlerProtection:     pulumi.String("enabled"),
-//				EnableJs:              pulumi.Bool(true),
-//				FightMode:             pulumi.Bool(true),
-//				IsRobotsTxtManaged:    pulumi.Bool(false),
+//				ZoneId:                   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AiBotsProtection:         pulumi.String("block"),
+//				BotPreferenceSyncEnabled: pulumi.Bool(true),
+//				CfRobotsVariant:          pulumi.String("policy_only"),
+//				ContentBotsProtection:    pulumi.String("disabled"),
+//				CrawlerProtection:        pulumi.String("enabled"),
+//				EnableJs:                 pulumi.Bool(true),
+//				FightMode:                pulumi.Bool(true),
+//				IsRobotsTxtManaged:       pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -65,6 +66,8 @@ type BotManagement struct {
 	AutoUpdateModel pulumi.BoolOutput `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled pulumi.BoolOutput `pulumi:"bmCookieEnabled"`
+	// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+	BotPreferenceSyncEnabled pulumi.BoolPtrOutput `pulumi:"botPreferenceSyncEnabled"`
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant pulumi.StringOutput `pulumi:"cfRobotsVariant"`
@@ -145,6 +148,8 @@ type botManagementState struct {
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled *bool `pulumi:"bmCookieEnabled"`
+	// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+	BotPreferenceSyncEnabled *bool `pulumi:"botPreferenceSyncEnabled"`
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant *string `pulumi:"cfRobotsVariant"`
@@ -193,6 +198,8 @@ type BotManagementState struct {
 	AutoUpdateModel pulumi.BoolPtrInput
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled pulumi.BoolPtrInput
+	// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+	BotPreferenceSyncEnabled pulumi.BoolPtrInput
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant pulumi.StringPtrInput
@@ -245,6 +252,8 @@ type botManagementArgs struct {
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled *bool `pulumi:"bmCookieEnabled"`
+	// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+	BotPreferenceSyncEnabled *bool `pulumi:"botPreferenceSyncEnabled"`
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant *string `pulumi:"cfRobotsVariant"`
@@ -290,6 +299,8 @@ type BotManagementArgs struct {
 	AutoUpdateModel pulumi.BoolPtrInput
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled pulumi.BoolPtrInput
+	// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+	BotPreferenceSyncEnabled pulumi.BoolPtrInput
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant pulumi.StringPtrInput
@@ -427,6 +438,11 @@ func (o BotManagementOutput) AutoUpdateModel() pulumi.BoolOutput {
 // Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 func (o BotManagementOutput) BmCookieEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.BmCookieEnabled }).(pulumi.BoolOutput)
+}
+
+// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+func (o BotManagementOutput) BotPreferenceSyncEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.BoolPtrOutput { return v.BotPreferenceSyncEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the Robots Access Control License variant to use.

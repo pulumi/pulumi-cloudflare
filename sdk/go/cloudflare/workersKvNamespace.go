@@ -32,8 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewWorkersKvNamespace(ctx, "example_workers_kv_namespace", &cloudflare.WorkersKvNamespaceArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Title:     pulumi.String("My Own Namespace"),
+//				AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Title:        pulumi.String("My Own Namespace"),
+//				Jurisdiction: pulumi.String("eu"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,6 +55,9 @@ type WorkersKvNamespace struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction pulumi.StringPtrOutput `pulumi:"jurisdiction"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolOutput `pulumi:"supportsUrlEncoding"`
 	// A human-readable string name for a Namespace.
@@ -98,6 +102,9 @@ func GetWorkersKvNamespace(ctx *pulumi.Context,
 type workersKvNamespaceState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
+	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding *bool `pulumi:"supportsUrlEncoding"`
 	// A human-readable string name for a Namespace.
@@ -107,6 +114,9 @@ type workersKvNamespaceState struct {
 type WorkersKvNamespaceState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
+	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction pulumi.StringPtrInput
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolPtrInput
 	// A human-readable string name for a Namespace.
@@ -120,6 +130,9 @@ func (WorkersKvNamespaceState) ElementType() reflect.Type {
 type workersKvNamespaceArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
+	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// A human-readable string name for a Namespace.
 	Title string `pulumi:"title"`
 }
@@ -128,6 +141,9 @@ type workersKvNamespaceArgs struct {
 type WorkersKvNamespaceArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
+	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction pulumi.StringPtrInput
 	// A human-readable string name for a Namespace.
 	Title pulumi.StringInput
 }
@@ -222,6 +238,12 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 // Identifier.
 func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+// Available values: "eu", "fedramp", "us".
+func (o WorkersKvNamespaceOutput) Jurisdiction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringPtrOutput { return v.Jurisdiction }).(pulumi.StringPtrOutput)
 }
 
 // True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".

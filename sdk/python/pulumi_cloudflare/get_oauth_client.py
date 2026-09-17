@@ -27,7 +27,7 @@ class GetOauthClientResult:
     """
     A collection of values returned by getOauthClient.
     """
-    def __init__(__self__, account_id=None, allowed_cors_origins=None, client_id=None, client_name=None, client_uri=None, client_uri_verification=None, created_at=None, grant_types=None, has_rotated_secret=None, logo_uri=None, oauth_client_id=None, policy_uri=None, post_logout_redirect_uris=None, promoted_at=None, redirect_uris=None, response_types=None, scopes=None, token_endpoint_auth_method=None, tos_uri=None, updated_at=None, visibility=None):
+    def __init__(__self__, account_id=None, allowed_cors_origins=None, client_id=None, client_name=None, client_uri=None, client_uri_verification=None, created_at=None, grant_types=None, has_rotated_secret=None, logo_uri=None, oauth_client_id=None, optional_scopes=None, policy_uri=None, post_logout_redirect_uris=None, promoted_at=None, redirect_uris=None, response_types=None, scopes=None, token_endpoint_auth_method=None, tos_uri=None, updated_at=None, visibility=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -61,6 +61,9 @@ class GetOauthClientResult:
         if oauth_client_id and not isinstance(oauth_client_id, str):
             raise TypeError("Expected argument 'oauth_client_id' to be a str")
         pulumi.set(__self__, "oauth_client_id", oauth_client_id)
+        if optional_scopes and not isinstance(optional_scopes, list):
+            raise TypeError("Expected argument 'optional_scopes' to be a list")
+        pulumi.set(__self__, "optional_scopes", optional_scopes)
         if policy_uri and not isinstance(policy_uri, str):
             raise TypeError("Expected argument 'policy_uri' to be a str")
         pulumi.set(__self__, "policy_uri", policy_uri)
@@ -181,6 +184,14 @@ class GetOauthClientResult:
         return pulumi.get(self, "oauth_client_id")
 
     @_builtins.property
+    @pulumi.getter(name="optionalScopes")
+    def optional_scopes(self) -> Sequence[_builtins.str]:
+        """
+        Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
+        """
+        return pulumi.get(self, "optional_scopes")
+
+    @_builtins.property
     @pulumi.getter(name="policyUri")
     def policy_uri(self) -> _builtins.str:
         """
@@ -280,6 +291,7 @@ class AwaitableGetOauthClientResult(GetOauthClientResult):
             has_rotated_secret=self.has_rotated_secret,
             logo_uri=self.logo_uri,
             oauth_client_id=self.oauth_client_id,
+            optional_scopes=self.optional_scopes,
             policy_uri=self.policy_uri,
             post_logout_redirect_uris=self.post_logout_redirect_uris,
             promoted_at=self.promoted_at,
@@ -332,6 +344,7 @@ def get_oauth_client(account_id: Optional[_builtins.str] = None,
         has_rotated_secret=pulumi.get(__ret__, 'has_rotated_secret'),
         logo_uri=pulumi.get(__ret__, 'logo_uri'),
         oauth_client_id=pulumi.get(__ret__, 'oauth_client_id'),
+        optional_scopes=pulumi.get(__ret__, 'optional_scopes'),
         policy_uri=pulumi.get(__ret__, 'policy_uri'),
         post_logout_redirect_uris=pulumi.get(__ret__, 'post_logout_redirect_uris'),
         promoted_at=pulumi.get(__ret__, 'promoted_at'),
@@ -381,6 +394,7 @@ def get_oauth_client_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
         has_rotated_secret=pulumi.get(__response__, 'has_rotated_secret'),
         logo_uri=pulumi.get(__response__, 'logo_uri'),
         oauth_client_id=pulumi.get(__response__, 'oauth_client_id'),
+        optional_scopes=pulumi.get(__response__, 'optional_scopes'),
         policy_uri=pulumi.get(__response__, 'policy_uri'),
         post_logout_redirect_uris=pulumi.get(__response__, 'post_logout_redirect_uris'),
         promoted_at=pulumi.get(__response__, 'promoted_at'),

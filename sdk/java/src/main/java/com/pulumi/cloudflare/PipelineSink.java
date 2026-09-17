@@ -42,7 +42,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.PipelineSinkFormatArgs;
  * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaArgs;
  * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaFieldArgs;
- * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaFormatArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -85,6 +84,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .format(PipelineSinkFormatArgs.builder()
  *                 .type("json")
+ *                 .compression("uncompressed")
  *                 .decimalEncoding("number")
  *                 .timestampFormat("rfc3339")
  *                 .unstructured(true)
@@ -96,12 +96,6 @@ import javax.annotation.Nullable;
  *                     .name("name")
  *                     .required(true)
  *                     .sqlName("sql_name")
- *                     .build())
- *                 .format(PipelineSinkSchemaFormatArgs.builder()
- *                     .type("json")
- *                     .decimalEncoding("number")
- *                     .timestampFormat("rfc3339")
- *                     .unstructured(true)
  *                     .build())
  *                 .inferred(true)
  *                 .build())
@@ -155,9 +149,17 @@ public class PipelineSink extends com.pulumi.resources.CustomResource {
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Defines the output data format of a sink.
+     * 
+     */
     @Export(name="format", refs={PipelineSinkFormat.class}, tree="[0]")
     private Output</* @Nullable */ PipelineSinkFormat> format;
 
+    /**
+     * @return Defines the output data format of a sink.
+     * 
+     */
     public Output<Optional<PipelineSinkFormat>> format() {
         return Codegen.optional(this.format);
     }
@@ -181,9 +183,17 @@ public class PipelineSink extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Defines the schema of the events in the data stream.
+     * 
+     */
     @Export(name="schema", refs={PipelineSinkSchema.class}, tree="[0]")
     private Output</* @Nullable */ PipelineSinkSchema> schema;
 
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     public Output<Optional<PipelineSinkSchema>> schema() {
         return Codegen.optional(this.schema);
     }

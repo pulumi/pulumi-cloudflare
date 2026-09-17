@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetStreamLiveInputPlayback;
 import com.pulumi.cloudflare.outputs.GetStreamLiveInputRecording;
 import com.pulumi.cloudflare.outputs.GetStreamLiveInputRtmps;
 import com.pulumi.cloudflare.outputs.GetStreamLiveInputRtmpsPlayback;
@@ -59,6 +60,11 @@ public final class GetStreamLiveInputResult {
      * 
      */
     private String modified;
+    /**
+     * @return Details for playing a live input&#39;s broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     * 
+     */
+    private GetStreamLiveInputPlayback playback;
     /**
      * @return When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
      * 
@@ -169,6 +175,13 @@ public final class GetStreamLiveInputResult {
         return this.modified;
     }
     /**
+     * @return Details for playing a live input&#39;s broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     * 
+     */
+    public GetStreamLiveInputPlayback playback() {
+        return this.playback;
+    }
+    /**
      * @return When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
      * 
      */
@@ -257,6 +270,7 @@ public final class GetStreamLiveInputResult {
         private String liveInputIdentifier;
         private String meta;
         private String modified;
+        private GetStreamLiveInputPlayback playback;
         private Boolean preferLowLatency;
         private GetStreamLiveInputRecording recording;
         private GetStreamLiveInputRtmps rtmps;
@@ -278,6 +292,7 @@ public final class GetStreamLiveInputResult {
     	      this.liveInputIdentifier = defaults.liveInputIdentifier;
     	      this.meta = defaults.meta;
     	      this.modified = defaults.modified;
+    	      this.playback = defaults.playback;
     	      this.preferLowLatency = defaults.preferLowLatency;
     	      this.recording = defaults.recording;
     	      this.rtmps = defaults.rtmps;
@@ -352,6 +367,14 @@ public final class GetStreamLiveInputResult {
               throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "modified");
             }
             this.modified = modified;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder playback(GetStreamLiveInputPlayback playback) {
+            if (playback == null) {
+              throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "playback");
+            }
+            this.playback = playback;
             return this;
         }
         @CustomType.Setter
@@ -444,6 +467,7 @@ public final class GetStreamLiveInputResult {
             _resultValue.liveInputIdentifier = liveInputIdentifier;
             _resultValue.meta = meta;
             _resultValue.modified = modified;
+            _resultValue.playback = playback;
             _resultValue.preferLowLatency = preferLowLatency;
             _resultValue.recording = recording;
             _resultValue.rtmps = rtmps;

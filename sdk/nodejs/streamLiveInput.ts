@@ -83,6 +83,10 @@ export class StreamLiveInput extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
+     * Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     */
+    declare public /*out*/ readonly playback: pulumi.Output<outputs.StreamLiveInputPlayback>;
+    /**
      * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
      */
     declare public readonly preferLowLatency: pulumi.Output<boolean>;
@@ -146,6 +150,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
             resourceInputs["liveInputIdentifier"] = state?.liveInputIdentifier;
             resourceInputs["meta"] = state?.meta;
             resourceInputs["modified"] = state?.modified;
+            resourceInputs["playback"] = state?.playback;
             resourceInputs["preferLowLatency"] = state?.preferLowLatency;
             resourceInputs["recording"] = state?.recording;
             resourceInputs["rtmps"] = state?.rtmps;
@@ -172,6 +177,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["keysRotatedAt"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
+            resourceInputs["playback"] = undefined /*out*/;
             resourceInputs["rtmps"] = undefined /*out*/;
             resourceInputs["rtmpsPlayback"] = undefined /*out*/;
             resourceInputs["srt"] = undefined /*out*/;
@@ -226,6 +232,10 @@ export interface StreamLiveInputState {
      * The date and time the live input was last modified.
      */
     modified?: pulumi.Input<string | undefined>;
+    /**
+     * Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     */
+    playback?: pulumi.Input<inputs.StreamLiveInputPlayback | undefined>;
     /**
      * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
      */
