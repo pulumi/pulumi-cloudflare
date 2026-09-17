@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ApiShieldOperationFeaturesSchemaInfoActiveSchema;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,11 +17,6 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
      * 
      */
     private @Nullable ApiShieldOperationFeaturesSchemaInfoActiveSchema activeSchema;
-    /**
-     * @return Deprecated. Always false.
-     * 
-     */
-    private @Nullable Boolean learnedAvailable;
     /**
      * @return Action taken on requests failing validation.
      * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
@@ -37,13 +31,6 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
      */
     public Optional<ApiShieldOperationFeaturesSchemaInfoActiveSchema> activeSchema() {
         return Optional.ofNullable(this.activeSchema);
-    }
-    /**
-     * @return Deprecated. Always false.
-     * 
-     */
-    public Optional<Boolean> learnedAvailable() {
-        return Optional.ofNullable(this.learnedAvailable);
     }
     /**
      * @return Action taken on requests failing validation.
@@ -64,13 +51,11 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ApiShieldOperationFeaturesSchemaInfoActiveSchema activeSchema;
-        private @Nullable Boolean learnedAvailable;
         private @Nullable String mitigationAction;
         public Builder() {}
         public Builder(ApiShieldOperationFeaturesSchemaInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeSchema = defaults.activeSchema;
-    	      this.learnedAvailable = defaults.learnedAvailable;
     	      this.mitigationAction = defaults.mitigationAction;
         }
 
@@ -78,12 +63,6 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
         public Builder activeSchema(@Nullable ApiShieldOperationFeaturesSchemaInfoActiveSchema activeSchema) {
 
             this.activeSchema = activeSchema;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder learnedAvailable(@Nullable Boolean learnedAvailable) {
-
-            this.learnedAvailable = learnedAvailable;
             return this;
         }
         @CustomType.Setter
@@ -95,7 +74,6 @@ public final class ApiShieldOperationFeaturesSchemaInfo {
         public ApiShieldOperationFeaturesSchemaInfo build() {
             final var _resultValue = new ApiShieldOperationFeaturesSchemaInfo();
             _resultValue.activeSchema = activeSchema;
-            _resultValue.learnedAvailable = learnedAvailable;
             _resultValue.mitigationAction = mitigationAction;
             return _resultValue;
         }

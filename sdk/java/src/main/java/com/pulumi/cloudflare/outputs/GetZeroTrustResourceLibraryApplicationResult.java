@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustResourceLibraryApplicationFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
@@ -10,6 +11,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustResourceLibraryApplicationResult {
@@ -49,6 +52,7 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
      * 
      */
     private String createdAt;
+    private @Nullable GetZeroTrustResourceLibraryApplicationFilter filter;
     /**
      * @return GenAI score for the application. Returns -1 when no score is available.
      * 
@@ -65,7 +69,7 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
      */
     private String humanId;
     /**
-     * @return The ID of this resource.
+     * @return Returns the application ID.
      * 
      */
     private Integer id;
@@ -158,6 +162,9 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
     public String createdAt() {
         return this.createdAt;
     }
+    public Optional<GetZeroTrustResourceLibraryApplicationFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
     /**
      * @return GenAI score for the application. Returns -1 when no score is available.
      * 
@@ -180,7 +187,7 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
         return this.humanId;
     }
     /**
-     * @return The ID of this resource.
+     * @return Returns the application ID.
      * 
      */
     public Integer id() {
@@ -253,6 +260,7 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
         private String applicationTypeDescription;
         private Integer categoryId;
         private String createdAt;
+        private @Nullable GetZeroTrustResourceLibraryApplicationFilter filter;
         private Double genAiScore;
         private List<String> hostnames;
         private String humanId;
@@ -275,6 +283,7 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
     	      this.applicationTypeDescription = defaults.applicationTypeDescription;
     	      this.categoryId = defaults.categoryId;
     	      this.createdAt = defaults.createdAt;
+    	      this.filter = defaults.filter;
     	      this.genAiScore = defaults.genAiScore;
     	      this.hostnames = defaults.hostnames;
     	      this.humanId = defaults.humanId;
@@ -350,6 +359,12 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
               throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetZeroTrustResourceLibraryApplicationFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -465,6 +480,7 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
             _resultValue.applicationTypeDescription = applicationTypeDescription;
             _resultValue.categoryId = categoryId;
             _resultValue.createdAt = createdAt;
+            _resultValue.filter = filter;
             _resultValue.genAiScore = genAiScore;
             _resultValue.hostnames = hostnames;
             _resultValue.humanId = humanId;

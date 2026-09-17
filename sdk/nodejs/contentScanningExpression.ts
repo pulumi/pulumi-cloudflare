@@ -60,6 +60,10 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 
     declare public readonly bodies: pulumi.Output<outputs.ContentScanningExpressionBody[]>;
     /**
+     * Defines the custom content extraction expression used to reach content objects in the request.
+     */
+    declare public readonly payload: pulumi.Output<string | undefined>;
+    /**
      * Defines an identifier.
      */
     declare public readonly zoneId: pulumi.Output<string>;
@@ -78,6 +82,7 @@ export class ContentScanningExpression extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ContentScanningExpressionState | undefined;
             resourceInputs["bodies"] = state?.bodies;
+            resourceInputs["payload"] = state?.payload;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ContentScanningExpressionArgs | undefined;
@@ -88,6 +93,7 @@ export class ContentScanningExpression extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["bodies"] = args?.bodies;
+            resourceInputs["payload"] = args?.payload;
             resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -101,6 +107,10 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 export interface ContentScanningExpressionState {
     bodies?: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[] | undefined>;
     /**
+     * Defines the custom content extraction expression used to reach content objects in the request.
+     */
+    payload?: pulumi.Input<string | undefined>;
+    /**
      * Defines an identifier.
      */
     zoneId?: pulumi.Input<string | undefined>;
@@ -111,6 +121,10 @@ export interface ContentScanningExpressionState {
  */
 export interface ContentScanningExpressionArgs {
     bodies: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
+    /**
+     * Defines the custom content extraction expression used to reach content objects in the request.
+     */
+    payload?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */

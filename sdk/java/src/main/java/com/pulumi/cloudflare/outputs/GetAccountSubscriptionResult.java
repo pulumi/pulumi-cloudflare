@@ -41,7 +41,7 @@ public final class GetAccountSubscriptionResult {
      */
     private String frequency;
     /**
-     * @return Subscription identifier tag.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     private String id;
@@ -105,7 +105,7 @@ public final class GetAccountSubscriptionResult {
         return this.frequency;
     }
     /**
-     * @return Subscription identifier tag.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public String id() {

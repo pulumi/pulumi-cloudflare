@@ -35,7 +35,13 @@ class PrecursorArgs:
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if default_mode is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""default_mode is deprecated: This attribute is deprecated.""")
+        if default_mode is not None:
             pulumi.set(__self__, "default_mode", default_mode)
+        if enforcement_rules is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""enforcement_rules is deprecated: This attribute is deprecated.""")
         if enforcement_rules is not None:
             pulumi.set(__self__, "enforcement_rules", enforcement_rules)
 
@@ -53,6 +59,7 @@ class PrecursorArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultMode")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def default_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone-level Precursor enforcement mode applied to requests that do
@@ -67,6 +74,7 @@ class PrecursorArgs:
 
     @_builtins.property
     @pulumi.getter(name="enforcementRules")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def enforcement_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrecursorEnforcementRuleArgs']]]]:
         """
         The ordered list of enforcement rules for the zone.
@@ -94,7 +102,13 @@ class _PrecursorState:
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if default_mode is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""default_mode is deprecated: This attribute is deprecated.""")
+        if default_mode is not None:
             pulumi.set(__self__, "default_mode", default_mode)
+        if enforcement_rules is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""enforcement_rules is deprecated: This attribute is deprecated.""")
         if enforcement_rules is not None:
             pulumi.set(__self__, "enforcement_rules", enforcement_rules)
         if zone_id is not None:
@@ -102,6 +116,7 @@ class _PrecursorState:
 
     @_builtins.property
     @pulumi.getter(name="defaultMode")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def default_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone-level Precursor enforcement mode applied to requests that do
@@ -116,6 +131,7 @@ class _PrecursorState:
 
     @_builtins.property
     @pulumi.getter(name="enforcementRules")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def enforcement_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrecursorEnforcementRuleArgs']]]]:
         """
         The ordered list of enforcement rules for the zone.
@@ -282,6 +298,7 @@ class Precursor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultMode")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def default_mode(self) -> pulumi.Output[_builtins.str]:
         """
         The zone-level Precursor enforcement mode applied to requests that do
@@ -292,6 +309,7 @@ class Precursor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enforcementRules")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def enforcement_rules(self) -> pulumi.Output[Sequence['outputs.PrecursorEnforcementRule']]:
         """
         The ordered list of enforcement rules for the zone.

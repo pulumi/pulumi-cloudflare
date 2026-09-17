@@ -33,7 +33,7 @@ type LookupAiSearchInstanceArgs struct {
 type LookupAiSearchInstanceResult struct {
 	AccountId   *string `pulumi:"accountId"`
 	AiGatewayId string  `pulumi:"aiGatewayId"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 	AisearchModel string `pulumi:"aisearchModel"`
 	Cache         bool   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -46,11 +46,10 @@ type LookupAiSearchInstanceResult struct {
 	CreatedAt       string                              `pulumi:"createdAt"`
 	CreatedBy       string                              `pulumi:"createdBy"`
 	CustomMetadatas []GetAiSearchInstanceCustomMetadata `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/qwen/qwen3-vl-embedding-2b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
-	EmbeddingModel string                     `pulumi:"embeddingModel"`
-	Enable         bool                       `pulumi:"enable"`
-	EngineVersion  float64                    `pulumi:"engineVersion"`
-	Filter         *GetAiSearchInstanceFilter `pulumi:"filter"`
+	EmbeddingModel  string                              `pulumi:"embeddingModel"`
+	Enable          bool                                `pulumi:"enable"`
+	EngineVersion   float64                             `pulumi:"engineVersion"`
+	Filter          *GetAiSearchInstanceFilter          `pulumi:"filter"`
 	// Available values: "max", "rrf".
 	FusionMethod string `pulumi:"fusionMethod"`
 	// Deprecated — use indexMethod instead.
@@ -72,10 +71,9 @@ type LookupAiSearchInstanceResult struct {
 	PublicEndpointId     string                                  `pulumi:"publicEndpointId"`
 	PublicEndpointParams GetAiSearchInstancePublicEndpointParams `pulumi:"publicEndpointParams"`
 	Reranking            bool                                    `pulumi:"reranking"`
-	// Available values: "@cf/baai/bge-reranker-base", "".
-	RerankingModel   string                              `pulumi:"rerankingModel"`
-	RetrievalOptions GetAiSearchInstanceRetrievalOptions `pulumi:"retrievalOptions"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	RerankingModel       string                                  `pulumi:"rerankingModel"`
+	RetrievalOptions     GetAiSearchInstanceRetrievalOptions     `pulumi:"retrievalOptions"`
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 	RewriteModel   string                          `pulumi:"rewriteModel"`
 	RewriteQuery   bool                            `pulumi:"rewriteQuery"`
 	ScoreThreshold float64                         `pulumi:"scoreThreshold"`
@@ -130,7 +128,7 @@ func (o LookupAiSearchInstanceResultOutput) AiGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.AiGatewayId }).(pulumi.StringOutput)
 }
 
-// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 func (o LookupAiSearchInstanceResultOutput) AisearchModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.AisearchModel }).(pulumi.StringOutput)
 }
@@ -170,7 +168,6 @@ func (o LookupAiSearchInstanceResultOutput) CustomMetadatas() GetAiSearchInstanc
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) []GetAiSearchInstanceCustomMetadata { return v.CustomMetadatas }).(GetAiSearchInstanceCustomMetadataArrayOutput)
 }
 
-// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/qwen/qwen3-vl-embedding-2b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 func (o LookupAiSearchInstanceResultOutput) EmbeddingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.EmbeddingModel }).(pulumi.StringOutput)
 }
@@ -255,7 +252,6 @@ func (o LookupAiSearchInstanceResultOutput) Reranking() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) bool { return v.Reranking }).(pulumi.BoolOutput)
 }
 
-// Available values: "@cf/baai/bge-reranker-base", "".
 func (o LookupAiSearchInstanceResultOutput) RerankingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.RerankingModel }).(pulumi.StringOutput)
 }
@@ -264,7 +260,7 @@ func (o LookupAiSearchInstanceResultOutput) RetrievalOptions() GetAiSearchInstan
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) GetAiSearchInstanceRetrievalOptions { return v.RetrievalOptions }).(GetAiSearchInstanceRetrievalOptionsOutput)
 }
 
-// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 func (o LookupAiSearchInstanceResultOutput) RewriteModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.RewriteModel }).(pulumi.StringOutput)
 }

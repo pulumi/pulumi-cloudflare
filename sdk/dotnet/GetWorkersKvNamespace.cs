@@ -157,6 +157,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        /// Available values: "eu", "fedramp", "us".
+        /// </summary>
+        public readonly string Jurisdiction;
+        /// <summary>
         /// Namespace identifier tag.
         /// </summary>
         public readonly string? NamespaceId;
@@ -177,6 +182,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string jurisdiction,
+
             string? namespaceId,
 
             bool supportsUrlEncoding,
@@ -186,6 +193,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Filter = filter;
             Id = id;
+            Jurisdiction = jurisdiction;
             NamespaceId = namespaceId;
             SupportsUrlEncoding = supportsUrlEncoding;
             Title = title;

@@ -26,6 +26,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetWorkersScriptsResultObservabilityLogsResult Logs;
         /// <summary>
+        /// Whether query strings are removed from request URLs in logs and traces.
+        /// </summary>
+        public readonly bool RedactQueryString;
+        /// <summary>
         /// Trace settings for the Worker.
         /// </summary>
         public readonly Outputs.GetWorkersScriptsResultObservabilityTracesResult Traces;
@@ -38,11 +42,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetWorkersScriptsResultObservabilityLogsResult logs,
 
+            bool redactQueryString,
+
             Outputs.GetWorkersScriptsResultObservabilityTracesResult traces)
         {
             Enabled = enabled;
             HeadSamplingRate = headSamplingRate;
             Logs = logs;
+            RedactQueryString = redactQueryString;
             Traces = traces;
         }
     }

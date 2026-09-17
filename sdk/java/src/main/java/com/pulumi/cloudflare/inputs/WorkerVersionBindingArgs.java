@@ -247,6 +247,23 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * Available values: &#34;runtime-email-alpha&#34;.
+     * 
+     */
+    @Import(name="identity")
+    private @Nullable Output<String> identity;
+
+    /**
+     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * Available values: &#34;runtime-email-alpha&#34;.
+     * 
+     */
+    public Optional<Output<String>> identity() {
+        return Optional.ofNullable(this.identity);
+    }
+
+    /**
      * Name of the Vectorize index to bind to.
      * 
      */
@@ -293,7 +310,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     @Import(name="jurisdiction")
@@ -301,7 +318,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     public Optional<Output<String>> jurisdiction() {
@@ -673,6 +690,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         this.environment = $.environment;
         this.format = $.format;
         this.id = $.id;
+        this.identity = $.identity;
         this.indexName = $.indexName;
         this.instanceName = $.instanceName;
         this.json = $.json;
@@ -1058,6 +1076,29 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param identity Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+         * Available values: &#34;runtime-email-alpha&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identity(@Nullable Output<String> identity) {
+            $.identity = identity;
+            return this;
+        }
+
+        /**
+         * @param identity Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+         * Available values: &#34;runtime-email-alpha&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identity(String identity) {
+            return identity(Output.of(identity));
+        }
+
+        /**
          * @param indexName Name of the Vectorize index to bind to.
          * 
          * @return builder
@@ -1122,7 +1163,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
          * 
          * @return builder
          * 
@@ -1134,7 +1175,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
          * 
          * @return builder
          * 

@@ -37,6 +37,9 @@ import (
 //				WorkflowName: pulumi.String("x"),
 //				ClassName:    pulumi.String("x"),
 //				ScriptName:   pulumi.String("x"),
+//				Concurrency: &cloudflare.WorkflowConcurrencyArgs{
+//					Limit: pulumi.Int(1),
+//				},
 //				DefaultRetention: &cloudflare.WorkflowDefaultRetentionArgs{
 //					ErrorRetention:   pulumi.Any("5 minutes"),
 //					SuccessRetention: pulumi.Any("5 minutes"),
@@ -67,12 +70,13 @@ import (
 type Workflow struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	ClassName pulumi.StringOutput `pulumi:"className"`
-	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	AccountId   pulumi.StringOutput          `pulumi:"accountId"`
+	ClassName   pulumi.StringOutput          `pulumi:"className"`
+	Concurrency WorkflowConcurrencyPtrOutput `pulumi:"concurrency"`
+	CreatedOn   pulumi.StringOutput          `pulumi:"createdOn"`
 	// Default retention applied to instances of this version when they do not set their own retention.
 	DefaultRetention  WorkflowDefaultRetentionPtrOutput `pulumi:"defaultRetention"`
-	Instances         WorkflowInstancesOutput           `pulumi:"instances"`
+	Instances         pulumi.Float64MapOutput           `pulumi:"instances"`
 	IsDeleted         pulumi.Float64Output              `pulumi:"isDeleted"`
 	Limits            WorkflowLimitsPtrOutput           `pulumi:"limits"`
 	ModifiedOn        pulumi.StringOutput               `pulumi:"modifiedOn"`
@@ -127,12 +131,13 @@ func GetWorkflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workflow resources.
 type workflowState struct {
-	AccountId *string `pulumi:"accountId"`
-	ClassName *string `pulumi:"className"`
-	CreatedOn *string `pulumi:"createdOn"`
+	AccountId   *string              `pulumi:"accountId"`
+	ClassName   *string              `pulumi:"className"`
+	Concurrency *WorkflowConcurrency `pulumi:"concurrency"`
+	CreatedOn   *string              `pulumi:"createdOn"`
 	// Default retention applied to instances of this version when they do not set their own retention.
 	DefaultRetention  *WorkflowDefaultRetention `pulumi:"defaultRetention"`
-	Instances         *WorkflowInstances        `pulumi:"instances"`
+	Instances         map[string]float64        `pulumi:"instances"`
 	IsDeleted         *float64                  `pulumi:"isDeleted"`
 	Limits            *WorkflowLimits           `pulumi:"limits"`
 	ModifiedOn        *string                   `pulumi:"modifiedOn"`
@@ -146,12 +151,13 @@ type workflowState struct {
 }
 
 type WorkflowState struct {
-	AccountId pulumi.StringPtrInput
-	ClassName pulumi.StringPtrInput
-	CreatedOn pulumi.StringPtrInput
+	AccountId   pulumi.StringPtrInput
+	ClassName   pulumi.StringPtrInput
+	Concurrency WorkflowConcurrencyPtrInput
+	CreatedOn   pulumi.StringPtrInput
 	// Default retention applied to instances of this version when they do not set their own retention.
 	DefaultRetention  WorkflowDefaultRetentionPtrInput
-	Instances         WorkflowInstancesPtrInput
+	Instances         pulumi.Float64MapInput
 	IsDeleted         pulumi.Float64PtrInput
 	Limits            WorkflowLimitsPtrInput
 	ModifiedOn        pulumi.StringPtrInput
@@ -169,8 +175,9 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
-	AccountId string `pulumi:"accountId"`
-	ClassName string `pulumi:"className"`
+	AccountId   string               `pulumi:"accountId"`
+	ClassName   string               `pulumi:"className"`
+	Concurrency *WorkflowConcurrency `pulumi:"concurrency"`
 	// Default retention applied to instances of this version when they do not set their own retention.
 	DefaultRetention *WorkflowDefaultRetention `pulumi:"defaultRetention"`
 	Limits           *WorkflowLimits           `pulumi:"limits"`
@@ -181,8 +188,9 @@ type workflowArgs struct {
 
 // The set of arguments for constructing a Workflow resource.
 type WorkflowArgs struct {
-	AccountId pulumi.StringInput
-	ClassName pulumi.StringInput
+	AccountId   pulumi.StringInput
+	ClassName   pulumi.StringInput
+	Concurrency WorkflowConcurrencyPtrInput
 	// Default retention applied to instances of this version when they do not set their own retention.
 	DefaultRetention WorkflowDefaultRetentionPtrInput
 	Limits           WorkflowLimitsPtrInput
@@ -286,6 +294,10 @@ func (o WorkflowOutput) ClassName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.ClassName }).(pulumi.StringOutput)
 }
 
+func (o WorkflowOutput) Concurrency() WorkflowConcurrencyPtrOutput {
+	return o.ApplyT(func(v *Workflow) WorkflowConcurrencyPtrOutput { return v.Concurrency }).(WorkflowConcurrencyPtrOutput)
+}
+
 func (o WorkflowOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
@@ -295,8 +307,8 @@ func (o WorkflowOutput) DefaultRetention() WorkflowDefaultRetentionPtrOutput {
 	return o.ApplyT(func(v *Workflow) WorkflowDefaultRetentionPtrOutput { return v.DefaultRetention }).(WorkflowDefaultRetentionPtrOutput)
 }
 
-func (o WorkflowOutput) Instances() WorkflowInstancesOutput {
-	return o.ApplyT(func(v *Workflow) WorkflowInstancesOutput { return v.Instances }).(WorkflowInstancesOutput)
+func (o WorkflowOutput) Instances() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.Float64MapOutput { return v.Instances }).(pulumi.Float64MapOutput)
 }
 
 func (o WorkflowOutput) IsDeleted() pulumi.Float64Output {

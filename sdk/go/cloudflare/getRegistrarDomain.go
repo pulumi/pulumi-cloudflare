@@ -49,23 +49,23 @@ func LookupRegistrarDomain(ctx *pulumi.Context, args *LookupRegistrarDomainArgs,
 
 // A collection of arguments for invoking getRegistrarDomain.
 type LookupRegistrarDomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Fully qualified domain name (FQDN) including the extension
-	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-	// identifies a registration — the same domain cannot be registered
-	// twice, making it a natural idempotency key for registration requests.
+	// Provides a fully qualified domain name (FQDN), including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+	// a registration. Cloudflare permits only one registration per domain, making
+	// the domain name a natural idempotency key for registration requests.
 	DomainName string `pulumi:"domainName"`
 }
 
 // A collection of values returned by getRegistrarDomain.
 type LookupRegistrarDomainResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Fully qualified domain name (FQDN) including the extension
-	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-	// identifies a registration — the same domain cannot be registered
-	// twice, making it a natural idempotency key for registration requests.
+	// Provides a fully qualified domain name (FQDN), including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+	// a registration. Cloudflare permits only one registration per domain, making
+	// the domain name a natural idempotency key for registration requests.
 	DomainName string `pulumi:"domainName"`
 }
 
@@ -76,12 +76,12 @@ func LookupRegistrarDomainOutput(ctx *pulumi.Context, args LookupRegistrarDomain
 
 // A collection of arguments for invoking getRegistrarDomain.
 type LookupRegistrarDomainOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Fully qualified domain name (FQDN) including the extension
-	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-	// identifies a registration — the same domain cannot be registered
-	// twice, making it a natural idempotency key for registration requests.
+	// Provides a fully qualified domain name (FQDN), including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+	// a registration. Cloudflare permits only one registration per domain, making
+	// the domain name a natural idempotency key for registration requests.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 }
 
@@ -104,15 +104,15 @@ func (o LookupRegistrarDomainResultOutput) ToLookupRegistrarDomainResultOutputWi
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupRegistrarDomainResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrarDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Fully qualified domain name (FQDN) including the extension
-// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-// identifies a registration — the same domain cannot be registered
-// twice, making it a natural idempotency key for registration requests.
+// Provides a fully qualified domain name (FQDN), including the extension
+// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+// a registration. Cloudflare permits only one registration per domain, making
+// the domain name a natural idempotency key for registration requests.
 func (o LookupRegistrarDomainResultOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrarDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
 }

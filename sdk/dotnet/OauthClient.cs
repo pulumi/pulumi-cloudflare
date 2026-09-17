@@ -53,6 +53,10 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         ClientUri = "https://example.com",
     ///         LogoUri = "https://example.com/logo.png",
+    ///         OptionalScopes = new[]
+    ///         {
+    ///             "account.write",
+    ///         },
     ///         PolicyUri = "https://example.com/privacy",
     ///         PostLogoutRedirectUris = new[]
     ///         {
@@ -142,6 +146,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("oauthClientId")]
         public Output<string?> OauthClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// Scopes that the authorizing user may decline during consent. Each value must also appear in `Scopes`. The scopes `Openid`, `Offline`, and `OfflineAccess` cannot be optional.
+        /// </summary>
+        [Output("optionalScopes")]
+        public Output<ImmutableArray<string>> OptionalScopes { get; private set; } = null!;
 
         /// <summary>
         /// URL that points to a privacy policy document.
@@ -308,6 +318,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("oauthClientId")]
         public Input<string>? OauthClientId { get; set; }
+
+        [Input("optionalScopes")]
+        private InputList<string>? _optionalScopes;
+
+        /// <summary>
+        /// Scopes that the authorizing user may decline during consent. Each value must also appear in `Scopes`. The scopes `Openid`, `Offline`, and `OfflineAccess` cannot be optional.
+        /// </summary>
+        public InputList<string> OptionalScopes
+        {
+            get => _optionalScopes ?? (_optionalScopes = new InputList<string>());
+            set => _optionalScopes = value;
+        }
 
         /// <summary>
         /// URL that points to a privacy policy document.
@@ -484,6 +506,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("oauthClientId")]
         public Input<string>? OauthClientId { get; set; }
+
+        [Input("optionalScopes")]
+        private InputList<string>? _optionalScopes;
+
+        /// <summary>
+        /// Scopes that the authorizing user may decline during consent. Each value must also appear in `Scopes`. The scopes `Openid`, `Offline`, and `OfflineAccess` cannot be optional.
+        /// </summary>
+        public InputList<string> OptionalScopes
+        {
+            get => _optionalScopes ?? (_optionalScopes = new InputList<string>());
+            set => _optionalScopes = value;
+        }
 
         /// <summary>
         /// URL that points to a privacy policy document.

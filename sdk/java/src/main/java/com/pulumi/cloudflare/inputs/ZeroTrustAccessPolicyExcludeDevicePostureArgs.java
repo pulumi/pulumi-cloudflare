@@ -8,11 +8,28 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustAccessPolicyExcludeDevicePostureArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustAccessPolicyExcludeDevicePostureArgs Empty = new ZeroTrustAccessPolicyExcludeDevicePostureArgs();
+
+    /**
+     * The ID of the account that owns the device posture integration.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return The ID of the account that owns the device posture integration.
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
 
     /**
      * The ID of a device posture integration.
@@ -32,6 +49,7 @@ public final class ZeroTrustAccessPolicyExcludeDevicePostureArgs extends com.pul
     private ZeroTrustAccessPolicyExcludeDevicePostureArgs() {}
 
     private ZeroTrustAccessPolicyExcludeDevicePostureArgs(ZeroTrustAccessPolicyExcludeDevicePostureArgs $) {
+        this.accountId = $.accountId;
         this.integrationUid = $.integrationUid;
     }
 
@@ -51,6 +69,27 @@ public final class ZeroTrustAccessPolicyExcludeDevicePostureArgs extends com.pul
 
         public Builder(ZeroTrustAccessPolicyExcludeDevicePostureArgs defaults) {
             $ = new ZeroTrustAccessPolicyExcludeDevicePostureArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountId The ID of the account that owns the device posture integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId The ID of the account that owns the device posture integration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**

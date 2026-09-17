@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineSinkFormat {
     /**
-     * @return Available values: &#34;uncompressed&#34;, &#34;snappy&#34;, &#34;gzip&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
+     * @return Specifies the compression applied to JSON sink output.
+     * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
      * 
      */
     private @Nullable String compression;
@@ -39,7 +40,8 @@ public final class PipelineSinkFormat {
 
     private PipelineSinkFormat() {}
     /**
-     * @return Available values: &#34;uncompressed&#34;, &#34;snappy&#34;, &#34;gzip&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
+     * @return Specifies the compression applied to JSON sink output.
+     * Available values: &#34;uncompressed&#34;, &#34;gzip&#34;, &#34;snappy&#34;, &#34;zstd&#34;, &#34;lz4&#34;.
      * 
      */
     public Optional<String> compression() {

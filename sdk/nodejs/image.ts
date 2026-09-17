@@ -10,22 +10,12 @@ import * as utilities from "./utilities";
  * - `Images Read`
  * - `Images Write`
  *
- * ## Example Usage
+ * > Set either `file` (base64-encoded image data, e.g. from
+ *   `filebase64`)
+ *   or `url` (fetched server-side), not both.
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleImage = new cloudflare.Image("example_image", {
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     imageId: "id",
- *     creator: "creator",
- *     file: "Example data",
- *     metadata: {},
- *     requireSignedUrls: true,
- *     url: "https://example.com/path/to/logo.png",
- * });
- * ```
+ * > `requireSignedUrls = true` is rejected for images with a custom `id` (API
+ *   error 5410). Since `id` is required here, leave it unset or `false`.
  *
  * ## Import
  *

@@ -291,6 +291,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? OriginErrorPagePassthru { get; set; }
 
         /// <summary>
+        /// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+        /// </summary>
+        [Input("originRangeRequests")]
+        public Input<Inputs.RulesetRuleActionParametersOriginRangeRequestsArgs>? OriginRangeRequests { get; set; }
+
+        /// <summary>
         /// A set of overrides to apply to the target ruleset.
         /// </summary>
         [Input("overrides")]

@@ -17,6 +17,23 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
 
     public static final CloudConnectorRulesRuleArgs Empty = new CloudConnectorRulesRuleArgs();
 
+    /**
+     * Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
+     * 
+     */
+    @Import(name="cloudConnectorRulesProvider")
+    private @Nullable Output<String> cloudConnectorRulesProvider;
+
+    /**
+     * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
+     * 
+     */
+    public Optional<Output<String>> cloudConnectorRulesProvider() {
+        return Optional.ofNullable(this.cloudConnectorRulesProvider);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -60,32 +77,15 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.parameters);
     }
 
-    /**
-     * Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
-     * 
-     */
-    @Import(name="provider")
-    private @Nullable Output<String> provider;
-
-    /**
-     * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
-     * 
-     */
-    public Optional<Output<String>> provider() {
-        return Optional.ofNullable(this.provider);
-    }
-
     private CloudConnectorRulesRuleArgs() {}
 
     private CloudConnectorRulesRuleArgs(CloudConnectorRulesRuleArgs $) {
+        this.cloudConnectorRulesProvider = $.cloudConnectorRulesProvider;
         this.description = $.description;
         this.enabled = $.enabled;
         this.expression = $.expression;
         this.id = $.id;
         this.parameters = $.parameters;
-        this.provider = $.provider;
     }
 
     public static Builder builder() {
@@ -104,6 +104,29 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
 
         public Builder(CloudConnectorRulesRuleArgs defaults) {
             $ = new CloudConnectorRulesRuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cloudConnectorRulesProvider Cloud Provider type
+         * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudConnectorRulesProvider(@Nullable Output<String> cloudConnectorRulesProvider) {
+            $.cloudConnectorRulesProvider = cloudConnectorRulesProvider;
+            return this;
+        }
+
+        /**
+         * @param cloudConnectorRulesProvider Cloud Provider type
+         * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudConnectorRulesProvider(String cloudConnectorRulesProvider) {
+            return cloudConnectorRulesProvider(Output.of(cloudConnectorRulesProvider));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -161,29 +184,6 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
          */
         public Builder parameters(CloudConnectorRulesRuleParametersArgs parameters) {
             return parameters(Output.of(parameters));
-        }
-
-        /**
-         * @param provider Cloud Provider type
-         * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder provider(@Nullable Output<String> provider) {
-            $.provider = provider;
-            return this;
-        }
-
-        /**
-         * @param provider Cloud Provider type
-         * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder provider(String provider) {
-            return provider(Output.of(provider));
         }
 
         public CloudConnectorRulesRuleArgs build() {

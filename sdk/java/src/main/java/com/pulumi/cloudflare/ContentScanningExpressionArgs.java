@@ -10,6 +10,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ContentScanningExpressionArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,6 +23,21 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
     public Output<List<ContentScanningExpressionBodyArgs>> bodies() {
         return this.bodies;
+    }
+
+    /**
+     * Defines the custom content extraction expression used to reach content objects in the request.
+     * 
+     */
+    @Import(name="payload")
+    private @Nullable Output<String> payload;
+
+    /**
+     * @return Defines the custom content extraction expression used to reach content objects in the request.
+     * 
+     */
+    public Optional<Output<String>> payload() {
+        return Optional.ofNullable(this.payload);
     }
 
     /**
@@ -42,6 +59,7 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
     private ContentScanningExpressionArgs(ContentScanningExpressionArgs $) {
         this.bodies = $.bodies;
+        this.payload = $.payload;
         this.zoneId = $.zoneId;
     }
 
@@ -74,6 +92,27 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
         public Builder bodies(ContentScanningExpressionBodyArgs... bodies) {
             return bodies(List.of(bodies));
+        }
+
+        /**
+         * @param payload Defines the custom content extraction expression used to reach content objects in the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payload(@Nullable Output<String> payload) {
+            $.payload = payload;
+            return this;
+        }
+
+        /**
+         * @param payload Defines the custom content extraction expression used to reach content objects in the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payload(String payload) {
+            return payload(Output.of(payload));
         }
 
         /**

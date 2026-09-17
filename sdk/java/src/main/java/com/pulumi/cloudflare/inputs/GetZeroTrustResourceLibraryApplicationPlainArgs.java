@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustResourceLibraryApplicationFilter;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustResourceLibraryApplicationPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -21,25 +24,33 @@ public final class GetZeroTrustResourceLibraryApplicationPlainArgs extends com.p
         return this.accountId;
     }
 
-    /**
-     * The ID of this resource.
-     * 
-     */
-    @Import(name="id", required=true)
-    private Integer id;
+    @Import(name="filter")
+    private @Nullable GetZeroTrustResourceLibraryApplicationFilter filter;
+
+    public Optional<GetZeroTrustResourceLibraryApplicationFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
 
     /**
-     * @return The ID of this resource.
+     * Returns the application ID.
      * 
      */
-    public Integer id() {
-        return this.id;
+    @Import(name="id")
+    private @Nullable Integer id;
+
+    /**
+     * @return Returns the application ID.
+     * 
+     */
+    public Optional<Integer> id() {
+        return Optional.ofNullable(this.id);
     }
 
     private GetZeroTrustResourceLibraryApplicationPlainArgs() {}
 
     private GetZeroTrustResourceLibraryApplicationPlainArgs(GetZeroTrustResourceLibraryApplicationPlainArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.id = $.id;
     }
 
@@ -66,13 +77,18 @@ public final class GetZeroTrustResourceLibraryApplicationPlainArgs extends com.p
             return this;
         }
 
+        public Builder filter(@Nullable GetZeroTrustResourceLibraryApplicationFilter filter) {
+            $.filter = filter;
+            return this;
+        }
+
         /**
-         * @param id The ID of this resource.
+         * @param id Returns the application ID.
          * 
          * @return builder
          * 
          */
-        public Builder id(Integer id) {
+        public Builder id(@Nullable Integer id) {
             $.id = id;
             return this;
         }
@@ -80,9 +96,6 @@ public final class GetZeroTrustResourceLibraryApplicationPlainArgs extends com.p
         public GetZeroTrustResourceLibraryApplicationPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationPlainArgs", "accountId");
-            }
-            if ($.id == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationPlainArgs", "id");
             }
             return $;
         }

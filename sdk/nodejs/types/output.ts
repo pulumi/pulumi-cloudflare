@@ -1380,6 +1380,10 @@ export interface AccessGroupExcludeCommonName {
 
 export interface AccessGroupExcludeDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -1632,6 +1636,10 @@ export interface AccessGroupIncludeCommonName {
 }
 
 export interface AccessGroupIncludeDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
     /**
      * The ID of a device posture integration.
      */
@@ -1886,6 +1894,10 @@ export interface AccessGroupRequireCommonName {
 
 export interface AccessGroupRequireDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -2112,6 +2124,10 @@ export interface AccessIdentityProviderConfig {
      */
     enableEncryption: boolean;
     /**
+     * Asks the IdP to reauthenticate the user for each SAML authentication request.
+     */
+    forceAuthn?: boolean;
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      */
     headerAttributes?: outputs.AccessIdentityProviderConfigHeaderAttribute[];
@@ -2123,6 +2139,13 @@ export interface AccessIdentityProviderConfig {
      * IdP Entity ID or Issuer URL
      */
     issuerUrl?: string;
+    /**
+     * The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     */
+    maxSsoUrlLength?: number;
     /**
      * Your okta account url
      */
@@ -2469,6 +2492,10 @@ export interface AccessPolicyExcludeCommonName {
 
 export interface AccessPolicyExcludeDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -2721,6 +2748,10 @@ export interface AccessPolicyIncludeCommonName {
 }
 
 export interface AccessPolicyIncludeDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
     /**
      * The ID of a device posture integration.
      */
@@ -2989,6 +3020,10 @@ export interface AccessPolicyRequireCommonName {
 }
 
 export interface AccessPolicyRequireDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
     /**
      * The ID of a device posture integration.
      */
@@ -3927,7 +3962,7 @@ export interface AiSearchInstanceSourceParamsWebCrawler {
      * Available values: "sitemap", "discover".
      */
     parseType: string;
-    storeOptions?: outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
+    storeOptions: outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
 }
 
 export interface AiSearchInstanceSourceParamsWebCrawlerDiscoverOptions {
@@ -3989,10 +4024,7 @@ export interface AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelect
 export interface AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
     r2Jurisdiction: string;
     storageId: string;
-    /**
-     * Available values: "r2".
-     */
-    storageType?: string;
+    storageType: string;
 }
 
 export interface AiSearchNamespacePublicEndpointParams {
@@ -4164,10 +4196,6 @@ export interface ApiShieldOperationFeaturesSchemaInfo {
      */
     activeSchema: outputs.ApiShieldOperationFeaturesSchemaInfoActiveSchema;
     /**
-     * Deprecated. Always false.
-     */
-    learnedAvailable: boolean;
-    /**
      * Action taken on requests failing validation.
      * Available values: "none", "log", "block".
      */
@@ -4180,10 +4208,6 @@ export interface ApiShieldOperationFeaturesSchemaInfoActiveSchema {
      * UUID.
      */
     id: string;
-    /**
-     * True if schema is Cloudflare-provided.
-     */
-    isLearned: boolean;
     /**
      * Schema file name.
      */
@@ -4534,6 +4558,11 @@ export interface ClientCertificateCertificateAuthority {
 }
 
 export interface CloudConnectorRulesRule {
+    /**
+     * Cloud Provider type
+     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
+     */
+    cloudConnectorRulesProvider?: string;
     description?: string;
     enabled?: boolean;
     expression?: string;
@@ -4542,11 +4571,6 @@ export interface CloudConnectorRulesRule {
      * Parameters of Cloud Connector Rule
      */
     parameters?: outputs.CloudConnectorRulesRuleParameters;
-    /**
-     * Cloud Provider type
-     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
-     */
-    provider?: string;
 }
 
 export interface CloudConnectorRulesRuleParameters {
@@ -4582,7 +4606,7 @@ export interface ConnectivityDirectoryServiceTlsSettings {
 
 export interface ContentScanningExpressionBody {
     /**
-     * Defines the ruleset expression to use in matching content objects.
+     * Defines the custom content extraction expression used to reach content objects in the request.
      */
     payload: string;
 }
@@ -5266,133 +5290,6 @@ export interface EmailRoutingCatchAllMatcher {
     type: string;
 }
 
-export interface EmailRoutingDnsError {
-    code: number;
-    documentationUrl: string;
-    message: string;
-    source: outputs.EmailRoutingDnsErrorSource;
-}
-
-export interface EmailRoutingDnsErrorSource {
-    pointer: string;
-}
-
-export interface EmailRoutingDnsMessage {
-    code: number;
-    documentationUrl: string;
-    message: string;
-    source: outputs.EmailRoutingDnsMessageSource;
-}
-
-export interface EmailRoutingDnsMessageSource {
-    pointer: string;
-}
-
-export interface EmailRoutingDnsResult {
-    /**
-     * DNS record content.
-     */
-    content: string;
-    errors: outputs.EmailRoutingDnsResultError[];
-    /**
-     * DNS record name (or @ for the zone apex).
-     */
-    name: string;
-    /**
-     * Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-     */
-    priority: number;
-    records: outputs.EmailRoutingDnsResultRecord[];
-    /**
-     * Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-     */
-    ttl: number;
-    /**
-     * DNS record type.
-     * Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-     */
-    type: string;
-}
-
-export interface EmailRoutingDnsResultError {
-    code: string;
-    /**
-     * List of records needed to enable an Email Routing zone.
-     */
-    missing: outputs.EmailRoutingDnsResultErrorMissing;
-}
-
-export interface EmailRoutingDnsResultErrorMissing {
-    /**
-     * DNS record content.
-     */
-    content: string;
-    /**
-     * DNS record name (or @ for the zone apex).
-     */
-    name: string;
-    /**
-     * Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-     */
-    priority: number;
-    /**
-     * Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-     */
-    ttl: number;
-    /**
-     * DNS record type.
-     * Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-     */
-    type: string;
-}
-
-export interface EmailRoutingDnsResultInfo {
-    /**
-     * Total number of results for the requested service.
-     */
-    emailRoutingDnsCount: number;
-    /**
-     * Current page within paginated list of results.
-     */
-    page: number;
-    /**
-     * Number of results per page of results.
-     */
-    perPage: number;
-    /**
-     * Total results available without any search parameters.
-     */
-    totalCount: number;
-    /**
-     * The number of total pages in the entire result set.
-     */
-    totalPages: number;
-}
-
-export interface EmailRoutingDnsResultRecord {
-    /**
-     * DNS record content.
-     */
-    content: string;
-    /**
-     * DNS record name (or @ for the zone apex).
-     */
-    name: string;
-    /**
-     * Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-     */
-    priority: number;
-    /**
-     * Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-     */
-    ttl: number;
-    /**
-     * DNS record type.
-     * Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-     */
-    type: string;
-}
-
 export interface EmailRoutingRuleAction {
     /**
      * Type of supported action.
@@ -5417,6 +5314,18 @@ export interface EmailRoutingRuleMatcher {
      * Value for matcher.
      */
     value?: string;
+}
+
+export interface EmailSecurityDomainAuthorization {
+    authorized: boolean;
+    statusMessage: string;
+    timestamp: string;
+}
+
+export interface EmailSecurityDomainEmailsProcessed {
+    timestamp: string;
+    totalEmailsProcessed: number;
+    totalEmailsProcessedPrevious: number;
 }
 
 export interface FilterBody {
@@ -8275,10 +8184,6 @@ export interface GetApiShieldOperationFeaturesSchemaInfo {
      */
     activeSchema: outputs.GetApiShieldOperationFeaturesSchemaInfoActiveSchema;
     /**
-     * Deprecated. Always false.
-     */
-    learnedAvailable: boolean;
-    /**
      * Action taken on requests failing validation.
      * Available values: "none", "log", "block".
      */
@@ -8291,10 +8196,6 @@ export interface GetApiShieldOperationFeaturesSchemaInfoActiveSchema {
      * UUID.
      */
     id: string;
-    /**
-     * True if schema is Cloudflare-provided.
-     */
-    isLearned: boolean;
     /**
      * Schema file name.
      */
@@ -8530,10 +8431,6 @@ export interface GetApiShieldOperationsResultFeaturesSchemaInfo {
      */
     activeSchema: outputs.GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema;
     /**
-     * Deprecated. Always false.
-     */
-    learnedAvailable: boolean;
-    /**
      * Action taken on requests failing validation.
      * Available values: "none", "log", "block".
      */
@@ -8546,10 +8443,6 @@ export interface GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
      * UUID.
      */
     id: string;
-    /**
-     * True if schema is Cloudflare-provided.
-     */
-    isLearned: boolean;
     /**
      * Schema file name.
      */
@@ -9464,23 +9357,7 @@ export interface GetClientCertificatesResultCertificateAuthority {
     name: string;
 }
 
-export interface GetCloudConnectorRulesRule {
-    description: string;
-    enabled: boolean;
-    expression: string;
-    id: string;
-    /**
-     * Parameters of Cloud Connector Rule
-     */
-    parameters: outputs.GetCloudConnectorRulesRuleParameters;
-    /**
-     * Cloud Provider type
-     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
-     */
-    provider: string;
-}
-
-export interface GetCloudConnectorRulesRuleParameters {
+export interface GetCloudConnectorRulesParameters {
     /**
      * Host to perform Cloud Connection to
      */
@@ -9665,11 +9542,11 @@ export interface GetConnectivityDirectoryServicesResultTlsSettings {
 
 export interface GetContentScanningExpressionsResult {
     /**
-     * defines the unique ID for this custom scan expression.
+     * Defines the unique ID for this Content Scanning custom expression.
      */
     id: string;
     /**
-     * Defines the ruleset expression to use in matching content objects.
+     * Defines the custom content extraction expression used to reach content objects in the request.
      */
     payload: string;
 }
@@ -11486,110 +11363,7 @@ export interface GetEmailRoutingCatchAllMatcher {
     type: string;
 }
 
-export interface GetEmailRoutingDnsError {
-    code: number;
-    documentationUrl: string;
-    message: string;
-    source: outputs.GetEmailRoutingDnsErrorSource;
-}
-
-export interface GetEmailRoutingDnsErrorSource {
-    pointer: string;
-}
-
-export interface GetEmailRoutingDnsMessage {
-    code: number;
-    documentationUrl: string;
-    message: string;
-    source: outputs.GetEmailRoutingDnsMessageSource;
-}
-
-export interface GetEmailRoutingDnsMessageSource {
-    pointer: string;
-}
-
-export interface GetEmailRoutingDnsResult {
-    /**
-     * DNS record content.
-     */
-    content: string;
-    errors: outputs.GetEmailRoutingDnsResultError[];
-    /**
-     * DNS record name (or @ for the zone apex).
-     */
-    name: string;
-    /**
-     * Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-     */
-    priority: number;
-    records: outputs.GetEmailRoutingDnsResultRecord[];
-    /**
-     * Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-     */
-    ttl: number;
-    /**
-     * DNS record type.
-     * Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-     */
-    type: string;
-}
-
-export interface GetEmailRoutingDnsResultError {
-    code: string;
-    /**
-     * List of records needed to enable an Email Routing zone.
-     */
-    missing: outputs.GetEmailRoutingDnsResultErrorMissing;
-}
-
-export interface GetEmailRoutingDnsResultErrorMissing {
-    /**
-     * DNS record content.
-     */
-    content: string;
-    /**
-     * DNS record name (or @ for the zone apex).
-     */
-    name: string;
-    /**
-     * Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-     */
-    priority: number;
-    /**
-     * Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-     */
-    ttl: number;
-    /**
-     * DNS record type.
-     * Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-     */
-    type: string;
-}
-
-export interface GetEmailRoutingDnsResultInfo {
-    /**
-     * Total number of results for the requested service.
-     */
-    emailRoutingDnsCount: number;
-    /**
-     * Current page within paginated list of results.
-     */
-    page: number;
-    /**
-     * Number of results per page of results.
-     */
-    perPage: number;
-    /**
-     * Total results available without any search parameters.
-     */
-    totalCount: number;
-    /**
-     * The number of total pages in the entire result set.
-     */
-    totalPages: number;
-}
-
-export interface GetEmailRoutingDnsResultRecord {
+export interface GetEmailRoutingDnsDn {
     /**
      * DNS record content.
      */
@@ -11705,6 +11479,113 @@ export interface GetEmailRoutingRulesResultMatcher {
     value: string;
 }
 
+export interface GetEmailSecurityAllowPoliciesResult {
+    comments: string;
+    createdAt: string;
+    /**
+     * Allow policy identifier.
+     */
+    id: string;
+    /**
+     * Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply.
+     */
+    isAcceptableSender: boolean;
+    /**
+     * Bypasses all detections for messages to this recipient.
+     */
+    isExemptRecipient: boolean;
+    /**
+     * Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
+     *
+     * @deprecated Use `isExemptRecipient` instead.
+     */
+    isRecipient: boolean;
+    isRegex: boolean;
+    /**
+     * Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
+     *
+     * @deprecated Use `isTrustedSender` instead.
+     */
+    isSender: boolean;
+    /**
+     * Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
+     *
+     * @deprecated Use `isAcceptableSender` instead.
+     */
+    isSpoof: boolean;
+    /**
+     * Bypasses all detections and link following for messages from this sender.
+     */
+    isTrustedSender: boolean;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated Use `modifiedAt` instead.
+     */
+    lastModified: string;
+    modifiedAt: string;
+    /**
+     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     */
+    pattern: string;
+    /**
+     * Type of pattern matching.
+     * - EMAIL: matches a full email address (e.g. `user@example.com`)
+     * - DOMAIN: matches a domain name (e.g. `example.com`)
+     * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+     *   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
+    patternType: string;
+    /**
+     * Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication.
+     */
+    verifySender: boolean;
+}
+
+export interface GetEmailSecurityAllowPolicyFilter {
+    /**
+     * The sorting direction.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious).
+     */
+    isAcceptableSender?: boolean;
+    /**
+     * Filter to show only policies where messages to the recipient bypass all detections.
+     */
+    isExemptRecipient?: boolean;
+    /**
+     * Filter to show only policies where messages from the sender bypass all detections and link following.
+     */
+    isTrustedSender?: boolean;
+    /**
+     * Field to sort by.
+     * Available values: "pattern", "createdAt".
+     */
+    order?: string;
+    pattern?: string;
+    /**
+     * Type of pattern matching.
+     * - EMAIL: matches a full email address (e.g. `user@example.com`)
+     * - DOMAIN: matches a domain name (e.g. `example.com`)
+     * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+     *   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     */
+    patternType?: string;
+    /**
+     * Search term for filtering records. Behavior may change.
+     */
+    search?: string;
+    /**
+     * Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.
+     */
+    verifySender?: boolean;
+}
+
 export interface GetEmailSecurityBlockSenderFilter {
     /**
      * The sorting direction.
@@ -11735,7 +11616,7 @@ export interface GetEmailSecurityBlockSendersResult {
     comments: string;
     createdAt: string;
     /**
-     * Blocked sender pattern identifier
+     * Blocked sender pattern identifier.
      */
     id: string;
     isRegex: boolean;
@@ -11747,21 +11628,130 @@ export interface GetEmailSecurityBlockSendersResult {
     lastModified: string;
     modifiedAt: string;
     /**
-     * The pattern value to match against. Format depends on `patternType`:
-     * - EMAIL: a valid email address, e.g. `user@example.com`
-     * - DOMAIN: a valid domain name, e.g. `example.com`
-     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
      */
     pattern: string;
     /**
      * Type of pattern matching.
      * - EMAIL: matches a full email address (e.g. `user@example.com`)
      * - DOMAIN: matches a domain name (e.g. `example.com`)
-     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
      *   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType: string;
+}
+
+export interface GetEmailSecurityDomainAuthorization {
+    authorized: boolean;
+    statusMessage: string;
+    timestamp: string;
+}
+
+export interface GetEmailSecurityDomainEmailsProcessed {
+    timestamp: string;
+    totalEmailsProcessed: number;
+    totalEmailsProcessedPrevious: number;
+}
+
+export interface GetEmailSecurityDomainFilter {
+    /**
+     * Currently active delivery mode to filter by.
+     * Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+     */
+    activeDeliveryMode?: string;
+    /**
+     * Delivery mode to filter by.
+     * Available values: "DIRECT", "BCC", "JOURNAL", "API", "RETRO_SCAN".
+     */
+    allowedDeliveryMode?: string;
+    /**
+     * The sorting direction.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Domain names to filter by.
+     */
+    domains?: string[];
+    /**
+     * Integration ID to filter by.
+     */
+    integrationId?: string;
+    /**
+     * Field to sort by.
+     * Available values: "domain", "createdAt".
+     */
+    order?: string;
+    /**
+     * Search term for filtering records. Behavior may change.
+     */
+    search?: string;
+    /**
+     * Filters response to domains with the provided status.
+     * Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+     */
+    status?: string;
+}
+
+export interface GetEmailSecurityDomainsResult {
+    allowedDeliveryModes: string[];
+    authorization: outputs.GetEmailSecurityDomainsResultAuthorization;
+    createdAt: string;
+    /**
+     * Available values: "none", "good", "invalid".
+     */
+    dmarcStatus: string;
+    domain: string;
+    dropDispositions: string[];
+    emailsProcessed: outputs.GetEmailSecurityDomainsResultEmailsProcessed;
+    /**
+     * Available values: "AllItems", "Inbox".
+     */
+    folder: string;
+    /**
+     * Domain identifier.
+     */
+    id: string;
+    /**
+     * Available values: "Microsoft", "Google".
+     */
+    inboxProvider: string;
+    integrationId: string;
+    ipRestrictions: string[];
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated Use `modifiedAt` instead.
+     */
+    lastModified: string;
+    lookbackHops: number;
+    modifiedAt: string;
+    o365TenantId: string;
+    regions: string[];
+    requireTlsInbound: boolean;
+    requireTlsOutbound: boolean;
+    /**
+     * Available values: "none", "good", "neutral", "open", "invalid".
+     */
+    spfStatus: string;
+    /**
+     * Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+     */
+    status: string;
+    transport: string;
+}
+
+export interface GetEmailSecurityDomainsResultAuthorization {
+    authorized: boolean;
+    statusMessage: string;
+    timestamp: string;
+}
+
+export interface GetEmailSecurityDomainsResultEmailsProcessed {
+    timestamp: string;
+    totalEmailsProcessed: number;
+    totalEmailsProcessedPrevious: number;
 }
 
 export interface GetEmailSecurityImpersonationRegistriesResult {
@@ -11864,6 +11854,51 @@ export interface GetEmailSecurityTrustedDomainsListResult {
     lastModified: string;
     modifiedAt: string;
     pattern: string;
+}
+
+export interface GetEmailSendingSubdomainsResult {
+    /**
+     * The date and time the destination address has been created.
+     */
+    created: string;
+    /**
+     * The DKIM selector used for email signing. Wildcard rows publish the selector and sign with `d=<base>`.
+     */
+    dkimSelector: string;
+    /**
+     * Whether a send request that includes a recipient suppressed on
+     * this subdomain drops that recipient and still delivers to the
+     * rest, instead of failing the entire request.
+     */
+    dropSuppressedRecipients: boolean;
+    /**
+     * Whether Email Sending is enabled on this subdomain.
+     */
+    enabled: boolean;
+    /**
+     * Sending subdomain identifier.
+     */
+    id: string;
+    /**
+     * The date and time the destination address was last modified.
+     */
+    modified: string;
+    /**
+     * The exact domain name or a leftmost wildcard such as `*.example.com`.
+     */
+    name: string;
+    /**
+     * Whether sent messages from this subdomain can be previewed in the activity log.
+     */
+    previewEnabled: boolean;
+    /**
+     * The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.<base>`.
+     */
+    returnPathDomain: string;
+    /**
+     * Sending subdomain identifier.
+     */
+    tag: string;
 }
 
 export interface GetFilterFilter {
@@ -14009,7 +14044,7 @@ export interface GetLogpushJobOutputOptions {
 export interface GetLogpushJobsResult {
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+     * Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
      */
     dataset: string;
     /**
@@ -14281,6 +14316,8 @@ export interface GetMagicTransitConnectorsResult {
     lastUpdated: string;
     licenseKey: string;
     notes: string;
+    primary: boolean;
+    siteId: string;
     timezone: string;
 }
 
@@ -14483,6 +14520,8 @@ export interface GetMagicTransitSiteLanStaticAddressingDhcpServer {
     dhcpPoolStart: string;
     /**
      * A valid IPv4 address.
+     *
+     * @deprecated This attribute is deprecated.
      */
     dnsServer: string;
     dnsServers: string[];
@@ -14609,6 +14648,8 @@ export interface GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
     dhcpPoolStart: string;
     /**
      * A valid IPv4 address.
+     *
+     * @deprecated This attribute is deprecated.
      */
     dnsServer: string;
     dnsServers: string[];
@@ -15184,6 +15225,13 @@ export interface GetMtlsCertificatesResult {
     uploadedOn: string;
 }
 
+export interface GetNelSettingValue {
+    /**
+     * Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+     */
+    enabled: boolean;
+}
+
 export interface GetNotificationPoliciesResult {
     /**
      * Optional specification of how often to re-alert from the same incident, not support on all alert types.
@@ -15712,6 +15760,10 @@ export interface GetOauthClientsResult {
      */
     logoUri: string;
     /**
+     * Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     */
+    optionalScopes: string[];
+    /**
      * URL that points to a privacy policy document.
      */
     policyUri: string;
@@ -15869,6 +15921,7 @@ export interface GetOrganizationMeta {
 
 export interface GetOrganizationMetaTenantFlags {
     accountCreation: string;
+    accountCreationAppliesTenantDefaults: string;
     accountDeletion: string;
     accountMigration: string;
     accountMobility: string;
@@ -15962,6 +16015,7 @@ export interface GetOrganizationsResultMeta {
 
 export interface GetOrganizationsResultMetaTenantFlags {
     accountCreation: string;
+    accountCreationAppliesTenantDefaults: string;
     accountDeletion: string;
     accountMigration: string;
     accountMobility: string;
@@ -18474,7 +18528,8 @@ export interface GetPipelineSinkFilter {
 
 export interface GetPipelineSinkFormat {
     /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+     * Specifies the compression applied to JSON sink output.
+     * Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
      */
     compression: string;
     /**
@@ -18495,7 +18550,6 @@ export interface GetPipelineSinkFormat {
 
 export interface GetPipelineSinkSchema {
     fields: outputs.GetPipelineSinkSchemaField[];
-    format: outputs.GetPipelineSinkSchemaFormat;
     inferred: boolean;
 }
 
@@ -18514,33 +18568,15 @@ export interface GetPipelineSinkSchemaField {
     unit: string;
 }
 
-export interface GetPipelineSinkSchemaFormat {
-    /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-     */
-    compression: string;
-    /**
-     * Available values: "number", "string", "bytes".
-     */
-    decimalEncoding: string;
-    rowGroupBytes: number;
-    /**
-     * Available values: "rfc3339", "unixMillis".
-     */
-    timestampFormat: string;
-    /**
-     * Available values: "json", "parquet".
-     */
-    type: string;
-    unstructured: boolean;
-}
-
 export interface GetPipelineSinksResult {
     /**
      * Defines the configuration of the R2 Sink.
      */
     config: outputs.GetPipelineSinksResultConfig;
     createdAt: string;
+    /**
+     * Defines the output data format of a sink.
+     */
     format: outputs.GetPipelineSinksResultFormat;
     /**
      * Indicates a unique identifier for this sink.
@@ -18551,6 +18587,9 @@ export interface GetPipelineSinksResult {
      * Defines the name of the Sink.
      */
     name: string;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     schema: outputs.GetPipelineSinksResultSchema;
     /**
      * Specifies the type of sink.
@@ -18638,7 +18677,8 @@ export interface GetPipelineSinksResultConfigRollingPolicy {
 
 export interface GetPipelineSinksResultFormat {
     /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+     * Specifies the compression applied to JSON sink output.
+     * Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
      */
     compression: string;
     /**
@@ -18659,7 +18699,6 @@ export interface GetPipelineSinksResultFormat {
 
 export interface GetPipelineSinksResultSchema {
     fields: outputs.GetPipelineSinksResultSchemaField[];
-    format: outputs.GetPipelineSinksResultSchemaFormat;
     inferred: boolean;
 }
 
@@ -18676,27 +18715,6 @@ export interface GetPipelineSinksResultSchemaField {
      * Available values: "second", "millisecond", "microsecond", "nanosecond".
      */
     unit: string;
-}
-
-export interface GetPipelineSinksResultSchemaFormat {
-    /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-     */
-    compression: string;
-    /**
-     * Available values: "number", "string", "bytes".
-     */
-    decimalEncoding: string;
-    rowGroupBytes: number;
-    /**
-     * Available values: "rfc3339", "unixMillis".
-     */
-    timestampFormat: string;
-    /**
-     * Available values: "json", "parquet".
-     */
-    type: string;
-    unstructured: boolean;
 }
 
 export interface GetPipelineStreamFilter {
@@ -18752,7 +18770,6 @@ export interface GetPipelineStreamHttpCors {
 
 export interface GetPipelineStreamSchema {
     fields: outputs.GetPipelineStreamSchemaField[];
-    format: outputs.GetPipelineStreamSchemaFormat;
     inferred: boolean;
 }
 
@@ -18771,27 +18788,6 @@ export interface GetPipelineStreamSchemaField {
     unit: string;
 }
 
-export interface GetPipelineStreamSchemaFormat {
-    /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-     */
-    compression: string;
-    /**
-     * Available values: "number", "string", "bytes".
-     */
-    decimalEncoding: string;
-    rowGroupBytes: number;
-    /**
-     * Available values: "rfc3339", "unixMillis".
-     */
-    timestampFormat: string;
-    /**
-     * Available values: "json", "parquet".
-     */
-    type: string;
-    unstructured: boolean;
-}
-
 export interface GetPipelineStreamWorkerBinding {
     /**
      * Indicates that the worker binding is enabled.
@@ -18805,6 +18801,9 @@ export interface GetPipelineStreamsResult {
      * Indicates the endpoint URL of this stream.
      */
     endpoint: string;
+    /**
+     * Defines the data format of the events.
+     */
     format: outputs.GetPipelineStreamsResultFormat;
     http: outputs.GetPipelineStreamsResultHttp;
     /**
@@ -18816,6 +18815,9 @@ export interface GetPipelineStreamsResult {
      * Indicates the name of the Stream.
      */
     name: string;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     schema: outputs.GetPipelineStreamsResultSchema;
     /**
      * Indicates the current version of this stream.
@@ -18866,7 +18868,6 @@ export interface GetPipelineStreamsResultHttpCors {
 
 export interface GetPipelineStreamsResultSchema {
     fields: outputs.GetPipelineStreamsResultSchemaField[];
-    format: outputs.GetPipelineStreamsResultSchemaFormat;
     inferred: boolean;
 }
 
@@ -18883,27 +18884,6 @@ export interface GetPipelineStreamsResultSchemaField {
      * Available values: "second", "millisecond", "microsecond", "nanosecond".
      */
     unit: string;
-}
-
-export interface GetPipelineStreamsResultSchemaFormat {
-    /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-     */
-    compression: string;
-    /**
-     * Available values: "number", "string", "bytes".
-     */
-    decimalEncoding: string;
-    rowGroupBytes: number;
-    /**
-     * Available values: "rfc3339", "unixMillis".
-     */
-    timestampFormat: string;
-    /**
-     * Available values: "json", "parquet".
-     */
-    type: string;
-    unstructured: boolean;
 }
 
 export interface GetPipelineStreamsResultWorkerBinding {
@@ -19674,7 +19654,7 @@ export interface GetRegistrarDomainsResult {
      */
     available: boolean;
     /**
-     * Indicates if the domain can be registered as a new domain.
+     * Indicates eligibility to register the domain as a new domain.
      */
     canRegister: boolean;
     /**
@@ -19702,11 +19682,11 @@ export interface GetRegistrarDomainsResult {
      */
     registrantContact: outputs.GetRegistrarDomainsResultRegistrantContact;
     /**
-     * A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+     * A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
      */
     registryStatuses: string;
     /**
-     * Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+     * Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
      */
     supportedTld: boolean;
     /**
@@ -19745,7 +19725,7 @@ export interface GetRegistrarDomainsResultRegistrantContact {
      */
     fax: string;
     /**
-     * User's first name
+     * User's first name.
      */
     firstName: string;
     /**
@@ -19753,7 +19733,7 @@ export interface GetRegistrarDomainsResultRegistrantContact {
      */
     id: string;
     /**
-     * User's last name
+     * User's last name.
      */
     lastName: string;
     /**
@@ -19761,7 +19741,7 @@ export interface GetRegistrarDomainsResultRegistrantContact {
      */
     organization: string;
     /**
-     * User's telephone number
+     * User's telephone number.
      */
     phone: string;
     /**
@@ -19776,12 +19756,12 @@ export interface GetRegistrarDomainsResultRegistrantContact {
 
 export interface GetRegistrarDomainsResultTransferIn {
     /**
-     * Form of authorization has been accepted by the registrant.
+     * Status of the registrant authorization step.
      * Available values: "needed", "ok".
      */
     acceptFoa: string;
     /**
-     * Shows transfer status with the registry.
+     * Status of the registry transfer-approval step.
      * Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
      */
     approveTransfer: string;
@@ -19790,17 +19770,17 @@ export interface GetRegistrarDomainsResultTransferIn {
      */
     canCancelTransfer: boolean;
     /**
-     * Privacy guards are disabled at the foreign registrar.
+     * Status of the privacy-guard disabling step at the foreign registrar.
      * Available values: "needed", "ok", "unknown".
      */
     disablePrivacy: string;
     /**
-     * Auth code has been entered and verified.
+     * Status of the auth-code entry and verification step.
      * Available values: "needed", "ok", "pending", "trying", "rejected".
      */
     enterAuthCode: string;
     /**
-     * Domain is unlocked at the foreign registrar.
+     * Status of the domain-unlock step at the foreign registrar.
      * Available values: "needed", "ok", "pending", "trying", "unknown".
      */
     unlockDomain: string;
@@ -20090,6 +20070,10 @@ export interface GetRulesetRuleActionParameters {
      * Whether to generate Cloudflare error pages for issues from the origin server.
      */
     originErrorPagePassthru: boolean;
+    /**
+     * Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+     */
+    originRangeRequests: outputs.GetRulesetRuleActionParametersOriginRangeRequests;
     /**
      * A set of overrides to apply to the target ruleset.
      */
@@ -20631,6 +20615,14 @@ export interface GetRulesetRuleActionParametersOrigin {
      * A destination port to route to.
      */
     port: number;
+}
+
+export interface GetRulesetRuleActionParametersOriginRangeRequests {
+    /**
+     * Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+     * Available values: "on", "off", "default".
+     */
+    mode: string;
 }
 
 export interface GetRulesetRuleActionParametersOverrides {
@@ -21327,7 +21319,7 @@ export interface GetShareResource {
     resourceId: string;
     /**
      * Resource Type.
-     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
      */
     resourceType: string;
     /**
@@ -21344,7 +21336,7 @@ export interface GetShareResource {
 export interface GetShareResourceFilter {
     /**
      * Filter share resources by resource_type.
-     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
      */
     resourceType?: string;
     /**
@@ -21381,7 +21373,7 @@ export interface GetShareResourcesResult {
     resourceId: string;
     /**
      * Resource Type.
-     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
      */
     resourceType: string;
     /**
@@ -21485,7 +21477,7 @@ export interface GetSharesResultResource {
     resourceId: string;
     /**
      * Resource Type.
-     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
      */
     resourceType: string;
     /**
@@ -21728,6 +21720,25 @@ export interface GetSpectrumApplicationsResultOriginDns {
     type: string;
 }
 
+export interface GetSpectrumProtocolsResult {
+    /**
+     * The full name of the application protocol.
+     */
+    description: string;
+    /**
+     * The short name of the application protocol.
+     */
+    name: string;
+    /**
+     * The available listening ports for the given protocol.
+     */
+    ports: number[];
+    /**
+     * The transport layer protocol used by the application protocol
+     */
+    transport: string;
+}
+
 export interface GetSsoConnectorVerification {
     /**
      * DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership.
@@ -21803,6 +21814,17 @@ export interface GetStreamInput {
      * The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.
      */
     width: number;
+}
+
+export interface GetStreamLiveInputPlayback {
+    /**
+     * The DASH manifest URL used to play live video, referencing the live input ID.
+     */
+    dash: string;
+    /**
+     * The HLS manifest URL used to play live video, referencing the live input ID.
+     */
+    hls: string;
 }
 
 export interface GetStreamLiveInputRecording {
@@ -22472,14 +22494,6 @@ export interface GetTurnstileWidgetsResult {
      * When the widget was created.
      */
     createdOn: string;
-    /**
-     * Origin that created this widget, recorded at creation time and
-     * immutable afterward. Server-derived from the create request; not
-     * client-settable. Omitted from the response for widgets created
-     * before this field existed.
-     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-     */
-    deployedVia: string;
     domains: string[];
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
@@ -22489,13 +22503,6 @@ export interface GetTurnstileWidgetsResult {
      * Widget item identifier tag.
      */
     id: string;
-    /**
-     * Origin of the most recent mutation (create, update, delete, or
-     * secret rotation). Server-derived; not client-settable. Omitted for
-     * widgets last mutated before this field existed.
-     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-     */
-    lastModifiedVia: string;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
@@ -23023,7 +23030,7 @@ export interface GetWaitingRoomsResult {
     customPageHtml: string;
     /**
      * The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-     * Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+     * Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
      */
     defaultTemplateLanguage: string;
     /**
@@ -23455,7 +23462,7 @@ export interface GetWorkerObservabilityTraces {
      */
     persist: boolean;
     /**
-     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
      * Available values: "authenticated", "accept".
      */
     propagationPolicy: string;
@@ -23703,6 +23710,11 @@ export interface GetWorkerVersionBinding {
      */
     id: string;
     /**
+     * Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+     * Available values: "runtime-email-alpha".
+     */
+    identity: string;
+    /**
      * Name of the Vectorize index to bind to.
      */
     indexName: string;
@@ -23716,7 +23728,7 @@ export interface GetWorkerVersionBinding {
     json: string;
     /**
      * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: "eu", "fedramp", "fedramp-high".
+     * Available values: "eu", "fedramp", "fedramp-high", "us".
      */
     jurisdiction: string;
     /**
@@ -24315,6 +24327,11 @@ export interface GetWorkerVersionsResultBinding {
      */
     id: string;
     /**
+     * Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+     * Available values: "runtime-email-alpha".
+     */
+    identity: string;
+    /**
      * Name of the Vectorize index to bind to.
      */
     indexName: string;
@@ -24328,7 +24345,7 @@ export interface GetWorkerVersionsResultBinding {
     json: string;
     /**
      * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: "eu", "fedramp", "fedramp-high".
+     * Available values: "eu", "fedramp", "fedramp-high", "us".
      */
     jurisdiction: string;
     /**
@@ -24841,6 +24858,11 @@ export interface GetWorkersKvNamespacesResult {
      */
     id: string;
     /**
+     * Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: "eu", "fedramp", "us".
+     */
+    jurisdiction: string;
+    /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
     supportsUrlEncoding: boolean;
@@ -24911,6 +24933,10 @@ export interface GetWorkersResultObservability {
      */
     logs: outputs.GetWorkersResultObservabilityLogs;
     /**
+     * Whether query strings are removed from request URLs in logs and traces.
+     */
+    redactQueryString: boolean;
+    /**
      * Trace settings for the Worker.
      */
     traces: outputs.GetWorkersResultObservabilityTraces;
@@ -24957,7 +24983,7 @@ export interface GetWorkersResultObservabilityTraces {
      */
     persist: boolean;
     /**
-     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
      * Available values: "authenticated", "accept".
      */
     propagationPolicy: string;
@@ -25325,6 +25351,10 @@ export interface GetWorkersScriptsResultObservability {
      */
     logs: outputs.GetWorkersScriptsResultObservabilityLogs;
     /**
+     * Whether query strings are removed from request URLs in logs and traces.
+     */
+    redactQueryString: boolean;
+    /**
      * Trace settings for the Worker.
      */
     traces: outputs.GetWorkersScriptsResultObservabilityTraces;
@@ -25371,7 +25401,7 @@ export interface GetWorkersScriptsResultObservabilityTraces {
      */
     persist: boolean;
     /**
-     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
      * Available values: "authenticated", "accept".
      */
     propagationPolicy: string;
@@ -25462,18 +25492,6 @@ export interface GetWorkflowFilter {
     search?: string;
 }
 
-export interface GetWorkflowInstances {
-    complete: number;
-    errored: number;
-    paused: number;
-    queued: number;
-    rollingBack: number;
-    running: number;
-    terminated: number;
-    waiting: number;
-    waitingForPause: number;
-}
-
 export interface GetWorkflowSchedule {
     cron: string;
     nextInstance: string;
@@ -25483,24 +25501,12 @@ export interface GetWorkflowsResult {
     className: string;
     createdOn: string;
     id: string;
-    instances: outputs.GetWorkflowsResultInstances;
+    instances: {[key: string]: number};
     modifiedOn: string;
     name: string;
     schedules: outputs.GetWorkflowsResultSchedule[];
     scriptName: string;
     triggeredOn: string;
-}
-
-export interface GetWorkflowsResultInstances {
-    complete: number;
-    errored: number;
-    paused: number;
-    queued: number;
-    rollingBack: number;
-    running: number;
-    terminated: number;
-    waiting: number;
-    waitingForPause: number;
 }
 
 export interface GetWorkflowsResultSchedule {
@@ -28875,6 +28881,10 @@ export interface GetZeroTrustAccessGroupExcludeCommonName {
 
 export interface GetZeroTrustAccessGroupExcludeDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -29139,6 +29149,10 @@ export interface GetZeroTrustAccessGroupIncludeCommonName {
 
 export interface GetZeroTrustAccessGroupIncludeDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -29392,6 +29406,10 @@ export interface GetZeroTrustAccessGroupIsDefaultCommonName {
 
 export interface GetZeroTrustAccessGroupIsDefaultDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -29644,6 +29662,10 @@ export interface GetZeroTrustAccessGroupRequireCommonName {
 }
 
 export interface GetZeroTrustAccessGroupRequireDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
     /**
      * The ID of a device posture integration.
      */
@@ -29925,6 +29947,10 @@ export interface GetZeroTrustAccessGroupsResultExcludeCommonName {
 
 export interface GetZeroTrustAccessGroupsResultExcludeDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -30177,6 +30203,10 @@ export interface GetZeroTrustAccessGroupsResultIncludeCommonName {
 }
 
 export interface GetZeroTrustAccessGroupsResultIncludeDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
     /**
      * The ID of a device posture integration.
      */
@@ -30431,6 +30461,10 @@ export interface GetZeroTrustAccessGroupsResultIsDefaultCommonName {
 
 export interface GetZeroTrustAccessGroupsResultIsDefaultDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -30684,6 +30718,10 @@ export interface GetZeroTrustAccessGroupsResultRequireCommonName {
 
 export interface GetZeroTrustAccessGroupsResultRequireDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -30910,6 +30948,10 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
      */
     enableEncryption: boolean;
     /**
+     * Asks the IdP to reauthenticate the user for each SAML authentication request.
+     */
+    forceAuthn: boolean;
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      */
     headerAttributes: outputs.GetZeroTrustAccessIdentityProviderConfigHeaderAttribute[];
@@ -30921,6 +30963,13 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
      * IdP Entity ID or Issuer URL
      */
     issuerUrl: string;
+    /**
+     * The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     */
+    maxSsoUrlLength: number;
     /**
      * Your okta account url
      */
@@ -31160,6 +31209,10 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
      */
     enableEncryption: boolean;
     /**
+     * Asks the IdP to reauthenticate the user for each SAML authentication request.
+     */
+    forceAuthn: boolean;
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      */
     headerAttributes: outputs.GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute[];
@@ -31171,6 +31224,13 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
      * IdP Entity ID or Issuer URL
      */
     issuerUrl: string;
+    /**
+     * The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     */
+    maxSsoUrlLength: number;
     /**
      * Your okta account url
      */
@@ -31497,6 +31557,10 @@ export interface GetZeroTrustAccessMtlsCertificatesResult {
 
 export interface GetZeroTrustAccessPoliciesResult {
     /**
+     * Identifier.
+     */
+    accountId: string;
+    /**
      * Number of access applications currently using this policy.
      */
     appCount: number;
@@ -31684,6 +31748,10 @@ export interface GetZeroTrustAccessPoliciesResultExcludeCommonName {
 }
 
 export interface GetZeroTrustAccessPoliciesResultExcludeDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
     /**
      * The ID of a device posture integration.
      */
@@ -31937,6 +32005,10 @@ export interface GetZeroTrustAccessPoliciesResultIncludeCommonName {
 }
 
 export interface GetZeroTrustAccessPoliciesResultIncludeDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
     /**
      * The ID of a device posture integration.
      */
@@ -32205,6 +32277,10 @@ export interface GetZeroTrustAccessPoliciesResultRequireCommonName {
 }
 
 export interface GetZeroTrustAccessPoliciesResultRequireDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
     /**
      * The ID of a device posture integration.
      */
@@ -32492,6 +32568,10 @@ export interface GetZeroTrustAccessPolicyExcludeCommonName {
 
 export interface GetZeroTrustAccessPolicyExcludeDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -32744,6 +32824,10 @@ export interface GetZeroTrustAccessPolicyIncludeCommonName {
 }
 
 export interface GetZeroTrustAccessPolicyIncludeDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
     /**
      * The ID of a device posture integration.
      */
@@ -33012,6 +33096,10 @@ export interface GetZeroTrustAccessPolicyRequireCommonName {
 }
 
 export interface GetZeroTrustAccessPolicyRequireDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId: string;
     /**
      * The ID of a device posture integration.
      */
@@ -37111,6 +37199,50 @@ export interface GetZeroTrustOrganizationMfaSshPivKeyRequirements {
     touchPolicy: string;
 }
 
+export interface GetZeroTrustResourceLibraryApplicationFilter {
+    /**
+     * Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     */
+    fields?: string;
+    /**
+     * Filter applications using key:value format. Supported filter keys:
+     * - name: Filter by application name (e.g., name:HR)
+     * - id: Filter by application ID (e.g., id:498)
+     * - human_id: Filter by human-readable ID (e.g., human_id:HR)
+     * - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
+     * - source: Filter by application source name (e.g., source:cloudflare)
+     * - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
+     * - category_id: Filter by category ID (e.g., category_id:12).
+     * - category_name: Filter by category name (e.g., category_name:HR).
+     * - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
+     * - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
+     *   .
+     */
+    filter?: string;
+    /**
+     * Limit of number of results to return (max 250).
+     */
+    limit: number;
+    /**
+     * Offset of results to return.
+     */
+    offset: number;
+    /**
+     * Order results using field:direction format. Supported fields are name, id, human_id,
+     * category_id, application_type, application_confidence_score, and gen_ai_score.
+     * Supported directions are asc and desc. Ignored when search is provided; results are
+     * ranked by relevance instead.
+     */
+    orderBy?: string;
+    /**
+     * Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
+     */
+    search?: string;
+}
+
 export interface GetZeroTrustResourceLibraryApplicationsResult {
     /**
      * Confidence score for the application. Returns -1 when no score is available.
@@ -37168,6 +37300,11 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
      * Port and protocol pairs matched by the application.
      */
     portProtocols: string[];
+    /**
+     * The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
+     * Available values: "approved", "unapproved", "inReview", "unreviewed".
+     */
+    reviewStatus: string;
     /**
      * Support domains matched by the application.
      */
@@ -37450,6 +37587,12 @@ export interface GetZeroTrustTunnelCloudflaredConnection {
      */
     id: string;
     /**
+     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     *
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
+     */
+    isPendingReconnect: boolean;
+    /**
      * Timestamp of when the connection was established.
      */
     openedAt: string;
@@ -37700,6 +37843,12 @@ export interface GetZeroTrustTunnelCloudflaredsResultConnection {
      */
     id: string;
     /**
+     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     *
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
+     */
+    isPendingReconnect: boolean;
+    /**
      * Timestamp of when the connection was established.
      */
     openedAt: string;
@@ -37759,6 +37908,12 @@ export interface GetZeroTrustTunnelWarpConnectorConnection {
      * UUID of the Cloudflare Tunnel connection.
      */
     id: string;
+    /**
+     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     *
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
+     */
+    isPendingReconnect: boolean;
     /**
      * Timestamp of when the connection was established.
      */
@@ -37869,6 +38024,12 @@ export interface GetZeroTrustTunnelWarpConnectorsResultConnection {
      * UUID of the Cloudflare Tunnel connection.
      */
     id: string;
+    /**
+     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     *
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
+     */
+    isPendingReconnect: boolean;
     /**
      * Timestamp of when the connection was established.
      */
@@ -39317,6 +39478,8 @@ export interface MagicTransitSiteLanStaticAddressingDhcpServer {
     dhcpPoolStart?: string;
     /**
      * A valid IPv4 address.
+     *
+     * @deprecated This attribute is deprecated.
      */
     dnsServer?: string;
     dnsServers?: string[];
@@ -39604,6 +39767,13 @@ export interface MoqRelayConfigUpstreamsUpstream {
      * (WebTransport). Validated on update (PUT); rejected with 21013.
      */
     url?: string;
+}
+
+export interface NelSettingValue {
+    /**
+     * Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+     */
+    enabled: boolean;
 }
 
 export interface NotificationPolicyFilters {
@@ -40026,6 +40196,7 @@ export interface OrganizationMeta {
 
 export interface OrganizationMetaTenantFlags {
     accountCreation: string;
+    accountCreationAppliesTenantDefaults: string;
     accountDeletion: string;
     accountMigration: string;
     accountMobility: string;
@@ -41246,7 +41417,8 @@ export interface PipelineSinkConfigRollingPolicy {
 
 export interface PipelineSinkFormat {
     /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+     * Specifies the compression applied to JSON sink output.
+     * Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
      */
     compression?: string;
     /**
@@ -41267,7 +41439,6 @@ export interface PipelineSinkFormat {
 
 export interface PipelineSinkSchema {
     fields?: outputs.PipelineSinkSchemaField[];
-    format?: outputs.PipelineSinkSchemaFormat;
     inferred?: boolean;
 }
 
@@ -41284,27 +41455,6 @@ export interface PipelineSinkSchemaField {
      * Available values: "second", "millisecond", "microsecond", "nanosecond".
      */
     unit?: string;
-}
-
-export interface PipelineSinkSchemaFormat {
-    /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-     */
-    compression?: string;
-    /**
-     * Available values: "number", "string", "bytes".
-     */
-    decimalEncoding?: string;
-    rowGroupBytes?: number;
-    /**
-     * Available values: "rfc3339", "unixMillis".
-     */
-    timestampFormat?: string;
-    /**
-     * Available values: "json", "parquet".
-     */
-    type: string;
-    unstructured?: boolean;
 }
 
 export interface PipelineStreamFormat {
@@ -41349,7 +41499,6 @@ export interface PipelineStreamHttpCors {
 
 export interface PipelineStreamSchema {
     fields?: outputs.PipelineStreamSchemaField[];
-    format?: outputs.PipelineStreamSchemaFormat;
     inferred?: boolean;
 }
 
@@ -41366,27 +41515,6 @@ export interface PipelineStreamSchemaField {
      * Available values: "second", "millisecond", "microsecond", "nanosecond".
      */
     unit?: string;
-}
-
-export interface PipelineStreamSchemaFormat {
-    /**
-     * Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-     */
-    compression?: string;
-    /**
-     * Available values: "number", "string", "bytes".
-     */
-    decimalEncoding?: string;
-    rowGroupBytes?: number;
-    /**
-     * Available values: "rfc3339", "unixMillis".
-     */
-    timestampFormat?: string;
-    /**
-     * Available values: "json", "parquet".
-     */
-    type: string;
-    unstructured?: boolean;
 }
 
 export interface PipelineStreamWorkerBinding {
@@ -42286,6 +42414,10 @@ export interface RulesetRuleActionParameters {
      */
     originErrorPagePassthru?: boolean;
     /**
+     * Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+     */
+    originRangeRequests?: outputs.RulesetRuleActionParametersOriginRangeRequests;
+    /**
      * A set of overrides to apply to the target ruleset.
      */
     overrides?: outputs.RulesetRuleActionParametersOverrides;
@@ -42828,6 +42960,14 @@ export interface RulesetRuleActionParametersOrigin {
     port?: number;
 }
 
+export interface RulesetRuleActionParametersOriginRangeRequests {
+    /**
+     * Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+     * Available values: "on", "off", "default".
+     */
+    mode: string;
+}
+
 export interface RulesetRuleActionParametersOverrides {
     /**
      * An action to override all rules with. This option has lower precedence than rule and category overrides.
@@ -43215,7 +43355,7 @@ export interface ShareResource {
     resourceId: string;
     /**
      * Resource Type.
-     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
      */
     resourceType: string;
 }
@@ -43395,6 +43535,17 @@ export interface StreamInput {
      * The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.
      */
     width: number;
+}
+
+export interface StreamLiveInputPlayback {
+    /**
+     * The DASH manifest URL used to play live video, referencing the live input ID.
+     */
+    dash: string;
+    /**
+     * The HLS manifest URL used to play live video, referencing the live input ID.
+     */
+    hls: string;
 }
 
 export interface StreamLiveInputRecording {
@@ -45313,6 +45464,25 @@ export interface WorkerScriptExportsCache {
     enabled: boolean;
 }
 
+export interface WorkerScriptFiles {
+    /**
+     * Base64-encoded file content.
+     */
+    contentBase64?: string;
+    /**
+     * Path to the file content.
+     */
+    contentFile?: string;
+    /**
+     * SHA-256 hash of the file content, used to detect changes and remote drift.
+     */
+    contentSha256: string;
+    /**
+     * Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+     */
+    contentType: string;
+}
+
 export interface WorkerScriptLimits {
     /**
      * The amount of CPU time this Worker can use in milliseconds.
@@ -45699,6 +45869,11 @@ export interface WorkerVersionBinding {
      */
     id?: string;
     /**
+     * Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+     * Available values: "runtime-email-alpha".
+     */
+    identity?: string;
+    /**
      * Name of the Vectorize index to bind to.
      */
     indexName?: string;
@@ -45712,7 +45887,7 @@ export interface WorkerVersionBinding {
     json?: string;
     /**
      * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: "eu", "fedramp", "fedramp-high".
+     * Available values: "eu", "fedramp", "fedramp-high", "us".
      */
     jurisdiction?: string;
     /**
@@ -46431,6 +46606,25 @@ export interface WorkersScriptExportsCache {
     enabled: boolean;
 }
 
+export interface WorkersScriptFiles {
+    /**
+     * Base64-encoded file content.
+     */
+    contentBase64?: string;
+    /**
+     * Path to the file content.
+     */
+    contentFile?: string;
+    /**
+     * SHA-256 hash of the file content, used to detect changes and remote drift.
+     */
+    contentSha256: string;
+    /**
+     * Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+     */
+    contentType: string;
+}
+
 export interface WorkersScriptLimits {
     /**
      * The amount of CPU time this Worker can use in milliseconds.
@@ -46677,6 +46871,13 @@ export interface WorkersScriptTailConsumer {
     service: string;
 }
 
+export interface WorkflowConcurrency {
+    /**
+     * Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit.
+     */
+    limit?: number;
+}
+
 export interface WorkflowDefaultRetention {
     /**
      * Specifies the duration in milliseconds or as a string like '5 minutes'.
@@ -46686,18 +46887,6 @@ export interface WorkflowDefaultRetention {
      * Specifies the duration in milliseconds or as a string like '5 minutes'.
      */
     successRetention?: any;
-}
-
-export interface WorkflowInstances {
-    complete: number;
-    errored: number;
-    paused: number;
-    queued: number;
-    rollingBack: number;
-    running: number;
-    terminated: number;
-    waiting: number;
-    waitingForPause: number;
 }
 
 export interface WorkflowLimits {
@@ -48231,6 +48420,10 @@ export interface ZeroTrustAccessGroupExcludeCommonName {
 
 export interface ZeroTrustAccessGroupExcludeDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -48483,6 +48676,10 @@ export interface ZeroTrustAccessGroupIncludeCommonName {
 }
 
 export interface ZeroTrustAccessGroupIncludeDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
     /**
      * The ID of a device posture integration.
      */
@@ -48737,6 +48934,10 @@ export interface ZeroTrustAccessGroupRequireCommonName {
 
 export interface ZeroTrustAccessGroupRequireDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -48963,6 +49164,10 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      */
     enableEncryption: boolean;
     /**
+     * Asks the IdP to reauthenticate the user for each SAML authentication request.
+     */
+    forceAuthn?: boolean;
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      */
     headerAttributes?: outputs.ZeroTrustAccessIdentityProviderConfigHeaderAttribute[];
@@ -48974,6 +49179,13 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      * IdP Entity ID or Issuer URL
      */
     issuerUrl?: string;
+    /**
+     * The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     */
+    maxSsoUrlLength?: number;
     /**
      * Your okta account url
      */
@@ -49275,6 +49487,10 @@ export interface ZeroTrustAccessPolicyExcludeCommonName {
 
 export interface ZeroTrustAccessPolicyExcludeDevicePosture {
     /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
+    /**
      * The ID of a device posture integration.
      */
     integrationUid: string;
@@ -49527,6 +49743,10 @@ export interface ZeroTrustAccessPolicyIncludeCommonName {
 }
 
 export interface ZeroTrustAccessPolicyIncludeDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
     /**
      * The ID of a device posture integration.
      */
@@ -49795,6 +50015,10 @@ export interface ZeroTrustAccessPolicyRequireCommonName {
 }
 
 export interface ZeroTrustAccessPolicyRequireDevicePosture {
+    /**
+     * The ID of the account that owns the device posture integration.
+     */
+    accountId?: string;
     /**
      * The ID of a device posture integration.
      */
@@ -52033,6 +52257,12 @@ export interface ZeroTrustTunnelWarpConnectorConnection {
      * UUID of the Cloudflare Tunnel connection.
      */
     id: string;
+    /**
+     * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     *
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
+     */
+    isPendingReconnect: boolean;
     /**
      * Timestamp of when the connection was established.
      */

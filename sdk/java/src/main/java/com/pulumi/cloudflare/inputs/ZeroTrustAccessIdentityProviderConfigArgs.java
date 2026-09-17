@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessIdentityProviderConfigHeaderA
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -246,6 +247,21 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     }
 
     /**
+     * Asks the IdP to reauthenticate the user for each SAML authentication request.
+     * 
+     */
+    @Import(name="forceAuthn")
+    private @Nullable Output<Boolean> forceAuthn;
+
+    /**
+     * @return Asks the IdP to reauthenticate the user for each SAML authentication request.
+     * 
+     */
+    public Optional<Output<Boolean>> forceAuthn() {
+        return Optional.ofNullable(this.forceAuthn);
+    }
+
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -288,6 +304,27 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
      */
     public Optional<Output<String>> issuerUrl() {
         return Optional.ofNullable(this.issuerUrl);
+    }
+
+    /**
+     * The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     * 
+     */
+    @Import(name="maxSsoUrlLength")
+    private @Nullable Output<Integer> maxSsoUrlLength;
+
+    /**
+     * @return The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     * 
+     */
+    public Optional<Output<Integer>> maxSsoUrlLength() {
+        return Optional.ofNullable(this.maxSsoUrlLength);
     }
 
     /**
@@ -482,9 +519,11 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         this.emailAttributeName = $.emailAttributeName;
         this.emailClaimName = $.emailClaimName;
         this.enableEncryption = $.enableEncryption;
+        this.forceAuthn = $.forceAuthn;
         this.headerAttributes = $.headerAttributes;
         this.idpPublicCerts = $.idpPublicCerts;
         this.issuerUrl = $.issuerUrl;
+        this.maxSsoUrlLength = $.maxSsoUrlLength;
         this.oktaAccount = $.oktaAccount;
         this.oneloginAccount = $.oneloginAccount;
         this.pingEnvId = $.pingEnvId;
@@ -855,6 +894,27 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
+         * @param forceAuthn Asks the IdP to reauthenticate the user for each SAML authentication request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceAuthn(@Nullable Output<Boolean> forceAuthn) {
+            $.forceAuthn = forceAuthn;
+            return this;
+        }
+
+        /**
+         * @param forceAuthn Asks the IdP to reauthenticate the user for each SAML authentication request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceAuthn(Boolean forceAuthn) {
+            return forceAuthn(Output.of(forceAuthn));
+        }
+
+        /**
          * @param headerAttributes Add a list of attribute names that will be returned in the response header from the Access callback.
          * 
          * @return builder
@@ -935,6 +995,33 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
          */
         public Builder issuerUrl(String issuerUrl) {
             return issuerUrl(Output.of(issuerUrl));
+        }
+
+        /**
+         * @param maxSsoUrlLength The maximum URL length the IdP accepts for the SSO redirect URL.
+         * When the constructed SSO URL would exceed this length, the RelayState
+         * is stored server-side and a short nonce is passed to the IdP instead.
+         * Set this if your IdP enforces a URL length limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSsoUrlLength(@Nullable Output<Integer> maxSsoUrlLength) {
+            $.maxSsoUrlLength = maxSsoUrlLength;
+            return this;
+        }
+
+        /**
+         * @param maxSsoUrlLength The maximum URL length the IdP accepts for the SSO redirect URL.
+         * When the constructed SSO URL would exceed this length, the RelayState
+         * is stored server-side and a short nonce is passed to the IdP instead.
+         * Set this if your IdP enforces a URL length limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSsoUrlLength(Integer maxSsoUrlLength) {
+            return maxSsoUrlLength(Output.of(maxSsoUrlLength));
         }
 
         /**

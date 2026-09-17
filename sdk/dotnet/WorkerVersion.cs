@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
     ///             Enabled = true,
     ///             CrossVersionCache = true,
     ///         },
-    ///         CompatibilityDate = "2021-01-01",
+    ///         CompatibilityDate = "2021-01-01T00:00:00Z",
     ///         CompatibilityFlags = new[]
     ///         {
     ///             "nodejs_compat",

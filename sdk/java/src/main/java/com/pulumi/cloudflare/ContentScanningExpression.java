@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -70,6 +71,20 @@ public class ContentScanningExpression extends com.pulumi.resources.CustomResour
 
     public Output<List<ContentScanningExpressionBody>> bodies() {
         return this.bodies;
+    }
+    /**
+     * Defines the custom content extraction expression used to reach content objects in the request.
+     * 
+     */
+    @Export(name="payload", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> payload;
+
+    /**
+     * @return Defines the custom content extraction expression used to reach content objects in the request.
+     * 
+     */
+    public Output<Optional<String>> payload() {
+        return Codegen.optional(this.payload);
     }
     /**
      * Defines an identifier.

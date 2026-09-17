@@ -20,9 +20,6 @@ namespace Pulumi.Cloudflare.Inputs
             set => _fields = value;
         }
 
-        [Input("format")]
-        public Input<Inputs.PipelineStreamSchemaFormatArgs>? Format { get; set; }
-
         [Input("inferred")]
         public Input<bool>? Inferred { get; set; }
 

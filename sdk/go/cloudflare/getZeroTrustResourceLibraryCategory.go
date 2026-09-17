@@ -50,7 +50,7 @@ func GetZeroTrustResourceLibraryCategory(ctx *pulumi.Context, args *GetZeroTrust
 // A collection of arguments for invoking getZeroTrustResourceLibraryCategory.
 type GetZeroTrustResourceLibraryCategoryArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// The ID of this resource.
+	// Returns the category ID.
 	Id int `pulumi:"id"`
 }
 
@@ -61,7 +61,7 @@ type GetZeroTrustResourceLibraryCategoryResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Returns the category description.
 	Description string `pulumi:"description"`
-	// The ID of this resource.
+	// Returns the category ID.
 	Id int `pulumi:"id"`
 	// Returns the category name.
 	Name string `pulumi:"name"`
@@ -75,7 +75,7 @@ func GetZeroTrustResourceLibraryCategoryOutput(ctx *pulumi.Context, args GetZero
 // A collection of arguments for invoking getZeroTrustResourceLibraryCategory.
 type GetZeroTrustResourceLibraryCategoryOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The ID of this resource.
+	// Returns the category ID.
 	Id pulumi.IntInput `pulumi:"id"`
 }
 
@@ -112,7 +112,7 @@ func (o GetZeroTrustResourceLibraryCategoryResultOutput) Description() pulumi.St
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryCategoryResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
+// Returns the category ID.
 func (o GetZeroTrustResourceLibraryCategoryResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryCategoryResult) int { return v.Id }).(pulumi.IntOutput)
 }

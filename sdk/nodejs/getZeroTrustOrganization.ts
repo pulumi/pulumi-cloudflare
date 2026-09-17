@@ -90,9 +90,6 @@ export interface GetZeroTrustOrganizationResult {
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     readonly mfaRequiredForAllApps: boolean;
-    /**
-     * Configures SSH PIV key requirements for MFA using hardware security keys.
-     */
     readonly mfaSshPivKeyRequirements: outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirements;
     /**
      * The name of your Zero Trust organization.

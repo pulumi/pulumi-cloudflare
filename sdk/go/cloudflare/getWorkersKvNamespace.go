@@ -68,6 +68,9 @@ type LookupWorkersKvNamespaceResult struct {
 	Filter    *GetWorkersKvNamespaceFilter `pulumi:"filter"`
 	// Namespace identifier tag.
 	Id string `pulumi:"id"`
+	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+	// Available values: "eu", "fedramp", "us".
+	Jurisdiction string `pulumi:"jurisdiction"`
 	// Namespace identifier tag.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -121,6 +124,12 @@ func (o LookupWorkersKvNamespaceResultOutput) Filter() GetWorkersKvNamespaceFilt
 // Namespace identifier tag.
 func (o LookupWorkersKvNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+// Available values: "eu", "fedramp", "us".
+func (o LookupWorkersKvNamespaceResultOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // Namespace identifier tag.

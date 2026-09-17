@@ -6,8 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkflowArgs;
 import com.pulumi.cloudflare.inputs.WorkflowState;
+import com.pulumi.cloudflare.outputs.WorkflowConcurrency;
 import com.pulumi.cloudflare.outputs.WorkflowDefaultRetention;
-import com.pulumi.cloudflare.outputs.WorkflowInstances;
 import com.pulumi.cloudflare.outputs.WorkflowLimits;
 import com.pulumi.cloudflare.outputs.WorkflowSchedule;
 import com.pulumi.core.Output;
@@ -17,6 +17,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -38,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.Workflow;
  * import com.pulumi.cloudflare.WorkflowArgs;
+ * import com.pulumi.cloudflare.inputs.WorkflowConcurrencyArgs;
  * import com.pulumi.cloudflare.inputs.WorkflowDefaultRetentionArgs;
  * import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
  * import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
@@ -59,6 +61,9 @@ import javax.annotation.Nullable;
  *             .workflowName("x")
  *             .className("x")
  *             .scriptName("x")
+ *             .concurrency(WorkflowConcurrencyArgs.builder()
+ *                 .limit(1)
+ *                 .build())
  *             .defaultRetention(WorkflowDefaultRetentionArgs.builder()
  *                 .errorRetention("5 minutes")
  *                 .successRetention("5 minutes")
@@ -97,6 +102,12 @@ public class Workflow extends com.pulumi.resources.CustomResource {
     public Output<String> className() {
         return this.className;
     }
+    @Export(name="concurrency", refs={WorkflowConcurrency.class}, tree="[0]")
+    private Output</* @Nullable */ WorkflowConcurrency> concurrency;
+
+    public Output<Optional<WorkflowConcurrency>> concurrency() {
+        return Codegen.optional(this.concurrency);
+    }
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
@@ -117,10 +128,10 @@ public class Workflow extends com.pulumi.resources.CustomResource {
     public Output<Optional<WorkflowDefaultRetention>> defaultRetention() {
         return Codegen.optional(this.defaultRetention);
     }
-    @Export(name="instances", refs={WorkflowInstances.class}, tree="[0]")
-    private Output<WorkflowInstances> instances;
+    @Export(name="instances", refs={Map.class,String.class,Double.class}, tree="[0,1,2]")
+    private Output<Map<String,Double>> instances;
 
-    public Output<WorkflowInstances> instances() {
+    public Output<Map<String,Double>> instances() {
         return this.instances;
     }
     @Export(name="isDeleted", refs={Double.class}, tree="[0]")

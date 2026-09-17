@@ -68,7 +68,7 @@ type LookupWorkflowResult struct {
 	Filter    *GetWorkflowFilter `pulumi:"filter"`
 	// The ID of this resource.
 	Id           string                `pulumi:"id"`
-	Instances    GetWorkflowInstances  `pulumi:"instances"`
+	Instances    map[string]float64    `pulumi:"instances"`
 	ModifiedOn   string                `pulumi:"modifiedOn"`
 	Name         string                `pulumi:"name"`
 	Schedules    []GetWorkflowSchedule `pulumi:"schedules"`
@@ -129,8 +129,8 @@ func (o LookupWorkflowResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupWorkflowResultOutput) Instances() GetWorkflowInstancesOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) GetWorkflowInstances { return v.Instances }).(GetWorkflowInstancesOutput)
+func (o LookupWorkflowResultOutput) Instances() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) map[string]float64 { return v.Instances }).(pulumi.Float64MapOutput)
 }
 
 func (o LookupWorkflowResultOutput) ModifiedOn() pulumi.StringOutput {

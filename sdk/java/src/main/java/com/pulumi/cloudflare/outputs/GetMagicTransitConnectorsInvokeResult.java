@@ -15,11 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitConnectorsInvokeResult {
-    /**
-     * @return Account identifier
-     * 
-     */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Filter connectors by device type.
      * Available values: &#34;MANAGED&#34;, &#34;LICENSED&#34;.
@@ -38,12 +34,8 @@ public final class GetMagicTransitConnectorsInvokeResult {
     private List<GetMagicTransitConnectorsResult> results;
 
     private GetMagicTransitConnectorsInvokeResult() {}
-    /**
-     * @return Account identifier
-     * 
-     */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Filter connectors by device type.
@@ -77,7 +69,7 @@ public final class GetMagicTransitConnectorsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private @Nullable String deviceType;
         private @Nullable Integer maxItems;
         private List<GetMagicTransitConnectorsResult> results;
@@ -91,8 +83,10 @@ public final class GetMagicTransitConnectorsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorsInvokeResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

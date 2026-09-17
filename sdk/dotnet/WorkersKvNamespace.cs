@@ -29,6 +29,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Title = "My Own Namespace",
+    ///         Jurisdiction = "eu",
     ///     });
     /// 
     /// });
@@ -48,6 +49,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        /// Available values: "eu", "fedramp", "us".
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string?> Jurisdiction { get; private set; } = null!;
 
         /// <summary>
         /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -114,6 +122,13 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        /// Available values: "eu", "fedramp", "us".
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
+        /// <summary>
         /// A human-readable string name for a Namespace.
         /// </summary>
         [Input("title", required: true)]
@@ -132,6 +147,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        /// Available values: "eu", "fedramp", "us".
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
         /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".

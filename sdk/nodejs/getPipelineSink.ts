@@ -63,6 +63,9 @@ export interface GetPipelineSinkResult {
     readonly config: outputs.GetPipelineSinkConfig;
     readonly createdAt: string;
     readonly filter?: outputs.GetPipelineSinkFilter;
+    /**
+     * Defines the output data format of a sink.
+     */
     readonly format: outputs.GetPipelineSinkFormat;
     /**
      * Specifies the publid ID of the sink.
@@ -73,6 +76,9 @@ export interface GetPipelineSinkResult {
      * Defines the name of the Sink.
      */
     readonly name: string;
+    /**
+     * Defines the schema of the events in the data stream.
+     */
     readonly schema: outputs.GetPipelineSinkSchema;
     /**
      * Specifies the publid ID of the sink.

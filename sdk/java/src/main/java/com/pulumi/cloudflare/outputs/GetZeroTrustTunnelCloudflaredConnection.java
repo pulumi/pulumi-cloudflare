@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -30,6 +31,15 @@ public final class GetZeroTrustTunnelCloudflaredConnection {
      * 
      */
     private String id;
+    /**
+     * @return Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     * 
+     * @deprecated
+     * This functionality has been removed. The isPendingReconnect field will now always report false.
+     * 
+     */
+    @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+    private Boolean isPendingReconnect;
     /**
      * @return Timestamp of when the connection was established.
      * 
@@ -76,6 +86,17 @@ public final class GetZeroTrustTunnelCloudflaredConnection {
         return this.id;
     }
     /**
+     * @return Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+     * 
+     * @deprecated
+     * This functionality has been removed. The isPendingReconnect field will now always report false.
+     * 
+     */
+    @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+    public Boolean isPendingReconnect() {
+        return this.isPendingReconnect;
+    }
+    /**
      * @return Timestamp of when the connection was established.
      * 
      */
@@ -110,6 +131,7 @@ public final class GetZeroTrustTunnelCloudflaredConnection {
         private String clientVersion;
         private String coloName;
         private String id;
+        private Boolean isPendingReconnect;
         private String openedAt;
         private String originIp;
         private String uuid;
@@ -120,6 +142,7 @@ public final class GetZeroTrustTunnelCloudflaredConnection {
     	      this.clientVersion = defaults.clientVersion;
     	      this.coloName = defaults.coloName;
     	      this.id = defaults.id;
+    	      this.isPendingReconnect = defaults.isPendingReconnect;
     	      this.openedAt = defaults.openedAt;
     	      this.originIp = defaults.originIp;
     	      this.uuid = defaults.uuid;
@@ -158,6 +181,14 @@ public final class GetZeroTrustTunnelCloudflaredConnection {
             return this;
         }
         @CustomType.Setter
+        public Builder isPendingReconnect(Boolean isPendingReconnect) {
+            if (isPendingReconnect == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConnection", "isPendingReconnect");
+            }
+            this.isPendingReconnect = isPendingReconnect;
+            return this;
+        }
+        @CustomType.Setter
         public Builder openedAt(String openedAt) {
             if (openedAt == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConnection", "openedAt");
@@ -187,6 +218,7 @@ public final class GetZeroTrustTunnelCloudflaredConnection {
             _resultValue.clientVersion = clientVersion;
             _resultValue.coloName = coloName;
             _resultValue.id = id;
+            _resultValue.isPendingReconnect = isPendingReconnect;
             _resultValue.openedAt = openedAt;
             _resultValue.originIp = originIp;
             _resultValue.uuid = uuid;

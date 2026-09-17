@@ -42,7 +42,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -84,18 +83,18 @@ import javax.annotation.Nullable;
  *                 .requiredAaguids("2fc0579f-8113-47ea-b116-bb5a8db9202a")
  *                 .sessionDuration("24h")
  *                 .build())
- *             .mfaRequiredForAllApps(false)
- *             .mfaSshPivKeyRequirements(ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs.builder()
- *                 .pinPolicy("always")
- *                 .requireFipsDevice(true)
- *                 .sshKeySizes(                
+ *             .mfaPivKeyRequirements(Map.ofEntries(
+ *                 Map.entry("pinPolicy", "always"),
+ *                 Map.entry("requireFipsDevice", true),
+ *                 Map.entry("sshKeySize", Arrays.asList(                
  *                     256,
- *                     2048)
- *                 .sshKeyTypes(                
+ *                     2048)),
+ *                 Map.entry("sshKeyType", Arrays.asList(                
  *                     "ecdsa",
- *                     "rsa")
- *                 .touchPolicy("always")
- *                 .build())
+ *                     "rsa")),
+ *                 Map.entry("touchPolicy", "always")
+ *             ))
+ *             .mfaRequiredForAllApps(false)
  *             .name("Widget Corps Internal Applications")
  *             .sessionDuration("24h")
  *             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")

@@ -16,10 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRegistrarDomainsInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Max items to fetch, default: 1000
      * 
@@ -33,11 +33,11 @@ public final class GetRegistrarDomainsInvokeResult {
 
     private GetRegistrarDomainsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -63,7 +63,7 @@ public final class GetRegistrarDomainsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private @Nullable Integer maxItems;
         private List<GetRegistrarDomainsResult> results;
         public Builder() {}
@@ -75,8 +75,10 @@ public final class GetRegistrarDomainsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetRegistrarDomainsInvokeResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

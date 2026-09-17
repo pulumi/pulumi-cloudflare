@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,6 +23,7 @@ export function getZeroTrustResourceLibraryApplication(args: GetZeroTrustResourc
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "id": args.id,
     }, opts);
 }
@@ -30,10 +33,11 @@ export function getZeroTrustResourceLibraryApplication(args: GetZeroTrustResourc
  */
 export interface GetZeroTrustResourceLibraryApplicationArgs {
     accountId: string;
+    filter?: inputs.GetZeroTrustResourceLibraryApplicationFilter;
     /**
-     * The ID of this resource.
+     * Returns the application ID.
      */
-    id: number;
+    id?: number;
 }
 
 /**
@@ -69,6 +73,7 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
      * Returns the application creation time.
      */
     readonly createdAt: string;
+    readonly filter?: outputs.GetZeroTrustResourceLibraryApplicationFilter;
     /**
      * GenAI score for the application. Returns -1 when no score is available.
      */
@@ -82,7 +87,7 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
      */
     readonly humanId: string;
     /**
-     * The ID of this resource.
+     * Returns the application ID.
      */
     readonly id: number;
     /**
@@ -131,6 +136,7 @@ export function getZeroTrustResourceLibraryApplicationOutput(args: GetZeroTrustR
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "id": args.id,
     }, opts);
 }
@@ -140,8 +146,9 @@ export function getZeroTrustResourceLibraryApplicationOutput(args: GetZeroTrustR
  */
 export interface GetZeroTrustResourceLibraryApplicationOutputArgs {
     accountId: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetZeroTrustResourceLibraryApplicationFilterArgs | undefined>;
     /**
-     * The ID of this resource.
+     * Returns the application ID.
      */
-    id: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
 }

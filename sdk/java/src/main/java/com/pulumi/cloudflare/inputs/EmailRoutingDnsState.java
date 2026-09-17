@@ -3,15 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.EmailRoutingDnsErrorArgs;
-import com.pulumi.cloudflare.inputs.EmailRoutingDnsMessageArgs;
-import com.pulumi.cloudflare.inputs.EmailRoutingDnsResultArgs;
-import com.pulumi.cloudflare.inputs.EmailRoutingDnsResultInfoArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -51,20 +46,6 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.enabled);
     }
 
-    @Import(name="errors")
-    private @Nullable Output<List<EmailRoutingDnsErrorArgs>> errors;
-
-    public Optional<Output<List<EmailRoutingDnsErrorArgs>>> errors() {
-        return Optional.ofNullable(this.errors);
-    }
-
-    @Import(name="messages")
-    private @Nullable Output<List<EmailRoutingDnsMessageArgs>> messages;
-
-    public Optional<Output<List<EmailRoutingDnsMessageArgs>>> messages() {
-        return Optional.ofNullable(this.messages);
-    }
-
     /**
      * The date and time the settings have been modified.
      * 
@@ -93,20 +74,6 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
-    }
-
-    @Import(name="result")
-    private @Nullable Output<EmailRoutingDnsResultArgs> result;
-
-    public Optional<Output<EmailRoutingDnsResultArgs>> result() {
-        return Optional.ofNullable(this.result);
-    }
-
-    @Import(name="resultInfo")
-    private @Nullable Output<EmailRoutingDnsResultInfoArgs> resultInfo;
-
-    public Optional<Output<EmailRoutingDnsResultInfoArgs>> resultInfo() {
-        return Optional.ofNullable(this.resultInfo);
     }
 
     /**
@@ -142,18 +109,18 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether the API call was successful.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      * 
      */
-    @Import(name="success")
-    private @Nullable Output<Boolean> success;
+    @Import(name="supportSubaddress")
+    private @Nullable Output<Boolean> supportSubaddress;
 
     /**
-     * @return Whether the API call was successful.
+     * @return Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      * 
      */
-    public Optional<Output<Boolean>> success() {
-        return Optional.ofNullable(this.success);
+    public Optional<Output<Boolean>> supportSubaddress() {
+        return Optional.ofNullable(this.supportSubaddress);
     }
 
     /**
@@ -199,15 +166,11 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
     private EmailRoutingDnsState(EmailRoutingDnsState $) {
         this.created = $.created;
         this.enabled = $.enabled;
-        this.errors = $.errors;
-        this.messages = $.messages;
         this.modified = $.modified;
         this.name = $.name;
-        this.result = $.result;
-        this.resultInfo = $.resultInfo;
         this.skipWizard = $.skipWizard;
         this.status = $.status;
-        this.success = $.success;
+        this.supportSubaddress = $.supportSubaddress;
         this.tag = $.tag;
         this.zoneId = $.zoneId;
     }
@@ -272,32 +235,6 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
             return enabled(Output.of(enabled));
         }
 
-        public Builder errors(@Nullable Output<List<EmailRoutingDnsErrorArgs>> errors) {
-            $.errors = errors;
-            return this;
-        }
-
-        public Builder errors(List<EmailRoutingDnsErrorArgs> errors) {
-            return errors(Output.of(errors));
-        }
-
-        public Builder errors(EmailRoutingDnsErrorArgs... errors) {
-            return errors(List.of(errors));
-        }
-
-        public Builder messages(@Nullable Output<List<EmailRoutingDnsMessageArgs>> messages) {
-            $.messages = messages;
-            return this;
-        }
-
-        public Builder messages(List<EmailRoutingDnsMessageArgs> messages) {
-            return messages(Output.of(messages));
-        }
-
-        public Builder messages(EmailRoutingDnsMessageArgs... messages) {
-            return messages(List.of(messages));
-        }
-
         /**
          * @param modified The date and time the settings have been modified.
          * 
@@ -338,24 +275,6 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        public Builder result(@Nullable Output<EmailRoutingDnsResultArgs> result) {
-            $.result = result;
-            return this;
-        }
-
-        public Builder result(EmailRoutingDnsResultArgs result) {
-            return result(Output.of(result));
-        }
-
-        public Builder resultInfo(@Nullable Output<EmailRoutingDnsResultInfoArgs> resultInfo) {
-            $.resultInfo = resultInfo;
-            return this;
-        }
-
-        public Builder resultInfo(EmailRoutingDnsResultInfoArgs resultInfo) {
-            return resultInfo(Output.of(resultInfo));
         }
 
         /**
@@ -403,24 +322,24 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param success Whether the API call was successful.
+         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
          * 
          * @return builder
          * 
          */
-        public Builder success(@Nullable Output<Boolean> success) {
-            $.success = success;
+        public Builder supportSubaddress(@Nullable Output<Boolean> supportSubaddress) {
+            $.supportSubaddress = supportSubaddress;
             return this;
         }
 
         /**
-         * @param success Whether the API call was successful.
+         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
          * 
          * @return builder
          * 
          */
-        public Builder success(Boolean success) {
-            return success(Output.of(success));
+        public Builder supportSubaddress(Boolean supportSubaddress) {
+            return supportSubaddress(Output.of(supportSubaddress));
         }
 
         /**

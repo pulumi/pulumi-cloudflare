@@ -25,6 +25,7 @@ class BotManagementArgs:
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
                  content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -45,6 +46,7 @@ class BotManagementArgs:
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        :param pulumi.Input[_builtins.bool] bot_preference_sync_enabled: Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
         :param pulumi.Input[_builtins.str] cf_robots_variant: Specifies the Robots Access Control License variant to use.
                Available values: "off", "policy_only".
         :param pulumi.Input[_builtins.str] content_bots_protection: Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
@@ -73,6 +75,8 @@ class BotManagementArgs:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
         if bm_cookie_enabled is not None:
             pulumi.set(__self__, "bm_cookie_enabled", bm_cookie_enabled)
+        if bot_preference_sync_enabled is not None:
+            pulumi.set(__self__, "bot_preference_sync_enabled", bot_preference_sync_enabled)
         if cf_robots_variant is not None:
             pulumi.set(__self__, "cf_robots_variant", cf_robots_variant)
         if content_bots_protection is not None:
@@ -146,6 +150,18 @@ class BotManagementArgs:
     @bm_cookie_enabled.setter
     def bm_cookie_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bm_cookie_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="botPreferenceSyncEnabled")
+    def bot_preference_sync_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+        """
+        return pulumi.get(self, "bot_preference_sync_enabled")
+
+    @bot_preference_sync_enabled.setter
+    def bot_preference_sync_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bot_preference_sync_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cfRobotsVariant")
@@ -306,6 +322,7 @@ class _BotManagementState:
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
                  content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -328,6 +345,7 @@ class _BotManagementState:
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        :param pulumi.Input[_builtins.bool] bot_preference_sync_enabled: Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
         :param pulumi.Input[_builtins.str] cf_robots_variant: Specifies the Robots Access Control License variant to use.
                Available values: "off", "policy_only".
         :param pulumi.Input[_builtins.str] content_bots_protection: Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
@@ -358,6 +376,8 @@ class _BotManagementState:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
         if bm_cookie_enabled is not None:
             pulumi.set(__self__, "bm_cookie_enabled", bm_cookie_enabled)
+        if bot_preference_sync_enabled is not None:
+            pulumi.set(__self__, "bot_preference_sync_enabled", bot_preference_sync_enabled)
         if cf_robots_variant is not None:
             pulumi.set(__self__, "cf_robots_variant", cf_robots_variant)
         if content_bots_protection is not None:
@@ -425,6 +445,18 @@ class _BotManagementState:
     @bm_cookie_enabled.setter
     def bm_cookie_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bm_cookie_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="botPreferenceSyncEnabled")
+    def bot_preference_sync_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+        """
+        return pulumi.get(self, "bot_preference_sync_enabled")
+
+    @bot_preference_sync_enabled.setter
+    def bot_preference_sync_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bot_preference_sync_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cfRobotsVariant")
@@ -624,6 +656,7 @@ class BotManagement(pulumi.CustomResource):
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
                  content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -653,6 +686,7 @@ class BotManagement(pulumi.CustomResource):
         example_bot_management = cloudflare.BotManagement("example_bot_management",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             ai_bots_protection="block",
+            bot_preference_sync_enabled=True,
             cf_robots_variant="policy_only",
             content_bots_protection="disabled",
             crawler_protection="enabled",
@@ -674,6 +708,7 @@ class BotManagement(pulumi.CustomResource):
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        :param pulumi.Input[_builtins.bool] bot_preference_sync_enabled: Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
         :param pulumi.Input[_builtins.str] cf_robots_variant: Specifies the Robots Access Control License variant to use.
                Available values: "off", "policy_only".
         :param pulumi.Input[_builtins.str] content_bots_protection: Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
@@ -717,6 +752,7 @@ class BotManagement(pulumi.CustomResource):
         example_bot_management = cloudflare.BotManagement("example_bot_management",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             ai_bots_protection="block",
+            bot_preference_sync_enabled=True,
             cf_robots_variant="policy_only",
             content_bots_protection="disabled",
             crawler_protection="enabled",
@@ -750,6 +786,7 @@ class BotManagement(pulumi.CustomResource):
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
                  content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -775,6 +812,7 @@ class BotManagement(pulumi.CustomResource):
             __props__.__dict__["ai_bots_protection"] = ai_bots_protection
             __props__.__dict__["auto_update_model"] = auto_update_model
             __props__.__dict__["bm_cookie_enabled"] = bm_cookie_enabled
+            __props__.__dict__["bot_preference_sync_enabled"] = bot_preference_sync_enabled
             __props__.__dict__["cf_robots_variant"] = cf_robots_variant
             __props__.__dict__["content_bots_protection"] = content_bots_protection
             __props__.__dict__["crawler_protection"] = crawler_protection
@@ -805,6 +843,7 @@ class BotManagement(pulumi.CustomResource):
             ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
             auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
             bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
             content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
             crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -831,6 +870,7 @@ class BotManagement(pulumi.CustomResource):
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        :param pulumi.Input[_builtins.bool] bot_preference_sync_enabled: Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
         :param pulumi.Input[_builtins.str] cf_robots_variant: Specifies the Robots Access Control License variant to use.
                Available values: "off", "policy_only".
         :param pulumi.Input[_builtins.str] content_bots_protection: Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
@@ -862,6 +902,7 @@ class BotManagement(pulumi.CustomResource):
         __props__.__dict__["ai_bots_protection"] = ai_bots_protection
         __props__.__dict__["auto_update_model"] = auto_update_model
         __props__.__dict__["bm_cookie_enabled"] = bm_cookie_enabled
+        __props__.__dict__["bot_preference_sync_enabled"] = bot_preference_sync_enabled
         __props__.__dict__["cf_robots_variant"] = cf_robots_variant
         __props__.__dict__["content_bots_protection"] = content_bots_protection
         __props__.__dict__["crawler_protection"] = crawler_protection
@@ -903,6 +944,14 @@ class BotManagement(pulumi.CustomResource):
         Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         """
         return pulumi.get(self, "bm_cookie_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="botPreferenceSyncEnabled")
+    def bot_preference_sync_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+        """
+        return pulumi.get(self, "bot_preference_sync_enabled")
 
     @_builtins.property
     @pulumi.getter(name="cfRobotsVariant")

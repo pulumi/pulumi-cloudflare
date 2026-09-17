@@ -23,7 +23,11 @@ public final class PrecursorArgs extends com.pulumi.resources.ResourceArgs {
      * not match a more specific enforcement rule.
      * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="defaultMode")
     private @Nullable Output<String> defaultMode;
 
@@ -32,7 +36,11 @@ public final class PrecursorArgs extends com.pulumi.resources.ResourceArgs {
      * not match a more specific enforcement rule.
      * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> defaultMode() {
         return Optional.ofNullable(this.defaultMode);
     }
@@ -40,14 +48,22 @@ public final class PrecursorArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ordered list of enforcement rules for the zone.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="enforcementRules")
     private @Nullable Output<List<PrecursorEnforcementRuleArgs>> enforcementRules;
 
     /**
      * @return The ordered list of enforcement rules for the zone.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<List<PrecursorEnforcementRuleArgs>>> enforcementRules() {
         return Optional.ofNullable(this.enforcementRules);
     }
@@ -100,7 +116,11 @@ public final class PrecursorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder defaultMode(@Nullable Output<String> defaultMode) {
             $.defaultMode = defaultMode;
             return this;
@@ -113,7 +133,11 @@ public final class PrecursorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder defaultMode(String defaultMode) {
             return defaultMode(Output.of(defaultMode));
         }
@@ -123,7 +147,11 @@ public final class PrecursorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder enforcementRules(@Nullable Output<List<PrecursorEnforcementRuleArgs>> enforcementRules) {
             $.enforcementRules = enforcementRules;
             return this;
@@ -134,7 +162,11 @@ public final class PrecursorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder enforcementRules(List<PrecursorEnforcementRuleArgs> enforcementRules) {
             return enforcementRules(Output.of(enforcementRules));
         }
@@ -144,7 +176,11 @@ public final class PrecursorArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder enforcementRules(PrecursorEnforcementRuleArgs... enforcementRules) {
             return enforcementRules(List.of(enforcementRules));
         }

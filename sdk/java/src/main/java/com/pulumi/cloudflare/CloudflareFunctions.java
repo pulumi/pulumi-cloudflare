@@ -222,10 +222,18 @@ import com.pulumi.cloudflare.inputs.GetEmailRoutingRulesArgs;
 import com.pulumi.cloudflare.inputs.GetEmailRoutingRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetEmailRoutingSettingsArgs;
 import com.pulumi.cloudflare.inputs.GetEmailRoutingSettingsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPoliciesArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPoliciesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPolicyArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPolicyPlainArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSenderArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSenderPlainArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSendersArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSendersPlainArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainPlainArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainsArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityImpersonationRegistriesArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityImpersonationRegistriesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityImpersonationRegistryArgs;
@@ -234,6 +242,10 @@ import com.pulumi.cloudflare.inputs.GetEmailSecurityTrustedDomainsArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityTrustedDomainsListArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityTrustedDomainsListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityTrustedDomainsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainPlainArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainsArgs;
+import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetFilterArgs;
 import com.pulumi.cloudflare.inputs.GetFilterPlainArgs;
 import com.pulumi.cloudflare.inputs.GetFiltersArgs;
@@ -364,6 +376,8 @@ import com.pulumi.cloudflare.inputs.GetMtlsCertificateAssociationsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetMtlsCertificatePlainArgs;
 import com.pulumi.cloudflare.inputs.GetMtlsCertificatesArgs;
 import com.pulumi.cloudflare.inputs.GetMtlsCertificatesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetNelSettingArgs;
+import com.pulumi.cloudflare.inputs.GetNelSettingPlainArgs;
 import com.pulumi.cloudflare.inputs.GetNotificationPoliciesArgs;
 import com.pulumi.cloudflare.inputs.GetNotificationPoliciesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetNotificationPolicyArgs;
@@ -526,6 +540,8 @@ import com.pulumi.cloudflare.inputs.GetSpectrumApplicationArgs;
 import com.pulumi.cloudflare.inputs.GetSpectrumApplicationPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSpectrumApplicationsArgs;
 import com.pulumi.cloudflare.inputs.GetSpectrumApplicationsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSpectrumProtocolsArgs;
+import com.pulumi.cloudflare.inputs.GetSpectrumProtocolsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSsoConnectorArgs;
 import com.pulumi.cloudflare.inputs.GetSsoConnectorPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSsoConnectorsArgs;
@@ -1005,16 +1021,22 @@ import com.pulumi.cloudflare.outputs.GetDnsZoneTransfersTsigsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetEmailRoutingAddressResult;
 import com.pulumi.cloudflare.outputs.GetEmailRoutingAddressesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetEmailRoutingCatchAllResult;
-import com.pulumi.cloudflare.outputs.GetEmailRoutingDnsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetEmailRoutingDnsResult;
 import com.pulumi.cloudflare.outputs.GetEmailRoutingRuleResult;
 import com.pulumi.cloudflare.outputs.GetEmailRoutingRulesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetEmailRoutingSettingsResult;
+import com.pulumi.cloudflare.outputs.GetEmailSecurityAllowPoliciesInvokeResult;
+import com.pulumi.cloudflare.outputs.GetEmailSecurityAllowPolicyResult;
 import com.pulumi.cloudflare.outputs.GetEmailSecurityBlockSenderResult;
 import com.pulumi.cloudflare.outputs.GetEmailSecurityBlockSendersInvokeResult;
+import com.pulumi.cloudflare.outputs.GetEmailSecurityDomainResult;
+import com.pulumi.cloudflare.outputs.GetEmailSecurityDomainsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetEmailSecurityImpersonationRegistriesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetEmailSecurityImpersonationRegistryResult;
 import com.pulumi.cloudflare.outputs.GetEmailSecurityTrustedDomainsListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetEmailSecurityTrustedDomainsResult;
+import com.pulumi.cloudflare.outputs.GetEmailSendingSubdomainResult;
+import com.pulumi.cloudflare.outputs.GetEmailSendingSubdomainsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetFilterResult;
 import com.pulumi.cloudflare.outputs.GetFiltersInvokeResult;
 import com.pulumi.cloudflare.outputs.GetFirewallRuleResult;
@@ -1080,6 +1102,7 @@ import com.pulumi.cloudflare.outputs.GetMoqRelaysInvokeResult;
 import com.pulumi.cloudflare.outputs.GetMtlsCertificateAssociationsResult;
 import com.pulumi.cloudflare.outputs.GetMtlsCertificateResult;
 import com.pulumi.cloudflare.outputs.GetMtlsCertificatesInvokeResult;
+import com.pulumi.cloudflare.outputs.GetNelSettingResult;
 import com.pulumi.cloudflare.outputs.GetNotificationPoliciesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetNotificationPolicyResult;
 import com.pulumi.cloudflare.outputs.GetNotificationPolicyWebhooksListInvokeResult;
@@ -1161,6 +1184,7 @@ import com.pulumi.cloudflare.outputs.GetSnippetsListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSnippetsResult;
 import com.pulumi.cloudflare.outputs.GetSpectrumApplicationResult;
 import com.pulumi.cloudflare.outputs.GetSpectrumApplicationsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetSpectrumProtocolsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSsoConnectorResult;
 import com.pulumi.cloudflare.outputs.GetSsoConnectorsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetStreamAudioTrackResult;
@@ -17667,92 +17691,6 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static Output<GetCloudConnectorRulesResult> getCloudConnectorRules() {
-        return getCloudConnectorRules(GetCloudConnectorRulesArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Cloud Connector Read`
-     * - `Cloud Connector Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCloudConnectorRulesResult> getCloudConnectorRulesPlain() {
-        return getCloudConnectorRulesPlain(GetCloudConnectorRulesPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Cloud Connector Read`
-     * - `Cloud Connector Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetCloudConnectorRulesResult> getCloudConnectorRules(GetCloudConnectorRulesArgs args) {
         return getCloudConnectorRules(args, InvokeOptions.Empty);
     }
@@ -25442,11 +25380,6 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getDcvDelegation:getDcvDelegation", TypeShape.of(GetDcvDelegationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25486,11 +25419,6 @@ public final class CloudflareFunctions {
         return getDlsPrefixBinding(args, InvokeOptions.Empty);
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25530,11 +25458,6 @@ public final class CloudflareFunctions {
         return getDlsPrefixBindingPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25574,11 +25497,6 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding", TypeShape.of(GetDlsPrefixBindingResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25618,11 +25536,6 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding", TypeShape.of(GetDlsPrefixBindingResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25662,11 +25575,6 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getDlsPrefixBinding:getDlsPrefixBinding", TypeShape.of(GetDlsPrefixBindingResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25705,11 +25613,6 @@ public final class CloudflareFunctions {
         return getDlsPrefixBindings(args, InvokeOptions.Empty);
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25748,11 +25651,6 @@ public final class CloudflareFunctions {
         return getDlsPrefixBindingsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25791,11 +25689,6 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings", TypeShape.of(GetDlsPrefixBindingsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -25834,11 +25727,6 @@ public final class CloudflareFunctions {
         return Deployment.getInstance().invoke("cloudflare:index/getDlsPrefixBindings:getDlsPrefixBindings", TypeShape.of(GetDlsPrefixBindingsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Accepted Permissions
-     * 
-     * - `DLS: Read`
-     * - `DLS: Write`
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -30423,95 +30311,7 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static Output<GetEmailRoutingDnsInvokeResult> getEmailRoutingDns() {
-        return getEmailRoutingDns(GetEmailRoutingDnsArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Zone Settings Read`
-     * - `Zone Settings Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetEmailRoutingDnsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleEmailRoutingDns = CloudflareFunctions.getEmailRoutingDns(GetEmailRoutingDnsArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .subdomain("example.net")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetEmailRoutingDnsInvokeResult> getEmailRoutingDnsPlain() {
-        return getEmailRoutingDnsPlain(GetEmailRoutingDnsPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Zone Settings Read`
-     * - `Zone Settings Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetEmailRoutingDnsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleEmailRoutingDns = CloudflareFunctions.getEmailRoutingDns(GetEmailRoutingDnsArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .subdomain("example.net")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetEmailRoutingDnsInvokeResult> getEmailRoutingDns(GetEmailRoutingDnsArgs args) {
+    public static Output<GetEmailRoutingDnsResult> getEmailRoutingDns(GetEmailRoutingDnsArgs args) {
         return getEmailRoutingDns(args, InvokeOptions.Empty);
     }
     /**
@@ -30555,7 +30355,7 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetEmailRoutingDnsInvokeResult> getEmailRoutingDnsPlain(GetEmailRoutingDnsPlainArgs args) {
+    public static CompletableFuture<GetEmailRoutingDnsResult> getEmailRoutingDnsPlain(GetEmailRoutingDnsPlainArgs args) {
         return getEmailRoutingDnsPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -30599,8 +30399,8 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static Output<GetEmailRoutingDnsInvokeResult> getEmailRoutingDns(GetEmailRoutingDnsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", TypeShape.of(GetEmailRoutingDnsInvokeResult.class), args, Utilities.withVersion(options));
+    public static Output<GetEmailRoutingDnsResult> getEmailRoutingDns(GetEmailRoutingDnsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", TypeShape.of(GetEmailRoutingDnsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -30643,8 +30443,8 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static Output<GetEmailRoutingDnsInvokeResult> getEmailRoutingDns(GetEmailRoutingDnsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", TypeShape.of(GetEmailRoutingDnsInvokeResult.class), args, Utilities.withVersion(options));
+    public static Output<GetEmailRoutingDnsResult> getEmailRoutingDns(GetEmailRoutingDnsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", TypeShape.of(GetEmailRoutingDnsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -30687,8 +30487,8 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetEmailRoutingDnsInvokeResult> getEmailRoutingDnsPlain(GetEmailRoutingDnsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", TypeShape.of(GetEmailRoutingDnsInvokeResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetEmailRoutingDnsResult> getEmailRoutingDnsPlain(GetEmailRoutingDnsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", TypeShape.of(GetEmailRoutingDnsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -31623,7 +31423,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSenderArgs;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPoliciesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -31637,9 +31437,17 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleEmailSecurityBlockSender = CloudflareFunctions.getEmailSecurityBlockSender(GetEmailSecurityBlockSenderArgs.builder()
+     *         final var exampleEmailSecurityAllowPolicies = CloudflareFunctions.getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .patternId("2402")
+     *             .direction("asc")
+     *             .isAcceptableSender(true)
+     *             .isExemptRecipient(true)
+     *             .isTrustedSender(true)
+     *             .order("pattern")
+     *             .pattern("pattern")
+     *             .patternType("EMAIL")
+     *             .search("search")
+     *             .verifySender(true)
      *             .build());
      * 
      *     }
@@ -31648,8 +31456,8 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static Output<GetEmailSecurityBlockSenderResult> getEmailSecurityBlockSender() {
-        return getEmailSecurityBlockSender(GetEmailSecurityBlockSenderArgs.Empty, InvokeOptions.Empty);
+    public static Output<GetEmailSecurityAllowPoliciesInvokeResult> getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs args) {
+        return getEmailSecurityAllowPolicies(args, InvokeOptions.Empty);
     }
     /**
      * Accepted Permissions
@@ -31667,7 +31475,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSenderArgs;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPoliciesArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -31681,9 +31489,17 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleEmailSecurityBlockSender = CloudflareFunctions.getEmailSecurityBlockSender(GetEmailSecurityBlockSenderArgs.builder()
+     *         final var exampleEmailSecurityAllowPolicies = CloudflareFunctions.getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .patternId("2402")
+     *             .direction("asc")
+     *             .isAcceptableSender(true)
+     *             .isExemptRecipient(true)
+     *             .isTrustedSender(true)
+     *             .order("pattern")
+     *             .pattern("pattern")
+     *             .patternType("EMAIL")
+     *             .search("search")
+     *             .verifySender(true)
      *             .build());
      * 
      *     }
@@ -31692,8 +31508,384 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetEmailSecurityBlockSenderResult> getEmailSecurityBlockSenderPlain() {
-        return getEmailSecurityBlockSenderPlain(GetEmailSecurityBlockSenderPlainArgs.Empty, InvokeOptions.Empty);
+    public static CompletableFuture<GetEmailSecurityAllowPoliciesInvokeResult> getEmailSecurityAllowPoliciesPlain(GetEmailSecurityAllowPoliciesPlainArgs args) {
+        return getEmailSecurityAllowPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityAllowPolicies = CloudflareFunctions.getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .direction("asc")
+     *             .isAcceptableSender(true)
+     *             .isExemptRecipient(true)
+     *             .isTrustedSender(true)
+     *             .order("pattern")
+     *             .pattern("pattern")
+     *             .patternType("EMAIL")
+     *             .search("search")
+     *             .verifySender(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityAllowPoliciesInvokeResult> getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSecurityAllowPolicies:getEmailSecurityAllowPolicies", TypeShape.of(GetEmailSecurityAllowPoliciesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityAllowPolicies = CloudflareFunctions.getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .direction("asc")
+     *             .isAcceptableSender(true)
+     *             .isExemptRecipient(true)
+     *             .isTrustedSender(true)
+     *             .order("pattern")
+     *             .pattern("pattern")
+     *             .patternType("EMAIL")
+     *             .search("search")
+     *             .verifySender(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityAllowPoliciesInvokeResult> getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSecurityAllowPolicies:getEmailSecurityAllowPolicies", TypeShape.of(GetEmailSecurityAllowPoliciesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityAllowPolicies = CloudflareFunctions.getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .direction("asc")
+     *             .isAcceptableSender(true)
+     *             .isExemptRecipient(true)
+     *             .isTrustedSender(true)
+     *             .order("pattern")
+     *             .pattern("pattern")
+     *             .patternType("EMAIL")
+     *             .search("search")
+     *             .verifySender(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSecurityAllowPoliciesInvokeResult> getEmailSecurityAllowPoliciesPlain(GetEmailSecurityAllowPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailSecurityAllowPolicies:getEmailSecurityAllowPolicies", TypeShape.of(GetEmailSecurityAllowPoliciesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityAllowPolicy = CloudflareFunctions.getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .policyId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityAllowPolicyResult> getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs args) {
+        return getEmailSecurityAllowPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityAllowPolicy = CloudflareFunctions.getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .policyId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSecurityAllowPolicyResult> getEmailSecurityAllowPolicyPlain(GetEmailSecurityAllowPolicyPlainArgs args) {
+        return getEmailSecurityAllowPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityAllowPolicy = CloudflareFunctions.getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .policyId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityAllowPolicyResult> getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSecurityAllowPolicy:getEmailSecurityAllowPolicy", TypeShape.of(GetEmailSecurityAllowPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityAllowPolicy = CloudflareFunctions.getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .policyId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityAllowPolicyResult> getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSecurityAllowPolicy:getEmailSecurityAllowPolicy", TypeShape.of(GetEmailSecurityAllowPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityAllowPolicy = CloudflareFunctions.getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .policyId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSecurityAllowPolicyResult> getEmailSecurityAllowPolicyPlain(GetEmailSecurityAllowPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailSecurityAllowPolicy:getEmailSecurityAllowPolicy", TypeShape.of(GetEmailSecurityAllowPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -31960,102 +32152,6 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static Output<GetEmailSecurityBlockSendersInvokeResult> getEmailSecurityBlockSenders() {
-        return getEmailSecurityBlockSenders(GetEmailSecurityBlockSendersArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Cloud Email Security: Read`
-     * - `Cloud Email Security: Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSendersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleEmailSecurityBlockSenders = CloudflareFunctions.getEmailSecurityBlockSenders(GetEmailSecurityBlockSendersArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .direction("asc")
-     *             .order("pattern")
-     *             .pattern("pattern")
-     *             .patternType("EMAIL")
-     *             .search("search")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetEmailSecurityBlockSendersInvokeResult> getEmailSecurityBlockSendersPlain() {
-        return getEmailSecurityBlockSendersPlain(GetEmailSecurityBlockSendersPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Cloud Email Security: Read`
-     * - `Cloud Email Security: Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetEmailSecurityBlockSendersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleEmailSecurityBlockSenders = CloudflareFunctions.getEmailSecurityBlockSenders(GetEmailSecurityBlockSendersArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .direction("asc")
-     *             .order("pattern")
-     *             .pattern("pattern")
-     *             .patternType("EMAIL")
-     *             .search("search")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetEmailSecurityBlockSendersInvokeResult> getEmailSecurityBlockSenders(GetEmailSecurityBlockSendersArgs args) {
         return getEmailSecurityBlockSenders(args, InvokeOptions.Empty);
     }
@@ -32250,6 +32346,481 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetEmailSecurityBlockSendersInvokeResult> getEmailSecurityBlockSendersPlain(GetEmailSecurityBlockSendersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", TypeShape.of(GetEmailSecurityBlockSendersInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomain = CloudflareFunctions.getEmailSecurityDomain(GetEmailSecurityDomainArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .domainId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityDomainResult> getEmailSecurityDomain(GetEmailSecurityDomainArgs args) {
+        return getEmailSecurityDomain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomain = CloudflareFunctions.getEmailSecurityDomain(GetEmailSecurityDomainArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .domainId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSecurityDomainResult> getEmailSecurityDomainPlain(GetEmailSecurityDomainPlainArgs args) {
+        return getEmailSecurityDomainPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomain = CloudflareFunctions.getEmailSecurityDomain(GetEmailSecurityDomainArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .domainId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityDomainResult> getEmailSecurityDomain(GetEmailSecurityDomainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSecurityDomain:getEmailSecurityDomain", TypeShape.of(GetEmailSecurityDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomain = CloudflareFunctions.getEmailSecurityDomain(GetEmailSecurityDomainArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .domainId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityDomainResult> getEmailSecurityDomain(GetEmailSecurityDomainArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSecurityDomain:getEmailSecurityDomain", TypeShape.of(GetEmailSecurityDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomain = CloudflareFunctions.getEmailSecurityDomain(GetEmailSecurityDomainArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .domainId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSecurityDomainResult> getEmailSecurityDomainPlain(GetEmailSecurityDomainPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailSecurityDomain:getEmailSecurityDomain", TypeShape.of(GetEmailSecurityDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomains = CloudflareFunctions.getEmailSecurityDomains(GetEmailSecurityDomainsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .activeDeliveryMode("DIRECT")
+     *             .allowedDeliveryMode("DIRECT")
+     *             .direction("asc")
+     *             .domains("string")
+     *             .integrationId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .order("domain")
+     *             .search("search")
+     *             .status("PENDING")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityDomainsInvokeResult> getEmailSecurityDomains(GetEmailSecurityDomainsArgs args) {
+        return getEmailSecurityDomains(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomains = CloudflareFunctions.getEmailSecurityDomains(GetEmailSecurityDomainsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .activeDeliveryMode("DIRECT")
+     *             .allowedDeliveryMode("DIRECT")
+     *             .direction("asc")
+     *             .domains("string")
+     *             .integrationId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .order("domain")
+     *             .search("search")
+     *             .status("PENDING")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSecurityDomainsInvokeResult> getEmailSecurityDomainsPlain(GetEmailSecurityDomainsPlainArgs args) {
+        return getEmailSecurityDomainsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomains = CloudflareFunctions.getEmailSecurityDomains(GetEmailSecurityDomainsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .activeDeliveryMode("DIRECT")
+     *             .allowedDeliveryMode("DIRECT")
+     *             .direction("asc")
+     *             .domains("string")
+     *             .integrationId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .order("domain")
+     *             .search("search")
+     *             .status("PENDING")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityDomainsInvokeResult> getEmailSecurityDomains(GetEmailSecurityDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSecurityDomains:getEmailSecurityDomains", TypeShape.of(GetEmailSecurityDomainsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomains = CloudflareFunctions.getEmailSecurityDomains(GetEmailSecurityDomainsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .activeDeliveryMode("DIRECT")
+     *             .allowedDeliveryMode("DIRECT")
+     *             .direction("asc")
+     *             .domains("string")
+     *             .integrationId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .order("domain")
+     *             .search("search")
+     *             .status("PENDING")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSecurityDomainsInvokeResult> getEmailSecurityDomains(GetEmailSecurityDomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSecurityDomains:getEmailSecurityDomains", TypeShape.of(GetEmailSecurityDomainsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Cloud Email Security: Read`
+     * - `Cloud Email Security: Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSecurityDomains = CloudflareFunctions.getEmailSecurityDomains(GetEmailSecurityDomainsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .activeDeliveryMode("DIRECT")
+     *             .allowedDeliveryMode("DIRECT")
+     *             .direction("asc")
+     *             .domains("string")
+     *             .integrationId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .order("domain")
+     *             .search("search")
+     *             .status("PENDING")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSecurityDomainsInvokeResult> getEmailSecurityDomainsPlain(GetEmailSecurityDomainsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailSecurityDomains:getEmailSecurityDomains", TypeShape.of(GetEmailSecurityDomainsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -33314,6 +33885,391 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetEmailSecurityTrustedDomainsListInvokeResult> getEmailSecurityTrustedDomainsListPlain(GetEmailSecurityTrustedDomainsListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList", TypeShape.of(GetEmailSecurityTrustedDomainsListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomain = CloudflareFunctions.getEmailSendingSubdomain(GetEmailSendingSubdomainArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .subdomainId("aabbccdd11223344aabbccdd11223344")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSendingSubdomainResult> getEmailSendingSubdomain(GetEmailSendingSubdomainArgs args) {
+        return getEmailSendingSubdomain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomain = CloudflareFunctions.getEmailSendingSubdomain(GetEmailSendingSubdomainArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .subdomainId("aabbccdd11223344aabbccdd11223344")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSendingSubdomainResult> getEmailSendingSubdomainPlain(GetEmailSendingSubdomainPlainArgs args) {
+        return getEmailSendingSubdomainPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomain = CloudflareFunctions.getEmailSendingSubdomain(GetEmailSendingSubdomainArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .subdomainId("aabbccdd11223344aabbccdd11223344")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSendingSubdomainResult> getEmailSendingSubdomain(GetEmailSendingSubdomainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSendingSubdomain:getEmailSendingSubdomain", TypeShape.of(GetEmailSendingSubdomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomain = CloudflareFunctions.getEmailSendingSubdomain(GetEmailSendingSubdomainArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .subdomainId("aabbccdd11223344aabbccdd11223344")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSendingSubdomainResult> getEmailSendingSubdomain(GetEmailSendingSubdomainArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSendingSubdomain:getEmailSendingSubdomain", TypeShape.of(GetEmailSendingSubdomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomain = CloudflareFunctions.getEmailSendingSubdomain(GetEmailSendingSubdomainArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .subdomainId("aabbccdd11223344aabbccdd11223344")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSendingSubdomainResult> getEmailSendingSubdomainPlain(GetEmailSendingSubdomainPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailSendingSubdomain:getEmailSendingSubdomain", TypeShape.of(GetEmailSendingSubdomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomains = CloudflareFunctions.getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSendingSubdomainsInvokeResult> getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs args) {
+        return getEmailSendingSubdomains(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomains = CloudflareFunctions.getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSendingSubdomainsInvokeResult> getEmailSendingSubdomainsPlain(GetEmailSendingSubdomainsPlainArgs args) {
+        return getEmailSendingSubdomainsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomains = CloudflareFunctions.getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSendingSubdomainsInvokeResult> getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSendingSubdomains:getEmailSendingSubdomains", TypeShape.of(GetEmailSendingSubdomainsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomains = CloudflareFunctions.getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetEmailSendingSubdomainsInvokeResult> getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getEmailSendingSubdomains:getEmailSendingSubdomains", TypeShape.of(GetEmailSendingSubdomainsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleEmailSendingSubdomains = CloudflareFunctions.getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetEmailSendingSubdomainsInvokeResult> getEmailSendingSubdomainsPlain(GetEmailSendingSubdomainsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getEmailSendingSubdomains:getEmailSendingSubdomains", TypeShape.of(GetEmailSendingSubdomainsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -45125,94 +46081,6 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static Output<GetMagicTransitConnectorResult> getMagicTransitConnector() {
-        return getMagicTransitConnector(GetMagicTransitConnectorArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Magic WAN Read`
-     * - `Magic WAN Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetMagicTransitConnectorArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleMagicTransitConnector = CloudflareFunctions.getMagicTransitConnector(GetMagicTransitConnectorArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .connectorId("connector_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetMagicTransitConnectorResult> getMagicTransitConnectorPlain() {
-        return getMagicTransitConnectorPlain(GetMagicTransitConnectorPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Magic WAN Read`
-     * - `Magic WAN Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetMagicTransitConnectorArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleMagicTransitConnector = CloudflareFunctions.getMagicTransitConnector(GetMagicTransitConnectorArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .connectorId("connector_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetMagicTransitConnectorResult> getMagicTransitConnector(GetMagicTransitConnectorArgs args) {
         return getMagicTransitConnector(args, InvokeOptions.Empty);
     }
@@ -45391,92 +46259,6 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetMagicTransitConnectorResult> getMagicTransitConnectorPlain(GetMagicTransitConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", TypeShape.of(GetMagicTransitConnectorResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Magic WAN Read`
-     * - `Magic WAN Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetMagicTransitConnectorsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleMagicTransitConnectors = CloudflareFunctions.getMagicTransitConnectors(GetMagicTransitConnectorsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetMagicTransitConnectorsInvokeResult> getMagicTransitConnectors() {
-        return getMagicTransitConnectors(GetMagicTransitConnectorsArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * Accepted Permissions
-     * 
-     * - `Magic WAN Read`
-     * - `Magic WAN Write`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetMagicTransitConnectorsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleMagicTransitConnectors = CloudflareFunctions.getMagicTransitConnectors(GetMagicTransitConnectorsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetMagicTransitConnectorsInvokeResult> getMagicTransitConnectorsPlain() {
-        return getMagicTransitConnectorsPlain(GetMagicTransitConnectorsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Accepted Permissions
@@ -49808,6 +50590,216 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetMtlsCertificatesInvokeResult> getMtlsCertificatesPlain(GetMtlsCertificatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getMtlsCertificates:getMtlsCertificates", TypeShape.of(GetMtlsCertificatesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetNelSettingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleNelSetting = CloudflareFunctions.getNelSetting(GetNelSettingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNelSettingResult> getNelSetting(GetNelSettingArgs args) {
+        return getNelSetting(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetNelSettingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleNelSetting = CloudflareFunctions.getNelSetting(GetNelSettingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNelSettingResult> getNelSettingPlain(GetNelSettingPlainArgs args) {
+        return getNelSettingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetNelSettingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleNelSetting = CloudflareFunctions.getNelSetting(GetNelSettingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNelSettingResult> getNelSetting(GetNelSettingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getNelSetting:getNelSetting", TypeShape.of(GetNelSettingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetNelSettingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleNelSetting = CloudflareFunctions.getNelSetting(GetNelSettingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNelSettingResult> getNelSetting(GetNelSettingArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getNelSetting:getNelSetting", TypeShape.of(GetNelSettingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetNelSettingArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleNelSetting = CloudflareFunctions.getNelSetting(GetNelSettingArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNelSettingResult> getNelSettingPlain(GetNelSettingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getNelSetting:getNelSetting", TypeShape.of(GetNelSettingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -63401,82 +64393,6 @@ public final class CloudflareFunctions {
      * </pre>
      * 
      */
-    public static Output<GetRegistrarDomainsInvokeResult> getRegistrarDomains() {
-        return getRegistrarDomains(GetRegistrarDomainsArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomains = CloudflareFunctions.getRegistrarDomains(GetRegistrarDomainsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetRegistrarDomainsInvokeResult> getRegistrarDomainsPlain() {
-        return getRegistrarDomainsPlain(GetRegistrarDomainsPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomains = CloudflareFunctions.getRegistrarDomains(GetRegistrarDomainsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
     public static Output<GetRegistrarDomainsInvokeResult> getRegistrarDomains(GetRegistrarDomainsArgs args) {
         return getRegistrarDomains(args, InvokeOptions.Empty);
     }
@@ -69527,6 +70443,221 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetSpectrumApplicationsInvokeResult> getSpectrumApplicationsPlain(GetSpectrumApplicationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getSpectrumApplications:getSpectrumApplications", TypeShape.of(GetSpectrumApplicationsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * - `Zone Settings Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSpectrumProtocolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSpectrumProtocols = CloudflareFunctions.getSpectrumProtocols(GetSpectrumProtocolsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSpectrumProtocolsInvokeResult> getSpectrumProtocols(GetSpectrumProtocolsArgs args) {
+        return getSpectrumProtocols(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * - `Zone Settings Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSpectrumProtocolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSpectrumProtocols = CloudflareFunctions.getSpectrumProtocols(GetSpectrumProtocolsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSpectrumProtocolsInvokeResult> getSpectrumProtocolsPlain(GetSpectrumProtocolsPlainArgs args) {
+        return getSpectrumProtocolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * - `Zone Settings Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSpectrumProtocolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSpectrumProtocols = CloudflareFunctions.getSpectrumProtocols(GetSpectrumProtocolsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSpectrumProtocolsInvokeResult> getSpectrumProtocols(GetSpectrumProtocolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSpectrumProtocols:getSpectrumProtocols", TypeShape.of(GetSpectrumProtocolsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * - `Zone Settings Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSpectrumProtocolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSpectrumProtocols = CloudflareFunctions.getSpectrumProtocols(GetSpectrumProtocolsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSpectrumProtocolsInvokeResult> getSpectrumProtocols(GetSpectrumProtocolsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSpectrumProtocols:getSpectrumProtocols", TypeShape.of(GetSpectrumProtocolsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Accepted Permissions
+     * 
+     * - `Zone Settings Read`
+     * - `Zone Settings Write`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSpectrumProtocolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSpectrumProtocols = CloudflareFunctions.getSpectrumProtocols(GetSpectrumProtocolsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSpectrumProtocolsInvokeResult> getSpectrumProtocolsPlain(GetSpectrumProtocolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSpectrumProtocols:getSpectrumProtocols", TypeShape.of(GetSpectrumProtocolsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -111174,6 +112305,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplications = CloudflareFunctions.getZeroTrustResourceLibraryApplications(GetZeroTrustResourceLibraryApplicationsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .fields("fields")
      *             .filter("filter")
      *             .orderBy("order_by")
      *             .search("xx")
@@ -111215,6 +112347,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplications = CloudflareFunctions.getZeroTrustResourceLibraryApplications(GetZeroTrustResourceLibraryApplicationsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .fields("fields")
      *             .filter("filter")
      *             .orderBy("order_by")
      *             .search("xx")
@@ -111256,6 +112389,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplications = CloudflareFunctions.getZeroTrustResourceLibraryApplications(GetZeroTrustResourceLibraryApplicationsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .fields("fields")
      *             .filter("filter")
      *             .orderBy("order_by")
      *             .search("xx")
@@ -111297,6 +112431,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplications = CloudflareFunctions.getZeroTrustResourceLibraryApplications(GetZeroTrustResourceLibraryApplicationsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .fields("fields")
      *             .filter("filter")
      *             .orderBy("order_by")
      *             .search("xx")
@@ -111338,6 +112473,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustResourceLibraryApplications = CloudflareFunctions.getZeroTrustResourceLibraryApplications(GetZeroTrustResourceLibraryApplicationsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .fields("fields")
      *             .filter("filter")
      *             .orderBy("order_by")
      *             .search("xx")
@@ -119331,7 +120467,7 @@ public final class CloudflareFunctions {
      * | `imageResizing` | `&#34;on&#34;`, `&#34;off&#34;`, `&#34;open&#34;` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
      * | `ipGeolocation` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
      * | `ipv6` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-     * | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+     * | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
      * | `minTlsVersion` | `&#34;1.0&#34;`, `&#34;1.1&#34;`, `&#34;1.2&#34;`, `&#34;1.3&#34;` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
      * | `mirage` | `&#34;on&#34;` / `&#34;off&#34;` | Automatically optimize image loading for website visitors on mobile devices. ... |
      * | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -119342,6 +120478,7 @@ public final class CloudflareFunctions {
      * | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
      * | `originMaxHttpVersion` | `&#34;2&#34;`, `&#34;1&#34;` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
      * | `polish` | `&#34;off&#34;`, `&#34;lossless&#34;`, `&#34;lossy&#34;` | Removes metadata and compresses your images for faster page load times. Basic... |
+     * | `preRender` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
      * | `prefetchPreload` | `&#34;on&#34;` / `&#34;off&#34;` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
      * | `privacyPass` | `&#34;on&#34;` / `&#34;off&#34;` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
      * | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -119451,7 +120588,7 @@ public final class CloudflareFunctions {
      * | `imageResizing` | `&#34;on&#34;`, `&#34;off&#34;`, `&#34;open&#34;` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
      * | `ipGeolocation` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
      * | `ipv6` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-     * | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+     * | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
      * | `minTlsVersion` | `&#34;1.0&#34;`, `&#34;1.1&#34;`, `&#34;1.2&#34;`, `&#34;1.3&#34;` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
      * | `mirage` | `&#34;on&#34;` / `&#34;off&#34;` | Automatically optimize image loading for website visitors on mobile devices. ... |
      * | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -119462,6 +120599,7 @@ public final class CloudflareFunctions {
      * | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
      * | `originMaxHttpVersion` | `&#34;2&#34;`, `&#34;1&#34;` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
      * | `polish` | `&#34;off&#34;`, `&#34;lossless&#34;`, `&#34;lossy&#34;` | Removes metadata and compresses your images for faster page load times. Basic... |
+     * | `preRender` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
      * | `prefetchPreload` | `&#34;on&#34;` / `&#34;off&#34;` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
      * | `privacyPass` | `&#34;on&#34;` / `&#34;off&#34;` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
      * | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -119571,7 +120709,7 @@ public final class CloudflareFunctions {
      * | `imageResizing` | `&#34;on&#34;`, `&#34;off&#34;`, `&#34;open&#34;` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
      * | `ipGeolocation` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
      * | `ipv6` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-     * | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+     * | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
      * | `minTlsVersion` | `&#34;1.0&#34;`, `&#34;1.1&#34;`, `&#34;1.2&#34;`, `&#34;1.3&#34;` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
      * | `mirage` | `&#34;on&#34;` / `&#34;off&#34;` | Automatically optimize image loading for website visitors on mobile devices. ... |
      * | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -119582,6 +120720,7 @@ public final class CloudflareFunctions {
      * | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
      * | `originMaxHttpVersion` | `&#34;2&#34;`, `&#34;1&#34;` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
      * | `polish` | `&#34;off&#34;`, `&#34;lossless&#34;`, `&#34;lossy&#34;` | Removes metadata and compresses your images for faster page load times. Basic... |
+     * | `preRender` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
      * | `prefetchPreload` | `&#34;on&#34;` / `&#34;off&#34;` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
      * | `privacyPass` | `&#34;on&#34;` / `&#34;off&#34;` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
      * | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -119691,7 +120830,7 @@ public final class CloudflareFunctions {
      * | `imageResizing` | `&#34;on&#34;`, `&#34;off&#34;`, `&#34;open&#34;` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
      * | `ipGeolocation` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
      * | `ipv6` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-     * | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+     * | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
      * | `minTlsVersion` | `&#34;1.0&#34;`, `&#34;1.1&#34;`, `&#34;1.2&#34;`, `&#34;1.3&#34;` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
      * | `mirage` | `&#34;on&#34;` / `&#34;off&#34;` | Automatically optimize image loading for website visitors on mobile devices. ... |
      * | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -119702,6 +120841,7 @@ public final class CloudflareFunctions {
      * | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
      * | `originMaxHttpVersion` | `&#34;2&#34;`, `&#34;1&#34;` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
      * | `polish` | `&#34;off&#34;`, `&#34;lossless&#34;`, `&#34;lossy&#34;` | Removes metadata and compresses your images for faster page load times. Basic... |
+     * | `preRender` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
      * | `prefetchPreload` | `&#34;on&#34;` / `&#34;off&#34;` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
      * | `privacyPass` | `&#34;on&#34;` / `&#34;off&#34;` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
      * | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -119811,7 +120951,7 @@ public final class CloudflareFunctions {
      * | `imageResizing` | `&#34;on&#34;`, `&#34;off&#34;`, `&#34;open&#34;` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
      * | `ipGeolocation` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
      * | `ipv6` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-     * | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+     * | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
      * | `minTlsVersion` | `&#34;1.0&#34;`, `&#34;1.1&#34;`, `&#34;1.2&#34;`, `&#34;1.3&#34;` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
      * | `mirage` | `&#34;on&#34;` / `&#34;off&#34;` | Automatically optimize image loading for website visitors on mobile devices. ... |
      * | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -119822,6 +120962,7 @@ public final class CloudflareFunctions {
      * | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
      * | `originMaxHttpVersion` | `&#34;2&#34;`, `&#34;1&#34;` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
      * | `polish` | `&#34;off&#34;`, `&#34;lossless&#34;`, `&#34;lossy&#34;` | Removes metadata and compresses your images for faster page load times. Basic... |
+     * | `preRender` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
      * | `prefetchPreload` | `&#34;on&#34;` / `&#34;off&#34;` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
      * | `privacyPass` | `&#34;on&#34;` / `&#34;off&#34;` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
      * | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |

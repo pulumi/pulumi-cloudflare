@@ -444,7 +444,7 @@ class PagesProject(pulumi.CustomResource):
                         "BROWSER": {},
                     },
                     "build_image_major_version": 3,
-                    "compatibility_date": "2025-01-01",
+                    "compatibility_date": "2025-01-01T00:00:00Z",
                     "compatibility_flags": ["url_standard"],
                     "d1_databases": {
                         "D1_BINDING": {
@@ -526,7 +526,7 @@ class PagesProject(pulumi.CustomResource):
                         "BROWSER": {},
                     },
                     "build_image_major_version": 3,
-                    "compatibility_date": "2025-01-01",
+                    "compatibility_date": "2025-01-01T00:00:00Z",
                     "compatibility_flags": ["url_standard"],
                     "d1_databases": {
                         "D1_BINDING": {
@@ -683,7 +683,7 @@ class PagesProject(pulumi.CustomResource):
                         "BROWSER": {},
                     },
                     "build_image_major_version": 3,
-                    "compatibility_date": "2025-01-01",
+                    "compatibility_date": "2025-01-01T00:00:00Z",
                     "compatibility_flags": ["url_standard"],
                     "d1_databases": {
                         "D1_BINDING": {
@@ -765,7 +765,7 @@ class PagesProject(pulumi.CustomResource):
                         "BROWSER": {},
                     },
                     "build_image_major_version": 3,
-                    "compatibility_date": "2025-01-01",
+                    "compatibility_date": "2025-01-01T00:00:00Z",
                     "compatibility_flags": ["url_standard"],
                     "d1_databases": {
                         "D1_BINDING": {

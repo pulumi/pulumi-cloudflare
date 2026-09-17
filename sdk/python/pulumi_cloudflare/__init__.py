@@ -86,9 +86,12 @@ from .email_routing_catch_all import *
 from .email_routing_dns import *
 from .email_routing_rule import *
 from .email_routing_settings import *
+from .email_security_allow_policy import *
 from .email_security_block_sender import *
+from .email_security_domain import *
 from .email_security_impersonation_registry import *
 from .email_security_trusted_domains import *
+from .email_sending_subdomain import *
 from .filter import *
 from .firewall_rule import *
 from .flagship_app import *
@@ -202,12 +205,18 @@ from .get_email_routing_dns import *
 from .get_email_routing_rule import *
 from .get_email_routing_rules import *
 from .get_email_routing_settings import *
+from .get_email_security_allow_policies import *
+from .get_email_security_allow_policy import *
 from .get_email_security_block_sender import *
 from .get_email_security_block_senders import *
+from .get_email_security_domain import *
+from .get_email_security_domains import *
 from .get_email_security_impersonation_registries import *
 from .get_email_security_impersonation_registry import *
 from .get_email_security_trusted_domains import *
 from .get_email_security_trusted_domains_list import *
+from .get_email_sending_subdomain import *
+from .get_email_sending_subdomains import *
 from .get_filter import *
 from .get_filters import *
 from .get_firewall_rule import *
@@ -273,6 +282,7 @@ from .get_moq_relays import *
 from .get_mtls_certificate import *
 from .get_mtls_certificate_associations import *
 from .get_mtls_certificates import *
+from .get_nel_setting import *
 from .get_notification_policies import *
 from .get_notification_policy import *
 from .get_notification_policy_webhooks import *
@@ -354,6 +364,7 @@ from .get_snippets import *
 from .get_snippets_list import *
 from .get_spectrum_application import *
 from .get_spectrum_applications import *
+from .get_spectrum_protocols import *
 from .get_sso_connector import *
 from .get_sso_connectors import *
 from .get_stream import *
@@ -575,6 +586,7 @@ from .managed_headers import *
 from .managed_transforms import *
 from .moq_relay import *
 from .mtls_certificate import *
+from .nel_setting import *
 from .notification_policy import *
 from .notification_policy_webhooks import *
 from .oauth_client import *
@@ -732,6 +744,7 @@ from .zero_trust_list import *
 from .zero_trust_local_fallback_domain import *
 from .zero_trust_network_hostname_route import *
 from .zero_trust_organization import *
+from .zero_trust_resource_library_application import *
 from .zero_trust_risk_behavior import *
 from .zero_trust_risk_scoring_integration import *
 from .zero_trust_tunnel_cloudflared import *
@@ -1405,10 +1418,26 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/emailSecurityAllowPolicy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/emailSecurityAllowPolicy:EmailSecurityAllowPolicy": "EmailSecurityAllowPolicy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/emailSecurityBlockSender",
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender": "EmailSecurityBlockSender"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/emailSecurityDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/emailSecurityDomain:EmailSecurityDomain": "EmailSecurityDomain"
   }
  },
  {
@@ -1425,6 +1454,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains": "EmailSecurityTrustedDomains"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/emailSendingSubdomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/emailSendingSubdomain:EmailSendingSubdomain": "EmailSendingSubdomain"
   }
  },
  {
@@ -1721,6 +1758,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/mtlsCertificate:MtlsCertificate": "MtlsCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/nelSetting",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/nelSetting:NelSetting": "NelSetting"
   }
  },
  {
@@ -2969,6 +3014,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization": "ZeroTrustOrganization"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustResourceLibraryApplication",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustResourceLibraryApplication:ZeroTrustResourceLibraryApplication": "ZeroTrustResourceLibraryApplication"
   }
  },
  {

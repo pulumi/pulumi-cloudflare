@@ -3,88 +3,58 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetEmailRoutingDnsResultError;
-import com.pulumi.cloudflare.outputs.GetEmailRoutingDnsResultRecord;
+import com.pulumi.cloudflare.outputs.GetEmailRoutingDnsDn;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEmailRoutingDnsResult {
+    private List<GetEmailRoutingDnsDn> dns;
     /**
-     * @return DNS record content.
+     * @return Identifier.
      * 
      */
-    private String content;
-    private List<GetEmailRoutingDnsResultError> errors;
+    private String id;
     /**
-     * @return DNS record name (or {@literal @} for the zone apex).
+     * @return Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      * 
      */
-    private String name;
+    private @Nullable String subdomain;
     /**
-     * @return Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
+     * @return Identifier.
      * 
      */
-    private Double priority;
-    private List<GetEmailRoutingDnsResultRecord> records;
-    /**
-     * @return Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for &#39;automatic&#39;.
-     * 
-     */
-    private Double ttl;
-    /**
-     * @return DNS record type.
-     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;HTTPS&#34;, &#34;TXT&#34;, &#34;SRV&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
-     * 
-     */
-    private String type;
+    private String zoneId;
 
     private GetEmailRoutingDnsResult() {}
-    /**
-     * @return DNS record content.
-     * 
-     */
-    public String content() {
-        return this.content;
-    }
-    public List<GetEmailRoutingDnsResultError> errors() {
-        return this.errors;
+    public List<GetEmailRoutingDnsDn> dns() {
+        return this.dns;
     }
     /**
-     * @return DNS record name (or {@literal @} for the zone apex).
+     * @return Identifier.
      * 
      */
-    public String name() {
-        return this.name;
+    public String id() {
+        return this.id;
     }
     /**
-     * @return Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
+     * @return Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      * 
      */
-    public Double priority() {
-        return this.priority;
-    }
-    public List<GetEmailRoutingDnsResultRecord> records() {
-        return this.records;
+    public Optional<String> subdomain() {
+        return Optional.ofNullable(this.subdomain);
     }
     /**
-     * @return Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for &#39;automatic&#39;.
+     * @return Identifier.
      * 
      */
-    public Double ttl() {
-        return this.ttl;
-    }
-    /**
-     * @return DNS record type.
-     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;HTTPS&#34;, &#34;TXT&#34;, &#34;SRV&#34;, &#34;LOC&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
-     * 
-     */
-    public String type() {
-        return this.type;
+    public String zoneId() {
+        return this.zoneId;
     }
 
     public static Builder builder() {
@@ -96,96 +66,58 @@ public final class GetEmailRoutingDnsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String content;
-        private List<GetEmailRoutingDnsResultError> errors;
-        private String name;
-        private Double priority;
-        private List<GetEmailRoutingDnsResultRecord> records;
-        private Double ttl;
-        private String type;
+        private List<GetEmailRoutingDnsDn> dns;
+        private String id;
+        private @Nullable String subdomain;
+        private String zoneId;
         public Builder() {}
         public Builder(GetEmailRoutingDnsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.content = defaults.content;
-    	      this.errors = defaults.errors;
-    	      this.name = defaults.name;
-    	      this.priority = defaults.priority;
-    	      this.records = defaults.records;
-    	      this.ttl = defaults.ttl;
-    	      this.type = defaults.type;
+    	      this.dns = defaults.dns;
+    	      this.id = defaults.id;
+    	      this.subdomain = defaults.subdomain;
+    	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
-        public Builder content(String content) {
-            if (content == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "content");
+        public Builder dns(List<GetEmailRoutingDnsDn> dns) {
+            if (dns == null) {
+              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "dns");
             }
-            this.content = content;
+            this.dns = dns;
+            return this;
+        }
+        public Builder dns(GetEmailRoutingDnsDn... dns) {
+            return dns(List.of(dns));
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder errors(List<GetEmailRoutingDnsResultError> errors) {
-            if (errors == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "errors");
-            }
-            this.errors = errors;
-            return this;
-        }
-        public Builder errors(GetEmailRoutingDnsResultError... errors) {
-            return errors(List.of(errors));
-        }
-        @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "name");
-            }
-            this.name = name;
+        public Builder subdomain(@Nullable String subdomain) {
+
+            this.subdomain = subdomain;
             return this;
         }
         @CustomType.Setter
-        public Builder priority(Double priority) {
-            if (priority == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "priority");
+        public Builder zoneId(String zoneId) {
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "zoneId");
             }
-            this.priority = priority;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder records(List<GetEmailRoutingDnsResultRecord> records) {
-            if (records == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "records");
-            }
-            this.records = records;
-            return this;
-        }
-        public Builder records(GetEmailRoutingDnsResultRecord... records) {
-            return records(List.of(records));
-        }
-        @CustomType.Setter
-        public Builder ttl(Double ttl) {
-            if (ttl == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "ttl");
-            }
-            this.ttl = ttl;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsResult", "type");
-            }
-            this.type = type;
+            this.zoneId = zoneId;
             return this;
         }
         public GetEmailRoutingDnsResult build() {
             final var _resultValue = new GetEmailRoutingDnsResult();
-            _resultValue.content = content;
-            _resultValue.errors = errors;
-            _resultValue.name = name;
-            _resultValue.priority = priority;
-            _resultValue.records = records;
-            _resultValue.ttl = ttl;
-            _resultValue.type = type;
+            _resultValue.dns = dns;
+            _resultValue.id = id;
+            _resultValue.subdomain = subdomain;
+            _resultValue.zoneId = zoneId;
             return _resultValue;
         }
     }

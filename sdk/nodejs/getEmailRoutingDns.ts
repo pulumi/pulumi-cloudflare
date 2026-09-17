@@ -24,8 +24,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailRoutingDns(args?: GetEmailRoutingDnsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingDnsResult> {
-    args = args || {};
+export function getEmailRoutingDns(args: GetEmailRoutingDnsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingDnsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", {
         "subdomain": args.subdomain,
@@ -38,39 +37,32 @@ export function getEmailRoutingDns(args?: GetEmailRoutingDnsArgs, opts?: pulumi.
  */
 export interface GetEmailRoutingDnsArgs {
     /**
-     * Domain of your zone.
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      */
     subdomain?: string;
     /**
      * Identifier.
      */
-    zoneId?: string;
+    zoneId: string;
 }
 
 /**
  * A collection of values returned by getEmailRoutingDns.
  */
 export interface GetEmailRoutingDnsResult {
-    readonly errors: outputs.GetEmailRoutingDnsError[];
+    readonly dns: outputs.GetEmailRoutingDnsDn[];
     /**
      * Identifier.
      */
     readonly id: string;
-    readonly messages: outputs.GetEmailRoutingDnsMessage[];
-    readonly result: outputs.GetEmailRoutingDnsResult;
-    readonly resultInfo: outputs.GetEmailRoutingDnsResultInfo;
     /**
-     * Domain of your zone.
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      */
     readonly subdomain?: string;
     /**
-     * Whether the API call was successful.
-     */
-    readonly success: boolean;
-    /**
      * Identifier.
      */
-    readonly zoneId?: string;
+    readonly zoneId: string;
 }
 /**
  * Accepted Permissions
@@ -90,8 +82,7 @@ export interface GetEmailRoutingDnsResult {
  * });
  * ```
  */
-export function getEmailRoutingDnsOutput(args?: GetEmailRoutingDnsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingDnsResult> {
-    args = args || {};
+export function getEmailRoutingDnsOutput(args: GetEmailRoutingDnsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingDnsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", {
         "subdomain": args.subdomain,
@@ -104,11 +95,11 @@ export function getEmailRoutingDnsOutput(args?: GetEmailRoutingDnsOutputArgs, op
  */
 export interface GetEmailRoutingDnsOutputArgs {
     /**
-     * Domain of your zone.
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      */
     subdomain?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

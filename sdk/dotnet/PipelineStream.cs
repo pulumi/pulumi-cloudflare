@@ -61,13 +61,6 @@ namespace Pulumi.Cloudflare
     ///                     SqlName = "sql_name",
     ///                 },
     ///             },
-    ///             Format = new Cloudflare.Inputs.PipelineStreamSchemaFormatArgs
-    ///             {
-    ///                 Type = "json",
-    ///                 DecimalEncoding = "number",
-    ///                 TimestampFormat = "rfc3339",
-    ///                 Unstructured = true,
-    ///             },
     ///             Inferred = true,
     ///         },
     ///         WorkerBinding = new Cloudflare.Inputs.PipelineStreamWorkerBindingArgs
@@ -103,6 +96,9 @@ namespace Pulumi.Cloudflare
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the data format of the events.
+        /// </summary>
         [Output("format")]
         public Output<Outputs.PipelineStreamFormat?> Format { get; private set; } = null!;
 
@@ -118,6 +114,9 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         [Output("schema")]
         public Output<Outputs.PipelineStreamSchema?> Schema { get; private set; } = null!;
 
@@ -182,6 +181,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Defines the data format of the events.
+        /// </summary>
         [Input("format")]
         public Input<Inputs.PipelineStreamFormatArgs>? Format { get; set; }
 
@@ -194,6 +196,9 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         [Input("schema")]
         public Input<Inputs.PipelineStreamSchemaArgs>? Schema { get; set; }
 
@@ -223,6 +228,9 @@ namespace Pulumi.Cloudflare
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// Defines the data format of the events.
+        /// </summary>
         [Input("format")]
         public Input<Inputs.PipelineStreamFormatGetArgs>? Format { get; set; }
 
@@ -238,6 +246,9 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         [Input("schema")]
         public Input<Inputs.PipelineStreamSchemaGetArgs>? Schema { get; set; }
 

@@ -65,16 +65,13 @@ type EmailSecurityBlockSender struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
 	ModifiedAt   pulumi.StringOutput `pulumi:"modifiedAt"`
-	// The pattern value to match against. Format depends on `patternType`:
-	// - EMAIL: a valid email address, e.g. `user@example.com`
-	// - DOMAIN: a valid domain name, e.g. `example.com`
-	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 	Pattern pulumi.StringOutput `pulumi:"pattern"`
 	// Type of pattern matching.
 	// - EMAIL: matches a full email address (e.g. `user@example.com`)
 	// - DOMAIN: matches a domain name (e.g. `example.com`)
-	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringOutput `pulumi:"patternType"`
 }
@@ -131,16 +128,13 @@ type emailSecurityBlockSenderState struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified *string `pulumi:"lastModified"`
 	ModifiedAt   *string `pulumi:"modifiedAt"`
-	// The pattern value to match against. Format depends on `patternType`:
-	// - EMAIL: a valid email address, e.g. `user@example.com`
-	// - DOMAIN: a valid domain name, e.g. `example.com`
-	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 	Pattern *string `pulumi:"pattern"`
 	// Type of pattern matching.
 	// - EMAIL: matches a full email address (e.g. `user@example.com`)
 	// - DOMAIN: matches a domain name (e.g. `example.com`)
-	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `pulumi:"patternType"`
 }
@@ -156,16 +150,13 @@ type EmailSecurityBlockSenderState struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified pulumi.StringPtrInput
 	ModifiedAt   pulumi.StringPtrInput
-	// The pattern value to match against. Format depends on `patternType`:
-	// - EMAIL: a valid email address, e.g. `user@example.com`
-	// - DOMAIN: a valid domain name, e.g. `example.com`
-	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 	Pattern pulumi.StringPtrInput
 	// Type of pattern matching.
 	// - EMAIL: matches a full email address (e.g. `user@example.com`)
 	// - DOMAIN: matches a domain name (e.g. `example.com`)
-	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringPtrInput
 }
@@ -179,16 +170,13 @@ type emailSecurityBlockSenderArgs struct {
 	AccountId string  `pulumi:"accountId"`
 	Comments  *string `pulumi:"comments"`
 	IsRegex   bool    `pulumi:"isRegex"`
-	// The pattern value to match against. Format depends on `patternType`:
-	// - EMAIL: a valid email address, e.g. `user@example.com`
-	// - DOMAIN: a valid domain name, e.g. `example.com`
-	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 	Pattern string `pulumi:"pattern"`
 	// Type of pattern matching.
 	// - EMAIL: matches a full email address (e.g. `user@example.com`)
 	// - DOMAIN: matches a domain name (e.g. `example.com`)
-	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType string `pulumi:"patternType"`
 }
@@ -199,16 +187,13 @@ type EmailSecurityBlockSenderArgs struct {
 	AccountId pulumi.StringInput
 	Comments  pulumi.StringPtrInput
 	IsRegex   pulumi.BoolInput
-	// The pattern value to match against. Format depends on `patternType`:
-	// - EMAIL: a valid email address, e.g. `user@example.com`
-	// - DOMAIN: a valid domain name, e.g. `example.com`
-	// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+	// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 	Pattern pulumi.StringInput
 	// Type of pattern matching.
 	// - EMAIL: matches a full email address (e.g. `user@example.com`)
 	// - DOMAIN: matches a domain name (e.g. `example.com`)
-	// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-	// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+	// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+	// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 	//   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringInput
 }
@@ -328,10 +313,7 @@ func (o EmailSecurityBlockSenderOutput) ModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
-// The pattern value to match against. Format depends on `patternType`:
-// - EMAIL: a valid email address, e.g. `user@example.com`
-// - DOMAIN: a valid domain name, e.g. `example.com`
-// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
 func (o EmailSecurityBlockSenderOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
@@ -339,8 +321,8 @@ func (o EmailSecurityBlockSenderOutput) Pattern() pulumi.StringOutput {
 // Type of pattern matching.
 //   - EMAIL: matches a full email address (e.g. `user@example.com`)
 //   - DOMAIN: matches a domain name (e.g. `example.com`)
-//   - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-//   - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+//   - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+//   - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
 //     Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o EmailSecurityBlockSenderOutput) PatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.PatternType }).(pulumi.StringOutput)

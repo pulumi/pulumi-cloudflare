@@ -6,17 +6,12 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.EmailRoutingDnsArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.EmailRoutingDnsState;
-import com.pulumi.cloudflare.outputs.EmailRoutingDnsError;
-import com.pulumi.cloudflare.outputs.EmailRoutingDnsMessage;
-import com.pulumi.cloudflare.outputs.EmailRoutingDnsResult;
-import com.pulumi.cloudflare.outputs.EmailRoutingDnsResultInfo;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -97,18 +92,6 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
     public Output<Boolean> enabled() {
         return this.enabled;
     }
-    @Export(name="errors", refs={List.class,EmailRoutingDnsError.class}, tree="[0,1]")
-    private Output<List<EmailRoutingDnsError>> errors;
-
-    public Output<List<EmailRoutingDnsError>> errors() {
-        return this.errors;
-    }
-    @Export(name="messages", refs={List.class,EmailRoutingDnsMessage.class}, tree="[0,1]")
-    private Output<List<EmailRoutingDnsMessage>> messages;
-
-    public Output<List<EmailRoutingDnsMessage>> messages() {
-        return this.messages;
-    }
     /**
      * The date and time the settings have been modified.
      * 
@@ -136,18 +119,6 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
-    }
-    @Export(name="result", refs={EmailRoutingDnsResult.class}, tree="[0]")
-    private Output<EmailRoutingDnsResult> result;
-
-    public Output<EmailRoutingDnsResult> result() {
-        return this.result;
-    }
-    @Export(name="resultInfo", refs={EmailRoutingDnsResultInfo.class}, tree="[0]")
-    private Output<EmailRoutingDnsResultInfo> resultInfo;
-
-    public Output<EmailRoutingDnsResultInfo> resultInfo() {
-        return this.resultInfo;
     }
     /**
      * Flag to check if the user skipped the configuration wizard.
@@ -180,18 +151,18 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Whether the API call was successful.
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      * 
      */
-    @Export(name="success", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> success;
+    @Export(name="supportSubaddress", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> supportSubaddress;
 
     /**
-     * @return Whether the API call was successful.
+     * @return Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      * 
      */
-    public Output<Boolean> success() {
-        return this.success;
+    public Output<Boolean> supportSubaddress() {
+        return this.supportSubaddress;
     }
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

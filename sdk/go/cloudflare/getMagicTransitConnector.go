@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitConnector(ctx, &cloudflare.LookupMagicTransitConnectorArgs{
-//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				ConnectorId: pulumi.StringRef("connector_id"),
 //			}, nil)
 //			if err != nil {
@@ -54,16 +54,14 @@ func LookupMagicTransitConnector(ctx *pulumi.Context, args *LookupMagicTransitCo
 
 // A collection of arguments for invoking getMagicTransitConnector.
 type LookupMagicTransitConnectorArgs struct {
-	// Account identifier
-	AccountId   *string                         `pulumi:"accountId"`
+	AccountId   string                          `pulumi:"accountId"`
 	ConnectorId *string                         `pulumi:"connectorId"`
 	Filter      *GetMagicTransitConnectorFilter `pulumi:"filter"`
 }
 
 // A collection of values returned by getMagicTransitConnector.
 type LookupMagicTransitConnectorResult struct {
-	// Account identifier
-	AccountId   *string                         `pulumi:"accountId"`
+	AccountId   string                          `pulumi:"accountId"`
 	Activated   bool                            `pulumi:"activated"`
 	ConnectorId *string                         `pulumi:"connectorId"`
 	Device      GetMagicTransitConnectorDevice  `pulumi:"device"`
@@ -81,6 +79,8 @@ type LookupMagicTransitConnectorResult struct {
 	LastUpdated                 string   `pulumi:"lastUpdated"`
 	LicenseKey                  string   `pulumi:"licenseKey"`
 	Notes                       string   `pulumi:"notes"`
+	Primary                     bool     `pulumi:"primary"`
+	SiteId                      string   `pulumi:"siteId"`
 	Timezone                    string   `pulumi:"timezone"`
 }
 
@@ -91,8 +91,7 @@ func LookupMagicTransitConnectorOutput(ctx *pulumi.Context, args LookupMagicTran
 
 // A collection of arguments for invoking getMagicTransitConnector.
 type LookupMagicTransitConnectorOutputArgs struct {
-	// Account identifier
-	AccountId   pulumi.StringPtrInput                  `pulumi:"accountId"`
+	AccountId   pulumi.StringInput                     `pulumi:"accountId"`
 	ConnectorId pulumi.StringPtrInput                  `pulumi:"connectorId"`
 	Filter      GetMagicTransitConnectorFilterPtrInput `pulumi:"filter"`
 }
@@ -116,9 +115,8 @@ func (o LookupMagicTransitConnectorResultOutput) ToLookupMagicTransitConnectorRe
 	return o
 }
 
-// Account identifier
-func (o LookupMagicTransitConnectorResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitConnectorResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupMagicTransitConnectorResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o LookupMagicTransitConnectorResultOutput) Activated() pulumi.BoolOutput {
@@ -178,6 +176,14 @@ func (o LookupMagicTransitConnectorResultOutput) LicenseKey() pulumi.StringOutpu
 
 func (o LookupMagicTransitConnectorResultOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.Notes }).(pulumi.StringOutput)
+}
+
+func (o LookupMagicTransitConnectorResultOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorResult) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+func (o LookupMagicTransitConnectorResultOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.SiteId }).(pulumi.StringOutput)
 }
 
 func (o LookupMagicTransitConnectorResultOutput) Timezone() pulumi.StringOutput {

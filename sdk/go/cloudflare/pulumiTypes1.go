@@ -13,789 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type ManagedTransformsManagedRequestHeader struct {
-	// Whether the Managed Transform is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id string `pulumi:"id"`
-}
-
-// ManagedTransformsManagedRequestHeaderInput is an input type that accepts ManagedTransformsManagedRequestHeaderArgs and ManagedTransformsManagedRequestHeaderOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderInput` via:
-//
-//	ManagedTransformsManagedRequestHeaderArgs{...}
-type ManagedTransformsManagedRequestHeaderInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput
-	ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderOutput
-}
-
-type ManagedTransformsManagedRequestHeaderArgs struct {
-	// Whether the Managed Transform is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ManagedTransformsManagedRequestHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
-	return i.ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderOutput)
-}
-
-// ManagedTransformsManagedRequestHeaderArrayInput is an input type that accepts ManagedTransformsManagedRequestHeaderArray and ManagedTransformsManagedRequestHeaderArrayOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderArrayInput` via:
-//
-//	ManagedTransformsManagedRequestHeaderArray{ ManagedTransformsManagedRequestHeaderArgs{...} }
-type ManagedTransformsManagedRequestHeaderArrayInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput
-	ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderArrayOutput
-}
-
-type ManagedTransformsManagedRequestHeaderArray []ManagedTransformsManagedRequestHeaderInput
-
-func (ManagedTransformsManagedRequestHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
-	return i.ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderArrayOutput)
-}
-
-type ManagedTransformsManagedRequestHeaderOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedRequestHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
-	return o
-}
-
-// Whether the Managed Transform is enabled.
-func (o ManagedTransformsManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The human-readable identifier of the Managed Transform.
-func (o ManagedTransformsManagedRequestHeaderOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ManagedTransformsManagedRequestHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedRequestHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedRequestHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedRequestHeader {
-		return vs[0].([]ManagedTransformsManagedRequestHeader)[vs[1].(int)]
-	}).(ManagedTransformsManagedRequestHeaderOutput)
-}
-
-type ManagedTransformsManagedResponseHeader struct {
-	// Whether the Managed Transform is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id string `pulumi:"id"`
-}
-
-// ManagedTransformsManagedResponseHeaderInput is an input type that accepts ManagedTransformsManagedResponseHeaderArgs and ManagedTransformsManagedResponseHeaderOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderInput` via:
-//
-//	ManagedTransformsManagedResponseHeaderArgs{...}
-type ManagedTransformsManagedResponseHeaderInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput
-	ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderOutput
-}
-
-type ManagedTransformsManagedResponseHeaderArgs struct {
-	// Whether the Managed Transform is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ManagedTransformsManagedResponseHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
-	return i.ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderOutput)
-}
-
-// ManagedTransformsManagedResponseHeaderArrayInput is an input type that accepts ManagedTransformsManagedResponseHeaderArray and ManagedTransformsManagedResponseHeaderArrayOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderArrayInput` via:
-//
-//	ManagedTransformsManagedResponseHeaderArray{ ManagedTransformsManagedResponseHeaderArgs{...} }
-type ManagedTransformsManagedResponseHeaderArrayInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput
-	ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderArrayOutput
-}
-
-type ManagedTransformsManagedResponseHeaderArray []ManagedTransformsManagedResponseHeaderInput
-
-func (ManagedTransformsManagedResponseHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
-	return i.ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderArrayOutput)
-}
-
-type ManagedTransformsManagedResponseHeaderOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedResponseHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
-	return o
-}
-
-// Whether the Managed Transform is enabled.
-func (o ManagedTransformsManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The human-readable identifier of the Managed Transform.
-func (o ManagedTransformsManagedResponseHeaderOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ManagedTransformsManagedResponseHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedResponseHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedResponseHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedResponseHeader {
-		return vs[0].([]ManagedTransformsManagedResponseHeader)[vs[1].(int)]
-	}).(ManagedTransformsManagedResponseHeaderOutput)
-}
-
-type MoqRelayConfig struct {
-	LingeringSubscribe *MoqRelayConfigLingeringSubscribe `pulumi:"lingeringSubscribe"`
-	// Upstreams are external MOQT server publishers that a relay falls back
-	// to when it has no local publisher for a requested namespace/track.
-	Upstreams *MoqRelayConfigUpstreams `pulumi:"upstreams"`
-}
-
-// MoqRelayConfigInput is an input type that accepts MoqRelayConfigArgs and MoqRelayConfigOutput values.
-// You can construct a concrete instance of `MoqRelayConfigInput` via:
-//
-//	MoqRelayConfigArgs{...}
-type MoqRelayConfigInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigOutput() MoqRelayConfigOutput
-	ToMoqRelayConfigOutputWithContext(context.Context) MoqRelayConfigOutput
-}
-
-type MoqRelayConfigArgs struct {
-	LingeringSubscribe MoqRelayConfigLingeringSubscribePtrInput `pulumi:"lingeringSubscribe"`
-	// Upstreams are external MOQT server publishers that a relay falls back
-	// to when it has no local publisher for a requested namespace/track.
-	Upstreams MoqRelayConfigUpstreamsPtrInput `pulumi:"upstreams"`
-}
-
-func (MoqRelayConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
-	return i.ToMoqRelayConfigOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput)
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput).ToMoqRelayConfigPtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigPtrInput is an input type that accepts MoqRelayConfigArgs, MoqRelayConfigPtr and MoqRelayConfigPtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigPtrInput` via:
-//
-//	        MoqRelayConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigPtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput
-	ToMoqRelayConfigPtrOutputWithContext(context.Context) MoqRelayConfigPtrOutput
-}
-
-type moqRelayConfigPtrType MoqRelayConfigArgs
-
-func MoqRelayConfigPtr(v *MoqRelayConfigArgs) MoqRelayConfigPtrInput {
-	return (*moqRelayConfigPtrType)(v)
-}
-
-func (*moqRelayConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
-}
-
-func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigPtrOutput)
-}
-
-type MoqRelayConfigOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
-	return o
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
-	return o
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return o.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfig) *MoqRelayConfig {
-		return &v
-	}).(MoqRelayConfigPtrOutput)
-}
-
-func (o MoqRelayConfigOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigLingeringSubscribe { return v.LingeringSubscribe }).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-// Upstreams are external MOQT server publishers that a relay falls back
-// to when it has no local publisher for a requested namespace/track.
-func (o MoqRelayConfigOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigUpstreams { return v.Upstreams }).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
-}
-
-func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigPtrOutput) Elem() MoqRelayConfigOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) MoqRelayConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfig
-		return ret
-	}).(MoqRelayConfigOutput)
-}
-
-func (o MoqRelayConfigPtrOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigLingeringSubscribe {
-		if v == nil {
-			return nil
-		}
-		return v.LingeringSubscribe
-	}).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-// Upstreams are external MOQT server publishers that a relay falls back
-// to when it has no local publisher for a requested namespace/track.
-func (o MoqRelayConfigPtrOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigUpstreams {
-		if v == nil {
-			return nil
-		}
-		return v.Upstreams
-	}).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribe struct {
-	Enabled *bool `pulumi:"enabled"`
-	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-	MaxTimeoutMs *int `pulumi:"maxTimeoutMs"`
-}
-
-// MoqRelayConfigLingeringSubscribeInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs and MoqRelayConfigLingeringSubscribeOutput values.
-// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribeInput` via:
-//
-//	MoqRelayConfigLingeringSubscribeArgs{...}
-type MoqRelayConfigLingeringSubscribeInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput
-	ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribeOutput
-}
-
-type MoqRelayConfigLingeringSubscribeArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-	MaxTimeoutMs pulumi.IntPtrInput `pulumi:"maxTimeoutMs"`
-}
-
-func (MoqRelayConfigLingeringSubscribeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
-	return i.ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput)
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput).ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigLingeringSubscribePtrInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs, MoqRelayConfigLingeringSubscribePtr and MoqRelayConfigLingeringSubscribePtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribePtrInput` via:
-//
-//	        MoqRelayConfigLingeringSubscribeArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigLingeringSubscribePtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput
-	ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribePtrOutput
-}
-
-type moqRelayConfigLingeringSubscribePtrType MoqRelayConfigLingeringSubscribeArgs
-
-func MoqRelayConfigLingeringSubscribePtr(v *MoqRelayConfigLingeringSubscribeArgs) MoqRelayConfigLingeringSubscribePtrInput {
-	return (*moqRelayConfigLingeringSubscribePtrType)(v)
-}
-
-func (*moqRelayConfigLingeringSubscribePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribeOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigLingeringSubscribeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigLingeringSubscribe) *MoqRelayConfigLingeringSubscribe {
-		return &v
-	}).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-func (o MoqRelayConfigLingeringSubscribeOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *int { return v.MaxTimeoutMs }).(pulumi.IntPtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribePtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigLingeringSubscribePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) Elem() MoqRelayConfigLingeringSubscribeOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) MoqRelayConfigLingeringSubscribe {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfigLingeringSubscribe
-		return ret
-	}).(MoqRelayConfigLingeringSubscribeOutput)
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-func (o MoqRelayConfigLingeringSubscribePtrOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxTimeoutMs
-	}).(pulumi.IntPtrOutput)
-}
-
-type MoqRelayConfigUpstreams struct {
-	Enabled *bool `pulumi:"enabled"`
-	// Ordered list of upstream MOQT server publishers. Each entry is an
-	// object (not a bare string) so per-upstream configuration can be
-	// added in the future without another breaking change.
-	Upstreams []MoqRelayConfigUpstreamsUpstream `pulumi:"upstreams"`
-}
-
-// MoqRelayConfigUpstreamsInput is an input type that accepts MoqRelayConfigUpstreamsArgs and MoqRelayConfigUpstreamsOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsInput` via:
-//
-//	MoqRelayConfigUpstreamsArgs{...}
-type MoqRelayConfigUpstreamsInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput
-	ToMoqRelayConfigUpstreamsOutputWithContext(context.Context) MoqRelayConfigUpstreamsOutput
-}
-
-type MoqRelayConfigUpstreamsArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Ordered list of upstream MOQT server publishers. Each entry is an
-	// object (not a bare string) so per-upstream configuration can be
-	// added in the future without another breaking change.
-	Upstreams MoqRelayConfigUpstreamsUpstreamArrayInput `pulumi:"upstreams"`
-}
-
-func (MoqRelayConfigUpstreamsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput {
-	return i.ToMoqRelayConfigUpstreamsOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsOutput)
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return i.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsOutput).ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigUpstreamsPtrInput is an input type that accepts MoqRelayConfigUpstreamsArgs, MoqRelayConfigUpstreamsPtr and MoqRelayConfigUpstreamsPtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsPtrInput` via:
-//
-//	        MoqRelayConfigUpstreamsArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigUpstreamsPtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput
-	ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Context) MoqRelayConfigUpstreamsPtrOutput
-}
-
-type moqRelayConfigUpstreamsPtrType MoqRelayConfigUpstreamsArgs
-
-func MoqRelayConfigUpstreamsPtr(v *MoqRelayConfigUpstreamsArgs) MoqRelayConfigUpstreamsPtrInput {
-	return (*moqRelayConfigUpstreamsPtrType)(v)
-}
-
-func (*moqRelayConfigUpstreamsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (i *moqRelayConfigUpstreamsPtrType) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return i.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigUpstreamsPtrType) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigUpstreamsOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigUpstreams) *MoqRelayConfigUpstreams {
-		return &v
-	}).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-func (o MoqRelayConfigUpstreamsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigUpstreams) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Ordered list of upstream MOQT server publishers. Each entry is an
-// object (not a bare string) so per-upstream configuration can be
-// added in the future without another breaking change.
-func (o MoqRelayConfigUpstreamsOutput) Upstreams() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o.ApplyT(func(v MoqRelayConfigUpstreams) []MoqRelayConfigUpstreamsUpstream { return v.Upstreams }).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
-}
-
-type MoqRelayConfigUpstreamsPtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) Elem() MoqRelayConfigUpstreamsOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) MoqRelayConfigUpstreams {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfigUpstreams
-		return ret
-	}).(MoqRelayConfigUpstreamsOutput)
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Ordered list of upstream MOQT server publishers. Each entry is an
-// object (not a bare string) so per-upstream configuration can be
-// added in the future without another breaking change.
-func (o MoqRelayConfigUpstreamsPtrOutput) Upstreams() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) []MoqRelayConfigUpstreamsUpstream {
-		if v == nil {
-			return nil
-		}
-		return v.Upstreams
-	}).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
-}
-
-type MoqRelayConfigUpstreamsUpstream struct {
-	// Upstream MOQT server publisher URL. Must be an absolute URL with a
-	// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
-	// (WebTransport). Validated on update (PUT); rejected with 21013.
-	Url *string `pulumi:"url"`
-}
-
-// MoqRelayConfigUpstreamsUpstreamInput is an input type that accepts MoqRelayConfigUpstreamsUpstreamArgs and MoqRelayConfigUpstreamsUpstreamOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsUpstreamInput` via:
-//
-//	MoqRelayConfigUpstreamsUpstreamArgs{...}
-type MoqRelayConfigUpstreamsUpstreamInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput
-	ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(context.Context) MoqRelayConfigUpstreamsUpstreamOutput
-}
-
-type MoqRelayConfigUpstreamsUpstreamArgs struct {
-	// Upstream MOQT server publisher URL. Must be an absolute URL with a
-	// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
-	// (WebTransport). Validated on update (PUT); rejected with 21013.
-	Url pulumi.StringPtrInput `pulumi:"url"`
-}
-
-func (MoqRelayConfigUpstreamsUpstreamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
-}
-
-func (i MoqRelayConfigUpstreamsUpstreamArgs) ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput {
-	return i.ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsUpstreamArgs) ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsUpstreamOutput)
-}
-
-// MoqRelayConfigUpstreamsUpstreamArrayInput is an input type that accepts MoqRelayConfigUpstreamsUpstreamArray and MoqRelayConfigUpstreamsUpstreamArrayOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsUpstreamArrayInput` via:
-//
-//	MoqRelayConfigUpstreamsUpstreamArray{ MoqRelayConfigUpstreamsUpstreamArgs{...} }
-type MoqRelayConfigUpstreamsUpstreamArrayInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput
-	ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput
-}
-
-type MoqRelayConfigUpstreamsUpstreamArray []MoqRelayConfigUpstreamsUpstreamInput
-
-func (MoqRelayConfigUpstreamsUpstreamArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
-}
-
-func (i MoqRelayConfigUpstreamsUpstreamArray) ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return i.ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsUpstreamArray) ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
-}
-
-type MoqRelayConfigUpstreamsUpstreamOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsUpstreamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamOutput) ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamOutput) ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamOutput {
-	return o
-}
-
-// Upstream MOQT server publisher URL. Must be an absolute URL with a
-// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
-// (WebTransport). Validated on update (PUT); rejected with 21013.
-func (o MoqRelayConfigUpstreamsUpstreamOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigUpstreamsUpstream) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type MoqRelayConfigUpstreamsUpstreamArrayOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsUpstreamArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) Index(i pulumi.IntInput) MoqRelayConfigUpstreamsUpstreamOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MoqRelayConfigUpstreamsUpstream {
-		return vs[0].([]MoqRelayConfigUpstreamsUpstream)[vs[1].(int)]
-	}).(MoqRelayConfigUpstreamsUpstreamOutput)
-}
-
 type NotificationPolicyFilters struct {
 	// Usage depends on specific alert type
 	Actions []string `pulumi:"actions"`
@@ -4191,13 +3408,14 @@ func (o OrganizationMetaPtrOutput) TenantFlags() OrganizationMetaTenantFlagsPtrO
 }
 
 type OrganizationMetaTenantFlags struct {
-	AccountCreation      *string `pulumi:"accountCreation"`
-	AccountDeletion      *string `pulumi:"accountDeletion"`
-	AccountMigration     *string `pulumi:"accountMigration"`
-	AccountMobility      *string `pulumi:"accountMobility"`
-	EnterpriseCapability *string `pulumi:"enterpriseCapability"`
-	MemberManagement     *string `pulumi:"memberManagement"`
-	SubOrgCreation       *string `pulumi:"subOrgCreation"`
+	AccountCreation                      *string `pulumi:"accountCreation"`
+	AccountCreationAppliesTenantDefaults *string `pulumi:"accountCreationAppliesTenantDefaults"`
+	AccountDeletion                      *string `pulumi:"accountDeletion"`
+	AccountMigration                     *string `pulumi:"accountMigration"`
+	AccountMobility                      *string `pulumi:"accountMobility"`
+	EnterpriseCapability                 *string `pulumi:"enterpriseCapability"`
+	MemberManagement                     *string `pulumi:"memberManagement"`
+	SubOrgCreation                       *string `pulumi:"subOrgCreation"`
 }
 
 // OrganizationMetaTenantFlagsInput is an input type that accepts OrganizationMetaTenantFlagsArgs and OrganizationMetaTenantFlagsOutput values.
@@ -4212,13 +3430,14 @@ type OrganizationMetaTenantFlagsInput interface {
 }
 
 type OrganizationMetaTenantFlagsArgs struct {
-	AccountCreation      pulumi.StringPtrInput `pulumi:"accountCreation"`
-	AccountDeletion      pulumi.StringPtrInput `pulumi:"accountDeletion"`
-	AccountMigration     pulumi.StringPtrInput `pulumi:"accountMigration"`
-	AccountMobility      pulumi.StringPtrInput `pulumi:"accountMobility"`
-	EnterpriseCapability pulumi.StringPtrInput `pulumi:"enterpriseCapability"`
-	MemberManagement     pulumi.StringPtrInput `pulumi:"memberManagement"`
-	SubOrgCreation       pulumi.StringPtrInput `pulumi:"subOrgCreation"`
+	AccountCreation                      pulumi.StringPtrInput `pulumi:"accountCreation"`
+	AccountCreationAppliesTenantDefaults pulumi.StringPtrInput `pulumi:"accountCreationAppliesTenantDefaults"`
+	AccountDeletion                      pulumi.StringPtrInput `pulumi:"accountDeletion"`
+	AccountMigration                     pulumi.StringPtrInput `pulumi:"accountMigration"`
+	AccountMobility                      pulumi.StringPtrInput `pulumi:"accountMobility"`
+	EnterpriseCapability                 pulumi.StringPtrInput `pulumi:"enterpriseCapability"`
+	MemberManagement                     pulumi.StringPtrInput `pulumi:"memberManagement"`
+	SubOrgCreation                       pulumi.StringPtrInput `pulumi:"subOrgCreation"`
 }
 
 func (OrganizationMetaTenantFlagsArgs) ElementType() reflect.Type {
@@ -4302,6 +3521,10 @@ func (o OrganizationMetaTenantFlagsOutput) AccountCreation() pulumi.StringPtrOut
 	return o.ApplyT(func(v OrganizationMetaTenantFlags) *string { return v.AccountCreation }).(pulumi.StringPtrOutput)
 }
 
+func (o OrganizationMetaTenantFlagsOutput) AccountCreationAppliesTenantDefaults() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationMetaTenantFlags) *string { return v.AccountCreationAppliesTenantDefaults }).(pulumi.StringPtrOutput)
+}
+
 func (o OrganizationMetaTenantFlagsOutput) AccountDeletion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationMetaTenantFlags) *string { return v.AccountDeletion }).(pulumi.StringPtrOutput)
 }
@@ -4356,6 +3579,15 @@ func (o OrganizationMetaTenantFlagsPtrOutput) AccountCreation() pulumi.StringPtr
 			return nil
 		}
 		return v.AccountCreation
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationMetaTenantFlagsPtrOutput) AccountCreationAppliesTenantDefaults() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationMetaTenantFlags) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountCreationAppliesTenantDefaults
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17011,7 +16243,8 @@ func (o PipelineSinkConfigRollingPolicyPtrOutput) IntervalSeconds() pulumi.IntPt
 }
 
 type PipelineSinkFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+	// Specifies the compression applied to JSON sink output.
+	// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 	Compression *string `pulumi:"compression"`
 	// Available values: "number", "string", "bytes".
 	DecimalEncoding *string `pulumi:"decimalEncoding"`
@@ -17035,7 +16268,8 @@ type PipelineSinkFormatInput interface {
 }
 
 type PipelineSinkFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+	// Specifies the compression applied to JSON sink output.
+	// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
 	// Available values: "number", "string", "bytes".
 	DecimalEncoding pulumi.StringPtrInput `pulumi:"decimalEncoding"`
@@ -17124,7 +16358,8 @@ func (o PipelineSinkFormatOutput) ToPipelineSinkFormatPtrOutputWithContext(ctx c
 	}).(PipelineSinkFormatPtrOutput)
 }
 
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+// Specifies the compression applied to JSON sink output.
+// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 func (o PipelineSinkFormatOutput) Compression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineSinkFormat) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
@@ -17176,7 +16411,8 @@ func (o PipelineSinkFormatPtrOutput) Elem() PipelineSinkFormatOutput {
 	}).(PipelineSinkFormatOutput)
 }
 
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+// Specifies the compression applied to JSON sink output.
+// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
 func (o PipelineSinkFormatPtrOutput) Compression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PipelineSinkFormat) *string {
 		if v == nil {
@@ -17236,7 +16472,6 @@ func (o PipelineSinkFormatPtrOutput) Unstructured() pulumi.BoolPtrOutput {
 
 type PipelineSinkSchema struct {
 	Fields   []PipelineSinkSchemaField `pulumi:"fields"`
-	Format   *PipelineSinkSchemaFormat `pulumi:"format"`
 	Inferred *bool                     `pulumi:"inferred"`
 }
 
@@ -17253,7 +16488,6 @@ type PipelineSinkSchemaInput interface {
 
 type PipelineSinkSchemaArgs struct {
 	Fields   PipelineSinkSchemaFieldArrayInput `pulumi:"fields"`
-	Format   PipelineSinkSchemaFormatPtrInput  `pulumi:"format"`
 	Inferred pulumi.BoolPtrInput               `pulumi:"inferred"`
 }
 
@@ -17338,10 +16572,6 @@ func (o PipelineSinkSchemaOutput) Fields() PipelineSinkSchemaFieldArrayOutput {
 	return o.ApplyT(func(v PipelineSinkSchema) []PipelineSinkSchemaField { return v.Fields }).(PipelineSinkSchemaFieldArrayOutput)
 }
 
-func (o PipelineSinkSchemaOutput) Format() PipelineSinkSchemaFormatPtrOutput {
-	return o.ApplyT(func(v PipelineSinkSchema) *PipelineSinkSchemaFormat { return v.Format }).(PipelineSinkSchemaFormatPtrOutput)
-}
-
 func (o PipelineSinkSchemaOutput) Inferred() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PipelineSinkSchema) *bool { return v.Inferred }).(pulumi.BoolPtrOutput)
 }
@@ -17377,15 +16607,6 @@ func (o PipelineSinkSchemaPtrOutput) Fields() PipelineSinkSchemaFieldArrayOutput
 		}
 		return v.Fields
 	}).(PipelineSinkSchemaFieldArrayOutput)
-}
-
-func (o PipelineSinkSchemaPtrOutput) Format() PipelineSinkSchemaFormatPtrOutput {
-	return o.ApplyT(func(v *PipelineSinkSchema) *PipelineSinkSchemaFormat {
-		if v == nil {
-			return nil
-		}
-		return v.Format
-	}).(PipelineSinkSchemaFormatPtrOutput)
 }
 
 func (o PipelineSinkSchemaPtrOutput) Inferred() pulumi.BoolPtrOutput {
@@ -17525,230 +16746,6 @@ func (o PipelineSinkSchemaFieldArrayOutput) Index(i pulumi.IntInput) PipelineSin
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineSinkSchemaField {
 		return vs[0].([]PipelineSinkSchemaField)[vs[1].(int)]
 	}).(PipelineSinkSchemaFieldOutput)
-}
-
-type PipelineSinkSchemaFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression *string `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding *string `pulumi:"decimalEncoding"`
-	RowGroupBytes   *int    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat *string `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         string `pulumi:"type"`
-	Unstructured *bool  `pulumi:"unstructured"`
-}
-
-// PipelineSinkSchemaFormatInput is an input type that accepts PipelineSinkSchemaFormatArgs and PipelineSinkSchemaFormatOutput values.
-// You can construct a concrete instance of `PipelineSinkSchemaFormatInput` via:
-//
-//	PipelineSinkSchemaFormatArgs{...}
-type PipelineSinkSchemaFormatInput interface {
-	pulumi.Input
-
-	ToPipelineSinkSchemaFormatOutput() PipelineSinkSchemaFormatOutput
-	ToPipelineSinkSchemaFormatOutputWithContext(context.Context) PipelineSinkSchemaFormatOutput
-}
-
-type PipelineSinkSchemaFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression pulumi.StringPtrInput `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding pulumi.StringPtrInput `pulumi:"decimalEncoding"`
-	RowGroupBytes   pulumi.IntPtrInput    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat pulumi.StringPtrInput `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         pulumi.StringInput  `pulumi:"type"`
-	Unstructured pulumi.BoolPtrInput `pulumi:"unstructured"`
-}
-
-func (PipelineSinkSchemaFormatArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineSinkSchemaFormat)(nil)).Elem()
-}
-
-func (i PipelineSinkSchemaFormatArgs) ToPipelineSinkSchemaFormatOutput() PipelineSinkSchemaFormatOutput {
-	return i.ToPipelineSinkSchemaFormatOutputWithContext(context.Background())
-}
-
-func (i PipelineSinkSchemaFormatArgs) ToPipelineSinkSchemaFormatOutputWithContext(ctx context.Context) PipelineSinkSchemaFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineSinkSchemaFormatOutput)
-}
-
-func (i PipelineSinkSchemaFormatArgs) ToPipelineSinkSchemaFormatPtrOutput() PipelineSinkSchemaFormatPtrOutput {
-	return i.ToPipelineSinkSchemaFormatPtrOutputWithContext(context.Background())
-}
-
-func (i PipelineSinkSchemaFormatArgs) ToPipelineSinkSchemaFormatPtrOutputWithContext(ctx context.Context) PipelineSinkSchemaFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineSinkSchemaFormatOutput).ToPipelineSinkSchemaFormatPtrOutputWithContext(ctx)
-}
-
-// PipelineSinkSchemaFormatPtrInput is an input type that accepts PipelineSinkSchemaFormatArgs, PipelineSinkSchemaFormatPtr and PipelineSinkSchemaFormatPtrOutput values.
-// You can construct a concrete instance of `PipelineSinkSchemaFormatPtrInput` via:
-//
-//	        PipelineSinkSchemaFormatArgs{...}
-//
-//	or:
-//
-//	        nil
-type PipelineSinkSchemaFormatPtrInput interface {
-	pulumi.Input
-
-	ToPipelineSinkSchemaFormatPtrOutput() PipelineSinkSchemaFormatPtrOutput
-	ToPipelineSinkSchemaFormatPtrOutputWithContext(context.Context) PipelineSinkSchemaFormatPtrOutput
-}
-
-type pipelineSinkSchemaFormatPtrType PipelineSinkSchemaFormatArgs
-
-func PipelineSinkSchemaFormatPtr(v *PipelineSinkSchemaFormatArgs) PipelineSinkSchemaFormatPtrInput {
-	return (*pipelineSinkSchemaFormatPtrType)(v)
-}
-
-func (*pipelineSinkSchemaFormatPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineSinkSchemaFormat)(nil)).Elem()
-}
-
-func (i *pipelineSinkSchemaFormatPtrType) ToPipelineSinkSchemaFormatPtrOutput() PipelineSinkSchemaFormatPtrOutput {
-	return i.ToPipelineSinkSchemaFormatPtrOutputWithContext(context.Background())
-}
-
-func (i *pipelineSinkSchemaFormatPtrType) ToPipelineSinkSchemaFormatPtrOutputWithContext(ctx context.Context) PipelineSinkSchemaFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineSinkSchemaFormatPtrOutput)
-}
-
-type PipelineSinkSchemaFormatOutput struct{ *pulumi.OutputState }
-
-func (PipelineSinkSchemaFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineSinkSchemaFormat)(nil)).Elem()
-}
-
-func (o PipelineSinkSchemaFormatOutput) ToPipelineSinkSchemaFormatOutput() PipelineSinkSchemaFormatOutput {
-	return o
-}
-
-func (o PipelineSinkSchemaFormatOutput) ToPipelineSinkSchemaFormatOutputWithContext(ctx context.Context) PipelineSinkSchemaFormatOutput {
-	return o
-}
-
-func (o PipelineSinkSchemaFormatOutput) ToPipelineSinkSchemaFormatPtrOutput() PipelineSinkSchemaFormatPtrOutput {
-	return o.ToPipelineSinkSchemaFormatPtrOutputWithContext(context.Background())
-}
-
-func (o PipelineSinkSchemaFormatOutput) ToPipelineSinkSchemaFormatPtrOutputWithContext(ctx context.Context) PipelineSinkSchemaFormatPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineSinkSchemaFormat) *PipelineSinkSchemaFormat {
-		return &v
-	}).(PipelineSinkSchemaFormatPtrOutput)
-}
-
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o PipelineSinkSchemaFormatOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineSinkSchemaFormat) *string { return v.Compression }).(pulumi.StringPtrOutput)
-}
-
-// Available values: "number", "string", "bytes".
-func (o PipelineSinkSchemaFormatOutput) DecimalEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineSinkSchemaFormat) *string { return v.DecimalEncoding }).(pulumi.StringPtrOutput)
-}
-
-func (o PipelineSinkSchemaFormatOutput) RowGroupBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PipelineSinkSchemaFormat) *int { return v.RowGroupBytes }).(pulumi.IntPtrOutput)
-}
-
-// Available values: "rfc3339", "unixMillis".
-func (o PipelineSinkSchemaFormatOutput) TimestampFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineSinkSchemaFormat) *string { return v.TimestampFormat }).(pulumi.StringPtrOutput)
-}
-
-// Available values: "json", "parquet".
-func (o PipelineSinkSchemaFormatOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineSinkSchemaFormat) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o PipelineSinkSchemaFormatOutput) Unstructured() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PipelineSinkSchemaFormat) *bool { return v.Unstructured }).(pulumi.BoolPtrOutput)
-}
-
-type PipelineSinkSchemaFormatPtrOutput struct{ *pulumi.OutputState }
-
-func (PipelineSinkSchemaFormatPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineSinkSchemaFormat)(nil)).Elem()
-}
-
-func (o PipelineSinkSchemaFormatPtrOutput) ToPipelineSinkSchemaFormatPtrOutput() PipelineSinkSchemaFormatPtrOutput {
-	return o
-}
-
-func (o PipelineSinkSchemaFormatPtrOutput) ToPipelineSinkSchemaFormatPtrOutputWithContext(ctx context.Context) PipelineSinkSchemaFormatPtrOutput {
-	return o
-}
-
-func (o PipelineSinkSchemaFormatPtrOutput) Elem() PipelineSinkSchemaFormatOutput {
-	return o.ApplyT(func(v *PipelineSinkSchemaFormat) PipelineSinkSchemaFormat {
-		if v != nil {
-			return *v
-		}
-		var ret PipelineSinkSchemaFormat
-		return ret
-	}).(PipelineSinkSchemaFormatOutput)
-}
-
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o PipelineSinkSchemaFormatPtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineSinkSchemaFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Compression
-	}).(pulumi.StringPtrOutput)
-}
-
-// Available values: "number", "string", "bytes".
-func (o PipelineSinkSchemaFormatPtrOutput) DecimalEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineSinkSchemaFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DecimalEncoding
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o PipelineSinkSchemaFormatPtrOutput) RowGroupBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PipelineSinkSchemaFormat) *int {
-		if v == nil {
-			return nil
-		}
-		return v.RowGroupBytes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Available values: "rfc3339", "unixMillis".
-func (o PipelineSinkSchemaFormatPtrOutput) TimestampFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineSinkSchemaFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimestampFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// Available values: "json", "parquet".
-func (o PipelineSinkSchemaFormatPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineSinkSchemaFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o PipelineSinkSchemaFormatPtrOutput) Unstructured() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineSinkSchemaFormat) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Unstructured
-	}).(pulumi.BoolPtrOutput)
 }
 
 type PipelineStreamFormat struct {
@@ -18285,7 +17282,6 @@ func (o PipelineStreamHttpCorsPtrOutput) Origins() pulumi.StringArrayOutput {
 
 type PipelineStreamSchema struct {
 	Fields   []PipelineStreamSchemaField `pulumi:"fields"`
-	Format   *PipelineStreamSchemaFormat `pulumi:"format"`
 	Inferred *bool                       `pulumi:"inferred"`
 }
 
@@ -18302,7 +17298,6 @@ type PipelineStreamSchemaInput interface {
 
 type PipelineStreamSchemaArgs struct {
 	Fields   PipelineStreamSchemaFieldArrayInput `pulumi:"fields"`
-	Format   PipelineStreamSchemaFormatPtrInput  `pulumi:"format"`
 	Inferred pulumi.BoolPtrInput                 `pulumi:"inferred"`
 }
 
@@ -18387,10 +17382,6 @@ func (o PipelineStreamSchemaOutput) Fields() PipelineStreamSchemaFieldArrayOutpu
 	return o.ApplyT(func(v PipelineStreamSchema) []PipelineStreamSchemaField { return v.Fields }).(PipelineStreamSchemaFieldArrayOutput)
 }
 
-func (o PipelineStreamSchemaOutput) Format() PipelineStreamSchemaFormatPtrOutput {
-	return o.ApplyT(func(v PipelineStreamSchema) *PipelineStreamSchemaFormat { return v.Format }).(PipelineStreamSchemaFormatPtrOutput)
-}
-
 func (o PipelineStreamSchemaOutput) Inferred() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PipelineStreamSchema) *bool { return v.Inferred }).(pulumi.BoolPtrOutput)
 }
@@ -18426,15 +17417,6 @@ func (o PipelineStreamSchemaPtrOutput) Fields() PipelineStreamSchemaFieldArrayOu
 		}
 		return v.Fields
 	}).(PipelineStreamSchemaFieldArrayOutput)
-}
-
-func (o PipelineStreamSchemaPtrOutput) Format() PipelineStreamSchemaFormatPtrOutput {
-	return o.ApplyT(func(v *PipelineStreamSchema) *PipelineStreamSchemaFormat {
-		if v == nil {
-			return nil
-		}
-		return v.Format
-	}).(PipelineStreamSchemaFormatPtrOutput)
 }
 
 func (o PipelineStreamSchemaPtrOutput) Inferred() pulumi.BoolPtrOutput {
@@ -18574,230 +17556,6 @@ func (o PipelineStreamSchemaFieldArrayOutput) Index(i pulumi.IntInput) PipelineS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineStreamSchemaField {
 		return vs[0].([]PipelineStreamSchemaField)[vs[1].(int)]
 	}).(PipelineStreamSchemaFieldOutput)
-}
-
-type PipelineStreamSchemaFormat struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression *string `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding *string `pulumi:"decimalEncoding"`
-	RowGroupBytes   *int    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat *string `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         string `pulumi:"type"`
-	Unstructured *bool  `pulumi:"unstructured"`
-}
-
-// PipelineStreamSchemaFormatInput is an input type that accepts PipelineStreamSchemaFormatArgs and PipelineStreamSchemaFormatOutput values.
-// You can construct a concrete instance of `PipelineStreamSchemaFormatInput` via:
-//
-//	PipelineStreamSchemaFormatArgs{...}
-type PipelineStreamSchemaFormatInput interface {
-	pulumi.Input
-
-	ToPipelineStreamSchemaFormatOutput() PipelineStreamSchemaFormatOutput
-	ToPipelineStreamSchemaFormatOutputWithContext(context.Context) PipelineStreamSchemaFormatOutput
-}
-
-type PipelineStreamSchemaFormatArgs struct {
-	// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-	Compression pulumi.StringPtrInput `pulumi:"compression"`
-	// Available values: "number", "string", "bytes".
-	DecimalEncoding pulumi.StringPtrInput `pulumi:"decimalEncoding"`
-	RowGroupBytes   pulumi.IntPtrInput    `pulumi:"rowGroupBytes"`
-	// Available values: "rfc3339", "unixMillis".
-	TimestampFormat pulumi.StringPtrInput `pulumi:"timestampFormat"`
-	// Available values: "json", "parquet".
-	Type         pulumi.StringInput  `pulumi:"type"`
-	Unstructured pulumi.BoolPtrInput `pulumi:"unstructured"`
-}
-
-func (PipelineStreamSchemaFormatArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineStreamSchemaFormat)(nil)).Elem()
-}
-
-func (i PipelineStreamSchemaFormatArgs) ToPipelineStreamSchemaFormatOutput() PipelineStreamSchemaFormatOutput {
-	return i.ToPipelineStreamSchemaFormatOutputWithContext(context.Background())
-}
-
-func (i PipelineStreamSchemaFormatArgs) ToPipelineStreamSchemaFormatOutputWithContext(ctx context.Context) PipelineStreamSchemaFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineStreamSchemaFormatOutput)
-}
-
-func (i PipelineStreamSchemaFormatArgs) ToPipelineStreamSchemaFormatPtrOutput() PipelineStreamSchemaFormatPtrOutput {
-	return i.ToPipelineStreamSchemaFormatPtrOutputWithContext(context.Background())
-}
-
-func (i PipelineStreamSchemaFormatArgs) ToPipelineStreamSchemaFormatPtrOutputWithContext(ctx context.Context) PipelineStreamSchemaFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineStreamSchemaFormatOutput).ToPipelineStreamSchemaFormatPtrOutputWithContext(ctx)
-}
-
-// PipelineStreamSchemaFormatPtrInput is an input type that accepts PipelineStreamSchemaFormatArgs, PipelineStreamSchemaFormatPtr and PipelineStreamSchemaFormatPtrOutput values.
-// You can construct a concrete instance of `PipelineStreamSchemaFormatPtrInput` via:
-//
-//	        PipelineStreamSchemaFormatArgs{...}
-//
-//	or:
-//
-//	        nil
-type PipelineStreamSchemaFormatPtrInput interface {
-	pulumi.Input
-
-	ToPipelineStreamSchemaFormatPtrOutput() PipelineStreamSchemaFormatPtrOutput
-	ToPipelineStreamSchemaFormatPtrOutputWithContext(context.Context) PipelineStreamSchemaFormatPtrOutput
-}
-
-type pipelineStreamSchemaFormatPtrType PipelineStreamSchemaFormatArgs
-
-func PipelineStreamSchemaFormatPtr(v *PipelineStreamSchemaFormatArgs) PipelineStreamSchemaFormatPtrInput {
-	return (*pipelineStreamSchemaFormatPtrType)(v)
-}
-
-func (*pipelineStreamSchemaFormatPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineStreamSchemaFormat)(nil)).Elem()
-}
-
-func (i *pipelineStreamSchemaFormatPtrType) ToPipelineStreamSchemaFormatPtrOutput() PipelineStreamSchemaFormatPtrOutput {
-	return i.ToPipelineStreamSchemaFormatPtrOutputWithContext(context.Background())
-}
-
-func (i *pipelineStreamSchemaFormatPtrType) ToPipelineStreamSchemaFormatPtrOutputWithContext(ctx context.Context) PipelineStreamSchemaFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineStreamSchemaFormatPtrOutput)
-}
-
-type PipelineStreamSchemaFormatOutput struct{ *pulumi.OutputState }
-
-func (PipelineStreamSchemaFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineStreamSchemaFormat)(nil)).Elem()
-}
-
-func (o PipelineStreamSchemaFormatOutput) ToPipelineStreamSchemaFormatOutput() PipelineStreamSchemaFormatOutput {
-	return o
-}
-
-func (o PipelineStreamSchemaFormatOutput) ToPipelineStreamSchemaFormatOutputWithContext(ctx context.Context) PipelineStreamSchemaFormatOutput {
-	return o
-}
-
-func (o PipelineStreamSchemaFormatOutput) ToPipelineStreamSchemaFormatPtrOutput() PipelineStreamSchemaFormatPtrOutput {
-	return o.ToPipelineStreamSchemaFormatPtrOutputWithContext(context.Background())
-}
-
-func (o PipelineStreamSchemaFormatOutput) ToPipelineStreamSchemaFormatPtrOutputWithContext(ctx context.Context) PipelineStreamSchemaFormatPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineStreamSchemaFormat) *PipelineStreamSchemaFormat {
-		return &v
-	}).(PipelineStreamSchemaFormatPtrOutput)
-}
-
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o PipelineStreamSchemaFormatOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineStreamSchemaFormat) *string { return v.Compression }).(pulumi.StringPtrOutput)
-}
-
-// Available values: "number", "string", "bytes".
-func (o PipelineStreamSchemaFormatOutput) DecimalEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineStreamSchemaFormat) *string { return v.DecimalEncoding }).(pulumi.StringPtrOutput)
-}
-
-func (o PipelineStreamSchemaFormatOutput) RowGroupBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PipelineStreamSchemaFormat) *int { return v.RowGroupBytes }).(pulumi.IntPtrOutput)
-}
-
-// Available values: "rfc3339", "unixMillis".
-func (o PipelineStreamSchemaFormatOutput) TimestampFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineStreamSchemaFormat) *string { return v.TimestampFormat }).(pulumi.StringPtrOutput)
-}
-
-// Available values: "json", "parquet".
-func (o PipelineStreamSchemaFormatOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineStreamSchemaFormat) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o PipelineStreamSchemaFormatOutput) Unstructured() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PipelineStreamSchemaFormat) *bool { return v.Unstructured }).(pulumi.BoolPtrOutput)
-}
-
-type PipelineStreamSchemaFormatPtrOutput struct{ *pulumi.OutputState }
-
-func (PipelineStreamSchemaFormatPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PipelineStreamSchemaFormat)(nil)).Elem()
-}
-
-func (o PipelineStreamSchemaFormatPtrOutput) ToPipelineStreamSchemaFormatPtrOutput() PipelineStreamSchemaFormatPtrOutput {
-	return o
-}
-
-func (o PipelineStreamSchemaFormatPtrOutput) ToPipelineStreamSchemaFormatPtrOutputWithContext(ctx context.Context) PipelineStreamSchemaFormatPtrOutput {
-	return o
-}
-
-func (o PipelineStreamSchemaFormatPtrOutput) Elem() PipelineStreamSchemaFormatOutput {
-	return o.ApplyT(func(v *PipelineStreamSchemaFormat) PipelineStreamSchemaFormat {
-		if v != nil {
-			return *v
-		}
-		var ret PipelineStreamSchemaFormat
-		return ret
-	}).(PipelineStreamSchemaFormatOutput)
-}
-
-// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
-func (o PipelineStreamSchemaFormatPtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineStreamSchemaFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Compression
-	}).(pulumi.StringPtrOutput)
-}
-
-// Available values: "number", "string", "bytes".
-func (o PipelineStreamSchemaFormatPtrOutput) DecimalEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineStreamSchemaFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DecimalEncoding
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o PipelineStreamSchemaFormatPtrOutput) RowGroupBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PipelineStreamSchemaFormat) *int {
-		if v == nil {
-			return nil
-		}
-		return v.RowGroupBytes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Available values: "rfc3339", "unixMillis".
-func (o PipelineStreamSchemaFormatPtrOutput) TimestampFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineStreamSchemaFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimestampFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// Available values: "json", "parquet".
-func (o PipelineStreamSchemaFormatPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineStreamSchemaFormat) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o PipelineStreamSchemaFormatPtrOutput) Unstructured() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PipelineStreamSchemaFormat) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Unstructured
-	}).(pulumi.BoolPtrOutput)
 }
 
 type PipelineStreamWorkerBinding struct {
@@ -24973,6 +23731,8 @@ type RulesetRuleActionParameters struct {
 	OriginCacheControl *bool `pulumi:"originCacheControl"`
 	// Whether to generate Cloudflare error pages for issues from the origin server.
 	OriginErrorPagePassthru *bool `pulumi:"originErrorPagePassthru"`
+	// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+	OriginRangeRequests *RulesetRuleActionParametersOriginRangeRequests `pulumi:"originRangeRequests"`
 	// A set of overrides to apply to the target ruleset.
 	Overrides *RulesetRuleActionParametersOverrides `pulumi:"overrides"`
 	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -25155,6 +23915,8 @@ type RulesetRuleActionParametersArgs struct {
 	OriginCacheControl pulumi.BoolPtrInput `pulumi:"originCacheControl"`
 	// Whether to generate Cloudflare error pages for issues from the origin server.
 	OriginErrorPagePassthru pulumi.BoolPtrInput `pulumi:"originErrorPagePassthru"`
+	// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+	OriginRangeRequests RulesetRuleActionParametersOriginRangeRequestsPtrInput `pulumi:"originRangeRequests"`
 	// A set of overrides to apply to the target ruleset.
 	Overrides RulesetRuleActionParametersOverridesPtrInput `pulumi:"overrides"`
 	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -25530,6 +24292,13 @@ func (o RulesetRuleActionParametersOutput) OriginCacheControl() pulumi.BoolPtrOu
 // Whether to generate Cloudflare error pages for issues from the origin server.
 func (o RulesetRuleActionParametersOutput) OriginErrorPagePassthru() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.OriginErrorPagePassthru }).(pulumi.BoolPtrOutput)
+}
+
+// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+func (o RulesetRuleActionParametersOutput) OriginRangeRequests() RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOriginRangeRequests {
+		return v.OriginRangeRequests
+	}).(RulesetRuleActionParametersOriginRangeRequestsPtrOutput)
 }
 
 // A set of overrides to apply to the target ruleset.
@@ -26179,6 +24948,16 @@ func (o RulesetRuleActionParametersPtrOutput) OriginErrorPagePassthru() pulumi.B
 		}
 		return v.OriginErrorPagePassthru
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+func (o RulesetRuleActionParametersPtrOutput) OriginRangeRequests() RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersOriginRangeRequests {
+		if v == nil {
+			return nil
+		}
+		return v.OriginRangeRequests
+	}).(RulesetRuleActionParametersOriginRangeRequestsPtrOutput)
 }
 
 // A set of overrides to apply to the target ruleset.
@@ -31312,6 +30091,147 @@ func (o RulesetRuleActionParametersOriginPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type RulesetRuleActionParametersOriginRangeRequests struct {
+	// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+	// Available values: "on", "off", "default".
+	Mode string `pulumi:"mode"`
+}
+
+// RulesetRuleActionParametersOriginRangeRequestsInput is an input type that accepts RulesetRuleActionParametersOriginRangeRequestsArgs and RulesetRuleActionParametersOriginRangeRequestsOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOriginRangeRequestsInput` via:
+//
+//	RulesetRuleActionParametersOriginRangeRequestsArgs{...}
+type RulesetRuleActionParametersOriginRangeRequestsInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersOriginRangeRequestsOutput() RulesetRuleActionParametersOriginRangeRequestsOutput
+	ToRulesetRuleActionParametersOriginRangeRequestsOutputWithContext(context.Context) RulesetRuleActionParametersOriginRangeRequestsOutput
+}
+
+type RulesetRuleActionParametersOriginRangeRequestsArgs struct {
+	// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+	// Available values: "on", "off", "default".
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (RulesetRuleActionParametersOriginRangeRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOriginRangeRequests)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersOriginRangeRequestsArgs) ToRulesetRuleActionParametersOriginRangeRequestsOutput() RulesetRuleActionParametersOriginRangeRequestsOutput {
+	return i.ToRulesetRuleActionParametersOriginRangeRequestsOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersOriginRangeRequestsArgs) ToRulesetRuleActionParametersOriginRangeRequestsOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginRangeRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginRangeRequestsOutput)
+}
+
+func (i RulesetRuleActionParametersOriginRangeRequestsArgs) ToRulesetRuleActionParametersOriginRangeRequestsPtrOutput() RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return i.ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersOriginRangeRequestsArgs) ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginRangeRequestsOutput).ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersOriginRangeRequestsPtrInput is an input type that accepts RulesetRuleActionParametersOriginRangeRequestsArgs, RulesetRuleActionParametersOriginRangeRequestsPtr and RulesetRuleActionParametersOriginRangeRequestsPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOriginRangeRequestsPtrInput` via:
+//
+//	        RulesetRuleActionParametersOriginRangeRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RulesetRuleActionParametersOriginRangeRequestsPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersOriginRangeRequestsPtrOutput() RulesetRuleActionParametersOriginRangeRequestsPtrOutput
+	ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(context.Context) RulesetRuleActionParametersOriginRangeRequestsPtrOutput
+}
+
+type rulesetRuleActionParametersOriginRangeRequestsPtrType RulesetRuleActionParametersOriginRangeRequestsArgs
+
+func RulesetRuleActionParametersOriginRangeRequestsPtr(v *RulesetRuleActionParametersOriginRangeRequestsArgs) RulesetRuleActionParametersOriginRangeRequestsPtrInput {
+	return (*rulesetRuleActionParametersOriginRangeRequestsPtrType)(v)
+}
+
+func (*rulesetRuleActionParametersOriginRangeRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersOriginRangeRequests)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersOriginRangeRequestsPtrType) ToRulesetRuleActionParametersOriginRangeRequestsPtrOutput() RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return i.ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersOriginRangeRequestsPtrType) ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginRangeRequestsPtrOutput)
+}
+
+type RulesetRuleActionParametersOriginRangeRequestsOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersOriginRangeRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOriginRangeRequests)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersOriginRangeRequestsOutput) ToRulesetRuleActionParametersOriginRangeRequestsOutput() RulesetRuleActionParametersOriginRangeRequestsOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOriginRangeRequestsOutput) ToRulesetRuleActionParametersOriginRangeRequestsOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginRangeRequestsOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOriginRangeRequestsOutput) ToRulesetRuleActionParametersOriginRangeRequestsPtrOutput() RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return o.ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersOriginRangeRequestsOutput) ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersOriginRangeRequests) *RulesetRuleActionParametersOriginRangeRequests {
+		return &v
+	}).(RulesetRuleActionParametersOriginRangeRequestsPtrOutput)
+}
+
+// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+// Available values: "on", "off", "default".
+func (o RulesetRuleActionParametersOriginRangeRequestsOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOriginRangeRequests) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type RulesetRuleActionParametersOriginRangeRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersOriginRangeRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersOriginRangeRequests)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersOriginRangeRequestsPtrOutput) ToRulesetRuleActionParametersOriginRangeRequestsPtrOutput() RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOriginRangeRequestsPtrOutput) ToRulesetRuleActionParametersOriginRangeRequestsPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginRangeRequestsPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOriginRangeRequestsPtrOutput) Elem() RulesetRuleActionParametersOriginRangeRequestsOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOriginRangeRequests) RulesetRuleActionParametersOriginRangeRequests {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersOriginRangeRequests
+		return ret
+	}).(RulesetRuleActionParametersOriginRangeRequestsOutput)
+}
+
+// Whether to use range requests. `default` is the behaviour the zone gets without this rule.
+// Available values: "on", "off", "default".
+func (o RulesetRuleActionParametersOriginRangeRequestsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOriginRangeRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
 type RulesetRuleActionParametersOverrides struct {
 	// An action to override all rules with. This option has lower precedence than rule and category overrides.
 	Action *string `pulumi:"action"`
@@ -35373,7 +34293,7 @@ type ShareResourceType struct {
 	// Share Resource identifier.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -35396,7 +34316,7 @@ type ShareResourceTypeArgs struct {
 	// Share Resource identifier.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -35467,7 +34387,7 @@ func (o ShareResourceTypeOutput) ResourceId() pulumi.StringOutput {
 }
 
 // Resource Type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o ShareResourceTypeOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ShareResourceType) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -37485,6 +36405,162 @@ func (o StreamInputTypePtrOutput) Width() pulumi.IntPtrOutput {
 		}
 		return v.Width
 	}).(pulumi.IntPtrOutput)
+}
+
+type StreamLiveInputPlayback struct {
+	// The DASH manifest URL used to play live video, referencing the live input ID.
+	Dash *string `pulumi:"dash"`
+	// The HLS manifest URL used to play live video, referencing the live input ID.
+	Hls *string `pulumi:"hls"`
+}
+
+// StreamLiveInputPlaybackInput is an input type that accepts StreamLiveInputPlaybackArgs and StreamLiveInputPlaybackOutput values.
+// You can construct a concrete instance of `StreamLiveInputPlaybackInput` via:
+//
+//	StreamLiveInputPlaybackArgs{...}
+type StreamLiveInputPlaybackInput interface {
+	pulumi.Input
+
+	ToStreamLiveInputPlaybackOutput() StreamLiveInputPlaybackOutput
+	ToStreamLiveInputPlaybackOutputWithContext(context.Context) StreamLiveInputPlaybackOutput
+}
+
+type StreamLiveInputPlaybackArgs struct {
+	// The DASH manifest URL used to play live video, referencing the live input ID.
+	Dash pulumi.StringPtrInput `pulumi:"dash"`
+	// The HLS manifest URL used to play live video, referencing the live input ID.
+	Hls pulumi.StringPtrInput `pulumi:"hls"`
+}
+
+func (StreamLiveInputPlaybackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamLiveInputPlayback)(nil)).Elem()
+}
+
+func (i StreamLiveInputPlaybackArgs) ToStreamLiveInputPlaybackOutput() StreamLiveInputPlaybackOutput {
+	return i.ToStreamLiveInputPlaybackOutputWithContext(context.Background())
+}
+
+func (i StreamLiveInputPlaybackArgs) ToStreamLiveInputPlaybackOutputWithContext(ctx context.Context) StreamLiveInputPlaybackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamLiveInputPlaybackOutput)
+}
+
+func (i StreamLiveInputPlaybackArgs) ToStreamLiveInputPlaybackPtrOutput() StreamLiveInputPlaybackPtrOutput {
+	return i.ToStreamLiveInputPlaybackPtrOutputWithContext(context.Background())
+}
+
+func (i StreamLiveInputPlaybackArgs) ToStreamLiveInputPlaybackPtrOutputWithContext(ctx context.Context) StreamLiveInputPlaybackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamLiveInputPlaybackOutput).ToStreamLiveInputPlaybackPtrOutputWithContext(ctx)
+}
+
+// StreamLiveInputPlaybackPtrInput is an input type that accepts StreamLiveInputPlaybackArgs, StreamLiveInputPlaybackPtr and StreamLiveInputPlaybackPtrOutput values.
+// You can construct a concrete instance of `StreamLiveInputPlaybackPtrInput` via:
+//
+//	        StreamLiveInputPlaybackArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamLiveInputPlaybackPtrInput interface {
+	pulumi.Input
+
+	ToStreamLiveInputPlaybackPtrOutput() StreamLiveInputPlaybackPtrOutput
+	ToStreamLiveInputPlaybackPtrOutputWithContext(context.Context) StreamLiveInputPlaybackPtrOutput
+}
+
+type streamLiveInputPlaybackPtrType StreamLiveInputPlaybackArgs
+
+func StreamLiveInputPlaybackPtr(v *StreamLiveInputPlaybackArgs) StreamLiveInputPlaybackPtrInput {
+	return (*streamLiveInputPlaybackPtrType)(v)
+}
+
+func (*streamLiveInputPlaybackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamLiveInputPlayback)(nil)).Elem()
+}
+
+func (i *streamLiveInputPlaybackPtrType) ToStreamLiveInputPlaybackPtrOutput() StreamLiveInputPlaybackPtrOutput {
+	return i.ToStreamLiveInputPlaybackPtrOutputWithContext(context.Background())
+}
+
+func (i *streamLiveInputPlaybackPtrType) ToStreamLiveInputPlaybackPtrOutputWithContext(ctx context.Context) StreamLiveInputPlaybackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamLiveInputPlaybackPtrOutput)
+}
+
+type StreamLiveInputPlaybackOutput struct{ *pulumi.OutputState }
+
+func (StreamLiveInputPlaybackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamLiveInputPlayback)(nil)).Elem()
+}
+
+func (o StreamLiveInputPlaybackOutput) ToStreamLiveInputPlaybackOutput() StreamLiveInputPlaybackOutput {
+	return o
+}
+
+func (o StreamLiveInputPlaybackOutput) ToStreamLiveInputPlaybackOutputWithContext(ctx context.Context) StreamLiveInputPlaybackOutput {
+	return o
+}
+
+func (o StreamLiveInputPlaybackOutput) ToStreamLiveInputPlaybackPtrOutput() StreamLiveInputPlaybackPtrOutput {
+	return o.ToStreamLiveInputPlaybackPtrOutputWithContext(context.Background())
+}
+
+func (o StreamLiveInputPlaybackOutput) ToStreamLiveInputPlaybackPtrOutputWithContext(ctx context.Context) StreamLiveInputPlaybackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamLiveInputPlayback) *StreamLiveInputPlayback {
+		return &v
+	}).(StreamLiveInputPlaybackPtrOutput)
+}
+
+// The DASH manifest URL used to play live video, referencing the live input ID.
+func (o StreamLiveInputPlaybackOutput) Dash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamLiveInputPlayback) *string { return v.Dash }).(pulumi.StringPtrOutput)
+}
+
+// The HLS manifest URL used to play live video, referencing the live input ID.
+func (o StreamLiveInputPlaybackOutput) Hls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamLiveInputPlayback) *string { return v.Hls }).(pulumi.StringPtrOutput)
+}
+
+type StreamLiveInputPlaybackPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamLiveInputPlaybackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamLiveInputPlayback)(nil)).Elem()
+}
+
+func (o StreamLiveInputPlaybackPtrOutput) ToStreamLiveInputPlaybackPtrOutput() StreamLiveInputPlaybackPtrOutput {
+	return o
+}
+
+func (o StreamLiveInputPlaybackPtrOutput) ToStreamLiveInputPlaybackPtrOutputWithContext(ctx context.Context) StreamLiveInputPlaybackPtrOutput {
+	return o
+}
+
+func (o StreamLiveInputPlaybackPtrOutput) Elem() StreamLiveInputPlaybackOutput {
+	return o.ApplyT(func(v *StreamLiveInputPlayback) StreamLiveInputPlayback {
+		if v != nil {
+			return *v
+		}
+		var ret StreamLiveInputPlayback
+		return ret
+	}).(StreamLiveInputPlaybackOutput)
+}
+
+// The DASH manifest URL used to play live video, referencing the live input ID.
+func (o StreamLiveInputPlaybackPtrOutput) Dash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamLiveInputPlayback) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dash
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HLS manifest URL used to play live video, referencing the live input ID.
+func (o StreamLiveInputPlaybackPtrOutput) Hls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamLiveInputPlayback) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hls
+	}).(pulumi.StringPtrOutput)
 }
 
 type StreamLiveInputRecording struct {
@@ -55265,6 +54341,130 @@ func (o WorkerScriptExportsCachePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type WorkerScriptFiles struct {
+	// Base64-encoded file content.
+	ContentBase64 *string `pulumi:"contentBase64"`
+	// Path to the file content.
+	ContentFile *string `pulumi:"contentFile"`
+	// SHA-256 hash of the file content, used to detect changes and remote drift.
+	ContentSha256 *string `pulumi:"contentSha256"`
+	// Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+	ContentType string `pulumi:"contentType"`
+}
+
+// WorkerScriptFilesInput is an input type that accepts WorkerScriptFilesArgs and WorkerScriptFilesOutput values.
+// You can construct a concrete instance of `WorkerScriptFilesInput` via:
+//
+//	WorkerScriptFilesArgs{...}
+type WorkerScriptFilesInput interface {
+	pulumi.Input
+
+	ToWorkerScriptFilesOutput() WorkerScriptFilesOutput
+	ToWorkerScriptFilesOutputWithContext(context.Context) WorkerScriptFilesOutput
+}
+
+type WorkerScriptFilesArgs struct {
+	// Base64-encoded file content.
+	ContentBase64 pulumi.StringPtrInput `pulumi:"contentBase64"`
+	// Path to the file content.
+	ContentFile pulumi.StringPtrInput `pulumi:"contentFile"`
+	// SHA-256 hash of the file content, used to detect changes and remote drift.
+	ContentSha256 pulumi.StringPtrInput `pulumi:"contentSha256"`
+	// Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+}
+
+func (WorkerScriptFilesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptFiles)(nil)).Elem()
+}
+
+func (i WorkerScriptFilesArgs) ToWorkerScriptFilesOutput() WorkerScriptFilesOutput {
+	return i.ToWorkerScriptFilesOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptFilesArgs) ToWorkerScriptFilesOutputWithContext(ctx context.Context) WorkerScriptFilesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptFilesOutput)
+}
+
+// WorkerScriptFilesMapInput is an input type that accepts WorkerScriptFilesMap and WorkerScriptFilesMapOutput values.
+// You can construct a concrete instance of `WorkerScriptFilesMapInput` via:
+//
+//	WorkerScriptFilesMap{ "key": WorkerScriptFilesArgs{...} }
+type WorkerScriptFilesMapInput interface {
+	pulumi.Input
+
+	ToWorkerScriptFilesMapOutput() WorkerScriptFilesMapOutput
+	ToWorkerScriptFilesMapOutputWithContext(context.Context) WorkerScriptFilesMapOutput
+}
+
+type WorkerScriptFilesMap map[string]WorkerScriptFilesInput
+
+func (WorkerScriptFilesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WorkerScriptFiles)(nil)).Elem()
+}
+
+func (i WorkerScriptFilesMap) ToWorkerScriptFilesMapOutput() WorkerScriptFilesMapOutput {
+	return i.ToWorkerScriptFilesMapOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptFilesMap) ToWorkerScriptFilesMapOutputWithContext(ctx context.Context) WorkerScriptFilesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptFilesMapOutput)
+}
+
+type WorkerScriptFilesOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptFilesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptFiles)(nil)).Elem()
+}
+
+func (o WorkerScriptFilesOutput) ToWorkerScriptFilesOutput() WorkerScriptFilesOutput {
+	return o
+}
+
+func (o WorkerScriptFilesOutput) ToWorkerScriptFilesOutputWithContext(ctx context.Context) WorkerScriptFilesOutput {
+	return o
+}
+
+// Base64-encoded file content.
+func (o WorkerScriptFilesOutput) ContentBase64() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerScriptFiles) *string { return v.ContentBase64 }).(pulumi.StringPtrOutput)
+}
+
+// Path to the file content.
+func (o WorkerScriptFilesOutput) ContentFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerScriptFiles) *string { return v.ContentFile }).(pulumi.StringPtrOutput)
+}
+
+// SHA-256 hash of the file content, used to detect changes and remote drift.
+func (o WorkerScriptFilesOutput) ContentSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerScriptFiles) *string { return v.ContentSha256 }).(pulumi.StringPtrOutput)
+}
+
+// Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+func (o WorkerScriptFilesOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptFiles) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+type WorkerScriptFilesMapOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptFilesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WorkerScriptFiles)(nil)).Elem()
+}
+
+func (o WorkerScriptFilesMapOutput) ToWorkerScriptFilesMapOutput() WorkerScriptFilesMapOutput {
+	return o
+}
+
+func (o WorkerScriptFilesMapOutput) ToWorkerScriptFilesMapOutputWithContext(ctx context.Context) WorkerScriptFilesMapOutput {
+	return o
+}
+
+func (o WorkerScriptFilesMapOutput) MapIndex(k pulumi.StringInput) WorkerScriptFilesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkerScriptFiles {
+		return vs[0].(map[string]WorkerScriptFiles)[vs[1].(string)]
+	}).(WorkerScriptFilesOutput)
+}
+
 type WorkerScriptLimits struct {
 	// The amount of CPU time this Worker can use in milliseconds.
 	CpuMs *int `pulumi:"cpuMs"`
@@ -58447,6 +57647,9 @@ type WorkerVersionBinding struct {
 	Format *string `pulumi:"format"`
 	// Identifier of the D1 database to bind to.
 	Id *string `pulumi:"id"`
+	// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+	// Available values: "runtime-email-alpha".
+	Identity *string `pulumi:"identity"`
 	// Name of the Vectorize index to bind to.
 	IndexName *string `pulumi:"indexName"`
 	// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -58454,7 +57657,7 @@ type WorkerVersionBinding struct {
 	// JSON data to use.
 	Json *string `pulumi:"json"`
 	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-	// Available values: "eu", "fedramp", "fedramp-high".
+	// Available values: "eu", "fedramp", "fedramp-high", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 *string `pulumi:"keyBase64"`
@@ -58548,6 +57751,9 @@ type WorkerVersionBindingArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// Identifier of the D1 database to bind to.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+	// Available values: "runtime-email-alpha".
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
 	// Name of the Vectorize index to bind to.
 	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
 	// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -58555,7 +57761,7 @@ type WorkerVersionBindingArgs struct {
 	// JSON data to use.
 	Json pulumi.StringPtrInput `pulumi:"json"`
 	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-	// Available values: "eu", "fedramp", "fedramp-high".
+	// Available values: "eu", "fedramp", "fedramp-high", "us".
 	Jurisdiction pulumi.StringPtrInput `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 pulumi.StringPtrInput `pulumi:"keyBase64"`
@@ -58733,6 +57939,12 @@ func (o WorkerVersionBindingOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerVersionBinding) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+// Available values: "runtime-email-alpha".
+func (o WorkerVersionBindingOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerVersionBinding) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
 // Name of the Vectorize index to bind to.
 func (o WorkerVersionBindingOutput) IndexName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerVersionBinding) *string { return v.IndexName }).(pulumi.StringPtrOutput)
@@ -58749,7 +57961,7 @@ func (o WorkerVersionBindingOutput) Json() pulumi.StringPtrOutput {
 }
 
 // The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-// Available values: "eu", "fedramp", "fedramp-high".
+// Available values: "eu", "fedramp", "fedramp-high", "us".
 func (o WorkerVersionBindingOutput) Jurisdiction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerVersionBinding) *string { return v.Jurisdiction }).(pulumi.StringPtrOutput)
 }
@@ -63999,6 +63211,130 @@ func (o WorkersScriptExportsCachePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type WorkersScriptFiles struct {
+	// Base64-encoded file content.
+	ContentBase64 *string `pulumi:"contentBase64"`
+	// Path to the file content.
+	ContentFile *string `pulumi:"contentFile"`
+	// SHA-256 hash of the file content, used to detect changes and remote drift.
+	ContentSha256 *string `pulumi:"contentSha256"`
+	// Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+	ContentType string `pulumi:"contentType"`
+}
+
+// WorkersScriptFilesInput is an input type that accepts WorkersScriptFilesArgs and WorkersScriptFilesOutput values.
+// You can construct a concrete instance of `WorkersScriptFilesInput` via:
+//
+//	WorkersScriptFilesArgs{...}
+type WorkersScriptFilesInput interface {
+	pulumi.Input
+
+	ToWorkersScriptFilesOutput() WorkersScriptFilesOutput
+	ToWorkersScriptFilesOutputWithContext(context.Context) WorkersScriptFilesOutput
+}
+
+type WorkersScriptFilesArgs struct {
+	// Base64-encoded file content.
+	ContentBase64 pulumi.StringPtrInput `pulumi:"contentBase64"`
+	// Path to the file content.
+	ContentFile pulumi.StringPtrInput `pulumi:"contentFile"`
+	// SHA-256 hash of the file content, used to detect changes and remote drift.
+	ContentSha256 pulumi.StringPtrInput `pulumi:"contentSha256"`
+	// Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+}
+
+func (WorkersScriptFilesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptFiles)(nil)).Elem()
+}
+
+func (i WorkersScriptFilesArgs) ToWorkersScriptFilesOutput() WorkersScriptFilesOutput {
+	return i.ToWorkersScriptFilesOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptFilesArgs) ToWorkersScriptFilesOutputWithContext(ctx context.Context) WorkersScriptFilesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptFilesOutput)
+}
+
+// WorkersScriptFilesMapInput is an input type that accepts WorkersScriptFilesMap and WorkersScriptFilesMapOutput values.
+// You can construct a concrete instance of `WorkersScriptFilesMapInput` via:
+//
+//	WorkersScriptFilesMap{ "key": WorkersScriptFilesArgs{...} }
+type WorkersScriptFilesMapInput interface {
+	pulumi.Input
+
+	ToWorkersScriptFilesMapOutput() WorkersScriptFilesMapOutput
+	ToWorkersScriptFilesMapOutputWithContext(context.Context) WorkersScriptFilesMapOutput
+}
+
+type WorkersScriptFilesMap map[string]WorkersScriptFilesInput
+
+func (WorkersScriptFilesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WorkersScriptFiles)(nil)).Elem()
+}
+
+func (i WorkersScriptFilesMap) ToWorkersScriptFilesMapOutput() WorkersScriptFilesMapOutput {
+	return i.ToWorkersScriptFilesMapOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptFilesMap) ToWorkersScriptFilesMapOutputWithContext(ctx context.Context) WorkersScriptFilesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptFilesMapOutput)
+}
+
+type WorkersScriptFilesOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptFilesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptFiles)(nil)).Elem()
+}
+
+func (o WorkersScriptFilesOutput) ToWorkersScriptFilesOutput() WorkersScriptFilesOutput {
+	return o
+}
+
+func (o WorkersScriptFilesOutput) ToWorkersScriptFilesOutputWithContext(ctx context.Context) WorkersScriptFilesOutput {
+	return o
+}
+
+// Base64-encoded file content.
+func (o WorkersScriptFilesOutput) ContentBase64() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkersScriptFiles) *string { return v.ContentBase64 }).(pulumi.StringPtrOutput)
+}
+
+// Path to the file content.
+func (o WorkersScriptFilesOutput) ContentFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkersScriptFiles) *string { return v.ContentFile }).(pulumi.StringPtrOutput)
+}
+
+// SHA-256 hash of the file content, used to detect changes and remote drift.
+func (o WorkersScriptFilesOutput) ContentSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkersScriptFiles) *string { return v.ContentSha256 }).(pulumi.StringPtrOutput)
+}
+
+// Content type of the file, such as `application/wasm`, `text/plain`, or `application/octet-stream`.
+func (o WorkersScriptFilesOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkersScriptFiles) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+type WorkersScriptFilesMapOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptFilesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WorkersScriptFiles)(nil)).Elem()
+}
+
+func (o WorkersScriptFilesMapOutput) ToWorkersScriptFilesMapOutput() WorkersScriptFilesMapOutput {
+	return o
+}
+
+func (o WorkersScriptFilesMapOutput) ToWorkersScriptFilesMapOutputWithContext(ctx context.Context) WorkersScriptFilesMapOutput {
+	return o
+}
+
+func (o WorkersScriptFilesMapOutput) MapIndex(k pulumi.StringInput) WorkersScriptFilesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkersScriptFiles {
+		return vs[0].(map[string]WorkersScriptFiles)[vs[1].(string)]
+	}).(WorkersScriptFilesOutput)
+}
+
 type WorkersScriptLimits struct {
 	// The amount of CPU time this Worker can use in milliseconds.
 	CpuMs *int `pulumi:"cpuMs"`
@@ -66306,6 +65642,143 @@ func (o WorkersScriptTailConsumerArrayOutput) Index(i pulumi.IntInput) WorkersSc
 	}).(WorkersScriptTailConsumerOutput)
 }
 
+type WorkflowConcurrency struct {
+	// Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit.
+	Limit *int `pulumi:"limit"`
+}
+
+// WorkflowConcurrencyInput is an input type that accepts WorkflowConcurrencyArgs and WorkflowConcurrencyOutput values.
+// You can construct a concrete instance of `WorkflowConcurrencyInput` via:
+//
+//	WorkflowConcurrencyArgs{...}
+type WorkflowConcurrencyInput interface {
+	pulumi.Input
+
+	ToWorkflowConcurrencyOutput() WorkflowConcurrencyOutput
+	ToWorkflowConcurrencyOutputWithContext(context.Context) WorkflowConcurrencyOutput
+}
+
+type WorkflowConcurrencyArgs struct {
+	// Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit.
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+}
+
+func (WorkflowConcurrencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowConcurrency)(nil)).Elem()
+}
+
+func (i WorkflowConcurrencyArgs) ToWorkflowConcurrencyOutput() WorkflowConcurrencyOutput {
+	return i.ToWorkflowConcurrencyOutputWithContext(context.Background())
+}
+
+func (i WorkflowConcurrencyArgs) ToWorkflowConcurrencyOutputWithContext(ctx context.Context) WorkflowConcurrencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowConcurrencyOutput)
+}
+
+func (i WorkflowConcurrencyArgs) ToWorkflowConcurrencyPtrOutput() WorkflowConcurrencyPtrOutput {
+	return i.ToWorkflowConcurrencyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowConcurrencyArgs) ToWorkflowConcurrencyPtrOutputWithContext(ctx context.Context) WorkflowConcurrencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowConcurrencyOutput).ToWorkflowConcurrencyPtrOutputWithContext(ctx)
+}
+
+// WorkflowConcurrencyPtrInput is an input type that accepts WorkflowConcurrencyArgs, WorkflowConcurrencyPtr and WorkflowConcurrencyPtrOutput values.
+// You can construct a concrete instance of `WorkflowConcurrencyPtrInput` via:
+//
+//	        WorkflowConcurrencyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowConcurrencyPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowConcurrencyPtrOutput() WorkflowConcurrencyPtrOutput
+	ToWorkflowConcurrencyPtrOutputWithContext(context.Context) WorkflowConcurrencyPtrOutput
+}
+
+type workflowConcurrencyPtrType WorkflowConcurrencyArgs
+
+func WorkflowConcurrencyPtr(v *WorkflowConcurrencyArgs) WorkflowConcurrencyPtrInput {
+	return (*workflowConcurrencyPtrType)(v)
+}
+
+func (*workflowConcurrencyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowConcurrency)(nil)).Elem()
+}
+
+func (i *workflowConcurrencyPtrType) ToWorkflowConcurrencyPtrOutput() WorkflowConcurrencyPtrOutput {
+	return i.ToWorkflowConcurrencyPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowConcurrencyPtrType) ToWorkflowConcurrencyPtrOutputWithContext(ctx context.Context) WorkflowConcurrencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowConcurrencyPtrOutput)
+}
+
+type WorkflowConcurrencyOutput struct{ *pulumi.OutputState }
+
+func (WorkflowConcurrencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowConcurrency)(nil)).Elem()
+}
+
+func (o WorkflowConcurrencyOutput) ToWorkflowConcurrencyOutput() WorkflowConcurrencyOutput {
+	return o
+}
+
+func (o WorkflowConcurrencyOutput) ToWorkflowConcurrencyOutputWithContext(ctx context.Context) WorkflowConcurrencyOutput {
+	return o
+}
+
+func (o WorkflowConcurrencyOutput) ToWorkflowConcurrencyPtrOutput() WorkflowConcurrencyPtrOutput {
+	return o.ToWorkflowConcurrencyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowConcurrencyOutput) ToWorkflowConcurrencyPtrOutputWithContext(ctx context.Context) WorkflowConcurrencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowConcurrency) *WorkflowConcurrency {
+		return &v
+	}).(WorkflowConcurrencyPtrOutput)
+}
+
+// Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit.
+func (o WorkflowConcurrencyOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowConcurrency) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+type WorkflowConcurrencyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowConcurrencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowConcurrency)(nil)).Elem()
+}
+
+func (o WorkflowConcurrencyPtrOutput) ToWorkflowConcurrencyPtrOutput() WorkflowConcurrencyPtrOutput {
+	return o
+}
+
+func (o WorkflowConcurrencyPtrOutput) ToWorkflowConcurrencyPtrOutputWithContext(ctx context.Context) WorkflowConcurrencyPtrOutput {
+	return o
+}
+
+func (o WorkflowConcurrencyPtrOutput) Elem() WorkflowConcurrencyOutput {
+	return o.ApplyT(func(v *WorkflowConcurrency) WorkflowConcurrency {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowConcurrency
+		return ret
+	}).(WorkflowConcurrencyOutput)
+}
+
+// Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit.
+func (o WorkflowConcurrencyPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowConcurrency) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
 type WorkflowDefaultRetention struct {
 	// Specifies the duration in milliseconds or as a string like '5 minutes'.
 	ErrorRetention interface{} `pulumi:"errorRetention"`
@@ -66460,259 +65933,6 @@ func (o WorkflowDefaultRetentionPtrOutput) SuccessRetention() pulumi.AnyOutput {
 		}
 		return v.SuccessRetention
 	}).(pulumi.AnyOutput)
-}
-
-type WorkflowInstances struct {
-	Complete        *float64 `pulumi:"complete"`
-	Errored         *float64 `pulumi:"errored"`
-	Paused          *float64 `pulumi:"paused"`
-	Queued          *float64 `pulumi:"queued"`
-	RollingBack     *float64 `pulumi:"rollingBack"`
-	Running         *float64 `pulumi:"running"`
-	Terminated      *float64 `pulumi:"terminated"`
-	Waiting         *float64 `pulumi:"waiting"`
-	WaitingForPause *float64 `pulumi:"waitingForPause"`
-}
-
-// WorkflowInstancesInput is an input type that accepts WorkflowInstancesArgs and WorkflowInstancesOutput values.
-// You can construct a concrete instance of `WorkflowInstancesInput` via:
-//
-//	WorkflowInstancesArgs{...}
-type WorkflowInstancesInput interface {
-	pulumi.Input
-
-	ToWorkflowInstancesOutput() WorkflowInstancesOutput
-	ToWorkflowInstancesOutputWithContext(context.Context) WorkflowInstancesOutput
-}
-
-type WorkflowInstancesArgs struct {
-	Complete        pulumi.Float64PtrInput `pulumi:"complete"`
-	Errored         pulumi.Float64PtrInput `pulumi:"errored"`
-	Paused          pulumi.Float64PtrInput `pulumi:"paused"`
-	Queued          pulumi.Float64PtrInput `pulumi:"queued"`
-	RollingBack     pulumi.Float64PtrInput `pulumi:"rollingBack"`
-	Running         pulumi.Float64PtrInput `pulumi:"running"`
-	Terminated      pulumi.Float64PtrInput `pulumi:"terminated"`
-	Waiting         pulumi.Float64PtrInput `pulumi:"waiting"`
-	WaitingForPause pulumi.Float64PtrInput `pulumi:"waitingForPause"`
-}
-
-func (WorkflowInstancesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowInstances)(nil)).Elem()
-}
-
-func (i WorkflowInstancesArgs) ToWorkflowInstancesOutput() WorkflowInstancesOutput {
-	return i.ToWorkflowInstancesOutputWithContext(context.Background())
-}
-
-func (i WorkflowInstancesArgs) ToWorkflowInstancesOutputWithContext(ctx context.Context) WorkflowInstancesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowInstancesOutput)
-}
-
-func (i WorkflowInstancesArgs) ToWorkflowInstancesPtrOutput() WorkflowInstancesPtrOutput {
-	return i.ToWorkflowInstancesPtrOutputWithContext(context.Background())
-}
-
-func (i WorkflowInstancesArgs) ToWorkflowInstancesPtrOutputWithContext(ctx context.Context) WorkflowInstancesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowInstancesOutput).ToWorkflowInstancesPtrOutputWithContext(ctx)
-}
-
-// WorkflowInstancesPtrInput is an input type that accepts WorkflowInstancesArgs, WorkflowInstancesPtr and WorkflowInstancesPtrOutput values.
-// You can construct a concrete instance of `WorkflowInstancesPtrInput` via:
-//
-//	        WorkflowInstancesArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkflowInstancesPtrInput interface {
-	pulumi.Input
-
-	ToWorkflowInstancesPtrOutput() WorkflowInstancesPtrOutput
-	ToWorkflowInstancesPtrOutputWithContext(context.Context) WorkflowInstancesPtrOutput
-}
-
-type workflowInstancesPtrType WorkflowInstancesArgs
-
-func WorkflowInstancesPtr(v *WorkflowInstancesArgs) WorkflowInstancesPtrInput {
-	return (*workflowInstancesPtrType)(v)
-}
-
-func (*workflowInstancesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkflowInstances)(nil)).Elem()
-}
-
-func (i *workflowInstancesPtrType) ToWorkflowInstancesPtrOutput() WorkflowInstancesPtrOutput {
-	return i.ToWorkflowInstancesPtrOutputWithContext(context.Background())
-}
-
-func (i *workflowInstancesPtrType) ToWorkflowInstancesPtrOutputWithContext(ctx context.Context) WorkflowInstancesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowInstancesPtrOutput)
-}
-
-type WorkflowInstancesOutput struct{ *pulumi.OutputState }
-
-func (WorkflowInstancesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowInstances)(nil)).Elem()
-}
-
-func (o WorkflowInstancesOutput) ToWorkflowInstancesOutput() WorkflowInstancesOutput {
-	return o
-}
-
-func (o WorkflowInstancesOutput) ToWorkflowInstancesOutputWithContext(ctx context.Context) WorkflowInstancesOutput {
-	return o
-}
-
-func (o WorkflowInstancesOutput) ToWorkflowInstancesPtrOutput() WorkflowInstancesPtrOutput {
-	return o.ToWorkflowInstancesPtrOutputWithContext(context.Background())
-}
-
-func (o WorkflowInstancesOutput) ToWorkflowInstancesPtrOutputWithContext(ctx context.Context) WorkflowInstancesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowInstances) *WorkflowInstances {
-		return &v
-	}).(WorkflowInstancesPtrOutput)
-}
-
-func (o WorkflowInstancesOutput) Complete() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.Complete }).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesOutput) Errored() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.Errored }).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesOutput) Paused() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.Paused }).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesOutput) Queued() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.Queued }).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesOutput) RollingBack() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.RollingBack }).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesOutput) Running() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.Running }).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesOutput) Terminated() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.Terminated }).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesOutput) Waiting() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.Waiting }).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesOutput) WaitingForPause() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WorkflowInstances) *float64 { return v.WaitingForPause }).(pulumi.Float64PtrOutput)
-}
-
-type WorkflowInstancesPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkflowInstancesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkflowInstances)(nil)).Elem()
-}
-
-func (o WorkflowInstancesPtrOutput) ToWorkflowInstancesPtrOutput() WorkflowInstancesPtrOutput {
-	return o
-}
-
-func (o WorkflowInstancesPtrOutput) ToWorkflowInstancesPtrOutputWithContext(ctx context.Context) WorkflowInstancesPtrOutput {
-	return o
-}
-
-func (o WorkflowInstancesPtrOutput) Elem() WorkflowInstancesOutput {
-	return o.ApplyT(func(v *WorkflowInstances) WorkflowInstances {
-		if v != nil {
-			return *v
-		}
-		var ret WorkflowInstances
-		return ret
-	}).(WorkflowInstancesOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) Complete() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Complete
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) Errored() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Errored
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) Paused() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Paused
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) Queued() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Queued
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) RollingBack() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.RollingBack
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) Running() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Running
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) Terminated() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Terminated
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) Waiting() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Waiting
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o WorkflowInstancesPtrOutput) WaitingForPause() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WorkflowInstances) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.WaitingForPause
-	}).(pulumi.Float64PtrOutput)
 }
 
 type WorkflowLimits struct {
@@ -85214,19 +84434,555 @@ func (o ZeroTrustAccessGroupExcludeAuthMethodPtrOutput) AuthMethod() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type ZeroTrustAccessGroupExcludeAzureAd struct {
+	// The ID of an Azure group.
+	Id string `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// ZeroTrustAccessGroupExcludeAzureAdInput is an input type that accepts ZeroTrustAccessGroupExcludeAzureAdArgs and ZeroTrustAccessGroupExcludeAzureAdOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeAzureAdInput` via:
+//
+//	ZeroTrustAccessGroupExcludeAzureAdArgs{...}
+type ZeroTrustAccessGroupExcludeAzureAdInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput
+	ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput
+}
+
+type ZeroTrustAccessGroupExcludeAzureAdArgs struct {
+	// The ID of an Azure group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (ZeroTrustAccessGroupExcludeAzureAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return i.ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeAzureAdArgs) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdOutput).ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeAzureAdPtrInput is an input type that accepts ZeroTrustAccessGroupExcludeAzureAdArgs, ZeroTrustAccessGroupExcludeAzureAdPtr and ZeroTrustAccessGroupExcludeAzureAdPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeAzureAdPtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeAzureAdArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeAzureAdPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput
+	ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput
+}
+
+type zeroTrustAccessGroupExcludeAzureAdPtrType ZeroTrustAccessGroupExcludeAzureAdArgs
+
+func ZeroTrustAccessGroupExcludeAzureAdPtr(v *ZeroTrustAccessGroupExcludeAzureAdArgs) ZeroTrustAccessGroupExcludeAzureAdPtrInput {
+	return (*zeroTrustAccessGroupExcludeAzureAdPtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeAzureAdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeAzureAdPtrType) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeAzureAdPtrType) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeAzureAdPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeAzureAdOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeAzureAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdOutput() ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeAzureAd) *ZeroTrustAccessGroupExcludeAzureAd {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeAzureAdPtrOutput)
+}
+
+// The ID of an Azure group.
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAzureAd) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of your Azure identity provider.
+func (o ZeroTrustAccessGroupExcludeAzureAdOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessGroupExcludeAzureAdPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeAzureAd)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutput() ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) ToZeroTrustAccessGroupExcludeAzureAdPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeAzureAdPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) Elem() ZeroTrustAccessGroupExcludeAzureAdOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) ZeroTrustAccessGroupExcludeAzureAd {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeAzureAd
+		return ret
+	}).(ZeroTrustAccessGroupExcludeAzureAdOutput)
+}
+
+// The ID of an Azure group.
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your Azure identity provider.
+func (o ZeroTrustAccessGroupExcludeAzureAdPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCertificate struct {
+}
+
+// ZeroTrustAccessGroupExcludeCertificateInput is an input type that accepts ZeroTrustAccessGroupExcludeCertificateArgs and ZeroTrustAccessGroupExcludeCertificateOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCertificateInput` via:
+//
+//	ZeroTrustAccessGroupExcludeCertificateArgs{...}
+type ZeroTrustAccessGroupExcludeCertificateInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput
+	ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCertificateOutput
+}
+
+type ZeroTrustAccessGroupExcludeCertificateArgs struct {
+}
+
+func (ZeroTrustAccessGroupExcludeCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput {
+	return i.ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificateOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCertificateArgs) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificateOutput).ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeCertificatePtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCertificateArgs, ZeroTrustAccessGroupExcludeCertificatePtr and ZeroTrustAccessGroupExcludeCertificatePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCertificatePtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeCertificatePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput
+	ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput
+}
+
+type zeroTrustAccessGroupExcludeCertificatePtrType ZeroTrustAccessGroupExcludeCertificateArgs
+
+func ZeroTrustAccessGroupExcludeCertificatePtr(v *ZeroTrustAccessGroupExcludeCertificateArgs) ZeroTrustAccessGroupExcludeCertificatePtrInput {
+	return (*zeroTrustAccessGroupExcludeCertificatePtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeCertificatePtrType) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeCertificatePtrType) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCertificatePtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCertificateOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificateOutput() ZeroTrustAccessGroupExcludeCertificateOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificateOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificateOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificateOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCertificate) *ZeroTrustAccessGroupExcludeCertificate {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeCertificatePtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCertificate)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutput() ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) ToZeroTrustAccessGroupExcludeCertificatePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCertificatePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCertificatePtrOutput) Elem() ZeroTrustAccessGroupExcludeCertificateOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCertificate) ZeroTrustAccessGroupExcludeCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeCertificate
+		return ret
+	}).(ZeroTrustAccessGroupExcludeCertificateOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCloudflareAccountMember struct {
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+}
+
+// ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput is an input type that accepts ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs and ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput` via:
+//
+//	ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{...}
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput
+	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput
+}
+
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs struct {
+	// Identifier.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+}
+
+func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput).ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs, ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtr and ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput
+	ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput
+}
+
+type zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs
+
+func ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtr(v *ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput {
+	return (*zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeCloudflareAccountMemberPtrType) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCloudflareAccountMember) *ZeroTrustAccessGroupExcludeCloudflareAccountMember {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput)
+}
+
+// Identifier.
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeCloudflareAccountMember) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput() ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) ToZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) Elem() ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCloudflareAccountMember) ZeroTrustAccessGroupExcludeCloudflareAccountMember {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeCloudflareAccountMember
+		return ret
+	}).(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput)
+}
+
+// Identifier.
+func (o ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCloudflareAccountMember) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCommonName struct {
+	// The common name to match.
+	CommonName string `pulumi:"commonName"`
+}
+
+// ZeroTrustAccessGroupExcludeCommonNameInput is an input type that accepts ZeroTrustAccessGroupExcludeCommonNameArgs and ZeroTrustAccessGroupExcludeCommonNameOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCommonNameInput` via:
+//
+//	ZeroTrustAccessGroupExcludeCommonNameArgs{...}
+type ZeroTrustAccessGroupExcludeCommonNameInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput
+	ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput
+}
+
+type ZeroTrustAccessGroupExcludeCommonNameArgs struct {
+	// The common name to match.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+}
+
+func (ZeroTrustAccessGroupExcludeCommonNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
+}
+
+func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return i.ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNameOutput)
+}
+
+func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustAccessGroupExcludeCommonNameArgs) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNameOutput).ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustAccessGroupExcludeCommonNamePtrInput is an input type that accepts ZeroTrustAccessGroupExcludeCommonNameArgs, ZeroTrustAccessGroupExcludeCommonNamePtr and ZeroTrustAccessGroupExcludeCommonNamePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustAccessGroupExcludeCommonNamePtrInput` via:
+//
+//	        ZeroTrustAccessGroupExcludeCommonNameArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustAccessGroupExcludeCommonNamePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput
+	ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput
+}
+
+type zeroTrustAccessGroupExcludeCommonNamePtrType ZeroTrustAccessGroupExcludeCommonNameArgs
+
+func ZeroTrustAccessGroupExcludeCommonNamePtr(v *ZeroTrustAccessGroupExcludeCommonNameArgs) ZeroTrustAccessGroupExcludeCommonNamePtrInput {
+	return (*zeroTrustAccessGroupExcludeCommonNamePtrType)(v)
+}
+
+func (*zeroTrustAccessGroupExcludeCommonNamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
+}
+
+func (i *zeroTrustAccessGroupExcludeCommonNamePtrType) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return i.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustAccessGroupExcludeCommonNamePtrType) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessGroupExcludeCommonNamePtrOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCommonNameOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCommonNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNameOutput() ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNameOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return o.ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessGroupExcludeCommonName) *ZeroTrustAccessGroupExcludeCommonName {
+		return &v
+	}).(ZeroTrustAccessGroupExcludeCommonNamePtrOutput)
+}
+
+// The common name to match.
+func (o ZeroTrustAccessGroupExcludeCommonNameOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v ZeroTrustAccessGroupExcludeCommonName) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+type ZeroTrustAccessGroupExcludeCommonNamePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustAccessGroupExcludeCommonName)(nil)).Elem()
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutput() ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) ToZeroTrustAccessGroupExcludeCommonNamePtrOutputWithContext(ctx context.Context) ZeroTrustAccessGroupExcludeCommonNamePtrOutput {
+	return o
+}
+
+func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) Elem() ZeroTrustAccessGroupExcludeCommonNameOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCommonName) ZeroTrustAccessGroupExcludeCommonName {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustAccessGroupExcludeCommonName
+		return ret
+	}).(ZeroTrustAccessGroupExcludeCommonNameOutput)
+}
+
+// The common name to match.
+func (o ZeroTrustAccessGroupExcludeCommonNamePtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessGroupExcludeCommonName) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CommonName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigInput)(nil)).Elem(), MoqRelayConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigPtrInput)(nil)).Elem(), MoqRelayConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribeInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribePtrInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsPtrInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsUpstreamInput)(nil)).Elem(), MoqRelayConfigUpstreamsUpstreamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsUpstreamArrayInput)(nil)).Elem(), MoqRelayConfigUpstreamsUpstreamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyFiltersInput)(nil)).Elem(), NotificationPolicyFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyFiltersPtrInput)(nil)).Elem(), NotificationPolicyFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyMechanismsInput)(nil)).Elem(), NotificationPolicyMechanismsArgs{})
@@ -85405,8 +85161,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineSinkSchemaPtrInput)(nil)).Elem(), PipelineSinkSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineSinkSchemaFieldInput)(nil)).Elem(), PipelineSinkSchemaFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineSinkSchemaFieldArrayInput)(nil)).Elem(), PipelineSinkSchemaFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineSinkSchemaFormatInput)(nil)).Elem(), PipelineSinkSchemaFormatArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineSinkSchemaFormatPtrInput)(nil)).Elem(), PipelineSinkSchemaFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamFormatInput)(nil)).Elem(), PipelineStreamFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamFormatPtrInput)(nil)).Elem(), PipelineStreamFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamHttpInput)(nil)).Elem(), PipelineStreamHttpArgs{})
@@ -85417,8 +85171,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamSchemaPtrInput)(nil)).Elem(), PipelineStreamSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamSchemaFieldInput)(nil)).Elem(), PipelineStreamSchemaFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamSchemaFieldArrayInput)(nil)).Elem(), PipelineStreamSchemaFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamSchemaFormatInput)(nil)).Elem(), PipelineStreamSchemaFormatArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamSchemaFormatPtrInput)(nil)).Elem(), PipelineStreamSchemaFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamWorkerBindingInput)(nil)).Elem(), PipelineStreamWorkerBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineStreamWorkerBindingPtrInput)(nil)).Elem(), PipelineStreamWorkerBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTableInput)(nil)).Elem(), PipelineTableArgs{})
@@ -85551,6 +85303,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersNoTransformPtrInput)(nil)).Elem(), RulesetRuleActionParametersNoTransformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOriginInput)(nil)).Elem(), RulesetRuleActionParametersOriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOriginPtrInput)(nil)).Elem(), RulesetRuleActionParametersOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOriginRangeRequestsInput)(nil)).Elem(), RulesetRuleActionParametersOriginRangeRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOriginRangeRequestsPtrInput)(nil)).Elem(), RulesetRuleActionParametersOriginRangeRequestsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesInput)(nil)).Elem(), RulesetRuleActionParametersOverridesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesPtrInput)(nil)).Elem(), RulesetRuleActionParametersOverridesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesCategoryInput)(nil)).Elem(), RulesetRuleActionParametersOverridesCategoryArgs{})
@@ -85633,6 +85387,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDownloadDefaultPtrInput)(nil)).Elem(), StreamDownloadDefaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamInputTypeInput)(nil)).Elem(), StreamInputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamInputTypePtrInput)(nil)).Elem(), StreamInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamLiveInputPlaybackInput)(nil)).Elem(), StreamLiveInputPlaybackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamLiveInputPlaybackPtrInput)(nil)).Elem(), StreamLiveInputPlaybackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamLiveInputRecordingInput)(nil)).Elem(), StreamLiveInputRecordingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamLiveInputRecordingPtrInput)(nil)).Elem(), StreamLiveInputRecordingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamLiveInputRtmpsInput)(nil)).Elem(), StreamLiveInputRtmpsArgs{})
@@ -85837,6 +85593,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptExportsMapInput)(nil)).Elem(), WorkerScriptExportsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptExportsCacheInput)(nil)).Elem(), WorkerScriptExportsCacheArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptExportsCachePtrInput)(nil)).Elem(), WorkerScriptExportsCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptFilesInput)(nil)).Elem(), WorkerScriptFilesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptFilesMapInput)(nil)).Elem(), WorkerScriptFilesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptLimitsInput)(nil)).Elem(), WorkerScriptLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptLimitsPtrInput)(nil)).Elem(), WorkerScriptLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptMigrationsInput)(nil)).Elem(), WorkerScriptMigrationsArgs{})
@@ -85943,6 +85701,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptExportsMapInput)(nil)).Elem(), WorkersScriptExportsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptExportsCacheInput)(nil)).Elem(), WorkersScriptExportsCacheArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptExportsCachePtrInput)(nil)).Elem(), WorkersScriptExportsCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptFilesInput)(nil)).Elem(), WorkersScriptFilesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptFilesMapInput)(nil)).Elem(), WorkersScriptFilesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptLimitsInput)(nil)).Elem(), WorkersScriptLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptLimitsPtrInput)(nil)).Elem(), WorkersScriptLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptMigrationsInput)(nil)).Elem(), WorkersScriptMigrationsArgs{})
@@ -85973,10 +85733,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptPlacementTargetArrayInput)(nil)).Elem(), WorkersScriptPlacementTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptTailConsumerInput)(nil)).Elem(), WorkersScriptTailConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptTailConsumerArrayInput)(nil)).Elem(), WorkersScriptTailConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowConcurrencyInput)(nil)).Elem(), WorkflowConcurrencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowConcurrencyPtrInput)(nil)).Elem(), WorkflowConcurrencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowDefaultRetentionInput)(nil)).Elem(), WorkflowDefaultRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowDefaultRetentionPtrInput)(nil)).Elem(), WorkflowDefaultRetentionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowInstancesInput)(nil)).Elem(), WorkflowInstancesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowInstancesPtrInput)(nil)).Elem(), WorkflowInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowLimitsInput)(nil)).Elem(), WorkflowLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowLimitsPtrInput)(nil)).Elem(), WorkflowLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowScheduleInput)(nil)).Elem(), WorkflowScheduleArgs{})
@@ -86211,18 +85971,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAuthContextPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAuthContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAuthMethodInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAuthMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAuthMethodPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAuthMethodArgs{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderArrayOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderArrayOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigPtrOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribeOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribePtrOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsPtrOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsUpstreamOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsUpstreamArrayOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAdInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAzureAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeAzureAdPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeAzureAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificateInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCertificatePtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMemberInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonNameInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCommonNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessGroupExcludeCommonNamePtrInput)(nil)).Elem(), ZeroTrustAccessGroupExcludeCommonNameArgs{})
 	pulumi.RegisterOutputType(NotificationPolicyFiltersOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyFiltersPtrOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyMechanismsOutput{})
@@ -86401,8 +86157,6 @@ func init() {
 	pulumi.RegisterOutputType(PipelineSinkSchemaPtrOutput{})
 	pulumi.RegisterOutputType(PipelineSinkSchemaFieldOutput{})
 	pulumi.RegisterOutputType(PipelineSinkSchemaFieldArrayOutput{})
-	pulumi.RegisterOutputType(PipelineSinkSchemaFormatOutput{})
-	pulumi.RegisterOutputType(PipelineSinkSchemaFormatPtrOutput{})
 	pulumi.RegisterOutputType(PipelineStreamFormatOutput{})
 	pulumi.RegisterOutputType(PipelineStreamFormatPtrOutput{})
 	pulumi.RegisterOutputType(PipelineStreamHttpOutput{})
@@ -86413,8 +86167,6 @@ func init() {
 	pulumi.RegisterOutputType(PipelineStreamSchemaPtrOutput{})
 	pulumi.RegisterOutputType(PipelineStreamSchemaFieldOutput{})
 	pulumi.RegisterOutputType(PipelineStreamSchemaFieldArrayOutput{})
-	pulumi.RegisterOutputType(PipelineStreamSchemaFormatOutput{})
-	pulumi.RegisterOutputType(PipelineStreamSchemaFormatPtrOutput{})
 	pulumi.RegisterOutputType(PipelineStreamWorkerBindingOutput{})
 	pulumi.RegisterOutputType(PipelineStreamWorkerBindingPtrOutput{})
 	pulumi.RegisterOutputType(PipelineTableOutput{})
@@ -86547,6 +86299,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersNoTransformPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOriginOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOriginPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOriginRangeRequestsOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOriginRangeRequestsPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesCategoryOutput{})
@@ -86629,6 +86383,8 @@ func init() {
 	pulumi.RegisterOutputType(StreamDownloadDefaultPtrOutput{})
 	pulumi.RegisterOutputType(StreamInputTypeOutput{})
 	pulumi.RegisterOutputType(StreamInputTypePtrOutput{})
+	pulumi.RegisterOutputType(StreamLiveInputPlaybackOutput{})
+	pulumi.RegisterOutputType(StreamLiveInputPlaybackPtrOutput{})
 	pulumi.RegisterOutputType(StreamLiveInputRecordingOutput{})
 	pulumi.RegisterOutputType(StreamLiveInputRecordingPtrOutput{})
 	pulumi.RegisterOutputType(StreamLiveInputRtmpsOutput{})
@@ -86833,6 +86589,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptExportsMapOutput{})
 	pulumi.RegisterOutputType(WorkerScriptExportsCacheOutput{})
 	pulumi.RegisterOutputType(WorkerScriptExportsCachePtrOutput{})
+	pulumi.RegisterOutputType(WorkerScriptFilesOutput{})
+	pulumi.RegisterOutputType(WorkerScriptFilesMapOutput{})
 	pulumi.RegisterOutputType(WorkerScriptLimitsOutput{})
 	pulumi.RegisterOutputType(WorkerScriptLimitsPtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptMigrationsOutput{})
@@ -86939,6 +86697,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkersScriptExportsMapOutput{})
 	pulumi.RegisterOutputType(WorkersScriptExportsCacheOutput{})
 	pulumi.RegisterOutputType(WorkersScriptExportsCachePtrOutput{})
+	pulumi.RegisterOutputType(WorkersScriptFilesOutput{})
+	pulumi.RegisterOutputType(WorkersScriptFilesMapOutput{})
 	pulumi.RegisterOutputType(WorkersScriptLimitsOutput{})
 	pulumi.RegisterOutputType(WorkersScriptLimitsPtrOutput{})
 	pulumi.RegisterOutputType(WorkersScriptMigrationsOutput{})
@@ -86969,10 +86729,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkersScriptPlacementTargetArrayOutput{})
 	pulumi.RegisterOutputType(WorkersScriptTailConsumerOutput{})
 	pulumi.RegisterOutputType(WorkersScriptTailConsumerArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowConcurrencyOutput{})
+	pulumi.RegisterOutputType(WorkflowConcurrencyPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowDefaultRetentionOutput{})
 	pulumi.RegisterOutputType(WorkflowDefaultRetentionPtrOutput{})
-	pulumi.RegisterOutputType(WorkflowInstancesOutput{})
-	pulumi.RegisterOutputType(WorkflowInstancesPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowLimitsOutput{})
 	pulumi.RegisterOutputType(WorkflowLimitsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowScheduleOutput{})
@@ -87207,4 +86967,12 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAuthContextPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAuthMethodOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAuthMethodPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAzureAdOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeAzureAdPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCertificateOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCloudflareAccountMemberOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCloudflareAccountMemberPtrOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCommonNameOutput{})
+	pulumi.RegisterOutputType(ZeroTrustAccessGroupExcludeCommonNamePtrOutput{})
 }

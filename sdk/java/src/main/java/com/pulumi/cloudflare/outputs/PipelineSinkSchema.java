@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.PipelineSinkSchemaField;
-import com.pulumi.cloudflare.outputs.PipelineSinkSchemaFormat;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.List;
@@ -15,15 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineSinkSchema {
     private @Nullable List<PipelineSinkSchemaField> fields;
-    private @Nullable PipelineSinkSchemaFormat format;
     private @Nullable Boolean inferred;
 
     private PipelineSinkSchema() {}
     public List<PipelineSinkSchemaField> fields() {
         return this.fields == null ? List.of() : this.fields;
-    }
-    public Optional<PipelineSinkSchemaFormat> format() {
-        return Optional.ofNullable(this.format);
     }
     public Optional<Boolean> inferred() {
         return Optional.ofNullable(this.inferred);
@@ -39,13 +34,11 @@ public final class PipelineSinkSchema {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PipelineSinkSchemaField> fields;
-        private @Nullable PipelineSinkSchemaFormat format;
         private @Nullable Boolean inferred;
         public Builder() {}
         public Builder(PipelineSinkSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fields = defaults.fields;
-    	      this.format = defaults.format;
     	      this.inferred = defaults.inferred;
         }
 
@@ -59,12 +52,6 @@ public final class PipelineSinkSchema {
             return fields(List.of(fields));
         }
         @CustomType.Setter
-        public Builder format(@Nullable PipelineSinkSchemaFormat format) {
-
-            this.format = format;
-            return this;
-        }
-        @CustomType.Setter
         public Builder inferred(@Nullable Boolean inferred) {
 
             this.inferred = inferred;
@@ -73,7 +60,6 @@ public final class PipelineSinkSchema {
         public PipelineSinkSchema build() {
             final var _resultValue = new PipelineSinkSchema();
             _resultValue.fields = fields;
-            _resultValue.format = format;
             _resultValue.inferred = inferred;
             return _resultValue;
         }

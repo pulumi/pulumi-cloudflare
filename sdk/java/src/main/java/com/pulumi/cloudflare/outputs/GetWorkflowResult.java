@@ -4,12 +4,13 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkflowFilter;
-import com.pulumi.cloudflare.outputs.GetWorkflowInstances;
 import com.pulumi.cloudflare.outputs.GetWorkflowSchedule;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,7 +26,7 @@ public final class GetWorkflowResult {
      * 
      */
     private String id;
-    private GetWorkflowInstances instances;
+    private Map<String,Double> instances;
     private String modifiedOn;
     private String name;
     private List<GetWorkflowSchedule> schedules;
@@ -53,7 +54,7 @@ public final class GetWorkflowResult {
     public String id() {
         return this.id;
     }
-    public GetWorkflowInstances instances() {
+    public Map<String,Double> instances() {
         return this.instances;
     }
     public String modifiedOn() {
@@ -89,7 +90,7 @@ public final class GetWorkflowResult {
         private String createdOn;
         private @Nullable GetWorkflowFilter filter;
         private String id;
-        private GetWorkflowInstances instances;
+        private Map<String,Double> instances;
         private String modifiedOn;
         private String name;
         private List<GetWorkflowSchedule> schedules;
@@ -150,7 +151,7 @@ public final class GetWorkflowResult {
             return this;
         }
         @CustomType.Setter
-        public Builder instances(GetWorkflowInstances instances) {
+        public Builder instances(Map<String,Double> instances) {
             if (instances == null) {
               throw new MissingRequiredPropertyException("GetWorkflowResult", "instances");
             }

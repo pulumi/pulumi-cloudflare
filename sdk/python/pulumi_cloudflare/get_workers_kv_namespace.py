@@ -28,7 +28,7 @@ class GetWorkersKvNamespaceResult:
     """
     A collection of values returned by getWorkersKvNamespace.
     """
-    def __init__(__self__, account_id=None, filter=None, id=None, namespace_id=None, supports_url_encoding=None, title=None):
+    def __init__(__self__, account_id=None, filter=None, id=None, jurisdiction=None, namespace_id=None, supports_url_encoding=None, title=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetWorkersKvNamespaceResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if jurisdiction and not isinstance(jurisdiction, str):
+            raise TypeError("Expected argument 'jurisdiction' to be a str")
+        pulumi.set(__self__, "jurisdiction", jurisdiction)
         if namespace_id and not isinstance(namespace_id, str):
             raise TypeError("Expected argument 'namespace_id' to be a str")
         pulumi.set(__self__, "namespace_id", namespace_id)
@@ -68,6 +71,15 @@ class GetWorkersKvNamespaceResult:
         Namespace identifier tag.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> _builtins.str:
+        """
+        Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+        Available values: "eu", "fedramp", "us".
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
@@ -103,6 +115,7 @@ class AwaitableGetWorkersKvNamespaceResult(GetWorkersKvNamespaceResult):
             account_id=self.account_id,
             filter=self.filter,
             id=self.id,
+            jurisdiction=self.jurisdiction,
             namespace_id=self.namespace_id,
             supports_url_encoding=self.supports_url_encoding,
             title=self.title)
@@ -143,6 +156,7 @@ def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        jurisdiction=pulumi.get(__ret__, 'jurisdiction'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         supports_url_encoding=pulumi.get(__ret__, 'supports_url_encoding'),
         title=pulumi.get(__ret__, 'title'))
@@ -180,6 +194,7 @@ def get_workers_kv_namespace_output(account_id: pulumi.Input[Optional[Optional[_
         account_id=pulumi.get(__response__, 'account_id'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        jurisdiction=pulumi.get(__response__, 'jurisdiction'),
         namespace_id=pulumi.get(__response__, 'namespace_id'),
         supports_url_encoding=pulumi.get(__response__, 'supports_url_encoding'),
         title=pulumi.get(__response__, 'title')))

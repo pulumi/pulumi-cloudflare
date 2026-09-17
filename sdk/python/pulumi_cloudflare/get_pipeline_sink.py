@@ -92,6 +92,9 @@ class GetPipelineSinkResult:
     @_builtins.property
     @pulumi.getter
     def format(self) -> 'outputs.GetPipelineSinkFormatResult':
+        """
+        Defines the output data format of a sink.
+        """
         return pulumi.get(self, "format")
 
     @_builtins.property
@@ -118,6 +121,9 @@ class GetPipelineSinkResult:
     @_builtins.property
     @pulumi.getter
     def schema(self) -> 'outputs.GetPipelineSinkSchemaResult':
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @_builtins.property

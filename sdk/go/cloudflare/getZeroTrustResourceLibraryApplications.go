@@ -27,6 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustResourceLibraryApplications(ctx, &cloudflare.LookupZeroTrustResourceLibraryApplicationsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				Fields:    pulumi.StringRef("fields"),
 //				Filter:    pulumi.StringRef("filter"),
 //				OrderBy:   pulumi.StringRef("order_by"),
 //				Search:    pulumi.StringRef("xx"),
@@ -51,25 +52,35 @@ func LookupZeroTrustResourceLibraryApplications(ctx *pulumi.Context, args *Looku
 
 // A collection of arguments for invoking getZeroTrustResourceLibraryApplications.
 type LookupZeroTrustResourceLibraryApplicationsArgs struct {
-	AccountId string  `pulumi:"accountId"`
-	Filter    *string `pulumi:"filter"`
-	Limit     *int    `pulumi:"limit"`
-	MaxItems  *int    `pulumi:"maxItems"`
-	Offset    *int    `pulumi:"offset"`
-	OrderBy   *string `pulumi:"orderBy"`
-	Search    *string `pulumi:"search"`
+	AccountId string `pulumi:"accountId"`
+	// Return only the listed properties on each application, as a comma-separated list.
+	// Use this to keep responses small when you only need part of each application — for
+	// example populating a picker with `fields=id,name` instead of downloading every
+	// hostname and IP subnet.
+	Fields   *string `pulumi:"fields"`
+	Filter   *string `pulumi:"filter"`
+	Limit    *int    `pulumi:"limit"`
+	MaxItems *int    `pulumi:"maxItems"`
+	Offset   *int    `pulumi:"offset"`
+	OrderBy  *string `pulumi:"orderBy"`
+	Search   *string `pulumi:"search"`
 }
 
 // A collection of values returned by getZeroTrustResourceLibraryApplications.
 type LookupZeroTrustResourceLibraryApplicationsResult struct {
-	AccountId string                                          `pulumi:"accountId"`
-	Filter    *string                                         `pulumi:"filter"`
-	Limit     int                                             `pulumi:"limit"`
-	MaxItems  *int                                            `pulumi:"maxItems"`
-	Offset    int                                             `pulumi:"offset"`
-	OrderBy   *string                                         `pulumi:"orderBy"`
-	Results   []GetZeroTrustResourceLibraryApplicationsResult `pulumi:"results"`
-	Search    *string                                         `pulumi:"search"`
+	AccountId string `pulumi:"accountId"`
+	// Return only the listed properties on each application, as a comma-separated list.
+	// Use this to keep responses small when you only need part of each application — for
+	// example populating a picker with `fields=id,name` instead of downloading every
+	// hostname and IP subnet.
+	Fields   *string                                         `pulumi:"fields"`
+	Filter   *string                                         `pulumi:"filter"`
+	Limit    int                                             `pulumi:"limit"`
+	MaxItems *int                                            `pulumi:"maxItems"`
+	Offset   int                                             `pulumi:"offset"`
+	OrderBy  *string                                         `pulumi:"orderBy"`
+	Results  []GetZeroTrustResourceLibraryApplicationsResult `pulumi:"results"`
+	Search   *string                                         `pulumi:"search"`
 }
 
 func LookupZeroTrustResourceLibraryApplicationsOutput(ctx *pulumi.Context, args LookupZeroTrustResourceLibraryApplicationsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustResourceLibraryApplicationsResultOutput {
@@ -79,13 +90,18 @@ func LookupZeroTrustResourceLibraryApplicationsOutput(ctx *pulumi.Context, args 
 
 // A collection of arguments for invoking getZeroTrustResourceLibraryApplications.
 type LookupZeroTrustResourceLibraryApplicationsOutputArgs struct {
-	AccountId pulumi.StringInput    `pulumi:"accountId"`
-	Filter    pulumi.StringPtrInput `pulumi:"filter"`
-	Limit     pulumi.IntPtrInput    `pulumi:"limit"`
-	MaxItems  pulumi.IntPtrInput    `pulumi:"maxItems"`
-	Offset    pulumi.IntPtrInput    `pulumi:"offset"`
-	OrderBy   pulumi.StringPtrInput `pulumi:"orderBy"`
-	Search    pulumi.StringPtrInput `pulumi:"search"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Return only the listed properties on each application, as a comma-separated list.
+	// Use this to keep responses small when you only need part of each application — for
+	// example populating a picker with `fields=id,name` instead of downloading every
+	// hostname and IP subnet.
+	Fields   pulumi.StringPtrInput `pulumi:"fields"`
+	Filter   pulumi.StringPtrInput `pulumi:"filter"`
+	Limit    pulumi.IntPtrInput    `pulumi:"limit"`
+	MaxItems pulumi.IntPtrInput    `pulumi:"maxItems"`
+	Offset   pulumi.IntPtrInput    `pulumi:"offset"`
+	OrderBy  pulumi.StringPtrInput `pulumi:"orderBy"`
+	Search   pulumi.StringPtrInput `pulumi:"search"`
 }
 
 func (LookupZeroTrustResourceLibraryApplicationsOutputArgs) ElementType() reflect.Type {
@@ -109,6 +125,14 @@ func (o LookupZeroTrustResourceLibraryApplicationsResultOutput) ToLookupZeroTrus
 
 func (o LookupZeroTrustResourceLibraryApplicationsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationsResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Return only the listed properties on each application, as a comma-separated list.
+// Use this to keep responses small when you only need part of each application — for
+// example populating a picker with `fields=id,name` instead of downloading every
+// hostname and IP subnet.
+func (o LookupZeroTrustResourceLibraryApplicationsResultOutput) Fields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationsResult) *string { return v.Fields }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustResourceLibraryApplicationsResultOutput) Filter() pulumi.StringPtrOutput {

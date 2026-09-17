@@ -13,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CloudConnectorRulesRule {
+    /**
+     * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
+     * 
+     */
+    private @Nullable String cloudConnectorRulesProvider;
     private @Nullable String description;
     private @Nullable Boolean enabled;
     private @Nullable String expression;
@@ -22,14 +28,16 @@ public final class CloudConnectorRulesRule {
      * 
      */
     private @Nullable CloudConnectorRulesRuleParameters parameters;
+
+    private CloudConnectorRulesRule() {}
     /**
      * @return Cloud Provider type
      * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
      * 
      */
-    private @Nullable String provider;
-
-    private CloudConnectorRulesRule() {}
+    public Optional<String> cloudConnectorRulesProvider() {
+        return Optional.ofNullable(this.cloudConnectorRulesProvider);
+    }
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -49,14 +57,6 @@ public final class CloudConnectorRulesRule {
     public Optional<CloudConnectorRulesRuleParameters> parameters() {
         return Optional.ofNullable(this.parameters);
     }
-    /**
-     * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;, &#34;ociStorage&#34;.
-     * 
-     */
-    public Optional<String> provider() {
-        return Optional.ofNullable(this.provider);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,23 +67,29 @@ public final class CloudConnectorRulesRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String cloudConnectorRulesProvider;
         private @Nullable String description;
         private @Nullable Boolean enabled;
         private @Nullable String expression;
         private @Nullable String id;
         private @Nullable CloudConnectorRulesRuleParameters parameters;
-        private @Nullable String provider;
         public Builder() {}
         public Builder(CloudConnectorRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cloudConnectorRulesProvider = defaults.cloudConnectorRulesProvider;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.expression = defaults.expression;
     	      this.id = defaults.id;
     	      this.parameters = defaults.parameters;
-    	      this.provider = defaults.provider;
         }
 
+        @CustomType.Setter
+        public Builder cloudConnectorRulesProvider(@Nullable String cloudConnectorRulesProvider) {
+
+            this.cloudConnectorRulesProvider = cloudConnectorRulesProvider;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -114,20 +120,14 @@ public final class CloudConnectorRulesRule {
             this.parameters = parameters;
             return this;
         }
-        @CustomType.Setter
-        public Builder provider(@Nullable String provider) {
-
-            this.provider = provider;
-            return this;
-        }
         public CloudConnectorRulesRule build() {
             final var _resultValue = new CloudConnectorRulesRule();
+            _resultValue.cloudConnectorRulesProvider = cloudConnectorRulesProvider;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.expression = expression;
             _resultValue.id = id;
             _resultValue.parameters = parameters;
-            _resultValue.provider = provider;
             return _resultValue;
         }
     }

@@ -33,7 +33,7 @@ class ShareResourceInitArgs:
         :param pulumi.Input[_builtins.str] resource_account_id: Account identifier.
         :param pulumi.Input[_builtins.str] resource_id: Share Resource identifier.
         :param pulumi.Input[_builtins.str] resource_type: Resource Type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param pulumi.Input[_builtins.str] share_id: Share identifier tag.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -96,7 +96,7 @@ class ShareResourceInitArgs:
     def resource_type(self) -> pulumi.Input[_builtins.str]:
         """
         Resource Type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 
@@ -140,7 +140,7 @@ class _ShareResourceState:
         :param pulumi.Input[_builtins.str] resource_account_id: Account identifier.
         :param pulumi.Input[_builtins.str] resource_id: Share Resource identifier.
         :param pulumi.Input[_builtins.str] resource_type: Resource Type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param pulumi.Input[_builtins.int] resource_version: Resource Version.
         :param pulumi.Input[_builtins.str] share_id: Share identifier tag.
         :param pulumi.Input[_builtins.str] status: Resource Status.
@@ -244,7 +244,7 @@ class _ShareResourceState:
     def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 
@@ -333,7 +333,7 @@ class ShareResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_account_id: Account identifier.
         :param pulumi.Input[_builtins.str] resource_id: Share Resource identifier.
         :param pulumi.Input[_builtins.str] resource_type: Resource Type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param pulumi.Input[_builtins.str] share_id: Share identifier tag.
         """
         ...
@@ -451,7 +451,7 @@ class ShareResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_account_id: Account identifier.
         :param pulumi.Input[_builtins.str] resource_id: Share Resource identifier.
         :param pulumi.Input[_builtins.str] resource_type: Resource Type.
-               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+               Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         :param pulumi.Input[_builtins.int] resource_version: Resource Version.
         :param pulumi.Input[_builtins.str] share_id: Share identifier tag.
         :param pulumi.Input[_builtins.str] status: Resource Status.
@@ -526,7 +526,7 @@ class ShareResource(pulumi.CustomResource):
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
         Resource Type.
-        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+        Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
         """
         return pulumi.get(self, "resource_type")
 

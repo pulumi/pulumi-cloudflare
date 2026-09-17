@@ -14,13 +14,21 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustAccessGroupExcludeDevicePostureResult
     {
         /// <summary>
+        /// The ID of the account that owns the device posture integration.
+        /// </summary>
+        public readonly string AccountId;
+        /// <summary>
         /// The ID of a device posture integration.
         /// </summary>
         public readonly string IntegrationUid;
 
         [OutputConstructor]
-        private GetZeroTrustAccessGroupExcludeDevicePostureResult(string integrationUid)
+        private GetZeroTrustAccessGroupExcludeDevicePostureResult(
+            string accountId,
+
+            string integrationUid)
         {
+            AccountId = accountId;
             IntegrationUid = integrationUid;
         }
     }

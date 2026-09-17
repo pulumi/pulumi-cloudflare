@@ -48,14 +48,14 @@ import (
 type RegistrarDomain struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
-	// Fully qualified domain name (FQDN) including the extension
-	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-	// identifies a registration — the same domain cannot be registered
-	// twice, making it a natural idempotency key for registration requests.
+	// Provides a fully qualified domain name (FQDN), including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+	// a registration. Cloudflare permits only one registration per domain, making
+	// the domain name a natural idempotency key for registration requests.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Shows whether a registrar lock is in place for a domain.
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
@@ -99,14 +99,14 @@ func GetRegistrarDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegistrarDomain resources.
 type registrarDomainState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Fully qualified domain name (FQDN) including the extension
-	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-	// identifies a registration — the same domain cannot be registered
-	// twice, making it a natural idempotency key for registration requests.
+	// Provides a fully qualified domain name (FQDN), including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+	// a registration. Cloudflare permits only one registration per domain, making
+	// the domain name a natural idempotency key for registration requests.
 	DomainName *string `pulumi:"domainName"`
 	// Shows whether a registrar lock is in place for a domain.
 	Locked *bool `pulumi:"locked"`
@@ -115,14 +115,14 @@ type registrarDomainState struct {
 }
 
 type RegistrarDomainState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew pulumi.BoolPtrInput
-	// Fully qualified domain name (FQDN) including the extension
-	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-	// identifies a registration — the same domain cannot be registered
-	// twice, making it a natural idempotency key for registration requests.
+	// Provides a fully qualified domain name (FQDN), including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+	// a registration. Cloudflare permits only one registration per domain, making
+	// the domain name a natural idempotency key for registration requests.
 	DomainName pulumi.StringPtrInput
 	// Shows whether a registrar lock is in place for a domain.
 	Locked pulumi.BoolPtrInput
@@ -135,14 +135,14 @@ func (RegistrarDomainState) ElementType() reflect.Type {
 }
 
 type registrarDomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Fully qualified domain name (FQDN) including the extension
-	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-	// identifies a registration — the same domain cannot be registered
-	// twice, making it a natural idempotency key for registration requests.
+	// Provides a fully qualified domain name (FQDN), including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+	// a registration. Cloudflare permits only one registration per domain, making
+	// the domain name a natural idempotency key for registration requests.
 	DomainName string `pulumi:"domainName"`
 	// Shows whether a registrar lock is in place for a domain.
 	Locked *bool `pulumi:"locked"`
@@ -152,14 +152,14 @@ type registrarDomainArgs struct {
 
 // The set of arguments for constructing a RegistrarDomain resource.
 type RegistrarDomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew pulumi.BoolPtrInput
-	// Fully qualified domain name (FQDN) including the extension
-	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-	// identifies a registration — the same domain cannot be registered
-	// twice, making it a natural idempotency key for registration requests.
+	// Provides a fully qualified domain name (FQDN), including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+	// a registration. Cloudflare permits only one registration per domain, making
+	// the domain name a natural idempotency key for registration requests.
 	DomainName pulumi.StringInput
 	// Shows whether a registrar lock is in place for a domain.
 	Locked pulumi.BoolPtrInput
@@ -254,7 +254,7 @@ func (o RegistrarDomainOutput) ToRegistrarDomainOutputWithContext(ctx context.Co
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o RegistrarDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistrarDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -264,10 +264,10 @@ func (o RegistrarDomainOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegistrarDomain) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// Fully qualified domain name (FQDN) including the extension
-// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-// identifies a registration — the same domain cannot be registered
-// twice, making it a natural idempotency key for registration requests.
+// Provides a fully qualified domain name (FQDN), including the extension
+// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+// a registration. Cloudflare permits only one registration per domain, making
+// the domain name a natural idempotency key for registration requests.
 func (o RegistrarDomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistrarDomain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }

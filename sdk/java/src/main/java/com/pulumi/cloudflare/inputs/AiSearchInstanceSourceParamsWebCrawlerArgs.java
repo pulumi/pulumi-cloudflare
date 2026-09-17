@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerParseO
 import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -57,11 +58,11 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         return Optional.ofNullable(this.parseType);
     }
 
-    @Import(name="storeOptions")
-    private @Nullable Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs> storeOptions;
+    @Import(name="storeOptions", required=true)
+    private Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs> storeOptions;
 
-    public Optional<Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs>> storeOptions() {
-        return Optional.ofNullable(this.storeOptions);
+    public Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs> storeOptions() {
+        return this.storeOptions;
     }
 
     private AiSearchInstanceSourceParamsWebCrawlerArgs() {}
@@ -144,7 +145,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
             return parseType(Output.of(parseType));
         }
 
-        public Builder storeOptions(@Nullable Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs> storeOptions) {
+        public Builder storeOptions(Output<AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs> storeOptions) {
             $.storeOptions = storeOptions;
             return this;
         }
@@ -154,6 +155,9 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         }
 
         public AiSearchInstanceSourceParamsWebCrawlerArgs build() {
+            if ($.storeOptions == null) {
+                throw new MissingRequiredPropertyException("AiSearchInstanceSourceParamsWebCrawlerArgs", "storeOptions");
+            }
             return $;
         }
     }

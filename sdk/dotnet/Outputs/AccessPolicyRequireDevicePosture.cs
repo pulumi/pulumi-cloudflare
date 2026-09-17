@@ -14,13 +14,21 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessPolicyRequireDevicePosture
     {
         /// <summary>
+        /// The ID of the account that owns the device posture integration.
+        /// </summary>
+        public readonly string? AccountId;
+        /// <summary>
         /// The ID of a device posture integration.
         /// </summary>
         public readonly string IntegrationUid;
 
         [OutputConstructor]
-        private AccessPolicyRequireDevicePosture(string integrationUid)
+        private AccessPolicyRequireDevicePosture(
+            string? accountId,
+
+            string integrationUid)
         {
+            AccountId = accountId;
             IntegrationUid = integrationUid;
         }
     }

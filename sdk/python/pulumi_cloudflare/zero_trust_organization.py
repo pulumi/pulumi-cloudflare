@@ -729,20 +729,20 @@ class ZeroTrustOrganization(pulumi.CustomResource):
                 "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
                 "session_duration": "24h",
             },
-            mfa_required_for_all_apps=False,
-            mfa_ssh_piv_key_requirements={
-                "pin_policy": "always",
-                "require_fips_device": True,
-                "ssh_key_sizes": [
+            mfa_piv_key_requirements={
+                "pinPolicy": "always",
+                "requireFipsDevice": True,
+                "sshKeySize": [
                     256,
                     2048,
                 ],
-                "ssh_key_types": [
+                "sshKeyType": [
                     "ecdsa",
                     "rsa",
                 ],
-                "touch_policy": "always",
+                "touchPolicy": "always",
             },
+            mfa_required_for_all_apps=False,
             name="Widget Corps Internal Applications",
             session_duration="24h",
             ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
@@ -825,20 +825,20 @@ class ZeroTrustOrganization(pulumi.CustomResource):
                 "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
                 "session_duration": "24h",
             },
-            mfa_required_for_all_apps=False,
-            mfa_ssh_piv_key_requirements={
-                "pin_policy": "always",
-                "require_fips_device": True,
-                "ssh_key_sizes": [
+            mfa_piv_key_requirements={
+                "pinPolicy": "always",
+                "requireFipsDevice": True,
+                "sshKeySize": [
                     256,
                     2048,
                 ],
-                "ssh_key_types": [
+                "sshKeyType": [
                     "ecdsa",
                     "rsa",
                 ],
-                "touch_policy": "always",
+                "touchPolicy": "always",
             },
+            mfa_required_for_all_apps=False,
             name="Widget Corps Internal Applications",
             session_duration="24h",
             ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",

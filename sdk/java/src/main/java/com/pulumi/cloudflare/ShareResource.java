@@ -149,7 +149,7 @@ public class ShareResource extends com.pulumi.resources.CustomResource {
     }
     /**
      * Resource Type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
@@ -157,7 +157,7 @@ public class ShareResource extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Resource Type.
-     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;.
+     * Available values: &#34;custom-ruleset&#34;, &#34;gateway-policy&#34;, &#34;gateway-destination-ip&#34;, &#34;gateway-block-page-settings&#34;, &#34;gateway-extended-email-matching&#34;, &#34;idp-federation-grant&#34;, &#34;trust-grant&#34;.
      * 
      */
     public Output<String> resourceType() {

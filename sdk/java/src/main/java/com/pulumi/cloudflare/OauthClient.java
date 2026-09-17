@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *             .allowedCorsOrigins("https://example.com")
  *             .clientUri("https://example.com")
  *             .logoUri("https://example.com/logo.png")
+ *             .optionalScopes("account.write")
  *             .policyUri("https://example.com/privacy")
  *             .postLogoutRedirectUris("https://example.com/logout")
  *             .tosUri("https://example.com/tos")
@@ -244,6 +245,20 @@ public class OauthClient extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> oauthClientId() {
         return Codegen.optional(this.oauthClientId);
+    }
+    /**
+     * Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     * 
+     */
+    @Export(name="optionalScopes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> optionalScopes;
+
+    /**
+     * @return Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offlineAccess` cannot be optional.
+     * 
+     */
+    public Output<Optional<List<String>>> optionalScopes() {
+        return Codegen.optional(this.optionalScopes);
     }
     /**
      * URL that points to a privacy policy document.

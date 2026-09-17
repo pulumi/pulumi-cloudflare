@@ -43,6 +43,7 @@ class GetPrecursorResult:
 
     @_builtins.property
     @pulumi.getter(name="defaultMode")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def default_mode(self) -> _builtins.str:
         """
         The zone-level Precursor enforcement mode applied to requests that do
@@ -53,6 +54,7 @@ class GetPrecursorResult:
 
     @_builtins.property
     @pulumi.getter(name="enforcementRules")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def enforcement_rules(self) -> Sequence['outputs.GetPrecursorEnforcementRuleResult']:
         """
         The ordered list of enforcement rules for the zone.

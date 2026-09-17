@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.WorkerScriptAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptCacheOptionsArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptExportsArgs;
+import com.pulumi.cloudflare.inputs.WorkerScriptFilesArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptObservabilityArgs;
@@ -232,6 +233,21 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+     * 
+     */
+    @Import(name="files")
+    private @Nullable Output<Map<String,WorkerScriptFilesArgs>> files;
+
+    /**
+     * @return Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+     * 
+     */
+    public Optional<Output<Map<String,WorkerScriptFilesArgs>>> files() {
+        return Optional.ofNullable(this.files);
+    }
+
+    /**
      * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      * 
      */
@@ -429,6 +445,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         this.contentSha256 = $.contentSha256;
         this.contentType = $.contentType;
         this.exports = $.exports;
+        this.files = $.files;
         this.keepAssets = $.keepAssets;
         this.keepBindings = $.keepBindings;
         this.limits = $.limits;
@@ -758,6 +775,27 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder exports(Map<String,WorkerScriptExportsArgs> exports) {
             return exports(Output.of(exports));
+        }
+
+        /**
+         * @param files Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder files(@Nullable Output<Map<String,WorkerScriptFilesArgs>> files) {
+            $.files = files;
+            return this;
+        }
+
+        /**
+         * @param files Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder files(Map<String,WorkerScriptFilesArgs> files) {
+            return files(Output.of(files));
         }
 
         /**

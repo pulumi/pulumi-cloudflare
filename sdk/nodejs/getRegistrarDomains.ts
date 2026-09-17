@@ -18,8 +18,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getRegistrarDomains(args?: GetRegistrarDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrarDomainsResult> {
-    args = args || {};
+export function getRegistrarDomains(args: GetRegistrarDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrarDomainsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRegistrarDomains:getRegistrarDomains", {
         "accountId": args.accountId,
@@ -32,9 +31,9 @@ export function getRegistrarDomains(args?: GetRegistrarDomainsArgs, opts?: pulum
  */
 export interface GetRegistrarDomainsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -46,9 +45,9 @@ export interface GetRegistrarDomainsArgs {
  */
 export interface GetRegistrarDomainsResult {
     /**
-     * Identifier
+     * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -70,8 +69,7 @@ export interface GetRegistrarDomainsResult {
  * });
  * ```
  */
-export function getRegistrarDomainsOutput(args?: GetRegistrarDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistrarDomainsResult> {
-    args = args || {};
+export function getRegistrarDomainsOutput(args: GetRegistrarDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistrarDomainsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRegistrarDomains:getRegistrarDomains", {
         "accountId": args.accountId,
@@ -84,9 +82,9 @@ export function getRegistrarDomainsOutput(args?: GetRegistrarDomainsOutputArgs, 
  */
 export interface GetRegistrarDomainsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

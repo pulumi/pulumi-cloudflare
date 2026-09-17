@@ -31,7 +31,11 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
     /**
      * @return A valid IPv4 address.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private String dnsServer;
     private List<String> dnsServers;
     /**
@@ -65,7 +69,11 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
     /**
      * @return A valid IPv4 address.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public String dnsServer() {
         return this.dnsServer;
     }

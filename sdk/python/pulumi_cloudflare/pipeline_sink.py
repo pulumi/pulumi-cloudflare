@@ -35,6 +35,8 @@ class PipelineSinkArgs:
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
                Available values: "r2", "r2*data*catalog".
         :param pulumi.Input['PipelineSinkConfigArgs'] config: Defines the configuration of the R2 Sink.
+        :param pulumi.Input['PipelineSinkFormatArgs'] format: Defines the output data format of a sink.
+        :param pulumi.Input['PipelineSinkSchemaArgs'] schema: Defines the schema of the events in the data stream.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -98,6 +100,9 @@ class PipelineSinkArgs:
     @_builtins.property
     @pulumi.getter
     def format(self) -> pulumi.Input[Optional['PipelineSinkFormatArgs']]:
+        """
+        Defines the output data format of a sink.
+        """
         return pulumi.get(self, "format")
 
     @format.setter
@@ -107,6 +112,9 @@ class PipelineSinkArgs:
     @_builtins.property
     @pulumi.getter
     def schema(self) -> pulumi.Input[Optional['PipelineSinkSchemaArgs']]:
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -130,7 +138,9 @@ class _PipelineSinkState:
 
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input['PipelineSinkConfigArgs'] config: Defines the configuration of the R2 Sink.
+        :param pulumi.Input['PipelineSinkFormatArgs'] format: Defines the output data format of a sink.
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
+        :param pulumi.Input['PipelineSinkSchemaArgs'] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
                Available values: "r2", "r2*data*catalog".
         """
@@ -187,6 +197,9 @@ class _PipelineSinkState:
     @_builtins.property
     @pulumi.getter
     def format(self) -> pulumi.Input[Optional['PipelineSinkFormatArgs']]:
+        """
+        Defines the output data format of a sink.
+        """
         return pulumi.get(self, "format")
 
     @format.setter
@@ -217,6 +230,9 @@ class _PipelineSinkState:
     @_builtins.property
     @pulumi.getter
     def schema(self) -> pulumi.Input[Optional['PipelineSinkSchemaArgs']]:
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -291,6 +307,7 @@ class PipelineSink(pulumi.CustomResource):
             },
             format={
                 "type": "json",
+                "compression": "uncompressed",
                 "decimal_encoding": "number",
                 "timestamp_format": "rfc3339",
                 "unstructured": True,
@@ -303,12 +320,6 @@ class PipelineSink(pulumi.CustomResource):
                     "required": True,
                     "sql_name": "sql_name",
                 }],
-                "format": {
-                    "type": "json",
-                    "decimal_encoding": "number",
-                    "timestamp_format": "rfc3339",
-                    "unstructured": True,
-                },
                 "inferred": True,
             })
         ```
@@ -324,7 +335,9 @@ class PipelineSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']] config: Defines the configuration of the R2 Sink.
+        :param pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']] format: Defines the output data format of a sink.
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
+        :param pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
                Available values: "r2", "r2*data*catalog".
         """
@@ -375,6 +388,7 @@ class PipelineSink(pulumi.CustomResource):
             },
             format={
                 "type": "json",
+                "compression": "uncompressed",
                 "decimal_encoding": "number",
                 "timestamp_format": "rfc3339",
                 "unstructured": True,
@@ -387,12 +401,6 @@ class PipelineSink(pulumi.CustomResource):
                     "required": True,
                     "sql_name": "sql_name",
                 }],
-                "format": {
-                    "type": "json",
-                    "decimal_encoding": "number",
-                    "timestamp_format": "rfc3339",
-                    "unstructured": True,
-                },
                 "inferred": True,
             })
         ```
@@ -475,7 +483,9 @@ class PipelineSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']] config: Defines the configuration of the R2 Sink.
+        :param pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']] format: Defines the output data format of a sink.
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
+        :param pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
                Available values: "r2", "r2*data*catalog".
         """
@@ -517,6 +527,9 @@ class PipelineSink(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def format(self) -> pulumi.Output[Optional['outputs.PipelineSinkFormat']]:
+        """
+        Defines the output data format of a sink.
+        """
         return pulumi.get(self, "format")
 
     @_builtins.property
@@ -535,6 +548,9 @@ class PipelineSink(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional['outputs.PipelineSinkSchema']]:
+        """
+        Defines the schema of the events in the data stream.
+        """
         return pulumi.get(self, "schema")
 
     @_builtins.property

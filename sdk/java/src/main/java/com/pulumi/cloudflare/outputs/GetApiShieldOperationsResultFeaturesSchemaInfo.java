@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -17,11 +16,6 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfo {
      * 
      */
     private GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema activeSchema;
-    /**
-     * @return Deprecated. Always false.
-     * 
-     */
-    private Boolean learnedAvailable;
     /**
      * @return Action taken on requests failing validation.
      * Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
@@ -36,13 +30,6 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfo {
      */
     public GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema activeSchema() {
         return this.activeSchema;
-    }
-    /**
-     * @return Deprecated. Always false.
-     * 
-     */
-    public Boolean learnedAvailable() {
-        return this.learnedAvailable;
     }
     /**
      * @return Action taken on requests failing validation.
@@ -63,13 +50,11 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfo {
     @CustomType.Builder
     public static final class Builder {
         private GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema activeSchema;
-        private Boolean learnedAvailable;
         private String mitigationAction;
         public Builder() {}
         public Builder(GetApiShieldOperationsResultFeaturesSchemaInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeSchema = defaults.activeSchema;
-    	      this.learnedAvailable = defaults.learnedAvailable;
     	      this.mitigationAction = defaults.mitigationAction;
         }
 
@@ -79,14 +64,6 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfo {
               throw new MissingRequiredPropertyException("GetApiShieldOperationsResultFeaturesSchemaInfo", "activeSchema");
             }
             this.activeSchema = activeSchema;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder learnedAvailable(Boolean learnedAvailable) {
-            if (learnedAvailable == null) {
-              throw new MissingRequiredPropertyException("GetApiShieldOperationsResultFeaturesSchemaInfo", "learnedAvailable");
-            }
-            this.learnedAvailable = learnedAvailable;
             return this;
         }
         @CustomType.Setter
@@ -100,7 +77,6 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfo {
         public GetApiShieldOperationsResultFeaturesSchemaInfo build() {
             final var _resultValue = new GetApiShieldOperationsResultFeaturesSchemaInfo();
             _resultValue.activeSchema = activeSchema;
-            _resultValue.learnedAvailable = learnedAvailable;
             _resultValue.mitigationAction = mitigationAction;
             return _resultValue;
         }

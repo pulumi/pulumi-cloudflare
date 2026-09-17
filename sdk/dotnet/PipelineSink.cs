@@ -61,6 +61,7 @@ namespace Pulumi.Cloudflare
     ///         Format = new Cloudflare.Inputs.PipelineSinkFormatArgs
     ///         {
     ///             Type = "json",
+    ///             Compression = "uncompressed",
     ///             DecimalEncoding = "number",
     ///             TimestampFormat = "rfc3339",
     ///             Unstructured = true,
@@ -77,13 +78,6 @@ namespace Pulumi.Cloudflare
     ///                     Required = true,
     ///                     SqlName = "sql_name",
     ///                 },
-    ///             },
-    ///             Format = new Cloudflare.Inputs.PipelineSinkSchemaFormatArgs
-    ///             {
-    ///                 Type = "json",
-    ///                 DecimalEncoding = "number",
-    ///                 TimestampFormat = "rfc3339",
-    ///                 Unstructured = true,
     ///             },
     ///             Inferred = true,
     ///         },
@@ -116,6 +110,9 @@ namespace Pulumi.Cloudflare
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the output data format of a sink.
+        /// </summary>
         [Output("format")]
         public Output<Outputs.PipelineSinkFormat?> Format { get; private set; } = null!;
 
@@ -128,6 +125,9 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         [Output("schema")]
         public Output<Outputs.PipelineSinkSchema?> Schema { get; private set; } = null!;
 
@@ -196,6 +196,9 @@ namespace Pulumi.Cloudflare
         [Input("config")]
         public Input<Inputs.PipelineSinkConfigArgs>? Config { get; set; }
 
+        /// <summary>
+        /// Defines the output data format of a sink.
+        /// </summary>
         [Input("format")]
         public Input<Inputs.PipelineSinkFormatArgs>? Format { get; set; }
 
@@ -205,6 +208,9 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         [Input("schema")]
         public Input<Inputs.PipelineSinkSchemaArgs>? Schema { get; set; }
 
@@ -238,6 +244,9 @@ namespace Pulumi.Cloudflare
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Defines the output data format of a sink.
+        /// </summary>
         [Input("format")]
         public Input<Inputs.PipelineSinkFormatGetArgs>? Format { get; set; }
 
@@ -250,6 +259,9 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Defines the schema of the events in the data stream.
+        /// </summary>
         [Input("schema")]
         public Input<Inputs.PipelineSinkSchemaGetArgs>? Schema { get; set; }
 

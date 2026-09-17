@@ -31,6 +31,11 @@ public final class GetBotManagementResult {
      */
     private Boolean bmCookieEnabled;
     /**
+     * @return Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone&#39;s AI Search, AI User, and AI Training preferences.
+     * 
+     */
+    private Boolean botPreferenceSyncEnabled;
+    /**
      * @return Specifies the Robots Access Control License variant to use.
      * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
      * 
@@ -141,6 +146,13 @@ public final class GetBotManagementResult {
      */
     public Boolean bmCookieEnabled() {
         return this.bmCookieEnabled;
+    }
+    /**
+     * @return Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone&#39;s AI Search, AI User, and AI Training preferences.
+     * 
+     */
+    public Boolean botPreferenceSyncEnabled() {
+        return this.botPreferenceSyncEnabled;
     }
     /**
      * @return Specifies the Robots Access Control License variant to use.
@@ -275,6 +287,7 @@ public final class GetBotManagementResult {
         private String aiBotsProtection;
         private Boolean autoUpdateModel;
         private Boolean bmCookieEnabled;
+        private Boolean botPreferenceSyncEnabled;
         private String cfRobotsVariant;
         private String contentBotsProtection;
         private String crawlerProtection;
@@ -297,6 +310,7 @@ public final class GetBotManagementResult {
     	      this.aiBotsProtection = defaults.aiBotsProtection;
     	      this.autoUpdateModel = defaults.autoUpdateModel;
     	      this.bmCookieEnabled = defaults.bmCookieEnabled;
+    	      this.botPreferenceSyncEnabled = defaults.botPreferenceSyncEnabled;
     	      this.cfRobotsVariant = defaults.cfRobotsVariant;
     	      this.contentBotsProtection = defaults.contentBotsProtection;
     	      this.crawlerProtection = defaults.crawlerProtection;
@@ -337,6 +351,14 @@ public final class GetBotManagementResult {
               throw new MissingRequiredPropertyException("GetBotManagementResult", "bmCookieEnabled");
             }
             this.bmCookieEnabled = bmCookieEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder botPreferenceSyncEnabled(Boolean botPreferenceSyncEnabled) {
+            if (botPreferenceSyncEnabled == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "botPreferenceSyncEnabled");
+            }
+            this.botPreferenceSyncEnabled = botPreferenceSyncEnabled;
             return this;
         }
         @CustomType.Setter
@@ -470,6 +492,7 @@ public final class GetBotManagementResult {
             _resultValue.aiBotsProtection = aiBotsProtection;
             _resultValue.autoUpdateModel = autoUpdateModel;
             _resultValue.bmCookieEnabled = bmCookieEnabled;
+            _resultValue.botPreferenceSyncEnabled = botPreferenceSyncEnabled;
             _resultValue.cfRobotsVariant = cfRobotsVariant;
             _resultValue.contentBotsProtection = contentBotsProtection;
             _resultValue.crawlerProtection = crawlerProtection;

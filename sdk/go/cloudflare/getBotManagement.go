@@ -66,6 +66,8 @@ type LookupBotManagementResult struct {
 	AutoUpdateModel bool `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled bool `pulumi:"bmCookieEnabled"`
+	// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+	BotPreferenceSyncEnabled bool `pulumi:"botPreferenceSyncEnabled"`
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant string `pulumi:"cfRobotsVariant"`
@@ -152,6 +154,11 @@ func (o LookupBotManagementResultOutput) AutoUpdateModel() pulumi.BoolOutput {
 // Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 func (o LookupBotManagementResultOutput) BmCookieEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.BmCookieEnabled }).(pulumi.BoolOutput)
+}
+
+// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+func (o LookupBotManagementResultOutput) BotPreferenceSyncEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.BotPreferenceSyncEnabled }).(pulumi.BoolOutput)
 }
 
 // Specifies the Robots Access Control License variant to use.

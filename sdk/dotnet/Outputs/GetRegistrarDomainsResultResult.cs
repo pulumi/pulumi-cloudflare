@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Available;
         /// <summary>
-        /// Indicates if the domain can be registered as a new domain.
+        /// Indicates eligibility to register the domain as a new domain.
         /// </summary>
         public readonly bool CanRegister;
         /// <summary>
@@ -46,11 +46,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetRegistrarDomainsResultRegistrantContactResult RegistrantContact;
         /// <summary>
-        /// A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+        /// A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
         /// </summary>
         public readonly string RegistryStatuses;
         /// <summary>
-        /// Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+        /// Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
         /// </summary>
         public readonly bool SupportedTld;
         /// <summary>

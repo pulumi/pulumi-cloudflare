@@ -25,9 +25,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZeroTrustResourceLibraryApplication(ctx, &cloudflare.GetZeroTrustResourceLibraryApplicationArgs{
+//			_, err := cloudflare.GetZeroTrustResourceLibraryApplication(ctx, &cloudflare.LookupZeroTrustResourceLibraryApplicationArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				Id:        498,
+//				Id:        pulumi.IntRef(498),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -37,9 +37,9 @@ import (
 //	}
 //
 // ```
-func GetZeroTrustResourceLibraryApplication(ctx *pulumi.Context, args *GetZeroTrustResourceLibraryApplicationArgs, opts ...pulumi.InvokeOption) (*GetZeroTrustResourceLibraryApplicationResult, error) {
+func LookupZeroTrustResourceLibraryApplication(ctx *pulumi.Context, args *LookupZeroTrustResourceLibraryApplicationArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustResourceLibraryApplicationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetZeroTrustResourceLibraryApplicationResult
+	var rv LookupZeroTrustResourceLibraryApplicationResult
 	err := ctx.Invoke("cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -48,14 +48,15 @@ func GetZeroTrustResourceLibraryApplication(ctx *pulumi.Context, args *GetZeroTr
 }
 
 // A collection of arguments for invoking getZeroTrustResourceLibraryApplication.
-type GetZeroTrustResourceLibraryApplicationArgs struct {
-	AccountId string `pulumi:"accountId"`
-	// The ID of this resource.
-	Id int `pulumi:"id"`
+type LookupZeroTrustResourceLibraryApplicationArgs struct {
+	AccountId string                                        `pulumi:"accountId"`
+	Filter    *GetZeroTrustResourceLibraryApplicationFilter `pulumi:"filter"`
+	// Returns the application ID.
+	Id *int `pulumi:"id"`
 }
 
 // A collection of values returned by getZeroTrustResourceLibraryApplication.
-type GetZeroTrustResourceLibraryApplicationResult struct {
+type LookupZeroTrustResourceLibraryApplicationResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Confidence score for the application. Returns -1 when no score is available.
 	ApplicationConfidenceScore float64 `pulumi:"applicationConfidenceScore"`
@@ -70,14 +71,15 @@ type GetZeroTrustResourceLibraryApplicationResult struct {
 	// Returns the category ID.
 	CategoryId int `pulumi:"categoryId"`
 	// Returns the application creation time.
-	CreatedAt string `pulumi:"createdAt"`
+	CreatedAt string                                        `pulumi:"createdAt"`
+	Filter    *GetZeroTrustResourceLibraryApplicationFilter `pulumi:"filter"`
 	// GenAI score for the application. Returns -1 when no score is available.
 	GenAiScore float64 `pulumi:"genAiScore"`
 	// Hostnames matched by the application.
 	Hostnames []string `pulumi:"hostnames"`
 	// Returns the human readable ID.
 	HumanId string `pulumi:"humanId"`
-	// The ID of this resource.
+	// Returns the application ID.
 	Id int `pulumi:"id"`
 	// IP subnets matched by the application.
 	IpSubnets []string `pulumi:"ipSubnets"`
@@ -95,131 +97,138 @@ type GetZeroTrustResourceLibraryApplicationResult struct {
 	Version string `pulumi:"version"`
 }
 
-func GetZeroTrustResourceLibraryApplicationOutput(ctx *pulumi.Context, args GetZeroTrustResourceLibraryApplicationOutputArgs, opts ...pulumi.InvokeOption) GetZeroTrustResourceLibraryApplicationResultOutput {
+func LookupZeroTrustResourceLibraryApplicationOutput(ctx *pulumi.Context, args LookupZeroTrustResourceLibraryApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustResourceLibraryApplicationResultOutput {
 	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication", args, GetZeroTrustResourceLibraryApplicationResultOutput{}, options).(GetZeroTrustResourceLibraryApplicationResultOutput)
+	return ctx.InvokeOutput("cloudflare:index/getZeroTrustResourceLibraryApplication:getZeroTrustResourceLibraryApplication", args, LookupZeroTrustResourceLibraryApplicationResultOutput{}, options).(LookupZeroTrustResourceLibraryApplicationResultOutput)
 }
 
 // A collection of arguments for invoking getZeroTrustResourceLibraryApplication.
-type GetZeroTrustResourceLibraryApplicationOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The ID of this resource.
-	Id pulumi.IntInput `pulumi:"id"`
+type LookupZeroTrustResourceLibraryApplicationOutputArgs struct {
+	AccountId pulumi.StringInput                                   `pulumi:"accountId"`
+	Filter    GetZeroTrustResourceLibraryApplicationFilterPtrInput `pulumi:"filter"`
+	// Returns the application ID.
+	Id pulumi.IntPtrInput `pulumi:"id"`
 }
 
-func (GetZeroTrustResourceLibraryApplicationOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationArgs)(nil)).Elem()
+func (LookupZeroTrustResourceLibraryApplicationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupZeroTrustResourceLibraryApplicationArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getZeroTrustResourceLibraryApplication.
-type GetZeroTrustResourceLibraryApplicationResultOutput struct{ *pulumi.OutputState }
+type LookupZeroTrustResourceLibraryApplicationResultOutput struct{ *pulumi.OutputState }
 
-func (GetZeroTrustResourceLibraryApplicationResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationResult)(nil)).Elem()
+func (LookupZeroTrustResourceLibraryApplicationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupZeroTrustResourceLibraryApplicationResult)(nil)).Elem()
 }
 
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) ToGetZeroTrustResourceLibraryApplicationResultOutput() GetZeroTrustResourceLibraryApplicationResultOutput {
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) ToLookupZeroTrustResourceLibraryApplicationResultOutput() LookupZeroTrustResourceLibraryApplicationResultOutput {
 	return o
 }
 
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) ToGetZeroTrustResourceLibraryApplicationResultOutputWithContext(ctx context.Context) GetZeroTrustResourceLibraryApplicationResultOutput {
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) ToLookupZeroTrustResourceLibraryApplicationResultOutputWithContext(ctx context.Context) LookupZeroTrustResourceLibraryApplicationResultOutput {
 	return o
 }
 
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Confidence score for the application. Returns -1 when no score is available.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) ApplicationConfidenceScore() pulumi.Float64Output {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) float64 { return v.ApplicationConfidenceScore }).(pulumi.Float64Output)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) ApplicationConfidenceScore() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) float64 { return v.ApplicationConfidenceScore }).(pulumi.Float64Output)
 }
 
 // Returns the score composition breakdown for the application.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) ApplicationScoreComposition() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationScoreComposition }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) ApplicationScoreComposition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationScoreComposition }).(pulumi.StringOutput)
 }
 
 // Returns the application source.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) ApplicationSource() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationSource }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) ApplicationSource() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationSource }).(pulumi.StringOutput)
 }
 
 // Returns the application type.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) ApplicationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationType }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) ApplicationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationType }).(pulumi.StringOutput)
 }
 
 // Returns the application type description.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) ApplicationTypeDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationTypeDescription }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) ApplicationTypeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationTypeDescription }).(pulumi.StringOutput)
 }
 
 // Returns the category ID.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) CategoryId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) int { return v.CategoryId }).(pulumi.IntOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) CategoryId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) int { return v.CategoryId }).(pulumi.IntOutput)
 }
 
 // Returns the application creation time.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Filter() GetZeroTrustResourceLibraryApplicationFilterPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) *GetZeroTrustResourceLibraryApplicationFilter {
+		return v.Filter
+	}).(GetZeroTrustResourceLibraryApplicationFilterPtrOutput)
 }
 
 // GenAI score for the application. Returns -1 when no score is available.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) GenAiScore() pulumi.Float64Output {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) float64 { return v.GenAiScore }).(pulumi.Float64Output)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) GenAiScore() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) float64 { return v.GenAiScore }).(pulumi.Float64Output)
 }
 
 // Hostnames matched by the application.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) Hostnames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
 // Returns the human readable ID.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) HumanId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.HumanId }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) HumanId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.HumanId }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) int { return v.Id }).(pulumi.IntOutput)
+// Returns the application ID.
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // IP subnets matched by the application.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) IpSubnets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.IpSubnets }).(pulumi.StringArrayOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) IpSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.IpSubnets }).(pulumi.StringArrayOutput)
 }
 
 // Returns the application name.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Port and protocol pairs matched by the application.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) PortProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.PortProtocols }).(pulumi.StringArrayOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) PortProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.PortProtocols }).(pulumi.StringArrayOutput)
 }
 
 // Support domains matched by the application.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) SupportDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.SupportDomains }).(pulumi.StringArrayOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) SupportDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.SupportDomains }).(pulumi.StringArrayOutput)
 }
 
 // Cloudflare products that support this application.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) Supporteds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) []string { return v.Supporteds }).(pulumi.StringArrayOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Supporteds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.Supporteds }).(pulumi.StringArrayOutput)
 }
 
 // Returns the application update time.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // Returns the application version.
-func (o GetZeroTrustResourceLibraryApplicationResultOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationResult) string { return v.Version }).(pulumi.StringOutput)
+func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetZeroTrustResourceLibraryApplicationResultOutput{})
+	pulumi.RegisterOutputType(LookupZeroTrustResourceLibraryApplicationResultOutput{})
 }

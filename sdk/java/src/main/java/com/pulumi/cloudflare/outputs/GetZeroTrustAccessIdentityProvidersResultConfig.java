@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProvidersResultCo
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -90,6 +91,11 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
      */
     private Boolean enableEncryption;
     /**
+     * @return Asks the IdP to reauthenticate the user for each SAML authentication request.
+     * 
+     */
+    private Boolean forceAuthn;
+    /**
      * @return Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -104,6 +110,14 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
      * 
      */
     private String issuerUrl;
+    /**
+     * @return The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     * 
+     */
+    private Integer maxSsoUrlLength;
     /**
      * @return Your okta account url
      * 
@@ -270,6 +284,13 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
         return this.enableEncryption;
     }
     /**
+     * @return Asks the IdP to reauthenticate the user for each SAML authentication request.
+     * 
+     */
+    public Boolean forceAuthn() {
+        return this.forceAuthn;
+    }
+    /**
      * @return Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -289,6 +310,16 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
      */
     public String issuerUrl() {
         return this.issuerUrl;
+    }
+    /**
+     * @return The maximum URL length the IdP accepts for the SSO redirect URL.
+     * When the constructed SSO URL would exceed this length, the RelayState
+     * is stored server-side and a short nonce is passed to the IdP instead.
+     * Set this if your IdP enforces a URL length limit.
+     * 
+     */
+    public Integer maxSsoUrlLength() {
+        return this.maxSsoUrlLength;
     }
     /**
      * @return Your okta account url
@@ -396,9 +427,11 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
         private String emailAttributeName;
         private String emailClaimName;
         private Boolean enableEncryption;
+        private Boolean forceAuthn;
         private List<GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute> headerAttributes;
         private List<String> idpPublicCerts;
         private String issuerUrl;
+        private Integer maxSsoUrlLength;
         private String oktaAccount;
         private String oneloginAccount;
         private String pingEnvId;
@@ -429,9 +462,11 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
     	      this.emailAttributeName = defaults.emailAttributeName;
     	      this.emailClaimName = defaults.emailClaimName;
     	      this.enableEncryption = defaults.enableEncryption;
+    	      this.forceAuthn = defaults.forceAuthn;
     	      this.headerAttributes = defaults.headerAttributes;
     	      this.idpPublicCerts = defaults.idpPublicCerts;
     	      this.issuerUrl = defaults.issuerUrl;
+    	      this.maxSsoUrlLength = defaults.maxSsoUrlLength;
     	      this.oktaAccount = defaults.oktaAccount;
     	      this.oneloginAccount = defaults.oneloginAccount;
     	      this.pingEnvId = defaults.pingEnvId;
@@ -573,6 +608,14 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder forceAuthn(Boolean forceAuthn) {
+            if (forceAuthn == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResultConfig", "forceAuthn");
+            }
+            this.forceAuthn = forceAuthn;
+            return this;
+        }
+        @CustomType.Setter
         public Builder headerAttributes(List<GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute> headerAttributes) {
             if (headerAttributes == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResultConfig", "headerAttributes");
@@ -600,6 +643,14 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResultConfig", "issuerUrl");
             }
             this.issuerUrl = issuerUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxSsoUrlLength(Integer maxSsoUrlLength) {
+            if (maxSsoUrlLength == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResultConfig", "maxSsoUrlLength");
+            }
+            this.maxSsoUrlLength = maxSsoUrlLength;
             return this;
         }
         @CustomType.Setter
@@ -718,9 +769,11 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
             _resultValue.emailAttributeName = emailAttributeName;
             _resultValue.emailClaimName = emailClaimName;
             _resultValue.enableEncryption = enableEncryption;
+            _resultValue.forceAuthn = forceAuthn;
             _resultValue.headerAttributes = headerAttributes;
             _resultValue.idpPublicCerts = idpPublicCerts;
             _resultValue.issuerUrl = issuerUrl;
+            _resultValue.maxSsoUrlLength = maxSsoUrlLength;
             _resultValue.oktaAccount = oktaAccount;
             _resultValue.oneloginAccount = oneloginAccount;
             _resultValue.pingEnvId = pingEnvId;

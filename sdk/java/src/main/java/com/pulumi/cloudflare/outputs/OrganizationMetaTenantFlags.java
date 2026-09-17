@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrganizationMetaTenantFlags {
     private @Nullable String accountCreation;
+    private @Nullable String accountCreationAppliesTenantDefaults;
     private @Nullable String accountDeletion;
     private @Nullable String accountMigration;
     private @Nullable String accountMobility;
@@ -22,6 +23,9 @@ public final class OrganizationMetaTenantFlags {
     private OrganizationMetaTenantFlags() {}
     public Optional<String> accountCreation() {
         return Optional.ofNullable(this.accountCreation);
+    }
+    public Optional<String> accountCreationAppliesTenantDefaults() {
+        return Optional.ofNullable(this.accountCreationAppliesTenantDefaults);
     }
     public Optional<String> accountDeletion() {
         return Optional.ofNullable(this.accountDeletion);
@@ -52,6 +56,7 @@ public final class OrganizationMetaTenantFlags {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountCreation;
+        private @Nullable String accountCreationAppliesTenantDefaults;
         private @Nullable String accountDeletion;
         private @Nullable String accountMigration;
         private @Nullable String accountMobility;
@@ -62,6 +67,7 @@ public final class OrganizationMetaTenantFlags {
         public Builder(OrganizationMetaTenantFlags defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountCreation = defaults.accountCreation;
+    	      this.accountCreationAppliesTenantDefaults = defaults.accountCreationAppliesTenantDefaults;
     	      this.accountDeletion = defaults.accountDeletion;
     	      this.accountMigration = defaults.accountMigration;
     	      this.accountMobility = defaults.accountMobility;
@@ -74,6 +80,12 @@ public final class OrganizationMetaTenantFlags {
         public Builder accountCreation(@Nullable String accountCreation) {
 
             this.accountCreation = accountCreation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accountCreationAppliesTenantDefaults(@Nullable String accountCreationAppliesTenantDefaults) {
+
+            this.accountCreationAppliesTenantDefaults = accountCreationAppliesTenantDefaults;
             return this;
         }
         @CustomType.Setter
@@ -115,6 +127,7 @@ public final class OrganizationMetaTenantFlags {
         public OrganizationMetaTenantFlags build() {
             final var _resultValue = new OrganizationMetaTenantFlags();
             _resultValue.accountCreation = accountCreation;
+            _resultValue.accountCreationAppliesTenantDefaults = accountCreationAppliesTenantDefaults;
             _resultValue.accountDeletion = accountDeletion;
             _resultValue.accountMigration = accountMigration;
             _resultValue.accountMobility = accountMobility;

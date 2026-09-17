@@ -15,29 +15,12 @@ namespace Pulumi.Cloudflare
     /// - `Images Read`
     /// - `Images Write`
     /// 
-    /// ## Example Usage
+    /// &gt; Set either `File` (base64-encoded image data, e.g. from
+    ///   `Filebase64`)
+    ///   or `Url` (fetched server-side), not both.
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleImage = new Cloudflare.Image("example_image", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         ImageId = "id",
-    ///         Creator = "creator",
-    ///         File = "Example data",
-    ///         Metadata = null,
-    ///         RequireSignedUrls = true,
-    ///         Url = "https://example.com/path/to/logo.png",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; `RequireSignedUrls = true` is rejected for images with a custom `Id` (API
+    ///   error 5410). Since `Id` is required here, leave it unset or `False`.
     /// 
     /// ## Import
     /// 

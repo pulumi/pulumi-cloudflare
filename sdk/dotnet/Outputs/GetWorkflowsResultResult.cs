@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string ClassName;
         public readonly string CreatedOn;
         public readonly string Id;
-        public readonly Outputs.GetWorkflowsResultInstancesResult Instances;
+        public readonly ImmutableDictionary<string, double> Instances;
         public readonly string ModifiedOn;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetWorkflowsResultScheduleResult> Schedules;
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
-            Outputs.GetWorkflowsResultInstancesResult instances,
+            ImmutableDictionary<string, double> instances,
 
             string modifiedOn,
 

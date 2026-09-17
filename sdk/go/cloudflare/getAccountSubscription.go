@@ -73,7 +73,7 @@ type LookupAccountSubscriptionResult struct {
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency string `pulumi:"frequency"`
-	// Subscription identifier tag.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	Id string `pulumi:"id"`
 	// The price of the subscription that will be billed, in US dollars.
 	Price float64 `pulumi:"price"`
@@ -144,7 +144,7 @@ func (o LookupAccountSubscriptionResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// Subscription identifier tag.
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 func (o LookupAccountSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }

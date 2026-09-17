@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * | `imageResizing` | `&#34;on&#34;`, `&#34;off&#34;`, `&#34;open&#34;` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
  * | `ipGeolocation` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
  * | `ipv6` | `&#34;on&#34;` / `&#34;off&#34;` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
- * | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+ * | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
  * | `minTlsVersion` | `&#34;1.0&#34;`, `&#34;1.1&#34;`, `&#34;1.2&#34;`, `&#34;1.3&#34;` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
  * | `mirage` | `&#34;on&#34;` / `&#34;off&#34;` | Automatically optimize image loading for website visitors on mobile devices. ... |
  * | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  * | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
  * | `originMaxHttpVersion` | `&#34;2&#34;`, `&#34;1&#34;` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
  * | `polish` | `&#34;off&#34;`, `&#34;lossless&#34;`, `&#34;lossy&#34;` | Removes metadata and compresses your images for faster page load times. Basic... |
+ * | `preRender` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
  * | `prefetchPreload` | `&#34;on&#34;` / `&#34;off&#34;` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
  * | `privacyPass` | `&#34;on&#34;` / `&#34;off&#34;` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
  * | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |

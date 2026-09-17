@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetOrganizationsResultMetaTenantFlagsResult
     {
         public readonly string AccountCreation;
+        public readonly string AccountCreationAppliesTenantDefaults;
         public readonly string AccountDeletion;
         public readonly string AccountMigration;
         public readonly string AccountMobility;
@@ -24,6 +25,8 @@ namespace Pulumi.Cloudflare.Outputs
         [OutputConstructor]
         private GetOrganizationsResultMetaTenantFlagsResult(
             string accountCreation,
+
+            string accountCreationAppliesTenantDefaults,
 
             string accountDeletion,
 
@@ -38,6 +41,7 @@ namespace Pulumi.Cloudflare.Outputs
             string subOrgCreation)
         {
             AccountCreation = accountCreation;
+            AccountCreationAppliesTenantDefaults = accountCreationAppliesTenantDefaults;
             AccountDeletion = accountDeletion;
             AccountMigration = accountMigration;
             AccountMobility = accountMobility;

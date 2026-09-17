@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "sitemap", "discover".
         /// </summary>
         public readonly string? ParseType;
-        public readonly Outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions? StoreOptions;
+        public readonly Outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions StoreOptions;
 
         [OutputConstructor]
         private AiSearchInstanceSourceParamsWebCrawler(
@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? parseType,
 
-            Outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions? storeOptions)
+            Outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions)
         {
             DiscoverOptions = discoverOptions;
             ParseOptions = parseOptions;

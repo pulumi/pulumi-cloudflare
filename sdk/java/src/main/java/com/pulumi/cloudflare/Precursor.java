@@ -71,7 +71,11 @@ public class Precursor extends com.pulumi.resources.CustomResource {
      * not match a more specific enforcement rule.
      * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="defaultMode", refs={String.class}, tree="[0]")
     private Output<String> defaultMode;
 
@@ -87,7 +91,11 @@ public class Precursor extends com.pulumi.resources.CustomResource {
     /**
      * The ordered list of enforcement rules for the zone.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="enforcementRules", refs={List.class,PrecursorEnforcementRule.class}, tree="[0,1]")
     private Output<List<PrecursorEnforcementRule>> enforcementRules;
 

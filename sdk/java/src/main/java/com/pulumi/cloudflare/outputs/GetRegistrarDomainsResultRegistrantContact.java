@@ -41,7 +41,7 @@ public final class GetRegistrarDomainsResultRegistrantContact {
      */
     private String fax;
     /**
-     * @return User&#39;s first name
+     * @return User&#39;s first name.
      * 
      */
     private String firstName;
@@ -51,7 +51,7 @@ public final class GetRegistrarDomainsResultRegistrantContact {
      */
     private String id;
     /**
-     * @return User&#39;s last name
+     * @return User&#39;s last name.
      * 
      */
     private String lastName;
@@ -61,7 +61,7 @@ public final class GetRegistrarDomainsResultRegistrantContact {
      */
     private String organization;
     /**
-     * @return User&#39;s telephone number
+     * @return User&#39;s telephone number.
      * 
      */
     private String phone;
@@ -120,7 +120,7 @@ public final class GetRegistrarDomainsResultRegistrantContact {
         return this.fax;
     }
     /**
-     * @return User&#39;s first name
+     * @return User&#39;s first name.
      * 
      */
     public String firstName() {
@@ -134,7 +134,7 @@ public final class GetRegistrarDomainsResultRegistrantContact {
         return this.id;
     }
     /**
-     * @return User&#39;s last name
+     * @return User&#39;s last name.
      * 
      */
     public String lastName() {
@@ -148,7 +148,7 @@ public final class GetRegistrarDomainsResultRegistrantContact {
         return this.organization;
     }
     /**
-     * @return User&#39;s telephone number
+     * @return User&#39;s telephone number.
      * 
      */
     public String phone() {

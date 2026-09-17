@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -17,11 +16,6 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
      * 
      */
     private String id;
-    /**
-     * @return True if schema is Cloudflare-provided.
-     * 
-     */
-    private Boolean isLearned;
     /**
      * @return Schema file name.
      * 
@@ -38,13 +32,6 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
      */
     public String id() {
         return this.id;
-    }
-    /**
-     * @return True if schema is Cloudflare-provided.
-     * 
-     */
-    public Boolean isLearned() {
-        return this.isLearned;
     }
     /**
      * @return Schema file name.
@@ -65,14 +52,12 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
     public static final class Builder {
         private String createdAt;
         private String id;
-        private Boolean isLearned;
         private String name;
         public Builder() {}
         public Builder(GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.id = defaults.id;
-    	      this.isLearned = defaults.isLearned;
     	      this.name = defaults.name;
         }
 
@@ -93,14 +78,6 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
             return this;
         }
         @CustomType.Setter
-        public Builder isLearned(Boolean isLearned) {
-            if (isLearned == null) {
-              throw new MissingRequiredPropertyException("GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema", "isLearned");
-            }
-            this.isLearned = isLearned;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema", "name");
@@ -112,7 +89,6 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
             final var _resultValue = new GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema();
             _resultValue.createdAt = createdAt;
             _resultValue.id = id;
-            _resultValue.isLearned = isLearned;
             _resultValue.name = name;
             return _resultValue;
         }

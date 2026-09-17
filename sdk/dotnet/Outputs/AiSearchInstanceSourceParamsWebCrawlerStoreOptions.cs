@@ -13,20 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AiSearchInstanceSourceParamsWebCrawlerStoreOptions
     {
-        public readonly string? R2Jurisdiction;
+        public readonly string R2Jurisdiction;
         public readonly string StorageId;
-        /// <summary>
-        /// Available values: "r2".
-        /// </summary>
-        public readonly string? StorageType;
+        public readonly string StorageType;
 
         [OutputConstructor]
         private AiSearchInstanceSourceParamsWebCrawlerStoreOptions(
-            string? r2Jurisdiction,
+            string r2Jurisdiction,
 
             string storageId,
 
-            string? storageType)
+            string storageType)
         {
             R2Jurisdiction = r2Jurisdiction;
             StorageId = storageId;

@@ -14,7 +14,8 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPipelineSinkFormatResult
     {
         /// <summary>
-        /// Available values: "uncompressed", "snappy", "gzip", "zstd", "lz4".
+        /// Specifies the compression applied to JSON sink output.
+        /// Available values: "uncompressed", "gzip", "snappy", "zstd", "lz4".
         /// </summary>
         public readonly string Compression;
         /// <summary>

@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRegistrarDomainsResultTransferInResult
     {
         /// <summary>
-        /// Form of authorization has been accepted by the registrant.
+        /// Status of the registrant authorization step.
         /// Available values: "needed", "ok".
         /// </summary>
         public readonly string AcceptFoa;
         /// <summary>
-        /// Shows transfer status with the registry.
+        /// Status of the registry transfer-approval step.
         /// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
         /// </summary>
         public readonly string ApproveTransfer;
@@ -28,17 +28,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool CanCancelTransfer;
         /// <summary>
-        /// Privacy guards are disabled at the foreign registrar.
+        /// Status of the privacy-guard disabling step at the foreign registrar.
         /// Available values: "needed", "ok", "unknown".
         /// </summary>
         public readonly string DisablePrivacy;
         /// <summary>
-        /// Auth code has been entered and verified.
+        /// Status of the auth-code entry and verification step.
         /// Available values: "needed", "ok", "pending", "trying", "rejected".
         /// </summary>
         public readonly string EnterAuthCode;
         /// <summary>
-        /// Domain is unlocked at the foreign registrar.
+        /// Status of the domain-unlock step at the foreign registrar.
         /// Available values: "needed", "ok", "pending", "trying", "unknown".
         /// </summary>
         public readonly string UnlockDomain;

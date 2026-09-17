@@ -64,7 +64,7 @@ type ShareResource struct {
 	// Share Resource identifier.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion pulumi.IntOutput `pulumi:"resourceVersion"`
@@ -136,7 +136,7 @@ type shareResourceState struct {
 	// Share Resource identifier.
 	ResourceId *string `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType *string `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion *int `pulumi:"resourceVersion"`
@@ -161,7 +161,7 @@ type ShareResourceState struct {
 	// Share Resource identifier.
 	ResourceId pulumi.StringPtrInput
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringPtrInput
 	// Resource Version.
 	ResourceVersion pulumi.IntPtrInput
@@ -186,7 +186,7 @@ type shareResourceArgs struct {
 	// Share Resource identifier.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType string `pulumi:"resourceType"`
 	// Share identifier tag.
 	ShareId string `pulumi:"shareId"`
@@ -203,7 +203,7 @@ type ShareResourceArgs struct {
 	// Share Resource identifier.
 	ResourceId pulumi.StringInput
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringInput
 	// Share identifier tag.
 	ShareId pulumi.StringInput
@@ -327,7 +327,7 @@ func (o ShareResourceOutput) ResourceId() pulumi.StringOutput {
 }
 
 // Resource Type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o ShareResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareResource) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

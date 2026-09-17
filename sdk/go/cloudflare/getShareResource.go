@@ -77,7 +77,7 @@ type LookupShareResourceResult struct {
 	// Share Resource identifier.
 	ResourceId string `pulumi:"resourceId"`
 	// Resource Type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType string `pulumi:"resourceType"`
 	// Resource Version.
 	ResourceVersion int `pulumi:"resourceVersion"`
@@ -165,7 +165,7 @@ func (o LookupShareResourceResultOutput) ResourceId() pulumi.StringOutput {
 }
 
 // Resource Type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o LookupShareResourceResultOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResourceResult) string { return v.ResourceType }).(pulumi.StringOutput)
 }

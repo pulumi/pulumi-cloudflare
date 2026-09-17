@@ -22,6 +22,7 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersNoCacheArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersNoStoreArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersNoTransformArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginRangeRequestsArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOverridesArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersPrivateArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersProxyRevalidateArgs;
@@ -689,6 +690,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+     * 
+     */
+    @Import(name="originRangeRequests")
+    private @Nullable Output<RulesetRuleActionParametersOriginRangeRequestsArgs> originRangeRequests;
+
+    /**
+     * @return Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersOriginRangeRequestsArgs>> originRangeRequests() {
+        return Optional.ofNullable(this.originRangeRequests);
+    }
+
+    /**
      * A set of overrides to apply to the target ruleset.
      * 
      */
@@ -1304,6 +1320,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.origin = $.origin;
         this.originCacheControl = $.originCacheControl;
         this.originErrorPagePassthru = $.originErrorPagePassthru;
+        this.originRangeRequests = $.originRangeRequests;
         this.overrides = $.overrides;
         this.phases = $.phases;
         this.polish = $.polish;
@@ -2275,6 +2292,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder originErrorPagePassthru(Boolean originErrorPagePassthru) {
             return originErrorPagePassthru(Output.of(originErrorPagePassthru));
+        }
+
+        /**
+         * @param originRangeRequests Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originRangeRequests(@Nullable Output<RulesetRuleActionParametersOriginRangeRequestsArgs> originRangeRequests) {
+            $.originRangeRequests = originRangeRequests;
+            return this;
+        }
+
+        /**
+         * @param originRangeRequests Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originRangeRequests(RulesetRuleActionParametersOriginRangeRequestsArgs originRangeRequests) {
+            return originRangeRequests(Output.of(originRangeRequests));
         }
 
         /**

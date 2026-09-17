@@ -56,7 +56,7 @@ type LookupShareResourcesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter share resources by resource_type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType *string `pulumi:"resourceType"`
 	// Share identifier tag.
 	ShareId string `pulumi:"shareId"`
@@ -72,7 +72,7 @@ type LookupShareResourcesResult struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter share resources by resource_type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType *string `pulumi:"resourceType"`
 	// The items returned by the data source
 	Results []GetShareResourcesResult `pulumi:"results"`
@@ -95,7 +95,7 @@ type LookupShareResourcesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Filter share resources by resource_type.
-	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+	// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// Share identifier tag.
 	ShareId pulumi.StringInput `pulumi:"shareId"`
@@ -134,7 +134,7 @@ func (o LookupShareResourcesResultOutput) MaxItems() pulumi.IntPtrOutput {
 }
 
 // Filter share resources by resource_type.
-// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
 func (o LookupShareResourcesResultOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupShareResourcesResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }

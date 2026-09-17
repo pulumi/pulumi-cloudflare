@@ -75,6 +75,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? EnableEncryption;
         /// <summary>
+        /// Asks the IdP to reauthenticate the user for each SAML authentication request.
+        /// </summary>
+        public readonly bool? ForceAuthn;
+        /// <summary>
         /// Add a list of attribute names that will be returned in the response header from the Access callback.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessIdentityProviderConfigHeaderAttribute> HeaderAttributes;
@@ -86,6 +90,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// IdP Entity ID or Issuer URL
         /// </summary>
         public readonly string? IssuerUrl;
+        /// <summary>
+        /// The maximum URL length the IdP accepts for the SSO redirect URL.
+        /// When the constructed SSO URL would exceed this length, the RelayState
+        /// is stored server-side and a short nonce is passed to the IdP instead.
+        /// Set this if your IdP enforces a URL length limit.
+        /// </summary>
+        public readonly int? MaxSsoUrlLength;
         /// <summary>
         /// Your okta account url
         /// </summary>
@@ -165,11 +176,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? enableEncryption,
 
+            bool? forceAuthn,
+
             ImmutableArray<Outputs.AccessIdentityProviderConfigHeaderAttribute> headerAttributes,
 
             ImmutableArray<string> idpPublicCerts,
 
             string? issuerUrl,
+
+            int? maxSsoUrlLength,
 
             string? oktaAccount,
 
@@ -210,9 +225,11 @@ namespace Pulumi.Cloudflare.Outputs
             EmailAttributeName = emailAttributeName;
             EmailClaimName = emailClaimName;
             EnableEncryption = enableEncryption;
+            ForceAuthn = forceAuthn;
             HeaderAttributes = headerAttributes;
             IdpPublicCerts = idpPublicCerts;
             IssuerUrl = issuerUrl;
+            MaxSsoUrlLength = maxSsoUrlLength;
             OktaAccount = oktaAccount;
             OneloginAccount = oneloginAccount;
             PingEnvId = pingEnvId;

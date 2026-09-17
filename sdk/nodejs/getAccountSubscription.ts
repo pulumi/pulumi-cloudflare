@@ -73,7 +73,7 @@ export interface GetAccountSubscriptionResult {
      */
     readonly frequency: string;
     /**
-     * Subscription identifier tag.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     readonly id: string;
     /**

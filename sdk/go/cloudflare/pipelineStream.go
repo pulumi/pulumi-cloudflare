@@ -59,12 +59,6 @@ import (
 //							SqlName:     pulumi.String("sql_name"),
 //						},
 //					},
-//					Format: &cloudflare.PipelineStreamSchemaFormatArgs{
-//						Type:            pulumi.String("json"),
-//						DecimalEncoding: pulumi.String("number"),
-//						TimestampFormat: pulumi.String("rfc3339"),
-//						Unstructured:    pulumi.Bool(true),
-//					},
 //					Inferred: pulumi.Bool(true),
 //				},
 //				WorkerBinding: &cloudflare.PipelineStreamWorkerBindingArgs{
@@ -92,12 +86,14 @@ type PipelineStream struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Indicates the endpoint URL of this stream.
-	Endpoint   pulumi.StringOutput           `pulumi:"endpoint"`
+	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// Defines the data format of the events.
 	Format     PipelineStreamFormatPtrOutput `pulumi:"format"`
 	Http       PipelineStreamHttpOutput      `pulumi:"http"`
 	ModifiedAt pulumi.StringOutput           `pulumi:"modifiedAt"`
 	// Specifies the name of the Stream.
-	Name   pulumi.StringOutput           `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema PipelineStreamSchemaPtrOutput `pulumi:"schema"`
 	// Indicates the current version of this stream.
 	Version       pulumi.IntOutput                  `pulumi:"version"`
@@ -144,12 +140,14 @@ type pipelineStreamState struct {
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Indicates the endpoint URL of this stream.
-	Endpoint   *string               `pulumi:"endpoint"`
+	Endpoint *string `pulumi:"endpoint"`
+	// Defines the data format of the events.
 	Format     *PipelineStreamFormat `pulumi:"format"`
 	Http       *PipelineStreamHttp   `pulumi:"http"`
 	ModifiedAt *string               `pulumi:"modifiedAt"`
 	// Specifies the name of the Stream.
-	Name   *string               `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema *PipelineStreamSchema `pulumi:"schema"`
 	// Indicates the current version of this stream.
 	Version       *int                         `pulumi:"version"`
@@ -161,12 +159,14 @@ type PipelineStreamState struct {
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Indicates the endpoint URL of this stream.
-	Endpoint   pulumi.StringPtrInput
+	Endpoint pulumi.StringPtrInput
+	// Defines the data format of the events.
 	Format     PipelineStreamFormatPtrInput
 	Http       PipelineStreamHttpPtrInput
 	ModifiedAt pulumi.StringPtrInput
 	// Specifies the name of the Stream.
-	Name   pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Defines the schema of the events in the data stream.
 	Schema PipelineStreamSchemaPtrInput
 	// Indicates the current version of this stream.
 	Version       pulumi.IntPtrInput
@@ -179,11 +179,13 @@ func (PipelineStreamState) ElementType() reflect.Type {
 
 type pipelineStreamArgs struct {
 	// Specifies the public ID of the account.
-	AccountId string                `pulumi:"accountId"`
-	Format    *PipelineStreamFormat `pulumi:"format"`
-	Http      *PipelineStreamHttp   `pulumi:"http"`
+	AccountId string `pulumi:"accountId"`
+	// Defines the data format of the events.
+	Format *PipelineStreamFormat `pulumi:"format"`
+	Http   *PipelineStreamHttp   `pulumi:"http"`
 	// Specifies the name of the Stream.
-	Name          string                       `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Defines the schema of the events in the data stream.
 	Schema        *PipelineStreamSchema        `pulumi:"schema"`
 	WorkerBinding *PipelineStreamWorkerBinding `pulumi:"workerBinding"`
 }
@@ -192,10 +194,12 @@ type pipelineStreamArgs struct {
 type PipelineStreamArgs struct {
 	// Specifies the public ID of the account.
 	AccountId pulumi.StringInput
-	Format    PipelineStreamFormatPtrInput
-	Http      PipelineStreamHttpPtrInput
+	// Defines the data format of the events.
+	Format PipelineStreamFormatPtrInput
+	Http   PipelineStreamHttpPtrInput
 	// Specifies the name of the Stream.
-	Name          pulumi.StringInput
+	Name pulumi.StringInput
+	// Defines the schema of the events in the data stream.
 	Schema        PipelineStreamSchemaPtrInput
 	WorkerBinding PipelineStreamWorkerBindingPtrInput
 }
@@ -301,6 +305,7 @@ func (o PipelineStreamOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineStream) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// Defines the data format of the events.
 func (o PipelineStreamOutput) Format() PipelineStreamFormatPtrOutput {
 	return o.ApplyT(func(v *PipelineStream) PipelineStreamFormatPtrOutput { return v.Format }).(PipelineStreamFormatPtrOutput)
 }
@@ -318,6 +323,7 @@ func (o PipelineStreamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineStream) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Defines the schema of the events in the data stream.
 func (o PipelineStreamOutput) Schema() PipelineStreamSchemaPtrOutput {
 	return o.ApplyT(func(v *PipelineStream) PipelineStreamSchemaPtrOutput { return v.Schema }).(PipelineStreamSchemaPtrOutput)
 }

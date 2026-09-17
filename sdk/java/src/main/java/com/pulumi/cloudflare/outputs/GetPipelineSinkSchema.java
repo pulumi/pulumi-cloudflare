@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetPipelineSinkSchemaField;
-import com.pulumi.cloudflare.outputs.GetPipelineSinkSchemaFormat;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -14,15 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetPipelineSinkSchema {
     private List<GetPipelineSinkSchemaField> fields;
-    private GetPipelineSinkSchemaFormat format;
     private Boolean inferred;
 
     private GetPipelineSinkSchema() {}
     public List<GetPipelineSinkSchemaField> fields() {
         return this.fields;
-    }
-    public GetPipelineSinkSchemaFormat format() {
-        return this.format;
     }
     public Boolean inferred() {
         return this.inferred;
@@ -38,13 +33,11 @@ public final class GetPipelineSinkSchema {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPipelineSinkSchemaField> fields;
-        private GetPipelineSinkSchemaFormat format;
         private Boolean inferred;
         public Builder() {}
         public Builder(GetPipelineSinkSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fields = defaults.fields;
-    	      this.format = defaults.format;
     	      this.inferred = defaults.inferred;
         }
 
@@ -60,14 +53,6 @@ public final class GetPipelineSinkSchema {
             return fields(List.of(fields));
         }
         @CustomType.Setter
-        public Builder format(GetPipelineSinkSchemaFormat format) {
-            if (format == null) {
-              throw new MissingRequiredPropertyException("GetPipelineSinkSchema", "format");
-            }
-            this.format = format;
-            return this;
-        }
-        @CustomType.Setter
         public Builder inferred(Boolean inferred) {
             if (inferred == null) {
               throw new MissingRequiredPropertyException("GetPipelineSinkSchema", "inferred");
@@ -78,7 +63,6 @@ public final class GetPipelineSinkSchema {
         public GetPipelineSinkSchema build() {
             final var _resultValue = new GetPipelineSinkSchema();
             _resultValue.fields = fields;
-            _resultValue.format = format;
             _resultValue.inferred = inferred;
             return _resultValue;
         }

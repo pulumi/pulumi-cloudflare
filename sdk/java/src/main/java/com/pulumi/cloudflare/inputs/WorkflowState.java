@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkflowConcurrencyArgs;
 import com.pulumi.cloudflare.inputs.WorkflowDefaultRetentionArgs;
-import com.pulumi.cloudflare.inputs.WorkflowInstancesArgs;
 import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
 import com.pulumi.core.Output;
@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +34,13 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> className() {
         return Optional.ofNullable(this.className);
+    }
+
+    @Import(name="concurrency")
+    private @Nullable Output<WorkflowConcurrencyArgs> concurrency;
+
+    public Optional<Output<WorkflowConcurrencyArgs>> concurrency() {
+        return Optional.ofNullable(this.concurrency);
     }
 
     @Import(name="createdOn")
@@ -58,9 +66,9 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="instances")
-    private @Nullable Output<WorkflowInstancesArgs> instances;
+    private @Nullable Output<Map<String,Double>> instances;
 
-    public Optional<Output<WorkflowInstancesArgs>> instances() {
+    public Optional<Output<Map<String,Double>>> instances() {
         return Optional.ofNullable(this.instances);
     }
 
@@ -139,6 +147,7 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
     private WorkflowState(WorkflowState $) {
         this.accountId = $.accountId;
         this.className = $.className;
+        this.concurrency = $.concurrency;
         this.createdOn = $.createdOn;
         this.defaultRetention = $.defaultRetention;
         this.instances = $.instances;
@@ -190,6 +199,15 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
             return className(Output.of(className));
         }
 
+        public Builder concurrency(@Nullable Output<WorkflowConcurrencyArgs> concurrency) {
+            $.concurrency = concurrency;
+            return this;
+        }
+
+        public Builder concurrency(WorkflowConcurrencyArgs concurrency) {
+            return concurrency(Output.of(concurrency));
+        }
+
         public Builder createdOn(@Nullable Output<String> createdOn) {
             $.createdOn = createdOn;
             return this;
@@ -220,12 +238,12 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
             return defaultRetention(Output.of(defaultRetention));
         }
 
-        public Builder instances(@Nullable Output<WorkflowInstancesArgs> instances) {
+        public Builder instances(@Nullable Output<Map<String,Double>> instances) {
             $.instances = instances;
             return this;
         }
 
-        public Builder instances(WorkflowInstancesArgs instances) {
+        public Builder instances(Map<String,Double> instances) {
             return instances(Output.of(instances));
         }
 

@@ -27,7 +27,7 @@ class GetStreamLiveInputResult:
     """
     A collection of values returned by getStreamLiveInput.
     """
-    def __init__(__self__, account_id=None, created=None, delete_recording_after_days=None, enabled=None, keys_rotated_at=None, live_input_identifier=None, meta=None, modified=None, prefer_low_latency=None, recording=None, rtmps=None, rtmps_playback=None, srt=None, srt_playback=None, status=None, uid=None, web_rtc=None, web_rtc_playback=None):
+    def __init__(__self__, account_id=None, created=None, delete_recording_after_days=None, enabled=None, keys_rotated_at=None, live_input_identifier=None, meta=None, modified=None, playback=None, prefer_low_latency=None, recording=None, rtmps=None, rtmps_playback=None, srt=None, srt_playback=None, status=None, uid=None, web_rtc=None, web_rtc_playback=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -52,6 +52,9 @@ class GetStreamLiveInputResult:
         if modified and not isinstance(modified, str):
             raise TypeError("Expected argument 'modified' to be a str")
         pulumi.set(__self__, "modified", modified)
+        if playback and not isinstance(playback, dict):
+            raise TypeError("Expected argument 'playback' to be a dict")
+        pulumi.set(__self__, "playback", playback)
         if prefer_low_latency and not isinstance(prefer_low_latency, bool):
             raise TypeError("Expected argument 'prefer_low_latency' to be a bool")
         pulumi.set(__self__, "prefer_low_latency", prefer_low_latency)
@@ -146,6 +149,14 @@ class GetStreamLiveInputResult:
         The date and time the live input was last modified.
         """
         return pulumi.get(self, "modified")
+
+    @_builtins.property
+    @pulumi.getter
+    def playback(self) -> 'outputs.GetStreamLiveInputPlaybackResult':
+        """
+        Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+        """
+        return pulumi.get(self, "playback")
 
     @_builtins.property
     @pulumi.getter(name="preferLowLatency")
@@ -243,6 +254,7 @@ class AwaitableGetStreamLiveInputResult(GetStreamLiveInputResult):
             live_input_identifier=self.live_input_identifier,
             meta=self.meta,
             modified=self.modified,
+            playback=self.playback,
             prefer_low_latency=self.prefer_low_latency,
             recording=self.recording,
             rtmps=self.rtmps,
@@ -293,6 +305,7 @@ def get_stream_live_input(account_id: Optional[_builtins.str] = None,
         live_input_identifier=pulumi.get(__ret__, 'live_input_identifier'),
         meta=pulumi.get(__ret__, 'meta'),
         modified=pulumi.get(__ret__, 'modified'),
+        playback=pulumi.get(__ret__, 'playback'),
         prefer_low_latency=pulumi.get(__ret__, 'prefer_low_latency'),
         recording=pulumi.get(__ret__, 'recording'),
         rtmps=pulumi.get(__ret__, 'rtmps'),
@@ -340,6 +353,7 @@ def get_stream_live_input_output(account_id: pulumi.Input[Optional[_builtins.str
         live_input_identifier=pulumi.get(__response__, 'live_input_identifier'),
         meta=pulumi.get(__response__, 'meta'),
         modified=pulumi.get(__response__, 'modified'),
+        playback=pulumi.get(__response__, 'playback'),
         prefer_low_latency=pulumi.get(__response__, 'prefer_low_latency'),
         recording=pulumi.get(__response__, 'recording'),
         rtmps=pulumi.get(__response__, 'rtmps'),

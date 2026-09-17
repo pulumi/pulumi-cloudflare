@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetContentScanningExpressionsResult {
     /**
-     * @return defines the unique ID for this custom scan expression.
+     * @return Defines the unique ID for this Content Scanning custom expression.
      * 
      */
     private String id;
     /**
-     * @return Defines the ruleset expression to use in matching content objects.
+     * @return Defines the custom content extraction expression used to reach content objects in the request.
      * 
      */
     private String payload;
 
     private GetContentScanningExpressionsResult() {}
     /**
-     * @return defines the unique ID for this custom scan expression.
+     * @return Defines the unique ID for this Content Scanning custom expression.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Defines the ruleset expression to use in matching content objects.
+     * @return Defines the custom content extraction expression used to reach content objects in the request.
      * 
      */
     public String payload() {

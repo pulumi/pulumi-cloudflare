@@ -56,7 +56,7 @@ export interface GetWorkflowResult {
      * The ID of this resource.
      */
     readonly id: string;
-    readonly instances: outputs.GetWorkflowInstances;
+    readonly instances: {[key: string]: number};
     readonly modifiedOn: string;
     readonly name: string;
     readonly schedules: outputs.GetWorkflowSchedule[];

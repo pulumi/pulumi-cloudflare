@@ -14,7 +14,7 @@ public final class GetEmailSecurityBlockSendersResult {
     private String comments;
     private String createdAt;
     /**
-     * @return Blocked sender pattern identifier
+     * @return Blocked sender pattern identifier.
      * 
      */
     private String id;
@@ -30,10 +30,7 @@ public final class GetEmailSecurityBlockSendersResult {
     private String lastModified;
     private String modifiedAt;
     /**
-     * @return The pattern value to match against. Format depends on `patternType`:
-     * - EMAIL: a valid email address, e.g. `user{@literal @}example.com`
-     * - DOMAIN: a valid domain name, e.g. `example.com`
-     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     * @return The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
      * 
      */
     private String pattern;
@@ -41,8 +38,8 @@ public final class GetEmailSecurityBlockSendersResult {
      * @return Type of pattern matching.
      * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
      * - DOMAIN: matches a domain name (e.g. `example.com`)
-     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
      *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
@@ -56,7 +53,7 @@ public final class GetEmailSecurityBlockSendersResult {
         return this.createdAt;
     }
     /**
-     * @return Blocked sender pattern identifier
+     * @return Blocked sender pattern identifier.
      * 
      */
     public String id() {
@@ -80,10 +77,7 @@ public final class GetEmailSecurityBlockSendersResult {
         return this.modifiedAt;
     }
     /**
-     * @return The pattern value to match against. Format depends on `patternType`:
-     * - EMAIL: a valid email address, e.g. `user{@literal @}example.com`
-     * - DOMAIN: a valid domain name, e.g. `example.com`
-     * - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+     * @return The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user{@literal @}example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
      * 
      */
     public String pattern() {
@@ -93,8 +87,8 @@ public final class GetEmailSecurityBlockSendersResult {
      * @return Type of pattern matching.
      * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
      * - DOMAIN: matches a domain name (e.g. `example.com`)
-     * - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-     * - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+     * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+     * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
      *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */

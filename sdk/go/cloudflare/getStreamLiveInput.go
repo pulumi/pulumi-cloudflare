@@ -78,6 +78,8 @@ type LookupStreamLiveInputResult struct {
 	Meta string `pulumi:"meta"`
 	// The date and time the live input was last modified.
 	Modified string `pulumi:"modified"`
+	// Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+	Playback GetStreamLiveInputPlayback `pulumi:"playback"`
 	// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
 	PreferLowLatency bool `pulumi:"preferLowLatency"`
 	// Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -171,6 +173,11 @@ func (o LookupStreamLiveInputResultOutput) Meta() pulumi.StringOutput {
 // The date and time the live input was last modified.
 func (o LookupStreamLiveInputResultOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.Modified }).(pulumi.StringOutput)
+}
+
+// Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+func (o LookupStreamLiveInputResultOutput) Playback() GetStreamLiveInputPlaybackOutput {
+	return o.ApplyT(func(v LookupStreamLiveInputResult) GetStreamLiveInputPlayback { return v.Playback }).(GetStreamLiveInputPlaybackOutput)
 }
 
 // When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.

@@ -87,11 +87,14 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        [Input("filter")]
+        public Inputs.GetZeroTrustResourceLibraryApplicationFilterArgs? Filter { get; set; }
+
         /// <summary>
-        /// The ID of this resource.
+        /// Returns the application ID.
         /// </summary>
-        [Input("id", required: true)]
-        public int Id { get; set; }
+        [Input("id")]
+        public int? Id { get; set; }
 
         public GetZeroTrustResourceLibraryApplicationArgs()
         {
@@ -104,11 +107,14 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustResourceLibraryApplicationFilterInputArgs>? Filter { get; set; }
+
         /// <summary>
-        /// The ID of this resource.
+        /// Returns the application ID.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<int> Id { get; set; } = null!;
+        [Input("id")]
+        public Input<int>? Id { get; set; }
 
         public GetZeroTrustResourceLibraryApplicationInvokeArgs()
         {
@@ -149,6 +155,7 @@ namespace Pulumi.Cloudflare
         /// Returns the application creation time.
         /// </summary>
         public readonly string CreatedAt;
+        public readonly Outputs.GetZeroTrustResourceLibraryApplicationFilterResult? Filter;
         /// <summary>
         /// GenAI score for the application. Returns -1 when no score is available.
         /// </summary>
@@ -162,7 +169,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string HumanId;
         /// <summary>
-        /// The ID of this resource.
+        /// Returns the application ID.
         /// </summary>
         public readonly int Id;
         /// <summary>
@@ -212,6 +219,8 @@ namespace Pulumi.Cloudflare
 
             string createdAt,
 
+            Outputs.GetZeroTrustResourceLibraryApplicationFilterResult? filter,
+
             double genAiScore,
 
             ImmutableArray<string> hostnames,
@@ -242,6 +251,7 @@ namespace Pulumi.Cloudflare
             ApplicationTypeDescription = applicationTypeDescription;
             CategoryId = categoryId;
             CreatedAt = createdAt;
+            Filter = filter;
             GenAiScore = genAiScore;
             Hostnames = hostnames;
             HumanId = humanId;

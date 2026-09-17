@@ -28,8 +28,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailSecurityBlockSenders(args?: GetEmailSecurityBlockSendersArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityBlockSendersResult> {
-    args = args || {};
+export function getEmailSecurityBlockSenders(args: GetEmailSecurityBlockSendersArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityBlockSendersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", {
         "accountId": args.accountId,
@@ -46,7 +45,7 @@ export function getEmailSecurityBlockSenders(args?: GetEmailSecurityBlockSenders
  * A collection of arguments for invoking getEmailSecurityBlockSenders.
  */
 export interface GetEmailSecurityBlockSendersArgs {
-    accountId?: string;
+    accountId: string;
     direction?: string;
     maxItems?: number;
     order?: string;
@@ -59,7 +58,7 @@ export interface GetEmailSecurityBlockSendersArgs {
  * A collection of values returned by getEmailSecurityBlockSenders.
  */
 export interface GetEmailSecurityBlockSendersResult {
-    readonly accountId?: string;
+    readonly accountId: string;
     readonly direction?: string;
     readonly maxItems?: number;
     readonly order?: string;
@@ -90,8 +89,7 @@ export interface GetEmailSecurityBlockSendersResult {
  * });
  * ```
  */
-export function getEmailSecurityBlockSendersOutput(args?: GetEmailSecurityBlockSendersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityBlockSendersResult> {
-    args = args || {};
+export function getEmailSecurityBlockSendersOutput(args: GetEmailSecurityBlockSendersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityBlockSendersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", {
         "accountId": args.accountId,
@@ -108,7 +106,7 @@ export function getEmailSecurityBlockSendersOutput(args?: GetEmailSecurityBlockS
  * A collection of arguments for invoking getEmailSecurityBlockSenders.
  */
 export interface GetEmailSecurityBlockSendersOutputArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     direction?: pulumi.Input<string | undefined>;
     maxItems?: pulumi.Input<number | undefined>;
     order?: pulumi.Input<string | undefined>;

@@ -23,8 +23,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getMagicTransitConnectors(args?: GetMagicTransitConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitConnectorsResult> {
-    args = args || {};
+export function getMagicTransitConnectors(args: GetMagicTransitConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitConnectorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", {
         "accountId": args.accountId,
@@ -37,10 +36,7 @@ export function getMagicTransitConnectors(args?: GetMagicTransitConnectorsArgs, 
  * A collection of arguments for invoking getMagicTransitConnectors.
  */
 export interface GetMagicTransitConnectorsArgs {
-    /**
-     * Account identifier
-     */
-    accountId?: string;
+    accountId: string;
     /**
      * Filter connectors by device type.
      * Available values: "MANAGED", "LICENSED".
@@ -56,10 +52,7 @@ export interface GetMagicTransitConnectorsArgs {
  * A collection of values returned by getMagicTransitConnectors.
  */
 export interface GetMagicTransitConnectorsResult {
-    /**
-     * Account identifier
-     */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Filter connectors by device type.
      * Available values: "MANAGED", "LICENSED".
@@ -91,8 +84,7 @@ export interface GetMagicTransitConnectorsResult {
  * });
  * ```
  */
-export function getMagicTransitConnectorsOutput(args?: GetMagicTransitConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitConnectorsResult> {
-    args = args || {};
+export function getMagicTransitConnectorsOutput(args: GetMagicTransitConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitConnectorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors", {
         "accountId": args.accountId,
@@ -105,10 +97,7 @@ export function getMagicTransitConnectorsOutput(args?: GetMagicTransitConnectors
  * A collection of arguments for invoking getMagicTransitConnectors.
  */
 export interface GetMagicTransitConnectorsOutputArgs {
-    /**
-     * Account identifier
-     */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Filter connectors by device type.
      * Available values: "MANAGED", "LICENSED".

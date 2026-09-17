@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Fax;
         /// <summary>
-        /// User's first name
+        /// User's first name.
         /// </summary>
         public readonly string FirstName;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// User's last name
+        /// User's last name.
         /// </summary>
         public readonly string LastName;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Organization;
         /// <summary>
-        /// User's telephone number
+        /// User's telephone number.
         /// </summary>
         public readonly string Phone;
         /// <summary>

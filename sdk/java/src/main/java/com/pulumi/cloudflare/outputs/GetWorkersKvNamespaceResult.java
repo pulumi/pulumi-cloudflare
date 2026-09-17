@@ -26,6 +26,12 @@ public final class GetWorkersKvNamespaceResult {
      */
     private String id;
     /**
+     * @return Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    private String jurisdiction;
+    /**
      * @return Namespace identifier tag.
      * 
      */
@@ -58,6 +64,14 @@ public final class GetWorkersKvNamespaceResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * 
+     */
+    public String jurisdiction() {
+        return this.jurisdiction;
     }
     /**
      * @return Namespace identifier tag.
@@ -93,6 +107,7 @@ public final class GetWorkersKvNamespaceResult {
         private @Nullable String accountId;
         private @Nullable GetWorkersKvNamespaceFilter filter;
         private String id;
+        private String jurisdiction;
         private @Nullable String namespaceId;
         private Boolean supportsUrlEncoding;
         private String title;
@@ -102,6 +117,7 @@ public final class GetWorkersKvNamespaceResult {
     	      this.accountId = defaults.accountId;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.namespaceId = defaults.namespaceId;
     	      this.supportsUrlEncoding = defaults.supportsUrlEncoding;
     	      this.title = defaults.title;
@@ -125,6 +141,14 @@ public final class GetWorkersKvNamespaceResult {
               throw new MissingRequiredPropertyException("GetWorkersKvNamespaceResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jurisdiction(String jurisdiction) {
+            if (jurisdiction == null) {
+              throw new MissingRequiredPropertyException("GetWorkersKvNamespaceResult", "jurisdiction");
+            }
+            this.jurisdiction = jurisdiction;
             return this;
         }
         @CustomType.Setter
@@ -154,6 +178,7 @@ public final class GetWorkersKvNamespaceResult {
             _resultValue.accountId = accountId;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.namespaceId = namespaceId;
             _resultValue.supportsUrlEncoding = supportsUrlEncoding;
             _resultValue.title = title;

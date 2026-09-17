@@ -66,7 +66,7 @@ import (
 //							"BROWSER": &cloudflare.PagesProjectDeploymentConfigsPreviewBrowsersArgs{},
 //						},
 //						BuildImageMajorVersion: pulumi.Int(3),
-//						CompatibilityDate:      pulumi.String("2025-01-01"),
+//						CompatibilityDate:      pulumi.String("2025-01-01T00:00:00Z"),
 //						CompatibilityFlags: pulumi.StringArray{
 //							pulumi.String("url_standard"),
 //						},
@@ -150,7 +150,7 @@ import (
 //							"BROWSER": &cloudflare.PagesProjectDeploymentConfigsProductionBrowsersArgs{},
 //						},
 //						BuildImageMajorVersion: pulumi.Int(3),
-//						CompatibilityDate:      pulumi.String("2025-01-01"),
+//						CompatibilityDate:      pulumi.String("2025-01-01T00:00:00Z"),
 //						CompatibilityFlags: pulumi.StringArray{
 //							pulumi.String("url_standard"),
 //						},

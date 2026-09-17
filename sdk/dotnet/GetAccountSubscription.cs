@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Frequency;
         /// <summary>
-        /// Subscription identifier tag.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         public readonly string Id;
         /// <summary>

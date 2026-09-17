@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,10 +20,11 @@ public final class GetLogpushDatasetFieldResult {
     private @Nullable String accountId;
     /**
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dex*application*tests&#34;, &#34;dex*device*state*events&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;email*security*post*delivery*events&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;ipsec*logs&#34;, &#34;magic*ids*detections&#34;, &#34;mcp*portal*logs&#34;, &#34;mnm*flow*logs&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;turnstile*events&#34;, &#34;warp*config*changes&#34;, &#34;warp*toggle*changes&#34;, &#34;websocket*analytics&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
+     * Available values: &#34;access*requests&#34;, &#34;account*abuse*protection*events&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dex*application*tests&#34;, &#34;dex*device*state*events&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;email*security*post*delivery*events&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;ipsec*logs&#34;, &#34;magic*bgp*logs&#34;, &#34;magic*ids*detections&#34;, &#34;mcp*portal*logs&#34;, &#34;mnm*flow*logs&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;turnstile*events&#34;, &#34;warp*config*changes&#34;, &#34;warp*toggle*changes&#34;, &#34;websocket*analytics&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network_sessions&#34;.
      * 
      */
     private String datasetId;
+    private Map<String,String> fields;
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -39,11 +41,14 @@ public final class GetLogpushDatasetFieldResult {
     }
     /**
      * @return Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: &#34;access*requests&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dex*application*tests&#34;, &#34;dex*device*state*events&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;email*security*post*delivery*events&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;ipsec*logs&#34;, &#34;magic*ids*detections&#34;, &#34;mcp*portal*logs&#34;, &#34;mnm*flow*logs&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;turnstile*events&#34;, &#34;warp*config*changes&#34;, &#34;warp*toggle*changes&#34;, &#34;websocket*analytics&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network*sessions&#34;.
+     * Available values: &#34;access*requests&#34;, &#34;account*abuse*protection*events&#34;, &#34;audit*logs&#34;, &#34;audit*logs*v2&#34;, &#34;biso*user*actions&#34;, &#34;casb*findings&#34;, &#34;device*posture*results&#34;, &#34;dex*application*tests&#34;, &#34;dex*device*state*events&#34;, &#34;dlp*forensic*copies&#34;, &#34;dns*firewall*logs&#34;, &#34;dns*logs&#34;, &#34;email*security*alerts&#34;, &#34;email*security*post*delivery*events&#34;, &#34;firewall*events&#34;, &#34;gateway*dns&#34;, &#34;gateway*http&#34;, &#34;gateway*network&#34;, &#34;http*requests&#34;, &#34;ipsec*logs&#34;, &#34;magic*bgp*logs&#34;, &#34;magic*ids*detections&#34;, &#34;mcp*portal*logs&#34;, &#34;mnm*flow*logs&#34;, &#34;nel*reports&#34;, &#34;network*analytics*logs&#34;, &#34;page*shield*events&#34;, &#34;sinkhole*http*logs&#34;, &#34;spectrum*events&#34;, &#34;ssh*logs&#34;, &#34;turnstile*events&#34;, &#34;warp*config*changes&#34;, &#34;warp*toggle*changes&#34;, &#34;websocket*analytics&#34;, &#34;workers*trace*events&#34;, &#34;zaraz*events&#34;, &#34;zero*trust*network_sessions&#34;.
      * 
      */
     public String datasetId() {
         return this.datasetId;
+    }
+    public Map<String,String> fields() {
+        return this.fields;
     }
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -64,12 +69,14 @@ public final class GetLogpushDatasetFieldResult {
     public static final class Builder {
         private @Nullable String accountId;
         private String datasetId;
+        private Map<String,String> fields;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetLogpushDatasetFieldResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.datasetId = defaults.datasetId;
+    	      this.fields = defaults.fields;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -88,6 +95,14 @@ public final class GetLogpushDatasetFieldResult {
             return this;
         }
         @CustomType.Setter
+        public Builder fields(Map<String,String> fields) {
+            if (fields == null) {
+              throw new MissingRequiredPropertyException("GetLogpushDatasetFieldResult", "fields");
+            }
+            this.fields = fields;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -97,6 +112,7 @@ public final class GetLogpushDatasetFieldResult {
             final var _resultValue = new GetLogpushDatasetFieldResult();
             _resultValue.accountId = accountId;
             _resultValue.datasetId = datasetId;
+            _resultValue.fields = fields;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

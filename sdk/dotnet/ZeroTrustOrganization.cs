@@ -63,23 +63,23 @@ namespace Pulumi.Cloudflare
     ///             RequiredAaguids = "2fc0579f-8113-47ea-b116-bb5a8db9202a",
     ///             SessionDuration = "24h",
     ///         },
-    ///         MfaRequiredForAllApps = false,
-    ///         MfaSshPivKeyRequirements = new Cloudflare.Inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs
+    ///         MfaPivKeyRequirements = 
     ///         {
-    ///             PinPolicy = "always",
-    ///             RequireFipsDevice = true,
-    ///             SshKeySizes = new[]
+    ///             { "pinPolicy", "always" },
+    ///             { "requireFipsDevice", true },
+    ///             { "sshKeySize", new[]
     ///             {
     ///                 256,
     ///                 2048,
-    ///             },
-    ///             SshKeyTypes = new[]
+    ///             } },
+    ///             { "sshKeyType", new[]
     ///             {
     ///                 "ecdsa",
     ///                 "rsa",
-    ///             },
-    ///             TouchPolicy = "always",
+    ///             } },
+    ///             { "touchPolicy", "always" },
     ///         },
+    ///         MfaRequiredForAllApps = false,
     ///         Name = "Widget Corps Internal Applications",
     ///         SessionDuration = "24h",
     ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",

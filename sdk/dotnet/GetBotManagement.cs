@@ -140,6 +140,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool BmCookieEnabled;
         /// <summary>
+        /// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+        /// </summary>
+        public readonly bool BotPreferenceSyncEnabled;
+        /// <summary>
         /// Specifies the Robots Access Control License variant to use.
         /// Available values: "off", "PolicyOnly".
         /// </summary>
@@ -220,6 +224,8 @@ namespace Pulumi.Cloudflare
 
             bool bmCookieEnabled,
 
+            bool botPreferenceSyncEnabled,
+
             string cfRobotsVariant,
 
             string contentBotsProtection,
@@ -255,6 +261,7 @@ namespace Pulumi.Cloudflare
             AiBotsProtection = aiBotsProtection;
             AutoUpdateModel = autoUpdateModel;
             BmCookieEnabled = bmCookieEnabled;
+            BotPreferenceSyncEnabled = botPreferenceSyncEnabled;
             CfRobotsVariant = cfRobotsVariant;
             ContentBotsProtection = contentBotsProtection;
             CrawlerProtection = crawlerProtection;

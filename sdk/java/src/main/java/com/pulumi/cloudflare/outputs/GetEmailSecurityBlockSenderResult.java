@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEmailSecurityBlockSenderResult {
-    private @Nullable String accountId;
+    private String accountId;
     private String comments;
     private String createdAt;
     private @Nullable GetEmailSecurityBlockSenderFilter filter;
@@ -33,8 +33,8 @@ public final class GetEmailSecurityBlockSenderResult {
     private String patternType;
 
     private GetEmailSecurityBlockSenderResult() {}
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     public String comments() {
         return this.comments;
@@ -82,7 +82,7 @@ public final class GetEmailSecurityBlockSenderResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String comments;
         private String createdAt;
         private @Nullable GetEmailSecurityBlockSenderFilter filter;
@@ -110,8 +110,10 @@ public final class GetEmailSecurityBlockSenderResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityBlockSenderResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

@@ -22,7 +22,7 @@ type AiSearchInstance struct {
 	AiGatewayId pulumi.StringOutput `pulumi:"aiGatewayId"`
 	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 	AiSearchInstanceId pulumi.StringOutput `pulumi:"aiSearchInstanceId"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 	AisearchModel pulumi.StringOutput `pulumi:"aisearchModel"`
 	Cache         pulumi.BoolOutput   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -36,10 +36,9 @@ type AiSearchInstance struct {
 	CreatedAt       pulumi.StringOutput                       `pulumi:"createdAt"`
 	CreatedBy       pulumi.StringOutput                       `pulumi:"createdBy"`
 	CustomMetadatas AiSearchInstanceCustomMetadataArrayOutput `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
-	EmbeddingModel pulumi.StringOutput  `pulumi:"embeddingModel"`
-	Enable         pulumi.BoolOutput    `pulumi:"enable"`
-	EngineVersion  pulumi.Float64Output `pulumi:"engineVersion"`
+	EmbeddingModel  pulumi.StringOutput                       `pulumi:"embeddingModel"`
+	Enable          pulumi.BoolOutput                         `pulumi:"enable"`
+	EngineVersion   pulumi.Float64Output                      `pulumi:"engineVersion"`
 	// Available values: "max", "rrf".
 	FusionMethod pulumi.StringOutput `pulumi:"fusionMethod"`
 	// Deprecated — use indexMethod instead.
@@ -59,19 +58,17 @@ type AiSearchInstance struct {
 	PublicEndpointId     pulumi.StringOutput                        `pulumi:"publicEndpointId"`
 	PublicEndpointParams AiSearchInstancePublicEndpointParamsOutput `pulumi:"publicEndpointParams"`
 	Reranking            pulumi.BoolOutput                          `pulumi:"reranking"`
-	// Available values: "@cf/baai/bge-reranker-base", "".
-	RerankingModel   pulumi.StringOutput                       `pulumi:"rerankingModel"`
-	RetrievalOptions AiSearchInstanceRetrievalOptionsPtrOutput `pulumi:"retrievalOptions"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-	RewriteModel   pulumi.StringOutput                `pulumi:"rewriteModel"`
-	RewriteQuery   pulumi.BoolOutput                  `pulumi:"rewriteQuery"`
-	ScoreThreshold pulumi.Float64Output               `pulumi:"scoreThreshold"`
-	Source         pulumi.StringPtrOutput             `pulumi:"source"`
-	SourceParams   AiSearchInstanceSourceParamsOutput `pulumi:"sourceParams"`
-	Status         pulumi.StringOutput                `pulumi:"status"`
-	Summarization  pulumi.BoolOutput                  `pulumi:"summarization"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-	SummarizationModel pulumi.StringPtrOutput `pulumi:"summarizationModel"`
+	RerankingModel       pulumi.StringOutput                        `pulumi:"rerankingModel"`
+	RetrievalOptions     AiSearchInstanceRetrievalOptionsPtrOutput  `pulumi:"retrievalOptions"`
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
+	RewriteModel       pulumi.StringOutput                `pulumi:"rewriteModel"`
+	RewriteQuery       pulumi.BoolOutput                  `pulumi:"rewriteQuery"`
+	ScoreThreshold     pulumi.Float64Output               `pulumi:"scoreThreshold"`
+	Source             pulumi.StringPtrOutput             `pulumi:"source"`
+	SourceParams       AiSearchInstanceSourceParamsOutput `pulumi:"sourceParams"`
+	Status             pulumi.StringOutput                `pulumi:"status"`
+	Summarization      pulumi.BoolOutput                  `pulumi:"summarization"`
+	SummarizationModel pulumi.StringPtrOutput             `pulumi:"summarizationModel"`
 	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval                   pulumi.Float64Output   `pulumi:"syncInterval"`
@@ -80,8 +77,7 @@ type AiSearchInstance struct {
 	SystemPromptRewriteQuery       pulumi.StringPtrOutput `pulumi:"systemPromptRewriteQuery"`
 	TokenId                        pulumi.StringPtrOutput `pulumi:"tokenId"`
 	// Available values: "r2", "web-crawler".
-	Type          pulumi.StringPtrOutput `pulumi:"type"`
-	VectorizeName pulumi.StringOutput    `pulumi:"vectorizeName"`
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewAiSearchInstance registers a new resource with the given unique name, arguments, and options.
@@ -124,7 +120,7 @@ type aiSearchInstanceState struct {
 	AiGatewayId *string `pulumi:"aiGatewayId"`
 	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 	AiSearchInstanceId *string `pulumi:"aiSearchInstanceId"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 	AisearchModel *string `pulumi:"aisearchModel"`
 	Cache         *bool   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -138,10 +134,9 @@ type aiSearchInstanceState struct {
 	CreatedAt       *string                          `pulumi:"createdAt"`
 	CreatedBy       *string                          `pulumi:"createdBy"`
 	CustomMetadatas []AiSearchInstanceCustomMetadata `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
-	EmbeddingModel *string  `pulumi:"embeddingModel"`
-	Enable         *bool    `pulumi:"enable"`
-	EngineVersion  *float64 `pulumi:"engineVersion"`
+	EmbeddingModel  *string                          `pulumi:"embeddingModel"`
+	Enable          *bool                            `pulumi:"enable"`
+	EngineVersion   *float64                         `pulumi:"engineVersion"`
 	// Available values: "max", "rrf".
 	FusionMethod *string `pulumi:"fusionMethod"`
 	// Deprecated — use indexMethod instead.
@@ -161,19 +156,17 @@ type aiSearchInstanceState struct {
 	PublicEndpointId     *string                               `pulumi:"publicEndpointId"`
 	PublicEndpointParams *AiSearchInstancePublicEndpointParams `pulumi:"publicEndpointParams"`
 	Reranking            *bool                                 `pulumi:"reranking"`
-	// Available values: "@cf/baai/bge-reranker-base", "".
-	RerankingModel   *string                           `pulumi:"rerankingModel"`
-	RetrievalOptions *AiSearchInstanceRetrievalOptions `pulumi:"retrievalOptions"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-	RewriteModel   *string                       `pulumi:"rewriteModel"`
-	RewriteQuery   *bool                         `pulumi:"rewriteQuery"`
-	ScoreThreshold *float64                      `pulumi:"scoreThreshold"`
-	Source         *string                       `pulumi:"source"`
-	SourceParams   *AiSearchInstanceSourceParams `pulumi:"sourceParams"`
-	Status         *string                       `pulumi:"status"`
-	Summarization  *bool                         `pulumi:"summarization"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-	SummarizationModel *string `pulumi:"summarizationModel"`
+	RerankingModel       *string                               `pulumi:"rerankingModel"`
+	RetrievalOptions     *AiSearchInstanceRetrievalOptions     `pulumi:"retrievalOptions"`
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
+	RewriteModel       *string                       `pulumi:"rewriteModel"`
+	RewriteQuery       *bool                         `pulumi:"rewriteQuery"`
+	ScoreThreshold     *float64                      `pulumi:"scoreThreshold"`
+	Source             *string                       `pulumi:"source"`
+	SourceParams       *AiSearchInstanceSourceParams `pulumi:"sourceParams"`
+	Status             *string                       `pulumi:"status"`
+	Summarization      *bool                         `pulumi:"summarization"`
+	SummarizationModel *string                       `pulumi:"summarizationModel"`
 	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval                   *float64 `pulumi:"syncInterval"`
@@ -182,8 +175,7 @@ type aiSearchInstanceState struct {
 	SystemPromptRewriteQuery       *string  `pulumi:"systemPromptRewriteQuery"`
 	TokenId                        *string  `pulumi:"tokenId"`
 	// Available values: "r2", "web-crawler".
-	Type          *string `pulumi:"type"`
-	VectorizeName *string `pulumi:"vectorizeName"`
+	Type *string `pulumi:"type"`
 }
 
 type AiSearchInstanceState struct {
@@ -191,7 +183,7 @@ type AiSearchInstanceState struct {
 	AiGatewayId pulumi.StringPtrInput
 	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 	AiSearchInstanceId pulumi.StringPtrInput
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 	AisearchModel pulumi.StringPtrInput
 	Cache         pulumi.BoolPtrInput
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -205,10 +197,9 @@ type AiSearchInstanceState struct {
 	CreatedAt       pulumi.StringPtrInput
 	CreatedBy       pulumi.StringPtrInput
 	CustomMetadatas AiSearchInstanceCustomMetadataArrayInput
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
-	EmbeddingModel pulumi.StringPtrInput
-	Enable         pulumi.BoolPtrInput
-	EngineVersion  pulumi.Float64PtrInput
+	EmbeddingModel  pulumi.StringPtrInput
+	Enable          pulumi.BoolPtrInput
+	EngineVersion   pulumi.Float64PtrInput
 	// Available values: "max", "rrf".
 	FusionMethod pulumi.StringPtrInput
 	// Deprecated — use indexMethod instead.
@@ -228,18 +219,16 @@ type AiSearchInstanceState struct {
 	PublicEndpointId     pulumi.StringPtrInput
 	PublicEndpointParams AiSearchInstancePublicEndpointParamsPtrInput
 	Reranking            pulumi.BoolPtrInput
-	// Available values: "@cf/baai/bge-reranker-base", "".
-	RerankingModel   pulumi.StringPtrInput
-	RetrievalOptions AiSearchInstanceRetrievalOptionsPtrInput
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-	RewriteModel   pulumi.StringPtrInput
-	RewriteQuery   pulumi.BoolPtrInput
-	ScoreThreshold pulumi.Float64PtrInput
-	Source         pulumi.StringPtrInput
-	SourceParams   AiSearchInstanceSourceParamsPtrInput
-	Status         pulumi.StringPtrInput
-	Summarization  pulumi.BoolPtrInput
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	RerankingModel       pulumi.StringPtrInput
+	RetrievalOptions     AiSearchInstanceRetrievalOptionsPtrInput
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
+	RewriteModel       pulumi.StringPtrInput
+	RewriteQuery       pulumi.BoolPtrInput
+	ScoreThreshold     pulumi.Float64PtrInput
+	Source             pulumi.StringPtrInput
+	SourceParams       AiSearchInstanceSourceParamsPtrInput
+	Status             pulumi.StringPtrInput
+	Summarization      pulumi.BoolPtrInput
 	SummarizationModel pulumi.StringPtrInput
 	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
@@ -249,8 +238,7 @@ type AiSearchInstanceState struct {
 	SystemPromptRewriteQuery       pulumi.StringPtrInput
 	TokenId                        pulumi.StringPtrInput
 	// Available values: "r2", "web-crawler".
-	Type          pulumi.StringPtrInput
-	VectorizeName pulumi.StringPtrInput
+	Type pulumi.StringPtrInput
 }
 
 func (AiSearchInstanceState) ElementType() reflect.Type {
@@ -262,7 +250,7 @@ type aiSearchInstanceArgs struct {
 	AiGatewayId *string `pulumi:"aiGatewayId"`
 	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 	AiSearchInstanceId string `pulumi:"aiSearchInstanceId"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 	AisearchModel *string `pulumi:"aisearchModel"`
 	Cache         *bool   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -274,8 +262,7 @@ type aiSearchInstanceArgs struct {
 	ChunkOverlap    *int                             `pulumi:"chunkOverlap"`
 	ChunkSize       *int                             `pulumi:"chunkSize"`
 	CustomMetadatas []AiSearchInstanceCustomMetadata `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
-	EmbeddingModel *string `pulumi:"embeddingModel"`
+	EmbeddingModel  *string                          `pulumi:"embeddingModel"`
 	// Available values: "max", "rrf".
 	FusionMethod *string `pulumi:"fusionMethod"`
 	// Deprecated — use indexMethod instead.
@@ -290,18 +277,16 @@ type aiSearchInstanceArgs struct {
 	Paused               *bool                                 `pulumi:"paused"`
 	PublicEndpointParams *AiSearchInstancePublicEndpointParams `pulumi:"publicEndpointParams"`
 	Reranking            *bool                                 `pulumi:"reranking"`
-	// Available values: "@cf/baai/bge-reranker-base", "".
-	RerankingModel   *string                           `pulumi:"rerankingModel"`
-	RetrievalOptions *AiSearchInstanceRetrievalOptions `pulumi:"retrievalOptions"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-	RewriteModel   *string                       `pulumi:"rewriteModel"`
-	RewriteQuery   *bool                         `pulumi:"rewriteQuery"`
-	ScoreThreshold *float64                      `pulumi:"scoreThreshold"`
-	Source         *string                       `pulumi:"source"`
-	SourceParams   *AiSearchInstanceSourceParams `pulumi:"sourceParams"`
-	Summarization  *bool                         `pulumi:"summarization"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-	SummarizationModel *string `pulumi:"summarizationModel"`
+	RerankingModel       *string                               `pulumi:"rerankingModel"`
+	RetrievalOptions     *AiSearchInstanceRetrievalOptions     `pulumi:"retrievalOptions"`
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
+	RewriteModel       *string                       `pulumi:"rewriteModel"`
+	RewriteQuery       *bool                         `pulumi:"rewriteQuery"`
+	ScoreThreshold     *float64                      `pulumi:"scoreThreshold"`
+	Source             *string                       `pulumi:"source"`
+	SourceParams       *AiSearchInstanceSourceParams `pulumi:"sourceParams"`
+	Summarization      *bool                         `pulumi:"summarization"`
+	SummarizationModel *string                       `pulumi:"summarizationModel"`
 	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval                   *float64 `pulumi:"syncInterval"`
@@ -319,7 +304,7 @@ type AiSearchInstanceArgs struct {
 	AiGatewayId pulumi.StringPtrInput
 	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 	AiSearchInstanceId pulumi.StringInput
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 	AisearchModel pulumi.StringPtrInput
 	Cache         pulumi.BoolPtrInput
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -331,8 +316,7 @@ type AiSearchInstanceArgs struct {
 	ChunkOverlap    pulumi.IntPtrInput
 	ChunkSize       pulumi.IntPtrInput
 	CustomMetadatas AiSearchInstanceCustomMetadataArrayInput
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
-	EmbeddingModel pulumi.StringPtrInput
+	EmbeddingModel  pulumi.StringPtrInput
 	// Available values: "max", "rrf".
 	FusionMethod pulumi.StringPtrInput
 	// Deprecated — use indexMethod instead.
@@ -347,17 +331,15 @@ type AiSearchInstanceArgs struct {
 	Paused               pulumi.BoolPtrInput
 	PublicEndpointParams AiSearchInstancePublicEndpointParamsPtrInput
 	Reranking            pulumi.BoolPtrInput
-	// Available values: "@cf/baai/bge-reranker-base", "".
-	RerankingModel   pulumi.StringPtrInput
-	RetrievalOptions AiSearchInstanceRetrievalOptionsPtrInput
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
-	RewriteModel   pulumi.StringPtrInput
-	RewriteQuery   pulumi.BoolPtrInput
-	ScoreThreshold pulumi.Float64PtrInput
-	Source         pulumi.StringPtrInput
-	SourceParams   AiSearchInstanceSourceParamsPtrInput
-	Summarization  pulumi.BoolPtrInput
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	RerankingModel       pulumi.StringPtrInput
+	RetrievalOptions     AiSearchInstanceRetrievalOptionsPtrInput
+	// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
+	RewriteModel       pulumi.StringPtrInput
+	RewriteQuery       pulumi.BoolPtrInput
+	ScoreThreshold     pulumi.Float64PtrInput
+	Source             pulumi.StringPtrInput
+	SourceParams       AiSearchInstanceSourceParamsPtrInput
+	Summarization      pulumi.BoolPtrInput
 	SummarizationModel pulumi.StringPtrInput
 	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
@@ -470,7 +452,7 @@ func (o AiSearchInstanceOutput) AiSearchInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.AiSearchInstanceId }).(pulumi.StringOutput)
 }
 
-// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 func (o AiSearchInstanceOutput) AisearchModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.AisearchModel }).(pulumi.StringOutput)
 }
@@ -514,7 +496,6 @@ func (o AiSearchInstanceOutput) CustomMetadatas() AiSearchInstanceCustomMetadata
 	return o.ApplyT(func(v *AiSearchInstance) AiSearchInstanceCustomMetadataArrayOutput { return v.CustomMetadatas }).(AiSearchInstanceCustomMetadataArrayOutput)
 }
 
-// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 func (o AiSearchInstanceOutput) EmbeddingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.EmbeddingModel }).(pulumi.StringOutput)
 }
@@ -588,7 +569,6 @@ func (o AiSearchInstanceOutput) Reranking() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.BoolOutput { return v.Reranking }).(pulumi.BoolOutput)
 }
 
-// Available values: "@cf/baai/bge-reranker-base", "".
 func (o AiSearchInstanceOutput) RerankingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.RerankingModel }).(pulumi.StringOutput)
 }
@@ -597,7 +577,7 @@ func (o AiSearchInstanceOutput) RetrievalOptions() AiSearchInstanceRetrievalOpti
 	return o.ApplyT(func(v *AiSearchInstance) AiSearchInstanceRetrievalOptionsPtrOutput { return v.RetrievalOptions }).(AiSearchInstanceRetrievalOptionsPtrOutput)
 }
 
-// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
 func (o AiSearchInstanceOutput) RewriteModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.RewriteModel }).(pulumi.StringOutput)
 }
@@ -626,7 +606,6 @@ func (o AiSearchInstanceOutput) Summarization() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.BoolOutput { return v.Summarization }).(pulumi.BoolOutput)
 }
 
-// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
 func (o AiSearchInstanceOutput) SummarizationModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringPtrOutput { return v.SummarizationModel }).(pulumi.StringPtrOutput)
 }
@@ -656,10 +635,6 @@ func (o AiSearchInstanceOutput) TokenId() pulumi.StringPtrOutput {
 // Available values: "r2", "web-crawler".
 func (o AiSearchInstanceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-func (o AiSearchInstanceOutput) VectorizeName() pulumi.StringOutput {
-	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.VectorizeName }).(pulumi.StringOutput)
 }
 
 type AiSearchInstanceArrayOutput struct{ *pulumi.OutputState }

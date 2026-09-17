@@ -96,7 +96,7 @@ class GetWorkflowResult:
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> 'outputs.GetWorkflowInstancesResult':
+    def instances(self) -> Mapping[str, _builtins.float]:
         return pulumi.get(self, "instances")
 
     @_builtins.property

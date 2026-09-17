@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,11 +17,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchema {
      * 
      */
     private @Nullable String id;
-    /**
-     * @return True if schema is Cloudflare-provided.
-     * 
-     */
-    private @Nullable Boolean isLearned;
     /**
      * @return Schema file name.
      * 
@@ -39,13 +33,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchema {
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
-    }
-    /**
-     * @return True if schema is Cloudflare-provided.
-     * 
-     */
-    public Optional<Boolean> isLearned() {
-        return Optional.ofNullable(this.isLearned);
     }
     /**
      * @return Schema file name.
@@ -66,14 +53,12 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchema {
     public static final class Builder {
         private @Nullable String createdAt;
         private @Nullable String id;
-        private @Nullable Boolean isLearned;
         private @Nullable String name;
         public Builder() {}
         public Builder(ApiShieldOperationFeaturesSchemaInfoActiveSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.id = defaults.id;
-    	      this.isLearned = defaults.isLearned;
     	      this.name = defaults.name;
         }
 
@@ -90,12 +75,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchema {
             return this;
         }
         @CustomType.Setter
-        public Builder isLearned(@Nullable Boolean isLearned) {
-
-            this.isLearned = isLearned;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -105,7 +84,6 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchema {
             final var _resultValue = new ApiShieldOperationFeaturesSchemaInfoActiveSchema();
             _resultValue.createdAt = createdAt;
             _resultValue.id = id;
-            _resultValue.isLearned = isLearned;
             _resultValue.name = name;
             return _resultValue;
         }

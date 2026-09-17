@@ -128,6 +128,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The ordered list of enforcement rules for the zone.
         /// </summary>
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.PrecursorEnforcementRuleArgs> EnforcementRules
         {
             get => _enforcementRules ?? (_enforcementRules = new InputList<Inputs.PrecursorEnforcementRuleArgs>());
@@ -162,6 +163,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The ordered list of enforcement rules for the zone.
         /// </summary>
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.PrecursorEnforcementRuleGetArgs> EnforcementRules
         {
             get => _enforcementRules ?? (_enforcementRules = new InputList<Inputs.PrecursorEnforcementRuleGetArgs>());

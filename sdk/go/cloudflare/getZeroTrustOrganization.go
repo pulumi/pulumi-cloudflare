@@ -82,8 +82,7 @@ type LookupZeroTrustOrganizationResult struct {
 	// Configures multi-factor authentication (MFA) settings for an organization.
 	MfaConfig GetZeroTrustOrganizationMfaConfig `pulumi:"mfaConfig"`
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-	MfaRequiredForAllApps bool `pulumi:"mfaRequiredForAllApps"`
-	// Configures SSH PIV key requirements for MFA using hardware security keys.
+	MfaRequiredForAllApps    bool                                             `pulumi:"mfaRequiredForAllApps"`
 	MfaSshPivKeyRequirements GetZeroTrustOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
 	// The name of your Zero Trust organization.
 	Name string `pulumi:"name"`
@@ -186,7 +185,6 @@ func (o LookupZeroTrustOrganizationResultOutput) MfaRequiredForAllApps() pulumi.
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.MfaRequiredForAllApps }).(pulumi.BoolOutput)
 }
 
-// Configures SSH PIV key requirements for MFA using hardware security keys.
 func (o LookupZeroTrustOrganizationResultOutput) MfaSshPivKeyRequirements() GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaSshPivKeyRequirements {
 		return v.MfaSshPivKeyRequirements

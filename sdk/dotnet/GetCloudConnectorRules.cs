@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCloudConnectorRulesResult> InvokeAsync(GetCloudConnectorRulesArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetCloudConnectorRulesResult> InvokeAsync(GetCloudConnectorRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudConnectorRulesResult>("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", args ?? new GetCloudConnectorRulesArgs(), options.WithDefaults());
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCloudConnectorRulesResult> Invoke(GetCloudConnectorRulesInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetCloudConnectorRulesResult> Invoke(GetCloudConnectorRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudConnectorRulesResult>("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", args ?? new GetCloudConnectorRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -99,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public string? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public string ZoneId { get; set; } = null!;
 
         public GetCloudConnectorRulesArgs()
         {
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public GetCloudConnectorRulesInvokeArgs()
         {
@@ -127,25 +127,48 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudConnectorRulesResult
     {
         /// <summary>
-        /// Identifier.
+        /// Cloud Provider type
+        /// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "OciStorage".
         /// </summary>
-        public readonly string Id;
-        public readonly ImmutableArray<Outputs.GetCloudConnectorRulesRuleResult> Rules;
+        public readonly string CloudConnectorRulesProvider;
+        public readonly string Description;
+        public readonly bool Enabled;
+        public readonly string Expression;
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? ZoneId;
+        public readonly string Id;
+        /// <summary>
+        /// Parameters of Cloud Connector Rule
+        /// </summary>
+        public readonly Outputs.GetCloudConnectorRulesParametersResult Parameters;
+        /// <summary>
+        /// Identifier.
+        /// </summary>
+        public readonly string ZoneId;
 
         [OutputConstructor]
         private GetCloudConnectorRulesResult(
+            string cloudConnectorRulesProvider,
+
+            string description,
+
+            bool enabled,
+
+            string expression,
+
             string id,
 
-            ImmutableArray<Outputs.GetCloudConnectorRulesRuleResult> rules,
+            Outputs.GetCloudConnectorRulesParametersResult parameters,
 
-            string? zoneId)
+            string zoneId)
         {
+            CloudConnectorRulesProvider = cloudConnectorRulesProvider;
+            Description = description;
+            Enabled = enabled;
+            Expression = expression;
             Id = id;
-            Rules = rules;
+            Parameters = parameters;
             ZoneId = zoneId;
         }
     }

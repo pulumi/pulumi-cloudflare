@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         crossVersionCache: true,
  *     },
- *     compatibilityDate: "2021-01-01",
+ *     compatibilityDate: "2021-01-01T00:00:00Z",
  *     compatibilityFlags: ["nodejs_compat"],
  *     containers: [{
  *         className: "MyDurableObject",

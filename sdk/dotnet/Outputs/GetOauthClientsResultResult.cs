@@ -50,6 +50,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string LogoUri;
         /// <summary>
+        /// Scopes that the authorizing user may decline during consent. Each value must also appear in `Scopes`. The scopes `Openid`, `Offline`, and `OfflineAccess` cannot be optional.
+        /// </summary>
+        public readonly ImmutableArray<string> OptionalScopes;
+        /// <summary>
         /// URL that points to a privacy policy document.
         /// </summary>
         public readonly string PolicyUri;
@@ -112,6 +116,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string logoUri,
 
+            ImmutableArray<string> optionalScopes,
+
             string policyUri,
 
             ImmutableArray<string> postLogoutRedirectUris,
@@ -141,6 +147,7 @@ namespace Pulumi.Cloudflare.Outputs
             GrantTypes = grantTypes;
             HasRotatedSecret = hasRotatedSecret;
             LogoUri = logoUri;
+            OptionalScopes = optionalScopes;
             PolicyUri = policyUri;
             PostLogoutRedirectUris = postLogoutRedirectUris;
             PromotedAt = promotedAt;

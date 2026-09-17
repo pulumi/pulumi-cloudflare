@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,14 +16,14 @@ public final class GetEmailRoutingDnsPlainArgs extends com.pulumi.resources.Invo
     public static final GetEmailRoutingDnsPlainArgs Empty = new GetEmailRoutingDnsPlainArgs();
 
     /**
-     * Domain of your zone.
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      * 
      */
     @Import(name="subdomain")
     private @Nullable String subdomain;
 
     /**
-     * @return Domain of your zone.
+     * @return Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      * 
      */
     public Optional<String> subdomain() {
@@ -33,15 +34,15 @@ public final class GetEmailRoutingDnsPlainArgs extends com.pulumi.resources.Invo
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable String zoneId;
+    @Import(name="zoneId", required=true)
+    private String zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<String> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public String zoneId() {
+        return this.zoneId;
     }
 
     private GetEmailRoutingDnsPlainArgs() {}
@@ -70,7 +71,7 @@ public final class GetEmailRoutingDnsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param subdomain Domain of your zone.
+         * @param subdomain Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
          * 
          * @return builder
          * 
@@ -86,12 +87,15 @@ public final class GetEmailRoutingDnsPlainArgs extends com.pulumi.resources.Invo
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable String zoneId) {
+        public Builder zoneId(String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetEmailRoutingDnsPlainArgs build() {
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetEmailRoutingDnsPlainArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -17304,6 +17304,8 @@ func (o AccessGroupExcludeCommonNamePtrOutput) CommonName() pulumi.StringPtrOutp
 }
 
 type AccessGroupExcludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -17320,6 +17322,8 @@ type AccessGroupExcludeDevicePostureInput interface {
 }
 
 type AccessGroupExcludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -17401,6 +17405,11 @@ func (o AccessGroupExcludeDevicePostureOutput) ToAccessGroupExcludeDevicePosture
 	}).(AccessGroupExcludeDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o AccessGroupExcludeDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o AccessGroupExcludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupExcludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -17428,6 +17437,16 @@ func (o AccessGroupExcludeDevicePosturePtrOutput) Elem() AccessGroupExcludeDevic
 		var ret AccessGroupExcludeDevicePosture
 		return ret
 	}).(AccessGroupExcludeDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o AccessGroupExcludeDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -21289,6 +21308,8 @@ func (o AccessGroupIncludeCommonNamePtrOutput) CommonName() pulumi.StringPtrOutp
 }
 
 type AccessGroupIncludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -21305,6 +21326,8 @@ type AccessGroupIncludeDevicePostureInput interface {
 }
 
 type AccessGroupIncludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -21386,6 +21409,11 @@ func (o AccessGroupIncludeDevicePostureOutput) ToAccessGroupIncludeDevicePosture
 	}).(AccessGroupIncludeDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o AccessGroupIncludeDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o AccessGroupIncludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupIncludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -21413,6 +21441,16 @@ func (o AccessGroupIncludeDevicePosturePtrOutput) Elem() AccessGroupIncludeDevic
 		var ret AccessGroupIncludeDevicePosture
 		return ret
 	}).(AccessGroupIncludeDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o AccessGroupIncludeDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -25274,6 +25312,8 @@ func (o AccessGroupRequireCommonNamePtrOutput) CommonName() pulumi.StringPtrOutp
 }
 
 type AccessGroupRequireDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -25290,6 +25330,8 @@ type AccessGroupRequireDevicePostureInput interface {
 }
 
 type AccessGroupRequireDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -25371,6 +25413,11 @@ func (o AccessGroupRequireDevicePostureOutput) ToAccessGroupRequireDevicePosture
 	}).(AccessGroupRequireDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o AccessGroupRequireDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o AccessGroupRequireDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessGroupRequireDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -25398,6 +25445,16 @@ func (o AccessGroupRequireDevicePosturePtrOutput) Elem() AccessGroupRequireDevic
 		var ret AccessGroupRequireDevicePosture
 		return ret
 	}).(AccessGroupRequireDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o AccessGroupRequireDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupRequireDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -28060,12 +28117,19 @@ type AccessIdentityProviderConfig struct {
 	// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
 	// SAML assertions using the certificate from the assigned certificate set.
 	EnableEncryption *bool `pulumi:"enableEncryption"`
+	// Asks the IdP to reauthenticate the user for each SAML authentication request.
+	ForceAuthn *bool `pulumi:"forceAuthn"`
 	// Add a list of attribute names that will be returned in the response header from the Access callback.
 	HeaderAttributes []AccessIdentityProviderConfigHeaderAttribute `pulumi:"headerAttributes"`
 	// X509 certificate to verify the signature in the SAML authentication response
 	IdpPublicCerts []string `pulumi:"idpPublicCerts"`
 	// IdP Entity ID or Issuer URL
 	IssuerUrl *string `pulumi:"issuerUrl"`
+	// The maximum URL length the IdP accepts for the SSO redirect URL.
+	// When the constructed SSO URL would exceed this length, the RelayState
+	// is stored server-side and a short nonce is passed to the IdP instead.
+	// Set this if your IdP enforces a URL length limit.
+	MaxSsoUrlLength *int `pulumi:"maxSsoUrlLength"`
 	// Your okta account url
 	OktaAccount *string `pulumi:"oktaAccount"`
 	// Your OneLogin account url
@@ -28135,12 +28199,19 @@ type AccessIdentityProviderConfigArgs struct {
 	// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
 	// SAML assertions using the certificate from the assigned certificate set.
 	EnableEncryption pulumi.BoolPtrInput `pulumi:"enableEncryption"`
+	// Asks the IdP to reauthenticate the user for each SAML authentication request.
+	ForceAuthn pulumi.BoolPtrInput `pulumi:"forceAuthn"`
 	// Add a list of attribute names that will be returned in the response header from the Access callback.
 	HeaderAttributes AccessIdentityProviderConfigHeaderAttributeArrayInput `pulumi:"headerAttributes"`
 	// X509 certificate to verify the signature in the SAML authentication response
 	IdpPublicCerts pulumi.StringArrayInput `pulumi:"idpPublicCerts"`
 	// IdP Entity ID or Issuer URL
 	IssuerUrl pulumi.StringPtrInput `pulumi:"issuerUrl"`
+	// The maximum URL length the IdP accepts for the SSO redirect URL.
+	// When the constructed SSO URL would exceed this length, the RelayState
+	// is stored server-side and a short nonce is passed to the IdP instead.
+	// Set this if your IdP enforces a URL length limit.
+	MaxSsoUrlLength pulumi.IntPtrInput `pulumi:"maxSsoUrlLength"`
 	// Your okta account url
 	OktaAccount pulumi.StringPtrInput `pulumi:"oktaAccount"`
 	// Your OneLogin account url
@@ -28320,6 +28391,11 @@ func (o AccessIdentityProviderConfigOutput) EnableEncryption() pulumi.BoolPtrOut
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
 }
 
+// Asks the IdP to reauthenticate the user for each SAML authentication request.
+func (o AccessIdentityProviderConfigOutput) ForceAuthn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *bool { return v.ForceAuthn }).(pulumi.BoolPtrOutput)
+}
+
 // Add a list of attribute names that will be returned in the response header from the Access callback.
 func (o AccessIdentityProviderConfigOutput) HeaderAttributes() AccessIdentityProviderConfigHeaderAttributeArrayOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) []AccessIdentityProviderConfigHeaderAttribute {
@@ -28335,6 +28411,14 @@ func (o AccessIdentityProviderConfigOutput) IdpPublicCerts() pulumi.StringArrayO
 // IdP Entity ID or Issuer URL
 func (o AccessIdentityProviderConfigOutput) IssuerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.IssuerUrl }).(pulumi.StringPtrOutput)
+}
+
+// The maximum URL length the IdP accepts for the SSO redirect URL.
+// When the constructed SSO URL would exceed this length, the RelayState
+// is stored server-side and a short nonce is passed to the IdP instead.
+// Set this if your IdP enforces a URL length limit.
+func (o AccessIdentityProviderConfigOutput) MaxSsoUrlLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *int { return v.MaxSsoUrlLength }).(pulumi.IntPtrOutput)
 }
 
 // Your okta account url
@@ -28572,6 +28656,16 @@ func (o AccessIdentityProviderConfigPtrOutput) EnableEncryption() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Asks the IdP to reauthenticate the user for each SAML authentication request.
+func (o AccessIdentityProviderConfigPtrOutput) ForceAuthn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessIdentityProviderConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceAuthn
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Add a list of attribute names that will be returned in the response header from the Access callback.
 func (o AccessIdentityProviderConfigPtrOutput) HeaderAttributes() AccessIdentityProviderConfigHeaderAttributeArrayOutput {
 	return o.ApplyT(func(v *AccessIdentityProviderConfig) []AccessIdentityProviderConfigHeaderAttribute {
@@ -28600,6 +28694,19 @@ func (o AccessIdentityProviderConfigPtrOutput) IssuerUrl() pulumi.StringPtrOutpu
 		}
 		return v.IssuerUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum URL length the IdP accepts for the SSO redirect URL.
+// When the constructed SSO URL would exceed this length, the RelayState
+// is stored server-side and a short nonce is passed to the IdP instead.
+// Set this if your IdP enforces a URL length limit.
+func (o AccessIdentityProviderConfigPtrOutput) MaxSsoUrlLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessIdentityProviderConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSsoUrlLength
+	}).(pulumi.IntPtrOutput)
 }
 
 // Your okta account url
@@ -32015,6 +32122,8 @@ func (o AccessPolicyExcludeCommonNamePtrOutput) CommonName() pulumi.StringPtrOut
 }
 
 type AccessPolicyExcludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -32031,6 +32140,8 @@ type AccessPolicyExcludeDevicePostureInput interface {
 }
 
 type AccessPolicyExcludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -32112,6 +32223,11 @@ func (o AccessPolicyExcludeDevicePostureOutput) ToAccessPolicyExcludeDevicePostu
 	}).(AccessPolicyExcludeDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o AccessPolicyExcludeDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o AccessPolicyExcludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -32139,6 +32255,16 @@ func (o AccessPolicyExcludeDevicePosturePtrOutput) Elem() AccessPolicyExcludeDev
 		var ret AccessPolicyExcludeDevicePosture
 		return ret
 	}).(AccessPolicyExcludeDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o AccessPolicyExcludeDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -36000,6 +36126,8 @@ func (o AccessPolicyIncludeCommonNamePtrOutput) CommonName() pulumi.StringPtrOut
 }
 
 type AccessPolicyIncludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -36016,6 +36144,8 @@ type AccessPolicyIncludeDevicePostureInput interface {
 }
 
 type AccessPolicyIncludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -36097,6 +36227,11 @@ func (o AccessPolicyIncludeDevicePostureOutput) ToAccessPolicyIncludeDevicePostu
 	}).(AccessPolicyIncludeDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o AccessPolicyIncludeDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o AccessPolicyIncludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -36124,6 +36259,16 @@ func (o AccessPolicyIncludeDevicePosturePtrOutput) Elem() AccessPolicyIncludeDev
 		var ret AccessPolicyIncludeDevicePosture
 		return ret
 	}).(AccessPolicyIncludeDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o AccessPolicyIncludeDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -40160,6 +40305,8 @@ func (o AccessPolicyRequireCommonNamePtrOutput) CommonName() pulumi.StringPtrOut
 }
 
 type AccessPolicyRequireDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId *string `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid string `pulumi:"integrationUid"`
 }
@@ -40176,6 +40323,8 @@ type AccessPolicyRequireDevicePostureInput interface {
 }
 
 type AccessPolicyRequireDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a device posture integration.
 	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
 }
@@ -40257,6 +40406,11 @@ func (o AccessPolicyRequireDevicePostureOutput) ToAccessPolicyRequireDevicePostu
 	}).(AccessPolicyRequireDevicePosturePtrOutput)
 }
 
+// The ID of the account that owns the device posture integration.
+func (o AccessPolicyRequireDevicePostureOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyRequireDevicePosture) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of a device posture integration.
 func (o AccessPolicyRequireDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyRequireDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
@@ -40284,6 +40438,16 @@ func (o AccessPolicyRequireDevicePosturePtrOutput) Elem() AccessPolicyRequireDev
 		var ret AccessPolicyRequireDevicePosture
 		return ret
 	}).(AccessPolicyRequireDevicePostureOutput)
+}
+
+// The ID of the account that owns the device posture integration.
+func (o AccessPolicyRequireDevicePosturePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireDevicePosture) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of a device posture integration.
@@ -53435,8 +53599,8 @@ type AiSearchInstanceSourceParamsWebCrawler struct {
 	ParseOptions    *AiSearchInstanceSourceParamsWebCrawlerParseOptions    `pulumi:"parseOptions"`
 	// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
 	// Available values: "sitemap", "discover".
-	ParseType    *string                                             `pulumi:"parseType"`
-	StoreOptions *AiSearchInstanceSourceParamsWebCrawlerStoreOptions `pulumi:"storeOptions"`
+	ParseType    *string                                            `pulumi:"parseType"`
+	StoreOptions AiSearchInstanceSourceParamsWebCrawlerStoreOptions `pulumi:"storeOptions"`
 }
 
 // AiSearchInstanceSourceParamsWebCrawlerInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerArgs and AiSearchInstanceSourceParamsWebCrawlerOutput values.
@@ -53456,8 +53620,8 @@ type AiSearchInstanceSourceParamsWebCrawlerArgs struct {
 	ParseOptions    AiSearchInstanceSourceParamsWebCrawlerParseOptionsPtrInput    `pulumi:"parseOptions"`
 	// How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account.
 	// Available values: "sitemap", "discover".
-	ParseType    pulumi.StringPtrInput                                      `pulumi:"parseType"`
-	StoreOptions AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrInput `pulumi:"storeOptions"`
+	ParseType    pulumi.StringPtrInput                                   `pulumi:"parseType"`
+	StoreOptions AiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput `pulumi:"storeOptions"`
 }
 
 func (AiSearchInstanceSourceParamsWebCrawlerArgs) ElementType() reflect.Type {
@@ -53556,10 +53720,10 @@ func (o AiSearchInstanceSourceParamsWebCrawlerOutput) ParseType() pulumi.StringP
 	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) *string { return v.ParseType }).(pulumi.StringPtrOutput)
 }
 
-func (o AiSearchInstanceSourceParamsWebCrawlerOutput) StoreOptions() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput {
-	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) *AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
+func (o AiSearchInstanceSourceParamsWebCrawlerOutput) StoreOptions() AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawler) AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
 		return v.StoreOptions
-	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput)
+	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput)
 }
 
 type AiSearchInstanceSourceParamsWebCrawlerPtrOutput struct{ *pulumi.OutputState }
@@ -53621,7 +53785,7 @@ func (o AiSearchInstanceSourceParamsWebCrawlerPtrOutput) StoreOptions() AiSearch
 		if v == nil {
 			return nil
 		}
-		return v.StoreOptions
+		return &v.StoreOptions
 	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput)
 }
 
@@ -54175,10 +54339,9 @@ func (o AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArrayOu
 }
 
 type AiSearchInstanceSourceParamsWebCrawlerStoreOptions struct {
-	R2Jurisdiction *string `pulumi:"r2Jurisdiction"`
-	StorageId      string  `pulumi:"storageId"`
-	// Available values: "r2".
-	StorageType *string `pulumi:"storageType"`
+	R2Jurisdiction string `pulumi:"r2Jurisdiction"`
+	StorageId      string `pulumi:"storageId"`
+	StorageType    string `pulumi:"storageType"`
 }
 
 // AiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput is an input type that accepts AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs and AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput values.
@@ -54193,10 +54356,9 @@ type AiSearchInstanceSourceParamsWebCrawlerStoreOptionsInput interface {
 }
 
 type AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs struct {
-	R2Jurisdiction pulumi.StringPtrInput `pulumi:"r2Jurisdiction"`
-	StorageId      pulumi.StringInput    `pulumi:"storageId"`
-	// Available values: "r2".
-	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
+	R2Jurisdiction pulumi.StringInput `pulumi:"r2Jurisdiction"`
+	StorageId      pulumi.StringInput `pulumi:"storageId"`
+	StorageType    pulumi.StringInput `pulumi:"storageType"`
 }
 
 func (AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs) ElementType() reflect.Type {
@@ -54276,17 +54438,16 @@ func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) ToAiSearchInst
 	}).(AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput)
 }
 
-func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) R2Jurisdiction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *string { return v.R2Jurisdiction }).(pulumi.StringPtrOutput)
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) R2Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) string { return v.R2Jurisdiction }).(pulumi.StringOutput)
 }
 
 func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) StorageId() pulumi.StringOutput {
 	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) string { return v.StorageId }).(pulumi.StringOutput)
 }
 
-// Available values: "r2".
-func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) StorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *string { return v.StorageType }).(pulumi.StringPtrOutput)
+func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v AiSearchInstanceSourceParamsWebCrawlerStoreOptions) string { return v.StorageType }).(pulumi.StringOutput)
 }
 
 type AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -54318,7 +54479,7 @@ func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) R2Jurisdict
 		if v == nil {
 			return nil
 		}
-		return v.R2Jurisdiction
+		return &v.R2Jurisdiction
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54331,13 +54492,12 @@ func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) StorageId()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Available values: "r2".
 func (o AiSearchInstanceSourceParamsWebCrawlerStoreOptionsPtrOutput) StorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstanceSourceParamsWebCrawlerStoreOptions) *string {
 		if v == nil {
 			return nil
 		}
-		return v.StorageType
+		return &v.StorageType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56945,8 +57105,6 @@ func (o ApiShieldOperationFeaturesParameterSchemasParameterSchemasPtrOutput) Res
 type ApiShieldOperationFeaturesSchemaInfo struct {
 	// Schema active on endpoint.
 	ActiveSchema *ApiShieldOperationFeaturesSchemaInfoActiveSchema `pulumi:"activeSchema"`
-	// Deprecated. Always false.
-	LearnedAvailable *bool `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
 	MitigationAction *string `pulumi:"mitigationAction"`
@@ -56966,8 +57124,6 @@ type ApiShieldOperationFeaturesSchemaInfoInput interface {
 type ApiShieldOperationFeaturesSchemaInfoArgs struct {
 	// Schema active on endpoint.
 	ActiveSchema ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrInput `pulumi:"activeSchema"`
-	// Deprecated. Always false.
-	LearnedAvailable pulumi.BoolPtrInput `pulumi:"learnedAvailable"`
 	// Action taken on requests failing validation.
 	// Available values: "none", "log", "block".
 	MitigationAction pulumi.StringPtrInput `pulumi:"mitigationAction"`
@@ -57057,11 +57213,6 @@ func (o ApiShieldOperationFeaturesSchemaInfoOutput) ActiveSchema() ApiShieldOper
 	}).(ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrOutput)
 }
 
-// Deprecated. Always false.
-func (o ApiShieldOperationFeaturesSchemaInfoOutput) LearnedAvailable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApiShieldOperationFeaturesSchemaInfo) *bool { return v.LearnedAvailable }).(pulumi.BoolPtrOutput)
-}
-
 // Action taken on requests failing validation.
 // Available values: "none", "log", "block".
 func (o ApiShieldOperationFeaturesSchemaInfoOutput) MitigationAction() pulumi.StringPtrOutput {
@@ -57102,16 +57253,6 @@ func (o ApiShieldOperationFeaturesSchemaInfoPtrOutput) ActiveSchema() ApiShieldO
 	}).(ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrOutput)
 }
 
-// Deprecated. Always false.
-func (o ApiShieldOperationFeaturesSchemaInfoPtrOutput) LearnedAvailable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ApiShieldOperationFeaturesSchemaInfo) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.LearnedAvailable
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Action taken on requests failing validation.
 // Available values: "none", "log", "block".
 func (o ApiShieldOperationFeaturesSchemaInfoPtrOutput) MitigationAction() pulumi.StringPtrOutput {
@@ -57127,8 +57268,6 @@ type ApiShieldOperationFeaturesSchemaInfoActiveSchema struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// UUID.
 	Id *string `pulumi:"id"`
-	// True if schema is Cloudflare-provided.
-	IsLearned *bool `pulumi:"isLearned"`
 	// Schema file name.
 	Name *string `pulumi:"name"`
 }
@@ -57148,8 +57287,6 @@ type ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs struct {
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
 	// UUID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// True if schema is Cloudflare-provided.
-	IsLearned pulumi.BoolPtrInput `pulumi:"isLearned"`
 	// Schema file name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -57240,11 +57377,6 @@ func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput) Id() pulumi.Stri
 	return o.ApplyT(func(v ApiShieldOperationFeaturesSchemaInfoActiveSchema) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// True if schema is Cloudflare-provided.
-func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput) IsLearned() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApiShieldOperationFeaturesSchemaInfoActiveSchema) *bool { return v.IsLearned }).(pulumi.BoolPtrOutput)
-}
-
 // Schema file name.
 func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiShieldOperationFeaturesSchemaInfoActiveSchema) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -57291,16 +57423,6 @@ func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrOutput) Id() pulumi.S
 		}
 		return v.Id
 	}).(pulumi.StringPtrOutput)
-}
-
-// True if schema is Cloudflare-provided.
-func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrOutput) IsLearned() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ApiShieldOperationFeaturesSchemaInfoActiveSchema) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsLearned
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Schema file name.
@@ -60325,15 +60447,15 @@ func (o ClientCertificateCertificateAuthorityPtrOutput) Name() pulumi.StringPtrO
 }
 
 type CloudConnectorRulesRule struct {
-	Description *string `pulumi:"description"`
-	Enabled     *bool   `pulumi:"enabled"`
-	Expression  *string `pulumi:"expression"`
-	Id          *string `pulumi:"id"`
-	// Parameters of Cloud Connector Rule
-	Parameters *CloudConnectorRulesRuleParameters `pulumi:"parameters"`
 	// Cloud Provider type
 	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
-	Provider *string `pulumi:"provider"`
+	CloudConnectorRulesProvider *string `pulumi:"cloudConnectorRulesProvider"`
+	Description                 *string `pulumi:"description"`
+	Enabled                     *bool   `pulumi:"enabled"`
+	Expression                  *string `pulumi:"expression"`
+	Id                          *string `pulumi:"id"`
+	// Parameters of Cloud Connector Rule
+	Parameters *CloudConnectorRulesRuleParameters `pulumi:"parameters"`
 }
 
 // CloudConnectorRulesRuleInput is an input type that accepts CloudConnectorRulesRuleArgs and CloudConnectorRulesRuleOutput values.
@@ -60348,15 +60470,15 @@ type CloudConnectorRulesRuleInput interface {
 }
 
 type CloudConnectorRulesRuleArgs struct {
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Expression  pulumi.StringPtrInput `pulumi:"expression"`
-	Id          pulumi.StringPtrInput `pulumi:"id"`
-	// Parameters of Cloud Connector Rule
-	Parameters CloudConnectorRulesRuleParametersPtrInput `pulumi:"parameters"`
 	// Cloud Provider type
 	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
-	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	CloudConnectorRulesProvider pulumi.StringPtrInput `pulumi:"cloudConnectorRulesProvider"`
+	Description                 pulumi.StringPtrInput `pulumi:"description"`
+	Enabled                     pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Expression                  pulumi.StringPtrInput `pulumi:"expression"`
+	Id                          pulumi.StringPtrInput `pulumi:"id"`
+	// Parameters of Cloud Connector Rule
+	Parameters CloudConnectorRulesRuleParametersPtrInput `pulumi:"parameters"`
 }
 
 func (CloudConnectorRulesRuleArgs) ElementType() reflect.Type {
@@ -60410,6 +60532,12 @@ func (o CloudConnectorRulesRuleOutput) ToCloudConnectorRulesRuleOutputWithContex
 	return o
 }
 
+// Cloud Provider type
+// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
+func (o CloudConnectorRulesRuleOutput) CloudConnectorRulesProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.CloudConnectorRulesProvider }).(pulumi.StringPtrOutput)
+}
+
 func (o CloudConnectorRulesRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -60429,12 +60557,6 @@ func (o CloudConnectorRulesRuleOutput) Id() pulumi.StringPtrOutput {
 // Parameters of Cloud Connector Rule
 func (o CloudConnectorRulesRuleOutput) Parameters() CloudConnectorRulesRuleParametersPtrOutput {
 	return o.ApplyT(func(v CloudConnectorRulesRule) *CloudConnectorRulesRuleParameters { return v.Parameters }).(CloudConnectorRulesRuleParametersPtrOutput)
-}
-
-// Cloud Provider type
-// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage", "ociStorage".
-func (o CloudConnectorRulesRuleOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
 type CloudConnectorRulesRuleArrayOutput struct{ *pulumi.OutputState }
@@ -61208,7 +61330,7 @@ func (o ConnectivityDirectoryServiceTlsSettingsPtrOutput) CertVerificationMode()
 }
 
 type ContentScanningExpressionBody struct {
-	// Defines the ruleset expression to use in matching content objects.
+	// Defines the custom content extraction expression used to reach content objects in the request.
 	Payload string `pulumi:"payload"`
 }
 
@@ -61224,7 +61346,7 @@ type ContentScanningExpressionBodyInput interface {
 }
 
 type ContentScanningExpressionBodyArgs struct {
-	// Defines the ruleset expression to use in matching content objects.
+	// Defines the custom content extraction expression used to reach content objects in the request.
 	Payload pulumi.StringInput `pulumi:"payload"`
 }
 
@@ -61279,7 +61401,7 @@ func (o ContentScanningExpressionBodyOutput) ToContentScanningExpressionBodyOutp
 	return o
 }
 
-// Defines the ruleset expression to use in matching content objects.
+// Defines the custom content extraction expression used to reach content objects in the request.
 func (o ContentScanningExpressionBodyOutput) Payload() pulumi.StringOutput {
 	return o.ApplyT(func(v ContentScanningExpressionBody) string { return v.Payload }).(pulumi.StringOutput)
 }
@@ -66844,1412 +66966,6 @@ func (o EmailRoutingCatchAllMatcherArrayOutput) Index(i pulumi.IntInput) EmailRo
 	}).(EmailRoutingCatchAllMatcherOutput)
 }
 
-type EmailRoutingDnsError struct {
-	Code             *int                        `pulumi:"code"`
-	DocumentationUrl *string                     `pulumi:"documentationUrl"`
-	Message          *string                     `pulumi:"message"`
-	Source           *EmailRoutingDnsErrorSource `pulumi:"source"`
-}
-
-// EmailRoutingDnsErrorInput is an input type that accepts EmailRoutingDnsErrorArgs and EmailRoutingDnsErrorOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsErrorInput` via:
-//
-//	EmailRoutingDnsErrorArgs{...}
-type EmailRoutingDnsErrorInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsErrorOutput() EmailRoutingDnsErrorOutput
-	ToEmailRoutingDnsErrorOutputWithContext(context.Context) EmailRoutingDnsErrorOutput
-}
-
-type EmailRoutingDnsErrorArgs struct {
-	Code             pulumi.IntPtrInput                 `pulumi:"code"`
-	DocumentationUrl pulumi.StringPtrInput              `pulumi:"documentationUrl"`
-	Message          pulumi.StringPtrInput              `pulumi:"message"`
-	Source           EmailRoutingDnsErrorSourcePtrInput `pulumi:"source"`
-}
-
-func (EmailRoutingDnsErrorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsError)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsErrorArgs) ToEmailRoutingDnsErrorOutput() EmailRoutingDnsErrorOutput {
-	return i.ToEmailRoutingDnsErrorOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsErrorArgs) ToEmailRoutingDnsErrorOutputWithContext(ctx context.Context) EmailRoutingDnsErrorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsErrorOutput)
-}
-
-// EmailRoutingDnsErrorArrayInput is an input type that accepts EmailRoutingDnsErrorArray and EmailRoutingDnsErrorArrayOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsErrorArrayInput` via:
-//
-//	EmailRoutingDnsErrorArray{ EmailRoutingDnsErrorArgs{...} }
-type EmailRoutingDnsErrorArrayInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsErrorArrayOutput() EmailRoutingDnsErrorArrayOutput
-	ToEmailRoutingDnsErrorArrayOutputWithContext(context.Context) EmailRoutingDnsErrorArrayOutput
-}
-
-type EmailRoutingDnsErrorArray []EmailRoutingDnsErrorInput
-
-func (EmailRoutingDnsErrorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailRoutingDnsError)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsErrorArray) ToEmailRoutingDnsErrorArrayOutput() EmailRoutingDnsErrorArrayOutput {
-	return i.ToEmailRoutingDnsErrorArrayOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsErrorArray) ToEmailRoutingDnsErrorArrayOutputWithContext(ctx context.Context) EmailRoutingDnsErrorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsErrorArrayOutput)
-}
-
-type EmailRoutingDnsErrorOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsError)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsErrorOutput) ToEmailRoutingDnsErrorOutput() EmailRoutingDnsErrorOutput {
-	return o
-}
-
-func (o EmailRoutingDnsErrorOutput) ToEmailRoutingDnsErrorOutputWithContext(ctx context.Context) EmailRoutingDnsErrorOutput {
-	return o
-}
-
-func (o EmailRoutingDnsErrorOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsError) *int { return v.Code }).(pulumi.IntPtrOutput)
-}
-
-func (o EmailRoutingDnsErrorOutput) DocumentationUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsError) *string { return v.DocumentationUrl }).(pulumi.StringPtrOutput)
-}
-
-func (o EmailRoutingDnsErrorOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsError) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-func (o EmailRoutingDnsErrorOutput) Source() EmailRoutingDnsErrorSourcePtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsError) *EmailRoutingDnsErrorSource { return v.Source }).(EmailRoutingDnsErrorSourcePtrOutput)
-}
-
-type EmailRoutingDnsErrorArrayOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsErrorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailRoutingDnsError)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsErrorArrayOutput) ToEmailRoutingDnsErrorArrayOutput() EmailRoutingDnsErrorArrayOutput {
-	return o
-}
-
-func (o EmailRoutingDnsErrorArrayOutput) ToEmailRoutingDnsErrorArrayOutputWithContext(ctx context.Context) EmailRoutingDnsErrorArrayOutput {
-	return o
-}
-
-func (o EmailRoutingDnsErrorArrayOutput) Index(i pulumi.IntInput) EmailRoutingDnsErrorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailRoutingDnsError {
-		return vs[0].([]EmailRoutingDnsError)[vs[1].(int)]
-	}).(EmailRoutingDnsErrorOutput)
-}
-
-type EmailRoutingDnsErrorSource struct {
-	Pointer *string `pulumi:"pointer"`
-}
-
-// EmailRoutingDnsErrorSourceInput is an input type that accepts EmailRoutingDnsErrorSourceArgs and EmailRoutingDnsErrorSourceOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsErrorSourceInput` via:
-//
-//	EmailRoutingDnsErrorSourceArgs{...}
-type EmailRoutingDnsErrorSourceInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsErrorSourceOutput() EmailRoutingDnsErrorSourceOutput
-	ToEmailRoutingDnsErrorSourceOutputWithContext(context.Context) EmailRoutingDnsErrorSourceOutput
-}
-
-type EmailRoutingDnsErrorSourceArgs struct {
-	Pointer pulumi.StringPtrInput `pulumi:"pointer"`
-}
-
-func (EmailRoutingDnsErrorSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsErrorSource)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsErrorSourceArgs) ToEmailRoutingDnsErrorSourceOutput() EmailRoutingDnsErrorSourceOutput {
-	return i.ToEmailRoutingDnsErrorSourceOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsErrorSourceArgs) ToEmailRoutingDnsErrorSourceOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsErrorSourceOutput)
-}
-
-func (i EmailRoutingDnsErrorSourceArgs) ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput {
-	return i.ToEmailRoutingDnsErrorSourcePtrOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsErrorSourceArgs) ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsErrorSourceOutput).ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx)
-}
-
-// EmailRoutingDnsErrorSourcePtrInput is an input type that accepts EmailRoutingDnsErrorSourceArgs, EmailRoutingDnsErrorSourcePtr and EmailRoutingDnsErrorSourcePtrOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsErrorSourcePtrInput` via:
-//
-//	        EmailRoutingDnsErrorSourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type EmailRoutingDnsErrorSourcePtrInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput
-	ToEmailRoutingDnsErrorSourcePtrOutputWithContext(context.Context) EmailRoutingDnsErrorSourcePtrOutput
-}
-
-type emailRoutingDnsErrorSourcePtrType EmailRoutingDnsErrorSourceArgs
-
-func EmailRoutingDnsErrorSourcePtr(v *EmailRoutingDnsErrorSourceArgs) EmailRoutingDnsErrorSourcePtrInput {
-	return (*emailRoutingDnsErrorSourcePtrType)(v)
-}
-
-func (*emailRoutingDnsErrorSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsErrorSource)(nil)).Elem()
-}
-
-func (i *emailRoutingDnsErrorSourcePtrType) ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput {
-	return i.ToEmailRoutingDnsErrorSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *emailRoutingDnsErrorSourcePtrType) ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsErrorSourcePtrOutput)
-}
-
-type EmailRoutingDnsErrorSourceOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsErrorSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsErrorSource)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsErrorSourceOutput) ToEmailRoutingDnsErrorSourceOutput() EmailRoutingDnsErrorSourceOutput {
-	return o
-}
-
-func (o EmailRoutingDnsErrorSourceOutput) ToEmailRoutingDnsErrorSourceOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourceOutput {
-	return o
-}
-
-func (o EmailRoutingDnsErrorSourceOutput) ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput {
-	return o.ToEmailRoutingDnsErrorSourcePtrOutputWithContext(context.Background())
-}
-
-func (o EmailRoutingDnsErrorSourceOutput) ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailRoutingDnsErrorSource) *EmailRoutingDnsErrorSource {
-		return &v
-	}).(EmailRoutingDnsErrorSourcePtrOutput)
-}
-
-func (o EmailRoutingDnsErrorSourceOutput) Pointer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsErrorSource) *string { return v.Pointer }).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsErrorSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsErrorSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsErrorSource)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsErrorSourcePtrOutput) ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsErrorSourcePtrOutput) ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourcePtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsErrorSourcePtrOutput) Elem() EmailRoutingDnsErrorSourceOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsErrorSource) EmailRoutingDnsErrorSource {
-		if v != nil {
-			return *v
-		}
-		var ret EmailRoutingDnsErrorSource
-		return ret
-	}).(EmailRoutingDnsErrorSourceOutput)
-}
-
-func (o EmailRoutingDnsErrorSourcePtrOutput) Pointer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsErrorSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Pointer
-	}).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsMessage struct {
-	Code             *int                          `pulumi:"code"`
-	DocumentationUrl *string                       `pulumi:"documentationUrl"`
-	Message          *string                       `pulumi:"message"`
-	Source           *EmailRoutingDnsMessageSource `pulumi:"source"`
-}
-
-// EmailRoutingDnsMessageInput is an input type that accepts EmailRoutingDnsMessageArgs and EmailRoutingDnsMessageOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsMessageInput` via:
-//
-//	EmailRoutingDnsMessageArgs{...}
-type EmailRoutingDnsMessageInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsMessageOutput() EmailRoutingDnsMessageOutput
-	ToEmailRoutingDnsMessageOutputWithContext(context.Context) EmailRoutingDnsMessageOutput
-}
-
-type EmailRoutingDnsMessageArgs struct {
-	Code             pulumi.IntPtrInput                   `pulumi:"code"`
-	DocumentationUrl pulumi.StringPtrInput                `pulumi:"documentationUrl"`
-	Message          pulumi.StringPtrInput                `pulumi:"message"`
-	Source           EmailRoutingDnsMessageSourcePtrInput `pulumi:"source"`
-}
-
-func (EmailRoutingDnsMessageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsMessage)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsMessageArgs) ToEmailRoutingDnsMessageOutput() EmailRoutingDnsMessageOutput {
-	return i.ToEmailRoutingDnsMessageOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsMessageArgs) ToEmailRoutingDnsMessageOutputWithContext(ctx context.Context) EmailRoutingDnsMessageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsMessageOutput)
-}
-
-// EmailRoutingDnsMessageArrayInput is an input type that accepts EmailRoutingDnsMessageArray and EmailRoutingDnsMessageArrayOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsMessageArrayInput` via:
-//
-//	EmailRoutingDnsMessageArray{ EmailRoutingDnsMessageArgs{...} }
-type EmailRoutingDnsMessageArrayInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsMessageArrayOutput() EmailRoutingDnsMessageArrayOutput
-	ToEmailRoutingDnsMessageArrayOutputWithContext(context.Context) EmailRoutingDnsMessageArrayOutput
-}
-
-type EmailRoutingDnsMessageArray []EmailRoutingDnsMessageInput
-
-func (EmailRoutingDnsMessageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailRoutingDnsMessage)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsMessageArray) ToEmailRoutingDnsMessageArrayOutput() EmailRoutingDnsMessageArrayOutput {
-	return i.ToEmailRoutingDnsMessageArrayOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsMessageArray) ToEmailRoutingDnsMessageArrayOutputWithContext(ctx context.Context) EmailRoutingDnsMessageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsMessageArrayOutput)
-}
-
-type EmailRoutingDnsMessageOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsMessageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsMessage)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsMessageOutput) ToEmailRoutingDnsMessageOutput() EmailRoutingDnsMessageOutput {
-	return o
-}
-
-func (o EmailRoutingDnsMessageOutput) ToEmailRoutingDnsMessageOutputWithContext(ctx context.Context) EmailRoutingDnsMessageOutput {
-	return o
-}
-
-func (o EmailRoutingDnsMessageOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsMessage) *int { return v.Code }).(pulumi.IntPtrOutput)
-}
-
-func (o EmailRoutingDnsMessageOutput) DocumentationUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsMessage) *string { return v.DocumentationUrl }).(pulumi.StringPtrOutput)
-}
-
-func (o EmailRoutingDnsMessageOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsMessage) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-func (o EmailRoutingDnsMessageOutput) Source() EmailRoutingDnsMessageSourcePtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsMessage) *EmailRoutingDnsMessageSource { return v.Source }).(EmailRoutingDnsMessageSourcePtrOutput)
-}
-
-type EmailRoutingDnsMessageArrayOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsMessageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailRoutingDnsMessage)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsMessageArrayOutput) ToEmailRoutingDnsMessageArrayOutput() EmailRoutingDnsMessageArrayOutput {
-	return o
-}
-
-func (o EmailRoutingDnsMessageArrayOutput) ToEmailRoutingDnsMessageArrayOutputWithContext(ctx context.Context) EmailRoutingDnsMessageArrayOutput {
-	return o
-}
-
-func (o EmailRoutingDnsMessageArrayOutput) Index(i pulumi.IntInput) EmailRoutingDnsMessageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailRoutingDnsMessage {
-		return vs[0].([]EmailRoutingDnsMessage)[vs[1].(int)]
-	}).(EmailRoutingDnsMessageOutput)
-}
-
-type EmailRoutingDnsMessageSource struct {
-	Pointer *string `pulumi:"pointer"`
-}
-
-// EmailRoutingDnsMessageSourceInput is an input type that accepts EmailRoutingDnsMessageSourceArgs and EmailRoutingDnsMessageSourceOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsMessageSourceInput` via:
-//
-//	EmailRoutingDnsMessageSourceArgs{...}
-type EmailRoutingDnsMessageSourceInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsMessageSourceOutput() EmailRoutingDnsMessageSourceOutput
-	ToEmailRoutingDnsMessageSourceOutputWithContext(context.Context) EmailRoutingDnsMessageSourceOutput
-}
-
-type EmailRoutingDnsMessageSourceArgs struct {
-	Pointer pulumi.StringPtrInput `pulumi:"pointer"`
-}
-
-func (EmailRoutingDnsMessageSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsMessageSource)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsMessageSourceArgs) ToEmailRoutingDnsMessageSourceOutput() EmailRoutingDnsMessageSourceOutput {
-	return i.ToEmailRoutingDnsMessageSourceOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsMessageSourceArgs) ToEmailRoutingDnsMessageSourceOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsMessageSourceOutput)
-}
-
-func (i EmailRoutingDnsMessageSourceArgs) ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput {
-	return i.ToEmailRoutingDnsMessageSourcePtrOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsMessageSourceArgs) ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsMessageSourceOutput).ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx)
-}
-
-// EmailRoutingDnsMessageSourcePtrInput is an input type that accepts EmailRoutingDnsMessageSourceArgs, EmailRoutingDnsMessageSourcePtr and EmailRoutingDnsMessageSourcePtrOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsMessageSourcePtrInput` via:
-//
-//	        EmailRoutingDnsMessageSourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type EmailRoutingDnsMessageSourcePtrInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput
-	ToEmailRoutingDnsMessageSourcePtrOutputWithContext(context.Context) EmailRoutingDnsMessageSourcePtrOutput
-}
-
-type emailRoutingDnsMessageSourcePtrType EmailRoutingDnsMessageSourceArgs
-
-func EmailRoutingDnsMessageSourcePtr(v *EmailRoutingDnsMessageSourceArgs) EmailRoutingDnsMessageSourcePtrInput {
-	return (*emailRoutingDnsMessageSourcePtrType)(v)
-}
-
-func (*emailRoutingDnsMessageSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsMessageSource)(nil)).Elem()
-}
-
-func (i *emailRoutingDnsMessageSourcePtrType) ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput {
-	return i.ToEmailRoutingDnsMessageSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *emailRoutingDnsMessageSourcePtrType) ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsMessageSourcePtrOutput)
-}
-
-type EmailRoutingDnsMessageSourceOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsMessageSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsMessageSource)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsMessageSourceOutput) ToEmailRoutingDnsMessageSourceOutput() EmailRoutingDnsMessageSourceOutput {
-	return o
-}
-
-func (o EmailRoutingDnsMessageSourceOutput) ToEmailRoutingDnsMessageSourceOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourceOutput {
-	return o
-}
-
-func (o EmailRoutingDnsMessageSourceOutput) ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput {
-	return o.ToEmailRoutingDnsMessageSourcePtrOutputWithContext(context.Background())
-}
-
-func (o EmailRoutingDnsMessageSourceOutput) ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailRoutingDnsMessageSource) *EmailRoutingDnsMessageSource {
-		return &v
-	}).(EmailRoutingDnsMessageSourcePtrOutput)
-}
-
-func (o EmailRoutingDnsMessageSourceOutput) Pointer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsMessageSource) *string { return v.Pointer }).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsMessageSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsMessageSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsMessageSource)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsMessageSourcePtrOutput) ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsMessageSourcePtrOutput) ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourcePtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsMessageSourcePtrOutput) Elem() EmailRoutingDnsMessageSourceOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsMessageSource) EmailRoutingDnsMessageSource {
-		if v != nil {
-			return *v
-		}
-		var ret EmailRoutingDnsMessageSource
-		return ret
-	}).(EmailRoutingDnsMessageSourceOutput)
-}
-
-func (o EmailRoutingDnsMessageSourcePtrOutput) Pointer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsMessageSource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Pointer
-	}).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsResult struct {
-	// DNS record content.
-	Content *string                      `pulumi:"content"`
-	Errors  []EmailRoutingDnsResultError `pulumi:"errors"`
-	// DNS record name (or @ for the zone apex).
-	Name *string `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority *float64                      `pulumi:"priority"`
-	Records  []EmailRoutingDnsResultRecord `pulumi:"records"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl *float64 `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type *string `pulumi:"type"`
-}
-
-// EmailRoutingDnsResultInput is an input type that accepts EmailRoutingDnsResultArgs and EmailRoutingDnsResultOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultInput` via:
-//
-//	EmailRoutingDnsResultArgs{...}
-type EmailRoutingDnsResultInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultOutput() EmailRoutingDnsResultOutput
-	ToEmailRoutingDnsResultOutputWithContext(context.Context) EmailRoutingDnsResultOutput
-}
-
-type EmailRoutingDnsResultArgs struct {
-	// DNS record content.
-	Content pulumi.StringPtrInput                `pulumi:"content"`
-	Errors  EmailRoutingDnsResultErrorArrayInput `pulumi:"errors"`
-	// DNS record name (or @ for the zone apex).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority pulumi.Float64PtrInput                `pulumi:"priority"`
-	Records  EmailRoutingDnsResultRecordArrayInput `pulumi:"records"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl pulumi.Float64PtrInput `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (EmailRoutingDnsResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResult)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsResultArgs) ToEmailRoutingDnsResultOutput() EmailRoutingDnsResultOutput {
-	return i.ToEmailRoutingDnsResultOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultArgs) ToEmailRoutingDnsResultOutputWithContext(ctx context.Context) EmailRoutingDnsResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultOutput)
-}
-
-func (i EmailRoutingDnsResultArgs) ToEmailRoutingDnsResultPtrOutput() EmailRoutingDnsResultPtrOutput {
-	return i.ToEmailRoutingDnsResultPtrOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultArgs) ToEmailRoutingDnsResultPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultOutput).ToEmailRoutingDnsResultPtrOutputWithContext(ctx)
-}
-
-// EmailRoutingDnsResultPtrInput is an input type that accepts EmailRoutingDnsResultArgs, EmailRoutingDnsResultPtr and EmailRoutingDnsResultPtrOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultPtrInput` via:
-//
-//	        EmailRoutingDnsResultArgs{...}
-//
-//	or:
-//
-//	        nil
-type EmailRoutingDnsResultPtrInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultPtrOutput() EmailRoutingDnsResultPtrOutput
-	ToEmailRoutingDnsResultPtrOutputWithContext(context.Context) EmailRoutingDnsResultPtrOutput
-}
-
-type emailRoutingDnsResultPtrType EmailRoutingDnsResultArgs
-
-func EmailRoutingDnsResultPtr(v *EmailRoutingDnsResultArgs) EmailRoutingDnsResultPtrInput {
-	return (*emailRoutingDnsResultPtrType)(v)
-}
-
-func (*emailRoutingDnsResultPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsResult)(nil)).Elem()
-}
-
-func (i *emailRoutingDnsResultPtrType) ToEmailRoutingDnsResultPtrOutput() EmailRoutingDnsResultPtrOutput {
-	return i.ToEmailRoutingDnsResultPtrOutputWithContext(context.Background())
-}
-
-func (i *emailRoutingDnsResultPtrType) ToEmailRoutingDnsResultPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultPtrOutput)
-}
-
-type EmailRoutingDnsResultOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResult)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultOutput) ToEmailRoutingDnsResultOutput() EmailRoutingDnsResultOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultOutput) ToEmailRoutingDnsResultOutputWithContext(ctx context.Context) EmailRoutingDnsResultOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultOutput) ToEmailRoutingDnsResultPtrOutput() EmailRoutingDnsResultPtrOutput {
-	return o.ToEmailRoutingDnsResultPtrOutputWithContext(context.Background())
-}
-
-func (o EmailRoutingDnsResultOutput) ToEmailRoutingDnsResultPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailRoutingDnsResult) *EmailRoutingDnsResult {
-		return &v
-	}).(EmailRoutingDnsResultPtrOutput)
-}
-
-// DNS record content.
-func (o EmailRoutingDnsResultOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResult) *string { return v.Content }).(pulumi.StringPtrOutput)
-}
-
-func (o EmailRoutingDnsResultOutput) Errors() EmailRoutingDnsResultErrorArrayOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResult) []EmailRoutingDnsResultError { return v.Errors }).(EmailRoutingDnsResultErrorArrayOutput)
-}
-
-// DNS record name (or @ for the zone apex).
-func (o EmailRoutingDnsResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-func (o EmailRoutingDnsResultOutput) Priority() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResult) *float64 { return v.Priority }).(pulumi.Float64PtrOutput)
-}
-
-func (o EmailRoutingDnsResultOutput) Records() EmailRoutingDnsResultRecordArrayOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResult) []EmailRoutingDnsResultRecord { return v.Records }).(EmailRoutingDnsResultRecordArrayOutput)
-}
-
-// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-func (o EmailRoutingDnsResultOutput) Ttl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResult) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
-}
-
-// DNS record type.
-// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-func (o EmailRoutingDnsResultOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsResultPtrOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsResult)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultPtrOutput) ToEmailRoutingDnsResultPtrOutput() EmailRoutingDnsResultPtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultPtrOutput) ToEmailRoutingDnsResultPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultPtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultPtrOutput) Elem() EmailRoutingDnsResultOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResult) EmailRoutingDnsResult {
-		if v != nil {
-			return *v
-		}
-		var ret EmailRoutingDnsResult
-		return ret
-	}).(EmailRoutingDnsResultOutput)
-}
-
-// DNS record content.
-func (o EmailRoutingDnsResultPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResult) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Content
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o EmailRoutingDnsResultPtrOutput) Errors() EmailRoutingDnsResultErrorArrayOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResult) []EmailRoutingDnsResultError {
-		if v == nil {
-			return nil
-		}
-		return v.Errors
-	}).(EmailRoutingDnsResultErrorArrayOutput)
-}
-
-// DNS record name (or @ for the zone apex).
-func (o EmailRoutingDnsResultPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResult) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-func (o EmailRoutingDnsResultPtrOutput) Priority() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResult) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Priority
-	}).(pulumi.Float64PtrOutput)
-}
-
-func (o EmailRoutingDnsResultPtrOutput) Records() EmailRoutingDnsResultRecordArrayOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResult) []EmailRoutingDnsResultRecord {
-		if v == nil {
-			return nil
-		}
-		return v.Records
-	}).(EmailRoutingDnsResultRecordArrayOutput)
-}
-
-// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-func (o EmailRoutingDnsResultPtrOutput) Ttl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResult) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Ttl
-	}).(pulumi.Float64PtrOutput)
-}
-
-// DNS record type.
-// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-func (o EmailRoutingDnsResultPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResult) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsResultError struct {
-	Code *string `pulumi:"code"`
-	// List of records needed to enable an Email Routing zone.
-	Missing *EmailRoutingDnsResultErrorMissing `pulumi:"missing"`
-}
-
-// EmailRoutingDnsResultErrorInput is an input type that accepts EmailRoutingDnsResultErrorArgs and EmailRoutingDnsResultErrorOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultErrorInput` via:
-//
-//	EmailRoutingDnsResultErrorArgs{...}
-type EmailRoutingDnsResultErrorInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultErrorOutput() EmailRoutingDnsResultErrorOutput
-	ToEmailRoutingDnsResultErrorOutputWithContext(context.Context) EmailRoutingDnsResultErrorOutput
-}
-
-type EmailRoutingDnsResultErrorArgs struct {
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// List of records needed to enable an Email Routing zone.
-	Missing EmailRoutingDnsResultErrorMissingPtrInput `pulumi:"missing"`
-}
-
-func (EmailRoutingDnsResultErrorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResultError)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsResultErrorArgs) ToEmailRoutingDnsResultErrorOutput() EmailRoutingDnsResultErrorOutput {
-	return i.ToEmailRoutingDnsResultErrorOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultErrorArgs) ToEmailRoutingDnsResultErrorOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultErrorOutput)
-}
-
-// EmailRoutingDnsResultErrorArrayInput is an input type that accepts EmailRoutingDnsResultErrorArray and EmailRoutingDnsResultErrorArrayOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultErrorArrayInput` via:
-//
-//	EmailRoutingDnsResultErrorArray{ EmailRoutingDnsResultErrorArgs{...} }
-type EmailRoutingDnsResultErrorArrayInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultErrorArrayOutput() EmailRoutingDnsResultErrorArrayOutput
-	ToEmailRoutingDnsResultErrorArrayOutputWithContext(context.Context) EmailRoutingDnsResultErrorArrayOutput
-}
-
-type EmailRoutingDnsResultErrorArray []EmailRoutingDnsResultErrorInput
-
-func (EmailRoutingDnsResultErrorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailRoutingDnsResultError)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsResultErrorArray) ToEmailRoutingDnsResultErrorArrayOutput() EmailRoutingDnsResultErrorArrayOutput {
-	return i.ToEmailRoutingDnsResultErrorArrayOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultErrorArray) ToEmailRoutingDnsResultErrorArrayOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultErrorArrayOutput)
-}
-
-type EmailRoutingDnsResultErrorOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultErrorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResultError)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultErrorOutput) ToEmailRoutingDnsResultErrorOutput() EmailRoutingDnsResultErrorOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultErrorOutput) ToEmailRoutingDnsResultErrorOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultErrorOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultError) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// List of records needed to enable an Email Routing zone.
-func (o EmailRoutingDnsResultErrorOutput) Missing() EmailRoutingDnsResultErrorMissingPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultError) *EmailRoutingDnsResultErrorMissing { return v.Missing }).(EmailRoutingDnsResultErrorMissingPtrOutput)
-}
-
-type EmailRoutingDnsResultErrorArrayOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultErrorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailRoutingDnsResultError)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultErrorArrayOutput) ToEmailRoutingDnsResultErrorArrayOutput() EmailRoutingDnsResultErrorArrayOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultErrorArrayOutput) ToEmailRoutingDnsResultErrorArrayOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorArrayOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultErrorArrayOutput) Index(i pulumi.IntInput) EmailRoutingDnsResultErrorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailRoutingDnsResultError {
-		return vs[0].([]EmailRoutingDnsResultError)[vs[1].(int)]
-	}).(EmailRoutingDnsResultErrorOutput)
-}
-
-type EmailRoutingDnsResultErrorMissing struct {
-	// DNS record content.
-	Content *string `pulumi:"content"`
-	// DNS record name (or @ for the zone apex).
-	Name *string `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority *float64 `pulumi:"priority"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl *float64 `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type *string `pulumi:"type"`
-}
-
-// EmailRoutingDnsResultErrorMissingInput is an input type that accepts EmailRoutingDnsResultErrorMissingArgs and EmailRoutingDnsResultErrorMissingOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultErrorMissingInput` via:
-//
-//	EmailRoutingDnsResultErrorMissingArgs{...}
-type EmailRoutingDnsResultErrorMissingInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultErrorMissingOutput() EmailRoutingDnsResultErrorMissingOutput
-	ToEmailRoutingDnsResultErrorMissingOutputWithContext(context.Context) EmailRoutingDnsResultErrorMissingOutput
-}
-
-type EmailRoutingDnsResultErrorMissingArgs struct {
-	// DNS record content.
-	Content pulumi.StringPtrInput `pulumi:"content"`
-	// DNS record name (or @ for the zone apex).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority pulumi.Float64PtrInput `pulumi:"priority"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl pulumi.Float64PtrInput `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (EmailRoutingDnsResultErrorMissingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResultErrorMissing)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsResultErrorMissingArgs) ToEmailRoutingDnsResultErrorMissingOutput() EmailRoutingDnsResultErrorMissingOutput {
-	return i.ToEmailRoutingDnsResultErrorMissingOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultErrorMissingArgs) ToEmailRoutingDnsResultErrorMissingOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorMissingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultErrorMissingOutput)
-}
-
-func (i EmailRoutingDnsResultErrorMissingArgs) ToEmailRoutingDnsResultErrorMissingPtrOutput() EmailRoutingDnsResultErrorMissingPtrOutput {
-	return i.ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultErrorMissingArgs) ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorMissingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultErrorMissingOutput).ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(ctx)
-}
-
-// EmailRoutingDnsResultErrorMissingPtrInput is an input type that accepts EmailRoutingDnsResultErrorMissingArgs, EmailRoutingDnsResultErrorMissingPtr and EmailRoutingDnsResultErrorMissingPtrOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultErrorMissingPtrInput` via:
-//
-//	        EmailRoutingDnsResultErrorMissingArgs{...}
-//
-//	or:
-//
-//	        nil
-type EmailRoutingDnsResultErrorMissingPtrInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultErrorMissingPtrOutput() EmailRoutingDnsResultErrorMissingPtrOutput
-	ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(context.Context) EmailRoutingDnsResultErrorMissingPtrOutput
-}
-
-type emailRoutingDnsResultErrorMissingPtrType EmailRoutingDnsResultErrorMissingArgs
-
-func EmailRoutingDnsResultErrorMissingPtr(v *EmailRoutingDnsResultErrorMissingArgs) EmailRoutingDnsResultErrorMissingPtrInput {
-	return (*emailRoutingDnsResultErrorMissingPtrType)(v)
-}
-
-func (*emailRoutingDnsResultErrorMissingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsResultErrorMissing)(nil)).Elem()
-}
-
-func (i *emailRoutingDnsResultErrorMissingPtrType) ToEmailRoutingDnsResultErrorMissingPtrOutput() EmailRoutingDnsResultErrorMissingPtrOutput {
-	return i.ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(context.Background())
-}
-
-func (i *emailRoutingDnsResultErrorMissingPtrType) ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorMissingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultErrorMissingPtrOutput)
-}
-
-type EmailRoutingDnsResultErrorMissingOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultErrorMissingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResultErrorMissing)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultErrorMissingOutput) ToEmailRoutingDnsResultErrorMissingOutput() EmailRoutingDnsResultErrorMissingOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultErrorMissingOutput) ToEmailRoutingDnsResultErrorMissingOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorMissingOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultErrorMissingOutput) ToEmailRoutingDnsResultErrorMissingPtrOutput() EmailRoutingDnsResultErrorMissingPtrOutput {
-	return o.ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(context.Background())
-}
-
-func (o EmailRoutingDnsResultErrorMissingOutput) ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorMissingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailRoutingDnsResultErrorMissing) *EmailRoutingDnsResultErrorMissing {
-		return &v
-	}).(EmailRoutingDnsResultErrorMissingPtrOutput)
-}
-
-// DNS record content.
-func (o EmailRoutingDnsResultErrorMissingOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultErrorMissing) *string { return v.Content }).(pulumi.StringPtrOutput)
-}
-
-// DNS record name (or @ for the zone apex).
-func (o EmailRoutingDnsResultErrorMissingOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultErrorMissing) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-func (o EmailRoutingDnsResultErrorMissingOutput) Priority() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultErrorMissing) *float64 { return v.Priority }).(pulumi.Float64PtrOutput)
-}
-
-// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-func (o EmailRoutingDnsResultErrorMissingOutput) Ttl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultErrorMissing) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
-}
-
-// DNS record type.
-// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-func (o EmailRoutingDnsResultErrorMissingOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultErrorMissing) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsResultErrorMissingPtrOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultErrorMissingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsResultErrorMissing)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultErrorMissingPtrOutput) ToEmailRoutingDnsResultErrorMissingPtrOutput() EmailRoutingDnsResultErrorMissingPtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultErrorMissingPtrOutput) ToEmailRoutingDnsResultErrorMissingPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultErrorMissingPtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultErrorMissingPtrOutput) Elem() EmailRoutingDnsResultErrorMissingOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultErrorMissing) EmailRoutingDnsResultErrorMissing {
-		if v != nil {
-			return *v
-		}
-		var ret EmailRoutingDnsResultErrorMissing
-		return ret
-	}).(EmailRoutingDnsResultErrorMissingOutput)
-}
-
-// DNS record content.
-func (o EmailRoutingDnsResultErrorMissingPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultErrorMissing) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Content
-	}).(pulumi.StringPtrOutput)
-}
-
-// DNS record name (or @ for the zone apex).
-func (o EmailRoutingDnsResultErrorMissingPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultErrorMissing) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-func (o EmailRoutingDnsResultErrorMissingPtrOutput) Priority() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultErrorMissing) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Priority
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-func (o EmailRoutingDnsResultErrorMissingPtrOutput) Ttl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultErrorMissing) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Ttl
-	}).(pulumi.Float64PtrOutput)
-}
-
-// DNS record type.
-// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-func (o EmailRoutingDnsResultErrorMissingPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultErrorMissing) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsResultInfo struct {
-	// Total number of results for the requested service.
-	EmailRoutingDnsCount *float64 `pulumi:"emailRoutingDnsCount"`
-	// Current page within paginated list of results.
-	Page *float64 `pulumi:"page"`
-	// Number of results per page of results.
-	PerPage *float64 `pulumi:"perPage"`
-	// Total results available without any search parameters.
-	TotalCount *float64 `pulumi:"totalCount"`
-	// The number of total pages in the entire result set.
-	TotalPages *float64 `pulumi:"totalPages"`
-}
-
-// EmailRoutingDnsResultInfoInput is an input type that accepts EmailRoutingDnsResultInfoArgs and EmailRoutingDnsResultInfoOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultInfoInput` via:
-//
-//	EmailRoutingDnsResultInfoArgs{...}
-type EmailRoutingDnsResultInfoInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultInfoOutput() EmailRoutingDnsResultInfoOutput
-	ToEmailRoutingDnsResultInfoOutputWithContext(context.Context) EmailRoutingDnsResultInfoOutput
-}
-
-type EmailRoutingDnsResultInfoArgs struct {
-	// Total number of results for the requested service.
-	EmailRoutingDnsCount pulumi.Float64PtrInput `pulumi:"emailRoutingDnsCount"`
-	// Current page within paginated list of results.
-	Page pulumi.Float64PtrInput `pulumi:"page"`
-	// Number of results per page of results.
-	PerPage pulumi.Float64PtrInput `pulumi:"perPage"`
-	// Total results available without any search parameters.
-	TotalCount pulumi.Float64PtrInput `pulumi:"totalCount"`
-	// The number of total pages in the entire result set.
-	TotalPages pulumi.Float64PtrInput `pulumi:"totalPages"`
-}
-
-func (EmailRoutingDnsResultInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResultInfo)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsResultInfoArgs) ToEmailRoutingDnsResultInfoOutput() EmailRoutingDnsResultInfoOutput {
-	return i.ToEmailRoutingDnsResultInfoOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultInfoArgs) ToEmailRoutingDnsResultInfoOutputWithContext(ctx context.Context) EmailRoutingDnsResultInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultInfoOutput)
-}
-
-func (i EmailRoutingDnsResultInfoArgs) ToEmailRoutingDnsResultInfoPtrOutput() EmailRoutingDnsResultInfoPtrOutput {
-	return i.ToEmailRoutingDnsResultInfoPtrOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultInfoArgs) ToEmailRoutingDnsResultInfoPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultInfoOutput).ToEmailRoutingDnsResultInfoPtrOutputWithContext(ctx)
-}
-
-// EmailRoutingDnsResultInfoPtrInput is an input type that accepts EmailRoutingDnsResultInfoArgs, EmailRoutingDnsResultInfoPtr and EmailRoutingDnsResultInfoPtrOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultInfoPtrInput` via:
-//
-//	        EmailRoutingDnsResultInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type EmailRoutingDnsResultInfoPtrInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultInfoPtrOutput() EmailRoutingDnsResultInfoPtrOutput
-	ToEmailRoutingDnsResultInfoPtrOutputWithContext(context.Context) EmailRoutingDnsResultInfoPtrOutput
-}
-
-type emailRoutingDnsResultInfoPtrType EmailRoutingDnsResultInfoArgs
-
-func EmailRoutingDnsResultInfoPtr(v *EmailRoutingDnsResultInfoArgs) EmailRoutingDnsResultInfoPtrInput {
-	return (*emailRoutingDnsResultInfoPtrType)(v)
-}
-
-func (*emailRoutingDnsResultInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsResultInfo)(nil)).Elem()
-}
-
-func (i *emailRoutingDnsResultInfoPtrType) ToEmailRoutingDnsResultInfoPtrOutput() EmailRoutingDnsResultInfoPtrOutput {
-	return i.ToEmailRoutingDnsResultInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *emailRoutingDnsResultInfoPtrType) ToEmailRoutingDnsResultInfoPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultInfoPtrOutput)
-}
-
-type EmailRoutingDnsResultInfoOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResultInfo)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultInfoOutput) ToEmailRoutingDnsResultInfoOutput() EmailRoutingDnsResultInfoOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultInfoOutput) ToEmailRoutingDnsResultInfoOutputWithContext(ctx context.Context) EmailRoutingDnsResultInfoOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultInfoOutput) ToEmailRoutingDnsResultInfoPtrOutput() EmailRoutingDnsResultInfoPtrOutput {
-	return o.ToEmailRoutingDnsResultInfoPtrOutputWithContext(context.Background())
-}
-
-func (o EmailRoutingDnsResultInfoOutput) ToEmailRoutingDnsResultInfoPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailRoutingDnsResultInfo) *EmailRoutingDnsResultInfo {
-		return &v
-	}).(EmailRoutingDnsResultInfoPtrOutput)
-}
-
-// Total number of results for the requested service.
-func (o EmailRoutingDnsResultInfoOutput) EmailRoutingDnsCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.EmailRoutingDnsCount }).(pulumi.Float64PtrOutput)
-}
-
-// Current page within paginated list of results.
-func (o EmailRoutingDnsResultInfoOutput) Page() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.Page }).(pulumi.Float64PtrOutput)
-}
-
-// Number of results per page of results.
-func (o EmailRoutingDnsResultInfoOutput) PerPage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.PerPage }).(pulumi.Float64PtrOutput)
-}
-
-// Total results available without any search parameters.
-func (o EmailRoutingDnsResultInfoOutput) TotalCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.TotalCount }).(pulumi.Float64PtrOutput)
-}
-
-// The number of total pages in the entire result set.
-func (o EmailRoutingDnsResultInfoOutput) TotalPages() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.TotalPages }).(pulumi.Float64PtrOutput)
-}
-
-type EmailRoutingDnsResultInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EmailRoutingDnsResultInfo)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultInfoPtrOutput) ToEmailRoutingDnsResultInfoPtrOutput() EmailRoutingDnsResultInfoPtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultInfoPtrOutput) ToEmailRoutingDnsResultInfoPtrOutputWithContext(ctx context.Context) EmailRoutingDnsResultInfoPtrOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultInfoPtrOutput) Elem() EmailRoutingDnsResultInfoOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) EmailRoutingDnsResultInfo {
-		if v != nil {
-			return *v
-		}
-		var ret EmailRoutingDnsResultInfo
-		return ret
-	}).(EmailRoutingDnsResultInfoOutput)
-}
-
-// Total number of results for the requested service.
-func (o EmailRoutingDnsResultInfoPtrOutput) EmailRoutingDnsCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.EmailRoutingDnsCount
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Current page within paginated list of results.
-func (o EmailRoutingDnsResultInfoPtrOutput) Page() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Page
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Number of results per page of results.
-func (o EmailRoutingDnsResultInfoPtrOutput) PerPage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.PerPage
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Total results available without any search parameters.
-func (o EmailRoutingDnsResultInfoPtrOutput) TotalCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalCount
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The number of total pages in the entire result set.
-func (o EmailRoutingDnsResultInfoPtrOutput) TotalPages() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalPages
-	}).(pulumi.Float64PtrOutput)
-}
-
-type EmailRoutingDnsResultRecord struct {
-	// DNS record content.
-	Content *string `pulumi:"content"`
-	// DNS record name (or @ for the zone apex).
-	Name *string `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority *float64 `pulumi:"priority"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl *float64 `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type *string `pulumi:"type"`
-}
-
-// EmailRoutingDnsResultRecordInput is an input type that accepts EmailRoutingDnsResultRecordArgs and EmailRoutingDnsResultRecordOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultRecordInput` via:
-//
-//	EmailRoutingDnsResultRecordArgs{...}
-type EmailRoutingDnsResultRecordInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultRecordOutput() EmailRoutingDnsResultRecordOutput
-	ToEmailRoutingDnsResultRecordOutputWithContext(context.Context) EmailRoutingDnsResultRecordOutput
-}
-
-type EmailRoutingDnsResultRecordArgs struct {
-	// DNS record content.
-	Content pulumi.StringPtrInput `pulumi:"content"`
-	// DNS record name (or @ for the zone apex).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-	Priority pulumi.Float64PtrInput `pulumi:"priority"`
-	// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-	Ttl pulumi.Float64PtrInput `pulumi:"ttl"`
-	// DNS record type.
-	// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (EmailRoutingDnsResultRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResultRecord)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsResultRecordArgs) ToEmailRoutingDnsResultRecordOutput() EmailRoutingDnsResultRecordOutput {
-	return i.ToEmailRoutingDnsResultRecordOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultRecordArgs) ToEmailRoutingDnsResultRecordOutputWithContext(ctx context.Context) EmailRoutingDnsResultRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultRecordOutput)
-}
-
-// EmailRoutingDnsResultRecordArrayInput is an input type that accepts EmailRoutingDnsResultRecordArray and EmailRoutingDnsResultRecordArrayOutput values.
-// You can construct a concrete instance of `EmailRoutingDnsResultRecordArrayInput` via:
-//
-//	EmailRoutingDnsResultRecordArray{ EmailRoutingDnsResultRecordArgs{...} }
-type EmailRoutingDnsResultRecordArrayInput interface {
-	pulumi.Input
-
-	ToEmailRoutingDnsResultRecordArrayOutput() EmailRoutingDnsResultRecordArrayOutput
-	ToEmailRoutingDnsResultRecordArrayOutputWithContext(context.Context) EmailRoutingDnsResultRecordArrayOutput
-}
-
-type EmailRoutingDnsResultRecordArray []EmailRoutingDnsResultRecordInput
-
-func (EmailRoutingDnsResultRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailRoutingDnsResultRecord)(nil)).Elem()
-}
-
-func (i EmailRoutingDnsResultRecordArray) ToEmailRoutingDnsResultRecordArrayOutput() EmailRoutingDnsResultRecordArrayOutput {
-	return i.ToEmailRoutingDnsResultRecordArrayOutputWithContext(context.Background())
-}
-
-func (i EmailRoutingDnsResultRecordArray) ToEmailRoutingDnsResultRecordArrayOutputWithContext(ctx context.Context) EmailRoutingDnsResultRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsResultRecordArrayOutput)
-}
-
-type EmailRoutingDnsResultRecordOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailRoutingDnsResultRecord)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultRecordOutput) ToEmailRoutingDnsResultRecordOutput() EmailRoutingDnsResultRecordOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultRecordOutput) ToEmailRoutingDnsResultRecordOutputWithContext(ctx context.Context) EmailRoutingDnsResultRecordOutput {
-	return o
-}
-
-// DNS record content.
-func (o EmailRoutingDnsResultRecordOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultRecord) *string { return v.Content }).(pulumi.StringPtrOutput)
-}
-
-// DNS record name (or @ for the zone apex).
-func (o EmailRoutingDnsResultRecordOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
-func (o EmailRoutingDnsResultRecordOutput) Priority() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultRecord) *float64 { return v.Priority }).(pulumi.Float64PtrOutput)
-}
-
-// Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
-func (o EmailRoutingDnsResultRecordOutput) Ttl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultRecord) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
-}
-
-// DNS record type.
-// Available values: "A", "AAAA", "CNAME", "HTTPS", "TXT", "SRV", "LOC", "MX", "NS", "CERT", "DNSKEY", "DS", "NAPTR", "SMIMEA", "SSHFP", "SVCB", "TLSA", "URI".
-func (o EmailRoutingDnsResultRecordOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EmailRoutingDnsResultRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type EmailRoutingDnsResultRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (EmailRoutingDnsResultRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailRoutingDnsResultRecord)(nil)).Elem()
-}
-
-func (o EmailRoutingDnsResultRecordArrayOutput) ToEmailRoutingDnsResultRecordArrayOutput() EmailRoutingDnsResultRecordArrayOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultRecordArrayOutput) ToEmailRoutingDnsResultRecordArrayOutputWithContext(ctx context.Context) EmailRoutingDnsResultRecordArrayOutput {
-	return o
-}
-
-func (o EmailRoutingDnsResultRecordArrayOutput) Index(i pulumi.IntInput) EmailRoutingDnsResultRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailRoutingDnsResultRecord {
-		return vs[0].([]EmailRoutingDnsResultRecord)[vs[1].(int)]
-	}).(EmailRoutingDnsResultRecordOutput)
-}
-
 type EmailRoutingRuleAction struct {
 	// Type of supported action.
 	// Available values: "drop", "forward", "worker".
@@ -68475,6 +67191,332 @@ func (o EmailRoutingRuleMatcherArrayOutput) Index(i pulumi.IntInput) EmailRoutin
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailRoutingRuleMatcher {
 		return vs[0].([]EmailRoutingRuleMatcher)[vs[1].(int)]
 	}).(EmailRoutingRuleMatcherOutput)
+}
+
+type EmailSecurityDomainAuthorization struct {
+	Authorized    *bool   `pulumi:"authorized"`
+	StatusMessage *string `pulumi:"statusMessage"`
+	Timestamp     *string `pulumi:"timestamp"`
+}
+
+// EmailSecurityDomainAuthorizationInput is an input type that accepts EmailSecurityDomainAuthorizationArgs and EmailSecurityDomainAuthorizationOutput values.
+// You can construct a concrete instance of `EmailSecurityDomainAuthorizationInput` via:
+//
+//	EmailSecurityDomainAuthorizationArgs{...}
+type EmailSecurityDomainAuthorizationInput interface {
+	pulumi.Input
+
+	ToEmailSecurityDomainAuthorizationOutput() EmailSecurityDomainAuthorizationOutput
+	ToEmailSecurityDomainAuthorizationOutputWithContext(context.Context) EmailSecurityDomainAuthorizationOutput
+}
+
+type EmailSecurityDomainAuthorizationArgs struct {
+	Authorized    pulumi.BoolPtrInput   `pulumi:"authorized"`
+	StatusMessage pulumi.StringPtrInput `pulumi:"statusMessage"`
+	Timestamp     pulumi.StringPtrInput `pulumi:"timestamp"`
+}
+
+func (EmailSecurityDomainAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSecurityDomainAuthorization)(nil)).Elem()
+}
+
+func (i EmailSecurityDomainAuthorizationArgs) ToEmailSecurityDomainAuthorizationOutput() EmailSecurityDomainAuthorizationOutput {
+	return i.ToEmailSecurityDomainAuthorizationOutputWithContext(context.Background())
+}
+
+func (i EmailSecurityDomainAuthorizationArgs) ToEmailSecurityDomainAuthorizationOutputWithContext(ctx context.Context) EmailSecurityDomainAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSecurityDomainAuthorizationOutput)
+}
+
+func (i EmailSecurityDomainAuthorizationArgs) ToEmailSecurityDomainAuthorizationPtrOutput() EmailSecurityDomainAuthorizationPtrOutput {
+	return i.ToEmailSecurityDomainAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i EmailSecurityDomainAuthorizationArgs) ToEmailSecurityDomainAuthorizationPtrOutputWithContext(ctx context.Context) EmailSecurityDomainAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSecurityDomainAuthorizationOutput).ToEmailSecurityDomainAuthorizationPtrOutputWithContext(ctx)
+}
+
+// EmailSecurityDomainAuthorizationPtrInput is an input type that accepts EmailSecurityDomainAuthorizationArgs, EmailSecurityDomainAuthorizationPtr and EmailSecurityDomainAuthorizationPtrOutput values.
+// You can construct a concrete instance of `EmailSecurityDomainAuthorizationPtrInput` via:
+//
+//	        EmailSecurityDomainAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmailSecurityDomainAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToEmailSecurityDomainAuthorizationPtrOutput() EmailSecurityDomainAuthorizationPtrOutput
+	ToEmailSecurityDomainAuthorizationPtrOutputWithContext(context.Context) EmailSecurityDomainAuthorizationPtrOutput
+}
+
+type emailSecurityDomainAuthorizationPtrType EmailSecurityDomainAuthorizationArgs
+
+func EmailSecurityDomainAuthorizationPtr(v *EmailSecurityDomainAuthorizationArgs) EmailSecurityDomainAuthorizationPtrInput {
+	return (*emailSecurityDomainAuthorizationPtrType)(v)
+}
+
+func (*emailSecurityDomainAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSecurityDomainAuthorization)(nil)).Elem()
+}
+
+func (i *emailSecurityDomainAuthorizationPtrType) ToEmailSecurityDomainAuthorizationPtrOutput() EmailSecurityDomainAuthorizationPtrOutput {
+	return i.ToEmailSecurityDomainAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *emailSecurityDomainAuthorizationPtrType) ToEmailSecurityDomainAuthorizationPtrOutputWithContext(ctx context.Context) EmailSecurityDomainAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSecurityDomainAuthorizationPtrOutput)
+}
+
+type EmailSecurityDomainAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (EmailSecurityDomainAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSecurityDomainAuthorization)(nil)).Elem()
+}
+
+func (o EmailSecurityDomainAuthorizationOutput) ToEmailSecurityDomainAuthorizationOutput() EmailSecurityDomainAuthorizationOutput {
+	return o
+}
+
+func (o EmailSecurityDomainAuthorizationOutput) ToEmailSecurityDomainAuthorizationOutputWithContext(ctx context.Context) EmailSecurityDomainAuthorizationOutput {
+	return o
+}
+
+func (o EmailSecurityDomainAuthorizationOutput) ToEmailSecurityDomainAuthorizationPtrOutput() EmailSecurityDomainAuthorizationPtrOutput {
+	return o.ToEmailSecurityDomainAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o EmailSecurityDomainAuthorizationOutput) ToEmailSecurityDomainAuthorizationPtrOutputWithContext(ctx context.Context) EmailSecurityDomainAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailSecurityDomainAuthorization) *EmailSecurityDomainAuthorization {
+		return &v
+	}).(EmailSecurityDomainAuthorizationPtrOutput)
+}
+
+func (o EmailSecurityDomainAuthorizationOutput) Authorized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EmailSecurityDomainAuthorization) *bool { return v.Authorized }).(pulumi.BoolPtrOutput)
+}
+
+func (o EmailSecurityDomainAuthorizationOutput) StatusMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailSecurityDomainAuthorization) *string { return v.StatusMessage }).(pulumi.StringPtrOutput)
+}
+
+func (o EmailSecurityDomainAuthorizationOutput) Timestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailSecurityDomainAuthorization) *string { return v.Timestamp }).(pulumi.StringPtrOutput)
+}
+
+type EmailSecurityDomainAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (EmailSecurityDomainAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSecurityDomainAuthorization)(nil)).Elem()
+}
+
+func (o EmailSecurityDomainAuthorizationPtrOutput) ToEmailSecurityDomainAuthorizationPtrOutput() EmailSecurityDomainAuthorizationPtrOutput {
+	return o
+}
+
+func (o EmailSecurityDomainAuthorizationPtrOutput) ToEmailSecurityDomainAuthorizationPtrOutputWithContext(ctx context.Context) EmailSecurityDomainAuthorizationPtrOutput {
+	return o
+}
+
+func (o EmailSecurityDomainAuthorizationPtrOutput) Elem() EmailSecurityDomainAuthorizationOutput {
+	return o.ApplyT(func(v *EmailSecurityDomainAuthorization) EmailSecurityDomainAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret EmailSecurityDomainAuthorization
+		return ret
+	}).(EmailSecurityDomainAuthorizationOutput)
+}
+
+func (o EmailSecurityDomainAuthorizationPtrOutput) Authorized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityDomainAuthorization) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Authorized
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o EmailSecurityDomainAuthorizationPtrOutput) StatusMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityDomainAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StatusMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EmailSecurityDomainAuthorizationPtrOutput) Timestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityDomainAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+type EmailSecurityDomainEmailsProcessed struct {
+	Timestamp                    *string `pulumi:"timestamp"`
+	TotalEmailsProcessed         *int    `pulumi:"totalEmailsProcessed"`
+	TotalEmailsProcessedPrevious *int    `pulumi:"totalEmailsProcessedPrevious"`
+}
+
+// EmailSecurityDomainEmailsProcessedInput is an input type that accepts EmailSecurityDomainEmailsProcessedArgs and EmailSecurityDomainEmailsProcessedOutput values.
+// You can construct a concrete instance of `EmailSecurityDomainEmailsProcessedInput` via:
+//
+//	EmailSecurityDomainEmailsProcessedArgs{...}
+type EmailSecurityDomainEmailsProcessedInput interface {
+	pulumi.Input
+
+	ToEmailSecurityDomainEmailsProcessedOutput() EmailSecurityDomainEmailsProcessedOutput
+	ToEmailSecurityDomainEmailsProcessedOutputWithContext(context.Context) EmailSecurityDomainEmailsProcessedOutput
+}
+
+type EmailSecurityDomainEmailsProcessedArgs struct {
+	Timestamp                    pulumi.StringPtrInput `pulumi:"timestamp"`
+	TotalEmailsProcessed         pulumi.IntPtrInput    `pulumi:"totalEmailsProcessed"`
+	TotalEmailsProcessedPrevious pulumi.IntPtrInput    `pulumi:"totalEmailsProcessedPrevious"`
+}
+
+func (EmailSecurityDomainEmailsProcessedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSecurityDomainEmailsProcessed)(nil)).Elem()
+}
+
+func (i EmailSecurityDomainEmailsProcessedArgs) ToEmailSecurityDomainEmailsProcessedOutput() EmailSecurityDomainEmailsProcessedOutput {
+	return i.ToEmailSecurityDomainEmailsProcessedOutputWithContext(context.Background())
+}
+
+func (i EmailSecurityDomainEmailsProcessedArgs) ToEmailSecurityDomainEmailsProcessedOutputWithContext(ctx context.Context) EmailSecurityDomainEmailsProcessedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSecurityDomainEmailsProcessedOutput)
+}
+
+func (i EmailSecurityDomainEmailsProcessedArgs) ToEmailSecurityDomainEmailsProcessedPtrOutput() EmailSecurityDomainEmailsProcessedPtrOutput {
+	return i.ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(context.Background())
+}
+
+func (i EmailSecurityDomainEmailsProcessedArgs) ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(ctx context.Context) EmailSecurityDomainEmailsProcessedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSecurityDomainEmailsProcessedOutput).ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(ctx)
+}
+
+// EmailSecurityDomainEmailsProcessedPtrInput is an input type that accepts EmailSecurityDomainEmailsProcessedArgs, EmailSecurityDomainEmailsProcessedPtr and EmailSecurityDomainEmailsProcessedPtrOutput values.
+// You can construct a concrete instance of `EmailSecurityDomainEmailsProcessedPtrInput` via:
+//
+//	        EmailSecurityDomainEmailsProcessedArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmailSecurityDomainEmailsProcessedPtrInput interface {
+	pulumi.Input
+
+	ToEmailSecurityDomainEmailsProcessedPtrOutput() EmailSecurityDomainEmailsProcessedPtrOutput
+	ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(context.Context) EmailSecurityDomainEmailsProcessedPtrOutput
+}
+
+type emailSecurityDomainEmailsProcessedPtrType EmailSecurityDomainEmailsProcessedArgs
+
+func EmailSecurityDomainEmailsProcessedPtr(v *EmailSecurityDomainEmailsProcessedArgs) EmailSecurityDomainEmailsProcessedPtrInput {
+	return (*emailSecurityDomainEmailsProcessedPtrType)(v)
+}
+
+func (*emailSecurityDomainEmailsProcessedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSecurityDomainEmailsProcessed)(nil)).Elem()
+}
+
+func (i *emailSecurityDomainEmailsProcessedPtrType) ToEmailSecurityDomainEmailsProcessedPtrOutput() EmailSecurityDomainEmailsProcessedPtrOutput {
+	return i.ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(context.Background())
+}
+
+func (i *emailSecurityDomainEmailsProcessedPtrType) ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(ctx context.Context) EmailSecurityDomainEmailsProcessedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailSecurityDomainEmailsProcessedPtrOutput)
+}
+
+type EmailSecurityDomainEmailsProcessedOutput struct{ *pulumi.OutputState }
+
+func (EmailSecurityDomainEmailsProcessedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailSecurityDomainEmailsProcessed)(nil)).Elem()
+}
+
+func (o EmailSecurityDomainEmailsProcessedOutput) ToEmailSecurityDomainEmailsProcessedOutput() EmailSecurityDomainEmailsProcessedOutput {
+	return o
+}
+
+func (o EmailSecurityDomainEmailsProcessedOutput) ToEmailSecurityDomainEmailsProcessedOutputWithContext(ctx context.Context) EmailSecurityDomainEmailsProcessedOutput {
+	return o
+}
+
+func (o EmailSecurityDomainEmailsProcessedOutput) ToEmailSecurityDomainEmailsProcessedPtrOutput() EmailSecurityDomainEmailsProcessedPtrOutput {
+	return o.ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(context.Background())
+}
+
+func (o EmailSecurityDomainEmailsProcessedOutput) ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(ctx context.Context) EmailSecurityDomainEmailsProcessedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailSecurityDomainEmailsProcessed) *EmailSecurityDomainEmailsProcessed {
+		return &v
+	}).(EmailSecurityDomainEmailsProcessedPtrOutput)
+}
+
+func (o EmailSecurityDomainEmailsProcessedOutput) Timestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailSecurityDomainEmailsProcessed) *string { return v.Timestamp }).(pulumi.StringPtrOutput)
+}
+
+func (o EmailSecurityDomainEmailsProcessedOutput) TotalEmailsProcessed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EmailSecurityDomainEmailsProcessed) *int { return v.TotalEmailsProcessed }).(pulumi.IntPtrOutput)
+}
+
+func (o EmailSecurityDomainEmailsProcessedOutput) TotalEmailsProcessedPrevious() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EmailSecurityDomainEmailsProcessed) *int { return v.TotalEmailsProcessedPrevious }).(pulumi.IntPtrOutput)
+}
+
+type EmailSecurityDomainEmailsProcessedPtrOutput struct{ *pulumi.OutputState }
+
+func (EmailSecurityDomainEmailsProcessedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailSecurityDomainEmailsProcessed)(nil)).Elem()
+}
+
+func (o EmailSecurityDomainEmailsProcessedPtrOutput) ToEmailSecurityDomainEmailsProcessedPtrOutput() EmailSecurityDomainEmailsProcessedPtrOutput {
+	return o
+}
+
+func (o EmailSecurityDomainEmailsProcessedPtrOutput) ToEmailSecurityDomainEmailsProcessedPtrOutputWithContext(ctx context.Context) EmailSecurityDomainEmailsProcessedPtrOutput {
+	return o
+}
+
+func (o EmailSecurityDomainEmailsProcessedPtrOutput) Elem() EmailSecurityDomainEmailsProcessedOutput {
+	return o.ApplyT(func(v *EmailSecurityDomainEmailsProcessed) EmailSecurityDomainEmailsProcessed {
+		if v != nil {
+			return *v
+		}
+		var ret EmailSecurityDomainEmailsProcessed
+		return ret
+	}).(EmailSecurityDomainEmailsProcessedOutput)
+}
+
+func (o EmailSecurityDomainEmailsProcessedPtrOutput) Timestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityDomainEmailsProcessed) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EmailSecurityDomainEmailsProcessedPtrOutput) TotalEmailsProcessed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityDomainEmailsProcessed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalEmailsProcessed
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o EmailSecurityDomainEmailsProcessedPtrOutput) TotalEmailsProcessedPrevious() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityDomainEmailsProcessed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalEmailsProcessedPrevious
+	}).(pulumi.IntPtrOutput)
 }
 
 type FilterBody struct {
@@ -77821,6 +76863,8 @@ type MagicTransitSiteLanStaticAddressingDhcpServer struct {
 	// A valid IPv4 address.
 	DhcpPoolStart *string `pulumi:"dhcpPoolStart"`
 	// A valid IPv4 address.
+	//
+	// Deprecated: This attribute is deprecated.
 	DnsServer  *string  `pulumi:"dnsServer"`
 	DnsServers []string `pulumi:"dnsServers"`
 	// Mapping of MAC addresses to IP addresses
@@ -77846,6 +76890,8 @@ type MagicTransitSiteLanStaticAddressingDhcpServerArgs struct {
 	// A valid IPv4 address.
 	DhcpPoolStart pulumi.StringPtrInput `pulumi:"dhcpPoolStart"`
 	// A valid IPv4 address.
+	//
+	// Deprecated: This attribute is deprecated.
 	DnsServer  pulumi.StringPtrInput   `pulumi:"dnsServer"`
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// Mapping of MAC addresses to IP addresses
@@ -77947,6 +76993,8 @@ func (o MagicTransitSiteLanStaticAddressingDhcpServerOutput) DhcpPoolStart() pul
 }
 
 // A valid IPv4 address.
+//
+// Deprecated: This attribute is deprecated.
 func (o MagicTransitSiteLanStaticAddressingDhcpServerOutput) DnsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MagicTransitSiteLanStaticAddressingDhcpServer) *string { return v.DnsServer }).(pulumi.StringPtrOutput)
 }
@@ -78015,6 +77063,8 @@ func (o MagicTransitSiteLanStaticAddressingDhcpServerPtrOutput) DhcpPoolStart() 
 }
 
 // A valid IPv4 address.
+//
+// Deprecated: This attribute is deprecated.
 func (o MagicTransitSiteLanStaticAddressingDhcpServerPtrOutput) DnsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteLanStaticAddressingDhcpServer) *string {
 		if v == nil {
@@ -80734,6 +79784,926 @@ func (o ManagedHeadersManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput)
 	}).(ManagedHeadersManagedResponseHeaderOutput)
 }
 
+type ManagedTransformsManagedRequestHeader struct {
+	// Whether the Managed Transform is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id string `pulumi:"id"`
+}
+
+// ManagedTransformsManagedRequestHeaderInput is an input type that accepts ManagedTransformsManagedRequestHeaderArgs and ManagedTransformsManagedRequestHeaderOutput values.
+// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderInput` via:
+//
+//	ManagedTransformsManagedRequestHeaderArgs{...}
+type ManagedTransformsManagedRequestHeaderInput interface {
+	pulumi.Input
+
+	ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput
+	ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderOutput
+}
+
+type ManagedTransformsManagedRequestHeaderArgs struct {
+	// Whether the Managed Transform is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ManagedTransformsManagedRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
+}
+
+func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
+	return i.ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderOutput)
+}
+
+// ManagedTransformsManagedRequestHeaderArrayInput is an input type that accepts ManagedTransformsManagedRequestHeaderArray and ManagedTransformsManagedRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderArrayInput` via:
+//
+//	ManagedTransformsManagedRequestHeaderArray{ ManagedTransformsManagedRequestHeaderArgs{...} }
+type ManagedTransformsManagedRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput
+	ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderArrayOutput
+}
+
+type ManagedTransformsManagedRequestHeaderArray []ManagedTransformsManagedRequestHeaderInput
+
+func (ManagedTransformsManagedRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
+}
+
+func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
+	return i.ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderArrayOutput)
+}
+
+type ManagedTransformsManagedRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (ManagedTransformsManagedRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
+}
+
+func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
+	return o
+}
+
+// Whether the Managed Transform is enabled.
+func (o ManagedTransformsManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable identifier of the Managed Transform.
+func (o ManagedTransformsManagedRequestHeaderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ManagedTransformsManagedRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedTransformsManagedRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
+}
+
+func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedRequestHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedRequestHeader {
+		return vs[0].([]ManagedTransformsManagedRequestHeader)[vs[1].(int)]
+	}).(ManagedTransformsManagedRequestHeaderOutput)
+}
+
+type ManagedTransformsManagedResponseHeader struct {
+	// Whether the Managed Transform is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id string `pulumi:"id"`
+}
+
+// ManagedTransformsManagedResponseHeaderInput is an input type that accepts ManagedTransformsManagedResponseHeaderArgs and ManagedTransformsManagedResponseHeaderOutput values.
+// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderInput` via:
+//
+//	ManagedTransformsManagedResponseHeaderArgs{...}
+type ManagedTransformsManagedResponseHeaderInput interface {
+	pulumi.Input
+
+	ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput
+	ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderOutput
+}
+
+type ManagedTransformsManagedResponseHeaderArgs struct {
+	// Whether the Managed Transform is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ManagedTransformsManagedResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
+}
+
+func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
+	return i.ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderOutput)
+}
+
+// ManagedTransformsManagedResponseHeaderArrayInput is an input type that accepts ManagedTransformsManagedResponseHeaderArray and ManagedTransformsManagedResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderArrayInput` via:
+//
+//	ManagedTransformsManagedResponseHeaderArray{ ManagedTransformsManagedResponseHeaderArgs{...} }
+type ManagedTransformsManagedResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput
+	ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderArrayOutput
+}
+
+type ManagedTransformsManagedResponseHeaderArray []ManagedTransformsManagedResponseHeaderInput
+
+func (ManagedTransformsManagedResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
+}
+
+func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
+	return i.ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderArrayOutput)
+}
+
+type ManagedTransformsManagedResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (ManagedTransformsManagedResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
+}
+
+func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
+	return o
+}
+
+// Whether the Managed Transform is enabled.
+func (o ManagedTransformsManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable identifier of the Managed Transform.
+func (o ManagedTransformsManagedResponseHeaderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ManagedTransformsManagedResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedTransformsManagedResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
+}
+
+func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedResponseHeader {
+		return vs[0].([]ManagedTransformsManagedResponseHeader)[vs[1].(int)]
+	}).(ManagedTransformsManagedResponseHeaderOutput)
+}
+
+type MoqRelayConfig struct {
+	LingeringSubscribe *MoqRelayConfigLingeringSubscribe `pulumi:"lingeringSubscribe"`
+	// Upstreams are external MOQT server publishers that a relay falls back
+	// to when it has no local publisher for a requested namespace/track.
+	Upstreams *MoqRelayConfigUpstreams `pulumi:"upstreams"`
+}
+
+// MoqRelayConfigInput is an input type that accepts MoqRelayConfigArgs and MoqRelayConfigOutput values.
+// You can construct a concrete instance of `MoqRelayConfigInput` via:
+//
+//	MoqRelayConfigArgs{...}
+type MoqRelayConfigInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigOutput() MoqRelayConfigOutput
+	ToMoqRelayConfigOutputWithContext(context.Context) MoqRelayConfigOutput
+}
+
+type MoqRelayConfigArgs struct {
+	LingeringSubscribe MoqRelayConfigLingeringSubscribePtrInput `pulumi:"lingeringSubscribe"`
+	// Upstreams are external MOQT server publishers that a relay falls back
+	// to when it has no local publisher for a requested namespace/track.
+	Upstreams MoqRelayConfigUpstreamsPtrInput `pulumi:"upstreams"`
+}
+
+func (MoqRelayConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
+}
+
+func (i MoqRelayConfigArgs) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
+	return i.ToMoqRelayConfigOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigArgs) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput)
+}
+
+func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
+	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput).ToMoqRelayConfigPtrOutputWithContext(ctx)
+}
+
+// MoqRelayConfigPtrInput is an input type that accepts MoqRelayConfigArgs, MoqRelayConfigPtr and MoqRelayConfigPtrOutput values.
+// You can construct a concrete instance of `MoqRelayConfigPtrInput` via:
+//
+//	        MoqRelayConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MoqRelayConfigPtrInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput
+	ToMoqRelayConfigPtrOutputWithContext(context.Context) MoqRelayConfigPtrOutput
+}
+
+type moqRelayConfigPtrType MoqRelayConfigArgs
+
+func MoqRelayConfigPtr(v *MoqRelayConfigArgs) MoqRelayConfigPtrInput {
+	return (*moqRelayConfigPtrType)(v)
+}
+
+func (*moqRelayConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
+}
+
+func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
+	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigPtrOutput)
+}
+
+type MoqRelayConfigOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
+}
+
+func (o MoqRelayConfigOutput) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
+	return o
+}
+
+func (o MoqRelayConfigOutput) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
+	return o
+}
+
+func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
+	return o.ToMoqRelayConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfig) *MoqRelayConfig {
+		return &v
+	}).(MoqRelayConfigPtrOutput)
+}
+
+func (o MoqRelayConfigOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
+	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigLingeringSubscribe { return v.LingeringSubscribe }).(MoqRelayConfigLingeringSubscribePtrOutput)
+}
+
+// Upstreams are external MOQT server publishers that a relay falls back
+// to when it has no local publisher for a requested namespace/track.
+func (o MoqRelayConfigOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
+	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigUpstreams { return v.Upstreams }).(MoqRelayConfigUpstreamsPtrOutput)
+}
+
+type MoqRelayConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
+}
+
+func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigPtrOutput) Elem() MoqRelayConfigOutput {
+	return o.ApplyT(func(v *MoqRelayConfig) MoqRelayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MoqRelayConfig
+		return ret
+	}).(MoqRelayConfigOutput)
+}
+
+func (o MoqRelayConfigPtrOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigLingeringSubscribe {
+		if v == nil {
+			return nil
+		}
+		return v.LingeringSubscribe
+	}).(MoqRelayConfigLingeringSubscribePtrOutput)
+}
+
+// Upstreams are external MOQT server publishers that a relay falls back
+// to when it has no local publisher for a requested namespace/track.
+func (o MoqRelayConfigPtrOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigUpstreams {
+		if v == nil {
+			return nil
+		}
+		return v.Upstreams
+	}).(MoqRelayConfigUpstreamsPtrOutput)
+}
+
+type MoqRelayConfigLingeringSubscribe struct {
+	Enabled *bool `pulumi:"enabled"`
+	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
+	MaxTimeoutMs *int `pulumi:"maxTimeoutMs"`
+}
+
+// MoqRelayConfigLingeringSubscribeInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs and MoqRelayConfigLingeringSubscribeOutput values.
+// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribeInput` via:
+//
+//	MoqRelayConfigLingeringSubscribeArgs{...}
+type MoqRelayConfigLingeringSubscribeInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput
+	ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribeOutput
+}
+
+type MoqRelayConfigLingeringSubscribeArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
+	MaxTimeoutMs pulumi.IntPtrInput `pulumi:"maxTimeoutMs"`
+}
+
+func (MoqRelayConfigLingeringSubscribeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
+}
+
+func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
+	return i.ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput)
+}
+
+func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
+	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput).ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx)
+}
+
+// MoqRelayConfigLingeringSubscribePtrInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs, MoqRelayConfigLingeringSubscribePtr and MoqRelayConfigLingeringSubscribePtrOutput values.
+// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribePtrInput` via:
+//
+//	        MoqRelayConfigLingeringSubscribeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MoqRelayConfigLingeringSubscribePtrInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput
+	ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribePtrOutput
+}
+
+type moqRelayConfigLingeringSubscribePtrType MoqRelayConfigLingeringSubscribeArgs
+
+func MoqRelayConfigLingeringSubscribePtr(v *MoqRelayConfigLingeringSubscribeArgs) MoqRelayConfigLingeringSubscribePtrInput {
+	return (*moqRelayConfigLingeringSubscribePtrType)(v)
+}
+
+func (*moqRelayConfigLingeringSubscribePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
+}
+
+func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
+	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
+}
+
+func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribePtrOutput)
+}
+
+type MoqRelayConfigLingeringSubscribeOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigLingeringSubscribeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
+	return o
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
+	return o
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
+	return o.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigLingeringSubscribe) *MoqRelayConfigLingeringSubscribe {
+		return &v
+	}).(MoqRelayConfigLingeringSubscribePtrOutput)
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
+func (o MoqRelayConfigLingeringSubscribeOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *int { return v.MaxTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+type MoqRelayConfigLingeringSubscribePtrOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigLingeringSubscribePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
+}
+
+func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigLingeringSubscribePtrOutput) Elem() MoqRelayConfigLingeringSubscribeOutput {
+	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) MoqRelayConfigLingeringSubscribe {
+		if v != nil {
+			return *v
+		}
+		var ret MoqRelayConfigLingeringSubscribe
+		return ret
+	}).(MoqRelayConfigLingeringSubscribeOutput)
+}
+
+func (o MoqRelayConfigLingeringSubscribePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
+func (o MoqRelayConfigLingeringSubscribePtrOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
+type MoqRelayConfigUpstreams struct {
+	Enabled *bool `pulumi:"enabled"`
+	// Ordered list of upstream MOQT server publishers. Each entry is an
+	// object (not a bare string) so per-upstream configuration can be
+	// added in the future without another breaking change.
+	Upstreams []MoqRelayConfigUpstreamsUpstream `pulumi:"upstreams"`
+}
+
+// MoqRelayConfigUpstreamsInput is an input type that accepts MoqRelayConfigUpstreamsArgs and MoqRelayConfigUpstreamsOutput values.
+// You can construct a concrete instance of `MoqRelayConfigUpstreamsInput` via:
+//
+//	MoqRelayConfigUpstreamsArgs{...}
+type MoqRelayConfigUpstreamsInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput
+	ToMoqRelayConfigUpstreamsOutputWithContext(context.Context) MoqRelayConfigUpstreamsOutput
+}
+
+type MoqRelayConfigUpstreamsArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Ordered list of upstream MOQT server publishers. Each entry is an
+	// object (not a bare string) so per-upstream configuration can be
+	// added in the future without another breaking change.
+	Upstreams MoqRelayConfigUpstreamsUpstreamArrayInput `pulumi:"upstreams"`
+}
+
+func (MoqRelayConfigUpstreamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfigUpstreams)(nil)).Elem()
+}
+
+func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput {
+	return i.ToMoqRelayConfigUpstreamsOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsOutput)
+}
+
+func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
+	return i.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsOutput).ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx)
+}
+
+// MoqRelayConfigUpstreamsPtrInput is an input type that accepts MoqRelayConfigUpstreamsArgs, MoqRelayConfigUpstreamsPtr and MoqRelayConfigUpstreamsPtrOutput values.
+// You can construct a concrete instance of `MoqRelayConfigUpstreamsPtrInput` via:
+//
+//	        MoqRelayConfigUpstreamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MoqRelayConfigUpstreamsPtrInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput
+	ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Context) MoqRelayConfigUpstreamsPtrOutput
+}
+
+type moqRelayConfigUpstreamsPtrType MoqRelayConfigUpstreamsArgs
+
+func MoqRelayConfigUpstreamsPtr(v *MoqRelayConfigUpstreamsArgs) MoqRelayConfigUpstreamsPtrInput {
+	return (*moqRelayConfigUpstreamsPtrType)(v)
+}
+
+func (*moqRelayConfigUpstreamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfigUpstreams)(nil)).Elem()
+}
+
+func (i *moqRelayConfigUpstreamsPtrType) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
+	return i.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
+}
+
+func (i *moqRelayConfigUpstreamsPtrType) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsPtrOutput)
+}
+
+type MoqRelayConfigUpstreamsOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigUpstreamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfigUpstreams)(nil)).Elem()
+}
+
+func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput {
+	return o
+}
+
+func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsOutput {
+	return o
+}
+
+func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
+	return o.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
+}
+
+func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigUpstreams) *MoqRelayConfigUpstreams {
+		return &v
+	}).(MoqRelayConfigUpstreamsPtrOutput)
+}
+
+func (o MoqRelayConfigUpstreamsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MoqRelayConfigUpstreams) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Ordered list of upstream MOQT server publishers. Each entry is an
+// object (not a bare string) so per-upstream configuration can be
+// added in the future without another breaking change.
+func (o MoqRelayConfigUpstreamsOutput) Upstreams() MoqRelayConfigUpstreamsUpstreamArrayOutput {
+	return o.ApplyT(func(v MoqRelayConfigUpstreams) []MoqRelayConfigUpstreamsUpstream { return v.Upstreams }).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
+}
+
+type MoqRelayConfigUpstreamsPtrOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigUpstreamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfigUpstreams)(nil)).Elem()
+}
+
+func (o MoqRelayConfigUpstreamsPtrOutput) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigUpstreamsPtrOutput) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigUpstreamsPtrOutput) Elem() MoqRelayConfigUpstreamsOutput {
+	return o.ApplyT(func(v *MoqRelayConfigUpstreams) MoqRelayConfigUpstreams {
+		if v != nil {
+			return *v
+		}
+		var ret MoqRelayConfigUpstreams
+		return ret
+	}).(MoqRelayConfigUpstreamsOutput)
+}
+
+func (o MoqRelayConfigUpstreamsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfigUpstreams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Ordered list of upstream MOQT server publishers. Each entry is an
+// object (not a bare string) so per-upstream configuration can be
+// added in the future without another breaking change.
+func (o MoqRelayConfigUpstreamsPtrOutput) Upstreams() MoqRelayConfigUpstreamsUpstreamArrayOutput {
+	return o.ApplyT(func(v *MoqRelayConfigUpstreams) []MoqRelayConfigUpstreamsUpstream {
+		if v == nil {
+			return nil
+		}
+		return v.Upstreams
+	}).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
+}
+
+type MoqRelayConfigUpstreamsUpstream struct {
+	// Upstream MOQT server publisher URL. Must be an absolute URL with a
+	// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+	// (WebTransport). Validated on update (PUT); rejected with 21013.
+	Url *string `pulumi:"url"`
+}
+
+// MoqRelayConfigUpstreamsUpstreamInput is an input type that accepts MoqRelayConfigUpstreamsUpstreamArgs and MoqRelayConfigUpstreamsUpstreamOutput values.
+// You can construct a concrete instance of `MoqRelayConfigUpstreamsUpstreamInput` via:
+//
+//	MoqRelayConfigUpstreamsUpstreamArgs{...}
+type MoqRelayConfigUpstreamsUpstreamInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput
+	ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(context.Context) MoqRelayConfigUpstreamsUpstreamOutput
+}
+
+type MoqRelayConfigUpstreamsUpstreamArgs struct {
+	// Upstream MOQT server publisher URL. Must be an absolute URL with a
+	// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+	// (WebTransport). Validated on update (PUT); rejected with 21013.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (MoqRelayConfigUpstreamsUpstreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
+}
+
+func (i MoqRelayConfigUpstreamsUpstreamArgs) ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput {
+	return i.ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigUpstreamsUpstreamArgs) ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsUpstreamOutput)
+}
+
+// MoqRelayConfigUpstreamsUpstreamArrayInput is an input type that accepts MoqRelayConfigUpstreamsUpstreamArray and MoqRelayConfigUpstreamsUpstreamArrayOutput values.
+// You can construct a concrete instance of `MoqRelayConfigUpstreamsUpstreamArrayInput` via:
+//
+//	MoqRelayConfigUpstreamsUpstreamArray{ MoqRelayConfigUpstreamsUpstreamArgs{...} }
+type MoqRelayConfigUpstreamsUpstreamArrayInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput
+	ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput
+}
+
+type MoqRelayConfigUpstreamsUpstreamArray []MoqRelayConfigUpstreamsUpstreamInput
+
+func (MoqRelayConfigUpstreamsUpstreamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
+}
+
+func (i MoqRelayConfigUpstreamsUpstreamArray) ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput {
+	return i.ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigUpstreamsUpstreamArray) ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
+}
+
+type MoqRelayConfigUpstreamsUpstreamOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigUpstreamsUpstreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
+}
+
+func (o MoqRelayConfigUpstreamsUpstreamOutput) ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput {
+	return o
+}
+
+func (o MoqRelayConfigUpstreamsUpstreamOutput) ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamOutput {
+	return o
+}
+
+// Upstream MOQT server publisher URL. Must be an absolute URL with a
+// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
+// (WebTransport). Validated on update (PUT); rejected with 21013.
+func (o MoqRelayConfigUpstreamsUpstreamOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoqRelayConfigUpstreamsUpstream) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type MoqRelayConfigUpstreamsUpstreamArrayOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigUpstreamsUpstreamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
+}
+
+func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput {
+	return o
+}
+
+func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput {
+	return o
+}
+
+func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) Index(i pulumi.IntInput) MoqRelayConfigUpstreamsUpstreamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MoqRelayConfigUpstreamsUpstream {
+		return vs[0].([]MoqRelayConfigUpstreamsUpstream)[vs[1].(int)]
+	}).(MoqRelayConfigUpstreamsUpstreamOutput)
+}
+
+type NelSettingValue struct {
+	// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// NelSettingValueInput is an input type that accepts NelSettingValueArgs and NelSettingValueOutput values.
+// You can construct a concrete instance of `NelSettingValueInput` via:
+//
+//	NelSettingValueArgs{...}
+type NelSettingValueInput interface {
+	pulumi.Input
+
+	ToNelSettingValueOutput() NelSettingValueOutput
+	ToNelSettingValueOutputWithContext(context.Context) NelSettingValueOutput
+}
+
+type NelSettingValueArgs struct {
+	// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (NelSettingValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NelSettingValue)(nil)).Elem()
+}
+
+func (i NelSettingValueArgs) ToNelSettingValueOutput() NelSettingValueOutput {
+	return i.ToNelSettingValueOutputWithContext(context.Background())
+}
+
+func (i NelSettingValueArgs) ToNelSettingValueOutputWithContext(ctx context.Context) NelSettingValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NelSettingValueOutput)
+}
+
+func (i NelSettingValueArgs) ToNelSettingValuePtrOutput() NelSettingValuePtrOutput {
+	return i.ToNelSettingValuePtrOutputWithContext(context.Background())
+}
+
+func (i NelSettingValueArgs) ToNelSettingValuePtrOutputWithContext(ctx context.Context) NelSettingValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NelSettingValueOutput).ToNelSettingValuePtrOutputWithContext(ctx)
+}
+
+// NelSettingValuePtrInput is an input type that accepts NelSettingValueArgs, NelSettingValuePtr and NelSettingValuePtrOutput values.
+// You can construct a concrete instance of `NelSettingValuePtrInput` via:
+//
+//	        NelSettingValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type NelSettingValuePtrInput interface {
+	pulumi.Input
+
+	ToNelSettingValuePtrOutput() NelSettingValuePtrOutput
+	ToNelSettingValuePtrOutputWithContext(context.Context) NelSettingValuePtrOutput
+}
+
+type nelSettingValuePtrType NelSettingValueArgs
+
+func NelSettingValuePtr(v *NelSettingValueArgs) NelSettingValuePtrInput {
+	return (*nelSettingValuePtrType)(v)
+}
+
+func (*nelSettingValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NelSettingValue)(nil)).Elem()
+}
+
+func (i *nelSettingValuePtrType) ToNelSettingValuePtrOutput() NelSettingValuePtrOutput {
+	return i.ToNelSettingValuePtrOutputWithContext(context.Background())
+}
+
+func (i *nelSettingValuePtrType) ToNelSettingValuePtrOutputWithContext(ctx context.Context) NelSettingValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NelSettingValuePtrOutput)
+}
+
+type NelSettingValueOutput struct{ *pulumi.OutputState }
+
+func (NelSettingValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NelSettingValue)(nil)).Elem()
+}
+
+func (o NelSettingValueOutput) ToNelSettingValueOutput() NelSettingValueOutput {
+	return o
+}
+
+func (o NelSettingValueOutput) ToNelSettingValueOutputWithContext(ctx context.Context) NelSettingValueOutput {
+	return o
+}
+
+func (o NelSettingValueOutput) ToNelSettingValuePtrOutput() NelSettingValuePtrOutput {
+	return o.ToNelSettingValuePtrOutputWithContext(context.Background())
+}
+
+func (o NelSettingValueOutput) ToNelSettingValuePtrOutputWithContext(ctx context.Context) NelSettingValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NelSettingValue) *NelSettingValue {
+		return &v
+	}).(NelSettingValuePtrOutput)
+}
+
+// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+func (o NelSettingValueOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NelSettingValue) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type NelSettingValuePtrOutput struct{ *pulumi.OutputState }
+
+func (NelSettingValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NelSettingValue)(nil)).Elem()
+}
+
+func (o NelSettingValuePtrOutput) ToNelSettingValuePtrOutput() NelSettingValuePtrOutput {
+	return o
+}
+
+func (o NelSettingValuePtrOutput) ToNelSettingValuePtrOutputWithContext(ctx context.Context) NelSettingValuePtrOutput {
+	return o
+}
+
+func (o NelSettingValuePtrOutput) Elem() NelSettingValueOutput {
+	return o.ApplyT(func(v *NelSettingValue) NelSettingValue {
+		if v != nil {
+			return *v
+		}
+		var ret NelSettingValue
+		return ret
+	}).(NelSettingValueOutput)
+}
+
+// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
+func (o NelSettingValuePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NelSettingValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersPtrInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
@@ -81569,28 +81539,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingCatchAllActionArrayInput)(nil)).Elem(), EmailRoutingCatchAllActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingCatchAllMatcherInput)(nil)).Elem(), EmailRoutingCatchAllMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingCatchAllMatcherArrayInput)(nil)).Elem(), EmailRoutingCatchAllMatcherArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsErrorInput)(nil)).Elem(), EmailRoutingDnsErrorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsErrorArrayInput)(nil)).Elem(), EmailRoutingDnsErrorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsErrorSourceInput)(nil)).Elem(), EmailRoutingDnsErrorSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsErrorSourcePtrInput)(nil)).Elem(), EmailRoutingDnsErrorSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsMessageInput)(nil)).Elem(), EmailRoutingDnsMessageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsMessageArrayInput)(nil)).Elem(), EmailRoutingDnsMessageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsMessageSourceInput)(nil)).Elem(), EmailRoutingDnsMessageSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsMessageSourcePtrInput)(nil)).Elem(), EmailRoutingDnsMessageSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultInput)(nil)).Elem(), EmailRoutingDnsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultPtrInput)(nil)).Elem(), EmailRoutingDnsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultErrorInput)(nil)).Elem(), EmailRoutingDnsResultErrorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultErrorArrayInput)(nil)).Elem(), EmailRoutingDnsResultErrorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultErrorMissingInput)(nil)).Elem(), EmailRoutingDnsResultErrorMissingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultErrorMissingPtrInput)(nil)).Elem(), EmailRoutingDnsResultErrorMissingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultInfoInput)(nil)).Elem(), EmailRoutingDnsResultInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultInfoPtrInput)(nil)).Elem(), EmailRoutingDnsResultInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultRecordInput)(nil)).Elem(), EmailRoutingDnsResultRecordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultRecordArrayInput)(nil)).Elem(), EmailRoutingDnsResultRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingRuleActionInput)(nil)).Elem(), EmailRoutingRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingRuleActionArrayInput)(nil)).Elem(), EmailRoutingRuleActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingRuleMatcherInput)(nil)).Elem(), EmailRoutingRuleMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingRuleMatcherArrayInput)(nil)).Elem(), EmailRoutingRuleMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSecurityDomainAuthorizationInput)(nil)).Elem(), EmailSecurityDomainAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSecurityDomainAuthorizationPtrInput)(nil)).Elem(), EmailSecurityDomainAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSecurityDomainEmailsProcessedInput)(nil)).Elem(), EmailSecurityDomainEmailsProcessedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailSecurityDomainEmailsProcessedPtrInput)(nil)).Elem(), EmailSecurityDomainEmailsProcessedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterBodyInput)(nil)).Elem(), FilterBodyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterBodyArrayInput)(nil)).Elem(), FilterBodyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallRuleActionInput)(nil)).Elem(), FirewallRuleActionArgs{})
@@ -81733,6 +81689,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigInput)(nil)).Elem(), MoqRelayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigPtrInput)(nil)).Elem(), MoqRelayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribeInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribePtrInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsPtrInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsUpstreamInput)(nil)).Elem(), MoqRelayConfigUpstreamsUpstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsUpstreamArrayInput)(nil)).Elem(), MoqRelayConfigUpstreamsUpstreamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NelSettingValueInput)(nil)).Elem(), NelSettingValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NelSettingValuePtrInput)(nil)).Elem(), NelSettingValueArgs{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -82567,28 +82537,14 @@ func init() {
 	pulumi.RegisterOutputType(EmailRoutingCatchAllActionArrayOutput{})
 	pulumi.RegisterOutputType(EmailRoutingCatchAllMatcherOutput{})
 	pulumi.RegisterOutputType(EmailRoutingCatchAllMatcherArrayOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsErrorOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsErrorArrayOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsErrorSourceOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsErrorSourcePtrOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsMessageOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsMessageArrayOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsMessageSourceOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsMessageSourcePtrOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultPtrOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultErrorOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultErrorArrayOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultErrorMissingOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultErrorMissingPtrOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultInfoOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultInfoPtrOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultRecordOutput{})
-	pulumi.RegisterOutputType(EmailRoutingDnsResultRecordArrayOutput{})
 	pulumi.RegisterOutputType(EmailRoutingRuleActionOutput{})
 	pulumi.RegisterOutputType(EmailRoutingRuleActionArrayOutput{})
 	pulumi.RegisterOutputType(EmailRoutingRuleMatcherOutput{})
 	pulumi.RegisterOutputType(EmailRoutingRuleMatcherArrayOutput{})
+	pulumi.RegisterOutputType(EmailSecurityDomainAuthorizationOutput{})
+	pulumi.RegisterOutputType(EmailSecurityDomainAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(EmailSecurityDomainEmailsProcessedOutput{})
+	pulumi.RegisterOutputType(EmailSecurityDomainEmailsProcessedPtrOutput{})
 	pulumi.RegisterOutputType(FilterBodyOutput{})
 	pulumi.RegisterOutputType(FilterBodyArrayOutput{})
 	pulumi.RegisterOutputType(FirewallRuleActionOutput{})
@@ -82731,4 +82687,18 @@ func init() {
 	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderOutput{})
+	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderOutput{})
+	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderArrayOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigPtrOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribeOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribePtrOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsPtrOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsUpstreamOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsUpstreamArrayOutput{})
+	pulumi.RegisterOutputType(NelSettingValueOutput{})
+	pulumi.RegisterOutputType(NelSettingValuePtrOutput{})
 }

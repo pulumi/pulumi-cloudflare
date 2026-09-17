@@ -35,6 +35,7 @@ class WorkerScriptArgs:
                  content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  exports: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptExportsArgs']]]] = None,
+                 files: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptFilesArgs']]]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional['WorkerScriptLimitsArgs']] = None,
@@ -66,6 +67,7 @@ class WorkerScriptArgs:
         :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[Mapping[str, pulumi.Input['WorkerScriptExportsArgs']]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkerScriptFilesArgs']]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input['WorkerScriptLimitsArgs'] limits: Limits to apply for this Worker.
@@ -105,6 +107,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "content_type", content_type)
         if exports is not None:
             pulumi.set(__self__, "exports", exports)
+        if files is not None:
+            pulumi.set(__self__, "files", files)
         if keep_assets is not None:
             pulumi.set(__self__, "keep_assets", keep_assets)
         if keep_bindings is not None:
@@ -300,6 +304,18 @@ class WorkerScriptArgs:
         pulumi.set(self, "exports", value)
 
     @_builtins.property
+    @pulumi.getter
+    def files(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptFilesArgs']]]]:
+        """
+        Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        """
+        return pulumi.get(self, "files")
+
+    @files.setter
+    def files(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptFilesArgs']]]]):
+        pulumi.set(self, "files", value)
+
+    @_builtins.property
     @pulumi.getter(name="keepAssets")
     def keep_assets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -451,6 +467,7 @@ class _WorkerScriptState:
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  exports: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptExportsArgs']]]] = None,
+                 files: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptFilesArgs']]]] = None,
                  handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -494,6 +511,7 @@ class _WorkerScriptState:
         :param pulumi.Input[_builtins.str] created_on: When the script was created.
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
         :param pulumi.Input[Mapping[str, pulumi.Input['WorkerScriptExportsArgs']]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkerScriptFilesArgs']]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] handlers: The names of handlers exported as part of the default export.
         :param pulumi.Input[_builtins.bool] has_assets: Whether a Worker contains assets.
         :param pulumi.Input[_builtins.bool] has_modules: Whether a Worker contains modules.
@@ -547,6 +565,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "etag", etag)
         if exports is not None:
             pulumi.set(__self__, "exports", exports)
+        if files is not None:
+            pulumi.set(__self__, "files", files)
         if handlers is not None:
             pulumi.set(__self__, "handlers", handlers)
         if has_assets is not None:
@@ -780,6 +800,18 @@ class _WorkerScriptState:
     @exports.setter
     def exports(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptExportsArgs']]]]):
         pulumi.set(self, "exports", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def files(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptFilesArgs']]]]:
+        """
+        Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        """
+        return pulumi.get(self, "files")
+
+    @files.setter
+    def files(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkerScriptFilesArgs']]]]):
+        pulumi.set(self, "files", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1070,6 +1102,7 @@ class WorkerScript(pulumi.CustomResource):
                  content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]]] = None,
+                 files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
@@ -1091,6 +1124,134 @@ class WorkerScript(pulumi.CustomResource):
         - `Workers Tail Read`
 
         > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_workers_script = cloudflare.WorkersScript("example_workers_script",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            script_name="this-is_my_script-01",
+            assets={
+                "config": {
+                    "headers": \"\"\"        /dashboard/*
+                X-Frame-Options: DENY
+
+                /static/*
+                Access-Control-Allow-Origin: *
+        \"\"\",
+                    "redirects": \"\"\"        /foo /bar 301
+                /news/* /blog/:splat
+        \"\"\",
+                    "html_handling": "auto-trailing-slash",
+                    "not_found_handling": "404-page",
+                    "run_worker_first": [],
+                    "serve_directly": True,
+                },
+                "jwt": "jwt",
+            },
+            bindings=[{
+                "name": "MY_ENV_VAR",
+                "text": "my_data",
+                "type": "plain_text",
+            }],
+            body_part="worker.js",
+            cache_options={
+                "enabled": True,
+                "cross_version_cache": True,
+            },
+            compatibility_date="2021-01-01T00:00:00Z",
+            compatibility_flags=["nodejs_compat"],
+            exports={
+                "Admin": {
+                    "type": "worker",
+                    "cache": {
+                        "enabled": True,
+                    },
+                    "renamed_to": "renamed_to",
+                    "state": "created",
+                    "storage": "sqlite",
+                    "transfer_from": "transfer_from",
+                    "transferred_to": "transferred_to",
+                },
+                "default": {
+                    "type": "worker",
+                    "cache": {
+                        "enabled": False,
+                    },
+                    "renamed_to": "renamed_to",
+                    "state": "created",
+                    "storage": "sqlite",
+                    "transfer_from": "transfer_from",
+                    "transferred_to": "transferred_to",
+                },
+            },
+            keep_assets=False,
+            keep_bindings=["string"],
+            limits={
+                "cpu_ms": 50,
+                "subrequests": 1000,
+            },
+            logpush=False,
+            main_module="worker.js",
+            migrations={
+                "deleted_classes": ["string"],
+                "new_classes": ["string"],
+                "new_sqlite_classes": ["string"],
+                "new_tag": "v2",
+                "old_tag": "v1",
+                "renamed_classes": [{
+                    "from_": "from",
+                    "to": "to",
+                }],
+                "transferred_classes": [{
+                    "from_": "from",
+                    "from_script": "from_script",
+                    "to": "to",
+                }],
+            },
+            observability={
+                "enabled": True,
+                "head_sampling_rate": 0.1,
+                "logs": {
+                    "enabled": True,
+                    "invocation_logs": True,
+                    "destinations": ["cloudflare"],
+                    "head_sampling_rate": 0.1,
+                    "persist": True,
+                },
+                "redact_query_string": False,
+                "traces": {
+                    "destinations": ["cloudflare"],
+                    "enabled": True,
+                    "head_sampling_rate": 0.1,
+                    "persist": True,
+                },
+            },
+            package_dependencies=[{
+                "installed_version": "4.17.22",
+                "name": "lodash",
+                "package_json_version": "^4.17.21",
+            }],
+            placement={
+                "mode": "smart",
+            },
+            tags=["string"],
+            tail_consumers=[{
+                "service": "my-log-consumer",
+                "environment": "production",
+                "namespace": "my-namespace",
+            }],
+            usage_model="standard",
+            files={
+                "module.wasm": {
+                    "content_base64": "AGFzbQEAAAA=",
+                    "content_type": "application/wasm",
+                },
+            })
+        ```
 
         ## Import
 
@@ -1117,6 +1278,7 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']] limits: Limits to apply for this Worker.
@@ -1145,6 +1307,134 @@ class WorkerScript(pulumi.CustomResource):
         - `Workers Tail Read`
 
         > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_workers_script = cloudflare.WorkersScript("example_workers_script",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            script_name="this-is_my_script-01",
+            assets={
+                "config": {
+                    "headers": \"\"\"        /dashboard/*
+                X-Frame-Options: DENY
+
+                /static/*
+                Access-Control-Allow-Origin: *
+        \"\"\",
+                    "redirects": \"\"\"        /foo /bar 301
+                /news/* /blog/:splat
+        \"\"\",
+                    "html_handling": "auto-trailing-slash",
+                    "not_found_handling": "404-page",
+                    "run_worker_first": [],
+                    "serve_directly": True,
+                },
+                "jwt": "jwt",
+            },
+            bindings=[{
+                "name": "MY_ENV_VAR",
+                "text": "my_data",
+                "type": "plain_text",
+            }],
+            body_part="worker.js",
+            cache_options={
+                "enabled": True,
+                "cross_version_cache": True,
+            },
+            compatibility_date="2021-01-01T00:00:00Z",
+            compatibility_flags=["nodejs_compat"],
+            exports={
+                "Admin": {
+                    "type": "worker",
+                    "cache": {
+                        "enabled": True,
+                    },
+                    "renamed_to": "renamed_to",
+                    "state": "created",
+                    "storage": "sqlite",
+                    "transfer_from": "transfer_from",
+                    "transferred_to": "transferred_to",
+                },
+                "default": {
+                    "type": "worker",
+                    "cache": {
+                        "enabled": False,
+                    },
+                    "renamed_to": "renamed_to",
+                    "state": "created",
+                    "storage": "sqlite",
+                    "transfer_from": "transfer_from",
+                    "transferred_to": "transferred_to",
+                },
+            },
+            keep_assets=False,
+            keep_bindings=["string"],
+            limits={
+                "cpu_ms": 50,
+                "subrequests": 1000,
+            },
+            logpush=False,
+            main_module="worker.js",
+            migrations={
+                "deleted_classes": ["string"],
+                "new_classes": ["string"],
+                "new_sqlite_classes": ["string"],
+                "new_tag": "v2",
+                "old_tag": "v1",
+                "renamed_classes": [{
+                    "from_": "from",
+                    "to": "to",
+                }],
+                "transferred_classes": [{
+                    "from_": "from",
+                    "from_script": "from_script",
+                    "to": "to",
+                }],
+            },
+            observability={
+                "enabled": True,
+                "head_sampling_rate": 0.1,
+                "logs": {
+                    "enabled": True,
+                    "invocation_logs": True,
+                    "destinations": ["cloudflare"],
+                    "head_sampling_rate": 0.1,
+                    "persist": True,
+                },
+                "redact_query_string": False,
+                "traces": {
+                    "destinations": ["cloudflare"],
+                    "enabled": True,
+                    "head_sampling_rate": 0.1,
+                    "persist": True,
+                },
+            },
+            package_dependencies=[{
+                "installed_version": "4.17.22",
+                "name": "lodash",
+                "package_json_version": "^4.17.21",
+            }],
+            placement={
+                "mode": "smart",
+            },
+            tags=["string"],
+            tail_consumers=[{
+                "service": "my-log-consumer",
+                "environment": "production",
+                "namespace": "my-namespace",
+            }],
+            usage_model="standard",
+            files={
+                "module.wasm": {
+                    "content_base64": "AGFzbQEAAAA=",
+                    "content_type": "application/wasm",
+                },
+            })
+        ```
 
         ## Import
 
@@ -1181,6 +1471,7 @@ class WorkerScript(pulumi.CustomResource):
                  content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]]] = None,
+                 files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
@@ -1218,6 +1509,7 @@ class WorkerScript(pulumi.CustomResource):
             __props__.__dict__["content_sha256"] = content_sha256
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["exports"] = exports
+            __props__.__dict__["files"] = files
             __props__.__dict__["keep_assets"] = keep_assets
             __props__.__dict__["keep_bindings"] = keep_bindings
             __props__.__dict__["limits"] = limits
@@ -1271,6 +1563,7 @@ class WorkerScript(pulumi.CustomResource):
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]]] = None,
+            files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]]] = None,
             handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
             has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1318,6 +1611,7 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_on: When the script was created.
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] handlers: The names of handlers exported as part of the default export.
         :param pulumi.Input[_builtins.bool] has_assets: Whether a Worker contains assets.
         :param pulumi.Input[_builtins.bool] has_modules: Whether a Worker contains modules.
@@ -1360,6 +1654,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["etag"] = etag
         __props__.__dict__["exports"] = exports
+        __props__.__dict__["files"] = files
         __props__.__dict__["handlers"] = handlers
         __props__.__dict__["has_assets"] = has_assets
         __props__.__dict__["has_modules"] = has_modules
@@ -1418,7 +1713,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="bodyPart")
-    def body_part(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def body_part(self) -> pulumi.Output[_builtins.str]:
         """
         Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         """
@@ -1506,6 +1801,14 @@ class WorkerScript(pulumi.CustomResource):
         Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
         """
         return pulumi.get(self, "exports")
+
+    @_builtins.property
+    @pulumi.getter
+    def files(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.WorkerScriptFiles']]]:
+        """
+        Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        """
+        return pulumi.get(self, "files")
 
     @_builtins.property
     @pulumi.getter

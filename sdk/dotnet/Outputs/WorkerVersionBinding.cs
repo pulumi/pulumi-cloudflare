@@ -75,6 +75,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+        /// Available values: "runtime-email-alpha".
+        /// </summary>
+        public readonly string? Identity;
+        /// <summary>
         /// Name of the Vectorize index to bind to.
         /// </summary>
         public readonly string? IndexName;
@@ -88,7 +93,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Json;
         /// <summary>
         /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-        /// Available values: "eu", "fedramp", "fedramp-high".
+        /// Available values: "eu", "fedramp", "fedramp-high", "us".
         /// </summary>
         public readonly string? Jurisdiction;
         /// <summary>
@@ -217,6 +222,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? id,
 
+            string? identity,
+
             string? indexName,
 
             string? instanceName,
@@ -286,6 +293,7 @@ namespace Pulumi.Cloudflare.Outputs
             Environment = environment;
             Format = format;
             Id = id;
+            Identity = identity;
             IndexName = indexName;
             InstanceName = instanceName;
             Json = json;

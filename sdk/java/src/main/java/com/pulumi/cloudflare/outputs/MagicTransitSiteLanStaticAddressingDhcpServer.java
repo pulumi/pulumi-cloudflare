@@ -32,7 +32,11 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
     /**
      * @return A valid IPv4 address.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private @Nullable String dnsServer;
     private @Nullable List<String> dnsServers;
     /**
@@ -66,7 +70,11 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServer {
     /**
      * @return A valid IPv4 address.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<String> dnsServer() {
         return Optional.ofNullable(this.dnsServer);
     }

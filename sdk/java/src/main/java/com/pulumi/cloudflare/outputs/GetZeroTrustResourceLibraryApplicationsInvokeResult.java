@@ -16,6 +16,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     private String accountId;
+    /**
+     * @return Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     * 
+     */
+    private @Nullable String fields;
     private @Nullable String filter;
     private Integer limit;
     private @Nullable Integer maxItems;
@@ -27,6 +35,16 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     private GetZeroTrustResourceLibraryApplicationsInvokeResult() {}
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return Return only the listed properties on each application, as a comma-separated list.
+     * Use this to keep responses small when you only need part of each application — for
+     * example populating a picker with `fields=id,name` instead of downloading every
+     * hostname and IP subnet.
+     * 
+     */
+    public Optional<String> fields() {
+        return Optional.ofNullable(this.fields);
     }
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
@@ -60,6 +78,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private @Nullable String fields;
         private @Nullable String filter;
         private Integer limit;
         private @Nullable Integer maxItems;
@@ -71,6 +90,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
         public Builder(GetZeroTrustResourceLibraryApplicationsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.fields = defaults.fields;
     	      this.filter = defaults.filter;
     	      this.limit = defaults.limit;
     	      this.maxItems = defaults.maxItems;
@@ -86,6 +106,12 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
               throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsInvokeResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fields(@Nullable String fields) {
+
+            this.fields = fields;
             return this;
         }
         @CustomType.Setter
@@ -142,6 +168,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
         public GetZeroTrustResourceLibraryApplicationsInvokeResult build() {
             final var _resultValue = new GetZeroTrustResourceLibraryApplicationsInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.fields = fields;
             _resultValue.filter = filter;
             _resultValue.limit = limit;
             _resultValue.maxItems = maxItems;

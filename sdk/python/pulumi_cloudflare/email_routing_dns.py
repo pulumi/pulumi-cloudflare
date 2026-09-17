@@ -13,8 +13,6 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['EmailRoutingDnsArgs', 'EmailRoutingDns']
 
@@ -63,15 +61,11 @@ class _EmailRoutingDnsState:
     def __init__(__self__, *,
                  created: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsErrorArgs']]]] = None,
-                 messages: pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsMessageArgs']]]] = None,
                  modified: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 result: pulumi.Input[Optional['EmailRoutingDnsResultArgs']] = None,
-                 result_info: pulumi.Input[Optional['EmailRoutingDnsResultInfoArgs']] = None,
                  skip_wizard: pulumi.Input[Optional[_builtins.bool]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 success: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -84,7 +78,7 @@ class _EmailRoutingDnsState:
         :param pulumi.Input[_builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[_builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
-        :param pulumi.Input[_builtins.bool] success: Whether the API call was successful.
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         :param pulumi.Input[_builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -92,24 +86,16 @@ class _EmailRoutingDnsState:
             pulumi.set(__self__, "created", created)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if errors is not None:
-            pulumi.set(__self__, "errors", errors)
-        if messages is not None:
-            pulumi.set(__self__, "messages", messages)
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if result is not None:
-            pulumi.set(__self__, "result", result)
-        if result_info is not None:
-            pulumi.set(__self__, "result_info", result_info)
         if skip_wizard is not None:
             pulumi.set(__self__, "skip_wizard", skip_wizard)
         if status is not None:
             pulumi.set(__self__, "status", status)
-        if success is not None:
-            pulumi.set(__self__, "success", success)
+        if support_subaddress is not None:
+            pulumi.set(__self__, "support_subaddress", support_subaddress)
         if tag is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""tag is deprecated: This attribute is deprecated.""")
@@ -144,24 +130,6 @@ class _EmailRoutingDnsState:
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsErrorArgs']]]]:
-        return pulumi.get(self, "errors")
-
-    @errors.setter
-    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsErrorArgs']]]]):
-        pulumi.set(self, "errors", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsMessageArgs']]]]:
-        return pulumi.get(self, "messages")
-
-    @messages.setter
-    def messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsMessageArgs']]]]):
-        pulumi.set(self, "messages", value)
-
-    @_builtins.property
-    @pulumi.getter
     def modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the settings have been modified.
@@ -183,24 +151,6 @@ class _EmailRoutingDnsState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def result(self) -> pulumi.Input[Optional['EmailRoutingDnsResultArgs']]:
-        return pulumi.get(self, "result")
-
-    @result.setter
-    def result(self, value: pulumi.Input[Optional['EmailRoutingDnsResultArgs']]):
-        pulumi.set(self, "result", value)
-
-    @_builtins.property
-    @pulumi.getter(name="resultInfo")
-    def result_info(self) -> pulumi.Input[Optional['EmailRoutingDnsResultInfoArgs']]:
-        return pulumi.get(self, "result_info")
-
-    @result_info.setter
-    def result_info(self, value: pulumi.Input[Optional['EmailRoutingDnsResultInfoArgs']]):
-        pulumi.set(self, "result_info", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWizard")
@@ -228,16 +178,16 @@ class _EmailRoutingDnsState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
-    @pulumi.getter
-    def success(self) -> pulumi.Input[Optional[_builtins.bool]]:
+    @pulumi.getter(name="supportSubaddress")
+    def support_subaddress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether the API call was successful.
+        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         """
-        return pulumi.get(self, "success")
+        return pulumi.get(self, "support_subaddress")
 
-    @success.setter
-    def success(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "success", value)
+    @support_subaddress.setter
+    def support_subaddress(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "support_subaddress", value)
 
     @_builtins.property
     @pulumi.getter
@@ -365,14 +315,10 @@ class EmailRoutingDns(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created"] = None
             __props__.__dict__["enabled"] = None
-            __props__.__dict__["errors"] = None
-            __props__.__dict__["messages"] = None
             __props__.__dict__["modified"] = None
-            __props__.__dict__["result"] = None
-            __props__.__dict__["result_info"] = None
             __props__.__dict__["skip_wizard"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["success"] = None
+            __props__.__dict__["support_subaddress"] = None
             __props__.__dict__["tag"] = None
         super(EmailRoutingDns, __self__).__init__(
             'cloudflare:index/emailRoutingDns:EmailRoutingDns',
@@ -386,15 +332,11 @@ class EmailRoutingDns(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingDnsErrorArgs', 'EmailRoutingDnsErrorArgsDict']]]]] = None,
-            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingDnsMessageArgs', 'EmailRoutingDnsMessageArgsDict']]]]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            result: pulumi.Input[Optional[Union['EmailRoutingDnsResultArgs', 'EmailRoutingDnsResultArgsDict']]] = None,
-            result_info: pulumi.Input[Optional[Union['EmailRoutingDnsResultInfoArgs', 'EmailRoutingDnsResultInfoArgsDict']]] = None,
             skip_wizard: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            success: pulumi.Input[Optional[_builtins.bool]] = None,
+            support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None,
             tag: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailRoutingDns':
         """
@@ -411,7 +353,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[_builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
-        :param pulumi.Input[_builtins.bool] success: Whether the API call was successful.
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         :param pulumi.Input[_builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -421,15 +363,11 @@ class EmailRoutingDns(pulumi.CustomResource):
 
         __props__.__dict__["created"] = created
         __props__.__dict__["enabled"] = enabled
-        __props__.__dict__["errors"] = errors
-        __props__.__dict__["messages"] = messages
         __props__.__dict__["modified"] = modified
         __props__.__dict__["name"] = name
-        __props__.__dict__["result"] = result
-        __props__.__dict__["result_info"] = result_info
         __props__.__dict__["skip_wizard"] = skip_wizard
         __props__.__dict__["status"] = status
-        __props__.__dict__["success"] = success
+        __props__.__dict__["support_subaddress"] = support_subaddress
         __props__.__dict__["tag"] = tag
         __props__.__dict__["zone_id"] = zone_id
         return EmailRoutingDns(resource_name, opts=opts, __props__=__props__)
@@ -452,16 +390,6 @@ class EmailRoutingDns(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> pulumi.Output[Sequence['outputs.EmailRoutingDnsError']]:
-        return pulumi.get(self, "errors")
-
-    @_builtins.property
-    @pulumi.getter
-    def messages(self) -> pulumi.Output[Sequence['outputs.EmailRoutingDnsMessage']]:
-        return pulumi.get(self, "messages")
-
-    @_builtins.property
-    @pulumi.getter
     def modified(self) -> pulumi.Output[_builtins.str]:
         """
         The date and time the settings have been modified.
@@ -475,16 +403,6 @@ class EmailRoutingDns(pulumi.CustomResource):
         Domain of your zone.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def result(self) -> pulumi.Output['outputs.EmailRoutingDnsResult']:
-        return pulumi.get(self, "result")
-
-    @_builtins.property
-    @pulumi.getter(name="resultInfo")
-    def result_info(self) -> pulumi.Output['outputs.EmailRoutingDnsResultInfo']:
-        return pulumi.get(self, "result_info")
 
     @_builtins.property
     @pulumi.getter(name="skipWizard")
@@ -504,12 +422,12 @@ class EmailRoutingDns(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @_builtins.property
-    @pulumi.getter
-    def success(self) -> pulumi.Output[_builtins.bool]:
+    @pulumi.getter(name="supportSubaddress")
+    def support_subaddress(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether the API call was successful.
+        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         """
-        return pulumi.get(self, "success")
+        return pulumi.get(self, "support_subaddress")
 
     @_builtins.property
     @pulumi.getter

@@ -819,7 +819,7 @@ class WorkerVersion(pulumi.CustomResource):
                 "enabled": True,
                 "cross_version_cache": True,
             },
-            compatibility_date="2021-01-01",
+            compatibility_date="2021-01-01T00:00:00Z",
             compatibility_flags=["nodejs_compat"],
             containers=[{
                 "class_name": "MyDurableObject",
@@ -969,7 +969,7 @@ class WorkerVersion(pulumi.CustomResource):
                 "enabled": True,
                 "cross_version_cache": True,
             },
-            compatibility_date="2021-01-01",
+            compatibility_date="2021-01-01T00:00:00Z",
             compatibility_flags=["nodejs_compat"],
             containers=[{
                 "class_name": "MyDurableObject",

@@ -83,6 +83,10 @@ export interface GetStreamLiveInputResult {
      */
     readonly modified: string;
     /**
+     * Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+     */
+    readonly playback: outputs.GetStreamLiveInputPlayback;
+    /**
      * When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
      */
     readonly preferLowLatency: boolean;

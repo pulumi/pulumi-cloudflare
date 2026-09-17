@@ -340,21 +340,12 @@ class Image(pulumi.CustomResource):
         - `Images Read`
         - `Images Write`
 
-        ## Example Usage
+        > Set either `file` (base64-encoded image data, e.g. from
+          `filebase64`)
+          or `url` (fetched server-side), not both.
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_image = cloudflare.Image("example_image",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            image_id="id",
-            creator="creator",
-            file="Example data",
-            metadata={},
-            require_signed_urls=True,
-            url="https://example.com/path/to/logo.png")
-        ```
+        > `require_signed_urls = true` is rejected for images with a custom `id` (API
+          error 5410). Since `id` is required here, leave it unset or `false`.
 
         ## Import
 
@@ -385,21 +376,12 @@ class Image(pulumi.CustomResource):
         - `Images Read`
         - `Images Write`
 
-        ## Example Usage
+        > Set either `file` (base64-encoded image data, e.g. from
+          `filebase64`)
+          or `url` (fetched server-side), not both.
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_image = cloudflare.Image("example_image",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            image_id="id",
-            creator="creator",
-            file="Example data",
-            metadata={},
-            require_signed_urls=True,
-            url="https://example.com/path/to/logo.png")
-        ```
+        > `require_signed_urls = true` is rejected for images with a custom `id` (API
+          error 5410). Since `id` is required here, leave it unset or `false`.
 
         ## Import
 

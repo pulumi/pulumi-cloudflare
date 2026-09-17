@@ -55,9 +55,17 @@ public final class PipelineSinkState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Defines the output data format of a sink.
+     * 
+     */
     @Import(name="format")
     private @Nullable Output<PipelineSinkFormatArgs> format;
 
+    /**
+     * @return Defines the output data format of a sink.
+     * 
+     */
     public Optional<Output<PipelineSinkFormatArgs>> format() {
         return Optional.ofNullable(this.format);
     }
@@ -84,9 +92,17 @@ public final class PipelineSinkState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Defines the schema of the events in the data stream.
+     * 
+     */
     @Import(name="schema")
     private @Nullable Output<PipelineSinkSchemaArgs> schema;
 
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     public Optional<Output<PipelineSinkSchemaArgs>> schema() {
         return Optional.ofNullable(this.schema);
     }
@@ -190,11 +206,23 @@ public final class PipelineSinkState extends com.pulumi.resources.ResourceArgs {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param format Defines the output data format of a sink.
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(@Nullable Output<PipelineSinkFormatArgs> format) {
             $.format = format;
             return this;
         }
 
+        /**
+         * @param format Defines the output data format of a sink.
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(PipelineSinkFormatArgs format) {
             return format(Output.of(format));
         }
@@ -229,11 +257,23 @@ public final class PipelineSinkState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param schema Defines the schema of the events in the data stream.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(@Nullable Output<PipelineSinkSchemaArgs> schema) {
             $.schema = schema;
             return this;
         }
 
+        /**
+         * @param schema Defines the schema of the events in the data stream.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(PipelineSinkSchemaArgs schema) {
             return schema(Output.of(schema));
         }

@@ -3,12 +3,15 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustResourceLibraryApplicationFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustResourceLibraryApplicationArgs extends com.pulumi.resources.InvokeArgs {
@@ -22,25 +25,33 @@ public final class GetZeroTrustResourceLibraryApplicationArgs extends com.pulumi
         return this.accountId;
     }
 
-    /**
-     * The ID of this resource.
-     * 
-     */
-    @Import(name="id", required=true)
-    private Output<Integer> id;
+    @Import(name="filter")
+    private @Nullable Output<GetZeroTrustResourceLibraryApplicationFilterArgs> filter;
+
+    public Optional<Output<GetZeroTrustResourceLibraryApplicationFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
 
     /**
-     * @return The ID of this resource.
+     * Returns the application ID.
      * 
      */
-    public Output<Integer> id() {
-        return this.id;
+    @Import(name="id")
+    private @Nullable Output<Integer> id;
+
+    /**
+     * @return Returns the application ID.
+     * 
+     */
+    public Optional<Output<Integer>> id() {
+        return Optional.ofNullable(this.id);
     }
 
     private GetZeroTrustResourceLibraryApplicationArgs() {}
 
     private GetZeroTrustResourceLibraryApplicationArgs(GetZeroTrustResourceLibraryApplicationArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.id = $.id;
     }
 
@@ -71,19 +82,28 @@ public final class GetZeroTrustResourceLibraryApplicationArgs extends com.pulumi
             return accountId(Output.of(accountId));
         }
 
+        public Builder filter(@Nullable Output<GetZeroTrustResourceLibraryApplicationFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetZeroTrustResourceLibraryApplicationFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
         /**
-         * @param id The ID of this resource.
+         * @param id Returns the application ID.
          * 
          * @return builder
          * 
          */
-        public Builder id(Output<Integer> id) {
+        public Builder id(@Nullable Output<Integer> id) {
             $.id = id;
             return this;
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id Returns the application ID.
          * 
          * @return builder
          * 
@@ -95,9 +115,6 @@ public final class GetZeroTrustResourceLibraryApplicationArgs extends com.pulumi
         public GetZeroTrustResourceLibraryApplicationArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationArgs", "accountId");
-            }
-            if ($.id == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationArgs", "id");
             }
             return $;
         }

@@ -15,6 +15,135 @@ import * as utilities from "./utilities";
  *
  * > For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleWorkersScript = new cloudflare.WorkersScript("example_workers_script", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     scriptName: "this-is_my_script-01",
+ *     assets: {
+ *         config: {
+ *             headers: `        /dashboard/*
+ *         X-Frame-Options: DENY
+ *
+ *         /static/*
+ *         Access-Control-Allow-Origin: *
+ * `,
+ *             redirects: `        /foo /bar 301
+ *         /news/* /blog/:splat
+ * `,
+ *             htmlHandling: "auto-trailing-slash",
+ *             notFoundHandling: "404-page",
+ *             runWorkerFirst: [],
+ *             serveDirectly: true,
+ *         },
+ *         jwt: "jwt",
+ *     },
+ *     bindings: [{
+ *         name: "MY_ENV_VAR",
+ *         text: "my_data",
+ *         type: "plain_text",
+ *     }],
+ *     bodyPart: "worker.js",
+ *     cacheOptions: {
+ *         enabled: true,
+ *         crossVersionCache: true,
+ *     },
+ *     compatibilityDate: "2021-01-01T00:00:00Z",
+ *     compatibilityFlags: ["nodejs_compat"],
+ *     exports: {
+ *         Admin: {
+ *             type: "worker",
+ *             cache: {
+ *                 enabled: true,
+ *             },
+ *             renamedTo: "renamed_to",
+ *             state: "created",
+ *             storage: "sqlite",
+ *             transferFrom: "transfer_from",
+ *             transferredTo: "transferred_to",
+ *         },
+ *         "default": {
+ *             type: "worker",
+ *             cache: {
+ *                 enabled: false,
+ *             },
+ *             renamedTo: "renamed_to",
+ *             state: "created",
+ *             storage: "sqlite",
+ *             transferFrom: "transfer_from",
+ *             transferredTo: "transferred_to",
+ *         },
+ *     },
+ *     keepAssets: false,
+ *     keepBindings: ["string"],
+ *     limits: {
+ *         cpuMs: 50,
+ *         subrequests: 1000,
+ *     },
+ *     logpush: false,
+ *     mainModule: "worker.js",
+ *     migrations: {
+ *         deletedClasses: ["string"],
+ *         newClasses: ["string"],
+ *         newSqliteClasses: ["string"],
+ *         newTag: "v2",
+ *         oldTag: "v1",
+ *         renamedClasses: [{
+ *             from: "from",
+ *             to: "to",
+ *         }],
+ *         transferredClasses: [{
+ *             from: "from",
+ *             fromScript: "from_script",
+ *             to: "to",
+ *         }],
+ *     },
+ *     observability: {
+ *         enabled: true,
+ *         headSamplingRate: 0.1,
+ *         logs: {
+ *             enabled: true,
+ *             invocationLogs: true,
+ *             destinations: ["cloudflare"],
+ *             headSamplingRate: 0.1,
+ *             persist: true,
+ *         },
+ *         redactQueryString: false,
+ *         traces: {
+ *             destinations: ["cloudflare"],
+ *             enabled: true,
+ *             headSamplingRate: 0.1,
+ *             persist: true,
+ *         },
+ *     },
+ *     packageDependencies: [{
+ *         installedVersion: "4.17.22",
+ *         name: "lodash",
+ *         packageJsonVersion: "^4.17.21",
+ *     }],
+ *     placement: {
+ *         mode: "smart",
+ *     },
+ *     tags: ["string"],
+ *     tailConsumers: [{
+ *         service: "my-log-consumer",
+ *         environment: "production",
+ *         namespace: "my-namespace",
+ *     }],
+ *     usageModel: "standard",
+ *     files: {
+ *         "module.wasm": {
+ *             contentBase64: "AGFzbQEAAAA=",
+ *             contentType: "application/wasm",
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -71,7 +200,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
-    declare public readonly bodyPart: pulumi.Output<string | undefined>;
+    declare public readonly bodyPart: pulumi.Output<string>;
     /**
      * Global CacheW configuration for the Worker. When caching is on,
      * the platform provisions a `cloudflare.app` zone for the Worker.
@@ -115,6 +244,10 @@ export class WorkerScript extends pulumi.CustomResource {
      * Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
      */
     declare public readonly exports: pulumi.Output<{[key: string]: outputs.WorkerScriptExports} | undefined>;
+    /**
+     * Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+     */
+    declare public readonly files: pulumi.Output<{[key: string]: outputs.WorkerScriptFiles} | undefined>;
     /**
      * The names of handlers exported as part of the default export.
      */
@@ -237,6 +370,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["exports"] = state?.exports;
+            resourceInputs["files"] = state?.files;
             resourceInputs["handlers"] = state?.handlers;
             resourceInputs["hasAssets"] = state?.hasAssets;
             resourceInputs["hasModules"] = state?.hasModules;
@@ -280,6 +414,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["contentSha256"] = args?.contentSha256;
             resourceInputs["contentType"] = args?.contentType;
             resourceInputs["exports"] = args?.exports;
+            resourceInputs["files"] = args?.files;
             resourceInputs["keepAssets"] = args?.keepAssets;
             resourceInputs["keepBindings"] = args?.keepBindings;
             resourceInputs["limits"] = args?.limits;
@@ -379,6 +514,10 @@ export interface WorkerScriptState {
      * Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
      */
     exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerScriptExports>} | undefined>;
+    /**
+     * Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+     */
+    files?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerScriptFiles>} | undefined>;
     /**
      * The names of handlers exported as part of the default export.
      */
@@ -530,6 +669,10 @@ export interface WorkerScriptArgs {
      * Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
      */
     exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerScriptExports>} | undefined>;
+    /**
+     * Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+     */
+    files?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerScriptFiles>} | undefined>;
     /**
      * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      */

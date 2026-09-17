@@ -28,6 +28,10 @@ public final class GetPipelineSinkResult {
     private GetPipelineSinkConfig config;
     private String createdAt;
     private @Nullable GetPipelineSinkFilter filter;
+    /**
+     * @return Defines the output data format of a sink.
+     * 
+     */
     private GetPipelineSinkFormat format;
     /**
      * @return Specifies the publid ID of the sink.
@@ -40,6 +44,10 @@ public final class GetPipelineSinkResult {
      * 
      */
     private String name;
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     private GetPipelineSinkSchema schema;
     /**
      * @return Specifies the publid ID of the sink.
@@ -74,6 +82,10 @@ public final class GetPipelineSinkResult {
     public Optional<GetPipelineSinkFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
+    /**
+     * @return Defines the output data format of a sink.
+     * 
+     */
     public GetPipelineSinkFormat format() {
         return this.format;
     }
@@ -94,6 +106,10 @@ public final class GetPipelineSinkResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     public GetPipelineSinkSchema schema() {
         return this.schema;
     }

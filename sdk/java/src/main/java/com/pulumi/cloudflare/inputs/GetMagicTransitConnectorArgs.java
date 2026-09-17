@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetMagicTransitConnectorFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,19 +17,11 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
 
     public static final GetMagicTransitConnectorArgs Empty = new GetMagicTransitConnectorArgs();
 
-    /**
-     * Account identifier
-     * 
-     */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    /**
-     * @return Account identifier
-     * 
-     */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="connectorId")
@@ -71,23 +64,11 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
             $ = new GetMagicTransitConnectorArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId Account identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId Account identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -111,6 +92,9 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
         }
 
         public GetMagicTransitConnectorArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetMagicTransitConnectorArgs", "accountId");
+            }
             return $;
         }
     }

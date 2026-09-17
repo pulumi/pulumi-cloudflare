@@ -58,8 +58,12 @@ type Precursor struct {
 	// The zone-level Precursor enforcement mode applied to requests that do
 	// not match a more specific enforcement rule.
 	// Available values: "off", "min-friction", "max-security".
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultMode pulumi.StringOutput `pulumi:"defaultMode"`
 	// The ordered list of enforcement rules for the zone.
+	//
+	// Deprecated: This attribute is deprecated.
 	EnforcementRules PrecursorEnforcementRuleArrayOutput `pulumi:"enforcementRules"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -101,8 +105,12 @@ type precursorState struct {
 	// The zone-level Precursor enforcement mode applied to requests that do
 	// not match a more specific enforcement rule.
 	// Available values: "off", "min-friction", "max-security".
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultMode *string `pulumi:"defaultMode"`
 	// The ordered list of enforcement rules for the zone.
+	//
+	// Deprecated: This attribute is deprecated.
 	EnforcementRules []PrecursorEnforcementRule `pulumi:"enforcementRules"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -112,8 +120,12 @@ type PrecursorState struct {
 	// The zone-level Precursor enforcement mode applied to requests that do
 	// not match a more specific enforcement rule.
 	// Available values: "off", "min-friction", "max-security".
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultMode pulumi.StringPtrInput
 	// The ordered list of enforcement rules for the zone.
+	//
+	// Deprecated: This attribute is deprecated.
 	EnforcementRules PrecursorEnforcementRuleArrayInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
@@ -127,8 +139,12 @@ type precursorArgs struct {
 	// The zone-level Precursor enforcement mode applied to requests that do
 	// not match a more specific enforcement rule.
 	// Available values: "off", "min-friction", "max-security".
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultMode *string `pulumi:"defaultMode"`
 	// The ordered list of enforcement rules for the zone.
+	//
+	// Deprecated: This attribute is deprecated.
 	EnforcementRules []PrecursorEnforcementRule `pulumi:"enforcementRules"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -139,8 +155,12 @@ type PrecursorArgs struct {
 	// The zone-level Precursor enforcement mode applied to requests that do
 	// not match a more specific enforcement rule.
 	// Available values: "off", "min-friction", "max-security".
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultMode pulumi.StringPtrInput
 	// The ordered list of enforcement rules for the zone.
+	//
+	// Deprecated: This attribute is deprecated.
 	EnforcementRules PrecursorEnforcementRuleArrayInput
 	// Identifier.
 	ZoneId pulumi.StringInput
@@ -236,11 +256,15 @@ func (o PrecursorOutput) ToPrecursorOutputWithContext(ctx context.Context) Precu
 // The zone-level Precursor enforcement mode applied to requests that do
 // not match a more specific enforcement rule.
 // Available values: "off", "min-friction", "max-security".
+//
+// Deprecated: This attribute is deprecated.
 func (o PrecursorOutput) DefaultMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Precursor) pulumi.StringOutput { return v.DefaultMode }).(pulumi.StringOutput)
 }
 
 // The ordered list of enforcement rules for the zone.
+//
+// Deprecated: This attribute is deprecated.
 func (o PrecursorOutput) EnforcementRules() PrecursorEnforcementRuleArrayOutput {
 	return o.ApplyT(func(v *Precursor) PrecursorEnforcementRuleArrayOutput { return v.EnforcementRules }).(PrecursorEnforcementRuleArrayOutput)
 }

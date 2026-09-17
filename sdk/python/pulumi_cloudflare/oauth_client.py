@@ -32,6 +32,7 @@ class OauthClientArgs:
                  client_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 optional_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  policy_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  post_logout_redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tos_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -51,6 +52,7 @@ class OauthClientArgs:
         :param pulumi.Input[_builtins.str] client_uri: URL of the home page of the client.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the client's logo.
         :param pulumi.Input[_builtins.str] oauth_client_id: The unique identifier for an OAuth client.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] optional_scopes: Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
         :param pulumi.Input[_builtins.str] policy_uri: URL that points to a privacy policy document.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] post_logout_redirect_uris: Array of allowed post-logout redirect URIs.
         :param pulumi.Input[_builtins.str] tos_uri: URL that points to a terms of service document.
@@ -72,6 +74,8 @@ class OauthClientArgs:
             pulumi.set(__self__, "logo_uri", logo_uri)
         if oauth_client_id is not None:
             pulumi.set(__self__, "oauth_client_id", oauth_client_id)
+        if optional_scopes is not None:
+            pulumi.set(__self__, "optional_scopes", optional_scopes)
         if policy_uri is not None:
             pulumi.set(__self__, "policy_uri", policy_uri)
         if post_logout_redirect_uris is not None:
@@ -215,6 +219,18 @@ class OauthClientArgs:
         pulumi.set(self, "oauth_client_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="optionalScopes")
+    def optional_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
+        """
+        return pulumi.get(self, "optional_scopes")
+
+    @optional_scopes.setter
+    def optional_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "optional_scopes", value)
+
+    @_builtins.property
     @pulumi.getter(name="policyUri")
     def policy_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -279,6 +295,7 @@ class _OauthClientState:
                  has_rotated_secret: pulumi.Input[Optional[_builtins.bool]] = None,
                  logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 optional_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  policy_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  post_logout_redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  promoted_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -304,6 +321,7 @@ class _OauthClientState:
         :param pulumi.Input[_builtins.bool] has_rotated_secret: Indicates whether the client has a rotated secret that has not yet been deleted.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the client's logo.
         :param pulumi.Input[_builtins.str] oauth_client_id: The unique identifier for an OAuth client.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] optional_scopes: Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
         :param pulumi.Input[_builtins.str] policy_uri: URL that points to a privacy policy document.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] post_logout_redirect_uris: Array of allowed post-logout redirect URIs.
         :param pulumi.Input[_builtins.str] promoted_at: Timestamp when the OAuth client was promoted to public visibility.
@@ -341,6 +359,8 @@ class _OauthClientState:
             pulumi.set(__self__, "logo_uri", logo_uri)
         if oauth_client_id is not None:
             pulumi.set(__self__, "oauth_client_id", oauth_client_id)
+        if optional_scopes is not None:
+            pulumi.set(__self__, "optional_scopes", optional_scopes)
         if policy_uri is not None:
             pulumi.set(__self__, "policy_uri", policy_uri)
         if post_logout_redirect_uris is not None:
@@ -507,6 +527,18 @@ class _OauthClientState:
         pulumi.set(self, "oauth_client_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="optionalScopes")
+    def optional_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
+        """
+        return pulumi.get(self, "optional_scopes")
+
+    @optional_scopes.setter
+    def optional_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "optional_scopes", value)
+
+    @_builtins.property
     @pulumi.getter(name="policyUri")
     def policy_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -642,6 +674,7 @@ class OauthClient(pulumi.CustomResource):
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 optional_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  policy_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  post_logout_redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -677,6 +710,7 @@ class OauthClient(pulumi.CustomResource):
             allowed_cors_origins=["https://example.com"],
             client_uri="https://example.com",
             logo_uri="https://example.com/logo.png",
+            optional_scopes=["account.write"],
             policy_uri="https://example.com/privacy",
             post_logout_redirect_uris=["https://example.com/logout"],
             tos_uri="https://example.com/tos")
@@ -696,6 +730,7 @@ class OauthClient(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the client's logo.
         :param pulumi.Input[_builtins.str] oauth_client_id: The unique identifier for an OAuth client.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] optional_scopes: Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
         :param pulumi.Input[_builtins.str] policy_uri: URL that points to a privacy policy document.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] post_logout_redirect_uris: Array of allowed post-logout redirect URIs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redirect_uris: Array of allowed redirect URIs for the client.
@@ -739,6 +774,7 @@ class OauthClient(pulumi.CustomResource):
             allowed_cors_origins=["https://example.com"],
             client_uri="https://example.com",
             logo_uri="https://example.com/logo.png",
+            optional_scopes=["account.write"],
             policy_uri="https://example.com/privacy",
             post_logout_redirect_uris=["https://example.com/logout"],
             tos_uri="https://example.com/tos")
@@ -771,6 +807,7 @@ class OauthClient(pulumi.CustomResource):
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 optional_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  policy_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  post_logout_redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -801,6 +838,7 @@ class OauthClient(pulumi.CustomResource):
             __props__.__dict__["grant_types"] = grant_types
             __props__.__dict__["logo_uri"] = logo_uri
             __props__.__dict__["oauth_client_id"] = oauth_client_id
+            __props__.__dict__["optional_scopes"] = optional_scopes
             __props__.__dict__["policy_uri"] = policy_uri
             __props__.__dict__["post_logout_redirect_uris"] = post_logout_redirect_uris
             if redirect_uris is None and not opts.urn:
@@ -848,6 +886,7 @@ class OauthClient(pulumi.CustomResource):
             has_rotated_secret: pulumi.Input[Optional[_builtins.bool]] = None,
             logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
             oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            optional_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             policy_uri: pulumi.Input[Optional[_builtins.str]] = None,
             post_logout_redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             promoted_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -877,6 +916,7 @@ class OauthClient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] has_rotated_secret: Indicates whether the client has a rotated secret that has not yet been deleted.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the client's logo.
         :param pulumi.Input[_builtins.str] oauth_client_id: The unique identifier for an OAuth client.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] optional_scopes: Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
         :param pulumi.Input[_builtins.str] policy_uri: URL that points to a privacy policy document.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] post_logout_redirect_uris: Array of allowed post-logout redirect URIs.
         :param pulumi.Input[_builtins.str] promoted_at: Timestamp when the OAuth client was promoted to public visibility.
@@ -906,6 +946,7 @@ class OauthClient(pulumi.CustomResource):
         __props__.__dict__["has_rotated_secret"] = has_rotated_secret
         __props__.__dict__["logo_uri"] = logo_uri
         __props__.__dict__["oauth_client_id"] = oauth_client_id
+        __props__.__dict__["optional_scopes"] = optional_scopes
         __props__.__dict__["policy_uri"] = policy_uri
         __props__.__dict__["post_logout_redirect_uris"] = post_logout_redirect_uris
         __props__.__dict__["promoted_at"] = promoted_at
@@ -1013,6 +1054,14 @@ class OauthClient(pulumi.CustomResource):
         The unique identifier for an OAuth client.
         """
         return pulumi.get(self, "oauth_client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="optionalScopes")
+    def optional_scopes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Scopes that the authorizing user may decline during consent. Each value must also appear in `scopes`. The scopes `openid`, `offline`, and `offline_access` cannot be optional.
+        """
+        return pulumi.get(self, "optional_scopes")
 
     @_builtins.property
     @pulumi.getter(name="policyUri")

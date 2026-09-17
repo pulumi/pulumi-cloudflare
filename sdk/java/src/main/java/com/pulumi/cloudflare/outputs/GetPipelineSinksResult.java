@@ -19,6 +19,10 @@ public final class GetPipelineSinksResult {
      */
     private GetPipelineSinksResultConfig config;
     private String createdAt;
+    /**
+     * @return Defines the output data format of a sink.
+     * 
+     */
     private GetPipelineSinksResultFormat format;
     /**
      * @return Indicates a unique identifier for this sink.
@@ -31,6 +35,10 @@ public final class GetPipelineSinksResult {
      * 
      */
     private String name;
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     private GetPipelineSinksResultSchema schema;
     /**
      * @return Specifies the type of sink.
@@ -50,6 +58,10 @@ public final class GetPipelineSinksResult {
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return Defines the output data format of a sink.
+     * 
+     */
     public GetPipelineSinksResultFormat format() {
         return this.format;
     }
@@ -70,6 +82,10 @@ public final class GetPipelineSinksResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Defines the schema of the events in the data stream.
+     * 
+     */
     public GetPipelineSinksResultSchema schema() {
         return this.schema;
     }

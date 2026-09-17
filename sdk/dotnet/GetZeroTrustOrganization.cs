@@ -182,9 +182,6 @@ namespace Pulumi.Cloudflare
         /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         /// </summary>
         public readonly bool MfaRequiredForAllApps;
-        /// <summary>
-        /// Configures SSH PIV key requirements for MFA using hardware security keys.
-        /// </summary>
         public readonly Outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult MfaSshPivKeyRequirements;
         /// <summary>
         /// The name of your Zero Trust organization.

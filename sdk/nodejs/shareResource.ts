@@ -81,7 +81,7 @@ export class ShareResource extends pulumi.CustomResource {
     declare public readonly resourceId: pulumi.Output<string>;
     /**
      * Resource Type.
-     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
@@ -187,7 +187,7 @@ export interface ShareResourceState {
     resourceId?: pulumi.Input<string | undefined>;
     /**
      * Resource Type.
-     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
      */
     resourceType?: pulumi.Input<string | undefined>;
     /**
@@ -227,7 +227,7 @@ export interface ShareResourceArgs {
     resourceId: pulumi.Input<string>;
     /**
      * Resource Type.
-     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
      */
     resourceType: pulumi.Input<string>;
     /**

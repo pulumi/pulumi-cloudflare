@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
     public static final GetEmailRoutingDnsArgs Empty = new GetEmailRoutingDnsArgs();
 
     /**
-     * Domain of your zone.
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      * 
      */
     @Import(name="subdomain")
     private @Nullable Output<String> subdomain;
 
     /**
-     * @return Domain of your zone.
+     * @return Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
      * 
      */
     public Optional<Output<String>> subdomain() {
@@ -34,15 +35,15 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private GetEmailRoutingDnsArgs() {}
@@ -71,7 +72,7 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param subdomain Domain of your zone.
+         * @param subdomain Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
          * 
          * @return builder
          * 
@@ -82,7 +83,7 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param subdomain Domain of your zone.
+         * @param subdomain Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
          * 
          * @return builder
          * 
@@ -97,7 +98,7 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -113,6 +114,9 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetEmailRoutingDnsArgs build() {
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetEmailRoutingDnsArgs", "zoneId");
+            }
             return $;
         }
     }

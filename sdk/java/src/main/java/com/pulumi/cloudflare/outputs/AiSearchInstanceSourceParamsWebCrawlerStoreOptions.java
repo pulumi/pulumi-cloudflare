@@ -7,32 +7,22 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
-    private @Nullable String r2Jurisdiction;
+    private String r2Jurisdiction;
     private String storageId;
-    /**
-     * @return Available values: &#34;r2&#34;.
-     * 
-     */
-    private @Nullable String storageType;
+    private String storageType;
 
     private AiSearchInstanceSourceParamsWebCrawlerStoreOptions() {}
-    public Optional<String> r2Jurisdiction() {
-        return Optional.ofNullable(this.r2Jurisdiction);
+    public String r2Jurisdiction() {
+        return this.r2Jurisdiction;
     }
     public String storageId() {
         return this.storageId;
     }
-    /**
-     * @return Available values: &#34;r2&#34;.
-     * 
-     */
-    public Optional<String> storageType() {
-        return Optional.ofNullable(this.storageType);
+    public String storageType() {
+        return this.storageType;
     }
 
     public static Builder builder() {
@@ -44,9 +34,9 @@ public final class AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String r2Jurisdiction;
+        private String r2Jurisdiction;
         private String storageId;
-        private @Nullable String storageType;
+        private String storageType;
         public Builder() {}
         public Builder(AiSearchInstanceSourceParamsWebCrawlerStoreOptions defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,8 +46,10 @@ public final class AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
         }
 
         @CustomType.Setter
-        public Builder r2Jurisdiction(@Nullable String r2Jurisdiction) {
-
+        public Builder r2Jurisdiction(String r2Jurisdiction) {
+            if (r2Jurisdiction == null) {
+              throw new MissingRequiredPropertyException("AiSearchInstanceSourceParamsWebCrawlerStoreOptions", "r2Jurisdiction");
+            }
             this.r2Jurisdiction = r2Jurisdiction;
             return this;
         }
@@ -70,8 +62,10 @@ public final class AiSearchInstanceSourceParamsWebCrawlerStoreOptions {
             return this;
         }
         @CustomType.Setter
-        public Builder storageType(@Nullable String storageType) {
-
+        public Builder storageType(String storageType) {
+            if (storageType == null) {
+              throw new MissingRequiredPropertyException("AiSearchInstanceSourceParamsWebCrawlerStoreOptions", "storageType");
+            }
             this.storageType = storageType;
             return this;
         }

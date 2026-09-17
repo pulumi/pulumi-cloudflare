@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetEmailRoutingDnsResult> InvokeAsync(GetEmailRoutingDnsArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetEmailRoutingDnsResult> InvokeAsync(GetEmailRoutingDnsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEmailRoutingDnsResult>("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", args ?? new GetEmailRoutingDnsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetEmailRoutingDnsResult> Invoke(GetEmailRoutingDnsInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetEmailRoutingDnsResult> Invoke(GetEmailRoutingDnsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailRoutingDnsResult>("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", args ?? new GetEmailRoutingDnsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailRoutingDnsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Domain of your zone.
+        /// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
         /// </summary>
         [Input("subdomain")]
         public string? Subdomain { get; set; }
@@ -108,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public string? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public string ZoneId { get; set; } = null!;
 
         public GetEmailRoutingDnsArgs()
         {
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailRoutingDnsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Domain of your zone.
+        /// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
         /// </summary>
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }
@@ -128,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public GetEmailRoutingDnsInvokeArgs()
         {
@@ -141,52 +141,33 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetEmailRoutingDnsResult
     {
-        public readonly ImmutableArray<Outputs.GetEmailRoutingDnsErrorResult> Errors;
+        public readonly ImmutableArray<Outputs.GetEmailRoutingDnsDnResult> Dns;
         /// <summary>
         /// Identifier.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableArray<Outputs.GetEmailRoutingDnsMessageResult> Messages;
-        public readonly Outputs.GetEmailRoutingDnsResultResult Result;
-        public readonly Outputs.GetEmailRoutingDnsResultInfoResult ResultInfo;
         /// <summary>
-        /// Domain of your zone.
+        /// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
         /// </summary>
         public readonly string? Subdomain;
         /// <summary>
-        /// Whether the API call was successful.
-        /// </summary>
-        public readonly bool Success;
-        /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? ZoneId;
+        public readonly string ZoneId;
 
         [OutputConstructor]
         private GetEmailRoutingDnsResult(
-            ImmutableArray<Outputs.GetEmailRoutingDnsErrorResult> errors,
+            ImmutableArray<Outputs.GetEmailRoutingDnsDnResult> dns,
 
             string id,
 
-            ImmutableArray<Outputs.GetEmailRoutingDnsMessageResult> messages,
-
-            Outputs.GetEmailRoutingDnsResultResult result,
-
-            Outputs.GetEmailRoutingDnsResultInfoResult resultInfo,
-
             string? subdomain,
 
-            bool success,
-
-            string? zoneId)
+            string zoneId)
         {
-            Errors = errors;
+            Dns = dns;
             Id = id;
-            Messages = messages;
-            Result = result;
-            ResultInfo = resultInfo;
             Subdomain = subdomain;
-            Success = success;
             ZoneId = zoneId;
         }
     }

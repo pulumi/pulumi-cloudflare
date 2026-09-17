@@ -104,7 +104,7 @@ class GetAccountSubscriptionResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Subscription identifier tag.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "id")
 

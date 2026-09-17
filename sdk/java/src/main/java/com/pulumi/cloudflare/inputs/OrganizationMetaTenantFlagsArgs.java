@@ -22,6 +22,13 @@ public final class OrganizationMetaTenantFlagsArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.accountCreation);
     }
 
+    @Import(name="accountCreationAppliesTenantDefaults")
+    private @Nullable Output<String> accountCreationAppliesTenantDefaults;
+
+    public Optional<Output<String>> accountCreationAppliesTenantDefaults() {
+        return Optional.ofNullable(this.accountCreationAppliesTenantDefaults);
+    }
+
     @Import(name="accountDeletion")
     private @Nullable Output<String> accountDeletion;
 
@@ -68,6 +75,7 @@ public final class OrganizationMetaTenantFlagsArgs extends com.pulumi.resources.
 
     private OrganizationMetaTenantFlagsArgs(OrganizationMetaTenantFlagsArgs $) {
         this.accountCreation = $.accountCreation;
+        this.accountCreationAppliesTenantDefaults = $.accountCreationAppliesTenantDefaults;
         this.accountDeletion = $.accountDeletion;
         this.accountMigration = $.accountMigration;
         this.accountMobility = $.accountMobility;
@@ -101,6 +109,15 @@ public final class OrganizationMetaTenantFlagsArgs extends com.pulumi.resources.
 
         public Builder accountCreation(String accountCreation) {
             return accountCreation(Output.of(accountCreation));
+        }
+
+        public Builder accountCreationAppliesTenantDefaults(@Nullable Output<String> accountCreationAppliesTenantDefaults) {
+            $.accountCreationAppliesTenantDefaults = accountCreationAppliesTenantDefaults;
+            return this;
+        }
+
+        public Builder accountCreationAppliesTenantDefaults(String accountCreationAppliesTenantDefaults) {
+            return accountCreationAppliesTenantDefaults(Output.of(accountCreationAppliesTenantDefaults));
         }
 
         public Builder accountDeletion(@Nullable Output<String> accountDeletion) {

@@ -14,19 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPipelineStreamSchemaResult
     {
         public readonly ImmutableArray<Outputs.GetPipelineStreamSchemaFieldResult> Fields;
-        public readonly Outputs.GetPipelineStreamSchemaFormatResult Format;
         public readonly bool Inferred;
 
         [OutputConstructor]
         private GetPipelineStreamSchemaResult(
             ImmutableArray<Outputs.GetPipelineStreamSchemaFieldResult> fields,
 
-            Outputs.GetPipelineStreamSchemaFormatResult format,
-
             bool inferred)
         {
             Fields = fields;
-            Format = format;
             Inferred = inferred;
         }
     }

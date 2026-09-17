@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetRegistrarDomainsResult> InvokeAsync(GetRegistrarDomainsArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetRegistrarDomainsResult> InvokeAsync(GetRegistrarDomainsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistrarDomainsResult>("cloudflare:index/getRegistrarDomains:getRegistrarDomains", args ?? new GetRegistrarDomainsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetRegistrarDomainsResult> Invoke(GetRegistrarDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetRegistrarDomainsResult> Invoke(GetRegistrarDomainsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistrarDomainsResult>("cloudflare:index/getRegistrarDomains:getRegistrarDomains", args ?? new GetRegistrarDomainsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -82,10 +82,10 @@ namespace Pulumi.Cloudflare
     public sealed class GetRegistrarDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -102,10 +102,10 @@ namespace Pulumi.Cloudflare
     public sealed class GetRegistrarDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -124,9 +124,9 @@ namespace Pulumi.Cloudflare
     public sealed class GetRegistrarDomainsResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetRegistrarDomainsResult(
-            string? accountId,
+            string accountId,
 
             int? maxItems,
 

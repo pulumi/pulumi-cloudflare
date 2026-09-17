@@ -27,10 +27,13 @@ class GetZeroTrustResourceLibraryApplicationsResult:
     """
     A collection of values returned by getZeroTrustResourceLibraryApplications.
     """
-    def __init__(__self__, account_id=None, filter=None, limit=None, max_items=None, offset=None, order_by=None, results=None, search=None):
+    def __init__(__self__, account_id=None, fields=None, filter=None, limit=None, max_items=None, offset=None, order_by=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if fields and not isinstance(fields, str):
+            raise TypeError("Expected argument 'fields' to be a str")
+        pulumi.set(__self__, "fields", fields)
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
@@ -57,6 +60,17 @@ class GetZeroTrustResourceLibraryApplicationsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Optional[_builtins.str]:
+        """
+        Return only the listed properties on each application, as a comma-separated list.
+        Use this to keep responses small when you only need part of each application — for
+        example populating a picker with `fields=id,name` instead of downloading every
+        hostname and IP subnet.
+        """
+        return pulumi.get(self, "fields")
 
     @_builtins.property
     @pulumi.getter
@@ -101,6 +115,7 @@ class AwaitableGetZeroTrustResourceLibraryApplicationsResult(GetZeroTrustResourc
             yield self
         return GetZeroTrustResourceLibraryApplicationsResult(
             account_id=self.account_id,
+            fields=self.fields,
             filter=self.filter,
             limit=self.limit,
             max_items=self.max_items,
@@ -111,6 +126,7 @@ class AwaitableGetZeroTrustResourceLibraryApplicationsResult(GetZeroTrustResourc
 
 
 def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.str] = None,
+                                                 fields: Optional[_builtins.str] = None,
                                                  filter: Optional[_builtins.str] = None,
                                                  limit: Optional[_builtins.int] = None,
                                                  max_items: Optional[_builtins.int] = None,
@@ -126,13 +142,21 @@ def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_resource_library_applications = cloudflare.get_zero_trust_resource_library_applications(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        fields="fields",
         filter="filter",
         order_by="order_by",
         search="xx")
     ```
+
+
+    :param _builtins.str fields: Return only the listed properties on each application, as a comma-separated list.
+           Use this to keep responses small when you only need part of each application — for
+           example populating a picker with `fields=id,name` instead of downloading every
+           hostname and IP subnet.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['fields'] = fields
     __args__['filter'] = filter
     __args__['limit'] = limit
     __args__['maxItems'] = max_items
@@ -144,6 +168,7 @@ def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.
 
     return AwaitableGetZeroTrustResourceLibraryApplicationsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        fields=pulumi.get(__ret__, 'fields'),
         filter=pulumi.get(__ret__, 'filter'),
         limit=pulumi.get(__ret__, 'limit'),
         max_items=pulumi.get(__ret__, 'max_items'),
@@ -152,6 +177,7 @@ def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
 def get_zero_trust_resource_library_applications_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                        fields: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                         max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -167,13 +193,21 @@ def get_zero_trust_resource_library_applications_output(account_id: pulumi.Input
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_resource_library_applications = cloudflare.get_zero_trust_resource_library_applications(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        fields="fields",
         filter="filter",
         order_by="order_by",
         search="xx")
     ```
+
+
+    :param _builtins.str fields: Return only the listed properties on each application, as a comma-separated list.
+           Use this to keep responses small when you only need part of each application — for
+           example populating a picker with `fields=id,name` instead of downloading every
+           hostname and IP subnet.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['fields'] = fields
     __args__['filter'] = filter
     __args__['limit'] = limit
     __args__['maxItems'] = max_items
@@ -184,6 +218,7 @@ def get_zero_trust_resource_library_applications_output(account_id: pulumi.Input
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustResourceLibraryApplications:getZeroTrustResourceLibraryApplications', __args__, opts=opts, typ=GetZeroTrustResourceLibraryApplicationsResult)
     return __ret__.apply(lambda __response__: GetZeroTrustResourceLibraryApplicationsResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        fields=pulumi.get(__response__, 'fields'),
         filter=pulumi.get(__response__, 'filter'),
         limit=pulumi.get(__response__, 'limit'),
         max_items=pulumi.get(__response__, 'max_items'),

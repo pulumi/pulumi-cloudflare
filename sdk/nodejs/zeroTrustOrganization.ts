@@ -48,20 +48,20 @@ import * as utilities from "./utilities";
  *         requiredAaguids: "2fc0579f-8113-47ea-b116-bb5a8db9202a",
  *         sessionDuration: "24h",
  *     },
- *     mfaRequiredForAllApps: false,
- *     mfaSshPivKeyRequirements: {
+ *     mfaPivKeyRequirements: {
  *         pinPolicy: "always",
  *         requireFipsDevice: true,
- *         sshKeySizes: [
+ *         sshKeySize: [
  *             256,
  *             2048,
  *         ],
- *         sshKeyTypes: [
+ *         sshKeyType: [
  *             "ecdsa",
  *             "rsa",
  *         ],
  *         touchPolicy: "always",
  *     },
+ *     mfaRequiredForAllApps: false,
  *     name: "Widget Corps Internal Applications",
  *     sessionDuration: "24h",
  *     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",

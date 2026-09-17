@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * const exampleBotManagement = new cloudflare.BotManagement("example_bot_management", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     aiBotsProtection: "block",
+ *     botPreferenceSyncEnabled: true,
  *     cfRobotsVariant: "policy_only",
  *     contentBotsProtection: "disabled",
  *     crawlerProtection: "enabled",
@@ -77,6 +78,10 @@ export class BotManagement extends pulumi.CustomResource {
      * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
      */
     declare public readonly bmCookieEnabled: pulumi.Output<boolean>;
+    /**
+     * Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+     */
+    declare public readonly botPreferenceSyncEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the Robots Access Control License variant to use.
      * Available values: "off", "policyOnly".
@@ -162,6 +167,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["aiBotsProtection"] = state?.aiBotsProtection;
             resourceInputs["autoUpdateModel"] = state?.autoUpdateModel;
             resourceInputs["bmCookieEnabled"] = state?.bmCookieEnabled;
+            resourceInputs["botPreferenceSyncEnabled"] = state?.botPreferenceSyncEnabled;
             resourceInputs["cfRobotsVariant"] = state?.cfRobotsVariant;
             resourceInputs["contentBotsProtection"] = state?.contentBotsProtection;
             resourceInputs["crawlerProtection"] = state?.crawlerProtection;
@@ -185,6 +191,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["aiBotsProtection"] = args?.aiBotsProtection;
             resourceInputs["autoUpdateModel"] = args?.autoUpdateModel;
             resourceInputs["bmCookieEnabled"] = args?.bmCookieEnabled;
+            resourceInputs["botPreferenceSyncEnabled"] = args?.botPreferenceSyncEnabled;
             resourceInputs["cfRobotsVariant"] = args?.cfRobotsVariant;
             resourceInputs["contentBotsProtection"] = args?.contentBotsProtection;
             resourceInputs["crawlerProtection"] = args?.crawlerProtection;
@@ -223,6 +230,10 @@ export interface BotManagementState {
      * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
      */
     bmCookieEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+     */
+    botPreferenceSyncEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the Robots Access Control License variant to use.
      * Available values: "off", "policyOnly".
@@ -310,6 +321,10 @@ export interface BotManagementArgs {
      * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
      */
     bmCookieEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+     */
+    botPreferenceSyncEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the Robots Access Control License variant to use.
      * Available values: "off", "policyOnly".

@@ -92,6 +92,12 @@ public final class WorkerVersionBinding {
      */
     private @Nullable String id;
     /**
+     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * Available values: &#34;runtime-email-alpha&#34;.
+     * 
+     */
+    private @Nullable String identity;
+    /**
      * @return Name of the Vectorize index to bind to.
      * 
      */
@@ -108,7 +114,7 @@ public final class WorkerVersionBinding {
     private @Nullable String json;
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     private @Nullable String jurisdiction;
@@ -337,6 +343,14 @@ public final class WorkerVersionBinding {
         return Optional.ofNullable(this.id);
     }
     /**
+     * @return Enables Gateway identity for the binding. Requires network*id to be &#34;cf1:network&#34; and cannot be combined with tunnel*id.
+     * Available values: &#34;runtime-email-alpha&#34;.
+     * 
+     */
+    public Optional<String> identity() {
+        return Optional.ofNullable(this.identity);
+    }
+    /**
      * @return Name of the Vectorize index to bind to.
      * 
      */
@@ -359,7 +373,7 @@ public final class WorkerVersionBinding {
     }
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;, &#34;us&#34;.
      * 
      */
     public Optional<String> jurisdiction() {
@@ -552,6 +566,7 @@ public final class WorkerVersionBinding {
         private @Nullable String environment;
         private @Nullable String format;
         private @Nullable String id;
+        private @Nullable String identity;
         private @Nullable String indexName;
         private @Nullable String instanceName;
         private @Nullable String json;
@@ -597,6 +612,7 @@ public final class WorkerVersionBinding {
     	      this.environment = defaults.environment;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
+    	      this.identity = defaults.identity;
     	      this.indexName = defaults.indexName;
     	      this.instanceName = defaults.instanceName;
     	      this.json = defaults.json;
@@ -720,6 +736,12 @@ public final class WorkerVersionBinding {
         public Builder id(@Nullable String id) {
 
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identity(@Nullable String identity) {
+
+            this.identity = identity;
             return this;
         }
         @CustomType.Setter
@@ -908,6 +930,7 @@ public final class WorkerVersionBinding {
             _resultValue.environment = environment;
             _resultValue.format = format;
             _resultValue.id = id;
+            _resultValue.identity = identity;
             _resultValue.indexName = indexName;
             _resultValue.instanceName = instanceName;
             _resultValue.json = json;

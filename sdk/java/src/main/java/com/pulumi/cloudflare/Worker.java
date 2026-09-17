@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *                     .invocationLogs(true)
  *                     .persist(true)
  *                     .build())
+ *                 .redactQueryString(true)
  *                 .traces(WorkerObservabilityTracesArgs.builder()
  *                     .destinations("string")
  *                     .enabled(true)

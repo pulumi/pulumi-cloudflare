@@ -48,6 +48,7 @@ import (
 //						InvocationLogs:   pulumi.Bool(true),
 //						Persist:          pulumi.Bool(true),
 //					},
+//					RedactQueryString: true,
 //					Traces: &cloudflare.WorkerObservabilityTracesArgs{
 //						Destinations: pulumi.StringArray{
 //							pulumi.String("string"),

@@ -59,6 +59,10 @@ export interface GetBotManagementResult {
      */
     readonly bmCookieEnabled: boolean;
     /**
+     * Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+     */
+    readonly botPreferenceSyncEnabled: boolean;
+    /**
      * Specifies the Robots Access Control License variant to use.
      * Available values: "off", "policyOnly".
      */

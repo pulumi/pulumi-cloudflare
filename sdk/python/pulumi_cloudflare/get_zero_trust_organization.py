@@ -171,9 +171,6 @@ class GetZeroTrustOrganizationResult:
     @_builtins.property
     @pulumi.getter(name="mfaSshPivKeyRequirements")
     def mfa_ssh_piv_key_requirements(self) -> 'outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult':
-        """
-        Configures SSH PIV key requirements for MFA using hardware security keys.
-        """
         return pulumi.get(self, "mfa_ssh_piv_key_requirements")
 
     @_builtins.property

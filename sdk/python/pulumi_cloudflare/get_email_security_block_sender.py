@@ -65,7 +65,7 @@ class GetEmailSecurityBlockSenderResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -178,7 +178,7 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
         pattern=pulumi.get(__ret__, 'pattern'),
         pattern_id=pulumi.get(__ret__, 'pattern_id'),
         pattern_type=pulumi.get(__ret__, 'pattern_type'))
-def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                            filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityBlockSenderFilterArgs', 'GetEmailSecurityBlockSenderFilterArgsDict']]]] = None,
                                            pattern_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityBlockSenderResult]:

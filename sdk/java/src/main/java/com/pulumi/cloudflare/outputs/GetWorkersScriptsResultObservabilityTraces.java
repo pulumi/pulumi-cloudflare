@@ -34,7 +34,7 @@ public final class GetWorkersScriptsResultObservabilityTraces {
      */
     private Boolean persist;
     /**
-     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
      * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
      * 
      */
@@ -70,7 +70,7 @@ public final class GetWorkersScriptsResultObservabilityTraces {
         return this.persist;
     }
     /**
-     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
      * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
      * 
      */

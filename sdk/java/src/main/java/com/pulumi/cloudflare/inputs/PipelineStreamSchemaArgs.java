@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFieldArgs;
-import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFormatArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -25,13 +24,6 @@ public final class PipelineStreamSchemaArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.fields);
     }
 
-    @Import(name="format")
-    private @Nullable Output<PipelineStreamSchemaFormatArgs> format;
-
-    public Optional<Output<PipelineStreamSchemaFormatArgs>> format() {
-        return Optional.ofNullable(this.format);
-    }
-
     @Import(name="inferred")
     private @Nullable Output<Boolean> inferred;
 
@@ -43,7 +35,6 @@ public final class PipelineStreamSchemaArgs extends com.pulumi.resources.Resourc
 
     private PipelineStreamSchemaArgs(PipelineStreamSchemaArgs $) {
         this.fields = $.fields;
-        this.format = $.format;
         this.inferred = $.inferred;
     }
 
@@ -76,15 +67,6 @@ public final class PipelineStreamSchemaArgs extends com.pulumi.resources.Resourc
 
         public Builder fields(PipelineStreamSchemaFieldArgs... fields) {
             return fields(List.of(fields));
-        }
-
-        public Builder format(@Nullable Output<PipelineStreamSchemaFormatArgs> format) {
-            $.format = format;
-            return this;
-        }
-
-        public Builder format(PipelineStreamSchemaFormatArgs format) {
-            return format(Output.of(format));
         }
 
         public Builder inferred(@Nullable Output<Boolean> inferred) {

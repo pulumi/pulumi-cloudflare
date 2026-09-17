@@ -25,6 +25,21 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
     }
 
     /**
+     * Defines the custom content extraction expression used to reach content objects in the request.
+     * 
+     */
+    @Import(name="payload")
+    private @Nullable Output<String> payload;
+
+    /**
+     * @return Defines the custom content extraction expression used to reach content objects in the request.
+     * 
+     */
+    public Optional<Output<String>> payload() {
+        return Optional.ofNullable(this.payload);
+    }
+
+    /**
      * Defines an identifier.
      * 
      */
@@ -43,6 +58,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     private ContentScanningExpressionState(ContentScanningExpressionState $) {
         this.bodies = $.bodies;
+        this.payload = $.payload;
         this.zoneId = $.zoneId;
     }
 
@@ -75,6 +91,27 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
         public Builder bodies(ContentScanningExpressionBodyArgs... bodies) {
             return bodies(List.of(bodies));
+        }
+
+        /**
+         * @param payload Defines the custom content extraction expression used to reach content objects in the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payload(@Nullable Output<String> payload) {
+            $.payload = payload;
+            return this;
+        }
+
+        /**
+         * @param payload Defines the custom content extraction expression used to reach content objects in the request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payload(String payload) {
+            return payload(Output.of(payload));
         }
 
         /**

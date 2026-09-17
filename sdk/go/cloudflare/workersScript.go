@@ -20,6 +20,176 @@ import (
 //
 // > For more direct control over Workers resources, we recommend the beta `Worker`, `WorkerVersion`, and `WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWorkersScript(ctx, "example_workers_script", &cloudflare.WorkersScriptArgs{
+//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ScriptName: pulumi.String("this-is_my_script-01"),
+//				Assets: &cloudflare.WorkersScriptAssetsArgs{
+//					Config: &cloudflare.WorkersScriptAssetsConfigArgs{
+//						Headers: pulumi.String(`        /dashboard/*
+//	        X-Frame-Options: DENY
+//
+//	        /static/*
+//	        Access-Control-Allow-Origin: *
+//
+// `),
+//
+//						Redirects:        pulumi.String("        /foo /bar 301\n        /news/* /blog/:splat\n"),
+//						HtmlHandling:     pulumi.String("auto-trailing-slash"),
+//						NotFoundHandling: pulumi.String("404-page"),
+//						RunWorkerFirst:   pulumi.Any{},
+//						ServeDirectly:    pulumi.Bool(true),
+//					},
+//					Jwt: pulumi.String("jwt"),
+//				},
+//				Bindings: cloudflare.WorkersScriptBindingArray{
+//					&cloudflare.WorkersScriptBindingArgs{
+//						Name: pulumi.String("MY_ENV_VAR"),
+//						Text: pulumi.String("my_data"),
+//						Type: pulumi.String("plain_text"),
+//					},
+//				},
+//				BodyPart: pulumi.String("worker.js"),
+//				CacheOptions: &cloudflare.WorkersScriptCacheOptionsArgs{
+//					Enabled:           pulumi.Bool(true),
+//					CrossVersionCache: pulumi.Bool(true),
+//				},
+//				CompatibilityDate: pulumi.String("2021-01-01T00:00:00Z"),
+//				CompatibilityFlags: pulumi.StringArray{
+//					pulumi.String("nodejs_compat"),
+//				},
+//				Exports: cloudflare.WorkersScriptExportsMap{
+//					"Admin": &cloudflare.WorkersScriptExportsArgs{
+//						Type: pulumi.String("worker"),
+//						Cache: &cloudflare.WorkersScriptExportsCacheArgs{
+//							Enabled: pulumi.Bool(true),
+//						},
+//						RenamedTo:     "renamed_to",
+//						State:         "created",
+//						Storage:       "sqlite",
+//						TransferFrom:  "transfer_from",
+//						TransferredTo: "transferred_to",
+//					},
+//					"default": &cloudflare.WorkersScriptExportsArgs{
+//						Type: pulumi.String("worker"),
+//						Cache: &cloudflare.WorkersScriptExportsCacheArgs{
+//							Enabled: pulumi.Bool(false),
+//						},
+//						RenamedTo:     "renamed_to",
+//						State:         "created",
+//						Storage:       "sqlite",
+//						TransferFrom:  "transfer_from",
+//						TransferredTo: "transferred_to",
+//					},
+//				},
+//				KeepAssets: pulumi.Bool(false),
+//				KeepBindings: pulumi.StringArray{
+//					pulumi.String("string"),
+//				},
+//				Limits: &cloudflare.WorkersScriptLimitsArgs{
+//					CpuMs:       pulumi.Int(50),
+//					Subrequests: pulumi.Int(1000),
+//				},
+//				Logpush:    pulumi.Bool(false),
+//				MainModule: pulumi.String("worker.js"),
+//				Migrations: &cloudflare.WorkersScriptMigrationsArgs{
+//					DeletedClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewSqliteClasses: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					NewTag: pulumi.String("v2"),
+//					OldTag: pulumi.String("v1"),
+//					RenamedClasses: cloudflare.WorkersScriptMigrationsRenamedClassArray{
+//						&cloudflare.WorkersScriptMigrationsRenamedClassArgs{
+//							From: pulumi.String("from"),
+//							To:   pulumi.String("to"),
+//						},
+//					},
+//					TransferredClasses: cloudflare.WorkersScriptMigrationsTransferredClassArray{
+//						&cloudflare.WorkersScriptMigrationsTransferredClassArgs{
+//							From:       pulumi.String("from"),
+//							FromScript: pulumi.String("from_script"),
+//							To:         pulumi.String("to"),
+//						},
+//					},
+//				},
+//				Observability: &cloudflare.WorkersScriptObservabilityArgs{
+//					Enabled:          pulumi.Bool(true),
+//					HeadSamplingRate: pulumi.Float64(0.1),
+//					Logs: &cloudflare.WorkersScriptObservabilityLogsArgs{
+//						Enabled:        pulumi.Bool(true),
+//						InvocationLogs: pulumi.Bool(true),
+//						Destinations: pulumi.StringArray{
+//							pulumi.String("cloudflare"),
+//						},
+//						HeadSamplingRate: pulumi.Float64(0.1),
+//						Persist:          pulumi.Bool(true),
+//					},
+//					RedactQueryString: false,
+//					Traces: &cloudflare.WorkersScriptObservabilityTracesArgs{
+//						Destinations: pulumi.StringArray{
+//							pulumi.String("cloudflare"),
+//						},
+//						Enabled:          pulumi.Bool(true),
+//						HeadSamplingRate: pulumi.Float64(0.1),
+//						Persist:          pulumi.Bool(true),
+//					},
+//				},
+//				PackageDependencies: cloudflare.WorkersScriptPackageDependencyArray{
+//					&cloudflare.WorkersScriptPackageDependencyArgs{
+//						InstalledVersion:   pulumi.String("4.17.22"),
+//						Name:               pulumi.String("lodash"),
+//						PackageJsonVersion: pulumi.String("^4.17.21"),
+//					},
+//				},
+//				Placement: &cloudflare.WorkersScriptPlacementArgs{
+//					Mode: pulumi.String("smart"),
+//				},
+//				Tags: []string{
+//					"string",
+//				},
+//				TailConsumers: cloudflare.WorkersScriptTailConsumerArray{
+//					&cloudflare.WorkersScriptTailConsumerArgs{
+//						Service:     pulumi.String("my-log-consumer"),
+//						Environment: pulumi.String("production"),
+//						Namespace:   pulumi.String("my-namespace"),
+//					},
+//				},
+//				UsageModel: pulumi.String("standard"),
+//				Files: cloudflare.WorkersScriptFilesMap{
+//					"module.wasm": &cloudflare.WorkersScriptFilesArgs{
+//						ContentBase64: pulumi.String("AGFzbQEAAAA="),
+//						ContentType:   pulumi.String("application/wasm"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -37,7 +207,7 @@ type WorkersScript struct {
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkersScriptBindingArrayOutput `pulumi:"bindings"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-	BodyPart pulumi.StringPtrOutput `pulumi:"bodyPart"`
+	BodyPart pulumi.StringOutput `pulumi:"bodyPart"`
 	// Global CacheW configuration for the Worker. When caching is on,
 	// the platform provisions a `cloudflare.app` zone for the Worker.
 	// A `type: worker` entry in the `exports` map can override this
@@ -61,6 +231,8 @@ type WorkersScript struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
 	Exports WorkersScriptExportsMapOutput `pulumi:"exports"`
+	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+	Files WorkersScriptFilesMapOutput `pulumi:"files"`
 	// The names of handlers exported as part of the default export.
 	Handlers pulumi.StringArrayOutput `pulumi:"handlers"`
 	// Whether a Worker contains assets.
@@ -186,6 +358,8 @@ type workersScriptState struct {
 	Etag *string `pulumi:"etag"`
 	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
 	Exports map[string]WorkersScriptExports `pulumi:"exports"`
+	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+	Files map[string]WorkersScriptFiles `pulumi:"files"`
 	// The names of handlers exported as part of the default export.
 	Handlers []string `pulumi:"handlers"`
 	// Whether a Worker contains assets.
@@ -270,6 +444,8 @@ type WorkersScriptState struct {
 	Etag pulumi.StringPtrInput
 	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
 	Exports WorkersScriptExportsMapInput
+	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+	Files WorkersScriptFilesMapInput
 	// The names of handlers exported as part of the default export.
 	Handlers pulumi.StringArrayInput
 	// Whether a Worker contains assets.
@@ -354,6 +530,8 @@ type workersScriptArgs struct {
 	ContentType *string `pulumi:"contentType"`
 	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
 	Exports map[string]WorkersScriptExports `pulumi:"exports"`
+	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+	Files map[string]WorkersScriptFiles `pulumi:"files"`
 	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets *bool `pulumi:"keepAssets"`
 	// List of binding types to keep from previous_upload.
@@ -412,6 +590,8 @@ type WorkersScriptArgs struct {
 	ContentType pulumi.StringPtrInput
 	// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
 	Exports WorkersScriptExportsMapInput
+	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+	Files WorkersScriptFilesMapInput
 	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets pulumi.BoolPtrInput
 	// List of binding types to keep from previous_upload.
@@ -547,8 +727,8 @@ func (o WorkersScriptOutput) Bindings() WorkersScriptBindingArrayOutput {
 }
 
 // Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-func (o WorkersScriptOutput) BodyPart() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.BodyPart }).(pulumi.StringPtrOutput)
+func (o WorkersScriptOutput) BodyPart() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersScript) pulumi.StringOutput { return v.BodyPart }).(pulumi.StringOutput)
 }
 
 // Global CacheW configuration for the Worker. When caching is on,
@@ -602,6 +782,11 @@ func (o WorkersScriptOutput) Etag() pulumi.StringOutput {
 // Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
 func (o WorkersScriptOutput) Exports() WorkersScriptExportsMapOutput {
 	return o.ApplyT(func(v *WorkersScript) WorkersScriptExportsMapOutput { return v.Exports }).(WorkersScriptExportsMapOutput)
+}
+
+// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+func (o WorkersScriptOutput) Files() WorkersScriptFilesMapOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptFilesMapOutput { return v.Files }).(WorkersScriptFilesMapOutput)
 }
 
 // The names of handlers exported as part of the default export.
