@@ -652,6 +652,7 @@ func Provider() info.Provider {
 		"cloudflare_magic_network_monitoring_rule",
 		"cloudflare_image_variant",
 		"cloudflare_turnstile_widget",
+		"cloudflare_zero_trust_resource_library_application",
 	}
 
 	for _, r := range resourcesWithMistypedID {

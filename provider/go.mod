@@ -7,8 +7,10 @@ require (
 	github.com/pulumi/providertest v0.7.0
 	github.com/pulumi/pulumi-cloudflare/sdk/v6 v6.0.0-00010101000000-000000000000
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.0
+	github.com/pulumi/pulumi/pkg/v3 v3.259.0
 	github.com/pulumi/pulumi/sdk/v3 v3.259.0
 	github.com/stretchr/testify v1.11.1
+	google.golang.org/protobuf v1.36.12
 )
 
 replace github.com/cloudflare/terraform-provider-cloudflare => ../upstream
@@ -74,7 +76,7 @@ require (
 	github.com/cloudflare/circl v1.6.3 // indirect
 	github.com/cloudflare/cloudflare-go v0.117.0 // indirect
 	github.com/cloudflare/cloudflare-go/v6 v6.10.0 // indirect
-	github.com/cloudflare/cloudflare-go/v7 v7.9.0 // indirect
+	github.com/cloudflare/cloudflare-go/v7 v7.10.0 // indirect
 	github.com/cncf/xds/go v0.0.0-20260202195803-dba9d589def2 // indirect
 	github.com/danieljoos/wincred v1.2.3 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
@@ -189,7 +191,6 @@ require (
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.110.0 // indirect
 	github.com/pulumi/pulumi-java v1.34.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.38.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.259.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
@@ -258,7 +259,6 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20260819154853-08b0e4226688 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260819154853-08b0e4226688 // indirect
 	google.golang.org/grpc v1.83.1 // indirect
-	google.golang.org/protobuf v1.36.12 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.5.1 // indirect
