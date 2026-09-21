@@ -299,7 +299,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
                  nexthop: pulumi.Input[Optional[_builtins.str]] = None,
                  prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 scope: pulumi.Input[Optional[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict', 'outputs.MagicWanStaticRouteScope']]] = None,
                  weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -336,7 +336,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
         :param pulumi.Input[_builtins.int] priority: Priority of the static route.
-        :param pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']] scope: Used only for ECMP routes.
+        :param pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict', 'outputs.MagicWanStaticRouteScope']] scope: Used only for ECMP routes.
         :param pulumi.Input[_builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         ...
@@ -392,7 +392,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
                  nexthop: pulumi.Input[Optional[_builtins.str]] = None,
                  prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 scope: pulumi.Input[Optional[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict', 'outputs.MagicWanStaticRouteScope']]] = None,
                  weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -439,7 +439,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
             nexthop: pulumi.Input[Optional[_builtins.str]] = None,
             prefix: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
-            scope: pulumi.Input[Optional[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
+            scope: pulumi.Input[Optional[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict', 'outputs.MagicWanStaticRouteScope']]] = None,
             weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'MagicWanStaticRoute':
         """
         Get an existing MagicWanStaticRoute resource's state with the given name, id, and optional extra
@@ -455,7 +455,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
         :param pulumi.Input[_builtins.int] priority: Priority of the static route.
-        :param pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']] scope: Used only for ECMP routes.
+        :param pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict', 'outputs.MagicWanStaticRouteScope']] scope: Used only for ECMP routes.
         :param pulumi.Input[_builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

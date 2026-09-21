@@ -180,7 +180,7 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
                  default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None,
+                 warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict', 'outputs.MagicNetworkMonitoringConfigurationWarpDevice']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -228,7 +228,7 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
                  default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None,
+                 warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict', 'outputs.MagicNetworkMonitoringConfigurationWarpDevice']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -261,7 +261,7 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
             default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None) -> 'MagicNetworkMonitoringConfiguration':
+            warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict', 'outputs.MagicNetworkMonitoringConfigurationWarpDevice']]]]] = None) -> 'MagicNetworkMonitoringConfiguration':
         """
         Get an existing MagicNetworkMonitoringConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

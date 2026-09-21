@@ -201,7 +201,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict', 'outputs.ZeroTrustTunnelCloudflaredConfigConfig']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -285,7 +285,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']] config: The tunnel configuration and ingress rules.
+        :param pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict', 'outputs.ZeroTrustTunnelCloudflaredConfigConfig']] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[_builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
@@ -389,7 +389,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict', 'outputs.ZeroTrustTunnelCloudflaredConfigConfig']]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -424,7 +424,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict', 'outputs.ZeroTrustTunnelCloudflaredConfigConfig']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -437,7 +437,7 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']] config: The tunnel configuration and ingress rules.
+        :param pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict', 'outputs.ZeroTrustTunnelCloudflaredConfigConfig']] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[_builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.

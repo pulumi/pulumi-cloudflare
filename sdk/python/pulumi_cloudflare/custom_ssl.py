@@ -505,7 +505,7 @@ class CustomSsl(pulumi.CustomResource):
                  certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_csr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy: pulumi.Input[Optional[_builtins.str]] = None,
-                 geo_restrictions: pulumi.Input[Optional[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
+                 geo_restrictions: pulumi.Input[Optional[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict', 'outputs.CustomSslGeoRestrictions']]] = None,
                  policy: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -605,7 +605,7 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_csr_id: The identifier for the Custom CSR that was used.
         :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
                Available values: "staging", "production".
-        :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict', 'outputs.CustomSslGeoRestrictions']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
                Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
         :param pulumi.Input[_builtins.str] private_key: The zone's private key.
@@ -724,7 +724,7 @@ class CustomSsl(pulumi.CustomResource):
                  certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_csr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy: pulumi.Input[Optional[_builtins.str]] = None,
-                 geo_restrictions: pulumi.Input[Optional[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
+                 geo_restrictions: pulumi.Input[Optional[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict', 'outputs.CustomSslGeoRestrictions']]] = None,
                  policy: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -780,10 +780,10 @@ class CustomSsl(pulumi.CustomResource):
             custom_csr_id: pulumi.Input[Optional[_builtins.str]] = None,
             deploy: pulumi.Input[Optional[_builtins.str]] = None,
             expires_on: pulumi.Input[Optional[_builtins.str]] = None,
-            geo_restrictions: pulumi.Input[Optional[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
+            geo_restrictions: pulumi.Input[Optional[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict', 'outputs.CustomSslGeoRestrictions']]] = None,
             hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             issuer: pulumi.Input[Optional[_builtins.str]] = None,
-            keyless_server: pulumi.Input[Optional[Union['CustomSslKeylessServerArgs', 'CustomSslKeylessServerArgsDict']]] = None,
+            keyless_server: pulumi.Input[Optional[Union['CustomSslKeylessServerArgs', 'CustomSslKeylessServerArgsDict', 'outputs.CustomSslKeylessServer']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             policy: pulumi.Input[Optional[_builtins.str]] = None,
             policy_restrictions: pulumi.Input[Optional[_builtins.str]] = None,
@@ -808,7 +808,7 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deploy: The environment to deploy the certificate to.
                Available values: "staging", "production".
         :param pulumi.Input[_builtins.str] expires_on: When the certificate from the authority expires.
-        :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict', 'outputs.CustomSslGeoRestrictions']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] modified_on: When the certificate was last modified.
         :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.

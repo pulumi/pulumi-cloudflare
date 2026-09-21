@@ -131,7 +131,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
-                 settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None,
+                 settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict', 'outputs.ZeroTrustGatewayLoggingSettingsByRuleType']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -169,7 +169,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] redact_pii: Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
-        :param pulumi.Input[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']] settings_by_rule_type: Configure logging settings for each rule type.
+        :param pulumi.Input[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict', 'outputs.ZeroTrustGatewayLoggingSettingsByRuleType']] settings_by_rule_type: Configure logging settings for each rule type.
         """
         ...
     @overload
@@ -227,7 +227,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
-                 settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None,
+                 settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict', 'outputs.ZeroTrustGatewayLoggingSettingsByRuleType']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -254,7 +254,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
-            settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None) -> 'ZeroTrustGatewayLogging':
+            settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict', 'outputs.ZeroTrustGatewayLoggingSettingsByRuleType']]] = None) -> 'ZeroTrustGatewayLogging':
         """
         Get an existing ZeroTrustGatewayLogging resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -263,7 +263,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] redact_pii: Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
-        :param pulumi.Input[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']] settings_by_rule_type: Configure logging settings for each rule type.
+        :param pulumi.Input[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict', 'outputs.ZeroTrustGatewayLoggingSettingsByRuleType']] settings_by_rule_type: Configure logging settings for each rule type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

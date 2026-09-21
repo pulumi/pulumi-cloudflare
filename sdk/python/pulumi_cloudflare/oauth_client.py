@@ -880,7 +880,7 @@ class OauthClient(pulumi.CustomResource):
             client_name: pulumi.Input[Optional[_builtins.str]] = None,
             client_secret: pulumi.Input[Optional[_builtins.str]] = None,
             client_uri: pulumi.Input[Optional[_builtins.str]] = None,
-            client_uri_verification: pulumi.Input[Optional[Union['OauthClientClientUriVerificationArgs', 'OauthClientClientUriVerificationArgsDict']]] = None,
+            client_uri_verification: pulumi.Input[Optional[Union['OauthClientClientUriVerificationArgs', 'OauthClientClientUriVerificationArgsDict', 'outputs.OauthClientClientUriVerification']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             has_rotated_secret: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -910,7 +910,7 @@ class OauthClient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_name: Human-readable name of the OAuth client.
         :param pulumi.Input[_builtins.str] client_secret: The client secret. This is the only time the secret is returned in a response.
         :param pulumi.Input[_builtins.str] client_uri: URL of the home page of the client.
-        :param pulumi.Input[Union['OauthClientClientUriVerificationArgs', 'OauthClientClientUriVerificationArgsDict']] client_uri_verification: Client URI domain control verification state.
+        :param pulumi.Input[Union['OauthClientClientUriVerificationArgs', 'OauthClientClientUriVerificationArgsDict', 'outputs.OauthClientClientUriVerification']] client_uri_verification: Client URI domain control verification state.
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the OAuth client was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.
         :param pulumi.Input[_builtins.bool] has_rotated_secret: Indicates whether the client has a rotated secret that has not yet been deleted.

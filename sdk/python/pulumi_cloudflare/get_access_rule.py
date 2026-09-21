@@ -182,7 +182,7 @@ class AwaitableGetAccessRuleResult(GetAccessRuleResult):
 
 
 def get_access_rule(account_id: Optional[_builtins.str] = None,
-                    filter: Optional[Union['GetAccessRuleFilterArgs', 'GetAccessRuleFilterArgsDict']] = None,
+                    filter: Optional[Union['GetAccessRuleFilterArgs', 'GetAccessRuleFilterArgsDict', 'outputs.GetAccessRuleFilterResult']] = None,
                     rule_id: Optional[_builtins.str] = None,
                     zone_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessRuleResult:
@@ -230,7 +230,7 @@ def get_access_rule(account_id: Optional[_builtins.str] = None,
         scope=pulumi.get(__ret__, 'scope'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_access_rule_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                           filter: pulumi.Input[Optional[Optional[Union['GetAccessRuleFilterArgs', 'GetAccessRuleFilterArgsDict']]]] = None,
+                           filter: pulumi.Input[Optional[Optional[Union['GetAccessRuleFilterArgs', 'GetAccessRuleFilterArgsDict', 'outputs.GetAccessRuleFilterResult']]]] = None,
                            rule_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessRuleResult]:

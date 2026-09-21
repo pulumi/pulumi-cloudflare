@@ -359,8 +359,8 @@ class PagesDomain(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            validation_data: pulumi.Input[Optional[Union['PagesDomainValidationDataArgs', 'PagesDomainValidationDataArgsDict']]] = None,
-            verification_data: pulumi.Input[Optional[Union['PagesDomainVerificationDataArgs', 'PagesDomainVerificationDataArgsDict']]] = None,
+            validation_data: pulumi.Input[Optional[Union['PagesDomainValidationDataArgs', 'PagesDomainValidationDataArgsDict', 'outputs.PagesDomainValidationData']]] = None,
+            verification_data: pulumi.Input[Optional[Union['PagesDomainVerificationDataArgs', 'PagesDomainVerificationDataArgsDict', 'outputs.PagesDomainVerificationData']]] = None,
             zone_tag: pulumi.Input[Optional[_builtins.str]] = None) -> 'PagesDomain':
         """
         Get an existing PagesDomain resource's state with the given name, id, and optional extra

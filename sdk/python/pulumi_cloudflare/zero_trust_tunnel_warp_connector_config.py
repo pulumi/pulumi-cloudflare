@@ -220,7 +220,7 @@ class ZeroTrustTunnelWarpConnectorConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict', 'outputs.ZeroTrustTunnelWarpConnectorConfigConfig']]] = None,
                  ha_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -257,7 +257,7 @@ class ZeroTrustTunnelWarpConnectorConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict']] config: Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
+        :param pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict', 'outputs.ZeroTrustTunnelWarpConnectorConfigConfig']] config: Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
         :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
                Available values: "none", "disabled", "aws", "local".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
@@ -314,7 +314,7 @@ class ZeroTrustTunnelWarpConnectorConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict', 'outputs.ZeroTrustTunnelWarpConnectorConfigConfig']]] = None,
                  ha_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -350,7 +350,7 @@ class ZeroTrustTunnelWarpConnectorConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict', 'outputs.ZeroTrustTunnelWarpConnectorConfigConfig']]] = None,
             configuration_version: pulumi.Input[Optional[_builtins.int]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             ha_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -364,7 +364,7 @@ class ZeroTrustTunnelWarpConnectorConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict']] config: Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
+        :param pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict', 'outputs.ZeroTrustTunnelWarpConnectorConfigConfig']] config: Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
         :param pulumi.Input[_builtins.int] configuration_version: Monotonically increasing configuration version, incremented on each PUT.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
         :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.

@@ -136,7 +136,7 @@ class NelSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 value: pulumi.Input[Optional[Union['NelSettingValueArgs', 'NelSettingValueArgsDict']]] = None,
+                 value: pulumi.Input[Optional[Union['NelSettingValueArgs', 'NelSettingValueArgsDict', 'outputs.NelSettingValue']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -167,7 +167,7 @@ class NelSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NelSettingValueArgs', 'NelSettingValueArgsDict']] value: The NEL configuration value.
+        :param pulumi.Input[Union['NelSettingValueArgs', 'NelSettingValueArgsDict', 'outputs.NelSettingValue']] value: The NEL configuration value.
         :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone.
         """
         ...
@@ -217,7 +217,7 @@ class NelSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 value: pulumi.Input[Optional[Union['NelSettingValueArgs', 'NelSettingValueArgsDict']]] = None,
+                 value: pulumi.Input[Optional[Union['NelSettingValueArgs', 'NelSettingValueArgsDict', 'outputs.NelSettingValue']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -248,7 +248,7 @@ class NelSetting(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             editable: pulumi.Input[Optional[_builtins.bool]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
-            value: pulumi.Input[Optional[Union['NelSettingValueArgs', 'NelSettingValueArgsDict']]] = None,
+            value: pulumi.Input[Optional[Union['NelSettingValueArgs', 'NelSettingValueArgsDict', 'outputs.NelSettingValue']]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NelSetting':
         """
         Get an existing NelSetting resource's state with the given name, id, and optional extra
@@ -259,7 +259,7 @@ class NelSetting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable. This is false when the zone's plan does not include NEL or the NEL product feature is not enabled.
         :param pulumi.Input[_builtins.str] modified_on: When the setting was last modified. A zero value (0001-01-01T00:00:00Z) indicates the setting has never been explicitly set and is using the default value.
-        :param pulumi.Input[Union['NelSettingValueArgs', 'NelSettingValueArgsDict']] value: The NEL configuration value.
+        :param pulumi.Input[Union['NelSettingValueArgs', 'NelSettingValueArgsDict', 'outputs.NelSettingValue']] value: The NEL configuration value.
         :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

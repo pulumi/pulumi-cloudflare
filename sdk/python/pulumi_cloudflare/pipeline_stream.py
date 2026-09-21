@@ -273,11 +273,11 @@ class PipelineStream(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
-                 http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
+                 format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict', 'outputs.PipelineStreamFormat']]] = None,
+                 http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict', 'outputs.PipelineStreamHttp']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
-                 worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None,
+                 schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict', 'outputs.PipelineStreamSchema']]] = None,
+                 worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict', 'outputs.PipelineStreamWorkerBinding']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -332,9 +332,9 @@ class PipelineStream(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
-        :param pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']] format: Defines the data format of the events.
+        :param pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict', 'outputs.PipelineStreamFormat']] format: Defines the data format of the events.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the Stream.
-        :param pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']] schema: Defines the schema of the events in the data stream.
+        :param pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict', 'outputs.PipelineStreamSchema']] schema: Defines the schema of the events in the data stream.
         """
         ...
     @overload
@@ -408,11 +408,11 @@ class PipelineStream(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
-                 http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
+                 format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict', 'outputs.PipelineStreamFormat']]] = None,
+                 http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict', 'outputs.PipelineStreamHttp']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
-                 worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None,
+                 schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict', 'outputs.PipelineStreamSchema']]] = None,
+                 worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict', 'outputs.PipelineStreamWorkerBinding']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -449,13 +449,13 @@ class PipelineStream(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-            format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
-            http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
+            format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict', 'outputs.PipelineStreamFormat']]] = None,
+            http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict', 'outputs.PipelineStreamHttp']]] = None,
             modified_at: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
+            schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict', 'outputs.PipelineStreamSchema']]] = None,
             version: pulumi.Input[Optional[_builtins.int]] = None,
-            worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None) -> 'PipelineStream':
+            worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict', 'outputs.PipelineStreamWorkerBinding']]] = None) -> 'PipelineStream':
         """
         Get an existing PipelineStream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -465,9 +465,9 @@ class PipelineStream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[_builtins.str] endpoint: Indicates the endpoint URL of this stream.
-        :param pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']] format: Defines the data format of the events.
+        :param pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict', 'outputs.PipelineStreamFormat']] format: Defines the data format of the events.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the Stream.
-        :param pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']] schema: Defines the schema of the events in the data stream.
+        :param pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict', 'outputs.PipelineStreamSchema']] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.int] version: Indicates the current version of this stream.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

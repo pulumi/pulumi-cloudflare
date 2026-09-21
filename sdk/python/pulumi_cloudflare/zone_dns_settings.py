@@ -367,12 +367,12 @@ class ZoneDnsSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
                  foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
-                 internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
+                 internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict', 'outputs.ZoneDnsSettingsInternalDns']]] = None,
                  multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
-                 nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
+                 nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']]] = None,
                  ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
-                 soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
+                 soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict', 'outputs.ZoneDnsSettingsSoa']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -425,12 +425,12 @@ class ZoneDnsSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
         :param pulumi.Input[_builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
-        :param pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']] internal_dns: Settings for this internal zone.
+        :param pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict', 'outputs.ZoneDnsSettingsInternalDns']] internal_dns: Settings for this internal zone.
         :param pulumi.Input[_builtins.bool] multi_provider: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
-        :param pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']] nameservers: Settings determining the nameservers through which the zone should be available.
+        :param pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']] nameservers: Settings determining the nameservers through which the zone should be available.
         :param pulumi.Input[_builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[_builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
-        :param pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']] soa: Components of the zone's SOA record.
+        :param pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict', 'outputs.ZoneDnsSettingsSoa']] soa: Components of the zone's SOA record.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] zone_mode: Whether the zone mode is a regular or CDN/DNS only zone.
                Available values: "standard", "cdn*only", "dns*only".
@@ -503,12 +503,12 @@ class ZoneDnsSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
                  foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
-                 internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
+                 internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict', 'outputs.ZoneDnsSettingsInternalDns']]] = None,
                  multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
-                 nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
+                 nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']]] = None,
                  ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
-                 soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
+                 soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict', 'outputs.ZoneDnsSettingsSoa']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -544,12 +544,12 @@ class ZoneDnsSettings(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
             foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
-            internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
+            internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict', 'outputs.ZoneDnsSettingsInternalDns']]] = None,
             multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
-            nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
+            nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']]] = None,
             ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
             secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
-            soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
+            soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict', 'outputs.ZoneDnsSettingsSoa']]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneDnsSettings':
         """
@@ -561,12 +561,12 @@ class ZoneDnsSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
         :param pulumi.Input[_builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
-        :param pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']] internal_dns: Settings for this internal zone.
+        :param pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict', 'outputs.ZoneDnsSettingsInternalDns']] internal_dns: Settings for this internal zone.
         :param pulumi.Input[_builtins.bool] multi_provider: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
-        :param pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']] nameservers: Settings determining the nameservers through which the zone should be available.
+        :param pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']] nameservers: Settings determining the nameservers through which the zone should be available.
         :param pulumi.Input[_builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[_builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
-        :param pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']] soa: Components of the zone's SOA record.
+        :param pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict', 'outputs.ZoneDnsSettingsSoa']] soa: Components of the zone's SOA record.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] zone_mode: Whether the zone mode is a regular or CDN/DNS only zone.
                Available values: "standard", "cdn*only", "dns*only".

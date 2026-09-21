@@ -765,20 +765,20 @@ class WorkerVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
-                 assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
-                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
-                 cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict', 'outputs.WorkerVersionAnnotations']]] = None,
+                 assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict', 'outputs.WorkerVersionAssets']]] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict', 'outputs.WorkerVersionBinding']]]]] = None,
+                 cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict', 'outputs.WorkerVersionCacheOptions']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
-                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]]] = None,
-                 limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict', 'outputs.WorkerVersionContainer']]]]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict', 'outputs.WorkerVersionExports']]]]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict', 'outputs.WorkerVersionLimits']]] = None,
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
-                 migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
-                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
-                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]]] = None,
-                 placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
+                 migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict', 'outputs.WorkerVersionMigrations']]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict', 'outputs.WorkerVersionModule']]]]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict', 'outputs.WorkerVersionPackageDependency']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict', 'outputs.WorkerVersionPlacement']]] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  worker_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -894,34 +894,34 @@ class WorkerVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']] annotations: Metadata about the version.
-        :param pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']] assets: Configuration for assets within a Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']] cache_options: Global CacheW configuration for the Worker. When caching is on,
+        :param pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict', 'outputs.WorkerVersionAnnotations']] annotations: Metadata about the version.
+        :param pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict', 'outputs.WorkerVersionAssets']] assets: Configuration for assets within a Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict', 'outputs.WorkerVersionBinding']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict', 'outputs.WorkerVersionCacheOptions']] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]] exports: Declarative exports for the version, including Durable Object
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict', 'outputs.WorkerVersionContainer']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict', 'outputs.WorkerVersionExports']]]] exports: Declarative exports for the version, including Durable Object
                classes (with their `storage` backend) and named Worker
                entrypoints. On reads, tombstoned lifecycle entries are
                omitted, so only live exports (`created` and
                `expecting-transfer`) are returned. `exports` and `migrations`
                are mutually exclusive on upload.
-        :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']] limits: Resource limits enforced at runtime.
+        :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict', 'outputs.WorkerVersionLimits']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
-        :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]] modules: Code, sourcemaps, and other content used at runtime.
+        :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict', 'outputs.WorkerVersionMigrations']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict', 'outputs.WorkerVersionModule']]]] modules: Code, sourcemaps, and other content used at runtime.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]] package_dependencies: The list of npm packages that were installed and used when this Worker
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict', 'outputs.WorkerVersionPackageDependency']]]] package_dependencies: The list of npm packages that were installed and used when this Worker
                version was built.
-        :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
+        :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict', 'outputs.WorkerVersionPlacement']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
@@ -1057,20 +1057,20 @@ class WorkerVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
-                 assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
-                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
-                 cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict', 'outputs.WorkerVersionAnnotations']]] = None,
+                 assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict', 'outputs.WorkerVersionAssets']]] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict', 'outputs.WorkerVersionBinding']]]]] = None,
+                 cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict', 'outputs.WorkerVersionCacheOptions']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
-                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]]] = None,
-                 limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict', 'outputs.WorkerVersionContainer']]]]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict', 'outputs.WorkerVersionExports']]]]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict', 'outputs.WorkerVersionLimits']]] = None,
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
-                 migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
-                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
-                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]]] = None,
-                 placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
+                 migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict', 'outputs.WorkerVersionMigrations']]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict', 'outputs.WorkerVersionModule']]]]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict', 'outputs.WorkerVersionPackageDependency']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict', 'outputs.WorkerVersionPlacement']]] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  worker_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1121,24 +1121,24 @@ class WorkerVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
-            assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
-            bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
-            cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict', 'outputs.WorkerVersionAnnotations']]] = None,
+            assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict', 'outputs.WorkerVersionAssets']]] = None,
+            bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict', 'outputs.WorkerVersionBinding']]]]] = None,
+            cache_options: pulumi.Input[Optional[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict', 'outputs.WorkerVersionCacheOptions']]] = None,
             compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
             compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
+            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict', 'outputs.WorkerVersionContainer']]]]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]]] = None,
-            limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
+            exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict', 'outputs.WorkerVersionExports']]]]] = None,
+            limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict', 'outputs.WorkerVersionLimits']]] = None,
             main_module: pulumi.Input[Optional[_builtins.str]] = None,
             main_script_base64: pulumi.Input[Optional[_builtins.str]] = None,
             migration_tag: pulumi.Input[Optional[_builtins.str]] = None,
-            migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
-            modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
+            migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict', 'outputs.WorkerVersionMigrations']]] = None,
+            modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict', 'outputs.WorkerVersionModule']]]]] = None,
             number: pulumi.Input[Optional[_builtins.int]] = None,
-            package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]]] = None,
-            placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
+            package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict', 'outputs.WorkerVersionPackageDependency']]]]] = None,
+            placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict', 'outputs.WorkerVersionPlacement']]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
             urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1152,38 +1152,38 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']] annotations: Metadata about the version.
-        :param pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']] assets: Configuration for assets within a Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict']] cache_options: Global CacheW configuration for the Worker. When caching is on,
+        :param pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict', 'outputs.WorkerVersionAnnotations']] annotations: Metadata about the version.
+        :param pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict', 'outputs.WorkerVersionAssets']] assets: Configuration for assets within a Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict', 'outputs.WorkerVersionBinding']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[Union['WorkerVersionCacheOptionsArgs', 'WorkerVersionCacheOptionsArgsDict', 'outputs.WorkerVersionCacheOptions']] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict', 'outputs.WorkerVersionContainer']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict']]]] exports: Declarative exports for the version, including Durable Object
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerVersionExportsArgs', 'WorkerVersionExportsArgsDict', 'outputs.WorkerVersionExports']]]] exports: Declarative exports for the version, including Durable Object
                classes (with their `storage` backend) and named Worker
                entrypoints. On reads, tombstoned lifecycle entries are
                omitted, so only live exports (`created` and
                `expecting-transfer`) are returned. `exports` and `migrations`
                are mutually exclusive on upload.
-        :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']] limits: Resource limits enforced at runtime.
+        :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict', 'outputs.WorkerVersionLimits']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
         :param pulumi.Input[_builtins.str] migration_tag: Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
-        :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]] modules: Code, sourcemaps, and other content used at runtime.
+        :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict', 'outputs.WorkerVersionMigrations']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict', 'outputs.WorkerVersionModule']]]] modules: Code, sourcemaps, and other content used at runtime.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
                [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
                [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict']]]] package_dependencies: The list of npm packages that were installed and used when this Worker
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionPackageDependencyArgs', 'WorkerVersionPackageDependencyArgsDict', 'outputs.WorkerVersionPackageDependency']]]] package_dependencies: The list of npm packages that were installed and used when this Worker
                version was built.
-        :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
+        :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict', 'outputs.WorkerVersionPlacement']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.

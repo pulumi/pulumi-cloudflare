@@ -508,12 +508,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 bgp: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict']]] = None,
+                 bgp: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict', 'outputs.MagicWanIpsecTunnelBgp']]] = None,
                  cloudflare_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_remote_identities: pulumi.Input[Optional[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict']]] = None,
+                 custom_remote_identities: pulumi.Input[Optional[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict', 'outputs.MagicWanIpsecTunnelCustomRemoteIdentities']]] = None,
                  customer_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 health_check: pulumi.Input[Optional[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
+                 health_check: pulumi.Input[Optional[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict', 'outputs.MagicWanIpsecTunnelHealthCheck']]] = None,
                  interface_address: pulumi.Input[Optional[_builtins.str]] = None,
                  interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -644,12 +644,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 bgp: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict']]] = None,
+                 bgp: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict', 'outputs.MagicWanIpsecTunnelBgp']]] = None,
                  cloudflare_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 custom_remote_identities: pulumi.Input[Optional[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict']]] = None,
+                 custom_remote_identities: pulumi.Input[Optional[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict', 'outputs.MagicWanIpsecTunnelCustomRemoteIdentities']]] = None,
                  customer_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 health_check: pulumi.Input[Optional[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
+                 health_check: pulumi.Input[Optional[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict', 'outputs.MagicWanIpsecTunnelHealthCheck']]] = None,
                  interface_address: pulumi.Input[Optional[_builtins.str]] = None,
                  interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -707,20 +707,20 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             allow_null_cipher: pulumi.Input[Optional[_builtins.bool]] = None,
             automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
-            bgp: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict']]] = None,
-            bgp_status: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpStatusArgs', 'MagicWanIpsecTunnelBgpStatusArgsDict']]] = None,
+            bgp: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpArgs', 'MagicWanIpsecTunnelBgpArgsDict', 'outputs.MagicWanIpsecTunnelBgp']]] = None,
+            bgp_status: pulumi.Input[Optional[Union['MagicWanIpsecTunnelBgpStatusArgs', 'MagicWanIpsecTunnelBgpStatusArgsDict', 'outputs.MagicWanIpsecTunnelBgpStatus']]] = None,
             cloudflare_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_remote_identities: pulumi.Input[Optional[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict']]] = None,
+            custom_remote_identities: pulumi.Input[Optional[Union['MagicWanIpsecTunnelCustomRemoteIdentitiesArgs', 'MagicWanIpsecTunnelCustomRemoteIdentitiesArgsDict', 'outputs.MagicWanIpsecTunnelCustomRemoteIdentities']]] = None,
             customer_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            health_check: pulumi.Input[Optional[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
+            health_check: pulumi.Input[Optional[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict', 'outputs.MagicWanIpsecTunnelHealthCheck']]] = None,
             interface_address: pulumi.Input[Optional[_builtins.str]] = None,
             interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             psk: pulumi.Input[Optional[_builtins.str]] = None,
-            psk_metadata: pulumi.Input[Optional[Union['MagicWanIpsecTunnelPskMetadataArgs', 'MagicWanIpsecTunnelPskMetadataArgsDict']]] = None,
+            psk_metadata: pulumi.Input[Optional[Union['MagicWanIpsecTunnelPskMetadataArgs', 'MagicWanIpsecTunnelPskMetadataArgsDict', 'outputs.MagicWanIpsecTunnelPskMetadata']]] = None,
             replay_protection: pulumi.Input[Optional[_builtins.bool]] = None) -> 'MagicWanIpsecTunnel':
         """
         Get an existing MagicWanIpsecTunnel resource's state with the given name, id, and optional extra
@@ -741,7 +741,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[_builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[_builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
-        :param pulumi.Input[Union['MagicWanIpsecTunnelPskMetadataArgs', 'MagicWanIpsecTunnelPskMetadataArgsDict']] psk_metadata: The PSK metadata that includes when the PSK was generated.
+        :param pulumi.Input[Union['MagicWanIpsecTunnelPskMetadataArgs', 'MagicWanIpsecTunnelPskMetadataArgsDict', 'outputs.MagicWanIpsecTunnelPskMetadata']] psk_metadata: The PSK metadata that includes when the PSK was generated.
         :param pulumi.Input[_builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

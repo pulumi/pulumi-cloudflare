@@ -524,7 +524,7 @@ class DnsFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
+                 attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict', 'outputs.DnsFirewallAttackMitigation']]] = None,
                  deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -580,7 +580,7 @@ class DnsFirewall(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']] attack_mitigation: Attack mitigation settings
+        :param pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict', 'outputs.DnsFirewallAttackMitigation']] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[_builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
         :param pulumi.Input[_builtins.int] dns_firewall_ip_count: Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
         :param pulumi.Input[_builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -674,7 +674,7 @@ class DnsFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
+                 attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict', 'outputs.DnsFirewallAttackMitigation']]] = None,
                  deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -725,7 +725,7 @@ class DnsFirewall(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
+            attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict', 'outputs.DnsFirewallAttackMitigation']]] = None,
             deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
             dns_firewall_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -746,7 +746,7 @@ class DnsFirewall(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']] attack_mitigation: Attack mitigation settings
+        :param pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict', 'outputs.DnsFirewallAttackMitigation']] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[_builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
         :param pulumi.Input[_builtins.int] dns_firewall_ip_count: Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
         :param pulumi.Input[_builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent

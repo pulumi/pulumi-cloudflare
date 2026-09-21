@@ -327,8 +327,8 @@ class NotificationPolicy(pulumi.CustomResource):
                  alert_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
-                 mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict', 'outputs.NotificationPolicyFilters']]] = None,
+                 mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict', 'outputs.NotificationPolicyMechanisms']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -426,8 +426,8 @@ class NotificationPolicy(pulumi.CustomResource):
                Available values: "abuse*report*alert", "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "bot*traffic*basic*alert", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "cni*maintenance*notification", "custom*analytics", "custom*bot*detection*alert", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
         :param pulumi.Input[_builtins.str] description: Optional description for the Notification policy.
         :param pulumi.Input[_builtins.bool] enabled: Whether or not the Notification policy is enabled.
-        :param pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']] filters: Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
-        :param pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']] mechanisms: List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        :param pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict', 'outputs.NotificationPolicyFilters']] filters: Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
+        :param pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict', 'outputs.NotificationPolicyMechanisms']] mechanisms: List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
         :param pulumi.Input[_builtins.str] name: Name of the policy.
         """
         ...
@@ -543,8 +543,8 @@ class NotificationPolicy(pulumi.CustomResource):
                  alert_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
-                 mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict', 'outputs.NotificationPolicyFilters']]] = None,
+                 mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict', 'outputs.NotificationPolicyMechanisms']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -589,8 +589,8 @@ class NotificationPolicy(pulumi.CustomResource):
             created: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
-            mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
+            filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict', 'outputs.NotificationPolicyFilters']]] = None,
+            mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict', 'outputs.NotificationPolicyMechanisms']]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'NotificationPolicy':
         """
@@ -606,8 +606,8 @@ class NotificationPolicy(pulumi.CustomResource):
                Available values: "abuse*report*alert", "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "bot*traffic*basic*alert", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "cni*maintenance*notification", "custom*analytics", "custom*bot*detection*alert", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
         :param pulumi.Input[_builtins.str] description: Optional description for the Notification policy.
         :param pulumi.Input[_builtins.bool] enabled: Whether or not the Notification policy is enabled.
-        :param pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']] filters: Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
-        :param pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']] mechanisms: List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        :param pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict', 'outputs.NotificationPolicyFilters']] filters: Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
+        :param pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict', 'outputs.NotificationPolicyMechanisms']] mechanisms: List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
         :param pulumi.Input[_builtins.str] name: Name of the policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -371,7 +371,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
-            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessCustomPageWarningArgs', 'ZeroTrustAccessCustomPageWarningArgsDict']]]]] = None) -> 'ZeroTrustAccessCustomPage':
+            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessCustomPageWarningArgs', 'ZeroTrustAccessCustomPageWarningArgsDict', 'outputs.ZeroTrustAccessCustomPageWarning']]]]] = None) -> 'ZeroTrustAccessCustomPage':
         """
         Get an existing ZeroTrustAccessCustomPage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -386,7 +386,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: Custom page type.
                Available values: "identity_denied", "forbidden", "login", "interstitial".
         :param pulumi.Input[_builtins.str] uid: UUID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessCustomPageWarningArgs', 'ZeroTrustAccessCustomPageWarningArgsDict']]]] warnings: Advisory validation findings returned when creating or updating a template. Omitted when empty.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessCustomPageWarningArgs', 'ZeroTrustAccessCustomPageWarningArgsDict', 'outputs.ZeroTrustAccessCustomPageWarning']]]] warnings: Advisory validation findings returned when creating or updating a template. Omitted when empty.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

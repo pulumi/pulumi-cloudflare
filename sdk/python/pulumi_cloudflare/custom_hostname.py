@@ -318,7 +318,7 @@ class CustomHostname(pulumi.CustomResource):
                  custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
-                 ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
+                 ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict', 'outputs.CustomHostnameSsl']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -423,7 +423,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_origin_server: a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         :param pulumi.Input[_builtins.str] custom_origin_sni: A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         :param pulumi.Input[_builtins.str] hostname: The custom hostname that will point to your hostname via CNAME.
-        :param pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']] ssl: SSL properties used when creating the custom hostname.
+        :param pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict', 'outputs.CustomHostnameSsl']] ssl: SSL properties used when creating the custom hostname.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -547,7 +547,7 @@ class CustomHostname(pulumi.CustomResource):
                  custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
-                 ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
+                 ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict', 'outputs.CustomHostnameSsl']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -588,9 +588,9 @@ class CustomHostname(pulumi.CustomResource):
             custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
             custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
-            ownership_verification: pulumi.Input[Optional[Union['CustomHostnameOwnershipVerificationArgs', 'CustomHostnameOwnershipVerificationArgsDict']]] = None,
-            ownership_verification_http: pulumi.Input[Optional[Union['CustomHostnameOwnershipVerificationHttpArgs', 'CustomHostnameOwnershipVerificationHttpArgsDict']]] = None,
-            ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
+            ownership_verification: pulumi.Input[Optional[Union['CustomHostnameOwnershipVerificationArgs', 'CustomHostnameOwnershipVerificationArgsDict', 'outputs.CustomHostnameOwnershipVerification']]] = None,
+            ownership_verification_http: pulumi.Input[Optional[Union['CustomHostnameOwnershipVerificationHttpArgs', 'CustomHostnameOwnershipVerificationHttpArgsDict', 'outputs.CustomHostnameOwnershipVerificationHttp']]] = None,
+            ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict', 'outputs.CustomHostnameSsl']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             verification_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomHostname':
@@ -606,9 +606,9 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_origin_server: a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         :param pulumi.Input[_builtins.str] custom_origin_sni: A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         :param pulumi.Input[_builtins.str] hostname: The custom hostname that will point to your hostname via CNAME.
-        :param pulumi.Input[Union['CustomHostnameOwnershipVerificationArgs', 'CustomHostnameOwnershipVerificationArgsDict']] ownership_verification: This is a record which can be placed to activate a hostname.
-        :param pulumi.Input[Union['CustomHostnameOwnershipVerificationHttpArgs', 'CustomHostnameOwnershipVerificationHttpArgsDict']] ownership_verification_http: This presents the token to be served by the given http url to activate a hostname.
-        :param pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']] ssl: SSL properties used when creating the custom hostname.
+        :param pulumi.Input[Union['CustomHostnameOwnershipVerificationArgs', 'CustomHostnameOwnershipVerificationArgsDict', 'outputs.CustomHostnameOwnershipVerification']] ownership_verification: This is a record which can be placed to activate a hostname.
+        :param pulumi.Input[Union['CustomHostnameOwnershipVerificationHttpArgs', 'CustomHostnameOwnershipVerificationHttpArgsDict', 'outputs.CustomHostnameOwnershipVerificationHttp']] ownership_verification_http: This presents the token to be served by the given http url to activate a hostname.
+        :param pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict', 'outputs.CustomHostnameSsl']] ssl: SSL properties used when creating the custom hostname.
         :param pulumi.Input[_builtins.str] status: Status of the hostname's activation.
                Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] verification_errors: These are errors that were encountered while trying to activate a hostname.

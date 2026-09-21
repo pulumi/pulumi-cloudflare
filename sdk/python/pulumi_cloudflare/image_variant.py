@@ -170,7 +170,7 @@ class ImageVariant(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
-                 options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict', 'outputs.ImageVariantOptions']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -208,7 +208,7 @@ class ImageVariant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] image_variant_id: The ID of this resource.
         :param pulumi.Input[_builtins.bool] never_require_signed_urls: Indicates whether the variant can access an image without a signature, regardless of image access control.
-        :param pulumi.Input[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']] options: Allows you to define image resizing sizes for different use cases.
+        :param pulumi.Input[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict', 'outputs.ImageVariantOptions']] options: Allows you to define image resizing sizes for different use cases.
         """
         ...
     @overload
@@ -265,7 +265,7 @@ class ImageVariant(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
-                 options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict', 'outputs.ImageVariantOptions']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -298,7 +298,7 @@ class ImageVariant(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
             never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
-            options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None) -> 'ImageVariant':
+            options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict', 'outputs.ImageVariantOptions']]] = None) -> 'ImageVariant':
         """
         Get an existing ImageVariant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -309,7 +309,7 @@ class ImageVariant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] image_variant_id: The ID of this resource.
         :param pulumi.Input[_builtins.bool] never_require_signed_urls: Indicates whether the variant can access an image without a signature, regardless of image access control.
-        :param pulumi.Input[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']] options: Allows you to define image resizing sizes for different use cases.
+        :param pulumi.Input[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict', 'outputs.ImageVariantOptions']] options: Allows you to define image resizing sizes for different use cases.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

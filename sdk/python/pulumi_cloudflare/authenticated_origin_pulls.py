@@ -340,7 +340,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict', 'outputs.AuthenticatedOriginPullsConfig']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -414,7 +414,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict', 'outputs.AuthenticatedOriginPullsConfig']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -463,7 +463,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             cert_updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             cert_uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
             certificate: pulumi.Input[Optional[_builtins.str]] = None,
-            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict']]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthenticatedOriginPullsConfigArgs', 'AuthenticatedOriginPullsConfigArgsDict', 'outputs.AuthenticatedOriginPullsConfig']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             expires_on: pulumi.Input[Optional[_builtins.str]] = None,

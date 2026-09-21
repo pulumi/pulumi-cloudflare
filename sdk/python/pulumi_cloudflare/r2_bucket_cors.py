@@ -163,7 +163,7 @@ class R2BucketCors(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict', 'outputs.R2BucketCorsRule']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -249,7 +249,7 @@ class R2BucketCors(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict', 'outputs.R2BucketCorsRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -280,7 +280,7 @@ class R2BucketCors(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
             jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None) -> 'R2BucketCors':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict', 'outputs.R2BucketCorsRule']]]]] = None) -> 'R2BucketCors':
         """
         Get an existing R2BucketCors resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

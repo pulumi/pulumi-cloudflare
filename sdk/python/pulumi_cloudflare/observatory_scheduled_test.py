@@ -317,8 +317,8 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             frequency: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule: pulumi.Input[Optional[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict']]] = None,
-            test: pulumi.Input[Optional[Union['ObservatoryScheduledTestTestArgs', 'ObservatoryScheduledTestTestArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict', 'outputs.ObservatoryScheduledTestSchedule']]] = None,
+            test: pulumi.Input[Optional[Union['ObservatoryScheduledTestTestArgs', 'ObservatoryScheduledTestTestArgsDict', 'outputs.ObservatoryScheduledTestTest']]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObservatoryScheduledTest':
         """
@@ -331,7 +331,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
         :param pulumi.Input[_builtins.str] region: A test region.
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
-        :param pulumi.Input[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict']] schedule: The test schedule.
+        :param pulumi.Input[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict', 'outputs.ObservatoryScheduledTestSchedule']] schedule: The test schedule.
         :param pulumi.Input[_builtins.str] url: A URL.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """

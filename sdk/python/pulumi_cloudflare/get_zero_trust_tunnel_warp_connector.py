@@ -208,7 +208,7 @@ class AwaitableGetZeroTrustTunnelWarpConnectorResult(GetZeroTrustTunnelWarpConne
 
 
 def get_zero_trust_tunnel_warp_connector(account_id: Optional[_builtins.str] = None,
-                                         filter: Optional[Union['GetZeroTrustTunnelWarpConnectorFilterArgs', 'GetZeroTrustTunnelWarpConnectorFilterArgsDict']] = None,
+                                         filter: Optional[Union['GetZeroTrustTunnelWarpConnectorFilterArgs', 'GetZeroTrustTunnelWarpConnectorFilterArgsDict', 'outputs.GetZeroTrustTunnelWarpConnectorFilterResult']] = None,
                                          tunnel_id: Optional[_builtins.str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelWarpConnectorResult:
     """
@@ -256,7 +256,7 @@ def get_zero_trust_tunnel_warp_connector(account_id: Optional[_builtins.str] = N
         tun_type=pulumi.get(__ret__, 'tun_type'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
 def get_zero_trust_tunnel_warp_connector_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustTunnelWarpConnectorFilterArgs', 'GetZeroTrustTunnelWarpConnectorFilterArgsDict']]]] = None,
+                                                filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustTunnelWarpConnectorFilterArgs', 'GetZeroTrustTunnelWarpConnectorFilterArgsDict', 'outputs.GetZeroTrustTunnelWarpConnectorFilterResult']]]] = None,
                                                 tunnel_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelWarpConnectorResult]:
     """

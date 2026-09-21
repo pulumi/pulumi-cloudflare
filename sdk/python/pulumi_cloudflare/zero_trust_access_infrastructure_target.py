@@ -181,7 +181,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
+                 ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -219,7 +219,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                length of 255 characters, supports the use of special characters dash
                and period, does not support spaces, and must start and end with an
                alphanumeric character.
-        :param pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']] ip: The IPv4/IPv6 address that identifies where to reach a target
+        :param pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']] ip: The IPv4/IPv6 address that identifies where to reach a target
         """
         ...
     @overload
@@ -273,7 +273,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
-                 ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
+                 ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -307,7 +307,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
-            ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
+            ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']]] = None,
             modified_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessInfrastructureTarget':
         """
         Get an existing ZeroTrustAccessInfrastructureTarget resource's state with the given name, id, and optional extra
@@ -322,7 +322,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                length of 255 characters, supports the use of special characters dash
                and period, does not support spaces, and must start and end with an
                alphanumeric character.
-        :param pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']] ip: The IPv4/IPv6 address that identifies where to reach a target
+        :param pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']] ip: The IPv4/IPv6 address that identifies where to reach a target
         :param pulumi.Input[_builtins.str] modified_at: Date and time at which the target was modified
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

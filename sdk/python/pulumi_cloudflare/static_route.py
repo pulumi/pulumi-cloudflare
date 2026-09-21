@@ -304,7 +304,7 @@ class StaticRoute(pulumi.CustomResource):
                  nexthop: pulumi.Input[Optional[_builtins.str]] = None,
                  prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 scope: pulumi.Input[Optional[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict', 'outputs.StaticRouteScope']]] = None,
                  weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -341,7 +341,7 @@ class StaticRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
         :param pulumi.Input[_builtins.int] priority: Priority of the static route.
-        :param pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']] scope: Used only for ECMP routes.
+        :param pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict', 'outputs.StaticRouteScope']] scope: Used only for ECMP routes.
         :param pulumi.Input[_builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         ...
@@ -397,7 +397,7 @@ class StaticRoute(pulumi.CustomResource):
                  nexthop: pulumi.Input[Optional[_builtins.str]] = None,
                  prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 scope: pulumi.Input[Optional[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict', 'outputs.StaticRouteScope']]] = None,
                  weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         pulumi.log.warn("""StaticRoute is deprecated: cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute""")
@@ -445,7 +445,7 @@ class StaticRoute(pulumi.CustomResource):
             nexthop: pulumi.Input[Optional[_builtins.str]] = None,
             prefix: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
-            scope: pulumi.Input[Optional[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
+            scope: pulumi.Input[Optional[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict', 'outputs.StaticRouteScope']]] = None,
             weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'StaticRoute':
         """
         Get an existing StaticRoute resource's state with the given name, id, and optional extra
@@ -461,7 +461,7 @@ class StaticRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
         :param pulumi.Input[_builtins.int] priority: Priority of the static route.
-        :param pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']] scope: Used only for ECMP routes.
+        :param pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict', 'outputs.StaticRouteScope']] scope: Used only for ECMP routes.
         :param pulumi.Input[_builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

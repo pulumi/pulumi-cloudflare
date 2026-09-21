@@ -170,7 +170,7 @@ class AwaitableGetCustomOriginTrustStoreResult(GetCustomOriginTrustStoreResult):
 
 
 def get_custom_origin_trust_store(custom_origin_trust_store_id: Optional[_builtins.str] = None,
-                                  filter: Optional[Union['GetCustomOriginTrustStoreFilterArgs', 'GetCustomOriginTrustStoreFilterArgsDict']] = None,
+                                  filter: Optional[Union['GetCustomOriginTrustStoreFilterArgs', 'GetCustomOriginTrustStoreFilterArgsDict', 'outputs.GetCustomOriginTrustStoreFilterResult']] = None,
                                   zone_id: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomOriginTrustStoreResult:
     """
@@ -213,7 +213,7 @@ def get_custom_origin_trust_store(custom_origin_trust_store_id: Optional[_builti
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_custom_origin_trust_store_output(custom_origin_trust_store_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                         filter: pulumi.Input[Optional[Optional[Union['GetCustomOriginTrustStoreFilterArgs', 'GetCustomOriginTrustStoreFilterArgsDict']]]] = None,
+                                         filter: pulumi.Input[Optional[Optional[Union['GetCustomOriginTrustStoreFilterArgs', 'GetCustomOriginTrustStoreFilterArgsDict', 'outputs.GetCustomOriginTrustStoreFilterResult']]]] = None,
                                          zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomOriginTrustStoreResult]:
     """

@@ -311,8 +311,8 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration: pulumi.Input[Optional[_builtins.str]] = None,
-                 input: pulumi.Input[Optional[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]] = None,
-                 matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]]] = None,
+                 input: pulumi.Input[Optional[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict', 'outputs.ZeroTrustDevicePostureRuleInput']]] = None,
+                 matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict', 'outputs.ZeroTrustDevicePostureRuleMatch']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -358,8 +358,8 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the device posture rule.
         :param pulumi.Input[_builtins.str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
-        :param pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']] input: The value to be checked against.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
+        :param pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict', 'outputs.ZeroTrustDevicePostureRuleInput']] input: The value to be checked against.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict', 'outputs.ZeroTrustDevicePostureRuleMatch']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[_builtins.str] name: The name of the device posture rule.
         :param pulumi.Input[_builtins.str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         :param pulumi.Input[_builtins.str] type: The type of device posture rule.
@@ -426,8 +426,8 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration: pulumi.Input[Optional[_builtins.str]] = None,
-                 input: pulumi.Input[Optional[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]] = None,
-                 matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]]] = None,
+                 input: pulumi.Input[Optional[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict', 'outputs.ZeroTrustDevicePostureRuleInput']]] = None,
+                 matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict', 'outputs.ZeroTrustDevicePostureRuleMatch']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -469,8 +469,8 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             expiration: pulumi.Input[Optional[_builtins.str]] = None,
-            input: pulumi.Input[Optional[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']]] = None,
-            matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]]] = None,
+            input: pulumi.Input[Optional[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict', 'outputs.ZeroTrustDevicePostureRuleInput']]] = None,
+            matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict', 'outputs.ZeroTrustDevicePostureRuleMatch']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             schedule: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDevicePostureRule':
@@ -484,8 +484,8 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the device posture rule.
         :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enabled. This is a computed, read-only value. It is false for deprecated Kolide posture rules that still use the issue_count input, and true otherwise.
         :param pulumi.Input[_builtins.str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
-        :param pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict']] input: The value to be checked against.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict']]]] matches: The conditions that the client must match to run the rule.
+        :param pulumi.Input[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict', 'outputs.ZeroTrustDevicePostureRuleInput']] input: The value to be checked against.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict', 'outputs.ZeroTrustDevicePostureRuleMatch']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[_builtins.str] name: The name of the device posture rule.
         :param pulumi.Input[_builtins.str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         :param pulumi.Input[_builtins.str] type: The type of device posture rule.

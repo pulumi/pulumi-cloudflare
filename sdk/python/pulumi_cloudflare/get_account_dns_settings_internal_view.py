@@ -133,7 +133,7 @@ class AwaitableGetAccountDnsSettingsInternalViewResult(GetAccountDnsSettingsInte
 
 
 def get_account_dns_settings_internal_view(account_id: Optional[_builtins.str] = None,
-                                           filter: Optional[Union['GetAccountDnsSettingsInternalViewFilterArgs', 'GetAccountDnsSettingsInternalViewFilterArgsDict']] = None,
+                                           filter: Optional[Union['GetAccountDnsSettingsInternalViewFilterArgs', 'GetAccountDnsSettingsInternalViewFilterArgsDict', 'outputs.GetAccountDnsSettingsInternalViewFilterResult']] = None,
                                            view_id: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountDnsSettingsInternalViewResult:
     """
@@ -173,7 +173,7 @@ def get_account_dns_settings_internal_view(account_id: Optional[_builtins.str] =
         view_id=pulumi.get(__ret__, 'view_id'),
         zones=pulumi.get(__ret__, 'zones'))
 def get_account_dns_settings_internal_view_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                  filter: pulumi.Input[Optional[Optional[Union['GetAccountDnsSettingsInternalViewFilterArgs', 'GetAccountDnsSettingsInternalViewFilterArgsDict']]]] = None,
+                                                  filter: pulumi.Input[Optional[Optional[Union['GetAccountDnsSettingsInternalViewFilterArgs', 'GetAccountDnsSettingsInternalViewFilterArgsDict', 'outputs.GetAccountDnsSettingsInternalViewFilterResult']]]] = None,
                                                   view_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDnsSettingsInternalViewResult]:
     """

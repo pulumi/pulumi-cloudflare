@@ -94,7 +94,7 @@ class AwaitableGetWorkersScriptResult(GetWorkersScriptResult):
 
 
 def get_workers_script(account_id: Optional[_builtins.str] = None,
-                       filter: Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict']] = None,
+                       filter: Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict', 'outputs.GetWorkersScriptFilterResult']] = None,
                        script_name: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersScriptResult:
     """
@@ -132,7 +132,7 @@ def get_workers_script(account_id: Optional[_builtins.str] = None,
         script=pulumi.get(__ret__, 'script'),
         script_name=pulumi.get(__ret__, 'script_name'))
 def get_workers_script_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              filter: pulumi.Input[Optional[Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict']]]] = None,
+                              filter: pulumi.Input[Optional[Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict', 'outputs.GetWorkersScriptFilterResult']]]] = None,
                               script_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersScriptResult]:
     """

@@ -169,7 +169,7 @@ class AwaitableGetSecretsStoreSecretResult(GetSecretsStoreSecretResult):
 
 
 def get_secrets_store_secret(account_id: Optional[_builtins.str] = None,
-                             filter: Optional[Union['GetSecretsStoreSecretFilterArgs', 'GetSecretsStoreSecretFilterArgsDict']] = None,
+                             filter: Optional[Union['GetSecretsStoreSecretFilterArgs', 'GetSecretsStoreSecretFilterArgsDict', 'outputs.GetSecretsStoreSecretFilterResult']] = None,
                              secret_id: Optional[_builtins.str] = None,
                              store_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretsStoreSecretResult:
@@ -216,7 +216,7 @@ def get_secrets_store_secret(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         store_id=pulumi.get(__ret__, 'store_id'))
 def get_secrets_store_secret_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                    filter: pulumi.Input[Optional[Optional[Union['GetSecretsStoreSecretFilterArgs', 'GetSecretsStoreSecretFilterArgsDict']]]] = None,
+                                    filter: pulumi.Input[Optional[Optional[Union['GetSecretsStoreSecretFilterArgs', 'GetSecretsStoreSecretFilterArgsDict', 'outputs.GetSecretsStoreSecretFilterResult']]]] = None,
                                     secret_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     store_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretsStoreSecretResult]:

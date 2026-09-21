@@ -154,7 +154,7 @@ class AwaitableGetMagicTransitSiteResult(GetMagicTransitSiteResult):
 
 
 def get_magic_transit_site(account_id: Optional[_builtins.str] = None,
-                           filter: Optional[Union['GetMagicTransitSiteFilterArgs', 'GetMagicTransitSiteFilterArgsDict']] = None,
+                           filter: Optional[Union['GetMagicTransitSiteFilterArgs', 'GetMagicTransitSiteFilterArgsDict', 'outputs.GetMagicTransitSiteFilterResult']] = None,
                            site_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicTransitSiteResult:
     """
@@ -198,7 +198,7 @@ def get_magic_transit_site(account_id: Optional[_builtins.str] = None,
         secondary_connector_id=pulumi.get(__ret__, 'secondary_connector_id'),
         site_id=pulumi.get(__ret__, 'site_id'))
 def get_magic_transit_site_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                  filter: pulumi.Input[Optional[Optional[Union['GetMagicTransitSiteFilterArgs', 'GetMagicTransitSiteFilterArgsDict']]]] = None,
+                                  filter: pulumi.Input[Optional[Optional[Union['GetMagicTransitSiteFilterArgs', 'GetMagicTransitSiteFilterArgsDict', 'outputs.GetMagicTransitSiteFilterResult']]]] = None,
                                   site_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteResult]:
     """

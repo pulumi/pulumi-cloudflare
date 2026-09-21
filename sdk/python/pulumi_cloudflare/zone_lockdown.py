@@ -263,7 +263,7 @@ class ZoneLockdown(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
+                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict', 'outputs.ZoneLockdownConfiguration']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
@@ -303,7 +303,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict', 'outputs.ZoneLockdownConfiguration']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.float] priority: The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
@@ -362,7 +362,7 @@ class ZoneLockdown(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
+                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict', 'outputs.ZoneLockdownConfiguration']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
@@ -401,7 +401,7 @@ class ZoneLockdown(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]]] = None,
+            configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict', 'outputs.ZoneLockdownConfiguration']]]]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -416,7 +416,7 @@ class ZoneLockdown(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict', 'outputs.ZoneLockdownConfiguration']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         :param pulumi.Input[_builtins.str] created_on: The timestamp of when the rule was created.
         :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.str] modified_on: The timestamp of when the rule was last modified.

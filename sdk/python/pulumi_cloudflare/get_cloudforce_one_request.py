@@ -219,7 +219,7 @@ class AwaitableGetCloudforceOneRequestResult(GetCloudforceOneRequestResult):
 
 
 def get_cloudforce_one_request(account_id: Optional[_builtins.str] = None,
-                               filter: Optional[Union['GetCloudforceOneRequestFilterArgs', 'GetCloudforceOneRequestFilterArgsDict']] = None,
+                               filter: Optional[Union['GetCloudforceOneRequestFilterArgs', 'GetCloudforceOneRequestFilterArgsDict', 'outputs.GetCloudforceOneRequestFilterResult']] = None,
                                request_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudforceOneRequestResult:
     """
@@ -267,7 +267,7 @@ def get_cloudforce_one_request(account_id: Optional[_builtins.str] = None,
         tokens=pulumi.get(__ret__, 'tokens'),
         updated=pulumi.get(__ret__, 'updated'))
 def get_cloudforce_one_request_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                      filter: pulumi.Input[Optional[Optional[Union['GetCloudforceOneRequestFilterArgs', 'GetCloudforceOneRequestFilterArgsDict']]]] = None,
+                                      filter: pulumi.Input[Optional[Optional[Union['GetCloudforceOneRequestFilterArgs', 'GetCloudforceOneRequestFilterArgsDict', 'outputs.GetCloudforceOneRequestFilterResult']]]] = None,
                                       request_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestResult]:
     """

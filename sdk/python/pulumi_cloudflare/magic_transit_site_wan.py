@@ -262,7 +262,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
+                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']]] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -304,7 +304,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] site_id: Identifier
-        :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         ...
@@ -368,7 +368,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
+                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']]] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -409,7 +409,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             physport: pulumi.Input[Optional[_builtins.int]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
-            static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
+            static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']]] = None,
             vlan_tag: pulumi.Input[Optional[_builtins.int]] = None) -> 'MagicTransitSiteWan':
         """
         Get an existing MagicTransitSiteWan resource's state with the given name, id, and optional extra
@@ -422,7 +422,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
                Available values: "low", "mid", "high".
         :param pulumi.Input[_builtins.str] site_id: Identifier
-        :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

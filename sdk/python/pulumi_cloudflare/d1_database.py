@@ -284,7 +284,7 @@ class D1Database(pulumi.CustomResource):
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
-                 read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
+                 read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict', 'outputs.D1DatabaseReadReplication']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -323,7 +323,7 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
-        :param pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']] read_replication: Configuration for D1 read replication.
+        :param pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict', 'outputs.D1DatabaseReadReplication']] read_replication: Configuration for D1 read replication.
         """
         ...
     @overload
@@ -379,7 +379,7 @@ class D1Database(pulumi.CustomResource):
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
-                 read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
+                 read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict', 'outputs.D1DatabaseReadReplication']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -420,7 +420,7 @@ class D1Database(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             num_tables: pulumi.Input[Optional[_builtins.float]] = None,
             primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
-            read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
+            read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict', 'outputs.D1DatabaseReadReplication']]] = None,
             uuid: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'D1Database':
         """
@@ -438,7 +438,7 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: D1 database name.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
-        :param pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']] read_replication: Configuration for D1 read replication.
+        :param pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict', 'outputs.D1DatabaseReadReplication']] read_replication: Configuration for D1 read replication.
         :param pulumi.Input[_builtins.str] uuid: D1 database identifier (UUID).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

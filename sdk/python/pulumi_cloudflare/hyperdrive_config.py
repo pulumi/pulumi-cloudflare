@@ -264,10 +264,10 @@ class HyperdriveConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
-                 mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
+                 caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict', 'outputs.HyperdriveConfigCaching']]] = None,
+                 mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+                 origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict', 'outputs.HyperdriveConfigOrigin']]] = None,
                  origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -314,7 +314,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
-        :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
@@ -381,10 +381,10 @@ class HyperdriveConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
-                 mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
+                 caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict', 'outputs.HyperdriveConfigCaching']]] = None,
+                 mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+                 origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict', 'outputs.HyperdriveConfigOrigin']]] = None,
                  origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -421,12 +421,12 @@ class HyperdriveConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
+            caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict', 'outputs.HyperdriveConfigCaching']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
-            mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
+            mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+            origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict', 'outputs.HyperdriveConfigOrigin']]] = None,
             origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
             restarted_on: pulumi.Input[Optional[_builtins.str]] = None) -> 'HyperdriveConfig':
         """
@@ -439,7 +439,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
-        :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         :param pulumi.Input[_builtins.str] restarted_on: Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.

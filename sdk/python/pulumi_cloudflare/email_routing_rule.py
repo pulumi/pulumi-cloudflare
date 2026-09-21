@@ -331,9 +331,9 @@ class EmailRoutingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]]] = None,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict', 'outputs.EmailRoutingRuleAction']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]]] = None,
+                 matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict', 'outputs.EmailRoutingRuleMatcher']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
@@ -379,9 +379,9 @@ class EmailRoutingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]] actions: List actions patterns.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict', 'outputs.EmailRoutingRuleAction']]]] actions: List actions patterns.
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict', 'outputs.EmailRoutingRuleMatcher']]]] matchers: Matching patterns to forward to your actions.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
         :param pulumi.Input[_builtins.str] owner_worker_tag: Public tag (script_tag) of the Worker that owns this rule. Required when
                `source` is `wrangler`.
@@ -450,9 +450,9 @@ class EmailRoutingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]]] = None,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict', 'outputs.EmailRoutingRuleAction']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]]] = None,
+                 matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict', 'outputs.EmailRoutingRuleMatcher']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
@@ -492,9 +492,9 @@ class EmailRoutingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]]] = None,
+            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict', 'outputs.EmailRoutingRuleAction']]]]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]]] = None,
+            matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict', 'outputs.EmailRoutingRuleMatcher']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.float]] = None,
@@ -508,9 +508,9 @@ class EmailRoutingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]] actions: List actions patterns.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict', 'outputs.EmailRoutingRuleAction']]]] actions: List actions patterns.
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict', 'outputs.EmailRoutingRuleMatcher']]]] matchers: Matching patterns to forward to your actions.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
         :param pulumi.Input[_builtins.str] owner_worker_tag: Public tag (script_tag) of the Worker that owns this rule. Required when
                `source` is `wrangler`.

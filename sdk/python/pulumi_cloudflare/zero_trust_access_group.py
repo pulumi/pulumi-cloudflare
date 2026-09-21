@@ -265,11 +265,11 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict']]]]] = None,
-                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict']]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict', 'outputs.ZeroTrustAccessGroupExclude']]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict', 'outputs.ZeroTrustAccessGroupInclude']]]]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict']]]]] = None,
+                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict', 'outputs.ZeroTrustAccessGroupRequire']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -309,11 +309,11 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict', 'outputs.ZeroTrustAccessGroupExclude']]]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict', 'outputs.ZeroTrustAccessGroupInclude']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[_builtins.bool] is_default: Whether this is the default group
         :param pulumi.Input[_builtins.str] name: The name of the Access group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict']]]] requires: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict', 'outputs.ZeroTrustAccessGroupRequire']]]] requires: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
@@ -372,11 +372,11 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict']]]]] = None,
-                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict']]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict', 'outputs.ZeroTrustAccessGroupExclude']]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict', 'outputs.ZeroTrustAccessGroupInclude']]]]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict']]]]] = None,
+                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict', 'outputs.ZeroTrustAccessGroupRequire']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -411,11 +411,11 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict']]]]] = None,
-            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict']]]]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict', 'outputs.ZeroTrustAccessGroupExclude']]]]] = None,
+            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict', 'outputs.ZeroTrustAccessGroupInclude']]]]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict']]]]] = None,
+            requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict', 'outputs.ZeroTrustAccessGroupRequire']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessGroup':
         """
         Get an existing ZeroTrustAccessGroup resource's state with the given name, id, and optional extra
@@ -425,11 +425,11 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict', 'outputs.ZeroTrustAccessGroupExclude']]]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict', 'outputs.ZeroTrustAccessGroupInclude']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[_builtins.bool] is_default: Whether this is the default group
         :param pulumi.Input[_builtins.str] name: The name of the Access group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict']]]] requires: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict', 'outputs.ZeroTrustAccessGroupRequire']]]] requires: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -209,9 +209,9 @@ class MagicTransitCf1Site(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitCf1SiteBodyArgs', 'MagicTransitCf1SiteBodyArgsDict']]]]] = None,
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitCf1SiteBodyArgs', 'MagicTransitCf1SiteBodyArgsDict', 'outputs.MagicTransitCf1SiteBody']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 location: pulumi.Input[Optional[Union['MagicTransitCf1SiteLocationArgs', 'MagicTransitCf1SiteLocationArgsDict']]] = None,
+                 location: pulumi.Input[Optional[Union['MagicTransitCf1SiteLocationArgs', 'MagicTransitCf1SiteLocationArgsDict', 'outputs.MagicTransitCf1SiteLocation']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -310,9 +310,9 @@ class MagicTransitCf1Site(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitCf1SiteBodyArgs', 'MagicTransitCf1SiteBodyArgsDict']]]]] = None,
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitCf1SiteBodyArgs', 'MagicTransitCf1SiteBodyArgsDict', 'outputs.MagicTransitCf1SiteBody']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 location: pulumi.Input[Optional[Union['MagicTransitCf1SiteLocationArgs', 'MagicTransitCf1SiteLocationArgsDict']]] = None,
+                 location: pulumi.Input[Optional[Union['MagicTransitCf1SiteLocationArgs', 'MagicTransitCf1SiteLocationArgsDict', 'outputs.MagicTransitCf1SiteLocation']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -345,10 +345,10 @@ class MagicTransitCf1Site(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitCf1SiteBodyArgs', 'MagicTransitCf1SiteBodyArgsDict']]]]] = None,
+            bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitCf1SiteBodyArgs', 'MagicTransitCf1SiteBodyArgsDict', 'outputs.MagicTransitCf1SiteBody']]]]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            location: pulumi.Input[Optional[Union['MagicTransitCf1SiteLocationArgs', 'MagicTransitCf1SiteLocationArgsDict']]] = None,
+            location: pulumi.Input[Optional[Union['MagicTransitCf1SiteLocationArgs', 'MagicTransitCf1SiteLocationArgsDict', 'outputs.MagicTransitCf1SiteLocation']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'MagicTransitCf1Site':
         """

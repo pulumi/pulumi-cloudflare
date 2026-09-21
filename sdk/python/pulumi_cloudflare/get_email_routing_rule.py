@@ -172,7 +172,7 @@ class AwaitableGetEmailRoutingRuleResult(GetEmailRoutingRuleResult):
             zone_id=self.zone_id)
 
 
-def get_email_routing_rule(filter: Optional[Union['GetEmailRoutingRuleFilterArgs', 'GetEmailRoutingRuleFilterArgsDict']] = None,
+def get_email_routing_rule(filter: Optional[Union['GetEmailRoutingRuleFilterArgs', 'GetEmailRoutingRuleFilterArgsDict', 'outputs.GetEmailRoutingRuleFilterResult']] = None,
                            rule_identifier: Optional[_builtins.str] = None,
                            zone_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailRoutingRuleResult:
@@ -215,7 +215,7 @@ def get_email_routing_rule(filter: Optional[Union['GetEmailRoutingRuleFilterArgs
         source=pulumi.get(__ret__, 'source'),
         tag=pulumi.get(__ret__, 'tag'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_email_routing_rule_output(filter: pulumi.Input[Optional[Optional[Union['GetEmailRoutingRuleFilterArgs', 'GetEmailRoutingRuleFilterArgsDict']]]] = None,
+def get_email_routing_rule_output(filter: pulumi.Input[Optional[Optional[Union['GetEmailRoutingRuleFilterArgs', 'GetEmailRoutingRuleFilterArgsDict', 'outputs.GetEmailRoutingRuleFilterResult']]]] = None,
                                   rule_identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingRuleResult]:

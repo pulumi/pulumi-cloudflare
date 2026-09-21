@@ -114,7 +114,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             profile=self.profile)
 
 
-def get_organization(filter: Optional[Union['GetOrganizationFilterArgs', 'GetOrganizationFilterArgsDict']] = None,
+def get_organization(filter: Optional[Union['GetOrganizationFilterArgs', 'GetOrganizationFilterArgsDict', 'outputs.GetOrganizationFilterResult']] = None,
                      organization_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
@@ -147,7 +147,7 @@ def get_organization(filter: Optional[Union['GetOrganizationFilterArgs', 'GetOrg
         organization_id=pulumi.get(__ret__, 'organization_id'),
         parent=pulumi.get(__ret__, 'parent'),
         profile=pulumi.get(__ret__, 'profile'))
-def get_organization_output(filter: pulumi.Input[Optional[Optional[Union['GetOrganizationFilterArgs', 'GetOrganizationFilterArgsDict']]]] = None,
+def get_organization_output(filter: pulumi.Input[Optional[Optional[Union['GetOrganizationFilterArgs', 'GetOrganizationFilterArgsDict', 'outputs.GetOrganizationFilterResult']]]] = None,
                             organization_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """

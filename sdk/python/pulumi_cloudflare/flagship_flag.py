@@ -382,7 +382,7 @@ class FlagshipFlag(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  flag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  variations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -437,7 +437,7 @@ class FlagshipFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
         :param pulumi.Input[_builtins.str] flag_key: Flag key (slug).
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict']]]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
         :param pulumi.Input[_builtins.str] type: Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
                Available values: "boolean", "string", "number", "json".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variations: Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
@@ -513,7 +513,7 @@ class FlagshipFlag(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  flag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  variations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -568,7 +568,7 @@ class FlagshipFlag(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             flag_key: pulumi.Input[Optional[_builtins.str]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None,
@@ -586,7 +586,7 @@ class FlagshipFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
         :param pulumi.Input[_builtins.str] flag_key: Flag key (slug).
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict']]]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
         :param pulumi.Input[_builtins.str] type: Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
                Available values: "boolean", "string", "number", "json".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variations: Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.

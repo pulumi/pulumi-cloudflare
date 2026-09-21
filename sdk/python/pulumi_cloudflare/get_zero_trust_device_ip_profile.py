@@ -175,7 +175,7 @@ class AwaitableGetZeroTrustDeviceIpProfileResult(GetZeroTrustDeviceIpProfileResu
 
 
 def get_zero_trust_device_ip_profile(account_id: Optional[_builtins.str] = None,
-                                     filter: Optional[Union['GetZeroTrustDeviceIpProfileFilterArgs', 'GetZeroTrustDeviceIpProfileFilterArgsDict']] = None,
+                                     filter: Optional[Union['GetZeroTrustDeviceIpProfileFilterArgs', 'GetZeroTrustDeviceIpProfileFilterArgsDict', 'outputs.GetZeroTrustDeviceIpProfileFilterResult']] = None,
                                      profile_id: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDeviceIpProfileResult:
     """
@@ -215,7 +215,7 @@ def get_zero_trust_device_ip_profile(account_id: Optional[_builtins.str] = None,
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_zero_trust_device_ip_profile_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                            filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustDeviceIpProfileFilterArgs', 'GetZeroTrustDeviceIpProfileFilterArgsDict']]]] = None,
+                                            filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustDeviceIpProfileFilterArgs', 'GetZeroTrustDeviceIpProfileFilterArgsDict', 'outputs.GetZeroTrustDeviceIpProfileFilterResult']]]] = None,
                                             profile_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceIpProfileResult]:
     """

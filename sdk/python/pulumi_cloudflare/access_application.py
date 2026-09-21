@@ -1363,36 +1363,36 @@ class AccessApplication(pulumi.CustomResource):
                  app_launcher_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
                  bg_color: pulumi.Input[Optional[_builtins.str]] = None,
-                 cors_headers: pulumi.Input[Optional[Union['AccessApplicationCorsHeadersArgs', 'AccessApplicationCorsHeadersArgsDict']]] = None,
+                 cors_headers: pulumi.Input[Optional[Union['AccessApplicationCorsHeadersArgs', 'AccessApplicationCorsHeadersArgsDict', 'outputs.AccessApplicationCorsHeaders']]] = None,
                  custom_deny_message: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_deny_url: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_non_identity_deny_url: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_pages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict']]]]] = None,
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict', 'outputs.AccessApplicationDestination']]]]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_binding_cookie: pulumi.Input[Optional[_builtins.bool]] = None,
-                 footer_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]]] = None,
+                 footer_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict', 'outputs.AccessApplicationFooterLink']]]]] = None,
                  header_bg_color: pulumi.Input[Optional[_builtins.str]] = None,
                  http_only_cookie_attribute: pulumi.Input[Optional[_builtins.bool]] = None,
-                 landing_page_design: pulumi.Input[Optional[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
+                 landing_page_design: pulumi.Input[Optional[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict', 'outputs.AccessApplicationLandingPageDesign']]] = None,
                  logo_url: pulumi.Input[Optional[_builtins.str]] = None,
-                 mfa_config: pulumi.Input[Optional[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']]] = None,
+                 mfa_config: pulumi.Input[Optional[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict', 'outputs.AccessApplicationMfaConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oauth_configuration: pulumi.Input[Optional[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']]] = None,
+                 oauth_configuration: pulumi.Input[Optional[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict', 'outputs.AccessApplicationOauthConfiguration']]] = None,
                  options_preflight_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
                  path_cookie_attribute: pulumi.Input[Optional[_builtins.bool]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict', 'outputs.AccessApplicationPolicy']]]]] = None,
                  read_service_tokens_from_header: pulumi.Input[Optional[_builtins.str]] = None,
-                 saas_app: pulumi.Input[Optional[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict']]] = None,
+                 saas_app: pulumi.Input[Optional[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict', 'outputs.AccessApplicationSaasApp']]] = None,
                  same_site_cookie_attribute: pulumi.Input[Optional[_builtins.str]] = None,
-                 scim_config: pulumi.Input[Optional[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']]] = None,
+                 scim_config: pulumi.Input[Optional[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict', 'outputs.AccessApplicationScimConfig']]] = None,
                  self_hosted_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_auth401_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_app_launcher_login_page: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_interstitial: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]]] = None,
+                 target_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict', 'outputs.AccessApplicationTargetCriteria']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1420,20 +1420,20 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
         :param pulumi.Input[_builtins.str] custom_non_identity_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_pages: The custom pages that will be displayed when applicable for this application
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict']]]] destinations: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict', 'outputs.AccessApplicationDestination']]]] destinations: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[_builtins.str] domain: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         :param pulumi.Input[_builtins.bool] enable_binding_cookie: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]] footer_links: The links in the App Launcher footer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict', 'outputs.AccessApplicationFooterLink']]]] footer_links: The links in the App Launcher footer.
         :param pulumi.Input[_builtins.str] header_bg_color: The background color of the App Launcher header.
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
-        :param pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
+        :param pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict', 'outputs.AccessApplicationLandingPageDesign']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
-        :param pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        :param pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict', 'outputs.AccessApplicationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
         :param pulumi.Input[_builtins.str] name: The name of the application.
-        :param pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        :param pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict', 'outputs.AccessApplicationOauthConfiguration']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict', 'outputs.AccessApplicationPolicy']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         :param pulumi.Input[_builtins.str] read_service_tokens_from_header: Allows matching Access Service Tokens passed HTTP in a single header with this name.
                This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
                The header value will be interpreted as a json object similar to:
@@ -1442,7 +1442,7 @@ class AccessApplication(pulumi.CustomResource):
                "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
                }
         :param pulumi.Input[_builtins.str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
-        :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+        :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict', 'outputs.AccessApplicationScimConfig']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[_builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
@@ -1492,36 +1492,36 @@ class AccessApplication(pulumi.CustomResource):
                  app_launcher_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
                  bg_color: pulumi.Input[Optional[_builtins.str]] = None,
-                 cors_headers: pulumi.Input[Optional[Union['AccessApplicationCorsHeadersArgs', 'AccessApplicationCorsHeadersArgsDict']]] = None,
+                 cors_headers: pulumi.Input[Optional[Union['AccessApplicationCorsHeadersArgs', 'AccessApplicationCorsHeadersArgsDict', 'outputs.AccessApplicationCorsHeaders']]] = None,
                  custom_deny_message: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_deny_url: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_non_identity_deny_url: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_pages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict']]]]] = None,
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict', 'outputs.AccessApplicationDestination']]]]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_binding_cookie: pulumi.Input[Optional[_builtins.bool]] = None,
-                 footer_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]]] = None,
+                 footer_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict', 'outputs.AccessApplicationFooterLink']]]]] = None,
                  header_bg_color: pulumi.Input[Optional[_builtins.str]] = None,
                  http_only_cookie_attribute: pulumi.Input[Optional[_builtins.bool]] = None,
-                 landing_page_design: pulumi.Input[Optional[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
+                 landing_page_design: pulumi.Input[Optional[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict', 'outputs.AccessApplicationLandingPageDesign']]] = None,
                  logo_url: pulumi.Input[Optional[_builtins.str]] = None,
-                 mfa_config: pulumi.Input[Optional[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']]] = None,
+                 mfa_config: pulumi.Input[Optional[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict', 'outputs.AccessApplicationMfaConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oauth_configuration: pulumi.Input[Optional[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']]] = None,
+                 oauth_configuration: pulumi.Input[Optional[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict', 'outputs.AccessApplicationOauthConfiguration']]] = None,
                  options_preflight_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
                  path_cookie_attribute: pulumi.Input[Optional[_builtins.bool]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict', 'outputs.AccessApplicationPolicy']]]]] = None,
                  read_service_tokens_from_header: pulumi.Input[Optional[_builtins.str]] = None,
-                 saas_app: pulumi.Input[Optional[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict']]] = None,
+                 saas_app: pulumi.Input[Optional[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict', 'outputs.AccessApplicationSaasApp']]] = None,
                  same_site_cookie_attribute: pulumi.Input[Optional[_builtins.str]] = None,
-                 scim_config: pulumi.Input[Optional[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']]] = None,
+                 scim_config: pulumi.Input[Optional[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict', 'outputs.AccessApplicationScimConfig']]] = None,
                  self_hosted_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_auth401_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_app_launcher_login_page: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_interstitial: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]]] = None,
+                 target_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict', 'outputs.AccessApplicationTargetCriteria']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1596,36 +1596,36 @@ class AccessApplication(pulumi.CustomResource):
             aud: pulumi.Input[Optional[_builtins.str]] = None,
             auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
             bg_color: pulumi.Input[Optional[_builtins.str]] = None,
-            cors_headers: pulumi.Input[Optional[Union['AccessApplicationCorsHeadersArgs', 'AccessApplicationCorsHeadersArgsDict']]] = None,
+            cors_headers: pulumi.Input[Optional[Union['AccessApplicationCorsHeadersArgs', 'AccessApplicationCorsHeadersArgsDict', 'outputs.AccessApplicationCorsHeaders']]] = None,
             custom_deny_message: pulumi.Input[Optional[_builtins.str]] = None,
             custom_deny_url: pulumi.Input[Optional[_builtins.str]] = None,
             custom_non_identity_deny_url: pulumi.Input[Optional[_builtins.str]] = None,
             custom_pages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict']]]]] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict', 'outputs.AccessApplicationDestination']]]]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             enable_binding_cookie: pulumi.Input[Optional[_builtins.bool]] = None,
-            footer_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]]] = None,
+            footer_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict', 'outputs.AccessApplicationFooterLink']]]]] = None,
             header_bg_color: pulumi.Input[Optional[_builtins.str]] = None,
             http_only_cookie_attribute: pulumi.Input[Optional[_builtins.bool]] = None,
-            landing_page_design: pulumi.Input[Optional[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
+            landing_page_design: pulumi.Input[Optional[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict', 'outputs.AccessApplicationLandingPageDesign']]] = None,
             logo_url: pulumi.Input[Optional[_builtins.str]] = None,
-            mfa_config: pulumi.Input[Optional[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']]] = None,
+            mfa_config: pulumi.Input[Optional[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict', 'outputs.AccessApplicationMfaConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oauth_configuration: pulumi.Input[Optional[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']]] = None,
+            oauth_configuration: pulumi.Input[Optional[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict', 'outputs.AccessApplicationOauthConfiguration']]] = None,
             options_preflight_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
             path_cookie_attribute: pulumi.Input[Optional[_builtins.bool]] = None,
-            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict', 'outputs.AccessApplicationPolicy']]]]] = None,
             read_service_tokens_from_header: pulumi.Input[Optional[_builtins.str]] = None,
-            saas_app: pulumi.Input[Optional[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict']]] = None,
+            saas_app: pulumi.Input[Optional[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict', 'outputs.AccessApplicationSaasApp']]] = None,
             same_site_cookie_attribute: pulumi.Input[Optional[_builtins.str]] = None,
-            scim_config: pulumi.Input[Optional[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']]] = None,
+            scim_config: pulumi.Input[Optional[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict', 'outputs.AccessApplicationScimConfig']]] = None,
             self_hosted_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             service_auth401_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
             session_duration: pulumi.Input[Optional[_builtins.str]] = None,
             skip_app_launcher_login_page: pulumi.Input[Optional[_builtins.bool]] = None,
             skip_interstitial: pulumi.Input[Optional[_builtins.bool]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]]] = None,
+            target_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict', 'outputs.AccessApplicationTargetCriteria']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessApplication':
         """
@@ -1648,20 +1648,20 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
         :param pulumi.Input[_builtins.str] custom_non_identity_deny_url: The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_pages: The custom pages that will be displayed when applicable for this application
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict']]]] destinations: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict', 'outputs.AccessApplicationDestination']]]] destinations: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[_builtins.str] domain: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         :param pulumi.Input[_builtins.bool] enable_binding_cookie: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]] footer_links: The links in the App Launcher footer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict', 'outputs.AccessApplicationFooterLink']]]] footer_links: The links in the App Launcher footer.
         :param pulumi.Input[_builtins.str] header_bg_color: The background color of the App Launcher header.
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
-        :param pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
+        :param pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict', 'outputs.AccessApplicationLandingPageDesign']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
-        :param pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        :param pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict', 'outputs.AccessApplicationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
         :param pulumi.Input[_builtins.str] name: The name of the application.
-        :param pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        :param pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict', 'outputs.AccessApplicationOauthConfiguration']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict', 'outputs.AccessApplicationPolicy']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         :param pulumi.Input[_builtins.str] read_service_tokens_from_header: Allows matching Access Service Tokens passed HTTP in a single header with this name.
                This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
                The header value will be interpreted as a json object similar to:
@@ -1670,7 +1670,7 @@ class AccessApplication(pulumi.CustomResource):
                "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
                }
         :param pulumi.Input[_builtins.str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
-        :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+        :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict', 'outputs.AccessApplicationScimConfig']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[_builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.

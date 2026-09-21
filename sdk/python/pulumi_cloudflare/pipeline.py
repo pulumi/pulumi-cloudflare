@@ -331,7 +331,7 @@ class Pipeline(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             sql: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineTableArgs', 'PipelineTableArgsDict']]]]] = None) -> 'Pipeline':
+            tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineTableArgs', 'PipelineTableArgsDict', 'outputs.PipelineTable']]]]] = None) -> 'Pipeline':
         """
         Get an existing Pipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -344,7 +344,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Specifies the name of the Pipeline.
         :param pulumi.Input[_builtins.str] sql: Specifies SQL for the Pipeline processing flow.
         :param pulumi.Input[_builtins.str] status: Indicates the current status of the Pipeline.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineTableArgs', 'PipelineTableArgsDict']]]] tables: List of streams and sinks used by this pipeline.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineTableArgs', 'PipelineTableArgsDict', 'outputs.PipelineTable']]]] tables: List of streams and sinks used by this pipeline.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

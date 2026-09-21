@@ -290,7 +290,7 @@ class AwaitableGetClientCertificateResult(GetClientCertificateResult):
 
 
 def get_client_certificate(client_certificate_id: Optional[_builtins.str] = None,
-                           filter: Optional[Union['GetClientCertificateFilterArgs', 'GetClientCertificateFilterArgsDict']] = None,
+                           filter: Optional[Union['GetClientCertificateFilterArgs', 'GetClientCertificateFilterArgsDict', 'outputs.GetClientCertificateFilterResult']] = None,
                            zone_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientCertificateResult:
     """
@@ -343,7 +343,7 @@ def get_client_certificate(client_certificate_id: Optional[_builtins.str] = None
         validity_days=pulumi.get(__ret__, 'validity_days'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_client_certificate_output(client_certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                  filter: pulumi.Input[Optional[Optional[Union['GetClientCertificateFilterArgs', 'GetClientCertificateFilterArgsDict']]]] = None,
+                                  filter: pulumi.Input[Optional[Optional[Union['GetClientCertificateFilterArgs', 'GetClientCertificateFilterArgsDict', 'outputs.GetClientCertificateFilterResult']]]] = None,
                                   zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientCertificateResult]:
     """

@@ -163,7 +163,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict', 'outputs.R2BucketLifecycleRule']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -281,7 +281,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict', 'outputs.R2BucketLifecycleRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,7 +312,7 @@ class R2BucketLifecycle(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
             jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict']]]]] = None) -> 'R2BucketLifecycle':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketLifecycleRuleArgs', 'R2BucketLifecycleRuleArgsDict', 'outputs.R2BucketLifecycleRule']]]]] = None) -> 'R2BucketLifecycle':
         """
         Get an existing R2BucketLifecycle resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -374,7 +374,7 @@ class SsoConnector(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             updated_on: pulumi.Input[Optional[_builtins.str]] = None,
             use_fedramp_language: pulumi.Input[Optional[_builtins.bool]] = None,
-            verification: pulumi.Input[Optional[Union['SsoConnectorVerificationArgs', 'SsoConnectorVerificationArgsDict']]] = None) -> 'SsoConnector':
+            verification: pulumi.Input[Optional[Union['SsoConnectorVerificationArgs', 'SsoConnectorVerificationArgsDict', 'outputs.SsoConnectorVerification']]] = None) -> 'SsoConnector':
         """
         Get an existing SsoConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

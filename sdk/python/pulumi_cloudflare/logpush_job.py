@@ -609,7 +609,7 @@ class LogpushJob(pulumi.CustomResource):
                  max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
+                 output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict', 'outputs.LogpushJobOutputOptions']]] = None,
                  ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -685,7 +685,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         :param pulumi.Input[_builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
-        :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict', 'outputs.LogpushJobOutputOptions']] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         :param pulumi.Input[_builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -777,7 +777,7 @@ class LogpushJob(pulumi.CustomResource):
                  max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
+                 output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict', 'outputs.LogpushJobOutputOptions']]] = None,
                  ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -836,7 +836,7 @@ class LogpushJob(pulumi.CustomResource):
             max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
+            output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict', 'outputs.LogpushJobOutputOptions']]] = None,
             ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogpushJob':
         """
@@ -864,7 +864,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         :param pulumi.Input[_builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
-        :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict', 'outputs.LogpushJobOutputOptions']] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         :param pulumi.Input[_builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """

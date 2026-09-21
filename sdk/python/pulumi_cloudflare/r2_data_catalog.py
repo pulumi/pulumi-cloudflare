@@ -301,7 +301,7 @@ class R2DataCatalog(pulumi.CustomResource):
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
             credential_status: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_config: pulumi.Input[Optional[Union['R2DataCatalogMaintenanceConfigArgs', 'R2DataCatalogMaintenanceConfigArgsDict']]] = None,
+            maintenance_config: pulumi.Input[Optional[Union['R2DataCatalogMaintenanceConfigArgs', 'R2DataCatalogMaintenanceConfigArgsDict', 'outputs.R2DataCatalogMaintenanceConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'R2DataCatalog':
         """
@@ -316,7 +316,7 @@ class R2DataCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bucket_name: Specifies the R2 bucket name.
         :param pulumi.Input[_builtins.str] credential_status: Shows the credential configuration status.
                Available values: "present", "absent".
-        :param pulumi.Input[Union['R2DataCatalogMaintenanceConfigArgs', 'R2DataCatalogMaintenanceConfigArgsDict']] maintenance_config: Configures maintenance for the catalog.
+        :param pulumi.Input[Union['R2DataCatalogMaintenanceConfigArgs', 'R2DataCatalogMaintenanceConfigArgsDict', 'outputs.R2DataCatalogMaintenanceConfig']] maintenance_config: Configures maintenance for the catalog.
         :param pulumi.Input[_builtins.str] name: Specifies the catalog name (generated from account and bucket name).
         :param pulumi.Input[_builtins.str] status: Indicates the status of the catalog.
                Available values: "active", "inactive".

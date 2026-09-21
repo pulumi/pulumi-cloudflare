@@ -175,7 +175,7 @@ class AwaitableGetConnectivityDirectoryServiceResult(GetConnectivityDirectorySer
 
 
 def get_connectivity_directory_service(account_id: Optional[_builtins.str] = None,
-                                       filter: Optional[Union['GetConnectivityDirectoryServiceFilterArgs', 'GetConnectivityDirectoryServiceFilterArgsDict']] = None,
+                                       filter: Optional[Union['GetConnectivityDirectoryServiceFilterArgs', 'GetConnectivityDirectoryServiceFilterArgsDict', 'outputs.GetConnectivityDirectoryServiceFilterResult']] = None,
                                        service_id: Optional[_builtins.str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectivityDirectoryServiceResult:
     """
@@ -212,7 +212,7 @@ def get_connectivity_directory_service(account_id: Optional[_builtins.str] = Non
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_connectivity_directory_service_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                              filter: pulumi.Input[Optional[Optional[Union['GetConnectivityDirectoryServiceFilterArgs', 'GetConnectivityDirectoryServiceFilterArgsDict']]]] = None,
+                                              filter: pulumi.Input[Optional[Optional[Union['GetConnectivityDirectoryServiceFilterArgs', 'GetConnectivityDirectoryServiceFilterArgsDict', 'outputs.GetConnectivityDirectoryServiceFilterResult']]]] = None,
                                               service_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectivityDirectoryServiceResult]:
     """

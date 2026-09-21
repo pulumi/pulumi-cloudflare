@@ -315,10 +315,10 @@ class ListItem(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  asn: pulumi.Input[Optional[_builtins.int]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
+                 hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict', 'outputs.ListItemHostname']]] = None,
                  ip: pulumi.Input[Optional[_builtins.str]] = None,
                  list_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
+                 redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict', 'outputs.ListItemRedirect']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -350,10 +350,10 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
-        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict', 'outputs.ListItemHostname']] hostname: Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
-        :param pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']] redirect: The definition of the redirect.
+        :param pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict', 'outputs.ListItemRedirect']] redirect: The definition of the redirect.
         """
         ...
     @overload
@@ -404,10 +404,10 @@ class ListItem(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  asn: pulumi.Input[Optional[_builtins.int]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
+                 hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict', 'outputs.ListItemHostname']]] = None,
                  ip: pulumi.Input[Optional[_builtins.str]] = None,
                  list_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
+                 redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict', 'outputs.ListItemRedirect']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -445,12 +445,12 @@ class ListItem(pulumi.CustomResource):
             asn: pulumi.Input[Optional[_builtins.int]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
+            hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict', 'outputs.ListItemHostname']]] = None,
             ip: pulumi.Input[Optional[_builtins.str]] = None,
             list_id: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             operation_id: pulumi.Input[Optional[_builtins.str]] = None,
-            redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None) -> 'ListItem':
+            redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict', 'outputs.ListItemRedirect']]] = None) -> 'ListItem':
         """
         Get an existing ListItem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -462,12 +462,12 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the item was created.
-        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict', 'outputs.ListItemHostname']] hostname: Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the item was last modified.
         :param pulumi.Input[_builtins.str] operation_id: The unique operation ID of the asynchronous action.
-        :param pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']] redirect: The definition of the redirect.
+        :param pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict', 'outputs.ListItemRedirect']] redirect: The definition of the redirect.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

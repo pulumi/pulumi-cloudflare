@@ -176,7 +176,7 @@ class AwaitableGetApiShieldOperationResult(GetApiShieldOperationResult):
 
 
 def get_api_shield_operation(feature: Optional[Sequence[_builtins.str]] = None,
-                             filter: Optional[Union['GetApiShieldOperationFilterArgs', 'GetApiShieldOperationFilterArgsDict']] = None,
+                             filter: Optional[Union['GetApiShieldOperationFilterArgs', 'GetApiShieldOperationFilterArgsDict', 'outputs.GetApiShieldOperationFilterResult']] = None,
                              operation_id: Optional[_builtins.str] = None,
                              with_schemas: Optional[_builtins.bool] = None,
                              zone_id: Optional[_builtins.str] = None,
@@ -220,7 +220,7 @@ def get_api_shield_operation(feature: Optional[Sequence[_builtins.str]] = None,
         with_schemas=pulumi.get(__ret__, 'with_schemas'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_api_shield_operation_output(feature: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                                    filter: pulumi.Input[Optional[Optional[Union['GetApiShieldOperationFilterArgs', 'GetApiShieldOperationFilterArgsDict']]]] = None,
+                                    filter: pulumi.Input[Optional[Optional[Union['GetApiShieldOperationFilterArgs', 'GetApiShieldOperationFilterArgsDict', 'outputs.GetApiShieldOperationFilterResult']]]] = None,
                                     operation_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     with_schemas: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                     zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

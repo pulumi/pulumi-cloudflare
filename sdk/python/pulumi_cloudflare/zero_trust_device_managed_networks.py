@@ -179,7 +179,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict', 'outputs.ZeroTrustDeviceManagedNetworksConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -213,7 +213,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']] config: The configuration object containing information for the WARP client to detect the managed network.
+        :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict', 'outputs.ZeroTrustDeviceManagedNetworksConfig']] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[_builtins.str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[_builtins.str] type: The type of device managed network.
                Available values: "tls".
@@ -268,7 +268,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict', 'outputs.ZeroTrustDeviceManagedNetworksConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -306,7 +306,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict', 'outputs.ZeroTrustDeviceManagedNetworksConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_id: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDeviceManagedNetworks':
@@ -317,7 +317,7 @@ class ZeroTrustDeviceManagedNetworks(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict']] config: The configuration object containing information for the WARP client to detect the managed network.
+        :param pulumi.Input[Union['ZeroTrustDeviceManagedNetworksConfigArgs', 'ZeroTrustDeviceManagedNetworksConfigArgsDict', 'outputs.ZeroTrustDeviceManagedNetworksConfig']] config: The configuration object containing information for the WARP client to detect the managed network.
         :param pulumi.Input[_builtins.str] name: The name of the device managed network. This name must be unique.
         :param pulumi.Input[_builtins.str] network_id: API UUID.
         :param pulumi.Input[_builtins.str] type: The type of device managed network.

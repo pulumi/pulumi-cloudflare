@@ -140,7 +140,7 @@ class AwaitableGetEmailSecurityBlockSenderResult(GetEmailSecurityBlockSenderResu
 
 
 def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
-                                    filter: Optional[Union['GetEmailSecurityBlockSenderFilterArgs', 'GetEmailSecurityBlockSenderFilterArgsDict']] = None,
+                                    filter: Optional[Union['GetEmailSecurityBlockSenderFilterArgs', 'GetEmailSecurityBlockSenderFilterArgsDict', 'outputs.GetEmailSecurityBlockSenderFilterResult']] = None,
                                     pattern_id: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityBlockSenderResult:
     """
@@ -179,7 +179,7 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
         pattern_id=pulumi.get(__ret__, 'pattern_id'),
         pattern_type=pulumi.get(__ret__, 'pattern_type'))
 def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                           filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityBlockSenderFilterArgs', 'GetEmailSecurityBlockSenderFilterArgsDict']]]] = None,
+                                           filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityBlockSenderFilterArgs', 'GetEmailSecurityBlockSenderFilterArgsDict', 'outputs.GetEmailSecurityBlockSenderFilterResult']]]] = None,
                                            pattern_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityBlockSenderResult]:
     """

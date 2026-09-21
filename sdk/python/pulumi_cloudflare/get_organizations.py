@@ -125,13 +125,13 @@ class AwaitableGetOrganizationsResult(GetOrganizationsResult):
             results=self.results)
 
 
-def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs', 'GetOrganizationsContainingArgsDict']] = None,
+def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs', 'GetOrganizationsContainingArgsDict', 'outputs.GetOrganizationsContainingResult']] = None,
                       ids: Optional[Sequence[_builtins.str]] = None,
                       max_items: Optional[_builtins.int] = None,
-                      name: Optional[Union['GetOrganizationsNameArgs', 'GetOrganizationsNameArgsDict']] = None,
+                      name: Optional[Union['GetOrganizationsNameArgs', 'GetOrganizationsNameArgsDict', 'outputs.GetOrganizationsNameResult']] = None,
                       page_size: Optional[_builtins.int] = None,
                       page_token: Optional[_builtins.str] = None,
-                      parent: Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict']] = None,
+                      parent: Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict', 'outputs.GetOrganizationsParentResult']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationsResult:
     """
     Accepted Permissions
@@ -191,13 +191,13 @@ def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs
         page_token=pulumi.get(__ret__, 'page_token'),
         parent=pulumi.get(__ret__, 'parent'),
         results=pulumi.get(__ret__, 'results'))
-def get_organizations_output(containing: pulumi.Input[Optional[Optional[Union['GetOrganizationsContainingArgs', 'GetOrganizationsContainingArgsDict']]]] = None,
+def get_organizations_output(containing: pulumi.Input[Optional[Optional[Union['GetOrganizationsContainingArgs', 'GetOrganizationsContainingArgsDict', 'outputs.GetOrganizationsContainingResult']]]] = None,
                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                              max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                             name: pulumi.Input[Optional[Optional[Union['GetOrganizationsNameArgs', 'GetOrganizationsNameArgsDict']]]] = None,
+                             name: pulumi.Input[Optional[Optional[Union['GetOrganizationsNameArgs', 'GetOrganizationsNameArgsDict', 'outputs.GetOrganizationsNameResult']]]] = None,
                              page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              page_token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                             parent: pulumi.Input[Optional[Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict']]]] = None,
+                             parent: pulumi.Input[Optional[Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict', 'outputs.GetOrganizationsParentResult']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationsResult]:
     """
     Accepted Permissions

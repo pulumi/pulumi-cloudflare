@@ -269,7 +269,7 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict', 'outputs.ListItem']]]]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -320,7 +320,7 @@ class List(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict', 'outputs.ListItem']]]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] name: An informative name for the list. Use this name in filter and rule expressions.
@@ -391,7 +391,7 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict', 'outputs.ListItem']]]]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -431,7 +431,7 @@ class List(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
+            items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict', 'outputs.ListItem']]]]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -447,7 +447,7 @@ class List(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the list was created.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict', 'outputs.ListItem']]]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the list was last modified.

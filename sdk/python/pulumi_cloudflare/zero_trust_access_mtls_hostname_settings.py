@@ -178,7 +178,7 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict']]]]] = None,
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict', 'outputs.ZeroTrustAccessMtlsHostnameSettingsSetting']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -260,7 +260,7 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict']]]]] = None,
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict', 'outputs.ZeroTrustAccessMtlsHostnameSettingsSetting']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -295,7 +295,7 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
             china_network: pulumi.Input[Optional[_builtins.bool]] = None,
             client_certificate_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
-            settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict']]]]] = None,
+            settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessMtlsHostnameSettingsSettingArgs', 'ZeroTrustAccessMtlsHostnameSettingsSettingArgsDict', 'outputs.ZeroTrustAccessMtlsHostnameSettingsSetting']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessMtlsHostnameSettings':
         """
         Get an existing ZeroTrustAccessMtlsHostnameSettings resource's state with the given name, id, and optional extra

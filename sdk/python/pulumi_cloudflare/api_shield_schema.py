@@ -418,10 +418,10 @@ class ApiShieldSchema(pulumi.CustomResource):
             file: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            schema: pulumi.Input[Optional[Union['ApiShieldSchemaSchemaArgs', 'ApiShieldSchemaSchemaArgsDict']]] = None,
+            schema: pulumi.Input[Optional[Union['ApiShieldSchemaSchemaArgs', 'ApiShieldSchemaSchemaArgsDict', 'outputs.ApiShieldSchemaSchema']]] = None,
             schema_id: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
-            upload_details: pulumi.Input[Optional[Union['ApiShieldSchemaUploadDetailsArgs', 'ApiShieldSchemaUploadDetailsArgsDict']]] = None,
+            upload_details: pulumi.Input[Optional[Union['ApiShieldSchemaUploadDetailsArgs', 'ApiShieldSchemaUploadDetailsArgsDict', 'outputs.ApiShieldSchemaUploadDetails']]] = None,
             validation_enabled: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiShieldSchema':
         """

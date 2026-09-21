@@ -299,9 +299,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]]] = None,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict', 'outputs.EmailRoutingCatchAllAction']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
+                 matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict', 'outputs.EmailRoutingCatchAllMatcher']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -343,9 +343,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions for the catch-all routing rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict', 'outputs.EmailRoutingCatchAllAction']]]] actions: List actions for the catch-all routing rule.
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: List of matchers for the catch-all routing rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict', 'outputs.EmailRoutingCatchAllMatcher']]]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
         :param pulumi.Input[_builtins.str] owner_worker_tag: Public tag (script_tag) of the Worker that owns this rule. Required when
                `source` is `wrangler`.
@@ -410,9 +410,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]]] = None,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict', 'outputs.EmailRoutingCatchAllAction']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
+                 matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict', 'outputs.EmailRoutingCatchAllMatcher']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -450,9 +450,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]]] = None,
+            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict', 'outputs.EmailRoutingCatchAllAction']]]]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]]] = None,
+            matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict', 'outputs.EmailRoutingCatchAllMatcher']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -465,9 +465,9 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict']]]] actions: List actions for the catch-all routing rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllActionArgs', 'EmailRoutingCatchAllActionArgsDict', 'outputs.EmailRoutingCatchAllAction']]]] actions: List actions for the catch-all routing rule.
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict']]]] matchers: List of matchers for the catch-all routing rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingCatchAllMatcherArgs', 'EmailRoutingCatchAllMatcherArgsDict', 'outputs.EmailRoutingCatchAllMatcher']]]] matchers: List of matchers for the catch-all routing rule.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
         :param pulumi.Input[_builtins.str] owner_worker_tag: Public tag (script_tag) of the Worker that owns this rule. Required when
                `source` is `wrangler`.

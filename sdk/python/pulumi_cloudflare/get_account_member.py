@@ -146,7 +146,7 @@ class AwaitableGetAccountMemberResult(GetAccountMemberResult):
 
 
 def get_account_member(account_id: Optional[_builtins.str] = None,
-                       filter: Optional[Union['GetAccountMemberFilterArgs', 'GetAccountMemberFilterArgsDict']] = None,
+                       filter: Optional[Union['GetAccountMemberFilterArgs', 'GetAccountMemberFilterArgsDict', 'outputs.GetAccountMemberFilterResult']] = None,
                        member_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountMemberResult:
     """
@@ -188,7 +188,7 @@ def get_account_member(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         user=pulumi.get(__ret__, 'user'))
 def get_account_member_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              filter: pulumi.Input[Optional[Optional[Union['GetAccountMemberFilterArgs', 'GetAccountMemberFilterArgsDict']]]] = None,
+                              filter: pulumi.Input[Optional[Optional[Union['GetAccountMemberFilterArgs', 'GetAccountMemberFilterArgsDict', 'outputs.GetAccountMemberFilterResult']]]] = None,
                               member_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountMemberResult]:
     """

@@ -927,12 +927,12 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict']]]]] = None,
+                 dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
-                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]]] = None,
-                 global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']]] = None,
-                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileExclude']]]]] = None,
+                 global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceCustomProfileGlobalAcceleration']]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileInclude']]]]] = None,
                  lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
                  lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
                  match: pulumi.Input[Optional[_builtins.str]] = None,
@@ -940,11 +940,11 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  precedence: pulumi.Input[Optional[_builtins.float]] = None,
                  register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
-                 service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict']]] = None,
+                 service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict', 'outputs.ZeroTrustDeviceCustomProfileServiceModeV2']]] = None,
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
-                 virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict']]] = None,
+                 virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceCustomProfileVirtualNetworks']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -1008,12 +1008,12 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] captive_portal: Turn on the captive portal after the specified amount of time.
         :param pulumi.Input[_builtins.str] description: A description of the policy.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict']]]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix']]]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
-        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileExclude']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceCustomProfileGlobalAcceleration']] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileInclude']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
@@ -1024,7 +1024,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
-        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict']] virtual_networks: Virtual network access settings for the device.
+        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceCustomProfileVirtualNetworks']] virtual_networks: Virtual network access settings for the device.
         """
         ...
     @overload
@@ -1108,12 +1108,12 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict']]]]] = None,
+                 dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix']]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
-                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]]] = None,
-                 global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']]] = None,
-                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileExclude']]]]] = None,
+                 global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceCustomProfileGlobalAcceleration']]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileInclude']]]]] = None,
                  lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
                  lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
                  match: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1121,11 +1121,11 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  precedence: pulumi.Input[Optional[_builtins.float]] = None,
                  register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
-                 service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict']]] = None,
+                 service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict', 'outputs.ZeroTrustDeviceCustomProfileServiceModeV2']]] = None,
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
-                 virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict']]] = None,
+                 virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceCustomProfileVirtualNetworks']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1193,14 +1193,14 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             default: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
-            dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict']]]]] = None,
+            dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix']]]]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
-            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]]] = None,
-            fallback_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileFallbackDomainArgsDict']]]]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileExclude']]]]] = None,
+            fallback_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileFallbackDomainArgs', 'ZeroTrustDeviceCustomProfileFallbackDomainArgsDict', 'outputs.ZeroTrustDeviceCustomProfileFallbackDomain']]]]] = None,
             gateway_unique_id: pulumi.Input[Optional[_builtins.str]] = None,
-            global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']]] = None,
-            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]]] = None,
+            global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceCustomProfileGlobalAcceleration']]] = None,
+            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileInclude']]]]] = None,
             lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
             lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
             match: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1209,12 +1209,12 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             precedence: pulumi.Input[Optional[_builtins.float]] = None,
             register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
             sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
-            service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict']]] = None,
+            service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict', 'outputs.ZeroTrustDeviceCustomProfileServiceModeV2']]] = None,
             support_url: pulumi.Input[Optional[_builtins.str]] = None,
             switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
-            target_tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileTargetTestArgs', 'ZeroTrustDeviceCustomProfileTargetTestArgsDict']]]]] = None,
+            target_tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileTargetTestArgs', 'ZeroTrustDeviceCustomProfileTargetTestArgsDict', 'outputs.ZeroTrustDeviceCustomProfileTargetTest']]]]] = None,
             tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
-            virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict']]] = None) -> 'ZeroTrustDeviceCustomProfile':
+            virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceCustomProfileVirtualNetworks']]] = None) -> 'ZeroTrustDeviceCustomProfile':
         """
         Get an existing ZeroTrustDeviceCustomProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1230,12 +1230,12 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] default: Whether the policy is the default policy for an account.
         :param pulumi.Input[_builtins.str] description: A description of the policy.
         :param pulumi.Input[_builtins.bool] disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict']]]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceCustomProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix']]]] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
         :param pulumi.Input[_builtins.bool] enabled: Whether the policy will be applied to matching devices.
         :param pulumi.Input[_builtins.bool] exclude_office_ips: Whether to add Microsoft IPs to Split Tunnel exclusions.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
-        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict']] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileExcludeArgs', 'ZeroTrustDeviceCustomProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileExclude']]]] excludes: List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
+        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileGlobalAccelerationArgs', 'ZeroTrustDeviceCustomProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceCustomProfileGlobalAcceleration']] global_acceleration: Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict', 'outputs.ZeroTrustDeviceCustomProfileInclude']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
@@ -1246,7 +1246,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
-        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict']] virtual_networks: Virtual network access settings for the device.
+        :param pulumi.Input[Union['ZeroTrustDeviceCustomProfileVirtualNetworksArgs', 'ZeroTrustDeviceCustomProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceCustomProfileVirtualNetworks']] virtual_networks: Virtual network access settings for the device.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

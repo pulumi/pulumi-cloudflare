@@ -245,8 +245,8 @@ class RateLimit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
-                 match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
+                 action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict', 'outputs.RateLimitAction']]] = None,
+                 match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict', 'outputs.RateLimitMatch']]] = None,
                  period: pulumi.Input[Optional[_builtins.float]] = None,
                  threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -313,8 +313,8 @@ class RateLimit(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
-        :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']] match: Determines which traffic the rate limit counts towards the threshold.
+        :param pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict', 'outputs.RateLimitAction']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
+        :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict', 'outputs.RateLimitMatch']] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[_builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         :param pulumi.Input[_builtins.float] threshold: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
@@ -400,8 +400,8 @@ class RateLimit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
-                 match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
+                 action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict', 'outputs.RateLimitAction']]] = None,
+                 match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict', 'outputs.RateLimitMatch']]] = None,
                  period: pulumi.Input[Optional[_builtins.float]] = None,
                  threshold: pulumi.Input[Optional[_builtins.float]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -442,11 +442,11 @@ class RateLimit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
-            bypasses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RateLimitBypassArgs', 'RateLimitBypassArgsDict']]]]] = None,
+            action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict', 'outputs.RateLimitAction']]] = None,
+            bypasses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RateLimitBypassArgs', 'RateLimitBypassArgsDict', 'outputs.RateLimitBypass']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict', 'outputs.RateLimitMatch']]] = None,
             period: pulumi.Input[Optional[_builtins.float]] = None,
             threshold: pulumi.Input[Optional[_builtins.float]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RateLimit':
@@ -457,11 +457,11 @@ class RateLimit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RateLimitBypassArgs', 'RateLimitBypassArgsDict']]]] bypasses: Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+        :param pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict', 'outputs.RateLimitAction']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RateLimitBypassArgs', 'RateLimitBypassArgsDict', 'outputs.RateLimitBypass']]]] bypasses: Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
         :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.bool] disabled: When true, indicates that the rate limit is currently disabled.
-        :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']] match: Determines which traffic the rate limit counts towards the threshold.
+        :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict', 'outputs.RateLimitMatch']] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[_builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         :param pulumi.Input[_builtins.float] threshold: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.

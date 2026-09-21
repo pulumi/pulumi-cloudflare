@@ -286,7 +286,7 @@ class AddressMap(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
+                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict', 'outputs.AddressMapMembership']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -324,7 +324,7 @@ class AddressMap(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
         :param pulumi.Input[_builtins.str] description: An optional description field which may be used to describe the types of IPs or zones on the map.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]] memberships: Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict', 'outputs.AddressMapMembership']]]] memberships: Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
         """
         ...
     @overload
@@ -382,7 +382,7 @@ class AddressMap(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
+                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict', 'outputs.AddressMapMembership']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -422,7 +422,7 @@ class AddressMap(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
+            memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict', 'outputs.AddressMapMembership']]]]] = None,
             modified_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddressMap':
         """
         Get an existing AddressMap resource's state with the given name, id, and optional extra
@@ -437,7 +437,7 @@ class AddressMap(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
         :param pulumi.Input[_builtins.str] description: An optional description field which may be used to describe the types of IPs or zones on the map.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]] memberships: Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict', 'outputs.AddressMapMembership']]]] memberships: Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

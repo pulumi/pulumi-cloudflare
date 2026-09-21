@@ -549,18 +549,18 @@ class AccessPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
+                 approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict', 'outputs.AccessPolicyApprovalGroup']]]]] = None,
                  approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
-                 connection_rules: pulumi.Input[Optional[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']]] = None,
+                 connection_rules: pulumi.Input[Optional[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict', 'outputs.AccessPolicyConnectionRules']]] = None,
                  decision: pulumi.Input[Optional[_builtins.str]] = None,
-                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
-                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict', 'outputs.AccessPolicyExclude']]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict', 'outputs.AccessPolicyInclude']]]]] = None,
                  isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mfa_config: pulumi.Input[Optional[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict']]] = None,
+                 mfa_config: pulumi.Input[Optional[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict', 'outputs.AccessPolicyMfaConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
-                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
+                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict', 'outputs.AccessPolicyRequire']]]]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -644,19 +644,19 @@ class AccessPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict', 'outputs.AccessPolicyApprovalGroup']]]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
-        :param pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to targets secured by your application.
+        :param pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict', 'outputs.AccessPolicyConnectionRules']] connection_rules: The rules that define how users may connect to targets secured by your application.
         :param pulumi.Input[_builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
                Available values: "allow", "deny", "non_identity", "bypass".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict', 'outputs.AccessPolicyExclude']]]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict', 'outputs.AccessPolicyInclude']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[_builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
-        :param pulumi.Input[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings.
+        :param pulumi.Input[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict', 'outputs.AccessPolicyMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings.
         :param pulumi.Input[_builtins.str] name: The name of the Access policy.
         :param pulumi.Input[_builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
         :param pulumi.Input[_builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict', 'outputs.AccessPolicyRequire']]]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         ...
@@ -759,18 +759,18 @@ class AccessPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
+                 approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict', 'outputs.AccessPolicyApprovalGroup']]]]] = None,
                  approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
-                 connection_rules: pulumi.Input[Optional[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']]] = None,
+                 connection_rules: pulumi.Input[Optional[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict', 'outputs.AccessPolicyConnectionRules']]] = None,
                  decision: pulumi.Input[Optional[_builtins.str]] = None,
-                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
-                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict', 'outputs.AccessPolicyExclude']]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict', 'outputs.AccessPolicyInclude']]]]] = None,
                  isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mfa_config: pulumi.Input[Optional[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict']]] = None,
+                 mfa_config: pulumi.Input[Optional[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict', 'outputs.AccessPolicyMfaConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
-                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
+                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict', 'outputs.AccessPolicyRequire']]]]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""AccessPolicy is deprecated: cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy""")
@@ -820,19 +820,19 @@ class AccessPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             app_count: pulumi.Input[Optional[_builtins.int]] = None,
-            approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
+            approval_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict', 'outputs.AccessPolicyApprovalGroup']]]]] = None,
             approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
-            connection_rules: pulumi.Input[Optional[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']]] = None,
+            connection_rules: pulumi.Input[Optional[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict', 'outputs.AccessPolicyConnectionRules']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             decision: pulumi.Input[Optional[_builtins.str]] = None,
-            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
-            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict', 'outputs.AccessPolicyExclude']]]]] = None,
+            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict', 'outputs.AccessPolicyInclude']]]]] = None,
             isolation_required: pulumi.Input[Optional[_builtins.bool]] = None,
-            mfa_config: pulumi.Input[Optional[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict']]] = None,
+            mfa_config: pulumi.Input[Optional[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict', 'outputs.AccessPolicyMfaConfig']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             purpose_justification_prompt: pulumi.Input[Optional[_builtins.str]] = None,
             purpose_justification_required: pulumi.Input[Optional[_builtins.bool]] = None,
-            requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
+            requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict', 'outputs.AccessPolicyRequire']]]]] = None,
             reusable: pulumi.Input[Optional[_builtins.bool]] = None,
             session_duration: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessPolicy':
@@ -845,19 +845,19 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.int] app_count: Number of access applications currently using this policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict', 'outputs.AccessPolicyApprovalGroup']]]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
-        :param pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to targets secured by your application.
+        :param pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict', 'outputs.AccessPolicyConnectionRules']] connection_rules: The rules that define how users may connect to targets secured by your application.
         :param pulumi.Input[_builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
                Available values: "allow", "deny", "non_identity", "bypass".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict', 'outputs.AccessPolicyExclude']]]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict', 'outputs.AccessPolicyInclude']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[_builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
-        :param pulumi.Input[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings.
+        :param pulumi.Input[Union['AccessPolicyMfaConfigArgs', 'AccessPolicyMfaConfigArgsDict', 'outputs.AccessPolicyMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings.
         :param pulumi.Input[_builtins.str] name: The name of the Access policy.
         :param pulumi.Input[_builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
         :param pulumi.Input[_builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict', 'outputs.AccessPolicyRequire']]]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

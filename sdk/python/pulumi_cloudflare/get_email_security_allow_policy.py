@@ -206,7 +206,7 @@ class AwaitableGetEmailSecurityAllowPolicyResult(GetEmailSecurityAllowPolicyResu
 
 
 def get_email_security_allow_policy(account_id: Optional[_builtins.str] = None,
-                                    filter: Optional[Union['GetEmailSecurityAllowPolicyFilterArgs', 'GetEmailSecurityAllowPolicyFilterArgsDict']] = None,
+                                    filter: Optional[Union['GetEmailSecurityAllowPolicyFilterArgs', 'GetEmailSecurityAllowPolicyFilterArgsDict', 'outputs.GetEmailSecurityAllowPolicyFilterResult']] = None,
                                     policy_id: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityAllowPolicyResult:
     """
@@ -252,7 +252,7 @@ def get_email_security_allow_policy(account_id: Optional[_builtins.str] = None,
         policy_id=pulumi.get(__ret__, 'policy_id'),
         verify_sender=pulumi.get(__ret__, 'verify_sender'))
 def get_email_security_allow_policy_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                           filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityAllowPolicyFilterArgs', 'GetEmailSecurityAllowPolicyFilterArgsDict']]]] = None,
+                                           filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityAllowPolicyFilterArgs', 'GetEmailSecurityAllowPolicyFilterArgsDict', 'outputs.GetEmailSecurityAllowPolicyFilterResult']]]] = None,
                                            policy_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityAllowPolicyResult]:
     """

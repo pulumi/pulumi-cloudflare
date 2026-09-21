@@ -151,7 +151,7 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
 
 
 def get_workflow(account_id: Optional[_builtins.str] = None,
-                 filter: Optional[Union['GetWorkflowFilterArgs', 'GetWorkflowFilterArgsDict']] = None,
+                 filter: Optional[Union['GetWorkflowFilterArgs', 'GetWorkflowFilterArgsDict', 'outputs.GetWorkflowFilterResult']] = None,
                  workflow_name: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkflowResult:
     """
@@ -192,7 +192,7 @@ def get_workflow(account_id: Optional[_builtins.str] = None,
         triggered_on=pulumi.get(__ret__, 'triggered_on'),
         workflow_name=pulumi.get(__ret__, 'workflow_name'))
 def get_workflow_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                        filter: pulumi.Input[Optional[Optional[Union['GetWorkflowFilterArgs', 'GetWorkflowFilterArgsDict']]]] = None,
+                        filter: pulumi.Input[Optional[Optional[Union['GetWorkflowFilterArgs', 'GetWorkflowFilterArgsDict', 'outputs.GetWorkflowFilterResult']]]] = None,
                         workflow_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkflowResult]:
     """

@@ -538,7 +538,7 @@ class ClientCertificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate: pulumi.Input[Optional[_builtins.str]] = None,
-            certificate_authority: pulumi.Input[Optional[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict']]] = None,
+            certificate_authority: pulumi.Input[Optional[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict', 'outputs.ClientCertificateCertificateAuthority']]] = None,
             common_name: pulumi.Input[Optional[_builtins.str]] = None,
             country: pulumi.Input[Optional[_builtins.str]] = None,
             csr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -564,7 +564,7 @@ class ClientCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: The Client Certificate PEM.
-        :param pulumi.Input[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict']] certificate_authority: Certificate Authority used to issue the Client Certificate.
+        :param pulumi.Input[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict', 'outputs.ClientCertificateCertificateAuthority']] certificate_authority: Certificate Authority used to issue the Client Certificate.
         :param pulumi.Input[_builtins.str] common_name: Common Name of the Client Certificate.
         :param pulumi.Input[_builtins.str] country: Country, provided by the CSR.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.

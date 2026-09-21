@@ -203,7 +203,7 @@ class AwaitableGetCustomHostnameResult(GetCustomHostnameResult):
 
 
 def get_custom_hostname(custom_hostname_id: Optional[_builtins.str] = None,
-                        filter: Optional[Union['GetCustomHostnameFilterArgs', 'GetCustomHostnameFilterArgsDict']] = None,
+                        filter: Optional[Union['GetCustomHostnameFilterArgs', 'GetCustomHostnameFilterArgsDict', 'outputs.GetCustomHostnameFilterResult']] = None,
                         zone_id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomHostnameResult:
     """
@@ -249,7 +249,7 @@ def get_custom_hostname(custom_hostname_id: Optional[_builtins.str] = None,
         verification_errors=pulumi.get(__ret__, 'verification_errors'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_custom_hostname_output(custom_hostname_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                               filter: pulumi.Input[Optional[Optional[Union['GetCustomHostnameFilterArgs', 'GetCustomHostnameFilterArgsDict']]]] = None,
+                               filter: pulumi.Input[Optional[Optional[Union['GetCustomHostnameFilterArgs', 'GetCustomHostnameFilterArgsDict', 'outputs.GetCustomHostnameFilterResult']]]] = None,
                                zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomHostnameResult]:
     """

@@ -228,7 +228,7 @@ class TokenValidationConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: pulumi.Input[Optional[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict', 'outputs.TokenValidationConfigCredentials']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  token_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -278,7 +278,7 @@ class TokenValidationConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict']] credentials: Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+        :param pulumi.Input[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict', 'outputs.TokenValidationConfigCredentials']] credentials: Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
         :param pulumi.Input[_builtins.str] token_type: Available values: "JWT".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -344,7 +344,7 @@ class TokenValidationConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: pulumi.Input[Optional[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict', 'outputs.TokenValidationConfigCredentials']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  token_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -390,7 +390,7 @@ class TokenValidationConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            credentials: pulumi.Input[Optional[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict']]] = None,
+            credentials: pulumi.Input[Optional[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict', 'outputs.TokenValidationConfigCredentials']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             last_updated: pulumi.Input[Optional[_builtins.str]] = None,
             title: pulumi.Input[Optional[_builtins.str]] = None,
@@ -404,7 +404,7 @@ class TokenValidationConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict']] credentials: Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
+        :param pulumi.Input[Union['TokenValidationConfigCredentialsArgs', 'TokenValidationConfigCredentialsArgsDict', 'outputs.TokenValidationConfigCredentials']] credentials: Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
         :param pulumi.Input[_builtins.str] token_type: Available values: "JWT".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """

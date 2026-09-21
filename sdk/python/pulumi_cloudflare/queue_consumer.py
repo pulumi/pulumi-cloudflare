@@ -259,7 +259,7 @@ class QueueConsumer(pulumi.CustomResource):
                  dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_id: pulumi.Input[Optional[_builtins.str]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict', 'outputs.QueueConsumerSettings']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -362,7 +362,7 @@ class QueueConsumer(pulumi.CustomResource):
                  dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_id: pulumi.Input[Optional[_builtins.str]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict', 'outputs.QueueConsumerSettings']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -405,7 +405,7 @@ class QueueConsumer(pulumi.CustomResource):
             queue_id: pulumi.Input[Optional[_builtins.str]] = None,
             queue_name: pulumi.Input[Optional[_builtins.str]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
-            settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
+            settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict', 'outputs.QueueConsumerSettings']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'QueueConsumer':
         """
         Get an existing QueueConsumer resource's state with the given name, id, and optional extra

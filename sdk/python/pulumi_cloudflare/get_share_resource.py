@@ -195,7 +195,7 @@ class AwaitableGetShareResourceResult(GetShareResourceResult):
 
 
 def get_share_resource(account_id: Optional[_builtins.str] = None,
-                       filter: Optional[Union['GetShareResourceFilterArgs', 'GetShareResourceFilterArgsDict']] = None,
+                       filter: Optional[Union['GetShareResourceFilterArgs', 'GetShareResourceFilterArgsDict', 'outputs.GetShareResourceFilterResult']] = None,
                        share_id: Optional[_builtins.str] = None,
                        share_resource_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareResourceResult:
@@ -239,7 +239,7 @@ def get_share_resource(account_id: Optional[_builtins.str] = None,
         share_resource_id=pulumi.get(__ret__, 'share_resource_id'),
         status=pulumi.get(__ret__, 'status'))
 def get_share_resource_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                              filter: pulumi.Input[Optional[Optional[Union['GetShareResourceFilterArgs', 'GetShareResourceFilterArgsDict']]]] = None,
+                              filter: pulumi.Input[Optional[Optional[Union['GetShareResourceFilterArgs', 'GetShareResourceFilterArgsDict', 'outputs.GetShareResourceFilterResult']]]] = None,
                               share_id: pulumi.Input[Optional[_builtins.str]] = None,
                               share_resource_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetShareResourceResult]:

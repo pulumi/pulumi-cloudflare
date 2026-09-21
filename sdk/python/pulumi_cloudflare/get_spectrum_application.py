@@ -259,7 +259,7 @@ class AwaitableGetSpectrumApplicationResult(GetSpectrumApplicationResult):
 
 
 def get_spectrum_application(app_id: Optional[_builtins.str] = None,
-                             filter: Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict']] = None,
+                             filter: Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict', 'outputs.GetSpectrumApplicationFilterResult']] = None,
                              zone_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpectrumApplicationResult:
     """
@@ -309,7 +309,7 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_spectrum_application_output(app_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                    filter: pulumi.Input[Optional[Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict']]]] = None,
+                                    filter: pulumi.Input[Optional[Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict', 'outputs.GetSpectrumApplicationFilterResult']]]] = None,
                                     zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpectrumApplicationResult]:
     """

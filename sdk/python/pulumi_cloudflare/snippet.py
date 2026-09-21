@@ -198,8 +198,8 @@ class Snippet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
-                 metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
+                 files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict', 'outputs.SnippetFile']]]]] = None,
+                 metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict', 'outputs.SnippetMetadata']]] = None,
                  snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -241,8 +241,8 @@ class Snippet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]] files: The list of files belonging to the snippet.
-        :param pulumi.Input[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']] metadata: Provide metadata about the snippet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict', 'outputs.SnippetFile']]]] files: The list of files belonging to the snippet.
+        :param pulumi.Input[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict', 'outputs.SnippetMetadata']] metadata: Provide metadata about the snippet.
         :param pulumi.Input[_builtins.str] snippet_name: Identify the snippet.
         :param pulumi.Input[_builtins.str] zone_id: Use this field to specify the unique ID of the zone.
         """
@@ -303,8 +303,8 @@ class Snippet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
-                 metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
+                 files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict', 'outputs.SnippetFile']]]]] = None,
+                 metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict', 'outputs.SnippetMetadata']]] = None,
                  snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -341,8 +341,8 @@ class Snippet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
-            metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
+            files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict', 'outputs.SnippetFile']]]]] = None,
+            metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict', 'outputs.SnippetMetadata']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Snippet':
@@ -354,8 +354,8 @@ class Snippet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_on: Indicates when the snippet was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]] files: The list of files belonging to the snippet.
-        :param pulumi.Input[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']] metadata: Provide metadata about the snippet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict', 'outputs.SnippetFile']]]] files: The list of files belonging to the snippet.
+        :param pulumi.Input[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict', 'outputs.SnippetMetadata']] metadata: Provide metadata about the snippet.
         :param pulumi.Input[_builtins.str] modified_on: Indicates when the snippet was last modified.
         :param pulumi.Input[_builtins.str] snippet_name: Identify the snippet.
         :param pulumi.Input[_builtins.str] zone_id: Use this field to specify the unique ID of the zone.

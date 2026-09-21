@@ -142,7 +142,7 @@ class AwaitableGetAiSearchTokenResult(GetAiSearchTokenResult):
 
 
 def get_ai_search_token(account_id: Optional[_builtins.str] = None,
-                        filter: Optional[Union['GetAiSearchTokenFilterArgs', 'GetAiSearchTokenFilterArgsDict']] = None,
+                        filter: Optional[Union['GetAiSearchTokenFilterArgs', 'GetAiSearchTokenFilterArgsDict', 'outputs.GetAiSearchTokenFilterResult']] = None,
                         id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchTokenResult:
     """
@@ -170,7 +170,7 @@ def get_ai_search_token(account_id: Optional[_builtins.str] = None,
         modified_by=pulumi.get(__ret__, 'modified_by'),
         name=pulumi.get(__ret__, 'name'))
 def get_ai_search_token_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                               filter: pulumi.Input[Optional[Optional[Union['GetAiSearchTokenFilterArgs', 'GetAiSearchTokenFilterArgsDict']]]] = None,
+                               filter: pulumi.Input[Optional[Optional[Union['GetAiSearchTokenFilterArgs', 'GetAiSearchTokenFilterArgsDict', 'outputs.GetAiSearchTokenFilterResult']]]] = None,
                                id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchTokenResult]:
     """

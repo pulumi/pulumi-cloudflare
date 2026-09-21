@@ -172,7 +172,7 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
                  ocr: pulumi.Input[Optional[_builtins.bool]] = None,
-                 payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None,
+                 payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict', 'outputs.ZeroTrustDlpSettingsPayloadLogging']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -207,7 +207,7 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ai_context_analysis: Whether AI context analysis is enabled at the account level.
         :param pulumi.Input[_builtins.bool] ocr: Whether OCR is enabled at the account level.
-        :param pulumi.Input[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']] payload_logging: Request model for payload log settings within the DLP settings endpoint.
+        :param pulumi.Input[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict', 'outputs.ZeroTrustDlpSettingsPayloadLogging']] payload_logging: Request model for payload log settings within the DLP settings endpoint.
                Unlike the legacy endpoint, null and missing are treated identically here
                (both mean "not provided" for PATCH, "reset to default" for PUT).
         """
@@ -264,7 +264,7 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
                  ocr: pulumi.Input[Optional[_builtins.bool]] = None,
-                 payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None,
+                 payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict', 'outputs.ZeroTrustDlpSettingsPayloadLogging']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,7 +293,7 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
             ocr: pulumi.Input[Optional[_builtins.bool]] = None,
-            payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None) -> 'ZeroTrustDlpSettings':
+            payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict', 'outputs.ZeroTrustDlpSettingsPayloadLogging']]] = None) -> 'ZeroTrustDlpSettings':
         """
         Get an existing ZeroTrustDlpSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -303,7 +303,7 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ai_context_analysis: Whether AI context analysis is enabled at the account level.
         :param pulumi.Input[_builtins.bool] ocr: Whether OCR is enabled at the account level.
-        :param pulumi.Input[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']] payload_logging: Request model for payload log settings within the DLP settings endpoint.
+        :param pulumi.Input[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict', 'outputs.ZeroTrustDlpSettingsPayloadLogging']] payload_logging: Request model for payload log settings within the DLP settings endpoint.
                Unlike the legacy endpoint, null and missing are treated identically here
                (both mean "not provided" for PATCH, "reset to default" for PUT).
         """

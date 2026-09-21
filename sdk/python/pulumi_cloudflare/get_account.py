@@ -133,7 +133,7 @@ class AwaitableGetAccountResult(GetAccountResult):
 
 
 def get_account(account_id: Optional[_builtins.str] = None,
-                filter: Optional[Union['GetAccountFilterArgs', 'GetAccountFilterArgsDict']] = None,
+                filter: Optional[Union['GetAccountFilterArgs', 'GetAccountFilterArgsDict', 'outputs.GetAccountFilterResult']] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
     Accepted Permissions
@@ -196,7 +196,7 @@ def get_account(account_id: Optional[_builtins.str] = None,
         settings=pulumi.get(__ret__, 'settings'),
         type=pulumi.get(__ret__, 'type'))
 def get_account_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                       filter: pulumi.Input[Optional[Optional[Union['GetAccountFilterArgs', 'GetAccountFilterArgsDict']]]] = None,
+                       filter: pulumi.Input[Optional[Optional[Union['GetAccountFilterArgs', 'GetAccountFilterArgsDict', 'outputs.GetAccountFilterResult']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Accepted Permissions

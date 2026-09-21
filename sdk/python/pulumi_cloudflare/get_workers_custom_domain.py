@@ -159,7 +159,7 @@ class AwaitableGetWorkersCustomDomainResult(GetWorkersCustomDomainResult):
 
 def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
                               domain_id: Optional[_builtins.str] = None,
-                              filter: Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict']] = None,
+                              filter: Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict', 'outputs.GetWorkersCustomDomainFilterResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersCustomDomainResult:
     """
     Accepted Permissions
@@ -201,7 +201,7 @@ def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
         zone_name=pulumi.get(__ret__, 'zone_name'))
 def get_workers_custom_domain_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                     filter: pulumi.Input[Optional[Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict']]]] = None,
+                                     filter: pulumi.Input[Optional[Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict', 'outputs.GetWorkersCustomDomainFilterResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersCustomDomainResult]:
     """
     Accepted Permissions

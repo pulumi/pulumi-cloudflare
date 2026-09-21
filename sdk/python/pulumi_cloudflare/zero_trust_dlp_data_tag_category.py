@@ -273,7 +273,7 @@ class ZeroTrustDlpDataTagCategory(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataTagCategoryTagArgs', 'ZeroTrustDlpDataTagCategoryTagArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataTagCategoryTagArgs', 'ZeroTrustDlpDataTagCategoryTagArgsDict', 'outputs.ZeroTrustDlpDataTagCategoryTag']]]]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDlpDataTagCategory':
         """

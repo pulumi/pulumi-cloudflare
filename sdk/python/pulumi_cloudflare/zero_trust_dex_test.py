@@ -290,12 +290,12 @@ class ZeroTrustDexTest(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 data: pulumi.Input[Optional[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict']]] = None,
+                 data: pulumi.Input[Optional[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict', 'outputs.ZeroTrustDexTestData']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
+                 target_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict', 'outputs.ZeroTrustDexTestTargetPolicy']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -339,12 +339,12 @@ class ZeroTrustDexTest(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Unique identifier linked to an account.
-        :param pulumi.Input[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict']] data: The configuration object which contains the details for the WARP client to conduct the test.
+        :param pulumi.Input[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict', 'outputs.ZeroTrustDexTestData']] data: The configuration object which contains the details for the WARP client to conduct the test.
         :param pulumi.Input[_builtins.str] description: Additional details about the test.
         :param pulumi.Input[_builtins.bool] enabled: Determines whether or not the test is active.
         :param pulumi.Input[_builtins.str] interval: How often the test will run.
         :param pulumi.Input[_builtins.str] name: The name of the DEX test. Must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict']]]] target_policies: DEX rules targeted by this test
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict', 'outputs.ZeroTrustDexTestTargetPolicy']]]] target_policies: DEX rules targeted by this test
         """
         ...
     @overload
@@ -407,12 +407,12 @@ class ZeroTrustDexTest(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 data: pulumi.Input[Optional[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict']]] = None,
+                 data: pulumi.Input[Optional[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict', 'outputs.ZeroTrustDexTestData']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
+                 target_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict', 'outputs.ZeroTrustDexTestTargetPolicy']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -452,12 +452,12 @@ class ZeroTrustDexTest(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            data: pulumi.Input[Optional[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict']]] = None,
+            data: pulumi.Input[Optional[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict', 'outputs.ZeroTrustDexTestData']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             interval: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            target_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
+            target_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict', 'outputs.ZeroTrustDexTestTargetPolicy']]]]] = None,
             targeted: pulumi.Input[Optional[_builtins.bool]] = None,
             test_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDexTest':
         """
@@ -468,12 +468,12 @@ class ZeroTrustDexTest(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Unique identifier linked to an account.
-        :param pulumi.Input[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict']] data: The configuration object which contains the details for the WARP client to conduct the test.
+        :param pulumi.Input[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict', 'outputs.ZeroTrustDexTestData']] data: The configuration object which contains the details for the WARP client to conduct the test.
         :param pulumi.Input[_builtins.str] description: Additional details about the test.
         :param pulumi.Input[_builtins.bool] enabled: Determines whether or not the test is active.
         :param pulumi.Input[_builtins.str] interval: How often the test will run.
         :param pulumi.Input[_builtins.str] name: The name of the DEX test. Must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict']]]] target_policies: DEX rules targeted by this test
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict', 'outputs.ZeroTrustDexTestTargetPolicy']]]] target_policies: DEX rules targeted by this test
         :param pulumi.Input[_builtins.str] test_id: The unique identifier for the test.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

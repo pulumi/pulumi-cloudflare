@@ -97,7 +97,7 @@ class CloudConnectorRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict', 'outputs.CloudConnectorRulesRule']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -191,7 +191,7 @@ class CloudConnectorRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict', 'outputs.CloudConnectorRulesRule']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -216,7 +216,7 @@ class CloudConnectorRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudConnectorRulesRuleArgs', 'CloudConnectorRulesRuleArgsDict', 'outputs.CloudConnectorRulesRule']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'CloudConnectorRules':
         """
         Get an existing CloudConnectorRules resource's state with the given name, id, and optional extra

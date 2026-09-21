@@ -512,11 +512,11 @@ class SpectrumApplication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
-                 edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
+                 dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict', 'outputs.SpectrumApplicationDns']]] = None,
+                 edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict', 'outputs.SpectrumApplicationEdgeIps']]] = None,
                  ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
                  origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
+                 origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict', 'outputs.SpectrumApplicationOriginDns']]] = None,
                  origin_port: Optional[Any] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -573,12 +573,12 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] argo_smart_routing: Enables Argo Smart Routing for this application.
                Notes: Only available for TCP applications with traffic_type set to "direct".
-        :param pulumi.Input[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']] dns: The name and type of DNS record for the Spectrum application.
-        :param pulumi.Input[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']] edge_ips: The anycast edge IP configuration for the hostname of this application.
+        :param pulumi.Input[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict', 'outputs.SpectrumApplicationDns']] dns: The name and type of DNS record for the Spectrum application.
+        :param pulumi.Input[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict', 'outputs.SpectrumApplicationEdgeIps']] edge_ips: The anycast edge IP configuration for the hostname of this application.
         :param pulumi.Input[_builtins.bool] ip_firewall: Enables IP Access Rules for this application.
                Notes: Only available for TCP applications.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] origin_directs: List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
-        :param pulumi.Input[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']] origin_dns: The name and type of DNS record for the Spectrum application.
+        :param pulumi.Input[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict', 'outputs.SpectrumApplicationOriginDns']] origin_dns: The name and type of DNS record for the Spectrum application.
         :param Any origin_port: The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
                Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
         :param pulumi.Input[_builtins.str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
@@ -657,11 +657,11 @@ class SpectrumApplication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
-                 dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
-                 edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
+                 dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict', 'outputs.SpectrumApplicationDns']]] = None,
+                 edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict', 'outputs.SpectrumApplicationEdgeIps']]] = None,
                  ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
                  origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
+                 origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict', 'outputs.SpectrumApplicationOriginDns']]] = None,
                  origin_port: Optional[Any] = None,
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -711,12 +711,12 @@ class SpectrumApplication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
-            edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
+            dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict', 'outputs.SpectrumApplicationDns']]] = None,
+            edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict', 'outputs.SpectrumApplicationEdgeIps']]] = None,
             ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
+            origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict', 'outputs.SpectrumApplicationOriginDns']]] = None,
             origin_port: Optional[Any] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
             proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -734,13 +734,13 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] argo_smart_routing: Enables Argo Smart Routing for this application.
                Notes: Only available for TCP applications with traffic_type set to "direct".
         :param pulumi.Input[_builtins.str] created_on: When the Application was created.
-        :param pulumi.Input[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']] dns: The name and type of DNS record for the Spectrum application.
-        :param pulumi.Input[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']] edge_ips: The anycast edge IP configuration for the hostname of this application.
+        :param pulumi.Input[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict', 'outputs.SpectrumApplicationDns']] dns: The name and type of DNS record for the Spectrum application.
+        :param pulumi.Input[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict', 'outputs.SpectrumApplicationEdgeIps']] edge_ips: The anycast edge IP configuration for the hostname of this application.
         :param pulumi.Input[_builtins.bool] ip_firewall: Enables IP Access Rules for this application.
                Notes: Only available for TCP applications.
         :param pulumi.Input[_builtins.str] modified_on: When the Application was last modified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] origin_directs: List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
-        :param pulumi.Input[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']] origin_dns: The name and type of DNS record for the Spectrum application.
+        :param pulumi.Input[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict', 'outputs.SpectrumApplicationOriginDns']] origin_dns: The name and type of DNS record for the Spectrum application.
         :param Any origin_port: The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
                Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
         :param pulumi.Input[_builtins.str] protocol: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.

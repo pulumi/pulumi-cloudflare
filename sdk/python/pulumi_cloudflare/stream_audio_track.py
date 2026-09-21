@@ -373,7 +373,7 @@ class StreamAudioTrack(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             audio_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            audios: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict']]]]] = None,
+            audios: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict', 'outputs.StreamAudioTrackAudio']]]]] = None,
             default: pulumi.Input[Optional[_builtins.bool]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
@@ -388,7 +388,7 @@ class StreamAudioTrack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] audio_identifier: The unique identifier for an additional audio track.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict']]]] audios: Array of audio tracks for the video.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict', 'outputs.StreamAudioTrackAudio']]]] audios: Array of audio tracks for the video.
         :param pulumi.Input[_builtins.bool] default: Denotes whether the audio track will be played by default in a player.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] label: A string to uniquely identify the track amongst other audio track labels for the specified video.

@@ -855,7 +855,7 @@ class BotManagement(pulumi.CustomResource):
             sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
             sbfm_static_resource_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             sbfm_verified_bots: pulumi.Input[Optional[_builtins.str]] = None,
-            stale_zone_configuration: pulumi.Input[Optional[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict']]] = None,
+            stale_zone_configuration: pulumi.Input[Optional[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict', 'outputs.BotManagementStaleZoneConfiguration']]] = None,
             suppress_session_score: pulumi.Input[Optional[_builtins.bool]] = None,
             using_latest_model: pulumi.Input[Optional[_builtins.bool]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'BotManagement':
@@ -890,7 +890,7 @@ class BotManagement(pulumi.CustomResource):
                Note: Static resource protection can also result in legitimate traffic being blocked.
         :param pulumi.Input[_builtins.str] sbfm_verified_bots: Super Bot Fight Mode (SBFM) action to take on verified bots requests.
                Available values: "allow", "block".
-        :param pulumi.Input[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict']] stale_zone_configuration: A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
+        :param pulumi.Input[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict', 'outputs.BotManagementStaleZoneConfiguration']] stale_zone_configuration: A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
         :param pulumi.Input[_builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         :param pulumi.Input[_builtins.bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.

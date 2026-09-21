@@ -192,7 +192,7 @@ class AwaitableGetEmailSecurityImpersonationRegistryResult(GetEmailSecurityImper
 
 
 def get_email_security_impersonation_registry(account_id: Optional[_builtins.str] = None,
-                                              filter: Optional[Union['GetEmailSecurityImpersonationRegistryFilterArgs', 'GetEmailSecurityImpersonationRegistryFilterArgsDict']] = None,
+                                              filter: Optional[Union['GetEmailSecurityImpersonationRegistryFilterArgs', 'GetEmailSecurityImpersonationRegistryFilterArgsDict', 'outputs.GetEmailSecurityImpersonationRegistryFilterResult']] = None,
                                               impersonation_registry_id: Optional[_builtins.str] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityImpersonationRegistryResult:
     """
@@ -231,7 +231,7 @@ def get_email_security_impersonation_registry(account_id: Optional[_builtins.str
         name=pulumi.get(__ret__, 'name'),
         provenance=pulumi.get(__ret__, 'provenance'))
 def get_email_security_impersonation_registry_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                     filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityImpersonationRegistryFilterArgs', 'GetEmailSecurityImpersonationRegistryFilterArgsDict']]]] = None,
+                                                     filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityImpersonationRegistryFilterArgs', 'GetEmailSecurityImpersonationRegistryFilterArgsDict', 'outputs.GetEmailSecurityImpersonationRegistryFilterResult']]]] = None,
                                                      impersonation_registry_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityImpersonationRegistryResult]:
     """

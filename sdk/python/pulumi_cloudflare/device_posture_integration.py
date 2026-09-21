@@ -199,7 +199,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict', 'outputs.DevicePostureIntegrationConfig']]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -237,7 +237,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']] config: The configuration object containing third-party integration information.
+        :param pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict', 'outputs.DevicePostureIntegrationConfig']] config: The configuration object containing third-party integration information.
         :param pulumi.Input[_builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param pulumi.Input[_builtins.str] name: The name of the device posture integration.
         :param pulumi.Input[_builtins.str] type: The type of device posture integration.
@@ -296,7 +296,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict', 'outputs.DevicePostureIntegrationConfig']]] = None,
                  interval: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -338,7 +338,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict', 'outputs.DevicePostureIntegrationConfig']]] = None,
             interval: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'DevicePostureIntegration':
@@ -349,7 +349,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']] config: The configuration object containing third-party integration information.
+        :param pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict', 'outputs.DevicePostureIntegrationConfig']] config: The configuration object containing third-party integration information.
         :param pulumi.Input[_builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param pulumi.Input[_builtins.str] name: The name of the device posture integration.
         :param pulumi.Input[_builtins.str] type: The type of device posture integration.

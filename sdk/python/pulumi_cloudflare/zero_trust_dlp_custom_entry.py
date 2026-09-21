@@ -343,7 +343,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 pattern: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict']]] = None,
+                 pattern: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict', 'outputs.ZeroTrustDlpCustomEntryPattern']]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -436,7 +436,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 pattern: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict']]] = None,
+                 pattern: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict', 'outputs.ZeroTrustDlpCustomEntryPattern']]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -484,20 +484,20 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
-            confidence: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryConfidenceArgs', 'ZeroTrustDlpCustomEntryConfidenceArgsDict']]] = None,
+            confidence: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryConfidenceArgs', 'ZeroTrustDlpCustomEntryConfidenceArgsDict', 'outputs.ZeroTrustDlpCustomEntryConfidence']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            pattern: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict']]] = None,
+            pattern: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryPatternArgs', 'ZeroTrustDlpCustomEntryPatternArgsDict', 'outputs.ZeroTrustDlpCustomEntryPattern']]] = None,
             profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-            profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomEntryProfileArgs', 'ZeroTrustDlpCustomEntryProfileArgsDict']]]]] = None,
+            profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomEntryProfileArgs', 'ZeroTrustDlpCustomEntryProfileArgsDict', 'outputs.ZeroTrustDlpCustomEntryProfile']]]]] = None,
             secret: pulumi.Input[Optional[_builtins.bool]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             upload_status: pulumi.Input[Optional[_builtins.str]] = None,
-            variant: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryVariantArgs', 'ZeroTrustDlpCustomEntryVariantArgsDict']]] = None,
+            variant: pulumi.Input[Optional[Union['ZeroTrustDlpCustomEntryVariantArgs', 'ZeroTrustDlpCustomEntryVariantArgsDict', 'outputs.ZeroTrustDlpCustomEntryVariant']]] = None,
             word_list: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDlpCustomEntry':
         """
         Get an existing ZeroTrustDlpCustomEntry resource's state with the given name, id, and optional extra
@@ -513,7 +513,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                emitted only when true.
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-        :param pulumi.Input[Union['ZeroTrustDlpCustomEntryVariantArgs', 'ZeroTrustDlpCustomEntryVariantArgsDict']] variant: A Predefined AI prompt classification topic entry.
+        :param pulumi.Input[Union['ZeroTrustDlpCustomEntryVariantArgs', 'ZeroTrustDlpCustomEntryVariantArgsDict', 'outputs.ZeroTrustDlpCustomEntryVariant']] variant: A Predefined AI prompt classification topic entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -227,7 +227,7 @@ class MoqRelay(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict', 'outputs.MoqRelayConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -241,7 +241,7 @@ class MoqRelay(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account identifier.
-        :param pulumi.Input[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict']] config: upstreams and lingering_subscribe are mutually exclusive.
+        :param pulumi.Input[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict', 'outputs.MoqRelayConfig']] config: upstreams and lingering_subscribe are mutually exclusive.
         :param pulumi.Input[_builtins.str] name: Human-readable name for the relay.
         """
         ...
@@ -274,7 +274,7 @@ class MoqRelay(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict', 'outputs.MoqRelayConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -311,7 +311,7 @@ class MoqRelay(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict', 'outputs.MoqRelayConfig']]] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -327,7 +327,7 @@ class MoqRelay(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account identifier.
-        :param pulumi.Input[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict']] config: upstreams and lingering_subscribe are mutually exclusive.
+        :param pulumi.Input[Union['MoqRelayConfigArgs', 'MoqRelayConfigArgsDict', 'outputs.MoqRelayConfig']] config: upstreams and lingering_subscribe are mutually exclusive.
         :param pulumi.Input[_builtins.str] name: Human-readable name for the relay.
         :param pulumi.Input[_builtins.str] status: "connected" when active, omitted otherwise.
                Available values: "connected".

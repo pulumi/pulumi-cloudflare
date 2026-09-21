@@ -292,11 +292,11 @@ class ApiToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict', 'outputs.ApiTokenCondition']]] = None,
                  expires_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  not_before: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -356,7 +356,7 @@ class ApiToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: Set of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         """
@@ -433,11 +433,11 @@ class ApiToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: pulumi.Input[Optional[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict', 'outputs.ApiTokenCondition']]] = None,
                  expires_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  not_before: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -474,14 +474,14 @@ class ApiToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: pulumi.Input[Optional[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict', 'outputs.ApiTokenCondition']]] = None,
             expires_on: pulumi.Input[Optional[_builtins.str]] = None,
             issued_on: pulumi.Input[Optional[_builtins.str]] = None,
             last_used_on: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             not_before: pulumi.Input[Optional[_builtins.str]] = None,
-            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             value: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiToken':
         """
@@ -497,7 +497,7 @@ class ApiToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: Last time the token was modified.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict']]]] policies: Set of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         :param pulumi.Input[_builtins.str] value: The token value.

@@ -260,10 +260,10 @@ class PipelineSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
-                 format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict', 'outputs.PipelineSinkConfig']]] = None,
+                 format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict', 'outputs.PipelineSinkFormat']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
+                 schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict', 'outputs.PipelineSinkSchema']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -334,10 +334,10 @@ class PipelineSink(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
-        :param pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']] config: Defines the configuration of the R2 Sink.
-        :param pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']] format: Defines the output data format of a sink.
+        :param pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict', 'outputs.PipelineSinkConfig']] config: Defines the configuration of the R2 Sink.
+        :param pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict', 'outputs.PipelineSinkFormat']] format: Defines the output data format of a sink.
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
-        :param pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']] schema: Defines the schema of the events in the data stream.
+        :param pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict', 'outputs.PipelineSinkSchema']] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
                Available values: "r2", "r2*data*catalog".
         """
@@ -428,10 +428,10 @@ class PipelineSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
-                 format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict', 'outputs.PipelineSinkConfig']]] = None,
+                 format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict', 'outputs.PipelineSinkFormat']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
+                 schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict', 'outputs.PipelineSinkSchema']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -467,12 +467,12 @@ class PipelineSink(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict', 'outputs.PipelineSinkConfig']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
+            format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict', 'outputs.PipelineSinkFormat']]] = None,
             modified_at: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
+            schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict', 'outputs.PipelineSinkSchema']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'PipelineSink':
         """
         Get an existing PipelineSink resource's state with the given name, id, and optional extra
@@ -482,10 +482,10 @@ class PipelineSink(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
-        :param pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']] config: Defines the configuration of the R2 Sink.
-        :param pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']] format: Defines the output data format of a sink.
+        :param pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict', 'outputs.PipelineSinkConfig']] config: Defines the configuration of the R2 Sink.
+        :param pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict', 'outputs.PipelineSinkFormat']] format: Defines the output data format of a sink.
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
-        :param pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']] schema: Defines the schema of the events in the data stream.
+        :param pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict', 'outputs.PipelineSinkSchema']] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
                Available values: "r2", "r2*data*catalog".
         """

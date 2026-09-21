@@ -302,7 +302,7 @@ class AwaitableGetDnsRecordResult(GetDnsRecordResult):
 
 
 def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
-                   filter: Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict']] = None,
+                   filter: Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict', 'outputs.GetDnsRecordFilterResult']] = None,
                    include_shadow_metadata: Optional[_builtins.bool] = None,
                    zone_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsRecordResult:
@@ -360,7 +360,7 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_dns_record_output(dns_record_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          filter: pulumi.Input[Optional[Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict']]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict', 'outputs.GetDnsRecordFilterResult']]]] = None,
                           include_shadow_metadata: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsRecordResult]:

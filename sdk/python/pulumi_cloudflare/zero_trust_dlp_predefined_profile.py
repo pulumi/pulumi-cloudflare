@@ -276,7 +276,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
                  confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_entries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict', 'outputs.ZeroTrustDlpPredefinedProfileEntry']]]]] = None,
                  ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -389,7 +389,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
                  confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_entries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict', 'outputs.ZeroTrustDlpPredefinedProfileEntry']]]]] = None,
                  ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -432,7 +432,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
             allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
             confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
             enabled_entries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict', 'outputs.ZeroTrustDlpPredefinedProfileEntry']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             open_access: pulumi.Input[Optional[_builtins.bool]] = None,

@@ -162,7 +162,7 @@ class AwaitableGetAccessRulesResult(GetAccessRulesResult):
 
 
 def get_access_rules(account_id: Optional[_builtins.str] = None,
-                     configuration: Optional[Union['GetAccessRulesConfigurationArgs', 'GetAccessRulesConfigurationArgsDict']] = None,
+                     configuration: Optional[Union['GetAccessRulesConfigurationArgs', 'GetAccessRulesConfigurationArgsDict', 'outputs.GetAccessRulesConfigurationResult']] = None,
                      direction: Optional[_builtins.str] = None,
                      match: Optional[_builtins.str] = None,
                      max_items: Optional[_builtins.int] = None,
@@ -235,7 +235,7 @@ def get_access_rules(account_id: Optional[_builtins.str] = None,
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_access_rules_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                            configuration: pulumi.Input[Optional[Optional[Union['GetAccessRulesConfigurationArgs', 'GetAccessRulesConfigurationArgsDict']]]] = None,
+                            configuration: pulumi.Input[Optional[Optional[Union['GetAccessRulesConfigurationArgs', 'GetAccessRulesConfigurationArgsDict', 'outputs.GetAccessRulesConfigurationResult']]]] = None,
                             direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             match: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,

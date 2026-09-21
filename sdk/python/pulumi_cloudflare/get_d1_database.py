@@ -191,7 +191,7 @@ class AwaitableGetD1DatabaseResult(GetD1DatabaseResult):
 def get_d1_database(account_id: Optional[_builtins.str] = None,
                     database_id: Optional[_builtins.str] = None,
                     fields: Optional[Sequence[_builtins.str]] = None,
-                    filter: Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict']] = None,
+                    filter: Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict', 'outputs.GetD1DatabaseFilterResult']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetD1DatabaseResult:
     """
     Accepted Permissions
@@ -241,7 +241,7 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
 def get_d1_database_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            database_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            fields: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                           filter: pulumi.Input[Optional[Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict']]]] = None,
+                           filter: pulumi.Input[Optional[Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict', 'outputs.GetD1DatabaseFilterResult']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetD1DatabaseResult]:
     """
     Accepted Permissions

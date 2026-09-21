@@ -331,8 +331,8 @@ class TokenValidationRules(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  expression: pulumi.Input[Optional[_builtins.str]] = None,
-                 position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
-                 selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
+                 position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict', 'outputs.TokenValidationRulesPosition']]] = None,
+                 selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict', 'outputs.TokenValidationRulesSelector']]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -387,8 +387,8 @@ class TokenValidationRules(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A human-readable description that gives more details than `title`.
         :param pulumi.Input[_builtins.bool] enabled: Toggle rule on or off.
         :param pulumi.Input[_builtins.str] expression: Rule expression. Requests that fail to match this expression will be subject to `action`.
-        :param pulumi.Input[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']] position: Update rule order among zone rules.
-        :param pulumi.Input[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']] selector: Select operations covered by this rule.
+        :param pulumi.Input[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict', 'outputs.TokenValidationRulesPosition']] position: Update rule order among zone rules.
+        :param pulumi.Input[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict', 'outputs.TokenValidationRulesSelector']] selector: Select operations covered by this rule.
                
                For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
         :param pulumi.Input[_builtins.str] title: A human-readable name for the rule.
@@ -463,8 +463,8 @@ class TokenValidationRules(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  expression: pulumi.Input[Optional[_builtins.str]] = None,
-                 position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
-                 selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
+                 position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict', 'outputs.TokenValidationRulesPosition']]] = None,
+                 selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict', 'outputs.TokenValidationRulesSelector']]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -516,8 +516,8 @@ class TokenValidationRules(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             expression: pulumi.Input[Optional[_builtins.str]] = None,
             last_updated: pulumi.Input[Optional[_builtins.str]] = None,
-            position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
-            selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
+            position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict', 'outputs.TokenValidationRulesPosition']]] = None,
+            selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict', 'outputs.TokenValidationRulesSelector']]] = None,
             title: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TokenValidationRules':
         """
@@ -532,8 +532,8 @@ class TokenValidationRules(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A human-readable description that gives more details than `title`.
         :param pulumi.Input[_builtins.bool] enabled: Toggle rule on or off.
         :param pulumi.Input[_builtins.str] expression: Rule expression. Requests that fail to match this expression will be subject to `action`.
-        :param pulumi.Input[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']] position: Update rule order among zone rules.
-        :param pulumi.Input[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']] selector: Select operations covered by this rule.
+        :param pulumi.Input[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict', 'outputs.TokenValidationRulesPosition']] position: Update rule order among zone rules.
+        :param pulumi.Input[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict', 'outputs.TokenValidationRulesSelector']] selector: Select operations covered by this rule.
                
                For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
         :param pulumi.Input[_builtins.str] title: A human-readable name for the rule.

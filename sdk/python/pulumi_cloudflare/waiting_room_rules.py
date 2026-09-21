@@ -119,7 +119,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict', 'outputs.WaitingRoomRulesRule']]]]] = None,
                  waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -208,7 +208,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict', 'outputs.WaitingRoomRulesRule']]]]] = None,
                  waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -239,7 +239,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict', 'outputs.WaitingRoomRulesRule']]]]] = None,
             waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WaitingRoomRules':
         """

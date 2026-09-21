@@ -133,7 +133,7 @@ class AwaitableGetUserAgentBlockingRuleResult(GetUserAgentBlockingRuleResult):
             zone_id=self.zone_id)
 
 
-def get_user_agent_blocking_rule(filter: Optional[Union['GetUserAgentBlockingRuleFilterArgs', 'GetUserAgentBlockingRuleFilterArgsDict']] = None,
+def get_user_agent_blocking_rule(filter: Optional[Union['GetUserAgentBlockingRuleFilterArgs', 'GetUserAgentBlockingRuleFilterArgsDict', 'outputs.GetUserAgentBlockingRuleFilterResult']] = None,
                                  ua_rule_id: Optional[_builtins.str] = None,
                                  zone_id: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserAgentBlockingRuleResult:
@@ -173,7 +173,7 @@ def get_user_agent_blocking_rule(filter: Optional[Union['GetUserAgentBlockingRul
         paused=pulumi.get(__ret__, 'paused'),
         ua_rule_id=pulumi.get(__ret__, 'ua_rule_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_user_agent_blocking_rule_output(filter: pulumi.Input[Optional[Optional[Union['GetUserAgentBlockingRuleFilterArgs', 'GetUserAgentBlockingRuleFilterArgsDict']]]] = None,
+def get_user_agent_blocking_rule_output(filter: pulumi.Input[Optional[Optional[Union['GetUserAgentBlockingRuleFilterArgs', 'GetUserAgentBlockingRuleFilterArgsDict', 'outputs.GetUserAgentBlockingRuleFilterResult']]]] = None,
                                         ua_rule_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserAgentBlockingRuleResult]:
