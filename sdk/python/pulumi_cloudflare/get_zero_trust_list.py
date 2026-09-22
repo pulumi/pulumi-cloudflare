@@ -161,7 +161,7 @@ class AwaitableGetZeroTrustListResult(GetZeroTrustListResult):
 
 
 def get_zero_trust_list(account_id: Optional[_builtins.str] = None,
-                        filter: Optional[Union['GetZeroTrustListFilterArgs', 'GetZeroTrustListFilterArgsDict']] = None,
+                        filter: Optional[Union['GetZeroTrustListFilterArgs', 'GetZeroTrustListFilterArgsDict', 'outputs.GetZeroTrustListFilterResult']] = None,
                         list_id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustListResult:
     """
@@ -198,7 +198,7 @@ def get_zero_trust_list(account_id: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_zero_trust_list_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                               filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustListFilterArgs', 'GetZeroTrustListFilterArgsDict']]]] = None,
+                               filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustListFilterArgs', 'GetZeroTrustListFilterArgsDict', 'outputs.GetZeroTrustListFilterResult']]]] = None,
                                list_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustListResult]:
     """

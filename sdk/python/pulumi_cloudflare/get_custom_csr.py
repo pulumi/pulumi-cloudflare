@@ -255,7 +255,7 @@ class AwaitableGetCustomCsrResult(GetCustomCsrResult):
 
 def get_custom_csr(account_id: Optional[_builtins.str] = None,
                    custom_csr_id: Optional[_builtins.str] = None,
-                   filter: Optional[Union['GetCustomCsrFilterArgs', 'GetCustomCsrFilterArgsDict']] = None,
+                   filter: Optional[Union['GetCustomCsrFilterArgs', 'GetCustomCsrFilterArgsDict', 'outputs.GetCustomCsrFilterResult']] = None,
                    zone_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomCsrResult:
     """
@@ -309,7 +309,7 @@ def get_custom_csr(account_id: Optional[_builtins.str] = None,
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_custom_csr_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           custom_csr_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          filter: pulumi.Input[Optional[Optional[Union['GetCustomCsrFilterArgs', 'GetCustomCsrFilterArgsDict']]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetCustomCsrFilterArgs', 'GetCustomCsrFilterArgsDict', 'outputs.GetCustomCsrFilterResult']]]] = None,
                           zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomCsrResult]:
     """

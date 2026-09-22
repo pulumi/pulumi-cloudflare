@@ -525,9 +525,9 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
-            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetColumnArgs', 'ZeroTrustDlpDatasetColumnArgsDict']]]]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetColumnArgs', 'ZeroTrustDlpDatasetColumnArgsDict', 'outputs.ZeroTrustDlpDatasetColumn']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            dataset: pulumi.Input[Optional[Union['ZeroTrustDlpDatasetDatasetArgs', 'ZeroTrustDlpDatasetDatasetArgsDict']]] = None,
+            dataset: pulumi.Input[Optional[Union['ZeroTrustDlpDatasetDatasetArgs', 'ZeroTrustDlpDatasetDatasetArgsDict', 'outputs.ZeroTrustDlpDatasetDataset']]] = None,
             dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             encoding_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -537,7 +537,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
             secret: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
-            uploads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetUploadArgs', 'ZeroTrustDlpDatasetUploadArgsDict']]]]] = None,
+            uploads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetUploadArgs', 'ZeroTrustDlpDatasetUploadArgsDict', 'outputs.ZeroTrustDlpDatasetUpload']]]]] = None,
             version: pulumi.Input[Optional[_builtins.int]] = None) -> 'ZeroTrustDlpDataset':
         """
         Get an existing ZeroTrustDlpDataset resource's state with the given name, id, and optional extra

@@ -128,7 +128,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersCronTriggerScheduleArgs', 'WorkersCronTriggerScheduleArgsDict']]]]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersCronTriggerScheduleArgs', 'WorkersCronTriggerScheduleArgsDict', 'outputs.WorkersCronTriggerSchedule']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -212,7 +212,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersCronTriggerScheduleArgs', 'WorkersCronTriggerScheduleArgsDict']]]]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersCronTriggerScheduleArgs', 'WorkersCronTriggerScheduleArgsDict', 'outputs.WorkersCronTriggerSchedule']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -245,7 +245,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersCronTriggerScheduleArgs', 'WorkersCronTriggerScheduleArgsDict']]]]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersCronTriggerScheduleArgs', 'WorkersCronTriggerScheduleArgsDict', 'outputs.WorkersCronTriggerSchedule']]]]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkersCronTrigger':
         """
         Get an existing WorkersCronTrigger resource's state with the given name, id, and optional extra

@@ -128,7 +128,7 @@ class UserGroupMembers(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict']]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict', 'outputs.UserGroupMembersMember']]]]] = None,
                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -214,7 +214,7 @@ class UserGroupMembers(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict']]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict', 'outputs.UserGroupMembersMember']]]]] = None,
                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -245,7 +245,7 @@ class UserGroupMembers(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict']]]]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict', 'outputs.UserGroupMembersMember']]]]] = None,
             user_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserGroupMembers':
         """
         Get an existing UserGroupMembers resource's state with the given name, id, and optional extra

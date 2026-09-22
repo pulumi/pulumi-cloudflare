@@ -226,7 +226,7 @@ class AccountMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict', 'outputs.AccountMemberPolicy']]]]] = None,
                  roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -261,7 +261,7 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]] policies: Array of policies associated with this member.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict', 'outputs.AccountMemberPolicy']]]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
         :param pulumi.Input[_builtins.str] status: Status of the member invitation. If not provided during creation, defaults to 'pending'.
                Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
@@ -317,7 +317,7 @@ class AccountMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict', 'outputs.AccountMemberPolicy']]]]] = None,
                  roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -351,10 +351,10 @@ class AccountMember(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             email: pulumi.Input[Optional[_builtins.str]] = None,
-            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict', 'outputs.AccountMemberPolicy']]]]] = None,
             roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            user: pulumi.Input[Optional[Union['AccountMemberUserArgs', 'AccountMemberUserArgsDict']]] = None) -> 'AccountMember':
+            user: pulumi.Input[Optional[Union['AccountMemberUserArgs', 'AccountMemberUserArgsDict', 'outputs.AccountMemberUser']]] = None) -> 'AccountMember':
         """
         Get an existing AccountMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -364,12 +364,12 @@ class AccountMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] email: The contact email address of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict']]]] policies: Array of policies associated with this member.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict', 'outputs.AccountMemberPolicy']]]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
         :param pulumi.Input[_builtins.str] status: Status of the member invitation. If not provided during creation, defaults to 'pending'.
                Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
                Available values: "accepted", "pending".
-        :param pulumi.Input[Union['AccountMemberUserArgs', 'AccountMemberUserArgsDict']] user: Details of the user associated to the membership.
+        :param pulumi.Input[Union['AccountMemberUserArgs', 'AccountMemberUserArgsDict', 'outputs.AccountMemberUser']] user: Details of the user associated to the membership.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

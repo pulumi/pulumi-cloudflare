@@ -169,7 +169,7 @@ class LoadBalancerMonitorGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict']]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict', 'outputs.LoadBalancerMonitorGroupMember']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -200,7 +200,7 @@ class LoadBalancerMonitorGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] description: A short description of the monitor group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict']]]] members: List of monitors in this group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict', 'outputs.LoadBalancerMonitorGroupMember']]]] members: List of monitors in this group
         """
         ...
     @overload
@@ -250,7 +250,7 @@ class LoadBalancerMonitorGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict']]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict', 'outputs.LoadBalancerMonitorGroupMember']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,7 +284,7 @@ class LoadBalancerMonitorGroup(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict']]]]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict', 'outputs.LoadBalancerMonitorGroupMember']]]]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None) -> 'LoadBalancerMonitorGroup':
         """
         Get an existing LoadBalancerMonitorGroup resource's state with the given name, id, and optional extra
@@ -296,7 +296,7 @@ class LoadBalancerMonitorGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created_on: The timestamp of when the monitor group was created
         :param pulumi.Input[_builtins.str] description: A short description of the monitor group
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict']]]] members: List of monitors in this group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerMonitorGroupMemberArgs', 'LoadBalancerMonitorGroupMemberArgsDict', 'outputs.LoadBalancerMonitorGroupMember']]]] members: List of monitors in this group
         :param pulumi.Input[_builtins.str] modified_on: The timestamp of when the monitor group was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

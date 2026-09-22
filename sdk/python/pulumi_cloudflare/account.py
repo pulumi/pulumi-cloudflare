@@ -225,11 +225,11 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
+                 managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None,
+                 unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -287,11 +287,11 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']] managed_by: Parent container details
+        :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
-        :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
+        :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']] settings: Account settings
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
-        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         ...
     @overload
@@ -368,11 +368,11 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
+                 managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None,
+                 unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -401,11 +401,11 @@ class Account(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
+            managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
+            settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None) -> 'Account':
+            unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -414,11 +414,11 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the account
-        :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']] managed_by: Parent container details
+        :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
-        :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
+        :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']] settings: Account settings
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
-        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

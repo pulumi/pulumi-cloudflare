@@ -219,10 +219,10 @@ class WorkersDeployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -318,10 +318,10 @@ class WorkersDeployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,13 +358,13 @@ class WorkersDeployment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
             author_email: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             strategy: pulumi.Input[Optional[_builtins.str]] = None,
-            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None) -> 'WorkersDeployment':
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]]] = None) -> 'WorkersDeployment':
         """
         Get an existing WorkersDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

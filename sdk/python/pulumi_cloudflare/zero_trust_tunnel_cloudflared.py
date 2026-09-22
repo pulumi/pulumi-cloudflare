@@ -486,7 +486,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             account_tag: pulumi.Input[Optional[_builtins.str]] = None,
             config_src: pulumi.Input[Optional[_builtins.str]] = None,
-            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConnectionArgs', 'ZeroTrustTunnelCloudflaredConnectionArgsDict']]]]] = None,
+            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConnectionArgs', 'ZeroTrustTunnelCloudflaredConnectionArgsDict', 'outputs.ZeroTrustTunnelCloudflaredConnection']]]]] = None,
             conns_active_at: pulumi.Input[Optional[_builtins.str]] = None,
             conns_inactive_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -508,7 +508,7 @@ class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_tag: Cloudflare account ID
         :param pulumi.Input[_builtins.str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConnectionArgs', 'ZeroTrustTunnelCloudflaredConnectionArgsDict']]]] connections: The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConnectionArgs', 'ZeroTrustTunnelCloudflaredConnectionArgsDict', 'outputs.ZeroTrustTunnelCloudflaredConnection']]]] connections: The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         :param pulumi.Input[_builtins.str] conns_active_at: Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
         :param pulumi.Input[_builtins.str] conns_inactive_at: Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.

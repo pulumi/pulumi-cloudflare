@@ -87,7 +87,7 @@ class ZeroTrustRiskBehavior(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ZeroTrustRiskBehaviorBehaviorsArgs', 'ZeroTrustRiskBehaviorBehaviorsArgsDict']]]]] = None,
+                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ZeroTrustRiskBehaviorBehaviorsArgs', 'ZeroTrustRiskBehaviorBehaviorsArgsDict', 'outputs.ZeroTrustRiskBehaviorBehaviors']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -168,7 +168,7 @@ class ZeroTrustRiskBehavior(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ZeroTrustRiskBehaviorBehaviorsArgs', 'ZeroTrustRiskBehaviorBehaviorsArgsDict']]]]] = None,
+                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ZeroTrustRiskBehaviorBehaviorsArgs', 'ZeroTrustRiskBehaviorBehaviorsArgsDict', 'outputs.ZeroTrustRiskBehaviorBehaviors']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -197,7 +197,7 @@ class ZeroTrustRiskBehavior(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ZeroTrustRiskBehaviorBehaviorsArgs', 'ZeroTrustRiskBehaviorBehaviorsArgsDict']]]]] = None) -> 'ZeroTrustRiskBehavior':
+            behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ZeroTrustRiskBehaviorBehaviorsArgs', 'ZeroTrustRiskBehaviorBehaviorsArgsDict', 'outputs.ZeroTrustRiskBehaviorBehaviors']]]]] = None) -> 'ZeroTrustRiskBehavior':
         """
         Get an existing ZeroTrustRiskBehavior resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

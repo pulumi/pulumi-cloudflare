@@ -226,7 +226,7 @@ class AccountSubscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
+                 rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict', 'outputs.AccountSubscriptionRatePlan']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -266,7 +266,7 @@ class AccountSubscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
-        :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
+        :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict', 'outputs.AccountSubscriptionRatePlan']] rate_plan: The rate plan applied to the subscription.
         """
         ...
     @overload
@@ -324,7 +324,7 @@ class AccountSubscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
+                 rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict', 'outputs.AccountSubscriptionRatePlan']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,7 +358,7 @@ class AccountSubscription(pulumi.CustomResource):
             current_period_start: pulumi.Input[Optional[_builtins.str]] = None,
             frequency: pulumi.Input[Optional[_builtins.str]] = None,
             price: pulumi.Input[Optional[_builtins.float]] = None,
-            rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
+            rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict', 'outputs.AccountSubscriptionRatePlan']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountSubscription':
         """
         Get an existing AccountSubscription resource's state with the given name, id, and optional extra
@@ -374,7 +374,7 @@ class AccountSubscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input[_builtins.float] price: The price of the subscription that will be billed, in US dollars.
-        :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
+        :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict', 'outputs.AccountSubscriptionRatePlan']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[_builtins.str] state: The state that the subscription is in.
                Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         """

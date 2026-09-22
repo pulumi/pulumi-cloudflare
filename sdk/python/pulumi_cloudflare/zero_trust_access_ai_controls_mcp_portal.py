@@ -385,7 +385,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpPortalServer']]]]] = None,
                  zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -444,7 +444,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] hostname: Hostname where the MCP portal is available.
         :param pulumi.Input[_builtins.str] name: Display name for the MCP portal.
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]] servers: MCP servers attached to the portal and their portal-specific settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpPortalServer']]]] servers: MCP servers attached to the portal and their portal-specific settings.
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: Unique identifier for the MCP portal.
         """
         ...
@@ -522,7 +522,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpPortalServer']]]]] = None,
                  zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -575,7 +575,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             modified_by: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpPortalServer']]]]] = None,
             zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessAiControlsMcpPortal':
         """
         Get an existing ZeroTrustAccessAiControlsMcpPortal resource's state with the given name, id, and optional extra
@@ -591,7 +591,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] hostname: Hostname where the MCP portal is available.
         :param pulumi.Input[_builtins.str] name: Display name for the MCP portal.
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]] servers: MCP servers attached to the portal and their portal-specific settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpPortalServer']]]] servers: MCP servers attached to the portal and their portal-specific settings.
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: Unique identifier for the MCP portal.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

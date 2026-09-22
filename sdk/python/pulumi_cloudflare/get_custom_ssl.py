@@ -226,7 +226,7 @@ class AwaitableGetCustomSslResult(GetCustomSslResult):
 
 
 def get_custom_ssl(custom_certificate_id: Optional[_builtins.str] = None,
-                   filter: Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict']] = None,
+                   filter: Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict', 'outputs.GetCustomSslFilterResult']] = None,
                    zone_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomSslResult:
     """
@@ -277,7 +277,7 @@ def get_custom_ssl(custom_certificate_id: Optional[_builtins.str] = None,
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_custom_ssl_output(custom_certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          filter: pulumi.Input[Optional[Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict']]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict', 'outputs.GetCustomSslFilterResult']]]] = None,
                           zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomSslResult]:
     """

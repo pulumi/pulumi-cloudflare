@@ -550,12 +550,12 @@ class Healthcheck(pulumi.CustomResource):
                  consecutive_fails: pulumi.Input[Optional[_builtins.int]] = None,
                  consecutive_successes: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
+                 http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict', 'outputs.HealthcheckHttpConfig']]] = None,
                  interval: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  retries: pulumi.Input[Optional[_builtins.int]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
+                 tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict', 'outputs.HealthcheckTcpConfig']]] = None,
                  timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -624,12 +624,12 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] consecutive_fails: The number of consecutive fails required from a health check before changing the health to unhealthy.
         :param pulumi.Input[_builtins.int] consecutive_successes: The number of consecutive successes required from a health check before changing the health to healthy.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the health check.
-        :param pulumi.Input[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']] http_config: Parameters specific to an HTTP or HTTPS health check.
+        :param pulumi.Input[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict', 'outputs.HealthcheckHttpConfig']] http_config: Parameters specific to an HTTP or HTTPS health check.
         :param pulumi.Input[_builtins.int] interval: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
         :param pulumi.Input[_builtins.str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[_builtins.int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         :param pulumi.Input[_builtins.bool] suspended: If suspended, no health checks are sent to the origin.
-        :param pulumi.Input[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']] tcp_config: Parameters specific to TCP health check.
+        :param pulumi.Input[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict', 'outputs.HealthcheckTcpConfig']] tcp_config: Parameters specific to TCP health check.
         :param pulumi.Input[_builtins.int] timeout: The timeout (in seconds) before marking the health check as failed.
         :param pulumi.Input[_builtins.str] type: The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
         :param pulumi.Input[_builtins.str] zone_id: Identifier
@@ -717,12 +717,12 @@ class Healthcheck(pulumi.CustomResource):
                  consecutive_fails: pulumi.Input[Optional[_builtins.int]] = None,
                  consecutive_successes: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
+                 http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict', 'outputs.HealthcheckHttpConfig']]] = None,
                  interval: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  retries: pulumi.Input[Optional[_builtins.int]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
+                 tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict', 'outputs.HealthcheckTcpConfig']]] = None,
                  timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -776,14 +776,14 @@ class Healthcheck(pulumi.CustomResource):
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
-            http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
+            http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict', 'outputs.HealthcheckHttpConfig']]] = None,
             interval: pulumi.Input[Optional[_builtins.int]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             retries: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             suspended: pulumi.Input[Optional[_builtins.bool]] = None,
-            tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
+            tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict', 'outputs.HealthcheckTcpConfig']]] = None,
             timeout: pulumi.Input[Optional[_builtins.int]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Healthcheck':
@@ -800,14 +800,14 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] consecutive_successes: The number of consecutive successes required from a health check before changing the health to healthy.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the health check.
         :param pulumi.Input[_builtins.str] failure_reason: The current failure reason if status is unhealthy.
-        :param pulumi.Input[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']] http_config: Parameters specific to an HTTP or HTTPS health check.
+        :param pulumi.Input[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict', 'outputs.HealthcheckHttpConfig']] http_config: Parameters specific to an HTTP or HTTPS health check.
         :param pulumi.Input[_builtins.int] interval: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
         :param pulumi.Input[_builtins.str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[_builtins.int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         :param pulumi.Input[_builtins.str] status: The current status of the origin server according to the health check.
                Available values: "unknown", "healthy", "unhealthy", "suspended".
         :param pulumi.Input[_builtins.bool] suspended: If suspended, no health checks are sent to the origin.
-        :param pulumi.Input[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']] tcp_config: Parameters specific to TCP health check.
+        :param pulumi.Input[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict', 'outputs.HealthcheckTcpConfig']] tcp_config: Parameters specific to TCP health check.
         :param pulumi.Input[_builtins.int] timeout: The timeout (in seconds) before marking the health check as failed.
         :param pulumi.Input[_builtins.str] type: The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
         :param pulumi.Input[_builtins.str] zone_id: Identifier

@@ -205,7 +205,7 @@ class AwaitableGetWorkerResult(GetWorkerResult):
 
 
 def get_worker(account_id: Optional[_builtins.str] = None,
-               filter: Optional[Union['GetWorkerFilterArgs', 'GetWorkerFilterArgsDict']] = None,
+               filter: Optional[Union['GetWorkerFilterArgs', 'GetWorkerFilterArgsDict', 'outputs.GetWorkerFilterResult']] = None,
                worker_id: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkerResult:
     """
@@ -252,7 +252,7 @@ def get_worker(account_id: Optional[_builtins.str] = None,
         updated_on=pulumi.get(__ret__, 'updated_on'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
 def get_worker_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                      filter: pulumi.Input[Optional[Optional[Union['GetWorkerFilterArgs', 'GetWorkerFilterArgsDict']]]] = None,
+                      filter: pulumi.Input[Optional[Optional[Union['GetWorkerFilterArgs', 'GetWorkerFilterArgsDict', 'outputs.GetWorkerFilterResult']]]] = None,
                       worker_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerResult]:
     """

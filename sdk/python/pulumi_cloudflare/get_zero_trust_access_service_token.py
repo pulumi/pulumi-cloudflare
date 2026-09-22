@@ -154,7 +154,7 @@ class AwaitableGetZeroTrustAccessServiceTokenResult(GetZeroTrustAccessServiceTok
 
 
 def get_zero_trust_access_service_token(account_id: Optional[_builtins.str] = None,
-                                        filter: Optional[Union['GetZeroTrustAccessServiceTokenFilterArgs', 'GetZeroTrustAccessServiceTokenFilterArgsDict']] = None,
+                                        filter: Optional[Union['GetZeroTrustAccessServiceTokenFilterArgs', 'GetZeroTrustAccessServiceTokenFilterArgsDict', 'outputs.GetZeroTrustAccessServiceTokenFilterResult']] = None,
                                         service_token_id: Optional[_builtins.str] = None,
                                         zone_id: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessServiceTokenResult:
@@ -200,7 +200,7 @@ def get_zero_trust_access_service_token(account_id: Optional[_builtins.str] = No
         service_token_id=pulumi.get(__ret__, 'service_token_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_service_token_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                               filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessServiceTokenFilterArgs', 'GetZeroTrustAccessServiceTokenFilterArgsDict']]]] = None,
+                                               filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessServiceTokenFilterArgs', 'GetZeroTrustAccessServiceTokenFilterArgsDict', 'outputs.GetZeroTrustAccessServiceTokenFilterResult']]]] = None,
                                                service_token_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessServiceTokenResult]:

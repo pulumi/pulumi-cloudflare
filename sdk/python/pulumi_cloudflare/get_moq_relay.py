@@ -143,7 +143,7 @@ class AwaitableGetMoqRelayResult(GetMoqRelayResult):
 
 
 def get_moq_relay(account_id: Optional[_builtins.str] = None,
-                  filter: Optional[Union['GetMoqRelayFilterArgs', 'GetMoqRelayFilterArgsDict']] = None,
+                  filter: Optional[Union['GetMoqRelayFilterArgs', 'GetMoqRelayFilterArgsDict', 'outputs.GetMoqRelayFilterResult']] = None,
                   relay_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMoqRelayResult:
     """
@@ -170,7 +170,7 @@ def get_moq_relay(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         uid=pulumi.get(__ret__, 'uid'))
 def get_moq_relay_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                         filter: pulumi.Input[Optional[Optional[Union['GetMoqRelayFilterArgs', 'GetMoqRelayFilterArgsDict']]]] = None,
+                         filter: pulumi.Input[Optional[Optional[Union['GetMoqRelayFilterArgs', 'GetMoqRelayFilterArgsDict', 'outputs.GetMoqRelayFilterResult']]]] = None,
                          relay_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMoqRelayResult]:
     """

@@ -360,7 +360,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict']]] = None,
+                 pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict', 'outputs.ZeroTrustDlpEntryPattern']]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -455,7 +455,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict']]] = None,
+                 pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict', 'outputs.ZeroTrustDlpEntryPattern']]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -504,20 +504,20 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
-            confidence: pulumi.Input[Optional[Union['ZeroTrustDlpEntryConfidenceArgs', 'ZeroTrustDlpEntryConfidenceArgsDict']]] = None,
+            confidence: pulumi.Input[Optional[Union['ZeroTrustDlpEntryConfidenceArgs', 'ZeroTrustDlpEntryConfidenceArgsDict', 'outputs.ZeroTrustDlpEntryConfidence']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict']]] = None,
+            pattern: pulumi.Input[Optional[Union['ZeroTrustDlpEntryPatternArgs', 'ZeroTrustDlpEntryPatternArgsDict', 'outputs.ZeroTrustDlpEntryPattern']]] = None,
             profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-            profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpEntryProfileArgs', 'ZeroTrustDlpEntryProfileArgsDict']]]]] = None,
+            profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpEntryProfileArgs', 'ZeroTrustDlpEntryProfileArgsDict', 'outputs.ZeroTrustDlpEntryProfile']]]]] = None,
             secret: pulumi.Input[Optional[_builtins.bool]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             upload_status: pulumi.Input[Optional[_builtins.str]] = None,
-            variant: pulumi.Input[Optional[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict']]] = None,
+            variant: pulumi.Input[Optional[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict', 'outputs.ZeroTrustDlpEntryVariant']]] = None,
             word_list: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDlpEntry':
         """
         Get an existing ZeroTrustDlpEntry resource's state with the given name, id, and optional extra
@@ -533,7 +533,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                emitted only when true.
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-        :param pulumi.Input[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict']] variant: A Predefined AI prompt classification topic entry.
+        :param pulumi.Input[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict', 'outputs.ZeroTrustDlpEntryVariant']] variant: A Predefined AI prompt classification topic entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

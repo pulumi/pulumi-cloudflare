@@ -205,7 +205,7 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayDynamicRoutingElementArgs', 'AiGatewayDynamicRoutingElementArgsDict']]]]] = None,
+                 elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayDynamicRoutingElementArgs', 'AiGatewayDynamicRoutingElementArgsDict', 'outputs.AiGatewayDynamicRoutingElement']]]]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -302,7 +302,7 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayDynamicRoutingElementArgs', 'AiGatewayDynamicRoutingElementArgsDict']]]]] = None,
+                 elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayDynamicRoutingElementArgs', 'AiGatewayDynamicRoutingElementArgsDict', 'outputs.AiGatewayDynamicRoutingElement']]]]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -344,14 +344,14 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            deployment: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingDeploymentArgs', 'AiGatewayDynamicRoutingDeploymentArgsDict']]] = None,
-            elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayDynamicRoutingElementArgs', 'AiGatewayDynamicRoutingElementArgsDict']]]]] = None,
+            deployment: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingDeploymentArgs', 'AiGatewayDynamicRoutingDeploymentArgsDict', 'outputs.AiGatewayDynamicRoutingDeployment']]] = None,
+            elements: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayDynamicRoutingElementArgs', 'AiGatewayDynamicRoutingElementArgsDict', 'outputs.AiGatewayDynamicRoutingElement']]]]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             modified_at: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            route: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingRouteArgs', 'AiGatewayDynamicRoutingRouteArgsDict']]] = None,
+            route: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingRouteArgs', 'AiGatewayDynamicRoutingRouteArgsDict', 'outputs.AiGatewayDynamicRoutingRoute']]] = None,
             success: pulumi.Input[Optional[_builtins.bool]] = None,
-            version: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingVersionArgs', 'AiGatewayDynamicRoutingVersionArgsDict']]] = None) -> 'AiGatewayDynamicRouting':
+            version: pulumi.Input[Optional[Union['AiGatewayDynamicRoutingVersionArgs', 'AiGatewayDynamicRoutingVersionArgsDict', 'outputs.AiGatewayDynamicRoutingVersion']]] = None) -> 'AiGatewayDynamicRouting':
         """
         Get an existing AiGatewayDynamicRouting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

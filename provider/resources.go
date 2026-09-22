@@ -71,13 +71,13 @@ func Provider() info.Provider {
 	// Create a Pulumi provider mapping
 	prov := info.Provider{
 		P:                       p,
-		Name:                    "cloudflare",
+		Name:                    mainPkg,
 		DisplayName:             "Cloudflare",
 		Description:             "A Pulumi package for creating and managing Cloudflare cloud resources.",
-		Keywords:                []string{"pulumi", "cloudflare"},
+		Keywords:                []string{"pulumi", mainPkg},
 		License:                 "Apache-2.0",
 		Homepage:                "https://pulumi.io",
-		GitHubOrg:               "cloudflare",
+		GitHubOrg:               mainPkg,
 		Repository:              "https://github.com/pulumi/pulumi-cloudflare",
 		UpstreamRepoPath:        "./upstream",
 		Version:                 version.Version,
@@ -639,7 +639,6 @@ func Provider() info.Provider {
 			},
 		},
 		EnableZeroDefaultSchemaVersion: true,
-		EnableAccurateBridgePreview:    true,
 	}
 
 	resourcesWithMistypedID := []string{
@@ -910,7 +909,7 @@ func isPulumiArgoTieredCachingState(state resource.PropertyMap) bool {
 
 func delegateID(pulumiField resource.PropertyKey) tfbridge.ComputeID {
 	repoURL := "https://github.com/pulumi/pulumi-cloudflare"
-	d := tfbridge.DelegateIDField(pulumiField, "cloudflare", repoURL)
+	d := tfbridge.DelegateIDField(pulumiField, mainPkg, repoURL)
 
 	return func(ctx context.Context, state resource.PropertyMap) (resource.ID, error) {
 		modifiedState := state

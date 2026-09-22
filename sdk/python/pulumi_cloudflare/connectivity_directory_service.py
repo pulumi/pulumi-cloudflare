@@ -324,12 +324,12 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
-                 host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
+                 host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict', 'outputs.ConnectivityDirectoryServiceHost']]] = None,
                  http_port: pulumi.Input[Optional[_builtins.int]] = None,
                  https_port: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
-                 tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
+                 tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict', 'outputs.ConnectivityDirectoryServiceTlsSettings']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -367,7 +367,7 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier
         :param pulumi.Input[_builtins.str] app_protocol: Available values: "postgresql", "mysql".
-        :param pulumi.Input[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']] tls_settings: TLS settings for a connectivity service.
+        :param pulumi.Input[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict', 'outputs.ConnectivityDirectoryServiceTlsSettings']] tls_settings: TLS settings for a connectivity service.
         :param pulumi.Input[_builtins.str] type: Available values: "tcp", "http".
         """
         ...
@@ -424,12 +424,12 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
-                 host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
+                 host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict', 'outputs.ConnectivityDirectoryServiceHost']]] = None,
                  http_port: pulumi.Input[Optional[_builtins.int]] = None,
                  https_port: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
-                 tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
+                 tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict', 'outputs.ConnectivityDirectoryServiceTlsSettings']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -473,13 +473,13 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
+            host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict', 'outputs.ConnectivityDirectoryServiceHost']]] = None,
             http_port: pulumi.Input[Optional[_builtins.int]] = None,
             https_port: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             service_id: pulumi.Input[Optional[_builtins.str]] = None,
             tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
-            tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
+            tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict', 'outputs.ConnectivityDirectoryServiceTlsSettings']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectivityDirectoryService':
         """
@@ -491,7 +491,7 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier
         :param pulumi.Input[_builtins.str] app_protocol: Available values: "postgresql", "mysql".
-        :param pulumi.Input[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']] tls_settings: TLS settings for a connectivity service.
+        :param pulumi.Input[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict', 'outputs.ConnectivityDirectoryServiceTlsSettings']] tls_settings: TLS settings for a connectivity service.
         :param pulumi.Input[_builtins.str] type: Available values: "tcp", "http".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

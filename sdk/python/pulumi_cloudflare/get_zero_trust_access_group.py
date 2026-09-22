@@ -157,7 +157,7 @@ class AwaitableGetZeroTrustAccessGroupResult(GetZeroTrustAccessGroupResult):
 
 
 def get_zero_trust_access_group(account_id: Optional[_builtins.str] = None,
-                                filter: Optional[Union['GetZeroTrustAccessGroupFilterArgs', 'GetZeroTrustAccessGroupFilterArgsDict']] = None,
+                                filter: Optional[Union['GetZeroTrustAccessGroupFilterArgs', 'GetZeroTrustAccessGroupFilterArgsDict', 'outputs.GetZeroTrustAccessGroupFilterResult']] = None,
                                 group_id: Optional[_builtins.str] = None,
                                 zone_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessGroupResult:
@@ -203,7 +203,7 @@ def get_zero_trust_access_group(account_id: Optional[_builtins.str] = None,
         requires=pulumi.get(__ret__, 'requires'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_group_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                       filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessGroupFilterArgs', 'GetZeroTrustAccessGroupFilterArgsDict']]]] = None,
+                                       filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessGroupFilterArgs', 'GetZeroTrustAccessGroupFilterArgsDict', 'outputs.GetZeroTrustAccessGroupFilterResult']]]] = None,
                                        group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessGroupResult]:

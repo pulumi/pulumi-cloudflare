@@ -1090,30 +1090,30 @@ class WorkerScript(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
-                 assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
-                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']]] = None,
+                 assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']]] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
-                 cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict']]] = None,
+                 cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  content_file: pulumi.Input[Optional[_builtins.str]] = None,
                  content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]]] = None,
-                 files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict', 'outputs.WorkerScriptExports']]]]] = None,
+                 files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict', 'outputs.WorkerScriptFiles']]]]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict', 'outputs.WorkerScriptLimits']]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
-                 migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
-                 observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
-                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict']]]]] = None,
-                 placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
+                 migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict', 'outputs.WorkerScriptMigrations']]] = None,
+                 observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict', 'outputs.WorkerScriptObservability']]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict', 'outputs.WorkerScriptPackageDependency']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict', 'outputs.WorkerScriptPlacement']]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict', 'outputs.WorkerScriptTailConsumer']]]]] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1263,11 +1263,11 @@ class WorkerScript(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']] annotations: Annotations for the version created by this upload.
-        :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']] assets: Configuration for assets within a Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']] annotations: Annotations for the version created by this upload.
+        :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']] assets: Configuration for assets within a Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-        :param pulumi.Input[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict']] cache_options: Global CacheW configuration for the Worker. When caching is on,
+        :param pulumi.Input[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
@@ -1277,19 +1277,19 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
         :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict', 'outputs.WorkerScriptExports']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict', 'outputs.WorkerScriptFiles']]]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
-        :param pulumi.Input[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']] limits: Limits to apply for this Worker.
+        :param pulumi.Input[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict', 'outputs.WorkerScriptLimits']] limits: Limits to apply for this Worker.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
-        :param pulumi.Input[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']] migrations: Migrations to apply for Durable Objects associated with this Worker.
-        :param pulumi.Input[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict']]]] package_dependencies: The list of npm packages that were installed and used when this Worker was built.
-        :param pulumi.Input[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
+        :param pulumi.Input[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict', 'outputs.WorkerScriptMigrations']] migrations: Migrations to apply for Durable Objects associated with this Worker.
+        :param pulumi.Input[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict', 'outputs.WorkerScriptObservability']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict', 'outputs.WorkerScriptPackageDependency']]]] package_dependencies: The list of npm packages that were installed and used when this Worker was built.
+        :param pulumi.Input[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict', 'outputs.WorkerScriptPlacement']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict', 'outputs.WorkerScriptTailConsumer']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
                Available values: "standard", "bundled", "unbound".
         """
@@ -1459,30 +1459,30 @@ class WorkerScript(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
-                 assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
-                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']]] = None,
+                 assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']]] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
-                 cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict']]] = None,
+                 cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
                  compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  content_file: pulumi.Input[Optional[_builtins.str]] = None,
                  content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]]] = None,
-                 files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]]] = None,
+                 exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict', 'outputs.WorkerScriptExports']]]]] = None,
+                 files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict', 'outputs.WorkerScriptFiles']]]]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict', 'outputs.WorkerScriptLimits']]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  main_module: pulumi.Input[Optional[_builtins.str]] = None,
-                 migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
-                 observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
-                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict']]]]] = None,
-                 placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
+                 migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict', 'outputs.WorkerScriptMigrations']]] = None,
+                 observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict', 'outputs.WorkerScriptObservability']]] = None,
+                 package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict', 'outputs.WorkerScriptPackageDependency']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict', 'outputs.WorkerScriptPlacement']]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict', 'outputs.WorkerScriptTailConsumer']]]]] = None,
                  usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""WorkerScript is deprecated: cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript""")
@@ -1549,11 +1549,11 @@ class WorkerScript(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
-            assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
-            bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']]] = None,
+            assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']]] = None,
+            bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]]] = None,
             body_part: pulumi.Input[Optional[_builtins.str]] = None,
-            cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict']]] = None,
+            cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
             compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
             compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             content: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1562,29 +1562,29 @@ class WorkerScript(pulumi.CustomResource):
             content_type: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
-            exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]]] = None,
-            files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]]] = None,
+            exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict', 'outputs.WorkerScriptExports']]]]] = None,
+            files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict', 'outputs.WorkerScriptFiles']]]]] = None,
             handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
             has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
             keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
             keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             last_deployed_from: pulumi.Input[Optional[_builtins.str]] = None,
-            limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
+            limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict', 'outputs.WorkerScriptLimits']]] = None,
             logpush: pulumi.Input[Optional[_builtins.bool]] = None,
             main_module: pulumi.Input[Optional[_builtins.str]] = None,
             migration_tag: pulumi.Input[Optional[_builtins.str]] = None,
-            migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
+            migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict', 'outputs.WorkerScriptMigrations']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
-            named_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptNamedHandlerArgs', 'WorkerScriptNamedHandlerArgsDict']]]]] = None,
-            observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
-            package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict']]]]] = None,
-            placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
+            named_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptNamedHandlerArgs', 'WorkerScriptNamedHandlerArgsDict', 'outputs.WorkerScriptNamedHandler']]]]] = None,
+            observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict', 'outputs.WorkerScriptObservability']]] = None,
+            package_dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict', 'outputs.WorkerScriptPackageDependency']]]]] = None,
+            placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict', 'outputs.WorkerScriptPlacement']]] = None,
             placement_mode: pulumi.Input[Optional[_builtins.str]] = None,
             placement_status: pulumi.Input[Optional[_builtins.str]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
             startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
-            tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
+            tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict', 'outputs.WorkerScriptTailConsumer']]]]] = None,
             usage_model: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkerScript':
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
@@ -1594,11 +1594,11 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']] annotations: Annotations for the version created by this upload.
-        :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']] assets: Configuration for assets within a Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']] annotations: Annotations for the version created by this upload.
+        :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']] assets: Configuration for assets within a Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-        :param pulumi.Input[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict']] cache_options: Global CacheW configuration for the Worker. When caching is on,
+        :param pulumi.Input[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
                A `type: worker` entry in the `exports` map can override this
                value for a single entrypoint.
@@ -1610,28 +1610,28 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[_builtins.str] created_on: When the script was created.
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict']]]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptExportsArgs', 'WorkerScriptExportsArgsDict', 'outputs.WorkerScriptExports']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkerScriptFilesArgs', 'WorkerScriptFilesArgsDict', 'outputs.WorkerScriptFiles']]]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] handlers: The names of handlers exported as part of the default export.
         :param pulumi.Input[_builtins.bool] has_assets: Whether a Worker contains assets.
         :param pulumi.Input[_builtins.bool] has_modules: Whether a Worker contains modules.
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[_builtins.str] last_deployed_from: The client most recently used to deploy this Worker.
-        :param pulumi.Input[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']] limits: Limits to apply for this Worker.
+        :param pulumi.Input[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict', 'outputs.WorkerScriptLimits']] limits: Limits to apply for this Worker.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input[_builtins.str] migration_tag: The tag of the Durable Object migration that was most recently applied for this Worker.
-        :param pulumi.Input[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']] migrations: Migrations to apply for Durable Objects associated with this Worker.
+        :param pulumi.Input[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict', 'outputs.WorkerScriptMigrations']] migrations: Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptNamedHandlerArgs', 'WorkerScriptNamedHandlerArgsDict']]]] named_handlers: Named exports, such as Durable Object class implementations and named entrypoints.
-        :param pulumi.Input[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict']]]] package_dependencies: The list of npm packages that were installed and used when this Worker was built.
-        :param pulumi.Input[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptNamedHandlerArgs', 'WorkerScriptNamedHandlerArgsDict', 'outputs.WorkerScriptNamedHandler']]]] named_handlers: Named exports, such as Durable Object class implementations and named entrypoints.
+        :param pulumi.Input[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict', 'outputs.WorkerScriptObservability']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptPackageDependencyArgs', 'WorkerScriptPackageDependencyArgsDict', 'outputs.WorkerScriptPackageDependency']]]] package_dependencies: The list of npm packages that were installed and used when this Worker was built.
+        :param pulumi.Input[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict', 'outputs.WorkerScriptPlacement']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] placement_mode: Available values: "smart", "targeted".
         :param pulumi.Input[_builtins.str] placement_status: Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict', 'outputs.WorkerScriptTailConsumer']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
                Available values: "standard", "bundled", "unbound".
         """

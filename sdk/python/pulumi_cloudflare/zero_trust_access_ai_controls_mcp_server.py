@@ -592,8 +592,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
                  is_shared_oauth_callback_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-                 updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
-                 updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
+                 updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]]] = None,
+                 updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool']]]]] = None,
                  zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -651,8 +651,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
         :param pulumi.Input[_builtins.str] name: Display name for the MCP server.
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]] updated_prompts: Server-wide prompt capability overrides.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]] updated_tools: Server-wide tool capability overrides.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]] updated_prompts: Server-wide prompt capability overrides.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool']]]] updated_tools: Server-wide tool capability overrides.
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_server_id: Unique identifier for the MCP server.
         """
         ...
@@ -729,8 +729,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
                  is_shared_oauth_callback_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-                 updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
-                 updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
+                 updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]]] = None,
+                 updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool']]]]] = None,
                  zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -789,7 +789,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            auth_config_summary: pulumi.Input[Optional[Union['ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs', 'ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgsDict']]] = None,
+            auth_config_summary: pulumi.Input[Optional[Union['ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs', 'ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummary']]] = None,
             auth_credentials: pulumi.Input[Optional[_builtins.str]] = None,
             auth_type: pulumi.Input[Optional[_builtins.str]] = None,
             authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -798,7 +798,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             error: pulumi.Input[Optional[_builtins.str]] = None,
-            error_details: pulumi.Input[Optional[Union['ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs', 'ZeroTrustAccessAiControlsMcpServerErrorDetailsArgsDict']]] = None,
+            error_details: pulumi.Input[Optional[Union['ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs', 'ZeroTrustAccessAiControlsMcpServerErrorDetailsArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerErrorDetails']]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
             is_shared_oauth_callback_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             last_successful_sync: pulumi.Input[Optional[_builtins.str]] = None,
@@ -810,8 +810,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tools: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
-            updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
+            updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]]] = None,
+            updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool']]]]] = None,
             zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessAiControlsMcpServer':
         """
         Get an existing ZeroTrustAccessAiControlsMcpServer resource's state with the given name, id, and optional extra
@@ -820,7 +820,7 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs', 'ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgsDict']] auth_config_summary: Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
+        :param pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs', 'ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummary']] auth_config_summary: Safe subset of auth*credentials surfaced to the dashboard. Includes auth*mode (dcr|manual), has*client*secret, client*secret*version, and the OAuth endpoints + client*id for manual servers. Never includes the secret value.
         :param pulumi.Input[_builtins.str] auth_credentials: Static credential for the upstream MCP server. For auth_type "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer <token>`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
         :param pulumi.Input[_builtins.str] auth_type: Authentication method used to connect to the upstream MCP server.
                Available values: "oauth", "bearer", "unauthenticated".
@@ -832,8 +832,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_shared_oauth_callback_enabled: When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true.
         :param pulumi.Input[_builtins.str] name: Display name for the MCP server.
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]] updated_prompts: Server-wide prompt capability overrides.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]] updated_tools: Server-wide tool capability overrides.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]] updated_prompts: Server-wide prompt capability overrides.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool']]]] updated_tools: Server-wide tool capability overrides.
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_server_id: Unique identifier for the MCP server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

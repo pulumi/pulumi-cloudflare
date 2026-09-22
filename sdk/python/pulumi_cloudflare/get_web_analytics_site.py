@@ -163,7 +163,7 @@ class AwaitableGetWebAnalyticsSiteResult(GetWebAnalyticsSiteResult):
 
 
 def get_web_analytics_site(account_id: Optional[_builtins.str] = None,
-                           filter: Optional[Union['GetWebAnalyticsSiteFilterArgs', 'GetWebAnalyticsSiteFilterArgsDict']] = None,
+                           filter: Optional[Union['GetWebAnalyticsSiteFilterArgs', 'GetWebAnalyticsSiteFilterArgsDict', 'outputs.GetWebAnalyticsSiteFilterResult']] = None,
                            site_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebAnalyticsSiteResult:
     """
@@ -205,7 +205,7 @@ def get_web_analytics_site(account_id: Optional[_builtins.str] = None,
         site_token=pulumi.get(__ret__, 'site_token'),
         snippet=pulumi.get(__ret__, 'snippet'))
 def get_web_analytics_site_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                  filter: pulumi.Input[Optional[Optional[Union['GetWebAnalyticsSiteFilterArgs', 'GetWebAnalyticsSiteFilterArgsDict']]]] = None,
+                                  filter: pulumi.Input[Optional[Optional[Union['GetWebAnalyticsSiteFilterArgs', 'GetWebAnalyticsSiteFilterArgsDict', 'outputs.GetWebAnalyticsSiteFilterResult']]]] = None,
                                   site_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebAnalyticsSiteResult]:
     """

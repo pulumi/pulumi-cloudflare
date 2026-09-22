@@ -473,7 +473,7 @@ class User(pulumi.CustomResource):
             has_enterprise_zones: pulumi.Input[Optional[_builtins.bool]] = None,
             has_pro_zones: pulumi.Input[Optional[_builtins.bool]] = None,
             last_name: pulumi.Input[Optional[_builtins.str]] = None,
-            organizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserOrganizationArgs', 'UserOrganizationArgsDict']]]]] = None,
+            organizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserOrganizationArgs', 'UserOrganizationArgsDict', 'outputs.UserOrganization']]]]] = None,
             suspended: pulumi.Input[Optional[_builtins.bool]] = None,
             telephone: pulumi.Input[Optional[_builtins.str]] = None,
             two_factor_authentication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,

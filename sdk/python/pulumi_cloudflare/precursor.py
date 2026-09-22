@@ -162,7 +162,7 @@ class Precursor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 enforcement_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict']]]]] = None,
+                 enforcement_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict', 'outputs.PrecursorEnforcementRule']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -195,7 +195,7 @@ class Precursor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_mode: The zone-level Precursor enforcement mode applied to requests that do
                not match a more specific enforcement rule.
                Available values: "off", "min-friction", "max-security".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict']]]] enforcement_rules: The ordered list of enforcement rules for the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict', 'outputs.PrecursorEnforcementRule']]]] enforcement_rules: The ordered list of enforcement rules for the zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -245,7 +245,7 @@ class Precursor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 enforcement_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict']]]]] = None,
+                 enforcement_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict', 'outputs.PrecursorEnforcementRule']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -272,7 +272,7 @@ class Precursor(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             default_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            enforcement_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict']]]]] = None,
+            enforcement_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict', 'outputs.PrecursorEnforcementRule']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Precursor':
         """
         Get an existing Precursor resource's state with the given name, id, and optional extra
@@ -284,7 +284,7 @@ class Precursor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_mode: The zone-level Precursor enforcement mode applied to requests that do
                not match a more specific enforcement rule.
                Available values: "off", "min-friction", "max-security".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict']]]] enforcement_rules: The ordered list of enforcement rules for the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrecursorEnforcementRuleArgs', 'PrecursorEnforcementRuleArgsDict', 'outputs.PrecursorEnforcementRule']]]] enforcement_rules: The ordered list of enforcement rules for the zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -308,7 +308,7 @@ class Ruleset(pulumi.CustomResource):
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  phase: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict', 'outputs.RulesetRule']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -348,7 +348,7 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The human-readable name of the ruleset.
         :param pulumi.Input[_builtins.str] phase: The phase of the ruleset.
                Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]] rules: The list of rules in the ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict', 'outputs.RulesetRule']]]] rules: The list of rules in the ruleset.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """
         ...
@@ -405,7 +405,7 @@ class Ruleset(pulumi.CustomResource):
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  phase: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict', 'outputs.RulesetRule']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -447,7 +447,7 @@ class Ruleset(pulumi.CustomResource):
             last_updated: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             phase: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict', 'outputs.RulesetRule']]]]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ruleset':
         """
@@ -465,7 +465,7 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The human-readable name of the ruleset.
         :param pulumi.Input[_builtins.str] phase: The phase of the ruleset.
                Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]] rules: The list of rules in the ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict', 'outputs.RulesetRule']]]] rules: The list of rules in the ruleset.
         :param pulumi.Input[_builtins.str] version: The version of the ruleset.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """

@@ -336,10 +336,10 @@ class Workflow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict']]] = None,
-                 default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
-                 limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
-                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
+                 concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict', 'outputs.WorkflowConcurrency']]] = None,
+                 default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict', 'outputs.WorkflowLimits']]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict', 'outputs.WorkflowSchedule']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  workflow_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -385,7 +385,7 @@ class Workflow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
+        :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
         """
         ...
     @overload
@@ -450,10 +450,10 @@ class Workflow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict']]] = None,
-                 default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
-                 limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
-                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
+                 concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict', 'outputs.WorkflowConcurrency']]] = None,
+                 default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict', 'outputs.WorkflowLimits']]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict', 'outputs.WorkflowSchedule']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  workflow_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -501,15 +501,15 @@ class Workflow(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             class_name: pulumi.Input[Optional[_builtins.str]] = None,
-            concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict']]] = None,
+            concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict', 'outputs.WorkflowConcurrency']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']]] = None,
+            default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']]] = None,
             instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None,
             is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
-            limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
+            limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict', 'outputs.WorkflowLimits']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict', 'outputs.WorkflowSchedule']]]]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
             terminator_running: pulumi.Input[Optional[_builtins.float]] = None,
             triggered_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -522,7 +522,7 @@ class Workflow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
+        :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

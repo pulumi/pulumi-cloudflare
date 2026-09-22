@@ -390,11 +390,11 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
+                 nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict', 'outputs.MagicTransitSiteLanNat']]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
-                 routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
+                 routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict', 'outputs.MagicTransitSiteLanRoutedSubnet']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
+                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']]] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -465,7 +465,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_breakout: mark true to use this LAN for source-based breakout traffic
         :param pulumi.Input[_builtins.bool] is_prioritized: mark true to use this LAN for source-based prioritized traffic
         :param pulumi.Input[_builtins.str] site_id: Identifier
-        :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
+        :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         ...
@@ -556,11 +556,11 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                  is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
+                 nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict', 'outputs.MagicTransitSiteLanNat']]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
-                 routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
+                 routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict', 'outputs.MagicTransitSiteLanRoutedSubnet']]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
+                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']]] = None,
                  vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -603,11 +603,11 @@ class MagicTransitSiteLan(pulumi.CustomResource):
             is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
             is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
+            nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict', 'outputs.MagicTransitSiteLanNat']]] = None,
             physport: pulumi.Input[Optional[_builtins.int]] = None,
-            routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
+            routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict', 'outputs.MagicTransitSiteLanRoutedSubnet']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
-            static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
+            static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']]] = None,
             vlan_tag: pulumi.Input[Optional[_builtins.int]] = None) -> 'MagicTransitSiteLan':
         """
         Get an existing MagicTransitSiteLan resource's state with the given name, id, and optional extra
@@ -621,7 +621,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_breakout: mark true to use this LAN for source-based breakout traffic
         :param pulumi.Input[_builtins.bool] is_prioritized: mark true to use this LAN for source-based prioritized traffic
         :param pulumi.Input[_builtins.str] site_id: Identifier
-        :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
+        :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict', 'outputs.MagicTransitSiteLanStaticAddressing']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

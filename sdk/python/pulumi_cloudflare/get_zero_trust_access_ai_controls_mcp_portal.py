@@ -189,7 +189,7 @@ class AwaitableGetZeroTrustAccessAiControlsMcpPortalResult(GetZeroTrustAccessAiC
 
 
 def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.str] = None,
-                                                 filter: Optional[Union['GetZeroTrustAccessAiControlsMcpPortalFilterArgs', 'GetZeroTrustAccessAiControlsMcpPortalFilterArgsDict']] = None,
+                                                 filter: Optional[Union['GetZeroTrustAccessAiControlsMcpPortalFilterArgs', 'GetZeroTrustAccessAiControlsMcpPortalFilterArgsDict', 'outputs.GetZeroTrustAccessAiControlsMcpPortalFilterResult']] = None,
                                                  id: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessAiControlsMcpPortalResult:
     """
@@ -234,7 +234,7 @@ def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.
         secure_web_gateway=pulumi.get(__ret__, 'secure_web_gateway'),
         servers=pulumi.get(__ret__, 'servers'))
 def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                        filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessAiControlsMcpPortalFilterArgs', 'GetZeroTrustAccessAiControlsMcpPortalFilterArgsDict']]]] = None,
+                                                        filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessAiControlsMcpPortalFilterArgs', 'GetZeroTrustAccessAiControlsMcpPortalFilterArgsDict', 'outputs.GetZeroTrustAccessAiControlsMcpPortalFilterResult']]]] = None,
                                                         id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessAiControlsMcpPortalResult]:
     """

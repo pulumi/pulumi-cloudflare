@@ -324,7 +324,7 @@ class AwaitableGetAiGatewayResult(GetAiGatewayResult):
 
 
 def get_ai_gateway(account_id: Optional[_builtins.str] = None,
-                   filter: Optional[Union['GetAiGatewayFilterArgs', 'GetAiGatewayFilterArgsDict']] = None,
+                   filter: Optional[Union['GetAiGatewayFilterArgs', 'GetAiGatewayFilterArgsDict', 'outputs.GetAiGatewayFilterResult']] = None,
                    id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiGatewayResult:
     """
@@ -384,7 +384,7 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
         workers_ai_billing_mode=pulumi.get(__ret__, 'workers_ai_billing_mode'),
         zdr=pulumi.get(__ret__, 'zdr'))
 def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          filter: pulumi.Input[Optional[Optional[Union['GetAiGatewayFilterArgs', 'GetAiGatewayFilterArgsDict']]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetAiGatewayFilterArgs', 'GetAiGatewayFilterArgsDict', 'outputs.GetAiGatewayFilterResult']]]] = None,
                           id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayResult]:
     """

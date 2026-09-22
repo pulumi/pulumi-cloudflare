@@ -242,7 +242,7 @@ class TeamsList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict', 'outputs.TeamsListItem']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -274,7 +274,7 @@ class TeamsList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Provide the list description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]] items: Add items to the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict', 'outputs.TeamsListItem']]]] items: Add items to the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
                Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
@@ -327,7 +327,7 @@ class TeamsList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict', 'outputs.TeamsListItem']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -369,7 +369,7 @@ class TeamsList(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]]] = None,
+            items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict', 'outputs.TeamsListItem']]]]] = None,
             list_count: pulumi.Input[Optional[_builtins.float]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -382,7 +382,7 @@ class TeamsList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Provide the list description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]] items: Add items to the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict', 'outputs.TeamsListItem']]]] items: Add items to the list.
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.

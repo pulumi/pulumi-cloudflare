@@ -272,7 +272,7 @@ class ZeroTrustDlpSensitivityGroup(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpSensitivityGroupLevelArgs', 'ZeroTrustDlpSensitivityGroupLevelArgsDict']]]]] = None,
+            levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpSensitivityGroupLevelArgs', 'ZeroTrustDlpSensitivityGroupLevelArgsDict', 'outputs.ZeroTrustDlpSensitivityGroupLevel']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDlpSensitivityGroup':

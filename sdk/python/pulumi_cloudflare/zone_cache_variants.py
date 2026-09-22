@@ -136,7 +136,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 value: pulumi.Input[Optional[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict']]] = None,
+                 value: pulumi.Input[Optional[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict', 'outputs.ZoneCacheVariantsValue']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -212,7 +212,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict']] value: Value of the zone setting.
+        :param pulumi.Input[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict', 'outputs.ZoneCacheVariantsValue']] value: Value of the zone setting.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -307,7 +307,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 value: pulumi.Input[Optional[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict']]] = None,
+                 value: pulumi.Input[Optional[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict', 'outputs.ZoneCacheVariantsValue']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -338,7 +338,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             editable: pulumi.Input[Optional[_builtins.bool]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
-            value: pulumi.Input[Optional[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict']]] = None,
+            value: pulumi.Input[Optional[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict', 'outputs.ZoneCacheVariantsValue']]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneCacheVariants':
         """
         Get an existing ZoneCacheVariants resource's state with the given name, id, and optional extra
@@ -349,7 +349,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
-        :param pulumi.Input[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict']] value: Value of the zone setting.
+        :param pulumi.Input[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict', 'outputs.ZoneCacheVariantsValue']] value: Value of the zone setting.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -167,7 +167,7 @@ class AwaitableGetEmailSecurityTrustedDomainsResult(GetEmailSecurityTrustedDomai
 
 
 def get_email_security_trusted_domains(account_id: Optional[_builtins.str] = None,
-                                       filter: Optional[Union['GetEmailSecurityTrustedDomainsFilterArgs', 'GetEmailSecurityTrustedDomainsFilterArgsDict']] = None,
+                                       filter: Optional[Union['GetEmailSecurityTrustedDomainsFilterArgs', 'GetEmailSecurityTrustedDomainsFilterArgsDict', 'outputs.GetEmailSecurityTrustedDomainsFilterResult']] = None,
                                        trusted_domain_id: Optional[_builtins.str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityTrustedDomainsResult:
     """
@@ -211,7 +211,7 @@ def get_email_security_trusted_domains(account_id: Optional[_builtins.str] = Non
         pattern=pulumi.get(__ret__, 'pattern'),
         trusted_domain_id=pulumi.get(__ret__, 'trusted_domain_id'))
 def get_email_security_trusted_domains_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                              filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityTrustedDomainsFilterArgs', 'GetEmailSecurityTrustedDomainsFilterArgsDict']]]] = None,
+                                              filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityTrustedDomainsFilterArgs', 'GetEmailSecurityTrustedDomainsFilterArgsDict', 'outputs.GetEmailSecurityTrustedDomainsFilterResult']]]] = None,
                                               trusted_domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityTrustedDomainsResult]:
     """

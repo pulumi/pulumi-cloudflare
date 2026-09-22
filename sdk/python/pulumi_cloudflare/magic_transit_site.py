@@ -260,7 +260,7 @@ class MagicTransitSite(pulumi.CustomResource):
                  connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
-                 location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
+                 location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict', 'outputs.MagicTransitSiteLocation']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -303,7 +303,7 @@ class MagicTransitSite(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] connector_id: Magic Connector identifier tag.
         :param pulumi.Input[_builtins.bool] ha_mode: Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
-        :param pulumi.Input[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']] location: Location of site in latitude and longitude.
+        :param pulumi.Input[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict', 'outputs.MagicTransitSiteLocation']] location: Location of site in latitude and longitude.
         :param pulumi.Input[_builtins.str] name: The name of the site.
         :param pulumi.Input[_builtins.str] secondary_connector_id: Magic Connector identifier tag. Used when high availability mode is on.
         """
@@ -366,7 +366,7 @@ class MagicTransitSite(pulumi.CustomResource):
                  connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
-                 location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
+                 location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict', 'outputs.MagicTransitSiteLocation']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -403,7 +403,7 @@ class MagicTransitSite(pulumi.CustomResource):
             connector_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
-            location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
+            location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict', 'outputs.MagicTransitSiteLocation']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MagicTransitSite':
         """
@@ -416,7 +416,7 @@ class MagicTransitSite(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] connector_id: Magic Connector identifier tag.
         :param pulumi.Input[_builtins.bool] ha_mode: Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
-        :param pulumi.Input[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']] location: Location of site in latitude and longitude.
+        :param pulumi.Input[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict', 'outputs.MagicTransitSiteLocation']] location: Location of site in latitude and longitude.
         :param pulumi.Input[_builtins.str] name: The name of the site.
         :param pulumi.Input[_builtins.str] secondary_connector_id: Magic Connector identifier tag. Used when high availability mode is on.
         """

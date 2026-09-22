@@ -324,11 +324,11 @@ class AccountToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['AccountTokenConditionArgs', 'AccountTokenConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AccountTokenConditionArgs', 'AccountTokenConditionArgsDict', 'outputs.AccountTokenCondition']]] = None,
                  expires_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  not_before: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict', 'outputs.AccountTokenPolicy']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -390,7 +390,7 @@ class AccountToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]] policies: Set of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict', 'outputs.AccountTokenPolicy']]]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         """
@@ -469,11 +469,11 @@ class AccountToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 condition: pulumi.Input[Optional[Union['AccountTokenConditionArgs', 'AccountTokenConditionArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['AccountTokenConditionArgs', 'AccountTokenConditionArgsDict', 'outputs.AccountTokenCondition']]] = None,
                  expires_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  not_before: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict', 'outputs.AccountTokenPolicy']]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -514,14 +514,14 @@ class AccountToken(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            condition: pulumi.Input[Optional[Union['AccountTokenConditionArgs', 'AccountTokenConditionArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['AccountTokenConditionArgs', 'AccountTokenConditionArgsDict', 'outputs.AccountTokenCondition']]] = None,
             expires_on: pulumi.Input[Optional[_builtins.str]] = None,
             issued_on: pulumi.Input[Optional[_builtins.str]] = None,
             last_used_on: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             not_before: pulumi.Input[Optional[_builtins.str]] = None,
-            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict', 'outputs.AccountTokenPolicy']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             value: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountToken':
         """
@@ -538,7 +538,7 @@ class AccountToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: Last time the token was modified.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]] policies: Set of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict', 'outputs.AccountTokenPolicy']]]] policies: Set of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         :param pulumi.Input[_builtins.str] value: The token value.

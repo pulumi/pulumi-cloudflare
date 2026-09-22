@@ -295,7 +295,7 @@ class AwaitableGetZeroTrustAccessAiControlsMcpServerResult(GetZeroTrustAccessAiC
 
 
 def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.str] = None,
-                                                 filter: Optional[Union['GetZeroTrustAccessAiControlsMcpServerFilterArgs', 'GetZeroTrustAccessAiControlsMcpServerFilterArgsDict']] = None,
+                                                 filter: Optional[Union['GetZeroTrustAccessAiControlsMcpServerFilterArgs', 'GetZeroTrustAccessAiControlsMcpServerFilterArgsDict', 'outputs.GetZeroTrustAccessAiControlsMcpServerFilterResult']] = None,
                                                  id: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessAiControlsMcpServerResult:
     """
@@ -350,7 +350,7 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
         updated_prompts=pulumi.get(__ret__, 'updated_prompts'),
         updated_tools=pulumi.get(__ret__, 'updated_tools'))
 def get_zero_trust_access_ai_controls_mcp_server_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                        filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessAiControlsMcpServerFilterArgs', 'GetZeroTrustAccessAiControlsMcpServerFilterArgsDict']]]] = None,
+                                                        filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessAiControlsMcpServerFilterArgs', 'GetZeroTrustAccessAiControlsMcpServerFilterArgsDict', 'outputs.GetZeroTrustAccessAiControlsMcpServerFilterResult']]]] = None,
                                                         id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessAiControlsMcpServerResult]:
     """

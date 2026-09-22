@@ -206,7 +206,7 @@ class Queue(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict', 'outputs.QueueSettings']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -287,7 +287,7 @@ class Queue(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict', 'outputs.QueueSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,15 +322,15 @@ class Queue(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueConsumerArgs', 'QueueConsumerArgsDict']]]]] = None,
+            consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueConsumerArgs', 'QueueConsumerArgsDict', 'outputs.QueueConsumer']]]]] = None,
             consumers_total_count: pulumi.Input[Optional[_builtins.float]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
-            producers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueProducerArgs', 'QueueProducerArgsDict']]]]] = None,
+            producers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueProducerArgs', 'QueueProducerArgsDict', 'outputs.QueueProducer']]]]] = None,
             producers_total_count: pulumi.Input[Optional[_builtins.float]] = None,
             queue_id: pulumi.Input[Optional[_builtins.str]] = None,
             queue_name: pulumi.Input[Optional[_builtins.str]] = None,
-            settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict']]] = None) -> 'Queue':
+            settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict', 'outputs.QueueSettings']]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

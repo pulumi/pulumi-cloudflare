@@ -170,7 +170,7 @@ class AwaitableGetZeroTrustNetworkHostnameRouteResult(GetZeroTrustNetworkHostnam
 
 
 def get_zero_trust_network_hostname_route(account_id: Optional[_builtins.str] = None,
-                                          filter: Optional[Union['GetZeroTrustNetworkHostnameRouteFilterArgs', 'GetZeroTrustNetworkHostnameRouteFilterArgsDict']] = None,
+                                          filter: Optional[Union['GetZeroTrustNetworkHostnameRouteFilterArgs', 'GetZeroTrustNetworkHostnameRouteFilterArgsDict', 'outputs.GetZeroTrustNetworkHostnameRouteFilterResult']] = None,
                                           hostname_route_id: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustNetworkHostnameRouteResult:
     """
@@ -215,7 +215,7 @@ def get_zero_trust_network_hostname_route(account_id: Optional[_builtins.str] = 
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
         tunnel_name=pulumi.get(__ret__, 'tunnel_name'))
 def get_zero_trust_network_hostname_route_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                 filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustNetworkHostnameRouteFilterArgs', 'GetZeroTrustNetworkHostnameRouteFilterArgsDict']]]] = None,
+                                                 filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustNetworkHostnameRouteFilterArgs', 'GetZeroTrustNetworkHostnameRouteFilterArgsDict', 'outputs.GetZeroTrustNetworkHostnameRouteFilterResult']]]] = None,
                                                  hostname_route_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustNetworkHostnameRouteResult]:
     """

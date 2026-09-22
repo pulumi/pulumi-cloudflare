@@ -304,7 +304,7 @@ class AwaitableGetLoadBalancerPoolResult(GetLoadBalancerPoolResult):
 
 
 def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
-                           filter: Optional[Union['GetLoadBalancerPoolFilterArgs', 'GetLoadBalancerPoolFilterArgsDict']] = None,
+                           filter: Optional[Union['GetLoadBalancerPoolFilterArgs', 'GetLoadBalancerPoolFilterArgsDict', 'outputs.GetLoadBalancerPoolFilterResult']] = None,
                            pool_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerPoolResult:
     """
@@ -358,7 +358,7 @@ def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
         origins=pulumi.get(__ret__, 'origins'),
         pool_id=pulumi.get(__ret__, 'pool_id'))
 def get_load_balancer_pool_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                  filter: pulumi.Input[Optional[Optional[Union['GetLoadBalancerPoolFilterArgs', 'GetLoadBalancerPoolFilterArgsDict']]]] = None,
+                                  filter: pulumi.Input[Optional[Optional[Union['GetLoadBalancerPoolFilterArgs', 'GetLoadBalancerPoolFilterArgsDict', 'outputs.GetLoadBalancerPoolFilterResult']]]] = None,
                                   pool_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerPoolResult]:
     """

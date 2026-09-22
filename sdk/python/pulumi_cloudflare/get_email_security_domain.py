@@ -294,7 +294,7 @@ class AwaitableGetEmailSecurityDomainResult(GetEmailSecurityDomainResult):
 
 def get_email_security_domain(account_id: Optional[_builtins.str] = None,
                               domain_id: Optional[_builtins.str] = None,
-                              filter: Optional[Union['GetEmailSecurityDomainFilterArgs', 'GetEmailSecurityDomainFilterArgsDict']] = None,
+                              filter: Optional[Union['GetEmailSecurityDomainFilterArgs', 'GetEmailSecurityDomainFilterArgsDict', 'outputs.GetEmailSecurityDomainFilterResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityDomainResult:
     """
     Accepted Permissions
@@ -351,7 +351,7 @@ def get_email_security_domain(account_id: Optional[_builtins.str] = None,
         transport=pulumi.get(__ret__, 'transport'))
 def get_email_security_domain_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                     filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityDomainFilterArgs', 'GetEmailSecurityDomainFilterArgsDict']]]] = None,
+                                     filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityDomainFilterArgs', 'GetEmailSecurityDomainFilterArgsDict', 'outputs.GetEmailSecurityDomainFilterResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityDomainResult]:
     """
     Accepted Permissions

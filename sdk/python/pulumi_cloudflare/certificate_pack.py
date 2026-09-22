@@ -552,16 +552,16 @@ class CertificatePack(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
-            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict']]]]] = None,
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict', 'outputs.CertificatePackCertificate']]]]] = None,
             cloudflare_branding: pulumi.Input[Optional[_builtins.bool]] = None,
-            dcv_delegation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackDcvDelegationRecordArgs', 'CertificatePackDcvDelegationRecordArgsDict']]]]] = None,
+            dcv_delegation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackDcvDelegationRecordArgs', 'CertificatePackDcvDelegationRecordArgsDict', 'outputs.CertificatePackDcvDelegationRecord']]]]] = None,
             hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             primary_certificate: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            validation_errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]]] = None,
+            validation_errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict', 'outputs.CertificatePackValidationError']]]]] = None,
             validation_method: pulumi.Input[Optional[_builtins.str]] = None,
-            validation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]]] = None,
+            validation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict', 'outputs.CertificatePackValidationRecord']]]]] = None,
             validity_days: pulumi.Input[Optional[_builtins.int]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'CertificatePack':
         """
@@ -573,19 +573,19 @@ class CertificatePack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
                Available values: "google", "lets*encrypt", "ssl*com".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict']]]] certificates: Array of certificates in this pack.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict', 'outputs.CertificatePackCertificate']]]] certificates: Array of certificates in this pack.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackDcvDelegationRecordArgs', 'CertificatePackDcvDelegationRecordArgsDict']]]] dcv_delegation_records: DCV Delegation records for domain validation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackDcvDelegationRecordArgs', 'CertificatePackDcvDelegationRecordArgsDict', 'outputs.CertificatePackDcvDelegationRecord']]]] dcv_delegation_records: DCV Delegation records for domain validation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         :param pulumi.Input[_builtins.str] primary_certificate: Identifier of the primary certificate in a pack.
         :param pulumi.Input[_builtins.str] status: Status of certificate pack.
                Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         :param pulumi.Input[_builtins.str] type: Type of certificate pack.
                Available values: "advanced".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]] validation_errors: Domain validation errors that have been received by the certificate authority (CA).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict', 'outputs.CertificatePackValidationError']]]] validation_errors: Domain validation errors that have been received by the certificate authority (CA).
         :param pulumi.Input[_builtins.str] validation_method: Validation Method selected for the order.
                Available values: "txt", "http", "email".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]] validation_records: Certificates' validation records.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict', 'outputs.CertificatePackValidationRecord']]]] validation_records: Certificates' validation records.
         :param pulumi.Input[_builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.

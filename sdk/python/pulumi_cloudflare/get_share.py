@@ -265,7 +265,7 @@ class AwaitableGetShareResult(GetShareResult):
 
 
 def get_share(account_id: Optional[_builtins.str] = None,
-              filter: Optional[Union['GetShareFilterArgs', 'GetShareFilterArgsDict']] = None,
+              filter: Optional[Union['GetShareFilterArgs', 'GetShareFilterArgsDict', 'outputs.GetShareFilterResult']] = None,
               include_recipient_counts: Optional[_builtins.bool] = None,
               include_resources: Optional[_builtins.bool] = None,
               share_id: Optional[_builtins.str] = None,
@@ -319,7 +319,7 @@ def get_share(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         target_type=pulumi.get(__ret__, 'target_type'))
 def get_share_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                     filter: pulumi.Input[Optional[Optional[Union['GetShareFilterArgs', 'GetShareFilterArgsDict']]]] = None,
+                     filter: pulumi.Input[Optional[Optional[Union['GetShareFilterArgs', 'GetShareFilterArgsDict', 'outputs.GetShareFilterResult']]]] = None,
                      include_recipient_counts: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                      include_resources: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                      share_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

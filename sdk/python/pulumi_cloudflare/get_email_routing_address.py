@@ -147,7 +147,7 @@ class AwaitableGetEmailRoutingAddressResult(GetEmailRoutingAddressResult):
 
 def get_email_routing_address(account_id: Optional[_builtins.str] = None,
                               destination_address_identifier: Optional[_builtins.str] = None,
-                              filter: Optional[Union['GetEmailRoutingAddressFilterArgs', 'GetEmailRoutingAddressFilterArgsDict']] = None,
+                              filter: Optional[Union['GetEmailRoutingAddressFilterArgs', 'GetEmailRoutingAddressFilterArgsDict', 'outputs.GetEmailRoutingAddressFilterResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailRoutingAddressResult:
     """
     Accepted Permissions
@@ -188,7 +188,7 @@ def get_email_routing_address(account_id: Optional[_builtins.str] = None,
         verified=pulumi.get(__ret__, 'verified'))
 def get_email_routing_address_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      destination_address_identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                     filter: pulumi.Input[Optional[Optional[Union['GetEmailRoutingAddressFilterArgs', 'GetEmailRoutingAddressFilterArgsDict']]]] = None,
+                                     filter: pulumi.Input[Optional[Optional[Union['GetEmailRoutingAddressFilterArgs', 'GetEmailRoutingAddressFilterArgsDict', 'outputs.GetEmailRoutingAddressFilterResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingAddressResult]:
     """
     Accepted Permissions

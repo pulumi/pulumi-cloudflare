@@ -191,7 +191,7 @@ class AwaitableGetAccountTokenResult(GetAccountTokenResult):
 
 
 def get_account_token(account_id: Optional[_builtins.str] = None,
-                      filter: Optional[Union['GetAccountTokenFilterArgs', 'GetAccountTokenFilterArgsDict']] = None,
+                      filter: Optional[Union['GetAccountTokenFilterArgs', 'GetAccountTokenFilterArgsDict', 'outputs.GetAccountTokenFilterResult']] = None,
                       token_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountTokenResult:
     """
@@ -236,7 +236,7 @@ def get_account_token(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         token_id=pulumi.get(__ret__, 'token_id'))
 def get_account_token_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                             filter: pulumi.Input[Optional[Optional[Union['GetAccountTokenFilterArgs', 'GetAccountTokenFilterArgsDict']]]] = None,
+                             filter: pulumi.Input[Optional[Optional[Union['GetAccountTokenFilterArgs', 'GetAccountTokenFilterArgsDict', 'outputs.GetAccountTokenFilterResult']]]] = None,
                              token_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountTokenResult]:
     """

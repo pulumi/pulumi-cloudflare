@@ -157,7 +157,7 @@ class AwaitableGetZeroTrustTunnelCloudflaredRouteResult(GetZeroTrustTunnelCloudf
 
 
 def get_zero_trust_tunnel_cloudflared_route(account_id: Optional[_builtins.str] = None,
-                                            filter: Optional[Union['GetZeroTrustTunnelCloudflaredRouteFilterArgs', 'GetZeroTrustTunnelCloudflaredRouteFilterArgsDict']] = None,
+                                            filter: Optional[Union['GetZeroTrustTunnelCloudflaredRouteFilterArgs', 'GetZeroTrustTunnelCloudflaredRouteFilterArgsDict', 'outputs.GetZeroTrustTunnelCloudflaredRouteFilterResult']] = None,
                                             route_id: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelCloudflaredRouteResult:
     """
@@ -201,7 +201,7 @@ def get_zero_trust_tunnel_cloudflared_route(account_id: Optional[_builtins.str] 
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'))
 def get_zero_trust_tunnel_cloudflared_route_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                   filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustTunnelCloudflaredRouteFilterArgs', 'GetZeroTrustTunnelCloudflaredRouteFilterArgsDict']]]] = None,
+                                                   filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustTunnelCloudflaredRouteFilterArgs', 'GetZeroTrustTunnelCloudflaredRouteFilterArgsDict', 'outputs.GetZeroTrustTunnelCloudflaredRouteFilterResult']]]] = None,
                                                    route_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredRouteResult]:
     """

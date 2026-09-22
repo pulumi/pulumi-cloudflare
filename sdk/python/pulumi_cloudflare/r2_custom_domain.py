@@ -475,7 +475,7 @@ class R2CustomDomain(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             min_tls: pulumi.Input[Optional[_builtins.str]] = None,
-            status: pulumi.Input[Optional[Union['R2CustomDomainStatusArgs', 'R2CustomDomainStatusArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['R2CustomDomainStatusArgs', 'R2CustomDomainStatusArgsDict', 'outputs.R2CustomDomainStatus']]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'R2CustomDomain':
         """

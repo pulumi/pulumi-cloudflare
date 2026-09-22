@@ -324,7 +324,7 @@ class ZeroTrustDexRule(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             match: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            targeted_tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexRuleTargetedTestArgs', 'ZeroTrustDexRuleTargetedTestArgsDict']]]]] = None,
+            targeted_tests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexRuleTargetedTestArgs', 'ZeroTrustDexRuleTargetedTestArgsDict', 'outputs.ZeroTrustDexRuleTargetedTest']]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDexRule':
         """
         Get an existing ZeroTrustDexRule resource's state with the given name, id, and optional extra

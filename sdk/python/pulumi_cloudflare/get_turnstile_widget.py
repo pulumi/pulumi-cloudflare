@@ -239,7 +239,7 @@ class AwaitableGetTurnstileWidgetResult(GetTurnstileWidgetResult):
 
 
 def get_turnstile_widget(account_id: Optional[_builtins.str] = None,
-                         filter: Optional[Union['GetTurnstileWidgetFilterArgs', 'GetTurnstileWidgetFilterArgsDict']] = None,
+                         filter: Optional[Union['GetTurnstileWidgetFilterArgs', 'GetTurnstileWidgetFilterArgsDict', 'outputs.GetTurnstileWidgetFilterResult']] = None,
                          sitekey: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTurnstileWidgetResult:
     """
@@ -290,7 +290,7 @@ def get_turnstile_widget(account_id: Optional[_builtins.str] = None,
         secret=pulumi.get(__ret__, 'secret'),
         sitekey=pulumi.get(__ret__, 'sitekey'))
 def get_turnstile_widget_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                filter: pulumi.Input[Optional[Optional[Union['GetTurnstileWidgetFilterArgs', 'GetTurnstileWidgetFilterArgsDict']]]] = None,
+                                filter: pulumi.Input[Optional[Optional[Union['GetTurnstileWidgetFilterArgs', 'GetTurnstileWidgetFilterArgsDict', 'outputs.GetTurnstileWidgetFilterResult']]]] = None,
                                 sitekey: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTurnstileWidgetResult]:
     """

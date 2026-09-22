@@ -394,7 +394,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            capacity: pulumi.Input[Optional[Union['ZeroTrustDeviceSubnetCapacityArgs', 'ZeroTrustDeviceSubnetCapacityArgsDict']]] = None,
+            capacity: pulumi.Input[Optional[Union['ZeroTrustDeviceSubnetCapacityArgs', 'ZeroTrustDeviceSubnetCapacityArgsDict', 'outputs.ZeroTrustDeviceSubnetCapacity']]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -410,7 +410,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
-        :param pulumi.Input[Union['ZeroTrustDeviceSubnetCapacityArgs', 'ZeroTrustDeviceSubnetCapacityArgsDict']] capacity: IP capacity information for the subnet.
+        :param pulumi.Input[Union['ZeroTrustDeviceSubnetCapacityArgs', 'ZeroTrustDeviceSubnetCapacityArgsDict', 'outputs.ZeroTrustDeviceSubnetCapacity']] capacity: IP capacity information for the subnet.
         :param pulumi.Input[_builtins.str] comment: An optional description of the subnet.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
         :param pulumi.Input[_builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.

@@ -392,11 +392,11 @@ class PagesProject(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
-                 deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
+                 build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']]] = None,
+                 deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  production_branch: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict', 'outputs.PagesProjectSource']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -625,11 +625,11 @@ class PagesProject(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']] build_config: Configs for the project build process.
-        :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']] deployment_configs: Configs for deployments in a project.
+        :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']] build_config: Configs for the project build process.
+        :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']] deployment_configs: Configs for deployments in a project.
         :param pulumi.Input[_builtins.str] name: Name of the project.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
-        :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']] source: Configs for the project source control.
+        :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict', 'outputs.PagesProjectSource']] source: Configs for the project source control.
         """
         ...
     @overload
@@ -877,11 +877,11 @@ class PagesProject(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
-                 deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
+                 build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']]] = None,
+                 deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  production_branch: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict', 'outputs.PagesProjectSource']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -924,19 +924,19 @@ class PagesProject(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
-            canonical_deployment: pulumi.Input[Optional[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict']]] = None,
+            build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']]] = None,
+            canonical_deployment: pulumi.Input[Optional[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict', 'outputs.PagesProjectCanonicalDeployment']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
+            deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']]] = None,
             domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             framework: pulumi.Input[Optional[_builtins.str]] = None,
             framework_version: pulumi.Input[Optional[_builtins.str]] = None,
-            latest_deployment: pulumi.Input[Optional[Union['PagesProjectLatestDeploymentArgs', 'PagesProjectLatestDeploymentArgsDict']]] = None,
+            latest_deployment: pulumi.Input[Optional[Union['PagesProjectLatestDeploymentArgs', 'PagesProjectLatestDeploymentArgsDict', 'outputs.PagesProjectLatestDeployment']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             preview_script_name: pulumi.Input[Optional[_builtins.str]] = None,
             production_branch: pulumi.Input[Optional[_builtins.str]] = None,
             production_script_name: pulumi.Input[Optional[_builtins.str]] = None,
-            source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
+            source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict', 'outputs.PagesProjectSource']]] = None,
             subdomain: pulumi.Input[Optional[_builtins.str]] = None,
             uses_functions: pulumi.Input[Optional[_builtins.bool]] = None) -> 'PagesProject':
         """
@@ -947,19 +947,19 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']] build_config: Configs for the project build process.
-        :param pulumi.Input[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict']] canonical_deployment: Most recent production deployment of the project.
+        :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']] build_config: Configs for the project build process.
+        :param pulumi.Input[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict', 'outputs.PagesProjectCanonicalDeployment']] canonical_deployment: Most recent production deployment of the project.
         :param pulumi.Input[_builtins.str] created_on: When the project was created.
-        :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']] deployment_configs: Configs for deployments in a project.
+        :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']] deployment_configs: Configs for deployments in a project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: A list of associated custom domains for the project.
         :param pulumi.Input[_builtins.str] framework: Framework the project is using.
         :param pulumi.Input[_builtins.str] framework_version: Version of the framework the project is using.
-        :param pulumi.Input[Union['PagesProjectLatestDeploymentArgs', 'PagesProjectLatestDeploymentArgsDict']] latest_deployment: Most recent deployment of the project.
+        :param pulumi.Input[Union['PagesProjectLatestDeploymentArgs', 'PagesProjectLatestDeploymentArgsDict', 'outputs.PagesProjectLatestDeployment']] latest_deployment: Most recent deployment of the project.
         :param pulumi.Input[_builtins.str] name: Name of the project.
         :param pulumi.Input[_builtins.str] preview_script_name: Name of the preview script.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
         :param pulumi.Input[_builtins.str] production_script_name: Name of the production script.
-        :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']] source: Configs for the project source control.
+        :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict', 'outputs.PagesProjectSource']] source: Configs for the project source control.
         :param pulumi.Input[_builtins.str] subdomain: The Cloudflare subdomain associated with the project.
         :param pulumi.Input[_builtins.bool] uses_functions: Whether the project uses functions.
         """

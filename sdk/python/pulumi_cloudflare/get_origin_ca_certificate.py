@@ -148,7 +148,7 @@ class AwaitableGetOriginCaCertificateResult(GetOriginCaCertificateResult):
 
 
 def get_origin_ca_certificate(certificate_id: Optional[_builtins.str] = None,
-                              filter: Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict']] = None,
+                              filter: Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict', 'outputs.GetOriginCaCertificateFilterResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOriginCaCertificateResult:
     """
     ## Example Usage
@@ -180,7 +180,7 @@ def get_origin_ca_certificate(certificate_id: Optional[_builtins.str] = None,
         request_type=pulumi.get(__ret__, 'request_type'),
         requested_validity=pulumi.get(__ret__, 'requested_validity'))
 def get_origin_ca_certificate_output(certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                     filter: pulumi.Input[Optional[Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict']]]] = None,
+                                     filter: pulumi.Input[Optional[Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict', 'outputs.GetOriginCaCertificateFilterResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOriginCaCertificateResult]:
     """
     ## Example Usage

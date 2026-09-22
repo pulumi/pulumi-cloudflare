@@ -218,7 +218,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict', 'outputs.R2BucketEventNotificationRule']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -258,7 +258,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[_builtins.str] queue_id: Queue ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]] rules: Array of rules to drive notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict', 'outputs.R2BucketEventNotificationRule']]]] rules: Array of rules to drive notifications.
         """
         ...
     @overload
@@ -317,7 +317,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict', 'outputs.R2BucketEventNotificationRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -356,7 +356,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
             jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             queue_id: pulumi.Input[Optional[_builtins.str]] = None,
             queue_name: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]]] = None) -> 'R2BucketEventNotification':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict', 'outputs.R2BucketEventNotificationRule']]]]] = None) -> 'R2BucketEventNotification':
         """
         Get an existing R2BucketEventNotification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -369,7 +369,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[_builtins.str] queue_id: Queue ID.
         :param pulumi.Input[_builtins.str] queue_name: Name of the queue.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]] rules: Array of rules to drive notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict', 'outputs.R2BucketEventNotificationRule']]]] rules: Array of rules to drive notifications.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

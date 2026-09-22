@@ -331,10 +331,10 @@ class Worker(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
-                 subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
+                 observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']]] = None,
+                 subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -396,10 +396,10 @@ class Worker(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
-        :param pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']] observability: Observability settings for the Worker.
-        :param pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']] subdomain: Subdomain settings for the Worker.
+        :param pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]] tail_consumers: Other Workers that should consume logs from the Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]] tail_consumers: Other Workers that should consume logs from the Worker.
         """
         ...
     @overload
@@ -480,10 +480,10 @@ class Worker(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
-                 subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
+                 observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']]] = None,
+                 subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -523,11 +523,11 @@ class Worker(pulumi.CustomResource):
             deployed_on: pulumi.Input[Optional[_builtins.str]] = None,
             logpush: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
-            references: pulumi.Input[Optional[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict']]] = None,
-            subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
+            observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']]] = None,
+            references: pulumi.Input[Optional[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict', 'outputs.WorkerReferences']]] = None,
+            subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
+            tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]]] = None,
             updated_on: pulumi.Input[Optional[_builtins.str]] = None) -> 'Worker':
         """
         Get an existing Worker resource's state with the given name, id, and optional extra
@@ -541,11 +541,11 @@ class Worker(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deployed_on: When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
-        :param pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']] observability: Observability settings for the Worker.
-        :param pulumi.Input[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict']] references: Other resources that reference the Worker and depend on it existing.
-        :param pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']] subdomain: Subdomain settings for the Worker.
+        :param pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict', 'outputs.WorkerReferences']] references: Other resources that reference the Worker and depend on it existing.
+        :param pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]] tail_consumers: Other Workers that should consume logs from the Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]] tail_consumers: Other Workers that should consume logs from the Worker.
         :param pulumi.Input[_builtins.str] updated_on: When the Worker was most recently updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

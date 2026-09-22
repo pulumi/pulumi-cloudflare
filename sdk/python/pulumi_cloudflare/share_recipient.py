@@ -350,7 +350,7 @@ class ShareRecipient(pulumi.CustomResource):
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             recipient_account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientResourceArgs', 'ShareRecipientResourceArgsDict']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientResourceArgs', 'ShareRecipientResourceArgsDict', 'outputs.ShareRecipientResource']]]]] = None,
             share_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ShareRecipient':
         """
         Get an existing ShareRecipient resource's state with the given name, id, and optional extra

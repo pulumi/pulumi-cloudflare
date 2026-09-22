@@ -131,7 +131,7 @@ class AccountDnsSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
-                 zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
+                 zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict', 'outputs.AccountDnsSettingsZoneDefaults']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -251,7 +251,7 @@ class AccountDnsSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
-                 zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
+                 zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict', 'outputs.AccountDnsSettingsZoneDefaults']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,7 +278,7 @@ class AccountDnsSettings(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
-            zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None) -> 'AccountDnsSettings':
+            zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict', 'outputs.AccountDnsSettingsZoneDefaults']]] = None) -> 'AccountDnsSettings':
         """
         Get an existing AccountDnsSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

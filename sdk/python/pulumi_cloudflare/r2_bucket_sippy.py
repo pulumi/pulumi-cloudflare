@@ -218,9 +218,9 @@ class R2BucketSippy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict', 'outputs.R2BucketSippyDestination']]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict', 'outputs.R2BucketSippySource']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -259,9 +259,9 @@ class R2BucketSippy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
-        :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']] destination: R2 bucket to copy objects to.
+        :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict', 'outputs.R2BucketSippyDestination']] destination: R2 bucket to copy objects to.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']] source: AWS S3 bucket to copy objects from.
+        :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict', 'outputs.R2BucketSippySource']] source: AWS S3 bucket to copy objects from.
         """
         ...
     @overload
@@ -319,9 +319,9 @@ class R2BucketSippy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict', 'outputs.R2BucketSippyDestination']]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict', 'outputs.R2BucketSippySource']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -353,10 +353,10 @@ class R2BucketSippy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-            destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict', 'outputs.R2BucketSippyDestination']]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
-            source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None) -> 'R2BucketSippy':
+            source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict', 'outputs.R2BucketSippySource']]] = None) -> 'R2BucketSippy':
         """
         Get an existing R2BucketSippy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -366,10 +366,10 @@ class R2BucketSippy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
-        :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']] destination: R2 bucket to copy objects to.
+        :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict', 'outputs.R2BucketSippyDestination']] destination: R2 bucket to copy objects to.
         :param pulumi.Input[_builtins.bool] enabled: State of Sippy for this bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']] source: AWS S3 bucket to copy objects from.
+        :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict', 'outputs.R2BucketSippySource']] source: AWS S3 bucket to copy objects from.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

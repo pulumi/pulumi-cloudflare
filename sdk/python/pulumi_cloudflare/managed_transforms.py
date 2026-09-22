@@ -137,8 +137,8 @@ class ManagedTransforms(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict']]]]] = None,
-                 managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict']]]]] = None,
+                 managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict', 'outputs.ManagedTransformsManagedRequestHeader']]]]] = None,
+                 managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict', 'outputs.ManagedTransformsManagedResponseHeader']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -212,8 +212,8 @@ class ManagedTransforms(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict']]]] managed_request_headers: The list of Managed Request Transforms.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict']]]] managed_response_headers: The list of Managed Response Transforms.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict', 'outputs.ManagedTransformsManagedRequestHeader']]]] managed_request_headers: The list of Managed Request Transforms.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict', 'outputs.ManagedTransformsManagedResponseHeader']]]] managed_response_headers: The list of Managed Response Transforms.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """
         ...
@@ -306,8 +306,8 @@ class ManagedTransforms(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict']]]]] = None,
-                 managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict']]]]] = None,
+                 managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict', 'outputs.ManagedTransformsManagedRequestHeader']]]]] = None,
+                 managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict', 'outputs.ManagedTransformsManagedResponseHeader']]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -335,8 +335,8 @@ class ManagedTransforms(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict']]]]] = None,
-            managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict']]]]] = None,
+            managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict', 'outputs.ManagedTransformsManagedRequestHeader']]]]] = None,
+            managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict', 'outputs.ManagedTransformsManagedResponseHeader']]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ManagedTransforms':
         """
         Get an existing ManagedTransforms resource's state with the given name, id, and optional extra
@@ -345,8 +345,8 @@ class ManagedTransforms(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict']]]] managed_request_headers: The list of Managed Request Transforms.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict']]]] managed_response_headers: The list of Managed Response Transforms.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedRequestHeaderArgs', 'ManagedTransformsManagedRequestHeaderArgsDict', 'outputs.ManagedTransformsManagedRequestHeader']]]] managed_request_headers: The list of Managed Request Transforms.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedTransformsManagedResponseHeaderArgs', 'ManagedTransformsManagedResponseHeaderArgsDict', 'outputs.ManagedTransformsManagedResponseHeader']]]] managed_response_headers: The list of Managed Response Transforms.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

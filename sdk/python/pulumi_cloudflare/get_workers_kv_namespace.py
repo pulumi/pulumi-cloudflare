@@ -122,7 +122,7 @@ class AwaitableGetWorkersKvNamespaceResult(GetWorkersKvNamespaceResult):
 
 
 def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
-                             filter: Optional[Union['GetWorkersKvNamespaceFilterArgs', 'GetWorkersKvNamespaceFilterArgsDict']] = None,
+                             filter: Optional[Union['GetWorkersKvNamespaceFilterArgs', 'GetWorkersKvNamespaceFilterArgsDict', 'outputs.GetWorkersKvNamespaceFilterResult']] = None,
                              namespace_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersKvNamespaceResult:
     """
@@ -161,7 +161,7 @@ def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
         supports_url_encoding=pulumi.get(__ret__, 'supports_url_encoding'),
         title=pulumi.get(__ret__, 'title'))
 def get_workers_kv_namespace_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                    filter: pulumi.Input[Optional[Optional[Union['GetWorkersKvNamespaceFilterArgs', 'GetWorkersKvNamespaceFilterArgsDict']]]] = None,
+                                    filter: pulumi.Input[Optional[Optional[Union['GetWorkersKvNamespaceFilterArgs', 'GetWorkersKvNamespaceFilterArgsDict', 'outputs.GetWorkersKvNamespaceFilterResult']]]] = None,
                                     namespace_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersKvNamespaceResult]:
     """

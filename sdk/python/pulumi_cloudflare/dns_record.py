@@ -524,12 +524,12 @@ class DnsRecord(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
-                 data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
+                 data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
                  private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
-                 settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict', 'outputs.DnsRecordSettings']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,12 +574,12 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
-        :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']] data: Components of a MX record.
+        :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']] data: Components of a MX record.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
         :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
-        :param pulumi.Input[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']] settings: Settings for the DNS record.
+        :param pulumi.Input[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict', 'outputs.DnsRecordSettings']] settings: Settings for the DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Custom tags for the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[_builtins.str] type: Record type.
@@ -644,12 +644,12 @@ class DnsRecord(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
-                 data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
+                 data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
                  private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
-                 settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict', 'outputs.DnsRecordSettings']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -705,7 +705,7 @@ class DnsRecord(pulumi.CustomResource):
             comment_modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             content: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
-            data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
+            data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']]] = None,
             meta: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -713,7 +713,7 @@ class DnsRecord(pulumi.CustomResource):
             private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
             proxiable: pulumi.Input[Optional[_builtins.bool]] = None,
             proxied: pulumi.Input[Optional[_builtins.bool]] = None,
-            settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
+            settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict', 'outputs.DnsRecordSettings']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tags_modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             ttl: pulumi.Input[Optional[_builtins.float]] = None,
@@ -730,7 +730,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment_modified_on: When the record comment was last modified. Omitted if there is no comment.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input[_builtins.str] created_on: When the record was created.
-        :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']] data: Components of a MX record.
+        :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']] data: Components of a MX record.
         :param pulumi.Input[_builtins.str] meta: Extra Cloudflare-specific information about the record.
         :param pulumi.Input[_builtins.str] modified_on: When the record was last modified.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
@@ -738,7 +738,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
         :param pulumi.Input[_builtins.bool] proxiable: Whether the record can be proxied by Cloudflare or not.
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
-        :param pulumi.Input[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']] settings: Settings for the DNS record.
+        :param pulumi.Input[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict', 'outputs.DnsRecordSettings']] settings: Settings for the DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Custom tags for the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] tags_modified_on: When the record tags were last modified. Omitted if there are no tags.
         :param pulumi.Input[_builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.

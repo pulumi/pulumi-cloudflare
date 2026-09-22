@@ -511,7 +511,7 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: pulumi.Input[Optional[Union['ZoneAccountArgs', 'ZoneAccountArgsDict']]] = None,
+                 account: pulumi.Input[Optional[Union['ZoneAccountArgs', 'ZoneAccountArgsDict', 'outputs.ZoneAccount']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -680,7 +680,7 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: pulumi.Input[Optional[Union['ZoneAccountArgs', 'ZoneAccountArgsDict']]] = None,
+                 account: pulumi.Input[Optional[Union['ZoneAccountArgs', 'ZoneAccountArgsDict', 'outputs.ZoneAccount']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  paused: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -730,25 +730,25 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account: pulumi.Input[Optional[Union['ZoneAccountArgs', 'ZoneAccountArgsDict']]] = None,
+            account: pulumi.Input[Optional[Union['ZoneAccountArgs', 'ZoneAccountArgsDict', 'outputs.ZoneAccount']]] = None,
             activated_on: pulumi.Input[Optional[_builtins.str]] = None,
             cname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             development_mode: pulumi.Input[Optional[_builtins.float]] = None,
-            meta: pulumi.Input[Optional[Union['ZoneMetaArgs', 'ZoneMetaArgsDict']]] = None,
+            meta: pulumi.Input[Optional[Union['ZoneMetaArgs', 'ZoneMetaArgsDict', 'outputs.ZoneMeta']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             original_dnshost: pulumi.Input[Optional[_builtins.str]] = None,
             original_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             original_registrar: pulumi.Input[Optional[_builtins.str]] = None,
-            owner: pulumi.Input[Optional[Union['ZoneOwnerArgs', 'ZoneOwnerArgsDict']]] = None,
+            owner: pulumi.Input[Optional[Union['ZoneOwnerArgs', 'ZoneOwnerArgsDict', 'outputs.ZoneOwner']]] = None,
             paused: pulumi.Input[Optional[_builtins.bool]] = None,
             permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            plan: pulumi.Input[Optional[Union['ZonePlanArgs', 'ZonePlanArgsDict']]] = None,
+            plan: pulumi.Input[Optional[Union['ZonePlanArgs', 'ZonePlanArgsDict', 'outputs.ZonePlan']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            tenant: pulumi.Input[Optional[Union['ZoneTenantArgs', 'ZoneTenantArgsDict']]] = None,
-            tenant_unit: pulumi.Input[Optional[Union['ZoneTenantUnitArgs', 'ZoneTenantUnitArgsDict']]] = None,
+            tenant: pulumi.Input[Optional[Union['ZoneTenantArgs', 'ZoneTenantArgsDict', 'outputs.ZoneTenant']]] = None,
+            tenant_unit: pulumi.Input[Optional[Union['ZoneTenantUnitArgs', 'ZoneTenantUnitArgsDict', 'outputs.ZoneTenantUnit']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             vanity_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             verification_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'Zone':
@@ -767,23 +767,23 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] development_mode: The interval (in seconds) from when development mode expires
                (positive integer) or last expired (negative integer) for the
                domain. If development mode has never been enabled, this value is 0.
-        :param pulumi.Input[Union['ZoneMetaArgs', 'ZoneMetaArgsDict']] meta: Metadata about the zone.
+        :param pulumi.Input[Union['ZoneMetaArgs', 'ZoneMetaArgsDict', 'outputs.ZoneMeta']] meta: Metadata about the zone.
         :param pulumi.Input[_builtins.str] modified_on: When the zone was last modified.
         :param pulumi.Input[_builtins.str] name: The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: The name servers Cloudflare assigns to a zone.
         :param pulumi.Input[_builtins.str] original_dnshost: DNS host at the time of switching to Cloudflare.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] original_name_servers: Original name servers before moving to Cloudflare.
         :param pulumi.Input[_builtins.str] original_registrar: Registrar for the domain at the time of switching to Cloudflare.
-        :param pulumi.Input[Union['ZoneOwnerArgs', 'ZoneOwnerArgsDict']] owner: The owner of the zone.
+        :param pulumi.Input[Union['ZoneOwnerArgs', 'ZoneOwnerArgsDict', 'outputs.ZoneOwner']] owner: The owner of the zone.
         :param pulumi.Input[_builtins.bool] paused: Indicates whether the zone is only using Cloudflare DNS services. A
                true value means the zone will not receive security or performance
                benefits.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: Legacy permissions based on legacy user membership information.
-        :param pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict']] plan: A Zones subscription information.
+        :param pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict', 'outputs.ZonePlan']] plan: A Zones subscription information.
         :param pulumi.Input[_builtins.str] status: The zone status on Cloudflare.
                Available values: "initializing", "pending", "active", "moved".
-        :param pulumi.Input[Union['ZoneTenantArgs', 'ZoneTenantArgsDict']] tenant: The root organizational unit that this zone belongs to (such as a tenant or organization).
-        :param pulumi.Input[Union['ZoneTenantUnitArgs', 'ZoneTenantUnitArgsDict']] tenant_unit: The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+        :param pulumi.Input[Union['ZoneTenantArgs', 'ZoneTenantArgsDict', 'outputs.ZoneTenant']] tenant: The root organizational unit that this zone belongs to (such as a tenant or organization).
+        :param pulumi.Input[Union['ZoneTenantUnitArgs', 'ZoneTenantUnitArgsDict', 'outputs.ZoneTenantUnit']] tenant_unit: The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
         :param pulumi.Input[_builtins.str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
                typically a partner-hosted zone or a CNAME setup.
                Available values: "full", "partial", "secondary", "internal".

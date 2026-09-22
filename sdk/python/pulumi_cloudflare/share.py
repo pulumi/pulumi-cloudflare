@@ -328,8 +328,8 @@ class Share(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict']]]]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict']]]]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -417,8 +417,8 @@ class Share(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict']]]]] = None,
-                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict']]]]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,8 +472,8 @@ class Share(pulumi.CustomResource):
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-            recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict']]]]] = None,
-            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict']]]]] = None,
+            recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Share':
         """

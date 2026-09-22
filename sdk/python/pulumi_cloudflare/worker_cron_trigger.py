@@ -133,7 +133,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict', 'outputs.WorkerCronTriggerSchedule']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -217,7 +217,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict', 'outputs.WorkerCronTriggerSchedule']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""WorkerCronTrigger is deprecated: cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger""")
@@ -251,7 +251,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict', 'outputs.WorkerCronTriggerSchedule']]]]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkerCronTrigger':
         """
         Get an existing WorkerCronTrigger resource's state with the given name, id, and optional extra

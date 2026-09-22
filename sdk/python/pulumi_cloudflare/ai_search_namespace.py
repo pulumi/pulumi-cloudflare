@@ -171,7 +171,7 @@ class AiSearchNamespace(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict']]] = None,
+                 public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict', 'outputs.AiSearchNamespacePublicEndpointParams']]] = None,
                  __props__=None):
         """
         ## Import
@@ -213,7 +213,7 @@ class AiSearchNamespace(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict']]] = None,
+                 public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict', 'outputs.AiSearchNamespacePublicEndpointParams']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -248,7 +248,7 @@ class AiSearchNamespace(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             public_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-            public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict']]] = None) -> 'AiSearchNamespace':
+            public_endpoint_params: pulumi.Input[Optional[Union['AiSearchNamespacePublicEndpointParamsArgs', 'AiSearchNamespacePublicEndpointParamsArgsDict', 'outputs.AiSearchNamespacePublicEndpointParams']]] = None) -> 'AiSearchNamespace':
         """
         Get an existing AiSearchNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

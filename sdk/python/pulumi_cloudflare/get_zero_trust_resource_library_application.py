@@ -274,7 +274,7 @@ class AwaitableGetZeroTrustResourceLibraryApplicationResult(GetZeroTrustResource
 
 
 def get_zero_trust_resource_library_application(account_id: Optional[_builtins.str] = None,
-                                                filter: Optional[Union['GetZeroTrustResourceLibraryApplicationFilterArgs', 'GetZeroTrustResourceLibraryApplicationFilterArgsDict']] = None,
+                                                filter: Optional[Union['GetZeroTrustResourceLibraryApplicationFilterArgs', 'GetZeroTrustResourceLibraryApplicationFilterArgsDict', 'outputs.GetZeroTrustResourceLibraryApplicationFilterResult']] = None,
                                                 id: Optional[_builtins.int] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustResourceLibraryApplicationResult:
     """
@@ -320,7 +320,7 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
         updated_at=pulumi.get(__ret__, 'updated_at'),
         version=pulumi.get(__ret__, 'version'))
 def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                       filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustResourceLibraryApplicationFilterArgs', 'GetZeroTrustResourceLibraryApplicationFilterArgsDict']]]] = None,
+                                                       filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustResourceLibraryApplicationFilterArgs', 'GetZeroTrustResourceLibraryApplicationFilterArgsDict', 'outputs.GetZeroTrustResourceLibraryApplicationFilterResult']]]] = None,
                                                        id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustResourceLibraryApplicationResult]:
     """

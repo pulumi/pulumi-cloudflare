@@ -269,7 +269,7 @@ class AccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 configuration: pulumi.Input[Optional[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict', 'outputs.AccessRuleConfiguration']]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -306,7 +306,7 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: The rule configuration.
+        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict', 'outputs.AccessRuleConfiguration']] configuration: The rule configuration.
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[_builtins.str] notes: An informative summary of the rule, typically used as a reminder or explanation.
@@ -363,7 +363,7 @@ class AccessRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 configuration: pulumi.Input[Optional[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict', 'outputs.AccessRuleConfiguration']]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -401,12 +401,12 @@ class AccessRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             allowed_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            configuration: pulumi.Input[Optional[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']]] = None,
+            configuration: pulumi.Input[Optional[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict', 'outputs.AccessRuleConfiguration']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             mode: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             notes: pulumi.Input[Optional[_builtins.str]] = None,
-            scope: pulumi.Input[Optional[Union['AccessRuleScopeArgs', 'AccessRuleScopeArgsDict']]] = None,
+            scope: pulumi.Input[Optional[Union['AccessRuleScopeArgs', 'AccessRuleScopeArgsDict', 'outputs.AccessRuleScope']]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessRule':
         """
         Get an existing AccessRule resource's state with the given name, id, and optional extra
@@ -417,13 +417,13 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_modes: The available actions that a rule can apply to a matched request.
-        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: The rule configuration.
+        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict', 'outputs.AccessRuleConfiguration']] configuration: The rule configuration.
         :param pulumi.Input[_builtins.str] created_on: The timestamp of when the rule was created.
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[_builtins.str] modified_on: The timestamp of when the rule was last modified.
         :param pulumi.Input[_builtins.str] notes: An informative summary of the rule, typically used as a reminder or explanation.
-        :param pulumi.Input[Union['AccessRuleScopeArgs', 'AccessRuleScopeArgsDict']] scope: All zones owned by the user will have the rule applied.
+        :param pulumi.Input[Union['AccessRuleScopeArgs', 'AccessRuleScopeArgsDict', 'outputs.AccessRuleScope']] scope: All zones owned by the user will have the rule applied.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

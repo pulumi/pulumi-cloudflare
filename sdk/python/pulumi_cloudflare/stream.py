@@ -675,7 +675,7 @@ class Stream(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
+                 public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict', 'outputs.StreamPublicDetails']]] = None,
                  require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
@@ -710,7 +710,7 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.int] max_duration_seconds: The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing videos.
-        :param pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']] public_details: Public details for the video including title, share link, channel link, and logo.
+        :param pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict', 'outputs.StreamPublicDetails']] public_details: Public details for the video including title, share link, channel link, and logo.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
         :param pulumi.Input[_builtins.str] scheduled_deletion: Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         :param pulumi.Input[_builtins.float] thumbnail_timestamp_pct: The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
@@ -764,7 +764,7 @@ class Stream(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
-                 public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
+                 public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict', 'outputs.StreamPublicDetails']]] = None,
                  require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
@@ -826,27 +826,27 @@ class Stream(pulumi.CustomResource):
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             duration: pulumi.Input[Optional[_builtins.float]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            input: pulumi.Input[Optional[Union['StreamInputArgs', 'StreamInputArgsDict']]] = None,
+            input: pulumi.Input[Optional[Union['StreamInputArgs', 'StreamInputArgsDict', 'outputs.StreamInput']]] = None,
             live_input: pulumi.Input[Optional[_builtins.str]] = None,
             max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             max_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
             meta: pulumi.Input[Optional[_builtins.str]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
-            playback: pulumi.Input[Optional[Union['StreamPlaybackArgs', 'StreamPlaybackArgsDict']]] = None,
+            playback: pulumi.Input[Optional[Union['StreamPlaybackArgs', 'StreamPlaybackArgsDict', 'outputs.StreamPlayback']]] = None,
             preview: pulumi.Input[Optional[_builtins.str]] = None,
-            public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
+            public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict', 'outputs.StreamPublicDetails']]] = None,
             ready_to_stream: pulumi.Input[Optional[_builtins.bool]] = None,
             ready_to_stream_at: pulumi.Input[Optional[_builtins.str]] = None,
             require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
             scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
             size: pulumi.Input[Optional[_builtins.float]] = None,
-            status: pulumi.Input[Optional[Union['StreamStatusArgs', 'StreamStatusArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['StreamStatusArgs', 'StreamStatusArgsDict', 'outputs.StreamStatus']]] = None,
             thumbnail: pulumi.Input[Optional[_builtins.str]] = None,
             thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             upload_expiry: pulumi.Input[Optional[_builtins.str]] = None,
             uploaded: pulumi.Input[Optional[_builtins.str]] = None,
-            watermark: pulumi.Input[Optional[Union['StreamWatermarkArgs', 'StreamWatermarkArgsDict']]] = None) -> 'Stream':
+            watermark: pulumi.Input[Optional[Union['StreamWatermarkArgs', 'StreamWatermarkArgsDict', 'outputs.StreamWatermark']]] = None) -> 'Stream':
         """
         Get an existing Stream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -867,13 +867,13 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing videos.
         :param pulumi.Input[_builtins.str] modified: The date and time the media item was last modified.
         :param pulumi.Input[_builtins.str] preview: The video's preview page URI. This field is omitted until encoding is complete.
-        :param pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']] public_details: Public details for the video including title, share link, channel link, and logo.
+        :param pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict', 'outputs.StreamPublicDetails']] public_details: Public details for the video including title, share link, channel link, and logo.
         :param pulumi.Input[_builtins.bool] ready_to_stream: Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         :param pulumi.Input[_builtins.str] ready_to_stream_at: Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
         :param pulumi.Input[_builtins.str] scheduled_deletion: Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         :param pulumi.Input[_builtins.float] size: The size of the media item in bytes.
-        :param pulumi.Input[Union['StreamStatusArgs', 'StreamStatusArgsDict']] status: Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
+        :param pulumi.Input[Union['StreamStatusArgs', 'StreamStatusArgsDict', 'outputs.StreamStatus']] status: Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
         :param pulumi.Input[_builtins.str] thumbnail: The media item's thumbnail URI. This field is omitted until encoding is complete.
         :param pulumi.Input[_builtins.float] thumbnail_timestamp_pct: The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
         :param pulumi.Input[_builtins.str] uid: The unique identifier for the video. Can be used to verify the video being updated.

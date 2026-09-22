@@ -133,7 +133,7 @@ class AwaitableGetUserGroupResult(GetUserGroupResult):
 
 
 def get_user_group(account_id: Optional[_builtins.str] = None,
-                   filter: Optional[Union['GetUserGroupFilterArgs', 'GetUserGroupFilterArgsDict']] = None,
+                   filter: Optional[Union['GetUserGroupFilterArgs', 'GetUserGroupFilterArgsDict', 'outputs.GetUserGroupFilterResult']] = None,
                    user_group_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserGroupResult:
     """
@@ -174,7 +174,7 @@ def get_user_group(account_id: Optional[_builtins.str] = None,
         policies=pulumi.get(__ret__, 'policies'),
         user_group_id=pulumi.get(__ret__, 'user_group_id'))
 def get_user_group_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                          filter: pulumi.Input[Optional[Optional[Union['GetUserGroupFilterArgs', 'GetUserGroupFilterArgsDict']]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetUserGroupFilterArgs', 'GetUserGroupFilterArgsDict', 'outputs.GetUserGroupFilterResult']]]] = None,
                           user_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupResult]:
     """

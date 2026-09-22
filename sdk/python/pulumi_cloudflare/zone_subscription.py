@@ -228,7 +228,7 @@ class ZoneSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_plan: pulumi.Input[Optional[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']]] = None,
+                 rate_plan: pulumi.Input[Optional[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict', 'outputs.ZoneSubscriptionRatePlan']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -269,7 +269,7 @@ class ZoneSubscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
                Note: Some plans may not support frequency configuration and will return "not-applicable".
-        :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
+        :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict', 'outputs.ZoneSubscriptionRatePlan']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[_builtins.str] zone_id: Identifier
         """
         ...
@@ -327,7 +327,7 @@ class ZoneSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
-                 rate_plan: pulumi.Input[Optional[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']]] = None,
+                 rate_plan: pulumi.Input[Optional[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict', 'outputs.ZoneSubscriptionRatePlan']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -363,7 +363,7 @@ class ZoneSubscription(pulumi.CustomResource):
             current_period_start: pulumi.Input[Optional[_builtins.str]] = None,
             frequency: pulumi.Input[Optional[_builtins.str]] = None,
             price: pulumi.Input[Optional[_builtins.float]] = None,
-            rate_plan: pulumi.Input[Optional[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']]] = None,
+            rate_plan: pulumi.Input[Optional[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict', 'outputs.ZoneSubscriptionRatePlan']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneSubscription':
         """
@@ -380,7 +380,7 @@ class ZoneSubscription(pulumi.CustomResource):
                Available values: "weekly", "monthly", "quarterly", "yearly".
                Note: Some plans may not support frequency configuration and will return "not-applicable".
         :param pulumi.Input[_builtins.float] price: The price of the subscription that will be billed, in US dollars.
-        :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
+        :param pulumi.Input[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict', 'outputs.ZoneSubscriptionRatePlan']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[_builtins.str] state: The state that the subscription is in.
                Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         :param pulumi.Input[_builtins.str] zone_id: Identifier

@@ -194,7 +194,7 @@ class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict']]]]] = None,
+                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict', 'outputs.ZeroTrustDeviceDeploymentGroupsVersionConfig']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -224,7 +224,7 @@ class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: A user-friendly name for the deployment group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policy_ids: Contains an optional list of policy IDs assigned to a group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict']]]] version_configs: Contains at least one version configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict', 'outputs.ZeroTrustDeviceDeploymentGroupsVersionConfig']]]] version_configs: Contains at least one version configuration.
         """
         ...
     @overload
@@ -274,7 +274,7 @@ class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict']]]]] = None,
+                 version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict', 'outputs.ZeroTrustDeviceDeploymentGroupsVersionConfig']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -311,7 +311,7 @@ class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             policy_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
-            version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict']]]]] = None) -> 'ZeroTrustDeviceDeploymentGroups':
+            version_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict', 'outputs.ZeroTrustDeviceDeploymentGroupsVersionConfig']]]]] = None) -> 'ZeroTrustDeviceDeploymentGroups':
         """
         Get an existing ZeroTrustDeviceDeploymentGroups resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -323,7 +323,7 @@ class ZeroTrustDeviceDeploymentGroups(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: A user-friendly name for the deployment group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policy_ids: Contains an optional list of policy IDs assigned to a group.
         :param pulumi.Input[_builtins.str] updated_at: The RFC3339Nano timestamp when the deployment group was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict']]]] version_configs: Contains at least one version configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDeploymentGroupsVersionConfigArgs', 'ZeroTrustDeviceDeploymentGroupsVersionConfigArgsDict', 'outputs.ZeroTrustDeviceDeploymentGroupsVersionConfig']]]] version_configs: Contains at least one version configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -203,8 +203,8 @@ class FirewallRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
-                 filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
+                 action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict', 'outputs.FirewallRuleAction']]] = None,
+                 filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict', 'outputs.FirewallRuleFilter']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -252,7 +252,7 @@ class FirewallRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
+        :param pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict', 'outputs.FirewallRuleAction']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         ...
@@ -319,8 +319,8 @@ class FirewallRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
-                 filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
+                 action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict', 'outputs.FirewallRuleAction']]] = None,
+                 filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict', 'outputs.FirewallRuleFilter']]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -355,9 +355,9 @@ class FirewallRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
+            action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict', 'outputs.FirewallRuleAction']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
+            filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict', 'outputs.FirewallRuleFilter']]] = None,
             paused: pulumi.Input[Optional[_builtins.bool]] = None,
             priority: pulumi.Input[Optional[_builtins.float]] = None,
             products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -370,7 +370,7 @@ class FirewallRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
+        :param pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict', 'outputs.FirewallRuleAction']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input[_builtins.str] description: An informative summary of the firewall rule.
         :param pulumi.Input[_builtins.bool] paused: When true, indicates that the firewall rule is currently paused.
         :param pulumi.Input[_builtins.float] priority: The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.

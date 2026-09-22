@@ -203,8 +203,8 @@ class AwaitableGetZeroTrustDexTestResult(GetZeroTrustDexTestResult):
 
 def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
                             dex_test_id: Optional[_builtins.str] = None,
-                            filter: Optional[Union['GetZeroTrustDexTestFilterArgs', 'GetZeroTrustDexTestFilterArgsDict']] = None,
-                            target_policies: Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']]] = None,
+                            filter: Optional[Union['GetZeroTrustDexTestFilterArgs', 'GetZeroTrustDexTestFilterArgsDict', 'outputs.GetZeroTrustDexTestFilterResult']] = None,
+                            target_policies: Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict', 'outputs.GetZeroTrustDexTestTargetPolicyResult']]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDexTestResult:
     """
     Accepted Permissions
@@ -227,7 +227,7 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.str dex_test_id: The unique identifier for the test.
-    :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']] target_policies: DEX rules targeted by this test
+    :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict', 'outputs.GetZeroTrustDexTestTargetPolicyResult']] target_policies: DEX rules targeted by this test
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -254,8 +254,8 @@ def get_zero_trust_dex_test(account_id: Optional[_builtins.str] = None,
         updated=pulumi.get(__ret__, 'updated'))
 def get_zero_trust_dex_test_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    dex_test_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                   filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustDexTestFilterArgs', 'GetZeroTrustDexTestFilterArgsDict']]]] = None,
-                                   target_policies: pulumi.Input[Optional[Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']]]]] = None,
+                                   filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustDexTestFilterArgs', 'GetZeroTrustDexTestFilterArgsDict', 'outputs.GetZeroTrustDexTestFilterResult']]]] = None,
+                                   target_policies: pulumi.Input[Optional[Optional[Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict', 'outputs.GetZeroTrustDexTestTargetPolicyResult']]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDexTestResult]:
     """
     Accepted Permissions
@@ -278,7 +278,7 @@ def get_zero_trust_dex_test_output(account_id: pulumi.Input[Optional[Optional[_b
 
     :param _builtins.str account_id: Unique identifier linked to an account.
     :param _builtins.str dex_test_id: The unique identifier for the test.
-    :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict']] target_policies: DEX rules targeted by this test
+    :param Sequence[Union['GetZeroTrustDexTestTargetPolicyArgs', 'GetZeroTrustDexTestTargetPolicyArgsDict', 'outputs.GetZeroTrustDexTestTargetPolicyResult']] target_policies: DEX rules targeted by this test
     """
     __args__ = dict()
     __args__['accountId'] = account_id

@@ -208,7 +208,7 @@ class ZeroTrustDlpDataClass(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expression: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataClassSensitivityLevelArgs', 'ZeroTrustDlpDataClassSensitivityLevelArgsDict']]]]] = None,
+                 sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataClassSensitivityLevelArgs', 'ZeroTrustDlpDataClassSensitivityLevelArgsDict', 'outputs.ZeroTrustDlpDataClassSensitivityLevel']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -301,7 +301,7 @@ class ZeroTrustDlpDataClass(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expression: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataClassSensitivityLevelArgs', 'ZeroTrustDlpDataClassSensitivityLevelArgsDict']]]]] = None,
+                 sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataClassSensitivityLevelArgs', 'ZeroTrustDlpDataClassSensitivityLevelArgsDict', 'outputs.ZeroTrustDlpDataClassSensitivityLevel']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -345,7 +345,7 @@ class ZeroTrustDlpDataClass(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             expression: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataClassSensitivityLevelArgs', 'ZeroTrustDlpDataClassSensitivityLevelArgsDict']]]]] = None,
+            sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDataClassSensitivityLevelArgs', 'ZeroTrustDlpDataClassSensitivityLevelArgsDict', 'outputs.ZeroTrustDlpDataClassSensitivityLevel']]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDlpDataClass':
         """
         Get an existing ZeroTrustDlpDataClass resource's state with the given name, id, and optional extra

@@ -455,8 +455,8 @@ class WebAnalyticsSite(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             host: pulumi.Input[Optional[_builtins.str]] = None,
             lite: pulumi.Input[Optional[_builtins.bool]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict']]]]] = None,
-            ruleset: pulumi.Input[Optional[Union['WebAnalyticsSiteRulesetArgs', 'WebAnalyticsSiteRulesetArgsDict']]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict', 'outputs.WebAnalyticsSiteRule']]]]] = None,
+            ruleset: pulumi.Input[Optional[Union['WebAnalyticsSiteRulesetArgs', 'WebAnalyticsSiteRulesetArgsDict', 'outputs.WebAnalyticsSiteRuleset']]] = None,
             site_tag: pulumi.Input[Optional[_builtins.str]] = None,
             site_token: pulumi.Input[Optional[_builtins.str]] = None,
             snippet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -473,7 +473,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[_builtins.str] host: The hostname to use for gray-clouded sites.
         :param pulumi.Input[_builtins.bool] lite: If enabled, the JavaScript snippet will not be injected for visitors from the EU.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict']]]] rules: A list of rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict', 'outputs.WebAnalyticsSiteRule']]]] rules: A list of rules.
         :param pulumi.Input[_builtins.str] site_tag: The Web Analytics site identifier.
         :param pulumi.Input[_builtins.str] site_token: The Web Analytics site token.
         :param pulumi.Input[_builtins.str] snippet: Encoded JavaScript snippet.

@@ -136,8 +136,8 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
-                 profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict', 'outputs.OrganizationParent']]] = None,
+                 profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -228,8 +228,8 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
-                 profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict', 'outputs.OrganizationParent']]] = None,
+                 profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -257,10 +257,10 @@ class Organization(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
-            meta: pulumi.Input[Optional[Union['OrganizationMetaArgs', 'OrganizationMetaArgsDict']]] = None,
+            meta: pulumi.Input[Optional[Union['OrganizationMetaArgs', 'OrganizationMetaArgsDict', 'outputs.OrganizationMeta']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
-            profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None) -> 'Organization':
+            parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict', 'outputs.OrganizationParent']]] = None,
+            profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict', 'outputs.OrganizationProfile']]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

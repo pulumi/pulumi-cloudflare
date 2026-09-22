@@ -92,7 +92,7 @@ class RiskBehavior(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None,
+                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict', 'outputs.RiskBehaviorBehaviors']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -173,7 +173,7 @@ class RiskBehavior(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None,
+                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict', 'outputs.RiskBehaviorBehaviors']]]]] = None,
                  __props__=None):
         pulumi.log.warn("""RiskBehavior is deprecated: cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -203,7 +203,7 @@ class RiskBehavior(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None) -> 'RiskBehavior':
+            behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict', 'outputs.RiskBehaviorBehaviors']]]]] = None) -> 'RiskBehavior':
         """
         Get an existing RiskBehavior resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

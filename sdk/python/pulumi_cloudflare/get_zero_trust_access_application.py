@@ -550,7 +550,7 @@ class AwaitableGetZeroTrustAccessApplicationResult(GetZeroTrustAccessApplication
 
 def get_zero_trust_access_application(account_id: Optional[_builtins.str] = None,
                                       app_id: Optional[_builtins.str] = None,
-                                      filter: Optional[Union['GetZeroTrustAccessApplicationFilterArgs', 'GetZeroTrustAccessApplicationFilterArgsDict']] = None,
+                                      filter: Optional[Union['GetZeroTrustAccessApplicationFilterArgs', 'GetZeroTrustAccessApplicationFilterArgsDict', 'outputs.GetZeroTrustAccessApplicationFilterResult']] = None,
                                       zone_id: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessApplicationResult:
     """
@@ -624,7 +624,7 @@ def get_zero_trust_access_application(account_id: Optional[_builtins.str] = None
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_application_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                              app_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                             filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessApplicationFilterArgs', 'GetZeroTrustAccessApplicationFilterArgsDict']]]] = None,
+                                             filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessApplicationFilterArgs', 'GetZeroTrustAccessApplicationFilterArgsDict', 'outputs.GetZeroTrustAccessApplicationFilterResult']]]] = None,
                                              zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessApplicationResult]:
     """

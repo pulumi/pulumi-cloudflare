@@ -675,15 +675,15 @@ class AccessOrganization(pulumi.CustomResource):
                  allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
                  auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+                 custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict', 'outputs.AccessOrganizationCustomPages']]] = None,
                  deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
                  deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
-                 login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
-                 mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+                 login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
+                 mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
                  mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
+                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
@@ -770,10 +770,10 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
-        :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
+        :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-        :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
+        :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
@@ -876,15 +876,15 @@ class AccessOrganization(pulumi.CustomResource):
                  allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
                  auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+                 custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict', 'outputs.AccessOrganizationCustomPages']]] = None,
                  deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
                  deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
-                 login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
-                 mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+                 login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
+                 mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
                  mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
+                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
@@ -938,15 +938,15 @@ class AccessOrganization(pulumi.CustomResource):
             allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
             auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
             auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
-            custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+            custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict', 'outputs.AccessOrganizationCustomPages']]] = None,
             deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
             deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
-            login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
-            mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+            login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
+            mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
             mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
             mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
-            mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
+            mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             session_duration: pulumi.Input[Optional[_builtins.str]] = None,
             ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
@@ -968,10 +968,10 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
-        :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
+        :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-        :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
+        :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.

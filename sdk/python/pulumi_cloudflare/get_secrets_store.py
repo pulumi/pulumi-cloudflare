@@ -121,7 +121,7 @@ class AwaitableGetSecretsStoreResult(GetSecretsStoreResult):
 
 
 def get_secrets_store(account_id: Optional[_builtins.str] = None,
-                      filter: Optional[Union['GetSecretsStoreFilterArgs', 'GetSecretsStoreFilterArgsDict']] = None,
+                      filter: Optional[Union['GetSecretsStoreFilterArgs', 'GetSecretsStoreFilterArgsDict', 'outputs.GetSecretsStoreFilterResult']] = None,
                       store_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretsStoreResult:
     """
@@ -160,7 +160,7 @@ def get_secrets_store(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         store_id=pulumi.get(__ret__, 'store_id'))
 def get_secrets_store_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                             filter: pulumi.Input[Optional[Optional[Union['GetSecretsStoreFilterArgs', 'GetSecretsStoreFilterArgsDict']]]] = None,
+                             filter: pulumi.Input[Optional[Optional[Union['GetSecretsStoreFilterArgs', 'GetSecretsStoreFilterArgsDict', 'outputs.GetSecretsStoreFilterResult']]]] = None,
                              store_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretsStoreResult]:
     """

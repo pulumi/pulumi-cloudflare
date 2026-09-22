@@ -356,12 +356,12 @@ class ApiShieldOperation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-            features: pulumi.Input[Optional[Union['ApiShieldOperationFeaturesArgs', 'ApiShieldOperationFeaturesArgsDict']]] = None,
+            features: pulumi.Input[Optional[Union['ApiShieldOperationFeaturesArgs', 'ApiShieldOperationFeaturesArgsDict', 'outputs.ApiShieldOperationFeatures']]] = None,
             host: pulumi.Input[Optional[_builtins.str]] = None,
             last_updated: pulumi.Input[Optional[_builtins.str]] = None,
             method: pulumi.Input[Optional[_builtins.str]] = None,
             operation_id: pulumi.Input[Optional[_builtins.str]] = None,
-            schemas: pulumi.Input[Optional[Union['ApiShieldOperationSchemasArgs', 'ApiShieldOperationSchemasArgsDict']]] = None,
+            schemas: pulumi.Input[Optional[Union['ApiShieldOperationSchemasArgs', 'ApiShieldOperationSchemasArgsDict', 'outputs.ApiShieldOperationSchemas']]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiShieldOperation':
         """
         Get an existing ApiShieldOperation resource's state with the given name, id, and optional extra
@@ -375,7 +375,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] method: The HTTP method used to access the endpoint.
                Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
-        :param pulumi.Input[Union['ApiShieldOperationSchemasArgs', 'ApiShieldOperationSchemasArgsDict']] schemas: OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+        :param pulumi.Input[Union['ApiShieldOperationSchemasArgs', 'ApiShieldOperationSchemasArgsDict', 'outputs.ApiShieldOperationSchemas']] schemas: OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

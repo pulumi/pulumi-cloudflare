@@ -212,7 +212,7 @@ class AwaitableGetMagicTransitConnectorResult(GetMagicTransitConnectorResult):
 
 def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
                                 connector_id: Optional[_builtins.str] = None,
-                                filter: Optional[Union['GetMagicTransitConnectorFilterArgs', 'GetMagicTransitConnectorFilterArgsDict']] = None,
+                                filter: Optional[Union['GetMagicTransitConnectorFilterArgs', 'GetMagicTransitConnectorFilterArgsDict', 'outputs.GetMagicTransitConnectorFilterResult']] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicTransitConnectorResult:
     """
     Accepted Permissions
@@ -258,7 +258,7 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         timezone=pulumi.get(__ret__, 'timezone'))
 def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        connector_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                       filter: pulumi.Input[Optional[Optional[Union['GetMagicTransitConnectorFilterArgs', 'GetMagicTransitConnectorFilterArgsDict']]]] = None,
+                                       filter: pulumi.Input[Optional[Optional[Union['GetMagicTransitConnectorFilterArgs', 'GetMagicTransitConnectorFilterArgsDict', 'outputs.GetMagicTransitConnectorFilterResult']]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitConnectorResult]:
     """
     Accepted Permissions

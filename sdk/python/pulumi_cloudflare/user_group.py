@@ -170,7 +170,7 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -215,7 +215,7 @@ class UserGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] name: Name of the User group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]] policies: Policies attached to the User group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]] policies: Policies attached to the User group
         """
         ...
     @overload
@@ -279,7 +279,7 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,7 +312,7 @@ class UserGroup(pulumi.CustomResource):
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None) -> 'UserGroup':
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None) -> 'UserGroup':
         """
         Get an existing UserGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -324,7 +324,7 @@ class UserGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the user group
         :param pulumi.Input[_builtins.str] modified_on: Last time the user group was modified.
         :param pulumi.Input[_builtins.str] name: Name of the User group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]] policies: Policies attached to the User group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]] policies: Policies attached to the User group
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
