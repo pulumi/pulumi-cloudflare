@@ -16,18 +16,16 @@ Three bugs in the same conditional:
   to the User-Agent instead of falling back to terraform/<version>.
 
 diff --git a/internal/provider.go b/internal/provider.go
-index fcf680dc13e7..b4d4ecc3342a 100644
+index bfdfc8090e49..c9fc5dcd93b9 100644
 --- a/internal/provider.go
 +++ b/internal/provider.go
-@@ -439,8 +439,9 @@ func (p *CloudflareProvider) Configure(ctx context.Context, req provider.Configu
+@@ -447,7 +447,8 @@ func (p *CloudflareProvider) Configure(ctx context.Context, req provider.Configu
  		PluginVersion:   pluginVersion,
  	}
  
--	if !data.UserAgentOperatorSuffix.IsNull() {
--		operatorSuffix := data.UserAgentOperatorSuffix.String()
+-	if !data.UserAgentOperatorSuffix.IsNull() && !data.UserAgentOperatorSuffix.IsUnknown() {
 +	if !data.UserAgentOperatorSuffix.IsNull() && !data.UserAgentOperatorSuffix.IsUnknown() &&
 +		data.UserAgentOperatorSuffix.ValueString() != "" {
-+		operatorSuffix := data.UserAgentOperatorSuffix.ValueString()
+ 		operatorSuffix := data.UserAgentOperatorSuffix.ValueString()
  		userAgentParams.OperatorSuffix = &operatorSuffix
- 	} else {
- 		userAgentParams.TerraformVersion = &req.TerraformVersion
+ 	} else if o, ok := os.LookupEnv(consts.UserAgentOperatorSuffixEnvVarKey); ok {
