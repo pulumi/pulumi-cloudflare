@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetWorkersKvNamespaceFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Direction to order namespaces.
+        /// Sort namespaces in ascending (`Asc`) or descending (`Desc`) order.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
         /// <summary>
-        /// Field to order results by.
+        /// Namespace field to sort by (`Id` or `Title`).
         /// Available values: "id", "title".
         /// </summary>
         [Input("order")]

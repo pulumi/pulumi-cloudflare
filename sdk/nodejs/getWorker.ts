@@ -84,6 +84,10 @@ export interface GetWorkerResult {
      */
     readonly observability: outputs.GetWorkerObservability;
     /**
+     * Template configuration used when creating new Previews for this Worker.
+     */
+    readonly previewsBaseConfig: outputs.GetWorkerPreviewsBaseConfig;
+    /**
      * Other resources that reference the Worker and depend on it existing.
      */
     readonly references: outputs.GetWorkerReferences;

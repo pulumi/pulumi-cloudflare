@@ -7,16 +7,14 @@ import com.pulumi.cloudflare.RateLimitArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.RateLimitState;
 import com.pulumi.cloudflare.outputs.RateLimitAction;
-import com.pulumi.cloudflare.outputs.RateLimitBypass;
 import com.pulumi.cloudflare.outputs.RateLimitMatch;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -123,48 +121,6 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
         return this.action;
     }
     /**
-     * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-     * 
-     */
-    @Export(name="bypasses", refs={List.class,RateLimitBypass.class}, tree="[0,1]")
-    private Output<List<RateLimitBypass>> bypasses;
-
-    /**
-     * @return Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-     * 
-     */
-    public Output<List<RateLimitBypass>> bypasses() {
-        return this.bypasses;
-    }
-    /**
-     * An informative summary of the rule. This value is sanitized and any tags will be removed.
-     * 
-     */
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
-
-    /**
-     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
-     * 
-     */
-    public Output<String> description() {
-        return this.description;
-    }
-    /**
-     * When true, indicates that the rate limit is currently disabled.
-     * 
-     */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> disabled;
-
-    /**
-     * @return When true, indicates that the rate limit is currently disabled.
-     * 
-     */
-    public Output<Boolean> disabled() {
-        return this.disabled;
-    }
-    /**
      * Determines which traffic the rate limit counts towards the threshold.
      * 
      */
@@ -191,6 +147,20 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
      */
     public Output<Double> period() {
         return this.period;
+    }
+    /**
+     * Defines the unique identifier of the rate limit.
+     * 
+     */
+    @Export(name="rateLimitId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> rateLimitId;
+
+    /**
+     * @return Defines the unique identifier of the rate limit.
+     * 
+     */
+    public Output<Optional<String>> rateLimitId() {
+        return Codegen.optional(this.rateLimitId);
     }
     /**
      * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.

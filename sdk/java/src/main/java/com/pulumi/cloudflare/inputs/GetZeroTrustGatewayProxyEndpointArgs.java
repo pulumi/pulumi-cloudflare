@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayProxyEndpointFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,17 +23,25 @@ public final class GetZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resou
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="proxyEndpointId", required=true)
-    private Output<String> proxyEndpointId;
+    @Import(name="filter")
+    private @Nullable Output<GetZeroTrustGatewayProxyEndpointFilterArgs> filter;
 
-    public Output<String> proxyEndpointId() {
-        return this.proxyEndpointId;
+    public Optional<Output<GetZeroTrustGatewayProxyEndpointFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    @Import(name="proxyEndpointId")
+    private @Nullable Output<String> proxyEndpointId;
+
+    public Optional<Output<String>> proxyEndpointId() {
+        return Optional.ofNullable(this.proxyEndpointId);
     }
 
     private GetZeroTrustGatewayProxyEndpointArgs() {}
 
     private GetZeroTrustGatewayProxyEndpointArgs(GetZeroTrustGatewayProxyEndpointArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.proxyEndpointId = $.proxyEndpointId;
     }
 
@@ -64,7 +72,16 @@ public final class GetZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resou
             return accountId(Output.of(accountId));
         }
 
-        public Builder proxyEndpointId(Output<String> proxyEndpointId) {
+        public Builder filter(@Nullable Output<GetZeroTrustGatewayProxyEndpointFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetZeroTrustGatewayProxyEndpointFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
+        public Builder proxyEndpointId(@Nullable Output<String> proxyEndpointId) {
             $.proxyEndpointId = proxyEndpointId;
             return this;
         }
@@ -74,9 +91,6 @@ public final class GetZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resou
         }
 
         public GetZeroTrustGatewayProxyEndpointArgs build() {
-            if ($.proxyEndpointId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointArgs", "proxyEndpointId");
-            }
             return $;
         }
     }

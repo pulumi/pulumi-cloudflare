@@ -17,14 +17,14 @@ public final class R2ManagedDomainState extends com.pulumi.resources.ResourceArg
     public static final R2ManagedDomainState Empty = new R2ManagedDomainState();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -136,7 +136,7 @@ public final class R2ManagedDomainState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class R2ManagedDomainState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 

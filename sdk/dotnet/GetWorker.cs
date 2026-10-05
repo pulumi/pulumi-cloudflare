@@ -180,6 +180,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetWorkerObservabilityResult Observability;
         /// <summary>
+        /// Template configuration used when creating new Previews for this Worker.
+        /// </summary>
+        public readonly Outputs.GetWorkerPreviewsBaseConfigResult PreviewsBaseConfig;
+        /// <summary>
         /// Other resources that reference the Worker and depend on it existing.
         /// </summary>
         public readonly Outputs.GetWorkerReferencesResult References;
@@ -222,6 +226,8 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetWorkerObservabilityResult observability,
 
+            Outputs.GetWorkerPreviewsBaseConfigResult previewsBaseConfig,
+
             Outputs.GetWorkerReferencesResult references,
 
             Outputs.GetWorkerSubdomainResult subdomain,
@@ -242,6 +248,7 @@ namespace Pulumi.Cloudflare
             Logpush = logpush;
             Name = name;
             Observability = observability;
+            PreviewsBaseConfig = previewsBaseConfig;
             References = references;
             Subdomain = subdomain;
             Tags = tags;

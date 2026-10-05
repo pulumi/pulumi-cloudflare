@@ -76,6 +76,7 @@ type LookupEmailSecurityDomainResult struct {
 	DropDispositions []string                              `pulumi:"dropDispositions"`
 	EmailsProcessed  GetEmailSecurityDomainEmailsProcessed `pulumi:"emailsProcessed"`
 	Filter           *GetEmailSecurityDomainFilter         `pulumi:"filter"`
+	// The mailbox folder to scan, for API-scanning domains.
 	// Available values: "AllItems", "Inbox".
 	Folder string `pulumi:"folder"`
 	// Domain identifier.
@@ -179,6 +180,7 @@ func (o LookupEmailSecurityDomainResultOutput) Filter() GetEmailSecurityDomainFi
 	return o.ApplyT(func(v LookupEmailSecurityDomainResult) *GetEmailSecurityDomainFilter { return v.Filter }).(GetEmailSecurityDomainFilterPtrOutput)
 }
 
+// The mailbox folder to scan, for API-scanning domains.
 // Available values: "AllItems", "Inbox".
 func (o LookupEmailSecurityDomainResultOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityDomainResult) string { return v.Folder }).(pulumi.StringOutput)

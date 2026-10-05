@@ -188,6 +188,8 @@ namespace Pulumi.Cloudflare
         /// Configuration for assets within a Worker.
         /// </summary>
         public readonly Outputs.GetWorkerVersionAssetsResult Assets;
+        public readonly string AuthorEmail;
+        public readonly string AuthorId;
         public readonly ImmutableArray<Outputs.GetWorkerVersionBindingResult> Bindings;
         public readonly Outputs.GetWorkerVersionCacheOptionsResult CacheOptions;
         public readonly string CompatibilityDate;
@@ -230,6 +232,10 @@ namespace Pulumi.Cloudflare
             Outputs.GetWorkerVersionAnnotationsResult annotations,
 
             Outputs.GetWorkerVersionAssetsResult assets,
+
+            string authorEmail,
+
+            string authorId,
 
             ImmutableArray<Outputs.GetWorkerVersionBindingResult> bindings,
 
@@ -282,6 +288,8 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Annotations = annotations;
             Assets = assets;
+            AuthorEmail = authorEmail;
+            AuthorId = authorId;
             Bindings = bindings;
             CacheOptions = cacheOptions;
             CompatibilityDate = compatibilityDate;

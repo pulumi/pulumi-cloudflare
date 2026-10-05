@@ -55,6 +55,10 @@ type SecretsStore struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// When the secret was created.
 	Created pulumi.StringOutput `pulumi:"created"`
+	// When true, cascade-deletes all secrets in the store before deleting the store itself.
+	// Required when deleting a non-empty store. Without this parameter, attempting to
+	// delete a non-empty store returns 409.
+	Force pulumi.BoolOutput `pulumi:"force"`
 	// When the secret was modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// The name of the store.
@@ -100,6 +104,10 @@ type secretsStoreState struct {
 	AccountId *string `pulumi:"accountId"`
 	// When the secret was created.
 	Created *string `pulumi:"created"`
+	// When true, cascade-deletes all secrets in the store before deleting the store itself.
+	// Required when deleting a non-empty store. Without this parameter, attempting to
+	// delete a non-empty store returns 409.
+	Force *bool `pulumi:"force"`
 	// When the secret was modified.
 	Modified *string `pulumi:"modified"`
 	// The name of the store.
@@ -110,6 +118,10 @@ type SecretsStoreState struct {
 	AccountId pulumi.StringPtrInput
 	// When the secret was created.
 	Created pulumi.StringPtrInput
+	// When true, cascade-deletes all secrets in the store before deleting the store itself.
+	// Required when deleting a non-empty store. Without this parameter, attempting to
+	// delete a non-empty store returns 409.
+	Force pulumi.BoolPtrInput
 	// When the secret was modified.
 	Modified pulumi.StringPtrInput
 	// The name of the store.
@@ -122,6 +134,10 @@ func (SecretsStoreState) ElementType() reflect.Type {
 
 type secretsStoreArgs struct {
 	AccountId string `pulumi:"accountId"`
+	// When true, cascade-deletes all secrets in the store before deleting the store itself.
+	// Required when deleting a non-empty store. Without this parameter, attempting to
+	// delete a non-empty store returns 409.
+	Force *bool `pulumi:"force"`
 	// The name of the store.
 	Name string `pulumi:"name"`
 }
@@ -129,6 +145,10 @@ type secretsStoreArgs struct {
 // The set of arguments for constructing a SecretsStore resource.
 type SecretsStoreArgs struct {
 	AccountId pulumi.StringInput
+	// When true, cascade-deletes all secrets in the store before deleting the store itself.
+	// Required when deleting a non-empty store. Without this parameter, attempting to
+	// delete a non-empty store returns 409.
+	Force pulumi.BoolPtrInput
 	// The name of the store.
 	Name pulumi.StringInput
 }
@@ -227,6 +247,13 @@ func (o SecretsStoreOutput) AccountId() pulumi.StringOutput {
 // When the secret was created.
 func (o SecretsStoreOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsStore) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// When true, cascade-deletes all secrets in the store before deleting the store itself.
+// Required when deleting a non-empty store. Without this parameter, attempting to
+// delete a non-empty store returns 409.
+func (o SecretsStoreOutput) Force() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecretsStore) pulumi.BoolOutput { return v.Force }).(pulumi.BoolOutput)
 }
 
 // When the secret was modified.

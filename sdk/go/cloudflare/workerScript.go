@@ -134,6 +134,9 @@ import (
 //				Observability: &cloudflare.WorkersScriptObservabilityArgs{
 //					Enabled:          pulumi.Bool(true),
 //					HeadSamplingRate: pulumi.Float64(0.1),
+//					Issues: &cloudflare.WorkersScriptObservabilityIssuesArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
 //					Logs: &cloudflare.WorkersScriptObservabilityLogsArgs{
 //						Enabled:        pulumi.Bool(true),
 //						InvocationLogs: pulumi.Bool(true),
@@ -235,6 +238,8 @@ type WorkerScript struct {
 	Exports WorkerScriptExportsMapOutput `pulumi:"exports"`
 	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
 	Files WorkerScriptFilesMapOutput `pulumi:"files"`
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The names of handlers exported as part of the default export.
 	Handlers pulumi.StringArrayOutput `pulumi:"handlers"`
 	// Whether a Worker contains assets.
@@ -362,6 +367,8 @@ type workerScriptState struct {
 	Exports map[string]WorkerScriptExports `pulumi:"exports"`
 	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
 	Files map[string]WorkerScriptFiles `pulumi:"files"`
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force *bool `pulumi:"force"`
 	// The names of handlers exported as part of the default export.
 	Handlers []string `pulumi:"handlers"`
 	// Whether a Worker contains assets.
@@ -448,6 +455,8 @@ type WorkerScriptState struct {
 	Exports WorkerScriptExportsMapInput
 	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
 	Files WorkerScriptFilesMapInput
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force pulumi.BoolPtrInput
 	// The names of handlers exported as part of the default export.
 	Handlers pulumi.StringArrayInput
 	// Whether a Worker contains assets.
@@ -534,6 +543,8 @@ type workerScriptArgs struct {
 	Exports map[string]WorkerScriptExports `pulumi:"exports"`
 	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
 	Files map[string]WorkerScriptFiles `pulumi:"files"`
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force *bool `pulumi:"force"`
 	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets *bool `pulumi:"keepAssets"`
 	// List of binding types to keep from previous_upload.
@@ -594,6 +605,8 @@ type WorkerScriptArgs struct {
 	Exports WorkerScriptExportsMapInput
 	// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
 	Files WorkerScriptFilesMapInput
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force pulumi.BoolPtrInput
 	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
 	KeepAssets pulumi.BoolPtrInput
 	// List of binding types to keep from previous_upload.
@@ -789,6 +802,11 @@ func (o WorkerScriptOutput) Exports() WorkerScriptExportsMapOutput {
 // Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
 func (o WorkerScriptOutput) Files() WorkerScriptFilesMapOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptFilesMapOutput { return v.Files }).(WorkerScriptFilesMapOutput)
+}
+
+// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+func (o WorkerScriptOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
 // The names of handlers exported as part of the default export.

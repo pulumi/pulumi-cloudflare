@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.R2DataCatalogMaintenanceConfigCompaction;
 import com.pulumi.cloudflare.outputs.R2DataCatalogMaintenanceConfigSnapshotExpiration;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,11 @@ public final class R2DataCatalogMaintenanceConfig {
      * 
      */
     private @Nullable R2DataCatalogMaintenanceConfigCompaction compaction;
+    /**
+     * @return Scheduling interval between normal table maintenance runs.
+     * 
+     */
+    private @Nullable String interval;
     /**
      * @return Configures snapshot expiration settings.
      * 
@@ -30,6 +36,13 @@ public final class R2DataCatalogMaintenanceConfig {
      */
     public Optional<R2DataCatalogMaintenanceConfigCompaction> compaction() {
         return Optional.ofNullable(this.compaction);
+    }
+    /**
+     * @return Scheduling interval between normal table maintenance runs.
+     * 
+     */
+    public Optional<String> interval() {
+        return Optional.ofNullable(this.interval);
     }
     /**
      * @return Configures snapshot expiration settings.
@@ -49,11 +62,13 @@ public final class R2DataCatalogMaintenanceConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable R2DataCatalogMaintenanceConfigCompaction compaction;
+        private @Nullable String interval;
         private @Nullable R2DataCatalogMaintenanceConfigSnapshotExpiration snapshotExpiration;
         public Builder() {}
         public Builder(R2DataCatalogMaintenanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compaction = defaults.compaction;
+    	      this.interval = defaults.interval;
     	      this.snapshotExpiration = defaults.snapshotExpiration;
         }
 
@@ -61,6 +76,12 @@ public final class R2DataCatalogMaintenanceConfig {
         public Builder compaction(@Nullable R2DataCatalogMaintenanceConfigCompaction compaction) {
 
             this.compaction = compaction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interval(@Nullable String interval) {
+
+            this.interval = interval;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +93,7 @@ public final class R2DataCatalogMaintenanceConfig {
         public R2DataCatalogMaintenanceConfig build() {
             final var _resultValue = new R2DataCatalogMaintenanceConfig();
             _resultValue.compaction = compaction;
+            _resultValue.interval = interval;
             _resultValue.snapshotExpiration = snapshotExpiration;
             return _resultValue;
         }

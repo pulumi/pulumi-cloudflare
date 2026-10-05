@@ -61,6 +61,7 @@ import (
 type ZeroTrustGatewayLogging struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii pulumi.BoolOutput `pulumi:"redactPii"`
@@ -101,6 +102,7 @@ func GetZeroTrustGatewayLogging(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustGatewayLogging resources.
 type zeroTrustGatewayLoggingState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii *bool `pulumi:"redactPii"`
@@ -109,6 +111,7 @@ type zeroTrustGatewayLoggingState struct {
 }
 
 type ZeroTrustGatewayLoggingState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii pulumi.BoolPtrInput
@@ -121,6 +124,7 @@ func (ZeroTrustGatewayLoggingState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayLoggingArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii *bool `pulumi:"redactPii"`
@@ -130,6 +134,7 @@ type zeroTrustGatewayLoggingArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewayLogging resource.
 type ZeroTrustGatewayLoggingArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii pulumi.BoolPtrInput
@@ -224,6 +229,7 @@ func (o ZeroTrustGatewayLoggingOutput) ToZeroTrustGatewayLoggingOutputWithContex
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o ZeroTrustGatewayLoggingOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayLogging) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

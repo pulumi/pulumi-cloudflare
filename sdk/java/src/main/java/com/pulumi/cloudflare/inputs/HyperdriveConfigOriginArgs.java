@@ -63,14 +63,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Defines the host (hostname or IP) of your origin database.
+     * Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return Defines the host (hostname or IP) of your origin database.
+     * @return Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
      * 
      */
     public Optional<Output<String>> host() {
@@ -250,7 +250,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param host Defines the host (hostname or IP) of your origin database.
+         * @param host Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param host Defines the host (hostname or IP) of your origin database.
+         * @param host Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
          * 
          * @return builder
          * 

@@ -175,6 +175,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ErrorMessage;
         /// <summary>
+        /// When true, excludes DDoS attack traffic from logs. This option is supported for the `HttpRequests`, `FirewallEvents`, and `NetworkAnalyticsLogs` datasets.
+        /// </summary>
+        public readonly bool FilterAttackTraffic;
+        /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
         /// Available values: "high", "low".
         /// </summary>
@@ -241,6 +245,8 @@ namespace Pulumi.Cloudflare
 
             string errorMessage,
 
+            bool filterAttackTraffic,
+
             string frequency,
 
             int id,
@@ -272,6 +278,7 @@ namespace Pulumi.Cloudflare
             DestinationConf = destinationConf;
             Enabled = enabled;
             ErrorMessage = errorMessage;
+            FilterAttackTraffic = filterAttackTraffic;
             Frequency = frequency;
             Id = id;
             JobId = jobId;

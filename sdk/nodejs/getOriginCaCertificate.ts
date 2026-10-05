@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleOriginCaCertificate = cloudflare.getOriginCaCertificate({
- *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     certificateId: "328578533902268680212849205732770752308931942346",
  * });
  * ```
  */
@@ -32,7 +32,7 @@ export function getOriginCaCertificate(args?: GetOriginCaCertificateArgs, opts?:
  */
 export interface GetOriginCaCertificateArgs {
     /**
-     * Identifier.
+     * The x509 serial number of the Origin CA certificate.
      */
     certificateId?: string;
     filter?: inputs.GetOriginCaCertificateFilter;
@@ -47,7 +47,7 @@ export interface GetOriginCaCertificateResult {
      */
     readonly certificate: string;
     /**
-     * Identifier.
+     * The x509 serial number of the Origin CA certificate.
      */
     readonly certificateId?: string;
     /**
@@ -65,7 +65,7 @@ export interface GetOriginCaCertificateResult {
      */
     readonly hostnames: string[];
     /**
-     * Identifier.
+     * The x509 serial number of the Origin CA certificate.
      */
     readonly id: string;
     /**
@@ -87,7 +87,7 @@ export interface GetOriginCaCertificateResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleOriginCaCertificate = cloudflare.getOriginCaCertificate({
- *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     certificateId: "328578533902268680212849205732770752308931942346",
  * });
  * ```
  */
@@ -105,7 +105,7 @@ export function getOriginCaCertificateOutput(args?: GetOriginCaCertificateOutput
  */
 export interface GetOriginCaCertificateOutputArgs {
     /**
-     * Identifier.
+     * The x509 serial number of the Origin CA certificate.
      */
     certificateId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetOriginCaCertificateFilterArgs | undefined>;

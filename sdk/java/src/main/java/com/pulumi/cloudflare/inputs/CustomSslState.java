@@ -209,14 +209,14 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone&#39;s private key.
+     * The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The zone&#39;s private key.
+     * @return The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -608,7 +608,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The zone&#39;s private key.
+         * @param privateKey The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The zone&#39;s private key.
+         * @param privateKey The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
          * 
          * @return builder
          * 

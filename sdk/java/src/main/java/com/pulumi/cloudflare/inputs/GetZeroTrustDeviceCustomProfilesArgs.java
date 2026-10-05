@@ -38,11 +38,29 @@ public final class GetZeroTrustDeviceCustomProfilesArgs extends com.pulumi.resou
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    @Import(name="profileType")
+    private @Nullable Output<String> profileType;
+
+    /**
+     * @return Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public Optional<Output<String>> profileType() {
+        return Optional.ofNullable(this.profileType);
+    }
+
     private GetZeroTrustDeviceCustomProfilesArgs() {}
 
     private GetZeroTrustDeviceCustomProfilesArgs(GetZeroTrustDeviceCustomProfilesArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.profileType = $.profileType;
     }
 
     public static Builder builder() {
@@ -91,6 +109,29 @@ public final class GetZeroTrustDeviceCustomProfilesArgs extends com.pulumi.resou
          */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param profileType Filter profiles by client type. When omitted, only WARP profiles are returned.
+         * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profileType(@Nullable Output<String> profileType) {
+            $.profileType = profileType;
+            return this;
+        }
+
+        /**
+         * @param profileType Filter profiles by client type. When omitted, only WARP profiles are returned.
+         * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profileType(String profileType) {
+            return profileType(Output.of(profileType));
         }
 
         public GetZeroTrustDeviceCustomProfilesArgs build() {

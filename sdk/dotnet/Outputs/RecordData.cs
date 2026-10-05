@@ -104,7 +104,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? Preference;
         /// <summary>
-        /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+        /// Priority.
         /// </summary>
         public readonly double? Priority;
         /// <summary>
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Tag;
         /// <summary>
-        /// A valid mail server hostname, or "." for a NULL MX record.
+        /// Target.
         /// </summary>
         public readonly string? Target;
         /// <summary>

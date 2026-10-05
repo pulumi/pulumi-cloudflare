@@ -52,9 +52,10 @@ import (
 type FlagshipApp struct {
 	pulumi.CustomResourceState
 
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
 	Name      pulumi.StringOutput `pulumi:"name"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.
@@ -97,9 +98,10 @@ func GetFlagshipApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlagshipApp resources.
 type flagshipAppState struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
+	// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
 	Name      *string `pulumi:"name"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.
@@ -107,9 +109,10 @@ type flagshipAppState struct {
 }
 
 type FlagshipAppState struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
+	// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
 	Name      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 	// Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.
@@ -121,16 +124,18 @@ func (FlagshipAppState) ElementType() reflect.Type {
 }
 
 type flagshipAppArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
-	Name      string `pulumi:"name"`
+	// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a FlagshipApp resource.
 type FlagshipAppArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringInput
-	Name      pulumi.StringInput
+	// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+	Name pulumi.StringInput
 }
 
 func (FlagshipAppArgs) ElementType() reflect.Type {
@@ -220,7 +225,7 @@ func (o FlagshipAppOutput) ToFlagshipAppOutputWithContext(ctx context.Context) F
 	return o
 }
 
-// Cloudflare account ID.
+// Cloudflare account ID that owns the Flagship app.
 func (o FlagshipAppOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagshipApp) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -229,6 +234,7 @@ func (o FlagshipAppOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagshipApp) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
 func (o FlagshipAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagshipApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

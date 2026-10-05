@@ -70,7 +70,7 @@ type LookupCallsTurnAppResult struct {
 	KeyId string `pulumi:"keyId"`
 	// The date and time the item was last modified.
 	Modified string `pulumi:"modified"`
-	// A short description of Calls app, not shown to end users.
+	// A short description of a Realtime SFU app, not shown to end users.
 	Name string `pulumi:"name"`
 	// A Cloudflare-generated unique identifier for a item.
 	Uid string `pulumi:"uid"`
@@ -128,7 +128,7 @@ func (o LookupCallsTurnAppResultOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCallsTurnAppResult) string { return v.Modified }).(pulumi.StringOutput)
 }
 
-// A short description of Calls app, not shown to end users.
+// A short description of a Realtime SFU app, not shown to end users.
 func (o LookupCallsTurnAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCallsTurnAppResult) string { return v.Name }).(pulumi.StringOutput)
 }

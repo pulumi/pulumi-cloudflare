@@ -21,6 +21,10 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustDnsLocations = cloudflare.getZeroTrustDnsLocations({
  *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     direction: "asc",
+ *     filters: ["string"],
+ *     orderBy: "name",
+ *     search: "search",
  * });
  * ```
  */
@@ -29,7 +33,11 @@ export function getZeroTrustDnsLocations(args?: GetZeroTrustDnsLocationsArgs, op
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", {
         "accountId": args.accountId,
+        "direction": args.direction,
+        "filters": args.filters,
         "maxItems": args.maxItems,
+        "orderBy": args.orderBy,
+        "search": args.search,
     }, opts);
 }
 
@@ -38,10 +46,11 @@ export function getZeroTrustDnsLocations(args?: GetZeroTrustDnsLocationsArgs, op
  */
 export interface GetZeroTrustDnsLocationsArgs {
     accountId?: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    direction?: string;
+    filters?: string[];
     maxItems?: number;
+    orderBy?: string;
+    search?: string;
 }
 
 /**
@@ -49,14 +58,12 @@ export interface GetZeroTrustDnsLocationsArgs {
  */
 export interface GetZeroTrustDnsLocationsResult {
     readonly accountId?: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    readonly direction?: string;
+    readonly filters?: string[];
     readonly maxItems?: number;
-    /**
-     * The items returned by the data source
-     */
+    readonly orderBy?: string;
     readonly results: outputs.GetZeroTrustDnsLocationsResult[];
+    readonly search?: string;
 }
 /**
  * Accepted Permissions
@@ -73,6 +80,10 @@ export interface GetZeroTrustDnsLocationsResult {
  *
  * const exampleZeroTrustDnsLocations = cloudflare.getZeroTrustDnsLocations({
  *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     direction: "asc",
+ *     filters: ["string"],
+ *     orderBy: "name",
+ *     search: "search",
  * });
  * ```
  */
@@ -81,7 +92,11 @@ export function getZeroTrustDnsLocationsOutput(args?: GetZeroTrustDnsLocationsOu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", {
         "accountId": args.accountId,
+        "direction": args.direction,
+        "filters": args.filters,
         "maxItems": args.maxItems,
+        "orderBy": args.orderBy,
+        "search": args.search,
     }, opts);
 }
 
@@ -90,8 +105,9 @@ export function getZeroTrustDnsLocationsOutput(args?: GetZeroTrustDnsLocationsOu
  */
 export interface GetZeroTrustDnsLocationsOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    direction?: pulumi.Input<string | undefined>;
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     maxItems?: pulumi.Input<number | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
+    search?: pulumi.Input<string | undefined>;
 }

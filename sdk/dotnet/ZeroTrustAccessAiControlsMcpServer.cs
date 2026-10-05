@@ -20,47 +20,46 @@ namespace Pulumi.Cloudflare
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var cloudflareAccountId = config.Require("cloudflareAccountId");
+    ///     var mcpOauthClientId = config.Require("mcpOauthClientId");
+    ///     var mcpOauthClientSecret = config.Require("mcpOauthClientSecret");
     ///     var exampleZeroTrustAccessAiControlsMcpServer = new Cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", new()
     ///     {
-    ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
-    ///         ZeroTrustAccessAiControlsMcpServerId = "my-mcp-server",
-    ///         AuthType = "unauthenticated",
-    ///         Hostname = "https://example.com/mcp",
-    ///         Name = "My MCP Server",
-    ///         AuthCredentials = "sk-my-bearer-token",
-    ///         ClientSecret = "client_secret",
-    ///         Description = "This is one remote MCP server",
+    ///         AccountId = cloudflareAccountId,
+    ///         ZeroTrustAccessAiControlsMcpServerId = "github",
+    ///         AuthType = "oauth",
+    ///         Hostname = "https://github-mcp.example.com/mcp",
+    ///         Name = "GitHub MCP Server",
+    ///         AuthCredentials = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["auth_mode"] = "manual",
+    ///             ["config"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["authorization_endpoint"] = "https://github.com/login/oauth/authorize",
+    ///                 ["token_endpoint"] = "https://github.com/login/oauth/access_token",
+    ///             },
+    ///             ["registration_info"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["client_id"] = mcpOauthClientId,
+    ///                 ["token_endpoint_auth_method"] = "client_secret_basic",
+    ///                 ["scope"] = "repo read:user",
+    ///             },
+    ///         }),
+    ///         ClientSecret = mcpOauthClientSecret,
     ///         IsSharedOauthCallbackEnabled = true,
-    ///         SecureWebGateway = false,
-    ///         UpdatedPrompts = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs
-    ///             {
-    ///                 Name = "name",
-    ///                 Alias = "my-custom-alias",
-    ///                 Description = "description",
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///         UpdatedTools = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs
-    ///             {
-    ///                 Name = "name",
-    ///                 Alias = "my-custom-alias",
-    ///                 Description = "description",
-    ///                 Enabled = true,
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// `AuthCredentials` and `ClientSecret` are write-only and cannot be recovered by import. Omitting either value on update preserves the existing credential. Because the API does not return `AuthCredentials`, Terraform cannot automatically detect and restore out-of-band OAuth metadata changes; inspect the computed `AuthConfigSummary` for the current non-secret metadata. Terraform's `Sensitive` marker hides credential values from normal output but still stores them in state, so use a protected state backend with restricted access.
     /// 
     /// ## Import
     /// 

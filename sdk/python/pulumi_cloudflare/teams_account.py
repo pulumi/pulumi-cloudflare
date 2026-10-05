@@ -26,6 +26,7 @@ class TeamsAccountArgs:
         """
         The set of arguments for constructing a TeamsAccount resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input['TeamsAccountSettingsArgs'] settings: Specify account settings.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -35,6 +36,9 @@ class TeamsAccountArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -64,6 +68,7 @@ class _TeamsAccountState:
         """
         Input properties used for looking up and filtering TeamsAccount resources.
 
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input['TeamsAccountSettingsArgs'] settings: Specify account settings.
         """
         if account_id is not None:
@@ -78,6 +83,9 @@ class _TeamsAccountState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -216,6 +224,7 @@ class TeamsAccount(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[Union['TeamsAccountSettingsArgs', 'TeamsAccountSettingsArgsDict', 'outputs.TeamsAccountSettings']] settings: Specify account settings.
         """
         ...
@@ -365,6 +374,7 @@ class TeamsAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[Union['TeamsAccountSettingsArgs', 'TeamsAccountSettingsArgsDict', 'outputs.TeamsAccountSettings']] settings: Specify account settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -380,6 +390,9 @@ class TeamsAccount(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property

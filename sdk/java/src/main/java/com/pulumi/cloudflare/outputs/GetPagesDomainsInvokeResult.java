@@ -26,7 +26,7 @@ public final class GetPagesDomainsInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     private String projectName;
@@ -52,7 +52,7 @@ public final class GetPagesDomainsInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public String projectName() {

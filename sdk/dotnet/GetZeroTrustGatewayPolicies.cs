@@ -25,6 +25,13 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustGatewayPolicies = Cloudflare.GetZeroTrustGatewayPolicies.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         Direction = "asc",
+        ///         Filters = new[]
+        ///         {
+        ///             "string",
+        ///         },
+        ///         OrderBy = "name",
+        ///         Search = "search",
         ///     });
         /// 
         /// });
@@ -47,6 +54,13 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustGatewayPolicies = Cloudflare.GetZeroTrustGatewayPolicies.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         Direction = "asc",
+        ///         Filters = new[]
+        ///         {
+        ///             "string",
+        ///         },
+        ///         OrderBy = "name",
+        ///         Search = "search",
         ///     });
         /// 
         /// });
@@ -69,6 +83,13 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustGatewayPolicies = Cloudflare.GetZeroTrustGatewayPolicies.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         Direction = "asc",
+        ///         Filters = new[]
+        ///         {
+        ///             "string",
+        ///         },
+        ///         OrderBy = "name",
+        ///         Search = "search",
         ///     });
         /// 
         /// });
@@ -81,14 +102,42 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPoliciesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// Sort direction. When `OrderBy` is omitted, this controls the direction
+        /// of the existing precedence ordering. Shared rules remain first in either
+        /// direction. Accepted values are `Asc` and `Desc`.
+        /// Available values: "asc", "desc".
         /// </summary>
+        [Input("direction")]
+        public string? Direction { get; set; }
+
+        [Input("filters")]
+        private List<string>? _filters;
+
+        /// <summary>
+        /// Filter the returned rules by one or more `field:value` pairs. Repeat the
+        /// parameter to combine filters with logical AND.
+        /// </summary>
+        public List<string> Filters
+        {
+            get => _filters ?? (_filters = new List<string>());
+            set => _filters = value;
+        }
+
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
+
+        [Input("search")]
+        public string? Search { get; set; }
 
         public GetZeroTrustGatewayPoliciesArgs()
         {
@@ -98,14 +147,42 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// Sort direction. When `OrderBy` is omitted, this controls the direction
+        /// of the existing precedence ordering. Shared rules remain first in either
+        /// direction. Accepted values are `Asc` and `Desc`.
+        /// Available values: "asc", "desc".
         /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        [Input("filters")]
+        private InputList<string>? _filters;
+
+        /// <summary>
+        /// Filter the returned rules by one or more `field:value` pairs. Repeat the
+        /// parameter to combine filters with logical AND.
+        /// </summary>
+        public InputList<string> Filters
+        {
+            get => _filters ?? (_filters = new InputList<string>());
+            set => _filters = value;
+        }
+
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
+        [Input("search")]
+        public Input<string>? Search { get; set; }
 
         public GetZeroTrustGatewayPoliciesInvokeArgs()
         {
@@ -117,27 +194,50 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayPoliciesResult
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// Sort direction. When `OrderBy` is omitted, this controls the direction
+        /// of the existing precedence ordering. Shared rules remain first in either
+        /// direction. Accepted values are `Asc` and `Desc`.
+        /// Available values: "asc", "desc".
         /// </summary>
-        public readonly int? MaxItems;
+        public readonly string? Direction;
         /// <summary>
-        /// The items returned by the data source
+        /// Filter the returned rules by one or more `field:value` pairs. Repeat the
+        /// parameter to combine filters with logical AND.
         /// </summary>
+        public readonly ImmutableArray<string> Filters;
+        public readonly int? MaxItems;
+        public readonly string? OrderBy;
         public readonly ImmutableArray<Outputs.GetZeroTrustGatewayPoliciesResultResult> Results;
+        public readonly string? Search;
 
         [OutputConstructor]
         private GetZeroTrustGatewayPoliciesResult(
             string? accountId,
 
+            string? direction,
+
+            ImmutableArray<string> filters,
+
             int? maxItems,
 
-            ImmutableArray<Outputs.GetZeroTrustGatewayPoliciesResultResult> results)
+            string? orderBy,
+
+            ImmutableArray<Outputs.GetZeroTrustGatewayPoliciesResultResult> results,
+
+            string? search)
         {
             AccountId = accountId;
+            Direction = direction;
+            Filters = filters;
             MaxItems = maxItems;
+            OrderBy = orderBy;
             Results = results;
+            Search = search;
         }
     }
 }

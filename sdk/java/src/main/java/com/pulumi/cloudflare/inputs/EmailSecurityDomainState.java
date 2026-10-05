@@ -35,9 +35,17 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Delivery modes to onboard the domain through.
+     * 
+     */
     @Import(name="allowedDeliveryModes")
     private @Nullable Output<List<String>> allowedDeliveryModes;
 
+    /**
+     * @return Delivery modes to onboard the domain through.
+     * 
+     */
     public Optional<Output<List<String>>> allowedDeliveryModes() {
         return Optional.ofNullable(this.allowedDeliveryModes);
     }
@@ -71,16 +79,32 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.dmarcStatus);
     }
 
+    /**
+     * The email domain to protect.
+     * 
+     */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
+    /**
+     * @return The email domain to protect.
+     * 
+     */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
 
+    /**
+     * Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+     * 
+     */
     @Import(name="dropDispositions")
     private @Nullable Output<List<String>> dropDispositions;
 
+    /**
+     * @return Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+     * 
+     */
     public Optional<Output<List<String>>> dropDispositions() {
         return Optional.ofNullable(this.dropDispositions);
     }
@@ -93,6 +117,7 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The mailbox folder to scan, for API-scanning domains.
      * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
      * 
      */
@@ -100,7 +125,8 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
     private @Nullable Output<String> folder;
 
     /**
-     * @return Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+     * @return The mailbox folder to scan, for API-scanning domains.
+     * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
      * 
      */
     public Optional<Output<String>> folder() {
@@ -122,16 +148,32 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.inboxProvider);
     }
 
+    /**
+     * Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     * 
+     */
     @Import(name="integrationId")
     private @Nullable Output<String> integrationId;
 
+    /**
+     * @return Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     * 
+     */
     public Optional<Output<String>> integrationId() {
         return Optional.ofNullable(this.integrationId);
     }
 
+    /**
+     * Source IP ranges mail is accepted from. Any other source is rejected.
+     * 
+     */
     @Import(name="ipRestrictions")
     private @Nullable Output<List<String>> ipRestrictions;
 
+    /**
+     * @return Source IP ranges mail is accepted from. Any other source is rejected.
+     * 
+     */
     public Optional<Output<List<String>>> ipRestrictions() {
         return Optional.ofNullable(this.ipRestrictions);
     }
@@ -159,9 +201,17 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.lastModified);
     }
 
+    /**
+     * Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     * 
+     */
     @Import(name="lookbackHops")
     private @Nullable Output<Integer> lookbackHops;
 
+    /**
+     * @return Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     * 
+     */
     public Optional<Output<Integer>> lookbackHops() {
         return Optional.ofNullable(this.lookbackHops);
     }
@@ -180,23 +230,47 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.o365TenantId);
     }
 
+    /**
+     * Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+     * 
+     */
     @Import(name="regions")
     private @Nullable Output<List<String>> regions;
 
+    /**
+     * @return Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+     * 
+     */
     public Optional<Output<List<String>>> regions() {
         return Optional.ofNullable(this.regions);
     }
 
+    /**
+     * Require TLS on inbound connections.
+     * 
+     */
     @Import(name="requireTlsInbound")
     private @Nullable Output<Boolean> requireTlsInbound;
 
+    /**
+     * @return Require TLS on inbound connections.
+     * 
+     */
     public Optional<Output<Boolean>> requireTlsInbound() {
         return Optional.ofNullable(this.requireTlsInbound);
     }
 
+    /**
+     * Require TLS on outbound connections.
+     * 
+     */
     @Import(name="requireTlsOutbound")
     private @Nullable Output<Boolean> requireTlsOutbound;
 
+    /**
+     * @return Require TLS on outbound connections.
+     * 
+     */
     public Optional<Output<Boolean>> requireTlsOutbound() {
         return Optional.ofNullable(this.requireTlsOutbound);
     }
@@ -231,9 +305,17 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     * 
+     */
     @Import(name="transport")
     private @Nullable Output<String> transport;
 
+    /**
+     * @return The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     * 
+     */
     public Optional<Output<String>> transport() {
         return Optional.ofNullable(this.transport);
     }
@@ -304,15 +386,33 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param allowedDeliveryModes Delivery modes to onboard the domain through.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDeliveryModes(@Nullable Output<List<String>> allowedDeliveryModes) {
             $.allowedDeliveryModes = allowedDeliveryModes;
             return this;
         }
 
+        /**
+         * @param allowedDeliveryModes Delivery modes to onboard the domain through.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDeliveryModes(List<String> allowedDeliveryModes) {
             return allowedDeliveryModes(Output.of(allowedDeliveryModes));
         }
 
+        /**
+         * @param allowedDeliveryModes Delivery modes to onboard the domain through.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDeliveryModes(String... allowedDeliveryModes) {
             return allowedDeliveryModes(List.of(allowedDeliveryModes));
         }
@@ -356,24 +456,54 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
             return dmarcStatus(Output.of(dmarcStatus));
         }
 
+        /**
+         * @param domain The email domain to protect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain The email domain to protect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
 
+        /**
+         * @param dropDispositions Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropDispositions(@Nullable Output<List<String>> dropDispositions) {
             $.dropDispositions = dropDispositions;
             return this;
         }
 
+        /**
+         * @param dropDispositions Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropDispositions(List<String> dropDispositions) {
             return dropDispositions(Output.of(dropDispositions));
         }
 
+        /**
+         * @param dropDispositions Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropDispositions(String... dropDispositions) {
             return dropDispositions(List.of(dropDispositions));
         }
@@ -388,7 +518,8 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param folder Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+         * @param folder The mailbox folder to scan, for API-scanning domains.
+         * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
          * 
          * @return builder
          * 
@@ -399,7 +530,8 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param folder Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+         * @param folder The mailbox folder to scan, for API-scanning domains.
+         * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
          * 
          * @return builder
          * 
@@ -429,24 +561,54 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
             return inboxProvider(Output.of(inboxProvider));
         }
 
+        /**
+         * @param integrationId Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationId(@Nullable Output<String> integrationId) {
             $.integrationId = integrationId;
             return this;
         }
 
+        /**
+         * @param integrationId Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationId(String integrationId) {
             return integrationId(Output.of(integrationId));
         }
 
+        /**
+         * @param ipRestrictions Source IP ranges mail is accepted from. Any other source is rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipRestrictions(@Nullable Output<List<String>> ipRestrictions) {
             $.ipRestrictions = ipRestrictions;
             return this;
         }
 
+        /**
+         * @param ipRestrictions Source IP ranges mail is accepted from. Any other source is rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipRestrictions(List<String> ipRestrictions) {
             return ipRestrictions(Output.of(ipRestrictions));
         }
 
+        /**
+         * @param ipRestrictions Source IP ranges mail is accepted from. Any other source is rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipRestrictions(String... ipRestrictions) {
             return ipRestrictions(List.of(ipRestrictions));
         }
@@ -480,11 +642,23 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
             return lastModified(Output.of(lastModified));
         }
 
+        /**
+         * @param lookbackHops Number of hops to trace back through received headers when reconstructing the original message (1-20).
+         * 
+         * @return builder
+         * 
+         */
         public Builder lookbackHops(@Nullable Output<Integer> lookbackHops) {
             $.lookbackHops = lookbackHops;
             return this;
         }
 
+        /**
+         * @param lookbackHops Number of hops to trace back through received headers when reconstructing the original message (1-20).
+         * 
+         * @return builder
+         * 
+         */
         public Builder lookbackHops(Integer lookbackHops) {
             return lookbackHops(Output.of(lookbackHops));
         }
@@ -507,33 +681,75 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
             return o365TenantId(Output.of(o365TenantId));
         }
 
+        /**
+         * @param regions Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regions(@Nullable Output<List<String>> regions) {
             $.regions = regions;
             return this;
         }
 
+        /**
+         * @param regions Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regions(List<String> regions) {
             return regions(Output.of(regions));
         }
 
+        /**
+         * @param regions Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regions(String... regions) {
             return regions(List.of(regions));
         }
 
+        /**
+         * @param requireTlsInbound Require TLS on inbound connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireTlsInbound(@Nullable Output<Boolean> requireTlsInbound) {
             $.requireTlsInbound = requireTlsInbound;
             return this;
         }
 
+        /**
+         * @param requireTlsInbound Require TLS on inbound connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireTlsInbound(Boolean requireTlsInbound) {
             return requireTlsInbound(Output.of(requireTlsInbound));
         }
 
+        /**
+         * @param requireTlsOutbound Require TLS on outbound connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireTlsOutbound(@Nullable Output<Boolean> requireTlsOutbound) {
             $.requireTlsOutbound = requireTlsOutbound;
             return this;
         }
 
+        /**
+         * @param requireTlsOutbound Require TLS on outbound connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireTlsOutbound(Boolean requireTlsOutbound) {
             return requireTlsOutbound(Output.of(requireTlsOutbound));
         }
@@ -580,11 +796,23 @@ public final class EmailSecurityDomainState extends com.pulumi.resources.Resourc
             return status(Output.of(status));
         }
 
+        /**
+         * @param transport The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder transport(@Nullable Output<String> transport) {
             $.transport = transport;
             return this;
         }
 
+        /**
+         * @param transport The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder transport(String transport) {
             return transport(Output.of(transport));
         }

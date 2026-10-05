@@ -22,7 +22,7 @@ public final class HyperdriveConfigMtls {
      */
     private @Nullable String mtlsCertificateId;
     /**
-     * @return Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
+     * @return PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
      * 
      */
     private @Nullable String sslmode;
@@ -43,7 +43,7 @@ public final class HyperdriveConfigMtls {
         return Optional.ofNullable(this.mtlsCertificateId);
     }
     /**
-     * @return Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
+     * @return PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
      * 
      */
     public Optional<String> sslmode() {

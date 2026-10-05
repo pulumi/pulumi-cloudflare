@@ -36,6 +36,7 @@ class WorkersScriptArgs:
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  exports: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]]] = None,
                  files: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptFilesArgs']]]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional['WorkersScriptLimitsArgs']] = None,
@@ -68,6 +69,7 @@ class WorkersScriptArgs:
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
         :param pulumi.Input[Mapping[str, pulumi.Input['WorkersScriptFilesArgs']]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        :param pulumi.Input[_builtins.bool] force: If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input['WorkersScriptLimitsArgs'] limits: Limits to apply for this Worker.
@@ -109,6 +111,8 @@ class WorkersScriptArgs:
             pulumi.set(__self__, "exports", exports)
         if files is not None:
             pulumi.set(__self__, "files", files)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if keep_assets is not None:
             pulumi.set(__self__, "keep_assets", keep_assets)
         if keep_bindings is not None:
@@ -316,6 +320,18 @@ class WorkersScriptArgs:
         pulumi.set(self, "files", value)
 
     @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force", value)
+
+    @_builtins.property
     @pulumi.getter(name="keepAssets")
     def keep_assets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -468,6 +484,7 @@ class _WorkersScriptState:
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  exports: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]]] = None,
                  files: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptFilesArgs']]]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -512,6 +529,7 @@ class _WorkersScriptState:
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
         :param pulumi.Input[Mapping[str, pulumi.Input['WorkersScriptExportsArgs']]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
         :param pulumi.Input[Mapping[str, pulumi.Input['WorkersScriptFilesArgs']]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        :param pulumi.Input[_builtins.bool] force: If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] handlers: The names of handlers exported as part of the default export.
         :param pulumi.Input[_builtins.bool] has_assets: Whether a Worker contains assets.
         :param pulumi.Input[_builtins.bool] has_modules: Whether a Worker contains modules.
@@ -567,6 +585,8 @@ class _WorkersScriptState:
             pulumi.set(__self__, "exports", exports)
         if files is not None:
             pulumi.set(__self__, "files", files)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if handlers is not None:
             pulumi.set(__self__, "handlers", handlers)
         if has_assets is not None:
@@ -812,6 +832,18 @@ class _WorkersScriptState:
     @files.setter
     def files(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['WorkersScriptFilesArgs']]]]):
         pulumi.set(self, "files", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1098,6 +1130,7 @@ class WorkersScript(pulumi.CustomResource):
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict', 'outputs.WorkersScriptExports']]]]] = None,
                  files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptFilesArgs', 'WorkersScriptFilesArgsDict', 'outputs.WorkersScriptFiles']]]]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict', 'outputs.WorkersScriptLimits']]] = None,
@@ -1210,6 +1243,9 @@ class WorkersScript(pulumi.CustomResource):
             observability={
                 "enabled": True,
                 "head_sampling_rate": 0.1,
+                "issues": {
+                    "enabled": True,
+                },
                 "logs": {
                     "enabled": True,
                     "invocation_logs": True,
@@ -1274,6 +1310,7 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict', 'outputs.WorkersScriptExports']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkersScriptFilesArgs', 'WorkersScriptFilesArgsDict', 'outputs.WorkersScriptFiles']]]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        :param pulumi.Input[_builtins.bool] force: If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict', 'outputs.WorkersScriptLimits']] limits: Limits to apply for this Worker.
@@ -1393,6 +1430,9 @@ class WorkersScript(pulumi.CustomResource):
             observability={
                 "enabled": True,
                 "head_sampling_rate": 0.1,
+                "issues": {
+                    "enabled": True,
+                },
                 "logs": {
                     "enabled": True,
                     "invocation_logs": True,
@@ -1467,6 +1507,7 @@ class WorkersScript(pulumi.CustomResource):
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
                  exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict', 'outputs.WorkersScriptExports']]]]] = None,
                  files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptFilesArgs', 'WorkersScriptFilesArgsDict', 'outputs.WorkersScriptFiles']]]]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
                  keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  limits: pulumi.Input[Optional[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict', 'outputs.WorkersScriptLimits']]] = None,
@@ -1504,6 +1545,7 @@ class WorkersScript(pulumi.CustomResource):
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["exports"] = exports
             __props__.__dict__["files"] = files
+            __props__.__dict__["force"] = force
             __props__.__dict__["keep_assets"] = keep_assets
             __props__.__dict__["keep_bindings"] = keep_bindings
             __props__.__dict__["limits"] = limits
@@ -1558,6 +1600,7 @@ class WorkersScript(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             exports: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict', 'outputs.WorkersScriptExports']]]]] = None,
             files: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['WorkersScriptFilesArgs', 'WorkersScriptFilesArgsDict', 'outputs.WorkersScriptFiles']]]]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
             handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
             has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1606,6 +1649,7 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkersScriptExportsArgs', 'WorkersScriptExportsArgsDict', 'outputs.WorkersScriptExports']]]] exports: Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WorkersScriptFilesArgs', 'WorkersScriptFilesArgsDict', 'outputs.WorkersScriptFiles']]]] files: Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+        :param pulumi.Input[_builtins.bool] force: If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] handlers: The names of handlers exported as part of the default export.
         :param pulumi.Input[_builtins.bool] has_assets: Whether a Worker contains assets.
         :param pulumi.Input[_builtins.bool] has_modules: Whether a Worker contains modules.
@@ -1649,6 +1693,7 @@ class WorkersScript(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["exports"] = exports
         __props__.__dict__["files"] = files
+        __props__.__dict__["force"] = force
         __props__.__dict__["handlers"] = handlers
         __props__.__dict__["has_assets"] = has_assets
         __props__.__dict__["has_modules"] = has_modules
@@ -1803,6 +1848,14 @@ class WorkersScript(pulumi.CustomResource):
         Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
         """
         return pulumi.get(self, "files")
+
+    @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        """
+        return pulumi.get(self, "force")
 
     @_builtins.property
     @pulumi.getter

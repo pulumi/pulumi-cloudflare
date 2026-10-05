@@ -18,6 +18,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("customerAsn", required: true)]
         public Input<int> CustomerAsn { get; set; } = null!;
 
+        /// <summary>
+        /// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+        /// </summary>
+        [Input("exportFilterId")]
+        public Input<string>? ExportFilterId { get; set; }
+
         [Input("extraPrefixes")]
         private InputList<string>? _extraPrefixes;
 
@@ -29,6 +35,12 @@ namespace Pulumi.Cloudflare.Inputs
             get => _extraPrefixes ?? (_extraPrefixes = new InputList<string>());
             set => _extraPrefixes = value;
         }
+
+        /// <summary>
+        /// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+        /// </summary>
+        [Input("importFilterId")]
+        public Input<string>? ImportFilterId { get; set; }
 
         /// <summary>
         /// MD5 key to use for session authentication.

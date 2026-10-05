@@ -223,7 +223,9 @@ class AiSearchToken(pulumi.CustomResource):
         """
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/aiSearchToken:AiSearchToken example '<account_id>/<id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -238,7 +240,9 @@ class AiSearchToken(pulumi.CustomResource):
         """
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/aiSearchToken:AiSearchToken example '<account_id>/<id>'
+        ```
 
 
         :param str resource_name: The name of the resource.

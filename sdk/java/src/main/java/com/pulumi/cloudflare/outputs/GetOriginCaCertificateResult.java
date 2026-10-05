@@ -21,7 +21,7 @@ public final class GetOriginCaCertificateResult {
      */
     private String certificate;
     /**
-     * @return Identifier.
+     * @return The x509 serial number of the Origin CA certificate.
      * 
      */
     private @Nullable String certificateId;
@@ -43,7 +43,7 @@ public final class GetOriginCaCertificateResult {
      */
     private List<String> hostnames;
     /**
-     * @return Identifier.
+     * @return The x509 serial number of the Origin CA certificate.
      * 
      */
     private String id;
@@ -69,7 +69,7 @@ public final class GetOriginCaCertificateResult {
         return this.certificate;
     }
     /**
-     * @return Identifier.
+     * @return The x509 serial number of the Origin CA certificate.
      * 
      */
     public Optional<String> certificateId() {
@@ -101,7 +101,7 @@ public final class GetOriginCaCertificateResult {
         return this.hostnames;
     }
     /**
-     * @return Identifier.
+     * @return The x509 serial number of the Origin CA certificate.
      * 
      */
     public String id() {

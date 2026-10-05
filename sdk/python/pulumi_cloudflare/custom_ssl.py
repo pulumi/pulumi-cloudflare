@@ -22,19 +22,18 @@ __all__ = ['CustomSslArgs', 'CustomSsl']
 class CustomSslArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[_builtins.str],
-                 private_key: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
                  bundle_method: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_csr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy: pulumi.Input[Optional[_builtins.str]] = None,
                  geo_restrictions: pulumi.Input[Optional['CustomSslGeoRestrictionsArgs']] = None,
                  policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomSsl resource.
 
         :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
-        :param pulumi.Input[_builtins.str] private_key: The zone's private key.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
@@ -44,11 +43,11 @@ class CustomSslArgs:
         :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
                Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
+        :param pulumi.Input[_builtins.str] private_key: The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         :param pulumi.Input[_builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
                Available values: "legacy*custom", "sni_custom".
         """
         pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "private_key", private_key)
         pulumi.set(__self__, "zone_id", zone_id)
         if bundle_method is not None:
             pulumi.set(__self__, "bundle_method", bundle_method)
@@ -60,6 +59,8 @@ class CustomSslArgs:
             pulumi.set(__self__, "geo_restrictions", geo_restrictions)
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -74,18 +75,6 @@ class CustomSslArgs:
     @certificate.setter
     def certificate(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "certificate", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privateKey")
-    def private_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The zone's private key.
-        """
-        return pulumi.get(self, "private_key")
-
-    @private_key.setter
-    def private_key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -163,6 +152,18 @@ class CustomSslArgs:
         pulumi.set(self, "policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "private_key", value)
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -217,7 +218,7 @@ class _CustomSslState:
                when a policy has been set. The API accepts the "policy" field in requests but
                returns this field as "policy_restrictions" in responses.
         :param pulumi.Input[_builtins.float] priority: The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
-        :param pulumi.Input[_builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[_builtins.str] private_key: The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[_builtins.str] status: Status of the zone's custom SSL.
                Available values: "active", "expired", "deleted", "pending", "initializing".
@@ -424,7 +425,7 @@ class _CustomSslState:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone's private key.
+        The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         """
         return pulumi.get(self, "private_key")
 
@@ -551,6 +552,13 @@ class CustomSsl(pulumi.CustomResource):
           -----END CERTIFICATE-----
 
         \"\"\",
+            bundle_method="ubiquitous",
+            custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+            deploy="staging",
+            geo_restrictions={
+                "label": "us",
+            },
+            policy="(country: US) or (region: EU)",
             private_key=\"\"\"  -----BEGIN RSA PRIVATE KEY-----
           MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
           dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -580,13 +588,6 @@ class CustomSsl(pulumi.CustomResource):
           -----END RSA PRIVATE KEY-----
 
         \"\"\",
-            bundle_method="ubiquitous",
-            custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-            deploy="staging",
-            geo_restrictions={
-                "label": "us",
-            },
-            policy="(country: US) or (region: EU)",
             type="sni_custom")
         ```
 
@@ -608,7 +609,7 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict', 'outputs.CustomSslGeoRestrictions']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         :param pulumi.Input[_builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
                Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policy_restrictions".
-        :param pulumi.Input[_builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[_builtins.str] private_key: The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         :param pulumi.Input[_builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
                Available values: "legacy*custom", "sni_custom".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -659,6 +660,13 @@ class CustomSsl(pulumi.CustomResource):
           -----END CERTIFICATE-----
 
         \"\"\",
+            bundle_method="ubiquitous",
+            custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+            deploy="staging",
+            geo_restrictions={
+                "label": "us",
+            },
+            policy="(country: US) or (region: EU)",
             private_key=\"\"\"  -----BEGIN RSA PRIVATE KEY-----
           MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
           dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -688,13 +696,6 @@ class CustomSsl(pulumi.CustomResource):
           -----END RSA PRIVATE KEY-----
 
         \"\"\",
-            bundle_method="ubiquitous",
-            custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-            deploy="staging",
-            geo_restrictions={
-                "label": "us",
-            },
-            policy="(country: US) or (region: EU)",
             type="sni_custom")
         ```
 
@@ -746,8 +747,6 @@ class CustomSsl(pulumi.CustomResource):
             __props__.__dict__["deploy"] = deploy
             __props__.__dict__["geo_restrictions"] = geo_restrictions
             __props__.__dict__["policy"] = policy
-            if private_key is None and not opts.urn:
-                raise TypeError("Missing required property 'private_key'")
             __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["type"] = type
             if zone_id is None and not opts.urn:
@@ -817,7 +816,7 @@ class CustomSsl(pulumi.CustomResource):
                when a policy has been set. The API accepts the "policy" field in requests but
                returns this field as "policy_restrictions" in responses.
         :param pulumi.Input[_builtins.float] priority: The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
-        :param pulumi.Input[_builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[_builtins.str] private_key: The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[_builtins.str] status: Status of the zone's custom SSL.
                Available values: "active", "expired", "deleted", "pending", "initializing".
@@ -956,9 +955,9 @@ class CustomSsl(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> pulumi.Output[_builtins.str]:
+    def private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The zone's private key.
+        The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         """
         return pulumi.get(self, "private_key")
 

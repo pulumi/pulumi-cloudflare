@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
     ///         IsRegex = false,
     ///         IsSimilarity = false,
     ///         Pattern = "example.com",
-    ///         Comments = null,
+    ///         Comments = "Trusted partner domain",
     ///     });
     /// 
     /// });
@@ -65,6 +65,9 @@ namespace Pulumi.Cloudflare
         [Output("isRecent")]
         public Output<bool?> IsRecent { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal domain.
+        /// </summary>
         [Output("isRegex")]
         public Output<bool?> IsRegex { get; private set; } = null!;
 
@@ -83,6 +86,9 @@ namespace Pulumi.Cloudflare
         [Output("modifiedAt")]
         public Output<string> ModifiedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// The domain pattern to trust, e.g. `example.com`.
+        /// </summary>
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
 
@@ -147,6 +153,9 @@ namespace Pulumi.Cloudflare
         [Input("isRecent")]
         public Input<bool>? IsRecent { get; set; }
 
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal domain.
+        /// </summary>
         [Input("isRegex")]
         public Input<bool>? IsRegex { get; set; }
 
@@ -156,6 +165,9 @@ namespace Pulumi.Cloudflare
         [Input("isSimilarity")]
         public Input<bool>? IsSimilarity { get; set; }
 
+        /// <summary>
+        /// The domain pattern to trust, e.g. `example.com`.
+        /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
@@ -185,6 +197,9 @@ namespace Pulumi.Cloudflare
         [Input("isRecent")]
         public Input<bool>? IsRecent { get; set; }
 
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal domain.
+        /// </summary>
         [Input("isRegex")]
         public Input<bool>? IsRegex { get; set; }
 
@@ -203,6 +218,9 @@ namespace Pulumi.Cloudflare
         [Input("modifiedAt")]
         public Input<string>? ModifiedAt { get; set; }
 
+        /// <summary>
+        /// The domain pattern to trust, e.g. `example.com`.
+        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 

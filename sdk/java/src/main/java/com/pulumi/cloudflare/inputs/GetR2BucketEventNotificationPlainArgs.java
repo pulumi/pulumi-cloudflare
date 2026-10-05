@@ -14,14 +14,14 @@ public final class GetR2BucketEventNotificationPlainArgs extends com.pulumi.reso
     public static final GetR2BucketEventNotificationPlainArgs Empty = new GetR2BucketEventNotificationPlainArgs();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public String accountId() {
@@ -44,14 +44,14 @@ public final class GetR2BucketEventNotificationPlainArgs extends com.pulumi.reso
     }
 
     /**
-     * Queue ID.
+     * ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     @Import(name="queueId", required=true)
     private String queueId;
 
     /**
-     * @return Queue ID.
+     * @return ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     public String queueId() {
@@ -85,7 +85,7 @@ public final class GetR2BucketEventNotificationPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GetR2BucketEventNotificationPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param queueId Queue ID.
+         * @param queueId ID of the Cloudflare Queue that receives notifications for matching R2 object events.
          * 
          * @return builder
          * 

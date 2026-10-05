@@ -34,9 +34,17 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
         return this.type;
     }
 
+    /**
+     * List of values for the action. Currently limited to a single value.
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
+    /**
+     * @return List of values for the action. Currently limited to a single value.
+     * 
+     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -89,15 +97,33 @@ public final class EmailRoutingCatchAllActionArgs extends com.pulumi.resources.R
             return type(Output.of(type));
         }
 
+        /**
+         * @param values List of values for the action. Currently limited to a single value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values List of values for the action. Currently limited to a single value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values List of values for the action. Currently limited to a single value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

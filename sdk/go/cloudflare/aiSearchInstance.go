@@ -14,7 +14,9 @@ import (
 
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/aiSearchInstance:AiSearchInstance example '<account_id>/<id>'
+// ```
 type AiSearchInstance struct {
 	pulumi.CustomResourceState
 
@@ -41,11 +43,11 @@ type AiSearchInstance struct {
 	EngineVersion   pulumi.Float64Output                      `pulumi:"engineVersion"`
 	// Available values: "max", "rrf".
 	FusionMethod pulumi.StringOutput `pulumi:"fusionMethod"`
-	// Deprecated — use indexMethod instead.
+	// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled pulumi.BoolOutput `pulumi:"hybridSearchEnabled"`
-	// Controls which storage backends are used during indexing. Defaults to vector-only.
+	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
 	IndexMethod          AiSearchInstanceIndexMethodOutput          `pulumi:"indexMethod"`
 	IndexingOptions      AiSearchInstanceIndexingOptionsOutput      `pulumi:"indexingOptions"`
 	LastActivity         pulumi.StringOutput                        `pulumi:"lastActivity"`
@@ -76,6 +78,7 @@ type AiSearchInstance struct {
 	SystemPromptIndexSummarization pulumi.StringPtrOutput `pulumi:"systemPromptIndexSummarization"`
 	SystemPromptRewriteQuery       pulumi.StringPtrOutput `pulumi:"systemPromptRewriteQuery"`
 	TokenId                        pulumi.StringPtrOutput `pulumi:"tokenId"`
+	// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 	// Available values: "r2", "web-crawler".
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
@@ -139,11 +142,11 @@ type aiSearchInstanceState struct {
 	EngineVersion   *float64                         `pulumi:"engineVersion"`
 	// Available values: "max", "rrf".
 	FusionMethod *string `pulumi:"fusionMethod"`
-	// Deprecated — use indexMethod instead.
+	// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled *bool `pulumi:"hybridSearchEnabled"`
-	// Controls which storage backends are used during indexing. Defaults to vector-only.
+	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
 	IndexMethod          *AiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
 	IndexingOptions      *AiSearchInstanceIndexingOptions      `pulumi:"indexingOptions"`
 	LastActivity         *string                               `pulumi:"lastActivity"`
@@ -174,6 +177,7 @@ type aiSearchInstanceState struct {
 	SystemPromptIndexSummarization *string  `pulumi:"systemPromptIndexSummarization"`
 	SystemPromptRewriteQuery       *string  `pulumi:"systemPromptRewriteQuery"`
 	TokenId                        *string  `pulumi:"tokenId"`
+	// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 	// Available values: "r2", "web-crawler".
 	Type *string `pulumi:"type"`
 }
@@ -202,11 +206,11 @@ type AiSearchInstanceState struct {
 	EngineVersion   pulumi.Float64PtrInput
 	// Available values: "max", "rrf".
 	FusionMethod pulumi.StringPtrInput
-	// Deprecated — use indexMethod instead.
+	// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled pulumi.BoolPtrInput
-	// Controls which storage backends are used during indexing. Defaults to vector-only.
+	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
 	IndexMethod          AiSearchInstanceIndexMethodPtrInput
 	IndexingOptions      AiSearchInstanceIndexingOptionsPtrInput
 	LastActivity         pulumi.StringPtrInput
@@ -237,6 +241,7 @@ type AiSearchInstanceState struct {
 	SystemPromptIndexSummarization pulumi.StringPtrInput
 	SystemPromptRewriteQuery       pulumi.StringPtrInput
 	TokenId                        pulumi.StringPtrInput
+	// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 	// Available values: "r2", "web-crawler".
 	Type pulumi.StringPtrInput
 }
@@ -265,11 +270,11 @@ type aiSearchInstanceArgs struct {
 	EmbeddingModel  *string                          `pulumi:"embeddingModel"`
 	// Available values: "max", "rrf".
 	FusionMethod *string `pulumi:"fusionMethod"`
-	// Deprecated — use indexMethod instead.
+	// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled *bool `pulumi:"hybridSearchEnabled"`
-	// Controls which storage backends are used during indexing. Defaults to vector-only.
+	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
 	IndexMethod          *AiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
 	IndexingOptions      *AiSearchInstanceIndexingOptions      `pulumi:"indexingOptions"`
 	MaxNumResults        *int                                  `pulumi:"maxNumResults"`
@@ -294,6 +299,7 @@ type aiSearchInstanceArgs struct {
 	SystemPromptIndexSummarization *string  `pulumi:"systemPromptIndexSummarization"`
 	SystemPromptRewriteQuery       *string  `pulumi:"systemPromptRewriteQuery"`
 	TokenId                        *string  `pulumi:"tokenId"`
+	// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 	// Available values: "r2", "web-crawler".
 	Type *string `pulumi:"type"`
 }
@@ -319,11 +325,11 @@ type AiSearchInstanceArgs struct {
 	EmbeddingModel  pulumi.StringPtrInput
 	// Available values: "max", "rrf".
 	FusionMethod pulumi.StringPtrInput
-	// Deprecated — use indexMethod instead.
+	// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled pulumi.BoolPtrInput
-	// Controls which storage backends are used during indexing. Defaults to vector-only.
+	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
 	IndexMethod          AiSearchInstanceIndexMethodPtrInput
 	IndexingOptions      AiSearchInstanceIndexingOptionsPtrInput
 	MaxNumResults        pulumi.IntPtrInput
@@ -348,6 +354,7 @@ type AiSearchInstanceArgs struct {
 	SystemPromptIndexSummarization pulumi.StringPtrInput
 	SystemPromptRewriteQuery       pulumi.StringPtrInput
 	TokenId                        pulumi.StringPtrInput
+	// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 	// Available values: "r2", "web-crawler".
 	Type pulumi.StringPtrInput
 }
@@ -513,14 +520,14 @@ func (o AiSearchInstanceOutput) FusionMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringOutput { return v.FusionMethod }).(pulumi.StringOutput)
 }
 
-// Deprecated — use indexMethod instead.
+// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
 //
 // Deprecated: This attribute is deprecated.
 func (o AiSearchInstanceOutput) HybridSearchEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.BoolOutput { return v.HybridSearchEnabled }).(pulumi.BoolOutput)
 }
 
-// Controls which storage backends are used during indexing. Defaults to vector-only.
+// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
 func (o AiSearchInstanceOutput) IndexMethod() AiSearchInstanceIndexMethodOutput {
 	return o.ApplyT(func(v *AiSearchInstance) AiSearchInstanceIndexMethodOutput { return v.IndexMethod }).(AiSearchInstanceIndexMethodOutput)
 }
@@ -632,6 +639,7 @@ func (o AiSearchInstanceOutput) TokenId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringPtrOutput { return v.TokenId }).(pulumi.StringPtrOutput)
 }
 
+// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 // Available values: "r2", "web-crawler".
 func (o AiSearchInstanceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstance) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)

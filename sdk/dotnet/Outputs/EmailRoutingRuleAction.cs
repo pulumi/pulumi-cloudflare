@@ -18,6 +18,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "drop", "forward", "worker".
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// List of values for the action. Currently limited to a single value.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

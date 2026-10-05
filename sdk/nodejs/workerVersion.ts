@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  *     },
  *     assets: {
  *         config: {
+ *             basePath: "/docs/",
  *             htmlHandling: "auto-trailing-slash",
  *             notFoundHandling: "404-page",
  *             runWorkerFirst: [],
@@ -54,22 +55,25 @@ import * as utilities from "./utilities";
  *             cache: {
  *                 enabled: true,
  *             },
- *             renamedTo: "renamed_to",
  *             state: "created",
+ *         },
+ *         Counter: {
  *             storage: "sqlite",
- *             transferFrom: "transfer_from",
- *             transferredTo: "transferred_to",
+ *             type: "durable-object",
+ *             container: "my-container",
+ *             state: "created",
+ *         },
+ *         OldCounter: {
+ *             renamedTo: "Counter",
+ *             state: "renamed",
+ *             type: "durable-object",
  *         },
  *         "default": {
  *             type: "worker",
  *             cache: {
  *                 enabled: false,
  *             },
- *             renamedTo: "renamed_to",
  *             state: "created",
- *             storage: "sqlite",
- *             transferFrom: "transfer_from",
- *             transferredTo: "transferred_to",
  *         },
  *     },
  *     limits: {
@@ -94,7 +98,7 @@ import * as utilities from "./utilities";
  *         }],
  *     },
  *     modules: [{
- *         contentFile: "dist/index.js",
+ *         contentBase64: "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==",
  *         contentType: "application/javascript+module",
  *         name: "index.js",
  *     }],
@@ -106,6 +110,7 @@ import * as utilities from "./utilities";
  *     placement: {
  *         mode: "smart",
  *     },
+ *     usageModel: "standard",
  * });
  * ```
  *
@@ -156,6 +161,14 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public readonly assets: pulumi.Output<outputs.WorkerVersionAssets | undefined>;
     /**
+     * Email of the user who created the version.
+     */
+    declare public /*out*/ readonly authorEmail: pulumi.Output<string>;
+    /**
+     * Identifier of the user who created the version.
+     */
+    declare public /*out*/ readonly authorId: pulumi.Output<string>;
+    /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
     declare public readonly bindings: pulumi.Output<outputs.WorkerVersionBinding[] | undefined>;
@@ -183,6 +196,10 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
+     * If true, a deployment will be created that sends 100% of traffic to the new version.
+     */
+    declare public readonly deploy: pulumi.Output<boolean | undefined>;
+    /**
      * Declarative exports for the version, including Durable Object
      * classes (with their `storage` backend) and named Worker
      * entrypoints. On reads, tombstoned lifecycle entries are
@@ -191,6 +208,15 @@ export class WorkerVersion extends pulumi.CustomResource {
      * are mutually exclusive on upload.
      */
     declare public readonly exports: pulumi.Output<{[key: string]: outputs.WorkerVersionExports} | undefined>;
+    /**
+     * Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+     */
+    declare public /*out*/ readonly exportsReconciliation: pulumi.Output<outputs.WorkerVersionExportsReconciliation>;
+    /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: "modules".
+     */
+    declare public readonly include: pulumi.Output<string | undefined>;
     /**
      * Resource limits enforced at runtime.
      */
@@ -273,13 +299,18 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["assets"] = state?.assets;
+            resourceInputs["authorEmail"] = state?.authorEmail;
+            resourceInputs["authorId"] = state?.authorId;
             resourceInputs["bindings"] = state?.bindings;
             resourceInputs["cacheOptions"] = state?.cacheOptions;
             resourceInputs["compatibilityDate"] = state?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = state?.compatibilityFlags;
             resourceInputs["containers"] = state?.containers;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["deploy"] = state?.deploy;
             resourceInputs["exports"] = state?.exports;
+            resourceInputs["exportsReconciliation"] = state?.exportsReconciliation;
+            resourceInputs["include"] = state?.include;
             resourceInputs["limits"] = state?.limits;
             resourceInputs["mainModule"] = state?.mainModule;
             resourceInputs["mainScriptBase64"] = state?.mainScriptBase64;
@@ -310,7 +341,9 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["compatibilityDate"] = args?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = args?.compatibilityFlags;
             resourceInputs["containers"] = args?.containers;
+            resourceInputs["deploy"] = args?.deploy;
             resourceInputs["exports"] = args?.exports;
+            resourceInputs["include"] = args?.include;
             resourceInputs["limits"] = args?.limits;
             resourceInputs["mainModule"] = args?.mainModule;
             resourceInputs["migrations"] = args?.migrations;
@@ -319,7 +352,10 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["placement"] = args?.placement;
             resourceInputs["usageModel"] = args?.usageModel;
             resourceInputs["workerId"] = args?.workerId;
+            resourceInputs["authorEmail"] = undefined /*out*/;
+            resourceInputs["authorId"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["exportsReconciliation"] = undefined /*out*/;
             resourceInputs["mainScriptBase64"] = undefined /*out*/;
             resourceInputs["migrationTag"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
@@ -349,6 +385,14 @@ export interface WorkerVersionState {
      */
     assets?: pulumi.Input<inputs.WorkerVersionAssets | undefined>;
     /**
+     * Email of the user who created the version.
+     */
+    authorEmail?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the user who created the version.
+     */
+    authorId?: pulumi.Input<string | undefined>;
+    /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkerVersionBinding>[] | undefined>;
@@ -376,6 +420,10 @@ export interface WorkerVersionState {
      */
     createdOn?: pulumi.Input<string | undefined>;
     /**
+     * If true, a deployment will be created that sends 100% of traffic to the new version.
+     */
+    deploy?: pulumi.Input<boolean | undefined>;
+    /**
      * Declarative exports for the version, including Durable Object
      * classes (with their `storage` backend) and named Worker
      * entrypoints. On reads, tombstoned lifecycle entries are
@@ -384,6 +432,15 @@ export interface WorkerVersionState {
      * are mutually exclusive on upload.
      */
     exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerVersionExports>} | undefined>;
+    /**
+     * Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+     */
+    exportsReconciliation?: pulumi.Input<inputs.WorkerVersionExportsReconciliation | undefined>;
+    /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: "modules".
+     */
+    include?: pulumi.Input<string | undefined>;
     /**
      * Resource limits enforced at runtime.
      */
@@ -491,6 +548,10 @@ export interface WorkerVersionArgs {
      */
     containers?: pulumi.Input<pulumi.Input<inputs.WorkerVersionContainer>[] | undefined>;
     /**
+     * If true, a deployment will be created that sends 100% of traffic to the new version.
+     */
+    deploy?: pulumi.Input<boolean | undefined>;
+    /**
      * Declarative exports for the version, including Durable Object
      * classes (with their `storage` backend) and named Worker
      * entrypoints. On reads, tombstoned lifecycle entries are
@@ -499,6 +560,11 @@ export interface WorkerVersionArgs {
      * are mutually exclusive on upload.
      */
     exports?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerVersionExports>} | undefined>;
+    /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: "modules".
+     */
+    include?: pulumi.Input<string | undefined>;
     /**
      * Resource limits enforced at runtime.
      */

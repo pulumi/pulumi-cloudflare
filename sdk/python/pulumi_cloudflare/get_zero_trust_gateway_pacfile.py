@@ -61,6 +61,9 @@ class GetZeroTrustGatewayPacfileResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -163,6 +166,9 @@ def get_zero_trust_gateway_pacfile(account_id: Optional[_builtins.str] = None,
     example_zero_trust_gateway_pacfile = cloudflare.get_zero_trust_gateway_pacfile(account_id="699d98642c564d2e855e9661899b7252",
         pacfile_id="ed35569b41ce4d1facfe683550f54086")
     ```
+
+
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -199,6 +205,9 @@ def get_zero_trust_gateway_pacfile_output(account_id: pulumi.Input[Optional[Opti
     example_zero_trust_gateway_pacfile = cloudflare.get_zero_trust_gateway_pacfile(account_id="699d98642c564d2e855e9661899b7252",
         pacfile_id="ed35569b41ce4d1facfe683550f54086")
     ```
+
+
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

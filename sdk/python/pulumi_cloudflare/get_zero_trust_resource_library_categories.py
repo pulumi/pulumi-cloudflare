@@ -101,7 +101,15 @@ def get_zero_trust_resource_library_categories(account_id: Optional[_builtins.st
                                                offset: Optional[_builtins.int] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustResourceLibraryCategoriesResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_resource_library_categories = cloudflare.get_zero_trust_resource_library_categories(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    ```
+
 
     :param _builtins.int limit: Limit of number of results to return.
     :param _builtins.int max_items: Max items to fetch, default: 1000
@@ -127,7 +135,15 @@ def get_zero_trust_resource_library_categories_output(account_id: pulumi.Input[O
                                                       offset: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustResourceLibraryCategoriesResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_resource_library_categories = cloudflare.get_zero_trust_resource_library_categories(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    ```
+
 
     :param _builtins.int limit: Limit of number of results to return.
     :param _builtins.int max_items: Max items to fetch, default: 1000

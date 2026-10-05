@@ -27,7 +27,7 @@ class R2BucketArgs:
         """
         The set of arguments for constructing a R2Bucket resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
                Available values: "default", "eu", "fedramp", "us".
@@ -49,7 +49,7 @@ class R2BucketArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -121,7 +121,7 @@ class _R2BucketState:
         """
         Input properties used for looking up and filtering R2Bucket resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] creation_date: Creation timestamp.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
                Available values: "default", "eu", "fedramp", "us".
@@ -148,7 +148,7 @@ class _R2BucketState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -259,7 +259,7 @@ class R2Bucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
                Available values: "default", "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] location: Location of the bucket.
@@ -361,7 +361,7 @@ class R2Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] creation_date: Creation timestamp.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
                Available values: "default", "eu", "fedramp", "us".
@@ -387,7 +387,7 @@ class R2Bucket(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 

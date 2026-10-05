@@ -167,6 +167,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetEmailSecurityDomainEmailsProcessedResult EmailsProcessed;
         public readonly Outputs.GetEmailSecurityDomainFilterResult? Filter;
         /// <summary>
+        /// The mailbox folder to scan, for API-scanning domains.
         /// Available values: "AllItems", "Inbox".
         /// </summary>
         public readonly string Folder;

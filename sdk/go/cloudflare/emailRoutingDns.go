@@ -65,6 +65,8 @@ type EmailRoutingDns struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+	Subdomain pulumi.StringPtrOutput `pulumi:"subdomain"`
 	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
 	SupportSubaddress pulumi.BoolOutput `pulumi:"supportSubaddress"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
@@ -121,6 +123,8 @@ type emailRoutingDnsState struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status *string `pulumi:"status"`
+	// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+	Subdomain *string `pulumi:"subdomain"`
 	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
 	SupportSubaddress *bool `pulumi:"supportSubaddress"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
@@ -145,6 +149,8 @@ type EmailRoutingDnsState struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringPtrInput
+	// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+	Subdomain pulumi.StringPtrInput
 	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
 	SupportSubaddress pulumi.BoolPtrInput
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
@@ -162,6 +168,8 @@ func (EmailRoutingDnsState) ElementType() reflect.Type {
 type emailRoutingDnsArgs struct {
 	// Domain of your zone.
 	Name *string `pulumi:"name"`
+	// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+	Subdomain *string `pulumi:"subdomain"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -170,6 +178,8 @@ type emailRoutingDnsArgs struct {
 type EmailRoutingDnsArgs struct {
 	// Domain of your zone.
 	Name pulumi.StringPtrInput
+	// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+	Subdomain pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -290,6 +300,11 @@ func (o EmailRoutingDnsOutput) SkipWizard() pulumi.BoolOutput {
 // Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 func (o EmailRoutingDnsOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+func (o EmailRoutingDnsOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringPtrOutput { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
 // Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.

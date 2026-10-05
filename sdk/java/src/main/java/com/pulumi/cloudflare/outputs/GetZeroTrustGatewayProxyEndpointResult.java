@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayProxyEndpointFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -15,32 +16,12 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustGatewayProxyEndpointResult {
     private @Nullable String accountId;
     private String createdAt;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
+    private @Nullable GetZeroTrustGatewayProxyEndpointFilter filter;
     private String id;
-    /**
-     * @return Specify the list of CIDRs to restrict ingress connections.
-     * 
-     */
     private List<String> ips;
-    /**
-     * @return The proxy endpoint kind
-     * Available values: &#34;ip&#34;, &#34;identity&#34;.
-     * 
-     */
     private String kind;
-    /**
-     * @return Specify the name of the proxy endpoint.
-     * 
-     */
     private String name;
-    private String proxyEndpointId;
-    /**
-     * @return Specify the subdomain to use as the destination in the proxy client.
-     * 
-     */
+    private @Nullable String proxyEndpointId;
     private String subdomain;
     private String updatedAt;
 
@@ -51,42 +32,24 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
     public String createdAt() {
         return this.createdAt;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
+    public Optional<GetZeroTrustGatewayProxyEndpointFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
     public String id() {
         return this.id;
     }
-    /**
-     * @return Specify the list of CIDRs to restrict ingress connections.
-     * 
-     */
     public List<String> ips() {
         return this.ips;
     }
-    /**
-     * @return The proxy endpoint kind
-     * Available values: &#34;ip&#34;, &#34;identity&#34;.
-     * 
-     */
     public String kind() {
         return this.kind;
     }
-    /**
-     * @return Specify the name of the proxy endpoint.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    public String proxyEndpointId() {
-        return this.proxyEndpointId;
+    public Optional<String> proxyEndpointId() {
+        return Optional.ofNullable(this.proxyEndpointId);
     }
-    /**
-     * @return Specify the subdomain to use as the destination in the proxy client.
-     * 
-     */
     public String subdomain() {
         return this.subdomain;
     }
@@ -105,11 +68,12 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
     public static final class Builder {
         private @Nullable String accountId;
         private String createdAt;
+        private @Nullable GetZeroTrustGatewayProxyEndpointFilter filter;
         private String id;
         private List<String> ips;
         private String kind;
         private String name;
-        private String proxyEndpointId;
+        private @Nullable String proxyEndpointId;
         private String subdomain;
         private String updatedAt;
         public Builder() {}
@@ -117,6 +81,7 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.createdAt = defaults.createdAt;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.ips = defaults.ips;
     	      this.kind = defaults.kind;
@@ -138,6 +103,12 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetZeroTrustGatewayProxyEndpointFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -176,10 +147,8 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             return this;
         }
         @CustomType.Setter
-        public Builder proxyEndpointId(String proxyEndpointId) {
-            if (proxyEndpointId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointResult", "proxyEndpointId");
-            }
+        public Builder proxyEndpointId(@Nullable String proxyEndpointId) {
+
             this.proxyEndpointId = proxyEndpointId;
             return this;
         }
@@ -203,6 +172,7 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
             final var _resultValue = new GetZeroTrustGatewayProxyEndpointResult();
             _resultValue.accountId = accountId;
             _resultValue.createdAt = createdAt;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.ips = ips;
             _resultValue.kind = kind;

@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustDnsLocationFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,17 +23,25 @@ public final class GetZeroTrustDnsLocationArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="locationId", required=true)
-    private Output<String> locationId;
+    @Import(name="filter")
+    private @Nullable Output<GetZeroTrustDnsLocationFilterArgs> filter;
 
-    public Output<String> locationId() {
-        return this.locationId;
+    public Optional<Output<GetZeroTrustDnsLocationFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    @Import(name="locationId")
+    private @Nullable Output<String> locationId;
+
+    public Optional<Output<String>> locationId() {
+        return Optional.ofNullable(this.locationId);
     }
 
     private GetZeroTrustDnsLocationArgs() {}
 
     private GetZeroTrustDnsLocationArgs(GetZeroTrustDnsLocationArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.locationId = $.locationId;
     }
 
@@ -64,7 +72,16 @@ public final class GetZeroTrustDnsLocationArgs extends com.pulumi.resources.Invo
             return accountId(Output.of(accountId));
         }
 
-        public Builder locationId(Output<String> locationId) {
+        public Builder filter(@Nullable Output<GetZeroTrustDnsLocationFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetZeroTrustDnsLocationFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
+        public Builder locationId(@Nullable Output<String> locationId) {
             $.locationId = locationId;
             return this;
         }
@@ -74,9 +91,6 @@ public final class GetZeroTrustDnsLocationArgs extends com.pulumi.resources.Invo
         }
 
         public GetZeroTrustDnsLocationArgs build() {
-            if ($.locationId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationArgs", "locationId");
-            }
             return $;
         }
     }

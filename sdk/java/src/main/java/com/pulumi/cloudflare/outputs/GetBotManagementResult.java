@@ -15,11 +15,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetBotManagementResult {
     /**
+     * @return Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     * 
+     */
+    private Boolean aiBotsMigrationOptOut;
+    /**
      * @return Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
     private String aiBotsProtection;
+    /**
+     * @return Configure robots.txt policy for AI model training bots.
+     * Available values: &#34;disabled&#34;, &#34;disallow&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    private String aiTraining;
+    /**
+     * @return Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    private String aiUser;
+    /**
+     * @return Configure robots.txt policy for AI search bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    private String aisearch;
     /**
      * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
@@ -74,6 +97,11 @@ public final class GetBotManagementResult {
      */
     private Boolean isRobotsTxtManaged;
     /**
+     * @return Whether to use JavaScript Detection results submitted through the API for this zone.
+     * 
+     */
+    private Boolean jsdApiResultsEnabled;
+    /**
      * @return Whether to optimize Super Bot Fight Mode protections for Wordpress.
      * 
      */
@@ -126,12 +154,43 @@ public final class GetBotManagementResult {
 
     private GetBotManagementResult() {}
     /**
+     * @return Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     * 
+     */
+    public Boolean aiBotsMigrationOptOut() {
+        return this.aiBotsMigrationOptOut;
+    }
+    /**
      * @return Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
     public String aiBotsProtection() {
         return this.aiBotsProtection;
+    }
+    /**
+     * @return Configure robots.txt policy for AI model training bots.
+     * Available values: &#34;disabled&#34;, &#34;disallow&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public String aiTraining() {
+        return this.aiTraining;
+    }
+    /**
+     * @return Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public String aiUser() {
+        return this.aiUser;
+    }
+    /**
+     * @return Configure robots.txt policy for AI search bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public String aisearch() {
+        return this.aisearch;
     }
     /**
      * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -205,6 +264,13 @@ public final class GetBotManagementResult {
      */
     public Boolean isRobotsTxtManaged() {
         return this.isRobotsTxtManaged;
+    }
+    /**
+     * @return Whether to use JavaScript Detection results submitted through the API for this zone.
+     * 
+     */
+    public Boolean jsdApiResultsEnabled() {
+        return this.jsdApiResultsEnabled;
     }
     /**
      * @return Whether to optimize Super Bot Fight Mode protections for Wordpress.
@@ -284,7 +350,11 @@ public final class GetBotManagementResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean aiBotsMigrationOptOut;
         private String aiBotsProtection;
+        private String aiTraining;
+        private String aiUser;
+        private String aisearch;
         private Boolean autoUpdateModel;
         private Boolean bmCookieEnabled;
         private Boolean botPreferenceSyncEnabled;
@@ -295,6 +365,7 @@ public final class GetBotManagementResult {
         private Boolean fightMode;
         private String id;
         private Boolean isRobotsTxtManaged;
+        private Boolean jsdApiResultsEnabled;
         private Boolean optimizeWordpress;
         private String sbfmDefinitelyAutomated;
         private String sbfmLikelyAutomated;
@@ -307,7 +378,11 @@ public final class GetBotManagementResult {
         public Builder() {}
         public Builder(GetBotManagementResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aiBotsMigrationOptOut = defaults.aiBotsMigrationOptOut;
     	      this.aiBotsProtection = defaults.aiBotsProtection;
+    	      this.aiTraining = defaults.aiTraining;
+    	      this.aiUser = defaults.aiUser;
+    	      this.aisearch = defaults.aisearch;
     	      this.autoUpdateModel = defaults.autoUpdateModel;
     	      this.bmCookieEnabled = defaults.bmCookieEnabled;
     	      this.botPreferenceSyncEnabled = defaults.botPreferenceSyncEnabled;
@@ -318,6 +393,7 @@ public final class GetBotManagementResult {
     	      this.fightMode = defaults.fightMode;
     	      this.id = defaults.id;
     	      this.isRobotsTxtManaged = defaults.isRobotsTxtManaged;
+    	      this.jsdApiResultsEnabled = defaults.jsdApiResultsEnabled;
     	      this.optimizeWordpress = defaults.optimizeWordpress;
     	      this.sbfmDefinitelyAutomated = defaults.sbfmDefinitelyAutomated;
     	      this.sbfmLikelyAutomated = defaults.sbfmLikelyAutomated;
@@ -330,11 +406,43 @@ public final class GetBotManagementResult {
         }
 
         @CustomType.Setter
+        public Builder aiBotsMigrationOptOut(Boolean aiBotsMigrationOptOut) {
+            if (aiBotsMigrationOptOut == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "aiBotsMigrationOptOut");
+            }
+            this.aiBotsMigrationOptOut = aiBotsMigrationOptOut;
+            return this;
+        }
+        @CustomType.Setter
         public Builder aiBotsProtection(String aiBotsProtection) {
             if (aiBotsProtection == null) {
               throw new MissingRequiredPropertyException("GetBotManagementResult", "aiBotsProtection");
             }
             this.aiBotsProtection = aiBotsProtection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aiTraining(String aiTraining) {
+            if (aiTraining == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "aiTraining");
+            }
+            this.aiTraining = aiTraining;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aiUser(String aiUser) {
+            if (aiUser == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "aiUser");
+            }
+            this.aiUser = aiUser;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aisearch(String aisearch) {
+            if (aisearch == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "aisearch");
+            }
+            this.aisearch = aisearch;
             return this;
         }
         @CustomType.Setter
@@ -418,6 +526,14 @@ public final class GetBotManagementResult {
             return this;
         }
         @CustomType.Setter
+        public Builder jsdApiResultsEnabled(Boolean jsdApiResultsEnabled) {
+            if (jsdApiResultsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "jsdApiResultsEnabled");
+            }
+            this.jsdApiResultsEnabled = jsdApiResultsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder optimizeWordpress(Boolean optimizeWordpress) {
             if (optimizeWordpress == null) {
               throw new MissingRequiredPropertyException("GetBotManagementResult", "optimizeWordpress");
@@ -489,7 +605,11 @@ public final class GetBotManagementResult {
         }
         public GetBotManagementResult build() {
             final var _resultValue = new GetBotManagementResult();
+            _resultValue.aiBotsMigrationOptOut = aiBotsMigrationOptOut;
             _resultValue.aiBotsProtection = aiBotsProtection;
+            _resultValue.aiTraining = aiTraining;
+            _resultValue.aiUser = aiUser;
+            _resultValue.aisearch = aisearch;
             _resultValue.autoUpdateModel = autoUpdateModel;
             _resultValue.bmCookieEnabled = bmCookieEnabled;
             _resultValue.botPreferenceSyncEnabled = botPreferenceSyncEnabled;
@@ -500,6 +620,7 @@ public final class GetBotManagementResult {
             _resultValue.fightMode = fightMode;
             _resultValue.id = id;
             _resultValue.isRobotsTxtManaged = isRobotsTxtManaged;
+            _resultValue.jsdApiResultsEnabled = jsdApiResultsEnabled;
             _resultValue.optimizeWordpress = optimizeWordpress;
             _resultValue.sbfmDefinitelyAutomated = sbfmDefinitelyAutomated;
             _resultValue.sbfmLikelyAutomated = sbfmLikelyAutomated;

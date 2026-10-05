@@ -14,14 +14,14 @@ public final class GetWorkersKvPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetWorkersKvPlainArgs Empty = new GetWorkersKvPlainArgs();
 
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public String accountId() {
@@ -44,14 +44,14 @@ public final class GetWorkersKvPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      * 
      */
     @Import(name="namespaceId", required=true)
     private String namespaceId;
 
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public String namespaceId() {
@@ -85,7 +85,7 @@ public final class GetWorkersKvPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GetWorkersKvPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId ID of the Workers KV namespace.
          * 
          * @return builder
          * 

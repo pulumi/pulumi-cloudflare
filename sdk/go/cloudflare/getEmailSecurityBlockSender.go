@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityBlockSender(ctx, &cloudflare.LookupEmailSecurityBlockSenderArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				PatternId: pulumi.StringRef("2402"),
+//				PatternId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
 //				return err

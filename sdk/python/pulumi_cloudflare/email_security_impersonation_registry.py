@@ -32,7 +32,15 @@ class EmailSecurityImpersonationRegistryArgs:
         The set of arguments for constructing a EmailSecurityImpersonationRegistry resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        :param pulumi.Input[_builtins.str] email: Email address (or pattern) of the protected identity.
+        :param pulumi.Input[_builtins.bool] is_email_regex: Whether `email` is a regular expression instead of a literal address.
+        :param pulumi.Input[_builtins.str] name: Display name of the protected identity.
+        :param pulumi.Input[_builtins.str] comments: Optional note describing the entry.
+        :param pulumi.Input[_builtins.int] directory_id: Identifier of the directory the entry was synced from, when directory-synced.
+        :param pulumi.Input[_builtins.int] directory_node_id: Identifier of the directory node the entry was synced from, when directory-synced.
+        :param pulumi.Input[_builtins.str] external_directory_node_id: Deprecated. External identifier of the directory node.
+        :param pulumi.Input[_builtins.str] provenance: Source the entry was created from.
+               Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
@@ -67,6 +75,9 @@ class EmailSecurityImpersonationRegistryArgs:
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Input[_builtins.str]:
+        """
+        Email address (or pattern) of the protected identity.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -76,6 +87,9 @@ class EmailSecurityImpersonationRegistryArgs:
     @_builtins.property
     @pulumi.getter(name="isEmailRegex")
     def is_email_regex(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether `email` is a regular expression instead of a literal address.
+        """
         return pulumi.get(self, "is_email_regex")
 
     @is_email_regex.setter
@@ -85,6 +99,9 @@ class EmailSecurityImpersonationRegistryArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Display name of the protected identity.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -94,6 +111,9 @@ class EmailSecurityImpersonationRegistryArgs:
     @_builtins.property
     @pulumi.getter
     def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional note describing the entry.
+        """
         return pulumi.get(self, "comments")
 
     @comments.setter
@@ -103,6 +123,9 @@ class EmailSecurityImpersonationRegistryArgs:
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Identifier of the directory the entry was synced from, when directory-synced.
+        """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
@@ -112,6 +135,9 @@ class EmailSecurityImpersonationRegistryArgs:
     @_builtins.property
     @pulumi.getter(name="directoryNodeId")
     def directory_node_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Identifier of the directory node the entry was synced from, when directory-synced.
+        """
         return pulumi.get(self, "directory_node_id")
 
     @directory_node_id.setter
@@ -122,6 +148,9 @@ class EmailSecurityImpersonationRegistryArgs:
     @pulumi.getter(name="externalDirectoryNodeId")
     @_utilities.deprecated("""This field is deprecated.""")
     def external_directory_node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deprecated. External identifier of the directory node.
+        """
         return pulumi.get(self, "external_directory_node_id")
 
     @external_directory_node_id.setter
@@ -132,6 +161,7 @@ class EmailSecurityImpersonationRegistryArgs:
     @pulumi.getter
     def provenance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        Source the entry was created from.
         Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         return pulumi.get(self, "provenance")
@@ -160,8 +190,16 @@ class _EmailSecurityImpersonationRegistryState:
         Input properties used for looking up and filtering EmailSecurityImpersonationRegistry resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] comments: Optional note describing the entry.
+        :param pulumi.Input[_builtins.int] directory_id: Identifier of the directory the entry was synced from, when directory-synced.
+        :param pulumi.Input[_builtins.int] directory_node_id: Identifier of the directory node the entry was synced from, when directory-synced.
+        :param pulumi.Input[_builtins.str] email: Email address (or pattern) of the protected identity.
+        :param pulumi.Input[_builtins.str] external_directory_node_id: Deprecated. External identifier of the directory node.
+        :param pulumi.Input[_builtins.bool] is_email_regex: Whether `email` is a regular expression instead of a literal address.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
-        :param pulumi.Input[_builtins.str] provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        :param pulumi.Input[_builtins.str] name: Display name of the protected identity.
+        :param pulumi.Input[_builtins.str] provenance: Source the entry was created from.
+               Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -209,6 +247,9 @@ class _EmailSecurityImpersonationRegistryState:
     @_builtins.property
     @pulumi.getter
     def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional note describing the entry.
+        """
         return pulumi.get(self, "comments")
 
     @comments.setter
@@ -227,6 +268,9 @@ class _EmailSecurityImpersonationRegistryState:
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Identifier of the directory the entry was synced from, when directory-synced.
+        """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
@@ -236,6 +280,9 @@ class _EmailSecurityImpersonationRegistryState:
     @_builtins.property
     @pulumi.getter(name="directoryNodeId")
     def directory_node_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Identifier of the directory node the entry was synced from, when directory-synced.
+        """
         return pulumi.get(self, "directory_node_id")
 
     @directory_node_id.setter
@@ -245,6 +292,9 @@ class _EmailSecurityImpersonationRegistryState:
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Email address (or pattern) of the protected identity.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -255,6 +305,9 @@ class _EmailSecurityImpersonationRegistryState:
     @pulumi.getter(name="externalDirectoryNodeId")
     @_utilities.deprecated("""This field is deprecated.""")
     def external_directory_node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deprecated. External identifier of the directory node.
+        """
         return pulumi.get(self, "external_directory_node_id")
 
     @external_directory_node_id.setter
@@ -264,6 +317,9 @@ class _EmailSecurityImpersonationRegistryState:
     @_builtins.property
     @pulumi.getter(name="isEmailRegex")
     def is_email_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether `email` is a regular expression instead of a literal address.
+        """
         return pulumi.get(self, "is_email_regex")
 
     @is_email_regex.setter
@@ -295,6 +351,9 @@ class _EmailSecurityImpersonationRegistryState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the protected identity.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -305,6 +364,7 @@ class _EmailSecurityImpersonationRegistryState:
     @pulumi.getter
     def provenance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        Source the entry was created from.
         Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         return pulumi.get(self, "provenance")
@@ -344,22 +404,35 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
 
         example_email_security_impersonation_registry = cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            email="email",
-            is_email_regex=True,
-            name="name")
+            email="john.doe@example.com",
+            is_email_regex=False,
+            name="John Doe",
+            comments="comments",
+            directory_id=0,
+            directory_node_id=0,
+            external_directory_node_id="external_directory_node_id",
+            provenance="A1S_INTERNAL")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<display_name_id>'
+        $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<impersonation_registry_id>'
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        :param pulumi.Input[_builtins.str] comments: Optional note describing the entry.
+        :param pulumi.Input[_builtins.int] directory_id: Identifier of the directory the entry was synced from, when directory-synced.
+        :param pulumi.Input[_builtins.int] directory_node_id: Identifier of the directory node the entry was synced from, when directory-synced.
+        :param pulumi.Input[_builtins.str] email: Email address (or pattern) of the protected identity.
+        :param pulumi.Input[_builtins.str] external_directory_node_id: Deprecated. External identifier of the directory node.
+        :param pulumi.Input[_builtins.bool] is_email_regex: Whether `email` is a regular expression instead of a literal address.
+        :param pulumi.Input[_builtins.str] name: Display name of the protected identity.
+        :param pulumi.Input[_builtins.str] provenance: Source the entry was created from.
+               Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         ...
     @overload
@@ -381,15 +454,20 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
 
         example_email_security_impersonation_registry = cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            email="email",
-            is_email_regex=True,
-            name="name")
+            email="john.doe@example.com",
+            is_email_regex=False,
+            name="John Doe",
+            comments="comments",
+            directory_id=0,
+            directory_node_id=0,
+            external_directory_node_id="external_directory_node_id",
+            provenance="A1S_INTERNAL")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<display_name_id>'
+        $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<impersonation_registry_id>'
         ```
 
 
@@ -476,8 +554,16 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] comments: Optional note describing the entry.
+        :param pulumi.Input[_builtins.int] directory_id: Identifier of the directory the entry was synced from, when directory-synced.
+        :param pulumi.Input[_builtins.int] directory_node_id: Identifier of the directory node the entry was synced from, when directory-synced.
+        :param pulumi.Input[_builtins.str] email: Email address (or pattern) of the protected identity.
+        :param pulumi.Input[_builtins.str] external_directory_node_id: Deprecated. External identifier of the directory node.
+        :param pulumi.Input[_builtins.bool] is_email_regex: Whether `email` is a regular expression instead of a literal address.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
-        :param pulumi.Input[_builtins.str] provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        :param pulumi.Input[_builtins.str] name: Display name of the protected identity.
+        :param pulumi.Input[_builtins.str] provenance: Source the entry was created from.
+               Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -508,6 +594,9 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def comments(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional note describing the entry.
+        """
         return pulumi.get(self, "comments")
 
     @_builtins.property
@@ -518,27 +607,42 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Identifier of the directory the entry was synced from, when directory-synced.
+        """
         return pulumi.get(self, "directory_id")
 
     @_builtins.property
     @pulumi.getter(name="directoryNodeId")
     def directory_node_id(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Identifier of the directory node the entry was synced from, when directory-synced.
+        """
         return pulumi.get(self, "directory_node_id")
 
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:
+        """
+        Email address (or pattern) of the protected identity.
+        """
         return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter(name="externalDirectoryNodeId")
     @_utilities.deprecated("""This field is deprecated.""")
     def external_directory_node_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Deprecated. External identifier of the directory node.
+        """
         return pulumi.get(self, "external_directory_node_id")
 
     @_builtins.property
     @pulumi.getter(name="isEmailRegex")
     def is_email_regex(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether `email` is a regular expression instead of a literal address.
+        """
         return pulumi.get(self, "is_email_regex")
 
     @_builtins.property
@@ -558,12 +662,16 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the protected identity.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def provenance(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        Source the entry was created from.
         Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         return pulumi.get(self, "provenance")

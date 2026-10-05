@@ -41,6 +41,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 uninstall_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  virtual_networks: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceDefaultProfile resource.
@@ -63,6 +64,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
+        :param pulumi.Input[_builtins.bool] uninstall_protection: Determines whether uninstalling the WARP client requires an override code. (Windows only).
         :param pulumi.Input['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs'] virtual_networks: Virtual network access settings for the device.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -104,6 +106,8 @@ class ZeroTrustDeviceDefaultProfileArgs:
             pulumi.set(__self__, "switch_locked", switch_locked)
         if tunnel_protocol is not None:
             pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
+        if uninstall_protection is not None:
+            pulumi.set(__self__, "uninstall_protection", uninstall_protection)
         if virtual_networks is not None:
             pulumi.set(__self__, "virtual_networks", virtual_networks)
 
@@ -342,6 +346,18 @@ class ZeroTrustDeviceDefaultProfileArgs:
         pulumi.set(self, "tunnel_protocol", value)
 
     @_builtins.property
+    @pulumi.getter(name="uninstallProtection")
+    def uninstall_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        """
+        return pulumi.get(self, "uninstall_protection")
+
+    @uninstall_protection.setter
+    def uninstall_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "uninstall_protection", value)
+
+    @_builtins.property
     @pulumi.getter(name="virtualNetworks")
     def virtual_networks(self) -> pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']]:
         """
@@ -376,12 +392,14 @@ class _ZeroTrustDeviceDefaultProfileState:
                  lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
                  lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_type: pulumi.Input[Optional[_builtins.str]] = None,
                  register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_mode_v2: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 uninstall_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  virtual_networks: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfile resources.
@@ -401,11 +419,14 @@ class _ZeroTrustDeviceDefaultProfileState:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+        :param pulumi.Input[_builtins.str] profile_type: The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+               Available values: "warp", "browser_extension".
         :param pulumi.Input[_builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[_builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
+        :param pulumi.Input[_builtins.bool] uninstall_protection: Determines whether uninstalling the WARP client requires an override code. (Windows only).
         :param pulumi.Input['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs'] virtual_networks: Virtual network access settings for the device.
         """
         if account_id is not None:
@@ -446,6 +467,8 @@ class _ZeroTrustDeviceDefaultProfileState:
             pulumi.set(__self__, "lan_allow_subnet_size", lan_allow_subnet_size)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if profile_type is not None:
+            pulumi.set(__self__, "profile_type", profile_type)
         if register_interface_ip_with_dns is not None:
             pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
         if sccm_vpn_boundary_support is not None:
@@ -458,6 +481,8 @@ class _ZeroTrustDeviceDefaultProfileState:
             pulumi.set(__self__, "switch_locked", switch_locked)
         if tunnel_protocol is not None:
             pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
+        if uninstall_protection is not None:
+            pulumi.set(__self__, "uninstall_protection", uninstall_protection)
         if virtual_networks is not None:
             pulumi.set(__self__, "virtual_networks", virtual_networks)
 
@@ -678,6 +703,19 @@ class _ZeroTrustDeviceDefaultProfileState:
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        Available values: "warp", "browser_extension".
+        """
+        return pulumi.get(self, "profile_type")
+
+    @profile_type.setter
+    def profile_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "profile_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")
     def register_interface_ip_with_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -747,6 +785,18 @@ class _ZeroTrustDeviceDefaultProfileState:
         pulumi.set(self, "tunnel_protocol", value)
 
     @_builtins.property
+    @pulumi.getter(name="uninstallProtection")
+    def uninstall_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        """
+        return pulumi.get(self, "uninstall_protection")
+
+    @uninstall_protection.setter
+    def uninstall_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "uninstall_protection", value)
+
+    @_builtins.property
     @pulumi.getter(name="virtualNetworks")
     def virtual_networks(self) -> pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs']]:
         """
@@ -785,6 +835,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 uninstall_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks']]] = None,
                  __props__=None):
         """
@@ -806,11 +857,21 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             auto_connect=float(0),
             captive_portal=float(180),
             disable_auto_fallback=True,
+            dns_search_suffixes=[{
+                "suffix": "internal.corp",
+                "description": "Example internal domains",
+            }],
             excludes=[{
                 "address": "192.0.2.0/24",
                 "description": "Exclude testing domains from the tunnel",
             }],
             exclude_office_ips=True,
+            global_acceleration={
+                "api_endpoints": ["198.51.100.1:443"],
+                "enabled": True,
+                "masque_endpoints": ["198.51.100.1:443"],
+                "wireguard_endpoints": ["198.51.100.1:2408"],
+            },
             includes=[{
                 "address": "192.0.2.0/24",
                 "description": "Include testing domains in the tunnel",
@@ -825,7 +886,12 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             },
             support_url="https://1.1.1.1/help",
             switch_locked=True,
-            tunnel_protocol="wireguard")
+            tunnel_protocol="wireguard",
+            uninstall_protection=False,
+            virtual_networks={
+                "alloweds": ["f174e90a-fafe-4643-bbbc-4a0ed4fc8415"],
+                "default": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+            })
         ```
 
         ## Import
@@ -855,6 +921,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
+        :param pulumi.Input[_builtins.bool] uninstall_protection: Determines whether uninstalling the WARP client requires an override code. (Windows only).
         :param pulumi.Input[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks']] virtual_networks: Virtual network access settings for the device.
         """
         ...
@@ -882,11 +949,21 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             auto_connect=float(0),
             captive_portal=float(180),
             disable_auto_fallback=True,
+            dns_search_suffixes=[{
+                "suffix": "internal.corp",
+                "description": "Example internal domains",
+            }],
             excludes=[{
                 "address": "192.0.2.0/24",
                 "description": "Exclude testing domains from the tunnel",
             }],
             exclude_office_ips=True,
+            global_acceleration={
+                "api_endpoints": ["198.51.100.1:443"],
+                "enabled": True,
+                "masque_endpoints": ["198.51.100.1:443"],
+                "wireguard_endpoints": ["198.51.100.1:2408"],
+            },
             includes=[{
                 "address": "192.0.2.0/24",
                 "description": "Include testing domains in the tunnel",
@@ -901,7 +978,12 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             },
             support_url="https://1.1.1.1/help",
             switch_locked=True,
-            tunnel_protocol="wireguard")
+            tunnel_protocol="wireguard",
+            uninstall_protection=False,
+            virtual_networks={
+                "alloweds": ["f174e90a-fafe-4643-bbbc-4a0ed4fc8415"],
+                "default": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+            })
         ```
 
         ## Import
@@ -946,6 +1028,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 uninstall_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -978,12 +1061,14 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             __props__.__dict__["support_url"] = support_url
             __props__.__dict__["switch_locked"] = switch_locked
             __props__.__dict__["tunnel_protocol"] = tunnel_protocol
+            __props__.__dict__["uninstall_protection"] = uninstall_protection
             __props__.__dict__["virtual_networks"] = virtual_networks
             __props__.__dict__["default"] = None
             __props__.__dict__["enabled"] = None
             __props__.__dict__["fallback_domains"] = None
             __props__.__dict__["gateway_unique_id"] = None
             __props__.__dict__["policy_id"] = None
+            __props__.__dict__["profile_type"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy"), pulumi.Alias(type_="cloudflare:index/splitTunnel:SplitTunnel")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDeviceDefaultProfile, __self__).__init__(
@@ -1015,12 +1100,14 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
             lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_type: pulumi.Input[Optional[_builtins.str]] = None,
             register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
             sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
             service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileServiceModeV2']]] = None,
             support_url: pulumi.Input[Optional[_builtins.str]] = None,
             switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
             tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            uninstall_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks']]] = None) -> 'ZeroTrustDeviceDefaultProfile':
         """
         Get an existing ZeroTrustDeviceDefaultProfile resource's state with the given name, id, and optional extra
@@ -1044,11 +1131,14 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileInclude']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[_builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[_builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+        :param pulumi.Input[_builtins.str] profile_type: The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+               Available values: "warp", "browser_extension".
         :param pulumi.Input[_builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[_builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[_builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
+        :param pulumi.Input[_builtins.bool] uninstall_protection: Determines whether uninstalling the WARP client requires an override code. (Windows only).
         :param pulumi.Input[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks']] virtual_networks: Virtual network access settings for the device.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1074,12 +1164,14 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__.__dict__["lan_allow_minutes"] = lan_allow_minutes
         __props__.__dict__["lan_allow_subnet_size"] = lan_allow_subnet_size
         __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["profile_type"] = profile_type
         __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
         __props__.__dict__["sccm_vpn_boundary_support"] = sccm_vpn_boundary_support
         __props__.__dict__["service_mode_v2"] = service_mode_v2
         __props__.__dict__["support_url"] = support_url
         __props__.__dict__["switch_locked"] = switch_locked
         __props__.__dict__["tunnel_protocol"] = tunnel_protocol
+        __props__.__dict__["uninstall_protection"] = uninstall_protection
         __props__.__dict__["virtual_networks"] = virtual_networks
         return ZeroTrustDeviceDefaultProfile(resource_name, opts=opts, __props__=__props__)
 
@@ -1224,6 +1316,15 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         return pulumi.get(self, "policy_id")
 
     @_builtins.property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        Available values: "warp", "browser_extension".
+        """
+        return pulumi.get(self, "profile_type")
+
+    @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")
     def register_interface_ip_with_dns(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -1267,6 +1368,14 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         Determines which tunnel protocol to use.
         """
         return pulumi.get(self, "tunnel_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="uninstallProtection")
+    def uninstall_protection(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        """
+        return pulumi.get(self, "uninstall_protection")
 
     @_builtins.property
     @pulumi.getter(name="virtualNetworks")

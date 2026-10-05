@@ -109,6 +109,21 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * 
+     */
+    @Import(name="supportSubaddress")
+    private @Nullable Output<Boolean> supportSubaddress;
+
+    /**
+     * @return Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * 
+     */
+    public Optional<Output<Boolean>> supportSubaddress() {
+        return Optional.ofNullable(this.supportSubaddress);
+    }
+
+    /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      * 
      * @deprecated
@@ -155,6 +170,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         this.name = $.name;
         this.skipWizard = $.skipWizard;
         this.status = $.status;
+        this.supportSubaddress = $.supportSubaddress;
         this.tag = $.tag;
         this.zoneId = $.zoneId;
     }
@@ -303,6 +319,27 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportSubaddress(@Nullable Output<Boolean> supportSubaddress) {
+            $.supportSubaddress = supportSubaddress;
+            return this;
+        }
+
+        /**
+         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportSubaddress(Boolean supportSubaddress) {
+            return supportSubaddress(Output.of(supportSubaddress));
         }
 
         /**

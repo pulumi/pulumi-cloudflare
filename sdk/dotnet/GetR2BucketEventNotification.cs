@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketEventNotificationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         public string BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Queue ID.
+        /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
         /// </summary>
         [Input("queueId", required: true)]
         public string QueueId { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketEventNotificationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Queue ID.
+        /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
         /// </summary>
         [Input("queueId", required: true)]
         public Input<string> QueueId { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketEventNotificationResult
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -165,7 +165,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// Queue ID.
+        /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
         /// </summary>
         public readonly string QueueId;
         /// <summary>

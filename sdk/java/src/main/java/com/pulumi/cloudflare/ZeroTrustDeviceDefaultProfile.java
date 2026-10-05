@@ -41,9 +41,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfile;
  * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileExcludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileIncludeArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileVirtualNetworksArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -65,11 +68,21 @@ import javax.annotation.Nullable;
  *             .autoConnect(0.0)
  *             .captivePortal(180.0)
  *             .disableAutoFallback(true)
+ *             .dnsSearchSuffixes(ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs.builder()
+ *                 .suffix("internal.corp")
+ *                 .description("Example internal domains")
+ *                 .build())
  *             .excludes(ZeroTrustDeviceDefaultProfileExcludeArgs.builder()
  *                 .address("192.0.2.0/24")
  *                 .description("Exclude testing domains from the tunnel")
  *                 .build())
  *             .excludeOfficeIps(true)
+ *             .globalAcceleration(ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs.builder()
+ *                 .apiEndpoints("198.51.100.1:443")
+ *                 .enabled(true)
+ *                 .masqueEndpoints("198.51.100.1:443")
+ *                 .wireguardEndpoints("198.51.100.1:2408")
+ *                 .build())
  *             .includes(ZeroTrustDeviceDefaultProfileIncludeArgs.builder()
  *                 .address("192.0.2.0/24")
  *                 .description("Include testing domains in the tunnel")
@@ -85,6 +98,11 @@ import javax.annotation.Nullable;
  *             .supportUrl("https://1.1.1.1/help")
  *             .switchLocked(true)
  *             .tunnelProtocol("wireguard")
+ *             .uninstallProtection(false)
+ *             .virtualNetworks(ZeroTrustDeviceDefaultProfileVirtualNetworksArgs.builder()
+ *                 .alloweds("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *                 .default_("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -336,6 +354,22 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
         return this.policyId;
     }
     /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    @Export(name="profileType", refs={String.class}, tree="[0]")
+    private Output<String> profileType;
+
+    /**
+     * @return The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public Output<String> profileType() {
+        return this.profileType;
+    }
+    /**
      * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
      */
@@ -410,6 +444,20 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      */
     public Output<String> tunnelProtocol() {
         return this.tunnelProtocol;
+    }
+    /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    @Export(name="uninstallProtection", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> uninstallProtection;
+
+    /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    public Output<Boolean> uninstallProtection() {
+        return this.uninstallProtection;
     }
     /**
      * Virtual network access settings for the device.

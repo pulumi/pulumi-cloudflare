@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.WorkerScriptObservabilityIssues;
 import com.pulumi.cloudflare.outputs.WorkerScriptObservabilityLogs;
 import com.pulumi.cloudflare.outputs.WorkerScriptObservabilityTraces;
 import com.pulumi.core.annotations.CustomType;
@@ -25,6 +26,11 @@ public final class WorkerScriptObservability {
      * 
      */
     private @Nullable Double headSamplingRate;
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    private @Nullable WorkerScriptObservabilityIssues issues;
     /**
      * @return Log settings for the Worker.
      * 
@@ -52,6 +58,13 @@ public final class WorkerScriptObservability {
         return Optional.ofNullable(this.headSamplingRate);
     }
     /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    public Optional<WorkerScriptObservabilityIssues> issues() {
+        return Optional.ofNullable(this.issues);
+    }
+    /**
      * @return Log settings for the Worker.
      * 
      */
@@ -77,6 +90,7 @@ public final class WorkerScriptObservability {
     public static final class Builder {
         private Boolean enabled;
         private @Nullable Double headSamplingRate;
+        private @Nullable WorkerScriptObservabilityIssues issues;
         private @Nullable WorkerScriptObservabilityLogs logs;
         private @Nullable WorkerScriptObservabilityTraces traces;
         public Builder() {}
@@ -84,6 +98,7 @@ public final class WorkerScriptObservability {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
+    	      this.issues = defaults.issues;
     	      this.logs = defaults.logs;
     	      this.traces = defaults.traces;
         }
@@ -103,6 +118,12 @@ public final class WorkerScriptObservability {
             return this;
         }
         @CustomType.Setter
+        public Builder issues(@Nullable WorkerScriptObservabilityIssues issues) {
+
+            this.issues = issues;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logs(@Nullable WorkerScriptObservabilityLogs logs) {
 
             this.logs = logs;
@@ -118,6 +139,7 @@ public final class WorkerScriptObservability {
             final var _resultValue = new WorkerScriptObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
+            _resultValue.issues = issues;
             _resultValue.logs = logs;
             _resultValue.traces = traces;
             return _resultValue;

@@ -6,8 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SecretsStoreArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,6 +22,25 @@ public final class SecretsStoreArgs extends com.pulumi.resources.ResourceArgs {
 
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * When true, cascade-deletes all secrets in the store before deleting the store itself.
+     * Required when deleting a non-empty store. Without this parameter, attempting to
+     * delete a non-empty store returns 409.
+     * 
+     */
+    @Import(name="force")
+    private @Nullable Output<Boolean> force;
+
+    /**
+     * @return When true, cascade-deletes all secrets in the store before deleting the store itself.
+     * Required when deleting a non-empty store. Without this parameter, attempting to
+     * delete a non-empty store returns 409.
+     * 
+     */
+    public Optional<Output<Boolean>> force() {
+        return Optional.ofNullable(this.force);
     }
 
     /**
@@ -40,6 +62,7 @@ public final class SecretsStoreArgs extends com.pulumi.resources.ResourceArgs {
 
     private SecretsStoreArgs(SecretsStoreArgs $) {
         this.accountId = $.accountId;
+        this.force = $.force;
         this.name = $.name;
     }
 
@@ -68,6 +91,31 @@ public final class SecretsStoreArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param force When true, cascade-deletes all secrets in the store before deleting the store itself.
+         * Required when deleting a non-empty store. Without this parameter, attempting to
+         * delete a non-empty store returns 409.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(@Nullable Output<Boolean> force) {
+            $.force = force;
+            return this;
+        }
+
+        /**
+         * @param force When true, cascade-deletes all secrets in the store before deleting the store itself.
+         * Required when deleting a non-empty store. Without this parameter, attempting to
+         * delete a non-empty store returns 409.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(Boolean force) {
+            return force(Output.of(force));
         }
 
         /**

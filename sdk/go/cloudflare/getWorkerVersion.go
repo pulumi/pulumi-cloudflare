@@ -76,6 +76,8 @@ type LookupWorkerVersionResult struct {
 	Annotations GetWorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
 	Assets             GetWorkerVersionAssets             `pulumi:"assets"`
+	AuthorEmail        string                             `pulumi:"authorEmail"`
+	AuthorId           string                             `pulumi:"authorId"`
 	Bindings           []GetWorkerVersionBinding          `pulumi:"bindings"`
 	CacheOptions       GetWorkerVersionCacheOptions       `pulumi:"cacheOptions"`
 	CompatibilityDate  string                             `pulumi:"compatibilityDate"`
@@ -157,6 +159,14 @@ func (o LookupWorkerVersionResultOutput) Annotations() GetWorkerVersionAnnotatio
 // Configuration for assets within a Worker.
 func (o LookupWorkerVersionResultOutput) Assets() GetWorkerVersionAssetsOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) GetWorkerVersionAssets { return v.Assets }).(GetWorkerVersionAssetsOutput)
+}
+
+func (o LookupWorkerVersionResultOutput) AuthorEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkerVersionResultOutput) AuthorId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.AuthorId }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkerVersionResultOutput) Bindings() GetWorkerVersionBindingArrayOutput {

@@ -62,14 +62,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The domain name.
+     * @return Fully qualified domain name for the Pages project, such as `example.com`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -77,14 +77,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -221,7 +221,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name.
+         * @param name Fully qualified domain name for the Pages project, such as `example.com`.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name.
+         * @param name Fully qualified domain name for the Pages project, such as `example.com`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Name of the project.
+         * @param projectName Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName Name of the project.
+         * @param projectName Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 

@@ -184,6 +184,9 @@ export class TeamsRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsRule.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -342,6 +345,9 @@ export class TeamsRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsRule resources.
  */
 export interface TeamsRuleState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -424,6 +430,9 @@ export interface TeamsRuleState {
  * The set of arguments for constructing a TeamsRule resource.
  */
 export interface TeamsRuleArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.

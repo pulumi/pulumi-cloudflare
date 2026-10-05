@@ -95,6 +95,7 @@ import (
 type ZeroTrustDnsLocation struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolOutput   `pulumi:"clientDefault"`
@@ -166,6 +167,7 @@ func GetZeroTrustDnsLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDnsLocation resources.
 type zeroTrustDnsLocationState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault *bool   `pulumi:"clientDefault"`
@@ -196,6 +198,7 @@ type zeroTrustDnsLocationState struct {
 }
 
 type ZeroTrustDnsLocationState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
@@ -230,6 +233,7 @@ func (ZeroTrustDnsLocationState) ElementType() reflect.Type {
 }
 
 type zeroTrustDnsLocationArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
@@ -249,6 +253,7 @@ type zeroTrustDnsLocationArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDnsLocation resource.
 type ZeroTrustDnsLocationArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
@@ -353,6 +358,7 @@ func (o ZeroTrustDnsLocationOutput) ToZeroTrustDnsLocationOutputWithContext(ctx 
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o ZeroTrustDnsLocationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

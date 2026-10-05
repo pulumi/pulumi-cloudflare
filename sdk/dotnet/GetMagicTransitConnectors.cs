@@ -30,6 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleMagicTransitConnectors = Cloudflare.GetMagicTransitConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         DeviceType = "MANAGED",
         ///     });
         /// 
         /// });
@@ -57,6 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleMagicTransitConnectors = Cloudflare.GetMagicTransitConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         DeviceType = "MANAGED",
         ///     });
         /// 
         /// });
@@ -84,6 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleMagicTransitConnectors = Cloudflare.GetMagicTransitConnectors.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         DeviceType = "MANAGED",
         ///     });
         /// 
         /// });

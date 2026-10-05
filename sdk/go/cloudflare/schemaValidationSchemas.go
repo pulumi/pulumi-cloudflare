@@ -63,6 +63,8 @@ type SchemaValidationSchemas struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// A human-readable name for the schema
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource pulumi.BoolOutput `pulumi:"omitSource"`
 	// A unique identifier of this schema
 	SchemaId pulumi.StringOutput `pulumi:"schemaId"`
 	// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
@@ -124,6 +126,8 @@ type schemaValidationSchemasState struct {
 	Kind *string `pulumi:"kind"`
 	// A human-readable name for the schema
 	Name *string `pulumi:"name"`
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource *bool `pulumi:"omitSource"`
 	// A unique identifier of this schema
 	SchemaId *string `pulumi:"schemaId"`
 	// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
@@ -141,6 +145,8 @@ type SchemaValidationSchemasState struct {
 	Kind pulumi.StringPtrInput
 	// A human-readable name for the schema
 	Name pulumi.StringPtrInput
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource pulumi.BoolPtrInput
 	// A unique identifier of this schema
 	SchemaId pulumi.StringPtrInput
 	// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
@@ -161,6 +167,8 @@ type schemaValidationSchemasArgs struct {
 	Kind string `pulumi:"kind"`
 	// A human-readable name for the schema
 	Name string `pulumi:"name"`
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource *bool `pulumi:"omitSource"`
 	// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 	Source string `pulumi:"source"`
 	// An indicator if this schema is enabled
@@ -176,6 +184,8 @@ type SchemaValidationSchemasArgs struct {
 	Kind pulumi.StringInput
 	// A human-readable name for the schema
 	Name pulumi.StringInput
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource pulumi.BoolPtrInput
 	// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
 	Source pulumi.StringInput
 	// An indicator if this schema is enabled
@@ -284,6 +294,11 @@ func (o SchemaValidationSchemasOutput) Kind() pulumi.StringOutput {
 // A human-readable name for the schema
 func (o SchemaValidationSchemasOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SchemaValidationSchemas) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Omit the source-files of schemas and only retrieve their meta-data.
+func (o SchemaValidationSchemasOutput) OmitSource() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SchemaValidationSchemas) pulumi.BoolOutput { return v.OmitSource }).(pulumi.BoolOutput)
 }
 
 // A unique identifier of this schema

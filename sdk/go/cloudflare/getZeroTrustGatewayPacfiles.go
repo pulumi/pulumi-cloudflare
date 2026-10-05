@@ -53,6 +53,7 @@ func LookupZeroTrustGatewayPacfiles(ctx *pulumi.Context, args *LookupZeroTrustGa
 
 // A collection of arguments for invoking getZeroTrustGatewayPacfiles.
 type LookupZeroTrustGatewayPacfilesArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -60,6 +61,7 @@ type LookupZeroTrustGatewayPacfilesArgs struct {
 
 // A collection of values returned by getZeroTrustGatewayPacfiles.
 type LookupZeroTrustGatewayPacfilesResult struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -74,6 +76,7 @@ func LookupZeroTrustGatewayPacfilesOutput(ctx *pulumi.Context, args LookupZeroTr
 
 // A collection of arguments for invoking getZeroTrustGatewayPacfiles.
 type LookupZeroTrustGatewayPacfilesOutputArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -98,6 +101,7 @@ func (o LookupZeroTrustGatewayPacfilesResultOutput) ToLookupZeroTrustGatewayPacf
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewayPacfilesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPacfilesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }

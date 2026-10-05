@@ -23,7 +23,8 @@ class SchemaValidationSchemasArgs:
                  name: pulumi.Input[_builtins.str],
                  source: pulumi.Input[_builtins.str],
                  validation_enabled: pulumi.Input[_builtins.bool],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: pulumi.Input[_builtins.str],
+                 omit_source: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SchemaValidationSchemas resource.
 
@@ -33,12 +34,15 @@ class SchemaValidationSchemasArgs:
         :param pulumi.Input[_builtins.str] source: The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
         :param pulumi.Input[_builtins.bool] validation_enabled: An indicator if this schema is enabled
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
+        :param pulumi.Input[_builtins.bool] omit_source: Omit the source-files of schemas and only retrieve their meta-data.
         """
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "validation_enabled", validation_enabled)
         pulumi.set(__self__, "zone_id", zone_id)
+        if omit_source is not None:
+            pulumi.set(__self__, "omit_source", omit_source)
 
     @_builtins.property
     @pulumi.getter
@@ -101,6 +105,18 @@ class SchemaValidationSchemasArgs:
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="omitSource")
+    def omit_source(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Omit the source-files of schemas and only retrieve their meta-data.
+        """
+        return pulumi.get(self, "omit_source")
+
+    @omit_source.setter
+    def omit_source(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "omit_source", value)
+
 
 @pulumi.input_type
 class _SchemaValidationSchemasState:
@@ -108,6 +124,7 @@ class _SchemaValidationSchemasState:
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  schema_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  validation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -118,6 +135,7 @@ class _SchemaValidationSchemasState:
         :param pulumi.Input[_builtins.str] kind: The kind of the schema
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] name: A human-readable name for the schema
+        :param pulumi.Input[_builtins.bool] omit_source: Omit the source-files of schemas and only retrieve their meta-data.
         :param pulumi.Input[_builtins.str] schema_id: A unique identifier of this schema
         :param pulumi.Input[_builtins.str] source: The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
         :param pulumi.Input[_builtins.bool] validation_enabled: An indicator if this schema is enabled
@@ -129,6 +147,8 @@ class _SchemaValidationSchemasState:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if omit_source is not None:
+            pulumi.set(__self__, "omit_source", omit_source)
         if schema_id is not None:
             pulumi.set(__self__, "schema_id", schema_id)
         if source is not None:
@@ -171,6 +191,18 @@ class _SchemaValidationSchemasState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="omitSource")
+    def omit_source(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Omit the source-files of schemas and only retrieve their meta-data.
+        """
+        return pulumi.get(self, "omit_source")
+
+    @omit_source.setter
+    def omit_source(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "omit_source", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaId")
@@ -229,6 +261,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  validation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -267,6 +300,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kind: The kind of the schema
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] name: A human-readable name for the schema
+        :param pulumi.Input[_builtins.bool] omit_source: Omit the source-files of schemas and only retrieve their meta-data.
         :param pulumi.Input[_builtins.str] source: The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
         :param pulumi.Input[_builtins.bool] validation_enabled: An indicator if this schema is enabled
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -323,6 +357,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  validation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -341,6 +376,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["omit_source"] = omit_source
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
@@ -365,6 +401,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
             schema_id: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             validation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -379,6 +416,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kind: The kind of the schema
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] name: A human-readable name for the schema
+        :param pulumi.Input[_builtins.bool] omit_source: Omit the source-files of schemas and only retrieve their meta-data.
         :param pulumi.Input[_builtins.str] schema_id: A unique identifier of this schema
         :param pulumi.Input[_builtins.str] source: The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
         :param pulumi.Input[_builtins.bool] validation_enabled: An indicator if this schema is enabled
@@ -391,6 +429,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
+        __props__.__dict__["omit_source"] = omit_source
         __props__.__dict__["schema_id"] = schema_id
         __props__.__dict__["source"] = source
         __props__.__dict__["validation_enabled"] = validation_enabled
@@ -418,6 +457,14 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         A human-readable name for the schema
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="omitSource")
+    def omit_source(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Omit the source-files of schemas and only retrieve their meta-data.
+        """
+        return pulumi.get(self, "omit_source")
 
     @_builtins.property
     @pulumi.getter(name="schemaId")

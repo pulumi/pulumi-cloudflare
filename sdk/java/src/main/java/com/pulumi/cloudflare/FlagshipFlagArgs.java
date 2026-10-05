@@ -21,14 +21,14 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
     public static final FlagshipFlagArgs Empty = new FlagshipFlagArgs();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Output<String> accountId() {
@@ -36,14 +36,14 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public Output<String> appId() {
@@ -65,9 +65,17 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
         return this.defaultVariation;
     }
 
+    /**
+     * Optional operator-facing description. It does not affect flag evaluation.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Optional operator-facing description. It does not affect flag evaluation.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -85,21 +93,6 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<Boolean> enabled() {
         return this.enabled;
-    }
-
-    /**
-     * Flag key (slug).
-     * 
-     */
-    @Import(name="flagKey")
-    private @Nullable Output<String> flagKey;
-
-    /**
-     * @return Flag key (slug).
-     * 
-     */
-    public Optional<Output<String>> flagKey() {
-        return Optional.ofNullable(this.flagKey);
     }
 
     /**
@@ -133,18 +126,26 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value type of the flag&#39;s variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag&#39;s variations.
      * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Value type of the flag&#39;s variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * @return Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag&#39;s variations.
      * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -172,7 +173,6 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultVariation = $.defaultVariation;
         this.description = $.description;
         this.enabled = $.enabled;
-        this.flagKey = $.flagKey;
         this.key = $.key;
         this.rules = $.rules;
         this.type = $.type;
@@ -198,7 +198,7 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -260,11 +260,23 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
             return defaultVariation(Output.of(defaultVariation));
         }
 
+        /**
+         * @param description Optional operator-facing description. It does not affect flag evaluation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Optional operator-facing description. It does not affect flag evaluation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -288,27 +300,6 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
-        }
-
-        /**
-         * @param flagKey Flag key (slug).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder flagKey(@Nullable Output<String> flagKey) {
-            $.flagKey = flagKey;
-            return this;
-        }
-
-        /**
-         * @param flagKey Flag key (slug).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder flagKey(String flagKey) {
-            return flagKey(Output.of(flagKey));
         }
 
         /**
@@ -364,24 +355,32 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Value type of the flag&#39;s variations. Inferred from the variation values on write, so it may be omitted in requests.
+         * @param type Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag&#39;s variations.
          * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type Value type of the flag&#39;s variations. Inferred from the variation values on write, so it may be omitted in requests.
+         * @param type Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag&#39;s variations.
          * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder type(String type) {
             return type(Output.of(type));
         }

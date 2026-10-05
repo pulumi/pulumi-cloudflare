@@ -59,7 +59,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example &#39;&lt;zone_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck")

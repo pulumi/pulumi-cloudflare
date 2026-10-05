@@ -30,14 +30,14 @@ public final class GetAiGatewayPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return gateway id
+     * @return Unique identifier of the AI Gateway within the account.
      * 
      */
     public Optional<String> id() {
@@ -81,7 +81,7 @@ public final class GetAiGatewayPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param id gateway id
+         * @param id Unique identifier of the AI Gateway within the account.
          * 
          * @return builder
          * 

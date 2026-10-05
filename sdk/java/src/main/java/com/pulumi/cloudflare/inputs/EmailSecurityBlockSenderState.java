@@ -45,9 +45,17 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Whether `pattern` is a regular expression instead of a literal value.
+     * 
+     */
     @Import(name="isRegex")
     private @Nullable Output<Boolean> isRegex;
 
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal value.
+     * 
+     */
     public Optional<Output<Boolean>> isRegex() {
         return Optional.ofNullable(this.isRegex);
     }
@@ -192,11 +200,23 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param isRegex Whether `pattern` is a regular expression instead of a literal value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRegex(@Nullable Output<Boolean> isRegex) {
             $.isRegex = isRegex;
             return this;
         }
 
+        /**
+         * @param isRegex Whether `pattern` is a regular expression instead of a literal value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRegex(Boolean isRegex) {
             return isRegex(Output.of(isRegex));
         }

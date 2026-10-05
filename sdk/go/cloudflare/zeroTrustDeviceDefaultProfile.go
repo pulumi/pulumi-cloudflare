@@ -38,6 +38,12 @@ import (
 //				AutoConnect:         pulumi.Float64(0),
 //				CaptivePortal:       pulumi.Float64(180),
 //				DisableAutoFallback: pulumi.Bool(true),
+//				DnsSearchSuffixes: cloudflare.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArray{
+//					&cloudflare.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs{
+//						Suffix:      pulumi.String("internal.corp"),
+//						Description: pulumi.String("Example internal domains"),
+//					},
+//				},
 //				Excludes: cloudflare.ZeroTrustDeviceDefaultProfileExcludeArray{
 //					&cloudflare.ZeroTrustDeviceDefaultProfileExcludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
@@ -45,6 +51,18 @@ import (
 //					},
 //				},
 //				ExcludeOfficeIps: pulumi.Bool(true),
+//				GlobalAcceleration: &cloudflare.ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs{
+//					ApiEndpoints: pulumi.StringArray{
+//						pulumi.String("198.51.100.1:443"),
+//					},
+//					Enabled: pulumi.Bool(true),
+//					MasqueEndpoints: pulumi.StringArray{
+//						pulumi.String("198.51.100.1:443"),
+//					},
+//					WireguardEndpoints: pulumi.StringArray{
+//						pulumi.String("198.51.100.1:2408"),
+//					},
+//				},
 //				Includes: cloudflare.ZeroTrustDeviceDefaultProfileIncludeArray{
 //					&cloudflare.ZeroTrustDeviceDefaultProfileIncludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
@@ -59,9 +77,16 @@ import (
 //					Mode: pulumi.String("proxy"),
 //					Port: pulumi.Float64(3000),
 //				},
-//				SupportUrl:     pulumi.String("https://1.1.1.1/help"),
-//				SwitchLocked:   pulumi.Bool(true),
-//				TunnelProtocol: pulumi.String("wireguard"),
+//				SupportUrl:          pulumi.String("https://1.1.1.1/help"),
+//				SwitchLocked:        pulumi.Bool(true),
+//				TunnelProtocol:      pulumi.String("wireguard"),
+//				UninstallProtection: pulumi.Bool(false),
+//				VirtualNetworks: &cloudflare.ZeroTrustDeviceDefaultProfileVirtualNetworksArgs{
+//					Alloweds: pulumi.StringArray{
+//						pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//					},
+//					Default: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -114,6 +139,9 @@ type ZeroTrustDeviceDefaultProfile struct {
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrOutput `pulumi:"lanAllowSubnetSize"`
 	PolicyId           pulumi.StringOutput     `pulumi:"policyId"`
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType pulumi.StringOutput `pulumi:"profileType"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolOutput `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -125,6 +153,8 @@ type ZeroTrustDeviceDefaultProfile struct {
 	SwitchLocked pulumi.BoolOutput `pulumi:"switchLocked"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringOutput `pulumi:"tunnelProtocol"`
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection pulumi.BoolOutput `pulumi:"uninstallProtection"`
 	// Virtual network access settings for the device.
 	VirtualNetworks ZeroTrustDeviceDefaultProfileVirtualNetworksPtrOutput `pulumi:"virtualNetworks"`
 }
@@ -205,6 +235,9 @@ type zeroTrustDeviceDefaultProfileState struct {
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
 	PolicyId           *string  `pulumi:"policyId"`
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType *string `pulumi:"profileType"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns *bool `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -216,6 +249,8 @@ type zeroTrustDeviceDefaultProfileState struct {
 	SwitchLocked *bool `pulumi:"switchLocked"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection *bool `pulumi:"uninstallProtection"`
 	// Virtual network access settings for the device.
 	VirtualNetworks *ZeroTrustDeviceDefaultProfileVirtualNetworks `pulumi:"virtualNetworks"`
 }
@@ -255,6 +290,9 @@ type ZeroTrustDeviceDefaultProfileState struct {
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
 	PolicyId           pulumi.StringPtrInput
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType pulumi.StringPtrInput
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -266,6 +304,8 @@ type ZeroTrustDeviceDefaultProfileState struct {
 	SwitchLocked pulumi.BoolPtrInput
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringPtrInput
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection pulumi.BoolPtrInput
 	// Virtual network access settings for the device.
 	VirtualNetworks ZeroTrustDeviceDefaultProfileVirtualNetworksPtrInput
 }
@@ -313,6 +353,8 @@ type zeroTrustDeviceDefaultProfileArgs struct {
 	SwitchLocked *bool `pulumi:"switchLocked"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection *bool `pulumi:"uninstallProtection"`
 	// Virtual network access settings for the device.
 	VirtualNetworks *ZeroTrustDeviceDefaultProfileVirtualNetworks `pulumi:"virtualNetworks"`
 }
@@ -357,6 +399,8 @@ type ZeroTrustDeviceDefaultProfileArgs struct {
 	SwitchLocked pulumi.BoolPtrInput
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringPtrInput
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection pulumi.BoolPtrInput
 	// Virtual network access settings for the device.
 	VirtualNetworks ZeroTrustDeviceDefaultProfileVirtualNetworksPtrInput
 }
@@ -549,6 +593,12 @@ func (o ZeroTrustDeviceDefaultProfileOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }
 
+// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+// Available values: "warp", "browserExtension".
+func (o ZeroTrustDeviceDefaultProfileOutput) ProfileType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.StringOutput { return v.ProfileType }).(pulumi.StringOutput)
+}
+
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 func (o ZeroTrustDeviceDefaultProfileOutput) RegisterInterfaceIpWithDns() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.BoolOutput { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolOutput)
@@ -578,6 +628,11 @@ func (o ZeroTrustDeviceDefaultProfileOutput) SwitchLocked() pulumi.BoolOutput {
 // Determines which tunnel protocol to use.
 func (o ZeroTrustDeviceDefaultProfileOutput) TunnelProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.StringOutput { return v.TunnelProtocol }).(pulumi.StringOutput)
+}
+
+// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+func (o ZeroTrustDeviceDefaultProfileOutput) UninstallProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.BoolOutput { return v.UninstallProtection }).(pulumi.BoolOutput)
 }
 
 // Virtual network access settings for the device.

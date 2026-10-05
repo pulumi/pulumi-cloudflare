@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetMagicTransitSiteWanStaticAddressing;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -28,6 +29,7 @@ public final class GetMagicTransitSiteWanResult {
      * 
      */
     private String id;
+    private Boolean loadBalanceInnerFlows;
     private String name;
     private Integer physport;
     /**
@@ -78,6 +80,9 @@ public final class GetMagicTransitSiteWanResult {
      */
     public String id() {
         return this.id;
+    }
+    public Boolean loadBalanceInnerFlows() {
+        return this.loadBalanceInnerFlows;
     }
     public String name() {
         return this.name;
@@ -133,6 +138,7 @@ public final class GetMagicTransitSiteWanResult {
         private String accountId;
         private String healthCheckRate;
         private String id;
+        private Boolean loadBalanceInnerFlows;
         private String name;
         private Integer physport;
         private Integer priority;
@@ -146,6 +152,7 @@ public final class GetMagicTransitSiteWanResult {
     	      this.accountId = defaults.accountId;
     	      this.healthCheckRate = defaults.healthCheckRate;
     	      this.id = defaults.id;
+    	      this.loadBalanceInnerFlows = defaults.loadBalanceInnerFlows;
     	      this.name = defaults.name;
     	      this.physport = defaults.physport;
     	      this.priority = defaults.priority;
@@ -177,6 +184,14 @@ public final class GetMagicTransitSiteWanResult {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteWanResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder loadBalanceInnerFlows(Boolean loadBalanceInnerFlows) {
+            if (loadBalanceInnerFlows == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteWanResult", "loadBalanceInnerFlows");
+            }
+            this.loadBalanceInnerFlows = loadBalanceInnerFlows;
             return this;
         }
         @CustomType.Setter
@@ -240,6 +255,7 @@ public final class GetMagicTransitSiteWanResult {
             _resultValue.accountId = accountId;
             _resultValue.healthCheckRate = healthCheckRate;
             _resultValue.id = id;
+            _resultValue.loadBalanceInnerFlows = loadBalanceInnerFlows;
             _resultValue.name = name;
             _resultValue.physport = physport;
             _resultValue.priority = priority;

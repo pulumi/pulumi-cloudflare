@@ -29,6 +29,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string AuthenticationStatus;
         public readonly string CreatedAt;
         public readonly string CreatedBy;
+        /// <summary>
+        /// Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
+        /// </summary>
         public readonly bool DefaultDisabled;
         /// <summary>
         /// Optional description of the MCP server.

@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
     public partial class R2BucketEventNotification : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -75,7 +75,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Jurisdiction { get; private set; } = null!;
 
         /// <summary>
-        /// Queue ID.
+        /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
         /// </summary>
         [Output("queueId")]
         public Output<string> QueueId { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketEventNotificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// Queue ID.
+        /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
         /// </summary>
         [Input("queueId", required: true)]
         public Input<string> QueueId { get; set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketEventNotificationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// Queue ID.
+        /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
         /// </summary>
         [Input("queueId")]
         public Input<string>? QueueId { get; set; }

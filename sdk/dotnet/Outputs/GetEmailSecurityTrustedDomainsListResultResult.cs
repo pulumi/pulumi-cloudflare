@@ -23,6 +23,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
         public readonly bool IsRecent;
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal domain.
+        /// </summary>
         public readonly bool IsRegex;
         /// <summary>
         /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
@@ -33,6 +36,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string LastModified;
         public readonly string ModifiedAt;
+        /// <summary>
+        /// The domain pattern to trust, e.g. `example.com`.
+        /// </summary>
         public readonly string Pattern;
 
         [OutputConstructor]

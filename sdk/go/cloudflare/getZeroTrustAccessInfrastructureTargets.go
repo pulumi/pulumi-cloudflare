@@ -45,6 +45,9 @@ import (
 //				ModifiedAfter:  pulumi.StringRef("2019-12-27T18:11:19.117Z"),
 //				ModifiedBefore: pulumi.StringRef("2019-12-27T18:11:19.117Z"),
 //				Order:          pulumi.StringRef("hostname"),
+//				Tags: []string{
+//					"string",
+//				},
 //				TargetIds: []string{
 //					"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //				},
@@ -114,6 +117,10 @@ type LookupZeroTrustAccessInfrastructureTargetsArgs struct {
 	// The field to sort by.
 	// Available values: "hostname", "createdAt".
 	Order *string `pulumi:"order"`
+	// Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+	// Format: `tag=key:value` (e.g., `tag=environment:production`).
+	// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+	Tags []string `pulumi:"tags"`
 	// Filters for targets that have any of the following UUIDs. Specify
 	// `targetIds` multiple times in query parameter to build list of
 	// candidates.
@@ -170,6 +177,10 @@ type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetZeroTrustAccessInfrastructureTargetsResult `pulumi:"results"`
+	// Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+	// Format: `tag=key:value` (e.g., `tag=environment:production`).
+	// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+	Tags []string `pulumi:"tags"`
 	// Filters for targets that have any of the following UUIDs. Specify
 	// `targetIds` multiple times in query parameter to build list of
 	// candidates.
@@ -229,6 +240,10 @@ type LookupZeroTrustAccessInfrastructureTargetsOutputArgs struct {
 	// The field to sort by.
 	// Available values: "hostname", "createdAt".
 	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+	// Format: `tag=key:value` (e.g., `tag=environment:production`).
+	// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Filters for targets that have any of the following UUIDs. Specify
 	// `targetIds` multiple times in query parameter to build list of
 	// candidates.
@@ -359,6 +374,13 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Results() GetZer
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) []GetZeroTrustAccessInfrastructureTargetsResult {
 		return v.Results
 	}).(GetZeroTrustAccessInfrastructureTargetsResultArrayOutput)
+}
+
+// Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+// Format: `tag=key:value` (e.g., `tag=environment:production`).
+// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Filters for targets that have any of the following UUIDs. Specify

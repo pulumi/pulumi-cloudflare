@@ -74,7 +74,7 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
      */
     declare public readonly previewsEnabled: pulumi.Output<boolean>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     declare public readonly scriptName: pulumi.Output<string>;
 
@@ -133,7 +133,7 @@ export interface WorkersScriptSubdomainState {
      */
     previewsEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName?: pulumi.Input<string | undefined>;
 }
@@ -155,7 +155,7 @@ export interface WorkersScriptSubdomainArgs {
      */
     previewsEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName: pulumi.Input<string>;
 }

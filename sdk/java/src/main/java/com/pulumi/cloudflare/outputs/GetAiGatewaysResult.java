@@ -19,6 +19,11 @@ import java.util.Objects;
 @CustomType
 public final class GetAiGatewaysResult {
     private Boolean authentication;
+    /**
+     * @return Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     * 
+     */
+    private Boolean byokOnly;
     private Boolean cacheInvalidateOnUpdate;
     private Integer cacheTtl;
     private Boolean collectLogs;
@@ -26,7 +31,7 @@ public final class GetAiGatewaysResult {
     private GetAiGatewaysResultDlp dlp;
     private GetAiGatewaysResultGuardrails guardrails;
     /**
-     * @return gateway id
+     * @return Unique identifier of the AI Gateway within the account.
      * 
      */
     private String id;
@@ -56,7 +61,7 @@ public final class GetAiGatewaysResult {
      */
     private String retryBackoff;
     /**
-     * @return Delay between retry attempts in milliseconds (0-5000)
+     * @return Delay between retry attempts in milliseconds (0-60000)
      * 
      */
     private Integer retryDelay;
@@ -80,6 +85,13 @@ public final class GetAiGatewaysResult {
     public Boolean authentication() {
         return this.authentication;
     }
+    /**
+     * @return Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     * 
+     */
+    public Boolean byokOnly() {
+        return this.byokOnly;
+    }
     public Boolean cacheInvalidateOnUpdate() {
         return this.cacheInvalidateOnUpdate;
     }
@@ -99,7 +111,7 @@ public final class GetAiGatewaysResult {
         return this.guardrails;
     }
     /**
-     * @return gateway id
+     * @return Unique identifier of the AI Gateway within the account.
      * 
      */
     public String id() {
@@ -155,7 +167,7 @@ public final class GetAiGatewaysResult {
         return this.retryBackoff;
     }
     /**
-     * @return Delay between retry attempts in milliseconds (0-5000)
+     * @return Delay between retry attempts in milliseconds (0-60000)
      * 
      */
     public Integer retryDelay() {
@@ -199,6 +211,7 @@ public final class GetAiGatewaysResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean authentication;
+        private Boolean byokOnly;
         private Boolean cacheInvalidateOnUpdate;
         private Integer cacheTtl;
         private Boolean collectLogs;
@@ -229,6 +242,7 @@ public final class GetAiGatewaysResult {
         public Builder(GetAiGatewaysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authentication = defaults.authentication;
+    	      this.byokOnly = defaults.byokOnly;
     	      this.cacheInvalidateOnUpdate = defaults.cacheInvalidateOnUpdate;
     	      this.cacheTtl = defaults.cacheTtl;
     	      this.collectLogs = defaults.collectLogs;
@@ -263,6 +277,14 @@ public final class GetAiGatewaysResult {
               throw new MissingRequiredPropertyException("GetAiGatewaysResult", "authentication");
             }
             this.authentication = authentication;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder byokOnly(Boolean byokOnly) {
+            if (byokOnly == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewaysResult", "byokOnly");
+            }
+            this.byokOnly = byokOnly;
             return this;
         }
         @CustomType.Setter
@@ -479,6 +501,7 @@ public final class GetAiGatewaysResult {
         public GetAiGatewaysResult build() {
             final var _resultValue = new GetAiGatewaysResult();
             _resultValue.authentication = authentication;
+            _resultValue.byokOnly = byokOnly;
             _resultValue.cacheInvalidateOnUpdate = cacheInvalidateOnUpdate;
             _resultValue.cacheTtl = cacheTtl;
             _resultValue.collectLogs = collectLogs;

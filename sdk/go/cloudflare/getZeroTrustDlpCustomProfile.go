@@ -81,7 +81,8 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 	// Deprecated: This attribute is deprecated.
 	Entries []GetZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
 	// The ID of this resource.
-	Id string `pulumi:"id"`
+	Id            string `pulumi:"id"`
+	IntegrationId string `pulumi:"integrationId"`
 	// The name of the profile.
 	Name       string `pulumi:"name"`
 	OcrEnabled bool   `pulumi:"ocrEnabled"`
@@ -182,6 +183,10 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) Entries() GetZeroTrustDlpCu
 // The ID of this resource.
 func (o LookupZeroTrustDlpCustomProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustDlpCustomProfileResultOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.IntegrationId }).(pulumi.StringOutput)
 }
 
 // The name of the profile.

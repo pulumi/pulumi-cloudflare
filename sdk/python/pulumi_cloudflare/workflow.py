@@ -137,6 +137,7 @@ class _WorkflowState:
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]] = None,
+                 script_deleted: pulumi.Input[Optional[_builtins.bool]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  terminator_running: pulumi.Input[Optional[_builtins.float]] = None,
                  triggered_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -146,6 +147,7 @@ class _WorkflowState:
         Input properties used for looking up and filtering Workflow resources.
 
         :param pulumi.Input['WorkflowDefaultRetentionArgs'] default_retention: Default retention applied to instances of this version when they do not set their own retention.
+        :param pulumi.Input[_builtins.bool] script_deleted: Whether the bound Worker was deleted, leaving this Workflow inactive.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -169,6 +171,8 @@ class _WorkflowState:
             pulumi.set(__self__, "name", name)
         if schedules is not None:
             pulumi.set(__self__, "schedules", schedules)
+        if script_deleted is not None:
+            pulumi.set(__self__, "script_deleted", script_deleted)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
         if terminator_running is not None:
@@ -281,6 +285,18 @@ class _WorkflowState:
     @schedules.setter
     def schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]]):
         pulumi.set(self, "schedules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scriptDeleted")
+    def script_deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the bound Worker was deleted, leaving this Workflow inactive.
+        """
+        return pulumi.get(self, "script_deleted")
+
+    @script_deleted.setter
+    def script_deleted(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "script_deleted", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
@@ -486,6 +502,7 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["is_deleted"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["script_deleted"] = None
             __props__.__dict__["terminator_running"] = None
             __props__.__dict__["triggered_on"] = None
             __props__.__dict__["version_id"] = None
@@ -510,6 +527,7 @@ class Workflow(pulumi.CustomResource):
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict', 'outputs.WorkflowSchedule']]]]] = None,
+            script_deleted: pulumi.Input[Optional[_builtins.bool]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
             terminator_running: pulumi.Input[Optional[_builtins.float]] = None,
             triggered_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -523,6 +541,7 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']] default_retention: Default retention applied to instances of this version when they do not set their own retention.
+        :param pulumi.Input[_builtins.bool] script_deleted: Whether the bound Worker was deleted, leaving this Workflow inactive.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -539,6 +558,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["schedules"] = schedules
+        __props__.__dict__["script_deleted"] = script_deleted
         __props__.__dict__["script_name"] = script_name
         __props__.__dict__["terminator_running"] = terminator_running
         __props__.__dict__["triggered_on"] = triggered_on
@@ -603,6 +623,14 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter
     def schedules(self) -> pulumi.Output[Optional[Sequence['outputs.WorkflowSchedule']]]:
         return pulumi.get(self, "schedules")
+
+    @_builtins.property
+    @pulumi.getter(name="scriptDeleted")
+    def script_deleted(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the bound Worker was deleted, leaving this Workflow inactive.
+        """
+        return pulumi.get(self, "script_deleted")
 
     @_builtins.property
     @pulumi.getter(name="scriptName")

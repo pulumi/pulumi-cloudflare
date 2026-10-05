@@ -27,7 +27,7 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
     """
     A collection of values returned by getZeroTrustAccessInfrastructureTargets.
     """
-    def __init__(__self__, account_id=None, created_after=None, created_before=None, direction=None, hostname=None, hostname_contains=None, ip_like=None, ip_v4=None, ip_v6=None, ips=None, ipv4_end=None, ipv4_start=None, ipv6_end=None, ipv6_start=None, max_items=None, modified_after=None, modified_before=None, order=None, results=None, target_ids=None, virtual_network_id=None):
+    def __init__(__self__, account_id=None, created_after=None, created_before=None, direction=None, hostname=None, hostname_contains=None, ip_like=None, ip_v4=None, ip_v6=None, ips=None, ipv4_end=None, ipv4_start=None, ipv6_end=None, ipv6_start=None, max_items=None, modified_after=None, modified_before=None, order=None, results=None, tags=None, target_ids=None, virtual_network_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -85,6 +85,9 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if target_ids and not isinstance(target_ids, list):
             raise TypeError("Expected argument 'target_ids' to be a list")
         pulumi.set(__self__, "target_ids", target_ids)
@@ -253,6 +256,16 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
         return pulumi.get(self, "results")
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+        Format: `tag=key:value` (e.g., `tag=environment:production`).
+        Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
     @pulumi.getter(name="targetIds")
     def target_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -296,6 +309,7 @@ class AwaitableGetZeroTrustAccessInfrastructureTargetsResult(GetZeroTrustAccessI
             modified_before=self.modified_before,
             order=self.order,
             results=self.results,
+            tags=self.tags,
             target_ids=self.target_ids,
             virtual_network_id=self.virtual_network_id)
 
@@ -318,6 +332,7 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
                                                  modified_after: Optional[_builtins.str] = None,
                                                  modified_before: Optional[_builtins.str] = None,
                                                  order: Optional[_builtins.str] = None,
+                                                 tags: Optional[Sequence[_builtins.str]] = None,
                                                  target_ids: Optional[Sequence[_builtins.str]] = None,
                                                  virtual_network_id: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessInfrastructureTargetsResult:
@@ -345,6 +360,7 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
         modified_after="2019-12-27T18:11:19.117Z",
         modified_before="2019-12-27T18:11:19.117Z",
         order="hostname",
+        tags=["string"],
         target_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
         virtual_network_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
@@ -376,6 +392,9 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
     :param _builtins.str modified_before: Date and time at which the target was modified before (inclusive)
     :param _builtins.str order: The field to sort by.
            Available values: "hostname", "created_at".
+    :param Sequence[_builtins.str] tags: Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+           Format: `tag=key:value` (e.g., `tag=environment:production`).
+           Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
     :param Sequence[_builtins.str] target_ids: Filters for targets that have any of the following UUIDs. Specify
            `target_ids` multiple times in query parameter to build list of
            candidates.
@@ -400,6 +419,7 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
     __args__['modifiedAfter'] = modified_after
     __args__['modifiedBefore'] = modified_before
     __args__['order'] = order
+    __args__['tags'] = tags
     __args__['targetIds'] = target_ids
     __args__['virtualNetworkId'] = virtual_network_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -425,6 +445,7 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
         modified_before=pulumi.get(__ret__, 'modified_before'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
+        tags=pulumi.get(__ret__, 'tags'),
         target_ids=pulumi.get(__ret__, 'target_ids'),
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'))
 def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -445,6 +466,7 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input
                                                         modified_after: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         modified_before: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                        tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                                         target_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                                         virtual_network_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessInfrastructureTargetsResult]:
@@ -472,6 +494,7 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input
         modified_after="2019-12-27T18:11:19.117Z",
         modified_before="2019-12-27T18:11:19.117Z",
         order="hostname",
+        tags=["string"],
         target_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
         virtual_network_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     ```
@@ -503,6 +526,9 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input
     :param _builtins.str modified_before: Date and time at which the target was modified before (inclusive)
     :param _builtins.str order: The field to sort by.
            Available values: "hostname", "created_at".
+    :param Sequence[_builtins.str] tags: Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+           Format: `tag=key:value` (e.g., `tag=environment:production`).
+           Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
     :param Sequence[_builtins.str] target_ids: Filters for targets that have any of the following UUIDs. Specify
            `target_ids` multiple times in query parameter to build list of
            candidates.
@@ -527,6 +553,7 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input
     __args__['modifiedAfter'] = modified_after
     __args__['modifiedBefore'] = modified_before
     __args__['order'] = order
+    __args__['tags'] = tags
     __args__['targetIds'] = target_ids
     __args__['virtualNetworkId'] = virtual_network_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -551,5 +578,6 @@ def get_zero_trust_access_infrastructure_targets_output(account_id: pulumi.Input
         modified_before=pulumi.get(__response__, 'modified_before'),
         order=pulumi.get(__response__, 'order'),
         results=pulumi.get(__response__, 'results'),
+        tags=pulumi.get(__response__, 'tags'),
         target_ids=pulumi.get(__response__, 'target_ids'),
         virtual_network_id=pulumi.get(__response__, 'virtual_network_id')))

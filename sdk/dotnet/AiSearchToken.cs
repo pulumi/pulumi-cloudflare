@@ -12,7 +12,9 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/aiSearchToken:AiSearchToken example '&lt;account_id&gt;/&lt;id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/aiSearchToken:AiSearchToken")]
     public partial class AiSearchToken : global::Pulumi.CustomResource

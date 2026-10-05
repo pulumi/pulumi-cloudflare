@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *             .isRegex(false)
  *             .pattern("test}{@literal @}{@code example.com")
  *             .patternType("EMAIL")
- *             .comments("block sender with email test}{@literal @}{@code example.com")
+ *             .comments("Block sender with email test}{@literal @}{@code example.com")
  *             .build());
  * 
  *     }}{@code
@@ -93,9 +93,17 @@ public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResourc
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Whether `pattern` is a regular expression instead of a literal value.
+     * 
+     */
     @Export(name="isRegex", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isRegex;
 
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal value.
+     * 
+     */
     public Output<Boolean> isRegex() {
         return this.isRegex;
     }

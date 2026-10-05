@@ -108,7 +108,7 @@ type PipelineSink struct {
 	// Defines the schema of the events in the data stream.
 	Schema PipelineSinkSchemaPtrOutput `pulumi:"schema"`
 	// Specifies the type of sink.
-	// Available values: "r2", "r2*data*catalog".
+	// Available values: "r2", "r2*data*catalog", "basinCatalog".
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -164,7 +164,7 @@ type pipelineSinkState struct {
 	// Defines the schema of the events in the data stream.
 	Schema *PipelineSinkSchema `pulumi:"schema"`
 	// Specifies the type of sink.
-	// Available values: "r2", "r2*data*catalog".
+	// Available values: "r2", "r2*data*catalog", "basinCatalog".
 	Type *string `pulumi:"type"`
 }
 
@@ -182,7 +182,7 @@ type PipelineSinkState struct {
 	// Defines the schema of the events in the data stream.
 	Schema PipelineSinkSchemaPtrInput
 	// Specifies the type of sink.
-	// Available values: "r2", "r2*data*catalog".
+	// Available values: "r2", "r2*data*catalog", "basinCatalog".
 	Type pulumi.StringPtrInput
 }
 
@@ -202,7 +202,7 @@ type pipelineSinkArgs struct {
 	// Defines the schema of the events in the data stream.
 	Schema *PipelineSinkSchema `pulumi:"schema"`
 	// Specifies the type of sink.
-	// Available values: "r2", "r2*data*catalog".
+	// Available values: "r2", "r2*data*catalog", "basinCatalog".
 	Type string `pulumi:"type"`
 }
 
@@ -219,7 +219,7 @@ type PipelineSinkArgs struct {
 	// Defines the schema of the events in the data stream.
 	Schema PipelineSinkSchemaPtrInput
 	// Specifies the type of sink.
-	// Available values: "r2", "r2*data*catalog".
+	// Available values: "r2", "r2*data*catalog", "basinCatalog".
 	Type pulumi.StringInput
 }
 
@@ -344,7 +344,7 @@ func (o PipelineSinkOutput) Schema() PipelineSinkSchemaPtrOutput {
 }
 
 // Specifies the type of sink.
-// Available values: "r2", "r2*data*catalog".
+// Available values: "r2", "r2*data*catalog", "basinCatalog".
 func (o PipelineSinkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineSink) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -95,7 +95,7 @@ class GetPagesDomainResult:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> _builtins.str:
         """
-        The domain name.
+        Fully qualified domain name for the Pages project, such as `example.com`.
         """
         return pulumi.get(self, "domain_name")
 
@@ -103,7 +103,7 @@ class GetPagesDomainResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The domain name.
+        Fully qualified domain name for the Pages project, such as `example.com`.
         """
         return pulumi.get(self, "id")
 
@@ -111,7 +111,7 @@ class GetPagesDomainResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The domain name.
+        Fully qualified domain name for the Pages project, such as `example.com`.
         """
         return pulumi.get(self, "name")
 
@@ -119,7 +119,7 @@ class GetPagesDomainResult:
     @pulumi.getter(name="projectName")
     def project_name(self) -> _builtins.str:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -185,13 +185,13 @@ def get_pages_domain(account_id: Optional[_builtins.str] = None,
 
     example_pages_domain = cloudflare.get_pages_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         project_name="this-is-my-project-01",
-        domain_name="this-is-my-domain-01.com")
+        domain_name="example.com")
     ```
 
 
     :param _builtins.str account_id: Identifier.
-    :param _builtins.str domain_name: The domain name.
-    :param _builtins.str project_name: Name of the project.
+    :param _builtins.str domain_name: Fully qualified domain name for the Pages project, such as `example.com`.
+    :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -231,13 +231,13 @@ def get_pages_domain_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
 
     example_pages_domain = cloudflare.get_pages_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         project_name="this-is-my-project-01",
-        domain_name="this-is-my-domain-01.com")
+        domain_name="example.com")
     ```
 
 
     :param _builtins.str account_id: Identifier.
-    :param _builtins.str domain_name: The domain name.
-    :param _builtins.str project_name: Name of the project.
+    :param _builtins.str domain_name: Fully qualified domain name for the Pages project, such as `example.com`.
+    :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

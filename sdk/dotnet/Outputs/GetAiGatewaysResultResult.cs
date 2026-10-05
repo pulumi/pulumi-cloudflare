@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiGatewaysResultResult
     {
         public readonly bool Authentication;
+        /// <summary>
+        /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        /// </summary>
+        public readonly bool ByokOnly;
         public readonly bool CacheInvalidateOnUpdate;
         public readonly int CacheTtl;
         public readonly bool CollectLogs;
@@ -21,7 +25,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetAiGatewaysResultDlpResult Dlp;
         public readonly Outputs.GetAiGatewaysResultGuardrailsResult Guardrails;
         /// <summary>
-        /// gateway id
+        /// Unique identifier of the AI Gateway within the account.
         /// </summary>
         public readonly string Id;
         public readonly bool IsDefault;
@@ -47,7 +51,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string RetryBackoff;
         /// <summary>
-        /// Delay between retry attempts in milliseconds (0-5000)
+        /// Delay between retry attempts in milliseconds (0-60000)
         /// </summary>
         public readonly int RetryDelay;
         /// <summary>
@@ -67,6 +71,8 @@ namespace Pulumi.Cloudflare.Outputs
         [OutputConstructor]
         private GetAiGatewaysResultResult(
             bool authentication,
+
+            bool byokOnly,
 
             bool cacheInvalidateOnUpdate,
 
@@ -121,6 +127,7 @@ namespace Pulumi.Cloudflare.Outputs
             bool zdr)
         {
             Authentication = authentication;
+            ByokOnly = byokOnly;
             CacheInvalidateOnUpdate = cacheInvalidateOnUpdate;
             CacheTtl = cacheTtl;
             CollectLogs = collectLogs;

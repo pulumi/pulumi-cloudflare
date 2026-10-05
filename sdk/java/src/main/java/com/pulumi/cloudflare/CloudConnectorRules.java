@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -77,10 +76,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/cloudConnectorRules:CloudConnectorRules")
 public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
     @Export(name="rules", refs={List.class,CloudConnectorRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<CloudConnectorRulesRule>> rules;
+    private Output<List<CloudConnectorRulesRule>> rules;
 
-    public Output<Optional<List<CloudConnectorRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<CloudConnectorRulesRule>> rules() {
+        return this.rules;
     }
     /**
      * Identifier.

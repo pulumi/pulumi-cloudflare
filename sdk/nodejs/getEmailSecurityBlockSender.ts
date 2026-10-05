@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleEmailSecurityBlockSender = cloudflare.getEmailSecurityBlockSender({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     patternId: "2402",
+ *     patternId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
@@ -75,7 +75,7 @@ export interface GetEmailSecurityBlockSenderResult {
  *
  * const exampleEmailSecurityBlockSender = cloudflare.getEmailSecurityBlockSender({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     patternId: "2402",
+ *     patternId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */

@@ -41,7 +41,8 @@ public final class GetEmailSecurityDomainResult {
     private GetEmailSecurityDomainEmailsProcessed emailsProcessed;
     private @Nullable GetEmailSecurityDomainFilter filter;
     /**
-     * @return Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+     * @return The mailbox folder to scan, for API-scanning domains.
+     * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
      * 
      */
     private String folder;
@@ -128,7 +129,8 @@ public final class GetEmailSecurityDomainResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+     * @return The mailbox folder to scan, for API-scanning domains.
+     * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
      * 
      */
     public String folder() {

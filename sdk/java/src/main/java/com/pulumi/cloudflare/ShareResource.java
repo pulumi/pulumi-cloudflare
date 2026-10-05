@@ -26,6 +26,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ShareResource;
  * import com.pulumi.cloudflare.ShareResourceArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -42,8 +43,10 @@ import javax.annotation.Nullable;
  *         var exampleShareResource = new ShareResource("exampleShareResource", ShareResourceArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .shareId("3fd85f74b32742f1bff64a85009dda07")
- *             .meta(Map.ofEntries(
- *             ))
+ *             .meta(serializeJson(
+ *                 jsonObject(
+ * 
+ *                 )))
  *             .resourceAccountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .resourceId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .resourceType("custom-ruleset")

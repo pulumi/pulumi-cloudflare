@@ -78,7 +78,7 @@ export class R2BucketLifecycle extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export class R2BucketLifecycle extends pulumi.CustomResource {
  */
 export interface R2BucketLifecycleState {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -150,7 +150,7 @@ export interface R2BucketLifecycleState {
  */
 export interface R2BucketLifecycleArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

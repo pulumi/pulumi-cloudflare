@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *             .name("Widget Corps IDP")
  *             .type("onetimepin")
  *             .zoneId("zone_id")
+ *             .samlCertificateSetId("c409ef44-e72c-41c8-8c0b-278c8a6f4fd8")
  *             .scimConfig(ZeroTrustAccessIdentityProviderScimConfigArgs.builder()
  *                 .enabled(true)
  *                 .identityUpdateBehavior("automatic")

@@ -18,14 +18,14 @@ public final class R2BucketCorsState extends com.pulumi.resources.ResourceArgs {
     public static final R2BucketCorsState Empty = new R2BucketCorsState();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -97,7 +97,7 @@ public final class R2BucketCorsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class R2BucketCorsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 

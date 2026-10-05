@@ -70,14 +70,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/r2CustomDomain:R2CustomDomain")
 public class R2CustomDomain extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Output<String> accountId() {

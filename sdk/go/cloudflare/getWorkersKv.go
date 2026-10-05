@@ -55,23 +55,23 @@ func LookupWorkersKv(ctx *pulumi.Context, args *LookupWorkersKvArgs, opts ...pul
 
 // A collection of arguments for invoking getWorkersKv.
 type LookupWorkersKvArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName string `pulumi:"keyName"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId string `pulumi:"namespaceId"`
 }
 
 // A collection of values returned by getWorkersKv.
 type LookupWorkersKvResult struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	Id string `pulumi:"id"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName string `pulumi:"keyName"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId string `pulumi:"namespaceId"`
 	Value       string `pulumi:"value"`
 }
@@ -83,11 +83,11 @@ func LookupWorkersKvOutput(ctx *pulumi.Context, args LookupWorkersKvOutputArgs, 
 
 // A collection of arguments for invoking getWorkersKv.
 type LookupWorkersKvOutputArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
 }
 
@@ -110,7 +110,7 @@ func (o LookupWorkersKvResultOutput) ToLookupWorkersKvResultOutputWithContext(ct
 	return o
 }
 
-// Identifier.
+// ID of the Cloudflare account that owns the Workers KV namespaces.
 func (o LookupWorkersKvResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -125,7 +125,7 @@ func (o LookupWorkersKvResultOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Namespace identifier tag.
+// ID of the Workers KV namespace.
 func (o LookupWorkersKvResultOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.NamespaceId }).(pulumi.StringOutput)
 }

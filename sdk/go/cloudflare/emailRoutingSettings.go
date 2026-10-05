@@ -64,6 +64,8 @@ type EmailRoutingSettings struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	SupportSubaddress pulumi.BoolPtrOutput `pulumi:"supportSubaddress"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -118,6 +120,8 @@ type emailRoutingSettingsState struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status *string `pulumi:"status"`
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	SupportSubaddress *bool `pulumi:"supportSubaddress"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -140,6 +144,8 @@ type EmailRoutingSettingsState struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringPtrInput
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	SupportSubaddress pulumi.BoolPtrInput
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
@@ -153,12 +159,16 @@ func (EmailRoutingSettingsState) ElementType() reflect.Type {
 }
 
 type emailRoutingSettingsArgs struct {
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	SupportSubaddress *bool `pulumi:"supportSubaddress"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a EmailRoutingSettings resource.
 type EmailRoutingSettingsArgs struct {
+	// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+	SupportSubaddress pulumi.BoolPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -279,6 +289,11 @@ func (o EmailRoutingSettingsOutput) SkipWizard() pulumi.BoolOutput {
 // Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 func (o EmailRoutingSettingsOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+func (o EmailRoutingSettingsOutput) SupportSubaddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.BoolPtrOutput { return v.SupportSubaddress }).(pulumi.BoolPtrOutput)
 }
 
 // Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

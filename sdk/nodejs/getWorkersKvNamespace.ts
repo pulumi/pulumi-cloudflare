@@ -39,12 +39,12 @@ export function getWorkersKvNamespace(args?: GetWorkersKvNamespaceArgs, opts?: p
  */
 export interface GetWorkersKvNamespaceArgs {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId?: string;
     filter?: inputs.GetWorkersKvNamespaceFilter;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     namespaceId?: string;
 }
@@ -54,12 +54,12 @@ export interface GetWorkersKvNamespaceArgs {
  */
 export interface GetWorkersKvNamespaceResult {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     readonly accountId?: string;
     readonly filter?: outputs.GetWorkersKvNamespaceFilter;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     readonly id: string;
     /**
@@ -68,7 +68,7 @@ export interface GetWorkersKvNamespaceResult {
      */
     readonly jurisdiction: string;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     readonly namespaceId?: string;
     /**
@@ -76,7 +76,7 @@ export interface GetWorkersKvNamespaceResult {
      */
     readonly supportsUrlEncoding: boolean;
     /**
-     * A human-readable string name for a Namespace.
+     * Human-readable string name for a Workers KV namespace.
      */
     readonly title: string;
 }
@@ -113,12 +113,12 @@ export function getWorkersKvNamespaceOutput(args?: GetWorkersKvNamespaceOutputAr
  */
 export interface GetWorkersKvNamespaceOutputArgs {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetWorkersKvNamespaceFilterArgs | undefined>;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     namespaceId?: pulumi.Input<string | undefined>;
 }

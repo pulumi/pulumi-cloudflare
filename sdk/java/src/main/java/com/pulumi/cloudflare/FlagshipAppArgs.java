@@ -15,23 +15,31 @@ public final class FlagshipAppArgs extends com.pulumi.resources.ResourceArgs {
     public static final FlagshipAppArgs Empty = new FlagshipAppArgs();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -62,7 +70,7 @@ public final class FlagshipAppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -73,7 +81,7 @@ public final class FlagshipAppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -82,11 +90,23 @@ public final class FlagshipAppArgs extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param name Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

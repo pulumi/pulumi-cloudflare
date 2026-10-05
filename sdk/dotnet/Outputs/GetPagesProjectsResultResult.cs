@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetPagesProjectsResultLatestDeploymentResult LatestDeployment;
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         public readonly string Name;
         /// <summary>

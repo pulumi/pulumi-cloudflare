@@ -18,6 +18,13 @@ import javax.annotation.Nullable;
 public final class GetApiTokenResult {
     private GetApiTokenCondition condition;
     /**
+     * @return The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     * 
+     */
+    private String creatorEmailAtCreation;
+    /**
      * @return The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
@@ -59,6 +66,20 @@ public final class GetApiTokenResult {
      */
     private List<GetApiTokenPolicy> policies;
     /**
+     * @return The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     * 
+     */
+    private String provisionerId;
+    /**
+     * @return The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     * 
+     */
+    private String provisionerType;
+    /**
      * @return Status of the token.
      * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
@@ -73,6 +94,15 @@ public final class GetApiTokenResult {
     private GetApiTokenResult() {}
     public GetApiTokenCondition condition() {
         return this.condition;
+    }
+    /**
+     * @return The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     * 
+     */
+    public String creatorEmailAtCreation() {
+        return this.creatorEmailAtCreation;
     }
     /**
      * @return The expiration time on or after which the JWT MUST NOT be accepted for processing.
@@ -134,6 +164,24 @@ public final class GetApiTokenResult {
         return this.policies;
     }
     /**
+     * @return The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     * 
+     */
+    public String provisionerId() {
+        return this.provisionerId;
+    }
+    /**
+     * @return The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     * 
+     */
+    public String provisionerType() {
+        return this.provisionerType;
+    }
+    /**
      * @return Status of the token.
      * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
@@ -159,6 +207,7 @@ public final class GetApiTokenResult {
     @CustomType.Builder
     public static final class Builder {
         private GetApiTokenCondition condition;
+        private String creatorEmailAtCreation;
         private String expiresOn;
         private @Nullable GetApiTokenFilter filter;
         private String id;
@@ -168,12 +217,15 @@ public final class GetApiTokenResult {
         private String name;
         private String notBefore;
         private List<GetApiTokenPolicy> policies;
+        private String provisionerId;
+        private String provisionerType;
         private String status;
         private @Nullable String tokenId;
         public Builder() {}
         public Builder(GetApiTokenResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
+    	      this.creatorEmailAtCreation = defaults.creatorEmailAtCreation;
     	      this.expiresOn = defaults.expiresOn;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
@@ -183,6 +235,8 @@ public final class GetApiTokenResult {
     	      this.name = defaults.name;
     	      this.notBefore = defaults.notBefore;
     	      this.policies = defaults.policies;
+    	      this.provisionerId = defaults.provisionerId;
+    	      this.provisionerType = defaults.provisionerType;
     	      this.status = defaults.status;
     	      this.tokenId = defaults.tokenId;
         }
@@ -193,6 +247,14 @@ public final class GetApiTokenResult {
               throw new MissingRequiredPropertyException("GetApiTokenResult", "condition");
             }
             this.condition = condition;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder creatorEmailAtCreation(String creatorEmailAtCreation) {
+            if (creatorEmailAtCreation == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenResult", "creatorEmailAtCreation");
+            }
+            this.creatorEmailAtCreation = creatorEmailAtCreation;
             return this;
         }
         @CustomType.Setter
@@ -269,6 +331,22 @@ public final class GetApiTokenResult {
             return policies(List.of(policies));
         }
         @CustomType.Setter
+        public Builder provisionerId(String provisionerId) {
+            if (provisionerId == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenResult", "provisionerId");
+            }
+            this.provisionerId = provisionerId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionerType(String provisionerType) {
+            if (provisionerType == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenResult", "provisionerType");
+            }
+            this.provisionerType = provisionerType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetApiTokenResult", "status");
@@ -285,6 +363,7 @@ public final class GetApiTokenResult {
         public GetApiTokenResult build() {
             final var _resultValue = new GetApiTokenResult();
             _resultValue.condition = condition;
+            _resultValue.creatorEmailAtCreation = creatorEmailAtCreation;
             _resultValue.expiresOn = expiresOn;
             _resultValue.filter = filter;
             _resultValue.id = id;
@@ -294,6 +373,8 @@ public final class GetApiTokenResult {
             _resultValue.name = name;
             _resultValue.notBefore = notBefore;
             _resultValue.policies = policies;
+            _resultValue.provisionerId = provisionerId;
+            _resultValue.provisionerType = provisionerType;
             _resultValue.status = status;
             _resultValue.tokenId = tokenId;
             return _resultValue;

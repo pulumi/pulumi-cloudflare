@@ -34,8 +34,8 @@ class GetFlagshipFlagsResult:
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
-        if limit and not isinstance(limit, str):
-            raise TypeError("Expected argument 'limit' to be a str")
+        if limit and not isinstance(limit, int):
+            raise TypeError("Expected argument 'limit' to be a int")
         pulumi.set(__self__, "limit", limit)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
@@ -48,7 +48,7 @@ class GetFlagshipFlagsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -56,13 +56,13 @@ class GetFlagshipFlagsResult:
     @pulumi.getter(name="appId")
     def app_id(self) -> _builtins.str:
         """
-        App identifier.
+        Flagship app ID returned when the app was created.
         """
         return pulumi.get(self, "app_id")
 
     @_builtins.property
     @pulumi.getter
-    def limit(self) -> Optional[_builtins.str]:
+    def limit(self) -> Optional[_builtins.int]:
         """
         Max items to return (1–200).
         """
@@ -100,7 +100,7 @@ class AwaitableGetFlagshipFlagsResult(GetFlagshipFlagsResult):
 
 def get_flagship_flags(account_id: Optional[_builtins.str] = None,
                        app_id: Optional[_builtins.str] = None,
-                       limit: Optional[_builtins.str] = None,
+                       limit: Optional[_builtins.int] = None,
                        max_items: Optional[_builtins.int] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlagshipFlagsResult:
     """
@@ -116,13 +116,13 @@ def get_flagship_flags(account_id: Optional[_builtins.str] = None,
 
     example_flagship_flags = cloudflare.get_flagship_flags(account_id="account_id",
         app_id="app_id",
-        limit="limit")
+        limit=1)
     ```
 
 
-    :param _builtins.str account_id: Cloudflare account ID.
-    :param _builtins.str app_id: App identifier.
-    :param _builtins.str limit: Max items to return (1–200).
+    :param _builtins.str account_id: Cloudflare account ID that owns the Flagship app.
+    :param _builtins.str app_id: Flagship app ID returned when the app was created.
+    :param _builtins.int limit: Max items to return (1–200).
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -141,7 +141,7 @@ def get_flagship_flags(account_id: Optional[_builtins.str] = None,
         results=pulumi.get(__ret__, 'results'))
 def get_flagship_flags_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                               app_id: pulumi.Input[Optional[_builtins.str]] = None,
-                              limit: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                               max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlagshipFlagsResult]:
     """
@@ -157,13 +157,13 @@ def get_flagship_flags_output(account_id: pulumi.Input[Optional[_builtins.str]] 
 
     example_flagship_flags = cloudflare.get_flagship_flags(account_id="account_id",
         app_id="app_id",
-        limit="limit")
+        limit=1)
     ```
 
 
-    :param _builtins.str account_id: Cloudflare account ID.
-    :param _builtins.str app_id: App identifier.
-    :param _builtins.str limit: Max items to return (1–200).
+    :param _builtins.str account_id: Cloudflare account ID that owns the Flagship app.
+    :param _builtins.str app_id: Flagship app ID returned when the app was created.
+    :param _builtins.int limit: Max items to return (1–200).
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

@@ -56,7 +56,7 @@ class GetR2BucketResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -89,7 +89,7 @@ class GetR2BucketResult:
     def jurisdiction(self) -> _builtins.str:
         """
         Jurisdiction where objects in this bucket are guaranteed to be stored.
-        Available values: "default", "eu", "fedramp", "us".
+        Available values: "default", "eu", "us", "fedramp", "fedramp-high".
         """
         return pulumi.get(self, "jurisdiction")
 
@@ -151,7 +151,7 @@ def get_r2_bucket(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Account ID.
+    :param _builtins.str account_id: Cloudflare account ID that owns the R2 resource.
     :param _builtins.str bucket_name: Name of the bucket.
     """
     __args__ = dict()
@@ -184,7 +184,7 @@ def get_r2_bucket_output(account_id: pulumi.Input[Optional[Optional[_builtins.st
     ```
 
 
-    :param _builtins.str account_id: Account ID.
+    :param _builtins.str account_id: Cloudflare account ID that owns the R2 resource.
     :param _builtins.str bucket_name: Name of the bucket.
     """
     __args__ = dict()

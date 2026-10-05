@@ -83,6 +83,9 @@ type LookupZeroTrustDeviceDefaultProfileResult struct {
 	// List of routes included in the WARP client's tunnel.
 	Includes []GetZeroTrustDeviceDefaultProfileInclude `pulumi:"includes"`
 	PolicyId string                                    `pulumi:"policyId"`
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType string `pulumi:"profileType"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns bool `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -94,6 +97,8 @@ type LookupZeroTrustDeviceDefaultProfileResult struct {
 	SwitchLocked bool `pulumi:"switchLocked"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol string `pulumi:"tunnelProtocol"`
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection bool `pulumi:"uninstallProtection"`
 	// Virtual network access settings for the device.
 	VirtualNetworks GetZeroTrustDeviceDefaultProfileVirtualNetworks `pulumi:"virtualNetworks"`
 }
@@ -216,6 +221,12 @@ func (o LookupZeroTrustDeviceDefaultProfileResultOutput) PolicyId() pulumi.Strin
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
+// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+// Available values: "warp", "browserExtension".
+func (o LookupZeroTrustDeviceDefaultProfileResultOutput) ProfileType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) string { return v.ProfileType }).(pulumi.StringOutput)
+}
+
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 func (o LookupZeroTrustDeviceDefaultProfileResultOutput) RegisterInterfaceIpWithDns() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) bool { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolOutput)
@@ -245,6 +256,11 @@ func (o LookupZeroTrustDeviceDefaultProfileResultOutput) SwitchLocked() pulumi.B
 // Determines which tunnel protocol to use.
 func (o LookupZeroTrustDeviceDefaultProfileResultOutput) TunnelProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) string { return v.TunnelProtocol }).(pulumi.StringOutput)
+}
+
+// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+func (o LookupZeroTrustDeviceDefaultProfileResultOutput) UninstallProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) bool { return v.UninstallProtection }).(pulumi.BoolOutput)
 }
 
 // Virtual network access settings for the device.

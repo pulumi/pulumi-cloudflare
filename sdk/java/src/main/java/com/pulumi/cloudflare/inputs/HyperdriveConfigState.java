@@ -56,6 +56,13 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.createdOn);
     }
 
+    @Import(name="integration")
+    private @Nullable Output<String> integration;
+
+    public Optional<Output<String>> integration() {
+        return Optional.ofNullable(this.integration);
+    }
+
     /**
      * Defines the last modified time of the Hyperdrive configuration.
      * 
@@ -101,9 +108,17 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Combines database connection fields with exactly one supported network location.
+     * 
+     */
     @Import(name="origin")
     private @Nullable Output<HyperdriveConfigOriginArgs> origin;
 
+    /**
+     * @return Combines database connection fields with exactly one supported network location.
+     * 
+     */
     public Optional<Output<HyperdriveConfigOriginArgs>> origin() {
         return Optional.ofNullable(this.origin);
     }
@@ -144,6 +159,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         this.accountId = $.accountId;
         this.caching = $.caching;
         this.createdOn = $.createdOn;
+        this.integration = $.integration;
         this.modifiedOn = $.modifiedOn;
         this.mtls = $.mtls;
         this.name = $.name;
@@ -221,6 +237,15 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
             return createdOn(Output.of(createdOn));
         }
 
+        public Builder integration(@Nullable Output<String> integration) {
+            $.integration = integration;
+            return this;
+        }
+
+        public Builder integration(String integration) {
+            return integration(Output.of(integration));
+        }
+
         /**
          * @param modifiedOn Defines the last modified time of the Hyperdrive configuration.
          * 
@@ -284,11 +309,23 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
             return name(Output.of(name));
         }
 
+        /**
+         * @param origin Combines database connection fields with exactly one supported network location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder origin(@Nullable Output<HyperdriveConfigOriginArgs> origin) {
             $.origin = origin;
             return this;
         }
 
+        /**
+         * @param origin Combines database connection fields with exactly one supported network location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder origin(HyperdriveConfigOriginArgs origin) {
             return origin(Output.of(origin));
         }

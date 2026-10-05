@@ -30,14 +30,14 @@ public final class GetMtlsCertificateAssociationsArgs extends com.pulumi.resourc
     }
 
     /**
-     * Identifier.
+     * Certificate identifier tag.
      * 
      */
     @Import(name="mtlsCertificateId", required=true)
     private Output<String> mtlsCertificateId;
 
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     public Output<String> mtlsCertificateId() {
@@ -91,7 +91,7 @@ public final class GetMtlsCertificateAssociationsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param mtlsCertificateId Identifier.
+         * @param mtlsCertificateId Certificate identifier tag.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetMtlsCertificateAssociationsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param mtlsCertificateId Identifier.
+         * @param mtlsCertificateId Certificate identifier tag.
          * 
          * @return builder
          * 

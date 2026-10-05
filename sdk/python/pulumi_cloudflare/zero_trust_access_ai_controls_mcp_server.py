@@ -606,32 +606,36 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
+        config = pulumi.Config()
+        cloudflare_account_id = config.require("cloudflareAccountId")
+        mcp_oauth_client_id = config.require("mcpOauthClientId")
+        mcp_oauth_client_secret = config.require("mcpOauthClientSecret")
         example_zero_trust_access_ai_controls_mcp_server = cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server",
-            account_id="a86a8f5c339544d7bdc89926de14fb8c",
-            zero_trust_access_ai_controls_mcp_server_id="my-mcp-server",
-            auth_type="unauthenticated",
-            hostname="https://example.com/mcp",
-            name="My MCP Server",
-            auth_credentials="sk-my-bearer-token",
-            client_secret="client_secret",
-            description="This is one remote MCP server",
-            is_shared_oauth_callback_enabled=True,
-            secure_web_gateway=False,
-            updated_prompts=[{
-                "name": "name",
-                "alias": "my-custom-alias",
-                "description": "description",
-                "enabled": True,
-            }],
-            updated_tools=[{
-                "name": "name",
-                "alias": "my-custom-alias",
-                "description": "description",
-                "enabled": True,
-            }])
+            account_id=cloudflare_account_id,
+            zero_trust_access_ai_controls_mcp_server_id="github",
+            auth_type="oauth",
+            hostname="https://github-mcp.example.com/mcp",
+            name="GitHub MCP Server",
+            auth_credentials=json.dumps({
+                "auth_mode": "manual",
+                "config": {
+                    "authorization_endpoint": "https://github.com/login/oauth/authorize",
+                    "token_endpoint": "https://github.com/login/oauth/access_token",
+                },
+                "registration_info": {
+                    "client_id": mcp_oauth_client_id,
+                    "token_endpoint_auth_method": "client_secret_basic",
+                    "scope": "repo read:user",
+                },
+            }),
+            client_secret=mcp_oauth_client_secret,
+            is_shared_oauth_callback_enabled=True)
         ```
+
+        `auth_credentials` and `client_secret` are write-only and cannot be recovered by import. Omitting either value on update preserves the existing credential. Because the API does not return `auth_credentials`, Terraform cannot automatically detect and restore out-of-band OAuth metadata changes; inspect the computed `auth_config_summary` for the current non-secret metadata. Terraform's `sensitive` marker hides credential values from normal output but still stores them in state, so use a protected state backend with restricted access.
 
         ## Import
 
@@ -671,32 +675,36 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
+        config = pulumi.Config()
+        cloudflare_account_id = config.require("cloudflareAccountId")
+        mcp_oauth_client_id = config.require("mcpOauthClientId")
+        mcp_oauth_client_secret = config.require("mcpOauthClientSecret")
         example_zero_trust_access_ai_controls_mcp_server = cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server",
-            account_id="a86a8f5c339544d7bdc89926de14fb8c",
-            zero_trust_access_ai_controls_mcp_server_id="my-mcp-server",
-            auth_type="unauthenticated",
-            hostname="https://example.com/mcp",
-            name="My MCP Server",
-            auth_credentials="sk-my-bearer-token",
-            client_secret="client_secret",
-            description="This is one remote MCP server",
-            is_shared_oauth_callback_enabled=True,
-            secure_web_gateway=False,
-            updated_prompts=[{
-                "name": "name",
-                "alias": "my-custom-alias",
-                "description": "description",
-                "enabled": True,
-            }],
-            updated_tools=[{
-                "name": "name",
-                "alias": "my-custom-alias",
-                "description": "description",
-                "enabled": True,
-            }])
+            account_id=cloudflare_account_id,
+            zero_trust_access_ai_controls_mcp_server_id="github",
+            auth_type="oauth",
+            hostname="https://github-mcp.example.com/mcp",
+            name="GitHub MCP Server",
+            auth_credentials=json.dumps({
+                "auth_mode": "manual",
+                "config": {
+                    "authorization_endpoint": "https://github.com/login/oauth/authorize",
+                    "token_endpoint": "https://github.com/login/oauth/access_token",
+                },
+                "registration_info": {
+                    "client_id": mcp_oauth_client_id,
+                    "token_endpoint_auth_method": "client_secret_basic",
+                    "scope": "repo read:user",
+                },
+            }),
+            client_secret=mcp_oauth_client_secret,
+            is_shared_oauth_callback_enabled=True)
         ```
+
+        `auth_credentials` and `client_secret` are write-only and cannot be recovered by import. Omitting either value on update preserves the existing credential. Because the API does not return `auth_credentials`, Terraform cannot automatically detect and restore out-of-band OAuth metadata changes; inspect the computed `auth_config_summary` for the current non-secret metadata. Terraform's `sensitive` marker hides credential values from normal output but still stores them in state, so use a protected state backend with restricted access.
 
         ## Import
 

@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityTrustedDomains(ctx, &cloudflare.LookupEmailSecurityTrustedDomainsArgs{
 //				AccountId:       pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				TrustedDomainId: pulumi.StringRef("2401"),
+//				TrustedDomainId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -72,7 +72,8 @@ type LookupEmailSecurityTrustedDomainsResult struct {
 	Id string `pulumi:"id"`
 	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent bool `pulumi:"isRecent"`
-	IsRegex  bool `pulumi:"isRegex"`
+	// Whether `pattern` is a regular expression instead of a literal domain.
+	IsRegex bool `pulumi:"isRegex"`
 	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 	IsSimilarity bool `pulumi:"isSimilarity"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -80,7 +81,8 @@ type LookupEmailSecurityTrustedDomainsResult struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified string `pulumi:"lastModified"`
 	ModifiedAt   string `pulumi:"modifiedAt"`
-	Pattern      string `pulumi:"pattern"`
+	// The domain pattern to trust, e.g. `example.com`.
+	Pattern string `pulumi:"pattern"`
 	// Trusted domain identifier
 	TrustedDomainId *string `pulumi:"trustedDomainId"`
 }
@@ -145,6 +147,7 @@ func (o LookupEmailSecurityTrustedDomainsResultOutput) IsRecent() pulumi.BoolOut
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) bool { return v.IsRecent }).(pulumi.BoolOutput)
 }
 
+// Whether `pattern` is a regular expression instead of a literal domain.
 func (o LookupEmailSecurityTrustedDomainsResultOutput) IsRegex() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) bool { return v.IsRegex }).(pulumi.BoolOutput)
 }
@@ -165,6 +168,7 @@ func (o LookupEmailSecurityTrustedDomainsResultOutput) ModifiedAt() pulumi.Strin
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
+// The domain pattern to trust, e.g. `example.com`.
 func (o LookupEmailSecurityTrustedDomainsResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) string { return v.Pattern }).(pulumi.StringOutput)
 }

@@ -42,7 +42,6 @@ import (
 //					StartsWith: pulumi.StringRef("app"),
 //				},
 //				HostnameStatus: pulumi.StringRef("provisioned"),
-//				Ssl:            pulumi.IntRef(0),
 //				SslStatus:      pulumi.StringRef("active"),
 //				Wildcard:       pulumi.BoolRef(false),
 //			}, nil)

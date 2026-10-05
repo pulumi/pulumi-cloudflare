@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "Widget Corps IDP",
     ///         Type = "onetimepin",
     ///         ZoneId = "zone_id",
+    ///         SamlCertificateSetId = "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
     ///         ScimConfig = new Cloudflare.Inputs.ZeroTrustAccessIdentityProviderScimConfigArgs
     ///         {
     ///             Enabled = true,

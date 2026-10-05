@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// If the deployment has been skipped.
+        /// Whether the deployment was skipped.
         /// </summary>
         [Input("isSkipped")]
         public Input<bool>? IsSkipped { get; set; }
@@ -92,7 +92,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }

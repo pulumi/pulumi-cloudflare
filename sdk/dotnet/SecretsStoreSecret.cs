@@ -29,6 +29,12 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "985e105f4ecef8ad9ca31a8372d0c353",
     ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "MY_API_KEY",
+    ///         Scopes = new[]
+    ///         {
+    ///             "workers",
+    ///         },
+    ///         Value = "my-secret-value",
     ///     });
     /// 
     /// });

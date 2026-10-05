@@ -156,6 +156,20 @@ public class Record extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.data);
     }
     /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Export(name="includeShadowMetadata", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> includeShadowMetadata;
+
+    /**
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Output<Boolean> includeShadowMetadata() {
+        return this.includeShadowMetadata;
+    }
+    /**
      * Extra Cloudflare-specific information about the record.
      * 
      */

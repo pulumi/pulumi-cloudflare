@@ -56,6 +56,21 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createdOn);
     }
 
+    /**
+     * Available values: &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Available values: &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
@@ -105,6 +120,7 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
         this.consumers = $.consumers;
         this.consumersTotalCount = $.consumersTotalCount;
         this.createdOn = $.createdOn;
+        this.jurisdiction = $.jurisdiction;
         this.modifiedOn = $.modifiedOn;
         this.producers = $.producers;
         this.producersTotalCount = $.producersTotalCount;
@@ -181,6 +197,27 @@ public final class QueueState extends com.pulumi.resources.ResourceArgs {
 
         public Builder createdOn(String createdOn) {
             return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param jurisdiction Available values: &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Available values: &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         public Builder modifiedOn(@Nullable Output<String> modifiedOn) {

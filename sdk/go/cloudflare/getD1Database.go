@@ -87,7 +87,10 @@ type LookupD1DatabaseResult struct {
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction string `pulumi:"jurisdiction"`
 	// D1 database name.
-	Name      string  `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+	//
+	// Deprecated: This attribute is deprecated.
 	NumTables float64 `pulumi:"numTables"`
 	// Configuration for D1 read replication.
 	ReadReplication GetD1DatabaseReadReplication `pulumi:"readReplication"`
@@ -178,6 +181,9 @@ func (o LookupD1DatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupD1DatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupD1DatabaseResultOutput) NumTables() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupD1DatabaseResult) float64 { return v.NumTables }).(pulumi.Float64Output)
 }

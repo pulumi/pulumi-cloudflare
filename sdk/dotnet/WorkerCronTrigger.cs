@@ -29,11 +29,11 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "this-is_my_script-01",
-    ///         Body = new[]
+    ///         Schedules = new[]
     ///         {
-    ///             
+    ///             new Cloudflare.Inputs.WorkersCronTriggerScheduleArgs
     ///             {
-    ///                 { "cron", "*/30 * * * *" },
+    ///                 Cron = "*/30 * * * *",
     ///             },
     ///         },
     ///     });
@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerCronTriggerSchedule>> Schedules { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }

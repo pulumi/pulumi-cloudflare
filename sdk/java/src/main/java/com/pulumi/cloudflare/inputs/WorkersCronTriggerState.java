@@ -40,14 +40,14 @@ public final class WorkersCronTriggerState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      * 
      */
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public Optional<Output<String>> scriptName() {
@@ -115,7 +115,7 @@ public final class WorkersCronTriggerState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scriptName Name of the script, used in URLs and route configuration.
+         * @param scriptName Name of the script.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class WorkersCronTriggerState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scriptName Name of the script, used in URLs and route configuration.
+         * @param scriptName Name of the script.
          * 
          * @return builder
          * 

@@ -27,10 +27,22 @@ class GetBotManagementResult:
     """
     A collection of values returned by getBotManagement.
     """
-    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, bm_cookie_enabled=None, bot_preference_sync_enabled=None, cf_robots_variant=None, content_bots_protection=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+    def __init__(__self__, ai_bots_migration_opt_out=None, ai_bots_protection=None, ai_training=None, ai_user=None, aisearch=None, auto_update_model=None, bm_cookie_enabled=None, bot_preference_sync_enabled=None, cf_robots_variant=None, content_bots_protection=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, jsd_api_results_enabled=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+        if ai_bots_migration_opt_out and not isinstance(ai_bots_migration_opt_out, bool):
+            raise TypeError("Expected argument 'ai_bots_migration_opt_out' to be a bool")
+        pulumi.set(__self__, "ai_bots_migration_opt_out", ai_bots_migration_opt_out)
         if ai_bots_protection and not isinstance(ai_bots_protection, str):
             raise TypeError("Expected argument 'ai_bots_protection' to be a str")
         pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
+        if ai_training and not isinstance(ai_training, str):
+            raise TypeError("Expected argument 'ai_training' to be a str")
+        pulumi.set(__self__, "ai_training", ai_training)
+        if ai_user and not isinstance(ai_user, str):
+            raise TypeError("Expected argument 'ai_user' to be a str")
+        pulumi.set(__self__, "ai_user", ai_user)
+        if aisearch and not isinstance(aisearch, str):
+            raise TypeError("Expected argument 'aisearch' to be a str")
+        pulumi.set(__self__, "aisearch", aisearch)
         if auto_update_model and not isinstance(auto_update_model, bool):
             raise TypeError("Expected argument 'auto_update_model' to be a bool")
         pulumi.set(__self__, "auto_update_model", auto_update_model)
@@ -61,6 +73,9 @@ class GetBotManagementResult:
         if is_robots_txt_managed and not isinstance(is_robots_txt_managed, bool):
             raise TypeError("Expected argument 'is_robots_txt_managed' to be a bool")
         pulumi.set(__self__, "is_robots_txt_managed", is_robots_txt_managed)
+        if jsd_api_results_enabled and not isinstance(jsd_api_results_enabled, bool):
+            raise TypeError("Expected argument 'jsd_api_results_enabled' to be a bool")
+        pulumi.set(__self__, "jsd_api_results_enabled", jsd_api_results_enabled)
         if optimize_wordpress and not isinstance(optimize_wordpress, bool):
             raise TypeError("Expected argument 'optimize_wordpress' to be a bool")
         pulumi.set(__self__, "optimize_wordpress", optimize_wordpress)
@@ -90,6 +105,14 @@ class GetBotManagementResult:
         pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
+    @pulumi.getter(name="aiBotsMigrationOptOut")
+    def ai_bots_migration_opt_out(self) -> _builtins.bool:
+        """
+        Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+        """
+        return pulumi.get(self, "ai_bots_migration_opt_out")
+
+    @_builtins.property
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> _builtins.str:
         """
@@ -97,6 +120,33 @@ class GetBotManagementResult:
         Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="aiTraining")
+    def ai_training(self) -> _builtins.str:
+        """
+        Configure robots.txt policy for AI model training bots.
+        Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "ai_training")
+
+    @_builtins.property
+    @pulumi.getter(name="aiUser")
+    def ai_user(self) -> _builtins.str:
+        """
+        Configure robots.txt policy for AI assistant and agent bots.
+        Available values: "disabled", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "ai_user")
+
+    @_builtins.property
+    @pulumi.getter
+    def aisearch(self) -> _builtins.str:
+        """
+        Configure robots.txt policy for AI search bots.
+        Available values: "disabled", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "aisearch")
 
     @_builtins.property
     @pulumi.getter(name="autoUpdateModel")
@@ -182,6 +232,14 @@ class GetBotManagementResult:
         return pulumi.get(self, "is_robots_txt_managed")
 
     @_builtins.property
+    @pulumi.getter(name="jsdApiResultsEnabled")
+    def jsd_api_results_enabled(self) -> _builtins.bool:
+        """
+        Whether to use JavaScript Detection results submitted through the API for this zone.
+        """
+        return pulumi.get(self, "jsd_api_results_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
     def optimize_wordpress(self) -> _builtins.bool:
         """
@@ -265,7 +323,11 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
         if False:
             yield self
         return GetBotManagementResult(
+            ai_bots_migration_opt_out=self.ai_bots_migration_opt_out,
             ai_bots_protection=self.ai_bots_protection,
+            ai_training=self.ai_training,
+            ai_user=self.ai_user,
+            aisearch=self.aisearch,
             auto_update_model=self.auto_update_model,
             bm_cookie_enabled=self.bm_cookie_enabled,
             bot_preference_sync_enabled=self.bot_preference_sync_enabled,
@@ -276,6 +338,7 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
             fight_mode=self.fight_mode,
             id=self.id,
             is_robots_txt_managed=self.is_robots_txt_managed,
+            jsd_api_results_enabled=self.jsd_api_results_enabled,
             optimize_wordpress=self.optimize_wordpress,
             sbfm_definitely_automated=self.sbfm_definitely_automated,
             sbfm_likely_automated=self.sbfm_likely_automated,
@@ -313,7 +376,11 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getBotManagement:getBotManagement', __args__, opts=opts, typ=GetBotManagementResult).value
 
     return AwaitableGetBotManagementResult(
+        ai_bots_migration_opt_out=pulumi.get(__ret__, 'ai_bots_migration_opt_out'),
         ai_bots_protection=pulumi.get(__ret__, 'ai_bots_protection'),
+        ai_training=pulumi.get(__ret__, 'ai_training'),
+        ai_user=pulumi.get(__ret__, 'ai_user'),
+        aisearch=pulumi.get(__ret__, 'aisearch'),
         auto_update_model=pulumi.get(__ret__, 'auto_update_model'),
         bm_cookie_enabled=pulumi.get(__ret__, 'bm_cookie_enabled'),
         bot_preference_sync_enabled=pulumi.get(__ret__, 'bot_preference_sync_enabled'),
@@ -324,6 +391,7 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
         fight_mode=pulumi.get(__ret__, 'fight_mode'),
         id=pulumi.get(__ret__, 'id'),
         is_robots_txt_managed=pulumi.get(__ret__, 'is_robots_txt_managed'),
+        jsd_api_results_enabled=pulumi.get(__ret__, 'jsd_api_results_enabled'),
         optimize_wordpress=pulumi.get(__ret__, 'optimize_wordpress'),
         sbfm_definitely_automated=pulumi.get(__ret__, 'sbfm_definitely_automated'),
         sbfm_likely_automated=pulumi.get(__ret__, 'sbfm_likely_automated'),
@@ -358,7 +426,11 @@ def get_bot_management_output(zone_id: pulumi.Input[Optional[Optional[_builtins.
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getBotManagement:getBotManagement', __args__, opts=opts, typ=GetBotManagementResult)
     return __ret__.apply(lambda __response__: GetBotManagementResult(
+        ai_bots_migration_opt_out=pulumi.get(__response__, 'ai_bots_migration_opt_out'),
         ai_bots_protection=pulumi.get(__response__, 'ai_bots_protection'),
+        ai_training=pulumi.get(__response__, 'ai_training'),
+        ai_user=pulumi.get(__response__, 'ai_user'),
+        aisearch=pulumi.get(__response__, 'aisearch'),
         auto_update_model=pulumi.get(__response__, 'auto_update_model'),
         bm_cookie_enabled=pulumi.get(__response__, 'bm_cookie_enabled'),
         bot_preference_sync_enabled=pulumi.get(__response__, 'bot_preference_sync_enabled'),
@@ -369,6 +441,7 @@ def get_bot_management_output(zone_id: pulumi.Input[Optional[Optional[_builtins.
         fight_mode=pulumi.get(__response__, 'fight_mode'),
         id=pulumi.get(__response__, 'id'),
         is_robots_txt_managed=pulumi.get(__response__, 'is_robots_txt_managed'),
+        jsd_api_results_enabled=pulumi.get(__response__, 'jsd_api_results_enabled'),
         optimize_wordpress=pulumi.get(__response__, 'optimize_wordpress'),
         sbfm_definitely_automated=pulumi.get(__response__, 'sbfm_definitely_automated'),
         sbfm_likely_automated=pulumi.get(__response__, 'sbfm_likely_automated'),

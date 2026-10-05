@@ -109,7 +109,7 @@ public final class PipelineSinkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies the type of sink.
-     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
      * 
      */
     @Import(name="type")
@@ -117,7 +117,7 @@ public final class PipelineSinkState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies the type of sink.
-     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -280,7 +280,7 @@ public final class PipelineSinkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Specifies the type of sink.
-         * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+         * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class PipelineSinkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Specifies the type of sink.
-         * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+         * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
          * 
          * @return builder
          * 

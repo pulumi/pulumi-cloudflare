@@ -52,7 +52,7 @@ class GetMtlsCertificateAssociationsResult:
     @pulumi.getter(name="mtlsCertificateId")
     def mtls_certificate_id(self) -> _builtins.str:
         """
-        Identifier.
+        Certificate identifier tag.
         """
         return pulumi.get(self, "mtls_certificate_id")
 
@@ -101,12 +101,12 @@ def get_mtls_certificate_associations(account_id: Optional[_builtins.str] = None
     import pulumi_cloudflare as cloudflare
 
     example_mtls_certificate_associations = cloudflare.get_mtls_certificate_associations(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        mtls_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+        mtls_certificate_id="2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
     ```
 
 
     :param _builtins.str account_id: Identifier.
-    :param _builtins.str mtls_certificate_id: Identifier.
+    :param _builtins.str mtls_certificate_id: Certificate identifier tag.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -135,12 +135,12 @@ def get_mtls_certificate_associations_output(account_id: pulumi.Input[Optional[_
     import pulumi_cloudflare as cloudflare
 
     example_mtls_certificate_associations = cloudflare.get_mtls_certificate_associations(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        mtls_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+        mtls_certificate_id="2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
     ```
 
 
     :param _builtins.str account_id: Identifier.
-    :param _builtins.str mtls_certificate_id: Identifier.
+    :param _builtins.str mtls_certificate_id: Certificate identifier tag.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

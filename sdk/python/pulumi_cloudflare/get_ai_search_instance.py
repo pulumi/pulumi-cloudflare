@@ -251,7 +251,7 @@ class GetAiSearchInstanceResult:
     @_utilities.deprecated("""This attribute is deprecated.""")
     def hybrid_search_enabled(self) -> _builtins.bool:
         """
-        Deprecated — use index_method instead.
+        Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
         """
         return pulumi.get(self, "hybrid_search_enabled")
 
@@ -267,7 +267,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter(name="indexMethod")
     def index_method(self) -> 'outputs.GetAiSearchInstanceIndexMethodResult':
         """
-        Controls which storage backends are used during indexing. Defaults to vector-only.
+        Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         """
         return pulumi.get(self, "index_method")
 
@@ -387,6 +387,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
+        Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         Available values: "r2", "web-crawler".
         """
         return pulumi.get(self, "type")

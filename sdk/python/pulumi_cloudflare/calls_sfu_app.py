@@ -27,7 +27,7 @@ class CallsSfuAppArgs:
 
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] app_id: A Cloudflare-generated unique identifier for a item.
-        :param pulumi.Input[_builtins.str] name: A short description of Calls app, not shown to end users.
+        :param pulumi.Input[_builtins.str] name: A short description of a Realtime SFU app, not shown to end users.
         """
         pulumi.set(__self__, "account_id", account_id)
         if app_id is not None:
@@ -63,7 +63,7 @@ class CallsSfuAppArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A short description of Calls app, not shown to end users.
+        A short description of a Realtime SFU app, not shown to end users.
         """
         return pulumi.get(self, "name")
 
@@ -89,7 +89,7 @@ class _CallsSfuAppState:
         :param pulumi.Input[_builtins.str] app_id: A Cloudflare-generated unique identifier for a item.
         :param pulumi.Input[_builtins.str] created: The date and time the item was created.
         :param pulumi.Input[_builtins.str] modified: The date and time the item was last modified.
-        :param pulumi.Input[_builtins.str] name: A short description of Calls app, not shown to end users.
+        :param pulumi.Input[_builtins.str] name: A short description of a Realtime SFU app, not shown to end users.
         :param pulumi.Input[_builtins.str] secret: Bearer token
         :param pulumi.Input[_builtins.str] uid: A Cloudflare-generated unique identifier for a item.
         """
@@ -160,7 +160,7 @@ class _CallsSfuAppState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A short description of Calls app, not shown to end users.
+        A short description of a Realtime SFU app, not shown to end users.
         """
         return pulumi.get(self, "name")
 
@@ -229,7 +229,7 @@ class CallsSfuApp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] app_id: A Cloudflare-generated unique identifier for a item.
-        :param pulumi.Input[_builtins.str] name: A short description of Calls app, not shown to end users.
+        :param pulumi.Input[_builtins.str] name: A short description of a Realtime SFU app, not shown to end users.
         """
         ...
     @overload
@@ -325,7 +325,7 @@ class CallsSfuApp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: A Cloudflare-generated unique identifier for a item.
         :param pulumi.Input[_builtins.str] created: The date and time the item was created.
         :param pulumi.Input[_builtins.str] modified: The date and time the item was last modified.
-        :param pulumi.Input[_builtins.str] name: A short description of Calls app, not shown to end users.
+        :param pulumi.Input[_builtins.str] name: A short description of a Realtime SFU app, not shown to end users.
         :param pulumi.Input[_builtins.str] secret: Bearer token
         :param pulumi.Input[_builtins.str] uid: A Cloudflare-generated unique identifier for a item.
         """
@@ -378,7 +378,7 @@ class CallsSfuApp(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        A short description of Calls app, not shown to end users.
+        A short description of a Realtime SFU app, not shown to end users.
         """
         return pulumi.get(self, "name")
 

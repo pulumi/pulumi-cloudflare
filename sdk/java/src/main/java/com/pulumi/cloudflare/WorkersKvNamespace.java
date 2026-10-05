@@ -66,14 +66,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workersKvNamespace:WorkersKvNamespace")
 public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Output<String> accountId() {
@@ -110,14 +110,14 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
         return this.supportsUrlEncoding;
     }
     /**
-     * A human-readable string name for a Namespace.
+     * Human-readable string name for a Workers KV namespace.
      * 
      */
     @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
-     * @return A human-readable string name for a Namespace.
+     * @return Human-readable string name for a Workers KV namespace.
      * 
      */
     public Output<String> title() {

@@ -3,9 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.QueueConsumerSettingsEmailArgs;
+import com.pulumi.cloudflare.inputs.QueueConsumerSettingsPagerdutyArgs;
+import com.pulumi.cloudflare.inputs.QueueConsumerSettingsWebhookArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +32,13 @@ public final class QueueConsumerSettingsArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Double>> batchSize() {
         return Optional.ofNullable(this.batchSize);
+    }
+
+    @Import(name="emails")
+    private @Nullable Output<List<QueueConsumerSettingsEmailArgs>> emails;
+
+    public Optional<Output<List<QueueConsumerSettingsEmailArgs>>> emails() {
+        return Optional.ofNullable(this.emails);
     }
 
     /**
@@ -76,6 +87,21 @@ public final class QueueConsumerSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * PagerDuty notification destinations.
+     * 
+     */
+    @Import(name="pagerduties")
+    private @Nullable Output<List<QueueConsumerSettingsPagerdutyArgs>> pagerduties;
+
+    /**
+     * @return PagerDuty notification destinations.
+     * 
+     */
+    public Optional<Output<List<QueueConsumerSettingsPagerdutyArgs>>> pagerduties() {
+        return Optional.ofNullable(this.pagerduties);
+    }
+
+    /**
      * The number of seconds to delay before making the message available for another attempt.
      * 
      */
@@ -105,15 +131,33 @@ public final class QueueConsumerSettingsArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.visibilityTimeoutMs);
     }
 
+    /**
+     * Webhook notification destinations.
+     * 
+     */
+    @Import(name="webhooks")
+    private @Nullable Output<List<QueueConsumerSettingsWebhookArgs>> webhooks;
+
+    /**
+     * @return Webhook notification destinations.
+     * 
+     */
+    public Optional<Output<List<QueueConsumerSettingsWebhookArgs>>> webhooks() {
+        return Optional.ofNullable(this.webhooks);
+    }
+
     private QueueConsumerSettingsArgs() {}
 
     private QueueConsumerSettingsArgs(QueueConsumerSettingsArgs $) {
         this.batchSize = $.batchSize;
+        this.emails = $.emails;
         this.maxConcurrency = $.maxConcurrency;
         this.maxRetries = $.maxRetries;
         this.maxWaitTimeMs = $.maxWaitTimeMs;
+        this.pagerduties = $.pagerduties;
         this.retryDelay = $.retryDelay;
         this.visibilityTimeoutMs = $.visibilityTimeoutMs;
+        this.webhooks = $.webhooks;
     }
 
     public static Builder builder() {
@@ -153,6 +197,19 @@ public final class QueueConsumerSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder batchSize(Double batchSize) {
             return batchSize(Output.of(batchSize));
+        }
+
+        public Builder emails(@Nullable Output<List<QueueConsumerSettingsEmailArgs>> emails) {
+            $.emails = emails;
+            return this;
+        }
+
+        public Builder emails(List<QueueConsumerSettingsEmailArgs> emails) {
+            return emails(Output.of(emails));
+        }
+
+        public Builder emails(QueueConsumerSettingsEmailArgs... emails) {
+            return emails(List.of(emails));
         }
 
         /**
@@ -219,6 +276,37 @@ public final class QueueConsumerSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param pagerduties PagerDuty notification destinations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pagerduties(@Nullable Output<List<QueueConsumerSettingsPagerdutyArgs>> pagerduties) {
+            $.pagerduties = pagerduties;
+            return this;
+        }
+
+        /**
+         * @param pagerduties PagerDuty notification destinations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pagerduties(List<QueueConsumerSettingsPagerdutyArgs> pagerduties) {
+            return pagerduties(Output.of(pagerduties));
+        }
+
+        /**
+         * @param pagerduties PagerDuty notification destinations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pagerduties(QueueConsumerSettingsPagerdutyArgs... pagerduties) {
+            return pagerduties(List.of(pagerduties));
+        }
+
+        /**
          * @param retryDelay The number of seconds to delay before making the message available for another attempt.
          * 
          * @return builder
@@ -258,6 +346,37 @@ public final class QueueConsumerSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder visibilityTimeoutMs(Double visibilityTimeoutMs) {
             return visibilityTimeoutMs(Output.of(visibilityTimeoutMs));
+        }
+
+        /**
+         * @param webhooks Webhook notification destinations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhooks(@Nullable Output<List<QueueConsumerSettingsWebhookArgs>> webhooks) {
+            $.webhooks = webhooks;
+            return this;
+        }
+
+        /**
+         * @param webhooks Webhook notification destinations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhooks(List<QueueConsumerSettingsWebhookArgs> webhooks) {
+            return webhooks(Output.of(webhooks));
+        }
+
+        /**
+         * @param webhooks Webhook notification destinations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhooks(QueueConsumerSettingsWebhookArgs... webhooks) {
+            return webhooks(List.of(webhooks));
         }
 
         public QueueConsumerSettingsArgs build() {

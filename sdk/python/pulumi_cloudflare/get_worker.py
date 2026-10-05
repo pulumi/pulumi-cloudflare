@@ -28,7 +28,7 @@ class GetWorkerResult:
     """
     A collection of values returned by getWorker.
     """
-    def __init__(__self__, account_id=None, created_on=None, deployed_on=None, filter=None, id=None, logpush=None, name=None, observability=None, references=None, subdomain=None, tags=None, tail_consumers=None, updated_on=None, worker_id=None):
+    def __init__(__self__, account_id=None, created_on=None, deployed_on=None, filter=None, id=None, logpush=None, name=None, observability=None, previews_base_config=None, references=None, subdomain=None, tags=None, tail_consumers=None, updated_on=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -53,6 +53,9 @@ class GetWorkerResult:
         if observability and not isinstance(observability, dict):
             raise TypeError("Expected argument 'observability' to be a dict")
         pulumi.set(__self__, "observability", observability)
+        if previews_base_config and not isinstance(previews_base_config, dict):
+            raise TypeError("Expected argument 'previews_base_config' to be a dict")
+        pulumi.set(__self__, "previews_base_config", previews_base_config)
         if references and not isinstance(references, dict):
             raise TypeError("Expected argument 'references' to be a dict")
         pulumi.set(__self__, "references", references)
@@ -134,6 +137,14 @@ class GetWorkerResult:
         return pulumi.get(self, "observability")
 
     @_builtins.property
+    @pulumi.getter(name="previewsBaseConfig")
+    def previews_base_config(self) -> 'outputs.GetWorkerPreviewsBaseConfigResult':
+        """
+        Template configuration used when creating new Previews for this Worker.
+        """
+        return pulumi.get(self, "previews_base_config")
+
+    @_builtins.property
     @pulumi.getter
     def references(self) -> 'outputs.GetWorkerReferencesResult':
         """
@@ -196,6 +207,7 @@ class AwaitableGetWorkerResult(GetWorkerResult):
             logpush=self.logpush,
             name=self.name,
             observability=self.observability,
+            previews_base_config=self.previews_base_config,
             references=self.references,
             subdomain=self.subdomain,
             tags=self.tags,
@@ -245,6 +257,7 @@ def get_worker(account_id: Optional[_builtins.str] = None,
         logpush=pulumi.get(__ret__, 'logpush'),
         name=pulumi.get(__ret__, 'name'),
         observability=pulumi.get(__ret__, 'observability'),
+        previews_base_config=pulumi.get(__ret__, 'previews_base_config'),
         references=pulumi.get(__ret__, 'references'),
         subdomain=pulumi.get(__ret__, 'subdomain'),
         tags=pulumi.get(__ret__, 'tags'),
@@ -291,6 +304,7 @@ def get_worker_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]
         logpush=pulumi.get(__response__, 'logpush'),
         name=pulumi.get(__response__, 'name'),
         observability=pulumi.get(__response__, 'observability'),
+        previews_base_config=pulumi.get(__response__, 'previews_base_config'),
         references=pulumi.get(__response__, 'references'),
         subdomain=pulumi.get(__response__, 'subdomain'),
         tags=pulumi.get(__response__, 'tags'),

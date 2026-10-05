@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetFlagshipFlagFilter;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetFlagshipFlagPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetFlagshipFlagPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetFlagshipFlagPlainArgs Empty = new GetFlagshipFlagPlainArgs();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public String accountId() {
@@ -29,33 +32,40 @@ public final class GetFlagshipFlagPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      * 
      */
     @Import(name="appId", required=true)
     private String appId;
 
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public String appId() {
         return this.appId;
     }
 
-    /**
-     * Flag key (slug).
-     * 
-     */
-    @Import(name="flagKey", required=true)
-    private String flagKey;
+    @Import(name="filter")
+    private @Nullable GetFlagshipFlagFilter filter;
+
+    public Optional<GetFlagshipFlagFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
 
     /**
-     * @return Flag key (slug).
+     * Case-sensitive key identifying the flag within the app.
      * 
      */
-    public String flagKey() {
-        return this.flagKey;
+    @Import(name="flagKey")
+    private @Nullable String flagKey;
+
+    /**
+     * @return Case-sensitive key identifying the flag within the app.
+     * 
+     */
+    public Optional<String> flagKey() {
+        return Optional.ofNullable(this.flagKey);
     }
 
     private GetFlagshipFlagPlainArgs() {}
@@ -63,6 +73,7 @@ public final class GetFlagshipFlagPlainArgs extends com.pulumi.resources.InvokeA
     private GetFlagshipFlagPlainArgs(GetFlagshipFlagPlainArgs $) {
         this.accountId = $.accountId;
         this.appId = $.appId;
+        this.filter = $.filter;
         this.flagKey = $.flagKey;
     }
 
@@ -85,7 +96,7 @@ public final class GetFlagshipFlagPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -96,7 +107,7 @@ public final class GetFlagshipFlagPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -106,13 +117,18 @@ public final class GetFlagshipFlagPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        public Builder filter(@Nullable GetFlagshipFlagFilter filter) {
+            $.filter = filter;
+            return this;
+        }
+
         /**
-         * @param flagKey Flag key (slug).
+         * @param flagKey Case-sensitive key identifying the flag within the app.
          * 
          * @return builder
          * 
          */
-        public Builder flagKey(String flagKey) {
+        public Builder flagKey(@Nullable String flagKey) {
             $.flagKey = flagKey;
             return this;
         }
@@ -123,9 +139,6 @@ public final class GetFlagshipFlagPlainArgs extends com.pulumi.resources.InvokeA
             }
             if ($.appId == null) {
                 throw new MissingRequiredPropertyException("GetFlagshipFlagPlainArgs", "appId");
-            }
-            if ($.flagKey == null) {
-                throw new MissingRequiredPropertyException("GetFlagshipFlagPlainArgs", "flagKey");
             }
             return $;
         }

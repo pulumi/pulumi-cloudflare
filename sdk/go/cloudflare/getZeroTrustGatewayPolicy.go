@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayPolicy(ctx, &cloudflare.LookupZeroTrustGatewayPolicyArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
-//				RuleId:    "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+//				RuleId:    pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,13 +49,16 @@ func LookupZeroTrustGatewayPolicy(ctx *pulumi.Context, args *LookupZeroTrustGate
 
 // A collection of arguments for invoking getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	// Specify the Cloudflare account identifier.
+	AccountId *string                          `pulumi:"accountId"`
+	Filter    *GetZeroTrustGatewayPolicyFilter `pulumi:"filter"`
 	// Identify the API resource with a UUID.
-	RuleId string `pulumi:"ruleId"`
+	RuleId *string `pulumi:"ruleId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyResult struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -71,6 +74,7 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 	Expiration GetZeroTrustGatewayPolicyExpiration `pulumi:"expiration"`
+	Filter     *GetZeroTrustGatewayPolicyFilter    `pulumi:"filter"`
 	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 	Filters []string `pulumi:"filters"`
 	// Identify the API resource with a UUID.
@@ -84,7 +88,7 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	// Indicate that this rule is shared via the Orgs API and read only.
 	ReadOnly bool `pulumi:"readOnly"`
 	// Identify the API resource with a UUID.
-	RuleId string `pulumi:"ruleId"`
+	RuleId *string `pulumi:"ruleId"`
 	// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
 	RuleSettings GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
 	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
@@ -109,9 +113,11 @@ func LookupZeroTrustGatewayPolicyOutput(ctx *pulumi.Context, args LookupZeroTrus
 
 // A collection of arguments for invoking getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyOutputArgs struct {
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Specify the Cloudflare account identifier.
+	AccountId pulumi.StringPtrInput                   `pulumi:"accountId"`
+	Filter    GetZeroTrustGatewayPolicyFilterPtrInput `pulumi:"filter"`
 	// Identify the API resource with a UUID.
-	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
 }
 
 func (LookupZeroTrustGatewayPolicyOutputArgs) ElementType() reflect.Type {
@@ -133,6 +139,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) ToLookupZeroTrustGatewayPolicy
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewayPolicyResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -172,6 +179,10 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Expiration() GetZeroTrustGatew
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) GetZeroTrustGatewayPolicyExpiration { return v.Expiration }).(GetZeroTrustGatewayPolicyExpirationOutput)
 }
 
+func (o LookupZeroTrustGatewayPolicyResultOutput) Filter() GetZeroTrustGatewayPolicyFilterPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) *GetZeroTrustGatewayPolicyFilter { return v.Filter }).(GetZeroTrustGatewayPolicyFilterPtrOutput)
+}
+
 // Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) []string { return v.Filters }).(pulumi.StringArrayOutput)
@@ -203,8 +214,8 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) ReadOnly() pulumi.BoolOutput {
 }
 
 // Identify the API resource with a UUID.
-func (o LookupZeroTrustGatewayPolicyResultOutput) RuleId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.RuleId }).(pulumi.StringOutput)
+func (o LookupZeroTrustGatewayPolicyResultOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
 }
 
 // Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.

@@ -19,6 +19,53 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]string{
+//				"name": "test stream 1",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudflare.NewStreamLiveInput(ctx, "example_stream_live_input", &cloudflare.StreamLiveInputArgs{
+//				AccountId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				DefaultCreator:           pulumi.String("defaultCreator"),
+//				DeleteRecordingAfterDays: pulumi.Float64(45),
+//				Enabled:                  pulumi.Bool(true),
+//				Meta:                     pulumi.String(json0),
+//				PreferLowLatency:         pulumi.Bool(true),
+//				Recording: &cloudflare.StreamLiveInputRecordingArgs{
+//					AllowedOrigins: pulumi.StringArray{
+//						pulumi.String("example.com"),
+//					},
+//					HideLiveViewerCount: pulumi.Bool(false),
+//					Mode:                pulumi.String("off"),
+//					RequireSignedUrls:   pulumi.Bool(false),
+//					TimeoutSeconds:      pulumi.Int(0),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // > This resource does not currently support `pulumi import`.

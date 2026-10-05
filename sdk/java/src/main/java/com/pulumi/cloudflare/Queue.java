@@ -16,6 +16,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -53,6 +54,7 @@ import javax.annotation.Nullable;
  *         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .queueName("example-queue")
+ *             .jurisdiction("eu")
  *             .build());
  * 
  *     }
@@ -100,6 +102,20 @@ public class Queue extends com.pulumi.resources.CustomResource {
 
     public Output<String> createdOn() {
         return this.createdOn;
+    }
+    /**
+     * Available values: &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> jurisdiction;
+
+    /**
+     * @return Available values: &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public Output<Optional<String>> jurisdiction() {
+        return Codegen.optional(this.jurisdiction);
     }
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;

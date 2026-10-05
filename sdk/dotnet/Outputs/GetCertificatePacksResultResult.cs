@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Identifier.
+        /// The unique identifier for a certificate_pack.
         /// </summary>
         public readonly string Id;
         /// <summary>

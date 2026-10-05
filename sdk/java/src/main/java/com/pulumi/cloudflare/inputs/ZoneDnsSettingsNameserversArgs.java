@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -17,14 +18,29 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
     public static final ZoneDnsSettingsNameserversArgs Empty = new ZoneDnsSettingsNameserversArgs();
 
     /**
-     * Configured nameserver set to be used for this zone
+     * Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * 
+     */
+    @Import(name="nameserverSetId")
+    private @Nullable Output<String> nameserverSetId;
+
+    /**
+     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * 
+     */
+    public Optional<Output<String>> nameserverSetId() {
+        return Optional.ofNullable(this.nameserverSetId);
+    }
+
+    /**
+     * Configured nameserver set number to use for this zone.
      * 
      */
     @Import(name="nsSet")
     private @Nullable Output<Integer> nsSet;
 
     /**
-     * @return Configured nameserver set to be used for this zone
+     * @return Configured nameserver set number to use for this zone.
      * 
      */
     public Optional<Output<Integer>> nsSet() {
@@ -32,25 +48,26 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
+     * Nameserver type.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;, &#34;custom&#34;.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
-     * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
+     * @return Nameserver type.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;, &#34;custom&#34;.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private ZoneDnsSettingsNameserversArgs() {}
 
     private ZoneDnsSettingsNameserversArgs(ZoneDnsSettingsNameserversArgs $) {
+        this.nameserverSetId = $.nameserverSetId;
         this.nsSet = $.nsSet;
         this.type = $.type;
     }
@@ -74,7 +91,28 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nsSet Configured nameserver set to be used for this zone
+         * @param nameserverSetId Identifier of the account-owned Custom Nameserver Set to use for this zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameserverSetId(@Nullable Output<String> nameserverSetId) {
+            $.nameserverSetId = nameserverSetId;
+            return this;
+        }
+
+        /**
+         * @param nameserverSetId Identifier of the account-owned Custom Nameserver Set to use for this zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameserverSetId(String nameserverSetId) {
+            return nameserverSetId(Output.of(nameserverSetId));
+        }
+
+        /**
+         * @param nsSet Configured nameserver set number to use for this zone.
          * 
          * @return builder
          * 
@@ -85,7 +123,7 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param nsSet Configured nameserver set to be used for this zone
+         * @param nsSet Configured nameserver set number to use for this zone.
          * 
          * @return builder
          * 
@@ -95,20 +133,20 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Nameserver type
-         * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
+         * @param type Nameserver type.
+         * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;, &#34;custom&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type Nameserver type
-         * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
+         * @param type Nameserver type.
+         * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;, &#34;custom&#34;.
          * 
          * @return builder
          * 
@@ -118,6 +156,9 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         public ZoneDnsSettingsNameserversArgs build() {
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ZoneDnsSettingsNameserversArgs", "type");
+            }
             return $;
         }
     }

@@ -220,6 +220,9 @@ namespace Pulumi.Cloudflare
         /// D1 database name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+        /// </summary>
         public readonly double NumTables;
         /// <summary>
         /// Configuration for D1 read replication.

@@ -16,6 +16,21 @@ public final class GetAiSearchInstanceFilter extends com.pulumi.resources.Invoke
     public static final GetAiSearchInstanceFilter Empty = new GetAiSearchInstanceFilter();
 
     /**
+     * Filter by exact Search for Agents hostname (case-insensitive).
+     * 
+     */
+    @Import(name="hostname")
+    private @Nullable String hostname;
+
+    /**
+     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * 
+     */
+    public Optional<String> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
+
+    /**
      * Filter by namespace.
      * 
      */
@@ -82,6 +97,7 @@ public final class GetAiSearchInstanceFilter extends com.pulumi.resources.Invoke
     private GetAiSearchInstanceFilter() {}
 
     private GetAiSearchInstanceFilter(GetAiSearchInstanceFilter $) {
+        this.hostname = $.hostname;
         this.namespace = $.namespace;
         this.orderBy = $.orderBy;
         this.orderByDirection = $.orderByDirection;
@@ -104,6 +120,17 @@ public final class GetAiSearchInstanceFilter extends com.pulumi.resources.Invoke
 
         public Builder(GetAiSearchInstanceFilter defaults) {
             $ = new GetAiSearchInstanceFilter(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param hostname Filter by exact Search for Agents hostname (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(@Nullable String hostname) {
+            $.hostname = hostname;
+            return this;
         }
 
         /**

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -16,6 +17,11 @@ public final class GetAiSearchInstanceIndexingOptions {
      * 
      */
     private String keywordTokenizer;
+    /**
+     * @return Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+     * 
+     */
+    private Boolean useOcr;
 
     private GetAiSearchInstanceIndexingOptions() {}
     /**
@@ -25,6 +31,13 @@ public final class GetAiSearchInstanceIndexingOptions {
      */
     public String keywordTokenizer() {
         return this.keywordTokenizer;
+    }
+    /**
+     * @return Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+     * 
+     */
+    public Boolean useOcr() {
+        return this.useOcr;
     }
 
     public static Builder builder() {
@@ -37,10 +50,12 @@ public final class GetAiSearchInstanceIndexingOptions {
     @CustomType.Builder
     public static final class Builder {
         private String keywordTokenizer;
+        private Boolean useOcr;
         public Builder() {}
         public Builder(GetAiSearchInstanceIndexingOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keywordTokenizer = defaults.keywordTokenizer;
+    	      this.useOcr = defaults.useOcr;
         }
 
         @CustomType.Setter
@@ -51,9 +66,18 @@ public final class GetAiSearchInstanceIndexingOptions {
             this.keywordTokenizer = keywordTokenizer;
             return this;
         }
+        @CustomType.Setter
+        public Builder useOcr(Boolean useOcr) {
+            if (useOcr == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstanceIndexingOptions", "useOcr");
+            }
+            this.useOcr = useOcr;
+            return this;
+        }
         public GetAiSearchInstanceIndexingOptions build() {
             final var _resultValue = new GetAiSearchInstanceIndexingOptions();
             _resultValue.keywordTokenizer = keywordTokenizer;
+            _resultValue.useOcr = useOcr;
             return _resultValue;
         }
     }

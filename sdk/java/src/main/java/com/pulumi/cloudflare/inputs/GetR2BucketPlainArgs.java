@@ -16,14 +16,14 @@ public final class GetR2BucketPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetR2BucketPlainArgs Empty = new GetR2BucketPlainArgs();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Optional<String> accountId() {
@@ -71,7 +71,7 @@ public final class GetR2BucketPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 

@@ -53,12 +53,12 @@ public final class GetZeroTrustDnsLocationsResult {
      */
     private String ip;
     /**
-     * @return Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+     * @return Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
      * 
      */
     private String ipv4Destination;
     /**
-     * @return Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+     * @return Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
      * 
      */
     private String ipv4DestinationBackup;
@@ -136,14 +136,14 @@ public final class GetZeroTrustDnsLocationsResult {
         return this.ip;
     }
     /**
-     * @return Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+     * @return Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
      * 
      */
     public String ipv4Destination() {
         return this.ipv4Destination;
     }
     /**
-     * @return Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+     * @return Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
      * 
      */
     public String ipv4DestinationBackup() {

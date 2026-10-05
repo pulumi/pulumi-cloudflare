@@ -20,9 +20,17 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
 
     public static final ZeroTrustDnsLocationState Empty = new ZeroTrustDnsLocationState();
 
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -259,11 +267,23 @@ public final class ZeroTrustDnsLocationState extends com.pulumi.resources.Resour
             $ = new ZeroTrustDnsLocationState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

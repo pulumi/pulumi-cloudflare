@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustDnsLocationFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,17 +22,25 @@ public final class GetZeroTrustDnsLocationPlainArgs extends com.pulumi.resources
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="locationId", required=true)
-    private String locationId;
+    @Import(name="filter")
+    private @Nullable GetZeroTrustDnsLocationFilter filter;
 
-    public String locationId() {
-        return this.locationId;
+    public Optional<GetZeroTrustDnsLocationFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    @Import(name="locationId")
+    private @Nullable String locationId;
+
+    public Optional<String> locationId() {
+        return Optional.ofNullable(this.locationId);
     }
 
     private GetZeroTrustDnsLocationPlainArgs() {}
 
     private GetZeroTrustDnsLocationPlainArgs(GetZeroTrustDnsLocationPlainArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.locationId = $.locationId;
     }
 
@@ -59,15 +67,17 @@ public final class GetZeroTrustDnsLocationPlainArgs extends com.pulumi.resources
             return this;
         }
 
-        public Builder locationId(String locationId) {
+        public Builder filter(@Nullable GetZeroTrustDnsLocationFilter filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder locationId(@Nullable String locationId) {
             $.locationId = locationId;
             return this;
         }
 
         public GetZeroTrustDnsLocationPlainArgs build() {
-            if ($.locationId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationPlainArgs", "locationId");
-            }
             return $;
         }
     }

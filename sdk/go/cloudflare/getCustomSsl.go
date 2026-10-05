@@ -34,7 +34,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCustomSsl(ctx, &cloudflare.LookupCustomSslArgs{
 //				ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CustomCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CustomCertificateId: pulumi.StringRef("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,7 +56,7 @@ func LookupCustomSsl(ctx *pulumi.Context, args *LookupCustomSslArgs, opts ...pul
 
 // A collection of arguments for invoking getCustomSsl.
 type LookupCustomSslArgs struct {
-	// Identifier.
+	// Custom certificate identifier tag.
 	CustomCertificateId *string             `pulumi:"customCertificateId"`
 	Filter              *GetCustomSslFilter `pulumi:"filter"`
 	// Identifier.
@@ -68,7 +68,7 @@ type LookupCustomSslResult struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod string `pulumi:"bundleMethod"`
-	// Identifier.
+	// Custom certificate identifier tag.
 	CustomCertificateId *string `pulumi:"customCertificateId"`
 	// The identifier for the Custom CSR that was used.
 	CustomCsrId string `pulumi:"customCsrId"`
@@ -78,7 +78,7 @@ type LookupCustomSslResult struct {
 	// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
 	GeoRestrictions GetCustomSslGeoRestrictions `pulumi:"geoRestrictions"`
 	Hosts           []string                    `pulumi:"hosts"`
-	// Identifier.
+	// Custom certificate identifier tag.
 	Id string `pulumi:"id"`
 	// The certificate authority that issued the certificate.
 	Issuer        string                    `pulumi:"issuer"`
@@ -104,7 +104,7 @@ func LookupCustomSslOutput(ctx *pulumi.Context, args LookupCustomSslOutputArgs, 
 
 // A collection of arguments for invoking getCustomSsl.
 type LookupCustomSslOutputArgs struct {
-	// Identifier.
+	// Custom certificate identifier tag.
 	CustomCertificateId pulumi.StringPtrInput      `pulumi:"customCertificateId"`
 	Filter              GetCustomSslFilterPtrInput `pulumi:"filter"`
 	// Identifier.
@@ -136,7 +136,7 @@ func (o LookupCustomSslResultOutput) BundleMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.BundleMethod }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Custom certificate identifier tag.
 func (o LookupCustomSslResultOutput) CustomCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) *string { return v.CustomCertificateId }).(pulumi.StringPtrOutput)
 }
@@ -164,7 +164,7 @@ func (o LookupCustomSslResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Identifier.
+// Custom certificate identifier tag.
 func (o LookupCustomSslResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.Id }).(pulumi.StringOutput)
 }

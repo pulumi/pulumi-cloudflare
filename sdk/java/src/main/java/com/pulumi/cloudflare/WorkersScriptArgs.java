@@ -248,6 +248,21 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     * 
+     */
+    @Import(name="force")
+    private @Nullable Output<Boolean> force;
+
+    /**
+     * @return If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     * 
+     */
+    public Optional<Output<Boolean>> force() {
+        return Optional.ofNullable(this.force);
+    }
+
+    /**
      * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      * 
      */
@@ -446,6 +461,7 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         this.contentType = $.contentType;
         this.exports = $.exports;
         this.files = $.files;
+        this.force = $.force;
         this.keepAssets = $.keepAssets;
         this.keepBindings = $.keepBindings;
         this.limits = $.limits;
@@ -796,6 +812,27 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder files(Map<String,WorkersScriptFilesArgs> files) {
             return files(Output.of(files));
+        }
+
+        /**
+         * @param force If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(@Nullable Output<Boolean> force) {
+            $.force = force;
+            return this;
+        }
+
+        /**
+         * @param force If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(Boolean force) {
+            return force(Output.of(force));
         }
 
         /**

@@ -70,8 +70,6 @@ export interface GetMagicTransitConnectorResult {
     readonly lastUpdated: string;
     readonly licenseKey: string;
     readonly notes: string;
-    readonly primary: boolean;
-    readonly siteId: string;
     readonly timezone: string;
 }
 /**

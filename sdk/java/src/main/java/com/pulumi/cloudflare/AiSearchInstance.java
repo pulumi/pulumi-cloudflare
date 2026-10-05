@@ -28,7 +28,9 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/aiSearchInstance:AiSearchInstance example &#39;&lt;account_id&gt;/&lt;id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/aiSearchInstance:AiSearchInstance")
@@ -178,7 +180,7 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
         return this.fusionMethod;
     }
     /**
-     * Deprecated — use indexMethod instead.
+     * Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -189,21 +191,21 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
     private Output<Boolean> hybridSearchEnabled;
 
     /**
-     * @return Deprecated — use indexMethod instead.
+     * @return Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
      */
     public Output<Boolean> hybridSearchEnabled() {
         return this.hybridSearchEnabled;
     }
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      * 
      */
     @Export(name="indexMethod", refs={AiSearchInstanceIndexMethod.class}, tree="[0]")
     private Output<AiSearchInstanceIndexMethod> indexMethod;
 
     /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
+     * @return Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      * 
      */
     public Output<AiSearchInstanceIndexMethod> indexMethod() {
@@ -384,6 +386,7 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tokenId);
     }
     /**
+     * Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
      * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
@@ -391,7 +394,8 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
+     * @return Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+     * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
     public Output<Optional<String>> type() {

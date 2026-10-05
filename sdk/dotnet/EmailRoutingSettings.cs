@@ -80,6 +80,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        /// </summary>
+        [Output("supportSubaddress")]
+        public Output<bool?> SupportSubaddress { get; private set; } = null!;
+
+        /// <summary>
         /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         /// </summary>
         [Output("tag")]
@@ -138,6 +144,12 @@ namespace Pulumi.Cloudflare
     public sealed class EmailRoutingSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        /// </summary>
+        [Input("supportSubaddress")]
+        public Input<bool>? SupportSubaddress { get; set; }
+
+        /// <summary>
         /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
@@ -187,6 +199,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        /// </summary>
+        [Input("supportSubaddress")]
+        public Input<bool>? SupportSubaddress { get; set; }
 
         /// <summary>
         /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

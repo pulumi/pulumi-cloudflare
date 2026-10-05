@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkersKvNamespaceResult {
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     private @Nullable String accountId;
     private @Nullable GetWorkersKvNamespaceFilter filter;
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     private String id;
@@ -32,7 +32,7 @@ public final class GetWorkersKvNamespaceResult {
      */
     private String jurisdiction;
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     private @Nullable String namespaceId;
@@ -42,14 +42,14 @@ public final class GetWorkersKvNamespaceResult {
      */
     private Boolean supportsUrlEncoding;
     /**
-     * @return A human-readable string name for a Namespace.
+     * @return Human-readable string name for a Workers KV namespace.
      * 
      */
     private String title;
 
     private GetWorkersKvNamespaceResult() {}
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Optional<String> accountId() {
@@ -59,7 +59,7 @@ public final class GetWorkersKvNamespaceResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public String id() {
@@ -74,7 +74,7 @@ public final class GetWorkersKvNamespaceResult {
         return this.jurisdiction;
     }
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public Optional<String> namespaceId() {
@@ -88,7 +88,7 @@ public final class GetWorkersKvNamespaceResult {
         return this.supportsUrlEncoding;
     }
     /**
-     * @return A human-readable string name for a Namespace.
+     * @return Human-readable string name for a Workers KV namespace.
      * 
      */
     public String title() {

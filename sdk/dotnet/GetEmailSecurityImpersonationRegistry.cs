@@ -18,6 +18,23 @@ namespace Pulumi.Cloudflare
         /// - `Cloud Email Security: Write`
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleEmailSecurityImpersonationRegistry = Cloudflare.GetEmailSecurityImpersonationRegistry.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ImpersonationRegistryId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEmailSecurityImpersonationRegistryResult> InvokeAsync(GetEmailSecurityImpersonationRegistryArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEmailSecurityImpersonationRegistryResult>("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", args ?? new GetEmailSecurityImpersonationRegistryArgs(), options.WithDefaults());
@@ -29,6 +46,23 @@ namespace Pulumi.Cloudflare
         /// - `Cloud Email Security: Write`
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleEmailSecurityImpersonationRegistry = Cloudflare.GetEmailSecurityImpersonationRegistry.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ImpersonationRegistryId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEmailSecurityImpersonationRegistryResult> Invoke(GetEmailSecurityImpersonationRegistryInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailSecurityImpersonationRegistryResult>("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", args ?? new GetEmailSecurityImpersonationRegistryInvokeArgs(), options.WithDefaults());
@@ -40,6 +74,23 @@ namespace Pulumi.Cloudflare
         /// - `Cloud Email Security: Write`
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleEmailSecurityImpersonationRegistry = Cloudflare.GetEmailSecurityImpersonationRegistry.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ImpersonationRegistryId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEmailSecurityImpersonationRegistryResult> Invoke(GetEmailSecurityImpersonationRegistryInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailSecurityImpersonationRegistryResult>("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", args ?? new GetEmailSecurityImpersonationRegistryInvokeArgs(), options.WithDefaults());
@@ -100,11 +151,26 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         public readonly string? AccountId;
+        /// <summary>
+        /// Optional note describing the entry.
+        /// </summary>
         public readonly string Comments;
         public readonly string CreatedAt;
+        /// <summary>
+        /// Identifier of the directory the entry was synced from, when directory-synced.
+        /// </summary>
         public readonly int DirectoryId;
+        /// <summary>
+        /// Identifier of the directory node the entry was synced from, when directory-synced.
+        /// </summary>
         public readonly int DirectoryNodeId;
+        /// <summary>
+        /// Email address (or pattern) of the protected identity.
+        /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// Deprecated. External identifier of the directory node.
+        /// </summary>
         public readonly string ExternalDirectoryNodeId;
         public readonly Outputs.GetEmailSecurityImpersonationRegistryFilterResult? Filter;
         /// <summary>
@@ -115,14 +181,21 @@ namespace Pulumi.Cloudflare
         /// Impersonation registry entry identifier
         /// </summary>
         public readonly string? ImpersonationRegistryId;
+        /// <summary>
+        /// Whether `Email` is a regular expression instead of a literal address.
+        /// </summary>
         public readonly bool IsEmailRegex;
         /// <summary>
         /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
         /// </summary>
         public readonly string LastModified;
         public readonly string ModifiedAt;
+        /// <summary>
+        /// Display name of the protected identity.
+        /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Source the entry was created from.
         /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         /// </summary>
         public readonly string Provenance;

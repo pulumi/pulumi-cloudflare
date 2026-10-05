@@ -55,28 +55,28 @@ func LookupWorkersKvNamespaces(ctx *pulumi.Context, args *LookupWorkersKvNamespa
 
 // A collection of arguments for invoking getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId *string `pulumi:"accountId"`
-	// Direction to order namespaces.
+	// Sort namespaces in ascending (`asc`) or descending (`desc`) order.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Field to order results by.
+	// Namespace field to sort by (`id` or `title`).
 	// Available values: "id", "title".
 	Order *string `pulumi:"order"`
 }
 
 // A collection of values returned by getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesResult struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId *string `pulumi:"accountId"`
-	// Direction to order namespaces.
+	// Sort namespaces in ascending (`asc`) or descending (`desc`) order.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Field to order results by.
+	// Namespace field to sort by (`id` or `title`).
 	// Available values: "id", "title".
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
@@ -90,14 +90,14 @@ func LookupWorkersKvNamespacesOutput(ctx *pulumi.Context, args LookupWorkersKvNa
 
 // A collection of arguments for invoking getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesOutputArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Direction to order namespaces.
+	// Sort namespaces in ascending (`asc`) or descending (`desc`) order.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Field to order results by.
+	// Namespace field to sort by (`id` or `title`).
 	// Available values: "id", "title".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 }
@@ -121,12 +121,12 @@ func (o LookupWorkersKvNamespacesResultOutput) ToLookupWorkersKvNamespacesResult
 	return o
 }
 
-// Identifier.
+// ID of the Cloudflare account that owns the Workers KV namespaces.
 func (o LookupWorkersKvNamespacesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Direction to order namespaces.
+// Sort namespaces in ascending (`asc`) or descending (`desc`) order.
 // Available values: "asc", "desc".
 func (o LookupWorkersKvNamespacesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
@@ -137,7 +137,7 @@ func (o LookupWorkersKvNamespacesResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Field to order results by.
+// Namespace field to sort by (`id` or `title`).
 // Available values: "id", "title".
 func (o LookupWorkersKvNamespacesResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) *string { return v.Order }).(pulumi.StringPtrOutput)

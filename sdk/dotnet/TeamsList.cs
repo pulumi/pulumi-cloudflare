@@ -49,6 +49,9 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/teamsList:TeamsList")]
     public partial class TeamsList : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
@@ -139,6 +142,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -181,6 +187,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsListState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 

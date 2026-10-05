@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -17,10 +19,12 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewayProxyEndpoint(args: GetZeroTrustGatewayProxyEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayProxyEndpointResult> {
+export function getZeroTrustGatewayProxyEndpoint(args?: GetZeroTrustGatewayProxyEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayProxyEndpointResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "proxyEndpointId": args.proxyEndpointId,
     }, opts);
 }
@@ -30,7 +34,8 @@ export function getZeroTrustGatewayProxyEndpoint(args: GetZeroTrustGatewayProxyE
  */
 export interface GetZeroTrustGatewayProxyEndpointArgs {
     accountId?: string;
-    proxyEndpointId: string;
+    filter?: inputs.GetZeroTrustGatewayProxyEndpointFilter;
+    proxyEndpointId?: string;
 }
 
 /**
@@ -39,27 +44,12 @@ export interface GetZeroTrustGatewayProxyEndpointArgs {
 export interface GetZeroTrustGatewayProxyEndpointResult {
     readonly accountId?: string;
     readonly createdAt: string;
-    /**
-     * The ID of this resource.
-     */
+    readonly filter?: outputs.GetZeroTrustGatewayProxyEndpointFilter;
     readonly id: string;
-    /**
-     * Specify the list of CIDRs to restrict ingress connections.
-     */
     readonly ips: string[];
-    /**
-     * The proxy endpoint kind
-     * Available values: "ip", "identity".
-     */
     readonly kind: string;
-    /**
-     * Specify the name of the proxy endpoint.
-     */
     readonly name: string;
-    readonly proxyEndpointId: string;
-    /**
-     * Specify the subdomain to use as the destination in the proxy client.
-     */
+    readonly proxyEndpointId?: string;
     readonly subdomain: string;
     readonly updatedAt: string;
 }
@@ -76,10 +66,12 @@ export interface GetZeroTrustGatewayProxyEndpointResult {
  * });
  * ```
  */
-export function getZeroTrustGatewayProxyEndpointOutput(args: GetZeroTrustGatewayProxyEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> {
+export function getZeroTrustGatewayProxyEndpointOutput(args?: GetZeroTrustGatewayProxyEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "proxyEndpointId": args.proxyEndpointId,
     }, opts);
 }
@@ -89,5 +81,6 @@ export function getZeroTrustGatewayProxyEndpointOutput(args: GetZeroTrustGateway
  */
 export interface GetZeroTrustGatewayProxyEndpointOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
-    proxyEndpointId: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetZeroTrustGatewayProxyEndpointFilterArgs | undefined>;
+    proxyEndpointId?: pulumi.Input<string | undefined>;
 }

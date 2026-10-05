@@ -81,6 +81,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayLoggingArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
@@ -92,6 +95,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayLoggingInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -105,9 +111,12 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayLoggingResult
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// The ID of this resource.
+        /// Specify the Cloudflare account identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

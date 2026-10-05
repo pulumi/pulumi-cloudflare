@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,33 +16,89 @@ public final class GetZeroTrustGatewayPoliciesPlainArgs extends com.pulumi.resou
 
     public static final GetZeroTrustGatewayPoliciesPlainArgs Empty = new GetZeroTrustGatewayPoliciesPlainArgs();
 
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable String accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Max items to fetch, default: 1000
+     * Sort direction. When `orderBy` is omitted, this controls the direction
+     * of the existing precedence ordering. Shared rules remain first in either
+     * direction. Accepted values are `asc` and `desc`.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
+    @Import(name="direction")
+    private @Nullable String direction;
+
+    /**
+     * @return Sort direction. When `orderBy` is omitted, this controls the direction
+     * of the existing precedence ordering. Shared rules remain first in either
+     * direction. Accepted values are `asc` and `desc`.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
+     * Filter the returned rules by one or more `field:value` pairs. Repeat the
+     * parameter to combine filters with logical AND.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable List<String> filters;
+
+    /**
+     * @return Filter the returned rules by one or more `field:value` pairs. Repeat the
+     * parameter to combine filters with logical AND.
+     * 
+     */
+    public Optional<List<String>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
     @Import(name="maxItems")
     private @Nullable Integer maxItems;
 
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+
+    @Import(name="orderBy")
+    private @Nullable String orderBy;
+
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
+    @Import(name="search")
+    private @Nullable String search;
+
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
     }
 
     private GetZeroTrustGatewayPoliciesPlainArgs() {}
 
     private GetZeroTrustGatewayPoliciesPlainArgs(GetZeroTrustGatewayPoliciesPlainArgs $) {
         this.accountId = $.accountId;
+        this.direction = $.direction;
+        this.filters = $.filters;
         this.maxItems = $.maxItems;
+        this.orderBy = $.orderBy;
+        this.search = $.search;
     }
 
     public static Builder builder() {
@@ -62,19 +119,66 @@ public final class GetZeroTrustGatewayPoliciesPlainArgs extends com.pulumi.resou
             $ = new GetZeroTrustGatewayPoliciesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param maxItems Max items to fetch, default: 1000
+         * @param direction Sort direction. When `orderBy` is omitted, this controls the direction
+         * of the existing precedence ordering. Shared rules remain first in either
+         * direction. Accepted values are `asc` and `desc`.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
          * 
          */
+        public Builder direction(@Nullable String direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param filters Filter the returned rules by one or more `field:value` pairs. Repeat the
+         * parameter to combine filters with logical AND.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable List<String> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters Filter the returned rules by one or more `field:value` pairs. Repeat the
+         * parameter to combine filters with logical AND.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(String... filters) {
+            return filters(List.of(filters));
+        }
+
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
+            return this;
+        }
+
+        public Builder orderBy(@Nullable String orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        public Builder search(@Nullable String search) {
+            $.search = search;
             return this;
         }
 

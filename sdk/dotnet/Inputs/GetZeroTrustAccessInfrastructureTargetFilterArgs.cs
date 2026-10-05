@@ -122,6 +122,20 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Filter by tag key:value pairs. Multiple `Tag` params are AND'd.
+        /// Format: `tag=key:value` (e.g., `tag=environment:production`).
+        /// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("targetIds")]
         private InputList<string>? _targetIds;
 

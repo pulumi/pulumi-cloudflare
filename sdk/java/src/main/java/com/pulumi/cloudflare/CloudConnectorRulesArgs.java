@@ -10,19 +10,17 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class CloudConnectorRulesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CloudConnectorRulesArgs Empty = new CloudConnectorRulesArgs();
 
-    @Import(name="rules")
-    private @Nullable Output<List<CloudConnectorRulesRuleArgs>> rules;
+    @Import(name="rules", required=true)
+    private Output<List<CloudConnectorRulesRuleArgs>> rules;
 
-    public Optional<Output<List<CloudConnectorRulesRuleArgs>>> rules() {
-        return Optional.ofNullable(this.rules);
+    public Output<List<CloudConnectorRulesRuleArgs>> rules() {
+        return this.rules;
     }
 
     /**
@@ -65,7 +63,7 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
             $ = new CloudConnectorRulesArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder rules(@Nullable Output<List<CloudConnectorRulesRuleArgs>> rules) {
+        public Builder rules(Output<List<CloudConnectorRulesRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
@@ -100,6 +98,9 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
         }
 
         public CloudConnectorRulesArgs build() {
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("CloudConnectorRulesArgs", "rules");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("CloudConnectorRulesArgs", "zoneId");
             }

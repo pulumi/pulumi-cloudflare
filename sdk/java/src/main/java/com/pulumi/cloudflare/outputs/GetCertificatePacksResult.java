@@ -44,7 +44,7 @@ public final class GetCertificatePacksResult {
      */
     private List<String> hosts;
     /**
-     * @return Identifier.
+     * @return The unique identifier for a certificate_pack.
      * 
      */
     private String id;
@@ -126,7 +126,7 @@ public final class GetCertificatePacksResult {
         return this.hosts;
     }
     /**
-     * @return Identifier.
+     * @return The unique identifier for a certificate_pack.
      * 
      */
     public String id() {

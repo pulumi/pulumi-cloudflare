@@ -20,14 +20,20 @@ __all__ = ['SecretsStoreArgs', 'SecretsStore']
 class SecretsStoreArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 force: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SecretsStore resource.
 
         :param pulumi.Input[_builtins.str] name: The name of the store.
+        :param pulumi.Input[_builtins.bool] force: When true, cascade-deletes all secrets in the store before deleting the store itself.
+               Required when deleting a non-empty store. Without this parameter, attempting to
+               delete a non-empty store returns 409.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -50,18 +56,36 @@ class SecretsStoreArgs:
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, cascade-deletes all secrets in the store before deleting the store itself.
+        Required when deleting a non-empty store. Without this parameter, attempting to
+        delete a non-empty store returns 409.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force", value)
+
 
 @pulumi.input_type
 class _SecretsStoreState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  created: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  modified: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretsStore resources.
 
         :param pulumi.Input[_builtins.str] created: When the secret was created.
+        :param pulumi.Input[_builtins.bool] force: When true, cascade-deletes all secrets in the store before deleting the store itself.
+               Required when deleting a non-empty store. Without this parameter, attempting to
+               delete a non-empty store returns 409.
         :param pulumi.Input[_builtins.str] modified: When the secret was modified.
         :param pulumi.Input[_builtins.str] name: The name of the store.
         """
@@ -69,6 +93,8 @@ class _SecretsStoreState:
             pulumi.set(__self__, "account_id", account_id)
         if created is not None:
             pulumi.set(__self__, "created", created)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
         if name is not None:
@@ -94,6 +120,20 @@ class _SecretsStoreState:
     @created.setter
     def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, cascade-deletes all secrets in the store before deleting the store itself.
+        Required when deleting a non-empty store. Without this parameter, attempting to
+        delete a non-empty store returns 409.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter
@@ -127,6 +167,7 @@ class SecretsStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -155,6 +196,9 @@ class SecretsStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] force: When true, cascade-deletes all secrets in the store before deleting the store itself.
+               Required when deleting a non-empty store. Without this parameter, attempting to
+               delete a non-empty store returns 409.
         :param pulumi.Input[_builtins.str] name: The name of the store.
         """
         ...
@@ -203,6 +247,7 @@ class SecretsStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -216,6 +261,7 @@ class SecretsStore(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["force"] = force
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -233,6 +279,7 @@ class SecretsStore(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecretsStore':
         """
@@ -243,6 +290,9 @@ class SecretsStore(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created: When the secret was created.
+        :param pulumi.Input[_builtins.bool] force: When true, cascade-deletes all secrets in the store before deleting the store itself.
+               Required when deleting a non-empty store. Without this parameter, attempting to
+               delete a non-empty store returns 409.
         :param pulumi.Input[_builtins.str] modified: When the secret was modified.
         :param pulumi.Input[_builtins.str] name: The name of the store.
         """
@@ -252,6 +302,7 @@ class SecretsStore(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created"] = created
+        __props__.__dict__["force"] = force
         __props__.__dict__["modified"] = modified
         __props__.__dict__["name"] = name
         return SecretsStore(resource_name, opts=opts, __props__=__props__)
@@ -268,6 +319,16 @@ class SecretsStore(pulumi.CustomResource):
         When the secret was created.
         """
         return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[_builtins.bool]:
+        """
+        When true, cascade-deletes all secrets in the store before deleting the store itself.
+        Required when deleting a non-empty store. Without this parameter, attempting to
+        delete a non-empty store returns 409.
+        """
+        return pulumi.get(self, "force")
 
     @_builtins.property
     @pulumi.getter

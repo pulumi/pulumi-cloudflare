@@ -33,7 +33,7 @@ import (
 //			_, err := cloudflare.GetPagesDomain(ctx, &cloudflare.LookupPagesDomainArgs{
 //				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				ProjectName: "this-is-my-project-01",
-//				DomainName:  "this-is-my-domain-01.com",
+//				DomainName:  "example.com",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,9 +57,9 @@ func LookupPagesDomain(ctx *pulumi.Context, args *LookupPagesDomainArgs, opts ..
 type LookupPagesDomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	DomainName string `pulumi:"domainName"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName string `pulumi:"projectName"`
 }
 
@@ -71,13 +71,13 @@ type LookupPagesDomainResult struct {
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	CreatedOn            string `pulumi:"createdOn"`
 	DomainId             string `pulumi:"domainId"`
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	DomainName string `pulumi:"domainName"`
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	Id string `pulumi:"id"`
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	Name string `pulumi:"name"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName string `pulumi:"projectName"`
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           string                         `pulumi:"status"`
@@ -95,9 +95,9 @@ func LookupPagesDomainOutput(ctx *pulumi.Context, args LookupPagesDomainOutputAr
 type LookupPagesDomainOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 }
 
@@ -138,22 +138,22 @@ func (o LookupPagesDomainResultOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.DomainId }).(pulumi.StringOutput)
 }
 
-// The domain name.
+// Fully qualified domain name for the Pages project, such as `example.com`.
 func (o LookupPagesDomainResultOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// The domain name.
+// Fully qualified domain name for the Pages project, such as `example.com`.
 func (o LookupPagesDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The domain name.
+// Fully qualified domain name for the Pages project, such as `example.com`.
 func (o LookupPagesDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Name of the project.
+// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 func (o LookupPagesDomainResultOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainResult) string { return v.ProjectName }).(pulumi.StringOutput)
 }

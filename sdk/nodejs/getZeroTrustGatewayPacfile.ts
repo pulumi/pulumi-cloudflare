@@ -34,6 +34,9 @@ export function getZeroTrustGatewayPacfile(args: GetZeroTrustGatewayPacfileArgs,
  * A collection of arguments for invoking getZeroTrustGatewayPacfile.
  */
 export interface GetZeroTrustGatewayPacfileArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: string;
     pacfileId: string;
 }
@@ -42,6 +45,9 @@ export interface GetZeroTrustGatewayPacfileArgs {
  * A collection of values returned by getZeroTrustGatewayPacfile.
  */
 export interface GetZeroTrustGatewayPacfileResult {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     readonly accountId?: string;
     /**
      * Actual contents of the PAC file
@@ -101,6 +107,9 @@ export function getZeroTrustGatewayPacfileOutput(args: GetZeroTrustGatewayPacfil
  * A collection of arguments for invoking getZeroTrustGatewayPacfile.
  */
 export interface GetZeroTrustGatewayPacfileOutputArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     pacfileId: pulumi.Input<string>;
 }

@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
 
     public sealed class CloudConnectorRulesArgs : global::Pulumi.ResourceArgs
     {
-        [Input("rules")]
+        [Input("rules", required: true)]
         private InputList<Inputs.CloudConnectorRulesRuleArgs>? _rules;
         public InputList<Inputs.CloudConnectorRulesRuleArgs> Rules
         {

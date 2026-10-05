@@ -37,7 +37,7 @@ export function getWorkersKv(args: GetWorkersKvArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetWorkersKvArgs {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetWorkersKvArgs {
      */
     keyName: string;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     namespaceId: string;
 }
@@ -55,7 +55,7 @@ export interface GetWorkersKvArgs {
  */
 export interface GetWorkersKvResult {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     readonly accountId: string;
     /**
@@ -67,7 +67,7 @@ export interface GetWorkersKvResult {
      */
     readonly keyName: string;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     readonly namespaceId: string;
     readonly value: string;
@@ -105,7 +105,7 @@ export function getWorkersKvOutput(args: GetWorkersKvOutputArgs, opts?: pulumi.I
  */
 export interface GetWorkersKvOutputArgs {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -113,7 +113,7 @@ export interface GetWorkersKvOutputArgs {
      */
     keyName: pulumi.Input<string>;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     namespaceId: pulumi.Input<string>;
 }

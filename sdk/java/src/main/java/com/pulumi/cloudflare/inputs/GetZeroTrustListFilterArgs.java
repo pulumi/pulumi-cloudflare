@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,128 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustListFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetZeroTrustListFilterArgs Empty = new GetZeroTrustListFilterArgs();
+
+    /**
+     * Sort direction. Applies to the field named in `orderBy`; when `orderBy`
+     * is omitted it applies to the default `createdAt` ordering. When
+     * `direction` is omitted the default is field-specific: explicitly choosing
+     * `createdAt` or `updatedAt` defaults to descending (newest first); `name`
+     * and `itemCount` default to ascending; and the default `createdAt`
+     * ordering used when `orderBy` is omitted is ascending (for backwards
+     * compatibility).
+     *   * `asc` — ascending.
+     *   * `desc` — descending.
+     *     Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    /**
+     * @return Sort direction. Applies to the field named in `orderBy`; when `orderBy`
+     * is omitted it applies to the default `createdAt` ordering. When
+     * `direction` is omitted the default is field-specific: explicitly choosing
+     * `createdAt` or `updatedAt` defaults to descending (newest first); `name`
+     * and `itemCount` default to ascending; and the default `createdAt`
+     * ordering used when `orderBy` is omitted is ascending (for backwards
+     * compatibility).
+     *   * `asc` — ascending.
+     *   * `desc` — descending.
+     *     Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
+     * Filter the returned lists by one or more `field:value` pairs.
+     * Repeat the parameter to apply multiple filters; they are combined with
+     * logical AND (a list must satisfy every filter to be returned).
+     * 
+     * Supported fields and their matching behaviour:
+     *   * `name` — case-insensitive substring match on the list name.
+     *   * `id` — substring match on the list ID (UUID), with or without dashes.
+     *   * `type` — exact match on the list type. Supersedes the legacy `type` query
+     *     parameter when both are supplied. Must be one of the valid type values.
+     *   * `itemCount` — exact integer match on the number of items in the list.
+     * 
+     * Each entry must match one of the per-field patterns below: the field must be
+     * one of `name`, `id`, `type`, or `itemCount`; `name`/`id` accept any value,
+     * `type` is restricted to the valid list type values, and `itemCount` must be
+     * a non-negative integer.
+     * 
+     */
+    @Import(name="filters")
+    private @Nullable Output<List<String>> filters;
+
+    /**
+     * @return Filter the returned lists by one or more `field:value` pairs.
+     * Repeat the parameter to apply multiple filters; they are combined with
+     * logical AND (a list must satisfy every filter to be returned).
+     * 
+     * Supported fields and their matching behaviour:
+     *   * `name` — case-insensitive substring match on the list name.
+     *   * `id` — substring match on the list ID (UUID), with or without dashes.
+     *   * `type` — exact match on the list type. Supersedes the legacy `type` query
+     *     parameter when both are supplied. Must be one of the valid type values.
+     *   * `itemCount` — exact integer match on the number of items in the list.
+     * 
+     * Each entry must match one of the per-field patterns below: the field must be
+     * one of `name`, `id`, `type`, or `itemCount`; `name`/`id` accept any value,
+     * `type` is restricted to the valid list type values, and `itemCount` must be
+     * a non-negative integer.
+     * 
+     */
+    public Optional<Output<List<String>>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
+    /**
+     * Field to sort the returned lists by. When omitted, results are ordered by
+     * `createdAt` in ascending order (i.e. creation order) for backwards
+     * compatibility. Supported values:
+     *   * `name` — sort alphabetically by list name.
+     *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+     *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+     *   * `itemCount` — sort by number of items in the list.
+     *     Available values: &#34;name&#34;, &#34;createdAt&#34;, &#34;updatedAt&#34;, &#34;itemCount&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable Output<String> orderBy;
+
+    /**
+     * @return Field to sort the returned lists by. When omitted, results are ordered by
+     * `createdAt` in ascending order (i.e. creation order) for backwards
+     * compatibility. Supported values:
+     *   * `name` — sort alphabetically by list name.
+     *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+     *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+     *   * `itemCount` — sort by number of items in the list.
+     *     Available values: &#34;name&#34;, &#34;createdAt&#34;, &#34;updatedAt&#34;, &#34;itemCount&#34;.
+     * 
+     */
+    public Optional<Output<String>> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
+    /**
+     * Case-insensitive substring match on the list name or description. When
+     * combined with `filter`, both must match (logical AND).
+     * 
+     */
+    @Import(name="search")
+    private @Nullable Output<String> search;
+
+    /**
+     * @return Case-insensitive substring match on the list name or description. When
+     * combined with `filter`, both must match (logical AND).
+     * 
+     */
+    public Optional<Output<String>> search() {
+        return Optional.ofNullable(this.search);
+    }
 
     /**
      * Specify the list type.
@@ -35,6 +158,10 @@ public final class GetZeroTrustListFilterArgs extends com.pulumi.resources.Resou
     private GetZeroTrustListFilterArgs() {}
 
     private GetZeroTrustListFilterArgs(GetZeroTrustListFilterArgs $) {
+        this.direction = $.direction;
+        this.filters = $.filters;
+        this.orderBy = $.orderBy;
+        this.search = $.search;
         this.type = $.type;
     }
 
@@ -54,6 +181,176 @@ public final class GetZeroTrustListFilterArgs extends com.pulumi.resources.Resou
 
         public Builder(GetZeroTrustListFilterArgs defaults) {
             $ = new GetZeroTrustListFilterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param direction Sort direction. Applies to the field named in `orderBy`; when `orderBy`
+         * is omitted it applies to the default `createdAt` ordering. When
+         * `direction` is omitted the default is field-specific: explicitly choosing
+         * `createdAt` or `updatedAt` defaults to descending (newest first); `name`
+         * and `itemCount` default to ascending; and the default `createdAt`
+         * ordering used when `orderBy` is omitted is ascending (for backwards
+         * compatibility).
+         *   * `asc` — ascending.
+         *   * `desc` — descending.
+         *     Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction Sort direction. Applies to the field named in `orderBy`; when `orderBy`
+         * is omitted it applies to the default `createdAt` ordering. When
+         * `direction` is omitted the default is field-specific: explicitly choosing
+         * `createdAt` or `updatedAt` defaults to descending (newest first); `name`
+         * and `itemCount` default to ascending; and the default `createdAt`
+         * ordering used when `orderBy` is omitted is ascending (for backwards
+         * compatibility).
+         *   * `asc` — ascending.
+         *   * `desc` — descending.
+         *     Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
+        }
+
+        /**
+         * @param filters Filter the returned lists by one or more `field:value` pairs.
+         * Repeat the parameter to apply multiple filters; they are combined with
+         * logical AND (a list must satisfy every filter to be returned).
+         * 
+         * Supported fields and their matching behaviour:
+         *   * `name` — case-insensitive substring match on the list name.
+         *   * `id` — substring match on the list ID (UUID), with or without dashes.
+         *   * `type` — exact match on the list type. Supersedes the legacy `type` query
+         *     parameter when both are supplied. Must be one of the valid type values.
+         *   * `itemCount` — exact integer match on the number of items in the list.
+         * 
+         * Each entry must match one of the per-field patterns below: the field must be
+         * one of `name`, `id`, `type`, or `itemCount`; `name`/`id` accept any value,
+         * `type` is restricted to the valid list type values, and `itemCount` must be
+         * a non-negative integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(@Nullable Output<List<String>> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        /**
+         * @param filters Filter the returned lists by one or more `field:value` pairs.
+         * Repeat the parameter to apply multiple filters; they are combined with
+         * logical AND (a list must satisfy every filter to be returned).
+         * 
+         * Supported fields and their matching behaviour:
+         *   * `name` — case-insensitive substring match on the list name.
+         *   * `id` — substring match on the list ID (UUID), with or without dashes.
+         *   * `type` — exact match on the list type. Supersedes the legacy `type` query
+         *     parameter when both are supplied. Must be one of the valid type values.
+         *   * `itemCount` — exact integer match on the number of items in the list.
+         * 
+         * Each entry must match one of the per-field patterns below: the field must be
+         * one of `name`, `id`, `type`, or `itemCount`; `name`/`id` accept any value,
+         * `type` is restricted to the valid list type values, and `itemCount` must be
+         * a non-negative integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(List<String> filters) {
+            return filters(Output.of(filters));
+        }
+
+        /**
+         * @param filters Filter the returned lists by one or more `field:value` pairs.
+         * Repeat the parameter to apply multiple filters; they are combined with
+         * logical AND (a list must satisfy every filter to be returned).
+         * 
+         * Supported fields and their matching behaviour:
+         *   * `name` — case-insensitive substring match on the list name.
+         *   * `id` — substring match on the list ID (UUID), with or without dashes.
+         *   * `type` — exact match on the list type. Supersedes the legacy `type` query
+         *     parameter when both are supplied. Must be one of the valid type values.
+         *   * `itemCount` — exact integer match on the number of items in the list.
+         * 
+         * Each entry must match one of the per-field patterns below: the field must be
+         * one of `name`, `id`, `type`, or `itemCount`; `name`/`id` accept any value,
+         * `type` is restricted to the valid list type values, and `itemCount` must be
+         * a non-negative integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filters(String... filters) {
+            return filters(List.of(filters));
+        }
+
+        /**
+         * @param orderBy Field to sort the returned lists by. When omitted, results are ordered by
+         * `createdAt` in ascending order (i.e. creation order) for backwards
+         * compatibility. Supported values:
+         *   * `name` — sort alphabetically by list name.
+         *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+         *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+         *   * `itemCount` — sort by number of items in the list.
+         *     Available values: &#34;name&#34;, &#34;createdAt&#34;, &#34;updatedAt&#34;, &#34;itemCount&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable Output<String> orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * @param orderBy Field to sort the returned lists by. When omitted, results are ordered by
+         * `createdAt` in ascending order (i.e. creation order) for backwards
+         * compatibility. Supported values:
+         *   * `name` — sort alphabetically by list name.
+         *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+         *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+         *   * `itemCount` — sort by number of items in the list.
+         *     Available values: &#34;name&#34;, &#34;createdAt&#34;, &#34;updatedAt&#34;, &#34;itemCount&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(String orderBy) {
+            return orderBy(Output.of(orderBy));
+        }
+
+        /**
+         * @param search Case-insensitive substring match on the list name or description. When
+         * combined with `filter`, both must match (logical AND).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder search(@Nullable Output<String> search) {
+            $.search = search;
+            return this;
+        }
+
+        /**
+         * @param search Case-insensitive substring match on the list name or description. When
+         * combined with `filter`, both must match (logical AND).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder search(String search) {
+            return search(Output.of(search));
         }
 
         /**

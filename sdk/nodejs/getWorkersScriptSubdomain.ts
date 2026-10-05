@@ -40,7 +40,7 @@ export interface GetWorkersScriptSubdomainArgs {
      */
     accountId: string;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName: string;
 }
@@ -62,7 +62,7 @@ export interface GetWorkersScriptSubdomainResult {
      */
     readonly previewsEnabled: boolean;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     readonly scriptName: string;
 }
@@ -102,7 +102,7 @@ export interface GetWorkersScriptSubdomainOutputArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName: pulumi.Input<string>;
 }

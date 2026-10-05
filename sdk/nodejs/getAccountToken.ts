@@ -59,6 +59,12 @@ export interface GetAccountTokenResult {
     readonly accountId?: string;
     readonly condition: outputs.GetAccountTokenCondition;
     /**
+     * The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     */
+    readonly creatorEmailAtCreation: string;
+    /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
     readonly expiresOn: string;
@@ -91,6 +97,18 @@ export interface GetAccountTokenResult {
      * List of access policies assigned to the token.
      */
     readonly policies: outputs.GetAccountTokenPolicy[];
+    /**
+     * The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     */
+    readonly provisionerId: string;
+    /**
+     * The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     */
+    readonly provisionerType: string;
     /**
      * Status of the token.
      * Available values: "active", "disabled", "expired".

@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkerArgs;
 import com.pulumi.cloudflare.inputs.WorkerState;
 import com.pulumi.cloudflare.outputs.WorkerObservability;
+import com.pulumi.cloudflare.outputs.WorkerPreviewsBaseConfig;
 import com.pulumi.cloudflare.outputs.WorkerReferences;
 import com.pulumi.cloudflare.outputs.WorkerSubdomain;
 import com.pulumi.cloudflare.outputs.WorkerTailConsumer;
@@ -17,6 +18,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -38,8 +40,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.Worker;
  * import com.pulumi.cloudflare.WorkerArgs;
  * import com.pulumi.cloudflare.inputs.WorkerObservabilityArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerObservabilityIssuesArgs;
  * import com.pulumi.cloudflare.inputs.WorkerObservabilityLogsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerObservabilityTracesArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigCacheOptionsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigEnvArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigLimitsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigObservabilityArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigObservabilityIssuesArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigObservabilityLogsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigObservabilityTracesArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigPlacementArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigTailConsumerArgs;
  * import com.pulumi.cloudflare.inputs.WorkerSubdomainArgs;
  * import com.pulumi.cloudflare.inputs.WorkerTailConsumerArgs;
  * import java.util.ArrayList;
@@ -62,6 +75,9 @@ import javax.annotation.Nullable;
  *             .observability(WorkerObservabilityArgs.builder()
  *                 .enabled(true)
  *                 .headSamplingRate(1.0)
+ *                 .issues(WorkerObservabilityIssuesArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
  *                 .logs(WorkerObservabilityLogsArgs.builder()
  *                     .destinations("string")
  *                     .enabled(true)
@@ -75,6 +91,49 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .headSamplingRate(1.0)
  *                     .persist(true)
+ *                     .propagationPolicy("authenticated")
+ *                     .build())
+ *                 .build())
+ *             .previewsBaseConfig(WorkerPreviewsBaseConfigArgs.builder()
+ *                 .cacheOptions(WorkerPreviewsBaseConfigCacheOptionsArgs.builder()
+ *                     .enabled(true)
+ *                     .crossVersionCache(true)
+ *                     .build())
+ *                 .env(Map.of("MY_ENV_VAR", WorkerPreviewsBaseConfigEnvArgs.builder()
+ *                     .type("plain_text")
+ *                     .build()))
+ *                 .limits(WorkerPreviewsBaseConfigLimitsArgs.builder()
+ *                     .cpuMs(50)
+ *                     .subrequests(1000)
+ *                     .build())
+ *                 .logpush(true)
+ *                 .observability(WorkerPreviewsBaseConfigObservabilityArgs.builder()
+ *                     .enabled(true)
+ *                     .headSamplingRate(1.0)
+ *                     .issues(WorkerPreviewsBaseConfigObservabilityIssuesArgs.builder()
+ *                         .enabled(true)
+ *                         .build())
+ *                     .logs(WorkerPreviewsBaseConfigObservabilityLogsArgs.builder()
+ *                         .destinations("string")
+ *                         .enabled(true)
+ *                         .headSamplingRate(1.0)
+ *                         .invocationLogs(true)
+ *                         .persist(true)
+ *                         .build())
+ *                     .redactQueryString(true)
+ *                     .traces(WorkerPreviewsBaseConfigObservabilityTracesArgs.builder()
+ *                         .destinations("string")
+ *                         .enabled(true)
+ *                         .headSamplingRate(1.0)
+ *                         .persist(true)
+ *                         .propagationPolicy("authenticated")
+ *                         .build())
+ *                     .build())
+ *                 .placement(WorkerPreviewsBaseConfigPlacementArgs.builder()
+ *                     .mode("smart")
+ *                     .build())
+ *                 .tailConsumers(WorkerPreviewsBaseConfigTailConsumerArgs.builder()
+ *                     .name("my-tail-consumer")
  *                     .build())
  *                 .build())
  *             .subdomain(WorkerSubdomainArgs.builder()
@@ -146,6 +205,20 @@ public class Worker extends com.pulumi.resources.CustomResource {
         return this.deployedOn;
     }
     /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     * 
+     */
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> force;
+
+    /**
+     * @return If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     * 
+     */
+    public Output<Optional<Boolean>> force() {
+        return Codegen.optional(this.force);
+    }
+    /**
      * Whether logpush is enabled for the Worker.
      * 
      */
@@ -186,6 +259,20 @@ public class Worker extends com.pulumi.resources.CustomResource {
      */
     public Output<WorkerObservability> observability() {
         return this.observability;
+    }
+    /**
+     * Template configuration used when creating new Previews for this Worker.
+     * 
+     */
+    @Export(name="previewsBaseConfig", refs={WorkerPreviewsBaseConfig.class}, tree="[0]")
+    private Output<WorkerPreviewsBaseConfig> previewsBaseConfig;
+
+    /**
+     * @return Template configuration used when creating new Previews for this Worker.
+     * 
+     */
+    public Output<WorkerPreviewsBaseConfig> previewsBaseConfig() {
+        return this.previewsBaseConfig;
     }
     /**
      * Other resources that reference the Worker and depend on it existing.

@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '&lt;account_id&gt;'
+    /// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '&lt;account_id&gt;/&lt;subscription_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accountSubscription:AccountSubscription")]

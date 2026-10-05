@@ -37,14 +37,14 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      * 
      */
     @Import(name="scriptName", required=true)
     private Output<String> scriptName;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public Output<String> scriptName() {
@@ -108,7 +108,7 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param scriptName Name of the script, used in URLs and route configuration.
+         * @param scriptName Name of the script.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param scriptName Name of the script, used in URLs and route configuration.
+         * @param scriptName Name of the script.
          * 
          * @return builder
          * 

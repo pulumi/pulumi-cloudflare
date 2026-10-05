@@ -96,7 +96,7 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * Error Page Types
+     * Custom page type.
      * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
      * 
      */
@@ -104,7 +104,7 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
     private Output<String> identifier;
 
     /**
-     * @return Error Page Types
+     * @return Custom page type.
      * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
      * 
      */

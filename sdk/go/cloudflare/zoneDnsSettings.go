@@ -42,8 +42,7 @@ import (
 //				},
 //				MultiProvider: pulumi.Bool(false),
 //				Nameservers: &cloudflare.ZoneDnsSettingsNameserversArgs{
-//					NsSet: pulumi.Int(1),
-//					Type:  pulumi.String("cloudflare.standard"),
+//					Type: pulumi.String("cloudflare.standard"),
 //				},
 //				NsTtl:              pulumi.Float64(86400),
 //				SecondaryOverrides: pulumi.Bool(false),
@@ -75,13 +74,15 @@ type ZoneDnsSettings struct {
 
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames pulumi.BoolPtrOutput `pulumi:"flattenAllCnames"`
-	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
+	//
+	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
 	FoundationDns pulumi.BoolPtrOutput `pulumi:"foundationDns"`
 	// Settings for this internal zone.
 	InternalDns ZoneDnsSettingsInternalDnsOutput `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider pulumi.BoolPtrOutput `pulumi:"multiProvider"`
-	// Settings determining the nameservers through which the zone should be available.
+	// Controls the nameservers through which the zone is available.
 	Nameservers ZoneDnsSettingsNameserversOutput `pulumi:"nameservers"`
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTtl pulumi.Float64PtrOutput `pulumi:"nsTtl"`
@@ -131,13 +132,15 @@ func GetZoneDnsSettings(ctx *pulumi.Context,
 type zoneDnsSettingsState struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames *bool `pulumi:"flattenAllCnames"`
-	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
+	//
+	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
 	FoundationDns *bool `pulumi:"foundationDns"`
 	// Settings for this internal zone.
 	InternalDns *ZoneDnsSettingsInternalDns `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider *bool `pulumi:"multiProvider"`
-	// Settings determining the nameservers through which the zone should be available.
+	// Controls the nameservers through which the zone is available.
 	Nameservers *ZoneDnsSettingsNameservers `pulumi:"nameservers"`
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTtl *float64 `pulumi:"nsTtl"`
@@ -155,13 +158,15 @@ type zoneDnsSettingsState struct {
 type ZoneDnsSettingsState struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames pulumi.BoolPtrInput
-	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
+	//
+	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
 	FoundationDns pulumi.BoolPtrInput
 	// Settings for this internal zone.
 	InternalDns ZoneDnsSettingsInternalDnsPtrInput
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider pulumi.BoolPtrInput
-	// Settings determining the nameservers through which the zone should be available.
+	// Controls the nameservers through which the zone is available.
 	Nameservers ZoneDnsSettingsNameserversPtrInput
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTtl pulumi.Float64PtrInput
@@ -183,13 +188,15 @@ func (ZoneDnsSettingsState) ElementType() reflect.Type {
 type zoneDnsSettingsArgs struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames *bool `pulumi:"flattenAllCnames"`
-	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
+	//
+	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
 	FoundationDns *bool `pulumi:"foundationDns"`
 	// Settings for this internal zone.
 	InternalDns *ZoneDnsSettingsInternalDns `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider *bool `pulumi:"multiProvider"`
-	// Settings determining the nameservers through which the zone should be available.
+	// Controls the nameservers through which the zone is available.
 	Nameservers *ZoneDnsSettingsNameservers `pulumi:"nameservers"`
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTtl *float64 `pulumi:"nsTtl"`
@@ -208,13 +215,15 @@ type zoneDnsSettingsArgs struct {
 type ZoneDnsSettingsArgs struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames pulumi.BoolPtrInput
-	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
+	//
+	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
 	FoundationDns pulumi.BoolPtrInput
 	// Settings for this internal zone.
 	InternalDns ZoneDnsSettingsInternalDnsPtrInput
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider pulumi.BoolPtrInput
-	// Settings determining the nameservers through which the zone should be available.
+	// Controls the nameservers through which the zone is available.
 	Nameservers ZoneDnsSettingsNameserversPtrInput
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTtl pulumi.Float64PtrInput
@@ -321,7 +330,9 @@ func (o ZoneDnsSettingsOutput) FlattenAllCnames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZoneDnsSettings) pulumi.BoolPtrOutput { return v.FlattenAllCnames }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+// Deprecated. Use nameservers.type to configure Advanced Nameservers.
+//
+// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
 func (o ZoneDnsSettingsOutput) FoundationDns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZoneDnsSettings) pulumi.BoolPtrOutput { return v.FoundationDns }).(pulumi.BoolPtrOutput)
 }
@@ -336,7 +347,7 @@ func (o ZoneDnsSettingsOutput) MultiProvider() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZoneDnsSettings) pulumi.BoolPtrOutput { return v.MultiProvider }).(pulumi.BoolPtrOutput)
 }
 
-// Settings determining the nameservers through which the zone should be available.
+// Controls the nameservers through which the zone is available.
 func (o ZoneDnsSettingsOutput) Nameservers() ZoneDnsSettingsNameserversOutput {
 	return o.ApplyT(func(v *ZoneDnsSettings) ZoneDnsSettingsNameserversOutput { return v.Nameservers }).(ZoneDnsSettingsNameserversOutput)
 }

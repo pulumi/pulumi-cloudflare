@@ -75,6 +75,9 @@ export class EmailSecurityDomain extends pulumi.CustomResource {
      * Identifier.
      */
     declare public readonly accountId: pulumi.Output<string>;
+    /**
+     * Delivery modes to onboard the domain through.
+     */
     declare public readonly allowedDeliveryModes: pulumi.Output<string[]>;
     declare public /*out*/ readonly authorization: pulumi.Output<outputs.EmailSecurityDomainAuthorization>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -82,10 +85,17 @@ export class EmailSecurityDomain extends pulumi.CustomResource {
      * Available values: "none", "good", "invalid".
      */
     declare public /*out*/ readonly dmarcStatus: pulumi.Output<string>;
+    /**
+     * The email domain to protect.
+     */
     declare public readonly domain: pulumi.Output<string>;
+    /**
+     * Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+     */
     declare public readonly dropDispositions: pulumi.Output<string[]>;
     declare public /*out*/ readonly emailsProcessed: pulumi.Output<outputs.EmailSecurityDomainEmailsProcessed>;
     /**
+     * The mailbox folder to scan, for API-scanning domains.
      * Available values: "AllItems", "Inbox".
      */
     declare public readonly folder: pulumi.Output<string>;
@@ -93,7 +103,13 @@ export class EmailSecurityDomain extends pulumi.CustomResource {
      * Available values: "Microsoft", "Google".
      */
     declare public /*out*/ readonly inboxProvider: pulumi.Output<string>;
+    /**
+     * Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     */
     declare public readonly integrationId: pulumi.Output<string | undefined>;
+    /**
+     * Source IP ranges mail is accepted from. Any other source is rejected.
+     */
     declare public readonly ipRestrictions: pulumi.Output<string[]>;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -101,11 +117,23 @@ export class EmailSecurityDomain extends pulumi.CustomResource {
      * @deprecated Use `modifiedAt` instead.
      */
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
+    /**
+     * Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     */
     declare public readonly lookbackHops: pulumi.Output<number>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public /*out*/ readonly o365TenantId: pulumi.Output<string>;
+    /**
+     * Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+     */
     declare public readonly regions: pulumi.Output<string[]>;
+    /**
+     * Require TLS on inbound connections.
+     */
     declare public readonly requireTlsInbound: pulumi.Output<boolean>;
+    /**
+     * Require TLS on outbound connections.
+     */
     declare public readonly requireTlsOutbound: pulumi.Output<boolean>;
     /**
      * Available values: "none", "good", "neutral", "open", "invalid".
@@ -115,6 +143,9 @@ export class EmailSecurityDomain extends pulumi.CustomResource {
      * Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     */
     declare public readonly transport: pulumi.Output<string | undefined>;
 
     /**
@@ -208,6 +239,9 @@ export interface EmailSecurityDomainState {
      * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Delivery modes to onboard the domain through.
+     */
     allowedDeliveryModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     authorization?: pulumi.Input<inputs.EmailSecurityDomainAuthorization | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
@@ -215,10 +249,17 @@ export interface EmailSecurityDomainState {
      * Available values: "none", "good", "invalid".
      */
     dmarcStatus?: pulumi.Input<string | undefined>;
+    /**
+     * The email domain to protect.
+     */
     domain?: pulumi.Input<string | undefined>;
+    /**
+     * Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+     */
     dropDispositions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     emailsProcessed?: pulumi.Input<inputs.EmailSecurityDomainEmailsProcessed | undefined>;
     /**
+     * The mailbox folder to scan, for API-scanning domains.
      * Available values: "AllItems", "Inbox".
      */
     folder?: pulumi.Input<string | undefined>;
@@ -226,7 +267,13 @@ export interface EmailSecurityDomainState {
      * Available values: "Microsoft", "Google".
      */
     inboxProvider?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     */
     integrationId?: pulumi.Input<string | undefined>;
+    /**
+     * Source IP ranges mail is accepted from. Any other source is rejected.
+     */
     ipRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -234,11 +281,23 @@ export interface EmailSecurityDomainState {
      * @deprecated Use `modifiedAt` instead.
      */
     lastModified?: pulumi.Input<string | undefined>;
+    /**
+     * Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     */
     lookbackHops?: pulumi.Input<number | undefined>;
     modifiedAt?: pulumi.Input<string | undefined>;
     o365TenantId?: pulumi.Input<string | undefined>;
+    /**
+     * Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+     */
     regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Require TLS on inbound connections.
+     */
     requireTlsInbound?: pulumi.Input<boolean | undefined>;
+    /**
+     * Require TLS on outbound connections.
+     */
     requireTlsOutbound?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "none", "good", "neutral", "open", "invalid".
@@ -248,6 +307,9 @@ export interface EmailSecurityDomainState {
      * Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     */
     transport?: pulumi.Input<string | undefined>;
 }
 
@@ -259,18 +321,49 @@ export interface EmailSecurityDomainArgs {
      * Identifier.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Delivery modes to onboard the domain through.
+     */
     allowedDeliveryModes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The email domain to protect.
+     */
     domain: pulumi.Input<string>;
+    /**
+     * Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+     */
     dropDispositions: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The mailbox folder to scan, for API-scanning domains.
      * Available values: "AllItems", "Inbox".
      */
     folder?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     */
     integrationId?: pulumi.Input<string | undefined>;
+    /**
+     * Source IP ranges mail is accepted from. Any other source is rejected.
+     */
     ipRestrictions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     */
     lookbackHops?: pulumi.Input<number | undefined>;
+    /**
+     * Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+     */
     regions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Require TLS on inbound connections.
+     */
     requireTlsInbound?: pulumi.Input<boolean | undefined>;
+    /**
+     * Require TLS on outbound connections.
+     */
     requireTlsOutbound?: pulumi.Input<boolean | undefined>;
+    /**
+     * The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     */
     transport?: pulumi.Input<string | undefined>;
 }

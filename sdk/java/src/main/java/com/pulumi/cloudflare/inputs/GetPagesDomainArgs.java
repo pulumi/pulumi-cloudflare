@@ -30,14 +30,14 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      * 
      */
     @Import(name="domainName", required=true)
     private Output<String> domainName;
 
     /**
-     * @return The domain name.
+     * @return Fully qualified domain name for the Pages project, such as `example.com`.
      * 
      */
     public Output<String> domainName() {
@@ -45,14 +45,14 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     @Import(name="projectName", required=true)
     private Output<String> projectName;
 
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public Output<String> projectName() {
@@ -107,7 +107,7 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domainName The domain name.
+         * @param domainName Fully qualified domain name for the Pages project, such as `example.com`.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domainName The domain name.
+         * @param domainName Fully qualified domain name for the Pages project, such as `example.com`.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectName Name of the project.
+         * @param projectName Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class GetPagesDomainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectName Name of the project.
+         * @param projectName Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 

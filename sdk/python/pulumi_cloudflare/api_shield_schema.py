@@ -25,6 +25,7 @@ class ApiShieldSchemaArgs:
                  kind: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  schema_id: pulumi.Input[Optional[_builtins.str]] = None,
                  validation_enabled: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -35,6 +36,7 @@ class ApiShieldSchemaArgs:
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Name of the schema
+        :param pulumi.Input[_builtins.bool] omit_source: Omit the source-files of schemas and only retrieve their meta-data.
         :param pulumi.Input[_builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
         """
@@ -43,6 +45,8 @@ class ApiShieldSchemaArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if omit_source is not None:
+            pulumi.set(__self__, "omit_source", omit_source)
         if schema_id is not None:
             pulumi.set(__self__, "schema_id", schema_id)
         if validation_enabled is not None:
@@ -98,6 +102,18 @@ class ApiShieldSchemaArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="omitSource")
+    def omit_source(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Omit the source-files of schemas and only retrieve their meta-data.
+        """
+        return pulumi.get(self, "omit_source")
+
+    @omit_source.setter
+    def omit_source(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "omit_source", value)
+
+    @_builtins.property
     @pulumi.getter(name="schemaId")
     def schema_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "schema_id")
@@ -127,6 +143,7 @@ class _ApiShieldSchemaState:
                  file: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  schema: pulumi.Input[Optional['ApiShieldSchemaSchemaArgs']] = None,
                  schema_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -140,6 +157,7 @@ class _ApiShieldSchemaState:
         :param pulumi.Input[_builtins.str] kind: Kind of schema
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] name: Name of the schema
+        :param pulumi.Input[_builtins.bool] omit_source: Omit the source-files of schemas and only retrieve their meta-data.
         :param pulumi.Input[_builtins.str] source: Source of the schema
         :param pulumi.Input[_builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
@@ -153,6 +171,8 @@ class _ApiShieldSchemaState:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if omit_source is not None:
+            pulumi.set(__self__, "omit_source", omit_source)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if schema_id is not None:
@@ -211,6 +231,18 @@ class _ApiShieldSchemaState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="omitSource")
+    def omit_source(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Omit the source-files of schemas and only retrieve their meta-data.
+        """
+        return pulumi.get(self, "omit_source")
+
+    @omit_source.setter
+    def omit_source(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "omit_source", value)
 
     @_builtins.property
     @pulumi.getter
@@ -286,6 +318,7 @@ class ApiShieldSchema(pulumi.CustomResource):
                  file: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  schema_id: pulumi.Input[Optional[_builtins.str]] = None,
                  validation_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -322,6 +355,7 @@ class ApiShieldSchema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kind: Kind of schema
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] name: Name of the schema
+        :param pulumi.Input[_builtins.bool] omit_source: Omit the source-files of schemas and only retrieve their meta-data.
         :param pulumi.Input[_builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -376,6 +410,7 @@ class ApiShieldSchema(pulumi.CustomResource):
                  file: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  schema_id: pulumi.Input[Optional[_builtins.str]] = None,
                  validation_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -395,6 +430,7 @@ class ApiShieldSchema(pulumi.CustomResource):
                 raise TypeError("Missing required property 'kind'")
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
+            __props__.__dict__["omit_source"] = omit_source
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["validation_enabled"] = validation_enabled
             if zone_id is None and not opts.urn:
@@ -418,6 +454,7 @@ class ApiShieldSchema(pulumi.CustomResource):
             file: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
             schema: pulumi.Input[Optional[Union['ApiShieldSchemaSchemaArgs', 'ApiShieldSchemaSchemaArgsDict', 'outputs.ApiShieldSchemaSchema']]] = None,
             schema_id: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -435,6 +472,7 @@ class ApiShieldSchema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kind: Kind of schema
                Available values: "openapi_v3".
         :param pulumi.Input[_builtins.str] name: Name of the schema
+        :param pulumi.Input[_builtins.bool] omit_source: Omit the source-files of schemas and only retrieve their meta-data.
         :param pulumi.Input[_builtins.str] source: Source of the schema
         :param pulumi.Input[_builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
@@ -448,6 +486,7 @@ class ApiShieldSchema(pulumi.CustomResource):
         __props__.__dict__["file"] = file
         __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
+        __props__.__dict__["omit_source"] = omit_source
         __props__.__dict__["schema"] = schema
         __props__.__dict__["schema_id"] = schema_id
         __props__.__dict__["source"] = source
@@ -485,6 +524,14 @@ class ApiShieldSchema(pulumi.CustomResource):
         Name of the schema
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="omitSource")
+    def omit_source(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Omit the source-files of schemas and only retrieve their meta-data.
+        """
+        return pulumi.get(self, "omit_source")
 
     @_builtins.property
     @pulumi.getter

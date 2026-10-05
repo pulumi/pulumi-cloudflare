@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,26 +23,50 @@ public final class GetZeroTrustGatewayProxyEndpointsPlainArgs extends com.pulumi
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * Max items to fetch, default: 1000
-     * 
-     */
+    @Import(name="direction")
+    private @Nullable String direction;
+
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    @Import(name="filters")
+    private @Nullable List<String> filters;
+
+    public Optional<List<String>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
     @Import(name="maxItems")
     private @Nullable Integer maxItems;
 
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+
+    @Import(name="orderBy")
+    private @Nullable String orderBy;
+
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
+    @Import(name="search")
+    private @Nullable String search;
+
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
     }
 
     private GetZeroTrustGatewayProxyEndpointsPlainArgs() {}
 
     private GetZeroTrustGatewayProxyEndpointsPlainArgs(GetZeroTrustGatewayProxyEndpointsPlainArgs $) {
         this.accountId = $.accountId;
+        this.direction = $.direction;
+        this.filters = $.filters;
         this.maxItems = $.maxItems;
+        this.orderBy = $.orderBy;
+        this.search = $.search;
     }
 
     public static Builder builder() {
@@ -67,14 +92,32 @@ public final class GetZeroTrustGatewayProxyEndpointsPlainArgs extends com.pulumi
             return this;
         }
 
-        /**
-         * @param maxItems Max items to fetch, default: 1000
-         * 
-         * @return builder
-         * 
-         */
+        public Builder direction(@Nullable String direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        public Builder filters(@Nullable List<String> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        public Builder filters(String... filters) {
+            return filters(List.of(filters));
+        }
+
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
+            return this;
+        }
+
+        public Builder orderBy(@Nullable String orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        public Builder search(@Nullable String search) {
+            $.search = search;
             return this;
         }
 

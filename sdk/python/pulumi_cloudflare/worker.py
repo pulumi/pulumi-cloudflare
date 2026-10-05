@@ -23,8 +23,10 @@ class WorkerArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  observability: pulumi.Input[Optional['WorkerObservabilityArgs']] = None,
+                 previews_base_config: pulumi.Input[Optional['WorkerPreviewsBaseConfigArgs']] = None,
                  subdomain: pulumi.Input[Optional['WorkerSubdomainArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]] = None):
@@ -33,18 +35,24 @@ class WorkerArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
+        :param pulumi.Input[_builtins.bool] force: If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input['WorkerObservabilityArgs'] observability: Observability settings for the Worker.
+        :param pulumi.Input['WorkerPreviewsBaseConfigArgs'] previews_base_config: Template configuration used when creating new Previews for this Worker.
         :param pulumi.Input['WorkerSubdomainArgs'] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]] tail_consumers: Other Workers that should consume logs from the Worker.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if logpush is not None:
             pulumi.set(__self__, "logpush", logpush)
         if observability is not None:
             pulumi.set(__self__, "observability", observability)
+        if previews_base_config is not None:
+            pulumi.set(__self__, "previews_base_config", previews_base_config)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -78,6 +86,18 @@ class WorkerArgs:
 
     @_builtins.property
     @pulumi.getter
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter
     def logpush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether logpush is enabled for the Worker.
@@ -99,6 +119,18 @@ class WorkerArgs:
     @observability.setter
     def observability(self, value: pulumi.Input[Optional['WorkerObservabilityArgs']]):
         pulumi.set(self, "observability", value)
+
+    @_builtins.property
+    @pulumi.getter(name="previewsBaseConfig")
+    def previews_base_config(self) -> pulumi.Input[Optional['WorkerPreviewsBaseConfigArgs']]:
+        """
+        Template configuration used when creating new Previews for this Worker.
+        """
+        return pulumi.get(self, "previews_base_config")
+
+    @previews_base_config.setter
+    def previews_base_config(self, value: pulumi.Input[Optional['WorkerPreviewsBaseConfigArgs']]):
+        pulumi.set(self, "previews_base_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -143,9 +175,11 @@ class _WorkerState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
                  deployed_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  observability: pulumi.Input[Optional['WorkerObservabilityArgs']] = None,
+                 previews_base_config: pulumi.Input[Optional['WorkerPreviewsBaseConfigArgs']] = None,
                  references: pulumi.Input[Optional['WorkerReferencesArgs']] = None,
                  subdomain: pulumi.Input[Optional['WorkerSubdomainArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -157,9 +191,11 @@ class _WorkerState:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created_on: When the Worker was created.
         :param pulumi.Input[_builtins.str] deployed_on: When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+        :param pulumi.Input[_builtins.bool] force: If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input['WorkerObservabilityArgs'] observability: Observability settings for the Worker.
+        :param pulumi.Input['WorkerPreviewsBaseConfigArgs'] previews_base_config: Template configuration used when creating new Previews for this Worker.
         :param pulumi.Input['WorkerReferencesArgs'] references: Other resources that reference the Worker and depend on it existing.
         :param pulumi.Input['WorkerSubdomainArgs'] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
@@ -172,12 +208,16 @@ class _WorkerState:
             pulumi.set(__self__, "created_on", created_on)
         if deployed_on is not None:
             pulumi.set(__self__, "deployed_on", deployed_on)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if logpush is not None:
             pulumi.set(__self__, "logpush", logpush)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if observability is not None:
             pulumi.set(__self__, "observability", observability)
+        if previews_base_config is not None:
+            pulumi.set(__self__, "previews_base_config", previews_base_config)
         if references is not None:
             pulumi.set(__self__, "references", references)
         if subdomain is not None:
@@ -227,6 +267,18 @@ class _WorkerState:
 
     @_builtins.property
     @pulumi.getter
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter
     def logpush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether logpush is enabled for the Worker.
@@ -260,6 +312,18 @@ class _WorkerState:
     @observability.setter
     def observability(self, value: pulumi.Input[Optional['WorkerObservabilityArgs']]):
         pulumi.set(self, "observability", value)
+
+    @_builtins.property
+    @pulumi.getter(name="previewsBaseConfig")
+    def previews_base_config(self) -> pulumi.Input[Optional['WorkerPreviewsBaseConfigArgs']]:
+        """
+        Template configuration used when creating new Previews for this Worker.
+        """
+        return pulumi.get(self, "previews_base_config")
+
+    @previews_base_config.setter
+    def previews_base_config(self, value: pulumi.Input[Optional['WorkerPreviewsBaseConfigArgs']]):
+        pulumi.set(self, "previews_base_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -329,9 +393,11 @@ class Worker(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']]] = None,
+                 previews_base_config: pulumi.Input[Optional[Union['WorkerPreviewsBaseConfigArgs', 'WorkerPreviewsBaseConfigArgsDict', 'outputs.WorkerPreviewsBaseConfig']]] = None,
                  subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]]] = None,
@@ -356,6 +422,9 @@ class Worker(pulumi.CustomResource):
             observability={
                 "enabled": True,
                 "head_sampling_rate": float(1),
+                "issues": {
+                    "enabled": True,
+                },
                 "logs": {
                     "destinations": ["string"],
                     "enabled": True,
@@ -369,7 +438,52 @@ class Worker(pulumi.CustomResource):
                     "enabled": True,
                     "head_sampling_rate": float(1),
                     "persist": True,
+                    "propagation_policy": "authenticated",
                 },
+            },
+            previews_base_config={
+                "cache_options": {
+                    "enabled": True,
+                    "cross_version_cache": True,
+                },
+                "env": {
+                    "MY_ENV_VAR": {
+                        "type": "plain_text",
+                    },
+                },
+                "limits": {
+                    "cpu_ms": 50,
+                    "subrequests": 1000,
+                },
+                "logpush": True,
+                "observability": {
+                    "enabled": True,
+                    "head_sampling_rate": float(1),
+                    "issues": {
+                        "enabled": True,
+                    },
+                    "logs": {
+                        "destinations": ["string"],
+                        "enabled": True,
+                        "head_sampling_rate": float(1),
+                        "invocation_logs": True,
+                        "persist": True,
+                    },
+                    "redact_query_string": True,
+                    "traces": {
+                        "destinations": ["string"],
+                        "enabled": True,
+                        "head_sampling_rate": float(1),
+                        "persist": True,
+                        "propagation_policy": "authenticated",
+                    },
+                },
+                "placement": {
+                    "mode": "smart",
+                },
+                "tail_consumers": [{
+                    "name": "my-tail-consumer",
+                }],
             },
             subdomain={
                 "enabled": True,
@@ -394,9 +508,11 @@ class Worker(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] force: If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Union['WorkerPreviewsBaseConfigArgs', 'WorkerPreviewsBaseConfigArgsDict', 'outputs.WorkerPreviewsBaseConfig']] previews_base_config: Template configuration used when creating new Previews for this Worker.
         :param pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]] tail_consumers: Other Workers that should consume logs from the Worker.
@@ -427,6 +543,9 @@ class Worker(pulumi.CustomResource):
             observability={
                 "enabled": True,
                 "head_sampling_rate": float(1),
+                "issues": {
+                    "enabled": True,
+                },
                 "logs": {
                     "destinations": ["string"],
                     "enabled": True,
@@ -440,7 +559,52 @@ class Worker(pulumi.CustomResource):
                     "enabled": True,
                     "head_sampling_rate": float(1),
                     "persist": True,
+                    "propagation_policy": "authenticated",
                 },
+            },
+            previews_base_config={
+                "cache_options": {
+                    "enabled": True,
+                    "cross_version_cache": True,
+                },
+                "env": {
+                    "MY_ENV_VAR": {
+                        "type": "plain_text",
+                    },
+                },
+                "limits": {
+                    "cpu_ms": 50,
+                    "subrequests": 1000,
+                },
+                "logpush": True,
+                "observability": {
+                    "enabled": True,
+                    "head_sampling_rate": float(1),
+                    "issues": {
+                        "enabled": True,
+                    },
+                    "logs": {
+                        "destinations": ["string"],
+                        "enabled": True,
+                        "head_sampling_rate": float(1),
+                        "invocation_logs": True,
+                        "persist": True,
+                    },
+                    "redact_query_string": True,
+                    "traces": {
+                        "destinations": ["string"],
+                        "enabled": True,
+                        "head_sampling_rate": float(1),
+                        "persist": True,
+                        "propagation_policy": "authenticated",
+                    },
+                },
+                "placement": {
+                    "mode": "smart",
+                },
+                "tail_consumers": [{
+                    "name": "my-tail-consumer",
+                }],
             },
             subdomain={
                 "enabled": True,
@@ -478,9 +642,11 @@ class Worker(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']]] = None,
+                 previews_base_config: pulumi.Input[Optional[Union['WorkerPreviewsBaseConfigArgs', 'WorkerPreviewsBaseConfigArgsDict', 'outputs.WorkerPreviewsBaseConfig']]] = None,
                  subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]]] = None,
@@ -496,11 +662,13 @@ class Worker(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["force"] = force
             __props__.__dict__["logpush"] = logpush
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["observability"] = observability
+            __props__.__dict__["previews_base_config"] = previews_base_config
             __props__.__dict__["subdomain"] = subdomain
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tail_consumers"] = tail_consumers
@@ -521,9 +689,11 @@ class Worker(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             deployed_on: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
             logpush: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']]] = None,
+            previews_base_config: pulumi.Input[Optional[Union['WorkerPreviewsBaseConfigArgs', 'WorkerPreviewsBaseConfigArgsDict', 'outputs.WorkerPreviewsBaseConfig']]] = None,
             references: pulumi.Input[Optional[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict', 'outputs.WorkerReferences']]] = None,
             subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -539,9 +709,11 @@ class Worker(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created_on: When the Worker was created.
         :param pulumi.Input[_builtins.str] deployed_on: When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+        :param pulumi.Input[_builtins.bool] force: If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']] observability: Observability settings for the Worker.
+        :param pulumi.Input[Union['WorkerPreviewsBaseConfigArgs', 'WorkerPreviewsBaseConfigArgsDict', 'outputs.WorkerPreviewsBaseConfig']] previews_base_config: Template configuration used when creating new Previews for this Worker.
         :param pulumi.Input[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict', 'outputs.WorkerReferences']] references: Other resources that reference the Worker and depend on it existing.
         :param pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
@@ -555,9 +727,11 @@ class Worker(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["deployed_on"] = deployed_on
+        __props__.__dict__["force"] = force
         __props__.__dict__["logpush"] = logpush
         __props__.__dict__["name"] = name
         __props__.__dict__["observability"] = observability
+        __props__.__dict__["previews_base_config"] = previews_base_config
         __props__.__dict__["references"] = references
         __props__.__dict__["subdomain"] = subdomain
         __props__.__dict__["tags"] = tags
@@ -591,6 +765,14 @@ class Worker(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        """
+        return pulumi.get(self, "force")
+
+    @_builtins.property
+    @pulumi.getter
     def logpush(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether logpush is enabled for the Worker.
@@ -612,6 +794,14 @@ class Worker(pulumi.CustomResource):
         Observability settings for the Worker.
         """
         return pulumi.get(self, "observability")
+
+    @_builtins.property
+    @pulumi.getter(name="previewsBaseConfig")
+    def previews_base_config(self) -> pulumi.Output['outputs.WorkerPreviewsBaseConfig']:
+        """
+        Template configuration used when creating new Previews for this Worker.
+        """
+        return pulumi.get(self, "previews_base_config")
 
     @_builtins.property
     @pulumi.getter

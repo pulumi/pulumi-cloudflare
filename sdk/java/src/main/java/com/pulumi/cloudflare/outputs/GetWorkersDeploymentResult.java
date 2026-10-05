@@ -28,7 +28,7 @@ public final class GetWorkersDeploymentResult {
      */
     private String id;
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     private String scriptName;
@@ -38,6 +38,10 @@ public final class GetWorkersDeploymentResult {
      * 
      */
     private String strategy;
+    /**
+     * @return Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+     * 
+     */
     private List<GetWorkersDeploymentVersion> versions;
 
     private GetWorkersDeploymentResult() {}
@@ -68,7 +72,7 @@ public final class GetWorkersDeploymentResult {
         return this.id;
     }
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public String scriptName() {
@@ -84,6 +88,10 @@ public final class GetWorkersDeploymentResult {
     public String strategy() {
         return this.strategy;
     }
+    /**
+     * @return Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+     * 
+     */
     public List<GetWorkersDeploymentVersion> versions() {
         return this.versions;
     }

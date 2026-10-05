@@ -47,6 +47,9 @@ class GetZeroTrustGatewaySettingsResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -58,7 +61,7 @@ class GetZeroTrustGatewaySettingsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of this resource.
+        Specify the Cloudflare account identifier.
         """
         return pulumi.get(self, "id")
 
@@ -100,6 +103,9 @@ def get_zero_trust_gateway_settings(account_id: Optional[_builtins.str] = None,
 
     example_zero_trust_gateway_settings = cloudflare.get_zero_trust_gateway_settings(account_id="699d98642c564d2e855e9661899b7252")
     ```
+
+
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -123,6 +129,9 @@ def get_zero_trust_gateway_settings_output(account_id: pulumi.Input[Optional[Opt
 
     example_zero_trust_gateway_settings = cloudflare.get_zero_trust_gateway_settings(account_id="699d98642c564d2e855e9661899b7252")
     ```
+
+
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

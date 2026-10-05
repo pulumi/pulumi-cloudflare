@@ -52,7 +52,9 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example '<{accounts|zones}/{account_id|zone_id}>'
+// ```
 //
 // Deprecated: cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
 type AccessMutualTlsHostnameSettings struct {

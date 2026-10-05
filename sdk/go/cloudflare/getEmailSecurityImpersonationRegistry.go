@@ -17,6 +17,31 @@ import (
 // - `Cloud Email Security: Write`
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetEmailSecurityImpersonationRegistry(ctx, &cloudflare.LookupEmailSecurityImpersonationRegistryArgs{
+//				AccountId:               pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ImpersonationRegistryId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEmailSecurityImpersonationRegistry(ctx *pulumi.Context, args *LookupEmailSecurityImpersonationRegistryArgs, opts ...pulumi.InvokeOption) (*LookupEmailSecurityImpersonationRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailSecurityImpersonationRegistryResult
@@ -39,12 +64,18 @@ type LookupEmailSecurityImpersonationRegistryArgs struct {
 // A collection of values returned by getEmailSecurityImpersonationRegistry.
 type LookupEmailSecurityImpersonationRegistryResult struct {
 	// Identifier.
-	AccountId       *string `pulumi:"accountId"`
-	Comments        string  `pulumi:"comments"`
-	CreatedAt       string  `pulumi:"createdAt"`
-	DirectoryId     int     `pulumi:"directoryId"`
-	DirectoryNodeId int     `pulumi:"directoryNodeId"`
-	Email           string  `pulumi:"email"`
+	AccountId *string `pulumi:"accountId"`
+	// Optional note describing the entry.
+	Comments  string `pulumi:"comments"`
+	CreatedAt string `pulumi:"createdAt"`
+	// Identifier of the directory the entry was synced from, when directory-synced.
+	DirectoryId int `pulumi:"directoryId"`
+	// Identifier of the directory node the entry was synced from, when directory-synced.
+	DirectoryNodeId int `pulumi:"directoryNodeId"`
+	// Email address (or pattern) of the protected identity.
+	Email string `pulumi:"email"`
+	// Deprecated. External identifier of the directory node.
+	//
 	// Deprecated: This field is deprecated.
 	ExternalDirectoryNodeId string                                       `pulumi:"externalDirectoryNodeId"`
 	Filter                  *GetEmailSecurityImpersonationRegistryFilter `pulumi:"filter"`
@@ -52,13 +83,16 @@ type LookupEmailSecurityImpersonationRegistryResult struct {
 	Id string `pulumi:"id"`
 	// Impersonation registry entry identifier
 	ImpersonationRegistryId *string `pulumi:"impersonationRegistryId"`
-	IsEmailRegex            bool    `pulumi:"isEmailRegex"`
+	// Whether `email` is a regular expression instead of a literal address.
+	IsEmailRegex bool `pulumi:"isEmailRegex"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
 	//
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified string `pulumi:"lastModified"`
 	ModifiedAt   string `pulumi:"modifiedAt"`
-	Name         string `pulumi:"name"`
+	// Display name of the protected identity.
+	Name string `pulumi:"name"`
+	// Source the entry was created from.
 	// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 	Provenance string `pulumi:"provenance"`
 }
@@ -101,6 +135,7 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) AccountId() pulumi
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+// Optional note describing the entry.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) Comments() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Comments }).(pulumi.StringOutput)
 }
@@ -109,18 +144,23 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) CreatedAt() pulumi
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Identifier of the directory the entry was synced from, when directory-synced.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) DirectoryId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) int { return v.DirectoryId }).(pulumi.IntOutput)
 }
 
+// Identifier of the directory node the entry was synced from, when directory-synced.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) DirectoryNodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) int { return v.DirectoryNodeId }).(pulumi.IntOutput)
 }
 
+// Email address (or pattern) of the protected identity.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// Deprecated. External identifier of the directory node.
+//
 // Deprecated: This field is deprecated.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) ExternalDirectoryNodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.ExternalDirectoryNodeId }).(pulumi.StringOutput)
@@ -142,6 +182,7 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) ImpersonationRegis
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) *string { return v.ImpersonationRegistryId }).(pulumi.StringPtrOutput)
 }
 
+// Whether `email` is a regular expression instead of a literal address.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) IsEmailRegex() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) bool { return v.IsEmailRegex }).(pulumi.BoolOutput)
 }
@@ -157,10 +198,12 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) ModifiedAt() pulum
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
+// Display name of the protected identity.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Source the entry was created from.
 // Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) Provenance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Provenance }).(pulumi.StringOutput)

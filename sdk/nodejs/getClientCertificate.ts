@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleClientCertificate = cloudflare.getClientCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     clientCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     clientCertificateId: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
  * });
  * ```
  */
@@ -39,7 +39,7 @@ export function getClientCertificate(args?: GetClientCertificateArgs, opts?: pul
  */
 export interface GetClientCertificateArgs {
     /**
-     * Identifier.
+     * Client Certificate Tag
      */
     clientCertificateId?: string;
     filter?: inputs.GetClientCertificateFilter;
@@ -62,7 +62,7 @@ export interface GetClientCertificateResult {
      */
     readonly certificateAuthority: outputs.GetClientCertificateCertificateAuthority;
     /**
-     * Identifier.
+     * Client Certificate Tag
      */
     readonly clientCertificateId?: string;
     /**
@@ -87,7 +87,7 @@ export interface GetClientCertificateResult {
      */
     readonly fingerprintSha256: string;
     /**
-     * Identifier.
+     * Client Certificate Tag
      */
     readonly id: string;
     /**
@@ -150,7 +150,7 @@ export interface GetClientCertificateResult {
  *
  * const exampleClientCertificate = cloudflare.getClientCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     clientCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     clientCertificateId: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
  * });
  * ```
  */
@@ -169,7 +169,7 @@ export function getClientCertificateOutput(args?: GetClientCertificateOutputArgs
  */
 export interface GetClientCertificateOutputArgs {
     /**
-     * Identifier.
+     * Client Certificate Tag
      */
     clientCertificateId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetClientCertificateFilterArgs | undefined>;

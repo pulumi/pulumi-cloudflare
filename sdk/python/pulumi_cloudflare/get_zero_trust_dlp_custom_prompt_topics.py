@@ -80,6 +80,15 @@ def get_zero_trust_dlp_custom_prompt_topics(account_id: Optional[_builtins.str] 
     - `Zero Trust Read`
     - `Zero Trust Write`
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_dlp_custom_prompt_topics = cloudflare.get_zero_trust_dlp_custom_prompt_topics(account_id="account_id")
+    ```
+
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
@@ -101,6 +110,15 @@ def get_zero_trust_dlp_custom_prompt_topics_output(account_id: pulumi.Input[Opti
 
     - `Zero Trust Read`
     - `Zero Trust Write`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_dlp_custom_prompt_topics = cloudflare.get_zero_trust_dlp_custom_prompt_topics(account_id="account_id")
+    ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000

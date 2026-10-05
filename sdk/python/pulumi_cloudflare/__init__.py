@@ -92,6 +92,7 @@ from .email_security_domain import *
 from .email_security_impersonation_registry import *
 from .email_security_trusted_domains import *
 from .email_sending_subdomain import *
+from .field_extractor import *
 from .filter import *
 from .firewall_rule import *
 from .flagship_app import *
@@ -217,6 +218,7 @@ from .get_email_security_trusted_domains import *
 from .get_email_security_trusted_domains_list import *
 from .get_email_sending_subdomain import *
 from .get_email_sending_subdomains import *
+from .get_field_extractor import *
 from .get_filter import *
 from .get_filters import *
 from .get_firewall_rule import *
@@ -273,6 +275,8 @@ from .get_magic_transit_site_lans import *
 from .get_magic_transit_site_wan import *
 from .get_magic_transit_site_wans import *
 from .get_magic_transit_sites import *
+from .get_magic_wan_bgp_filter_profile import *
+from .get_magic_wan_bgp_filter_profiles import *
 from .get_magic_wan_gre_tunnel import *
 from .get_magic_wan_ipsec_tunnel import *
 from .get_magic_wan_static_route import *
@@ -331,7 +335,6 @@ from .get_r2_bucket_sippy import *
 from .get_r2_custom_domain import *
 from .get_r2_data_catalog import *
 from .get_rate_limit import *
-from .get_rate_limits import *
 from .get_regional_hostname import *
 from .get_regional_hostnames import *
 from .get_regional_tiered_cache import *
@@ -417,6 +420,7 @@ from .get_workers_cron_trigger import *
 from .get_workers_custom_domain import *
 from .get_workers_custom_domains import *
 from .get_workers_deployment import *
+from .get_workers_deployments import *
 from .get_workers_for_platforms_dispatch_namespace import *
 from .get_workers_for_platforms_dispatch_namespaces import *
 from .get_workers_kv import *
@@ -455,6 +459,13 @@ from .get_zero_trust_access_short_lived_certificate import *
 from .get_zero_trust_access_short_lived_certificates import *
 from .get_zero_trust_access_tag import *
 from .get_zero_trust_access_tags import *
+from .get_zero_trust_casb_integration import *
+from .get_zero_trust_casb_integrations import *
+from .get_zero_trust_casb_policies import *
+from .get_zero_trust_casb_policy import *
+from .get_zero_trust_casb_webhook import *
+from .get_zero_trust_casb_webhooks import *
+from .get_zero_trust_connectivity_settings import *
 from .get_zero_trust_device_custom_profile import *
 from .get_zero_trust_device_custom_profile_local_domain_fallback import *
 from .get_zero_trust_device_custom_profiles import *
@@ -552,6 +563,8 @@ from .get_zone_lockdown import *
 from .get_zone_lockdowns import *
 from .get_zone_setting import *
 from .get_zone_subscription import *
+from .get_zone_tracing import *
+from .get_zone_tracing_rules import *
 from .get_zones import *
 from .google_tag_gateway import *
 from .healthcheck import *
@@ -579,6 +592,7 @@ from .magic_transit_site import *
 from .magic_transit_site_acl import *
 from .magic_transit_site_lan import *
 from .magic_transit_site_wan import *
+from .magic_wan_bgp_filter_profile import *
 from .magic_wan_gre_tunnel import *
 from .magic_wan_ipsec_tunnel import *
 from .magic_wan_static_route import *
@@ -705,6 +719,10 @@ from .zero_trust_access_policy import *
 from .zero_trust_access_service_token import *
 from .zero_trust_access_short_lived_certificate import *
 from .zero_trust_access_tag import *
+from .zero_trust_casb_integration import *
+from .zero_trust_casb_policy import *
+from .zero_trust_casb_webhook import *
+from .zero_trust_connectivity_settings import *
 from .zero_trust_device_custom_profile import *
 from .zero_trust_device_custom_profile_local_domain_fallback import *
 from .zero_trust_device_default_profile import *
@@ -763,6 +781,8 @@ from .zone_hold import *
 from .zone_lockdown import *
 from .zone_setting import *
 from .zone_subscription import *
+from .zone_tracing import *
+from .zone_tracing_rules import *
 from ._inputs import *
 from . import outputs
 
@@ -1466,6 +1486,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/fieldExtractor",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/fieldExtractor:FieldExtractor": "FieldExtractor"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/filter",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1702,6 +1730,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan": "MagicTransitSiteWan"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/magicWanBgpFilterProfile",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/magicWanBgpFilterProfile:MagicWanBgpFilterProfile": "MagicWanBgpFilterProfile"
   }
  },
  {
@@ -2706,6 +2742,38 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/zeroTrustCasbIntegration",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCasbIntegration:ZeroTrustCasbIntegration": "ZeroTrustCasbIntegration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCasbPolicy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCasbPolicy:ZeroTrustCasbPolicy": "ZeroTrustCasbPolicy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustCasbWebhook",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustCasbWebhook:ZeroTrustCasbWebhook": "ZeroTrustCasbWebhook"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustConnectivitySettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustConnectivitySettings:ZeroTrustConnectivitySettings": "ZeroTrustConnectivitySettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/zeroTrustDeviceCustomProfile",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -3166,6 +3234,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zoneSubscription:ZoneSubscription": "ZoneSubscription"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zoneTracing",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zoneTracing:ZoneTracing": "ZoneTracing"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zoneTracingRules",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zoneTracingRules:ZoneTracingRules": "ZoneTracingRules"
   }
  }
 ]

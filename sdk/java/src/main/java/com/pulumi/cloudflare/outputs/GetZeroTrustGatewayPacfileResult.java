@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayPacfileResult {
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     private @Nullable String accountId;
     /**
      * @return Actual contents of the PAC file
@@ -48,6 +52,10 @@ public final class GetZeroTrustGatewayPacfileResult {
     private String url;
 
     private GetZeroTrustGatewayPacfileResult() {}
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }

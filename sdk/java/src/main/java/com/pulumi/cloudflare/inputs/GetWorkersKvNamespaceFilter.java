@@ -15,7 +15,7 @@ public final class GetWorkersKvNamespaceFilter extends com.pulumi.resources.Invo
     public static final GetWorkersKvNamespaceFilter Empty = new GetWorkersKvNamespaceFilter();
 
     /**
-     * Direction to order namespaces.
+     * Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -23,7 +23,7 @@ public final class GetWorkersKvNamespaceFilter extends com.pulumi.resources.Invo
     private @Nullable String direction;
 
     /**
-     * @return Direction to order namespaces.
+     * @return Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -32,7 +32,7 @@ public final class GetWorkersKvNamespaceFilter extends com.pulumi.resources.Invo
     }
 
     /**
-     * Field to order results by.
+     * Namespace field to sort by (`id` or `title`).
      * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
@@ -40,7 +40,7 @@ public final class GetWorkersKvNamespaceFilter extends com.pulumi.resources.Invo
     private @Nullable String order;
 
     /**
-     * @return Field to order results by.
+     * @return Namespace field to sort by (`id` or `title`).
      * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
@@ -74,7 +74,7 @@ public final class GetWorkersKvNamespaceFilter extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param direction Direction to order namespaces.
+         * @param direction Sort namespaces in ascending (`asc`) or descending (`desc`) order.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -86,7 +86,7 @@ public final class GetWorkersKvNamespaceFilter extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param order Field to order results by.
+         * @param order Namespace field to sort by (`id` or `title`).
          * Available values: &#34;id&#34;, &#34;title&#34;.
          * 
          * @return builder

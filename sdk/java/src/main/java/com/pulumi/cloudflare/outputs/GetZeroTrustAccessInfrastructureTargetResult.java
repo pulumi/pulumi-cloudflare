@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessInfrastructureTargetIp;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,6 +46,11 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
      * 
      */
     private String modifiedAt;
+    /**
+     * @return Tags assigned to the target. Empty when no tags are assigned.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return Target identifier
      * 
@@ -98,6 +104,13 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
         return this.modifiedAt;
     }
     /**
+     * @return Tags assigned to the target. Empty when no tags are assigned.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
      * @return Target identifier
      * 
      */
@@ -121,6 +134,7 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
         private String id;
         private GetZeroTrustAccessInfrastructureTargetIp ip;
         private String modifiedAt;
+        private Map<String,String> tags;
         private @Nullable String targetId;
         public Builder() {}
         public Builder(GetZeroTrustAccessInfrastructureTargetResult defaults) {
@@ -132,6 +146,7 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
     	      this.id = defaults.id;
     	      this.ip = defaults.ip;
     	      this.modifiedAt = defaults.modifiedAt;
+    	      this.tags = defaults.tags;
     	      this.targetId = defaults.targetId;
         }
 
@@ -188,6 +203,14 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessInfrastructureTargetResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetId(@Nullable String targetId) {
 
             this.targetId = targetId;
@@ -202,6 +225,7 @@ public final class GetZeroTrustAccessInfrastructureTargetResult {
             _resultValue.id = id;
             _resultValue.ip = ip;
             _resultValue.modifiedAt = modifiedAt;
+            _resultValue.tags = tags;
             _resultValue.targetId = targetId;
             return _resultValue;
         }

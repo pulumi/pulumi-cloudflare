@@ -20,10 +20,20 @@ public final class MagicWanGreTunnelBgp {
      */
     private Integer customerAsn;
     /**
+     * @return UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+     * 
+     */
+    private @Nullable String exportFilterId;
+    /**
      * @return Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      * 
      */
     private @Nullable List<String> extraPrefixes;
+    /**
+     * @return UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+     * 
+     */
+    private @Nullable String importFilterId;
     /**
      * @return MD5 key to use for session authentication.
      * 
@@ -39,11 +49,25 @@ public final class MagicWanGreTunnelBgp {
         return this.customerAsn;
     }
     /**
+     * @return UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+     * 
+     */
+    public Optional<String> exportFilterId() {
+        return Optional.ofNullable(this.exportFilterId);
+    }
+    /**
      * @return Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      * 
      */
     public List<String> extraPrefixes() {
         return this.extraPrefixes == null ? List.of() : this.extraPrefixes;
+    }
+    /**
+     * @return UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+     * 
+     */
+    public Optional<String> importFilterId() {
+        return Optional.ofNullable(this.importFilterId);
     }
     /**
      * @return MD5 key to use for session authentication.
@@ -63,13 +87,17 @@ public final class MagicWanGreTunnelBgp {
     @CustomType.Builder
     public static final class Builder {
         private Integer customerAsn;
+        private @Nullable String exportFilterId;
         private @Nullable List<String> extraPrefixes;
+        private @Nullable String importFilterId;
         private @Nullable String md5Key;
         public Builder() {}
         public Builder(MagicWanGreTunnelBgp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customerAsn = defaults.customerAsn;
+    	      this.exportFilterId = defaults.exportFilterId;
     	      this.extraPrefixes = defaults.extraPrefixes;
+    	      this.importFilterId = defaults.importFilterId;
     	      this.md5Key = defaults.md5Key;
         }
 
@@ -82,6 +110,12 @@ public final class MagicWanGreTunnelBgp {
             return this;
         }
         @CustomType.Setter
+        public Builder exportFilterId(@Nullable String exportFilterId) {
+
+            this.exportFilterId = exportFilterId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder extraPrefixes(@Nullable List<String> extraPrefixes) {
 
             this.extraPrefixes = extraPrefixes;
@@ -89,6 +123,12 @@ public final class MagicWanGreTunnelBgp {
         }
         public Builder extraPrefixes(String... extraPrefixes) {
             return extraPrefixes(List.of(extraPrefixes));
+        }
+        @CustomType.Setter
+        public Builder importFilterId(@Nullable String importFilterId) {
+
+            this.importFilterId = importFilterId;
+            return this;
         }
         @CustomType.Setter
         public Builder md5Key(@Nullable String md5Key) {
@@ -99,7 +139,9 @@ public final class MagicWanGreTunnelBgp {
         public MagicWanGreTunnelBgp build() {
             final var _resultValue = new MagicWanGreTunnelBgp();
             _resultValue.customerAsn = customerAsn;
+            _resultValue.exportFilterId = exportFilterId;
             _resultValue.extraPrefixes = extraPrefixes;
+            _resultValue.importFilterId = importFilterId;
             _resultValue.md5Key = md5Key;
             return _resultValue;
         }

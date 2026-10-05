@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomCertificateId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomCertificateId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -92,7 +92,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomCertificateId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomSslArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Custom certificate identifier tag.
         /// </summary>
         [Input("customCertificateId")]
         public string? CustomCertificateId { get; set; }
@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomSslInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Custom certificate identifier tag.
         /// </summary>
         [Input("customCertificateId")]
         public Input<string>? CustomCertificateId { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BundleMethod;
         /// <summary>
-        /// Identifier.
+        /// Custom certificate identifier tag.
         /// </summary>
         public readonly string? CustomCertificateId;
         /// <summary>
@@ -177,7 +177,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetCustomSslGeoRestrictionsResult GeoRestrictions;
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Identifier.
+        /// Custom certificate identifier tag.
         /// </summary>
         public readonly string Id;
         /// <summary>

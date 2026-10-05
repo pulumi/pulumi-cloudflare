@@ -45,7 +45,7 @@ import (
 //						Type: pulumi.String("start"),
 //					},
 //				},
-//				Name: pulumi.String("name"),
+//				Name: pulumi.String("x"),
 //			})
 //			if err != nil {
 //				return err

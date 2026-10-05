@@ -14,14 +14,14 @@ public final class GetR2CustomDomainPlainArgs extends com.pulumi.resources.Invok
     public static final GetR2CustomDomainPlainArgs Empty = new GetR2CustomDomainPlainArgs();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public String accountId() {
@@ -85,7 +85,7 @@ public final class GetR2CustomDomainPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 

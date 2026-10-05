@@ -45,6 +45,11 @@ import * as utilities from "./utilities";
  *             serverAddresses: ["192.0.2.1"],
  *         },
  *         dhcpServer: {
+ *             dhcpOptions: [{
+ *                 code: 66,
+ *                 type: "ip",
+ *                 value: "10.20.30.40",
+ *             }],
  *             dhcpPoolEnd: "192.0.2.1",
  *             dhcpPoolStart: "192.0.2.1",
  *             dnsServer: "192.0.2.1",

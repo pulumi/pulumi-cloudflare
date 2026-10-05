@@ -58,7 +58,7 @@ public final class GetAiSearchInstanceResult {
      */
     private String fusionMethod;
     /**
-     * @return Deprecated — use indexMethod instead.
+     * @return Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -72,7 +72,7 @@ public final class GetAiSearchInstanceResult {
      */
     private String id;
     /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
+     * @return Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      * 
      */
     private GetAiSearchInstanceIndexMethod indexMethod;
@@ -107,7 +107,8 @@ public final class GetAiSearchInstanceResult {
     private Double syncInterval;
     private String tokenId;
     /**
-     * @return Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
+     * @return Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+     * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
     private String type;
@@ -179,7 +180,7 @@ public final class GetAiSearchInstanceResult {
         return this.fusionMethod;
     }
     /**
-     * @return Deprecated — use indexMethod instead.
+     * @return Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -197,7 +198,7 @@ public final class GetAiSearchInstanceResult {
         return this.id;
     }
     /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
+     * @return Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      * 
      */
     public GetAiSearchInstanceIndexMethod indexMethod() {
@@ -276,7 +277,8 @@ public final class GetAiSearchInstanceResult {
         return this.tokenId;
     }
     /**
-     * @return Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
+     * @return Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+     * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
     public String type() {

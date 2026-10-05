@@ -233,7 +233,7 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
                 },
                 "type": "start",
             }],
-            name="name")
+            name="x")
         ```
 
         ## Import
@@ -276,7 +276,7 @@ class AiGatewayDynamicRouting(pulumi.CustomResource):
                 },
                 "type": "start",
             }],
-            name="name")
+            name="x")
         ```
 
         ## Import

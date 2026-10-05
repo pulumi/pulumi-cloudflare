@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
     ///             new Cloudflare.Inputs.WorkersDeploymentVersionArgs
     ///             {
     ///                 Percentage = 100,
-    ///                 VersionId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///                 VersionId = "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
     ///             },
     ///         },
     ///         Annotations = new Cloudflare.Inputs.WorkersDeploymentAnnotationsArgs
@@ -73,7 +73,13 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        /// </summary>
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the script.
         /// </summary>
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
@@ -87,6 +93,9 @@ namespace Pulumi.Cloudflare
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
 
+        /// <summary>
+        /// Worker versions included in this deployment. Each object must contain a `VersionId` UUID and a `Percentage`; percentages across all objects must total 100. In the `Cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"VersionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        /// </summary>
         [Output("versions")]
         public Output<ImmutableArray<Outputs.WorkersDeploymentVersion>> Versions { get; private set; } = null!;
 
@@ -146,7 +155,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkersDeploymentAnnotationsArgs>? Annotations { get; set; }
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// Name of the script.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -159,6 +174,10 @@ namespace Pulumi.Cloudflare
 
         [Input("versions", required: true)]
         private InputList<Inputs.WorkersDeploymentVersionArgs>? _versions;
+
+        /// <summary>
+        /// Worker versions included in this deployment. Each object must contain a `VersionId` UUID and a `Percentage`; percentages across all objects must total 100. In the `Cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"VersionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        /// </summary>
         public InputList<Inputs.WorkersDeploymentVersionArgs> Versions
         {
             get => _versions ?? (_versions = new InputList<Inputs.WorkersDeploymentVersionArgs>());
@@ -189,7 +208,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// Name of the script.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
@@ -205,6 +230,10 @@ namespace Pulumi.Cloudflare
 
         [Input("versions")]
         private InputList<Inputs.WorkersDeploymentVersionGetArgs>? _versions;
+
+        /// <summary>
+        /// Worker versions included in this deployment. Each object must contain a `VersionId` UUID and a `Percentage`; percentages across all objects must total 100. In the `Cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"VersionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        /// </summary>
         public InputList<Inputs.WorkersDeploymentVersionGetArgs> Versions
         {
             get => _versions ?? (_versions = new InputList<Inputs.WorkersDeploymentVersionGetArgs>());

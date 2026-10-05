@@ -68,6 +68,10 @@ export interface GetHyperdriveConfigResult {
      */
     readonly id: string;
     /**
+     * Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+     */
+    readonly integration: outputs.GetHyperdriveConfigIntegration;
+    /**
      * Defines the last modified time of the Hyperdrive configuration.
      */
     readonly modifiedOn: string;
@@ -79,6 +83,9 @@ export interface GetHyperdriveConfigResult {
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
      */
     readonly name: string;
+    /**
+     * Combines database connection fields with exactly one supported network location.
+     */
     readonly origin: outputs.GetHyperdriveConfigOrigin;
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.

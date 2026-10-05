@@ -63,14 +63,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/flagshipApp:FlagshipApp")
 public class FlagshipApp extends com.pulumi.resources.CustomResource {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Output<String> accountId() {
@@ -82,9 +82,17 @@ public class FlagshipApp extends com.pulumi.resources.CustomResource {
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }

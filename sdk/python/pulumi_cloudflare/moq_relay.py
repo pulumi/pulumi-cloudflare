@@ -231,6 +231,17 @@ class MoqRelay(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_moq_relay = cloudflare.MoqRelay("example_moq_relay",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="Production Live Stream")
+        ```
+
         ## Import
 
         ```sh
@@ -251,6 +262,17 @@ class MoqRelay(pulumi.CustomResource):
                  args: MoqRelayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_moq_relay = cloudflare.MoqRelay("example_moq_relay",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="Production Live Stream")
+        ```
+
         ## Import
 
         ```sh

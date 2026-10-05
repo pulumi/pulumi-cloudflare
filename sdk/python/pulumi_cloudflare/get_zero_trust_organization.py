@@ -27,7 +27,7 @@ class GetZeroTrustOrganizationResult:
     """
     A collection of values returned by getZeroTrustOrganization.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_required_for_all_apps=None, mfa_ssh_piv_key_requirements=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_non_browser401=None, warp_auth_session_duration=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, deny_unmatched_requests=None, deny_unmatched_requests_exempted_zone_names=None, is_ui_read_only=None, login_design=None, mfa_config=None, mfa_required_for_all_apps=None, mfa_ssh_piv_key_requirements=None, name=None, service_token_inactivity=None, session_duration=None, strict_service_token_auth=None, trusted_accounts=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_non_browser401=None, warp_auth_session_duration=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -67,9 +67,18 @@ class GetZeroTrustOrganizationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if service_token_inactivity and not isinstance(service_token_inactivity, dict):
+            raise TypeError("Expected argument 'service_token_inactivity' to be a dict")
+        pulumi.set(__self__, "service_token_inactivity", service_token_inactivity)
         if session_duration and not isinstance(session_duration, str):
             raise TypeError("Expected argument 'session_duration' to be a str")
         pulumi.set(__self__, "session_duration", session_duration)
+        if strict_service_token_auth and not isinstance(strict_service_token_auth, bool):
+            raise TypeError("Expected argument 'strict_service_token_auth' to be a bool")
+        pulumi.set(__self__, "strict_service_token_auth", strict_service_token_auth)
+        if trusted_accounts and not isinstance(trusted_accounts, list):
+            raise TypeError("Expected argument 'trusted_accounts' to be a list")
+        pulumi.set(__self__, "trusted_accounts", trusted_accounts)
         if ui_read_only_toggle_reason and not isinstance(ui_read_only_toggle_reason, str):
             raise TypeError("Expected argument 'ui_read_only_toggle_reason' to be a str")
         pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
@@ -171,6 +180,9 @@ class GetZeroTrustOrganizationResult:
     @_builtins.property
     @pulumi.getter(name="mfaSshPivKeyRequirements")
     def mfa_ssh_piv_key_requirements(self) -> 'outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult':
+        """
+        Configures SSH PIV key requirements for MFA using hardware security keys.
+        """
         return pulumi.get(self, "mfa_ssh_piv_key_requirements")
 
     @_builtins.property
@@ -182,12 +194,36 @@ class GetZeroTrustOrganizationResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="serviceTokenInactivity")
+    def service_token_inactivity(self) -> 'outputs.GetZeroTrustOrganizationServiceTokenInactivityResult':
+        """
+        Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+        """
+        return pulumi.get(self, "service_token_inactivity")
+
+    @_builtins.property
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> _builtins.str:
         """
         The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="strictServiceTokenAuth")
+    def strict_service_token_auth(self) -> _builtins.bool:
+        """
+        Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+        """
+        return pulumi.get(self, "strict_service_token_auth")
+
+    @_builtins.property
+    @pulumi.getter(name="trustedAccounts")
+    def trusted_accounts(self) -> Sequence[_builtins.str]:
+        """
+        The account tags of organizations trusted by this organization for policy and device posture sharing.
+        """
+        return pulumi.get(self, "trusted_accounts")
 
     @_builtins.property
     @pulumi.getter(name="uiReadOnlyToggleReason")
@@ -249,7 +285,10 @@ class AwaitableGetZeroTrustOrganizationResult(GetZeroTrustOrganizationResult):
             mfa_required_for_all_apps=self.mfa_required_for_all_apps,
             mfa_ssh_piv_key_requirements=self.mfa_ssh_piv_key_requirements,
             name=self.name,
+            service_token_inactivity=self.service_token_inactivity,
             session_duration=self.session_duration,
+            strict_service_token_auth=self.strict_service_token_auth,
+            trusted_accounts=self.trusted_accounts,
             ui_read_only_toggle_reason=self.ui_read_only_toggle_reason,
             user_seat_expiration_inactive_time=self.user_seat_expiration_inactive_time,
             warp_auth_non_browser401=self.warp_auth_non_browser401,
@@ -301,7 +340,10 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
         mfa_required_for_all_apps=pulumi.get(__ret__, 'mfa_required_for_all_apps'),
         mfa_ssh_piv_key_requirements=pulumi.get(__ret__, 'mfa_ssh_piv_key_requirements'),
         name=pulumi.get(__ret__, 'name'),
+        service_token_inactivity=pulumi.get(__ret__, 'service_token_inactivity'),
         session_duration=pulumi.get(__ret__, 'session_duration'),
+        strict_service_token_auth=pulumi.get(__ret__, 'strict_service_token_auth'),
+        trusted_accounts=pulumi.get(__ret__, 'trusted_accounts'),
         ui_read_only_toggle_reason=pulumi.get(__ret__, 'ui_read_only_toggle_reason'),
         user_seat_expiration_inactive_time=pulumi.get(__ret__, 'user_seat_expiration_inactive_time'),
         warp_auth_non_browser401=pulumi.get(__ret__, 'warp_auth_non_browser401'),
@@ -350,7 +392,10 @@ def get_zero_trust_organization_output(account_id: pulumi.Input[Optional[Optiona
         mfa_required_for_all_apps=pulumi.get(__response__, 'mfa_required_for_all_apps'),
         mfa_ssh_piv_key_requirements=pulumi.get(__response__, 'mfa_ssh_piv_key_requirements'),
         name=pulumi.get(__response__, 'name'),
+        service_token_inactivity=pulumi.get(__response__, 'service_token_inactivity'),
         session_duration=pulumi.get(__response__, 'session_duration'),
+        strict_service_token_auth=pulumi.get(__response__, 'strict_service_token_auth'),
+        trusted_accounts=pulumi.get(__response__, 'trusted_accounts'),
         ui_read_only_toggle_reason=pulumi.get(__response__, 'ui_read_only_toggle_reason'),
         user_seat_expiration_inactive_time=pulumi.get(__response__, 'user_seat_expiration_inactive_time'),
         warp_auth_non_browser401=pulumi.get(__response__, 'warp_auth_non_browser401'),

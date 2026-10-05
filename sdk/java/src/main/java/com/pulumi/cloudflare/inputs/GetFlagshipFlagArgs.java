@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetFlagshipFlagFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFlagshipFlagArgs Empty = new GetFlagshipFlagArgs();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Output<String> accountId() {
@@ -30,33 +33,40 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public Output<String> appId() {
         return this.appId;
     }
 
-    /**
-     * Flag key (slug).
-     * 
-     */
-    @Import(name="flagKey", required=true)
-    private Output<String> flagKey;
+    @Import(name="filter")
+    private @Nullable Output<GetFlagshipFlagFilterArgs> filter;
+
+    public Optional<Output<GetFlagshipFlagFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
 
     /**
-     * @return Flag key (slug).
+     * Case-sensitive key identifying the flag within the app.
      * 
      */
-    public Output<String> flagKey() {
-        return this.flagKey;
+    @Import(name="flagKey")
+    private @Nullable Output<String> flagKey;
+
+    /**
+     * @return Case-sensitive key identifying the flag within the app.
+     * 
+     */
+    public Optional<Output<String>> flagKey() {
+        return Optional.ofNullable(this.flagKey);
     }
 
     private GetFlagshipFlagArgs() {}
@@ -64,6 +74,7 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
     private GetFlagshipFlagArgs(GetFlagshipFlagArgs $) {
         this.accountId = $.accountId;
         this.appId = $.appId;
+        this.filter = $.filter;
         this.flagKey = $.flagKey;
     }
 
@@ -86,7 +97,7 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -97,7 +108,7 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -107,7 +118,7 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -118,7 +129,7 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -127,19 +138,28 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
             return appId(Output.of(appId));
         }
 
+        public Builder filter(@Nullable Output<GetFlagshipFlagFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetFlagshipFlagFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
         /**
-         * @param flagKey Flag key (slug).
+         * @param flagKey Case-sensitive key identifying the flag within the app.
          * 
          * @return builder
          * 
          */
-        public Builder flagKey(Output<String> flagKey) {
+        public Builder flagKey(@Nullable Output<String> flagKey) {
             $.flagKey = flagKey;
             return this;
         }
 
         /**
-         * @param flagKey Flag key (slug).
+         * @param flagKey Case-sensitive key identifying the flag within the app.
          * 
          * @return builder
          * 
@@ -154,9 +174,6 @@ public final class GetFlagshipFlagArgs extends com.pulumi.resources.InvokeArgs {
             }
             if ($.appId == null) {
                 throw new MissingRequiredPropertyException("GetFlagshipFlagArgs", "appId");
-            }
-            if ($.flagKey == null) {
-                throw new MissingRequiredPropertyException("GetFlagshipFlagArgs", "flagKey");
             }
             return $;
         }

@@ -73,14 +73,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/r2BucketEventNotification:R2BucketEventNotification")
 public class R2BucketEventNotification extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Output<String> accountId() {
@@ -115,14 +115,14 @@ public class R2BucketEventNotification extends com.pulumi.resources.CustomResour
         return this.jurisdiction;
     }
     /**
-     * Queue ID.
+     * ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     @Export(name="queueId", refs={String.class}, tree="[0]")
     private Output<String> queueId;
 
     /**
-     * @return Queue ID.
+     * @return ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     public Output<String> queueId() {

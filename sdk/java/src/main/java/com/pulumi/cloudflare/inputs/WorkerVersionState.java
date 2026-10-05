@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionCacheOptionsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionExportsArgs;
+import com.pulumi.cloudflare.inputs.WorkerVersionExportsReconciliationArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
@@ -16,6 +17,7 @@ import com.pulumi.cloudflare.inputs.WorkerVersionPackageDependencyArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionPlacementArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -72,6 +74,36 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<WorkerVersionAssetsArgs>> assets() {
         return Optional.ofNullable(this.assets);
+    }
+
+    /**
+     * Email of the user who created the version.
+     * 
+     */
+    @Import(name="authorEmail")
+    private @Nullable Output<String> authorEmail;
+
+    /**
+     * @return Email of the user who created the version.
+     * 
+     */
+    public Optional<Output<String>> authorEmail() {
+        return Optional.ofNullable(this.authorEmail);
+    }
+
+    /**
+     * Identifier of the user who created the version.
+     * 
+     */
+    @Import(name="authorId")
+    private @Nullable Output<String> authorId;
+
+    /**
+     * @return Identifier of the user who created the version.
+     * 
+     */
+    public Optional<Output<String>> authorId() {
+        return Optional.ofNullable(this.authorId);
     }
 
     /**
@@ -171,6 +203,21 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * If true, a deployment will be created that sends 100% of traffic to the new version.
+     * 
+     */
+    @Import(name="deploy")
+    private @Nullable Output<Boolean> deploy;
+
+    /**
+     * @return If true, a deployment will be created that sends 100% of traffic to the new version.
+     * 
+     */
+    public Optional<Output<Boolean>> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
+
+    /**
      * Declarative exports for the version, including Durable Object
      * classes (with their `storage` backend) and named Worker
      * entrypoints. On reads, tombstoned lifecycle entries are
@@ -193,6 +240,38 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Map<String,WorkerVersionExportsArgs>>> exports() {
         return Optional.ofNullable(this.exports);
+    }
+
+    /**
+     * Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+     * 
+     */
+    @Import(name="exportsReconciliation")
+    private @Nullable Output<WorkerVersionExportsReconciliationArgs> exportsReconciliation;
+
+    /**
+     * @return Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+     * 
+     */
+    public Optional<Output<WorkerVersionExportsReconciliationArgs>> exportsReconciliation() {
+        return Optional.ofNullable(this.exportsReconciliation);
+    }
+
+    /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
+     * 
+     */
+    @Import(name="include")
+    private @Nullable Output<String> include;
+
+    /**
+     * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
+     * 
+     */
+    public Optional<Output<String>> include() {
+        return Optional.ofNullable(this.include);
     }
 
     /**
@@ -433,13 +512,18 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         this.accountId = $.accountId;
         this.annotations = $.annotations;
         this.assets = $.assets;
+        this.authorEmail = $.authorEmail;
+        this.authorId = $.authorId;
         this.bindings = $.bindings;
         this.cacheOptions = $.cacheOptions;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.containers = $.containers;
         this.createdOn = $.createdOn;
+        this.deploy = $.deploy;
         this.exports = $.exports;
+        this.exportsReconciliation = $.exportsReconciliation;
+        this.include = $.include;
         this.limits = $.limits;
         this.mainModule = $.mainModule;
         this.mainScriptBase64 = $.mainScriptBase64;
@@ -535,6 +619,48 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder assets(WorkerVersionAssetsArgs assets) {
             return assets(Output.of(assets));
+        }
+
+        /**
+         * @param authorEmail Email of the user who created the version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorEmail(@Nullable Output<String> authorEmail) {
+            $.authorEmail = authorEmail;
+            return this;
+        }
+
+        /**
+         * @param authorEmail Email of the user who created the version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorEmail(String authorEmail) {
+            return authorEmail(Output.of(authorEmail));
+        }
+
+        /**
+         * @param authorId Identifier of the user who created the version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorId(@Nullable Output<String> authorId) {
+            $.authorId = authorId;
+            return this;
+        }
+
+        /**
+         * @param authorId Identifier of the user who created the version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorId(String authorId) {
+            return authorId(Output.of(authorId));
         }
 
         /**
@@ -700,6 +826,27 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param deploy If true, a deployment will be created that sends 100% of traffic to the new version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(@Nullable Output<Boolean> deploy) {
+            $.deploy = deploy;
+            return this;
+        }
+
+        /**
+         * @param deploy If true, a deployment will be created that sends 100% of traffic to the new version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(Boolean deploy) {
+            return deploy(Output.of(deploy));
+        }
+
+        /**
          * @param exports Declarative exports for the version, including Durable Object
          * classes (with their `storage` backend) and named Worker
          * entrypoints. On reads, tombstoned lifecycle entries are
@@ -728,6 +875,50 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder exports(Map<String,WorkerVersionExportsArgs> exports) {
             return exports(Output.of(exports));
+        }
+
+        /**
+         * @param exportsReconciliation Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportsReconciliation(@Nullable Output<WorkerVersionExportsReconciliationArgs> exportsReconciliation) {
+            $.exportsReconciliation = exportsReconciliation;
+            return this;
+        }
+
+        /**
+         * @param exportsReconciliation Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportsReconciliation(WorkerVersionExportsReconciliationArgs exportsReconciliation) {
+            return exportsReconciliation(Output.of(exportsReconciliation));
+        }
+
+        /**
+         * @param include Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+         * Available values: &#34;modules&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder include(@Nullable Output<String> include) {
+            $.include = include;
+            return this;
+        }
+
+        /**
+         * @param include Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+         * Available values: &#34;modules&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder include(String include) {
+            return include(Output.of(include));
         }
 
         /**

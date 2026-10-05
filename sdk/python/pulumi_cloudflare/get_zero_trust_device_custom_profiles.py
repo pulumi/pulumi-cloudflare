@@ -27,13 +27,16 @@ class GetZeroTrustDeviceCustomProfilesResult:
     """
     A collection of values returned by getZeroTrustDeviceCustomProfiles.
     """
-    def __init__(__self__, account_id=None, max_items=None, results=None):
+    def __init__(__self__, account_id=None, max_items=None, profile_type=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if profile_type and not isinstance(profile_type, str):
+            raise TypeError("Expected argument 'profile_type' to be a str")
+        pulumi.set(__self__, "profile_type", profile_type)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
@@ -52,6 +55,15 @@ class GetZeroTrustDeviceCustomProfilesResult:
         return pulumi.get(self, "max_items")
 
     @_builtins.property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> _builtins.str:
+        """
+        Filter profiles by client type. When omitted, only WARP profiles are returned.
+        Available values: "warp", "browser_extension".
+        """
+        return pulumi.get(self, "profile_type")
+
+    @_builtins.property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetZeroTrustDeviceCustomProfilesResultResult']:
         """
@@ -68,11 +80,13 @@ class AwaitableGetZeroTrustDeviceCustomProfilesResult(GetZeroTrustDeviceCustomPr
         return GetZeroTrustDeviceCustomProfilesResult(
             account_id=self.account_id,
             max_items=self.max_items,
+            profile_type=self.profile_type,
             results=self.results)
 
 
 def get_zero_trust_device_custom_profiles(account_id: Optional[_builtins.str] = None,
                                           max_items: Optional[_builtins.int] = None,
+                                          profile_type: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDeviceCustomProfilesResult:
     """
     ## Example Usage
@@ -86,19 +100,24 @@ def get_zero_trust_device_custom_profiles(account_id: Optional[_builtins.str] = 
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str profile_type: Filter profiles by client type. When omitted, only WARP profiles are returned.
+           Available values: "warp", "browser_extension".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['profileType'] = profile_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles', __args__, opts=opts, typ=GetZeroTrustDeviceCustomProfilesResult).value
 
     return AwaitableGetZeroTrustDeviceCustomProfilesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        profile_type=pulumi.get(__ret__, 'profile_type'),
         results=pulumi.get(__ret__, 'results'))
 def get_zero_trust_device_custom_profiles_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                 profile_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceCustomProfilesResult]:
     """
     ## Example Usage
@@ -112,13 +131,17 @@ def get_zero_trust_device_custom_profiles_output(account_id: pulumi.Input[Option
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str profile_type: Filter profiles by client type. When omitted, only WARP profiles are returned.
+           Available values: "warp", "browser_extension".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['profileType'] = profile_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles', __args__, opts=opts, typ=GetZeroTrustDeviceCustomProfilesResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDeviceCustomProfilesResult(
         account_id=pulumi.get(__response__, 'account_id'),
         max_items=pulumi.get(__response__, 'max_items'),
+        profile_type=pulumi.get(__response__, 'profile_type'),
         results=pulumi.get(__response__, 'results')))

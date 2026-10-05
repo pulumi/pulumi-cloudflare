@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleClientCertificate = Cloudflare.GetClientCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         ClientCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ClientCertificateId = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleClientCertificate = Cloudflare.GetClientCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         ClientCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ClientCertificateId = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleClientCertificate = Cloudflare.GetClientCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         ClientCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ClientCertificateId = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///     });
         /// 
         /// });
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetClientCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Client Certificate Tag
         /// </summary>
         [Input("clientCertificateId")]
         public string? ClientCertificateId { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetClientCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Client Certificate Tag
         /// </summary>
         [Input("clientCertificateId")]
         public Input<string>? ClientCertificateId { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetClientCertificateCertificateAuthorityResult CertificateAuthority;
         /// <summary>
-        /// Identifier.
+        /// Client Certificate Tag
         /// </summary>
         public readonly string? ClientCertificateId;
         /// <summary>
@@ -181,7 +181,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string FingerprintSha256;
         /// <summary>
-        /// Identifier.
+        /// Client Certificate Tag
         /// </summary>
         public readonly string Id;
         /// <summary>

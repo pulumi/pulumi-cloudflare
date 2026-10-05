@@ -20,13 +20,13 @@ public final class GetWorkersCronTriggerResult {
      */
     private @Nullable String accountId;
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     private String id;
     private List<GetWorkersCronTriggerSchedule> schedules;
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     private String scriptName;
@@ -40,7 +40,7 @@ public final class GetWorkersCronTriggerResult {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public String id() {
@@ -50,7 +50,7 @@ public final class GetWorkersCronTriggerResult {
         return this.schedules;
     }
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public String scriptName() {

@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPolicyFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,32 +16,48 @@ public final class GetZeroTrustGatewayPolicyArgs extends com.pulumi.resources.In
 
     public static final GetZeroTrustGatewayPolicyArgs Empty = new GetZeroTrustGatewayPolicyArgs();
 
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetZeroTrustGatewayPolicyFilterArgs> filter;
+
+    public Optional<Output<GetZeroTrustGatewayPolicyFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
      * Identify the API resource with a UUID.
      * 
      */
-    @Import(name="ruleId", required=true)
-    private Output<String> ruleId;
+    @Import(name="ruleId")
+    private @Nullable Output<String> ruleId;
 
     /**
      * @return Identify the API resource with a UUID.
      * 
      */
-    public Output<String> ruleId() {
-        return this.ruleId;
+    public Optional<Output<String>> ruleId() {
+        return Optional.ofNullable(this.ruleId);
     }
 
     private GetZeroTrustGatewayPolicyArgs() {}
 
     private GetZeroTrustGatewayPolicyArgs(GetZeroTrustGatewayPolicyArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.ruleId = $.ruleId;
     }
 
@@ -63,13 +79,34 @@ public final class GetZeroTrustGatewayPolicyArgs extends com.pulumi.resources.In
             $ = new GetZeroTrustGatewayPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        public Builder filter(@Nullable Output<GetZeroTrustGatewayPolicyFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetZeroTrustGatewayPolicyFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
@@ -78,7 +115,7 @@ public final class GetZeroTrustGatewayPolicyArgs extends com.pulumi.resources.In
          * @return builder
          * 
          */
-        public Builder ruleId(Output<String> ruleId) {
+        public Builder ruleId(@Nullable Output<String> ruleId) {
             $.ruleId = ruleId;
             return this;
         }
@@ -94,9 +131,6 @@ public final class GetZeroTrustGatewayPolicyArgs extends com.pulumi.resources.In
         }
 
         public GetZeroTrustGatewayPolicyArgs build() {
-            if ($.ruleId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyArgs", "ruleId");
-            }
             return $;
         }
     }

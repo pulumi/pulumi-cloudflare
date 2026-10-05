@@ -32,6 +32,21 @@ public final class EmailRoutingDnsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     * 
+     */
+    @Import(name="subdomain")
+    private @Nullable Output<String> subdomain;
+
+    /**
+     * @return Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     * 
+     */
+    public Optional<Output<String>> subdomain() {
+        return Optional.ofNullable(this.subdomain);
+    }
+
+    /**
      * Identifier.
      * 
      */
@@ -50,6 +65,7 @@ public final class EmailRoutingDnsArgs extends com.pulumi.resources.ResourceArgs
 
     private EmailRoutingDnsArgs(EmailRoutingDnsArgs $) {
         this.name = $.name;
+        this.subdomain = $.subdomain;
         this.zoneId = $.zoneId;
     }
 
@@ -90,6 +106,27 @@ public final class EmailRoutingDnsArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param subdomain Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subdomain(@Nullable Output<String> subdomain) {
+            $.subdomain = subdomain;
+            return this;
+        }
+
+        /**
+         * @param subdomain Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subdomain(String subdomain) {
+            return subdomain(Output.of(subdomain));
         }
 
         /**

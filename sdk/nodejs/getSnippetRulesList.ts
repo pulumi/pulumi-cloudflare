@@ -6,6 +6,23 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Accepted Permissions
+ *
+ * - `Snippets Read`
+ * - `Snippets Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleSnippetRulesList = cloudflare.getSnippetRulesList({
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ * });
+ * ```
+ */
 export function getSnippetRulesList(args: GetSnippetRulesListArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetRulesListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSnippetRulesList:getSnippetRulesList", {
@@ -23,7 +40,7 @@ export interface GetSnippetRulesListArgs {
      */
     maxItems?: number;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId: string;
 }
@@ -41,10 +58,27 @@ export interface GetSnippetRulesListResult {
      */
     readonly results: outputs.GetSnippetRulesListResult[];
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     readonly zoneId: string;
 }
+/**
+ * Accepted Permissions
+ *
+ * - `Snippets Read`
+ * - `Snippets Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleSnippetRulesList = cloudflare.getSnippetRulesList({
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ * });
+ * ```
+ */
 export function getSnippetRulesListOutput(args: GetSnippetRulesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetRulesListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSnippetRulesList:getSnippetRulesList", {
@@ -62,7 +96,7 @@ export interface GetSnippetRulesListOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * The unique ID of the zone.
+     * Use this field to specify the unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

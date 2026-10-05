@@ -17,7 +17,7 @@ public final class GetFlagshipFlagsResultRuleRollout {
      */
     private String attribute;
     /**
-     * @return Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     * @return Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
      * 
      */
     private Double percentage;
@@ -31,7 +31,7 @@ public final class GetFlagshipFlagsResultRuleRollout {
         return this.attribute;
     }
     /**
-     * @return Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     * @return Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
      * 
      */
     public Double percentage() {

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? MtlsCertificateId { get; set; }
 
         /// <summary>
-        /// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+        /// PostgreSQL accepts `Require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
         /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }

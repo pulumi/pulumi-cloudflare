@@ -51,6 +51,9 @@ type LookupZeroTrustDeviceCustomProfilesArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter profiles by client type. When omitted, only WARP profiles are returned.
+	// Available values: "warp", "browserExtension".
+	ProfileType *string `pulumi:"profileType"`
 }
 
 // A collection of values returned by getZeroTrustDeviceCustomProfiles.
@@ -58,6 +61,9 @@ type LookupZeroTrustDeviceCustomProfilesResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter profiles by client type. When omitted, only WARP profiles are returned.
+	// Available values: "warp", "browserExtension".
+	ProfileType string `pulumi:"profileType"`
 	// The items returned by the data source
 	Results []GetZeroTrustDeviceCustomProfilesResult `pulumi:"results"`
 }
@@ -72,6 +78,9 @@ type LookupZeroTrustDeviceCustomProfilesOutputArgs struct {
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Filter profiles by client type. When omitted, only WARP profiles are returned.
+	// Available values: "warp", "browserExtension".
+	ProfileType pulumi.StringPtrInput `pulumi:"profileType"`
 }
 
 func (LookupZeroTrustDeviceCustomProfilesOutputArgs) ElementType() reflect.Type {
@@ -100,6 +109,12 @@ func (o LookupZeroTrustDeviceCustomProfilesResultOutput) AccountId() pulumi.Stri
 // Max items to fetch, default: 1000
 func (o LookupZeroTrustDeviceCustomProfilesResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfilesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// Filter profiles by client type. When omitted, only WARP profiles are returned.
+// Available values: "warp", "browserExtension".
+func (o LookupZeroTrustDeviceCustomProfilesResultOutput) ProfileType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfilesResult) string { return v.ProfileType }).(pulumi.StringOutput)
 }
 
 // The items returned by the data source

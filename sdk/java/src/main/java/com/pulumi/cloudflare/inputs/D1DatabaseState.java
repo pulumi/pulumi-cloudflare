@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,6 +46,23 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    @Import(name="fields")
+    private @Nullable Output<List<String>> fields;
+
+    /**
+     * @return Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    public Optional<Output<List<String>>> fields() {
+        return Optional.ofNullable(this.fields);
     }
 
     /**
@@ -94,9 +112,25 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="numTables")
     private @Nullable Output<Double> numTables;
 
+    /**
+     * @return The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<Double>> numTables() {
         return Optional.ofNullable(this.numTables);
     }
@@ -160,6 +194,7 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
     private D1DatabaseState(D1DatabaseState $) {
         this.accountId = $.accountId;
         this.createdAt = $.createdAt;
+        this.fields = $.fields;
         this.fileSize = $.fileSize;
         this.jurisdiction = $.jurisdiction;
         this.name = $.name;
@@ -231,6 +266,40 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(@Nullable Output<List<String>> fields) {
+            $.fields = fields;
+            return this;
+        }
+
+        /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(List<String> fields) {
+            return fields(Output.of(fields));
+        }
+
+        /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(String... fields) {
+            return fields(List.of(fields));
+        }
+
+        /**
          * @param fileSize The D1 database&#39;s size, in bytes.
          * 
          * @return builder
@@ -295,11 +364,31 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param numTables The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder numTables(@Nullable Output<Double> numTables) {
             $.numTables = numTables;
             return this;
         }
 
+        /**
+         * @param numTables The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder numTables(Double numTables) {
             return numTables(Output.of(numTables));
         }

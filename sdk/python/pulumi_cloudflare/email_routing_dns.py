@@ -20,16 +20,20 @@ __all__ = ['EmailRoutingDnsArgs', 'EmailRoutingDns']
 class EmailRoutingDnsArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subdomain: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailRoutingDns resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Domain of your zone.
+        :param pulumi.Input[_builtins.str] subdomain: Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -55,6 +59,18 @@ class EmailRoutingDnsArgs:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def subdomain(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subdomain", value)
+
 
 @pulumi.input_type
 class _EmailRoutingDnsState:
@@ -65,6 +81,7 @@ class _EmailRoutingDnsState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wizard: pulumi.Input[Optional[_builtins.bool]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subdomain: pulumi.Input[Optional[_builtins.str]] = None,
                  support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -78,6 +95,7 @@ class _EmailRoutingDnsState:
         :param pulumi.Input[_builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[_builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
+        :param pulumi.Input[_builtins.str] subdomain: Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
         :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         :param pulumi.Input[_builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -94,6 +112,8 @@ class _EmailRoutingDnsState:
             pulumi.set(__self__, "skip_wizard", skip_wizard)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if support_subaddress is not None:
             pulumi.set(__self__, "support_subaddress", support_subaddress)
         if tag is not None:
@@ -178,6 +198,18 @@ class _EmailRoutingDnsState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def subdomain(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subdomain", value)
+
+    @_builtins.property
     @pulumi.getter(name="supportSubaddress")
     def support_subaddress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -222,6 +254,7 @@ class EmailRoutingDns(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subdomain: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -251,6 +284,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Domain of your zone.
+        :param pulumi.Input[_builtins.str] subdomain: Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -299,6 +333,7 @@ class EmailRoutingDns(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subdomain: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -310,6 +345,7 @@ class EmailRoutingDns(pulumi.CustomResource):
             __props__ = EmailRoutingDnsArgs.__new__(EmailRoutingDnsArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["subdomain"] = subdomain
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -336,6 +372,7 @@ class EmailRoutingDns(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             skip_wizard: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            subdomain: pulumi.Input[Optional[_builtins.str]] = None,
             support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None,
             tag: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailRoutingDns':
@@ -353,6 +390,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[_builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
+        :param pulumi.Input[_builtins.str] subdomain: Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
         :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         :param pulumi.Input[_builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -367,6 +405,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["skip_wizard"] = skip_wizard
         __props__.__dict__["status"] = status
+        __props__.__dict__["subdomain"] = subdomain
         __props__.__dict__["support_subaddress"] = support_subaddress
         __props__.__dict__["tag"] = tag
         __props__.__dict__["zone_id"] = zone_id
@@ -420,6 +459,14 @@ class EmailRoutingDns(pulumi.CustomResource):
         Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def subdomain(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+        """
+        return pulumi.get(self, "subdomain")
 
     @_builtins.property
     @pulumi.getter(name="supportSubaddress")

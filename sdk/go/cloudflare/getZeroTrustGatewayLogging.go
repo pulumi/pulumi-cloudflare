@@ -48,13 +48,15 @@ func LookupZeroTrustGatewayLogging(ctx *pulumi.Context, args *LookupZeroTrustGat
 
 // A collection of arguments for invoking getZeroTrustGatewayLogging.
 type LookupZeroTrustGatewayLoggingArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayLogging.
 type LookupZeroTrustGatewayLoggingResult struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The ID of this resource.
+	// Specify the Cloudflare account identifier.
 	Id string `pulumi:"id"`
 	// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
 	RedactPii bool `pulumi:"redactPii"`
@@ -69,6 +71,7 @@ func LookupZeroTrustGatewayLoggingOutput(ctx *pulumi.Context, args LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustGatewayLogging.
 type LookupZeroTrustGatewayLoggingOutputArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
@@ -91,11 +94,12 @@ func (o LookupZeroTrustGatewayLoggingResultOutput) ToLookupZeroTrustGatewayLoggi
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewayLoggingResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayLoggingResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of this resource.
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewayLoggingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayLoggingResult) string { return v.Id }).(pulumi.StringOutput)
 }

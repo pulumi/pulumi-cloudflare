@@ -46,6 +46,13 @@ import * as utilities from "./utilities";
  *   -----END CERTIFICATE-----
  *
  * `,
+ *     bundleMethod: "ubiquitous",
+ *     customCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+ *     deploy: "staging",
+ *     geoRestrictions: {
+ *         label: "us",
+ *     },
+ *     policy: "(country: US) or (region: EU)",
  *     privateKey: `  -----BEGIN RSA PRIVATE KEY-----
  *   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
  *   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -75,13 +82,6 @@ import * as utilities from "./utilities";
  *   -----END RSA PRIVATE KEY-----
  *
  * `,
- *     bundleMethod: "ubiquitous",
- *     customCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
- *     deploy: "staging",
- *     geoRestrictions: {
- *         label: "us",
- *     },
- *     policy: "(country: US) or (region: EU)",
  *     type: "sni_custom",
  * });
  * ```
@@ -172,9 +172,9 @@ export class CustomSsl extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly priority: pulumi.Output<number>;
     /**
-     * The zone's private key.
+     * The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      */
-    declare public readonly privateKey: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * The type of hash used for the certificate.
      */
@@ -234,9 +234,6 @@ export class CustomSsl extends pulumi.CustomResource {
             const args = argsOrState as CustomSslArgs | undefined;
             if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
-            }
-            if (args?.privateKey === undefined && !opts.urn) {
-                throw new Error("Missing required property 'privateKey'");
             }
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
@@ -324,7 +321,7 @@ export interface CustomSslState {
      */
     priority?: pulumi.Input<number | undefined>;
     /**
-     * The zone's private key.
+     * The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      */
     privateKey?: pulumi.Input<string | undefined>;
     /**
@@ -383,9 +380,9 @@ export interface CustomSslArgs {
      */
     policy?: pulumi.Input<string | undefined>;
     /**
-     * The zone's private key.
+     * The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      */
-    privateKey: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
      * Available values: "legacy*custom", "sniCustom".

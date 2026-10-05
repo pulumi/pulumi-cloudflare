@@ -27,18 +27,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustResourceLibraryApplication(ctx, "example_zero_trust_resource_library_application", &cloudflare.ZeroTrustResourceLibraryApplicationArgs{
-//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CategoryId: pulumi.Int(12),
-//				HumanId:    pulumi.String("HR"),
-//				Name:       pulumi.String("HR"),
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostnames: pulumi.StringArray{
 //					pulumi.String("example.com"),
 //					pulumi.String("foo.com"),
 //				},
+//				CategoryId: pulumi.Int(12),
+//				HumanId:    pulumi.String("HR"),
 //				IpSubnets: pulumi.StringArray{
 //					pulumi.String("192.168.1.0/24"),
-//					pulumi.String("10.0.0.0/8"),
+//					pulumi.String("2001:db8::/48"),
 //				},
+//				Name: pulumi.String("HR"),
 //				PortProtocols: pulumi.StringArray{
 //					pulumi.String("tcp/80"),
 //					pulumi.String("tcp/443"),
@@ -77,7 +77,7 @@ type ZeroTrustResourceLibraryApplication struct {
 	// Returns the application type description.
 	ApplicationTypeDescription pulumi.StringOutput `pulumi:"applicationTypeDescription"`
 	// Returns the category ID.
-	CategoryId pulumi.IntOutput `pulumi:"categoryId"`
+	CategoryId pulumi.IntPtrOutput `pulumi:"categoryId"`
 	// Returns the application creation time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// GenAI score for the application. Returns -1 when no score is available.
@@ -85,11 +85,11 @@ type ZeroTrustResourceLibraryApplication struct {
 	// Hostnames matched by the application.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// Returns the human readable ID.
-	HumanId pulumi.StringOutput `pulumi:"humanId"`
-	// IP subnets matched by the application.
+	HumanId pulumi.StringPtrOutput `pulumi:"humanId"`
+	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets pulumi.StringArrayOutput `pulumi:"ipSubnets"`
 	// Returns the application name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Port and protocol pairs matched by the application.
 	PortProtocols pulumi.StringArrayOutput `pulumi:"portProtocols"`
 	// Support domains matched by the application.
@@ -111,15 +111,6 @@ func NewZeroTrustResourceLibraryApplication(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.CategoryId == nil {
-		return nil, errors.New("invalid value for required argument 'CategoryId'")
-	}
-	if args.HumanId == nil {
-		return nil, errors.New("invalid value for required argument 'HumanId'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustResourceLibraryApplication
@@ -165,7 +156,7 @@ type zeroTrustResourceLibraryApplicationState struct {
 	Hostnames []string `pulumi:"hostnames"`
 	// Returns the human readable ID.
 	HumanId *string `pulumi:"humanId"`
-	// IP subnets matched by the application.
+	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets []string `pulumi:"ipSubnets"`
 	// Returns the application name.
 	Name *string `pulumi:"name"`
@@ -203,7 +194,7 @@ type ZeroTrustResourceLibraryApplicationState struct {
 	Hostnames pulumi.StringArrayInput
 	// Returns the human readable ID.
 	HumanId pulumi.StringPtrInput
-	// IP subnets matched by the application.
+	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets pulumi.StringArrayInput
 	// Returns the application name.
 	Name pulumi.StringPtrInput
@@ -226,15 +217,15 @@ func (ZeroTrustResourceLibraryApplicationState) ElementType() reflect.Type {
 type zeroTrustResourceLibraryApplicationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Returns the category ID.
-	CategoryId int `pulumi:"categoryId"`
+	CategoryId *int `pulumi:"categoryId"`
 	// Hostnames matched by the application.
 	Hostnames []string `pulumi:"hostnames"`
 	// Returns the human readable ID.
-	HumanId string `pulumi:"humanId"`
-	// IP subnets matched by the application.
+	HumanId *string `pulumi:"humanId"`
+	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets []string `pulumi:"ipSubnets"`
 	// Returns the application name.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Port and protocol pairs matched by the application.
 	PortProtocols []string `pulumi:"portProtocols"`
 	// Support domains matched by the application.
@@ -245,15 +236,15 @@ type zeroTrustResourceLibraryApplicationArgs struct {
 type ZeroTrustResourceLibraryApplicationArgs struct {
 	AccountId pulumi.StringInput
 	// Returns the category ID.
-	CategoryId pulumi.IntInput
+	CategoryId pulumi.IntPtrInput
 	// Hostnames matched by the application.
 	Hostnames pulumi.StringArrayInput
 	// Returns the human readable ID.
-	HumanId pulumi.StringInput
-	// IP subnets matched by the application.
+	HumanId pulumi.StringPtrInput
+	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets pulumi.StringArrayInput
 	// Returns the application name.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Port and protocol pairs matched by the application.
 	PortProtocols pulumi.StringArrayInput
 	// Support domains matched by the application.
@@ -377,8 +368,8 @@ func (o ZeroTrustResourceLibraryApplicationOutput) ApplicationTypeDescription() 
 }
 
 // Returns the category ID.
-func (o ZeroTrustResourceLibraryApplicationOutput) CategoryId() pulumi.IntOutput {
-	return o.ApplyT(func(v *ZeroTrustResourceLibraryApplication) pulumi.IntOutput { return v.CategoryId }).(pulumi.IntOutput)
+func (o ZeroTrustResourceLibraryApplicationOutput) CategoryId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustResourceLibraryApplication) pulumi.IntPtrOutput { return v.CategoryId }).(pulumi.IntPtrOutput)
 }
 
 // Returns the application creation time.
@@ -397,18 +388,18 @@ func (o ZeroTrustResourceLibraryApplicationOutput) Hostnames() pulumi.StringArra
 }
 
 // Returns the human readable ID.
-func (o ZeroTrustResourceLibraryApplicationOutput) HumanId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustResourceLibraryApplication) pulumi.StringOutput { return v.HumanId }).(pulumi.StringOutput)
+func (o ZeroTrustResourceLibraryApplicationOutput) HumanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustResourceLibraryApplication) pulumi.StringPtrOutput { return v.HumanId }).(pulumi.StringPtrOutput)
 }
 
-// IP subnets matched by the application.
+// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 func (o ZeroTrustResourceLibraryApplicationOutput) IpSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustResourceLibraryApplication) pulumi.StringArrayOutput { return v.IpSubnets }).(pulumi.StringArrayOutput)
 }
 
 // Returns the application name.
-func (o ZeroTrustResourceLibraryApplicationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustResourceLibraryApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o ZeroTrustResourceLibraryApplicationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustResourceLibraryApplication) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Port and protocol pairs matched by the application.

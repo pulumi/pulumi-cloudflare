@@ -109,7 +109,7 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName", required: true)]
         public string ScriptName { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool PreviewsEnabled;
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         public readonly string ScriptName;
 

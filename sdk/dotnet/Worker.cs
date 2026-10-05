@@ -35,6 +35,10 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Enabled = true,
     ///             HeadSamplingRate = 1,
+    ///             Issues = new Cloudflare.Inputs.WorkerObservabilityIssuesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
     ///             Logs = new Cloudflare.Inputs.WorkerObservabilityLogsArgs
     ///             {
     ///                 Destinations = new[]
@@ -56,6 +60,71 @@ namespace Pulumi.Cloudflare
     ///                 Enabled = true,
     ///                 HeadSamplingRate = 1,
     ///                 Persist = true,
+    ///                 PropagationPolicy = "authenticated",
+    ///             },
+    ///         },
+    ///         PreviewsBaseConfig = new Cloudflare.Inputs.WorkerPreviewsBaseConfigArgs
+    ///         {
+    ///             CacheOptions = new Cloudflare.Inputs.WorkerPreviewsBaseConfigCacheOptionsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 CrossVersionCache = true,
+    ///             },
+    ///             Env = 
+    ///             {
+    ///                 { "MY_ENV_VAR", new Cloudflare.Inputs.WorkerPreviewsBaseConfigEnvArgs
+    ///                 {
+    ///                     Type = "plain_text",
+    ///                 } },
+    ///             },
+    ///             Limits = new Cloudflare.Inputs.WorkerPreviewsBaseConfigLimitsArgs
+    ///             {
+    ///                 CpuMs = 50,
+    ///                 Subrequests = 1000,
+    ///             },
+    ///             Logpush = true,
+    ///             Observability = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 HeadSamplingRate = 1,
+    ///                 Issues = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityIssuesArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                 },
+    ///                 Logs = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityLogsArgs
+    ///                 {
+    ///                     Destinations = new[]
+    ///                     {
+    ///                         "string",
+    ///                     },
+    ///                     Enabled = true,
+    ///                     HeadSamplingRate = 1,
+    ///                     InvocationLogs = true,
+    ///                     Persist = true,
+    ///                 },
+    ///                 RedactQueryString = true,
+    ///                 Traces = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityTracesArgs
+    ///                 {
+    ///                     Destinations = new[]
+    ///                     {
+    ///                         "string",
+    ///                     },
+    ///                     Enabled = true,
+    ///                     HeadSamplingRate = 1,
+    ///                     Persist = true,
+    ///                     PropagationPolicy = "authenticated",
+    ///                 },
+    ///             },
+    ///             Placement = new Cloudflare.Inputs.WorkerPreviewsBaseConfigPlacementArgs
+    ///             {
+    ///                 Mode = "smart",
+    ///             },
+    ///             TailConsumers = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkerPreviewsBaseConfigTailConsumerArgs
+    ///                 {
+    ///                     Name = "my-tail-consumer",
+    ///                 },
     ///             },
     ///         },
     ///         Subdomain = new Cloudflare.Inputs.WorkerSubdomainArgs
@@ -108,6 +177,12 @@ namespace Pulumi.Cloudflare
         public Output<string> DeployedOn { get; private set; } = null!;
 
         /// <summary>
+        /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        /// </summary>
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
+
+        /// <summary>
         /// Whether logpush is enabled for the Worker.
         /// </summary>
         [Output("logpush")]
@@ -124,6 +199,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("observability")]
         public Output<Outputs.WorkerObservability> Observability { get; private set; } = null!;
+
+        /// <summary>
+        /// Template configuration used when creating new Previews for this Worker.
+        /// </summary>
+        [Output("previewsBaseConfig")]
+        public Output<Outputs.WorkerPreviewsBaseConfig> PreviewsBaseConfig { get; private set; } = null!;
 
         /// <summary>
         /// Other resources that reference the Worker and depend on it existing.
@@ -208,6 +289,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
         /// Whether logpush is enabled for the Worker.
         /// </summary>
         [Input("logpush")]
@@ -224,6 +311,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("observability")]
         public Input<Inputs.WorkerObservabilityArgs>? Observability { get; set; }
+
+        /// <summary>
+        /// Template configuration used when creating new Previews for this Worker.
+        /// </summary>
+        [Input("previewsBaseConfig")]
+        public Input<Inputs.WorkerPreviewsBaseConfigArgs>? PreviewsBaseConfig { get; set; }
 
         /// <summary>
         /// Subdomain settings for the Worker.
@@ -282,6 +375,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? DeployedOn { get; set; }
 
         /// <summary>
+        /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
         /// Whether logpush is enabled for the Worker.
         /// </summary>
         [Input("logpush")]
@@ -298,6 +397,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("observability")]
         public Input<Inputs.WorkerObservabilityGetArgs>? Observability { get; set; }
+
+        /// <summary>
+        /// Template configuration used when creating new Previews for this Worker.
+        /// </summary>
+        [Input("previewsBaseConfig")]
+        public Input<Inputs.WorkerPreviewsBaseConfigGetArgs>? PreviewsBaseConfig { get; set; }
 
         /// <summary>
         /// Other resources that reference the Worker and depend on it existing.

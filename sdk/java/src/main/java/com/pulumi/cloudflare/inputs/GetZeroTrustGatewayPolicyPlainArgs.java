@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayPolicyFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,32 +15,48 @@ public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resourc
 
     public static final GetZeroTrustGatewayPolicyPlainArgs Empty = new GetZeroTrustGatewayPolicyPlainArgs();
 
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable String accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetZeroTrustGatewayPolicyFilter filter;
+
+    public Optional<GetZeroTrustGatewayPolicyFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
      * Identify the API resource with a UUID.
      * 
      */
-    @Import(name="ruleId", required=true)
-    private String ruleId;
+    @Import(name="ruleId")
+    private @Nullable String ruleId;
 
     /**
      * @return Identify the API resource with a UUID.
      * 
      */
-    public String ruleId() {
-        return this.ruleId;
+    public Optional<String> ruleId() {
+        return Optional.ofNullable(this.ruleId);
     }
 
     private GetZeroTrustGatewayPolicyPlainArgs() {}
 
     private GetZeroTrustGatewayPolicyPlainArgs(GetZeroTrustGatewayPolicyPlainArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.ruleId = $.ruleId;
     }
 
@@ -62,8 +78,19 @@ public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resourc
             $ = new GetZeroTrustGatewayPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetZeroTrustGatewayPolicyFilter filter) {
+            $.filter = filter;
             return this;
         }
 
@@ -73,15 +100,12 @@ public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder ruleId(String ruleId) {
+        public Builder ruleId(@Nullable String ruleId) {
             $.ruleId = ruleId;
             return this;
         }
 
         public GetZeroTrustGatewayPolicyPlainArgs build() {
-            if ($.ruleId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyPlainArgs", "ruleId");
-            }
             return $;
         }
     }

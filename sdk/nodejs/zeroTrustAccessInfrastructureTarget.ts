@@ -26,6 +26,9 @@ import * as utilities from "./utilities";
  *             virtualNetworkId: "c77b744e-acc8-428f-9257-6878c046ed55",
  *         },
  *     },
+ *     tags: {
+ *         foo: "string",
+ *     },
  * });
  * ```
  *
@@ -86,6 +89,11 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
      * Date and time at which the target was modified
      */
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
+    /**
+     * Optional tags to associate with the target. Keys and values are
+     * user-defined strings.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ZeroTrustAccessInfrastructureTarget resource with the given unique name, arguments, and options.
@@ -105,6 +113,7 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
             resourceInputs["hostname"] = state?.hostname;
             resourceInputs["ip"] = state?.ip;
             resourceInputs["modifiedAt"] = state?.modifiedAt;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ZeroTrustAccessInfrastructureTargetArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -119,6 +128,7 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["ip"] = args?.ip;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
         }
@@ -154,6 +164,11 @@ export interface ZeroTrustAccessInfrastructureTargetState {
      * Date and time at which the target was modified
      */
     modifiedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Optional tags to associate with the target. Keys and values are
+     * user-defined strings.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -175,4 +190,9 @@ export interface ZeroTrustAccessInfrastructureTargetArgs {
      * The IPv4/IPv6 address that identifies where to reach a target
      */
     ip: pulumi.Input<inputs.ZeroTrustAccessInfrastructureTargetIp>;
+    /**
+     * Optional tags to associate with the target. Keys and values are
+     * user-defined strings.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

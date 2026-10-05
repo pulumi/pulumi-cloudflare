@@ -57,7 +57,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>/<subscription_id>'
 // ```
 type AccountSubscription struct {
 	pulumi.CustomResourceState

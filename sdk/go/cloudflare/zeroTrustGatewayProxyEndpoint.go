@@ -48,6 +48,7 @@ import (
 type ZeroTrustGatewayProxyEndpoint struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Specify the list of CIDRs to restrict ingress connections.
@@ -104,6 +105,7 @@ func GetZeroTrustGatewayProxyEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustGatewayProxyEndpoint resources.
 type zeroTrustGatewayProxyEndpointState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Specify the list of CIDRs to restrict ingress connections.
@@ -119,6 +121,7 @@ type zeroTrustGatewayProxyEndpointState struct {
 }
 
 type ZeroTrustGatewayProxyEndpointState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Specify the list of CIDRs to restrict ingress connections.
@@ -138,6 +141,7 @@ func (ZeroTrustGatewayProxyEndpointState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayProxyEndpointArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
@@ -150,6 +154,7 @@ type zeroTrustGatewayProxyEndpointArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewayProxyEndpoint resource.
 type ZeroTrustGatewayProxyEndpointArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
@@ -247,6 +252,7 @@ func (o ZeroTrustGatewayProxyEndpointOutput) ToZeroTrustGatewayProxyEndpointOutp
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o ZeroTrustGatewayProxyEndpointOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayProxyEndpoint) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

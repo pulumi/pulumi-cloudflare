@@ -29,20 +29,19 @@ class FlagshipFlagArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]],
                  variations: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 flag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlagshipFlag resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID.
-        :param pulumi.Input[_builtins.str] app_id: App identifier.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the Flagship app.
+        :param pulumi.Input[_builtins.str] app_id: Flagship app ID returned when the app was created.
         :param pulumi.Input[_builtins.str] default_variation: Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         :param pulumi.Input[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variations: Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
-        :param pulumi.Input[_builtins.str] flag_key: Flag key (slug).
-        :param pulumi.Input[_builtins.str] type: Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        :param pulumi.Input[_builtins.str] description: Optional operator-facing description. It does not affect flag evaluation.
+        :param pulumi.Input[_builtins.str] type: Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
                Available values: "boolean", "string", "number", "json".
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -54,8 +53,9 @@ class FlagshipFlagArgs:
         pulumi.set(__self__, "variations", variations)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if flag_key is not None:
-            pulumi.set(__self__, "flag_key", flag_key)
+        if type is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: This attribute is deprecated.""")
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -63,7 +63,7 @@ class FlagshipFlagArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -75,7 +75,7 @@ class FlagshipFlagArgs:
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Input[_builtins.str]:
         """
-        App identifier.
+        Flagship app ID returned when the app was created.
         """
         return pulumi.get(self, "app_id")
 
@@ -146,6 +146,9 @@ class FlagshipFlagArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional operator-facing description. It does not affect flag evaluation.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -153,22 +156,11 @@ class FlagshipFlagArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
-    @pulumi.getter(name="flagKey")
-    def flag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Flag key (slug).
-        """
-        return pulumi.get(self, "flag_key")
-
-    @flag_key.setter
-    def flag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "flag_key", value)
-
-    @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
         Available values: "boolean", "string", "number", "json".
         """
         return pulumi.get(self, "type")
@@ -186,7 +178,6 @@ class _FlagshipFlagState:
                  default_variation: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 flag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -196,14 +187,14 @@ class _FlagshipFlagState:
         """
         Input properties used for looking up and filtering FlagshipFlag resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID.
-        :param pulumi.Input[_builtins.str] app_id: App identifier.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the Flagship app.
+        :param pulumi.Input[_builtins.str] app_id: Flagship app ID returned when the app was created.
         :param pulumi.Input[_builtins.str] default_variation: Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
+        :param pulumi.Input[_builtins.str] description: Optional operator-facing description. It does not affect flag evaluation.
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
-        :param pulumi.Input[_builtins.str] flag_key: Flag key (slug).
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         :param pulumi.Input[Sequence[pulumi.Input['FlagshipFlagRuleArgs']]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
-        :param pulumi.Input[_builtins.str] type: Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        :param pulumi.Input[_builtins.str] type: Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
                Available values: "boolean", "string", "number", "json".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variations: Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
         """
@@ -217,12 +208,13 @@ class _FlagshipFlagState:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if flag_key is not None:
-            pulumi.set(__self__, "flag_key", flag_key)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if type is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: This attribute is deprecated.""")
         if type is not None:
             pulumi.set(__self__, "type", type)
         if updated_at is not None:
@@ -236,7 +228,7 @@ class _FlagshipFlagState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -248,7 +240,7 @@ class _FlagshipFlagState:
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        App identifier.
+        Flagship app ID returned when the app was created.
         """
         return pulumi.get(self, "app_id")
 
@@ -271,6 +263,9 @@ class _FlagshipFlagState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional operator-facing description. It does not affect flag evaluation.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -288,18 +283,6 @@ class _FlagshipFlagState:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="flagKey")
-    def flag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Flag key (slug).
-        """
-        return pulumi.get(self, "flag_key")
-
-    @flag_key.setter
-    def flag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "flag_key", value)
 
     @_builtins.property
     @pulumi.getter
@@ -327,9 +310,10 @@ class _FlagshipFlagState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
         Available values: "boolean", "string", "number", "json".
         """
         return pulumi.get(self, "type")
@@ -380,7 +364,6 @@ class FlagshipFlag(pulumi.CustomResource):
                  default_variation: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 flag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -408,7 +391,7 @@ class FlagshipFlag(pulumi.CustomResource):
                 "conditions": [{
                     "attribute": "x",
                     "operator": "equals",
-                    "value": {},
+                    "value": "string",
                 }],
                 "priority": 1,
                 "serve_variation": "x",
@@ -426,19 +409,21 @@ class FlagshipFlag(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/flagshipFlag:FlagshipFlag example '<account_id>/<app_id>/<flag_key>'
+        ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID.
-        :param pulumi.Input[_builtins.str] app_id: App identifier.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the Flagship app.
+        :param pulumi.Input[_builtins.str] app_id: Flagship app ID returned when the app was created.
         :param pulumi.Input[_builtins.str] default_variation: Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
+        :param pulumi.Input[_builtins.str] description: Optional operator-facing description. It does not affect flag evaluation.
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
-        :param pulumi.Input[_builtins.str] flag_key: Flag key (slug).
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
-        :param pulumi.Input[_builtins.str] type: Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        :param pulumi.Input[_builtins.str] type: Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
                Available values: "boolean", "string", "number", "json".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variations: Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
         """
@@ -470,7 +455,7 @@ class FlagshipFlag(pulumi.CustomResource):
                 "conditions": [{
                     "attribute": "x",
                     "operator": "equals",
-                    "value": {},
+                    "value": "string",
                 }],
                 "priority": 1,
                 "serve_variation": "x",
@@ -488,7 +473,9 @@ class FlagshipFlag(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/flagshipFlag:FlagshipFlag example '<account_id>/<app_id>/<flag_key>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -511,7 +498,6 @@ class FlagshipFlag(pulumi.CustomResource):
                  default_variation: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 flag_key: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -538,7 +524,6 @@ class FlagshipFlag(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
-            __props__.__dict__["flag_key"] = flag_key
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
@@ -566,7 +551,6 @@ class FlagshipFlag(pulumi.CustomResource):
             default_variation: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            flag_key: pulumi.Input[Optional[_builtins.str]] = None,
             key: pulumi.Input[Optional[_builtins.str]] = None,
             rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -580,14 +564,14 @@ class FlagshipFlag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID.
-        :param pulumi.Input[_builtins.str] app_id: App identifier.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the Flagship app.
+        :param pulumi.Input[_builtins.str] app_id: Flagship app ID returned when the app was created.
         :param pulumi.Input[_builtins.str] default_variation: Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
+        :param pulumi.Input[_builtins.str] description: Optional operator-facing description. It does not affect flag evaluation.
         :param pulumi.Input[_builtins.bool] enabled: When false, the flag bypasses all rules and always serves `default_variation`.
-        :param pulumi.Input[_builtins.str] flag_key: Flag key (slug).
         :param pulumi.Input[_builtins.str] key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlagshipFlagRuleArgs', 'FlagshipFlagRuleArgsDict', 'outputs.FlagshipFlagRule']]]] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
-        :param pulumi.Input[_builtins.str] type: Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        :param pulumi.Input[_builtins.str] type: Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
                Available values: "boolean", "string", "number", "json".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] variations: Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
         """
@@ -600,7 +584,6 @@ class FlagshipFlag(pulumi.CustomResource):
         __props__.__dict__["default_variation"] = default_variation
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
-        __props__.__dict__["flag_key"] = flag_key
         __props__.__dict__["key"] = key
         __props__.__dict__["rules"] = rules
         __props__.__dict__["type"] = type
@@ -613,7 +596,7 @@ class FlagshipFlag(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -621,7 +604,7 @@ class FlagshipFlag(pulumi.CustomResource):
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:
         """
-        App identifier.
+        Flagship app ID returned when the app was created.
         """
         return pulumi.get(self, "app_id")
 
@@ -636,6 +619,9 @@ class FlagshipFlag(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional operator-facing description. It does not affect flag evaluation.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -645,14 +631,6 @@ class FlagshipFlag(pulumi.CustomResource):
         When false, the flag bypasses all rules and always serves `default_variation`.
         """
         return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter(name="flagKey")
-    def flag_key(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Flag key (slug).
-        """
-        return pulumi.get(self, "flag_key")
 
     @_builtins.property
     @pulumi.getter
@@ -672,9 +650,10 @@ class FlagshipFlag(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
         Available values: "boolean", "string", "number", "json".
         """
         return pulumi.get(self, "type")

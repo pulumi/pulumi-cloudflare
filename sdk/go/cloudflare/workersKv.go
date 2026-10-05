@@ -24,6 +24,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -31,12 +33,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersKv(ctx, "example_workers_kv", &cloudflare.WorkersKvArgs{
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudflare.NewWorkersKv(ctx, "example_workers_kv", &cloudflare.WorkersKvArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				NamespaceId: pulumi.String("0f2ac74b498b48028cb68387c421e279"),
 //				KeyName:     pulumi.String("My-Key"),
 //				Value:       pulumi.String("Some Value"),
-//				Metadata:    pulumi.String{},
+//				Metadata:    pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -55,13 +62,17 @@ import (
 type WorkersKv struct {
 	pulumi.CustomResourceState
 
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+	Expiration pulumi.Float64PtrOutput `pulumi:"expiration"`
+	// Expires the key after a number of seconds. Must be at least 60.
+	ExpirationTtl pulumi.Float64PtrOutput `pulumi:"expirationTtl"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
 	// Associates arbitrary JSON data with a key/value pair.
 	Metadata pulumi.StringPtrOutput `pulumi:"metadata"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// A byte sequence to be stored, up to 25 MiB in length.
 	Value pulumi.StringOutput `pulumi:"value"`
@@ -109,26 +120,34 @@ func GetWorkersKv(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersKv resources.
 type workersKvState struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId *string `pulumi:"accountId"`
+	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+	Expiration *float64 `pulumi:"expiration"`
+	// Expires the key after a number of seconds. Must be at least 60.
+	ExpirationTtl *float64 `pulumi:"expirationTtl"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName *string `pulumi:"keyName"`
 	// Associates arbitrary JSON data with a key/value pair.
 	Metadata *string `pulumi:"metadata"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// A byte sequence to be stored, up to 25 MiB in length.
 	Value *string `pulumi:"value"`
 }
 
 type WorkersKvState struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringPtrInput
+	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+	Expiration pulumi.Float64PtrInput
+	// Expires the key after a number of seconds. Must be at least 60.
+	ExpirationTtl pulumi.Float64PtrInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringPtrInput
 	// Associates arbitrary JSON data with a key/value pair.
 	Metadata pulumi.StringPtrInput
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId pulumi.StringPtrInput
 	// A byte sequence to be stored, up to 25 MiB in length.
 	Value pulumi.StringPtrInput
@@ -139,13 +158,17 @@ func (WorkersKvState) ElementType() reflect.Type {
 }
 
 type workersKvArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId string `pulumi:"accountId"`
+	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+	Expiration *float64 `pulumi:"expiration"`
+	// Expires the key after a number of seconds. Must be at least 60.
+	ExpirationTtl *float64 `pulumi:"expirationTtl"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName string `pulumi:"keyName"`
 	// Associates arbitrary JSON data with a key/value pair.
 	Metadata *string `pulumi:"metadata"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId string `pulumi:"namespaceId"`
 	// A byte sequence to be stored, up to 25 MiB in length.
 	Value string `pulumi:"value"`
@@ -153,13 +176,17 @@ type workersKvArgs struct {
 
 // The set of arguments for constructing a WorkersKv resource.
 type WorkersKvArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringInput
+	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+	Expiration pulumi.Float64PtrInput
+	// Expires the key after a number of seconds. Must be at least 60.
+	ExpirationTtl pulumi.Float64PtrInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringInput
 	// Associates arbitrary JSON data with a key/value pair.
 	Metadata pulumi.StringPtrInput
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId pulumi.StringInput
 	// A byte sequence to be stored, up to 25 MiB in length.
 	Value pulumi.StringInput
@@ -252,9 +279,19 @@ func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) Worke
 	return o
 }
 
-// Identifier.
+// ID of the Cloudflare account that owns the Workers KV namespaces.
 func (o WorkersKvOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+func (o WorkersKvOutput) Expiration() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.Float64PtrOutput { return v.Expiration }).(pulumi.Float64PtrOutput)
+}
+
+// Expires the key after a number of seconds. Must be at least 60.
+func (o WorkersKvOutput) ExpirationTtl() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.Float64PtrOutput { return v.ExpirationTtl }).(pulumi.Float64PtrOutput)
 }
 
 // A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
@@ -267,7 +304,7 @@ func (o WorkersKvOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringPtrOutput { return v.Metadata }).(pulumi.StringPtrOutput)
 }
 
-// Namespace identifier tag.
+// ID of the Workers KV namespace.
 func (o WorkersKvOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
 }

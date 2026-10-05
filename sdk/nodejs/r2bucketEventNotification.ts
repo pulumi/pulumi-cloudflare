@@ -67,7 +67,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
@@ -79,7 +79,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
      */
     declare public readonly jurisdiction: pulumi.Output<string>;
     /**
-     * Queue ID.
+     * ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      */
     declare public readonly queueId: pulumi.Output<string>;
     /**
@@ -141,7 +141,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
  */
 export interface R2BucketEventNotificationState {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -153,7 +153,7 @@ export interface R2BucketEventNotificationState {
      */
     jurisdiction?: pulumi.Input<string | undefined>;
     /**
-     * Queue ID.
+     * ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      */
     queueId?: pulumi.Input<string | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface R2BucketEventNotificationState {
  */
 export interface R2BucketEventNotificationArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface R2BucketEventNotificationArgs {
      */
     jurisdiction?: pulumi.Input<string | undefined>;
     /**
-     * Queue ID.
+     * ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      */
     queueId: pulumi.Input<string>;
     /**

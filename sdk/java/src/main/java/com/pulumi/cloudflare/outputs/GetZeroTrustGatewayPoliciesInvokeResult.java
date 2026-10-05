@@ -15,35 +15,67 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayPoliciesInvokeResult {
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     private @Nullable String accountId;
     /**
-     * @return Max items to fetch, default: 1000
+     * @return Sort direction. When `orderBy` is omitted, this controls the direction
+     * of the existing precedence ordering. Shared rules remain first in either
+     * direction. Accepted values are `asc` and `desc`.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
-    private @Nullable Integer maxItems;
+    private @Nullable String direction;
     /**
-     * @return The items returned by the data source
+     * @return Filter the returned rules by one or more `field:value` pairs. Repeat the
+     * parameter to combine filters with logical AND.
      * 
      */
+    private @Nullable List<String> filters;
+    private @Nullable Integer maxItems;
+    private @Nullable String orderBy;
     private List<GetZeroTrustGatewayPoliciesResult> results;
+    private @Nullable String search;
 
     private GetZeroTrustGatewayPoliciesInvokeResult() {}
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Max items to fetch, default: 1000
+     * @return Sort direction. When `orderBy` is omitted, this controls the direction
+     * of the existing precedence ordering. Shared rules remain first in either
+     * direction. Accepted values are `asc` and `desc`.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+    /**
+     * @return Filter the returned rules by one or more `field:value` pairs. Repeat the
+     * parameter to combine filters with logical AND.
+     * 
+     */
+    public List<String> filters() {
+        return this.filters == null ? List.of() : this.filters;
+    }
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
-    /**
-     * @return The items returned by the data source
-     * 
-     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
     public List<GetZeroTrustGatewayPoliciesResult> results() {
         return this.results;
+    }
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
     }
 
     public static Builder builder() {
@@ -56,14 +88,22 @@ public final class GetZeroTrustGatewayPoliciesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private @Nullable String direction;
+        private @Nullable List<String> filters;
         private @Nullable Integer maxItems;
+        private @Nullable String orderBy;
         private List<GetZeroTrustGatewayPoliciesResult> results;
+        private @Nullable String search;
         public Builder() {}
         public Builder(GetZeroTrustGatewayPoliciesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.direction = defaults.direction;
+    	      this.filters = defaults.filters;
     	      this.maxItems = defaults.maxItems;
+    	      this.orderBy = defaults.orderBy;
     	      this.results = defaults.results;
+    	      this.search = defaults.search;
         }
 
         @CustomType.Setter
@@ -73,9 +113,30 @@ public final class GetZeroTrustGatewayPoliciesInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder direction(@Nullable String direction) {
+
+            this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filters(@Nullable List<String> filters) {
+
+            this.filters = filters;
+            return this;
+        }
+        public Builder filters(String... filters) {
+            return filters(List.of(filters));
+        }
+        @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
 
             this.maxItems = maxItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
@@ -89,11 +150,21 @@ public final class GetZeroTrustGatewayPoliciesInvokeResult {
         public Builder results(GetZeroTrustGatewayPoliciesResult... results) {
             return results(List.of(results));
         }
+        @CustomType.Setter
+        public Builder search(@Nullable String search) {
+
+            this.search = search;
+            return this;
+        }
         public GetZeroTrustGatewayPoliciesInvokeResult build() {
             final var _resultValue = new GetZeroTrustGatewayPoliciesInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.direction = direction;
+            _resultValue.filters = filters;
             _resultValue.maxItems = maxItems;
+            _resultValue.orderBy = orderBy;
             _resultValue.results = results;
+            _resultValue.search = search;
             return _resultValue;
         }
     }

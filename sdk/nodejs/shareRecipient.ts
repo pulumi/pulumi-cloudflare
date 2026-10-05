@@ -71,6 +71,10 @@ export class ShareRecipient extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
+     * Include resources in the response.
+     */
+    declare public readonly includeResources: pulumi.Output<boolean | undefined>;
+    /**
      * When the share was modified.
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
@@ -104,6 +108,7 @@ export class ShareRecipient extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["associationStatus"] = state?.associationStatus;
             resourceInputs["created"] = state?.created;
+            resourceInputs["includeResources"] = state?.includeResources;
             resourceInputs["modified"] = state?.modified;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["recipientAccountId"] = state?.recipientAccountId;
@@ -118,6 +123,7 @@ export class ShareRecipient extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shareId'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["includeResources"] = args?.includeResources;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["recipientAccountId"] = args?.recipientAccountId;
             resourceInputs["shareId"] = args?.shareId;
@@ -151,6 +157,10 @@ export interface ShareRecipientState {
      */
     created?: pulumi.Input<string | undefined>;
     /**
+     * Include resources in the response.
+     */
+    includeResources?: pulumi.Input<boolean | undefined>;
+    /**
      * When the share was modified.
      */
     modified?: pulumi.Input<string | undefined>;
@@ -177,6 +187,10 @@ export interface ShareRecipientArgs {
      * Account identifier.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Include resources in the response.
+     */
+    includeResources?: pulumi.Input<boolean | undefined>;
     /**
      * Organization identifier.
      */

@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.AccountUnitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -65,6 +66,21 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+     * 
+     */
+    @Import(name="standalone")
+    private @Nullable Output<Boolean> standalone;
+
+    /**
+     * @return Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> standalone() {
+        return Optional.ofNullable(this.standalone);
+    }
+
+    /**
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      * @deprecated
@@ -88,14 +104,14 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
      * 
      */
     @Import(name="unit")
     private @Nullable Output<AccountUnitArgs> unit;
 
     /**
-     * @return information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * @return Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
      * 
      */
     public Optional<Output<AccountUnitArgs>> unit() {
@@ -108,6 +124,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         this.managedBy = $.managedBy;
         this.name = $.name;
         this.settings = $.settings;
+        this.standalone = $.standalone;
         this.type = $.type;
         this.unit = $.unit;
     }
@@ -194,6 +211,27 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param standalone Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standalone(@Nullable Output<Boolean> standalone) {
+            $.standalone = standalone;
+            return this;
+        }
+
+        /**
+         * @param standalone Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standalone(Boolean standalone) {
+            return standalone(Output.of(standalone));
+        }
+
+        /**
          * @param type Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
@@ -223,7 +261,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unit information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+         * @param unit Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
          * 
          * @return builder
          * 
@@ -234,7 +272,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unit information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+         * @param unit Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
          * 
          * @return builder
          * 

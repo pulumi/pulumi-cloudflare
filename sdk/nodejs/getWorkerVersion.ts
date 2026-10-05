@@ -76,6 +76,8 @@ export interface GetWorkerVersionResult {
      * Configuration for assets within a Worker.
      */
     readonly assets: outputs.GetWorkerVersionAssets;
+    readonly authorEmail: string;
+    readonly authorId: string;
     readonly bindings: outputs.GetWorkerVersionBinding[];
     readonly cacheOptions: outputs.GetWorkerVersionCacheOptions;
     readonly compatibilityDate: string;

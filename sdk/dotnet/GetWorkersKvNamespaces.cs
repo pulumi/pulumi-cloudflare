@@ -103,13 +103,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvNamespacesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Direction to order namespaces.
+        /// Sort namespaces in ascending (`Asc`) or descending (`Desc`) order.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Field to order results by.
+        /// Namespace field to sort by (`Id` or `Title`).
         /// Available values: "id", "title".
         /// </summary>
         [Input("order")]
@@ -137,13 +137,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvNamespacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Direction to order namespaces.
+        /// Sort namespaces in ascending (`Asc`) or descending (`Desc`) order.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Field to order results by.
+        /// Namespace field to sort by (`Id` or `Title`).
         /// Available values: "id", "title".
         /// </summary>
         [Input("order")]
@@ -173,11 +173,11 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvNamespacesResult
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// Direction to order namespaces.
+        /// Sort namespaces in ascending (`Asc`) or descending (`Desc`) order.
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
@@ -186,7 +186,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// Field to order results by.
+        /// Namespace field to sort by (`Id` or `Title`).
         /// Available values: "id", "title".
         /// </summary>
         public readonly string? Order;

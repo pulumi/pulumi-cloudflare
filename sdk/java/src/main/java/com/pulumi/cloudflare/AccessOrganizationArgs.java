@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.AccessOrganizationCustomPagesArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationLoginDesignArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationMfaConfigArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationMfaSshPivKeyRequirementsArgs;
+import com.pulumi.cloudflare.inputs.AccessOrganizationServiceTokenInactivityArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -216,6 +217,21 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     * 
+     */
+    @Import(name="serviceTokenInactivity")
+    private @Nullable Output<AccessOrganizationServiceTokenInactivityArgs> serviceTokenInactivity;
+
+    /**
+     * @return Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     * 
+     */
+    public Optional<Output<AccessOrganizationServiceTokenInactivityArgs>> serviceTokenInactivity() {
+        return Optional.ofNullable(this.serviceTokenInactivity);
+    }
+
+    /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
@@ -228,6 +244,21 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> sessionDuration() {
         return Optional.ofNullable(this.sessionDuration);
+    }
+
+    /**
+     * Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     * 
+     */
+    @Import(name="strictServiceTokenAuth")
+    private @Nullable Output<Boolean> strictServiceTokenAuth;
+
+    /**
+     * @return Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     * 
+     */
+    public Optional<Output<Boolean>> strictServiceTokenAuth() {
+        return Optional.ofNullable(this.strictServiceTokenAuth);
     }
 
     /**
@@ -322,7 +353,9 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         this.mfaRequiredForAllApps = $.mfaRequiredForAllApps;
         this.mfaSshPivKeyRequirements = $.mfaSshPivKeyRequirements;
         this.name = $.name;
+        this.serviceTokenInactivity = $.serviceTokenInactivity;
         this.sessionDuration = $.sessionDuration;
+        this.strictServiceTokenAuth = $.strictServiceTokenAuth;
         this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
         this.userSeatExpirationInactiveTime = $.userSeatExpirationInactiveTime;
         this.warpAuthNonBrowser401 = $.warpAuthNonBrowser401;
@@ -629,6 +662,27 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param serviceTokenInactivity Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceTokenInactivity(@Nullable Output<AccessOrganizationServiceTokenInactivityArgs> serviceTokenInactivity) {
+            $.serviceTokenInactivity = serviceTokenInactivity;
+            return this;
+        }
+
+        /**
+         * @param serviceTokenInactivity Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceTokenInactivity(AccessOrganizationServiceTokenInactivityArgs serviceTokenInactivity) {
+            return serviceTokenInactivity(Output.of(serviceTokenInactivity));
+        }
+
+        /**
          * @param sessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
@@ -647,6 +701,27 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sessionDuration(String sessionDuration) {
             return sessionDuration(Output.of(sessionDuration));
+        }
+
+        /**
+         * @param strictServiceTokenAuth Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strictServiceTokenAuth(@Nullable Output<Boolean> strictServiceTokenAuth) {
+            $.strictServiceTokenAuth = strictServiceTokenAuth;
+            return this;
+        }
+
+        /**
+         * @param strictServiceTokenAuth Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strictServiceTokenAuth(Boolean strictServiceTokenAuth) {
+            return strictServiceTokenAuth(Output.of(strictServiceTokenAuth));
         }
 
         /**

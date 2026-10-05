@@ -19,7 +19,7 @@ public final class GetCustomOriginTrustStoreResult {
      */
     private String certificate;
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     private @Nullable String customOriginTrustStoreId;
@@ -30,7 +30,7 @@ public final class GetCustomOriginTrustStoreResult {
     private String expiresOn;
     private @Nullable GetCustomOriginTrustStoreFilter filter;
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     private String id;
@@ -75,7 +75,7 @@ public final class GetCustomOriginTrustStoreResult {
         return this.certificate;
     }
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     public Optional<String> customOriginTrustStoreId() {
@@ -92,7 +92,7 @@ public final class GetCustomOriginTrustStoreResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     public String id() {

@@ -28,9 +28,14 @@ namespace Pulumi.Cloudflare
     ///     var exampleEmailSecurityImpersonationRegistry = new Cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Email = "email",
-    ///         IsEmailRegex = true,
-    ///         Name = "name",
+    ///         Email = "john.doe@example.com",
+    ///         IsEmailRegex = false,
+    ///         Name = "John Doe",
+    ///         Comments = "comments",
+    ///         DirectoryId = 0,
+    ///         DirectoryNodeId = 0,
+    ///         ExternalDirectoryNodeId = "external_directory_node_id",
+    ///         Provenance = "A1S_INTERNAL",
     ///     });
     /// 
     /// });
@@ -39,7 +44,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '&lt;account_id&gt;/&lt;display_name_id&gt;'
+    /// $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '&lt;account_id&gt;/&lt;impersonation_registry_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry")]
@@ -51,24 +56,42 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional note describing the entry.
+        /// </summary>
         [Output("comments")]
         public Output<string?> Comments { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the directory the entry was synced from, when directory-synced.
+        /// </summary>
         [Output("directoryId")]
         public Output<int?> DirectoryId { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the directory node the entry was synced from, when directory-synced.
+        /// </summary>
         [Output("directoryNodeId")]
         public Output<int?> DirectoryNodeId { get; private set; } = null!;
 
+        /// <summary>
+        /// Email address (or pattern) of the protected identity.
+        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated. External identifier of the directory node.
+        /// </summary>
         [Output("externalDirectoryNodeId")]
         public Output<string?> ExternalDirectoryNodeId { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether `Email` is a regular expression instead of a literal address.
+        /// </summary>
         [Output("isEmailRegex")]
         public Output<bool> IsEmailRegex { get; private set; } = null!;
 
@@ -81,10 +104,14 @@ namespace Pulumi.Cloudflare
         [Output("modifiedAt")]
         public Output<string> ModifiedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the protected identity.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Source the entry was created from.
         /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         /// </summary>
         [Output("provenance")]
@@ -142,28 +169,50 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Optional note describing the entry.
+        /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
 
+        /// <summary>
+        /// Identifier of the directory the entry was synced from, when directory-synced.
+        /// </summary>
         [Input("directoryId")]
         public Input<int>? DirectoryId { get; set; }
 
+        /// <summary>
+        /// Identifier of the directory node the entry was synced from, when directory-synced.
+        /// </summary>
         [Input("directoryNodeId")]
         public Input<int>? DirectoryNodeId { get; set; }
 
+        /// <summary>
+        /// Email address (or pattern) of the protected identity.
+        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
+        /// <summary>
+        /// Deprecated. External identifier of the directory node.
+        /// </summary>
         [Input("externalDirectoryNodeId")]
         public Input<string>? ExternalDirectoryNodeId { get; set; }
 
+        /// <summary>
+        /// Whether `Email` is a regular expression instead of a literal address.
+        /// </summary>
         [Input("isEmailRegex", required: true)]
         public Input<bool> IsEmailRegex { get; set; } = null!;
 
+        /// <summary>
+        /// Display name of the protected identity.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Source the entry was created from.
         /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         /// </summary>
         [Input("provenance")]
@@ -183,24 +232,42 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Optional note describing the entry.
+        /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Identifier of the directory the entry was synced from, when directory-synced.
+        /// </summary>
         [Input("directoryId")]
         public Input<int>? DirectoryId { get; set; }
 
+        /// <summary>
+        /// Identifier of the directory node the entry was synced from, when directory-synced.
+        /// </summary>
         [Input("directoryNodeId")]
         public Input<int>? DirectoryNodeId { get; set; }
 
+        /// <summary>
+        /// Email address (or pattern) of the protected identity.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
+        /// <summary>
+        /// Deprecated. External identifier of the directory node.
+        /// </summary>
         [Input("externalDirectoryNodeId")]
         public Input<string>? ExternalDirectoryNodeId { get; set; }
 
+        /// <summary>
+        /// Whether `Email` is a regular expression instead of a literal address.
+        /// </summary>
         [Input("isEmailRegex")]
         public Input<bool>? IsEmailRegex { get; set; }
 
@@ -213,10 +280,14 @@ namespace Pulumi.Cloudflare
         [Input("modifiedAt")]
         public Input<string>? ModifiedAt { get; set; }
 
+        /// <summary>
+        /// Display name of the protected identity.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Source the entry was created from.
         /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         /// </summary>
         [Input("provenance")]

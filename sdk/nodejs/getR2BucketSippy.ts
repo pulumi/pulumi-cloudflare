@@ -32,7 +32,7 @@ export function getR2BucketSippy(args: GetR2BucketSippyArgs, opts?: pulumi.Invok
  */
 export interface GetR2BucketSippyArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetR2BucketSippyArgs {
  */
 export interface GetR2BucketSippyResult {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     readonly accountId: string;
     /**
@@ -92,7 +92,7 @@ export function getR2BucketSippyOutput(args: GetR2BucketSippyOutputArgs, opts?: 
  */
 export interface GetR2BucketSippyOutputArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

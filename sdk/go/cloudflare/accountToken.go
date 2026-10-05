@@ -92,6 +92,10 @@ type AccountToken struct {
 	// Account identifier tag.
 	AccountId pulumi.StringOutput            `pulumi:"accountId"`
 	Condition AccountTokenConditionPtrOutput `pulumi:"condition"`
+	// The email address of the user who created the token at the time of
+	// creation. Only present for Account Owned API Tokens when a creator email
+	// was available.
+	CreatorEmailAtCreation pulumi.StringOutput `pulumi:"creatorEmailAtCreation"`
 	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn pulumi.StringPtrOutput `pulumi:"expiresOn"`
 	// The time on which the token was created.
@@ -104,8 +108,16 @@ type AccountToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore pulumi.StringPtrOutput `pulumi:"notBefore"`
-	// Set of access policies assigned to the token.
+	// List of access policies assigned to the token.
 	Policies AccountTokenPolicyArrayOutput `pulumi:"policies"`
+	// The identifier of the service that provisioned the token. For an
+	// OAuth-provisioned token, this is the OAuth client identifier. Present
+	// when `provisionerType` is present and null when the identifier is
+	// unavailable.
+	ProvisionerId pulumi.StringOutput `pulumi:"provisionerId"`
+	// The type of service that provisioned the token. Only present for
+	// provisioned Account Owned API Tokens.
+	ProvisionerType pulumi.StringOutput `pulumi:"provisionerType"`
 	// Status of the token.
 	// Available values: "active", "disabled", "expired".
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -159,6 +171,10 @@ type accountTokenState struct {
 	// Account identifier tag.
 	AccountId *string                `pulumi:"accountId"`
 	Condition *AccountTokenCondition `pulumi:"condition"`
+	// The email address of the user who created the token at the time of
+	// creation. Only present for Account Owned API Tokens when a creator email
+	// was available.
+	CreatorEmailAtCreation *string `pulumi:"creatorEmailAtCreation"`
 	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn *string `pulumi:"expiresOn"`
 	// The time on which the token was created.
@@ -171,8 +187,16 @@ type accountTokenState struct {
 	Name *string `pulumi:"name"`
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore *string `pulumi:"notBefore"`
-	// Set of access policies assigned to the token.
+	// List of access policies assigned to the token.
 	Policies []AccountTokenPolicy `pulumi:"policies"`
+	// The identifier of the service that provisioned the token. For an
+	// OAuth-provisioned token, this is the OAuth client identifier. Present
+	// when `provisionerType` is present and null when the identifier is
+	// unavailable.
+	ProvisionerId *string `pulumi:"provisionerId"`
+	// The type of service that provisioned the token. Only present for
+	// provisioned Account Owned API Tokens.
+	ProvisionerType *string `pulumi:"provisionerType"`
 	// Status of the token.
 	// Available values: "active", "disabled", "expired".
 	Status *string `pulumi:"status"`
@@ -184,6 +208,10 @@ type AccountTokenState struct {
 	// Account identifier tag.
 	AccountId pulumi.StringPtrInput
 	Condition AccountTokenConditionPtrInput
+	// The email address of the user who created the token at the time of
+	// creation. Only present for Account Owned API Tokens when a creator email
+	// was available.
+	CreatorEmailAtCreation pulumi.StringPtrInput
 	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn pulumi.StringPtrInput
 	// The time on which the token was created.
@@ -196,8 +224,16 @@ type AccountTokenState struct {
 	Name pulumi.StringPtrInput
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore pulumi.StringPtrInput
-	// Set of access policies assigned to the token.
+	// List of access policies assigned to the token.
 	Policies AccountTokenPolicyArrayInput
+	// The identifier of the service that provisioned the token. For an
+	// OAuth-provisioned token, this is the OAuth client identifier. Present
+	// when `provisionerType` is present and null when the identifier is
+	// unavailable.
+	ProvisionerId pulumi.StringPtrInput
+	// The type of service that provisioned the token. Only present for
+	// provisioned Account Owned API Tokens.
+	ProvisionerType pulumi.StringPtrInput
 	// Status of the token.
 	// Available values: "active", "disabled", "expired".
 	Status pulumi.StringPtrInput
@@ -219,7 +255,7 @@ type accountTokenArgs struct {
 	Name string `pulumi:"name"`
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore *string `pulumi:"notBefore"`
-	// Set of access policies assigned to the token.
+	// List of access policies assigned to the token.
 	Policies []AccountTokenPolicy `pulumi:"policies"`
 	// Status of the token.
 	// Available values: "active", "disabled", "expired".
@@ -237,7 +273,7 @@ type AccountTokenArgs struct {
 	Name pulumi.StringInput
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore pulumi.StringPtrInput
-	// Set of access policies assigned to the token.
+	// List of access policies assigned to the token.
 	Policies AccountTokenPolicyArrayInput
 	// Status of the token.
 	// Available values: "active", "disabled", "expired".
@@ -340,6 +376,13 @@ func (o AccountTokenOutput) Condition() AccountTokenConditionPtrOutput {
 	return o.ApplyT(func(v *AccountToken) AccountTokenConditionPtrOutput { return v.Condition }).(AccountTokenConditionPtrOutput)
 }
 
+// The email address of the user who created the token at the time of
+// creation. Only present for Account Owned API Tokens when a creator email
+// was available.
+func (o AccountTokenOutput) CreatorEmailAtCreation() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountToken) pulumi.StringOutput { return v.CreatorEmailAtCreation }).(pulumi.StringOutput)
+}
+
 // The expiration time on or after which the JWT MUST NOT be accepted for processing.
 func (o AccountTokenOutput) ExpiresOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountToken) pulumi.StringPtrOutput { return v.ExpiresOn }).(pulumi.StringPtrOutput)
@@ -370,9 +413,23 @@ func (o AccountTokenOutput) NotBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountToken) pulumi.StringPtrOutput { return v.NotBefore }).(pulumi.StringPtrOutput)
 }
 
-// Set of access policies assigned to the token.
+// List of access policies assigned to the token.
 func (o AccountTokenOutput) Policies() AccountTokenPolicyArrayOutput {
 	return o.ApplyT(func(v *AccountToken) AccountTokenPolicyArrayOutput { return v.Policies }).(AccountTokenPolicyArrayOutput)
+}
+
+// The identifier of the service that provisioned the token. For an
+// OAuth-provisioned token, this is the OAuth client identifier. Present
+// when `provisionerType` is present and null when the identifier is
+// unavailable.
+func (o AccountTokenOutput) ProvisionerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountToken) pulumi.StringOutput { return v.ProvisionerId }).(pulumi.StringOutput)
+}
+
+// The type of service that provisioned the token. Only present for
+// provisioned Account Owned API Tokens.
+func (o AccountTokenOutput) ProvisionerType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountToken) pulumi.StringOutput { return v.ProvisionerType }).(pulumi.StringOutput)
 }
 
 // Status of the token.

@@ -39,6 +39,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Config = new Cloudflare.Inputs.WorkerVersionAssetsConfigArgs
     ///             {
+    ///                 BasePath = "/docs/",
     ///                 HtmlHandling = "auto-trailing-slash",
     ///                 NotFoundHandling = "404-page",
     ///                 RunWorkerFirst = new() { },
@@ -80,11 +81,20 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     Enabled = true,
     ///                 },
-    ///                 RenamedTo = "renamed_to",
     ///                 State = "created",
+    ///             } },
+    ///             { "Counter", new Cloudflare.Inputs.WorkerVersionExportsArgs
+    ///             {
     ///                 Storage = "sqlite",
-    ///                 TransferFrom = "transfer_from",
-    ///                 TransferredTo = "transferred_to",
+    ///                 Type = "durable-object",
+    ///                 Container = "my-container",
+    ///                 State = "created",
+    ///             } },
+    ///             { "OldCounter", new Cloudflare.Inputs.WorkerVersionExportsArgs
+    ///             {
+    ///                 RenamedTo = "Counter",
+    ///                 State = "renamed",
+    ///                 Type = "durable-object",
     ///             } },
     ///             { "default", new Cloudflare.Inputs.WorkerVersionExportsArgs
     ///             {
@@ -93,11 +103,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     Enabled = false,
     ///                 },
-    ///                 RenamedTo = "renamed_to",
     ///                 State = "created",
-    ///                 Storage = "sqlite",
-    ///                 TransferFrom = "transfer_from",
-    ///                 TransferredTo = "transferred_to",
     ///             } },
     ///         },
     ///         Limits = new Cloudflare.Inputs.WorkerVersionLimitsArgs
@@ -144,7 +150,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.WorkerVersionModuleArgs
     ///             {
-    ///                 ContentFile = "dist/index.js",
+    ///                 ContentBase64 = "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==",
     ///                 ContentType = "application/javascript+module",
     ///                 Name = "index.js",
     ///             },
@@ -162,6 +168,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Mode = "smart",
     ///         },
+    ///         UsageModel = "standard",
     ///     });
     /// 
     /// });
@@ -193,6 +200,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("assets")]
         public Output<Outputs.WorkerVersionAssets?> Assets { get; private set; } = null!;
+
+        /// <summary>
+        /// Email of the user who created the version.
+        /// </summary>
+        [Output("authorEmail")]
+        public Output<string> AuthorEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier of the user who created the version.
+        /// </summary>
+        [Output("authorId")]
+        public Output<string> AuthorId { get; private set; } = null!;
 
         /// <summary>
         /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
@@ -234,6 +253,12 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
+        /// If true, a deployment will be created that sends 100% of traffic to the new version.
+        /// </summary>
+        [Output("deploy")]
+        public Output<bool?> Deploy { get; private set; } = null!;
+
+        /// <summary>
         /// Declarative exports for the version, including Durable Object
         /// classes (with their `Storage` backend) and named Worker
         /// entrypoints. On reads, tombstoned lifecycle entries are
@@ -243,6 +268,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("exports")]
         public Output<ImmutableDictionary<string, Outputs.WorkerVersionExports>?> Exports { get; private set; } = null!;
+
+        /// <summary>
+        /// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `Exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+        /// </summary>
+        [Output("exportsReconciliation")]
+        public Output<Outputs.WorkerVersionExportsReconciliation> ExportsReconciliation { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+        /// Available values: "modules".
+        /// </summary>
+        [Output("include")]
+        public Output<string?> Include { get; private set; } = null!;
 
         /// <summary>
         /// Resource limits enforced at runtime.
@@ -278,8 +316,8 @@ namespace Pulumi.Cloudflare
         /// Code, sourcemaps, and other content used at runtime.
         /// 
         /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
         /// included as modules named `_headers` and `_redirects` with content type `text/plain`.
         /// </summary>
         [Output("modules")]
@@ -450,6 +488,12 @@ namespace Pulumi.Cloudflare
             set => _containers = value;
         }
 
+        /// <summary>
+        /// If true, a deployment will be created that sends 100% of traffic to the new version.
+        /// </summary>
+        [Input("deploy")]
+        public Input<bool>? Deploy { get; set; }
+
         [Input("exports")]
         private InputMap<Inputs.WorkerVersionExportsArgs>? _exports;
 
@@ -466,6 +510,13 @@ namespace Pulumi.Cloudflare
             get => _exports ?? (_exports = new InputMap<Inputs.WorkerVersionExportsArgs>());
             set => _exports = value;
         }
+
+        /// <summary>
+        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+        /// Available values: "modules".
+        /// </summary>
+        [Input("include")]
+        public Input<string>? Include { get; set; }
 
         /// <summary>
         /// Resource limits enforced at runtime.
@@ -492,8 +543,8 @@ namespace Pulumi.Cloudflare
         /// Code, sourcemaps, and other content used at runtime.
         /// 
         /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
         /// included as modules named `_headers` and `_redirects` with content type `text/plain`.
         /// </summary>
         public InputList<Inputs.WorkerVersionModuleArgs> Modules
@@ -560,6 +611,18 @@ namespace Pulumi.Cloudflare
         [Input("assets")]
         public Input<Inputs.WorkerVersionAssetsGetArgs>? Assets { get; set; }
 
+        /// <summary>
+        /// Email of the user who created the version.
+        /// </summary>
+        [Input("authorEmail")]
+        public Input<string>? AuthorEmail { get; set; }
+
+        /// <summary>
+        /// Identifier of the user who created the version.
+        /// </summary>
+        [Input("authorId")]
+        public Input<string>? AuthorId { get; set; }
+
         [Input("bindings")]
         private InputList<Inputs.WorkerVersionBindingGetArgs>? _bindings;
 
@@ -617,6 +680,12 @@ namespace Pulumi.Cloudflare
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
+        /// <summary>
+        /// If true, a deployment will be created that sends 100% of traffic to the new version.
+        /// </summary>
+        [Input("deploy")]
+        public Input<bool>? Deploy { get; set; }
+
         [Input("exports")]
         private InputMap<Inputs.WorkerVersionExportsGetArgs>? _exports;
 
@@ -633,6 +702,19 @@ namespace Pulumi.Cloudflare
             get => _exports ?? (_exports = new InputMap<Inputs.WorkerVersionExportsGetArgs>());
             set => _exports = value;
         }
+
+        /// <summary>
+        /// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `Exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+        /// </summary>
+        [Input("exportsReconciliation")]
+        public Input<Inputs.WorkerVersionExportsReconciliationGetArgs>? ExportsReconciliation { get; set; }
+
+        /// <summary>
+        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+        /// Available values: "modules".
+        /// </summary>
+        [Input("include")]
+        public Input<string>? Include { get; set; }
 
         /// <summary>
         /// Resource limits enforced at runtime.
@@ -671,8 +753,8 @@ namespace Pulumi.Cloudflare
         /// Code, sourcemaps, and other content used at runtime.
         /// 
         /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
         /// included as modules named `_headers` and `_redirects` with content type `text/plain`.
         /// </summary>
         public InputList<Inputs.WorkerVersionModuleGetArgs> Modules

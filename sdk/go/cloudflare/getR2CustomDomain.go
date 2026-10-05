@@ -55,7 +55,7 @@ func LookupR2CustomDomain(ctx *pulumi.Context, args *LookupR2CustomDomainArgs, o
 
 // A collection of arguments for invoking getR2CustomDomain.
 type LookupR2CustomDomainArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -65,7 +65,7 @@ type LookupR2CustomDomainArgs struct {
 
 // A collection of values returned by getR2CustomDomain.
 type LookupR2CustomDomainResult struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -92,7 +92,7 @@ func LookupR2CustomDomainOutput(ctx *pulumi.Context, args LookupR2CustomDomainOu
 
 // A collection of arguments for invoking getR2CustomDomain.
 type LookupR2CustomDomainOutputArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
@@ -119,7 +119,7 @@ func (o LookupR2CustomDomainResultOutput) ToLookupR2CustomDomainResultOutputWith
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o LookupR2CustomDomainResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

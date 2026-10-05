@@ -34,11 +34,13 @@ import (
 //				Name:                   pulumi.String("GRE_1"),
 //				AutomaticReturnRouting: pulumi.Bool(true),
 //				Bgp: &cloudflare.MagicWanGreTunnelBgpArgs{
-//					CustomerAsn: pulumi.Int(0),
+//					CustomerAsn:    pulumi.Int(0),
+//					ExportFilterId: pulumi.String("a1b2c3d4e5f647890a1b2c3d4e5f6789"),
 //					ExtraPrefixes: pulumi.StringArray{
 //						pulumi.String("string"),
 //					},
-//					Md5Key: pulumi.String("md5_key"),
+//					ImportFilterId: pulumi.String("a1b2c3d4e5f647890a1b2c3d4e5f6789"),
+//					Md5Key:         pulumi.String("md5_key"),
 //				},
 //				Description: pulumi.String("Tunnel for ISP X"),
 //				HealthCheck: &cloudflare.MagicWanGreTunnelHealthCheckArgs{

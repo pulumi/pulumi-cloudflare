@@ -67,6 +67,12 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Omit the source-files of schemas and only retrieve their meta-data.
+        /// </summary>
+        [Output("omitSource")]
+        public Output<bool> OmitSource { get; private set; } = null!;
+
         [Output("schema")]
         public Output<Outputs.ApiShieldSchemaSchema> Schema { get; private set; } = null!;
 
@@ -160,6 +166,12 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Omit the source-files of schemas and only retrieve their meta-data.
+        /// </summary>
+        [Input("omitSource")]
+        public Input<bool>? OmitSource { get; set; }
+
         [Input("schemaId")]
         public Input<string>? SchemaId { get; set; }
 
@@ -205,6 +217,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Omit the source-files of schemas and only retrieve their meta-data.
+        /// </summary>
+        [Input("omitSource")]
+        public Input<bool>? OmitSource { get; set; }
 
         [Input("schema")]
         public Input<Inputs.ApiShieldSchemaSchemaGetArgs>? Schema { get; set; }

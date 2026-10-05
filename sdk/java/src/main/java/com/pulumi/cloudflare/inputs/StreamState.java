@@ -100,6 +100,21 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     * 
+     */
+    @Import(name="directUser")
+    private @Nullable Output<Boolean> directUser;
+
+    /**
+     * @return Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     * 
+     */
+    public Optional<Output<Boolean>> directUser() {
+        return Optional.ofNullable(this.directUser);
+    }
+
+    /**
      * The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
      * 
      */
@@ -428,6 +443,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
         this.clippedFrom = $.clippedFrom;
         this.created = $.created;
         this.creator = $.creator;
+        this.directUser = $.directUser;
         this.duration = $.duration;
         this.identifier = $.identifier;
         this.input = $.input;
@@ -584,6 +600,27 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
+        }
+
+        /**
+         * @param directUser Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directUser(@Nullable Output<Boolean> directUser) {
+            $.directUser = directUser;
+            return this;
+        }
+
+        /**
+         * @param directUser Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directUser(Boolean directUser) {
+            return directUser(Output.of(directUser));
         }
 
         /**

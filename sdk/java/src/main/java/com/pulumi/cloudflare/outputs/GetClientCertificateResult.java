@@ -26,7 +26,7 @@ public final class GetClientCertificateResult {
      */
     private GetClientCertificateCertificateAuthority certificateAuthority;
     /**
-     * @return Identifier.
+     * @return Client Certificate Tag
      * 
      */
     private @Nullable String clientCertificateId;
@@ -57,7 +57,7 @@ public final class GetClientCertificateResult {
      */
     private String fingerprintSha256;
     /**
-     * @return Identifier.
+     * @return Client Certificate Tag
      * 
      */
     private String id;
@@ -134,7 +134,7 @@ public final class GetClientCertificateResult {
         return this.certificateAuthority;
     }
     /**
-     * @return Identifier.
+     * @return Client Certificate Tag
      * 
      */
     public Optional<String> clientCertificateId() {
@@ -179,7 +179,7 @@ public final class GetClientCertificateResult {
         return this.fingerprintSha256;
     }
     /**
-     * @return Identifier.
+     * @return Client Certificate Tag
      * 
      */
     public String id() {

@@ -65,7 +65,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")

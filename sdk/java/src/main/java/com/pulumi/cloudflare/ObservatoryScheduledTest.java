@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
 public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResource {
     /**
      * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     @Export(name="frequency", refs={String.class}, tree="[0]")
@@ -73,6 +74,7 @@ public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     public Output<String> frequency() {

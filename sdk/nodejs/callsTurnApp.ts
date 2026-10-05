@@ -24,7 +24,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/callsTurnApp:CallsTurnApp example '<account_id>/<key_id>'
+ * ```
  */
 export class CallsTurnApp extends pulumi.CustomResource {
     /**
@@ -69,7 +71,7 @@ export class CallsTurnApp extends pulumi.CustomResource {
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
-    declare public readonly keyId: pulumi.Output<string | undefined>;
+    declare public readonly keyId: pulumi.Output<string>;
     /**
      * The date and time the item was last modified.
      */

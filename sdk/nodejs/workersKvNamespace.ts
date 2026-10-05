@@ -58,7 +58,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
@@ -71,7 +71,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly supportsUrlEncoding: pulumi.Output<boolean>;
     /**
-     * A human-readable string name for a Namespace.
+     * Human-readable string name for a Workers KV namespace.
      */
     declare public readonly title: pulumi.Output<string>;
 
@@ -115,7 +115,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
  */
 export interface WorkersKvNamespaceState {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -128,7 +128,7 @@ export interface WorkersKvNamespaceState {
      */
     supportsUrlEncoding?: pulumi.Input<boolean | undefined>;
     /**
-     * A human-readable string name for a Namespace.
+     * Human-readable string name for a Workers KV namespace.
      */
     title?: pulumi.Input<string | undefined>;
 }
@@ -138,7 +138,7 @@ export interface WorkersKvNamespaceState {
  */
 export interface WorkersKvNamespaceArgs {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -147,7 +147,7 @@ export interface WorkersKvNamespaceArgs {
      */
     jurisdiction?: pulumi.Input<string | undefined>;
     /**
-     * A human-readable string name for a Namespace.
+     * Human-readable string name for a Workers KV namespace.
      */
     title: pulumi.Input<string>;
 }

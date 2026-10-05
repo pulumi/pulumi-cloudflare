@@ -44,15 +44,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleZeroTrustResourceLibraryApplication = new ZeroTrustResourceLibraryApplication("exampleZeroTrustResourceLibraryApplication", ZeroTrustResourceLibraryApplicationArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .categoryId(12)
- *             .humanId("HR")
- *             .name("HR")
  *             .hostnames(            
  *                 "example.com",
  *                 "foo.com")
+ *             .categoryId(12)
+ *             .humanId("HR")
  *             .ipSubnets(            
  *                 "192.168.1.0/24",
- *                 "10.0.0.0/8")
+ *                 "2001:db8::/48")
+ *             .name("HR")
  *             .portProtocols(            
  *                 "tcp/80",
  *                 "tcp/443")
@@ -156,14 +156,14 @@ public class ZeroTrustResourceLibraryApplication extends com.pulumi.resources.Cu
      * 
      */
     @Export(name="categoryId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> categoryId;
+    private Output</* @Nullable */ Integer> categoryId;
 
     /**
      * @return Returns the category ID.
      * 
      */
-    public Output<Integer> categoryId() {
-        return this.categoryId;
+    public Output<Optional<Integer>> categoryId() {
+        return Codegen.optional(this.categoryId);
     }
     /**
      * Returns the application creation time.
@@ -212,24 +212,24 @@ public class ZeroTrustResourceLibraryApplication extends com.pulumi.resources.Cu
      * 
      */
     @Export(name="humanId", refs={String.class}, tree="[0]")
-    private Output<String> humanId;
+    private Output</* @Nullable */ String> humanId;
 
     /**
      * @return Returns the human readable ID.
      * 
      */
-    public Output<String> humanId() {
-        return this.humanId;
+    public Output<Optional<String>> humanId() {
+        return Codegen.optional(this.humanId);
     }
     /**
-     * IP subnets matched by the application.
+     * IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      * 
      */
     @Export(name="ipSubnets", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ipSubnets;
 
     /**
-     * @return IP subnets matched by the application.
+     * @return IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      * 
      */
     public Output<Optional<List<String>>> ipSubnets() {
@@ -240,14 +240,14 @@ public class ZeroTrustResourceLibraryApplication extends com.pulumi.resources.Cu
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
      * @return Returns the application name.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     /**
      * Port and protocol pairs matched by the application.

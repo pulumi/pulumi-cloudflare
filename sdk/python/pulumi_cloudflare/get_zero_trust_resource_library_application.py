@@ -192,7 +192,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter(name="ipSubnets")
     def ip_subnets(self) -> Sequence[_builtins.str]:
         """
-        IP subnets matched by the application.
+        IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         """
         return pulumi.get(self, "ip_subnets")
 

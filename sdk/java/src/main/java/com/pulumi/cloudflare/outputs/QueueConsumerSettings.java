@@ -3,8 +3,12 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.QueueConsumerSettingsEmail;
+import com.pulumi.cloudflare.outputs.QueueConsumerSettingsPagerduty;
+import com.pulumi.cloudflare.outputs.QueueConsumerSettingsWebhook;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +20,7 @@ public final class QueueConsumerSettings {
      * 
      */
     private @Nullable Double batchSize;
+    private @Nullable List<QueueConsumerSettingsEmail> emails;
     /**
      * @return Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform&#39;s maximum (recommended).
      * 
@@ -32,6 +37,11 @@ public final class QueueConsumerSettings {
      */
     private @Nullable Double maxWaitTimeMs;
     /**
+     * @return PagerDuty notification destinations.
+     * 
+     */
+    private @Nullable List<QueueConsumerSettingsPagerduty> pagerduties;
+    /**
      * @return The number of seconds to delay before making the message available for another attempt.
      * 
      */
@@ -41,6 +51,11 @@ public final class QueueConsumerSettings {
      * 
      */
     private @Nullable Double visibilityTimeoutMs;
+    /**
+     * @return Webhook notification destinations.
+     * 
+     */
+    private @Nullable List<QueueConsumerSettingsWebhook> webhooks;
 
     private QueueConsumerSettings() {}
     /**
@@ -49,6 +64,9 @@ public final class QueueConsumerSettings {
      */
     public Optional<Double> batchSize() {
         return Optional.ofNullable(this.batchSize);
+    }
+    public List<QueueConsumerSettingsEmail> emails() {
+        return this.emails == null ? List.of() : this.emails;
     }
     /**
      * @return Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform&#39;s maximum (recommended).
@@ -72,6 +90,13 @@ public final class QueueConsumerSettings {
         return Optional.ofNullable(this.maxWaitTimeMs);
     }
     /**
+     * @return PagerDuty notification destinations.
+     * 
+     */
+    public List<QueueConsumerSettingsPagerduty> pagerduties() {
+        return this.pagerduties == null ? List.of() : this.pagerduties;
+    }
+    /**
      * @return The number of seconds to delay before making the message available for another attempt.
      * 
      */
@@ -85,6 +110,13 @@ public final class QueueConsumerSettings {
     public Optional<Double> visibilityTimeoutMs() {
         return Optional.ofNullable(this.visibilityTimeoutMs);
     }
+    /**
+     * @return Webhook notification destinations.
+     * 
+     */
+    public List<QueueConsumerSettingsWebhook> webhooks() {
+        return this.webhooks == null ? List.of() : this.webhooks;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -96,20 +128,26 @@ public final class QueueConsumerSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Double batchSize;
+        private @Nullable List<QueueConsumerSettingsEmail> emails;
         private @Nullable Double maxConcurrency;
         private @Nullable Double maxRetries;
         private @Nullable Double maxWaitTimeMs;
+        private @Nullable List<QueueConsumerSettingsPagerduty> pagerduties;
         private @Nullable Double retryDelay;
         private @Nullable Double visibilityTimeoutMs;
+        private @Nullable List<QueueConsumerSettingsWebhook> webhooks;
         public Builder() {}
         public Builder(QueueConsumerSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.batchSize = defaults.batchSize;
+    	      this.emails = defaults.emails;
     	      this.maxConcurrency = defaults.maxConcurrency;
     	      this.maxRetries = defaults.maxRetries;
     	      this.maxWaitTimeMs = defaults.maxWaitTimeMs;
+    	      this.pagerduties = defaults.pagerduties;
     	      this.retryDelay = defaults.retryDelay;
     	      this.visibilityTimeoutMs = defaults.visibilityTimeoutMs;
+    	      this.webhooks = defaults.webhooks;
         }
 
         @CustomType.Setter
@@ -117,6 +155,15 @@ public final class QueueConsumerSettings {
 
             this.batchSize = batchSize;
             return this;
+        }
+        @CustomType.Setter
+        public Builder emails(@Nullable List<QueueConsumerSettingsEmail> emails) {
+
+            this.emails = emails;
+            return this;
+        }
+        public Builder emails(QueueConsumerSettingsEmail... emails) {
+            return emails(List.of(emails));
         }
         @CustomType.Setter
         public Builder maxConcurrency(@Nullable Double maxConcurrency) {
@@ -137,6 +184,15 @@ public final class QueueConsumerSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder pagerduties(@Nullable List<QueueConsumerSettingsPagerduty> pagerduties) {
+
+            this.pagerduties = pagerduties;
+            return this;
+        }
+        public Builder pagerduties(QueueConsumerSettingsPagerduty... pagerduties) {
+            return pagerduties(List.of(pagerduties));
+        }
+        @CustomType.Setter
         public Builder retryDelay(@Nullable Double retryDelay) {
 
             this.retryDelay = retryDelay;
@@ -148,14 +204,26 @@ public final class QueueConsumerSettings {
             this.visibilityTimeoutMs = visibilityTimeoutMs;
             return this;
         }
+        @CustomType.Setter
+        public Builder webhooks(@Nullable List<QueueConsumerSettingsWebhook> webhooks) {
+
+            this.webhooks = webhooks;
+            return this;
+        }
+        public Builder webhooks(QueueConsumerSettingsWebhook... webhooks) {
+            return webhooks(List.of(webhooks));
+        }
         public QueueConsumerSettings build() {
             final var _resultValue = new QueueConsumerSettings();
             _resultValue.batchSize = batchSize;
+            _resultValue.emails = emails;
             _resultValue.maxConcurrency = maxConcurrency;
             _resultValue.maxRetries = maxRetries;
             _resultValue.maxWaitTimeMs = maxWaitTimeMs;
+            _resultValue.pagerduties = pagerduties;
             _resultValue.retryDelay = retryDelay;
             _resultValue.visibilityTimeoutMs = visibilityTimeoutMs;
+            _resultValue.webhooks = webhooks;
             return _resultValue;
         }
     }

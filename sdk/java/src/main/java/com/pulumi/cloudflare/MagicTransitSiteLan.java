@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingArgs;
  * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpRelayArgs;
  * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs;
+ * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -83,6 +84,11 @@ import javax.annotation.Nullable;
  *                     .serverAddresses("192.0.2.1")
  *                     .build())
  *                 .dhcpServer(MagicTransitSiteLanStaticAddressingDhcpServerArgs.builder()
+ *                     .dhcpOptions(MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs.builder()
+ *                         .code(66)
+ *                         .type("ip")
+ *                         .value("10.20.30.40")
+ *                         .build())
  *                     .dhcpPoolEnd("192.0.2.1")
  *                     .dhcpPoolStart("192.0.2.1")
  *                     .dnsServer("192.0.2.1")

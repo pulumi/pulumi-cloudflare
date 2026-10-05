@@ -48,7 +48,7 @@ class GetR2BucketSippyResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -113,7 +113,7 @@ def get_r2_bucket_sippy(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Account ID.
+    :param _builtins.str account_id: Cloudflare account ID that owns the R2 resource.
     :param _builtins.str bucket_name: Name of the bucket.
     """
     __args__ = dict()
@@ -143,7 +143,7 @@ def get_r2_bucket_sippy_output(account_id: pulumi.Input[Optional[_builtins.str]]
     ```
 
 
-    :param _builtins.str account_id: Account ID.
+    :param _builtins.str account_id: Cloudflare account ID that owns the R2 resource.
     :param _builtins.str bucket_name: Name of the bucket.
     """
     __args__ = dict()

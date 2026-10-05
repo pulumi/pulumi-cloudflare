@@ -114,9 +114,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation")
 public class ZeroTrustDnsLocation extends com.pulumi.resources.CustomResource {
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }

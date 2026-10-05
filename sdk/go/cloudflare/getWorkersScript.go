@@ -58,7 +58,7 @@ type LookupWorkersScriptArgs struct {
 	// Identifier.
 	AccountId *string                 `pulumi:"accountId"`
 	Filter    *GetWorkersScriptFilter `pulumi:"filter"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName *string `pulumi:"scriptName"`
 }
 
@@ -67,10 +67,10 @@ type LookupWorkersScriptResult struct {
 	// Identifier.
 	AccountId *string                 `pulumi:"accountId"`
 	Filter    *GetWorkersScriptFilter `pulumi:"filter"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	Id     string `pulumi:"id"`
 	Script string `pulumi:"script"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName *string `pulumi:"scriptName"`
 }
 
@@ -84,7 +84,7 @@ type LookupWorkersScriptOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput          `pulumi:"accountId"`
 	Filter    GetWorkersScriptFilterPtrInput `pulumi:"filter"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringPtrInput `pulumi:"scriptName"`
 }
 
@@ -116,7 +116,7 @@ func (o LookupWorkersScriptResultOutput) Filter() GetWorkersScriptFilterPtrOutpu
 	return o.ApplyT(func(v LookupWorkersScriptResult) *GetWorkersScriptFilter { return v.Filter }).(GetWorkersScriptFilterPtrOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script.
 func (o LookupWorkersScriptResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -125,7 +125,7 @@ func (o LookupWorkersScriptResultOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.Script }).(pulumi.StringOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script.
 func (o LookupWorkersScriptResultOutput) ScriptName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersScriptResult) *string { return v.ScriptName }).(pulumi.StringPtrOutput)
 }

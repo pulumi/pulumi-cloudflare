@@ -23,7 +23,8 @@ class ZeroTrustAccessInfrastructureTargetArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
-                 ip: pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs']):
+                 ip: pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs'],
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessInfrastructureTarget resource.
 
@@ -33,10 +34,14 @@ class ZeroTrustAccessInfrastructureTargetArgs:
                and period, does not support spaces, and must start and end with an
                alphanumeric character.
         :param pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs'] ip: The IPv4/IPv6 address that identifies where to reach a target
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Optional tags to associate with the target. Keys and values are
+               user-defined strings.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "ip", ip)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -77,6 +82,19 @@ class ZeroTrustAccessInfrastructureTargetArgs:
     def ip(self, value: pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs']):
         pulumi.set(self, "ip", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional tags to associate with the target. Keys and values are
+        user-defined strings.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _ZeroTrustAccessInfrastructureTargetState:
@@ -85,7 +103,8 @@ class _ZeroTrustAccessInfrastructureTargetState:
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  ip: pulumi.Input[Optional['ZeroTrustAccessInfrastructureTargetIpArgs']] = None,
-                 modified_at: pulumi.Input[Optional[_builtins.str]] = None):
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessInfrastructureTarget resources.
 
@@ -97,6 +116,8 @@ class _ZeroTrustAccessInfrastructureTargetState:
                alphanumeric character.
         :param pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs'] ip: The IPv4/IPv6 address that identifies where to reach a target
         :param pulumi.Input[_builtins.str] modified_at: Date and time at which the target was modified
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Optional tags to associate with the target. Keys and values are
+               user-defined strings.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -108,6 +129,8 @@ class _ZeroTrustAccessInfrastructureTargetState:
             pulumi.set(__self__, "ip", ip)
         if modified_at is not None:
             pulumi.set(__self__, "modified_at", modified_at)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -172,6 +195,19 @@ class _ZeroTrustAccessInfrastructureTargetState:
     def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional tags to associate with the target. Keys and values are
+        user-defined strings.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.type_token("cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget")
 class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
@@ -182,6 +218,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -202,6 +239,9 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                     "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
                     "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55",
                 },
+            },
+            tags={
+                "foo": "string",
             })
         ```
 
@@ -220,6 +260,8 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                and period, does not support spaces, and must start and end with an
                alphanumeric character.
         :param pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']] ip: The IPv4/IPv6 address that identifies where to reach a target
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Optional tags to associate with the target. Keys and values are
+               user-defined strings.
         """
         ...
     @overload
@@ -246,6 +288,9 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                     "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
                     "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55",
                 },
+            },
+            tags={
+                "foo": "string",
             })
         ```
 
@@ -274,6 +319,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -292,6 +338,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
             if ip is None and not opts.urn:
                 raise TypeError("Missing required property 'ip'")
             __props__.__dict__["ip"] = ip
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["created_at"] = None
             __props__.__dict__["modified_at"] = None
         super(ZeroTrustAccessInfrastructureTarget, __self__).__init__(
@@ -308,7 +355,8 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
             ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']]] = None,
-            modified_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessInfrastructureTarget':
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ZeroTrustAccessInfrastructureTarget':
         """
         Get an existing ZeroTrustAccessInfrastructureTarget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -324,6 +372,8 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
                alphanumeric character.
         :param pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict', 'outputs.ZeroTrustAccessInfrastructureTargetIp']] ip: The IPv4/IPv6 address that identifies where to reach a target
         :param pulumi.Input[_builtins.str] modified_at: Date and time at which the target was modified
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Optional tags to associate with the target. Keys and values are
+               user-defined strings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -334,6 +384,7 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["ip"] = ip
         __props__.__dict__["modified_at"] = modified_at
+        __props__.__dict__["tags"] = tags
         return ZeroTrustAccessInfrastructureTarget(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -378,4 +429,13 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
         Date and time at which the target was modified
         """
         return pulumi.get(self, "modified_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        Optional tags to associate with the target. Keys and values are
+        user-defined strings.
+        """
+        return pulumi.get(self, "tags")
 

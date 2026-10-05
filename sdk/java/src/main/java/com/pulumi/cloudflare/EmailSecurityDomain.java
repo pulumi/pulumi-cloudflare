@@ -94,9 +94,17 @@ public class EmailSecurityDomain extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Delivery modes to onboard the domain through.
+     * 
+     */
     @Export(name="allowedDeliveryModes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allowedDeliveryModes;
 
+    /**
+     * @return Delivery modes to onboard the domain through.
+     * 
+     */
     public Output<List<String>> allowedDeliveryModes() {
         return this.allowedDeliveryModes;
     }
@@ -126,15 +134,31 @@ public class EmailSecurityDomain extends com.pulumi.resources.CustomResource {
     public Output<String> dmarcStatus() {
         return this.dmarcStatus;
     }
+    /**
+     * The email domain to protect.
+     * 
+     */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
+    /**
+     * @return The email domain to protect.
+     * 
+     */
     public Output<String> domain() {
         return this.domain;
     }
+    /**
+     * Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+     * 
+     */
     @Export(name="dropDispositions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dropDispositions;
 
+    /**
+     * @return Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+     * 
+     */
     public Output<List<String>> dropDispositions() {
         return this.dropDispositions;
     }
@@ -145,6 +169,7 @@ public class EmailSecurityDomain extends com.pulumi.resources.CustomResource {
         return this.emailsProcessed;
     }
     /**
+     * The mailbox folder to scan, for API-scanning domains.
      * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
      * 
      */
@@ -152,7 +177,8 @@ public class EmailSecurityDomain extends com.pulumi.resources.CustomResource {
     private Output<String> folder;
 
     /**
-     * @return Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+     * @return The mailbox folder to scan, for API-scanning domains.
+     * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
      * 
      */
     public Output<String> folder() {
@@ -172,15 +198,31 @@ public class EmailSecurityDomain extends com.pulumi.resources.CustomResource {
     public Output<String> inboxProvider() {
         return this.inboxProvider;
     }
+    /**
+     * Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     * 
+     */
     @Export(name="integrationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> integrationId;
 
+    /**
+     * @return Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     * 
+     */
     public Output<Optional<String>> integrationId() {
         return Codegen.optional(this.integrationId);
     }
+    /**
+     * Source IP ranges mail is accepted from. Any other source is rejected.
+     * 
+     */
     @Export(name="ipRestrictions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipRestrictions;
 
+    /**
+     * @return Source IP ranges mail is accepted from. Any other source is rejected.
+     * 
+     */
     public Output<List<String>> ipRestrictions() {
         return this.ipRestrictions;
     }
@@ -202,9 +244,17 @@ public class EmailSecurityDomain extends com.pulumi.resources.CustomResource {
     public Output<String> lastModified() {
         return this.lastModified;
     }
+    /**
+     * Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     * 
+     */
     @Export(name="lookbackHops", refs={Integer.class}, tree="[0]")
     private Output<Integer> lookbackHops;
 
+    /**
+     * @return Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     * 
+     */
     public Output<Integer> lookbackHops() {
         return this.lookbackHops;
     }
@@ -220,21 +270,45 @@ public class EmailSecurityDomain extends com.pulumi.resources.CustomResource {
     public Output<String> o365TenantId() {
         return this.o365TenantId;
     }
+    /**
+     * Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+     * 
+     */
     @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> regions;
 
+    /**
+     * @return Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+     * 
+     */
     public Output<List<String>> regions() {
         return this.regions;
     }
+    /**
+     * Require TLS on inbound connections.
+     * 
+     */
     @Export(name="requireTlsInbound", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requireTlsInbound;
 
+    /**
+     * @return Require TLS on inbound connections.
+     * 
+     */
     public Output<Boolean> requireTlsInbound() {
         return this.requireTlsInbound;
     }
+    /**
+     * Require TLS on outbound connections.
+     * 
+     */
     @Export(name="requireTlsOutbound", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requireTlsOutbound;
 
+    /**
+     * @return Require TLS on outbound connections.
+     * 
+     */
     public Output<Boolean> requireTlsOutbound() {
         return this.requireTlsOutbound;
     }
@@ -266,9 +340,17 @@ public class EmailSecurityDomain extends com.pulumi.resources.CustomResource {
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     * 
+     */
     @Export(name="transport", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transport;
 
+    /**
+     * @return The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     * 
+     */
     public Output<Optional<String>> transport() {
         return Codegen.optional(this.transport);
     }

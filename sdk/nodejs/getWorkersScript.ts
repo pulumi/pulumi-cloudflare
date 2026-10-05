@@ -45,7 +45,7 @@ export interface GetWorkersScriptArgs {
     accountId?: string;
     filter?: inputs.GetWorkersScriptFilter;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName?: string;
 }
@@ -60,12 +60,12 @@ export interface GetWorkersScriptResult {
     readonly accountId?: string;
     readonly filter?: outputs.GetWorkersScriptFilter;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     readonly id: string;
     readonly script: string;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     readonly scriptName?: string;
 }
@@ -108,7 +108,7 @@ export interface GetWorkersScriptOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetWorkersScriptFilterArgs | undefined>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName?: pulumi.Input<string | undefined>;
 }

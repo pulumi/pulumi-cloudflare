@@ -11,8 +11,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -160,6 +162,22 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     public Output<String> deployedVia() {
         return this.deployedVia;
     }
+    /**
+     * Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Export(name="direction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> direction;
+
+    /**
+     * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Output<Optional<String>> direction() {
+        return Codegen.optional(this.direction);
+    }
     @Export(name="domains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> domains;
 
@@ -179,6 +197,22 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> ephemeralId() {
         return this.ephemeralId;
+    }
+    /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    @Export(name="filter", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> filter;
+
+    /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    public Output<Optional<String>> filter() {
+        return Codegen.optional(this.filter);
     }
     /**
      * Origin of the most recent mutation (create, update, delete, or
@@ -261,6 +295,50 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> offlabel() {
         return this.offlabel;
+    }
+    /**
+     * Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
+     * 
+     */
+    @Export(name="order", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> order;
+
+    /**
+     * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
+     * 
+     */
+    public Output<Optional<String>> order() {
+        return Codegen.optional(this.order);
+    }
+    /**
+     * Page number of paginated results.
+     * 
+     */
+    @Export(name="page", refs={Double.class}, tree="[0]")
+    private Output<Double> page;
+
+    /**
+     * @return Page number of paginated results.
+     * 
+     */
+    public Output<Double> page() {
+        return this.page;
+    }
+    /**
+     * Number of items per page.
+     * 
+     */
+    @Export(name="perPage", refs={Double.class}, tree="[0]")
+    private Output<Double> perPage;
+
+    /**
+     * @return Number of items per page.
+     * 
+     */
+    public Output<Double> perPage() {
+        return this.perPage;
     }
     /**
      * Region where this widget can be used. This cannot be changed after creation.

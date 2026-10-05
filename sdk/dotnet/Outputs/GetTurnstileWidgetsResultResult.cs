@@ -28,15 +28,30 @@ namespace Pulumi.Cloudflare.Outputs
         /// When the widget was created.
         /// </summary>
         public readonly string CreatedOn;
+        /// <summary>
+        /// Origin that created this widget, recorded at creation time and
+        /// immutable afterward. Server-derived from the create request; not
+        /// client-settable. Omitted from the response for widgets created
+        /// before this field existed.
+        /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        /// </summary>
+        public readonly string DeployedVia;
         public readonly ImmutableArray<string> Domains;
         /// <summary>
         /// Return the Ephemeral ID in /siteverify (ENT only).
         /// </summary>
         public readonly bool EphemeralId;
         /// <summary>
-        /// Widget item identifier tag.
+        /// Unique identifier for a Turnstile widget.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Origin of the most recent mutation (create, update, delete, or
+        /// secret rotation). Server-derived; not client-settable. Omitted for
+        /// widgets last mutated before this field existed.
+        /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        /// </summary>
+        public readonly string LastModifiedVia;
         /// <summary>
         /// Widget Mode
         /// Available values: "non-interactive", "invisible", "managed".
@@ -62,7 +77,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Widget item identifier tag.
+        /// Unique identifier for a Turnstile widget.
         /// </summary>
         public readonly string Sitekey;
 
@@ -74,11 +89,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string createdOn,
 
+            string deployedVia,
+
             ImmutableArray<string> domains,
 
             bool ephemeralId,
 
             string id,
+
+            string lastModifiedVia,
 
             string mode,
 
@@ -95,9 +114,11 @@ namespace Pulumi.Cloudflare.Outputs
             BotFightMode = botFightMode;
             ClearanceLevel = clearanceLevel;
             CreatedOn = createdOn;
+            DeployedVia = deployedVia;
             Domains = domains;
             EphemeralId = ephemeralId;
             Id = id;
+            LastModifiedVia = lastModifiedVia;
             Mode = mode;
             ModifiedOn = modifiedOn;
             Name = name;

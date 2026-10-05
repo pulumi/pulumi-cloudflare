@@ -22,6 +22,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetWorkerVersionsResultAssetsResult Assets;
         /// <summary>
+        /// Email of the user who created the version.
+        /// </summary>
+        public readonly string AuthorEmail;
+        /// <summary>
+        /// Identifier of the user who created the version.
+        /// </summary>
+        public readonly string AuthorId;
+        /// <summary>
         /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerVersionsResultBindingResult> Bindings;
@@ -85,8 +93,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// Code, sourcemaps, and other content used at runtime.
         /// 
         /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
         /// included as modules named `_headers` and `_redirects` with content type `text/plain`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerVersionsResultModuleResult> Modules;
@@ -126,6 +134,10 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.GetWorkerVersionsResultAnnotationsResult annotations,
 
             Outputs.GetWorkerVersionsResultAssetsResult assets,
+
+            string authorEmail,
+
+            string authorId,
 
             ImmutableArray<Outputs.GetWorkerVersionsResultBindingResult> bindings,
 
@@ -171,6 +183,8 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Annotations = annotations;
             Assets = assets;
+            AuthorEmail = authorEmail;
+            AuthorId = authorId;
             Bindings = bindings;
             CacheOptions = cacheOptions;
             CompatibilityDate = compatibilityDate;

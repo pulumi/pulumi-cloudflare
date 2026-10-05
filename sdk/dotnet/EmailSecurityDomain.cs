@@ -72,6 +72,9 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Delivery modes to onboard the domain through.
+        /// </summary>
         [Output("allowedDeliveryModes")]
         public Output<ImmutableArray<string>> AllowedDeliveryModes { get; private set; } = null!;
 
@@ -87,9 +90,15 @@ namespace Pulumi.Cloudflare
         [Output("dmarcStatus")]
         public Output<string> DmarcStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// The email domain to protect.
+        /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
+        /// <summary>
+        /// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        /// </summary>
         [Output("dropDispositions")]
         public Output<ImmutableArray<string>> DropDispositions { get; private set; } = null!;
 
@@ -97,6 +106,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.EmailSecurityDomainEmailsProcessed> EmailsProcessed { get; private set; } = null!;
 
         /// <summary>
+        /// The mailbox folder to scan, for API-scanning domains.
         /// Available values: "AllItems", "Inbox".
         /// </summary>
         [Output("folder")]
@@ -108,9 +118,15 @@ namespace Pulumi.Cloudflare
         [Output("inboxProvider")]
         public Output<string> InboxProvider { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        /// </summary>
         [Output("integrationId")]
         public Output<string?> IntegrationId { get; private set; } = null!;
 
+        /// <summary>
+        /// Source IP ranges mail is accepted from. Any other source is rejected.
+        /// </summary>
         [Output("ipRestrictions")]
         public Output<ImmutableArray<string>> IpRestrictions { get; private set; } = null!;
 
@@ -120,6 +136,9 @@ namespace Pulumi.Cloudflare
         [Output("lastModified")]
         public Output<string> LastModified { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        /// </summary>
         [Output("lookbackHops")]
         public Output<int> LookbackHops { get; private set; } = null!;
 
@@ -129,12 +148,21 @@ namespace Pulumi.Cloudflare
         [Output("o365TenantId")]
         public Output<string> O365TenantId { get; private set; } = null!;
 
+        /// <summary>
+        /// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
+        /// <summary>
+        /// Require TLS on inbound connections.
+        /// </summary>
         [Output("requireTlsInbound")]
         public Output<bool> RequireTlsInbound { get; private set; } = null!;
 
+        /// <summary>
+        /// Require TLS on outbound connections.
+        /// </summary>
         [Output("requireTlsOutbound")]
         public Output<bool> RequireTlsOutbound { get; private set; } = null!;
 
@@ -150,6 +178,9 @@ namespace Pulumi.Cloudflare
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+        /// </summary>
         [Output("transport")]
         public Output<string?> Transport { get; private set; } = null!;
 
@@ -207,17 +238,28 @@ namespace Pulumi.Cloudflare
 
         [Input("allowedDeliveryModes", required: true)]
         private InputList<string>? _allowedDeliveryModes;
+
+        /// <summary>
+        /// Delivery modes to onboard the domain through.
+        /// </summary>
         public InputList<string> AllowedDeliveryModes
         {
             get => _allowedDeliveryModes ?? (_allowedDeliveryModes = new InputList<string>());
             set => _allowedDeliveryModes = value;
         }
 
+        /// <summary>
+        /// The email domain to protect.
+        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
         [Input("dropDispositions", required: true)]
         private InputList<string>? _dropDispositions;
+
+        /// <summary>
+        /// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        /// </summary>
         public InputList<string> DropDispositions
         {
             get => _dropDispositions ?? (_dropDispositions = new InputList<string>());
@@ -225,39 +267,63 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// The mailbox folder to scan, for API-scanning domains.
         /// Available values: "AllItems", "Inbox".
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
+        /// <summary>
+        /// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        /// </summary>
         [Input("integrationId")]
         public Input<string>? IntegrationId { get; set; }
 
         [Input("ipRestrictions", required: true)]
         private InputList<string>? _ipRestrictions;
+
+        /// <summary>
+        /// Source IP ranges mail is accepted from. Any other source is rejected.
+        /// </summary>
         public InputList<string> IpRestrictions
         {
             get => _ipRestrictions ?? (_ipRestrictions = new InputList<string>());
             set => _ipRestrictions = value;
         }
 
+        /// <summary>
+        /// Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        /// </summary>
         [Input("lookbackHops")]
         public Input<int>? LookbackHops { get; set; }
 
         [Input("regions", required: true)]
         private InputList<string>? _regions;
+
+        /// <summary>
+        /// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        /// </summary>
         public InputList<string> Regions
         {
             get => _regions ?? (_regions = new InputList<string>());
             set => _regions = value;
         }
 
+        /// <summary>
+        /// Require TLS on inbound connections.
+        /// </summary>
         [Input("requireTlsInbound")]
         public Input<bool>? RequireTlsInbound { get; set; }
 
+        /// <summary>
+        /// Require TLS on outbound connections.
+        /// </summary>
         [Input("requireTlsOutbound")]
         public Input<bool>? RequireTlsOutbound { get; set; }
 
+        /// <summary>
+        /// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+        /// </summary>
         [Input("transport")]
         public Input<string>? Transport { get; set; }
 
@@ -277,6 +343,10 @@ namespace Pulumi.Cloudflare
 
         [Input("allowedDeliveryModes")]
         private InputList<string>? _allowedDeliveryModes;
+
+        /// <summary>
+        /// Delivery modes to onboard the domain through.
+        /// </summary>
         public InputList<string> AllowedDeliveryModes
         {
             get => _allowedDeliveryModes ?? (_allowedDeliveryModes = new InputList<string>());
@@ -295,11 +365,18 @@ namespace Pulumi.Cloudflare
         [Input("dmarcStatus")]
         public Input<string>? DmarcStatus { get; set; }
 
+        /// <summary>
+        /// The email domain to protect.
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         [Input("dropDispositions")]
         private InputList<string>? _dropDispositions;
+
+        /// <summary>
+        /// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        /// </summary>
         public InputList<string> DropDispositions
         {
             get => _dropDispositions ?? (_dropDispositions = new InputList<string>());
@@ -310,6 +387,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.EmailSecurityDomainEmailsProcessedGetArgs>? EmailsProcessed { get; set; }
 
         /// <summary>
+        /// The mailbox folder to scan, for API-scanning domains.
         /// Available values: "AllItems", "Inbox".
         /// </summary>
         [Input("folder")]
@@ -321,11 +399,18 @@ namespace Pulumi.Cloudflare
         [Input("inboxProvider")]
         public Input<string>? InboxProvider { get; set; }
 
+        /// <summary>
+        /// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        /// </summary>
         [Input("integrationId")]
         public Input<string>? IntegrationId { get; set; }
 
         [Input("ipRestrictions")]
         private InputList<string>? _ipRestrictions;
+
+        /// <summary>
+        /// Source IP ranges mail is accepted from. Any other source is rejected.
+        /// </summary>
         public InputList<string> IpRestrictions
         {
             get => _ipRestrictions ?? (_ipRestrictions = new InputList<string>());
@@ -338,6 +423,9 @@ namespace Pulumi.Cloudflare
         [Input("lastModified")]
         public Input<string>? LastModified { get; set; }
 
+        /// <summary>
+        /// Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        /// </summary>
         [Input("lookbackHops")]
         public Input<int>? LookbackHops { get; set; }
 
@@ -349,15 +437,25 @@ namespace Pulumi.Cloudflare
 
         [Input("regions")]
         private InputList<string>? _regions;
+
+        /// <summary>
+        /// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        /// </summary>
         public InputList<string> Regions
         {
             get => _regions ?? (_regions = new InputList<string>());
             set => _regions = value;
         }
 
+        /// <summary>
+        /// Require TLS on inbound connections.
+        /// </summary>
         [Input("requireTlsInbound")]
         public Input<bool>? RequireTlsInbound { get; set; }
 
+        /// <summary>
+        /// Require TLS on outbound connections.
+        /// </summary>
         [Input("requireTlsOutbound")]
         public Input<bool>? RequireTlsOutbound { get; set; }
 
@@ -373,6 +471,9 @@ namespace Pulumi.Cloudflare
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+        /// </summary>
         [Input("transport")]
         public Input<string>? Transport { get; set; }
 

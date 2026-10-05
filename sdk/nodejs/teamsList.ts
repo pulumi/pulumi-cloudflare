@@ -62,6 +62,9 @@ export class TeamsList extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsList.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -142,6 +145,9 @@ export class TeamsList extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsList resources.
  */
 export interface TeamsListState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     /**
@@ -172,6 +178,9 @@ export interface TeamsListState {
  * The set of arguments for constructing a TeamsList resource.
  */
 export interface TeamsListArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Provide the list description.

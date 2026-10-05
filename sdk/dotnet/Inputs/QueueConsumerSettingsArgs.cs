@@ -18,6 +18,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("batchSize")]
         public Input<double>? BatchSize { get; set; }
 
+        [Input("emails")]
+        private InputList<Inputs.QueueConsumerSettingsEmailArgs>? _emails;
+        public InputList<Inputs.QueueConsumerSettingsEmailArgs> Emails
+        {
+            get => _emails ?? (_emails = new InputList<Inputs.QueueConsumerSettingsEmailArgs>());
+            set => _emails = value;
+        }
+
         /// <summary>
         /// Maximum number of concurrent consumers that may consume from this Queue. Set to `Null` to automatically opt in to the platform's maximum (recommended).
         /// </summary>
@@ -36,6 +44,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("maxWaitTimeMs")]
         public Input<double>? MaxWaitTimeMs { get; set; }
 
+        [Input("pagerduties")]
+        private InputList<Inputs.QueueConsumerSettingsPagerdutyArgs>? _pagerduties;
+
+        /// <summary>
+        /// PagerDuty notification destinations.
+        /// </summary>
+        public InputList<Inputs.QueueConsumerSettingsPagerdutyArgs> Pagerduties
+        {
+            get => _pagerduties ?? (_pagerduties = new InputList<Inputs.QueueConsumerSettingsPagerdutyArgs>());
+            set => _pagerduties = value;
+        }
+
         /// <summary>
         /// The number of seconds to delay before making the message available for another attempt.
         /// </summary>
@@ -47,6 +67,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("visibilityTimeoutMs")]
         public Input<double>? VisibilityTimeoutMs { get; set; }
+
+        [Input("webhooks")]
+        private InputList<Inputs.QueueConsumerSettingsWebhookArgs>? _webhooks;
+
+        /// <summary>
+        /// Webhook notification destinations.
+        /// </summary>
+        public InputList<Inputs.QueueConsumerSettingsWebhookArgs> Webhooks
+        {
+            get => _webhooks ?? (_webhooks = new InputList<Inputs.QueueConsumerSettingsWebhookArgs>());
+            set => _webhooks = value;
+        }
 
         public QueueConsumerSettingsArgs()
         {

@@ -67,6 +67,21 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     * 
+     */
+    @Import(name="directUser")
+    private @Nullable Output<Boolean> directUser;
+
+    /**
+     * @return Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     * 
+     */
+    public Optional<Output<Boolean>> directUser() {
+        return Optional.ofNullable(this.directUser);
+    }
+
+    /**
      * A Cloudflare-generated unique identifier for a media item.
      * 
      */
@@ -207,6 +222,7 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.allowedOrigins = $.allowedOrigins;
         this.creator = $.creator;
+        this.directUser = $.directUser;
         this.identifier = $.identifier;
         this.maxDurationSeconds = $.maxDurationSeconds;
         this.meta = $.meta;
@@ -307,6 +323,27 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
+        }
+
+        /**
+         * @param directUser Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directUser(@Nullable Output<Boolean> directUser) {
+            $.directUser = directUser;
+            return this;
+        }
+
+        /**
+         * @param directUser Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directUser(Boolean directUser) {
+            return directUser(Output.of(directUser));
         }
 
         /**

@@ -14,6 +14,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -163,6 +164,20 @@ public class Workflow extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<WorkflowSchedule>>> schedules() {
         return Codegen.optional(this.schedules);
+    }
+    /**
+     * Whether the bound Worker was deleted, leaving this Workflow inactive.
+     * 
+     */
+    @Export(name="scriptDeleted", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> scriptDeleted;
+
+    /**
+     * @return Whether the bound Worker was deleted, leaving this Workflow inactive.
+     * 
+     */
+    public Output<Boolean> scriptDeleted() {
+        return this.scriptDeleted;
     }
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;

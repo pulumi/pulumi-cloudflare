@@ -25,13 +25,16 @@ class WorkersDeploymentArgs:
                  script_name: pulumi.Input[_builtins.str],
                  strategy: pulumi.Input[_builtins.str],
                  versions: pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]],
-                 annotations: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']] = None):
+                 annotations: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WorkersDeployment resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        :param pulumi.Input[_builtins.bool] force: If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "script_name", script_name)
@@ -39,6 +42,8 @@ class WorkersDeploymentArgs:
         pulumi.set(__self__, "versions", versions)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -56,7 +61,7 @@ class WorkersDeploymentArgs:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 
@@ -79,6 +84,9 @@ class WorkersDeploymentArgs:
     @_builtins.property
     @pulumi.getter
     def versions(self) -> pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]:
+        """
+        Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        """
         return pulumi.get(self, "versions")
 
     @versions.setter
@@ -94,6 +102,18 @@ class WorkersDeploymentArgs:
     def annotations(self, value: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']]):
         pulumi.set(self, "annotations", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force", value)
+
 
 @pulumi.input_type
 class _WorkersDeploymentState:
@@ -102,6 +122,7 @@ class _WorkersDeploymentState:
                  annotations: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']] = None,
                  author_email: pulumi.Input[Optional[_builtins.str]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -110,8 +131,10 @@ class _WorkersDeploymentState:
         Input properties used for looking up and filtering WorkersDeployment resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.bool] force: If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -121,6 +144,8 @@ class _WorkersDeploymentState:
             pulumi.set(__self__, "author_email", author_email)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
         if source is not None:
@@ -170,10 +195,22 @@ class _WorkersDeploymentState:
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force", value)
+
+    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 
@@ -205,6 +242,9 @@ class _WorkersDeploymentState:
     @_builtins.property
     @pulumi.getter
     def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]]:
+        """
+        Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        """
         return pulumi.get(self, "versions")
 
     @versions.setter
@@ -220,6 +260,7 @@ class WorkersDeployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]]] = None,
@@ -243,7 +284,7 @@ class WorkersDeployment(pulumi.CustomResource):
             strategy="percentage",
             versions=[{
                 "percentage": float(100),
-                "version_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                "version_id": "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
             }],
             annotations={
                 "workers_message": "Deploy bug fix.",
@@ -260,8 +301,10 @@ class WorkersDeployment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.bool] force: If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
         """
         ...
     @overload
@@ -288,7 +331,7 @@ class WorkersDeployment(pulumi.CustomResource):
             strategy="percentage",
             versions=[{
                 "percentage": float(100),
-                "version_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                "version_id": "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
             }],
             annotations={
                 "workers_message": "Deploy bug fix.",
@@ -319,6 +362,7 @@ class WorkersDeployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]]] = None,
@@ -335,6 +379,7 @@ class WorkersDeployment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["force"] = force
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
             __props__.__dict__["script_name"] = script_name
@@ -361,6 +406,7 @@ class WorkersDeployment(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict', 'outputs.WorkersDeploymentAnnotations']]] = None,
             author_email: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -373,8 +419,10 @@ class WorkersDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.bool] force: If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict', 'outputs.WorkersDeploymentVersion']]]] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -384,6 +432,7 @@ class WorkersDeployment(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["author_email"] = author_email
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["force"] = force
         __props__.__dict__["script_name"] = script_name
         __props__.__dict__["source"] = source
         __props__.__dict__["strategy"] = strategy
@@ -414,10 +463,18 @@ class WorkersDeployment(pulumi.CustomResource):
         return pulumi.get(self, "created_on")
 
     @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+        """
+        return pulumi.get(self, "force")
+
+    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 
@@ -437,5 +494,8 @@ class WorkersDeployment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def versions(self) -> pulumi.Output[Sequence['outputs.WorkersDeploymentVersion']]:
+        """
+        Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        """
         return pulumi.get(self, "versions")
 

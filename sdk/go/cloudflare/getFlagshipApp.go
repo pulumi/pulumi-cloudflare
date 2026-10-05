@@ -53,20 +53,20 @@ func LookupFlagshipApp(ctx *pulumi.Context, args *LookupFlagshipAppArgs, opts ..
 
 // A collection of arguments for invoking getFlagshipApp.
 type LookupFlagshipAppArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId string `pulumi:"appId"`
 }
 
 // A collection of values returned by getFlagshipApp.
 type LookupFlagshipAppResult struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId     string `pulumi:"appId"`
 	CreatedAt string `pulumi:"createdAt"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	Id        string `pulumi:"id"`
 	Name      string `pulumi:"name"`
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -81,9 +81,9 @@ func LookupFlagshipAppOutput(ctx *pulumi.Context, args LookupFlagshipAppOutputAr
 
 // A collection of arguments for invoking getFlagshipApp.
 type LookupFlagshipAppOutputArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId pulumi.StringInput `pulumi:"appId"`
 }
 
@@ -106,12 +106,12 @@ func (o LookupFlagshipAppResultOutput) ToLookupFlagshipAppResultOutputWithContex
 	return o
 }
 
-// Cloudflare account ID.
+// Cloudflare account ID that owns the Flagship app.
 func (o LookupFlagshipAppResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipAppResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// App identifier.
+// Flagship app ID returned when the app was created.
 func (o LookupFlagshipAppResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipAppResult) string { return v.AppId }).(pulumi.StringOutput)
 }
@@ -120,7 +120,7 @@ func (o LookupFlagshipAppResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipAppResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// App identifier.
+// Flagship app ID returned when the app was created.
 func (o LookupFlagshipAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipAppResult) string { return v.Id }).(pulumi.StringOutput)
 }

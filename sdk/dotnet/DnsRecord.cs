@@ -89,6 +89,12 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.DnsRecordData?> Data { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to include shadow metadata in the `Meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        [Output("includeShadowMetadata")]
+        public Output<bool> IncludeShadowMetadata { get; private set; } = null!;
+
+        /// <summary>
         /// Extra Cloudflare-specific information about the record.
         /// </summary>
         [Output("meta")]
@@ -236,6 +242,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.DnsRecordDataArgs>? Data { get; set; }
 
         /// <summary>
+        /// Whether to include shadow metadata in the `Meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        [Input("includeShadowMetadata")]
+        public Input<bool>? IncludeShadowMetadata { get; set; }
+
+        /// <summary>
         /// DNS record name (or @ for the zone apex) in Punycode.
         /// </summary>
         [Input("name", required: true)]
@@ -333,6 +345,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("data")]
         public Input<Inputs.DnsRecordDataGetArgs>? Data { get; set; }
+
+        /// <summary>
+        /// Whether to include shadow metadata in the `Meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        /// </summary>
+        [Input("includeShadowMetadata")]
+        public Input<bool>? IncludeShadowMetadata { get; set; }
 
         /// <summary>
         /// Extra Cloudflare-specific information about the record.

@@ -102,6 +102,12 @@ namespace Pulumi.Cloudflare
         [Output("schedules")]
         public Output<ImmutableArray<Outputs.WorkflowSchedule>> Schedules { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the bound Worker was deleted, leaving this Workflow inactive.
+        /// </summary>
+        [Output("scriptDeleted")]
+        public Output<bool> ScriptDeleted { get; private set; } = null!;
+
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
 
@@ -248,6 +254,12 @@ namespace Pulumi.Cloudflare
             get => _schedules ?? (_schedules = new InputList<Inputs.WorkflowScheduleGetArgs>());
             set => _schedules = value;
         }
+
+        /// <summary>
+        /// Whether the bound Worker was deleted, leaving this Workflow inactive.
+        /// </summary>
+        [Input("scriptDeleted")]
+        public Input<bool>? ScriptDeleted { get; set; }
 
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }

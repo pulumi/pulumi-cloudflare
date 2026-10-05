@@ -10,15 +10,103 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountMemberPolicyPermissionGroupMeta {
-    private String key;
-    private String value;
+    /**
+     * @return A category used to group permission groups.
+     * 
+     */
+    private String category;
+    /**
+     * @return Indicates whether the permission group is deprecated.
+     * 
+     */
+    private String deprecated;
+    /**
+     * @return Additional information about the permission group.
+     * 
+     */
+    private String description;
+    /**
+     * @return Indicates whether the permission group can be edited.
+     * 
+     */
+    private String editable;
+    /**
+     * @return The planned end-of-life date and time, when provided.
+     * 
+     */
+    private String eolAt;
+    /**
+     * @return A label identifying the permission group.
+     * 
+     */
+    private String label;
+    /**
+     * @return The scope associated with the permission group.
+     * 
+     */
+    private String scopes;
+    /**
+     * @return Indicates the permission group&#39;s availability or visibility.
+     * 
+     */
+    private String visibility;
 
     private GetAccountMemberPolicyPermissionGroupMeta() {}
-    public String key() {
-        return this.key;
+    /**
+     * @return A category used to group permission groups.
+     * 
+     */
+    public String category() {
+        return this.category;
     }
-    public String value() {
-        return this.value;
+    /**
+     * @return Indicates whether the permission group is deprecated.
+     * 
+     */
+    public String deprecated() {
+        return this.deprecated;
+    }
+    /**
+     * @return Additional information about the permission group.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
+    /**
+     * @return Indicates whether the permission group can be edited.
+     * 
+     */
+    public String editable() {
+        return this.editable;
+    }
+    /**
+     * @return The planned end-of-life date and time, when provided.
+     * 
+     */
+    public String eolAt() {
+        return this.eolAt;
+    }
+    /**
+     * @return A label identifying the permission group.
+     * 
+     */
+    public String label() {
+        return this.label;
+    }
+    /**
+     * @return The scope associated with the permission group.
+     * 
+     */
+    public String scopes() {
+        return this.scopes;
+    }
+    /**
+     * @return Indicates the permission group&#39;s availability or visibility.
+     * 
+     */
+    public String visibility() {
+        return this.visibility;
     }
 
     public static Builder builder() {
@@ -30,35 +118,101 @@ public final class GetAccountMemberPolicyPermissionGroupMeta {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String key;
-        private String value;
+        private String category;
+        private String deprecated;
+        private String description;
+        private String editable;
+        private String eolAt;
+        private String label;
+        private String scopes;
+        private String visibility;
         public Builder() {}
         public Builder(GetAccountMemberPolicyPermissionGroupMeta defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.key = defaults.key;
-    	      this.value = defaults.value;
+    	      this.category = defaults.category;
+    	      this.deprecated = defaults.deprecated;
+    	      this.description = defaults.description;
+    	      this.editable = defaults.editable;
+    	      this.eolAt = defaults.eolAt;
+    	      this.label = defaults.label;
+    	      this.scopes = defaults.scopes;
+    	      this.visibility = defaults.visibility;
         }
 
         @CustomType.Setter
-        public Builder key(String key) {
-            if (key == null) {
-              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "key");
+        public Builder category(String category) {
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "category");
             }
-            this.key = key;
+            this.category = category;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "value");
+        public Builder deprecated(String deprecated) {
+            if (deprecated == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "deprecated");
             }
-            this.value = value;
+            this.deprecated = deprecated;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "description");
+            }
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder editable(String editable) {
+            if (editable == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "editable");
+            }
+            this.editable = editable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder eolAt(String eolAt) {
+            if (eolAt == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "eolAt");
+            }
+            this.eolAt = eolAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder label(String label) {
+            if (label == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "label");
+            }
+            this.label = label;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scopes(String scopes) {
+            if (scopes == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "scopes");
+            }
+            this.scopes = scopes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder visibility(String visibility) {
+            if (visibility == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberPolicyPermissionGroupMeta", "visibility");
+            }
+            this.visibility = visibility;
             return this;
         }
         public GetAccountMemberPolicyPermissionGroupMeta build() {
             final var _resultValue = new GetAccountMemberPolicyPermissionGroupMeta();
-            _resultValue.key = key;
-            _resultValue.value = value;
+            _resultValue.category = category;
+            _resultValue.deprecated = deprecated;
+            _resultValue.description = description;
+            _resultValue.editable = editable;
+            _resultValue.eolAt = eolAt;
+            _resultValue.label = label;
+            _resultValue.scopes = scopes;
+            _resultValue.visibility = visibility;
             return _resultValue;
         }
     }

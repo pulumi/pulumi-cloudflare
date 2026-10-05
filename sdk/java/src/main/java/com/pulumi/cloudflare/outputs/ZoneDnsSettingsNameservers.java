@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -13,32 +14,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZoneDnsSettingsNameservers {
     /**
-     * @return Configured nameserver set to be used for this zone
+     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * 
+     */
+    private @Nullable String nameserverSetId;
+    /**
+     * @return Configured nameserver set number to use for this zone.
      * 
      */
     private @Nullable Integer nsSet;
     /**
-     * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
+     * @return Nameserver type.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;, &#34;custom&#34;.
      * 
      */
-    private @Nullable String type;
+    private String type;
 
     private ZoneDnsSettingsNameservers() {}
     /**
-     * @return Configured nameserver set to be used for this zone
+     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * 
+     */
+    public Optional<String> nameserverSetId() {
+        return Optional.ofNullable(this.nameserverSetId);
+    }
+    /**
+     * @return Configured nameserver set number to use for this zone.
      * 
      */
     public Optional<Integer> nsSet() {
         return Optional.ofNullable(this.nsSet);
     }
     /**
-     * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
+     * @return Nameserver type.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.advanced&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;, &#34;custom&#34;.
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -50,15 +63,23 @@ public final class ZoneDnsSettingsNameservers {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String nameserverSetId;
         private @Nullable Integer nsSet;
-        private @Nullable String type;
+        private String type;
         public Builder() {}
         public Builder(ZoneDnsSettingsNameservers defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.nameserverSetId = defaults.nameserverSetId;
     	      this.nsSet = defaults.nsSet;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder nameserverSetId(@Nullable String nameserverSetId) {
+
+            this.nameserverSetId = nameserverSetId;
+            return this;
+        }
         @CustomType.Setter
         public Builder nsSet(@Nullable Integer nsSet) {
 
@@ -66,13 +87,16 @@ public final class ZoneDnsSettingsNameservers {
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ZoneDnsSettingsNameservers", "type");
+            }
             this.type = type;
             return this;
         }
         public ZoneDnsSettingsNameservers build() {
             final var _resultValue = new ZoneDnsSettingsNameservers();
+            _resultValue.nameserverSetId = nameserverSetId;
             _resultValue.nsSet = nsSet;
             _resultValue.type = type;
             return _resultValue;

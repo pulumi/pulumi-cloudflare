@@ -61,7 +61,7 @@ type CustomPages struct {
 	AccountId   pulumi.StringPtrOutput `pulumi:"accountId"`
 	CreatedOn   pulumi.StringOutput    `pulumi:"createdOn"`
 	Description pulumi.StringOutput    `pulumi:"description"`
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier     pulumi.StringOutput      `pulumi:"identifier"`
 	ModifiedOn     pulumi.StringOutput      `pulumi:"modifiedOn"`
@@ -116,7 +116,7 @@ type customPagesState struct {
 	AccountId   *string `pulumi:"accountId"`
 	CreatedOn   *string `pulumi:"createdOn"`
 	Description *string `pulumi:"description"`
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier     *string  `pulumi:"identifier"`
 	ModifiedOn     *string  `pulumi:"modifiedOn"`
@@ -136,7 +136,7 @@ type CustomPagesState struct {
 	AccountId   pulumi.StringPtrInput
 	CreatedOn   pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier     pulumi.StringPtrInput
 	ModifiedOn     pulumi.StringPtrInput
@@ -158,7 +158,7 @@ func (CustomPagesState) ElementType() reflect.Type {
 type customPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier string `pulumi:"identifier"`
 	// The custom page state.
@@ -174,7 +174,7 @@ type customPagesArgs struct {
 type CustomPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier pulumi.StringInput
 	// The custom page state.
@@ -286,7 +286,7 @@ func (o CustomPagesOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Error Page Types
+// Custom page type.
 // Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 func (o CustomPagesOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)

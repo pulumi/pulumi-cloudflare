@@ -16,46 +16,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustListsInvokeResult {
     private @Nullable String accountId;
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
+    private @Nullable String direction;
+    private @Nullable List<String> filters;
     private @Nullable Integer maxItems;
-    /**
-     * @return The items returned by the data source
-     * 
-     */
+    private @Nullable String orderBy;
     private List<GetZeroTrustListsResult> results;
-    /**
-     * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
-     * 
-     */
+    private @Nullable String search;
     private @Nullable String type;
 
     private GetZeroTrustListsInvokeResult() {}
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+    public List<String> filters() {
+        return this.filters == null ? List.of() : this.filters;
+    }
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
-    /**
-     * @return The items returned by the data source
-     * 
-     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
     public List<GetZeroTrustListsResult> results() {
         return this.results;
     }
-    /**
-     * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
-     * 
-     */
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
+    }
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
@@ -70,15 +60,23 @@ public final class GetZeroTrustListsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private @Nullable String direction;
+        private @Nullable List<String> filters;
         private @Nullable Integer maxItems;
+        private @Nullable String orderBy;
         private List<GetZeroTrustListsResult> results;
+        private @Nullable String search;
         private @Nullable String type;
         public Builder() {}
         public Builder(GetZeroTrustListsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.direction = defaults.direction;
+    	      this.filters = defaults.filters;
     	      this.maxItems = defaults.maxItems;
+    	      this.orderBy = defaults.orderBy;
     	      this.results = defaults.results;
+    	      this.search = defaults.search;
     	      this.type = defaults.type;
         }
 
@@ -89,9 +87,30 @@ public final class GetZeroTrustListsInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder direction(@Nullable String direction) {
+
+            this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filters(@Nullable List<String> filters) {
+
+            this.filters = filters;
+            return this;
+        }
+        public Builder filters(String... filters) {
+            return filters(List.of(filters));
+        }
+        @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
 
             this.maxItems = maxItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
             return this;
         }
         @CustomType.Setter
@@ -106,6 +125,12 @@ public final class GetZeroTrustListsInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
+        public Builder search(@Nullable String search) {
+
+            this.search = search;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
 
             this.type = type;
@@ -114,8 +139,12 @@ public final class GetZeroTrustListsInvokeResult {
         public GetZeroTrustListsInvokeResult build() {
             final var _resultValue = new GetZeroTrustListsInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.direction = direction;
+            _resultValue.filters = filters;
             _resultValue.maxItems = maxItems;
+            _resultValue.orderBy = orderBy;
             _resultValue.results = results;
+            _resultValue.search = search;
             _resultValue.type = type;
             return _resultValue;
         }

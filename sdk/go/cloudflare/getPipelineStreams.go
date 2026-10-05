@@ -32,6 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPipelineStreams(ctx, &cloudflare.LookupPipelineStreamsArgs{
 //				AccountId:  pulumi.StringRef("0123105f4ecef8ad9ca31a8372d0c353"),
+//				Name:       pulumi.StringRef("x"),
 //				PipelineId: pulumi.StringRef("043e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {

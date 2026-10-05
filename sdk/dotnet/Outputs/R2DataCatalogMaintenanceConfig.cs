@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.R2DataCatalogMaintenanceConfigCompaction? Compaction;
         /// <summary>
+        /// Scheduling interval between normal table maintenance runs.
+        /// </summary>
+        public readonly string? Interval;
+        /// <summary>
         /// Configures snapshot expiration settings.
         /// </summary>
         public readonly Outputs.R2DataCatalogMaintenanceConfigSnapshotExpiration? SnapshotExpiration;
@@ -26,9 +30,12 @@ namespace Pulumi.Cloudflare.Outputs
         private R2DataCatalogMaintenanceConfig(
             Outputs.R2DataCatalogMaintenanceConfigCompaction? compaction,
 
+            string? interval,
+
             Outputs.R2DataCatalogMaintenanceConfigSnapshotExpiration? snapshotExpiration)
         {
             Compaction = compaction;
+            Interval = interval;
             SnapshotExpiration = snapshotExpiration;
         }
     }

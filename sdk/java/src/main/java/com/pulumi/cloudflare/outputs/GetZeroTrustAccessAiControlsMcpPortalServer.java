@@ -36,6 +36,10 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     private String authenticationStatus;
     private String createdAt;
     private String createdBy;
+    /**
+     * @return Hide this server&#39;s tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
+     * 
+     */
     private Boolean defaultDisabled;
     /**
      * @return Optional description of the MCP server.
@@ -120,6 +124,10 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     public String createdBy() {
         return this.createdBy;
     }
+    /**
+     * @return Hide this server&#39;s tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
+     * 
+     */
     public Boolean defaultDisabled() {
         return this.defaultDisabled;
     }

@@ -71,12 +71,15 @@ type LookupHyperdriveConfigResult struct {
 	HyperdriveId string `pulumi:"hyperdriveId"`
 	// Define configurations using a unique string identifier.
 	Id string `pulumi:"id"`
+	// Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+	Integration GetHyperdriveConfigIntegration `pulumi:"integration"`
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls GetHyperdriveConfigMtls `pulumi:"mtls"`
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-	Name   string                    `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Combines database connection fields with exactly one supported network location.
 	Origin GetHyperdriveConfigOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit int    `pulumi:"originConnectionLimit"`
@@ -139,6 +142,11 @@ func (o LookupHyperdriveConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+func (o LookupHyperdriveConfigResultOutput) Integration() GetHyperdriveConfigIntegrationOutput {
+	return o.ApplyT(func(v LookupHyperdriveConfigResult) GetHyperdriveConfigIntegration { return v.Integration }).(GetHyperdriveConfigIntegrationOutput)
+}
+
 // Defines the last modified time of the Hyperdrive configuration.
 func (o LookupHyperdriveConfigResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
@@ -154,6 +162,7 @@ func (o LookupHyperdriveConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Combines database connection fields with exactly one supported network location.
 func (o LookupHyperdriveConfigResultOutput) Origin() GetHyperdriveConfigOriginOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) GetHyperdriveConfigOrigin { return v.Origin }).(GetHyperdriveConfigOriginOutput)
 }

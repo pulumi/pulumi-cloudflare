@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleEmailSecurityTrustedDomains = cloudflare.getEmailSecurityTrustedDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     trustedDomainId: "2401",
+ *     trustedDomainId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
@@ -68,6 +68,9 @@ export interface GetEmailSecurityTrustedDomainsResult {
      * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     readonly isRecent: boolean;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal domain.
+     */
     readonly isRegex: boolean;
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
@@ -80,6 +83,9 @@ export interface GetEmailSecurityTrustedDomainsResult {
      */
     readonly lastModified: string;
     readonly modifiedAt: string;
+    /**
+     * The domain pattern to trust, e.g. `example.com`.
+     */
     readonly pattern: string;
     /**
      * Trusted domain identifier
@@ -100,7 +106,7 @@ export interface GetEmailSecurityTrustedDomainsResult {
  *
  * const exampleEmailSecurityTrustedDomains = cloudflare.getEmailSecurityTrustedDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     trustedDomainId: "2401",
+ *     trustedDomainId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */

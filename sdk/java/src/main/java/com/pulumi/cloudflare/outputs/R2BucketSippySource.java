@@ -57,7 +57,7 @@ public final class R2BucketSippySource {
      */
     private @Nullable String privateKey;
     /**
-     * @return Name of the AWS availability zone.
+     * @return AWS region containing the source S3 bucket.
      * 
      */
     private @Nullable String region;
@@ -137,7 +137,7 @@ public final class R2BucketSippySource {
         return Optional.ofNullable(this.privateKey);
     }
     /**
-     * @return Name of the AWS availability zone.
+     * @return AWS region containing the source S3 bucket.
      * 
      */
     public Optional<String> region() {

@@ -20,13 +20,13 @@ public final class GetWorkersScriptResult {
     private @Nullable String accountId;
     private @Nullable GetWorkersScriptFilter filter;
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     private String id;
     private String script;
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     private @Nullable String scriptName;
@@ -43,7 +43,7 @@ public final class GetWorkersScriptResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public String id() {
@@ -53,7 +53,7 @@ public final class GetWorkersScriptResult {
         return this.script;
     }
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public Optional<String> scriptName() {

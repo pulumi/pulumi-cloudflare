@@ -84,6 +84,10 @@ export interface GetLogpushDatasetJobResult {
      */
     readonly errorMessage: string;
     /**
+     * When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     */
+    readonly filterAttackTraffic: boolean;
+    /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
      *

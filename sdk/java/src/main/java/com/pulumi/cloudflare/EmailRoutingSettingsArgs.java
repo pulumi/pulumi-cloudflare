@@ -6,13 +6,31 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EmailRoutingSettingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EmailRoutingSettingsArgs Empty = new EmailRoutingSettingsArgs();
+
+    /**
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * 
+     */
+    @Import(name="supportSubaddress")
+    private @Nullable Output<Boolean> supportSubaddress;
+
+    /**
+     * @return Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     * 
+     */
+    public Optional<Output<Boolean>> supportSubaddress() {
+        return Optional.ofNullable(this.supportSubaddress);
+    }
 
     /**
      * Identifier.
@@ -32,6 +50,7 @@ public final class EmailRoutingSettingsArgs extends com.pulumi.resources.Resourc
     private EmailRoutingSettingsArgs() {}
 
     private EmailRoutingSettingsArgs(EmailRoutingSettingsArgs $) {
+        this.supportSubaddress = $.supportSubaddress;
         this.zoneId = $.zoneId;
     }
 
@@ -51,6 +70,27 @@ public final class EmailRoutingSettingsArgs extends com.pulumi.resources.Resourc
 
         public Builder(EmailRoutingSettingsArgs defaults) {
             $ = new EmailRoutingSettingsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportSubaddress(@Nullable Output<Boolean> supportSubaddress) {
+            $.supportSubaddress = supportSubaddress;
+            return this;
+        }
+
+        /**
+         * @param supportSubaddress Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportSubaddress(Boolean supportSubaddress) {
+            return supportSubaddress(Output.of(supportSubaddress));
         }
 
         /**

@@ -31,7 +31,10 @@ import * as utilities from "./utilities";
  *     },
  *     caching: {
  *         disabled: true,
+ *         maxAge: 0,
+ *         staleWhileRevalidate: 0,
  *     },
+ *     integration: JSON.stringify({}),
  *     mtls: {
  *         caCertificateId: "00000000-0000-0000-0000-0000000000",
  *         mtlsCertificateId: "00000000-0000-0000-0000-0000000000",
@@ -84,6 +87,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      * Defines the creation time of the Hyperdrive configuration.
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    declare public readonly integration: pulumi.Output<string | undefined>;
     /**
      * Defines the last modified time of the Hyperdrive configuration.
      */
@@ -96,7 +100,10 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
      */
     declare public readonly name: pulumi.Output<string>;
-    declare public readonly origin: pulumi.Output<outputs.HyperdriveConfigOrigin>;
+    /**
+     * Combines database connection fields with exactly one supported network location.
+     */
+    declare public readonly origin: pulumi.Output<outputs.HyperdriveConfigOrigin | undefined>;
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
      */
@@ -122,6 +129,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["caching"] = state?.caching;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["integration"] = state?.integration;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["mtls"] = state?.mtls;
             resourceInputs["name"] = state?.name;
@@ -136,11 +144,9 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if (args?.origin === undefined && !opts.urn) {
-                throw new Error("Missing required property 'origin'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["caching"] = args?.caching;
+            resourceInputs["integration"] = args?.integration;
             resourceInputs["mtls"] = args?.mtls;
             resourceInputs["name"] = args?.name;
             resourceInputs["origin"] = args?.origin;
@@ -167,6 +173,7 @@ export interface HyperdriveConfigState {
      * Defines the creation time of the Hyperdrive configuration.
      */
     createdOn?: pulumi.Input<string | undefined>;
+    integration?: pulumi.Input<string | undefined>;
     /**
      * Defines the last modified time of the Hyperdrive configuration.
      */
@@ -179,6 +186,9 @@ export interface HyperdriveConfigState {
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Combines database connection fields with exactly one supported network location.
+     */
     origin?: pulumi.Input<inputs.HyperdriveConfigOrigin | undefined>;
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -199,6 +209,7 @@ export interface HyperdriveConfigArgs {
      */
     accountId: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching | undefined>;
+    integration?: pulumi.Input<string | undefined>;
     /**
      * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
      */
@@ -207,7 +218,10 @@ export interface HyperdriveConfigArgs {
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
      */
     name: pulumi.Input<string>;
-    origin: pulumi.Input<inputs.HyperdriveConfigOrigin>;
+    /**
+     * Combines database connection fields with exactly one supported network location.
+     */
+    origin?: pulumi.Input<inputs.HyperdriveConfigOrigin | undefined>;
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
      */

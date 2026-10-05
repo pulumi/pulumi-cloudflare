@@ -170,6 +170,9 @@ import (
 //					TargetZoneNames: pulumi.StringArray{
 //						pulumi.String("string"),
 //					},
+//					TokenIds: pulumi.StringArray{
+//						pulumi.String("x"),
+//					},
 //					TrafficExclusions: pulumi.StringArray{
 //						pulumi.String("security_events"),
 //					},

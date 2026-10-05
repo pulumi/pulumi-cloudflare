@@ -23,6 +23,11 @@ import javax.annotation.Nullable;
 public final class GetAiGatewayResult {
     private @Nullable String accountId;
     private Boolean authentication;
+    /**
+     * @return Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     * 
+     */
+    private Boolean byokOnly;
     private Boolean cacheInvalidateOnUpdate;
     private Integer cacheTtl;
     private Boolean collectLogs;
@@ -31,7 +36,7 @@ public final class GetAiGatewayResult {
     private @Nullable GetAiGatewayFilter filter;
     private GetAiGatewayGuardrails guardrails;
     /**
-     * @return gateway id
+     * @return Unique identifier of the AI Gateway within the account.
      * 
      */
     private String id;
@@ -61,7 +66,7 @@ public final class GetAiGatewayResult {
      */
     private String retryBackoff;
     /**
-     * @return Delay between retry attempts in milliseconds (0-5000)
+     * @return Delay between retry attempts in milliseconds (0-60000)
      * 
      */
     private Integer retryDelay;
@@ -88,6 +93,13 @@ public final class GetAiGatewayResult {
     public Boolean authentication() {
         return this.authentication;
     }
+    /**
+     * @return Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     * 
+     */
+    public Boolean byokOnly() {
+        return this.byokOnly;
+    }
     public Boolean cacheInvalidateOnUpdate() {
         return this.cacheInvalidateOnUpdate;
     }
@@ -110,7 +122,7 @@ public final class GetAiGatewayResult {
         return this.guardrails;
     }
     /**
-     * @return gateway id
+     * @return Unique identifier of the AI Gateway within the account.
      * 
      */
     public String id() {
@@ -166,7 +178,7 @@ public final class GetAiGatewayResult {
         return this.retryBackoff;
     }
     /**
-     * @return Delay between retry attempts in milliseconds (0-5000)
+     * @return Delay between retry attempts in milliseconds (0-60000)
      * 
      */
     public Integer retryDelay() {
@@ -211,6 +223,7 @@ public final class GetAiGatewayResult {
     public static final class Builder {
         private @Nullable String accountId;
         private Boolean authentication;
+        private Boolean byokOnly;
         private Boolean cacheInvalidateOnUpdate;
         private Integer cacheTtl;
         private Boolean collectLogs;
@@ -243,6 +256,7 @@ public final class GetAiGatewayResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.authentication = defaults.authentication;
+    	      this.byokOnly = defaults.byokOnly;
     	      this.cacheInvalidateOnUpdate = defaults.cacheInvalidateOnUpdate;
     	      this.cacheTtl = defaults.cacheTtl;
     	      this.collectLogs = defaults.collectLogs;
@@ -284,6 +298,14 @@ public final class GetAiGatewayResult {
               throw new MissingRequiredPropertyException("GetAiGatewayResult", "authentication");
             }
             this.authentication = authentication;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder byokOnly(Boolean byokOnly) {
+            if (byokOnly == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewayResult", "byokOnly");
+            }
+            this.byokOnly = byokOnly;
             return this;
         }
         @CustomType.Setter
@@ -507,6 +529,7 @@ public final class GetAiGatewayResult {
             final var _resultValue = new GetAiGatewayResult();
             _resultValue.accountId = accountId;
             _resultValue.authentication = authentication;
+            _resultValue.byokOnly = byokOnly;
             _resultValue.cacheInvalidateOnUpdate = cacheInvalidateOnUpdate;
             _resultValue.cacheTtl = cacheTtl;
             _resultValue.collectLogs = collectLogs;

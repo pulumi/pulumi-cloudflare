@@ -11,6 +11,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetMoqRelay(ctx, &cloudflare.LookupMoqRelayArgs{
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				RelayId:   pulumi.StringRef("a1b2c3d4e5f67890a1b2c3d4e5f67890"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMoqRelay(ctx *pulumi.Context, args *LookupMoqRelayArgs, opts ...pulumi.InvokeOption) (*LookupMoqRelayResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMoqRelayResult

@@ -36,7 +36,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/callsTurnApp:CallsTurnApp example '&lt;account_id&gt;/&lt;key_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/callsTurnApp:CallsTurnApp")]
     public partial class CallsTurnApp : global::Pulumi.CustomResource
@@ -63,7 +65,7 @@ namespace Pulumi.Cloudflare
         /// A Cloudflare-generated unique identifier for a item.
         /// </summary>
         [Output("keyId")]
-        public Output<string?> KeyId { get; private set; } = null!;
+        public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the item was last modified.

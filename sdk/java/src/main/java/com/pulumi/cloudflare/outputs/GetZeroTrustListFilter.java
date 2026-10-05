@@ -5,12 +5,64 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustListFilter {
+    /**
+     * @return Sort direction. Applies to the field named in `orderBy`; when `orderBy`
+     * is omitted it applies to the default `createdAt` ordering. When
+     * `direction` is omitted the default is field-specific: explicitly choosing
+     * `createdAt` or `updatedAt` defaults to descending (newest first); `name`
+     * and `itemCount` default to ascending; and the default `createdAt`
+     * ordering used when `orderBy` is omitted is ascending (for backwards
+     * compatibility).
+     *   * `asc` — ascending.
+     *   * `desc` — descending.
+     *     Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private @Nullable String direction;
+    /**
+     * @return Filter the returned lists by one or more `field:value` pairs.
+     * Repeat the parameter to apply multiple filters; they are combined with
+     * logical AND (a list must satisfy every filter to be returned).
+     * 
+     * Supported fields and their matching behaviour:
+     *   * `name` — case-insensitive substring match on the list name.
+     *   * `id` — substring match on the list ID (UUID), with or without dashes.
+     *   * `type` — exact match on the list type. Supersedes the legacy `type` query
+     *     parameter when both are supplied. Must be one of the valid type values.
+     *   * `itemCount` — exact integer match on the number of items in the list.
+     * 
+     * Each entry must match one of the per-field patterns below: the field must be
+     * one of `name`, `id`, `type`, or `itemCount`; `name`/`id` accept any value,
+     * `type` is restricted to the valid list type values, and `itemCount` must be
+     * a non-negative integer.
+     * 
+     */
+    private @Nullable List<String> filters;
+    /**
+     * @return Field to sort the returned lists by. When omitted, results are ordered by
+     * `createdAt` in ascending order (i.e. creation order) for backwards
+     * compatibility. Supported values:
+     *   * `name` — sort alphabetically by list name.
+     *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+     *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+     *   * `itemCount` — sort by number of items in the list.
+     *     Available values: &#34;name&#34;, &#34;createdAt&#34;, &#34;updatedAt&#34;, &#34;itemCount&#34;.
+     * 
+     */
+    private @Nullable String orderBy;
+    /**
+     * @return Case-insensitive substring match on the list name or description. When
+     * combined with `filter`, both must match (logical AND).
+     * 
+     */
+    private @Nullable String search;
     /**
      * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
@@ -19,6 +71,65 @@ public final class GetZeroTrustListFilter {
     private @Nullable String type;
 
     private GetZeroTrustListFilter() {}
+    /**
+     * @return Sort direction. Applies to the field named in `orderBy`; when `orderBy`
+     * is omitted it applies to the default `createdAt` ordering. When
+     * `direction` is omitted the default is field-specific: explicitly choosing
+     * `createdAt` or `updatedAt` defaults to descending (newest first); `name`
+     * and `itemCount` default to ascending; and the default `createdAt`
+     * ordering used when `orderBy` is omitted is ascending (for backwards
+     * compatibility).
+     *   * `asc` — ascending.
+     *   * `desc` — descending.
+     *     Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+    /**
+     * @return Filter the returned lists by one or more `field:value` pairs.
+     * Repeat the parameter to apply multiple filters; they are combined with
+     * logical AND (a list must satisfy every filter to be returned).
+     * 
+     * Supported fields and their matching behaviour:
+     *   * `name` — case-insensitive substring match on the list name.
+     *   * `id` — substring match on the list ID (UUID), with or without dashes.
+     *   * `type` — exact match on the list type. Supersedes the legacy `type` query
+     *     parameter when both are supplied. Must be one of the valid type values.
+     *   * `itemCount` — exact integer match on the number of items in the list.
+     * 
+     * Each entry must match one of the per-field patterns below: the field must be
+     * one of `name`, `id`, `type`, or `itemCount`; `name`/`id` accept any value,
+     * `type` is restricted to the valid list type values, and `itemCount` must be
+     * a non-negative integer.
+     * 
+     */
+    public List<String> filters() {
+        return this.filters == null ? List.of() : this.filters;
+    }
+    /**
+     * @return Field to sort the returned lists by. When omitted, results are ordered by
+     * `createdAt` in ascending order (i.e. creation order) for backwards
+     * compatibility. Supported values:
+     *   * `name` — sort alphabetically by list name.
+     *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+     *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+     *   * `itemCount` — sort by number of items in the list.
+     *     Available values: &#34;name&#34;, &#34;createdAt&#34;, &#34;updatedAt&#34;, &#34;itemCount&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+    /**
+     * @return Case-insensitive substring match on the list name or description. When
+     * combined with `filter`, both must match (logical AND).
+     * 
+     */
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
+    }
     /**
      * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
@@ -37,13 +148,48 @@ public final class GetZeroTrustListFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String direction;
+        private @Nullable List<String> filters;
+        private @Nullable String orderBy;
+        private @Nullable String search;
         private @Nullable String type;
         public Builder() {}
         public Builder(GetZeroTrustListFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.direction = defaults.direction;
+    	      this.filters = defaults.filters;
+    	      this.orderBy = defaults.orderBy;
+    	      this.search = defaults.search;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder direction(@Nullable String direction) {
+
+            this.direction = direction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filters(@Nullable List<String> filters) {
+
+            this.filters = filters;
+            return this;
+        }
+        public Builder filters(String... filters) {
+            return filters(List.of(filters));
+        }
+        @CustomType.Setter
+        public Builder orderBy(@Nullable String orderBy) {
+
+            this.orderBy = orderBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder search(@Nullable String search) {
+
+            this.search = search;
+            return this;
+        }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
 
@@ -52,6 +198,10 @@ public final class GetZeroTrustListFilter {
         }
         public GetZeroTrustListFilter build() {
             final var _resultValue = new GetZeroTrustListFilter();
+            _resultValue.direction = direction;
+            _resultValue.filters = filters;
+            _resultValue.orderBy = orderBy;
+            _resultValue.search = search;
             _resultValue.type = type;
             return _resultValue;
         }

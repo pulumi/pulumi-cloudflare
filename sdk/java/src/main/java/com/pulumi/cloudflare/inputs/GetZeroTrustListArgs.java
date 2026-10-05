@@ -30,17 +30,9 @@ public final class GetZeroTrustListArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * Identify the API resource with a UUID.
-     * 
-     */
     @Import(name="listId")
     private @Nullable Output<String> listId;
 
-    /**
-     * @return Identify the API resource with a UUID.
-     * 
-     */
     public Optional<Output<String>> listId() {
         return Optional.ofNullable(this.listId);
     }
@@ -89,23 +81,11 @@ public final class GetZeroTrustListArgs extends com.pulumi.resources.InvokeArgs 
             return filter(Output.of(filter));
         }
 
-        /**
-         * @param listId Identify the API resource with a UUID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder listId(@Nullable Output<String> listId) {
             $.listId = listId;
             return this;
         }
 
-        /**
-         * @param listId Identify the API resource with a UUID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder listId(String listId) {
             return listId(Output.of(listId));
         }

@@ -28,7 +28,7 @@ class GetWorkflowResult:
     """
     A collection of values returned by getWorkflow.
     """
-    def __init__(__self__, account_id=None, class_name=None, created_on=None, filter=None, id=None, instances=None, modified_on=None, name=None, schedules=None, script_name=None, triggered_on=None, workflow_name=None):
+    def __init__(__self__, account_id=None, class_name=None, created_on=None, filter=None, id=None, instances=None, modified_on=None, name=None, schedules=None, script_deleted=None, script_name=None, triggered_on=None, workflow_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -56,6 +56,9 @@ class GetWorkflowResult:
         if schedules and not isinstance(schedules, list):
             raise TypeError("Expected argument 'schedules' to be a list")
         pulumi.set(__self__, "schedules", schedules)
+        if script_deleted and not isinstance(script_deleted, bool):
+            raise TypeError("Expected argument 'script_deleted' to be a bool")
+        pulumi.set(__self__, "script_deleted", script_deleted)
         if script_name and not isinstance(script_name, str):
             raise TypeError("Expected argument 'script_name' to be a str")
         pulumi.set(__self__, "script_name", script_name)
@@ -115,6 +118,14 @@ class GetWorkflowResult:
         return pulumi.get(self, "schedules")
 
     @_builtins.property
+    @pulumi.getter(name="scriptDeleted")
+    def script_deleted(self) -> _builtins.bool:
+        """
+        Whether the bound Worker was deleted, leaving this Workflow inactive.
+        """
+        return pulumi.get(self, "script_deleted")
+
+    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> _builtins.str:
         return pulumi.get(self, "script_name")
@@ -145,6 +156,7 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
             modified_on=self.modified_on,
             name=self.name,
             schedules=self.schedules,
+            script_deleted=self.script_deleted,
             script_name=self.script_name,
             triggered_on=self.triggered_on,
             workflow_name=self.workflow_name)
@@ -188,6 +200,7 @@ def get_workflow(account_id: Optional[_builtins.str] = None,
         modified_on=pulumi.get(__ret__, 'modified_on'),
         name=pulumi.get(__ret__, 'name'),
         schedules=pulumi.get(__ret__, 'schedules'),
+        script_deleted=pulumi.get(__ret__, 'script_deleted'),
         script_name=pulumi.get(__ret__, 'script_name'),
         triggered_on=pulumi.get(__ret__, 'triggered_on'),
         workflow_name=pulumi.get(__ret__, 'workflow_name'))
@@ -228,6 +241,7 @@ def get_workflow_output(account_id: pulumi.Input[Optional[Optional[_builtins.str
         modified_on=pulumi.get(__response__, 'modified_on'),
         name=pulumi.get(__response__, 'name'),
         schedules=pulumi.get(__response__, 'schedules'),
+        script_deleted=pulumi.get(__response__, 'script_deleted'),
         script_name=pulumi.get(__response__, 'script_name'),
         triggered_on=pulumi.get(__response__, 'triggered_on'),
         workflow_name=pulumi.get(__response__, 'workflow_name')))

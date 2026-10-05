@@ -71,6 +71,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> Creator { get; private set; } = null!;
 
         /// <summary>
+        /// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+        /// </summary>
+        [Output("directUser")]
+        public Output<bool> DirectUser { get; private set; } = null!;
+
+        /// <summary>
         /// The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
         /// </summary>
         [Output("duration")]
@@ -270,6 +276,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Creator { get; set; }
 
         /// <summary>
+        /// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+        /// </summary>
+        [Input("directUser")]
+        public Input<bool>? DirectUser { get; set; }
+
+        /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
         /// </summary>
         [Input("identifier")]
@@ -366,6 +378,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
+
+        /// <summary>
+        /// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+        /// </summary>
+        [Input("directUser")]
+        public Input<bool>? DirectUser { get; set; }
 
         /// <summary>
         /// The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.

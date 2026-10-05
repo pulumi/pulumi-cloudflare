@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const exampleFlagshipFlags = cloudflare.getFlagshipFlags({
  *     accountId: "account_id",
  *     appId: "app_id",
- *     limit: "limit",
+ *     limit: 1,
  * });
  * ```
  */
@@ -39,17 +39,17 @@ export function getFlagshipFlags(args: GetFlagshipFlagsArgs, opts?: pulumi.Invok
  */
 export interface GetFlagshipFlagsArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: string;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     appId: string;
     /**
      * Max items to return (1–200).
      */
-    limit?: string;
+    limit?: number;
     /**
      * Max items to fetch, default: 1000
      */
@@ -61,17 +61,17 @@ export interface GetFlagshipFlagsArgs {
  */
 export interface GetFlagshipFlagsResult {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     readonly accountId: string;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     readonly appId: string;
     /**
      * Max items to return (1–200).
      */
-    readonly limit?: string;
+    readonly limit?: number;
     /**
      * Max items to fetch, default: 1000
      */
@@ -95,7 +95,7 @@ export interface GetFlagshipFlagsResult {
  * const exampleFlagshipFlags = cloudflare.getFlagshipFlags({
  *     accountId: "account_id",
  *     appId: "app_id",
- *     limit: "limit",
+ *     limit: 1,
  * });
  * ```
  */
@@ -114,17 +114,17 @@ export function getFlagshipFlagsOutput(args: GetFlagshipFlagsOutputArgs, opts?: 
  */
 export interface GetFlagshipFlagsOutputArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: pulumi.Input<string>;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     appId: pulumi.Input<string>;
     /**
      * Max items to return (1–200).
      */
-    limit?: pulumi.Input<string | undefined>;
+    limit?: pulumi.Input<number | undefined>;
     /**
      * Max items to fetch, default: 1000
      */

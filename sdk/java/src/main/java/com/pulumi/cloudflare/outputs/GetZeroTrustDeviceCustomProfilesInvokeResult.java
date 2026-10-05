@@ -22,6 +22,12 @@ public final class GetZeroTrustDeviceCustomProfilesInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
+     * @return Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    private String profileType;
+    /**
      * @return The items returned by the data source
      * 
      */
@@ -37,6 +43,14 @@ public final class GetZeroTrustDeviceCustomProfilesInvokeResult {
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+    /**
+     * @return Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public String profileType() {
+        return this.profileType;
     }
     /**
      * @return The items returned by the data source
@@ -57,12 +71,14 @@ public final class GetZeroTrustDeviceCustomProfilesInvokeResult {
     public static final class Builder {
         private @Nullable String accountId;
         private @Nullable Integer maxItems;
+        private String profileType;
         private List<GetZeroTrustDeviceCustomProfilesResult> results;
         public Builder() {}
         public Builder(GetZeroTrustDeviceCustomProfilesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.maxItems = defaults.maxItems;
+    	      this.profileType = defaults.profileType;
     	      this.results = defaults.results;
         }
 
@@ -76,6 +92,14 @@ public final class GetZeroTrustDeviceCustomProfilesInvokeResult {
         public Builder maxItems(@Nullable Integer maxItems) {
 
             this.maxItems = maxItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder profileType(String profileType) {
+            if (profileType == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfilesInvokeResult", "profileType");
+            }
+            this.profileType = profileType;
             return this;
         }
         @CustomType.Setter
@@ -93,6 +117,7 @@ public final class GetZeroTrustDeviceCustomProfilesInvokeResult {
             final var _resultValue = new GetZeroTrustDeviceCustomProfilesInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.maxItems = maxItems;
+            _resultValue.profileType = profileType;
             _resultValue.results = results;
             return _resultValue;
         }

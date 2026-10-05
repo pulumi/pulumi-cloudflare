@@ -12,9 +12,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -31,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ShareArgs;
  * import com.pulumi.cloudflare.inputs.ShareRecipientArgs;
  * import com.pulumi.cloudflare.inputs.ShareResourceArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -52,8 +55,10 @@ import javax.annotation.Nullable;
  *                 .recipientAccountId("023e105f4ecef8ad9ca31a8372d0c353")
  *                 .build())
  *             .resources(ShareResourceArgs.builder()
- *                 .meta(Map.ofEntries(
- *                 ))
+ *                 .meta(serializeJson(
+ *                     jsonObject(
+ * 
+ *                     )))
  *                 .resourceAccountId("023e105f4ecef8ad9ca31a8372d0c353")
  *                 .resourceId("023e105f4ecef8ad9ca31a8372d0c353")
  *                 .resourceType("custom-ruleset")
@@ -171,6 +176,34 @@ public class Share extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> disassociatingRecipientCount() {
         return this.disassociatingRecipientCount;
+    }
+    /**
+     * Include recipient counts in the response.
+     * 
+     */
+    @Export(name="includeRecipientCounts", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> includeRecipientCounts;
+
+    /**
+     * @return Include recipient counts in the response.
+     * 
+     */
+    public Output<Optional<Boolean>> includeRecipientCounts() {
+        return Codegen.optional(this.includeRecipientCounts);
+    }
+    /**
+     * Include resources in the response.
+     * 
+     */
+    @Export(name="includeResources", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> includeResources;
+
+    /**
+     * @return Include resources in the response.
+     * 
+     */
+    public Output<Optional<Boolean>> includeResources() {
+        return Codegen.optional(this.includeResources);
     }
     /**
      * Available values: &#34;sent&#34;, &#34;received&#34;.

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     isRegex: false,
  *     isSimilarity: false,
  *     pattern: "example.com",
- *     comments: null,
+ *     comments: "Trusted partner domain",
  * });
  * ```
  *
@@ -70,6 +70,9 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
      * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     declare public readonly isRecent: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal domain.
+     */
     declare public readonly isRegex: pulumi.Output<boolean | undefined>;
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
@@ -82,6 +85,9 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
+    /**
+     * The domain pattern to trust, e.g. `example.com`.
+     */
     declare public readonly pattern: pulumi.Output<string>;
 
     /**
@@ -143,6 +149,9 @@ export interface EmailSecurityTrustedDomainsState {
      * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     isRecent?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal domain.
+     */
     isRegex?: pulumi.Input<boolean | undefined>;
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
@@ -155,6 +164,9 @@ export interface EmailSecurityTrustedDomainsState {
      */
     lastModified?: pulumi.Input<string | undefined>;
     modifiedAt?: pulumi.Input<string | undefined>;
+    /**
+     * The domain pattern to trust, e.g. `example.com`.
+     */
     pattern?: pulumi.Input<string | undefined>;
 }
 
@@ -171,10 +183,16 @@ export interface EmailSecurityTrustedDomainsArgs {
      * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     isRecent?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal domain.
+     */
     isRegex?: pulumi.Input<boolean | undefined>;
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      */
     isSimilarity?: pulumi.Input<boolean | undefined>;
+    /**
+     * The domain pattern to trust, e.g. `example.com`.
+     */
     pattern: pulumi.Input<string>;
 }

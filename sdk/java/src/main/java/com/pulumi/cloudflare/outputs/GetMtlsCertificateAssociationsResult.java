@@ -16,7 +16,7 @@ public final class GetMtlsCertificateAssociationsResult {
      */
     private String accountId;
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     private String mtlsCertificateId;
@@ -40,7 +40,7 @@ public final class GetMtlsCertificateAssociationsResult {
         return this.accountId;
     }
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     public String mtlsCertificateId() {

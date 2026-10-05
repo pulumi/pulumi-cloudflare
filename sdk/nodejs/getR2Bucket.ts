@@ -30,7 +30,7 @@ export function getR2Bucket(args: GetR2BucketArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetR2BucketArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId?: string;
     /**
@@ -44,7 +44,7 @@ export interface GetR2BucketArgs {
  */
 export interface GetR2BucketResult {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     readonly accountId?: string;
     /**
@@ -61,7 +61,7 @@ export interface GetR2BucketResult {
     readonly id: string;
     /**
      * Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: "default", "eu", "fedramp", "us".
+     * Available values: "default", "eu", "us", "fedramp", "fedramp-high".
      */
     readonly jurisdiction: string;
     /**
@@ -105,7 +105,7 @@ export function getR2BucketOutput(args: GetR2BucketOutputArgs, opts?: pulumi.Inv
  */
 export interface GetR2BucketOutputArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**

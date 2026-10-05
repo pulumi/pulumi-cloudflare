@@ -14,9 +14,17 @@ public final class GetZeroTrustGatewayLoggingPlainArgs extends com.pulumi.resour
 
     public static final GetZeroTrustGatewayLoggingPlainArgs Empty = new GetZeroTrustGatewayLoggingPlainArgs();
 
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable String accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -45,6 +53,12 @@ public final class GetZeroTrustGatewayLoggingPlainArgs extends com.pulumi.resour
             $ = new GetZeroTrustGatewayLoggingPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;

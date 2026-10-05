@@ -55,6 +55,9 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsProxyEndpoint.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -126,6 +129,9 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsProxyEndpoint resources.
  */
 export interface TeamsProxyEndpointState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     /**
@@ -152,6 +158,9 @@ export interface TeamsProxyEndpointState {
  * The set of arguments for constructing a TeamsProxyEndpoint resource.
  */
 export interface TeamsProxyEndpointArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Specify the list of CIDRs to restrict ingress connections.

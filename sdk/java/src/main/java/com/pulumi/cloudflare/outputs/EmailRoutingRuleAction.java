@@ -18,6 +18,10 @@ public final class EmailRoutingRuleAction {
      * 
      */
     private String type;
+    /**
+     * @return List of values for the action. Currently limited to a single value.
+     * 
+     */
     private @Nullable List<String> values;
 
     private EmailRoutingRuleAction() {}
@@ -29,6 +33,10 @@ public final class EmailRoutingRuleAction {
     public String type() {
         return this.type;
     }
+    /**
+     * @return List of values for the action. Currently limited to a single value.
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

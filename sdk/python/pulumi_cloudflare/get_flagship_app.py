@@ -53,7 +53,7 @@ class GetFlagshipAppResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -61,7 +61,7 @@ class GetFlagshipAppResult:
     @pulumi.getter(name="appId")
     def app_id(self) -> _builtins.str:
         """
-        App identifier.
+        Flagship app ID returned when the app was created.
         """
         return pulumi.get(self, "app_id")
 
@@ -74,7 +74,7 @@ class GetFlagshipAppResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        App identifier.
+        Flagship app ID returned when the app was created.
         """
         return pulumi.get(self, "id")
 
@@ -131,8 +131,8 @@ def get_flagship_app(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Cloudflare account ID.
-    :param _builtins.str app_id: App identifier.
+    :param _builtins.str account_id: Cloudflare account ID that owns the Flagship app.
+    :param _builtins.str app_id: Flagship app ID returned when the app was created.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -167,8 +167,8 @@ def get_flagship_app_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
     ```
 
 
-    :param _builtins.str account_id: Cloudflare account ID.
-    :param _builtins.str app_id: App identifier.
+    :param _builtins.str account_id: Cloudflare account ID that owns the Flagship app.
+    :param _builtins.str app_id: Flagship app ID returned when the app was created.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

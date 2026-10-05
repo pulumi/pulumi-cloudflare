@@ -17,14 +17,14 @@ public final class GetOriginCaCertificateArgs extends com.pulumi.resources.Invok
     public static final GetOriginCaCertificateArgs Empty = new GetOriginCaCertificateArgs();
 
     /**
-     * Identifier.
+     * The x509 serial number of the Origin CA certificate.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return Identifier.
+     * @return The x509 serial number of the Origin CA certificate.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -64,7 +64,7 @@ public final class GetOriginCaCertificateArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param certificateId Identifier.
+         * @param certificateId The x509 serial number of the Origin CA certificate.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class GetOriginCaCertificateArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param certificateId Identifier.
+         * @param certificateId The x509 serial number of the Origin CA certificate.
          * 
          * @return builder
          * 

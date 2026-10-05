@@ -17,14 +17,14 @@ public final class GetCustomSslArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetCustomSslArgs Empty = new GetCustomSslArgs();
 
     /**
-     * Identifier.
+     * Custom certificate identifier tag.
      * 
      */
     @Import(name="customCertificateId")
     private @Nullable Output<String> customCertificateId;
 
     /**
-     * @return Identifier.
+     * @return Custom certificate identifier tag.
      * 
      */
     public Optional<Output<String>> customCertificateId() {
@@ -80,7 +80,7 @@ public final class GetCustomSslArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param customCertificateId Identifier.
+         * @param customCertificateId Custom certificate identifier tag.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetCustomSslArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param customCertificateId Identifier.
+         * @param customCertificateId Custom certificate identifier tag.
          * 
          * @return builder
          * 

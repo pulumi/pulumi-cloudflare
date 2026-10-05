@@ -48,7 +48,7 @@ public final class GetClientCertificatesResult {
      */
     private String fingerprintSha256;
     /**
-     * @return Identifier.
+     * @return Client Certificate Tag
      * 
      */
     private String id;
@@ -155,7 +155,7 @@ public final class GetClientCertificatesResult {
         return this.fingerprintSha256;
     }
     /**
-     * @return Identifier.
+     * @return Client Certificate Tag
      * 
      */
     public String id() {

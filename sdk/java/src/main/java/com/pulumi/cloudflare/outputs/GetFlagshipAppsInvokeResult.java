@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFlagshipAppsInvokeResult {
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     private String accountId;
@@ -33,7 +33,7 @@ public final class GetFlagshipAppsInvokeResult {
 
     private GetFlagshipAppsInvokeResult() {}
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public String accountId() {

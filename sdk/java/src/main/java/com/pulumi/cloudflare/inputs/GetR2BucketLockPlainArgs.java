@@ -14,14 +14,14 @@ public final class GetR2BucketLockPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetR2BucketLockPlainArgs Empty = new GetR2BucketLockPlainArgs();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public String accountId() {
@@ -69,7 +69,7 @@ public final class GetR2BucketLockPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 

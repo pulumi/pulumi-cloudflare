@@ -376,7 +376,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.PagesProjectLatestDeployment> LatestDeployment { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the project.
+        /// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -482,7 +482,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.PagesProjectDeploymentConfigsArgs>? DeploymentConfigs { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -568,7 +568,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.PagesProjectLatestDeploymentGetArgs>? LatestDeployment { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

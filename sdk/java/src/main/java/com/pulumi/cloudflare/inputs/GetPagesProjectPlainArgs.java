@@ -31,14 +31,14 @@ public final class GetPagesProjectPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     @Import(name="projectName", required=true)
     private String projectName;
 
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public String projectName() {
@@ -82,7 +82,7 @@ public final class GetPagesProjectPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param projectName Name of the project.
+         * @param projectName Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 

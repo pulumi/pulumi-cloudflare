@@ -45,7 +45,7 @@ export interface GetWorkersDeploymentArgs {
     accountId: string;
     deploymentId: string;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName: string;
 }
@@ -67,7 +67,7 @@ export interface GetWorkersDeploymentResult {
      */
     readonly id: string;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     readonly scriptName: string;
     readonly source: string;
@@ -75,6 +75,9 @@ export interface GetWorkersDeploymentResult {
      * Available values: "percentage".
      */
     readonly strategy: string;
+    /**
+     * Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+     */
     readonly versions: outputs.GetWorkersDeploymentVersion[];
 }
 /**
@@ -116,7 +119,7 @@ export interface GetWorkersDeploymentOutputArgs {
     accountId: pulumi.Input<string>;
     deploymentId: pulumi.Input<string>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName: pulumi.Input<string>;
 }

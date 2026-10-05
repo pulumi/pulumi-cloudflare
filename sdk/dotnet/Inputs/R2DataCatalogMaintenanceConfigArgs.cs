@@ -19,6 +19,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.R2DataCatalogMaintenanceConfigCompactionArgs>? Compaction { get; set; }
 
         /// <summary>
+        /// Scheduling interval between normal table maintenance runs.
+        /// </summary>
+        [Input("interval")]
+        public Input<string>? Interval { get; set; }
+
+        /// <summary>
         /// Configures snapshot expiration settings.
         /// </summary>
         [Input("snapshotExpiration")]

@@ -33,7 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDnsLocation(ctx, &cloudflare.LookupZeroTrustDnsLocationArgs{
 //				AccountId:  pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
-//				LocationId: "ed35569b41ce4d1facfe683550f54086",
+//				LocationId: pulumi.StringRef("ed35569b41ce4d1facfe683550f54086"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -55,42 +55,31 @@ func LookupZeroTrustDnsLocation(ctx *pulumi.Context, args *LookupZeroTrustDnsLoc
 
 // A collection of arguments for invoking getZeroTrustDnsLocation.
 type LookupZeroTrustDnsLocationArgs struct {
-	AccountId  *string `pulumi:"accountId"`
-	LocationId string  `pulumi:"locationId"`
+	AccountId  *string                        `pulumi:"accountId"`
+	Filter     *GetZeroTrustDnsLocationFilter `pulumi:"filter"`
+	LocationId *string                        `pulumi:"locationId"`
 }
 
 // A collection of values returned by getZeroTrustDnsLocation.
 type LookupZeroTrustDnsLocationResult struct {
-	AccountId *string `pulumi:"accountId"`
-	// Indicate whether this location is the default location.
-	ClientDefault bool   `pulumi:"clientDefault"`
-	CreatedAt     string `pulumi:"createdAt"`
-	// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-	DnsDestinationIpsId string `pulumi:"dnsDestinationIpsId"`
-	// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
-	DnsDestinationIpv6BlockId string `pulumi:"dnsDestinationIpv6BlockId"`
-	// Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
-	DohSubdomain string `pulumi:"dohSubdomain"`
-	// Indicate whether the location must resolve EDNS queries.
-	EcsSupport bool `pulumi:"ecsSupport"`
-	// Configure the destination endpoints for this location.
-	Endpoints GetZeroTrustDnsLocationEndpoints `pulumi:"endpoints"`
-	// The ID of this resource.
-	Id string `pulumi:"id"`
-	// Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-	Ip string `pulumi:"ip"`
-	// Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-	Ipv4Destination string `pulumi:"ipv4Destination"`
-	// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-	Ipv4DestinationBackup string `pulumi:"ipv4DestinationBackup"`
-	LocationId            string `pulumi:"locationId"`
-	// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
-	MaxTtl GetZeroTrustDnsLocationMaxTtl `pulumi:"maxTtl"`
-	// Specify the location name.
-	Name string `pulumi:"name"`
-	// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
-	Networks  []GetZeroTrustDnsLocationNetwork `pulumi:"networks"`
-	UpdatedAt string                           `pulumi:"updatedAt"`
+	AccountId                 *string                          `pulumi:"accountId"`
+	ClientDefault             bool                             `pulumi:"clientDefault"`
+	CreatedAt                 string                           `pulumi:"createdAt"`
+	DnsDestinationIpsId       string                           `pulumi:"dnsDestinationIpsId"`
+	DnsDestinationIpv6BlockId string                           `pulumi:"dnsDestinationIpv6BlockId"`
+	DohSubdomain              string                           `pulumi:"dohSubdomain"`
+	EcsSupport                bool                             `pulumi:"ecsSupport"`
+	Endpoints                 GetZeroTrustDnsLocationEndpoints `pulumi:"endpoints"`
+	Filter                    *GetZeroTrustDnsLocationFilter   `pulumi:"filter"`
+	Id                        string                           `pulumi:"id"`
+	Ip                        string                           `pulumi:"ip"`
+	Ipv4Destination           string                           `pulumi:"ipv4Destination"`
+	Ipv4DestinationBackup     string                           `pulumi:"ipv4DestinationBackup"`
+	LocationId                *string                          `pulumi:"locationId"`
+	MaxTtl                    GetZeroTrustDnsLocationMaxTtl    `pulumi:"maxTtl"`
+	Name                      string                           `pulumi:"name"`
+	Networks                  []GetZeroTrustDnsLocationNetwork `pulumi:"networks"`
+	UpdatedAt                 string                           `pulumi:"updatedAt"`
 }
 
 func LookupZeroTrustDnsLocationOutput(ctx *pulumi.Context, args LookupZeroTrustDnsLocationOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDnsLocationResultOutput {
@@ -100,8 +89,9 @@ func LookupZeroTrustDnsLocationOutput(ctx *pulumi.Context, args LookupZeroTrustD
 
 // A collection of arguments for invoking getZeroTrustDnsLocation.
 type LookupZeroTrustDnsLocationOutputArgs struct {
-	AccountId  pulumi.StringPtrInput `pulumi:"accountId"`
-	LocationId pulumi.StringInput    `pulumi:"locationId"`
+	AccountId  pulumi.StringPtrInput                 `pulumi:"accountId"`
+	Filter     GetZeroTrustDnsLocationFilterPtrInput `pulumi:"filter"`
+	LocationId pulumi.StringPtrInput                 `pulumi:"locationId"`
 }
 
 func (LookupZeroTrustDnsLocationOutputArgs) ElementType() reflect.Type {
@@ -127,7 +117,6 @@ func (o LookupZeroTrustDnsLocationResultOutput) AccountId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Indicate whether this location is the default location.
 func (o LookupZeroTrustDnsLocationResultOutput) ClientDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) bool { return v.ClientDefault }).(pulumi.BoolOutput)
 }
@@ -136,66 +125,58 @@ func (o LookupZeroTrustDnsLocationResultOutput) CreatedAt() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
 func (o LookupZeroTrustDnsLocationResultOutput) DnsDestinationIpsId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.DnsDestinationIpsId }).(pulumi.StringOutput)
 }
 
-// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
 func (o LookupZeroTrustDnsLocationResultOutput) DnsDestinationIpv6BlockId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.DnsDestinationIpv6BlockId }).(pulumi.StringOutput)
 }
 
-// Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
 func (o LookupZeroTrustDnsLocationResultOutput) DohSubdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.DohSubdomain }).(pulumi.StringOutput)
 }
 
-// Indicate whether the location must resolve EDNS queries.
 func (o LookupZeroTrustDnsLocationResultOutput) EcsSupport() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) bool { return v.EcsSupport }).(pulumi.BoolOutput)
 }
 
-// Configure the destination endpoints for this location.
 func (o LookupZeroTrustDnsLocationResultOutput) Endpoints() GetZeroTrustDnsLocationEndpointsOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) GetZeroTrustDnsLocationEndpoints { return v.Endpoints }).(GetZeroTrustDnsLocationEndpointsOutput)
 }
 
-// The ID of this resource.
+func (o LookupZeroTrustDnsLocationResultOutput) Filter() GetZeroTrustDnsLocationFilterPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) *GetZeroTrustDnsLocationFilter { return v.Filter }).(GetZeroTrustDnsLocationFilterPtrOutput)
+}
+
 func (o LookupZeroTrustDnsLocationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
 func (o LookupZeroTrustDnsLocationResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
 func (o LookupZeroTrustDnsLocationResultOutput) Ipv4Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.Ipv4Destination }).(pulumi.StringOutput)
 }
 
-// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
 func (o LookupZeroTrustDnsLocationResultOutput) Ipv4DestinationBackup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.Ipv4DestinationBackup }).(pulumi.StringOutput)
 }
 
-func (o LookupZeroTrustDnsLocationResultOutput) LocationId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.LocationId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDnsLocationResultOutput) LocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) *string { return v.LocationId }).(pulumi.StringPtrOutput)
 }
 
-// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
 func (o LookupZeroTrustDnsLocationResultOutput) MaxTtl() GetZeroTrustDnsLocationMaxTtlOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) GetZeroTrustDnsLocationMaxTtl { return v.MaxTtl }).(GetZeroTrustDnsLocationMaxTtlOutput)
 }
 
-// Specify the location name.
 func (o LookupZeroTrustDnsLocationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
 func (o LookupZeroTrustDnsLocationResultOutput) Networks() GetZeroTrustDnsLocationNetworkArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) []GetZeroTrustDnsLocationNetwork { return v.Networks }).(GetZeroTrustDnsLocationNetworkArrayOutput)
 }

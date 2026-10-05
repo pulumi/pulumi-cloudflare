@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDeviceCustomProfileResult> InvokeAsync(GetZeroTrustDeviceCustomProfileArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDeviceCustomProfileResult> InvokeAsync(GetZeroTrustDeviceCustomProfileArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDeviceCustomProfileResult>("cloudflare:index/getZeroTrustDeviceCustomProfile:getZeroTrustDeviceCustomProfile", args ?? new GetZeroTrustDeviceCustomProfileArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDeviceCustomProfileResult> Invoke(GetZeroTrustDeviceCustomProfileInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDeviceCustomProfileResult> Invoke(GetZeroTrustDeviceCustomProfileInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDeviceCustomProfileResult>("cloudflare:index/getZeroTrustDeviceCustomProfile:getZeroTrustDeviceCustomProfile", args ?? new GetZeroTrustDeviceCustomProfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -87,8 +87,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        [Input("policyId", required: true)]
-        public string PolicyId { get; set; } = null!;
+        [Input("filter")]
+        public Inputs.GetZeroTrustDeviceCustomProfileFilterArgs? Filter { get; set; }
+
+        [Input("policyId")]
+        public string? PolicyId { get; set; }
 
         public GetZeroTrustDeviceCustomProfileArgs()
         {
@@ -101,8 +104,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("policyId", required: true)]
-        public Input<string> PolicyId { get; set; } = null!;
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustDeviceCustomProfileFilterInputArgs>? Filter { get; set; }
+
+        [Input("policyId")]
+        public Input<string>? PolicyId { get; set; }
 
         public GetZeroTrustDeviceCustomProfileInvokeArgs()
         {
@@ -132,11 +138,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double AutoConnect;
         /// <summary>
+        /// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustDeviceCustomProfileBrowserExtensionConfigResult BrowserExtensionConfig;
+        /// <summary>
         /// Turn on the captive portal after the specified amount of time.
         /// </summary>
         public readonly double CaptivePortal;
         /// <summary>
-        /// Whether the policy is the default policy for an account.
+        /// Whether the policy is the account default. WARP group profiles cannot set this field.
         /// </summary>
         public readonly bool Default;
         /// <summary>
@@ -164,6 +174,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileExcludeResult> Excludes;
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileFallbackDomainResult> FallbackDomains;
+        public readonly Outputs.GetZeroTrustDeviceCustomProfileFilterResult? Filter;
         public readonly string GatewayUniqueId;
         /// <summary>
         /// The ID of this resource.
@@ -195,6 +206,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double Precedence;
         /// <summary>
+        /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        /// Available values: "warp", "BrowserExtension".
+        /// </summary>
+        public readonly string ProfileType;
+        /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         public readonly bool RegisterInterfaceIpWithDns;
@@ -217,6 +233,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string TunnelProtocol;
         /// <summary>
+        /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        /// </summary>
+        public readonly bool UninstallProtection;
+        /// <summary>
         /// Virtual network access settings for the device.
         /// </summary>
         public readonly Outputs.GetZeroTrustDeviceCustomProfileVirtualNetworksResult VirtualNetworks;
@@ -232,6 +252,8 @@ namespace Pulumi.Cloudflare
             bool allowedToLeave,
 
             double autoConnect,
+
+            Outputs.GetZeroTrustDeviceCustomProfileBrowserExtensionConfigResult browserExtensionConfig,
 
             double captivePortal,
 
@@ -251,6 +273,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileFallbackDomainResult> fallbackDomains,
 
+            Outputs.GetZeroTrustDeviceCustomProfileFilterResult? filter,
+
             string gatewayUniqueId,
 
             string id,
@@ -269,6 +293,8 @@ namespace Pulumi.Cloudflare
 
             double precedence,
 
+            string profileType,
+
             bool registerInterfaceIpWithDns,
 
             bool sccmVpnBoundarySupport,
@@ -283,6 +309,8 @@ namespace Pulumi.Cloudflare
 
             string tunnelProtocol,
 
+            bool uninstallProtection,
+
             Outputs.GetZeroTrustDeviceCustomProfileVirtualNetworksResult virtualNetworks)
         {
             AccountId = accountId;
@@ -290,6 +318,7 @@ namespace Pulumi.Cloudflare
             AllowUpdates = allowUpdates;
             AllowedToLeave = allowedToLeave;
             AutoConnect = autoConnect;
+            BrowserExtensionConfig = browserExtensionConfig;
             CaptivePortal = captivePortal;
             Default = @default;
             Description = description;
@@ -299,6 +328,7 @@ namespace Pulumi.Cloudflare
             ExcludeOfficeIps = excludeOfficeIps;
             Excludes = excludes;
             FallbackDomains = fallbackDomains;
+            Filter = filter;
             GatewayUniqueId = gatewayUniqueId;
             Id = id;
             Includes = includes;
@@ -308,6 +338,7 @@ namespace Pulumi.Cloudflare
             Name = name;
             PolicyId = policyId;
             Precedence = precedence;
+            ProfileType = profileType;
             RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
             SccmVpnBoundarySupport = sccmVpnBoundarySupport;
             ServiceModeV2 = serviceModeV2;
@@ -315,6 +346,7 @@ namespace Pulumi.Cloudflare
             SwitchLocked = switchLocked;
             TargetTests = targetTests;
             TunnelProtocol = tunnelProtocol;
+            UninstallProtection = uninstallProtection;
             VirtualNetworks = virtualNetworks;
         }
     }

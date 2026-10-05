@@ -18,10 +18,20 @@ public final class GetMagicWanGreTunnelGreTunnelBgp {
      */
     private Integer customerAsn;
     /**
+     * @return ID of the BGP filter profile applied to routes advertised to the customer.
+     * 
+     */
+    private String exportFilterId;
+    /**
      * @return Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      * 
      */
     private List<String> extraPrefixes;
+    /**
+     * @return ID of the BGP filter profile applied to routes received from the customer.
+     * 
+     */
+    private String importFilterId;
     /**
      * @return MD5 key to use for session authentication.
      * 
@@ -37,11 +47,25 @@ public final class GetMagicWanGreTunnelGreTunnelBgp {
         return this.customerAsn;
     }
     /**
+     * @return ID of the BGP filter profile applied to routes advertised to the customer.
+     * 
+     */
+    public String exportFilterId() {
+        return this.exportFilterId;
+    }
+    /**
      * @return Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      * 
      */
     public List<String> extraPrefixes() {
         return this.extraPrefixes;
+    }
+    /**
+     * @return ID of the BGP filter profile applied to routes received from the customer.
+     * 
+     */
+    public String importFilterId() {
+        return this.importFilterId;
     }
     /**
      * @return MD5 key to use for session authentication.
@@ -61,13 +85,17 @@ public final class GetMagicWanGreTunnelGreTunnelBgp {
     @CustomType.Builder
     public static final class Builder {
         private Integer customerAsn;
+        private String exportFilterId;
         private List<String> extraPrefixes;
+        private String importFilterId;
         private String md5Key;
         public Builder() {}
         public Builder(GetMagicWanGreTunnelGreTunnelBgp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customerAsn = defaults.customerAsn;
+    	      this.exportFilterId = defaults.exportFilterId;
     	      this.extraPrefixes = defaults.extraPrefixes;
+    	      this.importFilterId = defaults.importFilterId;
     	      this.md5Key = defaults.md5Key;
         }
 
@@ -77,6 +105,14 @@ public final class GetMagicWanGreTunnelGreTunnelBgp {
               throw new MissingRequiredPropertyException("GetMagicWanGreTunnelGreTunnelBgp", "customerAsn");
             }
             this.customerAsn = customerAsn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exportFilterId(String exportFilterId) {
+            if (exportFilterId == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanGreTunnelGreTunnelBgp", "exportFilterId");
+            }
+            this.exportFilterId = exportFilterId;
             return this;
         }
         @CustomType.Setter
@@ -91,6 +127,14 @@ public final class GetMagicWanGreTunnelGreTunnelBgp {
             return extraPrefixes(List.of(extraPrefixes));
         }
         @CustomType.Setter
+        public Builder importFilterId(String importFilterId) {
+            if (importFilterId == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanGreTunnelGreTunnelBgp", "importFilterId");
+            }
+            this.importFilterId = importFilterId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder md5Key(String md5Key) {
             if (md5Key == null) {
               throw new MissingRequiredPropertyException("GetMagicWanGreTunnelGreTunnelBgp", "md5Key");
@@ -101,7 +145,9 @@ public final class GetMagicWanGreTunnelGreTunnelBgp {
         public GetMagicWanGreTunnelGreTunnelBgp build() {
             final var _resultValue = new GetMagicWanGreTunnelGreTunnelBgp();
             _resultValue.customerAsn = customerAsn;
+            _resultValue.exportFilterId = exportFilterId;
             _resultValue.extraPrefixes = extraPrefixes;
+            _resultValue.importFilterId = importFilterId;
             _resultValue.md5Key = md5Key;
             return _resultValue;
         }

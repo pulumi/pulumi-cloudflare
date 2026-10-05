@@ -74,6 +74,10 @@ export class Stream extends pulumi.CustomResource {
      */
     declare public readonly creator: pulumi.Output<string | undefined>;
     /**
+     * Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     */
+    declare public readonly directUser: pulumi.Output<boolean>;
+    /**
      * The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
      */
     declare public /*out*/ readonly duration: pulumi.Output<number>;
@@ -175,6 +179,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["clippedFrom"] = state?.clippedFrom;
             resourceInputs["created"] = state?.created;
             resourceInputs["creator"] = state?.creator;
+            resourceInputs["directUser"] = state?.directUser;
             resourceInputs["duration"] = state?.duration;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["input"] = state?.input;
@@ -206,6 +211,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["allowedOrigins"] = args?.allowedOrigins;
             resourceInputs["creator"] = args?.creator;
+            resourceInputs["directUser"] = args?.directUser;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["maxDurationSeconds"] = args?.maxDurationSeconds;
             resourceInputs["meta"] = args?.meta;
@@ -261,6 +267,10 @@ export interface StreamState {
      * A user-defined identifier for the media creator.
      */
     creator?: pulumi.Input<string | undefined>;
+    /**
+     * Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     */
+    directUser?: pulumi.Input<boolean | undefined>;
     /**
      * The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
      */
@@ -362,6 +372,10 @@ export interface StreamArgs {
      * A user-defined identifier for the media creator.
      */
     creator?: pulumi.Input<string | undefined>;
+    /**
+     * Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     */
+    directUser?: pulumi.Input<boolean | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

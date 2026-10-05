@@ -82,6 +82,10 @@ export class EmailRoutingDns extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     */
+    declare public readonly subdomain: pulumi.Output<string | undefined>;
+    /**
      * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      */
     declare public /*out*/ readonly supportSubaddress: pulumi.Output<boolean>;
@@ -115,6 +119,7 @@ export class EmailRoutingDns extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["skipWizard"] = state?.skipWizard;
             resourceInputs["status"] = state?.status;
+            resourceInputs["subdomain"] = state?.subdomain;
             resourceInputs["supportSubaddress"] = state?.supportSubaddress;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["zoneId"] = state?.zoneId;
@@ -124,6 +129,7 @@ export class EmailRoutingDns extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["name"] = args?.name;
+            resourceInputs["subdomain"] = args?.subdomain;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
@@ -168,6 +174,10 @@ export interface EmailRoutingDnsState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     */
+    subdomain?: pulumi.Input<string | undefined>;
+    /**
      * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      */
     supportSubaddress?: pulumi.Input<boolean | undefined>;
@@ -191,6 +201,10 @@ export interface EmailRoutingDnsArgs {
      * Domain of your zone.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     */
+    subdomain?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */

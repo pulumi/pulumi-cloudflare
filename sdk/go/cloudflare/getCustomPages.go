@@ -60,7 +60,7 @@ func LookupCustomPages(ctx *pulumi.Context, args *LookupCustomPagesArgs, opts ..
 type LookupCustomPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier string `pulumi:"identifier"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -73,10 +73,10 @@ type LookupCustomPagesResult struct {
 	AccountId   *string `pulumi:"accountId"`
 	CreatedOn   string  `pulumi:"createdOn"`
 	Description string  `pulumi:"description"`
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Id string `pulumi:"id"`
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier     string   `pulumi:"identifier"`
 	ModifiedOn     string   `pulumi:"modifiedOn"`
@@ -100,7 +100,7 @@ func LookupCustomPagesOutput(ctx *pulumi.Context, args LookupCustomPagesOutputAr
 type LookupCustomPagesOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Error Page Types
+	// Custom page type.
 	// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -139,13 +139,13 @@ func (o LookupCustomPagesResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Error Page Types
+// Custom page type.
 // Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 func (o LookupCustomPagesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Error Page Types
+// Custom page type.
 // Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
 func (o LookupCustomPagesResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Identifier }).(pulumi.StringOutput)

@@ -27,7 +27,7 @@ class GetHyperdriveConfigResult:
     """
     A collection of values returned by getHyperdriveConfig.
     """
-    def __init__(__self__, account_id=None, caching=None, created_on=None, hyperdrive_id=None, id=None, modified_on=None, mtls=None, name=None, origin=None, origin_connection_limit=None, restarted_on=None):
+    def __init__(__self__, account_id=None, caching=None, created_on=None, hyperdrive_id=None, id=None, integration=None, modified_on=None, mtls=None, name=None, origin=None, origin_connection_limit=None, restarted_on=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,6 +43,9 @@ class GetHyperdriveConfigResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if integration and not isinstance(integration, dict):
+            raise TypeError("Expected argument 'integration' to be a dict")
+        pulumi.set(__self__, "integration", integration)
         if modified_on and not isinstance(modified_on, str):
             raise TypeError("Expected argument 'modified_on' to be a str")
         pulumi.set(__self__, "modified_on", modified_on)
@@ -100,6 +103,14 @@ class GetHyperdriveConfigResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def integration(self) -> 'outputs.GetHyperdriveConfigIntegrationResult':
+        """
+        Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+        """
+        return pulumi.get(self, "integration")
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> _builtins.str:
         """
@@ -126,6 +137,9 @@ class GetHyperdriveConfigResult:
     @_builtins.property
     @pulumi.getter
     def origin(self) -> 'outputs.GetHyperdriveConfigOriginResult':
+        """
+        Combines database connection fields with exactly one supported network location.
+        """
         return pulumi.get(self, "origin")
 
     @_builtins.property
@@ -153,6 +167,7 @@ class AwaitableGetHyperdriveConfigResult(GetHyperdriveConfigResult):
             created_on=self.created_on,
             hyperdrive_id=self.hyperdrive_id,
             id=self.id,
+            integration=self.integration,
             modified_on=self.modified_on,
             mtls=self.mtls,
             name=self.name,
@@ -196,6 +211,7 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
         created_on=pulumi.get(__ret__, 'created_on'),
         hyperdrive_id=pulumi.get(__ret__, 'hyperdrive_id'),
         id=pulumi.get(__ret__, 'id'),
+        integration=pulumi.get(__ret__, 'integration'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         mtls=pulumi.get(__ret__, 'mtls'),
         name=pulumi.get(__ret__, 'name'),
@@ -236,6 +252,7 @@ def get_hyperdrive_config_output(account_id: pulumi.Input[Optional[Optional[_bui
         created_on=pulumi.get(__response__, 'created_on'),
         hyperdrive_id=pulumi.get(__response__, 'hyperdrive_id'),
         id=pulumi.get(__response__, 'id'),
+        integration=pulumi.get(__response__, 'integration'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         mtls=pulumi.get(__response__, 'mtls'),
         name=pulumi.get(__response__, 'name'),

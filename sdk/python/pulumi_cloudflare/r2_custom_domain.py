@@ -32,7 +32,7 @@ class R2CustomDomainArgs:
         """
         The set of arguments for constructing a R2CustomDomain resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
@@ -58,7 +58,7 @@ class R2CustomDomainArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -168,7 +168,7 @@ class _R2CustomDomainState:
         """
         Input properties used for looking up and filtering R2CustomDomain resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
@@ -204,7 +204,7 @@ class _R2CustomDomainState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -363,7 +363,7 @@ class R2CustomDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
@@ -485,7 +485,7 @@ class R2CustomDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
@@ -516,7 +516,7 @@ class R2CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 

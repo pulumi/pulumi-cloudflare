@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? HeadSamplingRate;
         /// <summary>
+        /// Real-time Issues settings for the Worker.
+        /// </summary>
+        public readonly Outputs.WorkerScriptObservabilityIssues? Issues;
+        /// <summary>
         /// Log settings for the Worker.
         /// </summary>
         public readonly Outputs.WorkerScriptObservabilityLogs? Logs;
@@ -36,12 +40,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             double? headSamplingRate,
 
+            Outputs.WorkerScriptObservabilityIssues? issues,
+
             Outputs.WorkerScriptObservabilityLogs? logs,
 
             Outputs.WorkerScriptObservabilityTraces? traces)
         {
             Enabled = enabled;
             HeadSamplingRate = headSamplingRate;
+            Issues = issues;
             Logs = logs;
             Traces = traces;
         }

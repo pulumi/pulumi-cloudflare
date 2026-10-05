@@ -48,7 +48,7 @@ class GetR2BucketEventNotificationResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -64,7 +64,7 @@ class GetR2BucketEventNotificationResult:
     @pulumi.getter(name="queueId")
     def queue_id(self) -> _builtins.str:
         """
-        Queue ID.
+        ID of the Cloudflare Queue that receives notifications for matching R2 object events.
         """
         return pulumi.get(self, "queue_id")
 
@@ -117,9 +117,9 @@ def get_r2_bucket_event_notification(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Account ID.
+    :param _builtins.str account_id: Cloudflare account ID that owns the R2 resource.
     :param _builtins.str bucket_name: Name of the bucket.
-    :param _builtins.str queue_id: Queue ID.
+    :param _builtins.str queue_id: ID of the Cloudflare Queue that receives notifications for matching R2 object events.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -156,9 +156,9 @@ def get_r2_bucket_event_notification_output(account_id: pulumi.Input[Optional[_b
     ```
 
 
-    :param _builtins.str account_id: Account ID.
+    :param _builtins.str account_id: Cloudflare account ID that owns the R2 resource.
     :param _builtins.str bucket_name: Name of the bucket.
-    :param _builtins.str queue_id: Queue ID.
+    :param _builtins.str queue_id: ID of the Cloudflare Queue that receives notifications for matching R2 object events.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

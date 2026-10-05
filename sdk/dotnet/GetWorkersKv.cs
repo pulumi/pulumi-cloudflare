@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         public string KeyName { get; set; } = null!;
 
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         [Input("namespaceId", required: true)]
         public string NamespaceId { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         public Input<string> KeyName { get; set; } = null!;
 
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvResult
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -169,7 +169,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string KeyName;
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         public readonly string NamespaceId;
         public readonly string Value;

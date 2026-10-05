@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetWorkflowFilter;
 import com.pulumi.cloudflare.outputs.GetWorkflowSchedule;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +31,11 @@ public final class GetWorkflowResult {
     private String modifiedOn;
     private String name;
     private List<GetWorkflowSchedule> schedules;
+    /**
+     * @return Whether the bound Worker was deleted, leaving this Workflow inactive.
+     * 
+     */
+    private Boolean scriptDeleted;
     private String scriptName;
     private String triggeredOn;
     private @Nullable String workflowName;
@@ -66,6 +72,13 @@ public final class GetWorkflowResult {
     public List<GetWorkflowSchedule> schedules() {
         return this.schedules;
     }
+    /**
+     * @return Whether the bound Worker was deleted, leaving this Workflow inactive.
+     * 
+     */
+    public Boolean scriptDeleted() {
+        return this.scriptDeleted;
+    }
     public String scriptName() {
         return this.scriptName;
     }
@@ -94,6 +107,7 @@ public final class GetWorkflowResult {
         private String modifiedOn;
         private String name;
         private List<GetWorkflowSchedule> schedules;
+        private Boolean scriptDeleted;
         private String scriptName;
         private String triggeredOn;
         private @Nullable String workflowName;
@@ -109,6 +123,7 @@ public final class GetWorkflowResult {
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
     	      this.schedules = defaults.schedules;
+    	      this.scriptDeleted = defaults.scriptDeleted;
     	      this.scriptName = defaults.scriptName;
     	      this.triggeredOn = defaults.triggeredOn;
     	      this.workflowName = defaults.workflowName;
@@ -186,6 +201,14 @@ public final class GetWorkflowResult {
             return schedules(List.of(schedules));
         }
         @CustomType.Setter
+        public Builder scriptDeleted(Boolean scriptDeleted) {
+            if (scriptDeleted == null) {
+              throw new MissingRequiredPropertyException("GetWorkflowResult", "scriptDeleted");
+            }
+            this.scriptDeleted = scriptDeleted;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scriptName(String scriptName) {
             if (scriptName == null) {
               throw new MissingRequiredPropertyException("GetWorkflowResult", "scriptName");
@@ -218,6 +241,7 @@ public final class GetWorkflowResult {
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;
             _resultValue.schedules = schedules;
+            _resultValue.scriptDeleted = scriptDeleted;
             _resultValue.scriptName = scriptName;
             _resultValue.triggeredOn = triggeredOn;
             _resultValue.workflowName = workflowName;

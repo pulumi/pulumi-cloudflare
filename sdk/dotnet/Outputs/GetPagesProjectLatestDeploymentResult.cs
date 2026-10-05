@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// If the deployment has been skipped.
+        /// Whether the deployment was skipped.
         /// </summary>
         public readonly bool IsSkipped;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         public readonly string ProjectName;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string ShortId;
         /// <summary>
         /// Why the deployment was skipped.
-        /// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+        /// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         /// </summary>
         public readonly string SkipReason;
         /// <summary>

@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Error Page Types
+        /// Custom page type.
         /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         /// </summary>
         [Output("identifier")]
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Error Page Types
+        /// Custom page type.
         /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         /// </summary>
         [Input("identifier", required: true)]
@@ -194,7 +194,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Error Page Types
+        /// Custom page type.
         /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         /// </summary>
         [Input("identifier")]

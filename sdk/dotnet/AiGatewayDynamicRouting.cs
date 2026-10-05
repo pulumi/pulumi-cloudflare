@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
     ///                 Type = "start",
     ///             },
     ///         },
-    ///         Name = "name",
+    ///         Name = "x",
     ///     });
     /// 
     /// });

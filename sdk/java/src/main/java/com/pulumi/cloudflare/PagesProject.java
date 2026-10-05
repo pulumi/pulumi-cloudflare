@@ -383,14 +383,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.latestDeployment;
     }
     /**
-     * Name of the project.
+     * Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the project.
+     * @return Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public Output<String> name() {

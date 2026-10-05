@@ -118,9 +118,17 @@ import javax.annotation.Nullable;
 @Deprecated /* cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation */
 @ResourceType(type="cloudflare:index/teamsLocation:TeamsLocation")
 public class TeamsLocation extends com.pulumi.resources.CustomResource {
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }

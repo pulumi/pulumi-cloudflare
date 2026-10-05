@@ -48,7 +48,9 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example '<zone_id>'
+// ```
 type LeakedCredentialCheck struct {
 	pulumi.CustomResourceState
 

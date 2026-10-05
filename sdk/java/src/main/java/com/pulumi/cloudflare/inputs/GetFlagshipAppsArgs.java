@@ -18,14 +18,14 @@ public final class GetFlagshipAppsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFlagshipAppsArgs Empty = new GetFlagshipAppsArgs();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Output<String> accountId() {
@@ -73,7 +73,7 @@ public final class GetFlagshipAppsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetFlagshipAppsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 

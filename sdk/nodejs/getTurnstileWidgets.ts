@@ -54,7 +54,8 @@ export interface GetTurnstileWidgetsArgs {
      */
     direction?: string;
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      */
     filter?: string;
@@ -76,7 +77,8 @@ export interface GetTurnstileWidgetsResult {
      */
     readonly direction?: string;
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      */
     readonly filter?: string;
@@ -132,7 +134,8 @@ export interface GetTurnstileWidgetsOutputArgs {
      */
     direction?: pulumi.Input<string | undefined>;
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      */
     filter?: pulumi.Input<string | undefined>;

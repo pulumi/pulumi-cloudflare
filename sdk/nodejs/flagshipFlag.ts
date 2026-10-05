@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *         conditions: [{
  *             attribute: "x",
  *             operator: "equals",
- *             value: {},
+ *             value: "string",
  *         }],
  *         priority: 1,
  *         serveVariation: "x",
@@ -47,7 +47,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/flagshipFlag:FlagshipFlag example '<account_id>/<app_id>/<flag_key>'
+ * ```
  */
 export class FlagshipFlag extends pulumi.CustomResource {
     /**
@@ -78,26 +80,25 @@ export class FlagshipFlag extends pulumi.CustomResource {
     }
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     declare public readonly appId: pulumi.Output<string>;
     /**
      * Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
      */
     declare public readonly defaultVariation: pulumi.Output<string>;
+    /**
+     * Optional operator-facing description. It does not affect flag evaluation.
+     */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * When false, the flag bypasses all rules and always serves `defaultVariation`.
      */
     declare public readonly enabled: pulumi.Output<boolean>;
-    /**
-     * Flag key (slug).
-     */
-    declare public readonly flagKey: pulumi.Output<string | undefined>;
     /**
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
@@ -107,10 +108,12 @@ export class FlagshipFlag extends pulumi.CustomResource {
      */
     declare public readonly rules: pulumi.Output<outputs.FlagshipFlagRule[]>;
     /**
-     * Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
      * Available values: "boolean", "string", "number", "json".
+     *
+     * @deprecated This attribute is deprecated.
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
     /**
@@ -136,7 +139,6 @@ export class FlagshipFlag extends pulumi.CustomResource {
             resourceInputs["defaultVariation"] = state?.defaultVariation;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
-            resourceInputs["flagKey"] = state?.flagKey;
             resourceInputs["key"] = state?.key;
             resourceInputs["rules"] = state?.rules;
             resourceInputs["type"] = state?.type;
@@ -171,7 +173,6 @@ export class FlagshipFlag extends pulumi.CustomResource {
             resourceInputs["defaultVariation"] = args?.defaultVariation;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
-            resourceInputs["flagKey"] = args?.flagKey;
             resourceInputs["key"] = args?.key;
             resourceInputs["rules"] = args?.rules;
             resourceInputs["type"] = args?.type;
@@ -189,26 +190,25 @@ export class FlagshipFlag extends pulumi.CustomResource {
  */
 export interface FlagshipFlagState {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     appId?: pulumi.Input<string | undefined>;
     /**
      * Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
      */
     defaultVariation?: pulumi.Input<string | undefined>;
+    /**
+     * Optional operator-facing description. It does not affect flag evaluation.
+     */
     description?: pulumi.Input<string | undefined>;
     /**
      * When false, the flag bypasses all rules and always serves `defaultVariation`.
      */
     enabled?: pulumi.Input<boolean | undefined>;
-    /**
-     * Flag key (slug).
-     */
-    flagKey?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
@@ -218,8 +218,10 @@ export interface FlagshipFlagState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.FlagshipFlagRule>[] | undefined>;
     /**
-     * Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
      * Available values: "boolean", "string", "number", "json".
+     *
+     * @deprecated This attribute is deprecated.
      */
     type?: pulumi.Input<string | undefined>;
     updatedAt?: pulumi.Input<string | undefined>;
@@ -235,26 +237,25 @@ export interface FlagshipFlagState {
  */
 export interface FlagshipFlagArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: pulumi.Input<string>;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     appId: pulumi.Input<string>;
     /**
      * Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
      */
     defaultVariation: pulumi.Input<string>;
+    /**
+     * Optional operator-facing description. It does not affect flag evaluation.
+     */
     description?: pulumi.Input<string | undefined>;
     /**
      * When false, the flag bypasses all rules and always serves `defaultVariation`.
      */
     enabled: pulumi.Input<boolean>;
-    /**
-     * Flag key (slug).
-     */
-    flagKey?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
@@ -264,8 +265,10 @@ export interface FlagshipFlagArgs {
      */
     rules: pulumi.Input<pulumi.Input<inputs.FlagshipFlagRule>[]>;
     /**
-     * Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
      * Available values: "boolean", "string", "number", "json".
+     *
+     * @deprecated This attribute is deprecated.
      */
     type?: pulumi.Input<string | undefined>;
     /**

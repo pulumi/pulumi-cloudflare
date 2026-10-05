@@ -15,9 +15,17 @@ public final class GetZeroTrustGatewayCertificatePlainArgs extends com.pulumi.re
 
     public static final GetZeroTrustGatewayCertificatePlainArgs Empty = new GetZeroTrustGatewayCertificatePlainArgs();
 
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable String accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -62,6 +70,12 @@ public final class GetZeroTrustGatewayCertificatePlainArgs extends com.pulumi.re
             $ = new GetZeroTrustGatewayCertificatePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;

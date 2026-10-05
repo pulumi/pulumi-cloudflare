@@ -31,14 +31,14 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      * 
      */
     @Import(name="aiGatewayId")
     private @Nullable Output<String> aiGatewayId;
 
     /**
-     * @return gateway id
+     * @return Unique identifier of the AI Gateway within the account.
      * 
      */
     public Optional<Output<String>> aiGatewayId() {
@@ -50,6 +50,21 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<Boolean>> authentication() {
         return Optional.ofNullable(this.authentication);
+    }
+
+    /**
+     * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     * 
+     */
+    @Import(name="byokOnly")
+    private @Nullable Output<Boolean> byokOnly;
+
+    /**
+     * @return Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     * 
+     */
+    public Optional<Output<Boolean>> byokOnly() {
+        return Optional.ofNullable(this.byokOnly);
     }
 
     @Import(name="cacheInvalidateOnUpdate")
@@ -205,14 +220,14 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delay between retry attempts in milliseconds (0-5000)
+     * Delay between retry attempts in milliseconds (0-60000)
      * 
      */
     @Import(name="retryDelay")
     private @Nullable Output<Integer> retryDelay;
 
     /**
-     * @return Delay between retry attempts in milliseconds (0-5000)
+     * @return Delay between retry attempts in milliseconds (0-60000)
      * 
      */
     public Optional<Output<Integer>> retryDelay() {
@@ -285,6 +300,7 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.aiGatewayId = $.aiGatewayId;
         this.authentication = $.authentication;
+        this.byokOnly = $.byokOnly;
         this.cacheInvalidateOnUpdate = $.cacheInvalidateOnUpdate;
         this.cacheTtl = $.cacheTtl;
         this.collectLogs = $.collectLogs;
@@ -340,7 +356,7 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aiGatewayId gateway id
+         * @param aiGatewayId Unique identifier of the AI Gateway within the account.
          * 
          * @return builder
          * 
@@ -351,7 +367,7 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aiGatewayId gateway id
+         * @param aiGatewayId Unique identifier of the AI Gateway within the account.
          * 
          * @return builder
          * 
@@ -367,6 +383,27 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
 
         public Builder authentication(Boolean authentication) {
             return authentication(Output.of(authentication));
+        }
+
+        /**
+         * @param byokOnly Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder byokOnly(@Nullable Output<Boolean> byokOnly) {
+            $.byokOnly = byokOnly;
+            return this;
+        }
+
+        /**
+         * @param byokOnly Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder byokOnly(Boolean byokOnly) {
+            return byokOnly(Output.of(byokOnly));
         }
 
         public Builder cacheInvalidateOnUpdate(@Nullable Output<Boolean> cacheInvalidateOnUpdate) {
@@ -574,7 +611,7 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retryDelay Delay between retry attempts in milliseconds (0-5000)
+         * @param retryDelay Delay between retry attempts in milliseconds (0-60000)
          * 
          * @return builder
          * 
@@ -585,7 +622,7 @@ public final class AiGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retryDelay Delay between retry attempts in milliseconds (0-5000)
+         * @param retryDelay Delay between retry attempts in milliseconds (0-60000)
          * 
          * @return builder
          * 

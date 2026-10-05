@@ -119,6 +119,13 @@ class GetTurnstileWidgetResult:
     @_builtins.property
     @pulumi.getter(name="deployedVia")
     def deployed_via(self) -> _builtins.str:
+        """
+        Origin that created this widget, recorded at creation time and
+        immutable afterward. Server-derived from the create request; not
+        client-settable. Omitted from the response for widgets created
+        before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
         return pulumi.get(self, "deployed_via")
 
     @_builtins.property
@@ -143,13 +150,19 @@ class GetTurnstileWidgetResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Widget item identifier tag.
+        Unique identifier for a Turnstile widget.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedVia")
     def last_modified_via(self) -> _builtins.str:
+        """
+        Origin of the most recent mutation (create, update, delete, or
+        secret rotation). Server-derived; not client-settable. Omitted for
+        widgets last mutated before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
         return pulumi.get(self, "last_modified_via")
 
     @_builtins.property
@@ -208,7 +221,7 @@ class GetTurnstileWidgetResult:
     @pulumi.getter
     def sitekey(self) -> _builtins.str:
         """
-        Widget item identifier tag.
+        Unique identifier for a Turnstile widget.
         """
         return pulumi.get(self, "sitekey")
 
@@ -262,7 +275,7 @@ def get_turnstile_widget(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account_id: Identifier
-    :param _builtins.str sitekey: Widget item identifier tag.
+    :param _builtins.str sitekey: Unique identifier for a Turnstile widget.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -313,7 +326,7 @@ def get_turnstile_widget_output(account_id: pulumi.Input[Optional[Optional[_buil
 
 
     :param _builtins.str account_id: Identifier
-    :param _builtins.str sitekey: Widget item identifier tag.
+    :param _builtins.str sitekey: Unique identifier for a Turnstile widget.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

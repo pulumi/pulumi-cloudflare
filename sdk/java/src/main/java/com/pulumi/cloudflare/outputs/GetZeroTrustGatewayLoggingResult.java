@@ -14,9 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayLoggingResult {
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     private @Nullable String accountId;
     /**
-     * @return The ID of this resource.
+     * @return Specify the Cloudflare account identifier.
      * 
      */
     private String id;
@@ -32,11 +36,15 @@ public final class GetZeroTrustGatewayLoggingResult {
     private GetZeroTrustGatewayLoggingSettingsByRuleType settingsByRuleType;
 
     private GetZeroTrustGatewayLoggingResult() {}
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return The ID of this resource.
+     * @return Specify the Cloudflare account identifier.
      * 
      */
     public String id() {

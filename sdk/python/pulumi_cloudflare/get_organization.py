@@ -129,7 +129,7 @@ def get_organization(filter: Optional[Union['GetOrganizationFilterArgs', 'GetOrg
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_organization = cloudflare.get_organization(organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+    example_organization = cloudflare.get_organization(organization_id="a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
     ```
     """
     __args__ = dict()
@@ -162,7 +162,7 @@ def get_organization_output(filter: pulumi.Input[Optional[Optional[Union['GetOrg
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_organization = cloudflare.get_organization(organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+    example_organization = cloudflare.get_organization(organization_id="a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
     ```
     """
     __args__ = dict()

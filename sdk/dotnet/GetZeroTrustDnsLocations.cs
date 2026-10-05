@@ -31,6 +31,13 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustDnsLocations = Cloudflare.GetZeroTrustDnsLocations.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         Direction = "asc",
+        ///         Filters = new[]
+        ///         {
+        ///             "string",
+        ///         },
+        ///         OrderBy = "name",
+        ///         Search = "search",
         ///     });
         /// 
         /// });
@@ -59,6 +66,13 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustDnsLocations = Cloudflare.GetZeroTrustDnsLocations.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         Direction = "asc",
+        ///         Filters = new[]
+        ///         {
+        ///             "string",
+        ///         },
+        ///         OrderBy = "name",
+        ///         Search = "search",
         ///     });
         /// 
         /// });
@@ -87,6 +101,13 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustDnsLocations = Cloudflare.GetZeroTrustDnsLocations.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
+        ///         Direction = "asc",
+        ///         Filters = new[]
+        ///         {
+        ///             "string",
+        ///         },
+        ///         OrderBy = "name",
+        ///         Search = "search",
         ///     });
         /// 
         /// });
@@ -102,11 +123,25 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
+        [Input("direction")]
+        public string? Direction { get; set; }
+
+        [Input("filters")]
+        private List<string>? _filters;
+        public List<string> Filters
+        {
+            get => _filters ?? (_filters = new List<string>());
+            set => _filters = value;
+        }
+
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
+
+        [Input("search")]
+        public string? Search { get; set; }
 
         public GetZeroTrustDnsLocationsArgs()
         {
@@ -119,11 +154,25 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        [Input("filters")]
+        private InputList<string>? _filters;
+        public InputList<string> Filters
+        {
+            get => _filters ?? (_filters = new InputList<string>());
+            set => _filters = value;
+        }
+
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
+        [Input("search")]
+        public Input<string>? Search { get; set; }
 
         public GetZeroTrustDnsLocationsInvokeArgs()
         {
@@ -136,26 +185,36 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustDnsLocationsResult
     {
         public readonly string? AccountId;
-        /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
+        public readonly string? Direction;
+        public readonly ImmutableArray<string> Filters;
         public readonly int? MaxItems;
-        /// <summary>
-        /// The items returned by the data source
-        /// </summary>
+        public readonly string? OrderBy;
         public readonly ImmutableArray<Outputs.GetZeroTrustDnsLocationsResultResult> Results;
+        public readonly string? Search;
 
         [OutputConstructor]
         private GetZeroTrustDnsLocationsResult(
             string? accountId,
 
+            string? direction,
+
+            ImmutableArray<string> filters,
+
             int? maxItems,
 
-            ImmutableArray<Outputs.GetZeroTrustDnsLocationsResultResult> results)
+            string? orderBy,
+
+            ImmutableArray<Outputs.GetZeroTrustDnsLocationsResultResult> results,
+
+            string? search)
         {
             AccountId = accountId;
+            Direction = direction;
+            Filters = filters;
             MaxItems = maxItems;
+            OrderBy = orderBy;
             Results = results;
+            Search = search;
         }
     }
 }

@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -107,6 +108,21 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.schedules);
     }
 
+    /**
+     * Whether the bound Worker was deleted, leaving this Workflow inactive.
+     * 
+     */
+    @Import(name="scriptDeleted")
+    private @Nullable Output<Boolean> scriptDeleted;
+
+    /**
+     * @return Whether the bound Worker was deleted, leaving this Workflow inactive.
+     * 
+     */
+    public Optional<Output<Boolean>> scriptDeleted() {
+        return Optional.ofNullable(this.scriptDeleted);
+    }
+
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
@@ -156,6 +172,7 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.schedules = $.schedules;
+        this.scriptDeleted = $.scriptDeleted;
         this.scriptName = $.scriptName;
         this.terminatorRunning = $.terminatorRunning;
         this.triggeredOn = $.triggeredOn;
@@ -294,6 +311,27 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
 
         public Builder schedules(WorkflowScheduleArgs... schedules) {
             return schedules(List.of(schedules));
+        }
+
+        /**
+         * @param scriptDeleted Whether the bound Worker was deleted, leaving this Workflow inactive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scriptDeleted(@Nullable Output<Boolean> scriptDeleted) {
+            $.scriptDeleted = scriptDeleted;
+            return this;
+        }
+
+        /**
+         * @param scriptDeleted Whether the bound Worker was deleted, leaving this Workflow inactive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scriptDeleted(Boolean scriptDeleted) {
+            return scriptDeleted(Output.of(scriptDeleted));
         }
 
         public Builder scriptName(@Nullable Output<String> scriptName) {

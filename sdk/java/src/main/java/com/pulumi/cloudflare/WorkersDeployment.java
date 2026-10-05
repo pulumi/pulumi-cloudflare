@@ -12,8 +12,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -55,7 +57,7 @@ import javax.annotation.Nullable;
  *             .strategy("percentage")
  *             .versions(WorkersDeploymentVersionArgs.builder()
  *                 .percentage(100.0)
- *                 .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *                 .versionId("023e105f-2a42-4f8b-a1c1-73f6a2a30c0f")
  *                 .build())
  *             .annotations(WorkersDeploymentAnnotationsArgs.builder()
  *                 .workersMessage("Deploy bug fix.")
@@ -109,14 +111,28 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * Name of the script, used in URLs and route configuration.
+     * If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+     * 
+     */
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> force;
+
+    /**
+     * @return If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+     * 
+     */
+    public Output<Optional<Boolean>> force() {
+        return Codegen.optional(this.force);
+    }
+    /**
+     * Name of the script.
      * 
      */
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public Output<String> scriptName() {
@@ -142,9 +158,17 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
     public Output<String> strategy() {
         return this.strategy;
     }
+    /**
+     * Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+     * 
+     */
     @Export(name="versions", refs={List.class,WorkersDeploymentVersion.class}, tree="[0,1]")
     private Output<List<WorkersDeploymentVersion>> versions;
 
+    /**
+     * @return Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+     * 
+     */
     public Output<List<WorkersDeploymentVersion>> versions() {
         return this.versions;
     }

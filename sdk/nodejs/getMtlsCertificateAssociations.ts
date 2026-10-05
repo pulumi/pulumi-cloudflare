@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const exampleMtlsCertificateAssociations = cloudflare.getMtlsCertificateAssociations({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     mtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     mtlsCertificateId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
  * });
  * ```
  */
@@ -39,7 +39,7 @@ export interface GetMtlsCertificateAssociationsArgs {
      */
     accountId: string;
     /**
-     * Identifier.
+     * Certificate identifier tag.
      */
     mtlsCertificateId: string;
 }
@@ -53,7 +53,7 @@ export interface GetMtlsCertificateAssociationsResult {
      */
     readonly accountId: string;
     /**
-     * Identifier.
+     * Certificate identifier tag.
      */
     readonly mtlsCertificateId: string;
     /**
@@ -79,7 +79,7 @@ export interface GetMtlsCertificateAssociationsResult {
  *
  * const exampleMtlsCertificateAssociations = cloudflare.getMtlsCertificateAssociations({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     mtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     mtlsCertificateId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
  * });
  * ```
  */
@@ -100,7 +100,7 @@ export interface GetMtlsCertificateAssociationsOutputArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Identifier.
+     * Certificate identifier tag.
      */
     mtlsCertificateId: pulumi.Input<string>;
 }

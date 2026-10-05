@@ -197,6 +197,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> targetZoneNames;
     /**
+     * @return Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     * 
+     */
+    private @Nullable List<String> tokenIds;
+    /**
      * @return Used for configuring traffic*anomalies*alert
      * 
      */
@@ -488,6 +493,13 @@ public final class NotificationPolicyFilters {
         return this.targetZoneNames == null ? List.of() : this.targetZoneNames;
     }
     /**
+     * @return Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     * 
+     */
+    public List<String> tokenIds() {
+        return this.tokenIds == null ? List.of() : this.tokenIds;
+    }
+    /**
      * @return Used for configuring traffic*anomalies*alert
      * 
      */
@@ -576,6 +588,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> targetHostnames;
         private @Nullable List<String> targetIps;
         private @Nullable List<String> targetZoneNames;
+        private @Nullable List<String> tokenIds;
         private @Nullable List<String> trafficExclusions;
         private @Nullable List<String> tunnelIds;
         private @Nullable List<String> tunnelNames;
@@ -622,6 +635,7 @@ public final class NotificationPolicyFilters {
     	      this.targetHostnames = defaults.targetHostnames;
     	      this.targetIps = defaults.targetIps;
     	      this.targetZoneNames = defaults.targetZoneNames;
+    	      this.tokenIds = defaults.tokenIds;
     	      this.trafficExclusions = defaults.trafficExclusions;
     	      this.tunnelIds = defaults.tunnelIds;
     	      this.tunnelNames = defaults.tunnelNames;
@@ -964,6 +978,15 @@ public final class NotificationPolicyFilters {
             return targetZoneNames(List.of(targetZoneNames));
         }
         @CustomType.Setter
+        public Builder tokenIds(@Nullable List<String> tokenIds) {
+
+            this.tokenIds = tokenIds;
+            return this;
+        }
+        public Builder tokenIds(String... tokenIds) {
+            return tokenIds(List.of(tokenIds));
+        }
+        @CustomType.Setter
         public Builder trafficExclusions(@Nullable List<String> trafficExclusions) {
 
             this.trafficExclusions = trafficExclusions;
@@ -1056,6 +1079,7 @@ public final class NotificationPolicyFilters {
             _resultValue.targetHostnames = targetHostnames;
             _resultValue.targetIps = targetIps;
             _resultValue.targetZoneNames = targetZoneNames;
+            _resultValue.tokenIds = tokenIds;
             _resultValue.trafficExclusions = trafficExclusions;
             _resultValue.tunnelIds = tunnelIds;
             _resultValue.tunnelNames = tunnelNames;

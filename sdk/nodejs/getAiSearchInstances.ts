@@ -11,6 +11,7 @@ export function getAiSearchInstances(args?: GetAiSearchInstancesArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAiSearchInstances:getAiSearchInstances", {
         "accountId": args.accountId,
+        "hostname": args.hostname,
         "maxItems": args.maxItems,
         "namespace": args.namespace,
         "orderBy": args.orderBy,
@@ -24,6 +25,10 @@ export function getAiSearchInstances(args?: GetAiSearchInstancesArgs, opts?: pul
  */
 export interface GetAiSearchInstancesArgs {
     accountId?: string;
+    /**
+     * Filter by exact Search for Agents hostname (case-insensitive).
+     */
+    hostname?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -53,6 +58,10 @@ export interface GetAiSearchInstancesArgs {
  */
 export interface GetAiSearchInstancesResult {
     readonly accountId?: string;
+    /**
+     * Filter by exact Search for Agents hostname (case-insensitive).
+     */
+    readonly hostname?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -85,6 +94,7 @@ export function getAiSearchInstancesOutput(args?: GetAiSearchInstancesOutputArgs
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAiSearchInstances:getAiSearchInstances", {
         "accountId": args.accountId,
+        "hostname": args.hostname,
         "maxItems": args.maxItems,
         "namespace": args.namespace,
         "orderBy": args.orderBy,
@@ -98,6 +108,10 @@ export function getAiSearchInstancesOutput(args?: GetAiSearchInstancesOutputArgs
  */
 export interface GetAiSearchInstancesOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Filter by exact Search for Agents hostname (case-insensitive).
+     */
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */

@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare
     ///         Name = "my-database",
     ///         Jurisdiction = "eu",
     ///         PrimaryLocationHint = "wnam",
+    ///         ReadReplication = new Cloudflare.Inputs.D1DatabaseReadReplicationArgs
+    ///         {
+    ///             Mode = "auto",
+    ///         },
     ///     });
     /// 
     /// });
@@ -61,6 +65,13 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// Comma-separated list of fields to include in the response. When omitted,
+        /// all fields are returned.
+        /// </summary>
+        [Output("fields")]
+        public Output<ImmutableArray<string>> Fields { get; private set; } = null!;
+
+        /// <summary>
         /// The D1 database's size, in bytes.
         /// </summary>
         [Output("fileSize")]
@@ -79,6 +90,9 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+        /// </summary>
         [Output("numTables")]
         public Output<double> NumTables { get; private set; } = null!;
 
@@ -156,6 +170,19 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        [Input("fields")]
+        private InputList<string>? _fields;
+
+        /// <summary>
+        /// Comma-separated list of fields to include in the response. When omitted,
+        /// all fields are returned.
+        /// </summary>
+        public InputList<string> Fields
+        {
+            get => _fields ?? (_fields = new InputList<string>());
+            set => _fields = value;
+        }
+
         /// <summary>
         /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
         /// Available values: "eu", "fedramp", "us".
@@ -202,6 +229,19 @@ namespace Pulumi.Cloudflare
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        [Input("fields")]
+        private InputList<string>? _fields;
+
+        /// <summary>
+        /// Comma-separated list of fields to include in the response. When omitted,
+        /// all fields are returned.
+        /// </summary>
+        public InputList<string> Fields
+        {
+            get => _fields ?? (_fields = new InputList<string>());
+            set => _fields = value;
+        }
+
         /// <summary>
         /// The D1 database's size, in bytes.
         /// </summary>
@@ -221,6 +261,9 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+        /// </summary>
         [Input("numTables")]
         public Input<double>? NumTables { get; set; }
 

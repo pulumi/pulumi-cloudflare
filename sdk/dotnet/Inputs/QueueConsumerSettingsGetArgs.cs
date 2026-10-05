@@ -18,6 +18,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("batchSize")]
         public Input<double>? BatchSize { get; set; }
 
+        [Input("emails")]
+        private InputList<Inputs.QueueConsumerSettingsEmailGetArgs>? _emails;
+        public InputList<Inputs.QueueConsumerSettingsEmailGetArgs> Emails
+        {
+            get => _emails ?? (_emails = new InputList<Inputs.QueueConsumerSettingsEmailGetArgs>());
+            set => _emails = value;
+        }
+
         /// <summary>
         /// Maximum number of concurrent consumers that may consume from this Queue. Set to `Null` to automatically opt in to the platform's maximum (recommended).
         /// </summary>
@@ -36,6 +44,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("maxWaitTimeMs")]
         public Input<double>? MaxWaitTimeMs { get; set; }
 
+        [Input("pagerduties")]
+        private InputList<Inputs.QueueConsumerSettingsPagerdutyGetArgs>? _pagerduties;
+
+        /// <summary>
+        /// PagerDuty notification destinations.
+        /// </summary>
+        public InputList<Inputs.QueueConsumerSettingsPagerdutyGetArgs> Pagerduties
+        {
+            get => _pagerduties ?? (_pagerduties = new InputList<Inputs.QueueConsumerSettingsPagerdutyGetArgs>());
+            set => _pagerduties = value;
+        }
+
         /// <summary>
         /// The number of seconds to delay before making the message available for another attempt.
         /// </summary>
@@ -47,6 +67,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("visibilityTimeoutMs")]
         public Input<double>? VisibilityTimeoutMs { get; set; }
+
+        [Input("webhooks")]
+        private InputList<Inputs.QueueConsumerSettingsWebhookGetArgs>? _webhooks;
+
+        /// <summary>
+        /// Webhook notification destinations.
+        /// </summary>
+        public InputList<Inputs.QueueConsumerSettingsWebhookGetArgs> Webhooks
+        {
+            get => _webhooks ?? (_webhooks = new InputList<Inputs.QueueConsumerSettingsWebhookGetArgs>());
+            set => _webhooks = value;
+        }
 
         public QueueConsumerSettingsGetArgs()
         {

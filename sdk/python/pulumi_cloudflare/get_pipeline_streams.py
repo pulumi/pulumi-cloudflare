@@ -116,6 +116,7 @@ def get_pipeline_streams(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_pipeline_streams = cloudflare.get_pipeline_streams(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+        name="x",
         pipeline_id="043e105f4ecef8ad9ca31a8372d0c353")
     ```
 
@@ -157,6 +158,7 @@ def get_pipeline_streams_output(account_id: pulumi.Input[Optional[Optional[_buil
     import pulumi_cloudflare as cloudflare
 
     example_pipeline_streams = cloudflare.get_pipeline_streams(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+        name="x",
         pipeline_id="043e105f4ecef8ad9ca31a8372d0c353")
     ```
 

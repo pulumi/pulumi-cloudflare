@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCertificatePack(ctx, &cloudflare.LookupCertificatePackArgs{
 //				ZoneId:            pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CertificatePackId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CertificatePackId: pulumi.StringRef("3822ff90-ea29-44df-9e55-21300bb9419b"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,7 +54,7 @@ func LookupCertificatePack(ctx *pulumi.Context, args *LookupCertificatePackArgs,
 
 // A collection of arguments for invoking getCertificatePack.
 type LookupCertificatePackArgs struct {
-	// Identifier.
+	// The unique identifier for a certificate_pack.
 	CertificatePackId *string                   `pulumi:"certificatePackId"`
 	Filter            *GetCertificatePackFilter `pulumi:"filter"`
 	// Identifier.
@@ -66,7 +66,7 @@ type LookupCertificatePackResult struct {
 	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority string `pulumi:"certificateAuthority"`
-	// Identifier.
+	// The unique identifier for a certificate_pack.
 	CertificatePackId *string `pulumi:"certificatePackId"`
 	// Array of certificates in this pack.
 	Certificates []GetCertificatePackCertificate `pulumi:"certificates"`
@@ -77,7 +77,7 @@ type LookupCertificatePackResult struct {
 	Filter               *GetCertificatePackFilter               `pulumi:"filter"`
 	// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
 	Hosts []string `pulumi:"hosts"`
-	// Identifier.
+	// The unique identifier for a certificate_pack.
 	Id string `pulumi:"id"`
 	// Identifier of the primary certificate in a pack.
 	PrimaryCertificate string `pulumi:"primaryCertificate"`
@@ -108,7 +108,7 @@ func LookupCertificatePackOutput(ctx *pulumi.Context, args LookupCertificatePack
 
 // A collection of arguments for invoking getCertificatePack.
 type LookupCertificatePackOutputArgs struct {
-	// Identifier.
+	// The unique identifier for a certificate_pack.
 	CertificatePackId pulumi.StringPtrInput            `pulumi:"certificatePackId"`
 	Filter            GetCertificatePackFilterPtrInput `pulumi:"filter"`
 	// Identifier.
@@ -140,7 +140,7 @@ func (o LookupCertificatePackResultOutput) CertificateAuthority() pulumi.StringO
 	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// The unique identifier for a certificate_pack.
 func (o LookupCertificatePackResultOutput) CertificatePackId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) *string { return v.CertificatePackId }).(pulumi.StringPtrOutput)
 }
@@ -171,7 +171,7 @@ func (o LookupCertificatePackResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Identifier.
+// The unique identifier for a certificate_pack.
 func (o LookupCertificatePackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.Id }).(pulumi.StringOutput)
 }

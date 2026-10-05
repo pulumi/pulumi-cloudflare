@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketEventNotificationResult {
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     private String accountId;
@@ -23,7 +23,7 @@ public final class GetR2BucketEventNotificationResult {
      */
     private String bucketName;
     /**
-     * @return Queue ID.
+     * @return ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     private String queueId;
@@ -36,7 +36,7 @@ public final class GetR2BucketEventNotificationResult {
 
     private GetR2BucketEventNotificationResult() {}
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public String accountId() {
@@ -50,7 +50,7 @@ public final class GetR2BucketEventNotificationResult {
         return this.bucketName;
     }
     /**
-     * @return Queue ID.
+     * @return ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     public String queueId() {

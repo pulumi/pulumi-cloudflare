@@ -102,6 +102,10 @@ export interface GetSpectrumApplicationResult {
      */
     readonly originPort: any;
     /**
+     * Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+     */
+    readonly originWorkerId: string;
+    /**
      * The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
      */
     readonly protocol: string;
@@ -116,8 +120,8 @@ export interface GetSpectrumApplicationResult {
      */
     readonly tls: string;
     /**
-     * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-     * Available values: "direct", "http", "https".
+     * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to "worker", traffic is sent to the Worker specified by `originWorkerId`.
+     * Available values: "direct", "http", "https", "worker".
      */
     readonly trafficType: string;
     /**

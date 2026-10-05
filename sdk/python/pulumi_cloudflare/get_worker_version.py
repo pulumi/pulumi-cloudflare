@@ -27,7 +27,7 @@ class GetWorkerVersionResult:
     """
     A collection of values returned by getWorkerVersion.
     """
-    def __init__(__self__, account_id=None, annotations=None, assets=None, bindings=None, cache_options=None, compatibility_date=None, compatibility_flags=None, containers=None, created_on=None, exports=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migration_tag=None, migrations=None, modules=None, number=None, package_dependencies=None, placement=None, source=None, startup_time_ms=None, urls=None, usage_model=None, version_id=None, worker_id=None):
+    def __init__(__self__, account_id=None, annotations=None, assets=None, author_email=None, author_id=None, bindings=None, cache_options=None, compatibility_date=None, compatibility_flags=None, containers=None, created_on=None, exports=None, id=None, include=None, limits=None, main_module=None, main_script_base64=None, migration_tag=None, migrations=None, modules=None, number=None, package_dependencies=None, placement=None, source=None, startup_time_ms=None, urls=None, usage_model=None, version_id=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +37,12 @@ class GetWorkerVersionResult:
         if assets and not isinstance(assets, dict):
             raise TypeError("Expected argument 'assets' to be a dict")
         pulumi.set(__self__, "assets", assets)
+        if author_email and not isinstance(author_email, str):
+            raise TypeError("Expected argument 'author_email' to be a str")
+        pulumi.set(__self__, "author_email", author_email)
+        if author_id and not isinstance(author_id, str):
+            raise TypeError("Expected argument 'author_id' to be a str")
+        pulumi.set(__self__, "author_id", author_id)
         if bindings and not isinstance(bindings, list):
             raise TypeError("Expected argument 'bindings' to be a list")
         pulumi.set(__self__, "bindings", bindings)
@@ -133,6 +139,16 @@ class GetWorkerVersionResult:
         Configuration for assets within a Worker.
         """
         return pulumi.get(self, "assets")
+
+    @_builtins.property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> _builtins.str:
+        return pulumi.get(self, "author_email")
+
+    @_builtins.property
+    @pulumi.getter(name="authorId")
+    def author_id(self) -> _builtins.str:
+        return pulumi.get(self, "author_id")
 
     @_builtins.property
     @pulumi.getter
@@ -275,6 +291,8 @@ class AwaitableGetWorkerVersionResult(GetWorkerVersionResult):
             account_id=self.account_id,
             annotations=self.annotations,
             assets=self.assets,
+            author_email=self.author_email,
+            author_id=self.author_id,
             bindings=self.bindings,
             cache_options=self.cache_options,
             compatibility_date=self.compatibility_date,
@@ -344,6 +362,8 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         annotations=pulumi.get(__ret__, 'annotations'),
         assets=pulumi.get(__ret__, 'assets'),
+        author_email=pulumi.get(__ret__, 'author_email'),
+        author_id=pulumi.get(__ret__, 'author_id'),
         bindings=pulumi.get(__ret__, 'bindings'),
         cache_options=pulumi.get(__ret__, 'cache_options'),
         compatibility_date=pulumi.get(__ret__, 'compatibility_date'),
@@ -410,6 +430,8 @@ def get_worker_version_output(account_id: pulumi.Input[Optional[_builtins.str]] 
         account_id=pulumi.get(__response__, 'account_id'),
         annotations=pulumi.get(__response__, 'annotations'),
         assets=pulumi.get(__response__, 'assets'),
+        author_email=pulumi.get(__response__, 'author_email'),
+        author_id=pulumi.get(__response__, 'author_id'),
         bindings=pulumi.get(__response__, 'bindings'),
         cache_options=pulumi.get(__response__, 'cache_options'),
         compatibility_date=pulumi.get(__response__, 'compatibility_date'),

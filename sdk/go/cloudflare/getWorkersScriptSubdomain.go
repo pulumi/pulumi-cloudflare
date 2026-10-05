@@ -57,7 +57,7 @@ func LookupWorkersScriptSubdomain(ctx *pulumi.Context, args *LookupWorkersScript
 type LookupWorkersScriptSubdomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 }
 
@@ -69,7 +69,7 @@ type LookupWorkersScriptSubdomainResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs are available on the workers.dev subdomain.
 	PreviewsEnabled bool `pulumi:"previewsEnabled"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 }
 
@@ -82,7 +82,7 @@ func LookupWorkersScriptSubdomainOutput(ctx *pulumi.Context, args LookupWorkersS
 type LookupWorkersScriptSubdomainOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 }
 
@@ -120,7 +120,7 @@ func (o LookupWorkersScriptSubdomainResultOutput) PreviewsEnabled() pulumi.BoolO
 	return o.ApplyT(func(v LookupWorkersScriptSubdomainResult) bool { return v.PreviewsEnabled }).(pulumi.BoolOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script.
 func (o LookupWorkersScriptSubdomainResultOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptSubdomainResult) string { return v.ScriptName }).(pulumi.StringOutput)
 }

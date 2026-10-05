@@ -283,7 +283,7 @@ type PagesProject struct {
 	FrameworkVersion pulumi.StringOutput `pulumi:"frameworkVersion"`
 	// Most recent deployment of the project.
 	LatestDeployment PagesProjectLatestDeploymentOutput `pulumi:"latestDeployment"`
-	// Name of the project.
+	// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the preview script.
 	PreviewScriptName pulumi.StringOutput `pulumi:"previewScriptName"`
@@ -356,7 +356,7 @@ type pagesProjectState struct {
 	FrameworkVersion *string `pulumi:"frameworkVersion"`
 	// Most recent deployment of the project.
 	LatestDeployment *PagesProjectLatestDeployment `pulumi:"latestDeployment"`
-	// Name of the project.
+	// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	Name *string `pulumi:"name"`
 	// Name of the preview script.
 	PreviewScriptName *string `pulumi:"previewScriptName"`
@@ -391,7 +391,7 @@ type PagesProjectState struct {
 	FrameworkVersion pulumi.StringPtrInput
 	// Most recent deployment of the project.
 	LatestDeployment PagesProjectLatestDeploymentPtrInput
-	// Name of the project.
+	// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	Name pulumi.StringPtrInput
 	// Name of the preview script.
 	PreviewScriptName pulumi.StringPtrInput
@@ -418,7 +418,7 @@ type pagesProjectArgs struct {
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
 	// Configs for deployments in a project.
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
-	// Name of the project.
+	// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	Name string `pulumi:"name"`
 	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch string `pulumi:"productionBranch"`
@@ -434,7 +434,7 @@ type PagesProjectArgs struct {
 	BuildConfig PagesProjectBuildConfigPtrInput
 	// Configs for deployments in a project.
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
-	// Name of the project.
+	// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	Name pulumi.StringInput
 	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch pulumi.StringInput
@@ -574,7 +574,7 @@ func (o PagesProjectOutput) LatestDeployment() PagesProjectLatestDeploymentOutpu
 	return o.ApplyT(func(v *PagesProject) PagesProjectLatestDeploymentOutput { return v.LatestDeployment }).(PagesProjectLatestDeploymentOutput)
 }
 
-// Name of the project.
+// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 func (o PagesProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

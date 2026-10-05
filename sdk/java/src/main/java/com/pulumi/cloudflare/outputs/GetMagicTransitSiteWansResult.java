@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetMagicTransitSiteWansResultStaticAddressing;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -23,6 +24,7 @@ public final class GetMagicTransitSiteWansResult {
      * 
      */
     private String id;
+    private Boolean loadBalanceInnerFlows;
     private String name;
     private Integer physport;
     /**
@@ -61,6 +63,9 @@ public final class GetMagicTransitSiteWansResult {
      */
     public String id() {
         return this.id;
+    }
+    public Boolean loadBalanceInnerFlows() {
+        return this.loadBalanceInnerFlows;
     }
     public String name() {
         return this.name;
@@ -108,6 +113,7 @@ public final class GetMagicTransitSiteWansResult {
     public static final class Builder {
         private String healthCheckRate;
         private String id;
+        private Boolean loadBalanceInnerFlows;
         private String name;
         private Integer physport;
         private Integer priority;
@@ -119,6 +125,7 @@ public final class GetMagicTransitSiteWansResult {
     	      Objects.requireNonNull(defaults);
     	      this.healthCheckRate = defaults.healthCheckRate;
     	      this.id = defaults.id;
+    	      this.loadBalanceInnerFlows = defaults.loadBalanceInnerFlows;
     	      this.name = defaults.name;
     	      this.physport = defaults.physport;
     	      this.priority = defaults.priority;
@@ -141,6 +148,14 @@ public final class GetMagicTransitSiteWansResult {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteWansResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder loadBalanceInnerFlows(Boolean loadBalanceInnerFlows) {
+            if (loadBalanceInnerFlows == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteWansResult", "loadBalanceInnerFlows");
+            }
+            this.loadBalanceInnerFlows = loadBalanceInnerFlows;
             return this;
         }
         @CustomType.Setter
@@ -195,6 +210,7 @@ public final class GetMagicTransitSiteWansResult {
             final var _resultValue = new GetMagicTransitSiteWansResult();
             _resultValue.healthCheckRate = healthCheckRate;
             _resultValue.id = id;
+            _resultValue.loadBalanceInnerFlows = loadBalanceInnerFlows;
             _resultValue.name = name;
             _resultValue.physport = physport;
             _resultValue.priority = priority;

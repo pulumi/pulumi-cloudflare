@@ -30,6 +30,9 @@ export function getZeroTrustGatewaySettings(args?: GetZeroTrustGatewaySettingsAr
  * A collection of arguments for invoking getZeroTrustGatewaySettings.
  */
 export interface GetZeroTrustGatewaySettingsArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: string;
 }
 
@@ -37,10 +40,13 @@ export interface GetZeroTrustGatewaySettingsArgs {
  * A collection of values returned by getZeroTrustGatewaySettings.
  */
 export interface GetZeroTrustGatewaySettingsResult {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     readonly accountId?: string;
     readonly createdAt: string;
     /**
-     * The ID of this resource.
+     * Specify the Cloudflare account identifier.
      */
     readonly id: string;
     /**
@@ -73,5 +79,8 @@ export function getZeroTrustGatewaySettingsOutput(args?: GetZeroTrustGatewaySett
  * A collection of arguments for invoking getZeroTrustGatewaySettings.
  */
 export interface GetZeroTrustGatewaySettingsOutputArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
 }

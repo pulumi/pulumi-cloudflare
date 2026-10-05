@@ -27,7 +27,8 @@ public final class GetTurnstileWidgetsInvokeResult {
      */
     private @Nullable String direction;
     /**
-     * @return Filter widgets by field using case-insensitive substring matching.
+     * @return Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      * 
      */
@@ -53,7 +54,8 @@ public final class GetTurnstileWidgetsInvokeResult {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return Filter widgets by field using case-insensitive substring matching.
+     * @return Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      * 
      */

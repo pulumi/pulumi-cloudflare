@@ -50,6 +50,7 @@ import (
 type TeamsProxyEndpoint struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Specify the list of CIDRs to restrict ingress connections.
@@ -106,6 +107,7 @@ func GetTeamsProxyEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsProxyEndpoint resources.
 type teamsProxyEndpointState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Specify the list of CIDRs to restrict ingress connections.
@@ -121,6 +123,7 @@ type teamsProxyEndpointState struct {
 }
 
 type TeamsProxyEndpointState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Specify the list of CIDRs to restrict ingress connections.
@@ -140,6 +143,7 @@ func (TeamsProxyEndpointState) ElementType() reflect.Type {
 }
 
 type teamsProxyEndpointArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
@@ -152,6 +156,7 @@ type teamsProxyEndpointArgs struct {
 
 // The set of arguments for constructing a TeamsProxyEndpoint resource.
 type TeamsProxyEndpointArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
@@ -249,6 +254,7 @@ func (o TeamsProxyEndpointOutput) ToTeamsProxyEndpointOutputWithContext(ctx cont
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o TeamsProxyEndpointOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

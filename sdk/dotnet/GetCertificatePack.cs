@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCertificatePack = Cloudflare.GetCertificatePack.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CertificatePackId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CertificatePackId = "3822ff90-ea29-44df-9e55-21300bb9419b",
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCertificatePack = Cloudflare.GetCertificatePack.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CertificatePackId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CertificatePackId = "3822ff90-ea29-44df-9e55-21300bb9419b",
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCertificatePack = Cloudflare.GetCertificatePack.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CertificatePackId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CertificatePackId = "3822ff90-ea29-44df-9e55-21300bb9419b",
         ///     });
         /// 
         /// });
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCertificatePackArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// The unique identifier for a certificate_pack.
         /// </summary>
         [Input("certificatePackId")]
         public string? CertificatePackId { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCertificatePackInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// The unique identifier for a certificate_pack.
         /// </summary>
         [Input("certificatePackId")]
         public Input<string>? CertificatePackId { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CertificateAuthority;
         /// <summary>
-        /// Identifier.
+        /// The unique identifier for a certificate_pack.
         /// </summary>
         public readonly string? CertificatePackId;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Identifier.
+        /// The unique identifier for a certificate_pack.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * const exampleWorkersCronTrigger = new cloudflare.WorkersCronTrigger("example_workers_cron_trigger", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
- *     body: [{
+ *     schedules: [{
  *         cron: "*&#47;30 * * * *",
  *     }],
  * });
@@ -67,7 +67,7 @@ export class WorkersCronTrigger extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     declare public readonly schedules: pulumi.Output<outputs.WorkersCronTriggerSchedule[]>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     declare public readonly scriptName: pulumi.Output<string>;
 
@@ -119,7 +119,7 @@ export interface WorkersCronTriggerState {
     accountId?: pulumi.Input<string | undefined>;
     schedules?: pulumi.Input<pulumi.Input<inputs.WorkersCronTriggerSchedule>[] | undefined>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName?: pulumi.Input<string | undefined>;
 }
@@ -134,7 +134,7 @@ export interface WorkersCronTriggerArgs {
     accountId: pulumi.Input<string>;
     schedules: pulumi.Input<pulumi.Input<inputs.WorkersCronTriggerSchedule>[]>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName: pulumi.Input<string>;
 }

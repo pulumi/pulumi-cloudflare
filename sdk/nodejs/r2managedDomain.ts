@@ -51,7 +51,7 @@ export class R2ManagedDomain extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export class R2ManagedDomain extends pulumi.CustomResource {
  */
 export interface R2ManagedDomainState {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -152,7 +152,7 @@ export interface R2ManagedDomainState {
  */
 export interface R2ManagedDomainArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

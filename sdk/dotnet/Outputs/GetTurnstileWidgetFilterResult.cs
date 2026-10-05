@@ -19,7 +19,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Filter widgets by field using case-insensitive substring matching.
+        /// Filter widgets by field. The `Name` field uses case-insensitive
+        /// substring matching; `Sitekey` uses exact matching.
         /// Format: `field:value`
         /// </summary>
         public readonly string? Filter;

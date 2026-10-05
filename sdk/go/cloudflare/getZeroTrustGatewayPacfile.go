@@ -54,12 +54,14 @@ func LookupZeroTrustGatewayPacfile(ctx *pulumi.Context, args *LookupZeroTrustGat
 
 // A collection of arguments for invoking getZeroTrustGatewayPacfile.
 type LookupZeroTrustGatewayPacfileArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	PacfileId string  `pulumi:"pacfileId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayPacfile.
 type LookupZeroTrustGatewayPacfileResult struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Actual contents of the PAC file
 	Contents  string `pulumi:"contents"`
@@ -85,6 +87,7 @@ func LookupZeroTrustGatewayPacfileOutput(ctx *pulumi.Context, args LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustGatewayPacfile.
 type LookupZeroTrustGatewayPacfileOutputArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	PacfileId pulumi.StringInput    `pulumi:"pacfileId"`
 }
@@ -108,6 +111,7 @@ func (o LookupZeroTrustGatewayPacfileResultOutput) ToLookupZeroTrustGatewayPacfi
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewayPacfileResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPacfileResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }

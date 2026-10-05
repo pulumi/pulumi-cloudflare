@@ -199,8 +199,7 @@ def get_list(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
-        search="1.1.1.1")
+        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e")
     ```
 
 
@@ -244,8 +243,7 @@ def get_list_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] 
     import pulumi_cloudflare as cloudflare
 
     example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
-        search="1.1.1.1")
+        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e")
     ```
 
 

@@ -33,6 +33,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Date and time at which the target was modified
         /// </summary>
         public readonly string ModifiedAt;
+        /// <summary>
+        /// Tags assigned to the target. Empty when no tags are assigned.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetZeroTrustAccessInfrastructureTargetsResultResult(
@@ -44,13 +48,16 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetZeroTrustAccessInfrastructureTargetsResultIpResult ip,
 
-            string modifiedAt)
+            string modifiedAt,
+
+            ImmutableDictionary<string, string> tags)
         {
             CreatedAt = createdAt;
             Hostname = hostname;
             Id = id;
             Ip = ip;
             ModifiedAt = modifiedAt;
+            Tags = tags;
         }
     }
 }

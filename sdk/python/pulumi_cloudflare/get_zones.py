@@ -147,7 +147,8 @@ def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArg
         direction="desc",
         name="name",
         order="status",
-        status="initializing")
+        status="initializing",
+        types=["full"])
     ```
     """
     __args__ = dict()
@@ -199,7 +200,8 @@ def get_zones_output(account: pulumi.Input[Optional[Optional[Union['GetZonesAcco
         direction="desc",
         name="name",
         order="status",
-        status="initializing")
+        status="initializing",
+        types=["full"])
     ```
     """
     __args__ = dict()

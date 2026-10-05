@@ -158,14 +158,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the project.
+     * Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the project.
+     * @return Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public Optional<Output<String>> name() {
@@ -501,7 +501,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the project.
+         * @param name Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the project.
+         * @param name Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 

@@ -40,28 +40,33 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleEmailSecurityImpersonationRegistry = new EmailSecurityImpersonationRegistry("exampleEmailSecurityImpersonationRegistry", EmailSecurityImpersonationRegistryArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .email("email")
- *             .isEmailRegex(true)
- *             .name("name")
+ *             .email("john.doe}{@literal @}{@code example.com")
+ *             .isEmailRegex(false)
+ *             .name("John Doe")
+ *             .comments("comments")
+ *             .directoryId(0)
+ *             .directoryNodeId(0)
+ *             .externalDirectoryNodeId("external_directory_node_id")
+ *             .provenance("A1S_INTERNAL")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example &#39;&lt;account_id&gt;/&lt;display_name_id&gt;&#39;
+ * $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example &#39;&lt;account_id&gt;/&lt;impersonation_registry_id&gt;&#39;
  * ```
  * 
  */
@@ -81,9 +86,17 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Optional note describing the entry.
+     * 
+     */
     @Export(name="comments", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comments;
 
+    /**
+     * @return Optional note describing the entry.
+     * 
+     */
     public Output<Optional<String>> comments() {
         return Codegen.optional(this.comments);
     }
@@ -93,25 +106,51 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Identifier of the directory the entry was synced from, when directory-synced.
+     * 
+     */
     @Export(name="directoryId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> directoryId;
 
+    /**
+     * @return Identifier of the directory the entry was synced from, when directory-synced.
+     * 
+     */
     public Output<Optional<Integer>> directoryId() {
         return Codegen.optional(this.directoryId);
     }
+    /**
+     * Identifier of the directory node the entry was synced from, when directory-synced.
+     * 
+     */
     @Export(name="directoryNodeId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> directoryNodeId;
 
+    /**
+     * @return Identifier of the directory node the entry was synced from, when directory-synced.
+     * 
+     */
     public Output<Optional<Integer>> directoryNodeId() {
         return Codegen.optional(this.directoryNodeId);
     }
+    /**
+     * Email address (or pattern) of the protected identity.
+     * 
+     */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
+    /**
+     * @return Email address (or pattern) of the protected identity.
+     * 
+     */
     public Output<String> email() {
         return this.email;
     }
     /**
+     * Deprecated. External identifier of the directory node.
+     * 
      * @deprecated
      * This field is deprecated.
      * 
@@ -120,12 +159,24 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     @Export(name="externalDirectoryNodeId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalDirectoryNodeId;
 
+    /**
+     * @return Deprecated. External identifier of the directory node.
+     * 
+     */
     public Output<Optional<String>> externalDirectoryNodeId() {
         return Codegen.optional(this.externalDirectoryNodeId);
     }
+    /**
+     * Whether `email` is a regular expression instead of a literal address.
+     * 
+     */
     @Export(name="isEmailRegex", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEmailRegex;
 
+    /**
+     * @return Whether `email` is a regular expression instead of a literal address.
+     * 
+     */
     public Output<Boolean> isEmailRegex() {
         return this.isEmailRegex;
     }
@@ -153,13 +204,22 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     public Output<String> modifiedAt() {
         return this.modifiedAt;
     }
+    /**
+     * Display name of the protected identity.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the protected identity.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
     /**
+     * Source the entry was created from.
      * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
      * 
      */
@@ -167,7 +227,8 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     private Output</* @Nullable */ String> provenance;
 
     /**
-     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * @return Source the entry was created from.
+     * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
      * 
      */
     public Output<Optional<String>> provenance() {

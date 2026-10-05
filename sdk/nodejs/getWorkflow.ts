@@ -60,6 +60,10 @@ export interface GetWorkflowResult {
     readonly modifiedOn: string;
     readonly name: string;
     readonly schedules: outputs.GetWorkflowSchedule[];
+    /**
+     * Whether the bound Worker was deleted, leaving this Workflow inactive.
+     */
+    readonly scriptDeleted: boolean;
     readonly scriptName: string;
     readonly triggeredOn: string;
     readonly workflowName?: string;

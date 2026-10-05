@@ -15,6 +15,32 @@ import (
 //
 // - `Zero Trust Read`
 // - `Zero Trust Write`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetZeroTrustDlpCustomPromptTopics(ctx, &cloudflare.LookupZeroTrustDlpCustomPromptTopicsArgs{
+//				AccountId: "account_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZeroTrustDlpCustomPromptTopics(ctx *pulumi.Context, args *LookupZeroTrustDlpCustomPromptTopicsArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDlpCustomPromptTopicsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDlpCustomPromptTopicsResult

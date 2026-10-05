@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersKvResult {
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     private String accountId;
@@ -26,7 +26,7 @@ public final class GetWorkersKvResult {
      */
     private String keyName;
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     private String namespaceId;
@@ -34,7 +34,7 @@ public final class GetWorkersKvResult {
 
     private GetWorkersKvResult() {}
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public String accountId() {
@@ -55,7 +55,7 @@ public final class GetWorkersKvResult {
         return this.keyName;
     }
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public String namespaceId() {

@@ -96,11 +96,21 @@ export class TurnstileWidget extends pulumi.CustomResource {
      * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
      */
     declare public /*out*/ readonly deployedVia: pulumi.Output<string>;
+    /**
+     * Direction to order widgets.
+     * Available values: "asc", "desc".
+     */
+    declare public readonly direction: pulumi.Output<string | undefined>;
     declare public readonly domains: pulumi.Output<string[]>;
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
     declare public readonly ephemeralId: pulumi.Output<boolean>;
+    /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    declare public readonly filter: pulumi.Output<string | undefined>;
     /**
      * Origin of the most recent mutation (create, update, delete, or
      * secret rotation). Server-derived; not client-settable. Omitted for
@@ -127,6 +137,19 @@ export class TurnstileWidget extends pulumi.CustomResource {
      * Do not show any Cloudflare branding on the widget (ENT only).
      */
     declare public readonly offlabel: pulumi.Output<boolean>;
+    /**
+     * Field to order widgets by.
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+     */
+    declare public readonly order: pulumi.Output<string | undefined>;
+    /**
+     * Page number of paginated results.
+     */
+    declare public readonly page: pulumi.Output<number>;
+    /**
+     * Number of items per page.
+     */
+    declare public readonly perPage: pulumi.Output<number>;
     /**
      * Region where this widget can be used. This cannot be changed after creation.
      * Available values: "world", "china".
@@ -159,13 +182,18 @@ export class TurnstileWidget extends pulumi.CustomResource {
             resourceInputs["clearanceLevel"] = state?.clearanceLevel;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["deployedVia"] = state?.deployedVia;
+            resourceInputs["direction"] = state?.direction;
             resourceInputs["domains"] = state?.domains;
             resourceInputs["ephemeralId"] = state?.ephemeralId;
+            resourceInputs["filter"] = state?.filter;
             resourceInputs["lastModifiedVia"] = state?.lastModifiedVia;
             resourceInputs["mode"] = state?.mode;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
             resourceInputs["offlabel"] = state?.offlabel;
+            resourceInputs["order"] = state?.order;
+            resourceInputs["page"] = state?.page;
+            resourceInputs["perPage"] = state?.perPage;
             resourceInputs["region"] = state?.region;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["sitekey"] = state?.sitekey;
@@ -186,11 +214,16 @@ export class TurnstileWidget extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["botFightMode"] = args?.botFightMode;
             resourceInputs["clearanceLevel"] = args?.clearanceLevel;
+            resourceInputs["direction"] = args?.direction;
             resourceInputs["domains"] = args?.domains;
             resourceInputs["ephemeralId"] = args?.ephemeralId;
+            resourceInputs["filter"] = args?.filter;
             resourceInputs["mode"] = args?.mode;
             resourceInputs["name"] = args?.name;
             resourceInputs["offlabel"] = args?.offlabel;
+            resourceInputs["order"] = args?.order;
+            resourceInputs["page"] = args?.page;
+            resourceInputs["perPage"] = args?.perPage;
             resourceInputs["region"] = args?.region;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["deployedVia"] = undefined /*out*/;
@@ -237,11 +270,21 @@ export interface TurnstileWidgetState {
      * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
      */
     deployedVia?: pulumi.Input<string | undefined>;
+    /**
+     * Direction to order widgets.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string | undefined>;
     domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
     ephemeralId?: pulumi.Input<boolean | undefined>;
+    /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Origin of the most recent mutation (create, update, delete, or
      * secret rotation). Server-derived; not client-settable. Omitted for
@@ -268,6 +311,19 @@ export interface TurnstileWidgetState {
      * Do not show any Cloudflare branding on the widget (ENT only).
      */
     offlabel?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field to order widgets by.
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+     */
+    order?: pulumi.Input<string | undefined>;
+    /**
+     * Page number of paginated results.
+     */
+    page?: pulumi.Input<number | undefined>;
+    /**
+     * Number of items per page.
+     */
+    perPage?: pulumi.Input<number | undefined>;
     /**
      * Region where this widget can be used. This cannot be changed after creation.
      * Available values: "world", "china".
@@ -302,11 +358,21 @@ export interface TurnstileWidgetArgs {
      * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
     clearanceLevel?: pulumi.Input<string | undefined>;
+    /**
+     * Direction to order widgets.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string | undefined>;
     domains: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
     ephemeralId?: pulumi.Input<boolean | undefined>;
+    /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     */
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
@@ -322,6 +388,19 @@ export interface TurnstileWidgetArgs {
      * Do not show any Cloudflare branding on the widget (ENT only).
      */
     offlabel?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field to order widgets by.
+     * Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+     */
+    order?: pulumi.Input<string | undefined>;
+    /**
+     * Page number of paginated results.
+     */
+    page?: pulumi.Input<number | undefined>;
+    /**
+     * Number of items per page.
+     */
+    perPage?: pulumi.Input<number | undefined>;
     /**
      * Region where this widget can be used. This cannot be changed after creation.
      * Available values: "world", "china".

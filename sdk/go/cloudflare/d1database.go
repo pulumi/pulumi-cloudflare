@@ -40,6 +40,9 @@ import (
 //				Name:                pulumi.String("my-database"),
 //				Jurisdiction:        pulumi.String("eu"),
 //				PrimaryLocationHint: pulumi.String("wnam"),
+//				ReadReplication: &cloudflare.D1DatabaseReadReplicationArgs{
+//					Mode: pulumi.String("auto"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -62,13 +65,19 @@ type D1Database struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Comma-separated list of fields to include in the response. When omitted,
+	// all fields are returned.
+	Fields pulumi.StringArrayOutput `pulumi:"fields"`
 	// The D1 database's size, in bytes.
 	FileSize pulumi.Float64Output `pulumi:"fileSize"`
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrOutput `pulumi:"jurisdiction"`
 	// D1 database name.
-	Name      pulumi.StringOutput  `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+	//
+	// Deprecated: This attribute is deprecated.
 	NumTables pulumi.Float64Output `pulumi:"numTables"`
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -120,13 +129,19 @@ type d1databaseState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Comma-separated list of fields to include in the response. When omitted,
+	// all fields are returned.
+	Fields []string `pulumi:"fields"`
 	// The D1 database's size, in bytes.
 	FileSize *float64 `pulumi:"fileSize"`
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// D1 database name.
-	Name      *string  `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+	//
+	// Deprecated: This attribute is deprecated.
 	NumTables *float64 `pulumi:"numTables"`
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -143,13 +158,19 @@ type D1DatabaseState struct {
 	AccountId pulumi.StringPtrInput
 	// Specifies the timestamp the resource was created as an ISO8601 string.
 	CreatedAt pulumi.StringPtrInput
+	// Comma-separated list of fields to include in the response. When omitted,
+	// all fields are returned.
+	Fields pulumi.StringArrayInput
 	// The D1 database's size, in bytes.
 	FileSize pulumi.Float64PtrInput
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrInput
 	// D1 database name.
-	Name      pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+	//
+	// Deprecated: This attribute is deprecated.
 	NumTables pulumi.Float64PtrInput
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -168,6 +189,9 @@ func (D1DatabaseState) ElementType() reflect.Type {
 type d1databaseArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Comma-separated list of fields to include in the response. When omitted,
+	// all fields are returned.
+	Fields []string `pulumi:"fields"`
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
@@ -184,6 +208,9 @@ type d1databaseArgs struct {
 type D1DatabaseArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput
+	// Comma-separated list of fields to include in the response. When omitted,
+	// all fields are returned.
+	Fields pulumi.StringArrayInput
 	// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrInput
@@ -293,6 +320,12 @@ func (o D1DatabaseOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Comma-separated list of fields to include in the response. When omitted,
+// all fields are returned.
+func (o D1DatabaseOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *D1Database) pulumi.StringArrayOutput { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
 // The D1 database's size, in bytes.
 func (o D1DatabaseOutput) FileSize() pulumi.Float64Output {
 	return o.ApplyT(func(v *D1Database) pulumi.Float64Output { return v.FileSize }).(pulumi.Float64Output)
@@ -309,6 +342,9 @@ func (o D1DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+//
+// Deprecated: This attribute is deprecated.
 func (o D1DatabaseOutput) NumTables() pulumi.Float64Output {
 	return o.ApplyT(func(v *D1Database) pulumi.Float64Output { return v.NumTables }).(pulumi.Float64Output)
 }

@@ -57,6 +57,9 @@ class GetAccountDnsSettingsResult:
     @_builtins.property
     @pulumi.getter(name="zoneDefaults")
     def zone_defaults(self) -> 'outputs.GetAccountDnsSettingsZoneDefaultsResult':
+        """
+        Default settings for new zones created in this account.
+        """
         return pulumi.get(self, "zone_defaults")
 
 

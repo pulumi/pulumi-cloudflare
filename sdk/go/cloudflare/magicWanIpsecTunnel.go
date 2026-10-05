@@ -33,11 +33,13 @@ import (
 //				Name:                   pulumi.String("IPsec_1"),
 //				AutomaticReturnRouting: pulumi.Bool(true),
 //				Bgp: &cloudflare.MagicWanIpsecTunnelBgpArgs{
-//					CustomerAsn: pulumi.Int(0),
+//					CustomerAsn:    pulumi.Int(0),
+//					ExportFilterId: pulumi.String("a1b2c3d4e5f647890a1b2c3d4e5f6789"),
 //					ExtraPrefixes: pulumi.StringArray{
 //						pulumi.String("string"),
 //					},
-//					Md5Key: pulumi.String("md5_key"),
+//					ImportFilterId: pulumi.String("a1b2c3d4e5f647890a1b2c3d4e5f6789"),
+//					Md5Key:         pulumi.String("md5_key"),
 //				},
 //				CustomRemoteIdentities: &cloudflare.MagicWanIpsecTunnelCustomRemoteIdentitiesArgs{
 //					FqdnId: pulumi.String("fqdn_id"),

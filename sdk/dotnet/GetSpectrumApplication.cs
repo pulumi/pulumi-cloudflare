@@ -196,6 +196,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly object OriginPort;
         /// <summary>
+        /// Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+        /// </summary>
+        public readonly string OriginWorkerId;
+        /// <summary>
         /// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         /// </summary>
         public readonly string Protocol;
@@ -210,8 +214,8 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Tls;
         /// <summary>
-        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `Protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-        /// Available values: "direct", "http", "https".
+        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `Protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to "worker", traffic is sent to the Worker specified by `OriginWorkerId`.
+        /// Available values: "direct", "http", "https", "worker".
         /// </summary>
         public readonly string TrafficType;
         /// <summary>
@@ -249,6 +253,8 @@ namespace Pulumi.Cloudflare
 
             object originPort,
 
+            string originWorkerId,
+
             string protocol,
 
             string proxyProtocol,
@@ -273,6 +279,7 @@ namespace Pulumi.Cloudflare
             OriginDirects = originDirects;
             OriginDns = originDns;
             OriginPort = originPort;
+            OriginWorkerId = originWorkerId;
             Protocol = protocol;
             ProxyProtocol = proxyProtocol;
             Tls = tls;

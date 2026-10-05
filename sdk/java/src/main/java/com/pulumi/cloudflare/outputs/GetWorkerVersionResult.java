@@ -41,6 +41,8 @@ public final class GetWorkerVersionResult {
      * 
      */
     private GetWorkerVersionAssets assets;
+    private String authorEmail;
+    private String authorId;
     private List<GetWorkerVersionBinding> bindings;
     private GetWorkerVersionCacheOptions cacheOptions;
     private String compatibilityDate;
@@ -106,6 +108,12 @@ public final class GetWorkerVersionResult {
      */
     public GetWorkerVersionAssets assets() {
         return this.assets;
+    }
+    public String authorEmail() {
+        return this.authorEmail;
+    }
+    public String authorId() {
+        return this.authorId;
     }
     public List<GetWorkerVersionBinding> bindings() {
         return this.bindings;
@@ -211,6 +219,8 @@ public final class GetWorkerVersionResult {
         private String accountId;
         private GetWorkerVersionAnnotations annotations;
         private GetWorkerVersionAssets assets;
+        private String authorEmail;
+        private String authorId;
         private List<GetWorkerVersionBinding> bindings;
         private GetWorkerVersionCacheOptions cacheOptions;
         private String compatibilityDate;
@@ -241,6 +251,8 @@ public final class GetWorkerVersionResult {
     	      this.accountId = defaults.accountId;
     	      this.annotations = defaults.annotations;
     	      this.assets = defaults.assets;
+    	      this.authorEmail = defaults.authorEmail;
+    	      this.authorId = defaults.authorId;
     	      this.bindings = defaults.bindings;
     	      this.cacheOptions = defaults.cacheOptions;
     	      this.compatibilityDate = defaults.compatibilityDate;
@@ -289,6 +301,22 @@ public final class GetWorkerVersionResult {
               throw new MissingRequiredPropertyException("GetWorkerVersionResult", "assets");
             }
             this.assets = assets;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authorEmail(String authorEmail) {
+            if (authorEmail == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "authorEmail");
+            }
+            this.authorEmail = authorEmail;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authorId(String authorId) {
+            if (authorId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "authorId");
+            }
+            this.authorId = authorId;
             return this;
         }
         @CustomType.Setter
@@ -504,6 +532,8 @@ public final class GetWorkerVersionResult {
             _resultValue.accountId = accountId;
             _resultValue.annotations = annotations;
             _resultValue.assets = assets;
+            _resultValue.authorEmail = authorEmail;
+            _resultValue.authorId = authorId;
             _resultValue.bindings = bindings;
             _resultValue.cacheOptions = cacheOptions;
             _resultValue.compatibilityDate = compatibilityDate;

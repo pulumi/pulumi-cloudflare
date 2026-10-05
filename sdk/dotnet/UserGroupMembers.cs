@@ -57,8 +57,33 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// The sort order of returned user group members by email.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Output("direction")]
+        public Output<string> Direction { get; private set; } = null!;
+
+        /// <summary>
+        /// A string used for filtering members by partial email match.
+        /// </summary>
+        [Output("fuzzyEmail")]
+        public Output<string?> FuzzyEmail { get; private set; } = null!;
+
         [Output("members")]
         public Output<ImmutableArray<Outputs.UserGroupMembersMember>> Members { get; private set; } = null!;
+
+        /// <summary>
+        /// Page number of paginated results.
+        /// </summary>
+        [Output("page")]
+        public Output<double> Page { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of results per page.
+        /// </summary>
+        [Output("perPage")]
+        public Output<double> PerPage { get; private set; } = null!;
 
         /// <summary>
         /// User Group identifier tag.
@@ -118,6 +143,19 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// The sort order of returned user group members by email.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        /// <summary>
+        /// A string used for filtering members by partial email match.
+        /// </summary>
+        [Input("fuzzyEmail")]
+        public Input<string>? FuzzyEmail { get; set; }
+
         [Input("members", required: true)]
         private InputList<Inputs.UserGroupMembersMemberArgs>? _members;
         public InputList<Inputs.UserGroupMembersMemberArgs> Members
@@ -125,6 +163,18 @@ namespace Pulumi.Cloudflare
             get => _members ?? (_members = new InputList<Inputs.UserGroupMembersMemberArgs>());
             set => _members = value;
         }
+
+        /// <summary>
+        /// Page number of paginated results.
+        /// </summary>
+        [Input("page")]
+        public Input<double>? Page { get; set; }
+
+        /// <summary>
+        /// Maximum number of results per page.
+        /// </summary>
+        [Input("perPage")]
+        public Input<double>? PerPage { get; set; }
 
         /// <summary>
         /// User Group identifier tag.
@@ -146,6 +196,19 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// The sort order of returned user group members by email.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        /// <summary>
+        /// A string used for filtering members by partial email match.
+        /// </summary>
+        [Input("fuzzyEmail")]
+        public Input<string>? FuzzyEmail { get; set; }
+
         [Input("members")]
         private InputList<Inputs.UserGroupMembersMemberGetArgs>? _members;
         public InputList<Inputs.UserGroupMembersMemberGetArgs> Members
@@ -153,6 +216,18 @@ namespace Pulumi.Cloudflare
             get => _members ?? (_members = new InputList<Inputs.UserGroupMembersMemberGetArgs>());
             set => _members = value;
         }
+
+        /// <summary>
+        /// Page number of paginated results.
+        /// </summary>
+        [Input("page")]
+        public Input<double>? Page { get; set; }
+
+        /// <summary>
+        /// Maximum number of results per page.
+        /// </summary>
+        [Input("perPage")]
+        public Input<double>? PerPage { get; set; }
 
         /// <summary>
         /// User Group identifier tag.

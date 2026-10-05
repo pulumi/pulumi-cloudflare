@@ -127,7 +127,9 @@ class LeakedCredentialCheck(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example '<zone_id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -162,7 +164,9 @@ class LeakedCredentialCheck(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example '<zone_id>'
+        ```
 
 
         :param str resource_name: The name of the resource.

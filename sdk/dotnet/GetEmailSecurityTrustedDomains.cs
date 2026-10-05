@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         TrustedDomainId = "2401",
+        ///         TrustedDomainId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         TrustedDomainId = "2401",
+        ///         TrustedDomainId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         TrustedDomainId = "2401",
+        ///         TrustedDomainId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -162,6 +162,9 @@ namespace Pulumi.Cloudflare
         /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
         public readonly bool IsRecent;
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal domain.
+        /// </summary>
         public readonly bool IsRegex;
         /// <summary>
         /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
@@ -172,6 +175,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string LastModified;
         public readonly string ModifiedAt;
+        /// <summary>
+        /// The domain pattern to trust, e.g. `example.com`.
+        /// </summary>
         public readonly string Pattern;
         /// <summary>
         /// Trusted domain identifier

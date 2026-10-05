@@ -26,6 +26,9 @@ import * as utilities from "./utilities";
  *     name: "my-database",
  *     jurisdiction: "eu",
  *     primaryLocationHint: "wnam",
+ *     readReplication: {
+ *         mode: "auto",
+ *     },
  * });
  * ```
  *
@@ -72,6 +75,11 @@ export class D1Database extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     */
+    declare public readonly fields: pulumi.Output<string[] | undefined>;
+    /**
      * The D1 database's size, in bytes.
      */
     declare public /*out*/ readonly fileSize: pulumi.Output<number>;
@@ -84,6 +92,11 @@ export class D1Database extends pulumi.CustomResource {
      * D1 database name.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     declare public /*out*/ readonly numTables: pulumi.Output<number>;
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
@@ -115,6 +128,7 @@ export class D1Database extends pulumi.CustomResource {
             const state = argsOrState as D1DatabaseState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["fields"] = state?.fields;
             resourceInputs["fileSize"] = state?.fileSize;
             resourceInputs["jurisdiction"] = state?.jurisdiction;
             resourceInputs["name"] = state?.name;
@@ -132,6 +146,7 @@ export class D1Database extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["fields"] = args?.fields;
             resourceInputs["jurisdiction"] = args?.jurisdiction;
             resourceInputs["name"] = args?.name;
             resourceInputs["primaryLocationHint"] = args?.primaryLocationHint;
@@ -160,6 +175,11 @@ export interface D1DatabaseState {
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     */
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The D1 database's size, in bytes.
      */
     fileSize?: pulumi.Input<number | undefined>;
@@ -172,6 +192,11 @@ export interface D1DatabaseState {
      * D1 database name.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     numTables?: pulumi.Input<number | undefined>;
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
@@ -197,6 +222,11 @@ export interface D1DatabaseArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     */
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
      * Available values: "eu", "fedramp", "us".

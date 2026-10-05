@@ -46,10 +46,29 @@ export interface GetBotManagementArgs {
  */
 export interface GetBotManagementResult {
     /**
+     * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     */
+    readonly aiBotsMigrationOptOut: boolean;
+    /**
      * Enable rule to block AI Scrapers and Crawlers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
     readonly aiBotsProtection: string;
+    /**
+     * Configure robots.txt policy for AI model training bots.
+     * Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+     */
+    readonly aiTraining: string;
+    /**
+     * Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    readonly aiUser: string;
+    /**
+     * Configure robots.txt policy for AI search bots.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    readonly aisearch: string;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
@@ -93,6 +112,10 @@ export interface GetBotManagementResult {
      * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
      */
     readonly isRobotsTxtManaged: boolean;
+    /**
+     * Whether to use JavaScript Detection results submitted through the API for this zone.
+     */
+    readonly jsdApiResultsEnabled: boolean;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */

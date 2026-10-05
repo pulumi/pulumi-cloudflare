@@ -21,7 +21,7 @@ public final class GetCustomOriginTrustStoresResult {
      */
     private String expiresOn;
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     private String id;
@@ -68,7 +68,7 @@ public final class GetCustomOriginTrustStoresResult {
         return this.expiresOn;
     }
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     public String id() {

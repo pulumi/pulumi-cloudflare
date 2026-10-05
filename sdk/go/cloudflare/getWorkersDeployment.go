@@ -59,7 +59,7 @@ type LookupWorkersDeploymentArgs struct {
 	// Identifier.
 	AccountId    string `pulumi:"accountId"`
 	DeploymentId string `pulumi:"deploymentId"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 }
 
@@ -73,11 +73,12 @@ type LookupWorkersDeploymentResult struct {
 	DeploymentId string                          `pulumi:"deploymentId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 	Source     string `pulumi:"source"`
 	// Available values: "percentage".
-	Strategy string                        `pulumi:"strategy"`
+	Strategy string `pulumi:"strategy"`
+	// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
 	Versions []GetWorkersDeploymentVersion `pulumi:"versions"`
 }
 
@@ -91,7 +92,7 @@ type LookupWorkersDeploymentOutputArgs struct {
 	// Identifier.
 	AccountId    pulumi.StringInput `pulumi:"accountId"`
 	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 }
 
@@ -140,7 +141,7 @@ func (o LookupWorkersDeploymentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script.
 func (o LookupWorkersDeploymentResultOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.ScriptName }).(pulumi.StringOutput)
 }
@@ -154,6 +155,7 @@ func (o LookupWorkersDeploymentResultOutput) Strategy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.Strategy }).(pulumi.StringOutput)
 }
 
+// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
 func (o LookupWorkersDeploymentResultOutput) Versions() GetWorkersDeploymentVersionArrayOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) []GetWorkersDeploymentVersion { return v.Versions }).(GetWorkersDeploymentVersionArrayOutput)
 }

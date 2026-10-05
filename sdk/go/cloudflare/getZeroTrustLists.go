@@ -27,7 +27,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustLists(ctx, &cloudflare.LookupZeroTrustListsArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
-//				Type:      pulumi.StringRef("SERIAL"),
+//				Direction: pulumi.StringRef("asc"),
+//				Filters: []string{
+//					"string",
+//				},
+//				OrderBy: pulumi.StringRef("name"),
+//				Search:  pulumi.StringRef("search"),
+//				Type:    pulumi.StringRef("SERIAL"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,24 +55,25 @@ func LookupZeroTrustLists(ctx *pulumi.Context, args *LookupZeroTrustListsArgs, o
 
 // A collection of arguments for invoking getZeroTrustLists.
 type LookupZeroTrustListsArgs struct {
-	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-	Type *string `pulumi:"type"`
+	AccountId *string  `pulumi:"accountId"`
+	Direction *string  `pulumi:"direction"`
+	Filters   []string `pulumi:"filters"`
+	MaxItems  *int     `pulumi:"maxItems"`
+	OrderBy   *string  `pulumi:"orderBy"`
+	Search    *string  `pulumi:"search"`
+	Type      *string  `pulumi:"type"`
 }
 
 // A collection of values returned by getZeroTrustLists.
 type LookupZeroTrustListsResult struct {
-	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// The items returned by the data source
-	Results []GetZeroTrustListsResult `pulumi:"results"`
-	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-	Type *string `pulumi:"type"`
+	AccountId *string                   `pulumi:"accountId"`
+	Direction *string                   `pulumi:"direction"`
+	Filters   []string                  `pulumi:"filters"`
+	MaxItems  *int                      `pulumi:"maxItems"`
+	OrderBy   *string                   `pulumi:"orderBy"`
+	Results   []GetZeroTrustListsResult `pulumi:"results"`
+	Search    *string                   `pulumi:"search"`
+	Type      *string                   `pulumi:"type"`
 }
 
 func LookupZeroTrustListsOutput(ctx *pulumi.Context, args LookupZeroTrustListsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustListsResultOutput {
@@ -76,12 +83,13 @@ func LookupZeroTrustListsOutput(ctx *pulumi.Context, args LookupZeroTrustListsOu
 
 // A collection of arguments for invoking getZeroTrustLists.
 type LookupZeroTrustListsOutputArgs struct {
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	AccountId pulumi.StringPtrInput   `pulumi:"accountId"`
+	Direction pulumi.StringPtrInput   `pulumi:"direction"`
+	Filters   pulumi.StringArrayInput `pulumi:"filters"`
+	MaxItems  pulumi.IntPtrInput      `pulumi:"maxItems"`
+	OrderBy   pulumi.StringPtrInput   `pulumi:"orderBy"`
+	Search    pulumi.StringPtrInput   `pulumi:"search"`
+	Type      pulumi.StringPtrInput   `pulumi:"type"`
 }
 
 func (LookupZeroTrustListsOutputArgs) ElementType() reflect.Type {
@@ -107,18 +115,30 @@ func (o LookupZeroTrustListsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustListsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Max items to fetch, default: 1000
+func (o LookupZeroTrustListsResultOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustListsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupZeroTrustListsResultOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustListsResult) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupZeroTrustListsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustListsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// The items returned by the data source
+func (o LookupZeroTrustListsResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustListsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
 func (o LookupZeroTrustListsResultOutput) Results() GetZeroTrustListsResultArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustListsResult) []GetZeroTrustListsResult { return v.Results }).(GetZeroTrustListsResultArrayOutput)
 }
 
-// Specify the list type.
-// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
+func (o LookupZeroTrustListsResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustListsResult) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
 func (o LookupZeroTrustListsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustListsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

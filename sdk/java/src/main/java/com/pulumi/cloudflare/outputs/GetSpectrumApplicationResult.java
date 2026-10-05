@@ -79,6 +79,11 @@ public final class GetSpectrumApplicationResult {
      */
     private Object originPort;
     /**
+     * @return Optional Worker script tag (worker ID) to use as the application&#39;s origin. Only supported for TCP applications with traffic*type &#34;worker&#34;; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be &#34;off&#34; or &#34;flexible&#34;.
+     * 
+     */
+    private String originWorkerId;
+    /**
      * @return The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */
@@ -96,8 +101,8 @@ public final class GetSpectrumApplicationResult {
      */
     private String tls;
     /**
-     * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
+     * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to &#34;worker&#34;, traffic is sent to the Worker specified by `originWorkerId`.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;, &#34;worker&#34;.
      * 
      */
     private String trafficType;
@@ -197,6 +202,13 @@ public final class GetSpectrumApplicationResult {
         return this.originPort;
     }
     /**
+     * @return Optional Worker script tag (worker ID) to use as the application&#39;s origin. Only supported for TCP applications with traffic*type &#34;worker&#34;; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be &#34;off&#34; or &#34;flexible&#34;.
+     * 
+     */
+    public String originWorkerId() {
+        return this.originWorkerId;
+    }
+    /**
      * @return The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */
@@ -220,8 +232,8 @@ public final class GetSpectrumApplicationResult {
         return this.tls;
     }
     /**
-     * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
+     * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to &#34;worker&#34;, traffic is sent to the Worker specified by `originWorkerId`.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;, &#34;worker&#34;.
      * 
      */
     public String trafficType() {
@@ -263,6 +275,7 @@ public final class GetSpectrumApplicationResult {
         private List<String> originDirects;
         private GetSpectrumApplicationOriginDns originDns;
         private Object originPort;
+        private String originWorkerId;
         private String protocol;
         private String proxyProtocol;
         private String tls;
@@ -284,6 +297,7 @@ public final class GetSpectrumApplicationResult {
     	      this.originDirects = defaults.originDirects;
     	      this.originDns = defaults.originDns;
     	      this.originPort = defaults.originPort;
+    	      this.originWorkerId = defaults.originWorkerId;
     	      this.protocol = defaults.protocol;
     	      this.proxyProtocol = defaults.proxyProtocol;
     	      this.tls = defaults.tls;
@@ -388,6 +402,14 @@ public final class GetSpectrumApplicationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder originWorkerId(String originWorkerId) {
+            if (originWorkerId == null) {
+              throw new MissingRequiredPropertyException("GetSpectrumApplicationResult", "originWorkerId");
+            }
+            this.originWorkerId = originWorkerId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             if (protocol == null) {
               throw new MissingRequiredPropertyException("GetSpectrumApplicationResult", "protocol");
@@ -447,6 +469,7 @@ public final class GetSpectrumApplicationResult {
             _resultValue.originDirects = originDirects;
             _resultValue.originDns = originDns;
             _resultValue.originPort = originPort;
+            _resultValue.originWorkerId = originWorkerId;
             _resultValue.protocol = protocol;
             _resultValue.proxyProtocol = proxyProtocol;
             _resultValue.tls = tls;

@@ -46,7 +46,7 @@ export interface GetTurnstileWidgetArgs {
     accountId?: string;
     filter?: inputs.GetTurnstileWidgetFilter;
     /**
-     * Widget item identifier tag.
+     * Unique identifier for a Turnstile widget.
      */
     sitekey?: string;
 }
@@ -74,6 +74,13 @@ export interface GetTurnstileWidgetResult {
      * When the widget was created.
      */
     readonly createdOn: string;
+    /**
+     * Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
     readonly deployedVia: string;
     readonly domains: string[];
     /**
@@ -82,9 +89,15 @@ export interface GetTurnstileWidgetResult {
     readonly ephemeralId: boolean;
     readonly filter?: outputs.GetTurnstileWidgetFilter;
     /**
-     * Widget item identifier tag.
+     * Unique identifier for a Turnstile widget.
      */
     readonly id: string;
+    /**
+     * Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
     readonly lastModifiedVia: string;
     /**
      * Widget Mode
@@ -115,7 +128,7 @@ export interface GetTurnstileWidgetResult {
      */
     readonly secret: string;
     /**
-     * Widget item identifier tag.
+     * Unique identifier for a Turnstile widget.
      */
     readonly sitekey: string;
 }
@@ -159,7 +172,7 @@ export interface GetTurnstileWidgetOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetTurnstileWidgetFilterArgs | undefined>;
     /**
-     * Widget item identifier tag.
+     * Unique identifier for a Turnstile widget.
      */
     sitekey?: pulumi.Input<string | undefined>;
 }

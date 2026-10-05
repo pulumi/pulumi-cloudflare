@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .isRegex(false)
  *             .isSimilarity(false)
  *             .pattern("example.com")
- *             .comments(null)
+ *             .comments("Trusted partner domain")
  *             .build());
  * 
  *     }
@@ -108,9 +108,17 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
     public Output<Optional<Boolean>> isRecent() {
         return Codegen.optional(this.isRecent);
     }
+    /**
+     * Whether `pattern` is a regular expression instead of a literal domain.
+     * 
+     */
     @Export(name="isRegex", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isRegex;
 
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal domain.
+     * 
+     */
     public Output<Optional<Boolean>> isRegex() {
         return Codegen.optional(this.isRegex);
     }
@@ -152,9 +160,17 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
     public Output<String> modifiedAt() {
         return this.modifiedAt;
     }
+    /**
+     * The domain pattern to trust, e.g. `example.com`.
+     * 
+     */
     @Export(name="pattern", refs={String.class}, tree="[0]")
     private Output<String> pattern;
 
+    /**
+     * @return The domain pattern to trust, e.g. `example.com`.
+     * 
+     */
     public Output<String> pattern() {
         return this.pattern;
     }

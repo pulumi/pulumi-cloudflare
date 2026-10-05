@@ -44,8 +44,6 @@ public final class GetMagicTransitConnectorResult {
     private String lastUpdated;
     private String licenseKey;
     private String notes;
-    private Boolean primary;
-    private String siteId;
     private String timezone;
 
     private GetMagicTransitConnectorResult() {}
@@ -106,12 +104,6 @@ public final class GetMagicTransitConnectorResult {
     public String notes() {
         return this.notes;
     }
-    public Boolean primary() {
-        return this.primary;
-    }
-    public String siteId() {
-        return this.siteId;
-    }
     public String timezone() {
         return this.timezone;
     }
@@ -140,8 +132,6 @@ public final class GetMagicTransitConnectorResult {
         private String lastUpdated;
         private String licenseKey;
         private String notes;
-        private Boolean primary;
-        private String siteId;
         private String timezone;
         public Builder() {}
         public Builder(GetMagicTransitConnectorResult defaults) {
@@ -161,8 +151,6 @@ public final class GetMagicTransitConnectorResult {
     	      this.lastUpdated = defaults.lastUpdated;
     	      this.licenseKey = defaults.licenseKey;
     	      this.notes = defaults.notes;
-    	      this.primary = defaults.primary;
-    	      this.siteId = defaults.siteId;
     	      this.timezone = defaults.timezone;
         }
 
@@ -289,22 +277,6 @@ public final class GetMagicTransitConnectorResult {
             return this;
         }
         @CustomType.Setter
-        public Builder primary(Boolean primary) {
-            if (primary == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "primary");
-            }
-            this.primary = primary;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder siteId(String siteId) {
-            if (siteId == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "siteId");
-            }
-            this.siteId = siteId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder timezone(String timezone) {
             if (timezone == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "timezone");
@@ -329,8 +301,6 @@ public final class GetMagicTransitConnectorResult {
             _resultValue.lastUpdated = lastUpdated;
             _resultValue.licenseKey = licenseKey;
             _resultValue.notes = notes;
-            _resultValue.primary = primary;
-            _resultValue.siteId = siteId;
             _resultValue.timezone = timezone;
             return _resultValue;
         }

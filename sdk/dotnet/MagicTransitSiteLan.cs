@@ -65,6 +65,15 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             DhcpServer = new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpServerArgs
     ///             {
+    ///                 DhcpOptions = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs
+    ///                     {
+    ///                         Code = 66,
+    ///                         Type = "ip",
+    ///                         Value = "10.20.30.40",
+    ///                     },
+    ///                 },
     ///                 DhcpPoolEnd = "192.0.2.1",
     ///                 DhcpPoolStart = "192.0.2.1",
     ///                 DnsServer = "192.0.2.1",

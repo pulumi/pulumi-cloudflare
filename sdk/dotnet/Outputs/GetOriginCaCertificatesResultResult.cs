@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
-        /// Identifier.
+        /// The x509 serial number of the Origin CA certificate.
         /// </summary>
         public readonly string Id;
         /// <summary>

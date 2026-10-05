@@ -113,6 +113,7 @@ import (
 type ZeroTrustGatewaySettings struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Specify account settings.
@@ -159,6 +160,7 @@ func GetZeroTrustGatewaySettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
 type zeroTrustGatewaySettingsState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Specify account settings.
@@ -167,6 +169,7 @@ type zeroTrustGatewaySettingsState struct {
 }
 
 type ZeroTrustGatewaySettingsState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Specify account settings.
@@ -179,6 +182,7 @@ func (ZeroTrustGatewaySettingsState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewaySettingsArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Specify account settings.
 	Settings *ZeroTrustGatewaySettingsSettings `pulumi:"settings"`
@@ -186,6 +190,7 @@ type zeroTrustGatewaySettingsArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewaySettings resource.
 type ZeroTrustGatewaySettingsArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Specify account settings.
 	Settings ZeroTrustGatewaySettingsSettingsPtrInput
@@ -278,6 +283,7 @@ func (o ZeroTrustGatewaySettingsOutput) ToZeroTrustGatewaySettingsOutputWithCont
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o ZeroTrustGatewaySettingsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
@@ -55,6 +56,7 @@ import javax.annotation.Nullable;
  *                     .virtualNetworkId("c77b744e-acc8-428f-9257-6878c046ed55")
  *                     .build())
  *                 .build())
+ *             .tags(Map.of("foo", "string"))
  *             .build());
  * 
  *     }
@@ -146,6 +148,22 @@ public class ZeroTrustAccessInfrastructureTarget extends com.pulumi.resources.Cu
      */
     public Output<String> modifiedAt() {
         return this.modifiedAt;
+    }
+    /**
+     * Optional tags to associate with the target. Keys and values are
+     * user-defined strings.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> tags;
+
+    /**
+     * @return Optional tags to associate with the target. Keys and values are
+     * user-defined strings.
+     * 
+     */
+    public Output<Map<String,String>> tags() {
+        return this.tags;
     }
 
     /**

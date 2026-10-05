@@ -29,6 +29,9 @@ export function getZeroTrustGatewayCertificate(args: GetZeroTrustGatewayCertific
  * A collection of arguments for invoking getZeroTrustGatewayCertificate.
  */
 export interface GetZeroTrustGatewayCertificateArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: string;
     /**
      * Identify the certificate with a UUID.
@@ -40,6 +43,9 @@ export interface GetZeroTrustGatewayCertificateArgs {
  * A collection of values returned by getZeroTrustGatewayCertificate.
  */
 export interface GetZeroTrustGatewayCertificateResult {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     readonly accountId?: string;
     /**
      * Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
@@ -109,6 +115,9 @@ export function getZeroTrustGatewayCertificateOutput(args: GetZeroTrustGatewayCe
  * A collection of arguments for invoking getZeroTrustGatewayCertificate.
  */
 export interface GetZeroTrustGatewayCertificateOutputArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Identify the certificate with a UUID.

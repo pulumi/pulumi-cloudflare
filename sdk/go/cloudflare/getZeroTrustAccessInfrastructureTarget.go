@@ -71,6 +71,8 @@ type LookupZeroTrustAccessInfrastructureTargetResult struct {
 	Ip GetZeroTrustAccessInfrastructureTargetIp `pulumi:"ip"`
 	// Date and time at which the target was modified
 	ModifiedAt string `pulumi:"modifiedAt"`
+	// Tags assigned to the target. Empty when no tags are assigned.
+	Tags map[string]string `pulumi:"tags"`
 	// Target identifier
 	TargetId *string `pulumi:"targetId"`
 }
@@ -144,6 +146,11 @@ func (o LookupZeroTrustAccessInfrastructureTargetResultOutput) Ip() GetZeroTrust
 // Date and time at which the target was modified
 func (o LookupZeroTrustAccessInfrastructureTargetResultOutput) ModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+// Tags assigned to the target. Empty when no tags are assigned.
+func (o LookupZeroTrustAccessInfrastructureTargetResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Target identifier

@@ -55,6 +55,7 @@ import (
 type ZeroTrustList struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Provide the list description.
@@ -116,6 +117,7 @@ func GetZeroTrustList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustList resources.
 type zeroTrustListState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Provide the list description.
@@ -133,6 +135,7 @@ type zeroTrustListState struct {
 }
 
 type ZeroTrustListState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Provide the list description.
@@ -154,6 +157,7 @@ func (ZeroTrustListState) ElementType() reflect.Type {
 }
 
 type zeroTrustListArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Provide the list description.
 	Description *string `pulumi:"description"`
@@ -168,6 +172,7 @@ type zeroTrustListArgs struct {
 
 // The set of arguments for constructing a ZeroTrustList resource.
 type ZeroTrustListArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Provide the list description.
 	Description pulumi.StringPtrInput
@@ -267,6 +272,7 @@ func (o ZeroTrustListOutput) ToZeroTrustListOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o ZeroTrustListOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

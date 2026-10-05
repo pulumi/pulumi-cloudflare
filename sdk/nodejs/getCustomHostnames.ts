@@ -30,7 +30,6 @@ import * as utilities from "./utilities";
  *         startsWith: "app",
  *     },
  *     hostnameStatus: "provisioned",
- *     ssl: 0,
  *     sslStatus: "active",
  *     wildcard: false,
  * });
@@ -196,7 +195,6 @@ export interface GetCustomHostnamesResult {
  *         startsWith: "app",
  *     },
  *     hostnameStatus: "provisioned",
- *     ssl: 0,
  *     sslStatus: "active",
  *     wildcard: false,
  * });

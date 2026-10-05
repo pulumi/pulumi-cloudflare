@@ -38,8 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServer;
  * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServerArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -53,35 +52,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var cloudflareAccountId = config.require("cloudflareAccountId");
+ *         final var mcpOauthClientId = config.require("mcpOauthClientId");
+ *         final var mcpOauthClientSecret = config.require("mcpOauthClientSecret");
  *         var exampleZeroTrustAccessAiControlsMcpServer = new ZeroTrustAccessAiControlsMcpServer("exampleZeroTrustAccessAiControlsMcpServer", ZeroTrustAccessAiControlsMcpServerArgs.builder()
- *             .accountId("a86a8f5c339544d7bdc89926de14fb8c")
- *             .zeroTrustAccessAiControlsMcpServerId("my-mcp-server")
- *             .authType("unauthenticated")
- *             .hostname("https://example.com/mcp")
- *             .name("My MCP Server")
- *             .authCredentials("sk-my-bearer-token")
- *             .clientSecret("client_secret")
- *             .description("This is one remote MCP server")
+ *             .accountId(cloudflareAccountId)
+ *             .zeroTrustAccessAiControlsMcpServerId("github")
+ *             .authType("oauth")
+ *             .hostname("https://github-mcp.example.com/mcp")
+ *             .name("GitHub MCP Server")
+ *             .authCredentials(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("auth_mode", "manual"),
+ *                     jsonProperty("config", jsonObject(
+ *                         jsonProperty("authorization_endpoint", "https://github.com/login/oauth/authorize"),
+ *                         jsonProperty("token_endpoint", "https://github.com/login/oauth/access_token")
+ *                     )),
+ *                     jsonProperty("registration_info", jsonObject(
+ *                         jsonProperty("client_id", mcpOauthClientId),
+ *                         jsonProperty("token_endpoint_auth_method", "client_secret_basic"),
+ *                         jsonProperty("scope", "repo read:user")
+ *                     ))
+ *                 )))
+ *             .clientSecret(mcpOauthClientSecret)
  *             .isSharedOauthCallbackEnabled(true)
- *             .secureWebGateway(false)
- *             .updatedPrompts(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs.builder()
- *                 .name("name")
- *                 .alias("my-custom-alias")
- *                 .description("description")
- *                 .enabled(true)
- *                 .build())
- *             .updatedTools(ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs.builder()
- *                 .name("name")
- *                 .alias("my-custom-alias")
- *                 .description("description")
- *                 .enabled(true)
- *                 .build())
  *             .build());
  * 
  *     }
  * }
  * }
  * </pre>
+ * 
+ * `authCredentials` and `clientSecret` are write-only and cannot be recovered by import. Omitting either value on update preserves the existing credential. Because the API does not return `authCredentials`, Terraform cannot automatically detect and restore out-of-band OAuth metadata changes; inspect the computed `authConfigSummary` for the current non-secret metadata. Terraform&#39;s `sensitive` marker hides credential values from normal output but still stores them in state, so use a protected state backend with restricted access.
  * 
  * ## Import
  * 

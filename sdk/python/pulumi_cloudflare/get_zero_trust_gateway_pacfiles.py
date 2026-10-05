@@ -41,6 +41,9 @@ class GetZeroTrustGatewayPacfilesResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -90,6 +93,7 @@ def get_zero_trust_gateway_pacfiles(account_id: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -121,6 +125,7 @@ def get_zero_trust_gateway_pacfiles_output(account_id: pulumi.Input[Optional[Opt
     ```
 
 
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

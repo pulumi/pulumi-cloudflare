@@ -26,7 +26,7 @@ public final class GetSnippetRulesListInvokeResult {
      */
     private List<GetSnippetRulesListResult> results;
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     private String zoneId;
@@ -47,7 +47,7 @@ public final class GetSnippetRulesListInvokeResult {
         return this.results;
     }
     /**
-     * @return The unique ID of the zone.
+     * @return Use this field to specify the unique ID of the zone.
      * 
      */
     public String zoneId() {

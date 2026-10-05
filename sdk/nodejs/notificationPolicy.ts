@@ -77,6 +77,7 @@ import * as utilities from "./utilities";
  *         targetHostnames: ["string"],
  *         targetIps: ["string"],
  *         targetZoneNames: ["string"],
+ *         tokenIds: ["x"],
  *         trafficExclusions: ["security_events"],
  *         tunnelIds: ["string"],
  *         tunnelNames: ["string"],

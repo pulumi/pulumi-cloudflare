@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * const exampleShareResource = new cloudflare.ShareResource("example_share_resource", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     shareId: "3fd85f74b32742f1bff64a85009dda07",
- *     meta: {},
+ *     meta: JSON.stringify({}),
  *     resourceAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     resourceId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     resourceType: "custom-ruleset",

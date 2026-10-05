@@ -17,6 +17,11 @@ import javax.annotation.Nullable;
 public final class GetAiSearchInstancesInvokeResult {
     private @Nullable String accountId;
     /**
+     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * 
+     */
+    private @Nullable String hostname;
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
@@ -52,6 +57,13 @@ public final class GetAiSearchInstancesInvokeResult {
     private GetAiSearchInstancesInvokeResult() {}
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * 
+     */
+    public Optional<String> hostname() {
+        return Optional.ofNullable(this.hostname);
     }
     /**
      * @return Max items to fetch, default: 1000
@@ -108,6 +120,7 @@ public final class GetAiSearchInstancesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private @Nullable String hostname;
         private @Nullable Integer maxItems;
         private @Nullable String namespace;
         private String orderBy;
@@ -118,6 +131,7 @@ public final class GetAiSearchInstancesInvokeResult {
         public Builder(GetAiSearchInstancesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.hostname = defaults.hostname;
     	      this.maxItems = defaults.maxItems;
     	      this.namespace = defaults.namespace;
     	      this.orderBy = defaults.orderBy;
@@ -130,6 +144,12 @@ public final class GetAiSearchInstancesInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(@Nullable String hostname) {
+
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
@@ -180,6 +200,7 @@ public final class GetAiSearchInstancesInvokeResult {
         public GetAiSearchInstancesInvokeResult build() {
             final var _resultValue = new GetAiSearchInstancesInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.hostname = hostname;
             _resultValue.maxItems = maxItems;
             _resultValue.namespace = namespace;
             _resultValue.orderBy = orderBy;

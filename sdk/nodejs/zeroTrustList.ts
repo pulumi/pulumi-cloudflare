@@ -59,6 +59,9 @@ export class ZeroTrustList extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustList.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -136,6 +139,9 @@ export class ZeroTrustList extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustList resources.
  */
 export interface ZeroTrustListState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     /**
@@ -166,6 +172,9 @@ export interface ZeroTrustListState {
  * The set of arguments for constructing a ZeroTrustList resource.
  */
 export interface ZeroTrustListArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Provide the list description.

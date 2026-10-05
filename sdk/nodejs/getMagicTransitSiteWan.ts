@@ -71,6 +71,7 @@ export interface GetMagicTransitSiteWanResult {
      * Identifier
      */
     readonly id: string;
+    readonly loadBalanceInnerFlows: boolean;
     readonly name: string;
     readonly physport: number;
     /**

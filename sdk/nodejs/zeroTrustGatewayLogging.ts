@@ -67,6 +67,9 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayLogging.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
@@ -111,6 +114,9 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayLogging resources.
  */
 export interface ZeroTrustGatewayLoggingState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
@@ -126,6 +132,9 @@ export interface ZeroTrustGatewayLoggingState {
  * The set of arguments for constructing a ZeroTrustGatewayLogging resource.
  */
 export interface ZeroTrustGatewayLoggingArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).

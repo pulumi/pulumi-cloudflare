@@ -64,7 +64,7 @@ public final class PagesProjectCanonicalDeploymentStageArgs extends com.pulumi.r
 
     /**
      * State of the current stage.
-     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;, &#34;skipped&#34;.
      * 
      */
     @Import(name="status")
@@ -72,7 +72,7 @@ public final class PagesProjectCanonicalDeploymentStageArgs extends com.pulumi.r
 
     /**
      * @return State of the current stage.
-     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;, &#34;skipped&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -173,7 +173,7 @@ public final class PagesProjectCanonicalDeploymentStageArgs extends com.pulumi.r
 
         /**
          * @param status State of the current stage.
-         * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
+         * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;, &#34;skipped&#34;.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class PagesProjectCanonicalDeploymentStageArgs extends com.pulumi.r
 
         /**
          * @param status State of the current stage.
-         * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
+         * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;, &#34;skipped&#34;.
          * 
          * @return builder
          * 

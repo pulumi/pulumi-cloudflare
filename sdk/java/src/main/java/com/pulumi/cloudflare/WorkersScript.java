@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.WorkersScriptMigrationsRenamedClassArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptMigrationsTransferredClassArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityIssuesArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityLogsArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityTracesArgs;
  * import com.pulumi.cloudflare.inputs.WorkersScriptPackageDependencyArgs;
@@ -168,6 +169,9 @@ import javax.annotation.Nullable;
  *             .observability(WorkersScriptObservabilityArgs.builder()
  *                 .enabled(true)
  *                 .headSamplingRate(0.1)
+ *                 .issues(WorkersScriptObservabilityIssuesArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
  *                 .logs(WorkersScriptObservabilityLogsArgs.builder()
  *                     .enabled(true)
  *                     .invocationLogs(true)
@@ -447,6 +451,20 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,WorkersScriptFiles>>> files() {
         return Codegen.optional(this.files);
+    }
+    /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     * 
+     */
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> force;
+
+    /**
+     * @return If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     * 
+     */
+    public Output<Optional<Boolean>> force() {
+        return Codegen.optional(this.force);
     }
     /**
      * The names of handlers exported as part of the default export.

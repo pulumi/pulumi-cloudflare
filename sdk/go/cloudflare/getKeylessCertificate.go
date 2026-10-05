@@ -66,7 +66,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetKeylessCertificate(ctx, &cloudflare.LookupKeylessCertificateArgs{
 //				ZoneId:               pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				KeylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				KeylessCertificateId: "4d2844d2ce78891c34d0b6c0535a291e",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -88,7 +88,7 @@ func LookupKeylessCertificate(ctx *pulumi.Context, args *LookupKeylessCertificat
 
 // A collection of arguments for invoking getKeylessCertificate.
 type LookupKeylessCertificateArgs struct {
-	// Identifier.
+	// Keyless certificate identifier tag.
 	KeylessCertificateId string `pulumi:"keylessCertificateId"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -102,9 +102,9 @@ type LookupKeylessCertificateResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The keyless SSL name.
 	Host string `pulumi:"host"`
-	// Identifier.
+	// Keyless certificate identifier tag.
 	Id string `pulumi:"id"`
-	// Identifier.
+	// Keyless certificate identifier tag.
 	KeylessCertificateId string `pulumi:"keylessCertificateId"`
 	// When the Keyless SSL was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -130,7 +130,7 @@ func LookupKeylessCertificateOutput(ctx *pulumi.Context, args LookupKeylessCerti
 
 // A collection of arguments for invoking getKeylessCertificate.
 type LookupKeylessCertificateOutputArgs struct {
-	// Identifier.
+	// Keyless certificate identifier tag.
 	KeylessCertificateId pulumi.StringInput `pulumi:"keylessCertificateId"`
 	// Identifier.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -170,12 +170,12 @@ func (o LookupKeylessCertificateResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Keyless certificate identifier tag.
 func (o LookupKeylessCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Keyless certificate identifier tag.
 func (o LookupKeylessCertificateResultOutput) KeylessCertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.KeylessCertificateId }).(pulumi.StringOutput)
 }

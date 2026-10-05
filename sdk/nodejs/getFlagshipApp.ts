@@ -34,11 +34,11 @@ export function getFlagshipApp(args: GetFlagshipAppArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetFlagshipAppArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: string;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     appId: string;
 }
@@ -48,16 +48,16 @@ export interface GetFlagshipAppArgs {
  */
 export interface GetFlagshipAppResult {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     readonly accountId: string;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     readonly appId: string;
     readonly createdAt: string;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     readonly id: string;
     readonly name: string;
@@ -97,11 +97,11 @@ export function getFlagshipAppOutput(args: GetFlagshipAppOutputArgs, opts?: pulu
  */
 export interface GetFlagshipAppOutputArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: pulumi.Input<string>;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     appId: pulumi.Input<string>;
 }

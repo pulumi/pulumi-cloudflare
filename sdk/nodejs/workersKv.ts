@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     namespaceId: "0f2ac74b498b48028cb68387c421e279",
  *     keyName: "My-Key",
  *     value: "Some Value",
- *     metadata: {},
+ *     metadata: JSON.stringify({}),
  * });
  * ```
  *
@@ -60,9 +60,17 @@ export class WorkersKv extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     declare public readonly accountId: pulumi.Output<string>;
+    /**
+     * Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+     */
+    declare public readonly expiration: pulumi.Output<number | undefined>;
+    /**
+     * Expires the key after a number of seconds. Must be at least 60.
+     */
+    declare public readonly expirationTtl: pulumi.Output<number | undefined>;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
@@ -72,7 +80,7 @@ export class WorkersKv extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<string | undefined>;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     declare public readonly namespaceId: pulumi.Output<string>;
     /**
@@ -94,6 +102,8 @@ export class WorkersKv extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkersKvState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["expiration"] = state?.expiration;
+            resourceInputs["expirationTtl"] = state?.expirationTtl;
             resourceInputs["keyName"] = state?.keyName;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["namespaceId"] = state?.namespaceId;
@@ -113,6 +123,8 @@ export class WorkersKv extends pulumi.CustomResource {
                 throw new Error("Missing required property 'value'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["expiration"] = args?.expiration;
+            resourceInputs["expirationTtl"] = args?.expirationTtl;
             resourceInputs["keyName"] = args?.keyName;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["namespaceId"] = args?.namespaceId;
@@ -128,9 +140,17 @@ export class WorkersKv extends pulumi.CustomResource {
  */
 export interface WorkersKvState {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+     */
+    expiration?: pulumi.Input<number | undefined>;
+    /**
+     * Expires the key after a number of seconds. Must be at least 60.
+     */
+    expirationTtl?: pulumi.Input<number | undefined>;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
@@ -140,7 +160,7 @@ export interface WorkersKvState {
      */
     metadata?: pulumi.Input<string | undefined>;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     namespaceId?: pulumi.Input<string | undefined>;
     /**
@@ -154,9 +174,17 @@ export interface WorkersKvState {
  */
 export interface WorkersKvArgs {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+     */
+    expiration?: pulumi.Input<number | undefined>;
+    /**
+     * Expires the key after a number of seconds. Must be at least 60.
+     */
+    expirationTtl?: pulumi.Input<number | undefined>;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
@@ -166,7 +194,7 @@ export interface WorkersKvArgs {
      */
     metadata?: pulumi.Input<string | undefined>;
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     namespaceId: pulumi.Input<string>;
     /**

@@ -48,7 +48,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleBotManagement = new BotManagement("exampleBotManagement", BotManagementArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .aiBotsMigrationOptOut(false)
  *             .aiBotsProtection("block")
+ *             .aisearch("block")
+ *             .aiTraining("disallow")
+ *             .aiUser("only_on_ad_pages")
  *             .botPreferenceSyncEnabled(true)
  *             .cfRobotsVariant("policy_only")
  *             .contentBotsProtection("disabled")
@@ -56,6 +60,7 @@ import javax.annotation.Nullable;
  *             .enableJs(true)
  *             .fightMode(true)
  *             .isRobotsTxtManaged(false)
+ *             .jsdApiResultsEnabled(true)
  *             .build());
  * 
  *     }
@@ -73,6 +78,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/botManagement:BotManagement")
 public class BotManagement extends com.pulumi.resources.CustomResource {
     /**
+     * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     * 
+     */
+    @Export(name="aiBotsMigrationOptOut", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> aiBotsMigrationOptOut;
+
+    /**
+     * @return Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     * 
+     */
+    public Output<Boolean> aiBotsMigrationOptOut() {
+        return this.aiBotsMigrationOptOut;
+    }
+    /**
      * Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
@@ -87,6 +106,54 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      */
     public Output<String> aiBotsProtection() {
         return this.aiBotsProtection;
+    }
+    /**
+     * Configure robots.txt policy for AI model training bots.
+     * Available values: &#34;disabled&#34;, &#34;disallow&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    @Export(name="aiTraining", refs={String.class}, tree="[0]")
+    private Output<String> aiTraining;
+
+    /**
+     * @return Configure robots.txt policy for AI model training bots.
+     * Available values: &#34;disabled&#34;, &#34;disallow&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public Output<String> aiTraining() {
+        return this.aiTraining;
+    }
+    /**
+     * Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    @Export(name="aiUser", refs={String.class}, tree="[0]")
+    private Output<String> aiUser;
+
+    /**
+     * @return Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public Output<String> aiUser() {
+        return this.aiUser;
+    }
+    /**
+     * Configure robots.txt policy for AI search bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    @Export(name="aisearch", refs={String.class}, tree="[0]")
+    private Output<String> aisearch;
+
+    /**
+     * @return Configure robots.txt policy for AI search bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public Output<String> aisearch() {
+        return this.aisearch;
     }
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -219,6 +286,20 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> isRobotsTxtManaged() {
         return this.isRobotsTxtManaged;
+    }
+    /**
+     * Whether to use JavaScript Detection results submitted through the API for this zone.
+     * 
+     */
+    @Export(name="jsdApiResultsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> jsdApiResultsEnabled;
+
+    /**
+     * @return Whether to use JavaScript Detection results submitted through the API for this zone.
+     * 
+     */
+    public Output<Boolean> jsdApiResultsEnabled() {
+        return this.jsdApiResultsEnabled;
     }
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.

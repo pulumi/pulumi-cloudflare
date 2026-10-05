@@ -31,18 +31,27 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustDeviceCustomProfile(ctx, "example_zero_trust_device_custom_profile", &cloudflare.ZeroTrustDeviceCustomProfileArgs{
-//				AccountId:           pulumi.String("699d98642c564d2e855e9661899b7252"),
-//				Match:               pulumi.String("identity.email == \"test@cloudflare.com\""),
-//				Name:                pulumi.String("Allow Developers"),
-//				Precedence:          pulumi.Float64(100),
-//				AllowModeSwitch:     pulumi.Bool(true),
-//				AllowUpdates:        pulumi.Bool(true),
-//				AllowedToLeave:      pulumi.Bool(true),
-//				AutoConnect:         pulumi.Float64(0),
+//				AccountId:       pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Name:            pulumi.String("Allow Developers"),
+//				AllowModeSwitch: pulumi.Bool(true),
+//				AllowUpdates:    pulumi.Bool(true),
+//				AllowedToLeave:  pulumi.Bool(true),
+//				AutoConnect:     pulumi.Float64(0),
+//				BrowserExtensionConfig: &cloudflare.ZeroTrustDeviceCustomProfileBrowserExtensionConfigArgs{
+//					ProxyControl: pulumi.String("unlocked"),
+//					ProxyEnabled: pulumi.Bool(true),
+//				},
 //				CaptivePortal:       pulumi.Float64(180),
+//				Default:             false,
 //				Description:         pulumi.String("Policy for test teams."),
 //				DisableAutoFallback: pulumi.Bool(true),
-//				Enabled:             pulumi.Bool(true),
+//				DnsSearchSuffixes: cloudflare.ZeroTrustDeviceCustomProfileDnsSearchSuffixArray{
+//					&cloudflare.ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs{
+//						Suffix:      pulumi.String("internal.corp"),
+//						Description: pulumi.String("Example internal domains"),
+//					},
+//				},
+//				Enabled: pulumi.Bool(true),
 //				Excludes: cloudflare.ZeroTrustDeviceCustomProfileExcludeArray{
 //					&cloudflare.ZeroTrustDeviceCustomProfileExcludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
@@ -50,6 +59,18 @@ import (
 //					},
 //				},
 //				ExcludeOfficeIps: pulumi.Bool(true),
+//				GlobalAcceleration: &cloudflare.ZeroTrustDeviceCustomProfileGlobalAccelerationArgs{
+//					ApiEndpoints: pulumi.StringArray{
+//						pulumi.String("198.51.100.1:443"),
+//					},
+//					Enabled: pulumi.Bool(true),
+//					MasqueEndpoints: pulumi.StringArray{
+//						pulumi.String("198.51.100.1:443"),
+//					},
+//					WireguardEndpoints: pulumi.StringArray{
+//						pulumi.String("198.51.100.1:2408"),
+//					},
+//				},
 //				Includes: cloudflare.ZeroTrustDeviceCustomProfileIncludeArray{
 //					&cloudflare.ZeroTrustDeviceCustomProfileIncludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
@@ -58,15 +79,25 @@ import (
 //				},
 //				LanAllowMinutes:            pulumi.Float64(30),
 //				LanAllowSubnetSize:         pulumi.Float64(24),
+//				Match:                      pulumi.String("identity.email == \"test@cloudflare.com\""),
+//				Precedence:                 pulumi.Float64(100),
+//				ProfileType:                pulumi.String("warp"),
 //				RegisterInterfaceIpWithDns: pulumi.Bool(true),
 //				SccmVpnBoundarySupport:     pulumi.Bool(false),
 //				ServiceModeV2: &cloudflare.ZeroTrustDeviceCustomProfileServiceModeV2Args{
 //					Mode: pulumi.String("proxy"),
 //					Port: pulumi.Float64(3000),
 //				},
-//				SupportUrl:     pulumi.String("https://1.1.1.1/help"),
-//				SwitchLocked:   pulumi.Bool(true),
-//				TunnelProtocol: pulumi.String("wireguard"),
+//				SupportUrl:          pulumi.String("https://1.1.1.1/help"),
+//				SwitchLocked:        pulumi.Bool(true),
+//				TunnelProtocol:      pulumi.String("wireguard"),
+//				UninstallProtection: pulumi.Bool(false),
+//				VirtualNetworks: &cloudflare.ZeroTrustDeviceCustomProfileVirtualNetworksArgs{
+//					Alloweds: pulumi.StringArray{
+//						pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//					},
+//					Default: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -94,6 +125,8 @@ type ZeroTrustDeviceCustomProfile struct {
 	AllowedToLeave pulumi.BoolOutput `pulumi:"allowedToLeave"`
 	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect pulumi.Float64Output `pulumi:"autoConnect"`
+	// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+	BrowserExtensionConfig ZeroTrustDeviceCustomProfileBrowserExtensionConfigPtrOutput `pulumi:"browserExtensionConfig"`
 	// Turn on the captive portal after the specified amount of time.
 	CaptivePortal pulumi.Float64Output `pulumi:"captivePortal"`
 	// Whether the policy is the default policy for an account.
@@ -121,12 +154,15 @@ type ZeroTrustDeviceCustomProfile struct {
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrOutput `pulumi:"lanAllowSubnetSize"`
 	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
-	Match pulumi.StringOutput `pulumi:"match"`
+	Match pulumi.StringPtrOutput `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     pulumi.StringOutput `pulumi:"name"`
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence pulumi.Float64Output `pulumi:"precedence"`
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType pulumi.StringOutput `pulumi:"profileType"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolOutput `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -139,6 +175,8 @@ type ZeroTrustDeviceCustomProfile struct {
 	TargetTests  ZeroTrustDeviceCustomProfileTargetTestArrayOutput `pulumi:"targetTests"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringOutput `pulumi:"tunnelProtocol"`
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection pulumi.BoolOutput `pulumi:"uninstallProtection"`
 	// Virtual network access settings for the device.
 	VirtualNetworks ZeroTrustDeviceCustomProfileVirtualNetworksPtrOutput `pulumi:"virtualNetworks"`
 }
@@ -152,9 +190,6 @@ func NewZeroTrustDeviceCustomProfile(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.Match == nil {
-		return nil, errors.New("invalid value for required argument 'Match'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
@@ -200,6 +235,8 @@ type zeroTrustDeviceCustomProfileState struct {
 	AllowedToLeave *bool `pulumi:"allowedToLeave"`
 	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect *float64 `pulumi:"autoConnect"`
+	// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+	BrowserExtensionConfig *ZeroTrustDeviceCustomProfileBrowserExtensionConfig `pulumi:"browserExtensionConfig"`
 	// Turn on the captive portal after the specified amount of time.
 	CaptivePortal *float64 `pulumi:"captivePortal"`
 	// Whether the policy is the default policy for an account.
@@ -233,6 +270,9 @@ type zeroTrustDeviceCustomProfileState struct {
 	PolicyId *string `pulumi:"policyId"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence *float64 `pulumi:"precedence"`
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType *string `pulumi:"profileType"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns *bool `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -245,6 +285,8 @@ type zeroTrustDeviceCustomProfileState struct {
 	TargetTests  []ZeroTrustDeviceCustomProfileTargetTest `pulumi:"targetTests"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection *bool `pulumi:"uninstallProtection"`
 	// Virtual network access settings for the device.
 	VirtualNetworks *ZeroTrustDeviceCustomProfileVirtualNetworks `pulumi:"virtualNetworks"`
 }
@@ -259,6 +301,8 @@ type ZeroTrustDeviceCustomProfileState struct {
 	AllowedToLeave pulumi.BoolPtrInput
 	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect pulumi.Float64PtrInput
+	// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+	BrowserExtensionConfig ZeroTrustDeviceCustomProfileBrowserExtensionConfigPtrInput
 	// Turn on the captive portal after the specified amount of time.
 	CaptivePortal pulumi.Float64PtrInput
 	// Whether the policy is the default policy for an account.
@@ -292,6 +336,9 @@ type ZeroTrustDeviceCustomProfileState struct {
 	PolicyId pulumi.StringPtrInput
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence pulumi.Float64PtrInput
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType pulumi.StringPtrInput
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -304,6 +351,8 @@ type ZeroTrustDeviceCustomProfileState struct {
 	TargetTests  ZeroTrustDeviceCustomProfileTargetTestArrayInput
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringPtrInput
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection pulumi.BoolPtrInput
 	// Virtual network access settings for the device.
 	VirtualNetworks ZeroTrustDeviceCustomProfileVirtualNetworksPtrInput
 }
@@ -322,6 +371,8 @@ type zeroTrustDeviceCustomProfileArgs struct {
 	AllowedToLeave *bool `pulumi:"allowedToLeave"`
 	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect *float64 `pulumi:"autoConnect"`
+	// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+	BrowserExtensionConfig *ZeroTrustDeviceCustomProfileBrowserExtensionConfig `pulumi:"browserExtensionConfig"`
 	// Turn on the captive portal after the specified amount of time.
 	CaptivePortal *float64 `pulumi:"captivePortal"`
 	// A description of the policy.
@@ -345,11 +396,14 @@ type zeroTrustDeviceCustomProfileArgs struct {
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
 	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
-	Match string `pulumi:"match"`
+	Match *string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name string `pulumi:"name"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence *float64 `pulumi:"precedence"`
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType *string `pulumi:"profileType"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns *bool `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -361,6 +415,8 @@ type zeroTrustDeviceCustomProfileArgs struct {
 	SwitchLocked *bool `pulumi:"switchLocked"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection *bool `pulumi:"uninstallProtection"`
 	// Virtual network access settings for the device.
 	VirtualNetworks *ZeroTrustDeviceCustomProfileVirtualNetworks `pulumi:"virtualNetworks"`
 }
@@ -376,6 +432,8 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	AllowedToLeave pulumi.BoolPtrInput
 	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect pulumi.Float64PtrInput
+	// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+	BrowserExtensionConfig ZeroTrustDeviceCustomProfileBrowserExtensionConfigPtrInput
 	// Turn on the captive portal after the specified amount of time.
 	CaptivePortal pulumi.Float64PtrInput
 	// A description of the policy.
@@ -399,11 +457,14 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
 	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
-	Match pulumi.StringInput
+	Match pulumi.StringPtrInput
 	// The name of the device settings profile.
 	Name pulumi.StringInput
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence pulumi.Float64PtrInput
+	// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+	// Available values: "warp", "browserExtension".
+	ProfileType pulumi.StringPtrInput
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -415,6 +476,8 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	SwitchLocked pulumi.BoolPtrInput
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringPtrInput
+	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+	UninstallProtection pulumi.BoolPtrInput
 	// Virtual network access settings for the device.
 	VirtualNetworks ZeroTrustDeviceCustomProfileVirtualNetworksPtrInput
 }
@@ -530,6 +593,13 @@ func (o ZeroTrustDeviceCustomProfileOutput) AutoConnect() pulumi.Float64Output {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64Output { return v.AutoConnect }).(pulumi.Float64Output)
 }
 
+// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+func (o ZeroTrustDeviceCustomProfileOutput) BrowserExtensionConfig() ZeroTrustDeviceCustomProfileBrowserExtensionConfigPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) ZeroTrustDeviceCustomProfileBrowserExtensionConfigPtrOutput {
+		return v.BrowserExtensionConfig
+	}).(ZeroTrustDeviceCustomProfileBrowserExtensionConfigPtrOutput)
+}
+
 // Turn on the captive portal after the specified amount of time.
 func (o ZeroTrustDeviceCustomProfileOutput) CaptivePortal() pulumi.Float64Output {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64Output { return v.CaptivePortal }).(pulumi.Float64Output)
@@ -609,8 +679,8 @@ func (o ZeroTrustDeviceCustomProfileOutput) LanAllowSubnetSize() pulumi.Float64P
 }
 
 // The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
-func (o ZeroTrustDeviceCustomProfileOutput) Match() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.Match }).(pulumi.StringOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringPtrOutput { return v.Match }).(pulumi.StringPtrOutput)
 }
 
 // The name of the device settings profile.
@@ -625,6 +695,12 @@ func (o ZeroTrustDeviceCustomProfileOutput) PolicyId() pulumi.StringOutput {
 // The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 func (o ZeroTrustDeviceCustomProfileOutput) Precedence() pulumi.Float64Output {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64Output { return v.Precedence }).(pulumi.Float64Output)
+}
+
+// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+// Available values: "warp", "browserExtension".
+func (o ZeroTrustDeviceCustomProfileOutput) ProfileType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.ProfileType }).(pulumi.StringOutput)
 }
 
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
@@ -662,6 +738,11 @@ func (o ZeroTrustDeviceCustomProfileOutput) TargetTests() ZeroTrustDeviceCustomP
 // Determines which tunnel protocol to use.
 func (o ZeroTrustDeviceCustomProfileOutput) TunnelProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.TunnelProtocol }).(pulumi.StringOutput)
+}
+
+// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+func (o ZeroTrustDeviceCustomProfileOutput) UninstallProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.UninstallProtection }).(pulumi.BoolOutput)
 }
 
 // Virtual network access settings for the device.

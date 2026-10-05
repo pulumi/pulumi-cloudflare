@@ -41,7 +41,7 @@ export interface GetAiGatewayArgs {
     accountId?: string;
     filter?: inputs.GetAiGatewayFilter;
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      */
     id?: string;
 }
@@ -52,6 +52,10 @@ export interface GetAiGatewayArgs {
 export interface GetAiGatewayResult {
     readonly accountId?: string;
     readonly authentication: boolean;
+    /**
+     * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     */
+    readonly byokOnly: boolean;
     readonly cacheInvalidateOnUpdate: boolean;
     readonly cacheTtl: number;
     readonly collectLogs: boolean;
@@ -60,7 +64,7 @@ export interface GetAiGatewayResult {
     readonly filter?: outputs.GetAiGatewayFilter;
     readonly guardrails: outputs.GetAiGatewayGuardrails;
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      */
     readonly id: string;
     readonly isDefault: boolean;
@@ -86,7 +90,7 @@ export interface GetAiGatewayResult {
      */
     readonly retryBackoff: string;
     /**
-     * Delay between retry attempts in milliseconds (0-5000)
+     * Delay between retry attempts in milliseconds (0-60000)
      */
     readonly retryDelay: number;
     /**
@@ -138,7 +142,7 @@ export interface GetAiGatewayOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetAiGatewayFilterArgs | undefined>;
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      */
     id?: pulumi.Input<string | undefined>;
 }

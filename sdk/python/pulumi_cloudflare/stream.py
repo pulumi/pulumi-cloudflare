@@ -24,6 +24,7 @@ class StreamArgs:
                  account_id: pulumi.Input[_builtins.str],
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_user: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
@@ -39,6 +40,7 @@ class StreamArgs:
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         :param pulumi.Input[_builtins.str] creator: A user-defined identifier for the media creator.
+        :param pulumi.Input[_builtins.bool] direct_user: Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.int] max_duration_seconds: The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing videos.
@@ -54,6 +56,8 @@ class StreamArgs:
             pulumi.set(__self__, "allowed_origins", allowed_origins)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if direct_user is not None:
+            pulumi.set(__self__, "direct_user", direct_user)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if max_duration_seconds is not None:
@@ -108,6 +112,18 @@ class StreamArgs:
     @creator.setter
     def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="directUser")
+    def direct_user(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+        """
+        return pulumi.get(self, "direct_user")
+
+    @direct_user.setter
+    def direct_user(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "direct_user", value)
 
     @_builtins.property
     @pulumi.getter
@@ -226,6 +242,7 @@ class _StreamState:
                  clipped_from: pulumi.Input[Optional[_builtins.str]] = None,
                  created: pulumi.Input[Optional[_builtins.str]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_user: pulumi.Input[Optional[_builtins.bool]] = None,
                  duration: pulumi.Input[Optional[_builtins.float]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  input: pulumi.Input[Optional['StreamInputArgs']] = None,
@@ -257,6 +274,7 @@ class _StreamState:
         :param pulumi.Input[_builtins.str] clipped_from: The unique identifier of the source video this video was clipped from.
         :param pulumi.Input[_builtins.str] created: The date and time the media item was created.
         :param pulumi.Input[_builtins.str] creator: A user-defined identifier for the media creator.
+        :param pulumi.Input[_builtins.bool] direct_user: Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
         :param pulumi.Input[_builtins.float] duration: The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] live_input: The live input ID used to upload a video with Stream Live.
@@ -288,6 +306,8 @@ class _StreamState:
             pulumi.set(__self__, "created", created)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if direct_user is not None:
+            pulumi.set(__self__, "direct_user", direct_user)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if identifier is not None:
@@ -394,6 +414,18 @@ class _StreamState:
     @creator.setter
     def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="directUser")
+    def direct_user(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+        """
+        return pulumi.get(self, "direct_user")
+
+    @direct_user.setter
+    def direct_user(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "direct_user", value)
 
     @_builtins.property
     @pulumi.getter
@@ -672,6 +704,7 @@ class Stream(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_user: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
@@ -707,6 +740,7 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         :param pulumi.Input[_builtins.str] creator: A user-defined identifier for the media creator.
+        :param pulumi.Input[_builtins.bool] direct_user: Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.int] max_duration_seconds: The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing videos.
@@ -761,6 +795,7 @@ class Stream(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_user: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
@@ -784,6 +819,7 @@ class Stream(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allowed_origins"] = allowed_origins
             __props__.__dict__["creator"] = creator
+            __props__.__dict__["direct_user"] = direct_user
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["max_duration_seconds"] = max_duration_seconds
             __props__.__dict__["meta"] = meta
@@ -824,6 +860,7 @@ class Stream(pulumi.CustomResource):
             clipped_from: pulumi.Input[Optional[_builtins.str]] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
+            direct_user: pulumi.Input[Optional[_builtins.bool]] = None,
             duration: pulumi.Input[Optional[_builtins.float]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             input: pulumi.Input[Optional[Union['StreamInputArgs', 'StreamInputArgsDict', 'outputs.StreamInput']]] = None,
@@ -859,6 +896,7 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] clipped_from: The unique identifier of the source video this video was clipped from.
         :param pulumi.Input[_builtins.str] created: The date and time the media item was created.
         :param pulumi.Input[_builtins.str] creator: A user-defined identifier for the media creator.
+        :param pulumi.Input[_builtins.bool] direct_user: Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
         :param pulumi.Input[_builtins.float] duration: The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] live_input: The live input ID used to upload a video with Stream Live.
@@ -889,6 +927,7 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["clipped_from"] = clipped_from
         __props__.__dict__["created"] = created
         __props__.__dict__["creator"] = creator
+        __props__.__dict__["direct_user"] = direct_user
         __props__.__dict__["duration"] = duration
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["input"] = input
@@ -953,6 +992,14 @@ class Stream(pulumi.CustomResource):
         A user-defined identifier for the media creator.
         """
         return pulumi.get(self, "creator")
+
+    @_builtins.property
+    @pulumi.getter(name="directUser")
+    def direct_user(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+        """
+        return pulumi.get(self, "direct_user")
 
     @_builtins.property
     @pulumi.getter

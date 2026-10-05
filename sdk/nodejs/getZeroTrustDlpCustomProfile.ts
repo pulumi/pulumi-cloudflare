@@ -84,6 +84,7 @@ export interface GetZeroTrustDlpCustomProfileResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly integrationId: string;
     /**
      * The name of the profile.
      */

@@ -34,6 +34,11 @@ import (
 //			_, err := cloudflare.NewSecretsStoreSecret(ctx, "example_secrets_store_secret", &cloudflare.SecretsStoreSecretArgs{
 //				AccountId: pulumi.String("985e105f4ecef8ad9ca31a8372d0c353"),
 //				StoreId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("MY_API_KEY"),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("workers"),
+//				},
+//				Value: pulumi.String("my-secret-value"),
 //			})
 //			if err != nil {
 //				return err

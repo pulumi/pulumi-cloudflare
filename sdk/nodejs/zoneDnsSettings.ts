@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  *     },
  *     multiProvider: false,
  *     nameservers: {
- *         nsSet: 1,
  *         type: "cloudflare.standard",
  *     },
  *     nsTtl: 86400,
@@ -84,7 +83,10 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
      */
     declare public readonly flattenAllCnames: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     *
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+
      */
     declare public readonly foundationDns: pulumi.Output<boolean | undefined>;
     /**
@@ -96,7 +98,7 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
      */
     declare public readonly multiProvider: pulumi.Output<boolean | undefined>;
     /**
-     * Settings determining the nameservers through which the zone should be available.
+     * Controls the nameservers through which the zone is available.
      */
     declare public readonly nameservers: pulumi.Output<outputs.ZoneDnsSettingsNameservers>;
     /**
@@ -174,7 +176,10 @@ export interface ZoneDnsSettingsState {
      */
     flattenAllCnames?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     *
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+
      */
     foundationDns?: pulumi.Input<boolean | undefined>;
     /**
@@ -186,7 +191,7 @@ export interface ZoneDnsSettingsState {
      */
     multiProvider?: pulumi.Input<boolean | undefined>;
     /**
-     * Settings determining the nameservers through which the zone should be available.
+     * Controls the nameservers through which the zone is available.
      */
     nameservers?: pulumi.Input<inputs.ZoneDnsSettingsNameservers | undefined>;
     /**
@@ -221,7 +226,10 @@ export interface ZoneDnsSettingsArgs {
      */
     flattenAllCnames?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     *
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+
      */
     foundationDns?: pulumi.Input<boolean | undefined>;
     /**
@@ -233,7 +241,7 @@ export interface ZoneDnsSettingsArgs {
      */
     multiProvider?: pulumi.Input<boolean | undefined>;
     /**
-     * Settings determining the nameservers through which the zone should be available.
+     * Controls the nameservers through which the zone is available.
      */
     nameservers?: pulumi.Input<inputs.ZoneDnsSettingsNameservers | undefined>;
     /**

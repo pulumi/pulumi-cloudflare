@@ -28,7 +28,7 @@ class GetZeroTrustAccessInfrastructureTargetResult:
     """
     A collection of values returned by getZeroTrustAccessInfrastructureTarget.
     """
-    def __init__(__self__, account_id=None, created_at=None, filter=None, hostname=None, id=None, ip=None, modified_at=None, target_id=None):
+    def __init__(__self__, account_id=None, created_at=None, filter=None, hostname=None, id=None, ip=None, modified_at=None, tags=None, target_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -50,6 +50,9 @@ class GetZeroTrustAccessInfrastructureTargetResult:
         if modified_at and not isinstance(modified_at, str):
             raise TypeError("Expected argument 'modified_at' to be a str")
         pulumi.set(__self__, "modified_at", modified_at)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if target_id and not isinstance(target_id, str):
             raise TypeError("Expected argument 'target_id' to be a str")
         pulumi.set(__self__, "target_id", target_id)
@@ -108,6 +111,14 @@ class GetZeroTrustAccessInfrastructureTargetResult:
         return pulumi.get(self, "modified_at")
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Tags assigned to the target. Empty when no tags are assigned.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[_builtins.str]:
         """
@@ -129,6 +140,7 @@ class AwaitableGetZeroTrustAccessInfrastructureTargetResult(GetZeroTrustAccessIn
             id=self.id,
             ip=self.ip,
             modified_at=self.modified_at,
+            tags=self.tags,
             target_id=self.target_id)
 
 
@@ -166,6 +178,7 @@ def get_zero_trust_access_infrastructure_target(account_id: Optional[_builtins.s
         id=pulumi.get(__ret__, 'id'),
         ip=pulumi.get(__ret__, 'ip'),
         modified_at=pulumi.get(__ret__, 'modified_at'),
+        tags=pulumi.get(__ret__, 'tags'),
         target_id=pulumi.get(__ret__, 'target_id'))
 def get_zero_trust_access_infrastructure_target_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                        filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessInfrastructureTargetFilterArgs', 'GetZeroTrustAccessInfrastructureTargetFilterArgsDict', 'outputs.GetZeroTrustAccessInfrastructureTargetFilterResult']]]] = None,
@@ -200,4 +213,5 @@ def get_zero_trust_access_infrastructure_target_output(account_id: pulumi.Input[
         id=pulumi.get(__response__, 'id'),
         ip=pulumi.get(__response__, 'ip'),
         modified_at=pulumi.get(__response__, 'modified_at'),
+        tags=pulumi.get(__response__, 'tags'),
         target_id=pulumi.get(__response__, 'target_id')))

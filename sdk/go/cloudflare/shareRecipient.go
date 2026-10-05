@@ -58,6 +58,8 @@ type ShareRecipient struct {
 	AssociationStatus pulumi.StringOutput `pulumi:"associationStatus"`
 	// When the share was created.
 	Created pulumi.StringOutput `pulumi:"created"`
+	// Include resources in the response.
+	IncludeResources pulumi.BoolPtrOutput `pulumi:"includeResources"`
 	// When the share was modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// Organization identifier.
@@ -114,6 +116,8 @@ type shareRecipientState struct {
 	AssociationStatus *string `pulumi:"associationStatus"`
 	// When the share was created.
 	Created *string `pulumi:"created"`
+	// Include resources in the response.
+	IncludeResources *bool `pulumi:"includeResources"`
 	// When the share was modified.
 	Modified *string `pulumi:"modified"`
 	// Organization identifier.
@@ -135,6 +139,8 @@ type ShareRecipientState struct {
 	AssociationStatus pulumi.StringPtrInput
 	// When the share was created.
 	Created pulumi.StringPtrInput
+	// Include resources in the response.
+	IncludeResources pulumi.BoolPtrInput
 	// When the share was modified.
 	Modified pulumi.StringPtrInput
 	// Organization identifier.
@@ -153,6 +159,8 @@ func (ShareRecipientState) ElementType() reflect.Type {
 type shareRecipientArgs struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`
+	// Include resources in the response.
+	IncludeResources *bool `pulumi:"includeResources"`
 	// Organization identifier.
 	OrganizationId *string `pulumi:"organizationId"`
 	// The account that will receive the share.
@@ -165,6 +173,8 @@ type shareRecipientArgs struct {
 type ShareRecipientArgs struct {
 	// Account identifier.
 	AccountId pulumi.StringInput
+	// Include resources in the response.
+	IncludeResources pulumi.BoolPtrInput
 	// Organization identifier.
 	OrganizationId pulumi.StringPtrInput
 	// The account that will receive the share.
@@ -276,6 +286,11 @@ func (o ShareRecipientOutput) AssociationStatus() pulumi.StringOutput {
 // When the share was created.
 func (o ShareRecipientOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareRecipient) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// Include resources in the response.
+func (o ShareRecipientOutput) IncludeResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShareRecipient) pulumi.BoolPtrOutput { return v.IncludeResources }).(pulumi.BoolPtrOutput)
 }
 
 // When the share was modified.

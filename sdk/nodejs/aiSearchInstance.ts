@@ -9,7 +9,9 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/aiSearchInstance:AiSearchInstance example '<account_id>/<id>'
+ * ```
  */
 export class AiSearchInstance extends pulumi.CustomResource {
     /**
@@ -73,13 +75,13 @@ export class AiSearchInstance extends pulumi.CustomResource {
      */
     declare public readonly fusionMethod: pulumi.Output<string>;
     /**
-     * Deprecated — use indexMethod instead.
+     * Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      *
      * @deprecated This attribute is deprecated.
      */
     declare public readonly hybridSearchEnabled: pulumi.Output<boolean>;
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      */
     declare public readonly indexMethod: pulumi.Output<outputs.AiSearchInstanceIndexMethod>;
     declare public readonly indexingOptions: pulumi.Output<outputs.AiSearchInstanceIndexingOptions>;
@@ -116,6 +118,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
     declare public readonly systemPromptRewriteQuery: pulumi.Output<string | undefined>;
     declare public readonly tokenId: pulumi.Output<string | undefined>;
     /**
+     * Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
      * Available values: "r2", "web-crawler".
      */
     declare public readonly type: pulumi.Output<string | undefined>;
@@ -277,13 +280,13 @@ export interface AiSearchInstanceState {
      */
     fusionMethod?: pulumi.Input<string | undefined>;
     /**
-     * Deprecated — use indexMethod instead.
+     * Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      *
      * @deprecated This attribute is deprecated.
      */
     hybridSearchEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      */
     indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod | undefined>;
     indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions | undefined>;
@@ -320,6 +323,7 @@ export interface AiSearchInstanceState {
     systemPromptRewriteQuery?: pulumi.Input<string | undefined>;
     tokenId?: pulumi.Input<string | undefined>;
     /**
+     * Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
      * Available values: "r2", "web-crawler".
      */
     type?: pulumi.Input<string | undefined>;
@@ -359,13 +363,13 @@ export interface AiSearchInstanceArgs {
      */
     fusionMethod?: pulumi.Input<string | undefined>;
     /**
-     * Deprecated — use indexMethod instead.
+     * Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      *
      * @deprecated This attribute is deprecated.
      */
     hybridSearchEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      */
     indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod | undefined>;
     indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions | undefined>;
@@ -396,6 +400,7 @@ export interface AiSearchInstanceArgs {
     systemPromptRewriteQuery?: pulumi.Input<string | undefined>;
     tokenId?: pulumi.Input<string | undefined>;
     /**
+     * Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
      * Available values: "r2", "web-crawler".
      */
     type?: pulumi.Input<string | undefined>;

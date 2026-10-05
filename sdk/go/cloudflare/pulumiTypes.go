@@ -28139,7 +28139,7 @@ type AccessIdentityProviderConfig struct {
 	// Enable Proof Key for Code Exchange (PKCE)
 	PkceEnabled *bool `pulumi:"pkceEnabled"`
 	// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-	// Available values: "login", "selectAccount", "none".
+	// Available values: "login", "selectAccount", "none", "consent".
 	Prompt      *string `pulumi:"prompt"`
 	RedirectUrl *string `pulumi:"redirectUrl"`
 	// When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
@@ -28154,6 +28154,8 @@ type AccessIdentityProviderConfig struct {
 	SupportGroups *bool `pulumi:"supportGroups"`
 	// The tokenEndpoint URL of your IdP
 	TokenUrl *string `pulumi:"tokenUrl"`
+	// Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+	UseLoginHint *bool `pulumi:"useLoginHint"`
 }
 
 // AccessIdentityProviderConfigInput is an input type that accepts AccessIdentityProviderConfigArgs and AccessIdentityProviderConfigOutput values.
@@ -28221,7 +28223,7 @@ type AccessIdentityProviderConfigArgs struct {
 	// Enable Proof Key for Code Exchange (PKCE)
 	PkceEnabled pulumi.BoolPtrInput `pulumi:"pkceEnabled"`
 	// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-	// Available values: "login", "selectAccount", "none".
+	// Available values: "login", "selectAccount", "none", "consent".
 	Prompt      pulumi.StringPtrInput `pulumi:"prompt"`
 	RedirectUrl pulumi.StringPtrInput `pulumi:"redirectUrl"`
 	// When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
@@ -28236,6 +28238,8 @@ type AccessIdentityProviderConfigArgs struct {
 	SupportGroups pulumi.BoolPtrInput `pulumi:"supportGroups"`
 	// The tokenEndpoint URL of your IdP
 	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
+	// Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+	UseLoginHint pulumi.BoolPtrInput `pulumi:"useLoginHint"`
 }
 
 func (AccessIdentityProviderConfigArgs) ElementType() reflect.Type {
@@ -28442,7 +28446,7 @@ func (o AccessIdentityProviderConfigOutput) PkceEnabled() pulumi.BoolPtrOutput {
 }
 
 // Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-// Available values: "login", "selectAccount", "none".
+// Available values: "login", "selectAccount", "none", "consent".
 func (o AccessIdentityProviderConfigOutput) Prompt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.Prompt }).(pulumi.StringPtrOutput)
 }
@@ -28479,6 +28483,11 @@ func (o AccessIdentityProviderConfigOutput) SupportGroups() pulumi.BoolPtrOutput
 // The tokenEndpoint URL of your IdP
 func (o AccessIdentityProviderConfigOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+func (o AccessIdentityProviderConfigOutput) UseLoginHint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *bool { return v.UseLoginHint }).(pulumi.BoolPtrOutput)
 }
 
 type AccessIdentityProviderConfigPtrOutput struct{ *pulumi.OutputState }
@@ -28750,7 +28759,7 @@ func (o AccessIdentityProviderConfigPtrOutput) PkceEnabled() pulumi.BoolPtrOutpu
 }
 
 // Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-// Available values: "login", "selectAccount", "none".
+// Available values: "login", "selectAccount", "none", "consent".
 func (o AccessIdentityProviderConfigPtrOutput) Prompt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessIdentityProviderConfig) *string {
 		if v == nil {
@@ -28827,6 +28836,16 @@ func (o AccessIdentityProviderConfigPtrOutput) TokenUrl() pulumi.StringPtrOutput
 		}
 		return v.TokenUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+func (o AccessIdentityProviderConfigPtrOutput) UseLoginHint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessIdentityProviderConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseLoginHint
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AccessIdentityProviderConfigHeaderAttribute struct {
@@ -30481,6 +30500,185 @@ func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) TouchPolicy() pulum
 		}
 		return v.TouchPolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+type AccessOrganizationServiceTokenInactivity struct {
+	// The action applied to an inactive service token.
+	// Available values: "disable", "delete".
+	Action string `pulumi:"action"`
+	// Whether automatic enforcement for inactive service tokens is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The number of days a service token must be inactive before the configured action is applied.
+	InactivityThresholdDays int `pulumi:"inactivityThresholdDays"`
+}
+
+// AccessOrganizationServiceTokenInactivityInput is an input type that accepts AccessOrganizationServiceTokenInactivityArgs and AccessOrganizationServiceTokenInactivityOutput values.
+// You can construct a concrete instance of `AccessOrganizationServiceTokenInactivityInput` via:
+//
+//	AccessOrganizationServiceTokenInactivityArgs{...}
+type AccessOrganizationServiceTokenInactivityInput interface {
+	pulumi.Input
+
+	ToAccessOrganizationServiceTokenInactivityOutput() AccessOrganizationServiceTokenInactivityOutput
+	ToAccessOrganizationServiceTokenInactivityOutputWithContext(context.Context) AccessOrganizationServiceTokenInactivityOutput
+}
+
+type AccessOrganizationServiceTokenInactivityArgs struct {
+	// The action applied to an inactive service token.
+	// Available values: "disable", "delete".
+	Action pulumi.StringInput `pulumi:"action"`
+	// Whether automatic enforcement for inactive service tokens is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The number of days a service token must be inactive before the configured action is applied.
+	InactivityThresholdDays pulumi.IntInput `pulumi:"inactivityThresholdDays"`
+}
+
+func (AccessOrganizationServiceTokenInactivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessOrganizationServiceTokenInactivity)(nil)).Elem()
+}
+
+func (i AccessOrganizationServiceTokenInactivityArgs) ToAccessOrganizationServiceTokenInactivityOutput() AccessOrganizationServiceTokenInactivityOutput {
+	return i.ToAccessOrganizationServiceTokenInactivityOutputWithContext(context.Background())
+}
+
+func (i AccessOrganizationServiceTokenInactivityArgs) ToAccessOrganizationServiceTokenInactivityOutputWithContext(ctx context.Context) AccessOrganizationServiceTokenInactivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationServiceTokenInactivityOutput)
+}
+
+func (i AccessOrganizationServiceTokenInactivityArgs) ToAccessOrganizationServiceTokenInactivityPtrOutput() AccessOrganizationServiceTokenInactivityPtrOutput {
+	return i.ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(context.Background())
+}
+
+func (i AccessOrganizationServiceTokenInactivityArgs) ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(ctx context.Context) AccessOrganizationServiceTokenInactivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationServiceTokenInactivityOutput).ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(ctx)
+}
+
+// AccessOrganizationServiceTokenInactivityPtrInput is an input type that accepts AccessOrganizationServiceTokenInactivityArgs, AccessOrganizationServiceTokenInactivityPtr and AccessOrganizationServiceTokenInactivityPtrOutput values.
+// You can construct a concrete instance of `AccessOrganizationServiceTokenInactivityPtrInput` via:
+//
+//	        AccessOrganizationServiceTokenInactivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessOrganizationServiceTokenInactivityPtrInput interface {
+	pulumi.Input
+
+	ToAccessOrganizationServiceTokenInactivityPtrOutput() AccessOrganizationServiceTokenInactivityPtrOutput
+	ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(context.Context) AccessOrganizationServiceTokenInactivityPtrOutput
+}
+
+type accessOrganizationServiceTokenInactivityPtrType AccessOrganizationServiceTokenInactivityArgs
+
+func AccessOrganizationServiceTokenInactivityPtr(v *AccessOrganizationServiceTokenInactivityArgs) AccessOrganizationServiceTokenInactivityPtrInput {
+	return (*accessOrganizationServiceTokenInactivityPtrType)(v)
+}
+
+func (*accessOrganizationServiceTokenInactivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessOrganizationServiceTokenInactivity)(nil)).Elem()
+}
+
+func (i *accessOrganizationServiceTokenInactivityPtrType) ToAccessOrganizationServiceTokenInactivityPtrOutput() AccessOrganizationServiceTokenInactivityPtrOutput {
+	return i.ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(context.Background())
+}
+
+func (i *accessOrganizationServiceTokenInactivityPtrType) ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(ctx context.Context) AccessOrganizationServiceTokenInactivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationServiceTokenInactivityPtrOutput)
+}
+
+type AccessOrganizationServiceTokenInactivityOutput struct{ *pulumi.OutputState }
+
+func (AccessOrganizationServiceTokenInactivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessOrganizationServiceTokenInactivity)(nil)).Elem()
+}
+
+func (o AccessOrganizationServiceTokenInactivityOutput) ToAccessOrganizationServiceTokenInactivityOutput() AccessOrganizationServiceTokenInactivityOutput {
+	return o
+}
+
+func (o AccessOrganizationServiceTokenInactivityOutput) ToAccessOrganizationServiceTokenInactivityOutputWithContext(ctx context.Context) AccessOrganizationServiceTokenInactivityOutput {
+	return o
+}
+
+func (o AccessOrganizationServiceTokenInactivityOutput) ToAccessOrganizationServiceTokenInactivityPtrOutput() AccessOrganizationServiceTokenInactivityPtrOutput {
+	return o.ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(context.Background())
+}
+
+func (o AccessOrganizationServiceTokenInactivityOutput) ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(ctx context.Context) AccessOrganizationServiceTokenInactivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessOrganizationServiceTokenInactivity) *AccessOrganizationServiceTokenInactivity {
+		return &v
+	}).(AccessOrganizationServiceTokenInactivityPtrOutput)
+}
+
+// The action applied to an inactive service token.
+// Available values: "disable", "delete".
+func (o AccessOrganizationServiceTokenInactivityOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessOrganizationServiceTokenInactivity) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Whether automatic enforcement for inactive service tokens is enabled.
+func (o AccessOrganizationServiceTokenInactivityOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AccessOrganizationServiceTokenInactivity) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The number of days a service token must be inactive before the configured action is applied.
+func (o AccessOrganizationServiceTokenInactivityOutput) InactivityThresholdDays() pulumi.IntOutput {
+	return o.ApplyT(func(v AccessOrganizationServiceTokenInactivity) int { return v.InactivityThresholdDays }).(pulumi.IntOutput)
+}
+
+type AccessOrganizationServiceTokenInactivityPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessOrganizationServiceTokenInactivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessOrganizationServiceTokenInactivity)(nil)).Elem()
+}
+
+func (o AccessOrganizationServiceTokenInactivityPtrOutput) ToAccessOrganizationServiceTokenInactivityPtrOutput() AccessOrganizationServiceTokenInactivityPtrOutput {
+	return o
+}
+
+func (o AccessOrganizationServiceTokenInactivityPtrOutput) ToAccessOrganizationServiceTokenInactivityPtrOutputWithContext(ctx context.Context) AccessOrganizationServiceTokenInactivityPtrOutput {
+	return o
+}
+
+func (o AccessOrganizationServiceTokenInactivityPtrOutput) Elem() AccessOrganizationServiceTokenInactivityOutput {
+	return o.ApplyT(func(v *AccessOrganizationServiceTokenInactivity) AccessOrganizationServiceTokenInactivity {
+		if v != nil {
+			return *v
+		}
+		var ret AccessOrganizationServiceTokenInactivity
+		return ret
+	}).(AccessOrganizationServiceTokenInactivityOutput)
+}
+
+// The action applied to an inactive service token.
+// Available values: "disable", "delete".
+func (o AccessOrganizationServiceTokenInactivityPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganizationServiceTokenInactivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether automatic enforcement for inactive service tokens is enabled.
+func (o AccessOrganizationServiceTokenInactivityPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessOrganizationServiceTokenInactivity) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of days a service token must be inactive before the configured action is applied.
+func (o AccessOrganizationServiceTokenInactivityPtrOutput) InactivityThresholdDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessOrganizationServiceTokenInactivity) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.InactivityThresholdDays
+	}).(pulumi.IntPtrOutput)
 }
 
 type AccessPolicyApprovalGroup struct {
@@ -51993,6 +52191,8 @@ type AiSearchInstanceIndexingOptions struct {
 	// Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
 	// Available values: "porter", "trigram".
 	KeywordTokenizer *string `pulumi:"keywordTokenizer"`
+	// Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+	UseOcr *bool `pulumi:"useOcr"`
 }
 
 // AiSearchInstanceIndexingOptionsInput is an input type that accepts AiSearchInstanceIndexingOptionsArgs and AiSearchInstanceIndexingOptionsOutput values.
@@ -52010,6 +52210,8 @@ type AiSearchInstanceIndexingOptionsArgs struct {
 	// Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
 	// Available values: "porter", "trigram".
 	KeywordTokenizer pulumi.StringPtrInput `pulumi:"keywordTokenizer"`
+	// Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+	UseOcr pulumi.BoolPtrInput `pulumi:"useOcr"`
 }
 
 func (AiSearchInstanceIndexingOptionsArgs) ElementType() reflect.Type {
@@ -52095,6 +52297,11 @@ func (o AiSearchInstanceIndexingOptionsOutput) KeywordTokenizer() pulumi.StringP
 	return o.ApplyT(func(v AiSearchInstanceIndexingOptions) *string { return v.KeywordTokenizer }).(pulumi.StringPtrOutput)
 }
 
+// Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+func (o AiSearchInstanceIndexingOptionsOutput) UseOcr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceIndexingOptions) *bool { return v.UseOcr }).(pulumi.BoolPtrOutput)
+}
+
 type AiSearchInstanceIndexingOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (AiSearchInstanceIndexingOptionsPtrOutput) ElementType() reflect.Type {
@@ -52128,6 +52335,16 @@ func (o AiSearchInstanceIndexingOptionsPtrOutput) KeywordTokenizer() pulumi.Stri
 		}
 		return v.KeywordTokenizer
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+func (o AiSearchInstanceIndexingOptionsPtrOutput) UseOcr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceIndexingOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseOcr
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AiSearchInstanceMetadata struct {
@@ -65822,7 +66039,7 @@ type DnsRecordData struct {
 	PrecisionVert *float64 `pulumi:"precisionVert"`
 	// Preference.
 	Preference *float64 `pulumi:"preference"`
-	// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+	// Priority.
 	Priority *float64 `pulumi:"priority"`
 	// Protocol.
 	Protocol *float64 `pulumi:"protocol"`
@@ -65840,7 +66057,7 @@ type DnsRecordData struct {
 	Size *float64 `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag *string `pulumi:"tag"`
-	// A valid mail server hostname, or "." for a NULL MX record.
+	// Target.
 	Target *string `pulumi:"target"`
 	// Type.
 	Type *float64 `pulumi:"type"`
@@ -65910,7 +66127,7 @@ type DnsRecordDataArgs struct {
 	PrecisionVert pulumi.Float64PtrInput `pulumi:"precisionVert"`
 	// Preference.
 	Preference pulumi.Float64PtrInput `pulumi:"preference"`
-	// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+	// Priority.
 	Priority pulumi.Float64PtrInput `pulumi:"priority"`
 	// Protocol.
 	Protocol pulumi.Float64PtrInput `pulumi:"protocol"`
@@ -65928,7 +66145,7 @@ type DnsRecordDataArgs struct {
 	Size pulumi.Float64PtrInput `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// A valid mail server hostname, or "." for a NULL MX record.
+	// Target.
 	Target pulumi.StringPtrInput `pulumi:"target"`
 	// Type.
 	Type pulumi.Float64PtrInput `pulumi:"type"`
@@ -66129,7 +66346,7 @@ func (o DnsRecordDataOutput) Preference() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DnsRecordData) *float64 { return v.Preference }).(pulumi.Float64PtrOutput)
 }
 
-// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+// Priority.
 func (o DnsRecordDataOutput) Priority() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DnsRecordData) *float64 { return v.Priority }).(pulumi.Float64PtrOutput)
 }
@@ -66174,7 +66391,7 @@ func (o DnsRecordDataOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsRecordData) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-// A valid mail server hostname, or "." for a NULL MX record.
+// Target.
 func (o DnsRecordDataOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsRecordData) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -66445,7 +66662,7 @@ func (o DnsRecordDataPtrOutput) Preference() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+// Priority.
 func (o DnsRecordDataPtrOutput) Priority() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *DnsRecordData) *float64 {
 		if v == nil {
@@ -66535,7 +66752,7 @@ func (o DnsRecordDataPtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A valid mail server hostname, or "." for a NULL MX record.
+// Target.
 func (o DnsRecordDataPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsRecordData) *string {
 		if v == nil {
@@ -66763,7 +66980,8 @@ func (o DnsRecordSettingsPtrOutput) Ipv6Only() pulumi.BoolPtrOutput {
 type EmailRoutingCatchAllAction struct {
 	// Type of action for catch-all rule.
 	// Available values: "drop", "forward", "worker".
-	Type   string   `pulumi:"type"`
+	Type string `pulumi:"type"`
+	// List of values for the action. Currently limited to a single value.
 	Values []string `pulumi:"values"`
 }
 
@@ -66781,7 +66999,8 @@ type EmailRoutingCatchAllActionInput interface {
 type EmailRoutingCatchAllActionArgs struct {
 	// Type of action for catch-all rule.
 	// Available values: "drop", "forward", "worker".
-	Type   pulumi.StringInput      `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
+	// List of values for the action. Currently limited to a single value.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -66842,6 +67061,7 @@ func (o EmailRoutingCatchAllActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailRoutingCatchAllAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// List of values for the action. Currently limited to a single value.
 func (o EmailRoutingCatchAllActionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EmailRoutingCatchAllAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -66969,7 +67189,8 @@ func (o EmailRoutingCatchAllMatcherArrayOutput) Index(i pulumi.IntInput) EmailRo
 type EmailRoutingRuleAction struct {
 	// Type of supported action.
 	// Available values: "drop", "forward", "worker".
-	Type   string   `pulumi:"type"`
+	Type string `pulumi:"type"`
+	// List of values for the action. Currently limited to a single value.
 	Values []string `pulumi:"values"`
 }
 
@@ -66987,7 +67208,8 @@ type EmailRoutingRuleActionInput interface {
 type EmailRoutingRuleActionArgs struct {
 	// Type of supported action.
 	// Available values: "drop", "forward", "worker".
-	Type   pulumi.StringInput      `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
+	// List of values for the action. Currently limited to a single value.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -67048,6 +67270,7 @@ func (o EmailRoutingRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailRoutingRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// List of values for the action. Currently limited to a single value.
 func (o EmailRoutingRuleActionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EmailRoutingRuleAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -67517,6 +67740,212 @@ func (o EmailSecurityDomainEmailsProcessedPtrOutput) TotalEmailsProcessedPreviou
 		}
 		return v.TotalEmailsProcessedPrevious
 	}).(pulumi.IntPtrOutput)
+}
+
+type FieldExtractorRule struct {
+	Description *string                   `pulumi:"description"`
+	Fields      []FieldExtractorRuleField `pulumi:"fields"`
+	Ref         string                    `pulumi:"ref"`
+}
+
+// FieldExtractorRuleInput is an input type that accepts FieldExtractorRuleArgs and FieldExtractorRuleOutput values.
+// You can construct a concrete instance of `FieldExtractorRuleInput` via:
+//
+//	FieldExtractorRuleArgs{...}
+type FieldExtractorRuleInput interface {
+	pulumi.Input
+
+	ToFieldExtractorRuleOutput() FieldExtractorRuleOutput
+	ToFieldExtractorRuleOutputWithContext(context.Context) FieldExtractorRuleOutput
+}
+
+type FieldExtractorRuleArgs struct {
+	Description pulumi.StringPtrInput             `pulumi:"description"`
+	Fields      FieldExtractorRuleFieldArrayInput `pulumi:"fields"`
+	Ref         pulumi.StringInput                `pulumi:"ref"`
+}
+
+func (FieldExtractorRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldExtractorRule)(nil)).Elem()
+}
+
+func (i FieldExtractorRuleArgs) ToFieldExtractorRuleOutput() FieldExtractorRuleOutput {
+	return i.ToFieldExtractorRuleOutputWithContext(context.Background())
+}
+
+func (i FieldExtractorRuleArgs) ToFieldExtractorRuleOutputWithContext(ctx context.Context) FieldExtractorRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractorRuleOutput)
+}
+
+// FieldExtractorRuleArrayInput is an input type that accepts FieldExtractorRuleArray and FieldExtractorRuleArrayOutput values.
+// You can construct a concrete instance of `FieldExtractorRuleArrayInput` via:
+//
+//	FieldExtractorRuleArray{ FieldExtractorRuleArgs{...} }
+type FieldExtractorRuleArrayInput interface {
+	pulumi.Input
+
+	ToFieldExtractorRuleArrayOutput() FieldExtractorRuleArrayOutput
+	ToFieldExtractorRuleArrayOutputWithContext(context.Context) FieldExtractorRuleArrayOutput
+}
+
+type FieldExtractorRuleArray []FieldExtractorRuleInput
+
+func (FieldExtractorRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldExtractorRule)(nil)).Elem()
+}
+
+func (i FieldExtractorRuleArray) ToFieldExtractorRuleArrayOutput() FieldExtractorRuleArrayOutput {
+	return i.ToFieldExtractorRuleArrayOutputWithContext(context.Background())
+}
+
+func (i FieldExtractorRuleArray) ToFieldExtractorRuleArrayOutputWithContext(ctx context.Context) FieldExtractorRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractorRuleArrayOutput)
+}
+
+type FieldExtractorRuleOutput struct{ *pulumi.OutputState }
+
+func (FieldExtractorRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldExtractorRule)(nil)).Elem()
+}
+
+func (o FieldExtractorRuleOutput) ToFieldExtractorRuleOutput() FieldExtractorRuleOutput {
+	return o
+}
+
+func (o FieldExtractorRuleOutput) ToFieldExtractorRuleOutputWithContext(ctx context.Context) FieldExtractorRuleOutput {
+	return o
+}
+
+func (o FieldExtractorRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldExtractorRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o FieldExtractorRuleOutput) Fields() FieldExtractorRuleFieldArrayOutput {
+	return o.ApplyT(func(v FieldExtractorRule) []FieldExtractorRuleField { return v.Fields }).(FieldExtractorRuleFieldArrayOutput)
+}
+
+func (o FieldExtractorRuleOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldExtractorRule) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+type FieldExtractorRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldExtractorRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldExtractorRule)(nil)).Elem()
+}
+
+func (o FieldExtractorRuleArrayOutput) ToFieldExtractorRuleArrayOutput() FieldExtractorRuleArrayOutput {
+	return o
+}
+
+func (o FieldExtractorRuleArrayOutput) ToFieldExtractorRuleArrayOutputWithContext(ctx context.Context) FieldExtractorRuleArrayOutput {
+	return o
+}
+
+func (o FieldExtractorRuleArrayOutput) Index(i pulumi.IntInput) FieldExtractorRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldExtractorRule {
+		return vs[0].([]FieldExtractorRule)[vs[1].(int)]
+	}).(FieldExtractorRuleOutput)
+}
+
+type FieldExtractorRuleField struct {
+	Expression string `pulumi:"expression"`
+	Name       string `pulumi:"name"`
+}
+
+// FieldExtractorRuleFieldInput is an input type that accepts FieldExtractorRuleFieldArgs and FieldExtractorRuleFieldOutput values.
+// You can construct a concrete instance of `FieldExtractorRuleFieldInput` via:
+//
+//	FieldExtractorRuleFieldArgs{...}
+type FieldExtractorRuleFieldInput interface {
+	pulumi.Input
+
+	ToFieldExtractorRuleFieldOutput() FieldExtractorRuleFieldOutput
+	ToFieldExtractorRuleFieldOutputWithContext(context.Context) FieldExtractorRuleFieldOutput
+}
+
+type FieldExtractorRuleFieldArgs struct {
+	Expression pulumi.StringInput `pulumi:"expression"`
+	Name       pulumi.StringInput `pulumi:"name"`
+}
+
+func (FieldExtractorRuleFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldExtractorRuleField)(nil)).Elem()
+}
+
+func (i FieldExtractorRuleFieldArgs) ToFieldExtractorRuleFieldOutput() FieldExtractorRuleFieldOutput {
+	return i.ToFieldExtractorRuleFieldOutputWithContext(context.Background())
+}
+
+func (i FieldExtractorRuleFieldArgs) ToFieldExtractorRuleFieldOutputWithContext(ctx context.Context) FieldExtractorRuleFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractorRuleFieldOutput)
+}
+
+// FieldExtractorRuleFieldArrayInput is an input type that accepts FieldExtractorRuleFieldArray and FieldExtractorRuleFieldArrayOutput values.
+// You can construct a concrete instance of `FieldExtractorRuleFieldArrayInput` via:
+//
+//	FieldExtractorRuleFieldArray{ FieldExtractorRuleFieldArgs{...} }
+type FieldExtractorRuleFieldArrayInput interface {
+	pulumi.Input
+
+	ToFieldExtractorRuleFieldArrayOutput() FieldExtractorRuleFieldArrayOutput
+	ToFieldExtractorRuleFieldArrayOutputWithContext(context.Context) FieldExtractorRuleFieldArrayOutput
+}
+
+type FieldExtractorRuleFieldArray []FieldExtractorRuleFieldInput
+
+func (FieldExtractorRuleFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldExtractorRuleField)(nil)).Elem()
+}
+
+func (i FieldExtractorRuleFieldArray) ToFieldExtractorRuleFieldArrayOutput() FieldExtractorRuleFieldArrayOutput {
+	return i.ToFieldExtractorRuleFieldArrayOutputWithContext(context.Background())
+}
+
+func (i FieldExtractorRuleFieldArray) ToFieldExtractorRuleFieldArrayOutputWithContext(ctx context.Context) FieldExtractorRuleFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractorRuleFieldArrayOutput)
+}
+
+type FieldExtractorRuleFieldOutput struct{ *pulumi.OutputState }
+
+func (FieldExtractorRuleFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldExtractorRuleField)(nil)).Elem()
+}
+
+func (o FieldExtractorRuleFieldOutput) ToFieldExtractorRuleFieldOutput() FieldExtractorRuleFieldOutput {
+	return o
+}
+
+func (o FieldExtractorRuleFieldOutput) ToFieldExtractorRuleFieldOutputWithContext(ctx context.Context) FieldExtractorRuleFieldOutput {
+	return o
+}
+
+func (o FieldExtractorRuleFieldOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldExtractorRuleField) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o FieldExtractorRuleFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldExtractorRuleField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type FieldExtractorRuleFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldExtractorRuleFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldExtractorRuleField)(nil)).Elem()
+}
+
+func (o FieldExtractorRuleFieldArrayOutput) ToFieldExtractorRuleFieldArrayOutput() FieldExtractorRuleFieldArrayOutput {
+	return o
+}
+
+func (o FieldExtractorRuleFieldArrayOutput) ToFieldExtractorRuleFieldArrayOutputWithContext(ctx context.Context) FieldExtractorRuleFieldArrayOutput {
+	return o
+}
+
+func (o FieldExtractorRuleFieldArrayOutput) Index(i pulumi.IntInput) FieldExtractorRuleFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldExtractorRuleField {
+		return vs[0].([]FieldExtractorRuleField)[vs[1].(int)]
+	}).(FieldExtractorRuleFieldOutput)
 }
 
 type FilterBody struct {
@@ -68334,7 +68763,7 @@ type FlagshipFlagRuleCondition struct {
 	Clauses   []FlagshipFlagRuleConditionClause `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator *string `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator *string `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value *string `pulumi:"value"`
@@ -68356,7 +68785,7 @@ type FlagshipFlagRuleConditionArgs struct {
 	Clauses   FlagshipFlagRuleConditionClauseArrayInput `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -68426,7 +68855,7 @@ func (o FlagshipFlagRuleConditionOutput) LogicalOperator() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v FlagshipFlagRuleCondition) *string { return v.LogicalOperator }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 func (o FlagshipFlagRuleConditionOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlagshipFlagRuleCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -68461,7 +68890,7 @@ type FlagshipFlagRuleConditionClause struct {
 	Clauses   []FlagshipFlagRuleConditionClauseClause `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator *string `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator *string `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value *string `pulumi:"value"`
@@ -68483,7 +68912,7 @@ type FlagshipFlagRuleConditionClauseArgs struct {
 	Clauses   FlagshipFlagRuleConditionClauseClauseArrayInput `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -68553,7 +68982,7 @@ func (o FlagshipFlagRuleConditionClauseOutput) LogicalOperator() pulumi.StringPt
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClause) *string { return v.LogicalOperator }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 func (o FlagshipFlagRuleConditionClauseOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClause) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -68588,7 +69017,7 @@ type FlagshipFlagRuleConditionClauseClause struct {
 	Clauses   []FlagshipFlagRuleConditionClauseClauseClause `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator *string `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator *string `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value *string `pulumi:"value"`
@@ -68610,7 +69039,7 @@ type FlagshipFlagRuleConditionClauseClauseArgs struct {
 	Clauses   FlagshipFlagRuleConditionClauseClauseClauseArrayInput `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -68682,7 +69111,7 @@ func (o FlagshipFlagRuleConditionClauseClauseOutput) LogicalOperator() pulumi.St
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClauseClause) *string { return v.LogicalOperator }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 func (o FlagshipFlagRuleConditionClauseClauseOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClauseClause) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -68717,7 +69146,7 @@ type FlagshipFlagRuleConditionClauseClauseClause struct {
 	Clauses   []FlagshipFlagRuleConditionClauseClauseClauseClause `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator *string `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator *string `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value *string `pulumi:"value"`
@@ -68739,7 +69168,7 @@ type FlagshipFlagRuleConditionClauseClauseClauseArgs struct {
 	Clauses   FlagshipFlagRuleConditionClauseClauseClauseClauseArrayInput `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -68811,7 +69240,7 @@ func (o FlagshipFlagRuleConditionClauseClauseClauseOutput) LogicalOperator() pul
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClauseClauseClause) *string { return v.LogicalOperator }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 func (o FlagshipFlagRuleConditionClauseClauseClauseOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClauseClauseClause) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -68846,7 +69275,7 @@ type FlagshipFlagRuleConditionClauseClauseClauseClause struct {
 	Clauses   []FlagshipFlagRuleConditionClauseClauseClauseClauseClause `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator *string `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator *string `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value *string `pulumi:"value"`
@@ -68868,7 +69297,7 @@ type FlagshipFlagRuleConditionClauseClauseClauseClauseArgs struct {
 	Clauses   FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArrayInput `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -68940,7 +69369,7 @@ func (o FlagshipFlagRuleConditionClauseClauseClauseClauseOutput) LogicalOperator
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClauseClauseClauseClause) *string { return v.LogicalOperator }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 func (o FlagshipFlagRuleConditionClauseClauseClauseClauseOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClauseClauseClauseClause) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -68975,7 +69404,7 @@ type FlagshipFlagRuleConditionClauseClauseClauseClauseClause struct {
 	Clauses   []string `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator *string `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator *string `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value *string `pulumi:"value"`
@@ -68997,7 +69426,7 @@ type FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArgs struct {
 	Clauses   pulumi.StringArrayInput `pulumi:"clauses"`
 	// Available values: "AND", "OR".
 	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
-	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+	// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -69067,7 +69496,7 @@ func (o FlagshipFlagRuleConditionClauseClauseClauseClauseClauseOutput) LogicalOp
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClauseClauseClauseClauseClause) *string { return v.LogicalOperator }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
 func (o FlagshipFlagRuleConditionClauseClauseClauseClauseClauseOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlagshipFlagRuleConditionClauseClauseClauseClauseClause) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
@@ -69100,7 +69529,7 @@ func (o FlagshipFlagRuleConditionClauseClauseClauseClauseClauseArrayOutput) Inde
 type FlagshipFlagRuleRollout struct {
 	// Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
 	Attribute *string `pulumi:"attribute"`
-	// Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+	// Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
 	Percentage float64 `pulumi:"percentage"`
 }
 
@@ -69118,7 +69547,7 @@ type FlagshipFlagRuleRolloutInput interface {
 type FlagshipFlagRuleRolloutArgs struct {
 	// Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
 	Attribute pulumi.StringPtrInput `pulumi:"attribute"`
-	// Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+	// Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
 	Percentage pulumi.Float64Input `pulumi:"percentage"`
 }
 
@@ -69204,7 +69633,7 @@ func (o FlagshipFlagRuleRolloutOutput) Attribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlagshipFlagRuleRollout) *string { return v.Attribute }).(pulumi.StringPtrOutput)
 }
 
-// Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+// Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
 func (o FlagshipFlagRuleRolloutOutput) Percentage() pulumi.Float64Output {
 	return o.ApplyT(func(v FlagshipFlagRuleRollout) float64 { return v.Percentage }).(pulumi.Float64Output)
 }
@@ -69243,7 +69672,7 @@ func (o FlagshipFlagRuleRolloutPtrOutput) Attribute() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+// Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
 func (o FlagshipFlagRuleRolloutPtrOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *FlagshipFlagRuleRollout) *float64 {
 		if v == nil {
@@ -69688,12 +70117,9 @@ func (o HealthcheckTcpConfigPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 type HyperdriveConfigCaching struct {
-	// Set to true to disable caching of SQL responses. Default is false.
-	Disabled *bool `pulumi:"disabled"`
-	// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-	MaxAge *int `pulumi:"maxAge"`
-	// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-	StaleWhileRevalidate *int `pulumi:"staleWhileRevalidate"`
+	Disabled             *bool `pulumi:"disabled"`
+	MaxAge               *int  `pulumi:"maxAge"`
+	StaleWhileRevalidate *int  `pulumi:"staleWhileRevalidate"`
 }
 
 // HyperdriveConfigCachingInput is an input type that accepts HyperdriveConfigCachingArgs and HyperdriveConfigCachingOutput values.
@@ -69708,12 +70134,9 @@ type HyperdriveConfigCachingInput interface {
 }
 
 type HyperdriveConfigCachingArgs struct {
-	// Set to true to disable caching of SQL responses. Default is false.
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
-	// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-	StaleWhileRevalidate pulumi.IntPtrInput `pulumi:"staleWhileRevalidate"`
+	Disabled             pulumi.BoolPtrInput `pulumi:"disabled"`
+	MaxAge               pulumi.IntPtrInput  `pulumi:"maxAge"`
+	StaleWhileRevalidate pulumi.IntPtrInput  `pulumi:"staleWhileRevalidate"`
 }
 
 func (HyperdriveConfigCachingArgs) ElementType() reflect.Type {
@@ -69793,17 +70216,14 @@ func (o HyperdriveConfigCachingOutput) ToHyperdriveConfigCachingPtrOutputWithCon
 	}).(HyperdriveConfigCachingPtrOutput)
 }
 
-// Set to true to disable caching of SQL responses. Default is false.
 func (o HyperdriveConfigCachingOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 func (o HyperdriveConfigCachingOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
 
-// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 func (o HyperdriveConfigCachingOutput) StaleWhileRevalidate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *int { return v.StaleWhileRevalidate }).(pulumi.IntPtrOutput)
 }
@@ -69832,7 +70252,6 @@ func (o HyperdriveConfigCachingPtrOutput) Elem() HyperdriveConfigCachingOutput {
 	}).(HyperdriveConfigCachingOutput)
 }
 
-// Set to true to disable caching of SQL responses. Default is false.
 func (o HyperdriveConfigCachingPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigCaching) *bool {
 		if v == nil {
@@ -69842,7 +70261,6 @@ func (o HyperdriveConfigCachingPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
 func (o HyperdriveConfigCachingPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigCaching) *int {
 		if v == nil {
@@ -69852,7 +70270,6 @@ func (o HyperdriveConfigCachingPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
 func (o HyperdriveConfigCachingPtrOutput) StaleWhileRevalidate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigCaching) *int {
 		if v == nil {
@@ -69867,7 +70284,7 @@ type HyperdriveConfigMtls struct {
 	CaCertificateId *string `pulumi:"caCertificateId"`
 	// Define mTLS certificate ID obtained after uploading client cert.
 	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
-	// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+	// PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
 	Sslmode *string `pulumi:"sslmode"`
 }
 
@@ -69887,7 +70304,7 @@ type HyperdriveConfigMtlsArgs struct {
 	CaCertificateId pulumi.StringPtrInput `pulumi:"caCertificateId"`
 	// Define mTLS certificate ID obtained after uploading client cert.
 	MtlsCertificateId pulumi.StringPtrInput `pulumi:"mtlsCertificateId"`
-	// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+	// PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
 	Sslmode pulumi.StringPtrInput `pulumi:"sslmode"`
 }
 
@@ -69978,7 +70395,7 @@ func (o HyperdriveConfigMtlsOutput) MtlsCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigMtls) *string { return v.MtlsCertificateId }).(pulumi.StringPtrOutput)
 }
 
-// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+// PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
 func (o HyperdriveConfigMtlsOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigMtls) *string { return v.Sslmode }).(pulumi.StringPtrOutput)
 }
@@ -70027,7 +70444,7 @@ func (o HyperdriveConfigMtlsPtrOutput) MtlsCertificateId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+// PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
 func (o HyperdriveConfigMtlsPtrOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigMtls) *string {
 		if v == nil {
@@ -70044,7 +70461,7 @@ type HyperdriveConfigOrigin struct {
 	AccessClientSecret *string `pulumi:"accessClientSecret"`
 	// Set the name of your origin database.
 	Database string `pulumi:"database"`
-	// Defines the host (hostname or IP) of your origin database.
+	// Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
 	Host *string `pulumi:"host"`
 	// Set the password needed to access your origin database. The API never returns this write-only value.
 	Password string `pulumi:"password"`
@@ -70077,7 +70494,7 @@ type HyperdriveConfigOriginArgs struct {
 	AccessClientSecret pulumi.StringPtrInput `pulumi:"accessClientSecret"`
 	// Set the name of your origin database.
 	Database pulumi.StringInput `pulumi:"database"`
-	// Defines the host (hostname or IP) of your origin database.
+	// Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Set the password needed to access your origin database. The API never returns this write-only value.
 	Password pulumi.StringInput `pulumi:"password"`
@@ -70184,7 +70601,7 @@ func (o HyperdriveConfigOriginOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Database }).(pulumi.StringOutput)
 }
 
-// Defines the host (hostname or IP) of your origin database.
+// Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
 func (o HyperdriveConfigOriginOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -70269,7 +70686,7 @@ func (o HyperdriveConfigOriginPtrOutput) Database() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the host (hostname or IP) of your origin database.
+// Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
 func (o HyperdriveConfigOriginPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
 		if v == nil {
@@ -74570,7 +74987,7 @@ type LogpushJobOutputOptions struct {
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames []string `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
 	MergeSubrequests *bool `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -74583,7 +75000,7 @@ type LogpushJobOutputOptions struct {
 	RecordSuffix *string `pulumi:"recordSuffix"`
 	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate *string `pulumi:"recordTemplate"`
-	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+	// Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate *float64 `pulumi:"sampleRate"`
 	// String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
 	// Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
@@ -74612,7 +75029,7 @@ type LogpushJobOutputOptionsArgs struct {
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
 	MergeSubrequests pulumi.BoolPtrInput `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -74625,7 +75042,7 @@ type LogpushJobOutputOptionsArgs struct {
 	RecordSuffix pulumi.StringPtrInput `pulumi:"recordSuffix"`
 	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate pulumi.StringPtrInput `pulumi:"recordTemplate"`
-	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+	// Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate pulumi.Float64PtrInput `pulumi:"sampleRate"`
 	// String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
 	// Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
@@ -74734,7 +75151,7 @@ func (o LogpushJobOutputOptionsOutput) FieldNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
 }
 
-// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
 func (o LogpushJobOutputOptionsOutput) MergeSubrequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) *bool { return v.MergeSubrequests }).(pulumi.BoolPtrOutput)
 }
@@ -74765,7 +75182,7 @@ func (o LogpushJobOutputOptionsOutput) RecordTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordTemplate }).(pulumi.StringPtrOutput)
 }
 
-// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+// Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 func (o LogpushJobOutputOptionsOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) *float64 { return v.SampleRate }).(pulumi.Float64PtrOutput)
 }
@@ -74850,7 +75267,7 @@ func (o LogpushJobOutputOptionsPtrOutput) FieldNames() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
 func (o LogpushJobOutputOptionsPtrOutput) MergeSubrequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LogpushJobOutputOptions) *bool {
 		if v == nil {
@@ -74911,7 +75328,7 @@ func (o LogpushJobOutputOptionsPtrOutput) RecordTemplate() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+// Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 func (o LogpushJobOutputOptionsPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *LogpushJobOutputOptions) *float64 {
 		if v == nil {
@@ -77545,8 +77962,12 @@ func (o MagicTransitSiteWanStaticAddressingPtrOutput) SecondaryAddress() pulumi.
 type MagicWanGreTunnelBgp struct {
 	// ASN used on the customer end of the BGP session
 	CustomerAsn int `pulumi:"customerAsn"`
+	// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+	ExportFilterId *string `pulumi:"exportFilterId"`
 	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	ExtraPrefixes []string `pulumi:"extraPrefixes"`
+	// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+	ImportFilterId *string `pulumi:"importFilterId"`
 	// MD5 key to use for session authentication.
 	Md5Key *string `pulumi:"md5Key"`
 }
@@ -77565,8 +77986,12 @@ type MagicWanGreTunnelBgpInput interface {
 type MagicWanGreTunnelBgpArgs struct {
 	// ASN used on the customer end of the BGP session
 	CustomerAsn pulumi.IntInput `pulumi:"customerAsn"`
+	// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+	ExportFilterId pulumi.StringPtrInput `pulumi:"exportFilterId"`
 	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	ExtraPrefixes pulumi.StringArrayInput `pulumi:"extraPrefixes"`
+	// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+	ImportFilterId pulumi.StringPtrInput `pulumi:"importFilterId"`
 	// MD5 key to use for session authentication.
 	Md5Key pulumi.StringPtrInput `pulumi:"md5Key"`
 }
@@ -77653,9 +78078,19 @@ func (o MagicWanGreTunnelBgpOutput) CustomerAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v MagicWanGreTunnelBgp) int { return v.CustomerAsn }).(pulumi.IntOutput)
 }
 
+// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+func (o MagicWanGreTunnelBgpOutput) ExportFilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgp) *string { return v.ExportFilterId }).(pulumi.StringPtrOutput)
+}
+
 // Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 func (o MagicWanGreTunnelBgpOutput) ExtraPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MagicWanGreTunnelBgp) []string { return v.ExtraPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+func (o MagicWanGreTunnelBgpOutput) ImportFilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanGreTunnelBgp) *string { return v.ImportFilterId }).(pulumi.StringPtrOutput)
 }
 
 // MD5 key to use for session authentication.
@@ -77697,6 +78132,16 @@ func (o MagicWanGreTunnelBgpPtrOutput) CustomerAsn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+func (o MagicWanGreTunnelBgpPtrOutput) ExportFilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportFilterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 func (o MagicWanGreTunnelBgpPtrOutput) ExtraPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnelBgp) []string {
@@ -77705,6 +78150,16 @@ func (o MagicWanGreTunnelBgpPtrOutput) ExtraPrefixes() pulumi.StringArrayOutput 
 		}
 		return v.ExtraPrefixes
 	}).(pulumi.StringArrayOutput)
+}
+
+// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+func (o MagicWanGreTunnelBgpPtrOutput) ImportFilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnelBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportFilterId
+	}).(pulumi.StringPtrOutput)
 }
 
 // MD5 key to use for session authentication.
@@ -78343,8 +78798,12 @@ func (o MagicWanGreTunnelHealthCheckTargetPtrOutput) Saved() pulumi.StringPtrOut
 type MagicWanIpsecTunnelBgp struct {
 	// ASN used on the customer end of the BGP session
 	CustomerAsn int `pulumi:"customerAsn"`
+	// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+	ExportFilterId *string `pulumi:"exportFilterId"`
 	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	ExtraPrefixes []string `pulumi:"extraPrefixes"`
+	// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+	ImportFilterId *string `pulumi:"importFilterId"`
 	// MD5 key to use for session authentication.
 	Md5Key *string `pulumi:"md5Key"`
 }
@@ -78363,8 +78822,12 @@ type MagicWanIpsecTunnelBgpInput interface {
 type MagicWanIpsecTunnelBgpArgs struct {
 	// ASN used on the customer end of the BGP session
 	CustomerAsn pulumi.IntInput `pulumi:"customerAsn"`
+	// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+	ExportFilterId pulumi.StringPtrInput `pulumi:"exportFilterId"`
 	// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 	ExtraPrefixes pulumi.StringArrayInput `pulumi:"extraPrefixes"`
+	// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+	ImportFilterId pulumi.StringPtrInput `pulumi:"importFilterId"`
 	// MD5 key to use for session authentication.
 	Md5Key pulumi.StringPtrInput `pulumi:"md5Key"`
 }
@@ -78451,9 +78914,19 @@ func (o MagicWanIpsecTunnelBgpOutput) CustomerAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v MagicWanIpsecTunnelBgp) int { return v.CustomerAsn }).(pulumi.IntOutput)
 }
 
+// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+func (o MagicWanIpsecTunnelBgpOutput) ExportFilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgp) *string { return v.ExportFilterId }).(pulumi.StringPtrOutput)
+}
+
 // Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 func (o MagicWanIpsecTunnelBgpOutput) ExtraPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MagicWanIpsecTunnelBgp) []string { return v.ExtraPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+func (o MagicWanIpsecTunnelBgpOutput) ImportFilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelBgp) *string { return v.ImportFilterId }).(pulumi.StringPtrOutput)
 }
 
 // MD5 key to use for session authentication.
@@ -78495,6 +78968,16 @@ func (o MagicWanIpsecTunnelBgpPtrOutput) CustomerAsn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+func (o MagicWanIpsecTunnelBgpPtrOutput) ExportFilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportFilterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
 func (o MagicWanIpsecTunnelBgpPtrOutput) ExtraPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnelBgp) []string {
@@ -78503,6 +78986,16 @@ func (o MagicWanIpsecTunnelBgpPtrOutput) ExtraPrefixes() pulumi.StringArrayOutpu
 		}
 		return v.ExtraPrefixes
 	}).(pulumi.StringArrayOutput)
+}
+
+// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+func (o MagicWanIpsecTunnelBgpPtrOutput) ImportFilterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImportFilterId
+	}).(pulumi.StringPtrOutput)
 }
 
 // MD5 key to use for session authentication.
@@ -80304,406 +80797,6 @@ func (o MoqRelayConfigLingeringSubscribePtrOutput) MaxTimeoutMs() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-type MoqRelayConfigUpstreams struct {
-	Enabled *bool `pulumi:"enabled"`
-	// Ordered list of upstream MOQT server publishers. Each entry is an
-	// object (not a bare string) so per-upstream configuration can be
-	// added in the future without another breaking change.
-	Upstreams []MoqRelayConfigUpstreamsUpstream `pulumi:"upstreams"`
-}
-
-// MoqRelayConfigUpstreamsInput is an input type that accepts MoqRelayConfigUpstreamsArgs and MoqRelayConfigUpstreamsOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsInput` via:
-//
-//	MoqRelayConfigUpstreamsArgs{...}
-type MoqRelayConfigUpstreamsInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput
-	ToMoqRelayConfigUpstreamsOutputWithContext(context.Context) MoqRelayConfigUpstreamsOutput
-}
-
-type MoqRelayConfigUpstreamsArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Ordered list of upstream MOQT server publishers. Each entry is an
-	// object (not a bare string) so per-upstream configuration can be
-	// added in the future without another breaking change.
-	Upstreams MoqRelayConfigUpstreamsUpstreamArrayInput `pulumi:"upstreams"`
-}
-
-func (MoqRelayConfigUpstreamsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput {
-	return i.ToMoqRelayConfigUpstreamsOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsOutput)
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return i.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsArgs) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsOutput).ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigUpstreamsPtrInput is an input type that accepts MoqRelayConfigUpstreamsArgs, MoqRelayConfigUpstreamsPtr and MoqRelayConfigUpstreamsPtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsPtrInput` via:
-//
-//	        MoqRelayConfigUpstreamsArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigUpstreamsPtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput
-	ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Context) MoqRelayConfigUpstreamsPtrOutput
-}
-
-type moqRelayConfigUpstreamsPtrType MoqRelayConfigUpstreamsArgs
-
-func MoqRelayConfigUpstreamsPtr(v *MoqRelayConfigUpstreamsArgs) MoqRelayConfigUpstreamsPtrInput {
-	return (*moqRelayConfigUpstreamsPtrType)(v)
-}
-
-func (*moqRelayConfigUpstreamsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (i *moqRelayConfigUpstreamsPtrType) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return i.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigUpstreamsPtrType) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigUpstreamsOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsOutput() MoqRelayConfigUpstreamsOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ToMoqRelayConfigUpstreamsPtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigUpstreamsOutput) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigUpstreams) *MoqRelayConfigUpstreams {
-		return &v
-	}).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-func (o MoqRelayConfigUpstreamsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigUpstreams) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Ordered list of upstream MOQT server publishers. Each entry is an
-// object (not a bare string) so per-upstream configuration can be
-// added in the future without another breaking change.
-func (o MoqRelayConfigUpstreamsOutput) Upstreams() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o.ApplyT(func(v MoqRelayConfigUpstreams) []MoqRelayConfigUpstreamsUpstream { return v.Upstreams }).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
-}
-
-type MoqRelayConfigUpstreamsPtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigUpstreams)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) ToMoqRelayConfigUpstreamsPtrOutput() MoqRelayConfigUpstreamsPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) ToMoqRelayConfigUpstreamsPtrOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) Elem() MoqRelayConfigUpstreamsOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) MoqRelayConfigUpstreams {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfigUpstreams
-		return ret
-	}).(MoqRelayConfigUpstreamsOutput)
-}
-
-func (o MoqRelayConfigUpstreamsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Ordered list of upstream MOQT server publishers. Each entry is an
-// object (not a bare string) so per-upstream configuration can be
-// added in the future without another breaking change.
-func (o MoqRelayConfigUpstreamsPtrOutput) Upstreams() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o.ApplyT(func(v *MoqRelayConfigUpstreams) []MoqRelayConfigUpstreamsUpstream {
-		if v == nil {
-			return nil
-		}
-		return v.Upstreams
-	}).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
-}
-
-type MoqRelayConfigUpstreamsUpstream struct {
-	// Upstream MOQT server publisher URL. Must be an absolute URL with a
-	// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
-	// (WebTransport). Validated on update (PUT); rejected with 21013.
-	Url *string `pulumi:"url"`
-}
-
-// MoqRelayConfigUpstreamsUpstreamInput is an input type that accepts MoqRelayConfigUpstreamsUpstreamArgs and MoqRelayConfigUpstreamsUpstreamOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsUpstreamInput` via:
-//
-//	MoqRelayConfigUpstreamsUpstreamArgs{...}
-type MoqRelayConfigUpstreamsUpstreamInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput
-	ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(context.Context) MoqRelayConfigUpstreamsUpstreamOutput
-}
-
-type MoqRelayConfigUpstreamsUpstreamArgs struct {
-	// Upstream MOQT server publisher URL. Must be an absolute URL with a
-	// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
-	// (WebTransport). Validated on update (PUT); rejected with 21013.
-	Url pulumi.StringPtrInput `pulumi:"url"`
-}
-
-func (MoqRelayConfigUpstreamsUpstreamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
-}
-
-func (i MoqRelayConfigUpstreamsUpstreamArgs) ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput {
-	return i.ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsUpstreamArgs) ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsUpstreamOutput)
-}
-
-// MoqRelayConfigUpstreamsUpstreamArrayInput is an input type that accepts MoqRelayConfigUpstreamsUpstreamArray and MoqRelayConfigUpstreamsUpstreamArrayOutput values.
-// You can construct a concrete instance of `MoqRelayConfigUpstreamsUpstreamArrayInput` via:
-//
-//	MoqRelayConfigUpstreamsUpstreamArray{ MoqRelayConfigUpstreamsUpstreamArgs{...} }
-type MoqRelayConfigUpstreamsUpstreamArrayInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput
-	ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput
-}
-
-type MoqRelayConfigUpstreamsUpstreamArray []MoqRelayConfigUpstreamsUpstreamInput
-
-func (MoqRelayConfigUpstreamsUpstreamArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
-}
-
-func (i MoqRelayConfigUpstreamsUpstreamArray) ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return i.ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigUpstreamsUpstreamArray) ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigUpstreamsUpstreamArrayOutput)
-}
-
-type MoqRelayConfigUpstreamsUpstreamOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsUpstreamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamOutput) ToMoqRelayConfigUpstreamsUpstreamOutput() MoqRelayConfigUpstreamsUpstreamOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamOutput) ToMoqRelayConfigUpstreamsUpstreamOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamOutput {
-	return o
-}
-
-// Upstream MOQT server publisher URL. Must be an absolute URL with a
-// host and a scheme the relay can dial: moqt:// (raw QUIC) or https://
-// (WebTransport). Validated on update (PUT); rejected with 21013.
-func (o MoqRelayConfigUpstreamsUpstreamOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigUpstreamsUpstream) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type MoqRelayConfigUpstreamsUpstreamArrayOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigUpstreamsUpstreamArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MoqRelayConfigUpstreamsUpstream)(nil)).Elem()
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) ToMoqRelayConfigUpstreamsUpstreamArrayOutput() MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) ToMoqRelayConfigUpstreamsUpstreamArrayOutputWithContext(ctx context.Context) MoqRelayConfigUpstreamsUpstreamArrayOutput {
-	return o
-}
-
-func (o MoqRelayConfigUpstreamsUpstreamArrayOutput) Index(i pulumi.IntInput) MoqRelayConfigUpstreamsUpstreamOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MoqRelayConfigUpstreamsUpstream {
-		return vs[0].([]MoqRelayConfigUpstreamsUpstream)[vs[1].(int)]
-	}).(MoqRelayConfigUpstreamsUpstreamOutput)
-}
-
-type NelSettingValue struct {
-	// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// NelSettingValueInput is an input type that accepts NelSettingValueArgs and NelSettingValueOutput values.
-// You can construct a concrete instance of `NelSettingValueInput` via:
-//
-//	NelSettingValueArgs{...}
-type NelSettingValueInput interface {
-	pulumi.Input
-
-	ToNelSettingValueOutput() NelSettingValueOutput
-	ToNelSettingValueOutputWithContext(context.Context) NelSettingValueOutput
-}
-
-type NelSettingValueArgs struct {
-	// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (NelSettingValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NelSettingValue)(nil)).Elem()
-}
-
-func (i NelSettingValueArgs) ToNelSettingValueOutput() NelSettingValueOutput {
-	return i.ToNelSettingValueOutputWithContext(context.Background())
-}
-
-func (i NelSettingValueArgs) ToNelSettingValueOutputWithContext(ctx context.Context) NelSettingValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NelSettingValueOutput)
-}
-
-func (i NelSettingValueArgs) ToNelSettingValuePtrOutput() NelSettingValuePtrOutput {
-	return i.ToNelSettingValuePtrOutputWithContext(context.Background())
-}
-
-func (i NelSettingValueArgs) ToNelSettingValuePtrOutputWithContext(ctx context.Context) NelSettingValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NelSettingValueOutput).ToNelSettingValuePtrOutputWithContext(ctx)
-}
-
-// NelSettingValuePtrInput is an input type that accepts NelSettingValueArgs, NelSettingValuePtr and NelSettingValuePtrOutput values.
-// You can construct a concrete instance of `NelSettingValuePtrInput` via:
-//
-//	        NelSettingValueArgs{...}
-//
-//	or:
-//
-//	        nil
-type NelSettingValuePtrInput interface {
-	pulumi.Input
-
-	ToNelSettingValuePtrOutput() NelSettingValuePtrOutput
-	ToNelSettingValuePtrOutputWithContext(context.Context) NelSettingValuePtrOutput
-}
-
-type nelSettingValuePtrType NelSettingValueArgs
-
-func NelSettingValuePtr(v *NelSettingValueArgs) NelSettingValuePtrInput {
-	return (*nelSettingValuePtrType)(v)
-}
-
-func (*nelSettingValuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NelSettingValue)(nil)).Elem()
-}
-
-func (i *nelSettingValuePtrType) ToNelSettingValuePtrOutput() NelSettingValuePtrOutput {
-	return i.ToNelSettingValuePtrOutputWithContext(context.Background())
-}
-
-func (i *nelSettingValuePtrType) ToNelSettingValuePtrOutputWithContext(ctx context.Context) NelSettingValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NelSettingValuePtrOutput)
-}
-
-type NelSettingValueOutput struct{ *pulumi.OutputState }
-
-func (NelSettingValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NelSettingValue)(nil)).Elem()
-}
-
-func (o NelSettingValueOutput) ToNelSettingValueOutput() NelSettingValueOutput {
-	return o
-}
-
-func (o NelSettingValueOutput) ToNelSettingValueOutputWithContext(ctx context.Context) NelSettingValueOutput {
-	return o
-}
-
-func (o NelSettingValueOutput) ToNelSettingValuePtrOutput() NelSettingValuePtrOutput {
-	return o.ToNelSettingValuePtrOutputWithContext(context.Background())
-}
-
-func (o NelSettingValueOutput) ToNelSettingValuePtrOutputWithContext(ctx context.Context) NelSettingValuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NelSettingValue) *NelSettingValue {
-		return &v
-	}).(NelSettingValuePtrOutput)
-}
-
-// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
-func (o NelSettingValueOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v NelSettingValue) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type NelSettingValuePtrOutput struct{ *pulumi.OutputState }
-
-func (NelSettingValuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NelSettingValue)(nil)).Elem()
-}
-
-func (o NelSettingValuePtrOutput) ToNelSettingValuePtrOutput() NelSettingValuePtrOutput {
-	return o
-}
-
-func (o NelSettingValuePtrOutput) ToNelSettingValuePtrOutputWithContext(ctx context.Context) NelSettingValuePtrOutput {
-	return o
-}
-
-func (o NelSettingValuePtrOutput) Elem() NelSettingValueOutput {
-	return o.ApplyT(func(v *NelSettingValue) NelSettingValue {
-		if v != nil {
-			return *v
-		}
-		var ret NelSettingValue
-		return ret
-	}).(NelSettingValueOutput)
-}
-
-// Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint.
-func (o NelSettingValuePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NelSettingValue) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersPtrInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
@@ -81091,6 +81184,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaConfigPtrInput)(nil)).Elem(), AccessOrganizationMfaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaSshPivKeyRequirementsInput)(nil)).Elem(), AccessOrganizationMfaSshPivKeyRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaSshPivKeyRequirementsPtrInput)(nil)).Elem(), AccessOrganizationMfaSshPivKeyRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationServiceTokenInactivityInput)(nil)).Elem(), AccessOrganizationServiceTokenInactivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationServiceTokenInactivityPtrInput)(nil)).Elem(), AccessOrganizationServiceTokenInactivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupInput)(nil)).Elem(), AccessPolicyApprovalGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupArrayInput)(nil)).Elem(), AccessPolicyApprovalGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyConnectionRulesInput)(nil)).Elem(), AccessPolicyConnectionRulesArgs{})
@@ -81547,6 +81642,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailSecurityDomainAuthorizationPtrInput)(nil)).Elem(), EmailSecurityDomainAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailSecurityDomainEmailsProcessedInput)(nil)).Elem(), EmailSecurityDomainEmailsProcessedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailSecurityDomainEmailsProcessedPtrInput)(nil)).Elem(), EmailSecurityDomainEmailsProcessedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldExtractorRuleInput)(nil)).Elem(), FieldExtractorRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldExtractorRuleArrayInput)(nil)).Elem(), FieldExtractorRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldExtractorRuleFieldInput)(nil)).Elem(), FieldExtractorRuleFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldExtractorRuleFieldArrayInput)(nil)).Elem(), FieldExtractorRuleFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterBodyInput)(nil)).Elem(), FilterBodyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterBodyArrayInput)(nil)).Elem(), FilterBodyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallRuleActionInput)(nil)).Elem(), FirewallRuleActionArgs{})
@@ -81697,12 +81796,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigPtrInput)(nil)).Elem(), MoqRelayConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribeInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribePtrInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsPtrInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsUpstreamInput)(nil)).Elem(), MoqRelayConfigUpstreamsUpstreamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsUpstreamArrayInput)(nil)).Elem(), MoqRelayConfigUpstreamsUpstreamArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NelSettingValueInput)(nil)).Elem(), NelSettingValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NelSettingValuePtrInput)(nil)).Elem(), NelSettingValueArgs{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -82089,6 +82182,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessOrganizationMfaConfigPtrOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationMfaSshPivKeyRequirementsOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationMfaSshPivKeyRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(AccessOrganizationServiceTokenInactivityOutput{})
+	pulumi.RegisterOutputType(AccessOrganizationServiceTokenInactivityPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyApprovalGroupOutput{})
 	pulumi.RegisterOutputType(AccessPolicyApprovalGroupArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyConnectionRulesOutput{})
@@ -82545,6 +82640,10 @@ func init() {
 	pulumi.RegisterOutputType(EmailSecurityDomainAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(EmailSecurityDomainEmailsProcessedOutput{})
 	pulumi.RegisterOutputType(EmailSecurityDomainEmailsProcessedPtrOutput{})
+	pulumi.RegisterOutputType(FieldExtractorRuleOutput{})
+	pulumi.RegisterOutputType(FieldExtractorRuleArrayOutput{})
+	pulumi.RegisterOutputType(FieldExtractorRuleFieldOutput{})
+	pulumi.RegisterOutputType(FieldExtractorRuleFieldArrayOutput{})
 	pulumi.RegisterOutputType(FilterBodyOutput{})
 	pulumi.RegisterOutputType(FilterBodyArrayOutput{})
 	pulumi.RegisterOutputType(FirewallRuleActionOutput{})
@@ -82695,10 +82794,4 @@ func init() {
 	pulumi.RegisterOutputType(MoqRelayConfigPtrOutput{})
 	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribeOutput{})
 	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribePtrOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsPtrOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsUpstreamOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsUpstreamArrayOutput{})
-	pulumi.RegisterOutputType(NelSettingValueOutput{})
-	pulumi.RegisterOutputType(NelSettingValuePtrOutput{})
 }

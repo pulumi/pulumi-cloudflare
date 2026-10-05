@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomHostname = Cloudflare.GetCustomHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomHostnameId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomHostnameId = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomHostname = Cloudflare.GetCustomHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomHostnameId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomHostnameId = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomHostname = Cloudflare.GetCustomHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomHostnameId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomHostnameId = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
         ///     });
         /// 
         /// });
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomHostnameArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Custom hostname identifier tag.
         /// </summary>
         [Input("customHostnameId")]
         public string? CustomHostnameId { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomHostnameInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Custom hostname identifier tag.
         /// </summary>
         [Input("customHostnameId")]
         public Input<string>? CustomHostnameId { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Identifier.
+        /// Custom hostname identifier tag.
         /// </summary>
         public readonly string? CustomHostnameId;
         /// <summary>
@@ -173,7 +173,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// Identifier.
+        /// Custom hostname identifier tag.
         /// </summary>
         public readonly string Id;
         /// <summary>

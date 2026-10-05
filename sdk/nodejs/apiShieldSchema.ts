@@ -74,6 +74,10 @@ export class ApiShieldSchema extends pulumi.CustomResource {
      * Name of the schema
      */
     declare public readonly name: pulumi.Output<string | undefined>;
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    declare public readonly omitSource: pulumi.Output<boolean>;
     declare public /*out*/ readonly schema: pulumi.Output<outputs.ApiShieldSchemaSchema>;
     declare public readonly schemaId: pulumi.Output<string | undefined>;
     /**
@@ -108,6 +112,7 @@ export class ApiShieldSchema extends pulumi.CustomResource {
             resourceInputs["file"] = state?.file;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["name"] = state?.name;
+            resourceInputs["omitSource"] = state?.omitSource;
             resourceInputs["schema"] = state?.schema;
             resourceInputs["schemaId"] = state?.schemaId;
             resourceInputs["source"] = state?.source;
@@ -128,6 +133,7 @@ export class ApiShieldSchema extends pulumi.CustomResource {
             resourceInputs["file"] = args?.file;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
+            resourceInputs["omitSource"] = args?.omitSource;
             resourceInputs["schemaId"] = args?.schemaId;
             resourceInputs["validationEnabled"] = args?.validationEnabled;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -159,6 +165,10 @@ export interface ApiShieldSchemaState {
      * Name of the schema
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    omitSource?: pulumi.Input<boolean | undefined>;
     schema?: pulumi.Input<inputs.ApiShieldSchemaSchema | undefined>;
     schemaId?: pulumi.Input<string | undefined>;
     /**
@@ -194,6 +204,10 @@ export interface ApiShieldSchemaArgs {
      * Name of the schema
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    omitSource?: pulumi.Input<boolean | undefined>;
     schemaId?: pulumi.Input<string | undefined>;
     /**
      * Flag whether schema is enabled for validation.

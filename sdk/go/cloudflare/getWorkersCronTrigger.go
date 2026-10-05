@@ -56,7 +56,7 @@ func LookupWorkersCronTrigger(ctx *pulumi.Context, args *LookupWorkersCronTrigge
 type LookupWorkersCronTriggerArgs struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 }
 
@@ -64,10 +64,10 @@ type LookupWorkersCronTriggerArgs struct {
 type LookupWorkersCronTriggerResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	Id        string                          `pulumi:"id"`
 	Schedules []GetWorkersCronTriggerSchedule `pulumi:"schedules"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 }
 
@@ -80,7 +80,7 @@ func LookupWorkersCronTriggerOutput(ctx *pulumi.Context, args LookupWorkersCronT
 type LookupWorkersCronTriggerOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 }
 
@@ -108,7 +108,7 @@ func (o LookupWorkersCronTriggerResultOutput) AccountId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupWorkersCronTriggerResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script.
 func (o LookupWorkersCronTriggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCronTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -117,7 +117,7 @@ func (o LookupWorkersCronTriggerResultOutput) Schedules() GetWorkersCronTriggerS
 	return o.ApplyT(func(v LookupWorkersCronTriggerResult) []GetWorkersCronTriggerSchedule { return v.Schedules }).(GetWorkersCronTriggerScheduleArrayOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script.
 func (o LookupWorkersCronTriggerResultOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCronTriggerResult) string { return v.ScriptName }).(pulumi.StringOutput)
 }

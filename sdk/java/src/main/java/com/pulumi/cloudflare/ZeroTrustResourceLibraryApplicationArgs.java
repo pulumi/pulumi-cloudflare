@@ -29,15 +29,15 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
      * Returns the category ID.
      * 
      */
-    @Import(name="categoryId", required=true)
-    private Output<Integer> categoryId;
+    @Import(name="categoryId")
+    private @Nullable Output<Integer> categoryId;
 
     /**
      * @return Returns the category ID.
      * 
      */
-    public Output<Integer> categoryId() {
-        return this.categoryId;
+    public Optional<Output<Integer>> categoryId() {
+        return Optional.ofNullable(this.categoryId);
     }
 
     /**
@@ -59,26 +59,26 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
      * Returns the human readable ID.
      * 
      */
-    @Import(name="humanId", required=true)
-    private Output<String> humanId;
+    @Import(name="humanId")
+    private @Nullable Output<String> humanId;
 
     /**
      * @return Returns the human readable ID.
      * 
      */
-    public Output<String> humanId() {
-        return this.humanId;
+    public Optional<Output<String>> humanId() {
+        return Optional.ofNullable(this.humanId);
     }
 
     /**
-     * IP subnets matched by the application.
+     * IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      * 
      */
     @Import(name="ipSubnets")
     private @Nullable Output<List<String>> ipSubnets;
 
     /**
-     * @return IP subnets matched by the application.
+     * @return IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      * 
      */
     public Optional<Output<List<String>>> ipSubnets() {
@@ -89,15 +89,15 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
      * Returns the application name.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Returns the application name.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -176,7 +176,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder categoryId(Output<Integer> categoryId) {
+        public Builder categoryId(@Nullable Output<Integer> categoryId) {
             $.categoryId = categoryId;
             return this;
         }
@@ -228,7 +228,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder humanId(Output<String> humanId) {
+        public Builder humanId(@Nullable Output<String> humanId) {
             $.humanId = humanId;
             return this;
         }
@@ -244,7 +244,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param ipSubnets IP subnets matched by the application.
+         * @param ipSubnets IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param ipSubnets IP subnets matched by the application.
+         * @param ipSubnets IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param ipSubnets IP subnets matched by the application.
+         * @param ipSubnets IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -360,15 +360,6 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         public ZeroTrustResourceLibraryApplicationArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustResourceLibraryApplicationArgs", "accountId");
-            }
-            if ($.categoryId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustResourceLibraryApplicationArgs", "categoryId");
-            }
-            if ($.humanId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustResourceLibraryApplicationArgs", "humanId");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustResourceLibraryApplicationArgs", "name");
             }
             return $;
         }

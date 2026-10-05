@@ -94,32 +94,32 @@ public final class GetEmailSecurityAllowPolicyFilter extends com.pulumi.resource
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * Filter by exact pattern value.
+     * 
+     */
     @Import(name="pattern")
     private @Nullable String pattern;
 
+    /**
+     * @return Filter by exact pattern value.
+     * 
+     */
     public Optional<String> pattern() {
         return Optional.ofNullable(this.pattern);
     }
 
     /**
-     * Type of pattern matching.
-     * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
-     * - DOMAIN: matches a domain name (e.g. `example.com`)
-     * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-     * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
-     *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * Filter by pattern type.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     @Import(name="patternType")
     private @Nullable String patternType;
 
     /**
-     * @return Type of pattern matching.
-     * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
-     * - DOMAIN: matches a domain name (e.g. `example.com`)
-     * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-     * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
-     *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Filter by pattern type.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<String> patternType() {
@@ -245,18 +245,20 @@ public final class GetEmailSecurityAllowPolicyFilter extends com.pulumi.resource
             return this;
         }
 
+        /**
+         * @param pattern Filter by exact pattern value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(@Nullable String pattern) {
             $.pattern = pattern;
             return this;
         }
 
         /**
-         * @param patternType Type of pattern matching.
-         * - EMAIL: matches a full email address (e.g. `user{@literal @}example.com`)
-         * - DOMAIN: matches a domain name (e.g. `example.com`)
-         * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-         * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
-         *   Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * @param patternType Filter by pattern type.
+         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 

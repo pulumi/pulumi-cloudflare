@@ -46,7 +46,9 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/callsTurnApp:CallsTurnApp example '<account_id>/<key_id>'
+// ```
 type CallsTurnApp struct {
 	pulumi.CustomResourceState
 
@@ -57,7 +59,7 @@ type CallsTurnApp struct {
 	// Bearer token
 	Key pulumi.StringOutput `pulumi:"key"`
 	// A Cloudflare-generated unique identifier for a item.
-	KeyId pulumi.StringPtrOutput `pulumi:"keyId"`
+	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// The date and time the item was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// A short description of a TURN key, not shown to end users.
@@ -262,8 +264,8 @@ func (o CallsTurnAppOutput) Key() pulumi.StringOutput {
 }
 
 // A Cloudflare-generated unique identifier for a item.
-func (o CallsTurnAppOutput) KeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CallsTurnApp) pulumi.StringPtrOutput { return v.KeyId }).(pulumi.StringPtrOutput)
+func (o CallsTurnAppOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CallsTurnApp) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
 
 // The date and time the item was last modified.

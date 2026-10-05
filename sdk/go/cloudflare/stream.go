@@ -59,6 +59,8 @@ type Stream struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// A user-defined identifier for the media creator.
 	Creator pulumi.StringPtrOutput `pulumi:"creator"`
+	// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+	DirectUser pulumi.BoolOutput `pulumi:"directUser"`
 	// The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
 	Duration pulumi.Float64Output `pulumi:"duration"`
 	// A Cloudflare-generated unique identifier for a media item.
@@ -147,6 +149,8 @@ type streamState struct {
 	Created *string `pulumi:"created"`
 	// A user-defined identifier for the media creator.
 	Creator *string `pulumi:"creator"`
+	// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+	DirectUser *bool `pulumi:"directUser"`
 	// The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
 	Duration *float64 `pulumi:"duration"`
 	// A Cloudflare-generated unique identifier for a media item.
@@ -203,6 +207,8 @@ type StreamState struct {
 	Created pulumi.StringPtrInput
 	// A user-defined identifier for the media creator.
 	Creator pulumi.StringPtrInput
+	// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+	DirectUser pulumi.BoolPtrInput
 	// The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
 	Duration pulumi.Float64PtrInput
 	// A Cloudflare-generated unique identifier for a media item.
@@ -259,6 +265,8 @@ type streamArgs struct {
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
 	// A user-defined identifier for the media creator.
 	Creator *string `pulumi:"creator"`
+	// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+	DirectUser *bool `pulumi:"directUser"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `pulumi:"identifier"`
 	// The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
@@ -287,6 +295,8 @@ type StreamArgs struct {
 	AllowedOrigins pulumi.StringArrayInput
 	// A user-defined identifier for the media creator.
 	Creator pulumi.StringPtrInput
+	// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+	DirectUser pulumi.BoolPtrInput
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringPtrInput
 	// The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
@@ -417,6 +427,11 @@ func (o StreamOutput) Created() pulumi.StringOutput {
 // A user-defined identifier for the media creator.
 func (o StreamOutput) Creator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.Creator }).(pulumi.StringPtrOutput)
+}
+
+// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+func (o StreamOutput) DirectUser() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Stream) pulumi.BoolOutput { return v.DirectUser }).(pulumi.BoolOutput)
 }
 
 // The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.

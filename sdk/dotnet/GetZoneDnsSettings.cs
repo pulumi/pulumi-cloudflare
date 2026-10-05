@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool FlattenAllCnames;
         /// <summary>
-        /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
         /// </summary>
         public readonly bool FoundationDns;
         /// <summary>
@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool MultiProvider;
         /// <summary>
-        /// Settings determining the nameservers through which the zone should be available.
+        /// Controls the nameservers through which the zone is available.
         /// </summary>
         public readonly Outputs.GetZoneDnsSettingsNameserversResult Nameservers;
         /// <summary>

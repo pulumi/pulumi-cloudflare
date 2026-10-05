@@ -34,8 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewQueue(ctx, "example_queue", &cloudflare.QueueArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				QueueName: pulumi.String("example-queue"),
+//				AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				QueueName:    pulumi.String("example-queue"),
+//				Jurisdiction: pulumi.String("eu"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,12 +60,14 @@ type Queue struct {
 	Consumers           QueueConsumerTypeArrayOutput `pulumi:"consumers"`
 	ConsumersTotalCount pulumi.Float64Output         `pulumi:"consumersTotalCount"`
 	CreatedOn           pulumi.StringOutput          `pulumi:"createdOn"`
-	ModifiedOn          pulumi.StringOutput          `pulumi:"modifiedOn"`
-	Producers           QueueProducerArrayOutput     `pulumi:"producers"`
-	ProducersTotalCount pulumi.Float64Output         `pulumi:"producersTotalCount"`
-	QueueId             pulumi.StringOutput          `pulumi:"queueId"`
-	QueueName           pulumi.StringOutput          `pulumi:"queueName"`
-	Settings            QueueSettingsOutput          `pulumi:"settings"`
+	// Available values: "eu", "us", "fedramp".
+	Jurisdiction        pulumi.StringPtrOutput   `pulumi:"jurisdiction"`
+	ModifiedOn          pulumi.StringOutput      `pulumi:"modifiedOn"`
+	Producers           QueueProducerArrayOutput `pulumi:"producers"`
+	ProducersTotalCount pulumi.Float64Output     `pulumi:"producersTotalCount"`
+	QueueId             pulumi.StringOutput      `pulumi:"queueId"`
+	QueueName           pulumi.StringOutput      `pulumi:"queueName"`
+	Settings            QueueSettingsOutput      `pulumi:"settings"`
 }
 
 // NewQueue registers a new resource with the given unique name, arguments, and options.
@@ -108,12 +111,14 @@ type queueState struct {
 	Consumers           []QueueConsumerType `pulumi:"consumers"`
 	ConsumersTotalCount *float64            `pulumi:"consumersTotalCount"`
 	CreatedOn           *string             `pulumi:"createdOn"`
-	ModifiedOn          *string             `pulumi:"modifiedOn"`
-	Producers           []QueueProducer     `pulumi:"producers"`
-	ProducersTotalCount *float64            `pulumi:"producersTotalCount"`
-	QueueId             *string             `pulumi:"queueId"`
-	QueueName           *string             `pulumi:"queueName"`
-	Settings            *QueueSettings      `pulumi:"settings"`
+	// Available values: "eu", "us", "fedramp".
+	Jurisdiction        *string         `pulumi:"jurisdiction"`
+	ModifiedOn          *string         `pulumi:"modifiedOn"`
+	Producers           []QueueProducer `pulumi:"producers"`
+	ProducersTotalCount *float64        `pulumi:"producersTotalCount"`
+	QueueId             *string         `pulumi:"queueId"`
+	QueueName           *string         `pulumi:"queueName"`
+	Settings            *QueueSettings  `pulumi:"settings"`
 }
 
 type QueueState struct {
@@ -122,6 +127,8 @@ type QueueState struct {
 	Consumers           QueueConsumerTypeArrayInput
 	ConsumersTotalCount pulumi.Float64PtrInput
 	CreatedOn           pulumi.StringPtrInput
+	// Available values: "eu", "us", "fedramp".
+	Jurisdiction        pulumi.StringPtrInput
 	ModifiedOn          pulumi.StringPtrInput
 	Producers           QueueProducerArrayInput
 	ProducersTotalCount pulumi.Float64PtrInput
@@ -136,17 +143,21 @@ func (QueueState) ElementType() reflect.Type {
 
 type queueArgs struct {
 	// A Resource identifier.
-	AccountId string         `pulumi:"accountId"`
-	QueueName string         `pulumi:"queueName"`
-	Settings  *QueueSettings `pulumi:"settings"`
+	AccountId string `pulumi:"accountId"`
+	// Available values: "eu", "us", "fedramp".
+	Jurisdiction *string        `pulumi:"jurisdiction"`
+	QueueName    string         `pulumi:"queueName"`
+	Settings     *QueueSettings `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a Queue resource.
 type QueueArgs struct {
 	// A Resource identifier.
 	AccountId pulumi.StringInput
-	QueueName pulumi.StringInput
-	Settings  QueueSettingsPtrInput
+	// Available values: "eu", "us", "fedramp".
+	Jurisdiction pulumi.StringPtrInput
+	QueueName    pulumi.StringInput
+	Settings     QueueSettingsPtrInput
 }
 
 func (QueueArgs) ElementType() reflect.Type {
@@ -251,6 +262,11 @@ func (o QueueOutput) ConsumersTotalCount() pulumi.Float64Output {
 
 func (o QueueOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Available values: "eu", "us", "fedramp".
+func (o QueueOutput) Jurisdiction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.Jurisdiction }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueOutput) ModifiedOn() pulumi.StringOutput {

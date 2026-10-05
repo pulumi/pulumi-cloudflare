@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetR2BucketResult {
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     private @Nullable String accountId;
@@ -34,7 +34,7 @@ public final class GetR2BucketResult {
     private String id;
     /**
      * @return Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
      * 
      */
     private String jurisdiction;
@@ -58,7 +58,7 @@ public final class GetR2BucketResult {
 
     private GetR2BucketResult() {}
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Optional<String> accountId() {
@@ -87,7 +87,7 @@ public final class GetR2BucketResult {
     }
     /**
      * @return Jurisdiction where objects in this bucket are guaranteed to be stored.
-     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;, &#34;us&#34;.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
      * 
      */
     public String jurisdiction() {

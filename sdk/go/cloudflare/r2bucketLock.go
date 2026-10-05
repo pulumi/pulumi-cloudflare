@@ -56,7 +56,7 @@ import (
 type R2BucketLock struct {
 	pulumi.CustomResourceState
 
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
@@ -101,7 +101,7 @@ func GetR2BucketLock(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2BucketLock resources.
 type r2bucketLockState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
@@ -111,7 +111,7 @@ type r2bucketLockState struct {
 }
 
 type R2BucketLockState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
@@ -125,7 +125,7 @@ func (R2BucketLockState) ElementType() reflect.Type {
 }
 
 type r2bucketLockArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -136,7 +136,7 @@ type r2bucketLockArgs struct {
 
 // The set of arguments for constructing a R2BucketLock resource.
 type R2BucketLockArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
@@ -232,7 +232,7 @@ func (o R2BucketLockOutput) ToR2BucketLockOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o R2BucketLockOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketLock) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

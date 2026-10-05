@@ -23,6 +23,7 @@ class ShareRecipientInitArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  share_id: pulumi.Input[_builtins.str],
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  recipient_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -30,11 +31,14 @@ class ShareRecipientInitArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
         :param pulumi.Input[_builtins.str] share_id: Share identifier tag.
+        :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
         :param pulumi.Input[_builtins.str] organization_id: Organization identifier.
         :param pulumi.Input[_builtins.str] recipient_account_id: The account that will receive the share.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "share_id", share_id)
+        if include_resources is not None:
+            pulumi.set(__self__, "include_resources", include_resources)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
         if recipient_account_id is not None:
@@ -63,6 +67,18 @@ class ShareRecipientInitArgs:
     @share_id.setter
     def share_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "share_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeResources")
+    def include_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Include resources in the response.
+        """
+        return pulumi.get(self, "include_resources")
+
+    @include_resources.setter
+    def include_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
@@ -95,6 +111,7 @@ class _ShareRecipientState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  association_status: pulumi.Input[Optional[_builtins.str]] = None,
                  created: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  modified: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  recipient_account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -109,6 +126,7 @@ class _ShareRecipientState:
                target state set by the API; the background reconciliation workflow
                drives `current_association_status` toward it.
         :param pulumi.Input[_builtins.str] created: When the share was created.
+        :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
         :param pulumi.Input[_builtins.str] modified: When the share was modified.
         :param pulumi.Input[_builtins.str] organization_id: Organization identifier.
         :param pulumi.Input[_builtins.str] recipient_account_id: The account that will receive the share.
@@ -120,6 +138,8 @@ class _ShareRecipientState:
             pulumi.set(__self__, "association_status", association_status)
         if created is not None:
             pulumi.set(__self__, "created", created)
+        if include_resources is not None:
+            pulumi.set(__self__, "include_resources", include_resources)
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
         if organization_id is not None:
@@ -169,6 +189,18 @@ class _ShareRecipientState:
     @created.setter
     def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeResources")
+    def include_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Include resources in the response.
+        """
+        return pulumi.get(self, "include_resources")
+
+    @include_resources.setter
+    def include_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_resources", value)
 
     @_builtins.property
     @pulumi.getter
@@ -235,6 +267,7 @@ class ShareRecipient(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  recipient_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  share_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -263,6 +296,7 @@ class ShareRecipient(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
+        :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
         :param pulumi.Input[_builtins.str] organization_id: Organization identifier.
         :param pulumi.Input[_builtins.str] recipient_account_id: The account that will receive the share.
         :param pulumi.Input[_builtins.str] share_id: Share identifier tag.
@@ -310,6 +344,7 @@ class ShareRecipient(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  recipient_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  share_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -325,6 +360,7 @@ class ShareRecipient(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["include_resources"] = include_resources
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["recipient_account_id"] = recipient_account_id
             if share_id is None and not opts.urn:
@@ -347,6 +383,7 @@ class ShareRecipient(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             association_status: pulumi.Input[Optional[_builtins.str]] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
+            include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             recipient_account_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -365,6 +402,7 @@ class ShareRecipient(pulumi.CustomResource):
                target state set by the API; the background reconciliation workflow
                drives `current_association_status` toward it.
         :param pulumi.Input[_builtins.str] created: When the share was created.
+        :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
         :param pulumi.Input[_builtins.str] modified: When the share was modified.
         :param pulumi.Input[_builtins.str] organization_id: Organization identifier.
         :param pulumi.Input[_builtins.str] recipient_account_id: The account that will receive the share.
@@ -377,6 +415,7 @@ class ShareRecipient(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["association_status"] = association_status
         __props__.__dict__["created"] = created
+        __props__.__dict__["include_resources"] = include_resources
         __props__.__dict__["modified"] = modified
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["recipient_account_id"] = recipient_account_id
@@ -410,6 +449,14 @@ class ShareRecipient(pulumi.CustomResource):
         When the share was created.
         """
         return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter(name="includeResources")
+    def include_resources(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Include resources in the response.
+        """
+        return pulumi.get(self, "include_resources")
 
     @_builtins.property
     @pulumi.getter

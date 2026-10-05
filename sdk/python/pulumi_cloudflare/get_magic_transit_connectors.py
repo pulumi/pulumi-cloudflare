@@ -100,7 +100,8 @@ def get_magic_transit_connectors(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_connectors = cloudflare.get_magic_transit_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_magic_transit_connectors = cloudflare.get_magic_transit_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        device_type="MANAGED")
     ```
 
 
@@ -136,7 +137,8 @@ def get_magic_transit_connectors_output(account_id: pulumi.Input[Optional[_built
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_magic_transit_connectors = cloudflare.get_magic_transit_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_magic_transit_connectors = cloudflare.get_magic_transit_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        device_type="MANAGED")
     ```
 
 

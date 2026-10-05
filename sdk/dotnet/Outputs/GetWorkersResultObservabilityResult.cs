@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double HeadSamplingRate;
         /// <summary>
+        /// Real-time Issues settings for the Worker.
+        /// </summary>
+        public readonly Outputs.GetWorkersResultObservabilityIssuesResult Issues;
+        /// <summary>
         /// Log settings for the Worker.
         /// </summary>
         public readonly Outputs.GetWorkersResultObservabilityLogsResult Logs;
@@ -40,6 +44,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             double headSamplingRate,
 
+            Outputs.GetWorkersResultObservabilityIssuesResult issues,
+
             Outputs.GetWorkersResultObservabilityLogsResult logs,
 
             bool redactQueryString,
@@ -48,6 +54,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Enabled = enabled;
             HeadSamplingRate = headSamplingRate;
+            Issues = issues;
             Logs = logs;
             RedactQueryString = redactQueryString;
             Traces = traces;

@@ -66,12 +66,13 @@ class AiSearchInstanceArgs:
         :param pulumi.Input[_builtins.float] cache_ttl: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
                Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
-        :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead.
-        :param pulumi.Input['AiSearchInstanceIndexMethodArgs'] index_method: Controls which storage backends are used during indexing. Defaults to vector-only.
+        :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
+        :param pulumi.Input['AiSearchInstanceIndexMethodArgs'] index_method: Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         :param pulumi.Input[_builtins.str] rewrite_model: A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
         :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
                Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
-        :param pulumi.Input[_builtins.str] type: Available values: "r2", "web-crawler".
+        :param pulumi.Input[_builtins.str] type: Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+               Available values: "r2", "web-crawler".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "ai_search_instance_id", ai_search_instance_id)
@@ -285,7 +286,7 @@ class AiSearchInstanceArgs:
     @_utilities.deprecated("""This attribute is deprecated.""")
     def hybrid_search_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Deprecated — use index_method instead.
+        Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
         """
         return pulumi.get(self, "hybrid_search_enabled")
 
@@ -297,7 +298,7 @@ class AiSearchInstanceArgs:
     @pulumi.getter(name="indexMethod")
     def index_method(self) -> pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']]:
         """
-        Controls which storage backends are used during indexing. Defaults to vector-only.
+        Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         """
         return pulumi.get(self, "index_method")
 
@@ -496,6 +497,7 @@ class AiSearchInstanceArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         Available values: "r2", "web-crawler".
         """
         return pulumi.get(self, "type")
@@ -563,12 +565,13 @@ class _AiSearchInstanceState:
         :param pulumi.Input[_builtins.float] cache_ttl: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
                Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
-        :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead.
-        :param pulumi.Input['AiSearchInstanceIndexMethodArgs'] index_method: Controls which storage backends are used during indexing. Defaults to vector-only.
+        :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
+        :param pulumi.Input['AiSearchInstanceIndexMethodArgs'] index_method: Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         :param pulumi.Input[_builtins.str] rewrite_model: A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
         :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
                Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
-        :param pulumi.Input[_builtins.str] type: Available values: "r2", "web-crawler".
+        :param pulumi.Input[_builtins.str] type: Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+               Available values: "r2", "web-crawler".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -840,7 +843,7 @@ class _AiSearchInstanceState:
     @_utilities.deprecated("""This attribute is deprecated.""")
     def hybrid_search_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Deprecated — use index_method instead.
+        Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
         """
         return pulumi.get(self, "hybrid_search_enabled")
 
@@ -852,7 +855,7 @@ class _AiSearchInstanceState:
     @pulumi.getter(name="indexMethod")
     def index_method(self) -> pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']]:
         """
-        Controls which storage backends are used during indexing. Defaults to vector-only.
+        Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         """
         return pulumi.get(self, "index_method")
 
@@ -1105,6 +1108,7 @@ class _AiSearchInstanceState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         Available values: "r2", "web-crawler".
         """
         return pulumi.get(self, "type")
@@ -1160,7 +1164,9 @@ class AiSearchInstance(pulumi.CustomResource):
         """
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/aiSearchInstance:AiSearchInstance example '<account_id>/<id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -1171,12 +1177,13 @@ class AiSearchInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] cache_ttl: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
                Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
-        :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead.
-        :param pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict', 'outputs.AiSearchInstanceIndexMethod']] index_method: Controls which storage backends are used during indexing. Defaults to vector-only.
+        :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
+        :param pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict', 'outputs.AiSearchInstanceIndexMethod']] index_method: Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         :param pulumi.Input[_builtins.str] rewrite_model: A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
         :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
                Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
-        :param pulumi.Input[_builtins.str] type: Available values: "r2", "web-crawler".
+        :param pulumi.Input[_builtins.str] type: Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+               Available values: "r2", "web-crawler".
         """
         ...
     @overload
@@ -1187,7 +1194,9 @@ class AiSearchInstance(pulumi.CustomResource):
         """
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/aiSearchInstance:AiSearchInstance example '<account_id>/<id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -1369,12 +1378,13 @@ class AiSearchInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] cache_ttl: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
                Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
-        :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead.
-        :param pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict', 'outputs.AiSearchInstanceIndexMethod']] index_method: Controls which storage backends are used during indexing. Defaults to vector-only.
+        :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
+        :param pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict', 'outputs.AiSearchInstanceIndexMethod']] index_method: Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         :param pulumi.Input[_builtins.str] rewrite_model: A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
         :param pulumi.Input[_builtins.float] sync_interval: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
                Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
-        :param pulumi.Input[_builtins.str] type: Available values: "r2", "web-crawler".
+        :param pulumi.Input[_builtins.str] type: Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+               Available values: "r2", "web-crawler".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1534,7 +1544,7 @@ class AiSearchInstance(pulumi.CustomResource):
     @_utilities.deprecated("""This attribute is deprecated.""")
     def hybrid_search_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Deprecated — use index_method instead.
+        Deprecated — use index_method instead. Defaults to true for new instances; set false to create a vector-only instance.
         """
         return pulumi.get(self, "hybrid_search_enabled")
 
@@ -1542,7 +1552,7 @@ class AiSearchInstance(pulumi.CustomResource):
     @pulumi.getter(name="indexMethod")
     def index_method(self) -> pulumi.Output['outputs.AiSearchInstanceIndexMethod']:
         """
-        Controls which storage backends are used during indexing. Defaults to vector-only.
+        Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         """
         return pulumi.get(self, "index_method")
 
@@ -1687,6 +1697,7 @@ class AiSearchInstance(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         Available values: "r2", "web-crawler".
         """
         return pulumi.get(self, "type")

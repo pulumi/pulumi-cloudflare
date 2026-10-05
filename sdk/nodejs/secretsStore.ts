@@ -62,6 +62,12 @@ export class SecretsStore extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
+     * When true, cascade-deletes all secrets in the store before deleting the store itself.
+     * Required when deleting a non-empty store. Without this parameter, attempting to
+     * delete a non-empty store returns 409.
+     */
+    declare public readonly force: pulumi.Output<boolean>;
+    /**
      * When the secret was modified.
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
@@ -85,6 +91,7 @@ export class SecretsStore extends pulumi.CustomResource {
             const state = argsOrState as SecretsStoreState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["created"] = state?.created;
+            resourceInputs["force"] = state?.force;
             resourceInputs["modified"] = state?.modified;
             resourceInputs["name"] = state?.name;
         } else {
@@ -96,6 +103,7 @@ export class SecretsStore extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["force"] = args?.force;
             resourceInputs["name"] = args?.name;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
@@ -115,6 +123,12 @@ export interface SecretsStoreState {
      */
     created?: pulumi.Input<string | undefined>;
     /**
+     * When true, cascade-deletes all secrets in the store before deleting the store itself.
+     * Required when deleting a non-empty store. Without this parameter, attempting to
+     * delete a non-empty store returns 409.
+     */
+    force?: pulumi.Input<boolean | undefined>;
+    /**
      * When the secret was modified.
      */
     modified?: pulumi.Input<string | undefined>;
@@ -129,6 +143,12 @@ export interface SecretsStoreState {
  */
 export interface SecretsStoreArgs {
     accountId: pulumi.Input<string>;
+    /**
+     * When true, cascade-deletes all secrets in the store before deleting the store itself.
+     * Required when deleting a non-empty store. Without this parameter, attempting to
+     * delete a non-empty store returns 409.
+     */
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the store.
      */

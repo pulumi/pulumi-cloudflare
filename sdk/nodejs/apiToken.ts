@@ -87,6 +87,12 @@ export class ApiToken extends pulumi.CustomResource {
 
     declare public readonly condition: pulumi.Output<outputs.ApiTokenCondition | undefined>;
     /**
+     * The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     */
+    declare public /*out*/ readonly creatorEmailAtCreation: pulumi.Output<string>;
+    /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
     declare public readonly expiresOn: pulumi.Output<string | undefined>;
@@ -111,9 +117,21 @@ export class ApiToken extends pulumi.CustomResource {
      */
     declare public readonly notBefore: pulumi.Output<string | undefined>;
     /**
-     * Set of access policies assigned to the token.
+     * List of access policies assigned to the token.
      */
     declare public readonly policies: pulumi.Output<outputs.ApiTokenPolicy[]>;
+    /**
+     * The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     */
+    declare public /*out*/ readonly provisionerId: pulumi.Output<string>;
+    /**
+     * The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     */
+    declare public /*out*/ readonly provisionerType: pulumi.Output<string>;
     /**
      * Status of the token.
      * Available values: "active", "disabled", "expired".
@@ -138,6 +156,7 @@ export class ApiToken extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApiTokenState | undefined;
             resourceInputs["condition"] = state?.condition;
+            resourceInputs["creatorEmailAtCreation"] = state?.creatorEmailAtCreation;
             resourceInputs["expiresOn"] = state?.expiresOn;
             resourceInputs["issuedOn"] = state?.issuedOn;
             resourceInputs["lastUsedOn"] = state?.lastUsedOn;
@@ -145,6 +164,8 @@ export class ApiToken extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["notBefore"] = state?.notBefore;
             resourceInputs["policies"] = state?.policies;
+            resourceInputs["provisionerId"] = state?.provisionerId;
+            resourceInputs["provisionerType"] = state?.provisionerType;
             resourceInputs["status"] = state?.status;
             resourceInputs["value"] = state?.value;
         } else {
@@ -161,9 +182,12 @@ export class ApiToken extends pulumi.CustomResource {
             resourceInputs["notBefore"] = args?.notBefore;
             resourceInputs["policies"] = args?.policies;
             resourceInputs["status"] = args?.status;
+            resourceInputs["creatorEmailAtCreation"] = undefined /*out*/;
             resourceInputs["issuedOn"] = undefined /*out*/;
             resourceInputs["lastUsedOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["provisionerId"] = undefined /*out*/;
+            resourceInputs["provisionerType"] = undefined /*out*/;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -178,6 +202,12 @@ export class ApiToken extends pulumi.CustomResource {
  */
 export interface ApiTokenState {
     condition?: pulumi.Input<inputs.ApiTokenCondition | undefined>;
+    /**
+     * The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     */
+    creatorEmailAtCreation?: pulumi.Input<string | undefined>;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
@@ -203,9 +233,21 @@ export interface ApiTokenState {
      */
     notBefore?: pulumi.Input<string | undefined>;
     /**
-     * Set of access policies assigned to the token.
+     * List of access policies assigned to the token.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[] | undefined>;
+    /**
+     * The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     */
+    provisionerId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     */
+    provisionerType?: pulumi.Input<string | undefined>;
     /**
      * Status of the token.
      * Available values: "active", "disabled", "expired".
@@ -235,7 +277,7 @@ export interface ApiTokenArgs {
      */
     notBefore?: pulumi.Input<string | undefined>;
     /**
-     * Set of access policies assigned to the token.
+     * List of access policies assigned to the token.
      */
     policies: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
     /**

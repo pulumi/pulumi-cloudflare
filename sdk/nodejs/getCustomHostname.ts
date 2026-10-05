@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleCustomHostname = cloudflare.getCustomHostname({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     customHostnameId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customHostnameId: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
  * });
  * ```
  */
@@ -39,7 +39,7 @@ export function getCustomHostname(args?: GetCustomHostnameArgs, opts?: pulumi.In
  */
 export interface GetCustomHostnameArgs {
     /**
-     * Identifier.
+     * Custom hostname identifier tag.
      */
     customHostnameId?: string;
     filter?: inputs.GetCustomHostnameFilter;
@@ -58,7 +58,7 @@ export interface GetCustomHostnameResult {
      */
     readonly createdAt: string;
     /**
-     * Identifier.
+     * Custom hostname identifier tag.
      */
     readonly customHostnameId?: string;
     /**
@@ -79,7 +79,7 @@ export interface GetCustomHostnameResult {
      */
     readonly hostname: string;
     /**
-     * Identifier.
+     * Custom hostname identifier tag.
      */
     readonly id: string;
     /**
@@ -119,7 +119,7 @@ export interface GetCustomHostnameResult {
  *
  * const exampleCustomHostname = cloudflare.getCustomHostname({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     customHostnameId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customHostnameId: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
  * });
  * ```
  */
@@ -138,7 +138,7 @@ export function getCustomHostnameOutput(args?: GetCustomHostnameOutputArgs, opts
  */
 export interface GetCustomHostnameOutputArgs {
     /**
-     * Identifier.
+     * Custom hostname identifier tag.
      */
     customHostnameId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetCustomHostnameFilterArgs | undefined>;

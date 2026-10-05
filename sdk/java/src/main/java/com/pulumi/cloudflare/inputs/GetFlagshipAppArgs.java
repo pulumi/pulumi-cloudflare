@@ -15,14 +15,14 @@ public final class GetFlagshipAppArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFlagshipAppArgs Empty = new GetFlagshipAppArgs();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Output<String> accountId() {
@@ -30,14 +30,14 @@ public final class GetFlagshipAppArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public Output<String> appId() {
@@ -70,7 +70,7 @@ public final class GetFlagshipAppArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetFlagshipAppArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetFlagshipAppArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetFlagshipAppArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 

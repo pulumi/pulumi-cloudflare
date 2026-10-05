@@ -52,6 +52,9 @@ export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayProxyEndpoint.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -120,6 +123,9 @@ export class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayProxyEndpoint resources.
  */
 export interface ZeroTrustGatewayProxyEndpointState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     /**
@@ -146,6 +152,9 @@ export interface ZeroTrustGatewayProxyEndpointState {
  * The set of arguments for constructing a ZeroTrustGatewayProxyEndpoint resource.
  */
 export interface ZeroTrustGatewayProxyEndpointArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Specify the list of CIDRs to restrict ingress connections.

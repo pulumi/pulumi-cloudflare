@@ -42,7 +42,7 @@ public final class GetPipelineSinksResult {
     private GetPipelineSinksResultSchema schema;
     /**
      * @return Specifies the type of sink.
-     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
      * 
      */
     private String type;
@@ -91,7 +91,7 @@ public final class GetPipelineSinksResult {
     }
     /**
      * @return Specifies the type of sink.
-     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
      * 
      */
     public String type() {

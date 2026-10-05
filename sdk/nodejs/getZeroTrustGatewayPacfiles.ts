@@ -36,6 +36,9 @@ export function getZeroTrustGatewayPacfiles(args?: GetZeroTrustGatewayPacfilesAr
  * A collection of arguments for invoking getZeroTrustGatewayPacfiles.
  */
 export interface GetZeroTrustGatewayPacfilesArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: string;
     /**
      * Max items to fetch, default: 1000
@@ -47,6 +50,9 @@ export interface GetZeroTrustGatewayPacfilesArgs {
  * A collection of values returned by getZeroTrustGatewayPacfiles.
  */
 export interface GetZeroTrustGatewayPacfilesResult {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     readonly accountId?: string;
     /**
      * Max items to fetch, default: 1000
@@ -87,6 +93,9 @@ export function getZeroTrustGatewayPacfilesOutput(args?: GetZeroTrustGatewayPacf
  * A collection of arguments for invoking getZeroTrustGatewayPacfiles.
  */
 export interface GetZeroTrustGatewayPacfilesOutputArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000

@@ -40,7 +40,7 @@ public final class LogpushJobOutputOptions {
      */
     private @Nullable List<String> fieldNames;
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      * 
      */
     private @Nullable Boolean mergeSubrequests;
@@ -71,7 +71,7 @@ public final class LogpushJobOutputOptions {
      */
     private @Nullable String recordTemplate;
     /**
-     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * @return Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     private @Nullable Double sampleRate;
@@ -119,7 +119,7 @@ public final class LogpushJobOutputOptions {
         return this.fieldNames == null ? List.of() : this.fieldNames;
     }
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      * 
      */
     public Optional<Boolean> mergeSubrequests() {
@@ -162,7 +162,7 @@ public final class LogpushJobOutputOptions {
         return Optional.ofNullable(this.recordTemplate);
     }
     /**
-     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * @return Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     public Optional<Double> sampleRate() {

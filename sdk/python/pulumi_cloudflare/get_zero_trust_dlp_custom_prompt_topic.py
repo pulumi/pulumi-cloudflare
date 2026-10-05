@@ -140,6 +140,16 @@ def get_zero_trust_dlp_custom_prompt_topic(account_id: Optional[_builtins.str] =
 
     - `Zero Trust Read`
     - `Zero Trust Write`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_dlp_custom_prompt_topic = cloudflare.get_zero_trust_dlp_custom_prompt_topic(account_id="account_id",
+        entry_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    ```
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -166,6 +176,16 @@ def get_zero_trust_dlp_custom_prompt_topic_output(account_id: pulumi.Input[Optio
 
     - `Zero Trust Read`
     - `Zero Trust Write`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_dlp_custom_prompt_topic = cloudflare.get_zero_trust_dlp_custom_prompt_topic(account_id="account_id",
+        entry_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    ```
     """
     __args__ = dict()
     __args__['accountId'] = account_id

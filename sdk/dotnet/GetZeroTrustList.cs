@@ -90,9 +90,6 @@ namespace Pulumi.Cloudflare
         [Input("filter")]
         public Inputs.GetZeroTrustListFilterArgs? Filter { get; set; }
 
-        /// <summary>
-        /// Identify the API resource with a UUID.
-        /// </summary>
         [Input("listId")]
         public string? ListId { get; set; }
 
@@ -110,9 +107,6 @@ namespace Pulumi.Cloudflare
         [Input("filter")]
         public Input<Inputs.GetZeroTrustListFilterInputArgs>? Filter { get; set; }
 
-        /// <summary>
-        /// Identify the API resource with a UUID.
-        /// </summary>
         [Input("listId")]
         public Input<string>? ListId { get; set; }
 
@@ -128,35 +122,13 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         public readonly string CreatedAt;
-        /// <summary>
-        /// Provide the list description.
-        /// </summary>
         public readonly string Description;
         public readonly Outputs.GetZeroTrustListFilterResult? Filter;
-        /// <summary>
-        /// Identify the API resource with a UUID.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Provide the list items.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustListItemResult> Items;
-        /// <summary>
-        /// Indicate the number of items in the list.
-        /// </summary>
         public readonly double ListCount;
-        /// <summary>
-        /// Identify the API resource with a UUID.
-        /// </summary>
         public readonly string? ListId;
-        /// <summary>
-        /// Specify the list name.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Specify the list type.
-        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-        /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
 

@@ -27,7 +27,7 @@ class GetQueueResult:
     """
     A collection of values returned by getQueue.
     """
-    def __init__(__self__, account_id=None, consumers=None, consumers_total_count=None, created_on=None, id=None, modified_on=None, producers=None, producers_total_count=None, queue_id=None, queue_name=None, settings=None):
+    def __init__(__self__, account_id=None, consumers=None, consumers_total_count=None, created_on=None, id=None, jurisdiction=None, modified_on=None, producers=None, producers_total_count=None, queue_id=None, queue_name=None, settings=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,6 +43,9 @@ class GetQueueResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if jurisdiction and not isinstance(jurisdiction, str):
+            raise TypeError("Expected argument 'jurisdiction' to be a str")
+        pulumi.set(__self__, "jurisdiction", jurisdiction)
         if modified_on and not isinstance(modified_on, str):
             raise TypeError("Expected argument 'modified_on' to be a str")
         pulumi.set(__self__, "modified_on", modified_on)
@@ -94,6 +97,14 @@ class GetQueueResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> _builtins.str:
+        """
+        Available values: "eu", "us", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> _builtins.str:
         return pulumi.get(self, "modified_on")
@@ -138,6 +149,7 @@ class AwaitableGetQueueResult(GetQueueResult):
             consumers_total_count=self.consumers_total_count,
             created_on=self.created_on,
             id=self.id,
+            jurisdiction=self.jurisdiction,
             modified_on=self.modified_on,
             producers=self.producers,
             producers_total_count=self.producers_total_count,
@@ -183,6 +195,7 @@ def get_queue(account_id: Optional[_builtins.str] = None,
         consumers_total_count=pulumi.get(__ret__, 'consumers_total_count'),
         created_on=pulumi.get(__ret__, 'created_on'),
         id=pulumi.get(__ret__, 'id'),
+        jurisdiction=pulumi.get(__ret__, 'jurisdiction'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         producers=pulumi.get(__ret__, 'producers'),
         producers_total_count=pulumi.get(__ret__, 'producers_total_count'),
@@ -225,6 +238,7 @@ def get_queue_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]]
         consumers_total_count=pulumi.get(__response__, 'consumers_total_count'),
         created_on=pulumi.get(__response__, 'created_on'),
         id=pulumi.get(__response__, 'id'),
+        jurisdiction=pulumi.get(__response__, 'jurisdiction'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         producers=pulumi.get(__response__, 'producers'),
         producers_total_count=pulumi.get(__response__, 'producers_total_count'),

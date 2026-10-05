@@ -19,6 +19,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Blocked sender pattern identifier.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal value.
+        /// </summary>
         public readonly bool IsRegex;
         /// <summary>
         /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.

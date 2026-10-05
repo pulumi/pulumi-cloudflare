@@ -18,14 +18,14 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
     public static final R2BucketLifecycleState Empty = new R2BucketLifecycleState();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -97,7 +97,7 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 

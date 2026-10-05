@@ -12,12 +12,30 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEmailSecurityImpersonationRegistriesResult {
+    /**
+     * @return Optional note describing the entry.
+     * 
+     */
     private String comments;
     private String createdAt;
+    /**
+     * @return Identifier of the directory the entry was synced from, when directory-synced.
+     * 
+     */
     private Integer directoryId;
+    /**
+     * @return Identifier of the directory node the entry was synced from, when directory-synced.
+     * 
+     */
     private Integer directoryNodeId;
+    /**
+     * @return Email address (or pattern) of the protected identity.
+     * 
+     */
     private String email;
     /**
+     * @return Deprecated. External identifier of the directory node.
+     * 
      * @deprecated
      * This field is deprecated.
      * 
@@ -29,6 +47,10 @@ public final class GetEmailSecurityImpersonationRegistriesResult {
      * 
      */
     private String id;
+    /**
+     * @return Whether `email` is a regular expression instead of a literal address.
+     * 
+     */
     private Boolean isEmailRegex;
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -40,30 +62,53 @@ public final class GetEmailSecurityImpersonationRegistriesResult {
     @Deprecated /* Use `modifiedAt` instead. */
     private String lastModified;
     private String modifiedAt;
+    /**
+     * @return Display name of the protected identity.
+     * 
+     */
     private String name;
     /**
-     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * @return Source the entry was created from.
+     * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
      * 
      */
     private String provenance;
 
     private GetEmailSecurityImpersonationRegistriesResult() {}
+    /**
+     * @return Optional note describing the entry.
+     * 
+     */
     public String comments() {
         return this.comments;
     }
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return Identifier of the directory the entry was synced from, when directory-synced.
+     * 
+     */
     public Integer directoryId() {
         return this.directoryId;
     }
+    /**
+     * @return Identifier of the directory node the entry was synced from, when directory-synced.
+     * 
+     */
     public Integer directoryNodeId() {
         return this.directoryNodeId;
     }
+    /**
+     * @return Email address (or pattern) of the protected identity.
+     * 
+     */
     public String email() {
         return this.email;
     }
     /**
+     * @return Deprecated. External identifier of the directory node.
+     * 
      * @deprecated
      * This field is deprecated.
      * 
@@ -79,6 +124,10 @@ public final class GetEmailSecurityImpersonationRegistriesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Whether `email` is a regular expression instead of a literal address.
+     * 
+     */
     public Boolean isEmailRegex() {
         return this.isEmailRegex;
     }
@@ -96,11 +145,16 @@ public final class GetEmailSecurityImpersonationRegistriesResult {
     public String modifiedAt() {
         return this.modifiedAt;
     }
+    /**
+     * @return Display name of the protected identity.
+     * 
+     */
     public String name() {
         return this.name;
     }
     /**
-     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * @return Source the entry was created from.
+     * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
      * 
      */
     public String provenance() {

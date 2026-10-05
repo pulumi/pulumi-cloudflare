@@ -73,9 +73,10 @@ type LookupMagicTransitSiteWanResult struct {
 	// Available values: "low", "mid", "high".
 	HealthCheckRate string `pulumi:"healthCheckRate"`
 	// Identifier
-	Id       string `pulumi:"id"`
-	Name     string `pulumi:"name"`
-	Physport int    `pulumi:"physport"`
+	Id                    string `pulumi:"id"`
+	LoadBalanceInnerFlows bool   `pulumi:"loadBalanceInnerFlows"`
+	Name                  string `pulumi:"name"`
+	Physport              int    `pulumi:"physport"`
 	// Priority of WAN for traffic loadbalancing.
 	Priority int `pulumi:"priority"`
 	// Identifier
@@ -136,6 +137,10 @@ func (o LookupMagicTransitSiteWanResultOutput) HealthCheckRate() pulumi.StringOu
 // Identifier
 func (o LookupMagicTransitSiteWanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupMagicTransitSiteWanResultOutput) LoadBalanceInnerFlows() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) bool { return v.LoadBalanceInnerFlows }).(pulumi.BoolOutput)
 }
 
 func (o LookupMagicTransitSiteWanResultOutput) Name() pulumi.StringOutput {

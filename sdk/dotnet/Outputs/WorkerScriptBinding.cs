@@ -160,6 +160,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? StoreId;
         /// <summary>
+        /// ID of a K2 stream owned by the account deploying the Worker.
+        /// </summary>
+        public readonly string? Stream;
+        /// <summary>
         /// The text value to use.
         /// </summary>
         public readonly string? Text;
@@ -169,7 +173,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? TunnelId;
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+        /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -259,6 +263,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? storeId,
 
+            string? stream,
+
             string? text,
 
             string? tunnelId,
@@ -307,6 +313,7 @@ namespace Pulumi.Cloudflare.Outputs
             ServiceId = serviceId;
             Simple = simple;
             StoreId = storeId;
+            Stream = stream;
             Text = text;
             TunnelId = tunnelId;
             Type = type;

@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> PreviewsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? PreviewsEnabled { get; set; }
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? PreviewsEnabled { get; set; }
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }

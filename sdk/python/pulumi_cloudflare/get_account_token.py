@@ -28,13 +28,16 @@ class GetAccountTokenResult:
     """
     A collection of values returned by getAccountToken.
     """
-    def __init__(__self__, account_id=None, condition=None, expires_on=None, filter=None, id=None, issued_on=None, last_used_on=None, modified_on=None, name=None, not_before=None, policies=None, status=None, token_id=None):
+    def __init__(__self__, account_id=None, condition=None, creator_email_at_creation=None, expires_on=None, filter=None, id=None, issued_on=None, last_used_on=None, modified_on=None, name=None, not_before=None, policies=None, provisioner_id=None, provisioner_type=None, status=None, token_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if condition and not isinstance(condition, dict):
             raise TypeError("Expected argument 'condition' to be a dict")
         pulumi.set(__self__, "condition", condition)
+        if creator_email_at_creation and not isinstance(creator_email_at_creation, str):
+            raise TypeError("Expected argument 'creator_email_at_creation' to be a str")
+        pulumi.set(__self__, "creator_email_at_creation", creator_email_at_creation)
         if expires_on and not isinstance(expires_on, str):
             raise TypeError("Expected argument 'expires_on' to be a str")
         pulumi.set(__self__, "expires_on", expires_on)
@@ -62,6 +65,12 @@ class GetAccountTokenResult:
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
+        if provisioner_id and not isinstance(provisioner_id, str):
+            raise TypeError("Expected argument 'provisioner_id' to be a str")
+        pulumi.set(__self__, "provisioner_id", provisioner_id)
+        if provisioner_type and not isinstance(provisioner_type, str):
+            raise TypeError("Expected argument 'provisioner_type' to be a str")
+        pulumi.set(__self__, "provisioner_type", provisioner_type)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -81,6 +90,16 @@ class GetAccountTokenResult:
     @pulumi.getter
     def condition(self) -> 'outputs.GetAccountTokenConditionResult':
         return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter(name="creatorEmailAtCreation")
+    def creator_email_at_creation(self) -> _builtins.str:
+        """
+        The email address of the user who created the token at the time of
+        creation. Only present for Account Owned API Tokens when a creator email
+        was available.
+        """
+        return pulumi.get(self, "creator_email_at_creation")
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -152,6 +171,26 @@ class GetAccountTokenResult:
         return pulumi.get(self, "policies")
 
     @_builtins.property
+    @pulumi.getter(name="provisionerId")
+    def provisioner_id(self) -> _builtins.str:
+        """
+        The identifier of the service that provisioned the token. For an
+        OAuth-provisioned token, this is the OAuth client identifier. Present
+        when `provisioner_type` is present and null when the identifier is
+        unavailable.
+        """
+        return pulumi.get(self, "provisioner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerType")
+    def provisioner_type(self) -> _builtins.str:
+        """
+        The type of service that provisioned the token. Only present for
+        provisioned Account Owned API Tokens.
+        """
+        return pulumi.get(self, "provisioner_type")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
@@ -177,6 +216,7 @@ class AwaitableGetAccountTokenResult(GetAccountTokenResult):
         return GetAccountTokenResult(
             account_id=self.account_id,
             condition=self.condition,
+            creator_email_at_creation=self.creator_email_at_creation,
             expires_on=self.expires_on,
             filter=self.filter,
             id=self.id,
@@ -186,6 +226,8 @@ class AwaitableGetAccountTokenResult(GetAccountTokenResult):
             name=self.name,
             not_before=self.not_before,
             policies=self.policies,
+            provisioner_id=self.provisioner_id,
+            provisioner_type=self.provisioner_type,
             status=self.status,
             token_id=self.token_id)
 
@@ -224,6 +266,7 @@ def get_account_token(account_id: Optional[_builtins.str] = None,
     return AwaitableGetAccountTokenResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         condition=pulumi.get(__ret__, 'condition'),
+        creator_email_at_creation=pulumi.get(__ret__, 'creator_email_at_creation'),
         expires_on=pulumi.get(__ret__, 'expires_on'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
@@ -233,6 +276,8 @@ def get_account_token(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         not_before=pulumi.get(__ret__, 'not_before'),
         policies=pulumi.get(__ret__, 'policies'),
+        provisioner_id=pulumi.get(__ret__, 'provisioner_id'),
+        provisioner_type=pulumi.get(__ret__, 'provisioner_type'),
         status=pulumi.get(__ret__, 'status'),
         token_id=pulumi.get(__ret__, 'token_id'))
 def get_account_token_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -268,6 +313,7 @@ def get_account_token_output(account_id: pulumi.Input[Optional[Optional[_builtin
     return __ret__.apply(lambda __response__: GetAccountTokenResult(
         account_id=pulumi.get(__response__, 'account_id'),
         condition=pulumi.get(__response__, 'condition'),
+        creator_email_at_creation=pulumi.get(__response__, 'creator_email_at_creation'),
         expires_on=pulumi.get(__response__, 'expires_on'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
@@ -277,5 +323,7 @@ def get_account_token_output(account_id: pulumi.Input[Optional[Optional[_builtin
         name=pulumi.get(__response__, 'name'),
         not_before=pulumi.get(__response__, 'not_before'),
         policies=pulumi.get(__response__, 'policies'),
+        provisioner_id=pulumi.get(__response__, 'provisioner_id'),
+        provisioner_type=pulumi.get(__response__, 'provisioner_type'),
         status=pulumi.get(__response__, 'status'),
         token_id=pulumi.get(__response__, 'token_id')))

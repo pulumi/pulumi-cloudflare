@@ -72,6 +72,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
      * 
      */
     private String id;
+    private String integrationId;
     /**
      * @return The name of the profile.
      * 
@@ -177,6 +178,9 @@ public final class GetZeroTrustDlpCustomProfileResult {
     public String id() {
         return this.id;
     }
+    public String integrationId() {
+        return this.integrationId;
+    }
     /**
      * @return The name of the profile.
      * 
@@ -242,6 +246,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         private String description;
         private List<GetZeroTrustDlpCustomProfileEntry> entries;
         private String id;
+        private String integrationId;
         private String name;
         private Boolean ocrEnabled;
         private Boolean openAccess;
@@ -264,6 +269,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
     	      this.description = defaults.description;
     	      this.entries = defaults.entries;
     	      this.id = defaults.id;
+    	      this.integrationId = defaults.integrationId;
     	      this.name = defaults.name;
     	      this.ocrEnabled = defaults.ocrEnabled;
     	      this.openAccess = defaults.openAccess;
@@ -370,6 +376,14 @@ public final class GetZeroTrustDlpCustomProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder integrationId(String integrationId) {
+            if (integrationId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "integrationId");
+            }
+            this.integrationId = integrationId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "name");
@@ -452,6 +466,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
             _resultValue.description = description;
             _resultValue.entries = entries;
             _resultValue.id = id;
+            _resultValue.integrationId = integrationId;
             _resultValue.name = name;
             _resultValue.ocrEnabled = ocrEnabled;
             _resultValue.openAccess = openAccess;

@@ -17,6 +17,7 @@ import com.pulumi.cloudflare.inputs.WorkerVersionPlacementArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -156,6 +157,21 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, a deployment will be created that sends 100% of traffic to the new version.
+     * 
+     */
+    @Import(name="deploy")
+    private @Nullable Output<Boolean> deploy;
+
+    /**
+     * @return If true, a deployment will be created that sends 100% of traffic to the new version.
+     * 
+     */
+    public Optional<Output<Boolean>> deploy() {
+        return Optional.ofNullable(this.deploy);
+    }
+
+    /**
      * Declarative exports for the version, including Durable Object
      * classes (with their `storage` backend) and named Worker
      * entrypoints. On reads, tombstoned lifecycle entries are
@@ -178,6 +194,23 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,WorkerVersionExportsArgs>>> exports() {
         return Optional.ofNullable(this.exports);
+    }
+
+    /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
+     * 
+     */
+    @Import(name="include")
+    private @Nullable Output<String> include;
+
+    /**
+     * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
+     * 
+     */
+    public Optional<Output<String>> include() {
+        return Optional.ofNullable(this.include);
     }
 
     /**
@@ -333,7 +366,9 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.containers = $.containers;
+        this.deploy = $.deploy;
         this.exports = $.exports;
+        this.include = $.include;
         this.limits = $.limits;
         this.mainModule = $.mainModule;
         this.migrations = $.migrations;
@@ -567,6 +602,27 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param deploy If true, a deployment will be created that sends 100% of traffic to the new version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(@Nullable Output<Boolean> deploy) {
+            $.deploy = deploy;
+            return this;
+        }
+
+        /**
+         * @param deploy If true, a deployment will be created that sends 100% of traffic to the new version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploy(Boolean deploy) {
+            return deploy(Output.of(deploy));
+        }
+
+        /**
          * @param exports Declarative exports for the version, including Durable Object
          * classes (with their `storage` backend) and named Worker
          * entrypoints. On reads, tombstoned lifecycle entries are
@@ -595,6 +651,29 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder exports(Map<String,WorkerVersionExportsArgs> exports) {
             return exports(Output.of(exports));
+        }
+
+        /**
+         * @param include Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+         * Available values: &#34;modules&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder include(@Nullable Output<String> include) {
+            $.include = include;
+            return this;
+        }
+
+        /**
+         * @param include Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+         * Available values: &#34;modules&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder include(String include) {
+            return include(Output.of(include));
         }
 
         /**

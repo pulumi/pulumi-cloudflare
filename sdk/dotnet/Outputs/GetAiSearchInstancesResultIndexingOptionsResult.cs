@@ -18,11 +18,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "porter", "trigram".
         /// </summary>
         public readonly string KeywordTokenizer;
+        public readonly bool UseOcr;
 
         [OutputConstructor]
-        private GetAiSearchInstancesResultIndexingOptionsResult(string keywordTokenizer)
+        private GetAiSearchInstancesResultIndexingOptionsResult(
+            string keywordTokenizer,
+
+            bool useOcr)
         {
             KeywordTokenizer = keywordTokenizer;
+            UseOcr = useOcr;
         }
     }
 }

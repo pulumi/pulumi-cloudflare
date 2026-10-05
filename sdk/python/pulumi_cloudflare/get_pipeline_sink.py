@@ -139,7 +139,7 @@ class GetPipelineSinkResult:
     def type(self) -> _builtins.str:
         """
         Specifies the type of sink.
-        Available values: "r2", "r2*data*catalog".
+        Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         return pulumi.get(self, "type")
 

@@ -29,6 +29,7 @@ export function getFlagshipFlag(args: GetFlagshipFlagArgs, opts?: pulumi.InvokeO
     return pulumi.runtime.invoke("cloudflare:index/getFlagshipFlag:getFlagshipFlag", {
         "accountId": args.accountId,
         "appId": args.appId,
+        "filter": args.filter,
         "flagKey": args.flagKey,
     }, opts);
 }
@@ -38,17 +39,18 @@ export function getFlagshipFlag(args: GetFlagshipFlagArgs, opts?: pulumi.InvokeO
  */
 export interface GetFlagshipFlagArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: string;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     appId: string;
+    filter?: inputs.GetFlagshipFlagFilter;
     /**
-     * Flag key (slug).
+     * Case-sensitive key identifying the flag within the app.
      */
-    flagKey: string;
+    flagKey?: string;
 }
 
 /**
@@ -56,26 +58,34 @@ export interface GetFlagshipFlagArgs {
  */
 export interface GetFlagshipFlagResult {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     readonly accountId: string;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     readonly appId: string;
     /**
      * Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
      */
     readonly defaultVariation: string;
+    /**
+     * Optional operator-facing description. It does not affect flag evaluation.
+     */
     readonly description: string;
     /**
      * When false, the flag bypasses all rules and always serves `defaultVariation`.
      */
     readonly enabled: boolean;
+    readonly filter?: outputs.GetFlagshipFlagFilter;
     /**
-     * Flag key (slug).
+     * Case-sensitive key identifying the flag within the app.
      */
-    readonly flagKey: string;
+    readonly flagKey?: string;
+    /**
+     * Case-sensitive key identifying the flag within the app.
+     */
+    readonly id: string;
     /**
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
@@ -119,6 +129,7 @@ export function getFlagshipFlagOutput(args: GetFlagshipFlagOutputArgs, opts?: pu
     return pulumi.runtime.invokeOutput("cloudflare:index/getFlagshipFlag:getFlagshipFlag", {
         "accountId": args.accountId,
         "appId": args.appId,
+        "filter": args.filter,
         "flagKey": args.flagKey,
     }, opts);
 }
@@ -128,15 +139,16 @@ export function getFlagshipFlagOutput(args: GetFlagshipFlagOutputArgs, opts?: pu
  */
 export interface GetFlagshipFlagOutputArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: pulumi.Input<string>;
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      */
     appId: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetFlagshipFlagFilterArgs | undefined>;
     /**
-     * Flag key (slug).
+     * Case-sensitive key identifying the flag within the app.
      */
-    flagKey: pulumi.Input<string>;
+    flagKey?: pulumi.Input<string | undefined>;
 }

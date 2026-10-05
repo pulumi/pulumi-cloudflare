@@ -31,30 +31,38 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZeroTrustDlpCustomProfile, err := cloudflare.NewZeroTrustDlpCustomProfile(ctx, "example_zero_trust_dlp_custom_profile", &cloudflare.ZeroTrustDlpCustomProfileArgs{
-//				Name:        pulumi.String("name"),
-//				AccountId:   pulumi.String("account_id"),
-//				Description: pulumi.String("Custom profile with entries"),
-//				SharedEntries: cloudflare.ZeroTrustDlpCustomProfileSharedEntryArray{
-//					&cloudflare.ZeroTrustDlpCustomProfileSharedEntryArgs{
-//						EntryId:   pulumi.String("56a8c060-01bb-4f89-ba1e-3ad42770a342"),
-//						EntryType: pulumi.String("predefined"),
-//						Enabled:   pulumi.Bool(true),
+//			_, err := cloudflare.NewZeroTrustDlpCustomProfile(ctx, "example_zero_trust_dlp_custom_profile", &cloudflare.ZeroTrustDlpCustomProfileArgs{
+//				AccountId:           pulumi.String("account_id"),
+//				Name:                pulumi.String("name"),
+//				AiContextEnabled:    pulumi.Bool(true),
+//				AllowedMatchCount:   pulumi.Int(5),
+//				ConfidenceThreshold: pulumi.String("confidence_threshold"),
+//				ContextAwareness: &cloudflare.ZeroTrustDlpCustomProfileContextAwarenessArgs{
+//					Enabled: pulumi.Bool(true),
+//					Skip: &cloudflare.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs{
+//						Files: pulumi.Bool(true),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Custom entry that is a part of this new profile
-//			_, err = cloudflare.NewZeroTrustDlpCustomEntry(ctx, "example_custom_entry", &cloudflare.ZeroTrustDlpCustomEntryArgs{
-//				Name:      pulumi.String("custom"),
-//				AccountId: pulumi.String("account_id"),
-//				ProfileId: exampleZeroTrustDlpCustomProfile.ID().ToIDOutput().ToStringOutput(),
-//				Pattern: &cloudflare.ZeroTrustDlpCustomEntryPatternArgs{
-//					Regex: pulumi.String("customentryregex"),
+//				DataClasses: pulumi.StringArray{
+//					pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //				},
-//				Enabled: pulumi.Bool(true),
+//				DataTags: pulumi.StringArray{
+//					pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//				},
+//				Description: pulumi.String("description"),
+//				OcrEnabled:  pulumi.Bool(true),
+//				SensitivityLevels: cloudflare.ZeroTrustDlpCustomProfileSensitivityLevelArray{
+//					&cloudflare.ZeroTrustDlpCustomProfileSensitivityLevelArgs{
+//						GroupId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//						LevelId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//					},
+//				},
+//				SharedEntries: cloudflare.ZeroTrustDlpCustomProfileSharedEntryArray{
+//					&cloudflare.ZeroTrustDlpCustomProfileSharedEntryArgs{
+//						Enabled: pulumi.Bool(true),
+//						EntryId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -94,9 +102,10 @@ type ZeroTrustDlpCustomProfile struct {
 	// If this field is omitted, entries owned by this profile will not be changed.
 	//
 	// Deprecated: This attribute will be sunset on 01/01/2026
-	Entries    ZeroTrustDlpCustomProfileEntryArrayOutput `pulumi:"entries"`
-	Name       pulumi.StringOutput                       `pulumi:"name"`
-	OcrEnabled pulumi.BoolOutput                         `pulumi:"ocrEnabled"`
+	Entries       ZeroTrustDlpCustomProfileEntryArrayOutput `pulumi:"entries"`
+	IntegrationId pulumi.StringOutput                       `pulumi:"integrationId"`
+	Name          pulumi.StringOutput                       `pulumi:"name"`
+	OcrEnabled    pulumi.BoolOutput                         `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolOutput `pulumi:"openAccess"`
 	// Sensitivity levels to associate with the profile.
@@ -172,9 +181,10 @@ type zeroTrustDlpCustomProfileState struct {
 	// If this field is omitted, entries owned by this profile will not be changed.
 	//
 	// Deprecated: This attribute will be sunset on 01/01/2026
-	Entries    []ZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
-	Name       *string                          `pulumi:"name"`
-	OcrEnabled *bool                            `pulumi:"ocrEnabled"`
+	Entries       []ZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
+	IntegrationId *string                          `pulumi:"integrationId"`
+	Name          *string                          `pulumi:"name"`
+	OcrEnabled    *bool                            `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
 	OpenAccess *bool `pulumi:"openAccess"`
 	// Sensitivity levels to associate with the profile.
@@ -209,9 +219,10 @@ type ZeroTrustDlpCustomProfileState struct {
 	// If this field is omitted, entries owned by this profile will not be changed.
 	//
 	// Deprecated: This attribute will be sunset on 01/01/2026
-	Entries    ZeroTrustDlpCustomProfileEntryArrayInput
-	Name       pulumi.StringPtrInput
-	OcrEnabled pulumi.BoolPtrInput
+	Entries       ZeroTrustDlpCustomProfileEntryArrayInput
+	IntegrationId pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
+	OcrEnabled    pulumi.BoolPtrInput
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
 	// Sensitivity levels to associate with the profile.
@@ -426,6 +437,10 @@ func (o ZeroTrustDlpCustomProfileOutput) Description() pulumi.StringPtrOutput {
 // Deprecated: This attribute will be sunset on 01/01/2026
 func (o ZeroTrustDlpCustomProfileOutput) Entries() ZeroTrustDlpCustomProfileEntryArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) ZeroTrustDlpCustomProfileEntryArrayOutput { return v.Entries }).(ZeroTrustDlpCustomProfileEntryArrayOutput)
+}
+
+func (o ZeroTrustDlpCustomProfileOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.IntegrationId }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpCustomProfileOutput) Name() pulumi.StringOutput {

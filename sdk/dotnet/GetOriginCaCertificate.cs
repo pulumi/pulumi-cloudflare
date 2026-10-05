@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
         ///     {
-        ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CertificateId = "328578533902268680212849205732770752308931942346",
         ///     });
         /// 
         /// });
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
         ///     {
-        ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CertificateId = "328578533902268680212849205732770752308931942346",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
         ///     {
-        ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CertificateId = "328578533902268680212849205732770752308931942346",
         ///     });
         /// 
         /// });
@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// The x509 serial number of the Origin CA certificate.
         /// </summary>
         [Input("certificateId")]
         public string? CertificateId { get; set; }
@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// The x509 serial number of the Origin CA certificate.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// Identifier.
+        /// The x509 serial number of the Origin CA certificate.
         /// </summary>
         public readonly string? CertificateId;
         /// <summary>
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
-        /// Identifier.
+        /// The x509 serial number of the Origin CA certificate.
         /// </summary>
         public readonly string Id;
         /// <summary>

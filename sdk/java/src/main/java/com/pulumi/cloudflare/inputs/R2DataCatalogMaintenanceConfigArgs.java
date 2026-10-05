@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.R2DataCatalogMaintenanceConfigCompactionArgs
 import com.pulumi.cloudflare.inputs.R2DataCatalogMaintenanceConfigSnapshotExpirationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +33,21 @@ public final class R2DataCatalogMaintenanceConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Scheduling interval between normal table maintenance runs.
+     * 
+     */
+    @Import(name="interval")
+    private @Nullable Output<String> interval;
+
+    /**
+     * @return Scheduling interval between normal table maintenance runs.
+     * 
+     */
+    public Optional<Output<String>> interval() {
+        return Optional.ofNullable(this.interval);
+    }
+
+    /**
      * Configures snapshot expiration settings.
      * 
      */
@@ -50,6 +66,7 @@ public final class R2DataCatalogMaintenanceConfigArgs extends com.pulumi.resourc
 
     private R2DataCatalogMaintenanceConfigArgs(R2DataCatalogMaintenanceConfigArgs $) {
         this.compaction = $.compaction;
+        this.interval = $.interval;
         this.snapshotExpiration = $.snapshotExpiration;
     }
 
@@ -90,6 +107,27 @@ public final class R2DataCatalogMaintenanceConfigArgs extends com.pulumi.resourc
          */
         public Builder compaction(R2DataCatalogMaintenanceConfigCompactionArgs compaction) {
             return compaction(Output.of(compaction));
+        }
+
+        /**
+         * @param interval Scheduling interval between normal table maintenance runs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interval(@Nullable Output<String> interval) {
+            $.interval = interval;
+            return this;
+        }
+
+        /**
+         * @param interval Scheduling interval between normal table maintenance runs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interval(String interval) {
+            return interval(Output.of(interval));
         }
 
         /**

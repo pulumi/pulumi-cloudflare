@@ -94,6 +94,13 @@ namespace Pulumi.Cloudflare
         [Output("deployedVia")]
         public Output<string> DeployedVia { get; private set; } = null!;
 
+        /// <summary>
+        /// Direction to order widgets.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Output("direction")]
+        public Output<string?> Direction { get; private set; } = null!;
+
         [Output("domains")]
         public Output<ImmutableArray<string>> Domains { get; private set; } = null!;
 
@@ -102,6 +109,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("ephemeralId")]
         public Output<bool> EphemeralId { get; private set; } = null!;
+
+        /// <summary>
+        /// Filter widgets by field using case-insensitive substring matching.
+        /// Format: `field:value`
+        /// </summary>
+        [Output("filter")]
+        public Output<string?> Filter { get; private set; } = null!;
 
         /// <summary>
         /// Origin of the most recent mutation (create, update, delete, or
@@ -138,6 +152,25 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("offlabel")]
         public Output<bool> Offlabel { get; private set; } = null!;
+
+        /// <summary>
+        /// Field to order widgets by.
+        /// Available values: "id", "sitekey", "name", "CreatedOn", "ModifiedOn".
+        /// </summary>
+        [Output("order")]
+        public Output<string?> Order { get; private set; } = null!;
+
+        /// <summary>
+        /// Page number of paginated results.
+        /// </summary>
+        [Output("page")]
+        public Output<double> Page { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of items per page.
+        /// </summary>
+        [Output("perPage")]
+        public Output<double> PerPage { get; private set; } = null!;
 
         /// <summary>
         /// Region where this widget can be used. This cannot be changed after creation.
@@ -229,6 +262,13 @@ namespace Pulumi.Cloudflare
         [Input("clearanceLevel")]
         public Input<string>? ClearanceLevel { get; set; }
 
+        /// <summary>
+        /// Direction to order widgets.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
         [Input("domains", required: true)]
         private InputList<string>? _domains;
         public InputList<string> Domains
@@ -242,6 +282,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("ephemeralId")]
         public Input<bool>? EphemeralId { get; set; }
+
+        /// <summary>
+        /// Filter widgets by field using case-insensitive substring matching.
+        /// Format: `field:value`
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
 
         /// <summary>
         /// Widget Mode
@@ -263,6 +310,25 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("offlabel")]
         public Input<bool>? Offlabel { get; set; }
+
+        /// <summary>
+        /// Field to order widgets by.
+        /// Available values: "id", "sitekey", "name", "CreatedOn", "ModifiedOn".
+        /// </summary>
+        [Input("order")]
+        public Input<string>? Order { get; set; }
+
+        /// <summary>
+        /// Page number of paginated results.
+        /// </summary>
+        [Input("page")]
+        public Input<double>? Page { get; set; }
+
+        /// <summary>
+        /// Number of items per page.
+        /// </summary>
+        [Input("perPage")]
+        public Input<double>? PerPage { get; set; }
 
         /// <summary>
         /// Region where this widget can be used. This cannot be changed after creation.
@@ -316,6 +382,13 @@ namespace Pulumi.Cloudflare
         [Input("deployedVia")]
         public Input<string>? DeployedVia { get; set; }
 
+        /// <summary>
+        /// Direction to order widgets.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
         [Input("domains")]
         private InputList<string>? _domains;
         public InputList<string> Domains
@@ -329,6 +402,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("ephemeralId")]
         public Input<bool>? EphemeralId { get; set; }
+
+        /// <summary>
+        /// Filter widgets by field using case-insensitive substring matching.
+        /// Format: `field:value`
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
 
         /// <summary>
         /// Origin of the most recent mutation (create, update, delete, or
@@ -365,6 +445,25 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("offlabel")]
         public Input<bool>? Offlabel { get; set; }
+
+        /// <summary>
+        /// Field to order widgets by.
+        /// Available values: "id", "sitekey", "name", "CreatedOn", "ModifiedOn".
+        /// </summary>
+        [Input("order")]
+        public Input<string>? Order { get; set; }
+
+        /// <summary>
+        /// Page number of paginated results.
+        /// </summary>
+        [Input("page")]
+        public Input<double>? Page { get; set; }
+
+        /// <summary>
+        /// Number of items per page.
+        /// </summary>
+        [Input("perPage")]
+        public Input<double>? PerPage { get; set; }
 
         /// <summary>
         /// Region where this widget can be used. This cannot be changed after creation.

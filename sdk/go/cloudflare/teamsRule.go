@@ -189,6 +189,7 @@ import (
 type TeamsRule struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -276,6 +277,7 @@ func GetTeamsRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsRule resources.
 type teamsRuleState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -319,6 +321,7 @@ type teamsRuleState struct {
 }
 
 type TeamsRuleState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -366,6 +369,7 @@ func (TeamsRuleState) ElementType() reflect.Type {
 }
 
 type teamsRuleArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -396,6 +400,7 @@ type teamsRuleArgs struct {
 
 // The set of arguments for constructing a TeamsRule resource.
 type TeamsRuleArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -511,6 +516,7 @@ func (o TeamsRuleOutput) ToTeamsRuleOutputWithContext(ctx context.Context) Teams
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o TeamsRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

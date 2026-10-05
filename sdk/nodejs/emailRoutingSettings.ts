@@ -79,6 +79,10 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     */
+    declare public readonly supportSubaddress: pulumi.Output<boolean | undefined>;
+    /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      *
      * @deprecated This attribute is deprecated.
@@ -108,6 +112,7 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["skipWizard"] = state?.skipWizard;
             resourceInputs["status"] = state?.status;
+            resourceInputs["supportSubaddress"] = state?.supportSubaddress;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -115,6 +120,7 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["supportSubaddress"] = args?.supportSubaddress;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
@@ -159,6 +165,10 @@ export interface EmailRoutingSettingsState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     */
+    supportSubaddress?: pulumi.Input<boolean | undefined>;
+    /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      *
      * @deprecated This attribute is deprecated.
@@ -174,6 +184,10 @@ export interface EmailRoutingSettingsState {
  * The set of arguments for constructing a EmailRoutingSettings resource.
  */
 export interface EmailRoutingSettingsArgs {
+    /**
+     * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+     */
+    supportSubaddress?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

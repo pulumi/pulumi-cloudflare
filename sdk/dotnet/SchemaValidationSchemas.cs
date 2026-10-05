@@ -65,6 +65,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Omit the source-files of schemas and only retrieve their meta-data.
+        /// </summary>
+        [Output("omitSource")]
+        public Output<bool> OmitSource { get; private set; } = null!;
+
+        /// <summary>
         /// A unique identifier of this schema
         /// </summary>
         [Output("schemaId")]
@@ -148,6 +154,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Omit the source-files of schemas and only retrieve their meta-data.
+        /// </summary>
+        [Input("omitSource")]
+        public Input<bool>? OmitSource { get; set; }
+
+        /// <summary>
         /// The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
         /// </summary>
         [Input("source", required: true)]
@@ -188,6 +200,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Omit the source-files of schemas and only retrieve their meta-data.
+        /// </summary>
+        [Input("omitSource")]
+        public Input<bool>? OmitSource { get; set; }
 
         /// <summary>
         /// A unique identifier of this schema

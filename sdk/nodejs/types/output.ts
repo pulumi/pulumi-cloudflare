@@ -2164,7 +2164,7 @@ export interface AccessIdentityProviderConfig {
     pkceEnabled?: boolean;
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: "login", "selectAccount", "none".
+     * Available values: "login", "selectAccount", "none", "consent".
      */
     prompt?: string;
     redirectUrl: string;
@@ -2192,6 +2192,10 @@ export interface AccessIdentityProviderConfig {
      * The tokenEndpoint URL of your IdP
      */
     tokenUrl?: string;
+    /**
+     * Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+     */
+    useLoginHint?: boolean;
 }
 
 export interface AccessIdentityProviderConfigHeaderAttribute {
@@ -2367,6 +2371,22 @@ export interface AccessOrganizationMfaSshPivKeyRequirements {
      * Available values: "never", "always", "cached".
      */
     touchPolicy?: string;
+}
+
+export interface AccessOrganizationServiceTokenInactivity {
+    /**
+     * The action applied to an inactive service token.
+     * Available values: "disable", "delete".
+     */
+    action: string;
+    /**
+     * Whether automatic enforcement for inactive service tokens is enabled.
+     */
+    enabled: boolean;
+    /**
+     * The number of days a service token must be inactive before the configured action is applied.
+     */
+    inactivityThresholdDays: number;
 }
 
 export interface AccessPolicyApprovalGroup {
@@ -3858,6 +3878,10 @@ export interface AiSearchInstanceIndexingOptions {
      * Available values: "porter", "trigram".
      */
     keywordTokenizer: string;
+    /**
+     * Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+     */
+    useOcr: boolean;
 }
 
 export interface AiSearchInstanceMetadata {
@@ -5201,7 +5225,7 @@ export interface DnsRecordData {
      */
     preference?: number;
     /**
-     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * Priority.
      */
     priority?: number;
     /**
@@ -5237,7 +5261,7 @@ export interface DnsRecordData {
      */
     tag?: string;
     /**
-     * A valid mail server hostname, or "." for a NULL MX record.
+     * Target.
      */
     target?: string;
     /**
@@ -5279,6 +5303,9 @@ export interface EmailRoutingCatchAllAction {
      * Available values: "drop", "forward", "worker".
      */
     type: string;
+    /**
+     * List of values for the action. Currently limited to a single value.
+     */
     values?: string[];
 }
 
@@ -5296,6 +5323,9 @@ export interface EmailRoutingRuleAction {
      * Available values: "drop", "forward", "worker".
      */
     type: string;
+    /**
+     * List of values for the action. Currently limited to a single value.
+     */
     values?: string[];
 }
 
@@ -5326,6 +5356,17 @@ export interface EmailSecurityDomainEmailsProcessed {
     timestamp: string;
     totalEmailsProcessed: number;
     totalEmailsProcessedPrevious: number;
+}
+
+export interface FieldExtractorRule {
+    description?: string;
+    fields: outputs.FieldExtractorRuleField[];
+    ref: string;
+}
+
+export interface FieldExtractorRuleField {
+    expression: string;
+    name: string;
 }
 
 export interface FilterBody {
@@ -5427,7 +5468,7 @@ export interface FlagshipFlagRuleCondition {
      */
     logicalOperator?: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator?: string;
     /**
@@ -5444,7 +5485,7 @@ export interface FlagshipFlagRuleConditionClause {
      */
     logicalOperator?: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator?: string;
     /**
@@ -5461,7 +5502,7 @@ export interface FlagshipFlagRuleConditionClauseClause {
      */
     logicalOperator?: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator?: string;
     /**
@@ -5478,7 +5519,7 @@ export interface FlagshipFlagRuleConditionClauseClauseClause {
      */
     logicalOperator?: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator?: string;
     /**
@@ -5495,7 +5536,7 @@ export interface FlagshipFlagRuleConditionClauseClauseClauseClause {
      */
     logicalOperator?: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator?: string;
     /**
@@ -5512,7 +5553,7 @@ export interface FlagshipFlagRuleConditionClauseClauseClauseClauseClause {
      */
     logicalOperator?: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator?: string;
     /**
@@ -5527,7 +5568,7 @@ export interface FlagshipFlagRuleRollout {
      */
     attribute?: string;
     /**
-     * Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     * Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
      */
     percentage: number;
 }
@@ -5681,9 +5722,18 @@ export interface GetAccessRulesResultScope {
 
 export interface GetAccountApiTokenPermissionGroupsListResult {
     /**
+     * Product category that this permission group belongs to.
+     * Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
+     */
+    category: string;
+    /**
      * Public ID.
      */
     id: string;
+    /**
+     * Whether the caller can select this permission group when creating a token.
+     */
+    isSelectable: boolean;
     /**
      * Permission Group Name
      */
@@ -5696,9 +5746,18 @@ export interface GetAccountApiTokenPermissionGroupsListResult {
 
 export interface GetAccountApiTokenPermissionGroupsPermissionGroup {
     /**
+     * Product category that this permission group belongs to.
+     * Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
+     */
+    category: string;
+    /**
      * Public ID.
      */
     id: string;
+    /**
+     * Whether the caller can select this permission group when creating a token.
+     */
+    isSelectable: boolean;
     /**
      * Permission Group Name
      */
@@ -5960,8 +6019,38 @@ export interface GetAccountMemberPolicyPermissionGroup {
 }
 
 export interface GetAccountMemberPolicyPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetAccountMemberPolicyResourceGroup {
@@ -6184,8 +6273,38 @@ export interface GetAccountMembersResultPolicyPermissionGroup {
 }
 
 export interface GetAccountMembersResultPolicyPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetAccountMembersResultPolicyResourceGroup {
@@ -6345,8 +6464,38 @@ export interface GetAccountMembersResultUser {
 }
 
 export interface GetAccountPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetAccountPermissionGroupsResult {
@@ -6365,8 +6514,38 @@ export interface GetAccountPermissionGroupsResult {
 }
 
 export interface GetAccountPermissionGroupsResultMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetAccountRolePermissions {
@@ -6645,12 +6824,48 @@ export interface GetAccountTokenPolicyPermissionGroup {
 }
 
 export interface GetAccountTokenPolicyPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetAccountTokensResult {
     condition: outputs.GetAccountTokensResultCondition;
+    /**
+     * The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     */
+    creatorEmailAtCreation: string;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
@@ -6683,6 +6898,18 @@ export interface GetAccountTokensResult {
      * List of access policies assigned to the token.
      */
     policies: outputs.GetAccountTokensResultPolicy[];
+    /**
+     * The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     */
+    provisionerId: string;
+    /**
+     * The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     */
+    provisionerType: string;
     /**
      * Status of the token.
      * Available values: "active", "disabled", "expired".
@@ -6744,8 +6971,38 @@ export interface GetAccountTokensResultPolicyPermissionGroup {
 }
 
 export interface GetAccountTokensResultPolicyPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetAccountsResult {
@@ -7142,6 +7399,10 @@ export interface GetAiGatewayStripeUsageEvent {
 
 export interface GetAiGatewaysResult {
     authentication: boolean;
+    /**
+     * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     */
+    byokOnly: boolean;
     cacheInvalidateOnUpdate: boolean;
     cacheTtl: number;
     collectLogs: boolean;
@@ -7149,7 +7410,7 @@ export interface GetAiGatewaysResult {
     dlp: outputs.GetAiGatewaysResultDlp;
     guardrails: outputs.GetAiGatewaysResultGuardrails;
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      */
     id: string;
     isDefault: boolean;
@@ -7175,7 +7436,7 @@ export interface GetAiGatewaysResult {
      */
     retryBackoff: string;
     /**
-     * Delay between retry attempts in milliseconds (0-5000)
+     * Delay between retry attempts in milliseconds (0-60000)
      */
     retryDelay: number;
     /**
@@ -7413,6 +7674,10 @@ export interface GetAiSearchInstanceCustomMetadata {
 
 export interface GetAiSearchInstanceFilter {
     /**
+     * Filter by exact Search for Agents hostname (case-insensitive).
+     */
+    hostname?: string;
+    /**
      * Filter by namespace.
      */
     namespace?: string;
@@ -7449,6 +7714,10 @@ export interface GetAiSearchInstanceIndexingOptions {
      * Available values: "porter", "trigram".
      */
     keywordTokenizer: string;
+    /**
+     * Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+     */
+    useOcr: boolean;
 }
 
 export interface GetAiSearchInstanceMetadata {
@@ -7728,6 +7997,7 @@ export interface GetAiSearchInstancesResultIndexingOptions {
      * Available values: "porter", "trigram".
      */
     keywordTokenizer: string;
+    useOcr: boolean;
 }
 
 export interface GetAiSearchInstancesResultMetadata {
@@ -8542,9 +8812,18 @@ export interface GetApiTokenFilter {
 
 export interface GetApiTokenPermissionGroupsListResult {
     /**
+     * Product category that this permission group belongs to.
+     * Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
+     */
+    category: string;
+    /**
      * Public ID.
      */
     id: string;
+    /**
+     * Whether the caller can select this permission group when creating a token.
+     */
+    isSelectable: boolean;
     /**
      * Permission Group Name
      */
@@ -8591,12 +8870,48 @@ export interface GetApiTokenPolicyPermissionGroup {
 }
 
 export interface GetApiTokenPolicyPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetApiTokensResult {
     condition: outputs.GetApiTokensResultCondition;
+    /**
+     * The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     */
+    creatorEmailAtCreation: string;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
@@ -8629,6 +8944,18 @@ export interface GetApiTokensResult {
      * List of access policies assigned to the token.
      */
     policies: outputs.GetApiTokensResultPolicy[];
+    /**
+     * The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     */
+    provisionerId: string;
+    /**
+     * The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     */
+    provisionerType: string;
     /**
      * Status of the token.
      * Available values: "active", "disabled", "expired".
@@ -8690,8 +9017,38 @@ export interface GetApiTokensResultPolicyPermissionGroup {
 }
 
 export interface GetApiTokensResultPolicyPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetAuthenticatedOriginPullsCertificatesResult {
@@ -8884,7 +9241,7 @@ export interface GetCallsSfuAppsResult {
      */
     modified: string;
     /**
-     * A short description of Calls app, not shown to end users.
+     * A short description of a Realtime SFU app, not shown to end users.
      */
     name: string;
     /**
@@ -8903,7 +9260,7 @@ export interface GetCallsTurnAppsResult {
      */
     modified: string;
     /**
-     * A short description of Calls app, not shown to end users.
+     * A short description of a Realtime SFU app, not shown to end users.
      */
     name: string;
     /**
@@ -9083,7 +9440,7 @@ export interface GetCertificatePacksResult {
      */
     hosts: string[];
     /**
-     * Identifier.
+     * The unique identifier for a certificate_pack.
      */
     id: string;
     /**
@@ -9306,7 +9663,7 @@ export interface GetClientCertificatesResult {
      */
     fingerprintSha256: string;
     /**
-     * Identifier.
+     * Client Certificate Tag
      */
     id: string;
     /**
@@ -9925,7 +10282,7 @@ export interface GetCustomHostnamesResult {
      */
     hostname: string;
     /**
-     * Identifier.
+     * Custom hostname identifier tag.
      */
     id: string;
     /**
@@ -10182,7 +10539,7 @@ export interface GetCustomOriginTrustStoresResult {
      */
     expiresOn: string;
     /**
-     * Identifier.
+     * Certificate identifier tag.
      */
     id: string;
     /**
@@ -10345,7 +10702,7 @@ export interface GetCustomSslsResult {
     geoRestrictions: outputs.GetCustomSslsResultGeoRestrictions;
     hosts: string[];
     /**
-     * Identifier.
+     * Custom certificate identifier tag.
      */
     id: string;
     /**
@@ -10775,7 +11132,7 @@ export interface GetDnsRecordFilter {
      */
     search?: string;
     /**
-     * Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
      */
     shadowedByName?: string;
     /**
@@ -11352,6 +11709,9 @@ export interface GetEmailRoutingCatchAllAction {
      * Available values: "drop", "forward", "worker".
      */
     type: string;
+    /**
+     * List of values for the action. Currently limited to a single value.
+     */
     values: string[];
 }
 
@@ -11393,6 +11753,9 @@ export interface GetEmailRoutingRuleAction {
      * Available values: "drop", "forward", "worker".
      */
     type: string;
+    /**
+     * List of values for the action. Currently limited to a single value.
+     */
     values: string[];
 }
 
@@ -11459,6 +11822,9 @@ export interface GetEmailRoutingRulesResultAction {
      * Available values: "drop", "forward", "worker".
      */
     type: string;
+    /**
+     * List of values for the action. Currently limited to a single value.
+     */
     values: string[];
 }
 
@@ -11566,14 +11932,13 @@ export interface GetEmailSecurityAllowPolicyFilter {
      * Available values: "pattern", "createdAt".
      */
     order?: string;
+    /**
+     * Filter by exact pattern value.
+     */
     pattern?: string;
     /**
-     * Type of pattern matching.
-     * - EMAIL: matches a full email address (e.g. `user@example.com`)
-     * - DOMAIN: matches a domain name (e.g. `example.com`)
-     * - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-     * - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
-     *   Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+     * Filter by pattern type.
+     * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType?: string;
     /**
@@ -11619,6 +11984,9 @@ export interface GetEmailSecurityBlockSendersResult {
      * Blocked sender pattern identifier.
      */
     id: string;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal value.
+     */
     isRegex: boolean;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -11706,6 +12074,7 @@ export interface GetEmailSecurityDomainsResult {
     dropDispositions: string[];
     emailsProcessed: outputs.GetEmailSecurityDomainsResultEmailsProcessed;
     /**
+     * The mailbox folder to scan, for API-scanning domains.
      * Available values: "AllItems", "Inbox".
      */
     folder: string;
@@ -11755,12 +12124,26 @@ export interface GetEmailSecurityDomainsResultEmailsProcessed {
 }
 
 export interface GetEmailSecurityImpersonationRegistriesResult {
+    /**
+     * Optional note describing the entry.
+     */
     comments: string;
     createdAt: string;
+    /**
+     * Identifier of the directory the entry was synced from, when directory-synced.
+     */
     directoryId: number;
+    /**
+     * Identifier of the directory node the entry was synced from, when directory-synced.
+     */
     directoryNodeId: number;
+    /**
+     * Email address (or pattern) of the protected identity.
+     */
     email: string;
     /**
+     * Deprecated. External identifier of the directory node.
+     *
      * @deprecated This field is deprecated.
      */
     externalDirectoryNodeId: string;
@@ -11768,6 +12151,9 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
      * Impersonation registry entry identifier
      */
     id: string;
+    /**
+     * Whether `email` is a regular expression instead of a literal address.
+     */
     isEmailRegex: boolean;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -11776,8 +12162,12 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
      */
     lastModified: string;
     modifiedAt: string;
+    /**
+     * Display name of the protected identity.
+     */
     name: string;
     /**
+     * Source the entry was created from.
      * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
      */
     provenance: string;
@@ -11841,6 +12231,9 @@ export interface GetEmailSecurityTrustedDomainsListResult {
      * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     isRecent: boolean;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal domain.
+     */
     isRegex: boolean;
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
@@ -11853,6 +12246,9 @@ export interface GetEmailSecurityTrustedDomainsListResult {
      */
     lastModified: string;
     modifiedAt: string;
+    /**
+     * The domain pattern to trust, e.g. `example.com`.
+     */
     pattern: string;
 }
 
@@ -11899,6 +12295,29 @@ export interface GetEmailSendingSubdomainsResult {
      * Sending subdomain identifier.
      */
     tag: string;
+}
+
+export interface GetFieldExtractorRule {
+    /**
+     * Human-readable rule description.
+     */
+    description: string;
+    fields: outputs.GetFieldExtractorRuleField[];
+    /**
+     * Stable rule identifier.
+     */
+    ref: string;
+}
+
+export interface GetFieldExtractorRuleField {
+    /**
+     * Wirefilter value expression.
+     */
+    expression: string;
+    /**
+     * Field name.
+     */
+    name: string;
 }
 
 export interface GetFilterFilter {
@@ -12015,6 +12434,13 @@ export interface GetFlagshipAppsResult {
     updatedBy: string;
 }
 
+export interface GetFlagshipFlagFilter {
+    /**
+     * Max items to return (1–200).
+     */
+    limit?: number;
+}
+
 export interface GetFlagshipFlagRule {
     /**
      * Conditions the context must satisfy for this rule to match. An empty array matches all contexts.
@@ -12039,7 +12465,7 @@ export interface GetFlagshipFlagRuleCondition {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12056,7 +12482,7 @@ export interface GetFlagshipFlagRuleConditionClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12073,7 +12499,7 @@ export interface GetFlagshipFlagRuleConditionClauseClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12090,7 +12516,7 @@ export interface GetFlagshipFlagRuleConditionClauseClauseClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12107,7 +12533,7 @@ export interface GetFlagshipFlagRuleConditionClauseClauseClauseClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12124,7 +12550,7 @@ export interface GetFlagshipFlagRuleConditionClauseClauseClauseClauseClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12139,7 +12565,7 @@ export interface GetFlagshipFlagRuleRollout {
      */
     attribute: string;
     /**
-     * Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     * Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
      */
     percentage: number;
 }
@@ -12149,11 +12575,18 @@ export interface GetFlagshipFlagsResult {
      * Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
      */
     defaultVariation: string;
+    /**
+     * Optional operator-facing description. It does not affect flag evaluation.
+     */
     description: string;
     /**
      * When false, the flag bypasses all rules and always serves `defaultVariation`.
      */
     enabled: boolean;
+    /**
+     * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+     */
+    id: string;
     /**
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      */
@@ -12163,14 +12596,14 @@ export interface GetFlagshipFlagsResult {
      */
     rules: outputs.GetFlagshipFlagsResultRule[];
     /**
-     * Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * Server-inferred value type shared by all of the flag's variations.
      * Available values: "boolean", "string", "number", "json".
      */
     type: string;
     updatedAt: string;
     updatedBy: string;
     /**
-     * Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
+     * Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.
      */
     variations: {[key: string]: string};
 }
@@ -12199,7 +12632,7 @@ export interface GetFlagshipFlagsResultRuleCondition {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12216,7 +12649,7 @@ export interface GetFlagshipFlagsResultRuleConditionClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12233,7 +12666,7 @@ export interface GetFlagshipFlagsResultRuleConditionClauseClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12250,7 +12683,7 @@ export interface GetFlagshipFlagsResultRuleConditionClauseClauseClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12267,7 +12700,7 @@ export interface GetFlagshipFlagsResultRuleConditionClauseClauseClauseClause {
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12284,7 +12717,7 @@ export interface GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClau
      */
     logicalOperator: string;
     /**
-     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
      */
     operator: string;
     /**
@@ -12299,7 +12732,7 @@ export interface GetFlagshipFlagsResultRuleRollout {
      */
     attribute: string;
     /**
-     * Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     * Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
      */
     percentage: number;
 }
@@ -12496,17 +12929,46 @@ export interface GetHostnameTlsSettingsResult {
 
 export interface GetHyperdriveConfigCaching {
     /**
-     * Set to true to disable caching of SQL responses. Default is false.
+     * Defines whether caching is disabled.
      */
     disabled: boolean;
     /**
-     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+     * Defines the maximum duration (in seconds) items persist in the cache.
      */
     maxAge: number;
     /**
-     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+     * Defines the number of seconds the cache may serve a stale response.
      */
     staleWhileRevalidate: number;
+}
+
+export interface GetHyperdriveConfigIntegration {
+    /**
+     * The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL.
+     */
+    customDatabaseName: string;
+    /**
+     * The name of the PlanetScale database branch.
+     */
+    databaseBranchName: string;
+    /**
+     * The name of the PlanetScale database.
+     */
+    databaseName: string;
+    /**
+     * The database integration provider used by this operation.
+     * Available values: "planetscale".
+     */
+    hyperdriveConfigProvider: string;
+    /**
+     * The name of the PlanetScale organization.
+     */
+    organizationName: string;
+    /**
+     * Specifies the URL scheme used to connect to your origin database.
+     * Available values: "postgres", "postgresql", "mysql".
+     */
+    scheme: string;
 }
 
 export interface GetHyperdriveConfigMtls {
@@ -12519,7 +12981,7 @@ export interface GetHyperdriveConfigMtls {
      */
     mtlsCertificateId: string;
     /**
-     * Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+     * PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
      */
     sslmode: string;
 }
@@ -12538,7 +13000,7 @@ export interface GetHyperdriveConfigOrigin {
      */
     database: string;
     /**
-     * Defines the host (hostname or IP) of your origin database.
+     * Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
      */
     host: string;
     /**
@@ -12575,6 +13037,10 @@ export interface GetHyperdriveConfigsResult {
      */
     id: string;
     /**
+     * Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+     */
+    integration: outputs.GetHyperdriveConfigsResultIntegration;
+    /**
      * Defines the last modified time of the Hyperdrive configuration.
      */
     modifiedOn: string;
@@ -12586,6 +13052,9 @@ export interface GetHyperdriveConfigsResult {
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
      */
     name: string;
+    /**
+     * Combines database connection fields with exactly one supported network location.
+     */
     origin: outputs.GetHyperdriveConfigsResultOrigin;
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -12599,17 +13068,46 @@ export interface GetHyperdriveConfigsResult {
 
 export interface GetHyperdriveConfigsResultCaching {
     /**
-     * Set to true to disable caching of SQL responses. Default is false.
+     * Defines whether caching is disabled.
      */
     disabled: boolean;
     /**
-     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+     * Defines the maximum duration (in seconds) items persist in the cache.
      */
     maxAge: number;
     /**
-     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+     * Defines the number of seconds the cache may serve a stale response.
      */
     staleWhileRevalidate: number;
+}
+
+export interface GetHyperdriveConfigsResultIntegration {
+    /**
+     * The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL.
+     */
+    customDatabaseName: string;
+    /**
+     * The name of the PlanetScale database branch.
+     */
+    databaseBranchName: string;
+    /**
+     * The name of the PlanetScale database.
+     */
+    databaseName: string;
+    /**
+     * The database integration provider used by this operation.
+     * Available values: "planetscale".
+     */
+    hyperdriveConfigProvider: string;
+    /**
+     * The name of the PlanetScale organization.
+     */
+    organizationName: string;
+    /**
+     * Specifies the URL scheme used to connect to your origin database.
+     * Available values: "postgres", "postgresql", "mysql".
+     */
+    scheme: string;
 }
 
 export interface GetHyperdriveConfigsResultMtls {
@@ -12622,7 +13120,7 @@ export interface GetHyperdriveConfigsResultMtls {
      */
     mtlsCertificateId: string;
     /**
-     * Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+     * PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
      */
     sslmode: string;
 }
@@ -12641,7 +13139,7 @@ export interface GetHyperdriveConfigsResultOrigin {
      */
     database: string;
     /**
-     * Defines the host (hostname or IP) of your origin database.
+     * Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
      */
     host: string;
     /**
@@ -13949,7 +14447,7 @@ export interface GetLogpushDatasetJobOutputOptions {
      */
     fieldNames: string[];
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      */
     mergeSubrequests: boolean;
     /**
@@ -13974,7 +14472,7 @@ export interface GetLogpushDatasetJobOutputOptions {
      */
     recordTemplate: string;
     /**
-     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      */
     sampleRate: number;
     /**
@@ -14006,7 +14504,7 @@ export interface GetLogpushJobOutputOptions {
      */
     fieldNames: string[];
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      */
     mergeSubrequests: boolean;
     /**
@@ -14031,7 +14529,7 @@ export interface GetLogpushJobOutputOptions {
      */
     recordTemplate: string;
     /**
-     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      */
     sampleRate: number;
     /**
@@ -14059,6 +14557,10 @@ export interface GetLogpushJobsResult {
      * If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
      */
     errorMessage: string;
+    /**
+     * When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     */
+    filterAttackTraffic: boolean;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
@@ -14133,7 +14635,7 @@ export interface GetLogpushJobsResultOutputOptions {
      */
     fieldNames: string[];
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      */
     mergeSubrequests: boolean;
     /**
@@ -14158,7 +14660,7 @@ export interface GetLogpushJobsResultOutputOptions {
      */
     recordTemplate: string;
     /**
-     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      */
     sampleRate: number;
     /**
@@ -14711,6 +15213,7 @@ export interface GetMagicTransitSiteWansResult {
      * Identifier
      */
     id: string;
+    loadBalanceInnerFlows: boolean;
     name: string;
     physport: number;
     /**
@@ -14785,6 +15288,32 @@ export interface GetMagicTransitSitesResultLocation {
     lon: string;
 }
 
+export interface GetMagicWanBgpFilterProfilesResult {
+    createdOn: string;
+    /**
+     * Description of the filter profile
+     */
+    description: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * Action to take when a route matches one of the targets in this profile
+     * Available values: "allow", "deny".
+     */
+    matchAction: string;
+    modifiedOn: string;
+    /**
+     * Friendly name for the filter profile
+     */
+    name: string;
+    /**
+     * List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.
+     */
+    targets: string[];
+}
+
 export interface GetMagicWanGreTunnelGreTunnel {
     /**
      * True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `couplerIntegration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
@@ -14845,9 +15374,17 @@ export interface GetMagicWanGreTunnelGreTunnelBgp {
      */
     customerAsn: number;
     /**
+     * ID of the BGP filter profile applied to routes advertised to the customer.
+     */
+    exportFilterId: string;
+    /**
      * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      */
     extraPrefixes: string[];
+    /**
+     * ID of the BGP filter profile applied to routes received from the customer.
+     */
+    importFilterId: string;
     /**
      * MD5 key to use for session authentication.
      */
@@ -14970,9 +15507,17 @@ export interface GetMagicWanIpsecTunnelIpsecTunnelBgp {
      */
     customerAsn: number;
     /**
+     * ID of the BGP filter profile applied to routes advertised to the customer.
+     */
+    exportFilterId: string;
+    /**
      * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      */
     extraPrefixes: string[];
+    /**
+     * ID of the BGP filter profile applied to routes received from the customer.
+     */
+    importFilterId: string;
     /**
      * MD5 key to use for session authentication.
      */
@@ -15420,6 +15965,10 @@ export interface GetNotificationPoliciesResultFilters {
      */
     targetZoneNames: string[];
     /**
+     * Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     */
+    tokenIds: string[];
+    /**
      * Used for configuring traffic*anomalies*alert
      */
     trafficExclusions: string[];
@@ -15621,6 +16170,10 @@ export interface GetNotificationPolicyFilters {
      * Used for configuring advanced*ddos*attack*l7*alert
      */
     targetZoneNames: string[];
+    /**
+     * Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     */
+    tokenIds: string[];
     /**
      * Used for configuring traffic*anomalies*alert
      */
@@ -16071,7 +16624,7 @@ export interface GetOriginCaCertificatesResult {
      */
     hostnames: string[];
     /**
-     * Identifier.
+     * The x509 serial number of the Origin CA certificate.
      */
     id: string;
     /**
@@ -16308,7 +16861,7 @@ export interface GetPagesDomainsResult {
     domainId: string;
     id: string;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     name: string;
     /**
@@ -16400,7 +16953,7 @@ export interface GetPagesProjectCanonicalDeployment {
      */
     id: string;
     /**
-     * If the deployment has been skipped.
+     * Whether the deployment was skipped.
      */
     isSkipped: boolean;
     /**
@@ -16416,7 +16969,7 @@ export interface GetPagesProjectCanonicalDeployment {
      */
     projectId: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
     /**
@@ -16425,7 +16978,7 @@ export interface GetPagesProjectCanonicalDeployment {
     shortId: string;
     /**
      * Why the deployment was skipped.
-     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
      */
     skipReason: string;
     /**
@@ -16531,7 +17084,7 @@ export interface GetPagesProjectCanonicalDeploymentLatestStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -16620,7 +17173,7 @@ export interface GetPagesProjectCanonicalDeploymentStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -17065,7 +17618,7 @@ export interface GetPagesProjectLatestDeployment {
      */
     id: string;
     /**
-     * If the deployment has been skipped.
+     * Whether the deployment was skipped.
      */
     isSkipped: boolean;
     /**
@@ -17081,7 +17634,7 @@ export interface GetPagesProjectLatestDeployment {
      */
     projectId: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
     /**
@@ -17090,7 +17643,7 @@ export interface GetPagesProjectLatestDeployment {
     shortId: string;
     /**
      * Why the deployment was skipped.
-     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
      */
     skipReason: string;
     /**
@@ -17196,7 +17749,7 @@ export interface GetPagesProjectLatestDeploymentLatestStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -17285,7 +17838,7 @@ export interface GetPagesProjectLatestDeploymentStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -17396,7 +17949,7 @@ export interface GetPagesProjectsResult {
      */
     latestDeployment: outputs.GetPagesProjectsResultLatestDeployment;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     name: string;
     /**
@@ -17483,7 +18036,7 @@ export interface GetPagesProjectsResultCanonicalDeployment {
      */
     id: string;
     /**
-     * If the deployment has been skipped.
+     * Whether the deployment was skipped.
      */
     isSkipped: boolean;
     /**
@@ -17499,7 +18052,7 @@ export interface GetPagesProjectsResultCanonicalDeployment {
      */
     projectId: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
     /**
@@ -17508,7 +18061,7 @@ export interface GetPagesProjectsResultCanonicalDeployment {
     shortId: string;
     /**
      * Why the deployment was skipped.
-     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
      */
     skipReason: string;
     /**
@@ -17614,7 +18167,7 @@ export interface GetPagesProjectsResultCanonicalDeploymentLatestStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -17703,7 +18256,7 @@ export interface GetPagesProjectsResultCanonicalDeploymentStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -18148,7 +18701,7 @@ export interface GetPagesProjectsResultLatestDeployment {
      */
     id: string;
     /**
-     * If the deployment has been skipped.
+     * Whether the deployment was skipped.
      */
     isSkipped: boolean;
     /**
@@ -18164,7 +18717,7 @@ export interface GetPagesProjectsResultLatestDeployment {
      */
     projectId: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
     /**
@@ -18173,7 +18726,7 @@ export interface GetPagesProjectsResultLatestDeployment {
     shortId: string;
     /**
      * Why the deployment was skipped.
-     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+     * Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
      */
     skipReason: string;
     /**
@@ -18279,7 +18832,7 @@ export interface GetPagesProjectsResultLatestDeploymentLatestStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -18368,7 +18921,7 @@ export interface GetPagesProjectsResultLatestDeploymentStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -18593,7 +19146,7 @@ export interface GetPipelineSinksResult {
     schema: outputs.GetPipelineSinksResultSchema;
     /**
      * Specifies the type of sink.
-     * Available values: "r2", "r2*data*catalog".
+     * Available values: "r2", "r2*data*catalog", "basinCatalog".
      */
     type: string;
 }
@@ -19069,6 +19622,10 @@ export interface GetQueuesResult {
     consumersTotalCount: number;
     createdOn: string;
     id: string;
+    /**
+     * Available values: "eu", "us", "fedramp".
+     */
+    jurisdiction: string;
     modifiedOn: string;
     producers: outputs.GetQueuesResultProducer[];
     producersTotalCount: number;
@@ -19383,6 +19940,10 @@ export interface GetR2DataCatalogMaintenanceConfig {
      */
     compaction: outputs.GetR2DataCatalogMaintenanceConfigCompaction;
     /**
+     * Scheduling interval between normal table maintenance runs.
+     */
+    interval: string;
+    /**
      * Configures snapshot expiration settings.
      */
     snapshotExpiration: outputs.GetR2DataCatalogMaintenanceConfigSnapshotExpiration;
@@ -19498,126 +20059,6 @@ export interface GetRateLimitMatchRequest {
 }
 
 export interface GetRateLimitMatchResponse {
-    /**
-     * When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
-     * Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
-     */
-    originTraffic: boolean;
-}
-
-export interface GetRateLimitsResult {
-    /**
-     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
-     */
-    action: outputs.GetRateLimitsResultAction;
-    /**
-     * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-     */
-    bypasses: outputs.GetRateLimitsResultBypass[];
-    /**
-     * An informative summary of the rule. This value is sanitized and any tags will be removed.
-     */
-    description: string;
-    /**
-     * When true, indicates that the rate limit is currently disabled.
-     */
-    disabled: boolean;
-    /**
-     * The unique identifier of the rate limit.
-     */
-    id: string;
-    /**
-     * Determines which traffic the rate limit counts towards the threshold.
-     */
-    match: outputs.GetRateLimitsResultMatch;
-    /**
-     * The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
-     */
-    period: number;
-    /**
-     * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
-     */
-    threshold: number;
-}
-
-export interface GetRateLimitsResultAction {
-    /**
-     * The action to perform.
-     * Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
-     */
-    mode: string;
-    /**
-     * A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
-     * Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
-     */
-    response: outputs.GetRateLimitsResultActionResponse;
-    /**
-     * The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
-     * Notes: If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.
-     */
-    timeout: number;
-}
-
-export interface GetRateLimitsResultActionResponse {
-    /**
-     * The response body to return. The value must conform to the configured content type.
-     */
-    body: string;
-    /**
-     * The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
-     */
-    contentType: string;
-}
-
-export interface GetRateLimitsResultBypass {
-    /**
-     * Available values: "url".
-     */
-    name: string;
-    /**
-     * The URL to bypass.
-     */
-    value: string;
-}
-
-export interface GetRateLimitsResultMatch {
-    headers: outputs.GetRateLimitsResultMatchHeader[];
-    request: outputs.GetRateLimitsResultMatchRequest;
-    response: outputs.GetRateLimitsResultMatchResponse;
-}
-
-export interface GetRateLimitsResultMatchHeader {
-    /**
-     * The name of the response header to match.
-     */
-    name: string;
-    /**
-     * The operator used when matching: `eq` means "equal" and `ne` means "not equal".
-     * Available values: "eq", "ne".
-     */
-    op: string;
-    /**
-     * The value of the response header, which must match exactly.
-     */
-    value: string;
-}
-
-export interface GetRateLimitsResultMatchRequest {
-    /**
-     * The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
-     */
-    methods: string[];
-    /**
-     * The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
-     */
-    schemes: string[];
-    /**
-     * The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
-     */
-    url: string;
-}
-
-export interface GetRateLimitsResultMatchResponse {
     /**
      * When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
      * Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
@@ -21512,27 +21953,27 @@ export interface GetSnippetListResult {
 
 export interface GetSnippetRulesListResult {
     /**
-     * An informative description of the rule.
+     * Provide an informative description of the rule.
      */
     description: string;
     /**
-     * Whether the rule should be executed.
+     * Indicate whether to execute the rule.
      */
     enabled: boolean;
     /**
-     * The expression defining which traffic will match the rule.
+     * Define the expression that determines which traffic matches the rule.
      */
     expression: string;
     /**
-     * The unique ID of the rule.
+     * Specify the unique ID of the rule.
      */
     id: string;
     /**
-     * The timestamp of when the rule was last modified.
+     * Specify the timestamp of when the rule was last modified.
      */
     lastUpdated: string;
     /**
-     * The identifying name of the snippet.
+     * Identify the snippet.
      */
     snippetName: string;
 }
@@ -22467,7 +22908,8 @@ export interface GetTurnstileWidgetFilter {
      */
     direction?: string;
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      */
     filter?: string;
@@ -22494,15 +22936,30 @@ export interface GetTurnstileWidgetsResult {
      * When the widget was created.
      */
     createdOn: string;
+    /**
+     * Origin that created this widget, recorded at creation time and
+     * immutable afterward. Server-derived from the create request; not
+     * client-settable. Omitted from the response for widgets created
+     * before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
+    deployedVia: string;
     domains: string[];
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
     ephemeralId: boolean;
     /**
-     * Widget item identifier tag.
+     * Unique identifier for a Turnstile widget.
      */
     id: string;
+    /**
+     * Origin of the most recent mutation (create, update, delete, or
+     * secret rotation). Server-derived; not client-settable. Omitted for
+     * widgets last mutated before this field existed.
+     * Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+     */
+    lastModifiedVia: string;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
@@ -22528,7 +22985,7 @@ export interface GetTurnstileWidgetsResult {
      */
     region: string;
     /**
-     * Widget item identifier tag.
+     * Unique identifier for a Turnstile widget.
      */
     sitekey: string;
 }
@@ -22666,8 +23123,38 @@ export interface GetUserGroupPolicyPermissionGroup {
 }
 
 export interface GetUserGroupPolicyPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetUserGroupPolicyResourceGroup {
@@ -22771,8 +23258,38 @@ export interface GetUserGroupsResultPolicyPermissionGroup {
 }
 
 export interface GetUserGroupsResultPolicyPermissionGroupMeta {
-    key: string;
-    value: string;
+    /**
+     * A category used to group permission groups.
+     */
+    category: string;
+    /**
+     * Indicates whether the permission group is deprecated.
+     */
+    deprecated: string;
+    /**
+     * Additional information about the permission group.
+     */
+    description: string;
+    /**
+     * Indicates whether the permission group can be edited.
+     */
+    editable: string;
+    /**
+     * The planned end-of-life date and time, when provided.
+     */
+    eolAt: string;
+    /**
+     * A label identifying the permission group.
+     */
+    label: string;
+    /**
+     * The scope associated with the permission group.
+     */
+    scopes: string;
+    /**
+     * Indicates the permission group's availability or visibility.
+     */
+    visibility: string;
 }
 
 export interface GetUserGroupsResultPolicyResourceGroup {
@@ -23030,7 +23547,7 @@ export interface GetWaitingRoomsResult {
     customPageHtml: string;
     /**
      * The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-     * Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+     * Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
      */
     defaultTemplateLanguage: string;
     /**
@@ -23412,13 +23929,28 @@ export interface GetWorkerObservability {
      */
     headSamplingRate: number;
     /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues: outputs.GetWorkerObservabilityIssues;
+    /**
      * Log settings for the Worker.
      */
     logs: outputs.GetWorkerObservabilityLogs;
     /**
+     * Whether query strings are removed from request URLs in logs and traces.
+     */
+    redactQueryString: boolean;
+    /**
      * Trace settings for the Worker.
      */
     traces: outputs.GetWorkerObservabilityTraces;
+}
+
+export interface GetWorkerObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled: boolean;
 }
 
 export interface GetWorkerObservabilityLogs {
@@ -23466,6 +23998,196 @@ export interface GetWorkerObservabilityTraces {
      * Available values: "authenticated", "accept".
      */
     propagationPolicy: string;
+}
+
+export interface GetWorkerPreviewsBaseConfig {
+    /**
+     * Cache options used when creating new Previews.
+     */
+    cacheOptions: outputs.GetWorkerPreviewsBaseConfigCacheOptions;
+    /**
+     * Bindings used when creating new Previews, keyed by binding name.
+     */
+    env: {[key: string]: outputs.GetWorkerPreviewsBaseConfigEnv};
+    /**
+     * Resource limits enforced at runtime for newly created Previews.
+     */
+    limits: outputs.GetWorkerPreviewsBaseConfigLimits;
+    /**
+     * Whether logpush is enabled when creating new Previews.
+     */
+    logpush: boolean;
+    /**
+     * Observability settings used when creating new Previews.
+     */
+    observability: outputs.GetWorkerPreviewsBaseConfigObservability;
+    /**
+     * Placement configuration used when creating new Previews.
+     */
+    placement: outputs.GetWorkerPreviewsBaseConfigPlacement;
+    /**
+     * Other Workers that should consume logs from newly created Previews.
+     */
+    tailConsumers: outputs.GetWorkerPreviewsBaseConfigTailConsumer[];
+}
+
+export interface GetWorkerPreviewsBaseConfigCacheOptions {
+    /**
+     * Whether cached responses are shared across Worker version
+     * uploads. This is independent of `enabled`. It can stay true
+     * while caching is off, so the preference survives turning
+     * caching off and back on.
+     */
+    crossVersionCache: boolean;
+    /**
+     * Whether caching is enabled for this Worker.
+     */
+    enabled: boolean;
+}
+
+export interface GetWorkerPreviewsBaseConfigEnv {
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: string;
+}
+
+export interface GetWorkerPreviewsBaseConfigLimits {
+    /**
+     * The amount of CPU time this Worker can use in milliseconds.
+     */
+    cpuMs: number;
+    /**
+     * The number of subrequests this Worker can make per request.
+     */
+    subrequests: number;
+}
+
+export interface GetWorkerPreviewsBaseConfigObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues: outputs.GetWorkerPreviewsBaseConfigObservabilityIssues;
+    /**
+     * Log settings for the Worker.
+     */
+    logs: outputs.GetWorkerPreviewsBaseConfigObservabilityLogs;
+    /**
+     * Whether query strings are removed from request URLs in logs and traces.
+     */
+    redactQueryString: boolean;
+    /**
+     * Trace settings for the Worker.
+     */
+    traces: outputs.GetWorkerPreviewsBaseConfigObservabilityTraces;
+}
+
+export interface GetWorkerPreviewsBaseConfigObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled: boolean;
+}
+
+export interface GetWorkerPreviewsBaseConfigObservabilityLogs {
+    /**
+     * A list of destinations where logs will be exported to.
+     */
+    destinations: string[];
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
+    /**
+     * Whether log persistence is enabled for the Worker.
+     */
+    persist: boolean;
+}
+
+export interface GetWorkerPreviewsBaseConfigObservabilityTraces {
+    /**
+     * A list of destinations where traces will be exported to.
+     */
+    destinations: string[];
+    /**
+     * Whether traces are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether trace persistence is enabled for the Worker.
+     */
+    persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy: string;
+}
+
+export interface GetWorkerPreviewsBaseConfigPlacement {
+    /**
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
+     */
+    mode: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.GetWorkerPreviewsBaseConfigPlacementTarget[];
+}
+
+export interface GetWorkerPreviewsBaseConfigPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
+}
+
+export interface GetWorkerPreviewsBaseConfigTailConsumer {
+    /**
+     * Name of the consumer Worker.
+     */
+    name: string;
 }
 
 export interface GetWorkerReferences {
@@ -23631,6 +24353,10 @@ export interface GetWorkerVersionAssets {
 }
 
 export interface GetWorkerVersionAssetsConfig {
+    /**
+     * The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     */
+    basePath: string;
     /**
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
@@ -23800,6 +24526,10 @@ export interface GetWorkerVersionBinding {
      */
     storeId: string;
     /**
+     * ID of a K2 stream owned by the account deploying the Worker.
+     */
+    stream: string;
+    /**
      * The text value to use.
      */
     text: string;
@@ -23809,7 +24539,7 @@ export interface GetWorkerVersionBinding {
     tunnelId: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: string;
     /**
@@ -24119,6 +24849,14 @@ export interface GetWorkerVersionsResult {
      */
     assets: outputs.GetWorkerVersionsResultAssets;
     /**
+     * Email of the user who created the version.
+     */
+    authorEmail: string;
+    /**
+     * Identifier of the user who created the version.
+     */
+    authorId: string;
+    /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
     bindings: outputs.GetWorkerVersionsResultBinding[];
@@ -24248,6 +24986,10 @@ export interface GetWorkerVersionsResultAssets {
 }
 
 export interface GetWorkerVersionsResultAssetsConfig {
+    /**
+     * The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     */
+    basePath: string;
     /**
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
@@ -24417,6 +25159,10 @@ export interface GetWorkerVersionsResultBinding {
      */
     storeId: string;
     /**
+     * ID of a K2 stream owned by the account deploying the Worker.
+     */
+    stream: string;
+    /**
      * The text value to use.
      */
     text: string;
@@ -24426,7 +25172,7 @@ export interface GetWorkerVersionsResultBinding {
     tunnelId: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: string;
     /**
@@ -24800,7 +25546,55 @@ export interface GetWorkersDeploymentAnnotations {
 }
 
 export interface GetWorkersDeploymentVersion {
+    /**
+     * Percentage of traffic served by this version.
+     */
     percentage: number;
+    /**
+     * Identifier of the Worker Version.
+     */
+    versionId: string;
+}
+
+export interface GetWorkersDeploymentsResult {
+    deployments: outputs.GetWorkersDeploymentsResultDeployment[];
+}
+
+export interface GetWorkersDeploymentsResultDeployment {
+    annotations: outputs.GetWorkersDeploymentsResultDeploymentAnnotations;
+    authorEmail: string;
+    createdOn: string;
+    id: string;
+    source: string;
+    /**
+     * Available values: "percentage".
+     */
+    strategy: string;
+    /**
+     * Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+     */
+    versions: outputs.GetWorkersDeploymentsResultDeploymentVersion[];
+}
+
+export interface GetWorkersDeploymentsResultDeploymentAnnotations {
+    /**
+     * Human-readable message about the deployment. Truncated to 1000 bytes if longer.
+     */
+    workersMessage: string;
+    /**
+     * Operation that triggered the creation of the deployment.
+     */
+    workersTriggeredBy: string;
+}
+
+export interface GetWorkersDeploymentsResultDeploymentVersion {
+    /**
+     * Percentage of traffic served by this version.
+     */
+    percentage: number;
+    /**
+     * Identifier of the Worker Version.
+     */
     versionId: string;
 }
 
@@ -24841,12 +25635,12 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
 
 export interface GetWorkersKvNamespaceFilter {
     /**
-     * Direction to order namespaces.
+     * Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: "asc", "desc".
      */
     direction?: string;
     /**
-     * Field to order results by.
+     * Namespace field to sort by (`id` or `title`).
      * Available values: "id", "title".
      */
     order?: string;
@@ -24854,7 +25648,7 @@ export interface GetWorkersKvNamespaceFilter {
 
 export interface GetWorkersKvNamespacesResult {
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      */
     id: string;
     /**
@@ -24867,7 +25661,7 @@ export interface GetWorkersKvNamespacesResult {
      */
     supportsUrlEncoding: boolean;
     /**
-     * A human-readable string name for a Namespace.
+     * Human-readable string name for a Workers KV namespace.
      */
     title: string;
 }
@@ -24897,6 +25691,10 @@ export interface GetWorkersResult {
      * Observability settings for the Worker.
      */
     observability: outputs.GetWorkersResultObservability;
+    /**
+     * Template configuration used when creating new Previews for this Worker.
+     */
+    previewsBaseConfig: outputs.GetWorkersResultPreviewsBaseConfig;
     /**
      * Other resources that reference the Worker and depend on it existing.
      */
@@ -24929,6 +25727,10 @@ export interface GetWorkersResultObservability {
      */
     headSamplingRate: number;
     /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues: outputs.GetWorkersResultObservabilityIssues;
+    /**
      * Log settings for the Worker.
      */
     logs: outputs.GetWorkersResultObservabilityLogs;
@@ -24940,6 +25742,13 @@ export interface GetWorkersResultObservability {
      * Trace settings for the Worker.
      */
     traces: outputs.GetWorkersResultObservabilityTraces;
+}
+
+export interface GetWorkersResultObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled: boolean;
 }
 
 export interface GetWorkersResultObservabilityLogs {
@@ -24987,6 +25796,196 @@ export interface GetWorkersResultObservabilityTraces {
      * Available values: "authenticated", "accept".
      */
     propagationPolicy: string;
+}
+
+export interface GetWorkersResultPreviewsBaseConfig {
+    /**
+     * Cache options used when creating new Previews.
+     */
+    cacheOptions: outputs.GetWorkersResultPreviewsBaseConfigCacheOptions;
+    /**
+     * Bindings used when creating new Previews, keyed by binding name.
+     */
+    env: {[key: string]: outputs.GetWorkersResultPreviewsBaseConfigEnv};
+    /**
+     * Resource limits enforced at runtime for newly created Previews.
+     */
+    limits: outputs.GetWorkersResultPreviewsBaseConfigLimits;
+    /**
+     * Whether logpush is enabled when creating new Previews.
+     */
+    logpush: boolean;
+    /**
+     * Observability settings used when creating new Previews.
+     */
+    observability: outputs.GetWorkersResultPreviewsBaseConfigObservability;
+    /**
+     * Placement configuration used when creating new Previews.
+     */
+    placement: outputs.GetWorkersResultPreviewsBaseConfigPlacement;
+    /**
+     * Other Workers that should consume logs from newly created Previews.
+     */
+    tailConsumers: outputs.GetWorkersResultPreviewsBaseConfigTailConsumer[];
+}
+
+export interface GetWorkersResultPreviewsBaseConfigCacheOptions {
+    /**
+     * Whether cached responses are shared across Worker version
+     * uploads. This is independent of `enabled`. It can stay true
+     * while caching is off, so the preference survives turning
+     * caching off and back on.
+     */
+    crossVersionCache: boolean;
+    /**
+     * Whether caching is enabled for this Worker.
+     */
+    enabled: boolean;
+}
+
+export interface GetWorkersResultPreviewsBaseConfigEnv {
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: string;
+}
+
+export interface GetWorkersResultPreviewsBaseConfigLimits {
+    /**
+     * The amount of CPU time this Worker can use in milliseconds.
+     */
+    cpuMs: number;
+    /**
+     * The number of subrequests this Worker can make per request.
+     */
+    subrequests: number;
+}
+
+export interface GetWorkersResultPreviewsBaseConfigObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues: outputs.GetWorkersResultPreviewsBaseConfigObservabilityIssues;
+    /**
+     * Log settings for the Worker.
+     */
+    logs: outputs.GetWorkersResultPreviewsBaseConfigObservabilityLogs;
+    /**
+     * Whether query strings are removed from request URLs in logs and traces.
+     */
+    redactQueryString: boolean;
+    /**
+     * Trace settings for the Worker.
+     */
+    traces: outputs.GetWorkersResultPreviewsBaseConfigObservabilityTraces;
+}
+
+export interface GetWorkersResultPreviewsBaseConfigObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled: boolean;
+}
+
+export interface GetWorkersResultPreviewsBaseConfigObservabilityLogs {
+    /**
+     * A list of destinations where logs will be exported to.
+     */
+    destinations: string[];
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
+    /**
+     * Whether log persistence is enabled for the Worker.
+     */
+    persist: boolean;
+}
+
+export interface GetWorkersResultPreviewsBaseConfigObservabilityTraces {
+    /**
+     * A list of destinations where traces will be exported to.
+     */
+    destinations: string[];
+    /**
+     * Whether traces are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether trace persistence is enabled for the Worker.
+     */
+    persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy: string;
+}
+
+export interface GetWorkersResultPreviewsBaseConfigPlacement {
+    /**
+     * TCP host and port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
+     */
+    mode: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets: outputs.GetWorkersResultPreviewsBaseConfigPlacementTarget[];
+}
+
+export interface GetWorkersResultPreviewsBaseConfigPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region: string;
+}
+
+export interface GetWorkersResultPreviewsBaseConfigTailConsumer {
+    /**
+     * Name of the consumer Worker.
+     */
+    name: string;
 }
 
 export interface GetWorkersResultReferences {
@@ -25347,6 +26346,10 @@ export interface GetWorkersScriptsResultObservability {
      */
     headSamplingRate: number;
     /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues: outputs.GetWorkersScriptsResultObservabilityIssues;
+    /**
      * Log settings for the Worker.
      */
     logs: outputs.GetWorkersScriptsResultObservabilityLogs;
@@ -25358,6 +26361,13 @@ export interface GetWorkersScriptsResultObservability {
      * Trace settings for the Worker.
      */
     traces: outputs.GetWorkersScriptsResultObservabilityTraces;
+}
+
+export interface GetWorkersScriptsResultObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled: boolean;
 }
 
 export interface GetWorkersScriptsResultObservabilityLogs {
@@ -25505,6 +26515,10 @@ export interface GetWorkflowsResult {
     modifiedOn: string;
     name: string;
     schedules: outputs.GetWorkflowsResultSchedule[];
+    /**
+     * Whether the bound Worker was deleted, leaving this Workflow inactive.
+     */
+    scriptDeleted: boolean;
     scriptName: string;
     triggeredOn: string;
 }
@@ -25538,6 +26552,9 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
     authenticationStatus: string;
     createdAt: string;
     createdBy: string;
+    /**
+     * Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
+     */
     defaultDisabled: boolean;
     /**
      * Optional description of the MCP server.
@@ -25708,6 +26725,9 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
     authenticationStatus: string;
     createdAt: string;
     createdBy: string;
+    /**
+     * Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
+     */
     defaultDisabled: boolean;
     /**
      * Optional description of the MCP server.
@@ -30988,7 +32008,7 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
     pkceEnabled: boolean;
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: "login", "selectAccount", "none".
+     * Available values: "login", "selectAccount", "none", "consent".
      */
     prompt: string;
     redirectUrl: string;
@@ -31016,6 +32036,10 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
      * The tokenEndpoint URL of your IdP
      */
     tokenUrl: string;
+    /**
+     * Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+     */
+    useLoginHint: boolean;
 }
 
 export interface GetZeroTrustAccessIdentityProviderConfigHeaderAttribute {
@@ -31249,7 +32273,7 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
     pkceEnabled: boolean;
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: "login", "selectAccount", "none".
+     * Available values: "login", "selectAccount", "none", "consent".
      */
     prompt: string;
     redirectUrl: string;
@@ -31277,6 +32301,10 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
      * The tokenEndpoint URL of your IdP
      */
     tokenUrl: string;
+    /**
+     * Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+     */
+    useLoginHint: boolean;
 }
 
 export interface GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute {
@@ -31435,6 +32463,12 @@ export interface GetZeroTrustAccessInfrastructureTargetFilter {
      */
     order?: string;
     /**
+     * Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+     * Format: `tag=key:value` (e.g., `tag=environment:production`).
+     * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+     */
+    tags?: string[];
+    /**
      * Filters for targets that have any of the following UUIDs. Specify
      * `targetIds` multiple times in query parameter to build list of
      * candidates.
@@ -31500,6 +32534,10 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      * Date and time at which the target was modified
      */
     modifiedAt: string;
+    /**
+     * Tags assigned to the target. Empty when no tags are assigned.
+     */
+    tags: {[key: string]: string};
 }
 
 export interface GetZeroTrustAccessInfrastructureTargetsResultIp {
@@ -33325,6 +34363,285 @@ export interface GetZeroTrustAccessTagsResult {
     name: string;
 }
 
+export interface GetZeroTrustCasbIntegrationAuthorizationLink {
+    components: {[key: string]: string};
+    link: string;
+}
+
+export interface GetZeroTrustCasbIntegrationFilter {
+    /**
+     * Filter by application/vendor (e.g., GOOGLE*WORKSPACE, MICROSOFT*INTERNAL).
+     */
+    application?: string;
+    /**
+     * Direction to order results.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Filter by DLP enabled status (true/false).
+     */
+    dlpEnabled?: boolean;
+    /**
+     * Field to order results by.
+     * Available values: "application", "created", "name", "status".
+     */
+    order?: string;
+    /**
+     * Page number within the paginated result set.
+     */
+    page?: number;
+    /**
+     * Number of results per page.
+     */
+    pageSize?: number;
+    /**
+     * Search integrations by name or application.
+     */
+    search?: string;
+    /**
+     * Filter by integration status.
+     * Available values: "Healthy", "Initializing", "Offline", "Unhealthy".
+     */
+    status?: string;
+    /**
+     * Filter by one enabled use case (for example, casb or ces).
+     */
+    useCases?: string;
+}
+
+export interface GetZeroTrustCasbIntegrationsResult {
+    application: {[key: string]: string};
+    /**
+     * When the integration was created.
+     */
+    created: string;
+    /**
+     * Integration ID.
+     */
+    id: string;
+    /**
+     * Whether the user paused the integration.
+     */
+    isPaused: boolean;
+    /**
+     * Name of the integration.
+     */
+    name: string;
+    /**
+     * Integration status.
+     */
+    status: string;
+    /**
+     * When the integration was last updated.
+     */
+    updated: string;
+}
+
+export interface GetZeroTrustCasbPoliciesResult {
+    /**
+     * The actions configured for this policy.
+     */
+    actions: outputs.GetZeroTrustCasbPoliciesResultActions;
+    /**
+     * When true, the policy applies to all integrations for the account. When false, it applies only to the specified integration_ids.
+     */
+    appliesToAllIntegrations: boolean;
+    /**
+     * Timestamp when the policy was created.
+     */
+    createdAt: string;
+    /**
+     * User-set description of what this policy does. Limited to 1000 characters.
+     */
+    description: string;
+    /**
+     * Timestamp when the policy was disabled. Omitted from the response when the policy
+     * is enabled.
+     */
+    disabledAt: string;
+    /**
+     * Display name for the policy configuration. Limited to 255 characters.
+     */
+    displayName: string;
+    /**
+     * Whether the policy is enabled. Derived from disabled*at (enabled when disabled*at is unset).
+     */
+    enabled: boolean;
+    /**
+     * The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+     */
+    findingTypeId: string;
+    /**
+     * Unique identifier for the policy configuration.
+     */
+    id: string;
+    /**
+     * The integrations this policy applies to.
+     */
+    integrationIds: string[];
+    /**
+     * Timestamp of the most recent successful policy invocation. Omitted
+     * from the response when the policy has never been successfully
+     * triggered. Only populated on GET responses; absent on responses from
+     * create/update endpoints.
+     */
+    lastTriggeredAt: string;
+    /**
+     * Timestamp when the policy was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetZeroTrustCasbPoliciesResultActions {
+    /**
+     * List of remediation types that will be executed.
+     */
+    remediationTypes: outputs.GetZeroTrustCasbPoliciesResultActionsRemediationType[];
+    /**
+     * List of webhook configurations that will be triggered.
+     */
+    webhookConfigs: outputs.GetZeroTrustCasbPoliciesResultActionsWebhookConfig[];
+}
+
+export interface GetZeroTrustCasbPoliciesResultActionsRemediationType {
+    /**
+     * Display name/label of the remediation type.
+     */
+    displayName: string;
+    /**
+     * The system name of the remediation type.
+     */
+    remediationType: string;
+    /**
+     * Unique identifier for the remediation type.
+     */
+    remediationTypeId: string;
+}
+
+export interface GetZeroTrustCasbPoliciesResultActionsWebhookConfig {
+    /**
+     * Display name/label of the webhook configuration.
+     */
+    displayName: string;
+    /**
+     * Unique identifier for the webhook configuration.
+     */
+    webhookConfigId: string;
+}
+
+export interface GetZeroTrustCasbPolicyActions {
+    /**
+     * List of remediation types that will be executed.
+     */
+    remediationTypes: outputs.GetZeroTrustCasbPolicyActionsRemediationType[];
+    /**
+     * List of webhook configurations that will be triggered.
+     */
+    webhookConfigs: outputs.GetZeroTrustCasbPolicyActionsWebhookConfig[];
+}
+
+export interface GetZeroTrustCasbPolicyActionsRemediationType {
+    /**
+     * Display name/label of the remediation type.
+     */
+    displayName: string;
+    /**
+     * The system name of the remediation type.
+     */
+    remediationType: string;
+    /**
+     * Unique identifier for the remediation type.
+     */
+    remediationTypeId: string;
+}
+
+export interface GetZeroTrustCasbPolicyActionsWebhookConfig {
+    /**
+     * Display name/label of the webhook configuration.
+     */
+    displayName: string;
+    /**
+     * Unique identifier for the webhook configuration.
+     */
+    webhookConfigId: string;
+}
+
+export interface GetZeroTrustCasbWebhookHeader {
+    /**
+     * Header key name (lowercase).
+     */
+    key: string;
+    /**
+     * Header value. This field is never returned in API responses for security reasons.
+     */
+    value: string;
+}
+
+export interface GetZeroTrustCasbWebhooksResult {
+    /**
+     * Type of authentication used for the webhook.
+     * Available values: "Basic Auth", "None", "Bearer Auth", "Static Headers", "HMAC-Signing".
+     */
+    authenticationType: string;
+    /**
+     * Timestamp when the webhook configuration was created.
+     */
+    createdAt: string;
+    /**
+     * Target URL for the webhook configuration. Where resulting data will be sent.
+     */
+    destinationUrl: string;
+    /**
+     * List of header keys configured for this webhook. Values are not included for security reasons.
+     */
+    headers: outputs.GetZeroTrustCasbWebhooksResultHeader[];
+    /**
+     * Unique identifier for the specific webhook configuration.
+     */
+    id: string;
+    /**
+     * Account-specified display label for the webhook configuration.
+     */
+    label: string;
+    /**
+     * Current status of the webhook configuration. If disabled, data cannot be sent through this configuration.
+     * Available values: "enabled", "disabled".
+     */
+    status: string;
+    /**
+     * Timestamp when the webhook configuration was last updated.
+     */
+    updatedAt: string;
+    /**
+     * Version number of the configuration.
+     */
+    version: number;
+}
+
+export interface GetZeroTrustCasbWebhooksResultHeader {
+    /**
+     * Header key name (lowercase).
+     */
+    key: string;
+    /**
+     * Header value. This field is never returned in API responses for security reasons.
+     */
+    value: string;
+}
+
+export interface GetZeroTrustDeviceCustomProfileBrowserExtensionConfig {
+    /**
+     * Whether the user may disable the browser extension proxy.
+     * Available values: "unlocked", "locked".
+     */
+    proxyControl: string;
+    /**
+     * Whether the browser extension proxy is active.
+     */
+    proxyEnabled: boolean;
+}
+
 export interface GetZeroTrustDeviceCustomProfileDnsSearchSuffix {
     /**
      * A description of the DNS search suffix.
@@ -33364,6 +34681,14 @@ export interface GetZeroTrustDeviceCustomProfileFallbackDomain {
      * The domain suffix to match when resolving locally.
      */
     suffix: string;
+}
+
+export interface GetZeroTrustDeviceCustomProfileFilter {
+    /**
+     * Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: "warp", "browserExtension".
+     */
+    profileType: string;
 }
 
 export interface GetZeroTrustDeviceCustomProfileInclude {
@@ -33432,11 +34757,15 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      */
     autoConnect: number;
     /**
+     * Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+     */
+    browserExtensionConfig: outputs.GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfig;
+    /**
      * Turn on the captive portal after the specified amount of time.
      */
     captivePortal: number;
     /**
-     * Whether the policy is the default policy for an account.
+     * Whether the policy is the account default. WARP group profiles cannot set this field.
      */
     default: boolean;
     /**
@@ -33492,6 +34821,11 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      */
     precedence: number;
     /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: "warp", "browserExtension".
+     */
+    profileType: string;
+    /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     registerInterfaceIpWithDns: boolean;
@@ -33514,9 +34848,25 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      */
     tunnelProtocol: string;
     /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     */
+    uninstallProtection: boolean;
+    /**
      * Virtual network access settings for the device.
      */
     virtualNetworks: outputs.GetZeroTrustDeviceCustomProfilesResultVirtualNetworks;
+}
+
+export interface GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfig {
+    /**
+     * Whether the user may disable the browser extension proxy.
+     * Available values: "unlocked", "locked".
+     */
+    proxyControl: string;
+    /**
+     * Whether the browser extension proxy is active.
+     */
+    proxyEnabled: boolean;
 }
 
 export interface GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix {
@@ -35461,6 +36811,49 @@ export interface GetZeroTrustDnsLocationEndpointsIpv6Network {
     network: string;
 }
 
+export interface GetZeroTrustDnsLocationFilter {
+    /**
+     * Sort direction. Only takes effect when `orderBy` is also provided; it
+     * is ignored otherwise. When `direction` is omitted the effective
+     * direction is field-specific: `createdAt` and `updatedAt` default to
+     * descending (newest first); `name` defaults to ascending.
+     *   * `asc` — ascending.
+     *   * `desc` — descending.
+     *     Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Filter the returned locations by one or more `field:value` pairs.
+     * Repeat the parameter to apply multiple filters; they are combined with
+     * logical AND (a location must satisfy every filter to be returned).
+     *
+     * Supported fields and their matching behaviour:
+     *   * `name` — case-insensitive substring match on the location name.
+     *   * `id` — substring match on the location ID (UUID), with or without dashes.
+     *   * `isDefault` — whether it is the default for the account.
+     *
+     * Each entry must match one of the per-field patterns below:
+     *   * the field must be one of `name`, `id`, or `isDefault`;
+     *   * `name`/`id` accept any value;
+     *   * `isDefault` only accepts `true` or `false`; any other value returns `400`
+     */
+    filters?: string[];
+    /**
+     * Field to sort the returned locations by. When omitted, the order of
+     * results is unspecified. Supported values:
+     *   * `name` — sort alphabetically by location name.
+     *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+     *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+     *     Available values: "name", "createdAt", "updatedAt".
+     */
+    orderBy?: string;
+    /**
+     * Case-insensitive substring match on the location name. When combined
+     * with `filter`, both must match (logical AND).
+     */
+    search?: string;
+}
+
 export interface GetZeroTrustDnsLocationMaxTtl {
     /**
      * `inherit` uses the account `maxTtlSecs`. `override` uses this location's `ttlSecs`. `disabled` leaves returned TTLs unchanged.
@@ -35512,11 +36905,11 @@ export interface GetZeroTrustDnsLocationsResult {
      */
     ip: string;
     /**
-     * Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+     * Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
      */
     ipv4Destination: string;
     /**
-     * Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+     * Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
      */
     ipv4DestinationBackup: string;
     /**
@@ -36305,6 +37698,31 @@ export interface GetZeroTrustGatewayPolicyExpiration {
     expiresAt: string;
 }
 
+export interface GetZeroTrustGatewayPolicyFilter {
+    /**
+     * Sort direction. When `orderBy` is omitted, this controls the direction
+     * of the existing precedence ordering. Shared rules remain first in either
+     * direction. Accepted values are `asc` and `desc`.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Filter the returned rules by one or more `field:value` pairs. Repeat the
+     * parameter to combine filters with logical AND.
+     */
+    filters?: string[];
+    /**
+     * Field to sort the returned rules by. Supported values are `name`,
+     * `createdAt`, `updatedAt`, and `precedence`.
+     * Available values: "name", "createdAt", "updatedAt", "precedence".
+     */
+    orderBy?: string;
+    /**
+     * Case-insensitive substring search across rule name and description.
+     */
+    search?: string;
+}
+
 export interface GetZeroTrustGatewayPolicyRuleSettings {
     /**
      * Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.
@@ -36690,6 +38108,48 @@ export interface GetZeroTrustGatewayPolicySchedule {
     wed: string;
 }
 
+export interface GetZeroTrustGatewayProxyEndpointFilter {
+    /**
+     * Sort direction. Only takes effect when `orderBy` is also provided; it
+     * is ignored otherwise. When `direction` is omitted the effective
+     * direction is field-specific: `createdAt` and `updatedAt` default to
+     * descending (newest first); `name` defaults to ascending.
+     *   * `asc` — ascending.
+     *   * `desc` — descending.
+     *     Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Filter the returned proxy endpoints by one or more `field:value` pairs.
+     * Repeat the parameter to apply multiple filters; they are combined with
+     * logical AND (an endpoint must satisfy every filter to be returned).
+     *
+     * Supported fields and their matching behaviour:
+     *   * `name` — case-insensitive substring match on the endpoint name.
+     *   * `id` — substring match on the endpoint ID (UUID), with or without dashes.
+     *   * `kind` — exact match on the endpoint kind. The value must be `ip` or `identity`; any other value returns `400`.
+     *
+     * Each entry must match one of the per-field patterns below: the field
+     * must be one of `name`, `id`, or `kind`; `name`/`id` accept any value,
+     * while `kind` only accepts `ip` or `identity`.
+     */
+    filters?: string[];
+    /**
+     * Field to sort the returned endpoints by. When omitted, the order of
+     * results is unspecified. Supported values:
+     *   * `name` — sort alphabetically by endpoint name.
+     *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+     *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+     *     Available values: "name", "createdAt", "updatedAt".
+     */
+    orderBy?: string;
+    /**
+     * Case-insensitive substring match on the endpoint name. When combined
+     * with `filter`, both must match (logical AND).
+     */
+    search?: string;
+}
+
 export interface GetZeroTrustGatewayProxyEndpointsResult {
     createdAt: string;
     id: string;
@@ -36998,6 +38458,53 @@ export interface GetZeroTrustGatewaySettingsSettingsTlsDecrypt {
 
 export interface GetZeroTrustListFilter {
     /**
+     * Sort direction. Applies to the field named in `orderBy`; when `orderBy`
+     * is omitted it applies to the default `createdAt` ordering. When
+     * `direction` is omitted the default is field-specific: explicitly choosing
+     * `createdAt` or `updatedAt` defaults to descending (newest first); `name`
+     * and `itemCount` default to ascending; and the default `createdAt`
+     * ordering used when `orderBy` is omitted is ascending (for backwards
+     * compatibility).
+     *   * `asc` — ascending.
+     *   * `desc` — descending.
+     *     Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * Filter the returned lists by one or more `field:value` pairs.
+     * Repeat the parameter to apply multiple filters; they are combined with
+     * logical AND (a list must satisfy every filter to be returned).
+     *
+     * Supported fields and their matching behaviour:
+     *   * `name` — case-insensitive substring match on the list name.
+     *   * `id` — substring match on the list ID (UUID), with or without dashes.
+     *   * `type` — exact match on the list type. Supersedes the legacy `type` query
+     *     parameter when both are supplied. Must be one of the valid type values.
+     *   * `itemCount` — exact integer match on the number of items in the list.
+     *
+     * Each entry must match one of the per-field patterns below: the field must be
+     * one of `name`, `id`, `type`, or `itemCount`; `name`/`id` accept any value,
+     * `type` is restricted to the valid list type values, and `itemCount` must be
+     * a non-negative integer.
+     */
+    filters?: string[];
+    /**
+     * Field to sort the returned lists by. When omitted, results are ordered by
+     * `createdAt` in ascending order (i.e. creation order) for backwards
+     * compatibility. Supported values:
+     *   * `name` — sort alphabetically by list name.
+     *   * `createdAt` — sort by creation time; defaults to descending unless `direction` is set.
+     *   * `updatedAt` — sort by last-modified time; defaults to descending unless `direction` is set.
+     *   * `itemCount` — sort by number of items in the list.
+     *     Available values: "name", "createdAt", "updatedAt", "itemCount".
+     */
+    orderBy?: string;
+    /**
+     * Case-insensitive substring match on the list name or description. When
+     * combined with `filter`, both must match (logical AND).
+     */
+    search?: string;
+    /**
      * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
@@ -37199,6 +38706,22 @@ export interface GetZeroTrustOrganizationMfaSshPivKeyRequirements {
     touchPolicy: string;
 }
 
+export interface GetZeroTrustOrganizationServiceTokenInactivity {
+    /**
+     * The action applied to an inactive service token.
+     * Available values: "disable", "delete".
+     */
+    action: string;
+    /**
+     * Whether automatic enforcement for inactive service tokens is enabled.
+     */
+    enabled: boolean;
+    /**
+     * The number of days a service token must be inactive before the configured action is applied.
+     */
+    inactivityThresholdDays: number;
+}
+
 export interface GetZeroTrustResourceLibraryApplicationFilter {
     /**
      * Return only the listed properties on each application, as a comma-separated list.
@@ -37289,7 +38812,7 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
      */
     id: number;
     /**
-     * IP subnets matched by the application.
+     * IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      */
     ipSubnets: string[];
     /**
@@ -38111,12 +39634,16 @@ export interface GetZoneDnsSettingsInternalDns {
 
 export interface GetZoneDnsSettingsNameservers {
     /**
-     * Configured nameserver set to be used for this zone
+     * Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     */
+    nameserverSetId: string;
+    /**
+     * Configured nameserver set number to use for this zone.
      */
     nsSet: number;
     /**
-     * Nameserver type
-     * Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+     * Nameserver type.
+     * Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone", "custom".
      */
     type: string;
 }
@@ -38441,6 +39968,27 @@ export interface GetZoneTenantUnit {
     id: string;
 }
 
+export interface GetZoneTracingRulesRule {
+    /**
+     * Available values: "set*trace*settings".
+     */
+    action: string;
+    actionParameters: outputs.GetZoneTracingRulesRuleActionParameters;
+    description: string;
+    enabled: boolean;
+    /**
+     * A Rules language expression that selects requests.
+     */
+    expression: string;
+}
+
+export interface GetZoneTracingRulesRuleActionParameters {
+    /**
+     * The ratio of requests sampled for tracing, from 0 to 1.
+     */
+    samplingRatio: number;
+}
+
 export interface GetZonesAccount {
     /**
      * Filter by an account ID.
@@ -38735,17 +40283,8 @@ export interface HealthcheckTcpConfig {
 }
 
 export interface HyperdriveConfigCaching {
-    /**
-     * Set to true to disable caching of SQL responses. Default is false.
-     */
-    disabled: boolean;
-    /**
-     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-     */
+    disabled?: boolean;
     maxAge?: number;
-    /**
-     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-     */
     staleWhileRevalidate?: number;
 }
 
@@ -38759,7 +40298,7 @@ export interface HyperdriveConfigMtls {
      */
     mtlsCertificateId?: string;
     /**
-     * Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+     * PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
      */
     sslmode?: string;
 }
@@ -38778,7 +40317,7 @@ export interface HyperdriveConfigOrigin {
      */
     database: string;
     /**
-     * Defines the host (hostname or IP) of your origin database.
+     * Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
      */
     host?: string;
     /**
@@ -39186,7 +40725,7 @@ export interface LoadBalancerRuleOverridesSessionAffinityAttributes {
     /**
      * Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
      */
-    headers?: string[];
+    headers: string[];
     /**
      * When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
      */
@@ -39216,7 +40755,7 @@ export interface LoadBalancerSessionAffinityAttributes {
     /**
      * Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
      */
-    headers?: string[];
+    headers: string[];
     /**
      * When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
      */
@@ -39260,7 +40799,7 @@ export interface LogpushJobOutputOptions {
      */
     fieldNames?: string[];
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      */
     mergeSubrequests?: boolean;
     /**
@@ -39285,7 +40824,7 @@ export interface LogpushJobOutputOptions {
      */
     recordTemplate?: string;
     /**
-     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      */
     sampleRate?: number;
     /**
@@ -39537,9 +41076,17 @@ export interface MagicWanGreTunnelBgp {
      */
     customerAsn: number;
     /**
+     * UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+     */
+    exportFilterId?: string;
+    /**
      * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      */
     extraPrefixes: string[];
+    /**
+     * UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+     */
+    importFilterId?: string;
     /**
      * MD5 key to use for session authentication.
      */
@@ -39603,9 +41150,17 @@ export interface MagicWanIpsecTunnelBgp {
      */
     customerAsn: number;
     /**
+     * UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+     */
+    exportFilterId?: string;
+    /**
      * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      */
     extraPrefixes: string[];
+    /**
+     * UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+     */
+    importFilterId?: string;
     /**
      * MD5 key to use for session authentication.
      */
@@ -39925,6 +41480,10 @@ export interface NotificationPolicyFilters {
      * Used for configuring advanced*ddos*attack*l7*alert
      */
     targetZoneNames?: string[];
+    /**
+     * Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     */
+    tokenIds?: string[];
     /**
      * Used for configuring traffic*anomalies*alert
      */
@@ -40374,7 +41933,7 @@ export interface PagesProjectCanonicalDeployment {
      */
     id: string;
     /**
-     * If the deployment has been skipped.
+     * Whether the deployment was skipped.
      */
     isSkipped: boolean;
     /**
@@ -40390,7 +41949,7 @@ export interface PagesProjectCanonicalDeployment {
      */
     projectId: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
     /**
@@ -40500,7 +42059,7 @@ export interface PagesProjectCanonicalDeploymentLatestStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -40589,7 +42148,7 @@ export interface PagesProjectCanonicalDeploymentStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -41034,7 +42593,7 @@ export interface PagesProjectLatestDeployment {
      */
     id: string;
     /**
-     * If the deployment has been skipped.
+     * Whether the deployment was skipped.
      */
     isSkipped: boolean;
     /**
@@ -41050,7 +42609,7 @@ export interface PagesProjectLatestDeployment {
      */
     projectId: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
     /**
@@ -41160,7 +42719,7 @@ export interface PagesProjectLatestDeploymentLatestStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -41249,7 +42808,7 @@ export interface PagesProjectLatestDeploymentStage {
     startedOn: string;
     /**
      * State of the current stage.
-     * Available values: "success", "idle", "active", "failure", "canceled".
+     * Available values: "success", "idle", "active", "failure", "canceled", "skipped".
      */
     status: string;
 }
@@ -41600,6 +43159,7 @@ export interface QueueConsumerSettings {
      * The maximum number of messages to include in a batch.
      */
     batchSize: number;
+    emails?: outputs.QueueConsumerSettingsEmail[];
     /**
      * Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
      */
@@ -41613,6 +43173,10 @@ export interface QueueConsumerSettings {
      */
     maxWaitTimeMs: number;
     /**
+     * PagerDuty notification destinations.
+     */
+    pagerduties?: outputs.QueueConsumerSettingsPagerduty[];
+    /**
      * The number of seconds to delay before making the message available for another attempt.
      */
     retryDelay: number;
@@ -41620,6 +43184,31 @@ export interface QueueConsumerSettings {
      * The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
      */
     visibilityTimeoutMs: number;
+    /**
+     * Webhook notification destinations.
+     */
+    webhooks?: outputs.QueueConsumerSettingsWebhook[];
+}
+
+export interface QueueConsumerSettingsEmail {
+    /**
+     * The email address.
+     */
+    id: string;
+}
+
+export interface QueueConsumerSettingsPagerduty {
+    /**
+     * UUID.
+     */
+    id: string;
+}
+
+export interface QueueConsumerSettingsWebhook {
+    /**
+     * UUID.
+     */
+    id: string;
 }
 
 export interface QueueProducer {
@@ -41872,7 +43461,7 @@ export interface R2BucketSippySource {
      */
     privateKey?: string;
     /**
-     * Name of the AWS availability zone.
+     * AWS region containing the source S3 bucket.
      */
     region?: string;
     /**
@@ -41903,6 +43492,10 @@ export interface R2DataCatalogMaintenanceConfig {
      * Configures compaction for catalog maintenance.
      */
     compaction: outputs.R2DataCatalogMaintenanceConfigCompaction;
+    /**
+     * Scheduling interval between normal table maintenance runs.
+     */
+    interval: string;
     /**
      * Configures snapshot expiration settings.
      */
@@ -41968,17 +43561,6 @@ export interface RateLimitActionResponse {
      * The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
      */
     contentType?: string;
-}
-
-export interface RateLimitBypass {
-    /**
-     * Available values: "url".
-     */
-    name: string;
-    /**
-     * The URL to bypass.
-     */
-    value: string;
 }
 
 export interface RateLimitMatch {
@@ -42118,7 +43700,7 @@ export interface RecordData {
      */
     preference?: number;
     /**
-     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * Priority.
      */
     priority?: number;
     /**
@@ -42154,7 +43736,7 @@ export interface RecordData {
      */
     tag?: string;
     /**
-     * A valid mail server hostname, or "." for a NULL MX record.
+     * Target.
      */
     target?: string;
     /**
@@ -44990,6 +46572,10 @@ export interface WorkerObservability {
      */
     headSamplingRate: number;
     /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues: outputs.WorkerObservabilityIssues;
+    /**
      * Log settings for the Worker.
      */
     logs: outputs.WorkerObservabilityLogs;
@@ -44997,6 +46583,13 @@ export interface WorkerObservability {
      * Trace settings for the Worker.
      */
     traces: outputs.WorkerObservabilityTraces;
+}
+
+export interface WorkerObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled: boolean;
 }
 
 export interface WorkerObservabilityLogs {
@@ -45044,6 +46637,196 @@ export interface WorkerObservabilityTraces {
      * Available values: "authenticated", "accept".
      */
     propagationPolicy: string;
+}
+
+export interface WorkerPreviewsBaseConfig {
+    /**
+     * Cache options used when creating new Previews.
+     */
+    cacheOptions: outputs.WorkerPreviewsBaseConfigCacheOptions;
+    /**
+     * Bindings used when creating new Previews, keyed by binding name.
+     */
+    env?: {[key: string]: outputs.WorkerPreviewsBaseConfigEnv};
+    /**
+     * Resource limits enforced at runtime for newly created Previews.
+     */
+    limits: outputs.WorkerPreviewsBaseConfigLimits;
+    /**
+     * Whether logpush is enabled when creating new Previews.
+     */
+    logpush?: boolean;
+    /**
+     * Observability settings used when creating new Previews.
+     */
+    observability: outputs.WorkerPreviewsBaseConfigObservability;
+    /**
+     * Placement configuration used when creating new Previews.
+     */
+    placement?: outputs.WorkerPreviewsBaseConfigPlacement;
+    /**
+     * Other Workers that should consume logs from newly created Previews.
+     */
+    tailConsumers?: outputs.WorkerPreviewsBaseConfigTailConsumer[];
+}
+
+export interface WorkerPreviewsBaseConfigCacheOptions {
+    /**
+     * Whether cached responses are shared across Worker version
+     * uploads. This is independent of `enabled`. It can stay true
+     * while caching is off, so the preference survives turning
+     * caching off and back on.
+     */
+    crossVersionCache: boolean;
+    /**
+     * Whether caching is enabled for this Worker.
+     */
+    enabled: boolean;
+}
+
+export interface WorkerPreviewsBaseConfigEnv {
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: string;
+}
+
+export interface WorkerPreviewsBaseConfigLimits {
+    /**
+     * The amount of CPU time this Worker can use in milliseconds.
+     */
+    cpuMs?: number;
+    /**
+     * The number of subrequests this Worker can make per request.
+     */
+    subrequests?: number;
+}
+
+export interface WorkerPreviewsBaseConfigObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues: outputs.WorkerPreviewsBaseConfigObservabilityIssues;
+    /**
+     * Log settings for the Worker.
+     */
+    logs: outputs.WorkerPreviewsBaseConfigObservabilityLogs;
+    /**
+     * Whether query strings are removed from request URLs in logs and traces.
+     */
+    redactQueryString: boolean;
+    /**
+     * Trace settings for the Worker.
+     */
+    traces: outputs.WorkerPreviewsBaseConfigObservabilityTraces;
+}
+
+export interface WorkerPreviewsBaseConfigObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled: boolean;
+}
+
+export interface WorkerPreviewsBaseConfigObservabilityLogs {
+    /**
+     * A list of destinations where logs will be exported to.
+     */
+    destinations: string[];
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
+    /**
+     * Whether log persistence is enabled for the Worker.
+     */
+    persist: boolean;
+}
+
+export interface WorkerPreviewsBaseConfigObservabilityTraces {
+    /**
+     * A list of destinations where traces will be exported to.
+     */
+    destinations: string[];
+    /**
+     * Whether traces are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether trace persistence is enabled for the Worker.
+     */
+    persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy?: string;
+}
+
+export interface WorkerPreviewsBaseConfigPlacement {
+    /**
+     * TCP host and port for targeted placement.
+     */
+    host?: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: string;
+    /**
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: "smart", "targeted".
+     */
+    mode?: string;
+    /**
+     * Cloud region for targeted placement in format 'provider:region'.
+     */
+    region?: string;
+    /**
+     * Array of placement targets (currently limited to single target).
+     */
+    targets?: outputs.WorkerPreviewsBaseConfigPlacementTarget[];
+}
+
+export interface WorkerPreviewsBaseConfigPlacementTarget {
+    /**
+     * TCP host:port for targeted placement.
+     */
+    host?: string;
+    /**
+     * HTTP hostname for targeted placement.
+     */
+    hostname?: string;
+    /**
+     * Cloud region in format 'provider:region'.
+     */
+    region?: string;
+}
+
+export interface WorkerPreviewsBaseConfigTailConsumer {
+    /**
+     * Name of the consumer Worker.
+     */
+    name: string;
 }
 
 export interface WorkerReferences {
@@ -45191,6 +46974,10 @@ export interface WorkerScriptAssets {
 }
 
 export interface WorkerScriptAssetsConfig {
+    /**
+     * The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     */
+    basePath: string;
     /**
      * The contents of a _headers file (used to attach custom headers on asset responses).
      */
@@ -45369,6 +47156,10 @@ export interface WorkerScriptBinding {
      */
     storeId?: string;
     /**
+     * ID of a K2 stream owned by the account deploying the Worker.
+     */
+    stream?: string;
+    /**
      * The text value to use.
      */
     text?: string;
@@ -45378,7 +47169,7 @@ export interface WorkerScriptBinding {
     tunnelId?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: string;
     /**
@@ -45595,6 +47386,10 @@ export interface WorkerScriptObservability {
      */
     headSamplingRate?: number;
     /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues?: outputs.WorkerScriptObservabilityIssues;
+    /**
      * Log settings for the Worker.
      */
     logs?: outputs.WorkerScriptObservabilityLogs;
@@ -45602,6 +47397,13 @@ export interface WorkerScriptObservability {
      * Trace settings for the Worker.
      */
     traces?: outputs.WorkerScriptObservabilityTraces;
+}
+
+export interface WorkerScriptObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled?: boolean;
 }
 
 export interface WorkerScriptObservabilityLogs {
@@ -45791,6 +47593,10 @@ export interface WorkerVersionAssets {
 
 export interface WorkerVersionAssetsConfig {
     /**
+     * The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     */
+    basePath: string;
+    /**
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
      */
@@ -45959,6 +47765,10 @@ export interface WorkerVersionBinding {
      */
     storeId?: string;
     /**
+     * ID of a K2 stream owned by the account deploying the Worker.
+     */
+    stream?: string;
+    /**
      * The text value to use.
      */
     text?: string;
@@ -45968,7 +47778,7 @@ export interface WorkerVersionBinding {
     tunnelId?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: string;
     /**
@@ -46106,6 +47916,124 @@ export interface WorkerVersionExportsCache {
      * Whether caching is enabled for this entrypoint.
      */
     enabled: boolean;
+}
+
+export interface WorkerVersionExportsReconciliation {
+    /**
+     * Class names for which a new namespace was provisioned.
+     */
+    createds: string[];
+    /**
+     * Class names whose namespace was deleted by a `deleted` tombstone.
+     */
+    deleteds: string[];
+    /**
+     * Non-blocking info entries (stale tombstones, tombstone applied with class still in code). See `exportsReconciliationInfo`.
+     */
+    infos: outputs.WorkerVersionExportsReconciliationInfo[];
+    /**
+     * Source class names whose tombstone entry is now stale and safe to delete from `exports` (no remaining referencing scripts).
+     */
+    removableEntries: string[];
+    /**
+     * Applied `renamed` tombstones.
+     */
+    renameds: outputs.WorkerVersionExportsReconciliationRenamed[];
+    /**
+     * Phase-1 transfer hints recorded on the target side.
+     */
+    transferPendings: outputs.WorkerVersionExportsReconciliationTransferPending[];
+    /**
+     * Committed `transferred` tombstones (phase-2).
+     */
+    transferreds: outputs.WorkerVersionExportsReconciliationTransferred[];
+    /**
+     * Class names whose provisioned namespace was mutated in place.
+     */
+    updateds: string[];
+    /**
+     * Non-blocking warnings. See `exportsReconciliationWarning`.
+     */
+    warnings: outputs.WorkerVersionExportsReconciliationWarning[];
+}
+
+export interface WorkerVersionExportsReconciliationInfo {
+    /**
+     * The class name the info entry is about.
+     */
+    class: string;
+    /**
+     * Human-readable explanation.
+     */
+    message: string;
+    /**
+     * The provisioned namespace the entry relates to, when applicable.
+     */
+    namespaceId: string;
+    /**
+     * Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first.
+     */
+    referencingScripts: string[];
+    /**
+     * Stable, machine-readable tag identifying which reconciliation scenario produced an error, warning, or info entry. Clients may branch on this value instead of parsing `message`.
+     */
+    scenario: string;
+}
+
+export interface WorkerVersionExportsReconciliationRenamed {
+    /**
+     * The original (source) class name.
+     */
+    from: string;
+    /**
+     * The new class name (`renamedTo`).
+     */
+    to: string;
+}
+
+export interface WorkerVersionExportsReconciliationTransferPending {
+    /**
+     * The target-side class name awaiting transfer.
+     */
+    class: string;
+    /**
+     * The source script the namespace will be transferred from.
+     */
+    from: string;
+}
+
+export interface WorkerVersionExportsReconciliationTransferred {
+    /**
+     * The source class name that was transferred.
+     */
+    class: string;
+    /**
+     * The transfer phase. Currently always `committed`.
+     */
+    phase: string;
+    /**
+     * The destination script that now owns the namespace.
+     */
+    to: string;
+}
+
+export interface WorkerVersionExportsReconciliationWarning {
+    /**
+     * The class name the warning is about.
+     */
+    class: string;
+    /**
+     * Human-readable explanation of the warning.
+     */
+    message: string;
+    /**
+     * The provisioned namespace the warning relates to, when applicable.
+     */
+    namespaceId: string;
+    /**
+     * Stable, machine-readable tag identifying which reconciliation scenario produced an error, warning, or info entry. Clients may branch on this value instead of parsing `message`.
+     */
+    scenario: string;
 }
 
 export interface WorkerVersionLimits {
@@ -46294,7 +48222,13 @@ export interface WorkersDeploymentAnnotations {
 }
 
 export interface WorkersDeploymentVersion {
+    /**
+     * Percentage of traffic served by this version.
+     */
     percentage: number;
+    /**
+     * Identifier of the Worker Version.
+     */
     versionId: string;
 }
 
@@ -46333,6 +48267,10 @@ export interface WorkersScriptAssets {
 }
 
 export interface WorkersScriptAssetsConfig {
+    /**
+     * The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     */
+    basePath: string;
     /**
      * The contents of a _headers file (used to attach custom headers on asset responses).
      */
@@ -46511,6 +48449,10 @@ export interface WorkersScriptBinding {
      */
     storeId?: string;
     /**
+     * ID of a K2 stream owned by the account deploying the Worker.
+     */
+    stream?: string;
+    /**
      * The text value to use.
      */
     text?: string;
@@ -46520,7 +48462,7 @@ export interface WorkersScriptBinding {
     tunnelId?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+     * Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
      */
     type: string;
     /**
@@ -46737,6 +48679,10 @@ export interface WorkersScriptObservability {
      */
     headSamplingRate?: number;
     /**
+     * Real-time Issues settings for the Worker.
+     */
+    issues?: outputs.WorkersScriptObservabilityIssues;
+    /**
      * Log settings for the Worker.
      */
     logs?: outputs.WorkersScriptObservabilityLogs;
@@ -46744,6 +48690,13 @@ export interface WorkersScriptObservability {
      * Trace settings for the Worker.
      */
     traces?: outputs.WorkersScriptObservabilityTraces;
+}
+
+export interface WorkersScriptObservabilityIssues {
+    /**
+     * Whether real-time Issues are enabled for the Worker.
+     */
+    enabled?: boolean;
 }
 
 export interface WorkersScriptObservabilityLogs {
@@ -49204,7 +51157,7 @@ export interface ZeroTrustAccessIdentityProviderConfig {
     pkceEnabled?: boolean;
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: "login", "selectAccount", "none".
+     * Available values: "login", "selectAccount", "none", "consent".
      */
     prompt?: string;
     redirectUrl: string;
@@ -49232,6 +51185,10 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      * The tokenEndpoint URL of your IdP
      */
     tokenUrl?: string;
+    /**
+     * Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+     */
+    useLoginHint?: boolean;
 }
 
 export interface ZeroTrustAccessIdentityProviderConfigHeaderAttribute {
@@ -50181,6 +52138,233 @@ export interface ZeroTrustAccessPolicyRequireUserRiskScore {
      * A list of risk score levels to match. Values can be low, medium, high, or unscored.
      */
     userRiskScores: string[];
+}
+
+export interface ZeroTrustCasbIntegrationAnthropic {
+    /**
+     * Authenticate with an Anthropic Admin API key.
+     */
+    anthropicAdminApiKey?: outputs.ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey;
+    /**
+     * Authenticate with an Anthropic Compliance API key.
+     */
+    anthropicComplianceApiKey?: outputs.ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey;
+    /**
+     * Authenticate with an Anthropic Workspace API key.
+     */
+    anthropicWorkspaceApiKey?: outputs.ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey;
+}
+
+export interface ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Anthropic Admin API key. This value is write-only and is never persisted to Terraform state.
+     */
+    apiKey: string;
+    /**
+     * Organization ID. Auto-extracted from the key if not provided.
+     */
+    tenantId?: string;
+}
+
+export interface ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Anthropic Compliance API key. This value is write-only and is never persisted to Terraform state.
+     */
+    complianceApiKey: string;
+    /**
+     * Organization ID. Auto-extracted from the key if not provided.
+     */
+    tenantId?: string;
+}
+
+export interface ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Anthropic Workspace API key. This value is write-only and is never persisted to Terraform state.
+     */
+    apiKey: string;
+    /**
+     * Workspace ID, found in the Anthropic Console URL after /workspaces/.
+     */
+    tenantId: string;
+}
+
+export interface ZeroTrustCasbIntegrationAws {
+    /**
+     * Authenticate by delegating to a cross-account IAM role.
+     */
+    awsIamRole?: outputs.ZeroTrustCasbIntegrationAwsAwsIamRole;
+}
+
+export interface ZeroTrustCasbIntegrationAwsAwsIamRole {
+    /**
+     * External ID required when assuming the IAM role.
+     */
+    externalId: string;
+    /**
+     * ARN of the cross-account IAM role Cloudflare will assume.
+     */
+    roleArn: string;
+}
+
+export interface ZeroTrustCasbIntegrationBox {
+    /**
+     * Authenticate with Box server authentication. Before creating the integration, add the Cloudflare CASB application in Box Admin Console > Integrations > Platform Apps Manager > Server Authentication Apps using client ID `puaghckpy0578r8p6f3g0rf860unup4r`.
+     */
+    boxServerAuthentication?: outputs.ZeroTrustCasbIntegrationBoxBoxServerAuthentication;
+}
+
+export interface ZeroTrustCasbIntegrationBoxBoxServerAuthentication {
+    /**
+     * Box Enterprise ID from Admin Console > Accounts & Billing.
+     */
+    enterpriseId: string;
+}
+
+export interface ZeroTrustCasbIntegrationGoogleCloudPlatform {
+    /**
+     * Authenticate with a service account key.
+     */
+    googleCloudPlatformServiceAccount?: outputs.ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount;
+}
+
+export interface ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Contents of a Google service account JSON key file. This value is write-only and is never persisted to Terraform state.
+     */
+    serviceAccountKeyJson: string;
+}
+
+export interface ZeroTrustCasbIntegrationGoogleWorkspace {
+    /**
+     * Authenticate with a service account granted domain-wide delegation.
+     */
+    googleDomainWideDelegationServiceAccount?: outputs.ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount;
+}
+
+export interface ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount {
+    /**
+     * A Google Workspace super administrator email address.
+     */
+    administratorEmail: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Contents of a Google service account JSON key file. This value is write-only and is never persisted to Terraform state.
+     */
+    serviceAccountKeyJson: string;
+}
+
+export interface ZeroTrustCasbIntegrationOpenai {
+    /**
+     * Authenticate with an OpenAI Compliance API key. Requires an Enterprise plan.
+     */
+    chatgptComplianceApiKey?: outputs.ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey;
+    /**
+     * Authenticate with an OpenAI Admin API key.
+     */
+    chatgptStandardApiKey?: outputs.ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey;
+}
+
+export interface ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenAI Admin API key with api.management.read access. This value is write-only and is never persisted to Terraform state.
+     */
+    adminApiKey: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenAI Compliance API key for audit logs. This value is write-only and is never persisted to Terraform state.
+     */
+    complianceApiKey: string;
+    /**
+     * OpenAI Organization ID.
+     */
+    organizationId: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenAI Project API key, used for DLP. This value is write-only and is never persisted to Terraform state.
+     */
+    projectApiKey?: string;
+    /**
+     * OpenAI Project ID, used for DLP.
+     */
+    projectId?: string;
+    /**
+     * OpenAI Workspace ID for compliance data.
+     */
+    workspaceId: string;
+}
+
+export interface ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenAI Admin API key with api.management.read access. This value is write-only and is never persisted to Terraform state.
+     */
+    adminApiKey: string;
+    /**
+     * OpenAI Organization ID.
+     */
+    organizationId: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenAI Project API key, used for DLP. This value is write-only and is never persisted to Terraform state.
+     */
+    projectApiKey?: string;
+    /**
+     * OpenAI Project ID, used for DLP.
+     */
+    projectId?: string;
+}
+
+export interface ZeroTrustCasbPolicyActions {
+    /**
+     * Remediation actions to execute (at most one).
+     */
+    remediationTypes?: outputs.ZeroTrustCasbPolicyActionsRemediationType[];
+    /**
+     * Webhook actions to execute.
+     */
+    webhookConfigs?: outputs.ZeroTrustCasbPolicyActionsWebhookConfig[];
+}
+
+export interface ZeroTrustCasbPolicyActionsRemediationType {
+    /**
+     * The ID of the remediation type to execute.
+     */
+    remediationTypeId: string;
+}
+
+export interface ZeroTrustCasbPolicyActionsWebhookConfig {
+    /**
+     * The ID of the webhook configuration to use.
+     */
+    webhookConfigId: string;
+}
+
+export interface ZeroTrustCasbWebhookHeader {
+    /**
+     * Header key name.
+     */
+    key: string;
+    /**
+     * Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.
+     */
+    value?: string;
+}
+
+export interface ZeroTrustDeviceCustomProfileBrowserExtensionConfig {
+    /**
+     * Whether the user may disable the browser extension proxy.
+     * Available values: "unlocked", "locked".
+     */
+    proxyControl: string;
+    /**
+     * Whether the browser extension proxy is active.
+     */
+    proxyEnabled: boolean;
 }
 
 export interface ZeroTrustDeviceCustomProfileDnsSearchSuffix {
@@ -51992,6 +54176,22 @@ export interface ZeroTrustOrganizationMfaSshPivKeyRequirements {
     touchPolicy?: string;
 }
 
+export interface ZeroTrustOrganizationServiceTokenInactivity {
+    /**
+     * The action applied to an inactive service token.
+     * Available values: "disable", "delete".
+     */
+    action: string;
+    /**
+     * Whether automatic enforcement for inactive service tokens is enabled.
+     */
+    enabled: boolean;
+    /**
+     * The number of days a service token must be inactive before the configured action is applied.
+     */
+    inactivityThresholdDays: number;
+}
+
 export interface ZeroTrustRiskBehaviorBehaviors {
     enabled: boolean;
     /**
@@ -52340,14 +54540,18 @@ export interface ZoneDnsSettingsInternalDns {
 
 export interface ZoneDnsSettingsNameservers {
     /**
-     * Configured nameserver set to be used for this zone
+     * Identifier of the account-owned Custom Nameserver Set to use for this zone.
      */
-    nsSet?: number;
+    nameserverSetId?: string;
     /**
-     * Nameserver type
-     * Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+     * Configured nameserver set number to use for this zone.
      */
-    type?: string;
+    nsSet: number;
+    /**
+     * Nameserver type.
+     * Available values: "cloudflare.standard", "cloudflare.advanced", "custom.account", "custom.tenant", "custom.zone", "custom".
+     */
+    type: string;
 }
 
 export interface ZoneDnsSettingsSoa {
@@ -52527,5 +54731,26 @@ export interface ZoneTenantUnit {
      * Identifier
      */
     id: string;
+}
+
+export interface ZoneTracingRulesRule {
+    /**
+     * Available values: "set*trace*settings".
+     */
+    action: string;
+    actionParameters: outputs.ZoneTracingRulesRuleActionParameters;
+    description: string;
+    enabled: boolean;
+    /**
+     * A Rules language expression that selects requests.
+     */
+    expression: string;
+}
+
+export interface ZoneTracingRulesRuleActionParameters {
+    /**
+     * The ratio of requests sampled for tracing, from 0 to 1.
+     */
+    samplingRatio: number;
 }
 

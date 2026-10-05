@@ -7,9 +7,12 @@ import com.pulumi.cloudflare.inputs.ApiShieldAuthIdCharacteristicArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,6 +24,21 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
 
     public Output<List<ApiShieldAuthIdCharacteristicArgs>> authIdCharacteristics() {
         return this.authIdCharacteristics;
+    }
+
+    /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     * 
+     */
+    @Import(name="normalize")
+    private @Nullable Output<Boolean> normalize;
+
+    /**
+     * @return Ensures that the configuration is written or retrieved in normalized fashion
+     * 
+     */
+    public Optional<Output<Boolean>> normalize() {
+        return Optional.ofNullable(this.normalize);
     }
 
     /**
@@ -42,6 +60,7 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
 
     private ApiShieldArgs(ApiShieldArgs $) {
         this.authIdCharacteristics = $.authIdCharacteristics;
+        this.normalize = $.normalize;
         this.zoneId = $.zoneId;
     }
 
@@ -74,6 +93,27 @@ public final class ApiShieldArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder authIdCharacteristics(ApiShieldAuthIdCharacteristicArgs... authIdCharacteristics) {
             return authIdCharacteristics(List.of(authIdCharacteristics));
+        }
+
+        /**
+         * @param normalize Ensures that the configuration is written or retrieved in normalized fashion
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalize(@Nullable Output<Boolean> normalize) {
+            $.normalize = normalize;
+            return this;
+        }
+
+        /**
+         * @param normalize Ensures that the configuration is written or retrieved in normalized fashion
+         * 
+         * @return builder
+         * 
+         */
+        public Builder normalize(Boolean normalize) {
+            return normalize(Output.of(normalize));
         }
 
         /**

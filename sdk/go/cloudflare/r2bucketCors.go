@@ -65,7 +65,7 @@ import (
 type R2BucketCors struct {
 	pulumi.CustomResourceState
 
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
@@ -110,7 +110,7 @@ func GetR2BucketCors(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2BucketCors resources.
 type r2bucketCorsState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
@@ -120,7 +120,7 @@ type r2bucketCorsState struct {
 }
 
 type R2BucketCorsState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
@@ -134,7 +134,7 @@ func (R2BucketCorsState) ElementType() reflect.Type {
 }
 
 type r2bucketCorsArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -145,7 +145,7 @@ type r2bucketCorsArgs struct {
 
 // The set of arguments for constructing a R2BucketCors resource.
 type R2BucketCorsArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
@@ -241,7 +241,7 @@ func (o R2BucketCorsOutput) ToR2BucketCorsOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o R2BucketCorsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketCors) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

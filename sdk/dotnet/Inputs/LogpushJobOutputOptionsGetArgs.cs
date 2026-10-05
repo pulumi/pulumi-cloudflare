@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// If set to true, subrequests will be merged into the parent request. Only supported for the `HttpRequests` dataset.
+        /// If set to true, subrequests will be merged into the parent request. Only supported for the `HttpRequests` dataset. Not supported for account-scoped jobs.
         /// </summary>
         [Input("mergeSubrequests")]
         public Input<bool>? MergeSubrequests { get; set; }
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? RecordTemplate { get; set; }
 
         /// <summary>
-        /// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `SampleInterval` of the data.
+        /// Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `SampleInterval` of the data.
         /// </summary>
         [Input("sampleRate")]
         public Input<double>? SampleRate { get; set; }

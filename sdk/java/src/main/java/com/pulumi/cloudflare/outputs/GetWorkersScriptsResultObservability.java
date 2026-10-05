@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultObservabilityIssues;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultObservabilityLogs;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultObservabilityTraces;
 import com.pulumi.core.annotations.CustomType;
@@ -23,6 +24,11 @@ public final class GetWorkersScriptsResultObservability {
      * 
      */
     private Double headSamplingRate;
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    private GetWorkersScriptsResultObservabilityIssues issues;
     /**
      * @return Log settings for the Worker.
      * 
@@ -53,6 +59,13 @@ public final class GetWorkersScriptsResultObservability {
      */
     public Double headSamplingRate() {
         return this.headSamplingRate;
+    }
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    public GetWorkersScriptsResultObservabilityIssues issues() {
+        return this.issues;
     }
     /**
      * @return Log settings for the Worker.
@@ -87,6 +100,7 @@ public final class GetWorkersScriptsResultObservability {
     public static final class Builder {
         private Boolean enabled;
         private Double headSamplingRate;
+        private GetWorkersScriptsResultObservabilityIssues issues;
         private GetWorkersScriptsResultObservabilityLogs logs;
         private Boolean redactQueryString;
         private GetWorkersScriptsResultObservabilityTraces traces;
@@ -95,6 +109,7 @@ public final class GetWorkersScriptsResultObservability {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
+    	      this.issues = defaults.issues;
     	      this.logs = defaults.logs;
     	      this.redactQueryString = defaults.redactQueryString;
     	      this.traces = defaults.traces;
@@ -114,6 +129,14 @@ public final class GetWorkersScriptsResultObservability {
               throw new MissingRequiredPropertyException("GetWorkersScriptsResultObservability", "headSamplingRate");
             }
             this.headSamplingRate = headSamplingRate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issues(GetWorkersScriptsResultObservabilityIssues issues) {
+            if (issues == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResultObservability", "issues");
+            }
+            this.issues = issues;
             return this;
         }
         @CustomType.Setter
@@ -144,6 +167,7 @@ public final class GetWorkersScriptsResultObservability {
             final var _resultValue = new GetWorkersScriptsResultObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
+            _resultValue.issues = issues;
             _resultValue.logs = logs;
             _resultValue.redactQueryString = redactQueryString;
             _resultValue.traces = traces;

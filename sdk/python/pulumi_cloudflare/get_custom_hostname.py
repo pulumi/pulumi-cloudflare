@@ -84,7 +84,7 @@ class GetCustomHostnameResult:
     @pulumi.getter(name="customHostnameId")
     def custom_hostname_id(self) -> Optional[_builtins.str]:
         """
-        Identifier.
+        Custom hostname identifier tag.
         """
         return pulumi.get(self, "custom_hostname_id")
 
@@ -129,7 +129,7 @@ class GetCustomHostnameResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        Custom hostname identifier tag.
         """
         return pulumi.get(self, "id")
 
@@ -219,11 +219,11 @@ def get_custom_hostname(custom_hostname_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_custom_hostname = cloudflare.get_custom_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        custom_hostname_id="023e105f4ecef8ad9ca31a8372d0c353")
+        custom_hostname_id="0d89c70d-ad9f-4843-b99f-6cc0252067e9")
     ```
 
 
-    :param _builtins.str custom_hostname_id: Identifier.
+    :param _builtins.str custom_hostname_id: Custom hostname identifier tag.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
@@ -265,11 +265,11 @@ def get_custom_hostname_output(custom_hostname_id: pulumi.Input[Optional[Optiona
     import pulumi_cloudflare as cloudflare
 
     example_custom_hostname = cloudflare.get_custom_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        custom_hostname_id="023e105f4ecef8ad9ca31a8372d0c353")
+        custom_hostname_id="0d89c70d-ad9f-4843-b99f-6cc0252067e9")
     ```
 
 
-    :param _builtins.str custom_hostname_id: Identifier.
+    :param _builtins.str custom_hostname_id: Custom hostname identifier tag.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()

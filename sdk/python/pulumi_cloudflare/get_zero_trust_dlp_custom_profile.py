@@ -27,7 +27,7 @@ class GetZeroTrustDlpCustomProfileResult:
     """
     A collection of values returned by getZeroTrustDlpCustomProfile.
     """
-    def __init__(__self__, account_id=None, ai_context_enabled=None, allowed_match_count=None, confidence_threshold=None, context_awareness=None, created_at=None, data_classes=None, data_tags=None, description=None, entries=None, id=None, name=None, ocr_enabled=None, open_access=None, profile_id=None, sensitivity_levels=None, shared_entries=None, type=None, updated_at=None):
+    def __init__(__self__, account_id=None, ai_context_enabled=None, allowed_match_count=None, confidence_threshold=None, context_awareness=None, created_at=None, data_classes=None, data_tags=None, description=None, entries=None, id=None, integration_id=None, name=None, ocr_enabled=None, open_access=None, profile_id=None, sensitivity_levels=None, shared_entries=None, type=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -61,6 +61,9 @@ class GetZeroTrustDlpCustomProfileResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if integration_id and not isinstance(integration_id, str):
+            raise TypeError("Expected argument 'integration_id' to be a str")
+        pulumi.set(__self__, "integration_id", integration_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -168,6 +171,11 @@ class GetZeroTrustDlpCustomProfileResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="integrationId")
+    def integration_id(self) -> _builtins.str:
+        return pulumi.get(self, "integration_id")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -240,6 +248,7 @@ class AwaitableGetZeroTrustDlpCustomProfileResult(GetZeroTrustDlpCustomProfileRe
             description=self.description,
             entries=self.entries,
             id=self.id,
+            integration_id=self.integration_id,
             name=self.name,
             ocr_enabled=self.ocr_enabled,
             open_access=self.open_access,
@@ -287,6 +296,7 @@ def get_zero_trust_dlp_custom_profile(account_id: Optional[_builtins.str] = None
         description=pulumi.get(__ret__, 'description'),
         entries=pulumi.get(__ret__, 'entries'),
         id=pulumi.get(__ret__, 'id'),
+        integration_id=pulumi.get(__ret__, 'integration_id'),
         name=pulumi.get(__ret__, 'name'),
         ocr_enabled=pulumi.get(__ret__, 'ocr_enabled'),
         open_access=pulumi.get(__ret__, 'open_access'),
@@ -331,6 +341,7 @@ def get_zero_trust_dlp_custom_profile_output(account_id: pulumi.Input[Optional[O
         description=pulumi.get(__response__, 'description'),
         entries=pulumi.get(__response__, 'entries'),
         id=pulumi.get(__response__, 'id'),
+        integration_id=pulumi.get(__response__, 'integration_id'),
         name=pulumi.get(__response__, 'name'),
         ocr_enabled=pulumi.get(__response__, 'ocr_enabled'),
         open_access=pulumi.get(__response__, 'open_access'),

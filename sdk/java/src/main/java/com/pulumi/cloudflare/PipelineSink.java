@@ -199,7 +199,7 @@ public class PipelineSink extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the type of sink.
-     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -207,7 +207,7 @@ public class PipelineSink extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies the type of sink.
-     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
      * 
      */
     public Output<String> type() {

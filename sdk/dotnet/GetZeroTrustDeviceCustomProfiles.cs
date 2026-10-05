@@ -90,6 +90,13 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
+        /// <summary>
+        /// Filter profiles by client type. When omitted, only WARP profiles are returned.
+        /// Available values: "warp", "BrowserExtension".
+        /// </summary>
+        [Input("profileType")]
+        public string? ProfileType { get; set; }
+
         public GetZeroTrustDeviceCustomProfilesArgs()
         {
         }
@@ -107,6 +114,13 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
+        /// <summary>
+        /// Filter profiles by client type. When omitted, only WARP profiles are returned.
+        /// Available values: "warp", "BrowserExtension".
+        /// </summary>
+        [Input("profileType")]
+        public Input<string>? ProfileType { get; set; }
+
         public GetZeroTrustDeviceCustomProfilesInvokeArgs()
         {
         }
@@ -123,6 +137,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
+        /// Filter profiles by client type. When omitted, only WARP profiles are returned.
+        /// Available values: "warp", "BrowserExtension".
+        /// </summary>
+        public readonly string ProfileType;
+        /// <summary>
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultResult> Results;
@@ -133,10 +152,13 @@ namespace Pulumi.Cloudflare
 
             int? maxItems,
 
+            string profileType,
+
             ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfilesResultResult> results)
         {
             AccountId = accountId;
             MaxItems = maxItems;
+            ProfileType = profileType;
             Results = results;
         }
     }

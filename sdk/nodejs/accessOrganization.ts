@@ -63,7 +63,13 @@ import * as utilities from "./utilities";
  *     },
  *     mfaRequiredForAllApps: false,
  *     name: "Widget Corps Internal Applications",
+ *     serviceTokenInactivity: {
+ *         action: "disable",
+ *         enabled: true,
+ *         inactivityThresholdDays: 30,
+ *     },
  *     sessionDuration: "24h",
+ *     strictServiceTokenAuth: true,
  *     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
  *     userSeatExpirationInactiveTime: "730h",
  *     warpAuthNonBrowser401: false,
@@ -73,7 +79,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example '<account_id>'
+ * ```
  *
  * @deprecated cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
  */
@@ -157,9 +165,21 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string | undefined>;
     /**
+     * Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     */
+    declare public readonly serviceTokenInactivity: pulumi.Output<outputs.AccessOrganizationServiceTokenInactivity | undefined>;
+    /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     declare public readonly sessionDuration: pulumi.Output<string | undefined>;
+    /**
+     * Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     */
+    declare public readonly strictServiceTokenAuth: pulumi.Output<boolean>;
+    /**
+     * The account tags of organizations trusted by this organization for policy and device posture sharing.
+     */
+    declare public /*out*/ readonly trustedAccounts: pulumi.Output<string[]>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
@@ -211,7 +231,10 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["mfaRequiredForAllApps"] = state?.mfaRequiredForAllApps;
             resourceInputs["mfaSshPivKeyRequirements"] = state?.mfaSshPivKeyRequirements;
             resourceInputs["name"] = state?.name;
+            resourceInputs["serviceTokenInactivity"] = state?.serviceTokenInactivity;
             resourceInputs["sessionDuration"] = state?.sessionDuration;
+            resourceInputs["strictServiceTokenAuth"] = state?.strictServiceTokenAuth;
+            resourceInputs["trustedAccounts"] = state?.trustedAccounts;
             resourceInputs["uiReadOnlyToggleReason"] = state?.uiReadOnlyToggleReason;
             resourceInputs["userSeatExpirationInactiveTime"] = state?.userSeatExpirationInactiveTime;
             resourceInputs["warpAuthNonBrowser401"] = state?.warpAuthNonBrowser401;
@@ -233,12 +256,15 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["mfaRequiredForAllApps"] = args?.mfaRequiredForAllApps;
             resourceInputs["mfaSshPivKeyRequirements"] = args?.mfaSshPivKeyRequirements;
             resourceInputs["name"] = args?.name;
+            resourceInputs["serviceTokenInactivity"] = args?.serviceTokenInactivity;
             resourceInputs["sessionDuration"] = args?.sessionDuration;
+            resourceInputs["strictServiceTokenAuth"] = args?.strictServiceTokenAuth;
             resourceInputs["uiReadOnlyToggleReason"] = args?.uiReadOnlyToggleReason;
             resourceInputs["userSeatExpirationInactiveTime"] = args?.userSeatExpirationInactiveTime;
             resourceInputs["warpAuthNonBrowser401"] = args?.warpAuthNonBrowser401;
             resourceInputs["warpAuthSessionDuration"] = args?.warpAuthSessionDuration;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["trustedAccounts"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessOrganization:AccessOrganization" }] };
@@ -302,9 +328,21 @@ export interface AccessOrganizationState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     */
+    serviceTokenInactivity?: pulumi.Input<inputs.AccessOrganizationServiceTokenInactivity | undefined>;
+    /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string | undefined>;
+    /**
+     * Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     */
+    strictServiceTokenAuth?: pulumi.Input<boolean | undefined>;
+    /**
+     * The account tags of organizations trusted by this organization for policy and device posture sharing.
+     */
+    trustedAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
@@ -382,9 +420,17 @@ export interface AccessOrganizationArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     */
+    serviceTokenInactivity?: pulumi.Input<inputs.AccessOrganizationServiceTokenInactivity | undefined>;
+    /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string | undefined>;
+    /**
+     * Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     */
+    strictServiceTokenAuth?: pulumi.Input<boolean | undefined>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */

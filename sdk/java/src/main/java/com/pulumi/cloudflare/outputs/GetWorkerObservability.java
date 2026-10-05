@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkerObservabilityIssues;
 import com.pulumi.cloudflare.outputs.GetWorkerObservabilityLogs;
 import com.pulumi.cloudflare.outputs.GetWorkerObservabilityTraces;
 import com.pulumi.core.annotations.CustomType;
@@ -24,10 +25,20 @@ public final class GetWorkerObservability {
      */
     private Double headSamplingRate;
     /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    private GetWorkerObservabilityIssues issues;
+    /**
      * @return Log settings for the Worker.
      * 
      */
     private GetWorkerObservabilityLogs logs;
+    /**
+     * @return Whether query strings are removed from request URLs in logs and traces.
+     * 
+     */
+    private Boolean redactQueryString;
     /**
      * @return Trace settings for the Worker.
      * 
@@ -50,11 +61,25 @@ public final class GetWorkerObservability {
         return this.headSamplingRate;
     }
     /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    public GetWorkerObservabilityIssues issues() {
+        return this.issues;
+    }
+    /**
      * @return Log settings for the Worker.
      * 
      */
     public GetWorkerObservabilityLogs logs() {
         return this.logs;
+    }
+    /**
+     * @return Whether query strings are removed from request URLs in logs and traces.
+     * 
+     */
+    public Boolean redactQueryString() {
+        return this.redactQueryString;
     }
     /**
      * @return Trace settings for the Worker.
@@ -75,14 +100,18 @@ public final class GetWorkerObservability {
     public static final class Builder {
         private Boolean enabled;
         private Double headSamplingRate;
+        private GetWorkerObservabilityIssues issues;
         private GetWorkerObservabilityLogs logs;
+        private Boolean redactQueryString;
         private GetWorkerObservabilityTraces traces;
         public Builder() {}
         public Builder(GetWorkerObservability defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
+    	      this.issues = defaults.issues;
     	      this.logs = defaults.logs;
+    	      this.redactQueryString = defaults.redactQueryString;
     	      this.traces = defaults.traces;
         }
 
@@ -103,11 +132,27 @@ public final class GetWorkerObservability {
             return this;
         }
         @CustomType.Setter
+        public Builder issues(GetWorkerObservabilityIssues issues) {
+            if (issues == null) {
+              throw new MissingRequiredPropertyException("GetWorkerObservability", "issues");
+            }
+            this.issues = issues;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logs(GetWorkerObservabilityLogs logs) {
             if (logs == null) {
               throw new MissingRequiredPropertyException("GetWorkerObservability", "logs");
             }
             this.logs = logs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder redactQueryString(Boolean redactQueryString) {
+            if (redactQueryString == null) {
+              throw new MissingRequiredPropertyException("GetWorkerObservability", "redactQueryString");
+            }
+            this.redactQueryString = redactQueryString;
             return this;
         }
         @CustomType.Setter
@@ -122,7 +167,9 @@ public final class GetWorkerObservability {
             final var _resultValue = new GetWorkerObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
+            _resultValue.issues = issues;
             _resultValue.logs = logs;
+            _resultValue.redactQueryString = redactQueryString;
             _resultValue.traces = traces;
             return _resultValue;
         }

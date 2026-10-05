@@ -19,14 +19,14 @@ public final class R2BucketLockArgs extends com.pulumi.resources.ResourceArgs {
     public static final R2BucketLockArgs Empty = new R2BucketLockArgs();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Output<String> accountId() {
@@ -98,7 +98,7 @@ public final class R2BucketLockArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class R2BucketLockArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 

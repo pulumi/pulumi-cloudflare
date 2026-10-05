@@ -27,16 +27,28 @@ class GetZeroTrustListsResult:
     """
     A collection of values returned by getZeroTrustLists.
     """
-    def __init__(__self__, account_id=None, max_items=None, results=None, type=None):
+    def __init__(__self__, account_id=None, direction=None, filters=None, max_items=None, order_by=None, results=None, search=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if direction and not isinstance(direction, str):
+            raise TypeError("Expected argument 'direction' to be a str")
+        pulumi.set(__self__, "direction", direction)
+        if filters and not isinstance(filters, list):
+            raise TypeError("Expected argument 'filters' to be a list")
+        pulumi.set(__self__, "filters", filters)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
+        if search and not isinstance(search, str):
+            raise TypeError("Expected argument 'search' to be a str")
+        pulumi.set(__self__, "search", search)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -47,28 +59,38 @@ class GetZeroTrustListsResult:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
-        """
-        Max items to fetch, default: 1000
-        """
         return pulumi.get(self, "max_items")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "order_by")
 
     @_builtins.property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetZeroTrustListsResultResult']:
-        """
-        The items returned by the data source
-        """
         return pulumi.get(self, "results")
 
     @_builtins.property
     @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "search")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-        """
         return pulumi.get(self, "type")
 
 
@@ -79,13 +101,21 @@ class AwaitableGetZeroTrustListsResult(GetZeroTrustListsResult):
             yield self
         return GetZeroTrustListsResult(
             account_id=self.account_id,
+            direction=self.direction,
+            filters=self.filters,
             max_items=self.max_items,
+            order_by=self.order_by,
             results=self.results,
+            search=self.search,
             type=self.type)
 
 
 def get_zero_trust_lists(account_id: Optional[_builtins.str] = None,
+                         direction: Optional[_builtins.str] = None,
+                         filters: Optional[Sequence[_builtins.str]] = None,
                          max_items: Optional[_builtins.int] = None,
+                         order_by: Optional[_builtins.str] = None,
+                         search: Optional[_builtins.str] = None,
                          type: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustListsResult:
     """
@@ -96,28 +126,39 @@ def get_zero_trust_lists(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_lists = cloudflare.get_zero_trust_lists(account_id="699d98642c564d2e855e9661899b7252",
+        direction="asc",
+        filters=["string"],
+        order_by="name",
+        search="search",
         type="SERIAL")
     ```
-
-
-    :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str type: Specify the list type.
-           Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['direction'] = direction
+    __args__['filters'] = filters
     __args__['maxItems'] = max_items
+    __args__['orderBy'] = order_by
+    __args__['search'] = search
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustLists:getZeroTrustLists', __args__, opts=opts, typ=GetZeroTrustListsResult).value
 
     return AwaitableGetZeroTrustListsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        direction=pulumi.get(__ret__, 'direction'),
+        filters=pulumi.get(__ret__, 'filters'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        order_by=pulumi.get(__ret__, 'order_by'),
         results=pulumi.get(__ret__, 'results'),
+        search=pulumi.get(__ret__, 'search'),
         type=pulumi.get(__ret__, 'type'))
 def get_zero_trust_lists_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                filters: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                 max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustListsResult]:
     """
@@ -128,22 +169,29 @@ def get_zero_trust_lists_output(account_id: pulumi.Input[Optional[Optional[_buil
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_lists = cloudflare.get_zero_trust_lists(account_id="699d98642c564d2e855e9661899b7252",
+        direction="asc",
+        filters=["string"],
+        order_by="name",
+        search="search",
         type="SERIAL")
     ```
-
-
-    :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str type: Specify the list type.
-           Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['direction'] = direction
+    __args__['filters'] = filters
     __args__['maxItems'] = max_items
+    __args__['orderBy'] = order_by
+    __args__['search'] = search
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustLists:getZeroTrustLists', __args__, opts=opts, typ=GetZeroTrustListsResult)
     return __ret__.apply(lambda __response__: GetZeroTrustListsResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        direction=pulumi.get(__response__, 'direction'),
+        filters=pulumi.get(__response__, 'filters'),
         max_items=pulumi.get(__response__, 'max_items'),
+        order_by=pulumi.get(__response__, 'order_by'),
         results=pulumi.get(__response__, 'results'),
+        search=pulumi.get(__response__, 'search'),
         type=pulumi.get(__response__, 'type')))

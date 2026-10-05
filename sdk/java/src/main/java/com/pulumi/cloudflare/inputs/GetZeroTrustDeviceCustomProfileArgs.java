@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceCustomProfileFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,17 +23,25 @@ public final class GetZeroTrustDeviceCustomProfileArgs extends com.pulumi.resour
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="policyId", required=true)
-    private Output<String> policyId;
+    @Import(name="filter")
+    private @Nullable Output<GetZeroTrustDeviceCustomProfileFilterArgs> filter;
 
-    public Output<String> policyId() {
-        return this.policyId;
+    public Optional<Output<GetZeroTrustDeviceCustomProfileFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    @Import(name="policyId")
+    private @Nullable Output<String> policyId;
+
+    public Optional<Output<String>> policyId() {
+        return Optional.ofNullable(this.policyId);
     }
 
     private GetZeroTrustDeviceCustomProfileArgs() {}
 
     private GetZeroTrustDeviceCustomProfileArgs(GetZeroTrustDeviceCustomProfileArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.policyId = $.policyId;
     }
 
@@ -64,7 +72,16 @@ public final class GetZeroTrustDeviceCustomProfileArgs extends com.pulumi.resour
             return accountId(Output.of(accountId));
         }
 
-        public Builder policyId(Output<String> policyId) {
+        public Builder filter(@Nullable Output<GetZeroTrustDeviceCustomProfileFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetZeroTrustDeviceCustomProfileFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
+        public Builder policyId(@Nullable Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
@@ -74,9 +91,6 @@ public final class GetZeroTrustDeviceCustomProfileArgs extends com.pulumi.resour
         }
 
         public GetZeroTrustDeviceCustomProfileArgs build() {
-            if ($.policyId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileArgs", "policyId");
-            }
             return $;
         }
     }

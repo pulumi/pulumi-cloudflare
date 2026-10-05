@@ -34,6 +34,21 @@ public final class MagicWanGreTunnelBgpArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+     * 
+     */
+    @Import(name="exportFilterId")
+    private @Nullable Output<String> exportFilterId;
+
+    /**
+     * @return UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+     * 
+     */
+    public Optional<Output<String>> exportFilterId() {
+        return Optional.ofNullable(this.exportFilterId);
+    }
+
+    /**
      * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
      * 
      */
@@ -46,6 +61,21 @@ public final class MagicWanGreTunnelBgpArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<List<String>>> extraPrefixes() {
         return Optional.ofNullable(this.extraPrefixes);
+    }
+
+    /**
+     * UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+     * 
+     */
+    @Import(name="importFilterId")
+    private @Nullable Output<String> importFilterId;
+
+    /**
+     * @return UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+     * 
+     */
+    public Optional<Output<String>> importFilterId() {
+        return Optional.ofNullable(this.importFilterId);
     }
 
     /**
@@ -67,7 +97,9 @@ public final class MagicWanGreTunnelBgpArgs extends com.pulumi.resources.Resourc
 
     private MagicWanGreTunnelBgpArgs(MagicWanGreTunnelBgpArgs $) {
         this.customerAsn = $.customerAsn;
+        this.exportFilterId = $.exportFilterId;
         this.extraPrefixes = $.extraPrefixes;
+        this.importFilterId = $.importFilterId;
         this.md5Key = $.md5Key;
     }
 
@@ -111,6 +143,27 @@ public final class MagicWanGreTunnelBgpArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param exportFilterId UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportFilterId(@Nullable Output<String> exportFilterId) {
+            $.exportFilterId = exportFilterId;
+            return this;
+        }
+
+        /**
+         * @param exportFilterId UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportFilterId(String exportFilterId) {
+            return exportFilterId(Output.of(exportFilterId));
+        }
+
+        /**
          * @param extraPrefixes Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
          * 
          * @return builder
@@ -139,6 +192,27 @@ public final class MagicWanGreTunnelBgpArgs extends com.pulumi.resources.Resourc
          */
         public Builder extraPrefixes(String... extraPrefixes) {
             return extraPrefixes(List.of(extraPrefixes));
+        }
+
+        /**
+         * @param importFilterId UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFilterId(@Nullable Output<String> importFilterId) {
+            $.importFilterId = importFilterId;
+            return this;
+        }
+
+        /**
+         * @param importFilterId UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFilterId(String importFilterId) {
+            return importFilterId(Output.of(importFilterId));
         }
 
         /**

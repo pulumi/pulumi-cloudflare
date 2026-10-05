@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketCorsResult {
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     private String accountId;
@@ -26,7 +26,7 @@ public final class GetR2BucketCorsResult {
 
     private GetR2BucketCorsResult() {}
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public String accountId() {

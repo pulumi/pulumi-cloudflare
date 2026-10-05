@@ -30,6 +30,9 @@ export function getZeroTrustGatewayLogging(args?: GetZeroTrustGatewayLoggingArgs
  * A collection of arguments for invoking getZeroTrustGatewayLogging.
  */
 export interface GetZeroTrustGatewayLoggingArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: string;
 }
 
@@ -37,9 +40,12 @@ export interface GetZeroTrustGatewayLoggingArgs {
  * A collection of values returned by getZeroTrustGatewayLogging.
  */
 export interface GetZeroTrustGatewayLoggingResult {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     readonly accountId?: string;
     /**
-     * The ID of this resource.
+     * Specify the Cloudflare account identifier.
      */
     readonly id: string;
     /**
@@ -75,5 +81,8 @@ export function getZeroTrustGatewayLoggingOutput(args?: GetZeroTrustGatewayLoggi
  * A collection of arguments for invoking getZeroTrustGatewayLogging.
  */
 export interface GetZeroTrustGatewayLoggingOutputArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
 }

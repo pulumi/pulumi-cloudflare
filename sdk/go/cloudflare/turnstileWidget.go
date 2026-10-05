@@ -81,10 +81,16 @@ type TurnstileWidget struct {
 	// client-settable. Omitted from the response for widgets created
 	// before this field existed.
 	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-	DeployedVia pulumi.StringOutput      `pulumi:"deployedVia"`
-	Domains     pulumi.StringArrayOutput `pulumi:"domains"`
+	DeployedVia pulumi.StringOutput `pulumi:"deployedVia"`
+	// Direction to order widgets.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrOutput   `pulumi:"direction"`
+	Domains   pulumi.StringArrayOutput `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolOutput `pulumi:"ephemeralId"`
+	// Filter widgets by field using case-insensitive substring matching.
+	// Format: `field:value`
+	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// Origin of the most recent mutation (create, update, delete, or
 	// secret rotation). Server-derived; not client-settable. Omitted for
 	// widgets last mutated before this field existed.
@@ -101,6 +107,13 @@ type TurnstileWidget struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolOutput `pulumi:"offlabel"`
+	// Field to order widgets by.
+	// Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+	Order pulumi.StringPtrOutput `pulumi:"order"`
+	// Page number of paginated results.
+	Page pulumi.Float64Output `pulumi:"page"`
+	// Number of items per page.
+	PerPage pulumi.Float64Output `pulumi:"perPage"`
 	// Region where this widget can be used. This cannot be changed after creation.
 	// Available values: "world", "china".
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -172,10 +185,16 @@ type turnstileWidgetState struct {
 	// client-settable. Omitted from the response for widgets created
 	// before this field existed.
 	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
-	DeployedVia *string  `pulumi:"deployedVia"`
-	Domains     []string `pulumi:"domains"`
+	DeployedVia *string `pulumi:"deployedVia"`
+	// Direction to order widgets.
+	// Available values: "asc", "desc".
+	Direction *string  `pulumi:"direction"`
+	Domains   []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId *bool `pulumi:"ephemeralId"`
+	// Filter widgets by field using case-insensitive substring matching.
+	// Format: `field:value`
+	Filter *string `pulumi:"filter"`
 	// Origin of the most recent mutation (create, update, delete, or
 	// secret rotation). Server-derived; not client-settable. Omitted for
 	// widgets last mutated before this field existed.
@@ -192,6 +211,13 @@ type turnstileWidgetState struct {
 	Name *string `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `pulumi:"offlabel"`
+	// Field to order widgets by.
+	// Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+	Order *string `pulumi:"order"`
+	// Page number of paginated results.
+	Page *float64 `pulumi:"page"`
+	// Number of items per page.
+	PerPage *float64 `pulumi:"perPage"`
 	// Region where this widget can be used. This cannot be changed after creation.
 	// Available values: "world", "china".
 	Region *string `pulumi:"region"`
@@ -219,9 +245,15 @@ type TurnstileWidgetState struct {
 	// before this field existed.
 	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
 	DeployedVia pulumi.StringPtrInput
-	Domains     pulumi.StringArrayInput
+	// Direction to order widgets.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput
+	Domains   pulumi.StringArrayInput
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolPtrInput
+	// Filter widgets by field using case-insensitive substring matching.
+	// Format: `field:value`
+	Filter pulumi.StringPtrInput
 	// Origin of the most recent mutation (create, update, delete, or
 	// secret rotation). Server-derived; not client-settable. Omitted for
 	// widgets last mutated before this field existed.
@@ -238,6 +270,13 @@ type TurnstileWidgetState struct {
 	Name pulumi.StringPtrInput
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolPtrInput
+	// Field to order widgets by.
+	// Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+	Order pulumi.StringPtrInput
+	// Page number of paginated results.
+	Page pulumi.Float64PtrInput
+	// Number of items per page.
+	PerPage pulumi.Float64PtrInput
 	// Region where this widget can be used. This cannot be changed after creation.
 	// Available values: "world", "china".
 	Region pulumi.StringPtrInput
@@ -260,10 +299,16 @@ type turnstileWidgetArgs struct {
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
-	ClearanceLevel *string  `pulumi:"clearanceLevel"`
-	Domains        []string `pulumi:"domains"`
+	ClearanceLevel *string `pulumi:"clearanceLevel"`
+	// Direction to order widgets.
+	// Available values: "asc", "desc".
+	Direction *string  `pulumi:"direction"`
+	Domains   []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId *bool `pulumi:"ephemeralId"`
+	// Filter widgets by field using case-insensitive substring matching.
+	// Format: `field:value`
+	Filter *string `pulumi:"filter"`
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode string `pulumi:"mode"`
@@ -273,6 +318,13 @@ type turnstileWidgetArgs struct {
 	Name string `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `pulumi:"offlabel"`
+	// Field to order widgets by.
+	// Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+	Order *string `pulumi:"order"`
+	// Page number of paginated results.
+	Page *float64 `pulumi:"page"`
+	// Number of items per page.
+	PerPage *float64 `pulumi:"perPage"`
 	// Region where this widget can be used. This cannot be changed after creation.
 	// Available values: "world", "china".
 	Region *string `pulumi:"region"`
@@ -289,9 +341,15 @@ type TurnstileWidgetArgs struct {
 	// this setting can determine the clearance level to be set
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel pulumi.StringPtrInput
-	Domains        pulumi.StringArrayInput
+	// Direction to order widgets.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput
+	Domains   pulumi.StringArrayInput
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolPtrInput
+	// Filter widgets by field using case-insensitive substring matching.
+	// Format: `field:value`
+	Filter pulumi.StringPtrInput
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringInput
@@ -301,6 +359,13 @@ type TurnstileWidgetArgs struct {
 	Name pulumi.StringInput
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolPtrInput
+	// Field to order widgets by.
+	// Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+	Order pulumi.StringPtrInput
+	// Page number of paginated results.
+	Page pulumi.Float64PtrInput
+	// Number of items per page.
+	PerPage pulumi.Float64PtrInput
 	// Region where this widget can be used. This cannot be changed after creation.
 	// Available values: "world", "china".
 	Region pulumi.StringPtrInput
@@ -425,6 +490,12 @@ func (o TurnstileWidgetOutput) DeployedVia() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.DeployedVia }).(pulumi.StringOutput)
 }
 
+// Direction to order widgets.
+// Available values: "asc", "desc".
+func (o TurnstileWidgetOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
 func (o TurnstileWidgetOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
@@ -432,6 +503,12 @@ func (o TurnstileWidgetOutput) Domains() pulumi.StringArrayOutput {
 // Return the Ephemeral ID in /siteverify (ENT only).
 func (o TurnstileWidgetOutput) EphemeralId() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.EphemeralId }).(pulumi.BoolOutput)
+}
+
+// Filter widgets by field using case-insensitive substring matching.
+// Format: `field:value`
+func (o TurnstileWidgetOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
 // Origin of the most recent mutation (create, update, delete, or
@@ -463,6 +540,22 @@ func (o TurnstileWidgetOutput) Name() pulumi.StringOutput {
 // Do not show any Cloudflare branding on the widget (ENT only).
 func (o TurnstileWidgetOutput) Offlabel() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.Offlabel }).(pulumi.BoolOutput)
+}
+
+// Field to order widgets by.
+// Available values: "id", "sitekey", "name", "createdOn", "modifiedOn".
+func (o TurnstileWidgetOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+// Page number of paginated results.
+func (o TurnstileWidgetOutput) Page() pulumi.Float64Output {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.Float64Output { return v.Page }).(pulumi.Float64Output)
+}
+
+// Number of items per page.
+func (o TurnstileWidgetOutput) PerPage() pulumi.Float64Output {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.Float64Output { return v.PerPage }).(pulumi.Float64Output)
 }
 
 // Region where this widget can be used. This cannot be changed after creation.

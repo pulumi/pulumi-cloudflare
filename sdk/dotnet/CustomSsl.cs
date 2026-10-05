@@ -54,6 +54,14 @@ namespace Pulumi.Cloudflare
     ///   -----END CERTIFICATE-----
     /// 
     /// ",
+    ///         BundleMethod = "ubiquitous",
+    ///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+    ///         Deploy = "staging",
+    ///         GeoRestrictions = new Cloudflare.Inputs.CustomSslGeoRestrictionsArgs
+    ///         {
+    ///             Label = "us",
+    ///         },
+    ///         Policy = "(country: US) or (region: EU)",
     ///         PrivateKey = @"  -----BEGIN RSA PRIVATE KEY-----
     ///   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
     ///   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -83,14 +91,6 @@ namespace Pulumi.Cloudflare
     ///   -----END RSA PRIVATE KEY-----
     /// 
     /// ",
-    ///         BundleMethod = "ubiquitous",
-    ///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-    ///         Deploy = "staging",
-    ///         GeoRestrictions = new Cloudflare.Inputs.CustomSslGeoRestrictionsArgs
-    ///         {
-    ///             Label = "us",
-    ///         },
-    ///         Policy = "(country: US) or (region: EU)",
     ///         Type = "sni_custom",
     ///     });
     /// 
@@ -184,10 +184,10 @@ namespace Pulumi.Cloudflare
         public Output<double> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The zone's private key.
+        /// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         /// </summary>
         [Output("privateKey")]
-        public Output<string> PrivateKey { get; private set; } = null!;
+        public Output<string?> PrivateKey { get; private set; } = null!;
 
         /// <summary>
         /// The type of hash used for the certificate.
@@ -310,11 +310,11 @@ namespace Pulumi.Cloudflare
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
-        [Input("privateKey", required: true)]
+        [Input("privateKey")]
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The zone's private key.
+        /// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -433,7 +433,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The zone's private key.
+        /// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
         /// </summary>
         public Input<string>? PrivateKey
         {

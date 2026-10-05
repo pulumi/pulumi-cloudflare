@@ -32,6 +32,8 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Physport = 1,
+    ///         HealthCheckRate = "low",
+    ///         LoadBalanceInnerFlows = true,
     ///         Name = "name",
     ///         Priority = 0,
     ///         StaticAddressing = new Cloudflare.Inputs.MagicTransitSiteWanStaticAddressingArgs
@@ -67,6 +69,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("healthCheckRate")]
         public Output<string> HealthCheckRate { get; private set; } = null!;
+
+        [Output("loadBalanceInnerFlows")]
+        public Output<bool> LoadBalanceInnerFlows { get; private set; } = null!;
 
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
@@ -147,6 +152,16 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Magic WAN health check rate for tunnels created on this link. The default value is `Mid`.
+        /// Available values: "low", "mid", "high".
+        /// </summary>
+        [Input("healthCheckRate")]
+        public Input<string>? HealthCheckRate { get; set; }
+
+        [Input("loadBalanceInnerFlows")]
+        public Input<bool>? LoadBalanceInnerFlows { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -194,6 +209,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("healthCheckRate")]
         public Input<string>? HealthCheckRate { get; set; }
+
+        [Input("loadBalanceInnerFlows")]
+        public Input<bool>? LoadBalanceInnerFlows { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

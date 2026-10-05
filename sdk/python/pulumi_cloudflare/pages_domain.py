@@ -28,8 +28,8 @@ class PagesDomainArgs:
         The set of arguments for constructing a PagesDomain resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] name: The domain name.
-        :param pulumi.Input[_builtins.str] project_name: Name of the project.
+        :param pulumi.Input[_builtins.str] name: Fully qualified domain name for the Pages project, such as `example.com`.
+        :param pulumi.Input[_builtins.str] project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -51,7 +51,7 @@ class PagesDomainArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The domain name.
+        Fully qualified domain name for the Pages project, such as `example.com`.
         """
         return pulumi.get(self, "name")
 
@@ -63,7 +63,7 @@ class PagesDomainArgs:
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -90,8 +90,8 @@ class _PagesDomainState:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] certificate_authority: Available values: "google", "lets_encrypt".
-        :param pulumi.Input[_builtins.str] name: The domain name.
-        :param pulumi.Input[_builtins.str] project_name: Name of the project.
+        :param pulumi.Input[_builtins.str] name: Fully qualified domain name for the Pages project, such as `example.com`.
+        :param pulumi.Input[_builtins.str] project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param pulumi.Input[_builtins.str] status: Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
         """
         if account_id is not None:
@@ -161,7 +161,7 @@ class _PagesDomainState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The domain name.
+        Fully qualified domain name for the Pages project, such as `example.com`.
         """
         return pulumi.get(self, "name")
 
@@ -173,7 +173,7 @@ class _PagesDomainState:
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -249,7 +249,7 @@ class PagesDomain(pulumi.CustomResource):
         example_pages_domain = cloudflare.PagesDomain("example_pages_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             project_name="this-is-my-project-01",
-            name="this-is-my-domain-01.com")
+            name="example.com")
         ```
 
         ## Import
@@ -262,8 +262,8 @@ class PagesDomain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] name: The domain name.
-        :param pulumi.Input[_builtins.str] project_name: Name of the project.
+        :param pulumi.Input[_builtins.str] name: Fully qualified domain name for the Pages project, such as `example.com`.
+        :param pulumi.Input[_builtins.str] project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         ...
     @overload
@@ -289,7 +289,7 @@ class PagesDomain(pulumi.CustomResource):
         example_pages_domain = cloudflare.PagesDomain("example_pages_domain",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             project_name="this-is-my-project-01",
-            name="this-is-my-domain-01.com")
+            name="example.com")
         ```
 
         ## Import
@@ -371,8 +371,8 @@ class PagesDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] certificate_authority: Available values: "google", "lets_encrypt".
-        :param pulumi.Input[_builtins.str] name: The domain name.
-        :param pulumi.Input[_builtins.str] project_name: Name of the project.
+        :param pulumi.Input[_builtins.str] name: Fully qualified domain name for the Pages project, such as `example.com`.
+        :param pulumi.Input[_builtins.str] project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param pulumi.Input[_builtins.str] status: Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -421,7 +421,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The domain name.
+        Fully qualified domain name for the Pages project, such as `example.com`.
         """
         return pulumi.get(self, "name")
 
@@ -429,7 +429,7 @@ class PagesDomain(pulumi.CustomResource):
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 

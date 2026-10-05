@@ -75,7 +75,7 @@ import (
 type R2BucketLifecycle struct {
 	pulumi.CustomResourceState
 
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
@@ -120,7 +120,7 @@ func GetR2BucketLifecycle(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2BucketLifecycle resources.
 type r2bucketLifecycleState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
@@ -130,7 +130,7 @@ type r2bucketLifecycleState struct {
 }
 
 type R2BucketLifecycleState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
@@ -144,7 +144,7 @@ func (R2BucketLifecycleState) ElementType() reflect.Type {
 }
 
 type r2bucketLifecycleArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -155,7 +155,7 @@ type r2bucketLifecycleArgs struct {
 
 // The set of arguments for constructing a R2BucketLifecycle resource.
 type R2BucketLifecycleArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
@@ -251,7 +251,7 @@ func (o R2BucketLifecycleOutput) ToR2BucketLifecycleOutputWithContext(ctx contex
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o R2BucketLifecycleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketLifecycle) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

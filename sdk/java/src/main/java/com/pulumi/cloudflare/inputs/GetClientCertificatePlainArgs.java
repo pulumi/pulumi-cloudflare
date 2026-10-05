@@ -16,14 +16,14 @@ public final class GetClientCertificatePlainArgs extends com.pulumi.resources.In
     public static final GetClientCertificatePlainArgs Empty = new GetClientCertificatePlainArgs();
 
     /**
-     * Identifier.
+     * Client Certificate Tag
      * 
      */
     @Import(name="clientCertificateId")
     private @Nullable String clientCertificateId;
 
     /**
-     * @return Identifier.
+     * @return Client Certificate Tag
      * 
      */
     public Optional<String> clientCertificateId() {
@@ -79,7 +79,7 @@ public final class GetClientCertificatePlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param clientCertificateId Identifier.
+         * @param clientCertificateId Client Certificate Tag
          * 
          * @return builder
          * 

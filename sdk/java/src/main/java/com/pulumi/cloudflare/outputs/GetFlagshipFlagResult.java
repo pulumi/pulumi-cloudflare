@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetFlagshipFlagFilter;
 import com.pulumi.cloudflare.outputs.GetFlagshipFlagRule;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -11,16 +12,18 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlagshipFlagResult {
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     private String accountId;
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     private String appId;
@@ -29,17 +32,27 @@ public final class GetFlagshipFlagResult {
      * 
      */
     private String defaultVariation;
+    /**
+     * @return Optional operator-facing description. It does not affect flag evaluation.
+     * 
+     */
     private String description;
     /**
      * @return When false, the flag bypasses all rules and always serves `defaultVariation`.
      * 
      */
     private Boolean enabled;
+    private @Nullable GetFlagshipFlagFilter filter;
     /**
-     * @return Flag key (slug).
+     * @return Case-sensitive key identifying the flag within the app.
      * 
      */
-    private String flagKey;
+    private @Nullable String flagKey;
+    /**
+     * @return Case-sensitive key identifying the flag within the app.
+     * 
+     */
+    private String id;
     /**
      * @return Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      * 
@@ -66,14 +79,14 @@ public final class GetFlagshipFlagResult {
 
     private GetFlagshipFlagResult() {}
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public String appId() {
@@ -86,6 +99,10 @@ public final class GetFlagshipFlagResult {
     public String defaultVariation() {
         return this.defaultVariation;
     }
+    /**
+     * @return Optional operator-facing description. It does not affect flag evaluation.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -96,12 +113,22 @@ public final class GetFlagshipFlagResult {
     public Boolean enabled() {
         return this.enabled;
     }
+    public Optional<GetFlagshipFlagFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
     /**
-     * @return Flag key (slug).
+     * @return Case-sensitive key identifying the flag within the app.
      * 
      */
-    public String flagKey() {
-        return this.flagKey;
+    public Optional<String> flagKey() {
+        return Optional.ofNullable(this.flagKey);
+    }
+    /**
+     * @return Case-sensitive key identifying the flag within the app.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
@@ -153,7 +180,9 @@ public final class GetFlagshipFlagResult {
         private String defaultVariation;
         private String description;
         private Boolean enabled;
-        private String flagKey;
+        private @Nullable GetFlagshipFlagFilter filter;
+        private @Nullable String flagKey;
+        private String id;
         private String key;
         private List<GetFlagshipFlagRule> rules;
         private String type;
@@ -168,7 +197,9 @@ public final class GetFlagshipFlagResult {
     	      this.defaultVariation = defaults.defaultVariation;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
+    	      this.filter = defaults.filter;
     	      this.flagKey = defaults.flagKey;
+    	      this.id = defaults.id;
     	      this.key = defaults.key;
     	      this.rules = defaults.rules;
     	      this.type = defaults.type;
@@ -218,11 +249,23 @@ public final class GetFlagshipFlagResult {
             return this;
         }
         @CustomType.Setter
-        public Builder flagKey(String flagKey) {
-            if (flagKey == null) {
-              throw new MissingRequiredPropertyException("GetFlagshipFlagResult", "flagKey");
-            }
+        public Builder filter(@Nullable GetFlagshipFlagFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flagKey(@Nullable String flagKey) {
+
             this.flagKey = flagKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFlagshipFlagResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -283,7 +326,9 @@ public final class GetFlagshipFlagResult {
             _resultValue.defaultVariation = defaultVariation;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
+            _resultValue.filter = filter;
             _resultValue.flagKey = flagKey;
+            _resultValue.id = id;
             _resultValue.key = key;
             _resultValue.rules = rules;
             _resultValue.type = type;

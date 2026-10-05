@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;load_balancer_id&gt;&#39;
+ * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example &#39;&lt;zone_id&gt;/&lt;load_balancer_id&gt;&#39;
  * ```
  * 
  */

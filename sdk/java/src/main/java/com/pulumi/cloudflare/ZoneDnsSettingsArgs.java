@@ -37,16 +37,26 @@ public final class ZoneDnsSettingsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     * 
+     * @deprecated
+     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
+    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+ */
     @Import(name="foundationDns")
     private @Nullable Output<Boolean> foundationDns;
 
     /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     * 
+     * @deprecated
+     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
+    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+ */
     public Optional<Output<Boolean>> foundationDns() {
         return Optional.ofNullable(this.foundationDns);
     }
@@ -82,14 +92,14 @@ public final class ZoneDnsSettingsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Settings determining the nameservers through which the zone should be available.
+     * Controls the nameservers through which the zone is available.
      * 
      */
     @Import(name="nameservers")
     private @Nullable Output<ZoneDnsSettingsNameserversArgs> nameservers;
 
     /**
-     * @return Settings determining the nameservers through which the zone should be available.
+     * @return Controls the nameservers through which the zone is available.
      * 
      */
     public Optional<Output<ZoneDnsSettingsNameserversArgs>> nameservers() {
@@ -228,22 +238,32 @@ public final class ZoneDnsSettingsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param foundationDns Whether to enable Foundation DNS Advanced Nameservers on the zone.
+         * @param foundationDns Deprecated. Use nameservers.type to configure Advanced Nameservers.
          * 
          * @return builder
          * 
+         * @deprecated
+         * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+         * 
          */
+        @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+ */
         public Builder foundationDns(@Nullable Output<Boolean> foundationDns) {
             $.foundationDns = foundationDns;
             return this;
         }
 
         /**
-         * @param foundationDns Whether to enable Foundation DNS Advanced Nameservers on the zone.
+         * @param foundationDns Deprecated. Use nameservers.type to configure Advanced Nameservers.
          * 
          * @return builder
          * 
+         * @deprecated
+         * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+         * 
          */
+        @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+ */
         public Builder foundationDns(Boolean foundationDns) {
             return foundationDns(Output.of(foundationDns));
         }
@@ -291,7 +311,7 @@ public final class ZoneDnsSettingsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nameservers Settings determining the nameservers through which the zone should be available.
+         * @param nameservers Controls the nameservers through which the zone is available.
          * 
          * @return builder
          * 
@@ -302,7 +322,7 @@ public final class ZoneDnsSettingsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nameservers Settings determining the nameservers through which the zone should be available.
+         * @param nameservers Controls the nameservers through which the zone is available.
          * 
          * @return builder
          * 

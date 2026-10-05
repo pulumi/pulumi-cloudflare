@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleCustomOriginTrustStore = cloudflare.getCustomOriginTrustStore({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     customOriginTrustStoreId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customOriginTrustStoreId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
  * });
  * ```
  */
@@ -39,7 +39,7 @@ export function getCustomOriginTrustStore(args?: GetCustomOriginTrustStoreArgs, 
  */
 export interface GetCustomOriginTrustStoreArgs {
     /**
-     * Identifier.
+     * Certificate identifier tag.
      */
     customOriginTrustStoreId?: string;
     filter?: inputs.GetCustomOriginTrustStoreFilter;
@@ -58,7 +58,7 @@ export interface GetCustomOriginTrustStoreResult {
      */
     readonly certificate: string;
     /**
-     * Identifier.
+     * Certificate identifier tag.
      */
     readonly customOriginTrustStoreId?: string;
     /**
@@ -67,7 +67,7 @@ export interface GetCustomOriginTrustStoreResult {
     readonly expiresOn: string;
     readonly filter?: outputs.GetCustomOriginTrustStoreFilter;
     /**
-     * Identifier.
+     * Certificate identifier tag.
      */
     readonly id: string;
     /**
@@ -110,7 +110,7 @@ export interface GetCustomOriginTrustStoreResult {
  *
  * const exampleCustomOriginTrustStore = cloudflare.getCustomOriginTrustStore({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     customOriginTrustStoreId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customOriginTrustStoreId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
  * });
  * ```
  */
@@ -129,7 +129,7 @@ export function getCustomOriginTrustStoreOutput(args?: GetCustomOriginTrustStore
  */
 export interface GetCustomOriginTrustStoreOutputArgs {
     /**
-     * Identifier.
+     * Certificate identifier tag.
      */
     customOriginTrustStoreId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetCustomOriginTrustStoreFilterArgs | undefined>;

@@ -109,6 +109,21 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     * 
+     */
+    @Import(name="subdomain")
+    private @Nullable Output<String> subdomain;
+
+    /**
+     * @return Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     * 
+     */
+    public Optional<Output<String>> subdomain() {
+        return Optional.ofNullable(this.subdomain);
+    }
+
+    /**
      * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      * 
      */
@@ -170,6 +185,7 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
         this.name = $.name;
         this.skipWizard = $.skipWizard;
         this.status = $.status;
+        this.subdomain = $.subdomain;
         this.supportSubaddress = $.supportSubaddress;
         this.tag = $.tag;
         this.zoneId = $.zoneId;
@@ -319,6 +335,27 @@ public final class EmailRoutingDnsState extends com.pulumi.resources.ResourceArg
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param subdomain Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subdomain(@Nullable Output<String> subdomain) {
+            $.subdomain = subdomain;
+            return this;
+        }
+
+        /**
+         * @param subdomain Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subdomain(String subdomain) {
+            return subdomain(Output.of(subdomain));
         }
 
         /**

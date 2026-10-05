@@ -32,7 +32,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Error Page Types
+     * Custom page type.
      * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
      * 
      */
@@ -40,7 +40,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> identifier;
 
     /**
-     * @return Error Page Types
+     * @return Custom page type.
      * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
      * 
      */
@@ -145,7 +145,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Error Page Types
+         * @param identifier Custom page type.
          * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
          * 
          * @return builder
@@ -157,7 +157,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Error Page Types
+         * @param identifier Custom page type.
          * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
          * 
          * @return builder

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayCertificatesInvokeResult {
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     private @Nullable String accountId;
     /**
      * @return Max items to fetch, default: 1000
@@ -28,6 +32,10 @@ public final class GetZeroTrustGatewayCertificatesInvokeResult {
     private List<GetZeroTrustGatewayCertificatesResult> results;
 
     private GetZeroTrustGatewayCertificatesInvokeResult() {}
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }

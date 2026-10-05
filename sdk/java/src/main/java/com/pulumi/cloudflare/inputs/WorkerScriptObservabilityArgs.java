@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkerScriptObservabilityIssuesArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptObservabilityLogsArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptObservabilityTracesArgs;
 import com.pulumi.core.Output;
@@ -50,6 +51,21 @@ public final class WorkerScriptObservabilityArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Real-time Issues settings for the Worker.
+     * 
+     */
+    @Import(name="issues")
+    private @Nullable Output<WorkerScriptObservabilityIssuesArgs> issues;
+
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    public Optional<Output<WorkerScriptObservabilityIssuesArgs>> issues() {
+        return Optional.ofNullable(this.issues);
+    }
+
+    /**
      * Log settings for the Worker.
      * 
      */
@@ -84,6 +100,7 @@ public final class WorkerScriptObservabilityArgs extends com.pulumi.resources.Re
     private WorkerScriptObservabilityArgs(WorkerScriptObservabilityArgs $) {
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
+        this.issues = $.issues;
         this.logs = $.logs;
         this.traces = $.traces;
     }
@@ -146,6 +163,27 @@ public final class WorkerScriptObservabilityArgs extends com.pulumi.resources.Re
          */
         public Builder headSamplingRate(Double headSamplingRate) {
             return headSamplingRate(Output.of(headSamplingRate));
+        }
+
+        /**
+         * @param issues Real-time Issues settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issues(@Nullable Output<WorkerScriptObservabilityIssuesArgs> issues) {
+            $.issues = issues;
+            return this;
+        }
+
+        /**
+         * @param issues Real-time Issues settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issues(WorkerScriptObservabilityIssuesArgs issues) {
+            return issues(Output.of(issues));
         }
 
         /**

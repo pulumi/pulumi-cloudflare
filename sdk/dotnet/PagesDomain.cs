@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ProjectName = "this-is-my-project-01",
-    ///         Name = "this-is-my-domain-01.com",
+    ///         Name = "example.com",
     ///     });
     /// 
     /// });
@@ -66,13 +66,13 @@ namespace Pulumi.Cloudflare
         public Output<string> DomainId { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -145,13 +145,13 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -183,13 +183,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? DomainId { get; set; }
 
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }

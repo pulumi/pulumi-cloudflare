@@ -61,8 +61,7 @@ import javax.annotation.Nullable;
  *                 .conditions(FlagshipFlagRuleConditionArgs.builder()
  *                     .attribute("x")
  *                     .operator("equals")
- *                     .value(Map.ofEntries(
- *                     ))
+ *                     .value("string")
  *                     .build())
  *                 .priority(1)
  *                 .serveVariation("x")
@@ -83,34 +82,36 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/flagshipFlag:FlagshipFlag example &#39;&lt;account_id&gt;/&lt;app_id&gt;/&lt;flag_key&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/flagshipFlag:FlagshipFlag")
 public class FlagshipFlag extends com.pulumi.resources.CustomResource {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      * 
      */
     @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public Output<String> appId() {
@@ -130,9 +131,17 @@ public class FlagshipFlag extends com.pulumi.resources.CustomResource {
     public Output<String> defaultVariation() {
         return this.defaultVariation;
     }
+    /**
+     * Optional operator-facing description. It does not affect flag evaluation.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return Optional operator-facing description. It does not affect flag evaluation.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
@@ -149,20 +158,6 @@ public class FlagshipFlag extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enabled() {
         return this.enabled;
-    }
-    /**
-     * Flag key (slug).
-     * 
-     */
-    @Export(name="flagKey", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> flagKey;
-
-    /**
-     * @return Flag key (slug).
-     * 
-     */
-    public Output<Optional<String>> flagKey() {
-        return Codegen.optional(this.flagKey);
     }
     /**
      * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
@@ -193,20 +188,24 @@ public class FlagshipFlag extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
-     * Value type of the flag&#39;s variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag&#39;s variations.
      * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
-     * @return Value type of the flag&#39;s variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * @return Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag&#39;s variations.
      * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;

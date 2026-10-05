@@ -49,7 +49,7 @@ func LookupR2BucketSippy(ctx *pulumi.Context, args *LookupR2BucketSippyArgs, opt
 
 // A collection of arguments for invoking getR2BucketSippy.
 type LookupR2BucketSippyArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -57,7 +57,7 @@ type LookupR2BucketSippyArgs struct {
 
 // A collection of values returned by getR2BucketSippy.
 type LookupR2BucketSippyResult struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -76,7 +76,7 @@ func LookupR2BucketSippyOutput(ctx *pulumi.Context, args LookupR2BucketSippyOutp
 
 // A collection of arguments for invoking getR2BucketSippy.
 type LookupR2BucketSippyOutputArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
@@ -101,7 +101,7 @@ func (o LookupR2BucketSippyResultOutput) ToLookupR2BucketSippyResultOutputWithCo
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o LookupR2BucketSippyResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketSippyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

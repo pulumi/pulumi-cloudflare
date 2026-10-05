@@ -62,6 +62,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ApiShieldAuthIdCharacteristic>> AuthIdCharacteristics { get; private set; } = null!;
 
         /// <summary>
+        /// Ensures that the configuration is written or retrieved in normalized fashion
+        /// </summary>
+        [Output("normalize")]
+        public Output<bool?> Normalize { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
@@ -122,6 +128,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Ensures that the configuration is written or retrieved in normalized fashion
+        /// </summary>
+        [Input("normalize")]
+        public Input<bool>? Normalize { get; set; }
+
+        /// <summary>
         /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
@@ -142,6 +154,12 @@ namespace Pulumi.Cloudflare
             get => _authIdCharacteristics ?? (_authIdCharacteristics = new InputList<Inputs.ApiShieldAuthIdCharacteristicGetArgs>());
             set => _authIdCharacteristics = value;
         }
+
+        /// <summary>
+        /// Ensures that the configuration is written or retrieved in normalized fashion
+        /// </summary>
+        [Input("normalize")]
+        public Input<bool>? Normalize { get; set; }
 
         /// <summary>
         /// Identifier.

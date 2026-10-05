@@ -48,14 +48,16 @@ func LookupZeroTrustGatewaySettings(ctx *pulumi.Context, args *LookupZeroTrustGa
 
 // A collection of arguments for invoking getZeroTrustGatewaySettings.
 type LookupZeroTrustGatewaySettingsArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustGatewaySettings.
 type LookupZeroTrustGatewaySettingsResult struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt string  `pulumi:"createdAt"`
-	// The ID of this resource.
+	// Specify the Cloudflare account identifier.
 	Id string `pulumi:"id"`
 	// Specify account settings.
 	Settings  GetZeroTrustGatewaySettingsSettings `pulumi:"settings"`
@@ -69,6 +71,7 @@ func LookupZeroTrustGatewaySettingsOutput(ctx *pulumi.Context, args LookupZeroTr
 
 // A collection of arguments for invoking getZeroTrustGatewaySettings.
 type LookupZeroTrustGatewaySettingsOutputArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
@@ -91,6 +94,7 @@ func (o LookupZeroTrustGatewaySettingsResultOutput) ToLookupZeroTrustGatewaySett
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewaySettingsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewaySettingsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -99,7 +103,7 @@ func (o LookupZeroTrustGatewaySettingsResultOutput) CreatedAt() pulumi.StringOut
 	return o.ApplyT(func(v LookupZeroTrustGatewaySettingsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewaySettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewaySettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }

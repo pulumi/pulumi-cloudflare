@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerObservabilityArgs;
+import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigArgs;
 import com.pulumi.cloudflare.inputs.WorkerReferencesArgs;
 import com.pulumi.cloudflare.inputs.WorkerSubdomainArgs;
 import com.pulumi.cloudflare.inputs.WorkerTailConsumerArgs;
@@ -67,6 +68,21 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     * 
+     */
+    @Import(name="force")
+    private @Nullable Output<Boolean> force;
+
+    /**
+     * @return If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     * 
+     */
+    public Optional<Output<Boolean>> force() {
+        return Optional.ofNullable(this.force);
+    }
+
+    /**
      * Whether logpush is enabled for the Worker.
      * 
      */
@@ -109,6 +125,21 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<WorkerObservabilityArgs>> observability() {
         return Optional.ofNullable(this.observability);
+    }
+
+    /**
+     * Template configuration used when creating new Previews for this Worker.
+     * 
+     */
+    @Import(name="previewsBaseConfig")
+    private @Nullable Output<WorkerPreviewsBaseConfigArgs> previewsBaseConfig;
+
+    /**
+     * @return Template configuration used when creating new Previews for this Worker.
+     * 
+     */
+    public Optional<Output<WorkerPreviewsBaseConfigArgs>> previewsBaseConfig() {
+        return Optional.ofNullable(this.previewsBaseConfig);
     }
 
     /**
@@ -192,9 +223,11 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.createdOn = $.createdOn;
         this.deployedOn = $.deployedOn;
+        this.force = $.force;
         this.logpush = $.logpush;
         this.name = $.name;
         this.observability = $.observability;
+        this.previewsBaseConfig = $.previewsBaseConfig;
         this.references = $.references;
         this.subdomain = $.subdomain;
         this.tags = $.tags;
@@ -284,6 +317,27 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param force If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(@Nullable Output<Boolean> force) {
+            $.force = force;
+            return this;
+        }
+
+        /**
+         * @param force If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(Boolean force) {
+            return force(Output.of(force));
+        }
+
+        /**
          * @param logpush Whether logpush is enabled for the Worker.
          * 
          * @return builder
@@ -344,6 +398,27 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder observability(WorkerObservabilityArgs observability) {
             return observability(Output.of(observability));
+        }
+
+        /**
+         * @param previewsBaseConfig Template configuration used when creating new Previews for this Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewsBaseConfig(@Nullable Output<WorkerPreviewsBaseConfigArgs> previewsBaseConfig) {
+            $.previewsBaseConfig = previewsBaseConfig;
+            return this;
+        }
+
+        /**
+         * @param previewsBaseConfig Template configuration used when creating new Previews for this Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previewsBaseConfig(WorkerPreviewsBaseConfigArgs previewsBaseConfig) {
+            return previewsBaseConfig(Output.of(previewsBaseConfig));
         }
 
         /**

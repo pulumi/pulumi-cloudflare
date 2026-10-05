@@ -164,6 +164,7 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
+        public readonly string IntegrationId;
         /// <summary>
         /// The name of the profile.
         /// </summary>
@@ -212,6 +213,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string integrationId,
+
             string name,
 
             bool ocrEnabled,
@@ -239,6 +242,7 @@ namespace Pulumi.Cloudflare
             Description = description;
             Entries = entries;
             Id = id;
+            IntegrationId = integrationId;
             Name = name;
             OcrEnabled = ocrEnabled;
             OpenAccess = openAccess;

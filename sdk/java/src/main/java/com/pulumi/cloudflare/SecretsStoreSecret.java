@@ -48,6 +48,9 @@ import javax.annotation.Nullable;
  *         var exampleSecretsStoreSecret = new SecretsStoreSecret("exampleSecretsStoreSecret", SecretsStoreSecretArgs.builder()
  *             .accountId("985e105f4ecef8ad9ca31a8372d0c353")
  *             .storeId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("MY_API_KEY")
+ *             .scopes("workers")
+ *             .value("my-secret-value")
  *             .build());
  * 
  *     }

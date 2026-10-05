@@ -193,6 +193,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmailSecurityTrustedDomains{}
 	case "cloudflare:index/emailSendingSubdomain:EmailSendingSubdomain":
 		r = &EmailSendingSubdomain{}
+	case "cloudflare:index/fieldExtractor:FieldExtractor":
+		r = &FieldExtractor{}
 	case "cloudflare:index/filter:Filter":
 		r = &Filter{}
 	case "cloudflare:index/firewallRule:FirewallRule":
@@ -253,6 +255,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MagicTransitSiteLan{}
 	case "cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan":
 		r = &MagicTransitSiteWan{}
+	case "cloudflare:index/magicWanBgpFilterProfile:MagicWanBgpFilterProfile":
+		r = &MagicWanBgpFilterProfile{}
 	case "cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel":
 		r = &MagicWanGreTunnel{}
 	case "cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel":
@@ -503,6 +507,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustAccessShortLivedCertificate{}
 	case "cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag":
 		r = &ZeroTrustAccessTag{}
+	case "cloudflare:index/zeroTrustCasbIntegration:ZeroTrustCasbIntegration":
+		r = &ZeroTrustCasbIntegration{}
+	case "cloudflare:index/zeroTrustCasbPolicy:ZeroTrustCasbPolicy":
+		r = &ZeroTrustCasbPolicy{}
+	case "cloudflare:index/zeroTrustCasbWebhook:ZeroTrustCasbWebhook":
+		r = &ZeroTrustCasbWebhook{}
+	case "cloudflare:index/zeroTrustConnectivitySettings:ZeroTrustConnectivitySettings":
+		r = &ZeroTrustConnectivitySettings{}
 	case "cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile":
 		r = &ZeroTrustDeviceCustomProfile{}
 	case "cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback":
@@ -619,6 +631,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZoneSetting{}
 	case "cloudflare:index/zoneSubscription:ZoneSubscription":
 		r = &ZoneSubscription{}
+	case "cloudflare:index/zoneTracing:ZoneTracing":
+		r = &ZoneTracing{}
+	case "cloudflare:index/zoneTracingRules:ZoneTracingRules":
+		r = &ZoneTracingRules{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -1082,6 +1098,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/fieldExtractor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/filter",
 		&module{version},
 	)
@@ -1228,6 +1249,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/magicTransitSiteWan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/magicWanBgpFilterProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1857,6 +1883,26 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustCasbIntegration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCasbPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustCasbWebhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustConnectivitySettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustDeviceCustomProfile",
 		&module{version},
 	)
@@ -2143,6 +2189,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zoneSubscription",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zoneTracing",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zoneTracingRules",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

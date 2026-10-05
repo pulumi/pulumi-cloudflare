@@ -132,14 +132,14 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
     }
 
     /**
-     * If the deployment has been skipped.
+     * Whether the deployment was skipped.
      * 
      */
     @Import(name="isSkipped")
     private @Nullable Output<Boolean> isSkipped;
 
     /**
-     * @return If the deployment has been skipped.
+     * @return Whether the deployment was skipped.
      * 
      */
     public Optional<Output<Boolean>> isSkipped() {
@@ -192,14 +192,14 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
     }
 
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -481,7 +481,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param isSkipped If the deployment has been skipped.
+         * @param isSkipped Whether the deployment was skipped.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param isSkipped If the deployment has been skipped.
+         * @param isSkipped Whether the deployment was skipped.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param projectName Name of the project.
+         * @param projectName Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class PagesProjectCanonicalDeploymentArgs extends com.pulumi.resour
         }
 
         /**
-         * @param projectName Name of the project.
+         * @param projectName Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
          * 
          * @return builder
          * 

@@ -26,7 +26,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck example '<zone_id>'
+ * ```
  */
 export class LeakedCredentialCheck extends pulumi.CustomResource {
     /**

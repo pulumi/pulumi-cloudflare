@@ -27,31 +27,45 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleZeroTrustDlpCustomProfile = new Cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", new()
     ///     {
-    ///         Name = "name",
     ///         AccountId = "account_id",
-    ///         Description = "Custom profile with entries",
+    ///         Name = "name",
+    ///         AiContextEnabled = true,
+    ///         AllowedMatchCount = 5,
+    ///         ConfidenceThreshold = "confidence_threshold",
+    ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Skip = new Cloudflare.Inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs
+    ///             {
+    ///                 Files = true,
+    ///             },
+    ///         },
+    ///         DataClasses = new[]
+    ///         {
+    ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///         },
+    ///         DataTags = new[]
+    ///         {
+    ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///         },
+    ///         Description = "description",
+    ///         OcrEnabled = true,
+    ///         SensitivityLevels = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDlpCustomProfileSensitivityLevelArgs
+    ///             {
+    ///                 GroupId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///                 LevelId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///             },
+    ///         },
     ///         SharedEntries = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustDlpCustomProfileSharedEntryArgs
     ///             {
-    ///                 EntryId = "56a8c060-01bb-4f89-ba1e-3ad42770a342",
-    ///                 EntryType = "predefined",
     ///                 Enabled = true,
+    ///                 EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     // Custom entry that is a part of this new profile
-    ///     var exampleCustomEntry = new Cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry", new()
-    ///     {
-    ///         Name = "custom",
-    ///         AccountId = "account_id",
-    ///         ProfileId = exampleZeroTrustDlpCustomProfile.Id,
-    ///         Pattern = new Cloudflare.Inputs.ZeroTrustDlpCustomEntryPatternArgs
-    ///         {
-    ///             Regex = "customentryregex",
-    ///         },
-    ///         Enabled = true,
     ///     });
     /// 
     /// });
@@ -118,6 +132,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("entries")]
         public Output<ImmutableArray<Outputs.DlpCustomProfileEntry>> Entries { get; private set; } = null!;
+
+        [Output("integrationId")]
+        public Output<string> IntegrationId { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -378,6 +395,9 @@ namespace Pulumi.Cloudflare
             get => _entries ?? (_entries = new InputList<Inputs.DlpCustomProfileEntryGetArgs>());
             set => _entries = value;
         }
+
+        [Input("integrationId")]
+        public Input<string>? IntegrationId { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

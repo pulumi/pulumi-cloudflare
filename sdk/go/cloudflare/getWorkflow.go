@@ -67,14 +67,16 @@ type LookupWorkflowResult struct {
 	CreatedOn string             `pulumi:"createdOn"`
 	Filter    *GetWorkflowFilter `pulumi:"filter"`
 	// The ID of this resource.
-	Id           string                `pulumi:"id"`
-	Instances    map[string]float64    `pulumi:"instances"`
-	ModifiedOn   string                `pulumi:"modifiedOn"`
-	Name         string                `pulumi:"name"`
-	Schedules    []GetWorkflowSchedule `pulumi:"schedules"`
-	ScriptName   string                `pulumi:"scriptName"`
-	TriggeredOn  string                `pulumi:"triggeredOn"`
-	WorkflowName *string               `pulumi:"workflowName"`
+	Id         string                `pulumi:"id"`
+	Instances  map[string]float64    `pulumi:"instances"`
+	ModifiedOn string                `pulumi:"modifiedOn"`
+	Name       string                `pulumi:"name"`
+	Schedules  []GetWorkflowSchedule `pulumi:"schedules"`
+	// Whether the bound Worker was deleted, leaving this Workflow inactive.
+	ScriptDeleted bool    `pulumi:"scriptDeleted"`
+	ScriptName    string  `pulumi:"scriptName"`
+	TriggeredOn   string  `pulumi:"triggeredOn"`
+	WorkflowName  *string `pulumi:"workflowName"`
 }
 
 func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowResultOutput {
@@ -143,6 +145,11 @@ func (o LookupWorkflowResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupWorkflowResultOutput) Schedules() GetWorkflowScheduleArrayOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) []GetWorkflowSchedule { return v.Schedules }).(GetWorkflowScheduleArrayOutput)
+}
+
+// Whether the bound Worker was deleted, leaving this Workflow inactive.
+func (o LookupWorkflowResultOutput) ScriptDeleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) bool { return v.ScriptDeleted }).(pulumi.BoolOutput)
 }
 
 func (o LookupWorkflowResultOutput) ScriptName() pulumi.StringOutput {

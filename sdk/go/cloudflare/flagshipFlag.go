@@ -43,7 +43,7 @@ import (
 //							&cloudflare.FlagshipFlagRuleConditionArgs{
 //								Attribute: pulumi.String("x"),
 //								Operator:  pulumi.String("equals"),
-//								Value:     pulumi.String{},
+//								Value:     pulumi.String("string"),
 //							},
 //						},
 //						Priority:       pulumi.Int(1),
@@ -71,30 +71,33 @@ import (
 //
 // ## Import
 //
-// > This resource does not currently support `pulumi import`.
+// ```sh
+// $ pulumi import cloudflare:index/flagshipFlag:FlagshipFlag example '<account_id>/<app_id>/<flag_key>'
+// ```
 type FlagshipFlag struct {
 	pulumi.CustomResourceState
 
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
-	DefaultVariation pulumi.StringOutput    `pulumi:"defaultVariation"`
-	Description      pulumi.StringPtrOutput `pulumi:"description"`
+	DefaultVariation pulumi.StringOutput `pulumi:"defaultVariation"`
+	// Optional operator-facing description. It does not affect flag evaluation.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// When false, the flag bypasses all rules and always serves `defaultVariation`.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Flag key (slug).
-	FlagKey pulumi.StringPtrOutput `pulumi:"flagKey"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules FlagshipFlagRuleArrayOutput `pulumi:"rules"`
-	// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
 	// Available values: "boolean", "string", "number", "json".
-	Type      pulumi.StringPtrOutput `pulumi:"type"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
-	UpdatedBy pulumi.StringOutput    `pulumi:"updatedBy"`
+	//
+	// Deprecated: This attribute is deprecated.
+	Type      pulumi.StringOutput `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 	// Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
 	Variations pulumi.StringMapOutput `pulumi:"variations"`
 }
@@ -150,23 +153,24 @@ func GetFlagshipFlag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlagshipFlag resources.
 type flagshipFlagState struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId *string `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId *string `pulumi:"appId"`
 	// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
 	DefaultVariation *string `pulumi:"defaultVariation"`
-	Description      *string `pulumi:"description"`
+	// Optional operator-facing description. It does not affect flag evaluation.
+	Description *string `pulumi:"description"`
 	// When false, the flag bypasses all rules and always serves `defaultVariation`.
 	Enabled *bool `pulumi:"enabled"`
-	// Flag key (slug).
-	FlagKey *string `pulumi:"flagKey"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key *string `pulumi:"key"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules []FlagshipFlagRule `pulumi:"rules"`
-	// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
 	// Available values: "boolean", "string", "number", "json".
+	//
+	// Deprecated: This attribute is deprecated.
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 	UpdatedBy *string `pulumi:"updatedBy"`
@@ -175,23 +179,24 @@ type flagshipFlagState struct {
 }
 
 type FlagshipFlagState struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringPtrInput
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId pulumi.StringPtrInput
 	// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
 	DefaultVariation pulumi.StringPtrInput
-	Description      pulumi.StringPtrInput
+	// Optional operator-facing description. It does not affect flag evaluation.
+	Description pulumi.StringPtrInput
 	// When false, the flag bypasses all rules and always serves `defaultVariation`.
 	Enabled pulumi.BoolPtrInput
-	// Flag key (slug).
-	FlagKey pulumi.StringPtrInput
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key pulumi.StringPtrInput
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules FlagshipFlagRuleArrayInput
-	// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
 	// Available values: "boolean", "string", "number", "json".
+	//
+	// Deprecated: This attribute is deprecated.
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 	UpdatedBy pulumi.StringPtrInput
@@ -204,23 +209,24 @@ func (FlagshipFlagState) ElementType() reflect.Type {
 }
 
 type flagshipFlagArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId string `pulumi:"appId"`
 	// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
-	DefaultVariation string  `pulumi:"defaultVariation"`
-	Description      *string `pulumi:"description"`
+	DefaultVariation string `pulumi:"defaultVariation"`
+	// Optional operator-facing description. It does not affect flag evaluation.
+	Description *string `pulumi:"description"`
 	// When false, the flag bypasses all rules and always serves `defaultVariation`.
 	Enabled bool `pulumi:"enabled"`
-	// Flag key (slug).
-	FlagKey *string `pulumi:"flagKey"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key string `pulumi:"key"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules []FlagshipFlagRule `pulumi:"rules"`
-	// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
 	// Available values: "boolean", "string", "number", "json".
+	//
+	// Deprecated: This attribute is deprecated.
 	Type *string `pulumi:"type"`
 	// Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
 	Variations map[string]string `pulumi:"variations"`
@@ -228,23 +234,24 @@ type flagshipFlagArgs struct {
 
 // The set of arguments for constructing a FlagshipFlag resource.
 type FlagshipFlagArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringInput
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId pulumi.StringInput
 	// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
 	DefaultVariation pulumi.StringInput
-	Description      pulumi.StringPtrInput
+	// Optional operator-facing description. It does not affect flag evaluation.
+	Description pulumi.StringPtrInput
 	// When false, the flag bypasses all rules and always serves `defaultVariation`.
 	Enabled pulumi.BoolInput
-	// Flag key (slug).
-	FlagKey pulumi.StringPtrInput
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key pulumi.StringInput
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
 	Rules FlagshipFlagRuleArrayInput
-	// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+	// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
 	// Available values: "boolean", "string", "number", "json".
+	//
+	// Deprecated: This attribute is deprecated.
 	Type pulumi.StringPtrInput
 	// Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
 	Variations pulumi.StringMapInput
@@ -337,12 +344,12 @@ func (o FlagshipFlagOutput) ToFlagshipFlagOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Cloudflare account ID.
+// Cloudflare account ID that owns the Flagship app.
 func (o FlagshipFlagOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagshipFlag) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// App identifier.
+// Flagship app ID returned when the app was created.
 func (o FlagshipFlagOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagshipFlag) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
@@ -352,6 +359,7 @@ func (o FlagshipFlagOutput) DefaultVariation() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlagshipFlag) pulumi.StringOutput { return v.DefaultVariation }).(pulumi.StringOutput)
 }
 
+// Optional operator-facing description. It does not affect flag evaluation.
 func (o FlagshipFlagOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlagshipFlag) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -359,11 +367,6 @@ func (o FlagshipFlagOutput) Description() pulumi.StringPtrOutput {
 // When false, the flag bypasses all rules and always serves `defaultVariation`.
 func (o FlagshipFlagOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *FlagshipFlag) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Flag key (slug).
-func (o FlagshipFlagOutput) FlagKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlagshipFlag) pulumi.StringPtrOutput { return v.FlagKey }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
@@ -376,10 +379,12 @@ func (o FlagshipFlagOutput) Rules() FlagshipFlagRuleArrayOutput {
 	return o.ApplyT(func(v *FlagshipFlag) FlagshipFlagRuleArrayOutput { return v.Rules }).(FlagshipFlagRuleArrayOutput)
 }
 
-// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
 // Available values: "boolean", "string", "number", "json".
-func (o FlagshipFlagOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlagshipFlag) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+//
+// Deprecated: This attribute is deprecated.
+func (o FlagshipFlagOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlagshipFlag) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o FlagshipFlagOutput) UpdatedAt() pulumi.StringOutput {

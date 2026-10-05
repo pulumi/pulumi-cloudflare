@@ -62,9 +62,11 @@ type ApiShieldSchema struct {
 	// Available values: "openapiV3".
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the schema
-	Name     pulumi.StringPtrOutput      `pulumi:"name"`
-	Schema   ApiShieldSchemaSchemaOutput `pulumi:"schema"`
-	SchemaId pulumi.StringPtrOutput      `pulumi:"schemaId"`
+	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource pulumi.BoolOutput           `pulumi:"omitSource"`
+	Schema     ApiShieldSchemaSchemaOutput `pulumi:"schema"`
+	SchemaId   pulumi.StringPtrOutput      `pulumi:"schemaId"`
 	// Source of the schema
 	Source        pulumi.StringOutput                `pulumi:"source"`
 	UploadDetails ApiShieldSchemaUploadDetailsOutput `pulumi:"uploadDetails"`
@@ -121,9 +123,11 @@ type apiShieldSchemaState struct {
 	// Available values: "openapiV3".
 	Kind *string `pulumi:"kind"`
 	// Name of the schema
-	Name     *string                `pulumi:"name"`
-	Schema   *ApiShieldSchemaSchema `pulumi:"schema"`
-	SchemaId *string                `pulumi:"schemaId"`
+	Name *string `pulumi:"name"`
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource *bool                  `pulumi:"omitSource"`
+	Schema     *ApiShieldSchemaSchema `pulumi:"schema"`
+	SchemaId   *string                `pulumi:"schemaId"`
 	// Source of the schema
 	Source        *string                       `pulumi:"source"`
 	UploadDetails *ApiShieldSchemaUploadDetails `pulumi:"uploadDetails"`
@@ -142,9 +146,11 @@ type ApiShieldSchemaState struct {
 	// Available values: "openapiV3".
 	Kind pulumi.StringPtrInput
 	// Name of the schema
-	Name     pulumi.StringPtrInput
-	Schema   ApiShieldSchemaSchemaPtrInput
-	SchemaId pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource pulumi.BoolPtrInput
+	Schema     ApiShieldSchemaSchemaPtrInput
+	SchemaId   pulumi.StringPtrInput
 	// Source of the schema
 	Source        pulumi.StringPtrInput
 	UploadDetails ApiShieldSchemaUploadDetailsPtrInput
@@ -166,8 +172,10 @@ type apiShieldSchemaArgs struct {
 	// Available values: "openapiV3".
 	Kind string `pulumi:"kind"`
 	// Name of the schema
-	Name     *string `pulumi:"name"`
-	SchemaId *string `pulumi:"schemaId"`
+	Name *string `pulumi:"name"`
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource *bool   `pulumi:"omitSource"`
+	SchemaId   *string `pulumi:"schemaId"`
 	// Flag whether schema is enabled for validation.
 	// Available values: "true", "false".
 	ValidationEnabled *string `pulumi:"validationEnabled"`
@@ -183,8 +191,10 @@ type ApiShieldSchemaArgs struct {
 	// Available values: "openapiV3".
 	Kind pulumi.StringInput
 	// Name of the schema
-	Name     pulumi.StringPtrInput
-	SchemaId pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Omit the source-files of schemas and only retrieve their meta-data.
+	OmitSource pulumi.BoolPtrInput
+	SchemaId   pulumi.StringPtrInput
 	// Flag whether schema is enabled for validation.
 	// Available values: "true", "false".
 	ValidationEnabled pulumi.StringPtrInput
@@ -297,6 +307,11 @@ func (o ApiShieldSchemaOutput) Kind() pulumi.StringOutput {
 // Name of the schema
 func (o ApiShieldSchemaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Omit the source-files of schemas and only retrieve their meta-data.
+func (o ApiShieldSchemaOutput) OmitSource() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.BoolOutput { return v.OmitSource }).(pulumi.BoolOutput)
 }
 
 func (o ApiShieldSchemaOutput) Schema() ApiShieldSchemaSchemaOutput {

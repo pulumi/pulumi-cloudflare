@@ -23,20 +23,28 @@ class WorkersKvArgs:
                  key_name: pulumi.Input[_builtins.str],
                  namespace_id: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
+                 expiration: pulumi.Input[Optional[_builtins.float]] = None,
+                 expiration_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  metadata: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersKv resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-        :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input[_builtins.str] namespace_id: ID of the Workers KV namespace.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
+        :param pulumi.Input[_builtins.float] expiration: Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        :param pulumi.Input[_builtins.float] expiration_ttl: Expires the key after a number of seconds. Must be at least 60.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "value", value)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if expiration_ttl is not None:
+            pulumi.set(__self__, "expiration_ttl", expiration_ttl)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
 
@@ -44,7 +52,7 @@ class WorkersKvArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier.
+        ID of the Cloudflare account that owns the Workers KV namespaces.
         """
         return pulumi.get(self, "account_id")
 
@@ -68,7 +76,7 @@ class WorkersKvArgs:
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Namespace identifier tag.
+        ID of the Workers KV namespace.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -90,6 +98,30 @@ class WorkersKvArgs:
 
     @_builtins.property
     @pulumi.getter
+    def expiration(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        """
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "expiration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationTtl")
+    def expiration_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Expires the key after a number of seconds. Must be at least 60.
+        """
+        return pulumi.get(self, "expiration_ttl")
+
+    @expiration_ttl.setter
+    def expiration_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "expiration_ttl", value)
+
+    @_builtins.property
+    @pulumi.getter
     def metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Associates arbitrary JSON data with a key/value pair.
@@ -105,6 +137,8 @@ class WorkersKvArgs:
 class _WorkersKvState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.float]] = None,
+                 expiration_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -112,14 +146,20 @@ class _WorkersKvState:
         """
         Input properties used for looking up and filtering WorkersKv resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
+        :param pulumi.Input[_builtins.float] expiration: Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        :param pulumi.Input[_builtins.float] expiration_ttl: Expires the key after a number of seconds. Must be at least 60.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
-        :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input[_builtins.str] namespace_id: ID of the Workers KV namespace.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if expiration_ttl is not None:
+            pulumi.set(__self__, "expiration_ttl", expiration_ttl)
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if metadata is not None:
@@ -133,13 +173,37 @@ class _WorkersKvState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Identifier.
+        ID of the Cloudflare account that owns the Workers KV namespaces.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def expiration(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        """
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "expiration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationTtl")
+    def expiration_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Expires the key after a number of seconds. Must be at least 60.
+        """
+        return pulumi.get(self, "expiration_ttl")
+
+    @expiration_ttl.setter
+    def expiration_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "expiration_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="keyName")
@@ -169,7 +233,7 @@ class _WorkersKvState:
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Namespace identifier tag.
+        ID of the Workers KV namespace.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -197,6 +261,8 @@ class WorkersKv(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.float]] = None,
+                 expiration_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -212,6 +278,7 @@ class WorkersKv(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
         example_workers_kv = cloudflare.WorkersKv("example_workers_kv",
@@ -219,7 +286,7 @@ class WorkersKv(pulumi.CustomResource):
             namespace_id="0f2ac74b498b48028cb68387c421e279",
             key_name="My-Key",
             value="Some Value",
-            metadata={})
+            metadata=json.dumps({}))
         ```
 
         ## Import
@@ -231,10 +298,12 @@ class WorkersKv(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
+        :param pulumi.Input[_builtins.float] expiration: Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        :param pulumi.Input[_builtins.float] expiration_ttl: Expires the key after a number of seconds. Must be at least 60.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
-        :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input[_builtins.str] namespace_id: ID of the Workers KV namespace.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
         ...
@@ -253,6 +322,7 @@ class WorkersKv(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
         example_workers_kv = cloudflare.WorkersKv("example_workers_kv",
@@ -260,7 +330,7 @@ class WorkersKv(pulumi.CustomResource):
             namespace_id="0f2ac74b498b48028cb68387c421e279",
             key_name="My-Key",
             value="Some Value",
-            metadata={})
+            metadata=json.dumps({}))
         ```
 
         ## Import
@@ -286,6 +356,8 @@ class WorkersKv(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.float]] = None,
+                 expiration_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -302,6 +374,8 @@ class WorkersKv(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["expiration"] = expiration
+            __props__.__dict__["expiration_ttl"] = expiration_ttl
             if key_name is None and not opts.urn:
                 raise TypeError("Missing required property 'key_name'")
             __props__.__dict__["key_name"] = key_name
@@ -323,6 +397,8 @@ class WorkersKv(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.float]] = None,
+            expiration_ttl: pulumi.Input[Optional[_builtins.float]] = None,
             key_name: pulumi.Input[Optional[_builtins.str]] = None,
             metadata: pulumi.Input[Optional[_builtins.str]] = None,
             namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -334,10 +410,12 @@ class WorkersKv(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
+        :param pulumi.Input[_builtins.float] expiration: Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        :param pulumi.Input[_builtins.float] expiration_ttl: Expires the key after a number of seconds. Must be at least 60.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
-        :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input[_builtins.str] namespace_id: ID of the Workers KV namespace.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -345,6 +423,8 @@ class WorkersKv(pulumi.CustomResource):
         __props__ = _WorkersKvState.__new__(_WorkersKvState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["expiration"] = expiration
+        __props__.__dict__["expiration_ttl"] = expiration_ttl
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["namespace_id"] = namespace_id
@@ -355,9 +435,25 @@ class WorkersKv(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier.
+        ID of the Cloudflare account that owns the Workers KV namespaces.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def expiration(self) -> pulumi.Output[Optional[_builtins.float]]:
+        """
+        Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        """
+        return pulumi.get(self, "expiration")
+
+    @_builtins.property
+    @pulumi.getter(name="expirationTtl")
+    def expiration_ttl(self) -> pulumi.Output[Optional[_builtins.float]]:
+        """
+        Expires the key after a number of seconds. Must be at least 60.
+        """
+        return pulumi.get(self, "expiration_ttl")
 
     @_builtins.property
     @pulumi.getter(name="keyName")
@@ -379,7 +475,7 @@ class WorkersKv(pulumi.CustomResource):
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Namespace identifier tag.
+        ID of the Workers KV namespace.
         """
         return pulumi.get(self, "namespace_id")
 

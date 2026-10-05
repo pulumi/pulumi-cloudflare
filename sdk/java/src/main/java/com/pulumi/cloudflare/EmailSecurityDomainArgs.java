@@ -34,28 +34,53 @@ public final class EmailSecurityDomainArgs extends com.pulumi.resources.Resource
         return this.accountId;
     }
 
+    /**
+     * Delivery modes to onboard the domain through.
+     * 
+     */
     @Import(name="allowedDeliveryModes", required=true)
     private Output<List<String>> allowedDeliveryModes;
 
+    /**
+     * @return Delivery modes to onboard the domain through.
+     * 
+     */
     public Output<List<String>> allowedDeliveryModes() {
         return this.allowedDeliveryModes;
     }
 
+    /**
+     * The email domain to protect.
+     * 
+     */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
+    /**
+     * @return The email domain to protect.
+     * 
+     */
     public Output<String> domain() {
         return this.domain;
     }
 
+    /**
+     * Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+     * 
+     */
     @Import(name="dropDispositions", required=true)
     private Output<List<String>> dropDispositions;
 
+    /**
+     * @return Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+     * 
+     */
     public Output<List<String>> dropDispositions() {
         return this.dropDispositions;
     }
 
     /**
+     * The mailbox folder to scan, for API-scanning domains.
      * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
      * 
      */
@@ -63,58 +88,115 @@ public final class EmailSecurityDomainArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> folder;
 
     /**
-     * @return Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+     * @return The mailbox folder to scan, for API-scanning domains.
+     * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
      * 
      */
     public Optional<Output<String>> folder() {
         return Optional.ofNullable(this.folder);
     }
 
+    /**
+     * Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     * 
+     */
     @Import(name="integrationId")
     private @Nullable Output<String> integrationId;
 
+    /**
+     * @return Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+     * 
+     */
     public Optional<Output<String>> integrationId() {
         return Optional.ofNullable(this.integrationId);
     }
 
+    /**
+     * Source IP ranges mail is accepted from. Any other source is rejected.
+     * 
+     */
     @Import(name="ipRestrictions", required=true)
     private Output<List<String>> ipRestrictions;
 
+    /**
+     * @return Source IP ranges mail is accepted from. Any other source is rejected.
+     * 
+     */
     public Output<List<String>> ipRestrictions() {
         return this.ipRestrictions;
     }
 
+    /**
+     * Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     * 
+     */
     @Import(name="lookbackHops")
     private @Nullable Output<Integer> lookbackHops;
 
+    /**
+     * @return Number of hops to trace back through received headers when reconstructing the original message (1-20).
+     * 
+     */
     public Optional<Output<Integer>> lookbackHops() {
         return Optional.ofNullable(this.lookbackHops);
     }
 
+    /**
+     * Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+     * 
+     */
     @Import(name="regions", required=true)
     private Output<List<String>> regions;
 
+    /**
+     * @return Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+     * 
+     */
     public Output<List<String>> regions() {
         return this.regions;
     }
 
+    /**
+     * Require TLS on inbound connections.
+     * 
+     */
     @Import(name="requireTlsInbound")
     private @Nullable Output<Boolean> requireTlsInbound;
 
+    /**
+     * @return Require TLS on inbound connections.
+     * 
+     */
     public Optional<Output<Boolean>> requireTlsInbound() {
         return Optional.ofNullable(this.requireTlsInbound);
     }
 
+    /**
+     * Require TLS on outbound connections.
+     * 
+     */
     @Import(name="requireTlsOutbound")
     private @Nullable Output<Boolean> requireTlsOutbound;
 
+    /**
+     * @return Require TLS on outbound connections.
+     * 
+     */
     public Optional<Output<Boolean>> requireTlsOutbound() {
         return Optional.ofNullable(this.requireTlsOutbound);
     }
 
+    /**
+     * The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     * 
+     */
     @Import(name="transport")
     private @Nullable Output<String> transport;
 
+    /**
+     * @return The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+     * 
+     */
     public Optional<Output<String>> transport() {
         return Optional.ofNullable(this.transport);
     }
@@ -175,43 +257,92 @@ public final class EmailSecurityDomainArgs extends com.pulumi.resources.Resource
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param allowedDeliveryModes Delivery modes to onboard the domain through.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDeliveryModes(Output<List<String>> allowedDeliveryModes) {
             $.allowedDeliveryModes = allowedDeliveryModes;
             return this;
         }
 
+        /**
+         * @param allowedDeliveryModes Delivery modes to onboard the domain through.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDeliveryModes(List<String> allowedDeliveryModes) {
             return allowedDeliveryModes(Output.of(allowedDeliveryModes));
         }
 
+        /**
+         * @param allowedDeliveryModes Delivery modes to onboard the domain through.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDeliveryModes(String... allowedDeliveryModes) {
             return allowedDeliveryModes(List.of(allowedDeliveryModes));
         }
 
+        /**
+         * @param domain The email domain to protect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain The email domain to protect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
 
+        /**
+         * @param dropDispositions Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropDispositions(Output<List<String>> dropDispositions) {
             $.dropDispositions = dropDispositions;
             return this;
         }
 
+        /**
+         * @param dropDispositions Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropDispositions(List<String> dropDispositions) {
             return dropDispositions(Output.of(dropDispositions));
         }
 
+        /**
+         * @param dropDispositions Dispositions to drop instead of delivering, e.g. `[&#34;MALICIOUS&#34;, &#34;SPAM&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropDispositions(String... dropDispositions) {
             return dropDispositions(List.of(dropDispositions));
         }
 
         /**
-         * @param folder Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+         * @param folder The mailbox folder to scan, for API-scanning domains.
+         * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
          * 
          * @return builder
          * 
@@ -222,7 +353,8 @@ public final class EmailSecurityDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param folder Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
+         * @param folder The mailbox folder to scan, for API-scanning domains.
+         * Available values: &#34;AllItems&#34;, &#34;Inbox&#34;.
          * 
          * @return builder
          * 
@@ -231,73 +363,169 @@ public final class EmailSecurityDomainArgs extends com.pulumi.resources.Resource
             return folder(Output.of(folder));
         }
 
+        /**
+         * @param integrationId Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationId(@Nullable Output<String> integrationId) {
             $.integrationId = integrationId;
             return this;
         }
 
+        /**
+         * @param integrationId Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationId(String integrationId) {
             return integrationId(Output.of(integrationId));
         }
 
+        /**
+         * @param ipRestrictions Source IP ranges mail is accepted from. Any other source is rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipRestrictions(Output<List<String>> ipRestrictions) {
             $.ipRestrictions = ipRestrictions;
             return this;
         }
 
+        /**
+         * @param ipRestrictions Source IP ranges mail is accepted from. Any other source is rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipRestrictions(List<String> ipRestrictions) {
             return ipRestrictions(Output.of(ipRestrictions));
         }
 
+        /**
+         * @param ipRestrictions Source IP ranges mail is accepted from. Any other source is rejected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipRestrictions(String... ipRestrictions) {
             return ipRestrictions(List.of(ipRestrictions));
         }
 
+        /**
+         * @param lookbackHops Number of hops to trace back through received headers when reconstructing the original message (1-20).
+         * 
+         * @return builder
+         * 
+         */
         public Builder lookbackHops(@Nullable Output<Integer> lookbackHops) {
             $.lookbackHops = lookbackHops;
             return this;
         }
 
+        /**
+         * @param lookbackHops Number of hops to trace back through received headers when reconstructing the original message (1-20).
+         * 
+         * @return builder
+         * 
+         */
         public Builder lookbackHops(Integer lookbackHops) {
             return lookbackHops(Output.of(lookbackHops));
         }
 
+        /**
+         * @param regions Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regions(Output<List<String>> regions) {
             $.regions = regions;
             return this;
         }
 
+        /**
+         * @param regions Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regions(List<String> regions) {
             return regions(Output.of(regions));
         }
 
+        /**
+         * @param regions Regions that process messages for this domain, e.g. `[&#34;GLOBAL&#34;]` or `[&#34;US&#34;]`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regions(String... regions) {
             return regions(List.of(regions));
         }
 
+        /**
+         * @param requireTlsInbound Require TLS on inbound connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireTlsInbound(@Nullable Output<Boolean> requireTlsInbound) {
             $.requireTlsInbound = requireTlsInbound;
             return this;
         }
 
+        /**
+         * @param requireTlsInbound Require TLS on inbound connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireTlsInbound(Boolean requireTlsInbound) {
             return requireTlsInbound(Output.of(requireTlsInbound));
         }
 
+        /**
+         * @param requireTlsOutbound Require TLS on outbound connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireTlsOutbound(@Nullable Output<Boolean> requireTlsOutbound) {
             $.requireTlsOutbound = requireTlsOutbound;
             return this;
         }
 
+        /**
+         * @param requireTlsOutbound Require TLS on outbound connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireTlsOutbound(Boolean requireTlsOutbound) {
             return requireTlsOutbound(Output.of(requireTlsOutbound));
         }
 
+        /**
+         * @param transport The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder transport(@Nullable Output<String> transport) {
             $.transport = transport;
             return this;
         }
 
+        /**
+         * @param transport The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder transport(String transport) {
             return transport(Output.of(transport));
         }

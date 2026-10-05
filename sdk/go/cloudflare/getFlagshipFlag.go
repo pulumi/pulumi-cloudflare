@@ -32,7 +32,7 @@ import (
 //			_, err := cloudflare.GetFlagshipFlag(ctx, &cloudflare.LookupFlagshipFlagArgs{
 //				AccountId: "account_id",
 //				AppId:     "app_id",
-//				FlagKey:   "flag_key",
+//				FlagKey:   pulumi.StringRef("flag_key"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,27 +54,32 @@ func LookupFlagshipFlag(ctx *pulumi.Context, args *LookupFlagshipFlagArgs, opts 
 
 // A collection of arguments for invoking getFlagshipFlag.
 type LookupFlagshipFlagArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
-	// App identifier.
-	AppId string `pulumi:"appId"`
-	// Flag key (slug).
-	FlagKey string `pulumi:"flagKey"`
+	// Flagship app ID returned when the app was created.
+	AppId  string                 `pulumi:"appId"`
+	Filter *GetFlagshipFlagFilter `pulumi:"filter"`
+	// Case-sensitive key identifying the flag within the app.
+	FlagKey *string `pulumi:"flagKey"`
 }
 
 // A collection of values returned by getFlagshipFlag.
 type LookupFlagshipFlagResult struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId string `pulumi:"appId"`
 	// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
 	DefaultVariation string `pulumi:"defaultVariation"`
-	Description      string `pulumi:"description"`
+	// Optional operator-facing description. It does not affect flag evaluation.
+	Description string `pulumi:"description"`
 	// When false, the flag bypasses all rules and always serves `defaultVariation`.
-	Enabled bool `pulumi:"enabled"`
-	// Flag key (slug).
-	FlagKey string `pulumi:"flagKey"`
+	Enabled bool                   `pulumi:"enabled"`
+	Filter  *GetFlagshipFlagFilter `pulumi:"filter"`
+	// Case-sensitive key identifying the flag within the app.
+	FlagKey *string `pulumi:"flagKey"`
+	// Case-sensitive key identifying the flag within the app.
+	Id string `pulumi:"id"`
 	// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
 	Key string `pulumi:"key"`
 	// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
@@ -95,12 +100,13 @@ func LookupFlagshipFlagOutput(ctx *pulumi.Context, args LookupFlagshipFlagOutput
 
 // A collection of arguments for invoking getFlagshipFlag.
 type LookupFlagshipFlagOutputArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// App identifier.
-	AppId pulumi.StringInput `pulumi:"appId"`
-	// Flag key (slug).
-	FlagKey pulumi.StringInput `pulumi:"flagKey"`
+	// Flagship app ID returned when the app was created.
+	AppId  pulumi.StringInput            `pulumi:"appId"`
+	Filter GetFlagshipFlagFilterPtrInput `pulumi:"filter"`
+	// Case-sensitive key identifying the flag within the app.
+	FlagKey pulumi.StringPtrInput `pulumi:"flagKey"`
 }
 
 func (LookupFlagshipFlagOutputArgs) ElementType() reflect.Type {
@@ -122,12 +128,12 @@ func (o LookupFlagshipFlagResultOutput) ToLookupFlagshipFlagResultOutputWithCont
 	return o
 }
 
-// Cloudflare account ID.
+// Cloudflare account ID that owns the Flagship app.
 func (o LookupFlagshipFlagResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// App identifier.
+// Flagship app ID returned when the app was created.
 func (o LookupFlagshipFlagResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.AppId }).(pulumi.StringOutput)
 }
@@ -137,6 +143,7 @@ func (o LookupFlagshipFlagResultOutput) DefaultVariation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.DefaultVariation }).(pulumi.StringOutput)
 }
 
+// Optional operator-facing description. It does not affect flag evaluation.
 func (o LookupFlagshipFlagResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -146,9 +153,18 @@ func (o LookupFlagshipFlagResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Flag key (slug).
-func (o LookupFlagshipFlagResultOutput) FlagKey() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.FlagKey }).(pulumi.StringOutput)
+func (o LookupFlagshipFlagResultOutput) Filter() GetFlagshipFlagFilterPtrOutput {
+	return o.ApplyT(func(v LookupFlagshipFlagResult) *GetFlagshipFlagFilter { return v.Filter }).(GetFlagshipFlagFilterPtrOutput)
+}
+
+// Case-sensitive key identifying the flag within the app.
+func (o LookupFlagshipFlagResultOutput) FlagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFlagshipFlagResult) *string { return v.FlagKey }).(pulumi.StringPtrOutput)
+}
+
+// Case-sensitive key identifying the flag within the app.
+func (o LookupFlagshipFlagResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlagshipFlagResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Unique identifier for the flag within an app. Used in all evaluation and SDK calls.

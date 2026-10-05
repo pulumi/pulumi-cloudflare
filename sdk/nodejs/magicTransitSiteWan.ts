@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     physport: 1,
+ *     healthCheckRate: "low",
+ *     loadBalanceInnerFlows: true,
  *     name: "name",
  *     priority: 0,
  *     staticAddressing: {
@@ -77,7 +79,8 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
      * Available values: "low", "mid", "high".
      */
-    declare public /*out*/ readonly healthCheckRate: pulumi.Output<string>;
+    declare public readonly healthCheckRate: pulumi.Output<string>;
+    declare public readonly loadBalanceInnerFlows: pulumi.Output<boolean>;
     declare public readonly name: pulumi.Output<string | undefined>;
     declare public readonly physport: pulumi.Output<number>;
     declare public readonly priority: pulumi.Output<number | undefined>;
@@ -109,6 +112,7 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
             const state = argsOrState as MagicTransitSiteWanState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["healthCheckRate"] = state?.healthCheckRate;
+            resourceInputs["loadBalanceInnerFlows"] = state?.loadBalanceInnerFlows;
             resourceInputs["name"] = state?.name;
             resourceInputs["physport"] = state?.physport;
             resourceInputs["priority"] = state?.priority;
@@ -127,13 +131,14 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
                 throw new Error("Missing required property 'siteId'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["healthCheckRate"] = args?.healthCheckRate;
+            resourceInputs["loadBalanceInnerFlows"] = args?.loadBalanceInnerFlows;
             resourceInputs["name"] = args?.name;
             resourceInputs["physport"] = args?.physport;
             resourceInputs["priority"] = args?.priority;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["staticAddressing"] = args?.staticAddressing;
             resourceInputs["vlanTag"] = args?.vlanTag;
-            resourceInputs["healthCheckRate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicTransitSiteWan.__pulumiType, name, resourceInputs, opts);
@@ -153,6 +158,7 @@ export interface MagicTransitSiteWanState {
      * Available values: "low", "mid", "high".
      */
     healthCheckRate?: pulumi.Input<string | undefined>;
+    loadBalanceInnerFlows?: pulumi.Input<boolean | undefined>;
     name?: pulumi.Input<string | undefined>;
     physport?: pulumi.Input<number | undefined>;
     priority?: pulumi.Input<number | undefined>;
@@ -178,6 +184,12 @@ export interface MagicTransitSiteWanArgs {
      * Identifier
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: "low", "mid", "high".
+     */
+    healthCheckRate?: pulumi.Input<string | undefined>;
+    loadBalanceInnerFlows?: pulumi.Input<boolean | undefined>;
     name?: pulumi.Input<string | undefined>;
     physport: pulumi.Input<number>;
     priority?: pulumi.Input<number | undefined>;

@@ -83,7 +83,7 @@ class GetCustomPagesResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Error Page Types
+        Custom page type.
         Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         """
         return pulumi.get(self, "id")
@@ -92,7 +92,7 @@ class GetCustomPagesResult:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Error Page Types
+        Custom page type.
         Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         """
         return pulumi.get(self, "identifier")
@@ -183,7 +183,7 @@ def get_custom_pages(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param _builtins.str identifier: Error Page Types
+    :param _builtins.str identifier: Custom page type.
            Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
@@ -232,7 +232,7 @@ def get_custom_pages_output(account_id: pulumi.Input[Optional[Optional[_builtins
 
 
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param _builtins.str identifier: Error Page Types
+    :param _builtins.str identifier: Custom page type.
            Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
     :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """

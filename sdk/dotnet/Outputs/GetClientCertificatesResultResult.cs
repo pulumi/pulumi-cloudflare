@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string FingerprintSha256;
         /// <summary>
-        /// Identifier.
+        /// Client Certificate Tag
         /// </summary>
         public readonly string Id;
         /// <summary>

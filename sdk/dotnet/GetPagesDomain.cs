@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ProjectName = "this-is-my-project-01",
-        ///         DomainName = "this-is-my-domain-01.com",
+        ///         DomainName = "example.com",
         ///     });
         /// 
         /// });
@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ProjectName = "this-is-my-project-01",
-        ///         DomainName = "this-is-my-domain-01.com",
+        ///         DomainName = "example.com",
         ///     });
         /// 
         /// });
@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ProjectName = "this-is-my-project-01",
-        ///         DomainName = "this-is-my-domain-01.com",
+        ///         DomainName = "example.com",
         ///     });
         /// 
         /// });
@@ -109,13 +109,13 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         [Input("domainName", required: true)]
         public string DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName", required: true)]
         public string ProjectName { get; set; } = null!;
@@ -135,13 +135,13 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -167,19 +167,19 @@ namespace Pulumi.Cloudflare
         public readonly string CreatedOn;
         public readonly string DomainId;
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         public readonly string DomainName;
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         public readonly string ProjectName;
         /// <summary>

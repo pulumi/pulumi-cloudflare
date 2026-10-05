@@ -119,6 +119,13 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
      */
     private List<GetZeroTrustAccessInfrastructureTargetsResult> results;
     /**
+     * @return Filter by tag key:value pairs. Multiple `tag` params are AND&#39;d.
+     * Format: `tag=key:value` (e.g., `tag=environment:production`).
+     * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+     * 
+     */
+    private @Nullable List<String> tags;
+    /**
      * @return Filters for targets that have any of the following UUIDs. Specify
      * `targetIds` multiple times in query parameter to build list of
      * candidates.
@@ -274,6 +281,15 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
         return this.results;
     }
     /**
+     * @return Filter by tag key:value pairs. Multiple `tag` params are AND&#39;d.
+     * Format: `tag=key:value` (e.g., `tag=environment:production`).
+     * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+     * 
+     */
+    public List<String> tags() {
+        return this.tags == null ? List.of() : this.tags;
+    }
+    /**
      * @return Filters for targets that have any of the following UUIDs. Specify
      * `targetIds` multiple times in query parameter to build list of
      * candidates.
@@ -318,6 +334,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
         private @Nullable String modifiedBefore;
         private @Nullable String order;
         private List<GetZeroTrustAccessInfrastructureTargetsResult> results;
+        private @Nullable List<String> tags;
         private @Nullable List<String> targetIds;
         private @Nullable String virtualNetworkId;
         public Builder() {}
@@ -342,6 +359,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
     	      this.modifiedBefore = defaults.modifiedBefore;
     	      this.order = defaults.order;
     	      this.results = defaults.results;
+    	      this.tags = defaults.tags;
     	      this.targetIds = defaults.targetIds;
     	      this.virtualNetworkId = defaults.virtualNetworkId;
         }
@@ -469,6 +487,15 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
+        public Builder tags(@Nullable List<String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+        @CustomType.Setter
         public Builder targetIds(@Nullable List<String> targetIds) {
 
             this.targetIds = targetIds;
@@ -504,6 +531,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
             _resultValue.modifiedBefore = modifiedBefore;
             _resultValue.order = order;
             _resultValue.results = results;
+            _resultValue.tags = tags;
             _resultValue.targetIds = targetIds;
             _resultValue.virtualNetworkId = virtualNetworkId;
             return _resultValue;

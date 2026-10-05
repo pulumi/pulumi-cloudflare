@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -57,7 +56,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/callsTurnApp:CallsTurnApp example &#39;&lt;account_id&gt;/&lt;key_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/callsTurnApp:CallsTurnApp")
@@ -109,14 +110,14 @@ public class CallsTurnApp extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="keyId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> keyId;
+    private Output<String> keyId;
 
     /**
      * @return A Cloudflare-generated unique identifier for a item.
      * 
      */
-    public Output<Optional<String>> keyId() {
-        return Codegen.optional(this.keyId);
+    public Output<String> keyId() {
+        return this.keyId;
     }
     /**
      * The date and time the item was last modified.

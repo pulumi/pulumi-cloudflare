@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMtlsCertificateAssociations(ctx, &cloudflare.GetMtlsCertificateAssociationsArgs{
 //				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
-//				MtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				MtlsCertificateId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,7 +56,7 @@ func GetMtlsCertificateAssociations(ctx *pulumi.Context, args *GetMtlsCertificat
 type GetMtlsCertificateAssociationsArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Identifier.
+	// Certificate identifier tag.
 	MtlsCertificateId string `pulumi:"mtlsCertificateId"`
 }
 
@@ -64,7 +64,7 @@ type GetMtlsCertificateAssociationsArgs struct {
 type GetMtlsCertificateAssociationsResult struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Identifier.
+	// Certificate identifier tag.
 	MtlsCertificateId string `pulumi:"mtlsCertificateId"`
 	// The service using the certificate.
 	Service string `pulumi:"service"`
@@ -81,7 +81,7 @@ func GetMtlsCertificateAssociationsOutput(ctx *pulumi.Context, args GetMtlsCerti
 type GetMtlsCertificateAssociationsOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Identifier.
+	// Certificate identifier tag.
 	MtlsCertificateId pulumi.StringInput `pulumi:"mtlsCertificateId"`
 }
 
@@ -109,7 +109,7 @@ func (o GetMtlsCertificateAssociationsResultOutput) AccountId() pulumi.StringOut
 	return o.ApplyT(func(v GetMtlsCertificateAssociationsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Certificate identifier tag.
 func (o GetMtlsCertificateAssociationsResultOutput) MtlsCertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMtlsCertificateAssociationsResult) string { return v.MtlsCertificateId }).(pulumi.StringOutput)
 }

@@ -12,6 +12,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -116,6 +117,20 @@ public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
+    }
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    @Export(name="omitSource", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> omitSource;
+
+    /**
+     * @return Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    public Output<Boolean> omitSource() {
+        return this.omitSource;
     }
     @Export(name="schema", refs={ApiShieldSchemaSchema.class}, tree="[0]")
     private Output<ApiShieldSchemaSchema> schema;

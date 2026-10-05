@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the type of sink.
-        /// Available values: "r2", "r2*data*catalog".
+        /// Available values: "r2", "r2*data*catalog", "BasinCatalog".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the type of sink.
-        /// Available values: "r2", "r2*data*catalog".
+        /// Available values: "r2", "r2*data*catalog", "BasinCatalog".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -267,7 +267,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the type of sink.
-        /// Available values: "r2", "r2*data*catalog".
+        /// Available values: "r2", "r2*data*catalog", "BasinCatalog".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

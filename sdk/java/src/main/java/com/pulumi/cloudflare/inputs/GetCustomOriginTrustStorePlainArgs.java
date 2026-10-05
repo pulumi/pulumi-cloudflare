@@ -16,14 +16,14 @@ public final class GetCustomOriginTrustStorePlainArgs extends com.pulumi.resourc
     public static final GetCustomOriginTrustStorePlainArgs Empty = new GetCustomOriginTrustStorePlainArgs();
 
     /**
-     * Identifier.
+     * Certificate identifier tag.
      * 
      */
     @Import(name="customOriginTrustStoreId")
     private @Nullable String customOriginTrustStoreId;
 
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     public Optional<String> customOriginTrustStoreId() {
@@ -79,7 +79,7 @@ public final class GetCustomOriginTrustStorePlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param customOriginTrustStoreId Identifier.
+         * @param customOriginTrustStoreId Certificate identifier tag.
          * 
          * @return builder
          * 

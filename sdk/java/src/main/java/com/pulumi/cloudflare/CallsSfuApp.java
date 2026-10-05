@@ -119,14 +119,14 @@ public class CallsSfuApp extends com.pulumi.resources.CustomResource {
         return this.modified;
     }
     /**
-     * A short description of Calls app, not shown to end users.
+     * A short description of a Realtime SFU app, not shown to end users.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A short description of Calls app, not shown to end users.
+     * @return A short description of a Realtime SFU app, not shown to end users.
      * 
      */
     public Output<String> name() {

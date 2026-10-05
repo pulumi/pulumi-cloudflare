@@ -25,10 +25,12 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDnsLocation(args: GetZeroTrustDnsLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDnsLocationResult> {
+export function getZeroTrustDnsLocation(args?: GetZeroTrustDnsLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDnsLocationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "locationId": args.locationId,
     }, opts);
 }
@@ -38,7 +40,8 @@ export function getZeroTrustDnsLocation(args: GetZeroTrustDnsLocationArgs, opts?
  */
 export interface GetZeroTrustDnsLocationArgs {
     accountId?: string;
-    locationId: string;
+    filter?: inputs.GetZeroTrustDnsLocationFilter;
+    locationId?: string;
 }
 
 /**
@@ -46,59 +49,21 @@ export interface GetZeroTrustDnsLocationArgs {
  */
 export interface GetZeroTrustDnsLocationResult {
     readonly accountId?: string;
-    /**
-     * Indicate whether this location is the default location.
-     */
     readonly clientDefault: boolean;
     readonly createdAt: string;
-    /**
-     * Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-     */
     readonly dnsDestinationIpsId: string;
-    /**
-     * Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
-     */
     readonly dnsDestinationIpv6BlockId: string;
-    /**
-     * Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
-     */
     readonly dohSubdomain: string;
-    /**
-     * Indicate whether the location must resolve EDNS queries.
-     */
     readonly ecsSupport: boolean;
-    /**
-     * Configure the destination endpoints for this location.
-     */
     readonly endpoints: outputs.GetZeroTrustDnsLocationEndpoints;
-    /**
-     * The ID of this resource.
-     */
+    readonly filter?: outputs.GetZeroTrustDnsLocationFilter;
     readonly id: string;
-    /**
-     * Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-     */
     readonly ip: string;
-    /**
-     * Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-     */
     readonly ipv4Destination: string;
-    /**
-     * Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-     */
     readonly ipv4DestinationBackup: string;
-    readonly locationId: string;
-    /**
-     * Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
-     */
+    readonly locationId?: string;
     readonly maxTtl: outputs.GetZeroTrustDnsLocationMaxTtl;
-    /**
-     * Specify the location name.
-     */
     readonly name: string;
-    /**
-     * Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
-     */
     readonly networks: outputs.GetZeroTrustDnsLocationNetwork[];
     readonly updatedAt: string;
 }
@@ -121,10 +86,12 @@ export interface GetZeroTrustDnsLocationResult {
  * });
  * ```
  */
-export function getZeroTrustDnsLocationOutput(args: GetZeroTrustDnsLocationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDnsLocationResult> {
+export function getZeroTrustDnsLocationOutput(args?: GetZeroTrustDnsLocationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDnsLocationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "locationId": args.locationId,
     }, opts);
 }
@@ -134,5 +101,6 @@ export function getZeroTrustDnsLocationOutput(args: GetZeroTrustDnsLocationOutpu
  */
 export interface GetZeroTrustDnsLocationOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
-    locationId: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetZeroTrustDnsLocationFilterArgs | undefined>;
+    locationId?: pulumi.Input<string | undefined>;
 }

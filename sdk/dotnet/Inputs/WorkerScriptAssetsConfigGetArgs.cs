@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerScriptAssetsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+        /// </summary>
+        [Input("basePath")]
+        public Input<string>? BasePath { get; set; }
+
+        /// <summary>
         /// The contents of a _headers file (used to attach custom headers on asset responses).
         /// </summary>
         [Input("headers")]

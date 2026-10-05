@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessInfrastructureTargetsResu
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -36,6 +37,11 @@ public final class GetZeroTrustAccessInfrastructureTargetsResult {
      * 
      */
     private String modifiedAt;
+    /**
+     * @return Tags assigned to the target. Empty when no tags are assigned.
+     * 
+     */
+    private Map<String,String> tags;
 
     private GetZeroTrustAccessInfrastructureTargetsResult() {}
     /**
@@ -73,6 +79,13 @@ public final class GetZeroTrustAccessInfrastructureTargetsResult {
     public String modifiedAt() {
         return this.modifiedAt;
     }
+    /**
+     * @return Tags assigned to the target. Empty when no tags are assigned.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -88,6 +101,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsResult {
         private String id;
         private GetZeroTrustAccessInfrastructureTargetsResultIp ip;
         private String modifiedAt;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetZeroTrustAccessInfrastructureTargetsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,6 +110,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsResult {
     	      this.id = defaults.id;
     	      this.ip = defaults.ip;
     	      this.modifiedAt = defaults.modifiedAt;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -138,6 +153,14 @@ public final class GetZeroTrustAccessInfrastructureTargetsResult {
             this.modifiedAt = modifiedAt;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessInfrastructureTargetsResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
         public GetZeroTrustAccessInfrastructureTargetsResult build() {
             final var _resultValue = new GetZeroTrustAccessInfrastructureTargetsResult();
             _resultValue.createdAt = createdAt;
@@ -145,6 +168,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsResult {
             _resultValue.id = id;
             _resultValue.ip = ip;
             _resultValue.modifiedAt = modifiedAt;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

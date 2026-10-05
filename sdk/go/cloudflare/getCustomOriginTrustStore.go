@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCustomOriginTrustStore(ctx, &cloudflare.LookupCustomOriginTrustStoreArgs{
 //				ZoneId:                   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CustomOriginTrustStoreId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CustomOriginTrustStoreId: pulumi.StringRef("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,7 +54,7 @@ func LookupCustomOriginTrustStore(ctx *pulumi.Context, args *LookupCustomOriginT
 
 // A collection of arguments for invoking getCustomOriginTrustStore.
 type LookupCustomOriginTrustStoreArgs struct {
-	// Identifier.
+	// Certificate identifier tag.
 	CustomOriginTrustStoreId *string                          `pulumi:"customOriginTrustStoreId"`
 	Filter                   *GetCustomOriginTrustStoreFilter `pulumi:"filter"`
 	// Identifier.
@@ -65,12 +65,12 @@ type LookupCustomOriginTrustStoreArgs struct {
 type LookupCustomOriginTrustStoreResult struct {
 	// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 	Certificate string `pulumi:"certificate"`
-	// Identifier.
+	// Certificate identifier tag.
 	CustomOriginTrustStoreId *string `pulumi:"customOriginTrustStoreId"`
 	// When the certificate expires.
 	ExpiresOn string                           `pulumi:"expiresOn"`
 	Filter    *GetCustomOriginTrustStoreFilter `pulumi:"filter"`
-	// Identifier.
+	// Certificate identifier tag.
 	Id string `pulumi:"id"`
 	// The certificate authority that issued the certificate.
 	Issuer string `pulumi:"issuer"`
@@ -94,7 +94,7 @@ func LookupCustomOriginTrustStoreOutput(ctx *pulumi.Context, args LookupCustomOr
 
 // A collection of arguments for invoking getCustomOriginTrustStore.
 type LookupCustomOriginTrustStoreOutputArgs struct {
-	// Identifier.
+	// Certificate identifier tag.
 	CustomOriginTrustStoreId pulumi.StringPtrInput                   `pulumi:"customOriginTrustStoreId"`
 	Filter                   GetCustomOriginTrustStoreFilterPtrInput `pulumi:"filter"`
 	// Identifier.
@@ -125,7 +125,7 @@ func (o LookupCustomOriginTrustStoreResultOutput) Certificate() pulumi.StringOut
 	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Certificate identifier tag.
 func (o LookupCustomOriginTrustStoreResultOutput) CustomOriginTrustStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) *string { return v.CustomOriginTrustStoreId }).(pulumi.StringPtrOutput)
 }
@@ -139,7 +139,7 @@ func (o LookupCustomOriginTrustStoreResultOutput) Filter() GetCustomOriginTrustS
 	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) *GetCustomOriginTrustStoreFilter { return v.Filter }).(GetCustomOriginTrustStoreFilterPtrOutput)
 }
 
-// Identifier.
+// Certificate identifier tag.
 func (o LookupCustomOriginTrustStoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomOriginTrustStoreResult) string { return v.Id }).(pulumi.StringOutput)
 }

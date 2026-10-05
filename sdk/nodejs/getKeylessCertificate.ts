@@ -54,7 +54,7 @@ import * as utilities from "./utilities";
  *
  * const exampleKeylessCertificate = cloudflare.getKeylessCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     keylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     keylessCertificateId: "4d2844d2ce78891c34d0b6c0535a291e",
  * });
  * ```
  */
@@ -71,7 +71,7 @@ export function getKeylessCertificate(args: GetKeylessCertificateArgs, opts?: pu
  */
 export interface GetKeylessCertificateArgs {
     /**
-     * Identifier.
+     * Keyless certificate identifier tag.
      */
     keylessCertificateId: string;
     /**
@@ -97,11 +97,11 @@ export interface GetKeylessCertificateResult {
      */
     readonly host: string;
     /**
-     * Identifier.
+     * Keyless certificate identifier tag.
      */
     readonly id: string;
     /**
-     * Identifier.
+     * Keyless certificate identifier tag.
      */
     readonly keylessCertificateId: string;
     /**
@@ -182,7 +182,7 @@ export interface GetKeylessCertificateResult {
  *
  * const exampleKeylessCertificate = cloudflare.getKeylessCertificate({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     keylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     keylessCertificateId: "4d2844d2ce78891c34d0b6c0535a291e",
  * });
  * ```
  */
@@ -199,7 +199,7 @@ export function getKeylessCertificateOutput(args: GetKeylessCertificateOutputArg
  */
 export interface GetKeylessCertificateOutputArgs {
     /**
-     * Identifier.
+     * Keyless certificate identifier tag.
      */
     keylessCertificateId: pulumi.Input<string>;
     /**

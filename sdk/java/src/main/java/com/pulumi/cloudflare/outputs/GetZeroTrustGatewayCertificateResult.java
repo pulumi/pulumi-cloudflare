@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayCertificateResult {
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     private @Nullable String accountId;
     /**
      * @return Indicate the read-only deployment status of the certificate on Cloudflare&#39;s edge. Gateway TLS interception can use certificates in the &#39;available&#39; (previously called &#39;active&#39;) state.
@@ -67,6 +71,10 @@ public final class GetZeroTrustGatewayCertificateResult {
     private String uploadedOn;
 
     private GetZeroTrustGatewayCertificateResult() {}
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }

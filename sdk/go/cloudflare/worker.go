@@ -39,6 +39,9 @@ import (
 //				Observability: &cloudflare.WorkerObservabilityArgs{
 //					Enabled:          pulumi.Bool(true),
 //					HeadSamplingRate: pulumi.Float64(1),
+//					Issues: &cloudflare.WorkerObservabilityIssuesArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
 //					Logs: &cloudflare.WorkerObservabilityLogsArgs{
 //						Destinations: pulumi.StringArray{
 //							pulumi.String("string"),
@@ -53,9 +56,60 @@ import (
 //						Destinations: pulumi.StringArray{
 //							pulumi.String("string"),
 //						},
+//						Enabled:           pulumi.Bool(true),
+//						HeadSamplingRate:  pulumi.Float64(1),
+//						Persist:           pulumi.Bool(true),
+//						PropagationPolicy: pulumi.String("authenticated"),
+//					},
+//				},
+//				PreviewsBaseConfig: &cloudflare.WorkerPreviewsBaseConfigArgs{
+//					CacheOptions: &cloudflare.WorkerPreviewsBaseConfigCacheOptionsArgs{
+//						Enabled:           pulumi.Bool(true),
+//						CrossVersionCache: pulumi.Bool(true),
+//					},
+//					Env: cloudflare.WorkerPreviewsBaseConfigEnvMap{
+//						"MY_ENV_VAR": &cloudflare.WorkerPreviewsBaseConfigEnvArgs{
+//							Type: pulumi.String("plain_text"),
+//						},
+//					},
+//					Limits: &cloudflare.WorkerPreviewsBaseConfigLimitsArgs{
+//						CpuMs:       pulumi.Int(50),
+//						Subrequests: pulumi.Int(1000),
+//					},
+//					Logpush: pulumi.Bool(true),
+//					Observability: &cloudflare.WorkerPreviewsBaseConfigObservabilityArgs{
 //						Enabled:          pulumi.Bool(true),
 //						HeadSamplingRate: pulumi.Float64(1),
-//						Persist:          pulumi.Bool(true),
+//						Issues: &cloudflare.WorkerPreviewsBaseConfigObservabilityIssuesArgs{
+//							Enabled: pulumi.Bool(true),
+//						},
+//						Logs: &cloudflare.WorkerPreviewsBaseConfigObservabilityLogsArgs{
+//							Destinations: pulumi.StringArray{
+//								pulumi.String("string"),
+//							},
+//							Enabled:          pulumi.Bool(true),
+//							HeadSamplingRate: pulumi.Float64(1),
+//							InvocationLogs:   pulumi.Bool(true),
+//							Persist:          pulumi.Bool(true),
+//						},
+//						RedactQueryString: pulumi.Bool(true),
+//						Traces: &cloudflare.WorkerPreviewsBaseConfigObservabilityTracesArgs{
+//							Destinations: pulumi.StringArray{
+//								pulumi.String("string"),
+//							},
+//							Enabled:           pulumi.Bool(true),
+//							HeadSamplingRate:  pulumi.Float64(1),
+//							Persist:           pulumi.Bool(true),
+//							PropagationPolicy: pulumi.String("authenticated"),
+//						},
+//					},
+//					Placement: &cloudflare.WorkerPreviewsBaseConfigPlacementArgs{
+//						Mode: pulumi.String("smart"),
+//					},
+//					TailConsumers: cloudflare.WorkerPreviewsBaseConfigTailConsumerArray{
+//						&cloudflare.WorkerPreviewsBaseConfigTailConsumerArgs{
+//							Name: pulumi.String("my-tail-consumer"),
+//						},
 //					},
 //				},
 //				Subdomain: &cloudflare.WorkerSubdomainArgs{
@@ -95,12 +149,16 @@ type Worker struct {
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
 	DeployedOn pulumi.StringOutput `pulumi:"deployedOn"`
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Whether logpush is enabled for the Worker.
 	Logpush pulumi.BoolOutput `pulumi:"logpush"`
 	// Name of the Worker.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Observability settings for the Worker.
 	Observability WorkerObservabilityOutput `pulumi:"observability"`
+	// Template configuration used when creating new Previews for this Worker.
+	PreviewsBaseConfig WorkerPreviewsBaseConfigOutput `pulumi:"previewsBaseConfig"`
 	// Other resources that reference the Worker and depend on it existing.
 	References WorkerReferencesOutput `pulumi:"references"`
 	// Subdomain settings for the Worker.
@@ -155,12 +213,16 @@ type workerState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
 	DeployedOn *string `pulumi:"deployedOn"`
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force *bool `pulumi:"force"`
 	// Whether logpush is enabled for the Worker.
 	Logpush *bool `pulumi:"logpush"`
 	// Name of the Worker.
 	Name *string `pulumi:"name"`
 	// Observability settings for the Worker.
 	Observability *WorkerObservability `pulumi:"observability"`
+	// Template configuration used when creating new Previews for this Worker.
+	PreviewsBaseConfig *WorkerPreviewsBaseConfig `pulumi:"previewsBaseConfig"`
 	// Other resources that reference the Worker and depend on it existing.
 	References *WorkerReferences `pulumi:"references"`
 	// Subdomain settings for the Worker.
@@ -180,12 +242,16 @@ type WorkerState struct {
 	CreatedOn pulumi.StringPtrInput
 	// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
 	DeployedOn pulumi.StringPtrInput
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force pulumi.BoolPtrInput
 	// Whether logpush is enabled for the Worker.
 	Logpush pulumi.BoolPtrInput
 	// Name of the Worker.
 	Name pulumi.StringPtrInput
 	// Observability settings for the Worker.
 	Observability WorkerObservabilityPtrInput
+	// Template configuration used when creating new Previews for this Worker.
+	PreviewsBaseConfig WorkerPreviewsBaseConfigPtrInput
 	// Other resources that reference the Worker and depend on it existing.
 	References WorkerReferencesPtrInput
 	// Subdomain settings for the Worker.
@@ -205,12 +271,16 @@ func (WorkerState) ElementType() reflect.Type {
 type workerArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force *bool `pulumi:"force"`
 	// Whether logpush is enabled for the Worker.
 	Logpush *bool `pulumi:"logpush"`
 	// Name of the Worker.
 	Name string `pulumi:"name"`
 	// Observability settings for the Worker.
 	Observability *WorkerObservability `pulumi:"observability"`
+	// Template configuration used when creating new Previews for this Worker.
+	PreviewsBaseConfig *WorkerPreviewsBaseConfig `pulumi:"previewsBaseConfig"`
 	// Subdomain settings for the Worker.
 	Subdomain *WorkerSubdomain `pulumi:"subdomain"`
 	// Tags associated with the Worker.
@@ -223,12 +293,16 @@ type workerArgs struct {
 type WorkerArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
+	// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+	Force pulumi.BoolPtrInput
 	// Whether logpush is enabled for the Worker.
 	Logpush pulumi.BoolPtrInput
 	// Name of the Worker.
 	Name pulumi.StringInput
 	// Observability settings for the Worker.
 	Observability WorkerObservabilityPtrInput
+	// Template configuration used when creating new Previews for this Worker.
+	PreviewsBaseConfig WorkerPreviewsBaseConfigPtrInput
 	// Subdomain settings for the Worker.
 	Subdomain WorkerSubdomainPtrInput
 	// Tags associated with the Worker.
@@ -339,6 +413,11 @@ func (o WorkerOutput) DeployedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Worker) pulumi.StringOutput { return v.DeployedOn }).(pulumi.StringOutput)
 }
 
+// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+func (o WorkerOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Worker) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
 // Whether logpush is enabled for the Worker.
 func (o WorkerOutput) Logpush() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Worker) pulumi.BoolOutput { return v.Logpush }).(pulumi.BoolOutput)
@@ -352,6 +431,11 @@ func (o WorkerOutput) Name() pulumi.StringOutput {
 // Observability settings for the Worker.
 func (o WorkerOutput) Observability() WorkerObservabilityOutput {
 	return o.ApplyT(func(v *Worker) WorkerObservabilityOutput { return v.Observability }).(WorkerObservabilityOutput)
+}
+
+// Template configuration used when creating new Previews for this Worker.
+func (o WorkerOutput) PreviewsBaseConfig() WorkerPreviewsBaseConfigOutput {
+	return o.ApplyT(func(v *Worker) WorkerPreviewsBaseConfigOutput { return v.PreviewsBaseConfig }).(WorkerPreviewsBaseConfigOutput)
 }
 
 // Other resources that reference the Worker and depend on it existing.

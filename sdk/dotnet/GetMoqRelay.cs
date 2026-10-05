@@ -11,12 +11,72 @@ namespace Pulumi.Cloudflare
 {
     public static class GetMoqRelay
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMoqRelay = Cloudflare.GetMoqRelay.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RelayId = "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetMoqRelayResult> InvokeAsync(GetMoqRelayArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMoqRelayResult>("cloudflare:index/getMoqRelay:getMoqRelay", args ?? new GetMoqRelayArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMoqRelay = Cloudflare.GetMoqRelay.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RelayId = "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMoqRelayResult> Invoke(GetMoqRelayInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMoqRelayResult>("cloudflare:index/getMoqRelay:getMoqRelay", args ?? new GetMoqRelayInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleMoqRelay = Cloudflare.GetMoqRelay.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RelayId = "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMoqRelayResult> Invoke(GetMoqRelayInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMoqRelayResult>("cloudflare:index/getMoqRelay:getMoqRelay", args ?? new GetMoqRelayInvokeArgs(), options.WithDefaults());
     }

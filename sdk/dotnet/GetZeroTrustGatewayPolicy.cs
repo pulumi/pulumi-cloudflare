@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustGatewayPolicyResult> InvokeAsync(GetZeroTrustGatewayPolicyArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustGatewayPolicyResult> InvokeAsync(GetZeroTrustGatewayPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustGatewayPolicyResult>("cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy", args ?? new GetZeroTrustGatewayPolicyArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustGatewayPolicyResult> Invoke(GetZeroTrustGatewayPolicyInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustGatewayPolicyResult> Invoke(GetZeroTrustGatewayPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustGatewayPolicyResult>("cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy", args ?? new GetZeroTrustGatewayPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -84,14 +84,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetZeroTrustGatewayPolicyFilterArgs? Filter { get; set; }
 
         /// <summary>
         /// Identify the API resource with a UUID.
         /// </summary>
-        [Input("ruleId", required: true)]
-        public string RuleId { get; set; } = null!;
+        [Input("ruleId")]
+        public string? RuleId { get; set; }
 
         public GetZeroTrustGatewayPolicyArgs()
         {
@@ -101,14 +107,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustGatewayPolicyFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
         /// Identify the API resource with a UUID.
         /// </summary>
-        [Input("ruleId", required: true)]
-        public Input<string> RuleId { get; set; } = null!;
+        [Input("ruleId")]
+        public Input<string>? RuleId { get; set; }
 
         public GetZeroTrustGatewayPolicyInvokeArgs()
         {
@@ -120,6 +132,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayPolicyResult
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
@@ -147,6 +162,7 @@ namespace Pulumi.Cloudflare
         /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `Schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `Dns` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPolicyExpirationResult Expiration;
+        public readonly Outputs.GetZeroTrustGatewayPolicyFilterResult? Filter;
         /// <summary>
         /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
         /// </summary>
@@ -174,7 +190,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identify the API resource with a UUID.
         /// </summary>
-        public readonly string RuleId;
+        public readonly string? RuleId;
         /// <summary>
         /// Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
         /// </summary>
@@ -223,6 +239,8 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetZeroTrustGatewayPolicyExpirationResult expiration,
 
+            Outputs.GetZeroTrustGatewayPolicyFilterResult? filter,
+
             ImmutableArray<string> filters,
 
             string id,
@@ -235,7 +253,7 @@ namespace Pulumi.Cloudflare
 
             bool readOnly,
 
-            string ruleId,
+            string? ruleId,
 
             Outputs.GetZeroTrustGatewayPolicyRuleSettingsResult ruleSettings,
 
@@ -261,6 +279,7 @@ namespace Pulumi.Cloudflare
             DevicePosture = devicePosture;
             Enabled = enabled;
             Expiration = expiration;
+            Filter = filter;
             Filters = filters;
             Id = id;
             Identity = identity;

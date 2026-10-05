@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
  * import com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;
  * import com.pulumi.cloudflare.inputs.HyperdriveConfigMtlsArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -64,7 +65,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .caching(HyperdriveConfigCachingArgs.builder()
  *                 .disabled(true)
+ *                 .maxAge(0)
+ *                 .staleWhileRevalidate(0)
  *                 .build())
+ *             .integration(serializeJson(
+ *                 jsonObject(
+ * 
+ *                 )))
  *             .mtls(HyperdriveConfigMtlsArgs.builder()
  *                 .caCertificateId("00000000-0000-0000-0000-0000000000")
  *                 .mtlsCertificateId("00000000-0000-0000-0000-0000000000")
@@ -121,6 +128,12 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     public Output<String> createdOn() {
         return this.createdOn;
     }
+    @Export(name="integration", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> integration;
+
+    public Output<Optional<String>> integration() {
+        return Codegen.optional(this.integration);
+    }
     /**
      * Defines the last modified time of the Hyperdrive configuration.
      * 
@@ -163,11 +176,19 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Combines database connection fields with exactly one supported network location.
+     * 
+     */
     @Export(name="origin", refs={HyperdriveConfigOrigin.class}, tree="[0]")
-    private Output<HyperdriveConfigOrigin> origin;
+    private Output</* @Nullable */ HyperdriveConfigOrigin> origin;
 
-    public Output<HyperdriveConfigOrigin> origin() {
-        return this.origin;
+    /**
+     * @return Combines database connection fields with exactly one supported network location.
+     * 
+     */
+    public Output<Optional<HyperdriveConfigOrigin>> origin() {
+        return Codegen.optional(this.origin);
     }
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.

@@ -59,8 +59,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAccount(ctx, "example_account", &cloudflare.AccountArgs{
-//				Name: pulumi.String("name"),
-//				Type: pulumi.String("standard"),
+//				Name:       pulumi.String("name"),
+//				Standalone: pulumi.Bool(true),
+//				Type:       pulumi.String("standard"),
 //				Unit: &cloudflare.AccountUnitArgs{
 //					Id: pulumi.String("f267e341f3dd4697bd3b9f71dd96247f"),
 //				},
@@ -90,11 +91,13 @@ type Account struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Account settings
 	Settings AccountSettingsOutput `pulumi:"settings"`
+	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+	Standalone pulumi.BoolOutput `pulumi:"standalone"`
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	// Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
 	Unit AccountUnitOutput `pulumi:"unit"`
 }
 
@@ -139,11 +142,13 @@ type accountState struct {
 	Name *string `pulumi:"name"`
 	// Account settings
 	Settings *AccountSettings `pulumi:"settings"`
+	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+	Standalone *bool `pulumi:"standalone"`
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
 	Type *string `pulumi:"type"`
-	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	// Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
 	Unit *AccountUnit `pulumi:"unit"`
 }
 
@@ -156,11 +161,13 @@ type AccountState struct {
 	Name pulumi.StringPtrInput
 	// Account settings
 	Settings AccountSettingsPtrInput
+	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+	Standalone pulumi.BoolPtrInput
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
 	Type pulumi.StringPtrInput
-	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	// Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
 	Unit AccountUnitPtrInput
 }
 
@@ -175,11 +182,13 @@ type accountArgs struct {
 	Name string `pulumi:"name"`
 	// Account settings
 	Settings *AccountSettings `pulumi:"settings"`
+	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+	Standalone *bool `pulumi:"standalone"`
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
 	Type *string `pulumi:"type"`
-	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	// Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
 	Unit *AccountUnit `pulumi:"unit"`
 }
 
@@ -191,11 +200,13 @@ type AccountArgs struct {
 	Name pulumi.StringInput
 	// Account settings
 	Settings AccountSettingsPtrInput
+	// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+	Standalone pulumi.BoolPtrInput
 	// Available values: "standard", "enterprise".
 	//
 	// Deprecated: The 'type' field should no longer be set through the API.
 	Type pulumi.StringPtrInput
-	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+	// Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
 	Unit AccountUnitPtrInput
 }
 
@@ -306,6 +317,11 @@ func (o AccountOutput) Settings() AccountSettingsOutput {
 	return o.ApplyT(func(v *Account) AccountSettingsOutput { return v.Settings }).(AccountSettingsOutput)
 }
 
+// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+func (o AccountOutput) Standalone() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Account) pulumi.BoolOutput { return v.Standalone }).(pulumi.BoolOutput)
+}
+
 // Available values: "standard", "enterprise".
 //
 // Deprecated: The 'type' field should no longer be set through the API.
@@ -313,7 +329,7 @@ func (o AccountOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+// Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
 func (o AccountOutput) Unit() AccountUnitOutput {
 	return o.ApplyT(func(v *Account) AccountUnitOutput { return v.Unit }).(AccountUnitOutput)
 }

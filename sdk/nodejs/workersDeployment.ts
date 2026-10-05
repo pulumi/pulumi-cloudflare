@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     strategy: "percentage",
  *     versions: [{
  *         percentage: 100,
- *         versionId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *         versionId: "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
  *     }],
  *     annotations: {
  *         workersMessage: "Deploy bug fix.",
@@ -75,7 +75,11 @@ export class WorkersDeployment extends pulumi.CustomResource {
     declare public /*out*/ readonly authorEmail: pulumi.Output<string>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+     */
+    declare public readonly force: pulumi.Output<boolean | undefined>;
+    /**
+     * Name of the script.
      */
     declare public readonly scriptName: pulumi.Output<string>;
     declare public /*out*/ readonly source: pulumi.Output<string>;
@@ -83,6 +87,9 @@ export class WorkersDeployment extends pulumi.CustomResource {
      * Available values: "percentage".
      */
     declare public readonly strategy: pulumi.Output<string>;
+    /**
+     * Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+     */
     declare public readonly versions: pulumi.Output<outputs.WorkersDeploymentVersion[]>;
 
     /**
@@ -102,6 +109,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["authorEmail"] = state?.authorEmail;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["force"] = state?.force;
             resourceInputs["scriptName"] = state?.scriptName;
             resourceInputs["source"] = state?.source;
             resourceInputs["strategy"] = state?.strategy;
@@ -122,6 +130,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["force"] = args?.force;
             resourceInputs["scriptName"] = args?.scriptName;
             resourceInputs["strategy"] = args?.strategy;
             resourceInputs["versions"] = args?.versions;
@@ -146,7 +155,11 @@ export interface WorkersDeploymentState {
     authorEmail?: pulumi.Input<string | undefined>;
     createdOn?: pulumi.Input<string | undefined>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+     */
+    force?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the script.
      */
     scriptName?: pulumi.Input<string | undefined>;
     source?: pulumi.Input<string | undefined>;
@@ -154,6 +167,9 @@ export interface WorkersDeploymentState {
      * Available values: "percentage".
      */
     strategy?: pulumi.Input<string | undefined>;
+    /**
+     * Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+     */
     versions?: pulumi.Input<pulumi.Input<inputs.WorkersDeploymentVersion>[] | undefined>;
 }
 
@@ -167,12 +183,19 @@ export interface WorkersDeploymentArgs {
     accountId: pulumi.Input<string>;
     annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations | undefined>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+     */
+    force?: pulumi.Input<boolean | undefined>;
+    /**
+     * Name of the script.
      */
     scriptName: pulumi.Input<string>;
     /**
      * Available values: "percentage".
      */
     strategy: pulumi.Input<string>;
+    /**
+     * Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+     */
     versions: pulumi.Input<pulumi.Input<inputs.WorkersDeploymentVersion>[]>;
 }

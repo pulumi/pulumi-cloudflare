@@ -38,7 +38,7 @@ import (
 //			_, err := cloudflare.NewPagesDomain(ctx, "example_pages_domain", &cloudflare.PagesDomainArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ProjectName: pulumi.String("this-is-my-project-01"),
-//				Name:        pulumi.String("this-is-my-domain-01.com"),
+//				Name:        pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,9 +63,9 @@ type PagesDomain struct {
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
 	CreatedOn            pulumi.StringOutput `pulumi:"createdOn"`
 	DomainId             pulumi.StringOutput `pulumi:"domainId"`
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           pulumi.StringOutput               `pulumi:"status"`
@@ -119,9 +119,9 @@ type pagesDomainState struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	CreatedOn            *string `pulumi:"createdOn"`
 	DomainId             *string `pulumi:"domainId"`
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	Name *string `pulumi:"name"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName *string `pulumi:"projectName"`
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           *string                      `pulumi:"status"`
@@ -137,9 +137,9 @@ type PagesDomainState struct {
 	CertificateAuthority pulumi.StringPtrInput
 	CreatedOn            pulumi.StringPtrInput
 	DomainId             pulumi.StringPtrInput
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	Name pulumi.StringPtrInput
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName pulumi.StringPtrInput
 	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 	Status           pulumi.StringPtrInput
@@ -155,9 +155,9 @@ func (PagesDomainState) ElementType() reflect.Type {
 type pagesDomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	Name string `pulumi:"name"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName string `pulumi:"projectName"`
 }
 
@@ -165,9 +165,9 @@ type pagesDomainArgs struct {
 type PagesDomainArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
-	// The domain name.
+	// Fully qualified domain name for the Pages project, such as `example.com`.
 	Name pulumi.StringInput
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName pulumi.StringInput
 }
 
@@ -276,12 +276,12 @@ func (o PagesDomainOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
 }
 
-// The domain name.
+// Fully qualified domain name for the Pages project, such as `example.com`.
 func (o PagesDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Name of the project.
+// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 func (o PagesDomainOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }

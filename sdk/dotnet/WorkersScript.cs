@@ -151,6 +151,10 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Enabled = true,
     ///             HeadSamplingRate = 0.1,
+    ///             Issues = new Cloudflare.Inputs.WorkersScriptObservabilityIssuesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
     ///             Logs = new Cloudflare.Inputs.WorkersScriptObservabilityLogsArgs
     ///             {
     ///                 Enabled = true,
@@ -321,6 +325,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("files")]
         public Output<ImmutableDictionary<string, Outputs.WorkersScriptFiles>?> Files { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        /// </summary>
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
         /// The names of handlers exported as part of the default export.
@@ -614,6 +624,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
         /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `Assets` upload takes precedence over `KeepAssets`.
         /// </summary>
         [Input("keepAssets")]
@@ -834,6 +850,12 @@ namespace Pulumi.Cloudflare
             get => _files ?? (_files = new InputMap<Inputs.WorkersScriptFilesGetArgs>());
             set => _files = value;
         }
+
+        /// <summary>
+        /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
 
         [Input("handlers")]
         private InputList<string>? _handlers;

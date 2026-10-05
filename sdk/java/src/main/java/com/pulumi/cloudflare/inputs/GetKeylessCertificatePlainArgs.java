@@ -16,14 +16,14 @@ public final class GetKeylessCertificatePlainArgs extends com.pulumi.resources.I
     public static final GetKeylessCertificatePlainArgs Empty = new GetKeylessCertificatePlainArgs();
 
     /**
-     * Identifier.
+     * Keyless certificate identifier tag.
      * 
      */
     @Import(name="keylessCertificateId", required=true)
     private String keylessCertificateId;
 
     /**
-     * @return Identifier.
+     * @return Keyless certificate identifier tag.
      * 
      */
     public String keylessCertificateId() {
@@ -71,7 +71,7 @@ public final class GetKeylessCertificatePlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param keylessCertificateId Identifier.
+         * @param keylessCertificateId Keyless certificate identifier tag.
          * 
          * @return builder
          * 

@@ -47,9 +47,17 @@ public final class AccountDnsSettingsState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.enforceDnsOnly);
     }
 
+    /**
+     * Default settings for new zones created in this account.
+     * 
+     */
     @Import(name="zoneDefaults")
     private @Nullable Output<AccountDnsSettingsZoneDefaultsArgs> zoneDefaults;
 
+    /**
+     * @return Default settings for new zones created in this account.
+     * 
+     */
     public Optional<Output<AccountDnsSettingsZoneDefaultsArgs>> zoneDefaults() {
         return Optional.ofNullable(this.zoneDefaults);
     }
@@ -122,11 +130,23 @@ public final class AccountDnsSettingsState extends com.pulumi.resources.Resource
             return enforceDnsOnly(Output.of(enforceDnsOnly));
         }
 
+        /**
+         * @param zoneDefaults Default settings for new zones created in this account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneDefaults(@Nullable Output<AccountDnsSettingsZoneDefaultsArgs> zoneDefaults) {
             $.zoneDefaults = zoneDefaults;
             return this;
         }
 
+        /**
+         * @param zoneDefaults Default settings for new zones created in this account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneDefaults(AccountDnsSettingsZoneDefaultsArgs zoneDefaults) {
             return zoneDefaults(Output.of(zoneDefaults));
         }

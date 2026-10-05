@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetAiGatewayFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// gateway id
+        /// Unique identifier of the AI Gateway within the account.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetAiGatewayFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// gateway id
+        /// Unique identifier of the AI Gateway within the account.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -143,6 +143,10 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         public readonly bool Authentication;
+        /// <summary>
+        /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        /// </summary>
+        public readonly bool ByokOnly;
         public readonly bool CacheInvalidateOnUpdate;
         public readonly int CacheTtl;
         public readonly bool CollectLogs;
@@ -151,7 +155,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetAiGatewayFilterResult? Filter;
         public readonly Outputs.GetAiGatewayGuardrailsResult Guardrails;
         /// <summary>
-        /// gateway id
+        /// Unique identifier of the AI Gateway within the account.
         /// </summary>
         public readonly string Id;
         public readonly bool IsDefault;
@@ -177,7 +181,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string RetryBackoff;
         /// <summary>
-        /// Delay between retry attempts in milliseconds (0-5000)
+        /// Delay between retry attempts in milliseconds (0-60000)
         /// </summary>
         public readonly int RetryDelay;
         /// <summary>
@@ -199,6 +203,8 @@ namespace Pulumi.Cloudflare
             string? accountId,
 
             bool authentication,
+
+            bool byokOnly,
 
             bool cacheInvalidateOnUpdate,
 
@@ -256,6 +262,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Authentication = authentication;
+            ByokOnly = byokOnly;
             CacheInvalidateOnUpdate = cacheInvalidateOnUpdate;
             CacheTtl = cacheTtl;
             CollectLogs = collectLogs;

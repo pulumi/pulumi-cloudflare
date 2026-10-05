@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetWorkersDeploymentVersionResult
     {
+        /// <summary>
+        /// Percentage of traffic served by this version.
+        /// </summary>
         public readonly double Percentage;
+        /// <summary>
+        /// Identifier of the Worker Version.
+        /// </summary>
         public readonly string VersionId;
 
         [OutputConstructor]

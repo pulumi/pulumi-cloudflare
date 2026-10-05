@@ -91,7 +91,7 @@ class GetCertificatePackResult:
     @pulumi.getter(name="certificatePackId")
     def certificate_pack_id(self) -> Optional[_builtins.str]:
         """
-        Identifier.
+        The unique identifier for a certificate_pack.
         """
         return pulumi.get(self, "certificate_pack_id")
 
@@ -136,7 +136,7 @@ class GetCertificatePackResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        The unique identifier for a certificate_pack.
         """
         return pulumi.get(self, "id")
 
@@ -250,11 +250,11 @@ def get_certificate_pack(certificate_pack_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_certificate_pack = cloudflare.get_certificate_pack(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        certificate_pack_id="023e105f4ecef8ad9ca31a8372d0c353")
+        certificate_pack_id="3822ff90-ea29-44df-9e55-21300bb9419b")
     ```
 
 
-    :param _builtins.str certificate_pack_id: Identifier.
+    :param _builtins.str certificate_pack_id: The unique identifier for a certificate_pack.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
@@ -298,11 +298,11 @@ def get_certificate_pack_output(certificate_pack_id: pulumi.Input[Optional[Optio
     import pulumi_cloudflare as cloudflare
 
     example_certificate_pack = cloudflare.get_certificate_pack(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        certificate_pack_id="023e105f4ecef8ad9ca31a8372d0c353")
+        certificate_pack_id="3822ff90-ea29-44df-9e55-21300bb9419b")
     ```
 
 
-    :param _builtins.str certificate_pack_id: Identifier.
+    :param _builtins.str certificate_pack_id: The unique identifier for a certificate_pack.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()

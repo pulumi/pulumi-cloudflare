@@ -26,6 +26,9 @@ import * as utilities from "./utilities";
  *     observability: {
  *         enabled: true,
  *         headSamplingRate: 1,
+ *         issues: {
+ *             enabled: true,
+ *         },
  *         logs: {
  *             destinations: ["string"],
  *             enabled: true,
@@ -39,7 +42,52 @@ import * as utilities from "./utilities";
  *             enabled: true,
  *             headSamplingRate: 1,
  *             persist: true,
+ *             propagationPolicy: "authenticated",
  *         },
+ *     },
+ *     previewsBaseConfig: {
+ *         cacheOptions: {
+ *             enabled: true,
+ *             crossVersionCache: true,
+ *         },
+ *         env: {
+ *             MY_ENV_VAR: {
+ *                 type: "plain_text",
+ *             },
+ *         },
+ *         limits: {
+ *             cpuMs: 50,
+ *             subrequests: 1000,
+ *         },
+ *         logpush: true,
+ *         observability: {
+ *             enabled: true,
+ *             headSamplingRate: 1,
+ *             issues: {
+ *                 enabled: true,
+ *             },
+ *             logs: {
+ *                 destinations: ["string"],
+ *                 enabled: true,
+ *                 headSamplingRate: 1,
+ *                 invocationLogs: true,
+ *                 persist: true,
+ *             },
+ *             redactQueryString: true,
+ *             traces: {
+ *                 destinations: ["string"],
+ *                 enabled: true,
+ *                 headSamplingRate: 1,
+ *                 persist: true,
+ *                 propagationPolicy: "authenticated",
+ *             },
+ *         },
+ *         placement: {
+ *             mode: "smart",
+ *         },
+ *         tailConsumers: [{
+ *             name: "my-tail-consumer",
+ *         }],
  *     },
  *     subdomain: {
  *         enabled: true,
@@ -102,6 +150,10 @@ export class Worker extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deployedOn: pulumi.Output<string>;
     /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     */
+    declare public readonly force: pulumi.Output<boolean | undefined>;
+    /**
      * Whether logpush is enabled for the Worker.
      */
     declare public readonly logpush: pulumi.Output<boolean>;
@@ -113,6 +165,10 @@ export class Worker extends pulumi.CustomResource {
      * Observability settings for the Worker.
      */
     declare public readonly observability: pulumi.Output<outputs.WorkerObservability>;
+    /**
+     * Template configuration used when creating new Previews for this Worker.
+     */
+    declare public readonly previewsBaseConfig: pulumi.Output<outputs.WorkerPreviewsBaseConfig>;
     /**
      * Other resources that reference the Worker and depend on it existing.
      */
@@ -150,9 +206,11 @@ export class Worker extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["deployedOn"] = state?.deployedOn;
+            resourceInputs["force"] = state?.force;
             resourceInputs["logpush"] = state?.logpush;
             resourceInputs["name"] = state?.name;
             resourceInputs["observability"] = state?.observability;
+            resourceInputs["previewsBaseConfig"] = state?.previewsBaseConfig;
             resourceInputs["references"] = state?.references;
             resourceInputs["subdomain"] = state?.subdomain;
             resourceInputs["tags"] = state?.tags;
@@ -167,9 +225,11 @@ export class Worker extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["force"] = args?.force;
             resourceInputs["logpush"] = args?.logpush;
             resourceInputs["name"] = args?.name;
             resourceInputs["observability"] = args?.observability;
+            resourceInputs["previewsBaseConfig"] = args?.previewsBaseConfig;
             resourceInputs["subdomain"] = args?.subdomain;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["tailConsumers"] = args?.tailConsumers;
@@ -200,6 +260,10 @@ export interface WorkerState {
      */
     deployedOn?: pulumi.Input<string | undefined>;
     /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     */
+    force?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether logpush is enabled for the Worker.
      */
     logpush?: pulumi.Input<boolean | undefined>;
@@ -211,6 +275,10 @@ export interface WorkerState {
      * Observability settings for the Worker.
      */
     observability?: pulumi.Input<inputs.WorkerObservability | undefined>;
+    /**
+     * Template configuration used when creating new Previews for this Worker.
+     */
+    previewsBaseConfig?: pulumi.Input<inputs.WorkerPreviewsBaseConfig | undefined>;
     /**
      * Other resources that reference the Worker and depend on it existing.
      */
@@ -242,6 +310,10 @@ export interface WorkerArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     */
+    force?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether logpush is enabled for the Worker.
      */
     logpush?: pulumi.Input<boolean | undefined>;
@@ -253,6 +325,10 @@ export interface WorkerArgs {
      * Observability settings for the Worker.
      */
     observability?: pulumi.Input<inputs.WorkerObservability | undefined>;
+    /**
+     * Template configuration used when creating new Previews for this Worker.
+     */
+    previewsBaseConfig?: pulumi.Input<inputs.WorkerPreviewsBaseConfig | undefined>;
     /**
      * Subdomain settings for the Worker.
      */

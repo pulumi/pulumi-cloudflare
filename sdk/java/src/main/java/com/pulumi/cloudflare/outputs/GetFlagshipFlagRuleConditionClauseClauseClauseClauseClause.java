@@ -19,7 +19,7 @@ public final class GetFlagshipFlagRuleConditionClauseClauseClauseClauseClause {
      */
     private String logicalOperator;
     /**
-     * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;.
+     * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
      * 
      */
     private String operator;
@@ -44,7 +44,7 @@ public final class GetFlagshipFlagRuleConditionClauseClauseClauseClauseClause {
         return this.logicalOperator;
     }
     /**
-     * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;.
+     * @return Available values: &#34;equals&#34;, &#34;not*equals&#34;, &#34;greater*than&#34;, &#34;less*than&#34;, &#34;greater*than*or*equals&#34;, &#34;less*than*or*equals&#34;, &#34;contains&#34;, &#34;starts*with&#34;, &#34;ends*with&#34;, &#34;in&#34;, &#34;not*in&#34;, &#34;has&#34;, &#34;notHas&#34;.
      * 
      */
     public String operator() {

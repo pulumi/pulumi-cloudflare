@@ -28,7 +28,7 @@ class WorkersScriptSubdomainArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Worker should be available on the workers.dev subdomain.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         :param pulumi.Input[_builtins.bool] previews_enabled: Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -65,7 +65,7 @@ class WorkersScriptSubdomainArgs:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 
@@ -99,7 +99,7 @@ class _WorkersScriptSubdomainState:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Worker should be available on the workers.dev subdomain.
         :param pulumi.Input[_builtins.bool] previews_enabled: Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -150,7 +150,7 @@ class _WorkersScriptSubdomainState:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 
@@ -204,7 +204,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Worker should be available on the workers.dev subdomain.
         :param pulumi.Input[_builtins.bool] previews_enabled: Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         """
         ...
     @overload
@@ -303,7 +303,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Worker should be available on the workers.dev subdomain.
         :param pulumi.Input[_builtins.bool] previews_enabled: Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -343,7 +343,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 

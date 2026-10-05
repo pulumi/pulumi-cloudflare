@@ -166,6 +166,13 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         return Optional.ofNullable(this.entries);
     }
 
+    @Import(name="integrationId")
+    private @Nullable Output<String> integrationId;
+
+    public Optional<Output<String>> integrationId() {
+        return Optional.ofNullable(this.integrationId);
+    }
+
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -268,6 +275,7 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         this.dataTags = $.dataTags;
         this.description = $.description;
         this.entries = $.entries;
+        this.integrationId = $.integrationId;
         this.name = $.name;
         this.ocrEnabled = $.ocrEnabled;
         this.openAccess = $.openAccess;
@@ -520,6 +528,15 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         @Deprecated /* This attribute will be sunset on 01/01/2026 */
         public Builder entries(ZeroTrustDlpCustomProfileEntryArgs... entries) {
             return entries(List.of(entries));
+        }
+
+        public Builder integrationId(@Nullable Output<String> integrationId) {
+            $.integrationId = integrationId;
+            return this;
+        }
+
+        public Builder integrationId(String integrationId) {
+            return integrationId(Output.of(integrationId));
         }
 
         public Builder name(@Nullable Output<String> name) {

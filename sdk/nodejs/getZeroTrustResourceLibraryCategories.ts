@@ -6,6 +6,18 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustResourceLibraryCategories = cloudflare.getZeroTrustResourceLibraryCategories({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
+ */
 export function getZeroTrustResourceLibraryCategories(args: GetZeroTrustResourceLibraryCategoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustResourceLibraryCategoriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", {
@@ -57,6 +69,18 @@ export interface GetZeroTrustResourceLibraryCategoriesResult {
      */
     readonly results: outputs.GetZeroTrustResourceLibraryCategoriesResult[];
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustResourceLibraryCategories = cloudflare.getZeroTrustResourceLibraryCategories({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
+ */
 export function getZeroTrustResourceLibraryCategoriesOutput(args: GetZeroTrustResourceLibraryCategoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustResourceLibraryCategoriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", {

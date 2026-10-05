@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationLoginDesign;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationMfaConfig;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirements;
+import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationServiceTokenInactivity;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -65,6 +66,10 @@ public final class GetZeroTrustOrganizationResult {
      * 
      */
     private Boolean mfaRequiredForAllApps;
+    /**
+     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
+     * 
+     */
     private GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements;
     /**
      * @return The name of your Zero Trust organization.
@@ -72,10 +77,25 @@ public final class GetZeroTrustOrganizationResult {
      */
     private String name;
     /**
+     * @return Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     * 
+     */
+    private GetZeroTrustOrganizationServiceTokenInactivity serviceTokenInactivity;
+    /**
      * @return The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     private String sessionDuration;
+    /**
+     * @return Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     * 
+     */
+    private Boolean strictServiceTokenAuth;
+    /**
+     * @return The account tags of organizations trusted by this organization for policy and device posture sharing.
+     * 
+     */
+    private List<String> trustedAccounts;
     /**
      * @return A description of the reason why the UI read only field is being toggled.
      * 
@@ -172,6 +192,10 @@ public final class GetZeroTrustOrganizationResult {
     public Boolean mfaRequiredForAllApps() {
         return this.mfaRequiredForAllApps;
     }
+    /**
+     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
+     * 
+     */
     public GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements() {
         return this.mfaSshPivKeyRequirements;
     }
@@ -183,11 +207,32 @@ public final class GetZeroTrustOrganizationResult {
         return this.name;
     }
     /**
+     * @return Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     * 
+     */
+    public GetZeroTrustOrganizationServiceTokenInactivity serviceTokenInactivity() {
+        return this.serviceTokenInactivity;
+    }
+    /**
      * @return The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     public String sessionDuration() {
         return this.sessionDuration;
+    }
+    /**
+     * @return Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     * 
+     */
+    public Boolean strictServiceTokenAuth() {
+        return this.strictServiceTokenAuth;
+    }
+    /**
+     * @return The account tags of organizations trusted by this organization for policy and device posture sharing.
+     * 
+     */
+    public List<String> trustedAccounts() {
+        return this.trustedAccounts;
     }
     /**
      * @return A description of the reason why the UI read only field is being toggled.
@@ -247,7 +292,10 @@ public final class GetZeroTrustOrganizationResult {
         private Boolean mfaRequiredForAllApps;
         private GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements;
         private String name;
+        private GetZeroTrustOrganizationServiceTokenInactivity serviceTokenInactivity;
         private String sessionDuration;
+        private Boolean strictServiceTokenAuth;
+        private List<String> trustedAccounts;
         private String uiReadOnlyToggleReason;
         private String userSeatExpirationInactiveTime;
         private Boolean warpAuthNonBrowser401;
@@ -269,7 +317,10 @@ public final class GetZeroTrustOrganizationResult {
     	      this.mfaRequiredForAllApps = defaults.mfaRequiredForAllApps;
     	      this.mfaSshPivKeyRequirements = defaults.mfaSshPivKeyRequirements;
     	      this.name = defaults.name;
+    	      this.serviceTokenInactivity = defaults.serviceTokenInactivity;
     	      this.sessionDuration = defaults.sessionDuration;
+    	      this.strictServiceTokenAuth = defaults.strictServiceTokenAuth;
+    	      this.trustedAccounts = defaults.trustedAccounts;
     	      this.uiReadOnlyToggleReason = defaults.uiReadOnlyToggleReason;
     	      this.userSeatExpirationInactiveTime = defaults.userSeatExpirationInactiveTime;
     	      this.warpAuthNonBrowser401 = defaults.warpAuthNonBrowser401;
@@ -383,12 +434,39 @@ public final class GetZeroTrustOrganizationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceTokenInactivity(GetZeroTrustOrganizationServiceTokenInactivity serviceTokenInactivity) {
+            if (serviceTokenInactivity == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "serviceTokenInactivity");
+            }
+            this.serviceTokenInactivity = serviceTokenInactivity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionDuration(String sessionDuration) {
             if (sessionDuration == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "sessionDuration");
             }
             this.sessionDuration = sessionDuration;
             return this;
+        }
+        @CustomType.Setter
+        public Builder strictServiceTokenAuth(Boolean strictServiceTokenAuth) {
+            if (strictServiceTokenAuth == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "strictServiceTokenAuth");
+            }
+            this.strictServiceTokenAuth = strictServiceTokenAuth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder trustedAccounts(List<String> trustedAccounts) {
+            if (trustedAccounts == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "trustedAccounts");
+            }
+            this.trustedAccounts = trustedAccounts;
+            return this;
+        }
+        public Builder trustedAccounts(String... trustedAccounts) {
+            return trustedAccounts(List.of(trustedAccounts));
         }
         @CustomType.Setter
         public Builder uiReadOnlyToggleReason(String uiReadOnlyToggleReason) {
@@ -443,7 +521,10 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.mfaRequiredForAllApps = mfaRequiredForAllApps;
             _resultValue.mfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
             _resultValue.name = name;
+            _resultValue.serviceTokenInactivity = serviceTokenInactivity;
             _resultValue.sessionDuration = sessionDuration;
+            _resultValue.strictServiceTokenAuth = strictServiceTokenAuth;
+            _resultValue.trustedAccounts = trustedAccounts;
             _resultValue.uiReadOnlyToggleReason = uiReadOnlyToggleReason;
             _resultValue.userSeatExpirationInactiveTime = userSeatExpirationInactiveTime;
             _resultValue.warpAuthNonBrowser401 = warpAuthNonBrowser401;

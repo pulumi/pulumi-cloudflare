@@ -34,11 +34,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewMagicTransitSiteWan(ctx, "example_magic_transit_site_wan", &cloudflare.MagicTransitSiteWanArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				SiteId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Physport:  pulumi.Int(1),
-//				Name:      pulumi.String("name"),
-//				Priority:  pulumi.Int(0),
+//				AccountId:             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SiteId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Physport:              pulumi.Int(1),
+//				HealthCheckRate:       pulumi.String("low"),
+//				LoadBalanceInnerFlows: pulumi.Bool(true),
+//				Name:                  pulumi.String("name"),
+//				Priority:              pulumi.Int(0),
 //				StaticAddressing: &cloudflare.MagicTransitSiteWanStaticAddressingArgs{
 //					Address:          pulumi.String("192.0.2.0/24"),
 //					GatewayAddress:   pulumi.String("192.0.2.1"),
@@ -67,10 +69,11 @@ type MagicTransitSiteWan struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
 	// Available values: "low", "mid", "high".
-	HealthCheckRate pulumi.StringOutput    `pulumi:"healthCheckRate"`
-	Name            pulumi.StringPtrOutput `pulumi:"name"`
-	Physport        pulumi.IntOutput       `pulumi:"physport"`
-	Priority        pulumi.IntPtrOutput    `pulumi:"priority"`
+	HealthCheckRate       pulumi.StringOutput    `pulumi:"healthCheckRate"`
+	LoadBalanceInnerFlows pulumi.BoolOutput      `pulumi:"loadBalanceInnerFlows"`
+	Name                  pulumi.StringPtrOutput `pulumi:"name"`
+	Physport              pulumi.IntOutput       `pulumi:"physport"`
+	Priority              pulumi.IntPtrOutput    `pulumi:"priority"`
 	// Identifier
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -122,10 +125,11 @@ type magicTransitSiteWanState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
 	// Available values: "low", "mid", "high".
-	HealthCheckRate *string `pulumi:"healthCheckRate"`
-	Name            *string `pulumi:"name"`
-	Physport        *int    `pulumi:"physport"`
-	Priority        *int    `pulumi:"priority"`
+	HealthCheckRate       *string `pulumi:"healthCheckRate"`
+	LoadBalanceInnerFlows *bool   `pulumi:"loadBalanceInnerFlows"`
+	Name                  *string `pulumi:"name"`
+	Physport              *int    `pulumi:"physport"`
+	Priority              *int    `pulumi:"priority"`
 	// Identifier
 	SiteId *string `pulumi:"siteId"`
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -139,10 +143,11 @@ type MagicTransitSiteWanState struct {
 	AccountId pulumi.StringPtrInput
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
 	// Available values: "low", "mid", "high".
-	HealthCheckRate pulumi.StringPtrInput
-	Name            pulumi.StringPtrInput
-	Physport        pulumi.IntPtrInput
-	Priority        pulumi.IntPtrInput
+	HealthCheckRate       pulumi.StringPtrInput
+	LoadBalanceInnerFlows pulumi.BoolPtrInput
+	Name                  pulumi.StringPtrInput
+	Physport              pulumi.IntPtrInput
+	Priority              pulumi.IntPtrInput
 	// Identifier
 	SiteId pulumi.StringPtrInput
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -157,10 +162,14 @@ func (MagicTransitSiteWanState) ElementType() reflect.Type {
 
 type magicTransitSiteWanArgs struct {
 	// Identifier
-	AccountId string  `pulumi:"accountId"`
-	Name      *string `pulumi:"name"`
-	Physport  int     `pulumi:"physport"`
-	Priority  *int    `pulumi:"priority"`
+	AccountId string `pulumi:"accountId"`
+	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+	// Available values: "low", "mid", "high".
+	HealthCheckRate       *string `pulumi:"healthCheckRate"`
+	LoadBalanceInnerFlows *bool   `pulumi:"loadBalanceInnerFlows"`
+	Name                  *string `pulumi:"name"`
+	Physport              int     `pulumi:"physport"`
+	Priority              *int    `pulumi:"priority"`
 	// Identifier
 	SiteId string `pulumi:"siteId"`
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -173,9 +182,13 @@ type magicTransitSiteWanArgs struct {
 type MagicTransitSiteWanArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput
-	Name      pulumi.StringPtrInput
-	Physport  pulumi.IntInput
-	Priority  pulumi.IntPtrInput
+	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+	// Available values: "low", "mid", "high".
+	HealthCheckRate       pulumi.StringPtrInput
+	LoadBalanceInnerFlows pulumi.BoolPtrInput
+	Name                  pulumi.StringPtrInput
+	Physport              pulumi.IntInput
+	Priority              pulumi.IntPtrInput
 	// Identifier
 	SiteId pulumi.StringInput
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
@@ -280,6 +293,10 @@ func (o MagicTransitSiteWanOutput) AccountId() pulumi.StringOutput {
 // Available values: "low", "mid", "high".
 func (o MagicTransitSiteWanOutput) HealthCheckRate() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.StringOutput { return v.HealthCheckRate }).(pulumi.StringOutput)
+}
+
+func (o MagicTransitSiteWanOutput) LoadBalanceInnerFlows() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.BoolOutput { return v.LoadBalanceInnerFlows }).(pulumi.BoolOutput)
 }
 
 func (o MagicTransitSiteWanOutput) Name() pulumi.StringPtrOutput {

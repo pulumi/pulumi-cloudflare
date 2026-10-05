@@ -62,13 +62,13 @@ import (
 type R2BucketEventNotification struct {
 	pulumi.CustomResourceState
 
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
-	// Queue ID.
+	// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 	QueueId pulumi.StringOutput `pulumi:"queueId"`
 	// Name of the queue.
 	QueueName pulumi.StringOutput `pulumi:"queueName"`
@@ -118,13 +118,13 @@ func GetR2BucketEventNotification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2BucketEventNotification resources.
 type r2bucketEventNotificationState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
-	// Queue ID.
+	// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 	QueueId *string `pulumi:"queueId"`
 	// Name of the queue.
 	QueueName *string `pulumi:"queueName"`
@@ -133,13 +133,13 @@ type r2bucketEventNotificationState struct {
 }
 
 type R2BucketEventNotificationState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
-	// Queue ID.
+	// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 	QueueId pulumi.StringPtrInput
 	// Name of the queue.
 	QueueName pulumi.StringPtrInput
@@ -152,13 +152,13 @@ func (R2BucketEventNotificationState) ElementType() reflect.Type {
 }
 
 type r2bucketEventNotificationArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
-	// Queue ID.
+	// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 	QueueId string `pulumi:"queueId"`
 	// Array of rules to drive notifications.
 	Rules []R2BucketEventNotificationRule `pulumi:"rules"`
@@ -166,13 +166,13 @@ type r2bucketEventNotificationArgs struct {
 
 // The set of arguments for constructing a R2BucketEventNotification resource.
 type R2BucketEventNotificationArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
-	// Queue ID.
+	// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 	QueueId pulumi.StringInput
 	// Array of rules to drive notifications.
 	Rules R2BucketEventNotificationRuleArrayInput
@@ -265,7 +265,7 @@ func (o R2BucketEventNotificationOutput) ToR2BucketEventNotificationOutputWithCo
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o R2BucketEventNotificationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketEventNotification) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -280,7 +280,7 @@ func (o R2BucketEventNotificationOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketEventNotification) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
-// Queue ID.
+// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 func (o R2BucketEventNotificationOutput) QueueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketEventNotification) pulumi.StringOutput { return v.QueueId }).(pulumi.StringOutput)
 }

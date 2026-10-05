@@ -95,6 +95,11 @@ export interface GetD1DatabaseResult {
      * D1 database name.
      */
     readonly name: string;
+    /**
+     * The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     readonly numTables: number;
     /**
      * Configuration for D1 read replication.

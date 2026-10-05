@@ -23,6 +23,10 @@ public final class GetEmailSecurityTrustedDomainsListResult {
      * 
      */
     private Boolean isRecent;
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal domain.
+     * 
+     */
     private Boolean isRegex;
     /**
      * @return Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
@@ -39,6 +43,10 @@ public final class GetEmailSecurityTrustedDomainsListResult {
     @Deprecated /* Use `modifiedAt` instead. */
     private String lastModified;
     private String modifiedAt;
+    /**
+     * @return The domain pattern to trust, e.g. `example.com`.
+     * 
+     */
     private String pattern;
 
     private GetEmailSecurityTrustedDomainsListResult() {}
@@ -62,6 +70,10 @@ public final class GetEmailSecurityTrustedDomainsListResult {
     public Boolean isRecent() {
         return this.isRecent;
     }
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal domain.
+     * 
+     */
     public Boolean isRegex() {
         return this.isRegex;
     }
@@ -86,6 +98,10 @@ public final class GetEmailSecurityTrustedDomainsListResult {
     public String modifiedAt() {
         return this.modifiedAt;
     }
+    /**
+     * @return The domain pattern to trust, e.g. `example.com`.
+     * 
+     */
     public String pattern() {
         return this.pattern;
     }

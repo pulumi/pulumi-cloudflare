@@ -53,14 +53,14 @@ import (
 type WorkersKvNamespace struct {
 	pulumi.CustomResourceState
 
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrOutput `pulumi:"jurisdiction"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolOutput `pulumi:"supportsUrlEncoding"`
-	// A human-readable string name for a Namespace.
+	// Human-readable string name for a Workers KV namespace.
 	Title pulumi.StringOutput `pulumi:"title"`
 }
 
@@ -100,26 +100,26 @@ func GetWorkersKvNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersKvNamespace resources.
 type workersKvNamespaceState struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId *string `pulumi:"accountId"`
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding *bool `pulumi:"supportsUrlEncoding"`
-	// A human-readable string name for a Namespace.
+	// Human-readable string name for a Workers KV namespace.
 	Title *string `pulumi:"title"`
 }
 
 type WorkersKvNamespaceState struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringPtrInput
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrInput
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolPtrInput
-	// A human-readable string name for a Namespace.
+	// Human-readable string name for a Workers KV namespace.
 	Title pulumi.StringPtrInput
 }
 
@@ -128,23 +128,23 @@ func (WorkersKvNamespaceState) ElementType() reflect.Type {
 }
 
 type workersKvNamespaceArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId string `pulumi:"accountId"`
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
-	// A human-readable string name for a Namespace.
+	// Human-readable string name for a Workers KV namespace.
 	Title string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a WorkersKvNamespace resource.
 type WorkersKvNamespaceArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringInput
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrInput
-	// A human-readable string name for a Namespace.
+	// Human-readable string name for a Workers KV namespace.
 	Title pulumi.StringInput
 }
 
@@ -235,7 +235,7 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 	return o
 }
 
-// Identifier.
+// ID of the Cloudflare account that owns the Workers KV namespaces.
 func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -251,7 +251,7 @@ func (o WorkersKvNamespaceOutput) SupportsUrlEncoding() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.BoolOutput { return v.SupportsUrlEncoding }).(pulumi.BoolOutput)
 }
 
-// A human-readable string name for a Namespace.
+// Human-readable string name for a Workers KV namespace.
 func (o WorkersKvNamespaceOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }

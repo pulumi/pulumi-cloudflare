@@ -53,7 +53,7 @@ import (
 type R2Bucket struct {
 	pulumi.CustomResourceState
 
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Creation timestamp.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
@@ -106,7 +106,7 @@ func GetR2Bucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2Bucket resources.
 type r2bucketState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Creation timestamp.
 	CreationDate *string `pulumi:"creationDate"`
@@ -124,7 +124,7 @@ type r2bucketState struct {
 }
 
 type R2BucketState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringPtrInput
 	// Creation timestamp.
 	CreationDate pulumi.StringPtrInput
@@ -146,7 +146,7 @@ func (R2BucketState) ElementType() reflect.Type {
 }
 
 type r2bucketArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
 	// Available values: "default", "eu", "fedramp", "us".
@@ -163,7 +163,7 @@ type r2bucketArgs struct {
 
 // The set of arguments for constructing a R2Bucket resource.
 type R2BucketArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
 	// Available values: "default", "eu", "fedramp", "us".
@@ -265,7 +265,7 @@ func (o R2BucketOutput) ToR2BucketOutputWithContext(ctx context.Context) R2Bucke
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o R2BucketOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

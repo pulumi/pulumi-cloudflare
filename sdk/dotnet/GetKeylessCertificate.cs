@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleKeylessCertificate = Cloudflare.GetKeylessCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         KeylessCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         KeylessCertificateId = "4d2844d2ce78891c34d0b6c0535a291e",
         ///     });
         /// 
         /// });
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleKeylessCertificate = Cloudflare.GetKeylessCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         KeylessCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         KeylessCertificateId = "4d2844d2ce78891c34d0b6c0535a291e",
         ///     });
         /// 
         /// });
@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleKeylessCertificate = Cloudflare.GetKeylessCertificate.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         KeylessCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         KeylessCertificateId = "4d2844d2ce78891c34d0b6c0535a291e",
         ///     });
         /// 
         /// });
@@ -202,7 +202,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetKeylessCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Keyless certificate identifier tag.
         /// </summary>
         [Input("keylessCertificateId", required: true)]
         public string KeylessCertificateId { get; set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetKeylessCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Keyless certificate identifier tag.
         /// </summary>
         [Input("keylessCertificateId", required: true)]
         public Input<string> KeylessCertificateId { get; set; } = null!;
@@ -256,11 +256,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Identifier.
+        /// Keyless certificate identifier tag.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier.
+        /// Keyless certificate identifier tag.
         /// </summary>
         public readonly string KeylessCertificateId;
         /// <summary>

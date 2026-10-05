@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.outputs.AccessOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.AccessOrganizationLoginDesign;
 import com.pulumi.cloudflare.outputs.AccessOrganizationMfaConfig;
 import com.pulumi.cloudflare.outputs.AccessOrganizationMfaSshPivKeyRequirements;
+import com.pulumi.cloudflare.outputs.AccessOrganizationServiceTokenInactivity;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -42,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationServiceTokenInactivityArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -96,7 +98,13 @@ import javax.annotation.Nullable;
  *             ))
  *             .mfaRequiredForAllApps(false)
  *             .name("Widget Corps Internal Applications")
+ *             .serviceTokenInactivity(ZeroTrustOrganizationServiceTokenInactivityArgs.builder()
+ *                 .action("disable")
+ *                 .enabled(true)
+ *                 .inactivityThresholdDays(30)
+ *                 .build())
  *             .sessionDuration("24h")
+ *             .strictServiceTokenAuth(true)
  *             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")
  *             .userSeatExpirationInactiveTime("730h")
  *             .warpAuthNonBrowser401(false)
@@ -110,7 +118,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example &#39;&lt;account_id&gt;&#39;
+ * ```
  * 
  * @deprecated
  * cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
@@ -300,6 +310,20 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.name);
     }
     /**
+     * Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     * 
+     */
+    @Export(name="serviceTokenInactivity", refs={AccessOrganizationServiceTokenInactivity.class}, tree="[0]")
+    private Output</* @Nullable */ AccessOrganizationServiceTokenInactivity> serviceTokenInactivity;
+
+    /**
+     * @return Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     * 
+     */
+    public Output<Optional<AccessOrganizationServiceTokenInactivity>> serviceTokenInactivity() {
+        return Codegen.optional(this.serviceTokenInactivity);
+    }
+    /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
@@ -312,6 +336,34 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sessionDuration() {
         return Codegen.optional(this.sessionDuration);
+    }
+    /**
+     * Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     * 
+     */
+    @Export(name="strictServiceTokenAuth", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> strictServiceTokenAuth;
+
+    /**
+     * @return Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     * 
+     */
+    public Output<Boolean> strictServiceTokenAuth() {
+        return this.strictServiceTokenAuth;
+    }
+    /**
+     * The account tags of organizations trusted by this organization for policy and device posture sharing.
+     * 
+     */
+    @Export(name="trustedAccounts", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> trustedAccounts;
+
+    /**
+     * @return The account tags of organizations trusted by this organization for policy and device posture sharing.
+     * 
+     */
+    public Output<List<String>> trustedAccounts() {
+        return this.trustedAccounts;
     }
     /**
      * A description of the reason why the UI read only field is being toggled.

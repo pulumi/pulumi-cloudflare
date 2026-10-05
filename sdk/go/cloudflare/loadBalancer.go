@@ -208,7 +208,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
+// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
 // ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState

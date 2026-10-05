@@ -35,15 +35,126 @@ namespace Pulumi.Cloudflare
     ///         RateLimitingInterval = 0,
     ///         RateLimitingLimit = 0,
     ///         Authentication = true,
+    ///         ByokOnly = true,
+    ///         Dlp = new Cloudflare.Inputs.AiGatewayDlpArgs
+    ///         {
+    ///             Action = "BLOCK",
+    ///             Enabled = true,
+    ///             Profiles = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///         },
+    ///         Guardrails = new Cloudflare.Inputs.AiGatewayGuardrailsArgs
+    ///         {
+    ///             Prompt = new Cloudflare.Inputs.AiGatewayGuardrailsPromptArgs
+    ///             {
+    ///                 P1 = "FLAG",
+    ///                 S1 = "FLAG",
+    ///                 S10 = "FLAG",
+    ///                 S11 = "FLAG",
+    ///                 S12 = "FLAG",
+    ///                 S13 = "FLAG",
+    ///                 S2 = "FLAG",
+    ///                 S3 = "FLAG",
+    ///                 S4 = "FLAG",
+    ///                 S5 = "FLAG",
+    ///                 S6 = "FLAG",
+    ///                 S7 = "FLAG",
+    ///                 S8 = "FLAG",
+    ///                 S9 = "FLAG",
+    ///             },
+    ///             Response = new Cloudflare.Inputs.AiGatewayGuardrailsResponseArgs
+    ///             {
+    ///                 P1 = "FLAG",
+    ///                 S1 = "FLAG",
+    ///                 S10 = "FLAG",
+    ///                 S11 = "FLAG",
+    ///                 S12 = "FLAG",
+    ///                 S13 = "FLAG",
+    ///                 S2 = "FLAG",
+    ///                 S3 = "FLAG",
+    ///                 S4 = "FLAG",
+    ///                 S5 = "FLAG",
+    ///                 S6 = "FLAG",
+    ///                 S7 = "FLAG",
+    ///                 S8 = "FLAG",
+    ///                 S9 = "FLAG",
+    ///             },
+    ///         },
+    ///         LogClassification = true,
     ///         LogManagement = 10000,
     ///         LogManagementStrategy = "STOP_INSERTING",
     ///         Logpush = true,
     ///         LogpushPublicKey = "xxxxxxxxxxxxxxxx",
+    ///         Otels = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AiGatewayOtelArgs
+    ///             {
+    ///                 Headers = 
+    ///                 {
+    ///                     { "foo", "string" },
+    ///                 },
+    ///                 Url = "https://example.com",
+    ///                 Authorization = "authorization",
+    ///                 ContentType = "json",
+    ///             },
+    ///         },
     ///         RateLimitingTechnique = "fixed",
     ///         RetryBackoff = "constant",
     ///         RetryDelay = 0,
     ///         RetryMaxAttempts = 1,
+    ///         SpendLimits = new Cloudflare.Inputs.AiGatewaySpendLimitsArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Rules = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.AiGatewaySpendLimitsRuleArgs
+    ///                 {
+    ///                     Limit = 1,
+    ///                     LimitType = "cost",
+    ///                     Window = 1,
+    ///                     Id = "x",
+    ///                     Enabled = true,
+    ///                     Metadata = 
+    ///                     {
+    ///                         { "foo", new Cloudflare.Inputs.AiGatewaySpendLimitsRuleMetadataArgs
+    ///                         {
+    ///                             Mode = "partition",
+    ///                         } },
+    ///                     },
+    ///                     Model = new Cloudflare.Inputs.AiGatewaySpendLimitsRuleModelArgs
+    ///                     {
+    ///                         Mode = "filter",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "string",
+    ///                         },
+    ///                     },
+    ///                     AiGatewayProvider = new Cloudflare.Inputs.AiGatewaySpendLimitsRuleAiGatewayProviderArgs
+    ///                     {
+    ///                         Mode = "filter",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "string",
+    ///                         },
+    ///                     },
+    ///                     Technique = "fixed",
+    ///                 },
+    ///             },
+    ///         },
     ///         StoreId = "store_id",
+    ///         Stripe = new Cloudflare.Inputs.AiGatewayStripeArgs
+    ///         {
+    ///             Authorization = "authorization",
+    ///             UsageEvents = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.AiGatewayStripeUsageEventArgs
+    ///                 {
+    ///                     Payload = "payload",
+    ///                 },
+    ///             },
+    ///         },
     ///         WorkersAiBillingMode = "postpaid",
     ///         Zdr = true,
     ///     });
@@ -64,13 +175,19 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// gateway id
+        /// Unique identifier of the AI Gateway within the account.
         /// </summary>
         [Output("aiGatewayId")]
         public Output<string> AiGatewayId { get; private set; } = null!;
 
         [Output("authentication")]
-        public Output<bool?> Authentication { get; private set; } = null!;
+        public Output<bool> Authentication { get; private set; } = null!;
+
+        /// <summary>
+        /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        /// </summary>
+        [Output("byokOnly")]
+        public Output<bool> ByokOnly { get; private set; } = null!;
 
         [Output("cacheInvalidateOnUpdate")]
         public Output<bool> CacheInvalidateOnUpdate { get; private set; } = null!;
@@ -94,19 +211,19 @@ namespace Pulumi.Cloudflare
         public Output<bool> IsDefault { get; private set; } = null!;
 
         [Output("logClassification")]
-        public Output<bool?> LogClassification { get; private set; } = null!;
+        public Output<bool> LogClassification { get; private set; } = null!;
 
         [Output("logManagement")]
-        public Output<int?> LogManagement { get; private set; } = null!;
+        public Output<int> LogManagement { get; private set; } = null!;
 
         /// <summary>
         /// Available values: "STOP*INSERTING", "DELETE*OLDEST".
         /// </summary>
         [Output("logManagementStrategy")]
-        public Output<string?> LogManagementStrategy { get; private set; } = null!;
+        public Output<string> LogManagementStrategy { get; private set; } = null!;
 
         [Output("logpush")]
-        public Output<bool?> Logpush { get; private set; } = null!;
+        public Output<bool> Logpush { get; private set; } = null!;
 
         [Output("logpushPublicKey")]
         public Output<string?> LogpushPublicKey { get; private set; } = null!;
@@ -137,7 +254,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> RetryBackoff { get; private set; } = null!;
 
         /// <summary>
-        /// Delay between retry attempts in milliseconds (0-5000)
+        /// Delay between retry attempts in milliseconds (0-60000)
         /// </summary>
         [Output("retryDelay")]
         public Output<int?> RetryDelay { get; private set; } = null!;
@@ -152,7 +269,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AiGatewaySpendLimits> SpendLimits { get; private set; } = null!;
 
         [Output("storeId")]
-        public Output<string?> StoreId { get; private set; } = null!;
+        public Output<string> StoreId { get; private set; } = null!;
 
         [Output("stripe")]
         public Output<Outputs.AiGatewayStripe?> Stripe { get; private set; } = null!;
@@ -165,7 +282,7 @@ namespace Pulumi.Cloudflare
         public Output<string> WorkersAiBillingMode { get; private set; } = null!;
 
         [Output("zdr")]
-        public Output<bool?> Zdr { get; private set; } = null!;
+        public Output<bool> Zdr { get; private set; } = null!;
 
 
         /// <summary>
@@ -217,13 +334,19 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// gateway id
+        /// Unique identifier of the AI Gateway within the account.
         /// </summary>
         [Input("aiGatewayId", required: true)]
         public Input<string> AiGatewayId { get; set; } = null!;
 
         [Input("authentication")]
         public Input<bool>? Authentication { get; set; }
+
+        /// <summary>
+        /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        /// </summary>
+        [Input("byokOnly")]
+        public Input<bool>? ByokOnly { get; set; }
 
         [Input("cacheInvalidateOnUpdate", required: true)]
         public Input<bool> CacheInvalidateOnUpdate { get; set; } = null!;
@@ -286,7 +409,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? RetryBackoff { get; set; }
 
         /// <summary>
-        /// Delay between retry attempts in milliseconds (0-5000)
+        /// Delay between retry attempts in milliseconds (0-60000)
         /// </summary>
         [Input("retryDelay")]
         public Input<int>? RetryDelay { get; set; }
@@ -328,13 +451,19 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// gateway id
+        /// Unique identifier of the AI Gateway within the account.
         /// </summary>
         [Input("aiGatewayId")]
         public Input<string>? AiGatewayId { get; set; }
 
         [Input("authentication")]
         public Input<bool>? Authentication { get; set; }
+
+        /// <summary>
+        /// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        /// </summary>
+        [Input("byokOnly")]
+        public Input<bool>? ByokOnly { get; set; }
 
         [Input("cacheInvalidateOnUpdate")]
         public Input<bool>? CacheInvalidateOnUpdate { get; set; }
@@ -406,7 +535,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? RetryBackoff { get; set; }
 
         /// <summary>
-        /// Delay between retry attempts in milliseconds (0-5000)
+        /// Delay between retry attempts in milliseconds (0-60000)
         /// </summary>
         [Input("retryDelay")]
         public Input<int>? RetryDelay { get; set; }

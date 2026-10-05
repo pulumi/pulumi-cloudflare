@@ -158,6 +158,10 @@ namespace Pulumi.Cloudflare
         /// A Resource identifier.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Available values: "eu", "us", "fedramp".
+        /// </summary>
+        public readonly string Jurisdiction;
         public readonly string ModifiedOn;
         public readonly ImmutableArray<Outputs.GetQueueProducerResult> Producers;
         public readonly double ProducersTotalCount;
@@ -180,6 +184,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string jurisdiction,
+
             string modifiedOn,
 
             ImmutableArray<Outputs.GetQueueProducerResult> producers,
@@ -197,6 +203,7 @@ namespace Pulumi.Cloudflare
             ConsumersTotalCount = consumersTotalCount;
             CreatedOn = createdOn;
             Id = id;
+            Jurisdiction = jurisdiction;
             ModifiedOn = modifiedOn;
             Producers = producers;
             ProducersTotalCount = producersTotalCount;
