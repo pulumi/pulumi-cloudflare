@@ -29,6 +29,7 @@ class TeamsListArgs:
         """
         The set of arguments for constructing a TeamsList resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
                Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
@@ -46,6 +47,9 @@ class TeamsListArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -116,6 +120,7 @@ class _TeamsListState:
         """
         Input properties used for looking up and filtering TeamsList resources.
 
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] description: Provide the list description.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]] items: Add items to the list.
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
@@ -143,6 +148,9 @@ class _TeamsListState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -273,6 +281,7 @@ class TeamsList(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] description: Provide the list description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict', 'outputs.TeamsListItem']]]] items: Add items to the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
@@ -381,6 +390,7 @@ class TeamsList(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] description: Provide the list description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict', 'outputs.TeamsListItem']]]] items: Add items to the list.
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
@@ -405,6 +415,9 @@ class TeamsList(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property

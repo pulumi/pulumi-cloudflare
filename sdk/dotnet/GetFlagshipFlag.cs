@@ -100,22 +100,25 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipFlagArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
 
+        [Input("filter")]
+        public Inputs.GetFlagshipFlagFilterArgs? Filter { get; set; }
+
         /// <summary>
-        /// Flag key (slug).
+        /// Case-sensitive key identifying the flag within the app.
         /// </summary>
-        [Input("flagKey", required: true)]
-        public string FlagKey { get; set; } = null!;
+        [Input("flagKey")]
+        public string? FlagKey { get; set; }
 
         public GetFlagshipFlagArgs()
         {
@@ -126,22 +129,25 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipFlagInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 
+        [Input("filter")]
+        public Input<Inputs.GetFlagshipFlagFilterInputArgs>? Filter { get; set; }
+
         /// <summary>
-        /// Flag key (slug).
+        /// Case-sensitive key identifying the flag within the app.
         /// </summary>
-        [Input("flagKey", required: true)]
-        public Input<string> FlagKey { get; set; } = null!;
+        [Input("flagKey")]
+        public Input<string>? FlagKey { get; set; }
 
         public GetFlagshipFlagInvokeArgs()
         {
@@ -154,26 +160,34 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipFlagResult
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         public readonly string AppId;
         /// <summary>
         /// Variation served when no rule matches or the flag is disabled. Must be a key in `Variations`.
         /// </summary>
         public readonly string DefaultVariation;
+        /// <summary>
+        /// Optional operator-facing description. It does not affect flag evaluation.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// When false, the flag bypasses all rules and always serves `DefaultVariation`.
         /// </summary>
         public readonly bool Enabled;
+        public readonly Outputs.GetFlagshipFlagFilterResult? Filter;
         /// <summary>
-        /// Flag key (slug).
+        /// Case-sensitive key identifying the flag within the app.
         /// </summary>
-        public readonly string FlagKey;
+        public readonly string? FlagKey;
+        /// <summary>
+        /// Case-sensitive key identifying the flag within the app.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         /// </summary>
@@ -206,7 +220,11 @@ namespace Pulumi.Cloudflare
 
             bool enabled,
 
-            string flagKey,
+            Outputs.GetFlagshipFlagFilterResult? filter,
+
+            string? flagKey,
+
+            string id,
 
             string key,
 
@@ -225,7 +243,9 @@ namespace Pulumi.Cloudflare
             DefaultVariation = defaultVariation;
             Description = description;
             Enabled = enabled;
+            Filter = filter;
             FlagKey = flagKey;
+            Id = id;
             Key = key;
             Rules = rules;
             Type = type;

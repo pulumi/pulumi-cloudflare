@@ -41,7 +41,7 @@ export interface GetPagesProjectArgs {
      */
     accountId?: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
 }
@@ -83,7 +83,7 @@ export interface GetPagesProjectResult {
      */
     readonly frameworkVersion: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     readonly id: string;
     /**
@@ -91,7 +91,7 @@ export interface GetPagesProjectResult {
      */
     readonly latestDeployment: outputs.GetPagesProjectLatestDeployment;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     readonly name: string;
     /**
@@ -107,7 +107,7 @@ export interface GetPagesProjectResult {
      */
     readonly productionScriptName: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     readonly projectName: string;
     /**
@@ -158,7 +158,7 @@ export interface GetPagesProjectOutputArgs {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: pulumi.Input<string>;
 }

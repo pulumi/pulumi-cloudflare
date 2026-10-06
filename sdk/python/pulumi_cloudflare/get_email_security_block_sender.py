@@ -156,7 +156,7 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        pattern_id="2402")
+        pattern_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
     """
     __args__ = dict()
@@ -195,7 +195,7 @@ def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[_bu
     import pulumi_cloudflare as cloudflare
 
     example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        pattern_id="2402")
+        pattern_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
     """
     __args__ = dict()

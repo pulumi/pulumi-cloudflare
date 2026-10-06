@@ -15,6 +15,10 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustGatewayProxyEndpoints = cloudflare.getZeroTrustGatewayProxyEndpoints({
  *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     direction: "asc",
+ *     filters: ["string"],
+ *     orderBy: "name",
+ *     search: "search",
  * });
  * ```
  */
@@ -23,7 +27,11 @@ export function getZeroTrustGatewayProxyEndpoints(args?: GetZeroTrustGatewayProx
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints", {
         "accountId": args.accountId,
+        "direction": args.direction,
+        "filters": args.filters,
         "maxItems": args.maxItems,
+        "orderBy": args.orderBy,
+        "search": args.search,
     }, opts);
 }
 
@@ -32,10 +40,11 @@ export function getZeroTrustGatewayProxyEndpoints(args?: GetZeroTrustGatewayProx
  */
 export interface GetZeroTrustGatewayProxyEndpointsArgs {
     accountId?: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    direction?: string;
+    filters?: string[];
     maxItems?: number;
+    orderBy?: string;
+    search?: string;
 }
 
 /**
@@ -43,14 +52,12 @@ export interface GetZeroTrustGatewayProxyEndpointsArgs {
  */
 export interface GetZeroTrustGatewayProxyEndpointsResult {
     readonly accountId?: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    readonly direction?: string;
+    readonly filters?: string[];
     readonly maxItems?: number;
-    /**
-     * The items returned by the data source
-     */
+    readonly orderBy?: string;
     readonly results: outputs.GetZeroTrustGatewayProxyEndpointsResult[];
+    readonly search?: string;
 }
 /**
  * ## Example Usage
@@ -61,6 +68,10 @@ export interface GetZeroTrustGatewayProxyEndpointsResult {
  *
  * const exampleZeroTrustGatewayProxyEndpoints = cloudflare.getZeroTrustGatewayProxyEndpoints({
  *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     direction: "asc",
+ *     filters: ["string"],
+ *     orderBy: "name",
+ *     search: "search",
  * });
  * ```
  */
@@ -69,7 +80,11 @@ export function getZeroTrustGatewayProxyEndpointsOutput(args?: GetZeroTrustGatew
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints", {
         "accountId": args.accountId,
+        "direction": args.direction,
+        "filters": args.filters,
         "maxItems": args.maxItems,
+        "orderBy": args.orderBy,
+        "search": args.search,
     }, opts);
 }
 
@@ -78,8 +93,9 @@ export function getZeroTrustGatewayProxyEndpointsOutput(args?: GetZeroTrustGatew
  */
 export interface GetZeroTrustGatewayProxyEndpointsOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    direction?: pulumi.Input<string | undefined>;
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     maxItems?: pulumi.Input<number | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
+    search?: pulumi.Input<string | undefined>;
 }

@@ -7,7 +7,9 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/aiSearchToken:AiSearchToken example '<account_id>/<id>'
+ * ```
  */
 export class AiSearchToken extends pulumi.CustomResource {
     /**

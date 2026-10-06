@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustGatewayProxyEndpointFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,17 +22,25 @@ public final class GetZeroTrustGatewayProxyEndpointPlainArgs extends com.pulumi.
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="proxyEndpointId", required=true)
-    private String proxyEndpointId;
+    @Import(name="filter")
+    private @Nullable GetZeroTrustGatewayProxyEndpointFilter filter;
 
-    public String proxyEndpointId() {
-        return this.proxyEndpointId;
+    public Optional<GetZeroTrustGatewayProxyEndpointFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    @Import(name="proxyEndpointId")
+    private @Nullable String proxyEndpointId;
+
+    public Optional<String> proxyEndpointId() {
+        return Optional.ofNullable(this.proxyEndpointId);
     }
 
     private GetZeroTrustGatewayProxyEndpointPlainArgs() {}
 
     private GetZeroTrustGatewayProxyEndpointPlainArgs(GetZeroTrustGatewayProxyEndpointPlainArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.proxyEndpointId = $.proxyEndpointId;
     }
 
@@ -59,15 +67,17 @@ public final class GetZeroTrustGatewayProxyEndpointPlainArgs extends com.pulumi.
             return this;
         }
 
-        public Builder proxyEndpointId(String proxyEndpointId) {
+        public Builder filter(@Nullable GetZeroTrustGatewayProxyEndpointFilter filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder proxyEndpointId(@Nullable String proxyEndpointId) {
             $.proxyEndpointId = proxyEndpointId;
             return this;
         }
 
         public GetZeroTrustGatewayProxyEndpointPlainArgs build() {
-            if ($.proxyEndpointId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointPlainArgs", "proxyEndpointId");
-            }
             return $;
         }
     }

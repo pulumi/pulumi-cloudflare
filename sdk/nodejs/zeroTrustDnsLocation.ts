@@ -93,6 +93,9 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDnsLocation.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Indicate whether this location is the default location.
@@ -208,6 +211,9 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDnsLocation resources.
  */
 export interface ZeroTrustDnsLocationState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether this location is the default location.
@@ -265,6 +271,9 @@ export interface ZeroTrustDnsLocationState {
  * The set of arguments for constructing a ZeroTrustDnsLocation resource.
  */
 export interface ZeroTrustDnsLocationArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Indicate whether this location is the default location.

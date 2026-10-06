@@ -11,6 +11,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetZeroTrustResourceLibraryCategories(ctx, &cloudflare.LookupZeroTrustResourceLibraryCategoriesArgs{
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZeroTrustResourceLibraryCategories(ctx *pulumi.Context, args *LookupZeroTrustResourceLibraryCategoriesArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustResourceLibraryCategoriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustResourceLibraryCategoriesResult

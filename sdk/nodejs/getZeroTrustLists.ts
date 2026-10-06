@@ -15,6 +15,10 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustLists = cloudflare.getZeroTrustLists({
  *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     direction: "asc",
+ *     filters: ["string"],
+ *     orderBy: "name",
+ *     search: "search",
  *     type: "SERIAL",
  * });
  * ```
@@ -24,7 +28,11 @@ export function getZeroTrustLists(args?: GetZeroTrustListsArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustLists:getZeroTrustLists", {
         "accountId": args.accountId,
+        "direction": args.direction,
+        "filters": args.filters,
         "maxItems": args.maxItems,
+        "orderBy": args.orderBy,
+        "search": args.search,
         "type": args.type,
     }, opts);
 }
@@ -34,14 +42,11 @@ export function getZeroTrustLists(args?: GetZeroTrustListsArgs, opts?: pulumi.In
  */
 export interface GetZeroTrustListsArgs {
     accountId?: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    direction?: string;
+    filters?: string[];
     maxItems?: number;
-    /**
-     * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-     */
+    orderBy?: string;
+    search?: string;
     type?: string;
 }
 
@@ -50,18 +55,12 @@ export interface GetZeroTrustListsArgs {
  */
 export interface GetZeroTrustListsResult {
     readonly accountId?: string;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    readonly direction?: string;
+    readonly filters?: string[];
     readonly maxItems?: number;
-    /**
-     * The items returned by the data source
-     */
+    readonly orderBy?: string;
     readonly results: outputs.GetZeroTrustListsResult[];
-    /**
-     * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-     */
+    readonly search?: string;
     readonly type?: string;
 }
 /**
@@ -73,6 +72,10 @@ export interface GetZeroTrustListsResult {
  *
  * const exampleZeroTrustLists = cloudflare.getZeroTrustLists({
  *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     direction: "asc",
+ *     filters: ["string"],
+ *     orderBy: "name",
+ *     search: "search",
  *     type: "SERIAL",
  * });
  * ```
@@ -82,7 +85,11 @@ export function getZeroTrustListsOutput(args?: GetZeroTrustListsOutputArgs, opts
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustLists:getZeroTrustLists", {
         "accountId": args.accountId,
+        "direction": args.direction,
+        "filters": args.filters,
         "maxItems": args.maxItems,
+        "orderBy": args.orderBy,
+        "search": args.search,
         "type": args.type,
     }, opts);
 }
@@ -92,13 +99,10 @@ export function getZeroTrustListsOutput(args?: GetZeroTrustListsOutputArgs, opts
  */
 export interface GetZeroTrustListsOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
-    /**
-     * Max items to fetch, default: 1000
-     */
+    direction?: pulumi.Input<string | undefined>;
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     maxItems?: pulumi.Input<number | undefined>;
-    /**
-     * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-     */
+    orderBy?: pulumi.Input<string | undefined>;
+    search?: pulumi.Input<string | undefined>;
     type?: pulumi.Input<string | undefined>;
 }

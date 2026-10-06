@@ -14,6 +14,29 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleStreamLiveInput = new cloudflare.StreamLiveInput("example_stream_live_input", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     defaultCreator: "defaultCreator",
+ *     deleteRecordingAfterDays: 45,
+ *     enabled: true,
+ *     meta: JSON.stringify({
+ *         name: "test stream 1",
+ *     }),
+ *     preferLowLatency: true,
+ *     recording: {
+ *         allowedOrigins: ["example.com"],
+ *         hideLiveViewerCount: false,
+ *         mode: "off",
+ *         requireSignedUrls: false,
+ *         timeoutSeconds: 0,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * > This resource does not currently support `pulumi import`.

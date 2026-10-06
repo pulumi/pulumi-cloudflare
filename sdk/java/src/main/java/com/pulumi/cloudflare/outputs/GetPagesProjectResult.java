@@ -60,7 +60,7 @@ public final class GetPagesProjectResult {
      */
     private String frameworkVersion;
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     private String id;
@@ -70,7 +70,7 @@ public final class GetPagesProjectResult {
      */
     private GetPagesProjectLatestDeployment latestDeployment;
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     private String name;
@@ -90,7 +90,7 @@ public final class GetPagesProjectResult {
      */
     private String productionScriptName;
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     private String projectName;
@@ -168,7 +168,7 @@ public final class GetPagesProjectResult {
         return this.frameworkVersion;
     }
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public String id() {
@@ -182,7 +182,7 @@ public final class GetPagesProjectResult {
         return this.latestDeployment;
     }
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public String name() {
@@ -210,7 +210,7 @@ public final class GetPagesProjectResult {
         return this.productionScriptName;
     }
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public String projectName() {

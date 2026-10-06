@@ -59,6 +59,9 @@ export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayPacfile.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Actual contents of the PAC file
@@ -133,6 +136,9 @@ export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayPacfile resources.
  */
 export interface ZeroTrustGatewayPacfileState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Actual contents of the PAC file
@@ -162,6 +168,9 @@ export interface ZeroTrustGatewayPacfileState {
  * The set of arguments for constructing a ZeroTrustGatewayPacfile resource.
  */
 export interface ZeroTrustGatewayPacfileArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Actual contents of the PAC file

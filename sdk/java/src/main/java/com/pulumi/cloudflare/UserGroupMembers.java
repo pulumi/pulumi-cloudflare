@@ -11,8 +11,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -83,11 +85,69 @@ public class UserGroupMembers extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * The sort order of returned user group members by email.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Export(name="direction", refs={String.class}, tree="[0]")
+    private Output<String> direction;
+
+    /**
+     * @return The sort order of returned user group members by email.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Output<String> direction() {
+        return this.direction;
+    }
+    /**
+     * A string used for filtering members by partial email match.
+     * 
+     */
+    @Export(name="fuzzyEmail", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> fuzzyEmail;
+
+    /**
+     * @return A string used for filtering members by partial email match.
+     * 
+     */
+    public Output<Optional<String>> fuzzyEmail() {
+        return Codegen.optional(this.fuzzyEmail);
+    }
     @Export(name="members", refs={List.class,UserGroupMembersMember.class}, tree="[0,1]")
     private Output<List<UserGroupMembersMember>> members;
 
     public Output<List<UserGroupMembersMember>> members() {
         return this.members;
+    }
+    /**
+     * Page number of paginated results.
+     * 
+     */
+    @Export(name="page", refs={Double.class}, tree="[0]")
+    private Output<Double> page;
+
+    /**
+     * @return Page number of paginated results.
+     * 
+     */
+    public Output<Double> page() {
+        return this.page;
+    }
+    /**
+     * Maximum number of results per page.
+     * 
+     */
+    @Export(name="perPage", refs={Double.class}, tree="[0]")
+    private Output<Double> perPage;
+
+    /**
+     * @return Maximum number of results per page.
+     * 
+     */
+    public Output<Double> perPage() {
+        return this.perPage;
     }
     /**
      * User Group identifier tag.

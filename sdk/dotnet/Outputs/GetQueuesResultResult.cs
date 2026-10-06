@@ -17,6 +17,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double ConsumersTotalCount;
         public readonly string CreatedOn;
         public readonly string Id;
+        /// <summary>
+        /// Available values: "eu", "us", "fedramp".
+        /// </summary>
+        public readonly string Jurisdiction;
         public readonly string ModifiedOn;
         public readonly ImmutableArray<Outputs.GetQueuesResultProducerResult> Producers;
         public readonly double ProducersTotalCount;
@@ -34,6 +38,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            string jurisdiction,
+
             string modifiedOn,
 
             ImmutableArray<Outputs.GetQueuesResultProducerResult> producers,
@@ -50,6 +56,7 @@ namespace Pulumi.Cloudflare.Outputs
             ConsumersTotalCount = consumersTotalCount;
             CreatedOn = createdOn;
             Id = id;
+            Jurisdiction = jurisdiction;
             ModifiedOn = modifiedOn;
             Producers = producers;
             ProducersTotalCount = producersTotalCount;

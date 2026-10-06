@@ -27,7 +27,7 @@ public final class GetWorkersScriptSubdomainResult {
      */
     private Boolean previewsEnabled;
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     private String scriptName;
@@ -55,7 +55,7 @@ public final class GetWorkersScriptSubdomainResult {
         return this.previewsEnabled;
     }
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public String scriptName() {

@@ -272,6 +272,25 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter extends com.pulu
     }
 
     /**
+     * Filter by tag key:value pairs. Multiple `tag` params are AND&#39;d.
+     * Format: `tag=key:value` (e.g., `tag=environment:production`).
+     * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable List<String> tags;
+
+    /**
+     * @return Filter by tag key:value pairs. Multiple `tag` params are AND&#39;d.
+     * Format: `tag=key:value` (e.g., `tag=environment:production`).
+     * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+     * 
+     */
+    public Optional<List<String>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * Filters for targets that have any of the following UUIDs. Specify
      * `targetIds` multiple times in query parameter to build list of
      * candidates.
@@ -324,6 +343,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter extends com.pulu
         this.modifiedAfter = $.modifiedAfter;
         this.modifiedBefore = $.modifiedBefore;
         this.order = $.order;
+        this.tags = $.tags;
         this.targetIds = $.targetIds;
         this.virtualNetworkId = $.virtualNetworkId;
     }
@@ -539,6 +559,31 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter extends com.pulu
         public Builder order(@Nullable String order) {
             $.order = order;
             return this;
+        }
+
+        /**
+         * @param tags Filter by tag key:value pairs. Multiple `tag` params are AND&#39;d.
+         * Format: `tag=key:value` (e.g., `tag=environment:production`).
+         * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable List<String> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Filter by tag key:value pairs. Multiple `tag` params are AND&#39;d.
+         * Format: `tag=key:value` (e.g., `tag=environment:production`).
+         * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

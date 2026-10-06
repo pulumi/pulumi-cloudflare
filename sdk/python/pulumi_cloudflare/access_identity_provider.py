@@ -369,6 +369,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
             name="Widget Corps IDP",
             type="onetimepin",
             zone_id="zone_id",
+            saml_certificate_set_id="c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
             scim_config={
                 "enabled": True,
                 "identity_update_behavior": "automatic",
@@ -434,6 +435,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
             name="Widget Corps IDP",
             type="onetimepin",
             zone_id="zone_id",
+            saml_certificate_set_id="c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
             scim_config={
                 "enabled": True,
                 "identity_update_behavior": "automatic",

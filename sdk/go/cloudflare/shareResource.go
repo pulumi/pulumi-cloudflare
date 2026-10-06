@@ -19,6 +19,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -26,10 +28,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewShareResource(ctx, "example_share_resource", &cloudflare.ShareResourceArgs{
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudflare.NewShareResource(ctx, "example_share_resource", &cloudflare.ShareResourceArgs{
 //				AccountId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ShareId:           pulumi.String("3fd85f74b32742f1bff64a85009dda07"),
-//				Meta:              pulumi.String{},
+//				Meta:              pulumi.String(json0),
 //				ResourceAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ResourceId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ResourceType:      pulumi.String("custom-ruleset"),

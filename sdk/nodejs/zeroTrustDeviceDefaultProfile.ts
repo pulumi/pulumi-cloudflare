@@ -25,11 +25,21 @@ import * as utilities from "./utilities";
  *     autoConnect: 0,
  *     captivePortal: 180,
  *     disableAutoFallback: true,
+ *     dnsSearchSuffixes: [{
+ *         suffix: "internal.corp",
+ *         description: "Example internal domains",
+ *     }],
  *     excludes: [{
  *         address: "192.0.2.0/24",
  *         description: "Exclude testing domains from the tunnel",
  *     }],
  *     excludeOfficeIps: true,
+ *     globalAcceleration: {
+ *         apiEndpoints: ["198.51.100.1:443"],
+ *         enabled: true,
+ *         masqueEndpoints: ["198.51.100.1:443"],
+ *         wireguardEndpoints: ["198.51.100.1:2408"],
+ *     },
  *     includes: [{
  *         address: "192.0.2.0/24",
  *         description: "Include testing domains in the tunnel",
@@ -45,6 +55,11 @@ import * as utilities from "./utilities";
  *     supportUrl: "https://1.1.1.1/help",
  *     switchLocked: true,
  *     tunnelProtocol: "wireguard",
+ *     uninstallProtection: false,
+ *     virtualNetworks: {
+ *         alloweds: ["f174e90a-fafe-4643-bbbc-4a0ed4fc8415"],
+ *         "default": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     },
  * });
  * ```
  *
@@ -147,6 +162,11 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     declare public readonly lanAllowSubnetSize: pulumi.Output<number | undefined>;
     declare public /*out*/ readonly policyId: pulumi.Output<string>;
     /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: "warp", "browserExtension".
+     */
+    declare public /*out*/ readonly profileType: pulumi.Output<string>;
+    /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     declare public readonly registerInterfaceIpWithDns: pulumi.Output<boolean>;
@@ -167,6 +187,10 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      * Determines which tunnel protocol to use.
      */
     declare public readonly tunnelProtocol: pulumi.Output<string>;
+    /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     */
+    declare public readonly uninstallProtection: pulumi.Output<boolean>;
     /**
      * Virtual network access settings for the device.
      */
@@ -204,12 +228,14 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["lanAllowMinutes"] = state?.lanAllowMinutes;
             resourceInputs["lanAllowSubnetSize"] = state?.lanAllowSubnetSize;
             resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["profileType"] = state?.profileType;
             resourceInputs["registerInterfaceIpWithDns"] = state?.registerInterfaceIpWithDns;
             resourceInputs["sccmVpnBoundarySupport"] = state?.sccmVpnBoundarySupport;
             resourceInputs["serviceModeV2"] = state?.serviceModeV2;
             resourceInputs["supportUrl"] = state?.supportUrl;
             resourceInputs["switchLocked"] = state?.switchLocked;
             resourceInputs["tunnelProtocol"] = state?.tunnelProtocol;
+            resourceInputs["uninstallProtection"] = state?.uninstallProtection;
             resourceInputs["virtualNetworks"] = state?.virtualNetworks;
         } else {
             const args = argsOrState as ZeroTrustDeviceDefaultProfileArgs | undefined;
@@ -236,12 +262,14 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["supportUrl"] = args?.supportUrl;
             resourceInputs["switchLocked"] = args?.switchLocked;
             resourceInputs["tunnelProtocol"] = args?.tunnelProtocol;
+            resourceInputs["uninstallProtection"] = args?.uninstallProtection;
             resourceInputs["virtualNetworks"] = args?.virtualNetworks;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["fallbackDomains"] = undefined /*out*/;
             resourceInputs["gatewayUniqueId"] = undefined /*out*/;
             resourceInputs["policyId"] = undefined /*out*/;
+            resourceInputs["profileType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy" }, { type: "cloudflare:index/splitTunnel:SplitTunnel" }] };
@@ -319,6 +347,11 @@ export interface ZeroTrustDeviceDefaultProfileState {
     lanAllowSubnetSize?: pulumi.Input<number | undefined>;
     policyId?: pulumi.Input<string | undefined>;
     /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: "warp", "browserExtension".
+     */
+    profileType?: pulumi.Input<string | undefined>;
+    /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     registerInterfaceIpWithDns?: pulumi.Input<boolean | undefined>;
@@ -339,6 +372,10 @@ export interface ZeroTrustDeviceDefaultProfileState {
      * Determines which tunnel protocol to use.
      */
     tunnelProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     */
+    uninstallProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Virtual network access settings for the device.
      */
@@ -423,6 +460,10 @@ export interface ZeroTrustDeviceDefaultProfileArgs {
      * Determines which tunnel protocol to use.
      */
     tunnelProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     */
+    uninstallProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Virtual network access settings for the device.
      */

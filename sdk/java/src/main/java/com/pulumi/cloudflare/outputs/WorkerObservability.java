@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.WorkerObservabilityIssues;
 import com.pulumi.cloudflare.outputs.WorkerObservabilityLogs;
 import com.pulumi.cloudflare.outputs.WorkerObservabilityTraces;
 import com.pulumi.core.annotations.CustomType;
@@ -24,6 +25,11 @@ public final class WorkerObservability {
      * 
      */
     private @Nullable Double headSamplingRate;
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    private @Nullable WorkerObservabilityIssues issues;
     /**
      * @return Log settings for the Worker.
      * 
@@ -51,6 +57,13 @@ public final class WorkerObservability {
         return Optional.ofNullable(this.headSamplingRate);
     }
     /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    public Optional<WorkerObservabilityIssues> issues() {
+        return Optional.ofNullable(this.issues);
+    }
+    /**
      * @return Log settings for the Worker.
      * 
      */
@@ -76,6 +89,7 @@ public final class WorkerObservability {
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable Double headSamplingRate;
+        private @Nullable WorkerObservabilityIssues issues;
         private @Nullable WorkerObservabilityLogs logs;
         private @Nullable WorkerObservabilityTraces traces;
         public Builder() {}
@@ -83,6 +97,7 @@ public final class WorkerObservability {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
+    	      this.issues = defaults.issues;
     	      this.logs = defaults.logs;
     	      this.traces = defaults.traces;
         }
@@ -97,6 +112,12 @@ public final class WorkerObservability {
         public Builder headSamplingRate(@Nullable Double headSamplingRate) {
 
             this.headSamplingRate = headSamplingRate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issues(@Nullable WorkerObservabilityIssues issues) {
+
+            this.issues = issues;
             return this;
         }
         @CustomType.Setter
@@ -115,6 +136,7 @@ public final class WorkerObservability {
             final var _resultValue = new WorkerObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
+            _resultValue.issues = issues;
             _resultValue.logs = logs;
             _resultValue.traces = traces;
             return _resultValue;

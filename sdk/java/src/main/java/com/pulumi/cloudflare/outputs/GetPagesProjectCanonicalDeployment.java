@@ -56,7 +56,7 @@ public final class GetPagesProjectCanonicalDeployment {
      */
     private String id;
     /**
-     * @return If the deployment has been skipped.
+     * @return Whether the deployment was skipped.
      * 
      */
     private Boolean isSkipped;
@@ -76,7 +76,7 @@ public final class GetPagesProjectCanonicalDeployment {
      */
     private String projectId;
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     private String projectName;
@@ -87,7 +87,7 @@ public final class GetPagesProjectCanonicalDeployment {
     private String shortId;
     /**
      * @return Why the deployment was skipped.
-     * Available values: &#34;commit*message&#34;, &#34;preview*deployments*disabled&#34;, &#34;production*deployments*disabled&#34;, &#34;path*config&#34;, &#34;branch*config&#34;, &#34;pages*to*workers*conversion&#34;.
+     * Available values: &#34;commit*message&#34;, &#34;preview*deployments*disabled&#34;, &#34;production*deployments*disabled&#34;, &#34;path*config&#34;, &#34;branch*config&#34;, &#34;pages*to*workers*conversion&#34;, &#34;superseded*queued*build&#34;.
      * 
      */
     private String skipReason;
@@ -164,7 +164,7 @@ public final class GetPagesProjectCanonicalDeployment {
         return this.id;
     }
     /**
-     * @return If the deployment has been skipped.
+     * @return Whether the deployment was skipped.
      * 
      */
     public Boolean isSkipped() {
@@ -192,7 +192,7 @@ public final class GetPagesProjectCanonicalDeployment {
         return this.projectId;
     }
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public String projectName() {
@@ -207,7 +207,7 @@ public final class GetPagesProjectCanonicalDeployment {
     }
     /**
      * @return Why the deployment was skipped.
-     * Available values: &#34;commit*message&#34;, &#34;preview*deployments*disabled&#34;, &#34;production*deployments*disabled&#34;, &#34;path*config&#34;, &#34;branch*config&#34;, &#34;pages*to*workers*conversion&#34;.
+     * Available values: &#34;commit*message&#34;, &#34;preview*deployments*disabled&#34;, &#34;production*deployments*disabled&#34;, &#34;path*config&#34;, &#34;branch*config&#34;, &#34;pages*to*workers*conversion&#34;, &#34;superseded*queued*build&#34;.
      * 
      */
     public String skipReason() {

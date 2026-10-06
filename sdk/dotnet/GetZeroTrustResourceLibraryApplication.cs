@@ -173,7 +173,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// IP subnets matched by the application.
+        /// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         /// </summary>
         public readonly ImmutableArray<string> IpSubnets;
         /// <summary>

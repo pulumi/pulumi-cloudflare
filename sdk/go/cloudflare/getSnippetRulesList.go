@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Snippets Read`
+// - `Snippets Write`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetSnippetRulesList(ctx, &cloudflare.LookupSnippetRulesListArgs{
+//				ZoneId: "9f1839b6152d298aca64c4e906b6d074",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSnippetRulesList(ctx *pulumi.Context, args *LookupSnippetRulesListArgs, opts ...pulumi.InvokeOption) (*LookupSnippetRulesListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetRulesListResult
@@ -25,7 +55,7 @@ func LookupSnippetRulesList(ctx *pulumi.Context, args *LookupSnippetRulesListArg
 type LookupSnippetRulesListArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -35,7 +65,7 @@ type LookupSnippetRulesListResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetSnippetRulesListResult `pulumi:"results"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -48,7 +78,7 @@ func LookupSnippetRulesListOutput(ctx *pulumi.Context, args LookupSnippetRulesLi
 type LookupSnippetRulesListOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// The unique ID of the zone.
+	// Use this field to specify the unique ID of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -81,7 +111,7 @@ func (o LookupSnippetRulesListResultOutput) Results() GetSnippetRulesListResultA
 	return o.ApplyT(func(v LookupSnippetRulesListResult) []GetSnippetRulesListResult { return v.Results }).(GetSnippetRulesListResultArrayOutput)
 }
 
-// The unique ID of the zone.
+// Use this field to specify the unique ID of the zone.
 func (o LookupSnippetRulesListResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetRulesListResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetAiSearchInstanceFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// </summary>
+        [Input("hostname")]
+        public string? Hostname { get; set; }
+
+        /// <summary>
         /// Filter by namespace.
         /// </summary>
         [Input("namespace")]

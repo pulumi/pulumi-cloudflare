@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFlagshipFlagsInvokeResult {
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     private String accountId;
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     private String appId;
@@ -29,7 +29,7 @@ public final class GetFlagshipFlagsInvokeResult {
      * @return Max items to return (1–200).
      * 
      */
-    private @Nullable String limit;
+    private @Nullable Integer limit;
     /**
      * @return Max items to fetch, default: 1000
      * 
@@ -43,14 +43,14 @@ public final class GetFlagshipFlagsInvokeResult {
 
     private GetFlagshipFlagsInvokeResult() {}
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public String appId() {
@@ -60,7 +60,7 @@ public final class GetFlagshipFlagsInvokeResult {
      * @return Max items to return (1–200).
      * 
      */
-    public Optional<String> limit() {
+    public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
     /**
@@ -89,7 +89,7 @@ public final class GetFlagshipFlagsInvokeResult {
     public static final class Builder {
         private String accountId;
         private String appId;
-        private @Nullable String limit;
+        private @Nullable Integer limit;
         private @Nullable Integer maxItems;
         private List<GetFlagshipFlagsResult> results;
         public Builder() {}
@@ -119,7 +119,7 @@ public final class GetFlagshipFlagsInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder limit(@Nullable String limit) {
+        public Builder limit(@Nullable Integer limit) {
 
             this.limit = limit;
             return this;

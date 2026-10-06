@@ -158,6 +158,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ModifiedAt;
         /// <summary>
+        /// Tags assigned to the target. Empty when no tags are assigned.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
         /// Target identifier
         /// </summary>
         public readonly string? TargetId;
@@ -178,6 +182,8 @@ namespace Pulumi.Cloudflare
 
             string modifiedAt,
 
+            ImmutableDictionary<string, string> tags,
+
             string? targetId)
         {
             AccountId = accountId;
@@ -187,6 +193,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             Ip = ip;
             ModifiedAt = modifiedAt;
+            Tags = tags;
             TargetId = targetId;
         }
     }

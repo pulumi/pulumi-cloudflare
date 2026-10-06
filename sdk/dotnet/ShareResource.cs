@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
@@ -24,7 +25,9 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ShareId = "3fd85f74b32742f1bff64a85009dda07",
-    ///         Meta = null,
+    ///         Meta = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///         }),
     ///         ResourceAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ResourceId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ResourceType = "custom-ruleset",

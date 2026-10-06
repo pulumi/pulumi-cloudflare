@@ -257,7 +257,7 @@ class AccountSubscription(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+        $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>/<subscription_id>'
         ```
 
 
@@ -303,7 +303,7 @@ class AccountSubscription(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+        $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>/<subscription_id>'
         ```
 
 

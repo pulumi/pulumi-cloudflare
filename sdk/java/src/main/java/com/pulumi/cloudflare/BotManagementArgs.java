@@ -18,6 +18,21 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     public static final BotManagementArgs Empty = new BotManagementArgs();
 
     /**
+     * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     * 
+     */
+    @Import(name="aiBotsMigrationOptOut")
+    private @Nullable Output<Boolean> aiBotsMigrationOptOut;
+
+    /**
+     * @return Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     * 
+     */
+    public Optional<Output<Boolean>> aiBotsMigrationOptOut() {
+        return Optional.ofNullable(this.aiBotsMigrationOptOut);
+    }
+
+    /**
      * Enable rule to block AI Scrapers and Crawlers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
@@ -32,6 +47,57 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> aiBotsProtection() {
         return Optional.ofNullable(this.aiBotsProtection);
+    }
+
+    /**
+     * Configure robots.txt policy for AI model training bots.
+     * Available values: &#34;disabled&#34;, &#34;disallow&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    @Import(name="aiTraining")
+    private @Nullable Output<String> aiTraining;
+
+    /**
+     * @return Configure robots.txt policy for AI model training bots.
+     * Available values: &#34;disabled&#34;, &#34;disallow&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public Optional<Output<String>> aiTraining() {
+        return Optional.ofNullable(this.aiTraining);
+    }
+
+    /**
+     * Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    @Import(name="aiUser")
+    private @Nullable Output<String> aiUser;
+
+    /**
+     * @return Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public Optional<Output<String>> aiUser() {
+        return Optional.ofNullable(this.aiUser);
+    }
+
+    /**
+     * Configure robots.txt policy for AI search bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    @Import(name="aisearch")
+    private @Nullable Output<String> aisearch;
+
+    /**
+     * @return Configure robots.txt policy for AI search bots.
+     * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+     * 
+     */
+    public Optional<Output<String>> aisearch() {
+        return Optional.ofNullable(this.aisearch);
     }
 
     /**
@@ -176,6 +242,21 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to use JavaScript Detection results submitted through the API for this zone.
+     * 
+     */
+    @Import(name="jsdApiResultsEnabled")
+    private @Nullable Output<Boolean> jsdApiResultsEnabled;
+
+    /**
+     * @return Whether to use JavaScript Detection results submitted through the API for this zone.
+     * 
+     */
+    public Optional<Output<Boolean>> jsdApiResultsEnabled() {
+        return Optional.ofNullable(this.jsdApiResultsEnabled);
+    }
+
+    /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      * 
      */
@@ -293,7 +374,11 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     private BotManagementArgs() {}
 
     private BotManagementArgs(BotManagementArgs $) {
+        this.aiBotsMigrationOptOut = $.aiBotsMigrationOptOut;
         this.aiBotsProtection = $.aiBotsProtection;
+        this.aiTraining = $.aiTraining;
+        this.aiUser = $.aiUser;
+        this.aisearch = $.aisearch;
         this.autoUpdateModel = $.autoUpdateModel;
         this.bmCookieEnabled = $.bmCookieEnabled;
         this.botPreferenceSyncEnabled = $.botPreferenceSyncEnabled;
@@ -303,6 +388,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         this.enableJs = $.enableJs;
         this.fightMode = $.fightMode;
         this.isRobotsTxtManaged = $.isRobotsTxtManaged;
+        this.jsdApiResultsEnabled = $.jsdApiResultsEnabled;
         this.optimizeWordpress = $.optimizeWordpress;
         this.sbfmDefinitelyAutomated = $.sbfmDefinitelyAutomated;
         this.sbfmLikelyAutomated = $.sbfmLikelyAutomated;
@@ -331,6 +417,27 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param aiBotsMigrationOptOut Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiBotsMigrationOptOut(@Nullable Output<Boolean> aiBotsMigrationOptOut) {
+            $.aiBotsMigrationOptOut = aiBotsMigrationOptOut;
+            return this;
+        }
+
+        /**
+         * @param aiBotsMigrationOptOut Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiBotsMigrationOptOut(Boolean aiBotsMigrationOptOut) {
+            return aiBotsMigrationOptOut(Output.of(aiBotsMigrationOptOut));
+        }
+
+        /**
          * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
          * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
          * 
@@ -351,6 +458,75 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder aiBotsProtection(String aiBotsProtection) {
             return aiBotsProtection(Output.of(aiBotsProtection));
+        }
+
+        /**
+         * @param aiTraining Configure robots.txt policy for AI model training bots.
+         * Available values: &#34;disabled&#34;, &#34;disallow&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiTraining(@Nullable Output<String> aiTraining) {
+            $.aiTraining = aiTraining;
+            return this;
+        }
+
+        /**
+         * @param aiTraining Configure robots.txt policy for AI model training bots.
+         * Available values: &#34;disabled&#34;, &#34;disallow&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiTraining(String aiTraining) {
+            return aiTraining(Output.of(aiTraining));
+        }
+
+        /**
+         * @param aiUser Configure robots.txt policy for AI assistant and agent bots.
+         * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiUser(@Nullable Output<String> aiUser) {
+            $.aiUser = aiUser;
+            return this;
+        }
+
+        /**
+         * @param aiUser Configure robots.txt policy for AI assistant and agent bots.
+         * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiUser(String aiUser) {
+            return aiUser(Output.of(aiUser));
+        }
+
+        /**
+         * @param aisearch Configure robots.txt policy for AI search bots.
+         * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aisearch(@Nullable Output<String> aisearch) {
+            $.aisearch = aisearch;
+            return this;
+        }
+
+        /**
+         * @param aisearch Configure robots.txt policy for AI search bots.
+         * Available values: &#34;disabled&#34;, &#34;block&#34;, &#34;only*on*ad_pages&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aisearch(String aisearch) {
+            return aisearch(Output.of(aisearch));
         }
 
         /**
@@ -546,6 +722,27 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isRobotsTxtManaged(Boolean isRobotsTxtManaged) {
             return isRobotsTxtManaged(Output.of(isRobotsTxtManaged));
+        }
+
+        /**
+         * @param jsdApiResultsEnabled Whether to use JavaScript Detection results submitted through the API for this zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsdApiResultsEnabled(@Nullable Output<Boolean> jsdApiResultsEnabled) {
+            $.jsdApiResultsEnabled = jsdApiResultsEnabled;
+            return this;
+        }
+
+        /**
+         * @param jsdApiResultsEnabled Whether to use JavaScript Detection results submitted through the API for this zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsdApiResultsEnabled(Boolean jsdApiResultsEnabled) {
+            return jsdApiResultsEnabled(Output.of(jsdApiResultsEnabled));
         }
 
         /**

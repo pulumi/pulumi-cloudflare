@@ -59,7 +59,7 @@ type LookupTurnstileWidgetArgs struct {
 	// Identifier
 	AccountId *string                   `pulumi:"accountId"`
 	Filter    *GetTurnstileWidgetFilter `pulumi:"filter"`
-	// Widget item identifier tag.
+	// Unique identifier for a Turnstile widget.
 	Sitekey *string `pulumi:"sitekey"`
 }
 
@@ -75,14 +75,23 @@ type LookupTurnstileWidgetResult struct {
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
 	ClearanceLevel string `pulumi:"clearanceLevel"`
 	// When the widget was created.
-	CreatedOn   string   `pulumi:"createdOn"`
+	CreatedOn string `pulumi:"createdOn"`
+	// Origin that created this widget, recorded at creation time and
+	// immutable afterward. Server-derived from the create request; not
+	// client-settable. Omitted from the response for widgets created
+	// before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
 	DeployedVia string   `pulumi:"deployedVia"`
 	Domains     []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId bool                      `pulumi:"ephemeralId"`
 	Filter      *GetTurnstileWidgetFilter `pulumi:"filter"`
-	// Widget item identifier tag.
-	Id              string `pulumi:"id"`
+	// Unique identifier for a Turnstile widget.
+	Id string `pulumi:"id"`
+	// Origin of the most recent mutation (create, update, delete, or
+	// secret rotation). Server-derived; not client-settable. Omitted for
+	// widgets last mutated before this field existed.
+	// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
 	LastModifiedVia string `pulumi:"lastModifiedVia"`
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
@@ -100,7 +109,7 @@ type LookupTurnstileWidgetResult struct {
 	Region string `pulumi:"region"`
 	// Secret key for this widget.
 	Secret string `pulumi:"secret"`
-	// Widget item identifier tag.
+	// Unique identifier for a Turnstile widget.
 	Sitekey string `pulumi:"sitekey"`
 }
 
@@ -114,7 +123,7 @@ type LookupTurnstileWidgetOutputArgs struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput            `pulumi:"accountId"`
 	Filter    GetTurnstileWidgetFilterPtrInput `pulumi:"filter"`
-	// Widget item identifier tag.
+	// Unique identifier for a Turnstile widget.
 	Sitekey pulumi.StringPtrInput `pulumi:"sitekey"`
 }
 
@@ -160,6 +169,11 @@ func (o LookupTurnstileWidgetResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// Origin that created this widget, recorded at creation time and
+// immutable afterward. Server-derived from the create request; not
+// client-settable. Omitted from the response for widgets created
+// before this field existed.
+// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
 func (o LookupTurnstileWidgetResultOutput) DeployedVia() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.DeployedVia }).(pulumi.StringOutput)
 }
@@ -177,11 +191,15 @@ func (o LookupTurnstileWidgetResultOutput) Filter() GetTurnstileWidgetFilterPtrO
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) *GetTurnstileWidgetFilter { return v.Filter }).(GetTurnstileWidgetFilterPtrOutput)
 }
 
-// Widget item identifier tag.
+// Unique identifier for a Turnstile widget.
 func (o LookupTurnstileWidgetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Origin of the most recent mutation (create, update, delete, or
+// secret rotation). Server-derived; not client-settable. Omitted for
+// widgets last mutated before this field existed.
+// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
 func (o LookupTurnstileWidgetResultOutput) LastModifiedVia() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.LastModifiedVia }).(pulumi.StringOutput)
 }
@@ -220,7 +238,7 @@ func (o LookupTurnstileWidgetResultOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// Widget item identifier tag.
+// Unique identifier for a Turnstile widget.
 func (o LookupTurnstileWidgetResultOutput) Sitekey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.Sitekey }).(pulumi.StringOutput)
 }

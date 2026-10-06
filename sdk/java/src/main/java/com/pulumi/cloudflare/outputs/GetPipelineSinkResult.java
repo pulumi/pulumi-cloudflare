@@ -56,7 +56,7 @@ public final class GetPipelineSinkResult {
     private @Nullable String sinkId;
     /**
      * @return Specifies the type of sink.
-     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
      * 
      */
     private String type;
@@ -122,7 +122,7 @@ public final class GetPipelineSinkResult {
     }
     /**
      * @return Specifies the type of sink.
-     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;.
+     * Available values: &#34;r2&#34;, &#34;r2*data*catalog&#34;, &#34;basinCatalog&#34;.
      * 
      */
     public String type() {

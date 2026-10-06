@@ -41,6 +41,7 @@ import (
 //				},
 //				Assets: &cloudflare.WorkerVersionAssetsArgs{
 //					Config: &cloudflare.WorkerVersionAssetsConfigArgs{
+//						BasePath:         pulumi.String("/docs/"),
 //						HtmlHandling:     pulumi.String("auto-trailing-slash"),
 //						NotFoundHandling: pulumi.String("404-page"),
 //						RunWorkerFirst:   pulumi.Any{},
@@ -73,22 +74,25 @@ import (
 //						Cache: &cloudflare.WorkerVersionExportsCacheArgs{
 //							Enabled: pulumi.Bool(true),
 //						},
-//						RenamedTo:     pulumi.String("renamed_to"),
-//						State:         pulumi.String("created"),
-//						Storage:       pulumi.String("sqlite"),
-//						TransferFrom:  pulumi.String("transfer_from"),
-//						TransferredTo: pulumi.String("transferred_to"),
+//						State: pulumi.String("created"),
+//					},
+//					"Counter": &cloudflare.WorkerVersionExportsArgs{
+//						Storage:   pulumi.String("sqlite"),
+//						Type:      pulumi.String("durable-object"),
+//						Container: "my-container",
+//						State:     pulumi.String("created"),
+//					},
+//					"OldCounter": &cloudflare.WorkerVersionExportsArgs{
+//						RenamedTo: pulumi.String("Counter"),
+//						State:     pulumi.String("renamed"),
+//						Type:      pulumi.String("durable-object"),
 //					},
 //					"default": &cloudflare.WorkerVersionExportsArgs{
 //						Type: pulumi.String("worker"),
 //						Cache: &cloudflare.WorkerVersionExportsCacheArgs{
 //							Enabled: pulumi.Bool(false),
 //						},
-//						RenamedTo:     pulumi.String("renamed_to"),
-//						State:         pulumi.String("created"),
-//						Storage:       pulumi.String("sqlite"),
-//						TransferFrom:  pulumi.String("transfer_from"),
-//						TransferredTo: pulumi.String("transferred_to"),
+//						State: pulumi.String("created"),
 //					},
 //				},
 //				Limits: &cloudflare.WorkerVersionLimitsArgs{
@@ -124,9 +128,9 @@ import (
 //				},
 //				Modules: cloudflare.WorkerVersionModuleArray{
 //					&cloudflare.WorkerVersionModuleArgs{
-//						ContentFile: pulumi.String("dist/index.js"),
-//						ContentType: pulumi.String("application/javascript+module"),
-//						Name:        pulumi.String("index.js"),
+//						ContentBase64: pulumi.String("ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ=="),
+//						ContentType:   pulumi.String("application/javascript+module"),
+//						Name:          pulumi.String("index.js"),
 //					},
 //				},
 //				PackageDependencies: cloudflare.WorkerVersionPackageDependencyArray{
@@ -139,6 +143,7 @@ import (
 //				Placement: &cloudflare.WorkerVersionPlacementArgs{
 //					Mode: pulumi.String("smart"),
 //				},
+//				UsageModel: pulumi.String("standard"),
 //			})
 //			if err != nil {
 //				return err
@@ -163,6 +168,10 @@ type WorkerVersion struct {
 	Annotations WorkerVersionAnnotationsOutput `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
 	Assets WorkerVersionAssetsPtrOutput `pulumi:"assets"`
+	// Email of the user who created the version.
+	AuthorEmail pulumi.StringOutput `pulumi:"authorEmail"`
+	// Identifier of the user who created the version.
+	AuthorId pulumi.StringOutput `pulumi:"authorId"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerVersionBindingArrayOutput `pulumi:"bindings"`
 	// Global CacheW configuration for the Worker. When caching is on,
@@ -178,6 +187,8 @@ type WorkerVersion struct {
 	Containers WorkerVersionContainerArrayOutput `pulumi:"containers"`
 	// When the version was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// If true, a deployment will be created that sends 100% of traffic to the new version.
+	Deploy pulumi.BoolPtrOutput `pulumi:"deploy"`
 	// Declarative exports for the version, including Durable Object
 	// classes (with their `storage` backend) and named Worker
 	// entrypoints. On reads, tombstoned lifecycle entries are
@@ -185,6 +196,11 @@ type WorkerVersion struct {
 	// `expecting-transfer`) are returned. `exports` and `migrations`
 	// are mutually exclusive on upload.
 	Exports WorkerVersionExportsMapOutput `pulumi:"exports"`
+	// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+	ExportsReconciliation WorkerVersionExportsReconciliationOutput `pulumi:"exportsReconciliation"`
+	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+	// Available values: "modules".
+	Include pulumi.StringPtrOutput `pulumi:"include"`
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsOutput `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -266,6 +282,10 @@ type workerVersionState struct {
 	Annotations *WorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
 	Assets *WorkerVersionAssets `pulumi:"assets"`
+	// Email of the user who created the version.
+	AuthorEmail *string `pulumi:"authorEmail"`
+	// Identifier of the user who created the version.
+	AuthorId *string `pulumi:"authorId"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkerVersionBinding `pulumi:"bindings"`
 	// Global CacheW configuration for the Worker. When caching is on,
@@ -281,6 +301,8 @@ type workerVersionState struct {
 	Containers []WorkerVersionContainer `pulumi:"containers"`
 	// When the version was created.
 	CreatedOn *string `pulumi:"createdOn"`
+	// If true, a deployment will be created that sends 100% of traffic to the new version.
+	Deploy *bool `pulumi:"deploy"`
 	// Declarative exports for the version, including Durable Object
 	// classes (with their `storage` backend) and named Worker
 	// entrypoints. On reads, tombstoned lifecycle entries are
@@ -288,6 +310,11 @@ type workerVersionState struct {
 	// `expecting-transfer`) are returned. `exports` and `migrations`
 	// are mutually exclusive on upload.
 	Exports map[string]WorkerVersionExports `pulumi:"exports"`
+	// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+	ExportsReconciliation *WorkerVersionExportsReconciliation `pulumi:"exportsReconciliation"`
+	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+	// Available values: "modules".
+	Include *string `pulumi:"include"`
 	// Resource limits enforced at runtime.
 	Limits *WorkerVersionLimits `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -334,6 +361,10 @@ type WorkerVersionState struct {
 	Annotations WorkerVersionAnnotationsPtrInput
 	// Configuration for assets within a Worker.
 	Assets WorkerVersionAssetsPtrInput
+	// Email of the user who created the version.
+	AuthorEmail pulumi.StringPtrInput
+	// Identifier of the user who created the version.
+	AuthorId pulumi.StringPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerVersionBindingArrayInput
 	// Global CacheW configuration for the Worker. When caching is on,
@@ -349,6 +380,8 @@ type WorkerVersionState struct {
 	Containers WorkerVersionContainerArrayInput
 	// When the version was created.
 	CreatedOn pulumi.StringPtrInput
+	// If true, a deployment will be created that sends 100% of traffic to the new version.
+	Deploy pulumi.BoolPtrInput
 	// Declarative exports for the version, including Durable Object
 	// classes (with their `storage` backend) and named Worker
 	// entrypoints. On reads, tombstoned lifecycle entries are
@@ -356,6 +389,11 @@ type WorkerVersionState struct {
 	// `expecting-transfer`) are returned. `exports` and `migrations`
 	// are mutually exclusive on upload.
 	Exports WorkerVersionExportsMapInput
+	// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+	ExportsReconciliation WorkerVersionExportsReconciliationPtrInput
+	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+	// Available values: "modules".
+	Include pulumi.StringPtrInput
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsPtrInput
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -419,6 +457,8 @@ type workerVersionArgs struct {
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers []WorkerVersionContainer `pulumi:"containers"`
+	// If true, a deployment will be created that sends 100% of traffic to the new version.
+	Deploy *bool `pulumi:"deploy"`
 	// Declarative exports for the version, including Durable Object
 	// classes (with their `storage` backend) and named Worker
 	// entrypoints. On reads, tombstoned lifecycle entries are
@@ -426,6 +466,9 @@ type workerVersionArgs struct {
 	// `expecting-transfer`) are returned. `exports` and `migrations`
 	// are mutually exclusive on upload.
 	Exports map[string]WorkerVersionExports `pulumi:"exports"`
+	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+	// Available values: "modules".
+	Include *string `pulumi:"include"`
 	// Resource limits enforced at runtime.
 	Limits *WorkerVersionLimits `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -474,6 +517,8 @@ type WorkerVersionArgs struct {
 	CompatibilityFlags pulumi.StringArrayInput
 	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
 	Containers WorkerVersionContainerArrayInput
+	// If true, a deployment will be created that sends 100% of traffic to the new version.
+	Deploy pulumi.BoolPtrInput
 	// Declarative exports for the version, including Durable Object
 	// classes (with their `storage` backend) and named Worker
 	// entrypoints. On reads, tombstoned lifecycle entries are
@@ -481,6 +526,9 @@ type WorkerVersionArgs struct {
 	// `expecting-transfer`) are returned. `exports` and `migrations`
 	// are mutually exclusive on upload.
 	Exports WorkerVersionExportsMapInput
+	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+	// Available values: "modules".
+	Include pulumi.StringPtrInput
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsPtrInput
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -610,6 +658,16 @@ func (o WorkerVersionOutput) Assets() WorkerVersionAssetsPtrOutput {
 	return o.ApplyT(func(v *WorkerVersion) WorkerVersionAssetsPtrOutput { return v.Assets }).(WorkerVersionAssetsPtrOutput)
 }
 
+// Email of the user who created the version.
+func (o WorkerVersionOutput) AuthorEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+// Identifier of the user who created the version.
+func (o WorkerVersionOutput) AuthorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.AuthorId }).(pulumi.StringOutput)
+}
+
 // List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 func (o WorkerVersionOutput) Bindings() WorkerVersionBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerVersion) WorkerVersionBindingArrayOutput { return v.Bindings }).(WorkerVersionBindingArrayOutput)
@@ -643,6 +701,11 @@ func (o WorkerVersionOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+// If true, a deployment will be created that sends 100% of traffic to the new version.
+func (o WorkerVersionOutput) Deploy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.BoolPtrOutput { return v.Deploy }).(pulumi.BoolPtrOutput)
+}
+
 // Declarative exports for the version, including Durable Object
 // classes (with their `storage` backend) and named Worker
 // entrypoints. On reads, tombstoned lifecycle entries are
@@ -651,6 +714,17 @@ func (o WorkerVersionOutput) CreatedOn() pulumi.StringOutput {
 // are mutually exclusive on upload.
 func (o WorkerVersionOutput) Exports() WorkerVersionExportsMapOutput {
 	return o.ApplyT(func(v *WorkerVersion) WorkerVersionExportsMapOutput { return v.Exports }).(WorkerVersionExportsMapOutput)
+}
+
+// Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+func (o WorkerVersionOutput) ExportsReconciliation() WorkerVersionExportsReconciliationOutput {
+	return o.ApplyT(func(v *WorkerVersion) WorkerVersionExportsReconciliationOutput { return v.ExportsReconciliation }).(WorkerVersionExportsReconciliationOutput)
+}
+
+// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+// Available values: "modules".
+func (o WorkerVersionOutput) Include() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringPtrOutput { return v.Include }).(pulumi.StringPtrOutput)
 }
 
 // Resource limits enforced at runtime.

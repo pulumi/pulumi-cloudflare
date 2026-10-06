@@ -46,7 +46,7 @@ import (
 type R2ManagedDomain struct {
 	pulumi.CustomResourceState
 
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Bucket ID.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
@@ -99,7 +99,7 @@ func GetR2ManagedDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2ManagedDomain resources.
 type r2managedDomainState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Bucket ID.
 	BucketId *string `pulumi:"bucketId"`
@@ -114,7 +114,7 @@ type r2managedDomainState struct {
 }
 
 type R2ManagedDomainState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringPtrInput
 	// Bucket ID.
 	BucketId pulumi.StringPtrInput
@@ -133,7 +133,7 @@ func (R2ManagedDomainState) ElementType() reflect.Type {
 }
 
 type r2managedDomainArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -145,7 +145,7 @@ type r2managedDomainArgs struct {
 
 // The set of arguments for constructing a R2ManagedDomain resource.
 type R2ManagedDomainArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
@@ -242,7 +242,7 @@ func (o R2ManagedDomainOutput) ToR2ManagedDomainOutputWithContext(ctx context.Co
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o R2ManagedDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2ManagedDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -77,14 +77,14 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Available values: &#34;worker&#34;, &#34;httpPull&#34;.
+     * Available values: &#34;worker&#34;, &#34;httpPull&#34;, &#34;notification&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;worker&#34;, &#34;httpPull&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;httpPull&#34;, &#34;notification&#34;.
      * 
      */
     public Output<String> type() {
@@ -202,7 +202,7 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Available values: &#34;worker&#34;, &#34;httpPull&#34;.
+         * @param type Available values: &#34;worker&#34;, &#34;httpPull&#34;, &#34;notification&#34;.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class QueueConsumerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Available values: &#34;worker&#34;, &#34;httpPull&#34;.
+         * @param type Available values: &#34;worker&#34;, &#34;httpPull&#34;, &#34;notification&#34;.
          * 
          * @return builder
          * 

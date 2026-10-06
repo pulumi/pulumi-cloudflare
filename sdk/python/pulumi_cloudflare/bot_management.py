@@ -22,7 +22,11 @@ __all__ = ['BotManagementArgs', 'BotManagement']
 class BotManagementArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
+                 ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_training: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 aisearch: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -32,6 +36,7 @@ class BotManagementArgs:
                  enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
                  fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jsd_api_results_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
                  sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
                  sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,8 +47,15 @@ class BotManagementArgs:
         The set of arguments for constructing a BotManagement resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
+        :param pulumi.Input[_builtins.bool] ai_bots_migration_opt_out: Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] ai_training: Configure robots.txt policy for AI model training bots.
+               Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] ai_user: Configure robots.txt policy for AI assistant and agent bots.
+               Available values: "disabled", "block", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] aisearch: Configure robots.txt policy for AI search bots.
+               Available values: "disabled", "block", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         :param pulumi.Input[_builtins.bool] bot_preference_sync_enabled: Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
@@ -56,6 +68,7 @@ class BotManagementArgs:
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[_builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
         :param pulumi.Input[_builtins.bool] is_robots_txt_managed: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        :param pulumi.Input[_builtins.bool] jsd_api_results_enabled: Whether to use JavaScript Detection results submitted through the API for this zone.
         :param pulumi.Input[_builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[_builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
                Available values: "allow", "block", "managed_challenge".
@@ -69,8 +82,16 @@ class BotManagementArgs:
         :param pulumi.Input[_builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         """
         pulumi.set(__self__, "zone_id", zone_id)
+        if ai_bots_migration_opt_out is not None:
+            pulumi.set(__self__, "ai_bots_migration_opt_out", ai_bots_migration_opt_out)
         if ai_bots_protection is not None:
             pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
+        if ai_training is not None:
+            pulumi.set(__self__, "ai_training", ai_training)
+        if ai_user is not None:
+            pulumi.set(__self__, "ai_user", ai_user)
+        if aisearch is not None:
+            pulumi.set(__self__, "aisearch", aisearch)
         if auto_update_model is not None:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
         if bm_cookie_enabled is not None:
@@ -89,6 +110,8 @@ class BotManagementArgs:
             pulumi.set(__self__, "fight_mode", fight_mode)
         if is_robots_txt_managed is not None:
             pulumi.set(__self__, "is_robots_txt_managed", is_robots_txt_managed)
+        if jsd_api_results_enabled is not None:
+            pulumi.set(__self__, "jsd_api_results_enabled", jsd_api_results_enabled)
         if optimize_wordpress is not None:
             pulumi.set(__self__, "optimize_wordpress", optimize_wordpress)
         if sbfm_definitely_automated is not None:
@@ -115,6 +138,18 @@ class BotManagementArgs:
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="aiBotsMigrationOptOut")
+    def ai_bots_migration_opt_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+        """
+        return pulumi.get(self, "ai_bots_migration_opt_out")
+
+    @ai_bots_migration_opt_out.setter
+    def ai_bots_migration_opt_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ai_bots_migration_opt_out", value)
+
+    @_builtins.property
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -126,6 +161,45 @@ class BotManagementArgs:
     @ai_bots_protection.setter
     def ai_bots_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_bots_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiTraining")
+    def ai_training(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configure robots.txt policy for AI model training bots.
+        Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "ai_training")
+
+    @ai_training.setter
+    def ai_training(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ai_training", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiUser")
+    def ai_user(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configure robots.txt policy for AI assistant and agent bots.
+        Available values: "disabled", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "ai_user")
+
+    @ai_user.setter
+    def ai_user(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ai_user", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def aisearch(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configure robots.txt policy for AI search bots.
+        Available values: "disabled", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "aisearch")
+
+    @aisearch.setter
+    def aisearch(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aisearch", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpdateModel")
@@ -237,6 +311,18 @@ class BotManagementArgs:
     @is_robots_txt_managed.setter
     def is_robots_txt_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_robots_txt_managed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jsdApiResultsEnabled")
+    def jsd_api_results_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use JavaScript Detection results submitted through the API for this zone.
+        """
+        return pulumi.get(self, "jsd_api_results_enabled")
+
+    @jsd_api_results_enabled.setter
+    def jsd_api_results_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "jsd_api_results_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
@@ -319,7 +405,11 @@ class BotManagementArgs:
 @pulumi.input_type
 class _BotManagementState:
     def __init__(__self__, *,
+                 ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_training: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 aisearch: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -329,6 +419,7 @@ class _BotManagementState:
                  enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
                  fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jsd_api_results_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
                  sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
                  sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
@@ -341,8 +432,15 @@ class _BotManagementState:
         """
         Input properties used for looking up and filtering BotManagement resources.
 
+        :param pulumi.Input[_builtins.bool] ai_bots_migration_opt_out: Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] ai_training: Configure robots.txt policy for AI model training bots.
+               Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] ai_user: Configure robots.txt policy for AI assistant and agent bots.
+               Available values: "disabled", "block", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] aisearch: Configure robots.txt policy for AI search bots.
+               Available values: "disabled", "block", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         :param pulumi.Input[_builtins.bool] bot_preference_sync_enabled: Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
@@ -355,6 +453,7 @@ class _BotManagementState:
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[_builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
         :param pulumi.Input[_builtins.bool] is_robots_txt_managed: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        :param pulumi.Input[_builtins.bool] jsd_api_results_enabled: Whether to use JavaScript Detection results submitted through the API for this zone.
         :param pulumi.Input[_builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[_builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
                Available values: "allow", "block", "managed_challenge".
@@ -370,8 +469,16 @@ class _BotManagementState:
         :param pulumi.Input[_builtins.bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
+        if ai_bots_migration_opt_out is not None:
+            pulumi.set(__self__, "ai_bots_migration_opt_out", ai_bots_migration_opt_out)
         if ai_bots_protection is not None:
             pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
+        if ai_training is not None:
+            pulumi.set(__self__, "ai_training", ai_training)
+        if ai_user is not None:
+            pulumi.set(__self__, "ai_user", ai_user)
+        if aisearch is not None:
+            pulumi.set(__self__, "aisearch", aisearch)
         if auto_update_model is not None:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
         if bm_cookie_enabled is not None:
@@ -390,6 +497,8 @@ class _BotManagementState:
             pulumi.set(__self__, "fight_mode", fight_mode)
         if is_robots_txt_managed is not None:
             pulumi.set(__self__, "is_robots_txt_managed", is_robots_txt_managed)
+        if jsd_api_results_enabled is not None:
+            pulumi.set(__self__, "jsd_api_results_enabled", jsd_api_results_enabled)
         if optimize_wordpress is not None:
             pulumi.set(__self__, "optimize_wordpress", optimize_wordpress)
         if sbfm_definitely_automated is not None:
@@ -410,6 +519,18 @@ class _BotManagementState:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
+    @pulumi.getter(name="aiBotsMigrationOptOut")
+    def ai_bots_migration_opt_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+        """
+        return pulumi.get(self, "ai_bots_migration_opt_out")
+
+    @ai_bots_migration_opt_out.setter
+    def ai_bots_migration_opt_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ai_bots_migration_opt_out", value)
+
+    @_builtins.property
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -421,6 +542,45 @@ class _BotManagementState:
     @ai_bots_protection.setter
     def ai_bots_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_bots_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiTraining")
+    def ai_training(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configure robots.txt policy for AI model training bots.
+        Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "ai_training")
+
+    @ai_training.setter
+    def ai_training(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ai_training", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiUser")
+    def ai_user(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configure robots.txt policy for AI assistant and agent bots.
+        Available values: "disabled", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "ai_user")
+
+    @ai_user.setter
+    def ai_user(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ai_user", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def aisearch(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configure robots.txt policy for AI search bots.
+        Available values: "disabled", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "aisearch")
+
+    @aisearch.setter
+    def aisearch(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aisearch", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpdateModel")
@@ -532,6 +692,18 @@ class _BotManagementState:
     @is_robots_txt_managed.setter
     def is_robots_txt_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_robots_txt_managed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jsdApiResultsEnabled")
+    def jsd_api_results_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use JavaScript Detection results submitted through the API for this zone.
+        """
+        return pulumi.get(self, "jsd_api_results_enabled")
+
+    @jsd_api_results_enabled.setter
+    def jsd_api_results_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "jsd_api_results_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
@@ -653,7 +825,11 @@ class BotManagement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_training: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 aisearch: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -663,6 +839,7 @@ class BotManagement(pulumi.CustomResource):
                  enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
                  fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jsd_api_results_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
                  sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
                  sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
@@ -685,14 +862,19 @@ class BotManagement(pulumi.CustomResource):
 
         example_bot_management = cloudflare.BotManagement("example_bot_management",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            ai_bots_migration_opt_out=False,
             ai_bots_protection="block",
+            aisearch="block",
+            ai_training="disallow",
+            ai_user="only_on_ad_pages",
             bot_preference_sync_enabled=True,
             cf_robots_variant="policy_only",
             content_bots_protection="disabled",
             crawler_protection="enabled",
             enable_js=True,
             fight_mode=True,
-            is_robots_txt_managed=False)
+            is_robots_txt_managed=False,
+            jsd_api_results_enabled=True)
         ```
 
         ## Import
@@ -704,8 +886,15 @@ class BotManagement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] ai_bots_migration_opt_out: Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] ai_training: Configure robots.txt policy for AI model training bots.
+               Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] ai_user: Configure robots.txt policy for AI assistant and agent bots.
+               Available values: "disabled", "block", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] aisearch: Configure robots.txt policy for AI search bots.
+               Available values: "disabled", "block", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         :param pulumi.Input[_builtins.bool] bot_preference_sync_enabled: Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
@@ -718,6 +907,7 @@ class BotManagement(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[_builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
         :param pulumi.Input[_builtins.bool] is_robots_txt_managed: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        :param pulumi.Input[_builtins.bool] jsd_api_results_enabled: Whether to use JavaScript Detection results submitted through the API for this zone.
         :param pulumi.Input[_builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[_builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
                Available values: "allow", "block", "managed_challenge".
@@ -751,14 +941,19 @@ class BotManagement(pulumi.CustomResource):
 
         example_bot_management = cloudflare.BotManagement("example_bot_management",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            ai_bots_migration_opt_out=False,
             ai_bots_protection="block",
+            aisearch="block",
+            ai_training="disallow",
+            ai_user="only_on_ad_pages",
             bot_preference_sync_enabled=True,
             cf_robots_variant="policy_only",
             content_bots_protection="disabled",
             crawler_protection="enabled",
             enable_js=True,
             fight_mode=True,
-            is_robots_txt_managed=False)
+            is_robots_txt_managed=False,
+            jsd_api_results_enabled=True)
         ```
 
         ## Import
@@ -783,7 +978,11 @@ class BotManagement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
                  ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_training: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 aisearch: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -793,6 +992,7 @@ class BotManagement(pulumi.CustomResource):
                  enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
                  fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jsd_api_results_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
                  sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
                  sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
@@ -809,7 +1009,11 @@ class BotManagement(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BotManagementArgs.__new__(BotManagementArgs)
 
+            __props__.__dict__["ai_bots_migration_opt_out"] = ai_bots_migration_opt_out
             __props__.__dict__["ai_bots_protection"] = ai_bots_protection
+            __props__.__dict__["ai_training"] = ai_training
+            __props__.__dict__["ai_user"] = ai_user
+            __props__.__dict__["aisearch"] = aisearch
             __props__.__dict__["auto_update_model"] = auto_update_model
             __props__.__dict__["bm_cookie_enabled"] = bm_cookie_enabled
             __props__.__dict__["bot_preference_sync_enabled"] = bot_preference_sync_enabled
@@ -819,6 +1023,7 @@ class BotManagement(pulumi.CustomResource):
             __props__.__dict__["enable_js"] = enable_js
             __props__.__dict__["fight_mode"] = fight_mode
             __props__.__dict__["is_robots_txt_managed"] = is_robots_txt_managed
+            __props__.__dict__["jsd_api_results_enabled"] = jsd_api_results_enabled
             __props__.__dict__["optimize_wordpress"] = optimize_wordpress
             __props__.__dict__["sbfm_definitely_automated"] = sbfm_definitely_automated
             __props__.__dict__["sbfm_likely_automated"] = sbfm_likely_automated
@@ -840,7 +1045,11 @@ class BotManagement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ai_bots_migration_opt_out: pulumi.Input[Optional[_builtins.bool]] = None,
             ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_training: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_user: pulumi.Input[Optional[_builtins.str]] = None,
+            aisearch: pulumi.Input[Optional[_builtins.str]] = None,
             auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
             bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             bot_preference_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -850,6 +1059,7 @@ class BotManagement(pulumi.CustomResource):
             enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
             fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            jsd_api_results_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
             sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
             sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
@@ -866,8 +1076,15 @@ class BotManagement(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] ai_bots_migration_opt_out: Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
         :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] ai_training: Configure robots.txt policy for AI model training bots.
+               Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] ai_user: Configure robots.txt policy for AI assistant and agent bots.
+               Available values: "disabled", "block", "only*on*ad_pages".
+        :param pulumi.Input[_builtins.str] aisearch: Configure robots.txt policy for AI search bots.
+               Available values: "disabled", "block", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         :param pulumi.Input[_builtins.bool] bot_preference_sync_enabled: Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
@@ -880,6 +1097,7 @@ class BotManagement(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[_builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
         :param pulumi.Input[_builtins.bool] is_robots_txt_managed: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        :param pulumi.Input[_builtins.bool] jsd_api_results_enabled: Whether to use JavaScript Detection results submitted through the API for this zone.
         :param pulumi.Input[_builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[_builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
                Available values: "allow", "block", "managed_challenge".
@@ -899,7 +1117,11 @@ class BotManagement(pulumi.CustomResource):
 
         __props__ = _BotManagementState.__new__(_BotManagementState)
 
+        __props__.__dict__["ai_bots_migration_opt_out"] = ai_bots_migration_opt_out
         __props__.__dict__["ai_bots_protection"] = ai_bots_protection
+        __props__.__dict__["ai_training"] = ai_training
+        __props__.__dict__["ai_user"] = ai_user
+        __props__.__dict__["aisearch"] = aisearch
         __props__.__dict__["auto_update_model"] = auto_update_model
         __props__.__dict__["bm_cookie_enabled"] = bm_cookie_enabled
         __props__.__dict__["bot_preference_sync_enabled"] = bot_preference_sync_enabled
@@ -909,6 +1131,7 @@ class BotManagement(pulumi.CustomResource):
         __props__.__dict__["enable_js"] = enable_js
         __props__.__dict__["fight_mode"] = fight_mode
         __props__.__dict__["is_robots_txt_managed"] = is_robots_txt_managed
+        __props__.__dict__["jsd_api_results_enabled"] = jsd_api_results_enabled
         __props__.__dict__["optimize_wordpress"] = optimize_wordpress
         __props__.__dict__["sbfm_definitely_automated"] = sbfm_definitely_automated
         __props__.__dict__["sbfm_likely_automated"] = sbfm_likely_automated
@@ -921,6 +1144,14 @@ class BotManagement(pulumi.CustomResource):
         return BotManagement(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="aiBotsMigrationOptOut")
+    def ai_bots_migration_opt_out(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+        """
+        return pulumi.get(self, "ai_bots_migration_opt_out")
+
+    @_builtins.property
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> pulumi.Output[_builtins.str]:
         """
@@ -928,6 +1159,33 @@ class BotManagement(pulumi.CustomResource):
         Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="aiTraining")
+    def ai_training(self) -> pulumi.Output[_builtins.str]:
+        """
+        Configure robots.txt policy for AI model training bots.
+        Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "ai_training")
+
+    @_builtins.property
+    @pulumi.getter(name="aiUser")
+    def ai_user(self) -> pulumi.Output[_builtins.str]:
+        """
+        Configure robots.txt policy for AI assistant and agent bots.
+        Available values: "disabled", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "ai_user")
+
+    @_builtins.property
+    @pulumi.getter
+    def aisearch(self) -> pulumi.Output[_builtins.str]:
+        """
+        Configure robots.txt policy for AI search bots.
+        Available values: "disabled", "block", "only*on*ad_pages".
+        """
+        return pulumi.get(self, "aisearch")
 
     @_builtins.property
     @pulumi.getter(name="autoUpdateModel")
@@ -1003,6 +1261,14 @@ class BotManagement(pulumi.CustomResource):
         Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
         """
         return pulumi.get(self, "is_robots_txt_managed")
+
+    @_builtins.property
+    @pulumi.getter(name="jsdApiResultsEnabled")
+    def jsd_api_results_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to use JavaScript Detection results submitted through the API for this zone.
+        """
+        return pulumi.get(self, "jsd_api_results_enabled")
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")

@@ -76,8 +76,9 @@ type AccountDnsSettings struct {
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
-	EnforceDnsOnly pulumi.BoolPtrOutput                 `pulumi:"enforceDnsOnly"`
-	ZoneDefaults   AccountDnsSettingsZoneDefaultsOutput `pulumi:"zoneDefaults"`
+	EnforceDnsOnly pulumi.BoolPtrOutput `pulumi:"enforceDnsOnly"`
+	// Default settings for new zones created in this account.
+	ZoneDefaults AccountDnsSettingsZoneDefaultsOutput `pulumi:"zoneDefaults"`
 }
 
 // NewAccountDnsSettings registers a new resource with the given unique name, arguments, and options.
@@ -116,8 +117,9 @@ type accountDnsSettingsState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
-	EnforceDnsOnly *bool                           `pulumi:"enforceDnsOnly"`
-	ZoneDefaults   *AccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
+	EnforceDnsOnly *bool `pulumi:"enforceDnsOnly"`
+	// Default settings for new zones created in this account.
+	ZoneDefaults *AccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
 }
 
 type AccountDnsSettingsState struct {
@@ -125,7 +127,8 @@ type AccountDnsSettingsState struct {
 	AccountId pulumi.StringPtrInput
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
 	EnforceDnsOnly pulumi.BoolPtrInput
-	ZoneDefaults   AccountDnsSettingsZoneDefaultsPtrInput
+	// Default settings for new zones created in this account.
+	ZoneDefaults AccountDnsSettingsZoneDefaultsPtrInput
 }
 
 func (AccountDnsSettingsState) ElementType() reflect.Type {
@@ -136,8 +139,9 @@ type accountDnsSettingsArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
-	EnforceDnsOnly *bool                           `pulumi:"enforceDnsOnly"`
-	ZoneDefaults   *AccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
+	EnforceDnsOnly *bool `pulumi:"enforceDnsOnly"`
+	// Default settings for new zones created in this account.
+	ZoneDefaults *AccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
 }
 
 // The set of arguments for constructing a AccountDnsSettings resource.
@@ -146,7 +150,8 @@ type AccountDnsSettingsArgs struct {
 	AccountId pulumi.StringInput
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
 	EnforceDnsOnly pulumi.BoolPtrInput
-	ZoneDefaults   AccountDnsSettingsZoneDefaultsPtrInput
+	// Default settings for new zones created in this account.
+	ZoneDefaults AccountDnsSettingsZoneDefaultsPtrInput
 }
 
 func (AccountDnsSettingsArgs) ElementType() reflect.Type {
@@ -246,6 +251,7 @@ func (o AccountDnsSettingsOutput) EnforceDnsOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccountDnsSettings) pulumi.BoolPtrOutput { return v.EnforceDnsOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Default settings for new zones created in this account.
 func (o AccountDnsSettingsOutput) ZoneDefaults() AccountDnsSettingsZoneDefaultsOutput {
 	return o.ApplyT(func(v *AccountDnsSettings) AccountDnsSettingsZoneDefaultsOutput { return v.ZoneDefaults }).(AccountDnsSettingsZoneDefaultsOutput)
 }

@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstanceFilterResult
     {
         /// <summary>
+        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// </summary>
+        public readonly string? Hostname;
+        /// <summary>
         /// Filter by namespace.
         /// </summary>
         public readonly string? Namespace;
@@ -34,6 +38,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetAiSearchInstanceFilterResult(
+            string? hostname,
+
             string? @namespace,
 
             string orderBy,
@@ -42,6 +48,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? search)
         {
+            Hostname = hostname;
             Namespace = @namespace;
             OrderBy = orderBy;
             OrderByDirection = orderByDirection;

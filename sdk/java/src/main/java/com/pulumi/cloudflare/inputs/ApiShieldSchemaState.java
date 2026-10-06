@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.ApiShieldSchemaSchemaArgs;
 import com.pulumi.cloudflare.inputs.ApiShieldSchemaUploadDetailsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -69,6 +70,21 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    @Import(name="omitSource")
+    private @Nullable Output<Boolean> omitSource;
+
+    /**
+     * @return Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    public Optional<Output<Boolean>> omitSource() {
+        return Optional.ofNullable(this.omitSource);
     }
 
     @Import(name="schema")
@@ -146,6 +162,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
         this.file = $.file;
         this.kind = $.kind;
         this.name = $.name;
+        this.omitSource = $.omitSource;
         this.schema = $.schema;
         this.schemaId = $.schemaId;
         this.source = $.source;
@@ -244,6 +261,27 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder omitSource(@Nullable Output<Boolean> omitSource) {
+            $.omitSource = omitSource;
+            return this;
+        }
+
+        /**
+         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder omitSource(Boolean omitSource) {
+            return omitSource(Output.of(omitSource));
         }
 
         public Builder schema(@Nullable Output<ApiShieldSchemaSchemaArgs> schema) {

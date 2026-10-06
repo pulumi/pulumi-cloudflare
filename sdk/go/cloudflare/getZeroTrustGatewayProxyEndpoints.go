@@ -27,6 +27,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayProxyEndpoints(ctx, &cloudflare.LookupZeroTrustGatewayProxyEndpointsArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+//				Direction: pulumi.StringRef("asc"),
+//				Filters: []string{
+//					"string",
+//				},
+//				OrderBy: pulumi.StringRef("name"),
+//				Search:  pulumi.StringRef("search"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,18 +54,23 @@ func LookupZeroTrustGatewayProxyEndpoints(ctx *pulumi.Context, args *LookupZeroT
 
 // A collection of arguments for invoking getZeroTrustGatewayProxyEndpoints.
 type LookupZeroTrustGatewayProxyEndpointsArgs struct {
-	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
+	AccountId *string  `pulumi:"accountId"`
+	Direction *string  `pulumi:"direction"`
+	Filters   []string `pulumi:"filters"`
+	MaxItems  *int     `pulumi:"maxItems"`
+	OrderBy   *string  `pulumi:"orderBy"`
+	Search    *string  `pulumi:"search"`
 }
 
 // A collection of values returned by getZeroTrustGatewayProxyEndpoints.
 type LookupZeroTrustGatewayProxyEndpointsResult struct {
-	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// The items returned by the data source
-	Results []GetZeroTrustGatewayProxyEndpointsResult `pulumi:"results"`
+	AccountId *string                                   `pulumi:"accountId"`
+	Direction *string                                   `pulumi:"direction"`
+	Filters   []string                                  `pulumi:"filters"`
+	MaxItems  *int                                      `pulumi:"maxItems"`
+	OrderBy   *string                                   `pulumi:"orderBy"`
+	Results   []GetZeroTrustGatewayProxyEndpointsResult `pulumi:"results"`
+	Search    *string                                   `pulumi:"search"`
 }
 
 func LookupZeroTrustGatewayProxyEndpointsOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayProxyEndpointsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayProxyEndpointsResultOutput {
@@ -69,9 +80,12 @@ func LookupZeroTrustGatewayProxyEndpointsOutput(ctx *pulumi.Context, args Lookup
 
 // A collection of arguments for invoking getZeroTrustGatewayProxyEndpoints.
 type LookupZeroTrustGatewayProxyEndpointsOutputArgs struct {
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	AccountId pulumi.StringPtrInput   `pulumi:"accountId"`
+	Direction pulumi.StringPtrInput   `pulumi:"direction"`
+	Filters   pulumi.StringArrayInput `pulumi:"filters"`
+	MaxItems  pulumi.IntPtrInput      `pulumi:"maxItems"`
+	OrderBy   pulumi.StringPtrInput   `pulumi:"orderBy"`
+	Search    pulumi.StringPtrInput   `pulumi:"search"`
 }
 
 func (LookupZeroTrustGatewayProxyEndpointsOutputArgs) ElementType() reflect.Type {
@@ -97,16 +111,30 @@ func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) AccountId() pulumi.Str
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Max items to fetch, default: 1000
+func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// The items returned by the data source
+func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
 func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) Results() GetZeroTrustGatewayProxyEndpointsResultArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) []GetZeroTrustGatewayProxyEndpointsResult {
 		return v.Results
 	}).(GetZeroTrustGatewayProxyEndpointsResultArrayOutput)
+}
+
+func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
 
 func init() {

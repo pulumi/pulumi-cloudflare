@@ -44,15 +44,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        /// <summary>
+        /// Filter by exact pattern value.
+        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
-        /// Type of pattern matching.
-        /// - EMAIL: matches a full email address (e.g. `user@example.com`)
-        /// - DOMAIN: matches a domain name (e.g. `example.com`)
-        /// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-        /// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
+        /// Filter by pattern type.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Input("patternType")]

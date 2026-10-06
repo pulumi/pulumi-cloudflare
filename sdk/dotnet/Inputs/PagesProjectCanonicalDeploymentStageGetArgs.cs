@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// State of the current stage.
-        /// Available values: "success", "idle", "active", "failure", "canceled".
+        /// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

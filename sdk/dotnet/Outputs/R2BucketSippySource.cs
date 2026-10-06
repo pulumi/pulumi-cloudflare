@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? PrivateKey;
         /// <summary>
-        /// Name of the AWS availability zone.
+        /// AWS region containing the source S3 bucket.
         /// </summary>
         public readonly string? Region;
         /// <summary>

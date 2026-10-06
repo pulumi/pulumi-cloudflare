@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.ShareRecipientArgs;
 import com.pulumi.cloudflare.inputs.ShareResourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -125,6 +126,36 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Include recipient counts in the response.
+     * 
+     */
+    @Import(name="includeRecipientCounts")
+    private @Nullable Output<Boolean> includeRecipientCounts;
+
+    /**
+     * @return Include recipient counts in the response.
+     * 
+     */
+    public Optional<Output<Boolean>> includeRecipientCounts() {
+        return Optional.ofNullable(this.includeRecipientCounts);
+    }
+
+    /**
+     * Include resources in the response.
+     * 
+     */
+    @Import(name="includeResources")
+    private @Nullable Output<Boolean> includeResources;
+
+    /**
+     * @return Include resources in the response.
+     * 
+     */
+    public Optional<Output<Boolean>> includeResources() {
+        return Optional.ofNullable(this.includeResources);
+    }
+
+    /**
      * Available values: &#34;sent&#34;, &#34;received&#34;.
      * 
      */
@@ -238,6 +269,8 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         this.created = $.created;
         this.disassociatedRecipientCount = $.disassociatedRecipientCount;
         this.disassociatingRecipientCount = $.disassociatingRecipientCount;
+        this.includeRecipientCounts = $.includeRecipientCounts;
+        this.includeResources = $.includeResources;
         this.kind = $.kind;
         this.modified = $.modified;
         this.name = $.name;
@@ -411,6 +444,48 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disassociatingRecipientCount(Integer disassociatingRecipientCount) {
             return disassociatingRecipientCount(Output.of(disassociatingRecipientCount));
+        }
+
+        /**
+         * @param includeRecipientCounts Include recipient counts in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeRecipientCounts(@Nullable Output<Boolean> includeRecipientCounts) {
+            $.includeRecipientCounts = includeRecipientCounts;
+            return this;
+        }
+
+        /**
+         * @param includeRecipientCounts Include recipient counts in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeRecipientCounts(Boolean includeRecipientCounts) {
+            return includeRecipientCounts(Output.of(includeRecipientCounts));
+        }
+
+        /**
+         * @param includeResources Include resources in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeResources(@Nullable Output<Boolean> includeResources) {
+            $.includeResources = includeResources;
+            return this;
+        }
+
+        /**
+         * @param includeResources Include resources in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeResources(Boolean includeResources) {
+            return includeResources(Output.of(includeResources));
         }
 
         /**

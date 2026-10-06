@@ -180,7 +180,7 @@ namespace Pulumi.Cloudflare
         public readonly string? SinkId;
         /// <summary>
         /// Specifies the type of sink.
-        /// Available values: "r2", "r2*data*catalog".
+        /// Available values: "r2", "r2*data*catalog", "BasinCatalog".
         /// </summary>
         public readonly string Type;
 

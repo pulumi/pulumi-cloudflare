@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,21 @@ public final class ShareRecipientArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * Include resources in the response.
+     * 
+     */
+    @Import(name="includeResources")
+    private @Nullable Output<Boolean> includeResources;
+
+    /**
+     * @return Include resources in the response.
+     * 
+     */
+    public Optional<Output<Boolean>> includeResources() {
+        return Optional.ofNullable(this.includeResources);
     }
 
     /**
@@ -80,6 +96,7 @@ public final class ShareRecipientArgs extends com.pulumi.resources.ResourceArgs 
 
     private ShareRecipientArgs(ShareRecipientArgs $) {
         this.accountId = $.accountId;
+        this.includeResources = $.includeResources;
         this.organizationId = $.organizationId;
         this.recipientAccountId = $.recipientAccountId;
         this.shareId = $.shareId;
@@ -122,6 +139,27 @@ public final class ShareRecipientArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param includeResources Include resources in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeResources(@Nullable Output<Boolean> includeResources) {
+            $.includeResources = includeResources;
+            return this;
+        }
+
+        /**
+         * @param includeResources Include resources in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeResources(Boolean includeResources) {
+            return includeResources(Output.of(includeResources));
         }
 
         /**

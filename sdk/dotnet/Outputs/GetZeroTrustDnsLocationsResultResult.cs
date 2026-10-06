@@ -44,11 +44,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Ip;
         /// <summary>
-        /// Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+        /// Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
         /// </summary>
         public readonly string Ipv4Destination;
         /// <summary>
-        /// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+        /// Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
         /// </summary>
         public readonly string Ipv4DestinationBackup;
         /// <summary>

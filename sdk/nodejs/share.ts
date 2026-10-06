@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *         recipientAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     }],
  *     resources: [{
- *         meta: {},
+ *         meta: JSON.stringify({}),
  *         resourceAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *         resourceId: "023e105f4ecef8ad9ca31a8372d0c353",
  *         resourceType: "custom-ruleset",
@@ -92,6 +92,14 @@ export class Share extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly disassociatingRecipientCount: pulumi.Output<number>;
     /**
+     * Include recipient counts in the response.
+     */
+    declare public readonly includeRecipientCounts: pulumi.Output<boolean | undefined>;
+    /**
+     * Include resources in the response.
+     */
+    declare public readonly includeResources: pulumi.Output<boolean | undefined>;
+    /**
      * Available values: "sent", "received".
      */
     declare public /*out*/ readonly kind: pulumi.Output<string>;
@@ -138,6 +146,8 @@ export class Share extends pulumi.CustomResource {
             resourceInputs["created"] = state?.created;
             resourceInputs["disassociatedRecipientCount"] = state?.disassociatedRecipientCount;
             resourceInputs["disassociatingRecipientCount"] = state?.disassociatingRecipientCount;
+            resourceInputs["includeRecipientCounts"] = state?.includeRecipientCounts;
+            resourceInputs["includeResources"] = state?.includeResources;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["modified"] = state?.modified;
             resourceInputs["name"] = state?.name;
@@ -161,6 +171,8 @@ export class Share extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resources'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["includeRecipientCounts"] = args?.includeRecipientCounts;
+            resourceInputs["includeResources"] = args?.includeResources;
             resourceInputs["name"] = args?.name;
             resourceInputs["recipients"] = args?.recipients;
             resourceInputs["resources"] = args?.resources;
@@ -214,6 +226,14 @@ export interface ShareState {
      */
     disassociatingRecipientCount?: pulumi.Input<number | undefined>;
     /**
+     * Include recipient counts in the response.
+     */
+    includeRecipientCounts?: pulumi.Input<boolean | undefined>;
+    /**
+     * Include resources in the response.
+     */
+    includeResources?: pulumi.Input<boolean | undefined>;
+    /**
      * Available values: "sent", "received".
      */
     kind?: pulumi.Input<string | undefined>;
@@ -249,6 +269,14 @@ export interface ShareArgs {
      * Account identifier.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Include recipient counts in the response.
+     */
+    includeRecipientCounts?: pulumi.Input<boolean | undefined>;
+    /**
+     * Include resources in the response.
+     */
+    includeResources?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the share.
      */

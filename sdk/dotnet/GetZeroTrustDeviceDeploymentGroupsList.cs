@@ -11,12 +11,69 @@ namespace Pulumi.Cloudflare
 {
     public static class GetZeroTrustDeviceDeploymentGroupsList
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustDeviceDeploymentGroupsList = Cloudflare.GetZeroTrustDeviceDeploymentGroupsList.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetZeroTrustDeviceDeploymentGroupsListResult> InvokeAsync(GetZeroTrustDeviceDeploymentGroupsListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDeviceDeploymentGroupsListResult>("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", args ?? new GetZeroTrustDeviceDeploymentGroupsListArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustDeviceDeploymentGroupsList = Cloudflare.GetZeroTrustDeviceDeploymentGroupsList.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetZeroTrustDeviceDeploymentGroupsListResult> Invoke(GetZeroTrustDeviceDeploymentGroupsListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDeviceDeploymentGroupsListResult>("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", args ?? new GetZeroTrustDeviceDeploymentGroupsListInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustDeviceDeploymentGroupsList = Cloudflare.GetZeroTrustDeviceDeploymentGroupsList.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetZeroTrustDeviceDeploymentGroupsListResult> Invoke(GetZeroTrustDeviceDeploymentGroupsListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDeviceDeploymentGroupsListResult>("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", args ?? new GetZeroTrustDeviceDeploymentGroupsListInvokeArgs(), options.WithDefaults());
     }

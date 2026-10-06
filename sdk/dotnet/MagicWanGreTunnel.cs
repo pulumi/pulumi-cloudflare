@@ -31,10 +31,12 @@ namespace Pulumi.Cloudflare
     ///         Bgp = new Cloudflare.Inputs.MagicWanGreTunnelBgpArgs
     ///         {
     ///             CustomerAsn = 0,
+    ///             ExportFilterId = "a1b2c3d4e5f647890a1b2c3d4e5f6789",
     ///             ExtraPrefixes = new[]
     ///             {
     ///                 "string",
     ///             },
+    ///             ImportFilterId = "a1b2c3d4e5f647890a1b2c3d4e5f6789",
     ///             Md5Key = "md5_key",
     ///         },
     ///         Description = "Tunnel for ISP X",

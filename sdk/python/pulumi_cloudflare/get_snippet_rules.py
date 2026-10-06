@@ -69,6 +69,15 @@ def get_snippet_rules(zone_id: Optional[_builtins.str] = None,
     - `Snippets Read`
     - `Snippets Write`
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_snippet_rules = cloudflare.get_snippet_rules(zone_id="9f1839b6152d298aca64c4e906b6d074")
+    ```
+
 
     :param _builtins.str zone_id: Use this field to specify the unique ID of the zone.
     """
@@ -87,6 +96,15 @@ def get_snippet_rules_output(zone_id: pulumi.Input[Optional[_builtins.str]] = No
 
     - `Snippets Read`
     - `Snippets Write`
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_snippet_rules = cloudflare.get_snippet_rules(zone_id="9f1839b6152d298aca64c4e906b6d074")
+    ```
 
 
     :param _builtins.str zone_id: Use this field to specify the unique ID of the zone.

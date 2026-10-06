@@ -140,7 +140,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
     private Boolean pkceEnabled;
     /**
      * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
+     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
      * 
      */
     private String prompt;
@@ -175,6 +175,11 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
      * 
      */
     private String tokenUrl;
+    /**
+     * @return Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+     * 
+     */
+    private Boolean useLoginHint;
 
     private GetZeroTrustAccessIdentityProviderConfig() {}
     /**
@@ -351,7 +356,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
     }
     /**
      * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
+     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
      * 
      */
     public String prompt() {
@@ -402,6 +407,13 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
     public String tokenUrl() {
         return this.tokenUrl;
     }
+    /**
+     * @return Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+     * 
+     */
+    public Boolean useLoginHint() {
+        return this.useLoginHint;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -444,6 +456,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
         private String ssoTargetUrl;
         private Boolean supportGroups;
         private String tokenUrl;
+        private Boolean useLoginHint;
         public Builder() {}
         public Builder(GetZeroTrustAccessIdentityProviderConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -479,6 +492,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
     	      this.ssoTargetUrl = defaults.ssoTargetUrl;
     	      this.supportGroups = defaults.supportGroups;
     	      this.tokenUrl = defaults.tokenUrl;
+    	      this.useLoginHint = defaults.useLoginHint;
         }
 
         @CustomType.Setter
@@ -752,6 +766,14 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
             this.tokenUrl = tokenUrl;
             return this;
         }
+        @CustomType.Setter
+        public Builder useLoginHint(Boolean useLoginHint) {
+            if (useLoginHint == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderConfig", "useLoginHint");
+            }
+            this.useLoginHint = useLoginHint;
+            return this;
+        }
         public GetZeroTrustAccessIdentityProviderConfig build() {
             final var _resultValue = new GetZeroTrustAccessIdentityProviderConfig();
             _resultValue.appsDomain = appsDomain;
@@ -786,6 +808,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
             _resultValue.ssoTargetUrl = ssoTargetUrl;
             _resultValue.supportGroups = supportGroups;
             _resultValue.tokenUrl = tokenUrl;
+            _resultValue.useLoginHint = useLoginHint;
             return _resultValue;
         }
     }

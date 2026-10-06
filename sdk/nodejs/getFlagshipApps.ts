@@ -35,7 +35,7 @@ export function getFlagshipApps(args: GetFlagshipAppsArgs, opts?: pulumi.InvokeO
  */
 export interface GetFlagshipAppsArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: string;
     /**
@@ -49,7 +49,7 @@ export interface GetFlagshipAppsArgs {
  */
 export interface GetFlagshipAppsResult {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     readonly accountId: string;
     /**
@@ -90,7 +90,7 @@ export function getFlagshipAppsOutput(args: GetFlagshipAppsOutputArgs, opts?: pu
  */
 export interface GetFlagshipAppsOutputArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: pulumi.Input<string>;
     /**

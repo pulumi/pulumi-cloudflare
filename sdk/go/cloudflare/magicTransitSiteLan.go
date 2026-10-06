@@ -62,6 +62,13 @@ import (
 //						},
 //					},
 //					DhcpServer: &cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerArgs{
+//						DhcpOptions: cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArray{
+//							&cloudflare.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs{
+//								Code:  pulumi.Int(66),
+//								Type:  pulumi.String("ip"),
+//								Value: pulumi.String("10.20.30.40"),
+//							},
+//						},
 //						DhcpPoolEnd:   pulumi.String("192.0.2.1"),
 //						DhcpPoolStart: pulumi.String("192.0.2.1"),
 //						DnsServer:     pulumi.String("192.0.2.1"),

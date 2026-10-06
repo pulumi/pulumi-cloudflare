@@ -37,11 +37,29 @@ public final class GetZeroTrustDeviceCustomProfilesPlainArgs extends com.pulumi.
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    @Import(name="profileType")
+    private @Nullable String profileType;
+
+    /**
+     * @return Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public Optional<String> profileType() {
+        return Optional.ofNullable(this.profileType);
+    }
+
     private GetZeroTrustDeviceCustomProfilesPlainArgs() {}
 
     private GetZeroTrustDeviceCustomProfilesPlainArgs(GetZeroTrustDeviceCustomProfilesPlainArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.profileType = $.profileType;
     }
 
     public static Builder builder() {
@@ -75,6 +93,18 @@ public final class GetZeroTrustDeviceCustomProfilesPlainArgs extends com.pulumi.
          */
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param profileType Filter profiles by client type. When omitted, only WARP profiles are returned.
+         * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profileType(@Nullable String profileType) {
+            $.profileType = profileType;
             return this;
         }
 

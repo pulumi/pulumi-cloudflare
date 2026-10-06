@@ -581,6 +581,21 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * ID of a K2 stream owned by the account deploying the Worker.
+     * 
+     */
+    @Import(name="stream")
+    private @Nullable Output<String> stream;
+
+    /**
+     * @return ID of a K2 stream owned by the account deploying the Worker.
+     * 
+     */
+    public Optional<Output<String>> stream() {
+        return Optional.ofNullable(this.stream);
+    }
+
+    /**
      * The text value to use.
      * 
      */
@@ -612,7 +627,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -620,7 +635,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     public Output<String> type() {
@@ -712,6 +727,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         this.serviceId = $.serviceId;
         this.simple = $.simple;
         this.storeId = $.storeId;
+        this.stream = $.stream;
         this.text = $.text;
         this.tunnelId = $.tunnelId;
         this.type = $.type;
@@ -1542,6 +1558,27 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param stream ID of a K2 stream owned by the account deploying the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stream(@Nullable Output<String> stream) {
+            $.stream = stream;
+            return this;
+        }
+
+        /**
+         * @param stream ID of a K2 stream owned by the account deploying the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stream(String stream) {
+            return stream(Output.of(stream));
+        }
+
+        /**
          * @param text The text value to use.
          * 
          * @return builder
@@ -1585,7 +1622,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+         * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
          * 
          * @return builder
          * 
@@ -1597,7 +1634,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+         * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
          * 
          * @return builder
          * 

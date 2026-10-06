@@ -51,6 +51,9 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayCertificate.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
@@ -151,6 +154,9 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
  */
 export interface ZeroTrustGatewayCertificateState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
@@ -200,6 +206,9 @@ export interface ZeroTrustGatewayCertificateState {
  * The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
  */
 export interface ZeroTrustGatewayCertificateArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic

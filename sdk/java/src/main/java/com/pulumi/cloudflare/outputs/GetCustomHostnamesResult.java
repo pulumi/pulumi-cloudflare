@@ -41,7 +41,7 @@ public final class GetCustomHostnamesResult {
      */
     private String hostname;
     /**
-     * @return Identifier.
+     * @return Custom hostname identifier tag.
      * 
      */
     private String id;
@@ -105,7 +105,7 @@ public final class GetCustomHostnamesResult {
         return this.hostname;
     }
     /**
-     * @return Identifier.
+     * @return Custom hostname identifier tag.
      * 
      */
     public String id() {

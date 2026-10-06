@@ -75,7 +75,15 @@ def get_zero_trust_device_deployment_groups_list(account_id: Optional[_builtins.
                                                  max_items: Optional[_builtins.int] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDeviceDeploymentGroupsListResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_device_deployment_groups_list = cloudflare.get_zero_trust_device_deployment_groups_list(account_id="account_id")
+    ```
+
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
@@ -93,7 +101,15 @@ def get_zero_trust_device_deployment_groups_list_output(account_id: pulumi.Input
                                                         max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceDeploymentGroupsListResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_zero_trust_device_deployment_groups_list = cloudflare.get_zero_trust_device_deployment_groups_list(account_id="account_id")
+    ```
+
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """

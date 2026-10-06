@@ -97,6 +97,7 @@ import (
 type TeamsLocation struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolOutput   `pulumi:"clientDefault"`
@@ -168,6 +169,7 @@ func GetTeamsLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsLocation resources.
 type teamsLocationState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault *bool   `pulumi:"clientDefault"`
@@ -198,6 +200,7 @@ type teamsLocationState struct {
 }
 
 type TeamsLocationState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
@@ -232,6 +235,7 @@ func (TeamsLocationState) ElementType() reflect.Type {
 }
 
 type teamsLocationArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
@@ -251,6 +255,7 @@ type teamsLocationArgs struct {
 
 // The set of arguments for constructing a TeamsLocation resource.
 type TeamsLocationArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
@@ -355,6 +360,7 @@ func (o TeamsLocationOutput) ToTeamsLocationOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o TeamsLocationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

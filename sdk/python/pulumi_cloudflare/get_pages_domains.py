@@ -61,7 +61,7 @@ class GetPagesDomainsResult:
     @pulumi.getter(name="projectName")
     def project_name(self) -> _builtins.str:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -109,7 +109,7 @@ def get_pages_domains(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str project_name: Name of the project.
+    :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -146,7 +146,7 @@ def get_pages_domains_output(account_id: pulumi.Input[Optional[Optional[_builtin
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str project_name: Name of the project.
+    :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

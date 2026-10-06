@@ -33,14 +33,14 @@ public final class FlagshipFlagRuleRolloutArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     * Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
      * 
      */
     @Import(name="percentage", required=true)
     private Output<Double> percentage;
 
     /**
-     * @return Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     * @return Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
      * 
      */
     public Output<Double> percentage() {
@@ -94,7 +94,7 @@ public final class FlagshipFlagRuleRolloutArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param percentage Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+         * @param percentage Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class FlagshipFlagRuleRolloutArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param percentage Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+         * @param percentage Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
          * 
          * @return builder
          * 

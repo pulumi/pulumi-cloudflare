@@ -572,6 +572,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     * 
+     */
+    @Import(name="tokenIds")
+    private @Nullable Output<List<String>> tokenIds;
+
+    /**
+     * @return Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     * 
+     */
+    public Optional<Output<List<String>>> tokenIds() {
+        return Optional.ofNullable(this.tokenIds);
+    }
+
+    /**
      * Used for configuring traffic*anomalies*alert
      * 
      */
@@ -701,6 +716,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.targetHostnames = $.targetHostnames;
         this.targetIps = $.targetIps;
         this.targetZoneNames = $.targetZoneNames;
+        this.tokenIds = $.tokenIds;
         this.trafficExclusions = $.trafficExclusions;
         this.tunnelIds = $.tunnelIds;
         this.tunnelNames = $.tunnelNames;
@@ -1872,6 +1888,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder targetZoneNames(String... targetZoneNames) {
             return targetZoneNames(List.of(targetZoneNames));
+        }
+
+        /**
+         * @param tokenIds Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenIds(@Nullable Output<List<String>> tokenIds) {
+            $.tokenIds = tokenIds;
+            return this;
+        }
+
+        /**
+         * @param tokenIds Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenIds(List<String> tokenIds) {
+            return tokenIds(Output.of(tokenIds));
+        }
+
+        /**
+         * @param tokenIds Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenIds(String... tokenIds) {
+            return tokenIds(List.of(tokenIds));
         }
 
         /**

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkerObservabilityIssuesArgs;
 import com.pulumi.cloudflare.inputs.WorkerObservabilityLogsArgs;
 import com.pulumi.cloudflare.inputs.WorkerObservabilityTracesArgs;
 import com.pulumi.core.Output;
@@ -49,6 +50,21 @@ public final class WorkerObservabilityArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Real-time Issues settings for the Worker.
+     * 
+     */
+    @Import(name="issues")
+    private @Nullable Output<WorkerObservabilityIssuesArgs> issues;
+
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    public Optional<Output<WorkerObservabilityIssuesArgs>> issues() {
+        return Optional.ofNullable(this.issues);
+    }
+
+    /**
      * Log settings for the Worker.
      * 
      */
@@ -83,6 +99,7 @@ public final class WorkerObservabilityArgs extends com.pulumi.resources.Resource
     private WorkerObservabilityArgs(WorkerObservabilityArgs $) {
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
+        this.issues = $.issues;
         this.logs = $.logs;
         this.traces = $.traces;
     }
@@ -145,6 +162,27 @@ public final class WorkerObservabilityArgs extends com.pulumi.resources.Resource
          */
         public Builder headSamplingRate(Double headSamplingRate) {
             return headSamplingRate(Output.of(headSamplingRate));
+        }
+
+        /**
+         * @param issues Real-time Issues settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issues(@Nullable Output<WorkerObservabilityIssuesArgs> issues) {
+            $.issues = issues;
+            return this;
+        }
+
+        /**
+         * @param issues Real-time Issues settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issues(WorkerObservabilityIssuesArgs issues) {
+            return issues(Output.of(issues));
         }
 
         /**

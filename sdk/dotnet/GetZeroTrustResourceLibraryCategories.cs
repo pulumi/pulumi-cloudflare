@@ -11,12 +11,69 @@ namespace Pulumi.Cloudflare
 {
     public static class GetZeroTrustResourceLibraryCategories
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustResourceLibraryCategories = Cloudflare.GetZeroTrustResourceLibraryCategories.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetZeroTrustResourceLibraryCategoriesResult> InvokeAsync(GetZeroTrustResourceLibraryCategoriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustResourceLibraryCategoriesResult>("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", args ?? new GetZeroTrustResourceLibraryCategoriesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustResourceLibraryCategories = Cloudflare.GetZeroTrustResourceLibraryCategories.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetZeroTrustResourceLibraryCategoriesResult> Invoke(GetZeroTrustResourceLibraryCategoriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustResourceLibraryCategoriesResult>("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", args ?? new GetZeroTrustResourceLibraryCategoriesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustResourceLibraryCategories = Cloudflare.GetZeroTrustResourceLibraryCategories.Invoke(new()
+        ///     {
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetZeroTrustResourceLibraryCategoriesResult> Invoke(GetZeroTrustResourceLibraryCategoriesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustResourceLibraryCategoriesResult>("cloudflare:index/getZeroTrustResourceLibraryCategories:getZeroTrustResourceLibraryCategories", args ?? new GetZeroTrustResourceLibraryCategoriesInvokeArgs(), options.WithDefaults());
     }

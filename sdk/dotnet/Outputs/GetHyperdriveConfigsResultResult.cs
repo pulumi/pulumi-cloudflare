@@ -23,6 +23,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+        /// </summary>
+        public readonly Outputs.GetHyperdriveConfigsResultIntegrationResult Integration;
+        /// <summary>
         /// Defines the last modified time of the Hyperdrive configuration.
         /// </summary>
         public readonly string ModifiedOn;
@@ -34,6 +38,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Combines database connection fields with exactly one supported network location.
+        /// </summary>
         public readonly Outputs.GetHyperdriveConfigsResultOriginResult Origin;
         /// <summary>
         /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -52,6 +59,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            Outputs.GetHyperdriveConfigsResultIntegrationResult integration,
+
             string modifiedOn,
 
             Outputs.GetHyperdriveConfigsResultMtlsResult mtls,
@@ -67,6 +76,7 @@ namespace Pulumi.Cloudflare.Outputs
             Caching = caching;
             CreatedOn = createdOn;
             Id = id;
+            Integration = integration;
             ModifiedOn = modifiedOn;
             Mtls = mtls;
             Name = name;

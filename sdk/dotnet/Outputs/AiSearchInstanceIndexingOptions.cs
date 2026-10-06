@@ -18,11 +18,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "porter", "trigram".
         /// </summary>
         public readonly string? KeywordTokenizer;
+        /// <summary>
+        /// Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+        /// </summary>
+        public readonly bool? UseOcr;
 
         [OutputConstructor]
-        private AiSearchInstanceIndexingOptions(string? keywordTokenizer)
+        private AiSearchInstanceIndexingOptions(
+            string? keywordTokenizer,
+
+            bool? useOcr)
         {
             KeywordTokenizer = keywordTokenizer;
+            UseOcr = useOcr;
         }
     }
 }

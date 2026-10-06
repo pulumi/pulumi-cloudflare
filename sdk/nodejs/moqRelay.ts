@@ -7,6 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMoqRelay = new cloudflare.MoqRelay("example_moq_relay", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "Production Live Stream",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

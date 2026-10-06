@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleOrganizationProfile = cloudflare.getOrganizationProfile({
- *     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+ *     organizationId: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
  * });
  * ```
  */
@@ -49,7 +49,7 @@ export interface GetOrganizationProfileResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleOrganizationProfile = cloudflare.getOrganizationProfile({
- *     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+ *     organizationId: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
  * });
  * ```
  */

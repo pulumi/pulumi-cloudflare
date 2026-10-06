@@ -115,6 +115,7 @@ import (
 type TeamsAccount struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Specify account settings.
@@ -161,6 +162,7 @@ func GetTeamsAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsAccount resources.
 type teamsAccountState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Specify account settings.
@@ -169,6 +171,7 @@ type teamsAccountState struct {
 }
 
 type TeamsAccountState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Specify account settings.
@@ -181,6 +184,7 @@ func (TeamsAccountState) ElementType() reflect.Type {
 }
 
 type teamsAccountArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Specify account settings.
 	Settings *TeamsAccountSettings `pulumi:"settings"`
@@ -188,6 +192,7 @@ type teamsAccountArgs struct {
 
 // The set of arguments for constructing a TeamsAccount resource.
 type TeamsAccountArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Specify account settings.
 	Settings TeamsAccountSettingsPtrInput
@@ -280,6 +285,7 @@ func (o TeamsAccountOutput) ToTeamsAccountOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o TeamsAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsAccount) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

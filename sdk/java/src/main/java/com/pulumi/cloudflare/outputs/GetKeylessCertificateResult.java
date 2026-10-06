@@ -32,12 +32,12 @@ public final class GetKeylessCertificateResult {
      */
     private String host;
     /**
-     * @return Identifier.
+     * @return Keyless certificate identifier tag.
      * 
      */
     private String id;
     /**
-     * @return Identifier.
+     * @return Keyless certificate identifier tag.
      * 
      */
     private String keylessCertificateId;
@@ -101,14 +101,14 @@ public final class GetKeylessCertificateResult {
         return this.host;
     }
     /**
-     * @return Identifier.
+     * @return Keyless certificate identifier tag.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Identifier.
+     * @return Keyless certificate identifier tag.
      * 
      */
     public String keylessCertificateId() {

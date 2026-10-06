@@ -24,6 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> DropDispositions;
         public readonly Outputs.GetEmailSecurityDomainsResultEmailsProcessedResult EmailsProcessed;
         /// <summary>
+        /// The mailbox folder to scan, for API-scanning domains.
         /// Available values: "AllItems", "Inbox".
         /// </summary>
         public readonly string Folder;

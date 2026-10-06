@@ -39,6 +39,9 @@ import (
 //						VirtualNetworkId: pulumi.String("c77b744e-acc8-428f-9257-6878c046ed55"),
 //					},
 //				},
+//				Tags: pulumi.StringMap{
+//					"foo": pulumi.String("string"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -70,6 +73,9 @@ type ZeroTrustAccessInfrastructureTarget struct {
 	Ip ZeroTrustAccessInfrastructureTargetIpOutput `pulumi:"ip"`
 	// Date and time at which the target was modified
 	ModifiedAt pulumi.StringOutput `pulumi:"modifiedAt"`
+	// Optional tags to associate with the target. Keys and values are
+	// user-defined strings.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewZeroTrustAccessInfrastructureTarget registers a new resource with the given unique name, arguments, and options.
@@ -124,6 +130,9 @@ type zeroTrustAccessInfrastructureTargetState struct {
 	Ip *ZeroTrustAccessInfrastructureTargetIp `pulumi:"ip"`
 	// Date and time at which the target was modified
 	ModifiedAt *string `pulumi:"modifiedAt"`
+	// Optional tags to associate with the target. Keys and values are
+	// user-defined strings.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ZeroTrustAccessInfrastructureTargetState struct {
@@ -140,6 +149,9 @@ type ZeroTrustAccessInfrastructureTargetState struct {
 	Ip ZeroTrustAccessInfrastructureTargetIpPtrInput
 	// Date and time at which the target was modified
 	ModifiedAt pulumi.StringPtrInput
+	// Optional tags to associate with the target. Keys and values are
+	// user-defined strings.
+	Tags pulumi.StringMapInput
 }
 
 func (ZeroTrustAccessInfrastructureTargetState) ElementType() reflect.Type {
@@ -156,6 +168,9 @@ type zeroTrustAccessInfrastructureTargetArgs struct {
 	Hostname string `pulumi:"hostname"`
 	// The IPv4/IPv6 address that identifies where to reach a target
 	Ip ZeroTrustAccessInfrastructureTargetIp `pulumi:"ip"`
+	// Optional tags to associate with the target. Keys and values are
+	// user-defined strings.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessInfrastructureTarget resource.
@@ -169,6 +184,9 @@ type ZeroTrustAccessInfrastructureTargetArgs struct {
 	Hostname pulumi.StringInput
 	// The IPv4/IPv6 address that identifies where to reach a target
 	Ip ZeroTrustAccessInfrastructureTargetIpInput
+	// Optional tags to associate with the target. Keys and values are
+	// user-defined strings.
+	Tags pulumi.StringMapInput
 }
 
 func (ZeroTrustAccessInfrastructureTargetArgs) ElementType() reflect.Type {
@@ -284,6 +302,12 @@ func (o ZeroTrustAccessInfrastructureTargetOutput) Ip() ZeroTrustAccessInfrastru
 // Date and time at which the target was modified
 func (o ZeroTrustAccessInfrastructureTargetOutput) ModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessInfrastructureTarget) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+// Optional tags to associate with the target. Keys and values are
+// user-defined strings.
+func (o ZeroTrustAccessInfrastructureTargetOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessInfrastructureTarget) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ZeroTrustAccessInfrastructureTargetArrayOutput struct{ *pulumi.OutputState }

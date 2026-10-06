@@ -82,7 +82,7 @@ class GetCallsTurnAppResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        A short description of Calls app, not shown to end users.
+        A short description of a Realtime SFU app, not shown to end users.
         """
         return pulumi.get(self, "name")
 

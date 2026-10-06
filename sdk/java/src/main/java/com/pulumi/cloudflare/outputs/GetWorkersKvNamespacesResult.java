@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersKvNamespacesResult {
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     private String id;
@@ -28,14 +28,14 @@ public final class GetWorkersKvNamespacesResult {
      */
     private Boolean supportsUrlEncoding;
     /**
-     * @return A human-readable string name for a Namespace.
+     * @return Human-readable string name for a Workers KV namespace.
      * 
      */
     private String title;
 
     private GetWorkersKvNamespacesResult() {}
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public String id() {
@@ -57,7 +57,7 @@ public final class GetWorkersKvNamespacesResult {
         return this.supportsUrlEncoding;
     }
     /**
-     * @return A human-readable string name for a Namespace.
+     * @return Human-readable string name for a Workers KV namespace.
      * 
      */
     public String title() {

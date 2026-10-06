@@ -21,7 +21,7 @@ public final class GetCallsTurnAppsResult {
      */
     private String modified;
     /**
-     * @return A short description of Calls app, not shown to end users.
+     * @return A short description of a Realtime SFU app, not shown to end users.
      * 
      */
     private String name;
@@ -47,7 +47,7 @@ public final class GetCallsTurnAppsResult {
         return this.modified;
     }
     /**
-     * @return A short description of Calls app, not shown to end users.
+     * @return A short description of a Realtime SFU app, not shown to end users.
      * 
      */
     public String name() {

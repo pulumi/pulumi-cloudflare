@@ -24,6 +24,21 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
+     * Filter by exact Search for Agents hostname (case-insensitive).
+     * 
+     */
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
+
+    /**
+     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * 
+     */
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -106,6 +121,7 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
 
     private GetAiSearchInstancesArgs(GetAiSearchInstancesArgs $) {
         this.accountId = $.accountId;
+        this.hostname = $.hostname;
         this.maxItems = $.maxItems;
         this.namespace = $.namespace;
         this.orderBy = $.orderBy;
@@ -138,6 +154,27 @@ public final class GetAiSearchInstancesArgs extends com.pulumi.resources.InvokeA
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param hostname Filter by exact Search for Agents hostname (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(@Nullable Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname Filter by exact Search for Agents hostname (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
         }
 
         /**

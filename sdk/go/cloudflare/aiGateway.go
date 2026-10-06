@@ -40,17 +40,108 @@ import (
 //				RateLimitingInterval:    pulumi.Int(0),
 //				RateLimitingLimit:       pulumi.Int(0),
 //				Authentication:          pulumi.Bool(true),
-//				LogManagement:           pulumi.Int(10000),
-//				LogManagementStrategy:   pulumi.String("STOP_INSERTING"),
-//				Logpush:                 pulumi.Bool(true),
-//				LogpushPublicKey:        pulumi.String("xxxxxxxxxxxxxxxx"),
-//				RateLimitingTechnique:   pulumi.String("fixed"),
-//				RetryBackoff:            pulumi.String("constant"),
-//				RetryDelay:              pulumi.Int(0),
-//				RetryMaxAttempts:        pulumi.Int(1),
-//				StoreId:                 pulumi.String("store_id"),
-//				WorkersAiBillingMode:    pulumi.String("postpaid"),
-//				Zdr:                     pulumi.Bool(true),
+//				ByokOnly:                pulumi.Bool(true),
+//				Dlp: &cloudflare.AiGatewayDlpArgs{
+//					Action:  pulumi.String("BLOCK"),
+//					Enabled: pulumi.Bool(true),
+//					Profiles: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//				},
+//				Guardrails: &cloudflare.AiGatewayGuardrailsArgs{
+//					Prompt: &cloudflare.AiGatewayGuardrailsPromptArgs{
+//						P1:  pulumi.String("FLAG"),
+//						S1:  pulumi.String("FLAG"),
+//						S10: pulumi.String("FLAG"),
+//						S11: pulumi.String("FLAG"),
+//						S12: pulumi.String("FLAG"),
+//						S13: pulumi.String("FLAG"),
+//						S2:  pulumi.String("FLAG"),
+//						S3:  pulumi.String("FLAG"),
+//						S4:  pulumi.String("FLAG"),
+//						S5:  pulumi.String("FLAG"),
+//						S6:  pulumi.String("FLAG"),
+//						S7:  pulumi.String("FLAG"),
+//						S8:  pulumi.String("FLAG"),
+//						S9:  pulumi.String("FLAG"),
+//					},
+//					Response: &cloudflare.AiGatewayGuardrailsResponseArgs{
+//						P1:  pulumi.String("FLAG"),
+//						S1:  pulumi.String("FLAG"),
+//						S10: pulumi.String("FLAG"),
+//						S11: pulumi.String("FLAG"),
+//						S12: pulumi.String("FLAG"),
+//						S13: pulumi.String("FLAG"),
+//						S2:  pulumi.String("FLAG"),
+//						S3:  pulumi.String("FLAG"),
+//						S4:  pulumi.String("FLAG"),
+//						S5:  pulumi.String("FLAG"),
+//						S6:  pulumi.String("FLAG"),
+//						S7:  pulumi.String("FLAG"),
+//						S8:  pulumi.String("FLAG"),
+//						S9:  pulumi.String("FLAG"),
+//					},
+//				},
+//				LogClassification:     pulumi.Bool(true),
+//				LogManagement:         pulumi.Int(10000),
+//				LogManagementStrategy: pulumi.String("STOP_INSERTING"),
+//				Logpush:               pulumi.Bool(true),
+//				LogpushPublicKey:      pulumi.String("xxxxxxxxxxxxxxxx"),
+//				Otels: cloudflare.AiGatewayOtelArray{
+//					&cloudflare.AiGatewayOtelArgs{
+//						Headers: pulumi.StringMap{
+//							"foo": pulumi.String("string"),
+//						},
+//						Url:           pulumi.String("https://example.com"),
+//						Authorization: pulumi.String("authorization"),
+//						ContentType:   pulumi.String("json"),
+//					},
+//				},
+//				RateLimitingTechnique: pulumi.String("fixed"),
+//				RetryBackoff:          pulumi.String("constant"),
+//				RetryDelay:            pulumi.Int(0),
+//				RetryMaxAttempts:      pulumi.Int(1),
+//				SpendLimits: &cloudflare.AiGatewaySpendLimitsArgs{
+//					Enabled: pulumi.Bool(true),
+//					Rules: cloudflare.AiGatewaySpendLimitsRuleArray{
+//						&cloudflare.AiGatewaySpendLimitsRuleArgs{
+//							Limit:     pulumi.Float64(1),
+//							LimitType: pulumi.String("cost"),
+//							Window:    pulumi.Int(1),
+//							Id:        pulumi.String("x"),
+//							Enabled:   pulumi.Bool(true),
+//							Metadata: cloudflare.AiGatewaySpendLimitsRuleMetadataMap{
+//								"foo": &cloudflare.AiGatewaySpendLimitsRuleMetadataArgs{
+//									Mode: pulumi.String("partition"),
+//								},
+//							},
+//							Model: &cloudflare.AiGatewaySpendLimitsRuleModelArgs{
+//								Mode: pulumi.String("filter"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("string"),
+//								},
+//							},
+//							AiGatewayProvider: &cloudflare.AiGatewaySpendLimitsRuleAiGatewayProviderArgs{
+//								Mode: pulumi.String("filter"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("string"),
+//								},
+//							},
+//							Technique: pulumi.String("fixed"),
+//						},
+//					},
+//				},
+//				StoreId: pulumi.String("store_id"),
+//				Stripe: &cloudflare.AiGatewayStripeArgs{
+//					Authorization: pulumi.String("authorization"),
+//					UsageEvents: cloudflare.AiGatewayStripeUsageEventArray{
+//						&cloudflare.AiGatewayStripeUsageEventArgs{
+//							Payload: pulumi.String("payload"),
+//						},
+//					},
+//				},
+//				WorkersAiBillingMode: pulumi.String("postpaid"),
+//				Zdr:                  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -70,9 +161,11 @@ type AiGateway struct {
 	pulumi.CustomResourceState
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// gateway id
-	AiGatewayId             pulumi.StringOutput          `pulumi:"aiGatewayId"`
-	Authentication          pulumi.BoolPtrOutput         `pulumi:"authentication"`
+	// Unique identifier of the AI Gateway within the account.
+	AiGatewayId    pulumi.StringOutput `pulumi:"aiGatewayId"`
+	Authentication pulumi.BoolOutput   `pulumi:"authentication"`
+	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+	ByokOnly                pulumi.BoolOutput            `pulumi:"byokOnly"`
 	CacheInvalidateOnUpdate pulumi.BoolOutput            `pulumi:"cacheInvalidateOnUpdate"`
 	CacheTtl                pulumi.IntOutput             `pulumi:"cacheTtl"`
 	CollectLogs             pulumi.BoolOutput            `pulumi:"collectLogs"`
@@ -80,11 +173,11 @@ type AiGateway struct {
 	Dlp                     AiGatewayDlpPtrOutput        `pulumi:"dlp"`
 	Guardrails              AiGatewayGuardrailsPtrOutput `pulumi:"guardrails"`
 	IsDefault               pulumi.BoolOutput            `pulumi:"isDefault"`
-	LogClassification       pulumi.BoolPtrOutput         `pulumi:"logClassification"`
-	LogManagement           pulumi.IntPtrOutput          `pulumi:"logManagement"`
+	LogClassification       pulumi.BoolOutput            `pulumi:"logClassification"`
+	LogManagement           pulumi.IntOutput             `pulumi:"logManagement"`
 	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
-	LogManagementStrategy pulumi.StringPtrOutput   `pulumi:"logManagementStrategy"`
-	Logpush               pulumi.BoolPtrOutput     `pulumi:"logpush"`
+	LogManagementStrategy pulumi.StringOutput      `pulumi:"logManagementStrategy"`
+	Logpush               pulumi.BoolOutput        `pulumi:"logpush"`
 	LogpushPublicKey      pulumi.StringPtrOutput   `pulumi:"logpushPublicKey"`
 	ModifiedAt            pulumi.StringOutput      `pulumi:"modifiedAt"`
 	Otels                 AiGatewayOtelArrayOutput `pulumi:"otels"`
@@ -95,17 +188,17 @@ type AiGateway struct {
 	// Backoff strategy for retry delays
 	// Available values: "constant", "linear", "exponential".
 	RetryBackoff pulumi.StringPtrOutput `pulumi:"retryBackoff"`
-	// Delay between retry attempts in milliseconds (0-5000)
+	// Delay between retry attempts in milliseconds (0-60000)
 	RetryDelay pulumi.IntPtrOutput `pulumi:"retryDelay"`
 	// Maximum number of retry attempts for failed requests (1-5)
 	RetryMaxAttempts pulumi.IntPtrOutput        `pulumi:"retryMaxAttempts"`
 	SpendLimits      AiGatewaySpendLimitsOutput `pulumi:"spendLimits"`
-	StoreId          pulumi.StringPtrOutput     `pulumi:"storeId"`
+	StoreId          pulumi.StringOutput        `pulumi:"storeId"`
 	Stripe           AiGatewayStripePtrOutput   `pulumi:"stripe"`
 	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
 	// Available values: "postpaid", "unified".
-	WorkersAiBillingMode pulumi.StringOutput  `pulumi:"workersAiBillingMode"`
-	Zdr                  pulumi.BoolPtrOutput `pulumi:"zdr"`
+	WorkersAiBillingMode pulumi.StringOutput `pulumi:"workersAiBillingMode"`
+	Zdr                  pulumi.BoolOutput   `pulumi:"zdr"`
 }
 
 // NewAiGateway registers a new resource with the given unique name, arguments, and options.
@@ -160,9 +253,11 @@ func GetAiGateway(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AiGateway resources.
 type aiGatewayState struct {
 	AccountId *string `pulumi:"accountId"`
-	// gateway id
-	AiGatewayId             *string              `pulumi:"aiGatewayId"`
-	Authentication          *bool                `pulumi:"authentication"`
+	// Unique identifier of the AI Gateway within the account.
+	AiGatewayId    *string `pulumi:"aiGatewayId"`
+	Authentication *bool   `pulumi:"authentication"`
+	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+	ByokOnly                *bool                `pulumi:"byokOnly"`
 	CacheInvalidateOnUpdate *bool                `pulumi:"cacheInvalidateOnUpdate"`
 	CacheTtl                *int                 `pulumi:"cacheTtl"`
 	CollectLogs             *bool                `pulumi:"collectLogs"`
@@ -185,7 +280,7 @@ type aiGatewayState struct {
 	// Backoff strategy for retry delays
 	// Available values: "constant", "linear", "exponential".
 	RetryBackoff *string `pulumi:"retryBackoff"`
-	// Delay between retry attempts in milliseconds (0-5000)
+	// Delay between retry attempts in milliseconds (0-60000)
 	RetryDelay *int `pulumi:"retryDelay"`
 	// Maximum number of retry attempts for failed requests (1-5)
 	RetryMaxAttempts *int                  `pulumi:"retryMaxAttempts"`
@@ -200,9 +295,11 @@ type aiGatewayState struct {
 
 type AiGatewayState struct {
 	AccountId pulumi.StringPtrInput
-	// gateway id
-	AiGatewayId             pulumi.StringPtrInput
-	Authentication          pulumi.BoolPtrInput
+	// Unique identifier of the AI Gateway within the account.
+	AiGatewayId    pulumi.StringPtrInput
+	Authentication pulumi.BoolPtrInput
+	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+	ByokOnly                pulumi.BoolPtrInput
 	CacheInvalidateOnUpdate pulumi.BoolPtrInput
 	CacheTtl                pulumi.IntPtrInput
 	CollectLogs             pulumi.BoolPtrInput
@@ -225,7 +322,7 @@ type AiGatewayState struct {
 	// Backoff strategy for retry delays
 	// Available values: "constant", "linear", "exponential".
 	RetryBackoff pulumi.StringPtrInput
-	// Delay between retry attempts in milliseconds (0-5000)
+	// Delay between retry attempts in milliseconds (0-60000)
 	RetryDelay pulumi.IntPtrInput
 	// Maximum number of retry attempts for failed requests (1-5)
 	RetryMaxAttempts pulumi.IntPtrInput
@@ -244,9 +341,11 @@ func (AiGatewayState) ElementType() reflect.Type {
 
 type aiGatewayArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// gateway id
-	AiGatewayId             string               `pulumi:"aiGatewayId"`
-	Authentication          *bool                `pulumi:"authentication"`
+	// Unique identifier of the AI Gateway within the account.
+	AiGatewayId    string `pulumi:"aiGatewayId"`
+	Authentication *bool  `pulumi:"authentication"`
+	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+	ByokOnly                *bool                `pulumi:"byokOnly"`
 	CacheInvalidateOnUpdate bool                 `pulumi:"cacheInvalidateOnUpdate"`
 	CacheTtl                int                  `pulumi:"cacheTtl"`
 	CollectLogs             bool                 `pulumi:"collectLogs"`
@@ -266,7 +365,7 @@ type aiGatewayArgs struct {
 	// Backoff strategy for retry delays
 	// Available values: "constant", "linear", "exponential".
 	RetryBackoff *string `pulumi:"retryBackoff"`
-	// Delay between retry attempts in milliseconds (0-5000)
+	// Delay between retry attempts in milliseconds (0-60000)
 	RetryDelay *int `pulumi:"retryDelay"`
 	// Maximum number of retry attempts for failed requests (1-5)
 	RetryMaxAttempts *int                  `pulumi:"retryMaxAttempts"`
@@ -282,9 +381,11 @@ type aiGatewayArgs struct {
 // The set of arguments for constructing a AiGateway resource.
 type AiGatewayArgs struct {
 	AccountId pulumi.StringInput
-	// gateway id
-	AiGatewayId             pulumi.StringInput
-	Authentication          pulumi.BoolPtrInput
+	// Unique identifier of the AI Gateway within the account.
+	AiGatewayId    pulumi.StringInput
+	Authentication pulumi.BoolPtrInput
+	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+	ByokOnly                pulumi.BoolPtrInput
 	CacheInvalidateOnUpdate pulumi.BoolInput
 	CacheTtl                pulumi.IntInput
 	CollectLogs             pulumi.BoolInput
@@ -304,7 +405,7 @@ type AiGatewayArgs struct {
 	// Backoff strategy for retry delays
 	// Available values: "constant", "linear", "exponential".
 	RetryBackoff pulumi.StringPtrInput
-	// Delay between retry attempts in milliseconds (0-5000)
+	// Delay between retry attempts in milliseconds (0-60000)
 	RetryDelay pulumi.IntPtrInput
 	// Maximum number of retry attempts for failed requests (1-5)
 	RetryMaxAttempts pulumi.IntPtrInput
@@ -408,13 +509,18 @@ func (o AiGatewayOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// gateway id
+// Unique identifier of the AI Gateway within the account.
 func (o AiGatewayOutput) AiGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.StringOutput { return v.AiGatewayId }).(pulumi.StringOutput)
 }
 
-func (o AiGatewayOutput) Authentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AiGateway) pulumi.BoolPtrOutput { return v.Authentication }).(pulumi.BoolPtrOutput)
+func (o AiGatewayOutput) Authentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.BoolOutput { return v.Authentication }).(pulumi.BoolOutput)
+}
+
+// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+func (o AiGatewayOutput) ByokOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.BoolOutput { return v.ByokOnly }).(pulumi.BoolOutput)
 }
 
 func (o AiGatewayOutput) CacheInvalidateOnUpdate() pulumi.BoolOutput {
@@ -445,21 +551,21 @@ func (o AiGatewayOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
-func (o AiGatewayOutput) LogClassification() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AiGateway) pulumi.BoolPtrOutput { return v.LogClassification }).(pulumi.BoolPtrOutput)
+func (o AiGatewayOutput) LogClassification() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.BoolOutput { return v.LogClassification }).(pulumi.BoolOutput)
 }
 
-func (o AiGatewayOutput) LogManagement() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AiGateway) pulumi.IntPtrOutput { return v.LogManagement }).(pulumi.IntPtrOutput)
+func (o AiGatewayOutput) LogManagement() pulumi.IntOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.IntOutput { return v.LogManagement }).(pulumi.IntOutput)
 }
 
 // Available values: "STOP*INSERTING", "DELETE*OLDEST".
-func (o AiGatewayOutput) LogManagementStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiGateway) pulumi.StringPtrOutput { return v.LogManagementStrategy }).(pulumi.StringPtrOutput)
+func (o AiGatewayOutput) LogManagementStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.StringOutput { return v.LogManagementStrategy }).(pulumi.StringOutput)
 }
 
-func (o AiGatewayOutput) Logpush() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AiGateway) pulumi.BoolPtrOutput { return v.Logpush }).(pulumi.BoolPtrOutput)
+func (o AiGatewayOutput) Logpush() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.BoolOutput { return v.Logpush }).(pulumi.BoolOutput)
 }
 
 func (o AiGatewayOutput) LogpushPublicKey() pulumi.StringPtrOutput {
@@ -493,7 +599,7 @@ func (o AiGatewayOutput) RetryBackoff() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.StringPtrOutput { return v.RetryBackoff }).(pulumi.StringPtrOutput)
 }
 
-// Delay between retry attempts in milliseconds (0-5000)
+// Delay between retry attempts in milliseconds (0-60000)
 func (o AiGatewayOutput) RetryDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.IntPtrOutput { return v.RetryDelay }).(pulumi.IntPtrOutput)
 }
@@ -507,8 +613,8 @@ func (o AiGatewayOutput) SpendLimits() AiGatewaySpendLimitsOutput {
 	return o.ApplyT(func(v *AiGateway) AiGatewaySpendLimitsOutput { return v.SpendLimits }).(AiGatewaySpendLimitsOutput)
 }
 
-func (o AiGatewayOutput) StoreId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiGateway) pulumi.StringPtrOutput { return v.StoreId }).(pulumi.StringPtrOutput)
+func (o AiGatewayOutput) StoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.StringOutput { return v.StoreId }).(pulumi.StringOutput)
 }
 
 func (o AiGatewayOutput) Stripe() AiGatewayStripePtrOutput {
@@ -521,8 +627,8 @@ func (o AiGatewayOutput) WorkersAiBillingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGateway) pulumi.StringOutput { return v.WorkersAiBillingMode }).(pulumi.StringOutput)
 }
 
-func (o AiGatewayOutput) Zdr() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AiGateway) pulumi.BoolPtrOutput { return v.Zdr }).(pulumi.BoolPtrOutput)
+func (o AiGatewayOutput) Zdr() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AiGateway) pulumi.BoolOutput { return v.Zdr }).(pulumi.BoolOutput)
 }
 
 type AiGatewayArrayOutput struct{ *pulumi.OutputState }

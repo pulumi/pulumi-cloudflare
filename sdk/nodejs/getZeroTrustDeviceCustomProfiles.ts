@@ -24,6 +24,7 @@ export function getZeroTrustDeviceCustomProfiles(args?: GetZeroTrustDeviceCustom
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "profileType": args.profileType,
     }, opts);
 }
 
@@ -36,6 +37,11 @@ export interface GetZeroTrustDeviceCustomProfilesArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: "warp", "browserExtension".
+     */
+    profileType?: string;
 }
 
 /**
@@ -47,6 +53,11 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    /**
+     * Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: "warp", "browserExtension".
+     */
+    readonly profileType: string;
     /**
      * The items returned by the data source
      */
@@ -70,6 +81,7 @@ export function getZeroTrustDeviceCustomProfilesOutput(args?: GetZeroTrustDevice
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "profileType": args.profileType,
     }, opts);
 }
 
@@ -82,4 +94,9 @@ export interface GetZeroTrustDeviceCustomProfilesOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
+    /**
+     * Filter profiles by client type. When omitted, only WARP profiles are returned.
+     * Available values: "warp", "browserExtension".
+     */
+    profileType?: pulumi.Input<string | undefined>;
 }

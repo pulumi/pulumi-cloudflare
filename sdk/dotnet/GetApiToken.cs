@@ -134,6 +134,12 @@ namespace Pulumi.Cloudflare
     {
         public readonly Outputs.GetApiTokenConditionResult Condition;
         /// <summary>
+        /// The email address of the user who created the token at the time of
+        /// creation. Only present for Account Owned API Tokens when a creator email
+        /// was available.
+        /// </summary>
+        public readonly string CreatorEmailAtCreation;
+        /// <summary>
         /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
         /// </summary>
         public readonly string ExpiresOn;
@@ -167,6 +173,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApiTokenPolicyResult> Policies;
         /// <summary>
+        /// The identifier of the service that provisioned the token. For an
+        /// OAuth-provisioned token, this is the OAuth client identifier. Present
+        /// when `ProvisionerType` is present and null when the identifier is
+        /// unavailable.
+        /// </summary>
+        public readonly string ProvisionerId;
+        /// <summary>
+        /// The type of service that provisioned the token. Only present for
+        /// provisioned Account Owned API Tokens.
+        /// </summary>
+        public readonly string ProvisionerType;
+        /// <summary>
         /// Status of the token.
         /// Available values: "active", "disabled", "expired".
         /// </summary>
@@ -179,6 +197,8 @@ namespace Pulumi.Cloudflare
         [OutputConstructor]
         private GetApiTokenResult(
             Outputs.GetApiTokenConditionResult condition,
+
+            string creatorEmailAtCreation,
 
             string expiresOn,
 
@@ -198,11 +218,16 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetApiTokenPolicyResult> policies,
 
+            string provisionerId,
+
+            string provisionerType,
+
             string status,
 
             string? tokenId)
         {
             Condition = condition;
+            CreatorEmailAtCreation = creatorEmailAtCreation;
             ExpiresOn = expiresOn;
             Filter = filter;
             Id = id;
@@ -212,6 +237,8 @@ namespace Pulumi.Cloudflare
             Name = name;
             NotBefore = notBefore;
             Policies = policies;
+            ProvisionerId = provisionerId;
+            ProvisionerType = provisionerType;
             Status = status;
             TokenId = tokenId;
         }

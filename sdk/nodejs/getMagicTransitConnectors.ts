@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleMagicTransitConnectors = cloudflare.getMagicTransitConnectors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     deviceType: "MANAGED",
  * });
  * ```
  */
@@ -81,6 +82,7 @@ export interface GetMagicTransitConnectorsResult {
  *
  * const exampleMagicTransitConnectors = cloudflare.getMagicTransitConnectors({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     deviceType: "MANAGED",
  * });
  * ```
  */

@@ -16,14 +16,14 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
     public static final GetCertificatePackPlainArgs Empty = new GetCertificatePackPlainArgs();
 
     /**
-     * Identifier.
+     * The unique identifier for a certificate_pack.
      * 
      */
     @Import(name="certificatePackId")
     private @Nullable String certificatePackId;
 
     /**
-     * @return Identifier.
+     * @return The unique identifier for a certificate_pack.
      * 
      */
     public Optional<String> certificatePackId() {
@@ -79,7 +79,7 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param certificatePackId Identifier.
+         * @param certificatePackId The unique identifier for a certificate_pack.
          * 
          * @return builder
          * 

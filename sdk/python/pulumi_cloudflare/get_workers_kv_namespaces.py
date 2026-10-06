@@ -48,7 +48,7 @@ class GetWorkersKvNamespacesResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Identifier.
+        ID of the Cloudflare account that owns the Workers KV namespaces.
         """
         return pulumi.get(self, "account_id")
 
@@ -56,7 +56,7 @@ class GetWorkersKvNamespacesResult:
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
         """
-        Direction to order namespaces.
+        Sort namespaces in ascending (`asc`) or descending (`desc`) order.
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
@@ -73,7 +73,7 @@ class GetWorkersKvNamespacesResult:
     @pulumi.getter
     def order(self) -> Optional[_builtins.str]:
         """
-        Field to order results by.
+        Namespace field to sort by (`id` or `title`).
         Available values: "id", "title".
         """
         return pulumi.get(self, "order")
@@ -123,11 +123,11 @@ def get_workers_kv_namespaces(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier.
-    :param _builtins.str direction: Direction to order namespaces.
+    :param _builtins.str account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
+    :param _builtins.str direction: Sort namespaces in ascending (`asc`) or descending (`desc`) order.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: Field to order results by.
+    :param _builtins.str order: Namespace field to sort by (`id` or `title`).
            Available values: "id", "title".
     """
     __args__ = dict()
@@ -167,11 +167,11 @@ def get_workers_kv_namespaces_output(account_id: pulumi.Input[Optional[Optional[
     ```
 
 
-    :param _builtins.str account_id: Identifier.
-    :param _builtins.str direction: Direction to order namespaces.
+    :param _builtins.str account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
+    :param _builtins.str direction: Sort namespaces in ascending (`asc`) or descending (`desc`) order.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: Field to order results by.
+    :param _builtins.str order: Namespace field to sort by (`id` or `title`).
            Available values: "id", "title".
     """
     __args__ = dict()

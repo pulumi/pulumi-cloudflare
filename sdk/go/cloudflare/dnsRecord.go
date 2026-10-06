@@ -75,6 +75,8 @@ type DnsRecord struct {
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Components of a MX record.
 	Data DnsRecordDataPtrOutput `pulumi:"data"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata pulumi.BoolOutput `pulumi:"includeShadowMetadata"`
 	// Extra Cloudflare-specific information about the record.
 	Meta pulumi.StringOutput `pulumi:"meta"`
 	// When the record was last modified.
@@ -162,6 +164,8 @@ type dnsRecordState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// Components of a MX record.
 	Data *DnsRecordData `pulumi:"data"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata *bool `pulumi:"includeShadowMetadata"`
 	// Extra Cloudflare-specific information about the record.
 	Meta *string `pulumi:"meta"`
 	// When the record was last modified.
@@ -202,6 +206,8 @@ type DnsRecordState struct {
 	CreatedOn pulumi.StringPtrInput
 	// Components of a MX record.
 	Data DnsRecordDataPtrInput
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata pulumi.BoolPtrInput
 	// Extra Cloudflare-specific information about the record.
 	Meta pulumi.StringPtrInput
 	// When the record was last modified.
@@ -242,6 +248,8 @@ type dnsRecordArgs struct {
 	Content *string `pulumi:"content"`
 	// Components of a MX record.
 	Data *DnsRecordData `pulumi:"data"`
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata *bool `pulumi:"includeShadowMetadata"`
 	// DNS record name (or @ for the zone apex) in Punycode.
 	Name string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
@@ -271,6 +279,8 @@ type DnsRecordArgs struct {
 	Content pulumi.StringPtrInput
 	// Components of a MX record.
 	Data DnsRecordDataPtrInput
+	// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+	IncludeShadowMetadata pulumi.BoolPtrInput
 	// DNS record name (or @ for the zone apex) in Punycode.
 	Name pulumi.StringInput
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
@@ -402,6 +412,11 @@ func (o DnsRecordOutput) CreatedOn() pulumi.StringOutput {
 // Components of a MX record.
 func (o DnsRecordOutput) Data() DnsRecordDataPtrOutput {
 	return o.ApplyT(func(v *DnsRecord) DnsRecordDataPtrOutput { return v.Data }).(DnsRecordDataPtrOutput)
+}
+
+// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+func (o DnsRecordOutput) IncludeShadowMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.BoolOutput { return v.IncludeShadowMetadata }).(pulumi.BoolOutput)
 }
 
 // Extra Cloudflare-specific information about the record.

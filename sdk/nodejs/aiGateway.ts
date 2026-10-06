@@ -27,15 +27,94 @@ import * as utilities from "./utilities";
  *     rateLimitingInterval: 0,
  *     rateLimitingLimit: 0,
  *     authentication: true,
+ *     byokOnly: true,
+ *     dlp: {
+ *         action: "BLOCK",
+ *         enabled: true,
+ *         profiles: ["string"],
+ *     },
+ *     guardrails: {
+ *         prompt: {
+ *             p1: "FLAG",
+ *             s1: "FLAG",
+ *             s10: "FLAG",
+ *             s11: "FLAG",
+ *             s12: "FLAG",
+ *             s13: "FLAG",
+ *             s2: "FLAG",
+ *             s3: "FLAG",
+ *             s4: "FLAG",
+ *             s5: "FLAG",
+ *             s6: "FLAG",
+ *             s7: "FLAG",
+ *             s8: "FLAG",
+ *             s9: "FLAG",
+ *         },
+ *         response: {
+ *             p1: "FLAG",
+ *             s1: "FLAG",
+ *             s10: "FLAG",
+ *             s11: "FLAG",
+ *             s12: "FLAG",
+ *             s13: "FLAG",
+ *             s2: "FLAG",
+ *             s3: "FLAG",
+ *             s4: "FLAG",
+ *             s5: "FLAG",
+ *             s6: "FLAG",
+ *             s7: "FLAG",
+ *             s8: "FLAG",
+ *             s9: "FLAG",
+ *         },
+ *     },
+ *     logClassification: true,
  *     logManagement: 10000,
  *     logManagementStrategy: "STOP_INSERTING",
  *     logpush: true,
  *     logpushPublicKey: "xxxxxxxxxxxxxxxx",
+ *     otels: [{
+ *         headers: {
+ *             foo: "string",
+ *         },
+ *         url: "https://example.com",
+ *         authorization: "authorization",
+ *         contentType: "json",
+ *     }],
  *     rateLimitingTechnique: "fixed",
  *     retryBackoff: "constant",
  *     retryDelay: 0,
  *     retryMaxAttempts: 1,
+ *     spendLimits: {
+ *         enabled: true,
+ *         rules: [{
+ *             limit: 1,
+ *             limitType: "cost",
+ *             window: 1,
+ *             id: "x",
+ *             enabled: true,
+ *             metadata: {
+ *                 foo: {
+ *                     mode: "partition",
+ *                 },
+ *             },
+ *             model: {
+ *                 mode: "filter",
+ *                 values: ["string"],
+ *             },
+ *             aiGatewayProvider: {
+ *                 mode: "filter",
+ *                 values: ["string"],
+ *             },
+ *             technique: "fixed",
+ *         }],
+ *     },
  *     storeId: "store_id",
+ *     stripe: {
+ *         authorization: "authorization",
+ *         usageEvents: [{
+ *             payload: "payload",
+ *         }],
+ *     },
  *     workersAiBillingMode: "postpaid",
  *     zdr: true,
  * });
@@ -77,10 +156,14 @@ export class AiGateway extends pulumi.CustomResource {
 
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      */
     declare public readonly aiGatewayId: pulumi.Output<string>;
-    declare public readonly authentication: pulumi.Output<boolean | undefined>;
+    declare public readonly authentication: pulumi.Output<boolean>;
+    /**
+     * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     */
+    declare public readonly byokOnly: pulumi.Output<boolean>;
     declare public readonly cacheInvalidateOnUpdate: pulumi.Output<boolean>;
     declare public readonly cacheTtl: pulumi.Output<number>;
     declare public readonly collectLogs: pulumi.Output<boolean>;
@@ -88,13 +171,13 @@ export class AiGateway extends pulumi.CustomResource {
     declare public readonly dlp: pulumi.Output<outputs.AiGatewayDlp | undefined>;
     declare public readonly guardrails: pulumi.Output<outputs.AiGatewayGuardrails | undefined>;
     declare public /*out*/ readonly isDefault: pulumi.Output<boolean>;
-    declare public readonly logClassification: pulumi.Output<boolean | undefined>;
-    declare public readonly logManagement: pulumi.Output<number | undefined>;
+    declare public readonly logClassification: pulumi.Output<boolean>;
+    declare public readonly logManagement: pulumi.Output<number>;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
      */
-    declare public readonly logManagementStrategy: pulumi.Output<string | undefined>;
-    declare public readonly logpush: pulumi.Output<boolean | undefined>;
+    declare public readonly logManagementStrategy: pulumi.Output<string>;
+    declare public readonly logpush: pulumi.Output<boolean>;
     declare public readonly logpushPublicKey: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public readonly otels: pulumi.Output<outputs.AiGatewayOtel[]>;
@@ -110,7 +193,7 @@ export class AiGateway extends pulumi.CustomResource {
      */
     declare public readonly retryBackoff: pulumi.Output<string | undefined>;
     /**
-     * Delay between retry attempts in milliseconds (0-5000)
+     * Delay between retry attempts in milliseconds (0-60000)
      */
     declare public readonly retryDelay: pulumi.Output<number | undefined>;
     /**
@@ -118,14 +201,14 @@ export class AiGateway extends pulumi.CustomResource {
      */
     declare public readonly retryMaxAttempts: pulumi.Output<number | undefined>;
     declare public readonly spendLimits: pulumi.Output<outputs.AiGatewaySpendLimits>;
-    declare public readonly storeId: pulumi.Output<string | undefined>;
+    declare public readonly storeId: pulumi.Output<string>;
     declare public readonly stripe: pulumi.Output<outputs.AiGatewayStripe | undefined>;
     /**
      * Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
      * Available values: "postpaid", "unified".
      */
     declare public readonly workersAiBillingMode: pulumi.Output<string>;
-    declare public readonly zdr: pulumi.Output<boolean | undefined>;
+    declare public readonly zdr: pulumi.Output<boolean>;
 
     /**
      * Create a AiGateway resource with the given unique name, arguments, and options.
@@ -143,6 +226,7 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["aiGatewayId"] = state?.aiGatewayId;
             resourceInputs["authentication"] = state?.authentication;
+            resourceInputs["byokOnly"] = state?.byokOnly;
             resourceInputs["cacheInvalidateOnUpdate"] = state?.cacheInvalidateOnUpdate;
             resourceInputs["cacheTtl"] = state?.cacheTtl;
             resourceInputs["collectLogs"] = state?.collectLogs;
@@ -194,6 +278,7 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["aiGatewayId"] = args?.aiGatewayId;
             resourceInputs["authentication"] = args?.authentication;
+            resourceInputs["byokOnly"] = args?.byokOnly;
             resourceInputs["cacheInvalidateOnUpdate"] = args?.cacheInvalidateOnUpdate;
             resourceInputs["cacheTtl"] = args?.cacheTtl;
             resourceInputs["collectLogs"] = args?.collectLogs;
@@ -231,10 +316,14 @@ export class AiGateway extends pulumi.CustomResource {
 export interface AiGatewayState {
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      */
     aiGatewayId?: pulumi.Input<string | undefined>;
     authentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     */
+    byokOnly?: pulumi.Input<boolean | undefined>;
     cacheInvalidateOnUpdate?: pulumi.Input<boolean | undefined>;
     cacheTtl?: pulumi.Input<number | undefined>;
     collectLogs?: pulumi.Input<boolean | undefined>;
@@ -264,7 +353,7 @@ export interface AiGatewayState {
      */
     retryBackoff?: pulumi.Input<string | undefined>;
     /**
-     * Delay between retry attempts in milliseconds (0-5000)
+     * Delay between retry attempts in milliseconds (0-60000)
      */
     retryDelay?: pulumi.Input<number | undefined>;
     /**
@@ -288,10 +377,14 @@ export interface AiGatewayState {
 export interface AiGatewayArgs {
     accountId: pulumi.Input<string>;
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      */
     aiGatewayId: pulumi.Input<string>;
     authentication?: pulumi.Input<boolean | undefined>;
+    /**
+     * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     */
+    byokOnly?: pulumi.Input<boolean | undefined>;
     cacheInvalidateOnUpdate: pulumi.Input<boolean>;
     cacheTtl: pulumi.Input<number>;
     collectLogs: pulumi.Input<boolean>;
@@ -318,7 +411,7 @@ export interface AiGatewayArgs {
      */
     retryBackoff?: pulumi.Input<string | undefined>;
     /**
-     * Delay between retry attempts in milliseconds (0-5000)
+     * Delay between retry attempts in milliseconds (0-60000)
      */
     retryDelay?: pulumi.Input<number | undefined>;
     /**

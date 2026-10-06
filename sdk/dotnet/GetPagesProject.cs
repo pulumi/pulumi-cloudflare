@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName", required: true)]
         public string ProjectName { get; set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string FrameworkVersion;
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -182,7 +182,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetPagesProjectLatestDeploymentResult LatestDeployment;
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -198,7 +198,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ProductionScriptName;
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         public readonly string ProjectName;
         /// <summary>

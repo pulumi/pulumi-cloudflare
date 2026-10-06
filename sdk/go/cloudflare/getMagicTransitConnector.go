@@ -79,8 +79,6 @@ type LookupMagicTransitConnectorResult struct {
 	LastUpdated                 string   `pulumi:"lastUpdated"`
 	LicenseKey                  string   `pulumi:"licenseKey"`
 	Notes                       string   `pulumi:"notes"`
-	Primary                     bool     `pulumi:"primary"`
-	SiteId                      string   `pulumi:"siteId"`
 	Timezone                    string   `pulumi:"timezone"`
 }
 
@@ -176,14 +174,6 @@ func (o LookupMagicTransitConnectorResultOutput) LicenseKey() pulumi.StringOutpu
 
 func (o LookupMagicTransitConnectorResultOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.Notes }).(pulumi.StringOutput)
-}
-
-func (o LookupMagicTransitConnectorResultOutput) Primary() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupMagicTransitConnectorResult) bool { return v.Primary }).(pulumi.BoolOutput)
-}
-
-func (o LookupMagicTransitConnectorResultOutput) SiteId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.SiteId }).(pulumi.StringOutput)
 }
 
 func (o LookupMagicTransitConnectorResultOutput) Timezone() pulumi.StringOutput {

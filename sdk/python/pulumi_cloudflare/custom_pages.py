@@ -27,7 +27,7 @@ class CustomPagesArgs:
         """
         The set of arguments for constructing a CustomPages resource.
 
-        :param pulumi.Input[_builtins.str] identifier: Error Page Types
+        :param pulumi.Input[_builtins.str] identifier: Custom page type.
                Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         :param pulumi.Input[_builtins.str] state: The custom page state.
                Available values: "default", "customized".
@@ -48,7 +48,7 @@ class CustomPagesArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[_builtins.str]:
         """
-        Error Page Types
+        Custom page type.
         Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         """
         return pulumi.get(self, "identifier")
@@ -124,7 +124,7 @@ class _CustomPagesState:
         Input properties used for looking up and filtering CustomPages resources.
 
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[_builtins.str] identifier: Error Page Types
+        :param pulumi.Input[_builtins.str] identifier: Custom page type.
                Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         :param pulumi.Input[_builtins.str] state: The custom page state.
                Available values: "default", "customized".
@@ -186,7 +186,7 @@ class _CustomPagesState:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Error Page Types
+        Custom page type.
         Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         """
         return pulumi.get(self, "identifier")
@@ -304,7 +304,7 @@ class CustomPages(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[_builtins.str] identifier: Error Page Types
+        :param pulumi.Input[_builtins.str] identifier: Custom page type.
                Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         :param pulumi.Input[_builtins.str] state: The custom page state.
                Available values: "default", "customized".
@@ -417,7 +417,7 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[_builtins.str] identifier: Error Page Types
+        :param pulumi.Input[_builtins.str] identifier: Custom page type.
                Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         :param pulumi.Input[_builtins.str] state: The custom page state.
                Available values: "default", "customized".
@@ -462,7 +462,7 @@ class CustomPages(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[_builtins.str]:
         """
-        Error Page Types
+        Custom page type.
         Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
         """
         return pulumi.get(self, "identifier")

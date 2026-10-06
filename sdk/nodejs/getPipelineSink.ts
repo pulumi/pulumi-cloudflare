@@ -86,7 +86,7 @@ export interface GetPipelineSinkResult {
     readonly sinkId?: string;
     /**
      * Specifies the type of sink.
-     * Available values: "r2", "r2*data*catalog".
+     * Available values: "r2", "r2*data*catalog", "basinCatalog".
      */
     readonly type: string;
 }

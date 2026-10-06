@@ -168,6 +168,7 @@ class GetEmailSecurityDomainResult:
     @pulumi.getter
     def folder(self) -> _builtins.str:
         """
+        The mailbox folder to scan, for API-scanning domains.
         Available values: "AllItems", "Inbox".
         """
         return pulumi.get(self, "folder")

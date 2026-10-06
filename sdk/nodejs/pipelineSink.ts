@@ -123,7 +123,7 @@ export class PipelineSink extends pulumi.CustomResource {
     declare public readonly schema: pulumi.Output<outputs.PipelineSinkSchema | undefined>;
     /**
      * Specifies the type of sink.
-     * Available values: "r2", "r2*data*catalog".
+     * Available values: "r2", "r2*data*catalog", "basinCatalog".
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -201,7 +201,7 @@ export interface PipelineSinkState {
     schema?: pulumi.Input<inputs.PipelineSinkSchema | undefined>;
     /**
      * Specifies the type of sink.
-     * Available values: "r2", "r2*data*catalog".
+     * Available values: "r2", "r2*data*catalog", "basinCatalog".
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -232,7 +232,7 @@ export interface PipelineSinkArgs {
     schema?: pulumi.Input<inputs.PipelineSinkSchema | undefined>;
     /**
      * Specifies the type of sink.
-     * Available values: "r2", "r2*data*catalog".
+     * Available values: "r2", "r2*data*catalog", "basinCatalog".
      */
     type: pulumi.Input<string>;
 }

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityIssuesArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityLogsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityTracesArgs;
 import com.pulumi.core.Output;
@@ -50,6 +51,21 @@ public final class WorkersScriptObservabilityArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Real-time Issues settings for the Worker.
+     * 
+     */
+    @Import(name="issues")
+    private @Nullable Output<WorkersScriptObservabilityIssuesArgs> issues;
+
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    public Optional<Output<WorkersScriptObservabilityIssuesArgs>> issues() {
+        return Optional.ofNullable(this.issues);
+    }
+
+    /**
      * Log settings for the Worker.
      * 
      */
@@ -84,6 +100,7 @@ public final class WorkersScriptObservabilityArgs extends com.pulumi.resources.R
     private WorkersScriptObservabilityArgs(WorkersScriptObservabilityArgs $) {
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
+        this.issues = $.issues;
         this.logs = $.logs;
         this.traces = $.traces;
     }
@@ -146,6 +163,27 @@ public final class WorkersScriptObservabilityArgs extends com.pulumi.resources.R
          */
         public Builder headSamplingRate(Double headSamplingRate) {
             return headSamplingRate(Output.of(headSamplingRate));
+        }
+
+        /**
+         * @param issues Real-time Issues settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issues(@Nullable Output<WorkersScriptObservabilityIssuesArgs> issues) {
+            $.issues = issues;
+            return this;
+        }
+
+        /**
+         * @param issues Real-time Issues settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issues(WorkersScriptObservabilityIssuesArgs issues) {
+            return issues(Output.of(issues));
         }
 
         /**

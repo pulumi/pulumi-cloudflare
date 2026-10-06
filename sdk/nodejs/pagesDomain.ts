@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const examplePagesDomain = new cloudflare.PagesDomain("example_pages_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     projectName: "this-is-my-project-01",
- *     name: "this-is-my-domain-01.com",
+ *     name: "example.com",
  * });
  * ```
  *
@@ -73,11 +73,11 @@ export class PagesDomain extends pulumi.CustomResource {
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     declare public /*out*/ readonly domainId: pulumi.Output<string>;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     declare public readonly projectName: pulumi.Output<string>;
     /**
@@ -153,11 +153,11 @@ export interface PagesDomainState {
     createdOn?: pulumi.Input<string | undefined>;
     domainId?: pulumi.Input<string | undefined>;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName?: pulumi.Input<string | undefined>;
     /**
@@ -178,11 +178,11 @@ export interface PagesDomainArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: pulumi.Input<string>;
 }

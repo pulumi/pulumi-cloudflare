@@ -46,7 +46,7 @@ export interface GetPagesDomainsArgs {
      */
     maxItems?: number;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
 }
@@ -64,7 +64,7 @@ export interface GetPagesDomainsResult {
      */
     readonly maxItems?: number;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     readonly projectName: string;
     /**
@@ -112,7 +112,7 @@ export interface GetPagesDomainsOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: pulumi.Input<string>;
 }

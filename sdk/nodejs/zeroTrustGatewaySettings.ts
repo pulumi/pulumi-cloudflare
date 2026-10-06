@@ -119,6 +119,9 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewaySettings.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -165,6 +168,9 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
  */
 export interface ZeroTrustGatewaySettingsState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     /**
@@ -178,6 +184,9 @@ export interface ZeroTrustGatewaySettingsState {
  * The set of arguments for constructing a ZeroTrustGatewaySettings resource.
  */
 export interface ZeroTrustGatewaySettingsArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Specify account settings.

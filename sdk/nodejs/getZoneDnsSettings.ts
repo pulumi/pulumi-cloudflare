@@ -52,7 +52,10 @@ export interface GetZoneDnsSettingsResult {
      */
     readonly flattenAllCnames: boolean;
     /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     *
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+
      */
     readonly foundationDns: boolean;
     /**
@@ -64,7 +67,7 @@ export interface GetZoneDnsSettingsResult {
      */
     readonly multiProvider: boolean;
     /**
-     * Settings determining the nameservers through which the zone should be available.
+     * Controls the nameservers through which the zone is available.
      */
     readonly nameservers: outputs.GetZoneDnsSettingsNameservers;
     /**

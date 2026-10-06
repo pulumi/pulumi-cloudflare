@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkersScriptAssetsConfig {
     /**
+     * @return The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     * 
+     */
+    private @Nullable String basePath;
+    /**
      * @return The contents of a _headers file (used to attach custom headers on asset responses).
      * 
      */
@@ -51,6 +56,13 @@ public final class WorkersScriptAssetsConfig {
     private @Nullable Boolean serveDirectly;
 
     private WorkersScriptAssetsConfig() {}
+    /**
+     * @return The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     * 
+     */
+    public Optional<String> basePath() {
+        return Optional.ofNullable(this.basePath);
+    }
     /**
      * @return The contents of a _headers file (used to attach custom headers on asset responses).
      * 
@@ -109,6 +121,7 @@ public final class WorkersScriptAssetsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String basePath;
         private @Nullable String headers;
         private @Nullable String htmlHandling;
         private @Nullable String notFoundHandling;
@@ -118,6 +131,7 @@ public final class WorkersScriptAssetsConfig {
         public Builder() {}
         public Builder(WorkersScriptAssetsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.basePath = defaults.basePath;
     	      this.headers = defaults.headers;
     	      this.htmlHandling = defaults.htmlHandling;
     	      this.notFoundHandling = defaults.notFoundHandling;
@@ -126,6 +140,12 @@ public final class WorkersScriptAssetsConfig {
     	      this.serveDirectly = defaults.serveDirectly;
         }
 
+        @CustomType.Setter
+        public Builder basePath(@Nullable String basePath) {
+
+            this.basePath = basePath;
+            return this;
+        }
         @CustomType.Setter
         public Builder headers(@Nullable String headers) {
 
@@ -164,6 +184,7 @@ public final class WorkersScriptAssetsConfig {
         }
         public WorkersScriptAssetsConfig build() {
             final var _resultValue = new WorkersScriptAssetsConfig();
+            _resultValue.basePath = basePath;
             _resultValue.headers = headers;
             _resultValue.htmlHandling = htmlHandling;
             _resultValue.notFoundHandling = notFoundHandling;

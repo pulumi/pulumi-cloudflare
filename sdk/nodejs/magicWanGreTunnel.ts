@@ -22,7 +22,9 @@ import * as utilities from "./utilities";
  *     automaticReturnRouting: true,
  *     bgp: {
  *         customerAsn: 0,
+ *         exportFilterId: "a1b2c3d4e5f647890a1b2c3d4e5f6789",
  *         extraPrefixes: ["string"],
+ *         importFilterId: "a1b2c3d4e5f647890a1b2c3d4e5f6789",
  *         md5Key: "md5_key",
  *     },
  *     description: "Tunnel for ISP X",

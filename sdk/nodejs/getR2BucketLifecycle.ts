@@ -32,7 +32,7 @@ export function getR2BucketLifecycle(args: GetR2BucketLifecycleArgs, opts?: pulu
  */
 export interface GetR2BucketLifecycleArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetR2BucketLifecycleArgs {
  */
 export interface GetR2BucketLifecycleResult {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     readonly accountId: string;
     /**
@@ -81,7 +81,7 @@ export function getR2BucketLifecycleOutput(args: GetR2BucketLifecycleOutputArgs,
  */
 export interface GetR2BucketLifecycleOutputArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

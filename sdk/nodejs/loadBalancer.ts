@@ -166,7 +166,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
+ * $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
  * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {

@@ -127,10 +127,29 @@ namespace Pulumi.Cloudflare
     public sealed class GetBotManagementResult
     {
         /// <summary>
+        /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+        /// </summary>
+        public readonly bool AiBotsMigrationOptOut;
+        /// <summary>
         /// Enable rule to block AI Scrapers and Crawlers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         public readonly string AiBotsProtection;
+        /// <summary>
+        /// Configure robots.txt policy for AI model training bots.
+        /// Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        /// </summary>
+        public readonly string AiTraining;
+        /// <summary>
+        /// Configure robots.txt policy for AI assistant and agent bots.
+        /// Available values: "disabled", "block", "only*on*ad_pages".
+        /// </summary>
+        public readonly string AiUser;
+        /// <summary>
+        /// Configure robots.txt policy for AI search bots.
+        /// Available values: "disabled", "block", "only*on*ad_pages".
+        /// </summary>
+        public readonly string Aisearch;
         /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         /// </summary>
@@ -175,6 +194,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool IsRobotsTxtManaged;
         /// <summary>
+        /// Whether to use JavaScript Detection results submitted through the API for this zone.
+        /// </summary>
+        public readonly bool JsdApiResultsEnabled;
+        /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
         /// </summary>
         public readonly bool OptimizeWordpress;
@@ -218,7 +241,15 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetBotManagementResult(
+            bool aiBotsMigrationOptOut,
+
             string aiBotsProtection,
+
+            string aiTraining,
+
+            string aiUser,
+
+            string aisearch,
 
             bool autoUpdateModel,
 
@@ -240,6 +271,8 @@ namespace Pulumi.Cloudflare
 
             bool isRobotsTxtManaged,
 
+            bool jsdApiResultsEnabled,
+
             bool optimizeWordpress,
 
             string sbfmDefinitelyAutomated,
@@ -258,7 +291,11 @@ namespace Pulumi.Cloudflare
 
             string? zoneId)
         {
+            AiBotsMigrationOptOut = aiBotsMigrationOptOut;
             AiBotsProtection = aiBotsProtection;
+            AiTraining = aiTraining;
+            AiUser = aiUser;
+            Aisearch = aisearch;
             AutoUpdateModel = autoUpdateModel;
             BmCookieEnabled = bmCookieEnabled;
             BotPreferenceSyncEnabled = botPreferenceSyncEnabled;
@@ -269,6 +306,7 @@ namespace Pulumi.Cloudflare
             FightMode = fightMode;
             Id = id;
             IsRobotsTxtManaged = isRobotsTxtManaged;
+            JsdApiResultsEnabled = jsdApiResultsEnabled;
             OptimizeWordpress = optimizeWordpress;
             SbfmDefinitelyAutomated = sbfmDefinitelyAutomated;
             SbfmLikelyAutomated = sbfmLikelyAutomated;

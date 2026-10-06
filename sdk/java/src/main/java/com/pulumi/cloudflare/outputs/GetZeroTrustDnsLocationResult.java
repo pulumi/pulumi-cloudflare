@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustDnsLocationEndpoints;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDnsLocationFilter;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDnsLocationMaxTtl;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDnsLocationNetwork;
 import com.pulumi.core.annotations.CustomType;
@@ -18,72 +19,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustDnsLocationResult {
     private @Nullable String accountId;
-    /**
-     * @return Indicate whether this location is the default location.
-     * 
-     */
     private Boolean clientDefault;
     private String createdAt;
-    /**
-     * @return Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-     * 
-     */
     private String dnsDestinationIpsId;
-    /**
-     * @return Specify the UUID of the IPv6 block brought to the gateway so that this location&#39;s IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
-     * 
-     */
     private String dnsDestinationIpv6BlockId;
-    /**
-     * @return Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
-     * 
-     */
     private String dohSubdomain;
-    /**
-     * @return Indicate whether the location must resolve EDNS queries.
-     * 
-     */
     private Boolean ecsSupport;
-    /**
-     * @return Configure the destination endpoints for this location.
-     * 
-     */
     private GetZeroTrustDnsLocationEndpoints endpoints;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
+    private @Nullable GetZeroTrustDnsLocationFilter filter;
     private String id;
-    /**
-     * @return Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-     * 
-     */
     private String ip;
-    /**
-     * @return Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-     * 
-     */
     private String ipv4Destination;
-    /**
-     * @return Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-     * 
-     */
     private String ipv4DestinationBackup;
-    private String locationId;
-    /**
-     * @return Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
-     * 
-     */
+    private @Nullable String locationId;
     private GetZeroTrustDnsLocationMaxTtl maxTtl;
-    /**
-     * @return Specify the location name.
-     * 
-     */
     private String name;
-    /**
-     * @return Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
-     * 
-     */
     private List<GetZeroTrustDnsLocationNetwork> networks;
     private String updatedAt;
 
@@ -91,100 +41,51 @@ public final class GetZeroTrustDnsLocationResult {
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
-    /**
-     * @return Indicate whether this location is the default location.
-     * 
-     */
     public Boolean clientDefault() {
         return this.clientDefault;
     }
     public String createdAt() {
         return this.createdAt;
     }
-    /**
-     * @return Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-     * 
-     */
     public String dnsDestinationIpsId() {
         return this.dnsDestinationIpsId;
     }
-    /**
-     * @return Specify the UUID of the IPv6 block brought to the gateway so that this location&#39;s IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
-     * 
-     */
     public String dnsDestinationIpv6BlockId() {
         return this.dnsDestinationIpv6BlockId;
     }
-    /**
-     * @return Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
-     * 
-     */
     public String dohSubdomain() {
         return this.dohSubdomain;
     }
-    /**
-     * @return Indicate whether the location must resolve EDNS queries.
-     * 
-     */
     public Boolean ecsSupport() {
         return this.ecsSupport;
     }
-    /**
-     * @return Configure the destination endpoints for this location.
-     * 
-     */
     public GetZeroTrustDnsLocationEndpoints endpoints() {
         return this.endpoints;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
+    public Optional<GetZeroTrustDnsLocationFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
     public String id() {
         return this.id;
     }
-    /**
-     * @return Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-     * 
-     */
     public String ip() {
         return this.ip;
     }
-    /**
-     * @return Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-     * 
-     */
     public String ipv4Destination() {
         return this.ipv4Destination;
     }
-    /**
-     * @return Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-     * 
-     */
     public String ipv4DestinationBackup() {
         return this.ipv4DestinationBackup;
     }
-    public String locationId() {
-        return this.locationId;
+    public Optional<String> locationId() {
+        return Optional.ofNullable(this.locationId);
     }
-    /**
-     * @return Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
-     * 
-     */
     public GetZeroTrustDnsLocationMaxTtl maxTtl() {
         return this.maxTtl;
     }
-    /**
-     * @return Specify the location name.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
-     * 
-     */
     public List<GetZeroTrustDnsLocationNetwork> networks() {
         return this.networks;
     }
@@ -209,11 +110,12 @@ public final class GetZeroTrustDnsLocationResult {
         private String dohSubdomain;
         private Boolean ecsSupport;
         private GetZeroTrustDnsLocationEndpoints endpoints;
+        private @Nullable GetZeroTrustDnsLocationFilter filter;
         private String id;
         private String ip;
         private String ipv4Destination;
         private String ipv4DestinationBackup;
-        private String locationId;
+        private @Nullable String locationId;
         private GetZeroTrustDnsLocationMaxTtl maxTtl;
         private String name;
         private List<GetZeroTrustDnsLocationNetwork> networks;
@@ -229,6 +131,7 @@ public final class GetZeroTrustDnsLocationResult {
     	      this.dohSubdomain = defaults.dohSubdomain;
     	      this.ecsSupport = defaults.ecsSupport;
     	      this.endpoints = defaults.endpoints;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.ip = defaults.ip;
     	      this.ipv4Destination = defaults.ipv4Destination;
@@ -303,6 +206,12 @@ public final class GetZeroTrustDnsLocationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder filter(@Nullable GetZeroTrustDnsLocationFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationResult", "id");
@@ -335,10 +244,8 @@ public final class GetZeroTrustDnsLocationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder locationId(String locationId) {
-            if (locationId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDnsLocationResult", "locationId");
-            }
+        public Builder locationId(@Nullable String locationId) {
+
             this.locationId = locationId;
             return this;
         }
@@ -387,6 +294,7 @@ public final class GetZeroTrustDnsLocationResult {
             _resultValue.dohSubdomain = dohSubdomain;
             _resultValue.ecsSupport = ecsSupport;
             _resultValue.endpoints = endpoints;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.ip = ip;
             _resultValue.ipv4Destination = ipv4Destination;

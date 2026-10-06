@@ -46,9 +46,10 @@ import (
 //					Prompt:                   pulumi.String("login"),
 //					SupportGroups:            pulumi.Bool(true),
 //				},
-//				Name:   pulumi.String("Widget Corps IDP"),
-//				Type:   pulumi.String("onetimepin"),
-//				ZoneId: pulumi.String("zone_id"),
+//				Name:                 pulumi.String("Widget Corps IDP"),
+//				Type:                 pulumi.String("onetimepin"),
+//				ZoneId:               pulumi.String("zone_id"),
+//				SamlCertificateSetId: pulumi.String("c409ef44-e72c-41c8-8c0b-278c8a6f4fd8"),
 //				ScimConfig: &cloudflare.ZeroTrustAccessIdentityProviderScimConfigArgs{
 //					Enabled:                pulumi.Bool(true),
 //					IdentityUpdateBehavior: pulumi.String("automatic"),

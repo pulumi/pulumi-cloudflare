@@ -55,7 +55,7 @@ class GetWorkersKvNamespaceResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Identifier.
+        ID of the Cloudflare account that owns the Workers KV namespaces.
         """
         return pulumi.get(self, "account_id")
 
@@ -68,7 +68,7 @@ class GetWorkersKvNamespaceResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Namespace identifier tag.
+        ID of the Workers KV namespace.
         """
         return pulumi.get(self, "id")
 
@@ -85,7 +85,7 @@ class GetWorkersKvNamespaceResult:
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> Optional[_builtins.str]:
         """
-        Namespace identifier tag.
+        ID of the Workers KV namespace.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -101,7 +101,7 @@ class GetWorkersKvNamespaceResult:
     @pulumi.getter
     def title(self) -> _builtins.str:
         """
-        A human-readable string name for a Namespace.
+        Human-readable string name for a Workers KV namespace.
         """
         return pulumi.get(self, "title")
 
@@ -142,8 +142,8 @@ def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier.
-    :param _builtins.str namespace_id: Namespace identifier tag.
+    :param _builtins.str account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
+    :param _builtins.str namespace_id: ID of the Workers KV namespace.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -181,8 +181,8 @@ def get_workers_kv_namespace_output(account_id: pulumi.Input[Optional[Optional[_
     ```
 
 
-    :param _builtins.str account_id: Identifier.
-    :param _builtins.str namespace_id: Namespace identifier tag.
+    :param _builtins.str account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
+    :param _builtins.str namespace_id: ID of the Workers KV namespace.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

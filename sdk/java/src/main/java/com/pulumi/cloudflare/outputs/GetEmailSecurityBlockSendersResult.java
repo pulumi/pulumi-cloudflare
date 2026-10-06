@@ -18,6 +18,10 @@ public final class GetEmailSecurityBlockSendersResult {
      * 
      */
     private String id;
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal value.
+     * 
+     */
     private Boolean isRegex;
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -59,6 +63,10 @@ public final class GetEmailSecurityBlockSendersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal value.
+     * 
+     */
     public Boolean isRegex() {
         return this.isRegex;
     }

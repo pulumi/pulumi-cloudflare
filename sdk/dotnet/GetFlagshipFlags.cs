@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "account_id",
         ///         AppId = "app_id",
-        ///         Limit = "limit",
+        ///         Limit = 1,
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "account_id",
         ///         AppId = "app_id",
-        ///         Limit = "limit",
+        ///         Limit = 1,
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "account_id",
         ///         AppId = "app_id",
-        ///         Limit = "limit",
+        ///         Limit = 1,
         ///     });
         /// 
         /// });
@@ -100,13 +100,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipFlagsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         /// Max items to return (1–200).
         /// </summary>
         [Input("limit")]
-        public string? Limit { get; set; }
+        public int? Limit { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -132,13 +132,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipFlagsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// Max items to return (1–200).
         /// </summary>
         [Input("limit")]
-        public Input<string>? Limit { get; set; }
+        public Input<int>? Limit { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -166,17 +166,17 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipFlagsResult
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         public readonly string AppId;
         /// <summary>
         /// Max items to return (1–200).
         /// </summary>
-        public readonly string? Limit;
+        public readonly int? Limit;
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
@@ -192,7 +192,7 @@ namespace Pulumi.Cloudflare
 
             string appId,
 
-            string? limit,
+            int? limit,
 
             int? maxItems,
 

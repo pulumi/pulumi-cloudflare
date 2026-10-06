@@ -62,7 +62,7 @@ export interface GetAiSearchInstanceResult {
      */
     readonly fusionMethod: string;
     /**
-     * Deprecated — use indexMethod instead.
+     * Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      *
      * @deprecated This attribute is deprecated.
      */
@@ -72,7 +72,7 @@ export interface GetAiSearchInstanceResult {
      */
     readonly id: string;
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      */
     readonly indexMethod: outputs.GetAiSearchInstanceIndexMethod;
     readonly indexingOptions: outputs.GetAiSearchInstanceIndexingOptions;
@@ -104,6 +104,7 @@ export interface GetAiSearchInstanceResult {
     readonly syncInterval: number;
     readonly tokenId: string;
     /**
+     * Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
      * Available values: "r2", "web-crawler".
      */
     readonly type: string;

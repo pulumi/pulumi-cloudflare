@@ -90,6 +90,10 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     declare public readonly data: pulumi.Output<outputs.DnsRecordData | undefined>;
     /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    declare public readonly includeShadowMetadata: pulumi.Output<boolean>;
+    /**
      * Extra Cloudflare-specific information about the record.
      */
     declare public /*out*/ readonly meta: pulumi.Output<string>;
@@ -161,6 +165,7 @@ export class DnsRecord extends pulumi.CustomResource {
             resourceInputs["content"] = state?.content;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["data"] = state?.data;
+            resourceInputs["includeShadowMetadata"] = state?.includeShadowMetadata;
             resourceInputs["meta"] = state?.meta;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
@@ -191,6 +196,7 @@ export class DnsRecord extends pulumi.CustomResource {
             resourceInputs["comment"] = args?.comment;
             resourceInputs["content"] = args?.content;
             resourceInputs["data"] = args?.data;
+            resourceInputs["includeShadowMetadata"] = args?.includeShadowMetadata;
             resourceInputs["name"] = args?.name;
             resourceInputs["priority"] = args?.priority;
             resourceInputs["privateRouting"] = args?.privateRouting;
@@ -238,6 +244,10 @@ export interface DnsRecordState {
      * Components of a MX record.
      */
     data?: pulumi.Input<inputs.DnsRecordData | undefined>;
+    /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    includeShadowMetadata?: pulumi.Input<boolean | undefined>;
     /**
      * Extra Cloudflare-specific information about the record.
      */
@@ -309,6 +319,10 @@ export interface DnsRecordArgs {
      * Components of a MX record.
      */
     data?: pulumi.Input<inputs.DnsRecordData | undefined>;
+    /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     */
+    includeShadowMetadata?: pulumi.Input<boolean | undefined>;
     /**
      * DNS record name (or @ for the zone apex) in Punycode.
      */

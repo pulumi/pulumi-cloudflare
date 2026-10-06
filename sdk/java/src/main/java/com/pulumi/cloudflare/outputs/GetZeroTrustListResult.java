@@ -18,42 +18,13 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustListResult {
     private @Nullable String accountId;
     private String createdAt;
-    /**
-     * @return Provide the list description.
-     * 
-     */
     private String description;
     private @Nullable GetZeroTrustListFilter filter;
-    /**
-     * @return Identify the API resource with a UUID.
-     * 
-     */
     private String id;
-    /**
-     * @return Provide the list items.
-     * 
-     */
     private List<GetZeroTrustListItem> items;
-    /**
-     * @return Indicate the number of items in the list.
-     * 
-     */
     private Double listCount;
-    /**
-     * @return Identify the API resource with a UUID.
-     * 
-     */
     private @Nullable String listId;
-    /**
-     * @return Specify the list name.
-     * 
-     */
     private String name;
-    /**
-     * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
-     * 
-     */
     private String type;
     private String updatedAt;
 
@@ -64,56 +35,27 @@ public final class GetZeroTrustListResult {
     public String createdAt() {
         return this.createdAt;
     }
-    /**
-     * @return Provide the list description.
-     * 
-     */
     public String description() {
         return this.description;
     }
     public Optional<GetZeroTrustListFilter> filter() {
         return Optional.ofNullable(this.filter);
     }
-    /**
-     * @return Identify the API resource with a UUID.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return Provide the list items.
-     * 
-     */
     public List<GetZeroTrustListItem> items() {
         return this.items;
     }
-    /**
-     * @return Indicate the number of items in the list.
-     * 
-     */
     public Double listCount() {
         return this.listCount;
     }
-    /**
-     * @return Identify the API resource with a UUID.
-     * 
-     */
     public Optional<String> listId() {
         return Optional.ofNullable(this.listId);
     }
-    /**
-     * @return Specify the list name.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
-     * 
-     */
     public String type() {
         return this.type;
     }

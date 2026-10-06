@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileBrowserExtensionConfigArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileExcludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileGlobalAccelerationArgs;
@@ -90,6 +91,21 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
      */
     public Optional<Output<Double>> autoConnect() {
         return Optional.ofNullable(this.autoConnect);
+    }
+
+    /**
+     * Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+     * 
+     */
+    @Import(name="browserExtensionConfig")
+    private @Nullable Output<ZeroTrustDeviceCustomProfileBrowserExtensionConfigArgs> browserExtensionConfig;
+
+    /**
+     * @return Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+     * 
+     */
+    public Optional<Output<ZeroTrustDeviceCustomProfileBrowserExtensionConfigArgs>> browserExtensionConfig() {
+        return Optional.ofNullable(this.browserExtensionConfig);
     }
 
     /**
@@ -261,15 +277,15 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
      * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
-    @Import(name="match", required=true)
-    private Output<String> match;
+    @Import(name="match")
+    private @Nullable Output<String> match;
 
     /**
      * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
-    public Output<String> match() {
-        return this.match;
+    public Optional<Output<String>> match() {
+        return Optional.ofNullable(this.match);
     }
 
     /**
@@ -300,6 +316,23 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
      */
     public Optional<Output<Double>> precedence() {
         return Optional.ofNullable(this.precedence);
+    }
+
+    /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    @Import(name="profileType")
+    private @Nullable Output<String> profileType;
+
+    /**
+     * @return The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public Optional<Output<String>> profileType() {
+        return Optional.ofNullable(this.profileType);
     }
 
     /**
@@ -385,6 +418,21 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
     }
 
     /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    @Import(name="uninstallProtection")
+    private @Nullable Output<Boolean> uninstallProtection;
+
+    /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    public Optional<Output<Boolean>> uninstallProtection() {
+        return Optional.ofNullable(this.uninstallProtection);
+    }
+
+    /**
      * Virtual network access settings for the device.
      * 
      */
@@ -407,6 +455,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         this.allowUpdates = $.allowUpdates;
         this.allowedToLeave = $.allowedToLeave;
         this.autoConnect = $.autoConnect;
+        this.browserExtensionConfig = $.browserExtensionConfig;
         this.captivePortal = $.captivePortal;
         this.description = $.description;
         this.disableAutoFallback = $.disableAutoFallback;
@@ -421,12 +470,14 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         this.match = $.match;
         this.name = $.name;
         this.precedence = $.precedence;
+        this.profileType = $.profileType;
         this.registerInterfaceIpWithDns = $.registerInterfaceIpWithDns;
         this.sccmVpnBoundarySupport = $.sccmVpnBoundarySupport;
         this.serviceModeV2 = $.serviceModeV2;
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
         this.tunnelProtocol = $.tunnelProtocol;
+        this.uninstallProtection = $.uninstallProtection;
         this.virtualNetworks = $.virtualNetworks;
     }
 
@@ -539,6 +590,27 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
          */
         public Builder autoConnect(Double autoConnect) {
             return autoConnect(Output.of(autoConnect));
+        }
+
+        /**
+         * @param browserExtensionConfig Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder browserExtensionConfig(@Nullable Output<ZeroTrustDeviceCustomProfileBrowserExtensionConfigArgs> browserExtensionConfig) {
+            $.browserExtensionConfig = browserExtensionConfig;
+            return this;
+        }
+
+        /**
+         * @param browserExtensionConfig Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder browserExtensionConfig(ZeroTrustDeviceCustomProfileBrowserExtensionConfigArgs browserExtensionConfig) {
+            return browserExtensionConfig(Output.of(browserExtensionConfig));
         }
 
         /**
@@ -808,7 +880,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder match(Output<String> match) {
+        public Builder match(@Nullable Output<String> match) {
             $.match = match;
             return this;
         }
@@ -863,6 +935,29 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
          */
         public Builder precedence(Double precedence) {
             return precedence(Output.of(precedence));
+        }
+
+        /**
+         * @param profileType The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+         * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profileType(@Nullable Output<String> profileType) {
+            $.profileType = profileType;
+            return this;
+        }
+
+        /**
+         * @param profileType The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+         * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profileType(String profileType) {
+            return profileType(Output.of(profileType));
         }
 
         /**
@@ -980,6 +1075,27 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         }
 
         /**
+         * @param uninstallProtection Determines whether uninstalling the WARP client requires an override code. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uninstallProtection(@Nullable Output<Boolean> uninstallProtection) {
+            $.uninstallProtection = uninstallProtection;
+            return this;
+        }
+
+        /**
+         * @param uninstallProtection Determines whether uninstalling the WARP client requires an override code. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uninstallProtection(Boolean uninstallProtection) {
+            return uninstallProtection(Output.of(uninstallProtection));
+        }
+
+        /**
          * @param virtualNetworks Virtual network access settings for the device.
          * 
          * @return builder
@@ -1003,9 +1119,6 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         public ZeroTrustDeviceCustomProfileArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "accountId");
-            }
-            if ($.match == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "match");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "name");

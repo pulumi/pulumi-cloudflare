@@ -31,7 +31,7 @@ class PagesProjectArgs:
         The set of arguments for constructing a PagesProject resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] name: Name of the project.
+        :param pulumi.Input[_builtins.str] name: Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
         :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configs for the project build process.
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configs for deployments in a project.
@@ -63,7 +63,7 @@ class PagesProjectArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the project.
+        Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "name")
 
@@ -151,7 +151,7 @@ class _PagesProjectState:
         :param pulumi.Input[_builtins.str] framework: Framework the project is using.
         :param pulumi.Input[_builtins.str] framework_version: Version of the framework the project is using.
         :param pulumi.Input['PagesProjectLatestDeploymentArgs'] latest_deployment: Most recent deployment of the project.
-        :param pulumi.Input[_builtins.str] name: Name of the project.
+        :param pulumi.Input[_builtins.str] name: Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param pulumi.Input[_builtins.str] preview_script_name: Name of the preview script.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
         :param pulumi.Input[_builtins.str] production_script_name: Name of the production script.
@@ -304,7 +304,7 @@ class _PagesProjectState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the project.
+        Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "name")
 
@@ -627,7 +627,7 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']] build_config: Configs for the project build process.
         :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']] deployment_configs: Configs for deployments in a project.
-        :param pulumi.Input[_builtins.str] name: Name of the project.
+        :param pulumi.Input[_builtins.str] name: Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
         :param pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict', 'outputs.PagesProjectSource']] source: Configs for the project source control.
         """
@@ -955,7 +955,7 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] framework: Framework the project is using.
         :param pulumi.Input[_builtins.str] framework_version: Version of the framework the project is using.
         :param pulumi.Input[Union['PagesProjectLatestDeploymentArgs', 'PagesProjectLatestDeploymentArgsDict', 'outputs.PagesProjectLatestDeployment']] latest_deployment: Most recent deployment of the project.
-        :param pulumi.Input[_builtins.str] name: Name of the project.
+        :param pulumi.Input[_builtins.str] name: Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param pulumi.Input[_builtins.str] preview_script_name: Name of the preview script.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
         :param pulumi.Input[_builtins.str] production_script_name: Name of the production script.
@@ -1061,7 +1061,7 @@ class PagesProject(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the project.
+        Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "name")
 

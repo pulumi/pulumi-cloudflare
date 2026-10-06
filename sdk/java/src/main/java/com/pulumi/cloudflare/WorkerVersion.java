@@ -12,6 +12,7 @@ import com.pulumi.cloudflare.outputs.WorkerVersionBinding;
 import com.pulumi.cloudflare.outputs.WorkerVersionCacheOptions;
 import com.pulumi.cloudflare.outputs.WorkerVersionContainer;
 import com.pulumi.cloudflare.outputs.WorkerVersionExports;
+import com.pulumi.cloudflare.outputs.WorkerVersionExportsReconciliation;
 import com.pulumi.cloudflare.outputs.WorkerVersionLimits;
 import com.pulumi.cloudflare.outputs.WorkerVersionMigrations;
 import com.pulumi.cloudflare.outputs.WorkerVersionModule;
@@ -21,6 +22,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -83,6 +85,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .assets(WorkerVersionAssetsArgs.builder()
  *                 .config(WorkerVersionAssetsConfigArgs.builder()
+ *                     .basePath("/docs/")
  *                     .htmlHandling("auto-trailing-slash")
  *                     .notFoundHandling("404-page")
  *                     .runWorkerFirst()
@@ -109,22 +112,25 @@ import javax.annotation.Nullable;
  *                     .cache(WorkerVersionExportsCacheArgs.builder()
  *                         .enabled(true)
  *                         .build())
- *                     .renamedTo("renamed_to")
  *                     .state("created")
+ *                     .build()),
+ *                 Map.entry("Counter", WorkerVersionExportsArgs.builder()
  *                     .storage("sqlite")
- *                     .transferFrom("transfer_from")
- *                     .transferredTo("transferred_to")
+ *                     .type("durable-object")
+ *                     .container("my-container")
+ *                     .state("created")
+ *                     .build()),
+ *                 Map.entry("OldCounter", WorkerVersionExportsArgs.builder()
+ *                     .renamedTo("Counter")
+ *                     .state("renamed")
+ *                     .type("durable-object")
  *                     .build()),
  *                 Map.entry("default", WorkerVersionExportsArgs.builder()
  *                     .type("worker")
  *                     .cache(WorkerVersionExportsCacheArgs.builder()
  *                         .enabled(false)
  *                         .build())
- *                     .renamedTo("renamed_to")
  *                     .state("created")
- *                     .storage("sqlite")
- *                     .transferFrom("transfer_from")
- *                     .transferredTo("transferred_to")
  *                     .build())
  *             ))
  *             .limits(WorkerVersionLimitsArgs.builder()
@@ -149,7 +155,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .modules(WorkerVersionModuleArgs.builder()
- *                 .contentFile("dist/index.js")
+ *                 .contentBase64("ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==")
  *                 .contentType("application/javascript+module")
  *                 .name("index.js")
  *                 .build())
@@ -161,6 +167,7 @@ import javax.annotation.Nullable;
  *             .placement(WorkerVersionPlacementArgs.builder()
  *                 .mode("smart")
  *                 .build())
+ *             .usageModel("standard")
  *             .build());
  * 
  *     }
@@ -218,6 +225,34 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WorkerVersionAssets>> assets() {
         return Codegen.optional(this.assets);
+    }
+    /**
+     * Email of the user who created the version.
+     * 
+     */
+    @Export(name="authorEmail", refs={String.class}, tree="[0]")
+    private Output<String> authorEmail;
+
+    /**
+     * @return Email of the user who created the version.
+     * 
+     */
+    public Output<String> authorEmail() {
+        return this.authorEmail;
+    }
+    /**
+     * Identifier of the user who created the version.
+     * 
+     */
+    @Export(name="authorId", refs={String.class}, tree="[0]")
+    private Output<String> authorId;
+
+    /**
+     * @return Identifier of the user who created the version.
+     * 
+     */
+    public Output<String> authorId() {
+        return this.authorId;
     }
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
@@ -310,6 +345,20 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
+     * If true, a deployment will be created that sends 100% of traffic to the new version.
+     * 
+     */
+    @Export(name="deploy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deploy;
+
+    /**
+     * @return If true, a deployment will be created that sends 100% of traffic to the new version.
+     * 
+     */
+    public Output<Optional<Boolean>> deploy() {
+        return Codegen.optional(this.deploy);
+    }
+    /**
      * Declarative exports for the version, including Durable Object
      * classes (with their `storage` backend) and named Worker
      * entrypoints. On reads, tombstoned lifecycle entries are
@@ -332,6 +381,36 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,WorkerVersionExports>>> exports() {
         return Codegen.optional(this.exports);
+    }
+    /**
+     * Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+     * 
+     */
+    @Export(name="exportsReconciliation", refs={WorkerVersionExportsReconciliation.class}, tree="[0]")
+    private Output<WorkerVersionExportsReconciliation> exportsReconciliation;
+
+    /**
+     * @return Summary of the declarative exports reconciliation that ran on this upload. Populated only when the uploaded metadata included an `exports` block. Durable Object entries drive reconciliation; `type: worker` entries do not contribute to this summary.
+     * 
+     */
+    public Output<WorkerVersionExportsReconciliation> exportsReconciliation() {
+        return this.exportsReconciliation;
+    }
+    /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
+     * 
+     */
+    @Export(name="include", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> include;
+
+    /**
+     * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
+     * 
+     */
+    public Output<Optional<String>> include() {
+        return Codegen.optional(this.include);
     }
     /**
      * Resource limits enforced at runtime.

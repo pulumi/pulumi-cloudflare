@@ -60,9 +60,17 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         return Optional.ofNullable(this.isRecent);
     }
 
+    /**
+     * Whether `pattern` is a regular expression instead of a literal domain.
+     * 
+     */
     @Import(name="isRegex")
     private @Nullable Output<Boolean> isRegex;
 
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal domain.
+     * 
+     */
     public Optional<Output<Boolean>> isRegex() {
         return Optional.ofNullable(this.isRegex);
     }
@@ -112,9 +120,17 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         return Optional.ofNullable(this.modifiedAt);
     }
 
+    /**
+     * The domain pattern to trust, e.g. `example.com`.
+     * 
+     */
     @Import(name="pattern")
     private @Nullable Output<String> pattern;
 
+    /**
+     * @return The domain pattern to trust, e.g. `example.com`.
+     * 
+     */
     public Optional<Output<String>> pattern() {
         return Optional.ofNullable(this.pattern);
     }
@@ -211,11 +227,23 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
             return isRecent(Output.of(isRecent));
         }
 
+        /**
+         * @param isRegex Whether `pattern` is a regular expression instead of a literal domain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRegex(@Nullable Output<Boolean> isRegex) {
             $.isRegex = isRegex;
             return this;
         }
 
+        /**
+         * @param isRegex Whether `pattern` is a regular expression instead of a literal domain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRegex(Boolean isRegex) {
             return isRegex(Output.of(isRegex));
         }
@@ -279,11 +307,23 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
             return modifiedAt(Output.of(modifiedAt));
         }
 
+        /**
+         * @param pattern The domain pattern to trust, e.g. `example.com`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(@Nullable Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
 
+        /**
+         * @param pattern The domain pattern to trust, e.g. `example.com`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(String pattern) {
             return pattern(Output.of(pattern));
         }

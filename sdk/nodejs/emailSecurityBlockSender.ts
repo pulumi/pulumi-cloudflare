@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     isRegex: false,
  *     pattern: "test@example.com",
  *     patternType: "EMAIL",
- *     comments: "block sender with email test@example.com",
+ *     comments: "Block sender with email test@example.com",
  * });
  * ```
  *
@@ -65,6 +65,9 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal value.
+     */
     declare public readonly isRegex: pulumi.Output<boolean>;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -146,6 +149,9 @@ export interface EmailSecurityBlockSenderState {
     accountId?: pulumi.Input<string | undefined>;
     comments?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal value.
+     */
     isRegex?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -178,6 +184,9 @@ export interface EmailSecurityBlockSenderArgs {
      */
     accountId: pulumi.Input<string>;
     comments?: pulumi.Input<string | undefined>;
+    /**
+     * Whether `pattern` is a regular expression instead of a literal value.
+     */
     isRegex: pulumi.Input<boolean>;
     /**
      * The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.

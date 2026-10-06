@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiSearchInstanceFilter {
     /**
+     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * 
+     */
+    private @Nullable String hostname;
+    /**
      * @return Filter by namespace.
      * 
      */
@@ -36,6 +41,13 @@ public final class GetAiSearchInstanceFilter {
     private @Nullable String search;
 
     private GetAiSearchInstanceFilter() {}
+    /**
+     * @return Filter by exact Search for Agents hostname (case-insensitive).
+     * 
+     */
+    public Optional<String> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
     /**
      * @return Filter by namespace.
      * 
@@ -76,6 +88,7 @@ public final class GetAiSearchInstanceFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String hostname;
         private @Nullable String namespace;
         private String orderBy;
         private String orderByDirection;
@@ -83,12 +96,19 @@ public final class GetAiSearchInstanceFilter {
         public Builder() {}
         public Builder(GetAiSearchInstanceFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.hostname = defaults.hostname;
     	      this.namespace = defaults.namespace;
     	      this.orderBy = defaults.orderBy;
     	      this.orderByDirection = defaults.orderByDirection;
     	      this.search = defaults.search;
         }
 
+        @CustomType.Setter
+        public Builder hostname(@Nullable String hostname) {
+
+            this.hostname = hostname;
+            return this;
+        }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
 
@@ -119,6 +139,7 @@ public final class GetAiSearchInstanceFilter {
         }
         public GetAiSearchInstanceFilter build() {
             final var _resultValue = new GetAiSearchInstanceFilter();
+            _resultValue.hostname = hostname;
             _resultValue.namespace = namespace;
             _resultValue.orderBy = orderBy;
             _resultValue.orderByDirection = orderByDirection;

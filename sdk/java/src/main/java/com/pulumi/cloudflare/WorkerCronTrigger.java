@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.WorkersCronTrigger;
  * import com.pulumi.cloudflare.WorkersCronTriggerArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersCronTriggerScheduleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,7 +50,9 @@ import javax.annotation.Nullable;
  *         var exampleWorkersCronTrigger = new WorkersCronTrigger("exampleWorkersCronTrigger", WorkersCronTriggerArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .scriptName("this-is_my_script-01")
- *             .body(Arrays.asList(Map.of("cron", "*}&#47;{@code 30 * * * *")))
+ *             .schedules(WorkersCronTriggerScheduleArgs.builder()
+ *                 .cron("*}&#47;{@code 30 * * * *")
+ *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -91,14 +94,14 @@ public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
         return this.schedules;
     }
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      * 
      */
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public Output<String> scriptName() {

@@ -29,7 +29,7 @@ public final class HyperdriveConfigOrigin {
      */
     private String database;
     /**
-     * @return Defines the host (hostname or IP) of your origin database.
+     * @return Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
      * 
      */
     private @Nullable String host;
@@ -83,7 +83,7 @@ public final class HyperdriveConfigOrigin {
         return this.database;
     }
     /**
-     * @return Defines the host (hostname or IP) of your origin database.
+     * @return Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
      * 
      */
     public Optional<String> host() {

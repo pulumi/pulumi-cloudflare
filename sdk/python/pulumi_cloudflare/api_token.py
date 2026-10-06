@@ -31,7 +31,7 @@ class ApiTokenArgs:
         The set of arguments for constructing a ApiToken resource.
 
         :param pulumi.Input[_builtins.str] name: Token name.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Set of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: List of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] status: Status of the token.
@@ -64,7 +64,7 @@ class ApiTokenArgs:
     @pulumi.getter
     def policies(self) -> pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]:
         """
-        Set of access policies assigned to the token.
+        List of access policies assigned to the token.
         """
         return pulumi.get(self, "policies")
 
@@ -123,6 +123,7 @@ class ApiTokenArgs:
 class _ApiTokenState:
     def __init__(__self__, *,
                  condition: pulumi.Input[Optional['ApiTokenConditionArgs']] = None,
+                 creator_email_at_creation: pulumi.Input[Optional[_builtins.str]] = None,
                  expires_on: pulumi.Input[Optional[_builtins.str]] = None,
                  issued_on: pulumi.Input[Optional[_builtins.str]] = None,
                  last_used_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -130,24 +131,37 @@ class _ApiTokenState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  not_before: pulumi.Input[Optional[_builtins.str]] = None,
                  policies: pulumi.Input[Optional[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]] = None,
+                 provisioner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiToken resources.
 
+        :param pulumi.Input[_builtins.str] creator_email_at_creation: The email address of the user who created the token at the time of
+               creation. Only present for Account Owned API Tokens when a creator email
+               was available.
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] issued_on: The time on which the token was created.
         :param pulumi.Input[_builtins.str] last_used_on: Last time the token was used.
         :param pulumi.Input[_builtins.str] modified_on: Last time the token was modified.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Set of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: List of access policies assigned to the token.
+        :param pulumi.Input[_builtins.str] provisioner_id: The identifier of the service that provisioned the token. For an
+               OAuth-provisioned token, this is the OAuth client identifier. Present
+               when `provisioner_type` is present and null when the identifier is
+               unavailable.
+        :param pulumi.Input[_builtins.str] provisioner_type: The type of service that provisioned the token. Only present for
+               provisioned Account Owned API Tokens.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         :param pulumi.Input[_builtins.str] value: The token value.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
+        if creator_email_at_creation is not None:
+            pulumi.set(__self__, "creator_email_at_creation", creator_email_at_creation)
         if expires_on is not None:
             pulumi.set(__self__, "expires_on", expires_on)
         if issued_on is not None:
@@ -162,6 +176,10 @@ class _ApiTokenState:
             pulumi.set(__self__, "not_before", not_before)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
+        if provisioner_id is not None:
+            pulumi.set(__self__, "provisioner_id", provisioner_id)
+        if provisioner_type is not None:
+            pulumi.set(__self__, "provisioner_type", provisioner_type)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if value is not None:
@@ -175,6 +193,20 @@ class _ApiTokenState:
     @condition.setter
     def condition(self, value: pulumi.Input[Optional['ApiTokenConditionArgs']]):
         pulumi.set(self, "condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="creatorEmailAtCreation")
+    def creator_email_at_creation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The email address of the user who created the token at the time of
+        creation. Only present for Account Owned API Tokens when a creator email
+        was available.
+        """
+        return pulumi.get(self, "creator_email_at_creation")
+
+    @creator_email_at_creation.setter
+    def creator_email_at_creation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "creator_email_at_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -252,13 +284,41 @@ class _ApiTokenState:
     @pulumi.getter
     def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]]:
         """
-        Set of access policies assigned to the token.
+        List of access policies assigned to the token.
         """
         return pulumi.get(self, "policies")
 
     @policies.setter
     def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerId")
+    def provisioner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The identifier of the service that provisioned the token. For an
+        OAuth-provisioned token, this is the OAuth client identifier. Present
+        when `provisioner_type` is present and null when the identifier is
+        unavailable.
+        """
+        return pulumi.get(self, "provisioner_id")
+
+    @provisioner_id.setter
+    def provisioner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "provisioner_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerType")
+    def provisioner_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of service that provisioned the token. Only present for
+        provisioned Account Owned API Tokens.
+        """
+        return pulumi.get(self, "provisioner_type")
+
+    @provisioner_type.setter
+    def provisioner_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "provisioner_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -356,7 +416,7 @@ class ApiToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]] policies: Set of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]] policies: List of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         """
@@ -458,9 +518,12 @@ class ApiToken(pulumi.CustomResource):
                 raise TypeError("Missing required property 'policies'")
             __props__.__dict__["policies"] = policies
             __props__.__dict__["status"] = status
+            __props__.__dict__["creator_email_at_creation"] = None
             __props__.__dict__["issued_on"] = None
             __props__.__dict__["last_used_on"] = None
             __props__.__dict__["modified_on"] = None
+            __props__.__dict__["provisioner_id"] = None
+            __props__.__dict__["provisioner_type"] = None
             __props__.__dict__["value"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -475,6 +538,7 @@ class ApiToken(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             condition: pulumi.Input[Optional[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict', 'outputs.ApiTokenCondition']]] = None,
+            creator_email_at_creation: pulumi.Input[Optional[_builtins.str]] = None,
             expires_on: pulumi.Input[Optional[_builtins.str]] = None,
             issued_on: pulumi.Input[Optional[_builtins.str]] = None,
             last_used_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -482,6 +546,8 @@ class ApiToken(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             not_before: pulumi.Input[Optional[_builtins.str]] = None,
             policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]]] = None,
+            provisioner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             value: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiToken':
         """
@@ -491,13 +557,22 @@ class ApiToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] creator_email_at_creation: The email address of the user who created the token at the time of
+               creation. Only present for Account Owned API Tokens when a creator email
+               was available.
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] issued_on: The time on which the token was created.
         :param pulumi.Input[_builtins.str] last_used_on: Last time the token was used.
         :param pulumi.Input[_builtins.str] modified_on: Last time the token was modified.
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]] policies: Set of access policies assigned to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]] policies: List of access policies assigned to the token.
+        :param pulumi.Input[_builtins.str] provisioner_id: The identifier of the service that provisioned the token. For an
+               OAuth-provisioned token, this is the OAuth client identifier. Present
+               when `provisioner_type` is present and null when the identifier is
+               unavailable.
+        :param pulumi.Input[_builtins.str] provisioner_type: The type of service that provisioned the token. Only present for
+               provisioned Account Owned API Tokens.
         :param pulumi.Input[_builtins.str] status: Status of the token.
                Available values: "active", "disabled", "expired".
         :param pulumi.Input[_builtins.str] value: The token value.
@@ -507,6 +582,7 @@ class ApiToken(pulumi.CustomResource):
         __props__ = _ApiTokenState.__new__(_ApiTokenState)
 
         __props__.__dict__["condition"] = condition
+        __props__.__dict__["creator_email_at_creation"] = creator_email_at_creation
         __props__.__dict__["expires_on"] = expires_on
         __props__.__dict__["issued_on"] = issued_on
         __props__.__dict__["last_used_on"] = last_used_on
@@ -514,6 +590,8 @@ class ApiToken(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["not_before"] = not_before
         __props__.__dict__["policies"] = policies
+        __props__.__dict__["provisioner_id"] = provisioner_id
+        __props__.__dict__["provisioner_type"] = provisioner_type
         __props__.__dict__["status"] = status
         __props__.__dict__["value"] = value
         return ApiToken(resource_name, opts=opts, __props__=__props__)
@@ -522,6 +600,16 @@ class ApiToken(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.ApiTokenCondition']]:
         return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter(name="creatorEmailAtCreation")
+    def creator_email_at_creation(self) -> pulumi.Output[_builtins.str]:
+        """
+        The email address of the user who created the token at the time of
+        creation. Only present for Account Owned API Tokens when a creator email
+        was available.
+        """
+        return pulumi.get(self, "creator_email_at_creation")
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -575,9 +663,29 @@ class ApiToken(pulumi.CustomResource):
     @pulumi.getter
     def policies(self) -> pulumi.Output[Sequence['outputs.ApiTokenPolicy']]:
         """
-        Set of access policies assigned to the token.
+        List of access policies assigned to the token.
         """
         return pulumi.get(self, "policies")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerId")
+    def provisioner_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The identifier of the service that provisioned the token. For an
+        OAuth-provisioned token, this is the OAuth client identifier. Present
+        when `provisioner_type` is present and null when the identifier is
+        unavailable.
+        """
+        return pulumi.get(self, "provisioner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerType")
+    def provisioner_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of service that provisioned the token. Only present for
+        provisioned Account Owned API Tokens.
+        """
+        return pulumi.get(self, "provisioner_type")
 
     @_builtins.property
     @pulumi.getter

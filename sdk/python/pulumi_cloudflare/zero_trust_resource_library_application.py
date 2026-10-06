@@ -20,32 +20,35 @@ __all__ = ['ZeroTrustResourceLibraryApplicationArgs', 'ZeroTrustResourceLibraryA
 class ZeroTrustResourceLibraryApplicationArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 category_id: pulumi.Input[_builtins.int],
-                 human_id: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[_builtins.str],
+                 category_id: pulumi.Input[Optional[_builtins.int]] = None,
                  hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 human_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  port_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  support_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ZeroTrustResourceLibraryApplication resource.
 
         :param pulumi.Input[_builtins.int] category_id: Returns the category ID.
-        :param pulumi.Input[_builtins.str] human_id: Returns the human readable ID.
-        :param pulumi.Input[_builtins.str] name: Returns the application name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames matched by the application.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_subnets: IP subnets matched by the application.
+        :param pulumi.Input[_builtins.str] human_id: Returns the human readable ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_subnets: IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
+        :param pulumi.Input[_builtins.str] name: Returns the application name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] port_protocols: Port and protocol pairs matched by the application.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] support_domains: Support domains matched by the application.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "category_id", category_id)
-        pulumi.set(__self__, "human_id", human_id)
-        pulumi.set(__self__, "name", name)
+        if category_id is not None:
+            pulumi.set(__self__, "category_id", category_id)
         if hostnames is not None:
             pulumi.set(__self__, "hostnames", hostnames)
+        if human_id is not None:
+            pulumi.set(__self__, "human_id", human_id)
         if ip_subnets is not None:
             pulumi.set(__self__, "ip_subnets", ip_subnets)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if port_protocols is not None:
             pulumi.set(__self__, "port_protocols", port_protocols)
         if support_domains is not None:
@@ -62,39 +65,15 @@ class ZeroTrustResourceLibraryApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="categoryId")
-    def category_id(self) -> pulumi.Input[_builtins.int]:
+    def category_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Returns the category ID.
         """
         return pulumi.get(self, "category_id")
 
     @category_id.setter
-    def category_id(self, value: pulumi.Input[_builtins.int]):
+    def category_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "category_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="humanId")
-    def human_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Returns the human readable ID.
-        """
-        return pulumi.get(self, "human_id")
-
-    @human_id.setter
-    def human_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "human_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Returns the application name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -109,16 +88,40 @@ class ZeroTrustResourceLibraryApplicationArgs:
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
+    @pulumi.getter(name="humanId")
+    def human_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Returns the human readable ID.
+        """
+        return pulumi.get(self, "human_id")
+
+    @human_id.setter
+    def human_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "human_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipSubnets")
     def ip_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        IP subnets matched by the application.
+        IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         """
         return pulumi.get(self, "ip_subnets")
 
     @ip_subnets.setter
     def ip_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_subnets", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Returns the application name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="portProtocols")
@@ -179,7 +182,7 @@ class _ZeroTrustResourceLibraryApplicationState:
         :param pulumi.Input[_builtins.float] gen_ai_score: GenAI score for the application. Returns -1 when no score is available.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames matched by the application.
         :param pulumi.Input[_builtins.str] human_id: Returns the human readable ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_subnets: IP subnets matched by the application.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_subnets: IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         :param pulumi.Input[_builtins.str] name: Returns the application name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] port_protocols: Port and protocol pairs matched by the application.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] support_domains: Support domains matched by the application.
@@ -357,7 +360,7 @@ class _ZeroTrustResourceLibraryApplicationState:
     @pulumi.getter(name="ipSubnets")
     def ip_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        IP subnets matched by the application.
+        IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         """
         return pulumi.get(self, "ip_subnets")
 
@@ -462,17 +465,17 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
 
         example_zero_trust_resource_library_application = cloudflare.ZeroTrustResourceLibraryApplication("example_zero_trust_resource_library_application",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            category_id=12,
-            human_id="HR",
-            name="HR",
             hostnames=[
                 "example.com",
                 "foo.com",
             ],
+            category_id=12,
+            human_id="HR",
             ip_subnets=[
                 "192.168.1.0/24",
-                "10.0.0.0/8",
+                "2001:db8::/48",
             ],
+            name="HR",
             port_protocols=[
                 "tcp/80",
                 "tcp/443",
@@ -495,7 +498,7 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] category_id: Returns the category ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames matched by the application.
         :param pulumi.Input[_builtins.str] human_id: Returns the human readable ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_subnets: IP subnets matched by the application.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_subnets: IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         :param pulumi.Input[_builtins.str] name: Returns the application name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] port_protocols: Port and protocol pairs matched by the application.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] support_domains: Support domains matched by the application.
@@ -515,17 +518,17 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
 
         example_zero_trust_resource_library_application = cloudflare.ZeroTrustResourceLibraryApplication("example_zero_trust_resource_library_application",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            category_id=12,
-            human_id="HR",
-            name="HR",
             hostnames=[
                 "example.com",
                 "foo.com",
             ],
+            category_id=12,
+            human_id="HR",
             ip_subnets=[
                 "192.168.1.0/24",
-                "10.0.0.0/8",
+                "2001:db8::/48",
             ],
+            name="HR",
             port_protocols=[
                 "tcp/80",
                 "tcp/443",
@@ -578,16 +581,10 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if category_id is None and not opts.urn:
-                raise TypeError("Missing required property 'category_id'")
             __props__.__dict__["category_id"] = category_id
             __props__.__dict__["hostnames"] = hostnames
-            if human_id is None and not opts.urn:
-                raise TypeError("Missing required property 'human_id'")
             __props__.__dict__["human_id"] = human_id
             __props__.__dict__["ip_subnets"] = ip_subnets
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["port_protocols"] = port_protocols
             __props__.__dict__["support_domains"] = support_domains
@@ -646,7 +643,7 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] gen_ai_score: GenAI score for the application. Returns -1 when no score is available.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames matched by the application.
         :param pulumi.Input[_builtins.str] human_id: Returns the human readable ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_subnets: IP subnets matched by the application.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_subnets: IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         :param pulumi.Input[_builtins.str] name: Returns the application name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] port_protocols: Port and protocol pairs matched by the application.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] support_domains: Support domains matched by the application.
@@ -725,7 +722,7 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="categoryId")
-    def category_id(self) -> pulumi.Output[_builtins.int]:
+    def category_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Returns the category ID.
         """
@@ -757,7 +754,7 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="humanId")
-    def human_id(self) -> pulumi.Output[_builtins.str]:
+    def human_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Returns the human readable ID.
         """
@@ -767,13 +764,13 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
     @pulumi.getter(name="ipSubnets")
     def ip_subnets(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        IP subnets matched by the application.
+        IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         """
         return pulumi.get(self, "ip_subnets")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> pulumi.Output[_builtins.str]:
+    def name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Returns the application name.
         """

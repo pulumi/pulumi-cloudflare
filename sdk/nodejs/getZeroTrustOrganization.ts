@@ -90,15 +90,30 @@ export interface GetZeroTrustOrganizationResult {
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     readonly mfaRequiredForAllApps: boolean;
+    /**
+     * Configures SSH PIV key requirements for MFA using hardware security keys.
+     */
     readonly mfaSshPivKeyRequirements: outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirements;
     /**
      * The name of your Zero Trust organization.
      */
     readonly name: string;
     /**
+     * Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+     */
+    readonly serviceTokenInactivity: outputs.GetZeroTrustOrganizationServiceTokenInactivity;
+    /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     readonly sessionDuration: string;
+    /**
+     * Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+     */
+    readonly strictServiceTokenAuth: boolean;
+    /**
+     * The account tags of organizations trusted by this organization for policy and device posture sharing.
+     */
+    readonly trustedAccounts: string[];
     /**
      * A description of the reason why the UI read only field is being toggled.
      */

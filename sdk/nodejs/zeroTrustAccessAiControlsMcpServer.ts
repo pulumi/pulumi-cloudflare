@@ -18,31 +18,34 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
+ * const config = new pulumi.Config();
+ * const cloudflareAccountId = config.require("cloudflareAccountId");
+ * const mcpOauthClientId = config.require("mcpOauthClientId");
+ * const mcpOauthClientSecret = config.require("mcpOauthClientSecret");
  * const exampleZeroTrustAccessAiControlsMcpServer = new cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", {
- *     accountId: "a86a8f5c339544d7bdc89926de14fb8c",
- *     zeroTrustAccessAiControlsMcpServerId: "my-mcp-server",
- *     authType: "unauthenticated",
- *     hostname: "https://example.com/mcp",
- *     name: "My MCP Server",
- *     authCredentials: "sk-my-bearer-token",
- *     clientSecret: "client_secret",
- *     description: "This is one remote MCP server",
+ *     accountId: cloudflareAccountId,
+ *     zeroTrustAccessAiControlsMcpServerId: "github",
+ *     authType: "oauth",
+ *     hostname: "https://github-mcp.example.com/mcp",
+ *     name: "GitHub MCP Server",
+ *     authCredentials: JSON.stringify({
+ *         auth_mode: "manual",
+ *         config: {
+ *             authorization_endpoint: "https://github.com/login/oauth/authorize",
+ *             token_endpoint: "https://github.com/login/oauth/access_token",
+ *         },
+ *         registration_info: {
+ *             client_id: mcpOauthClientId,
+ *             token_endpoint_auth_method: "client_secret_basic",
+ *             scope: "repo read:user",
+ *         },
+ *     }),
+ *     clientSecret: mcpOauthClientSecret,
  *     isSharedOauthCallbackEnabled: true,
- *     secureWebGateway: false,
- *     updatedPrompts: [{
- *         name: "name",
- *         alias: "my-custom-alias",
- *         description: "description",
- *         enabled: true,
- *     }],
- *     updatedTools: [{
- *         name: "name",
- *         alias: "my-custom-alias",
- *         description: "description",
- *         enabled: true,
- *     }],
  * });
  * ```
+ *
+ * `authCredentials` and `clientSecret` are write-only and cannot be recovered by import. Omitting either value on update preserves the existing credential. Because the API does not return `authCredentials`, Terraform cannot automatically detect and restore out-of-band OAuth metadata changes; inspect the computed `authConfigSummary` for the current non-secret metadata. Terraform's `sensitive` marker hides credential values from normal output but still stores them in state, so use a protected state backend with restricted access.
  *
  * ## Import
  *

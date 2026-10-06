@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///                     {
     ///                         Attribute = "x",
     ///                         Operator = "equals",
-    ///                         Value = null,
+    ///                         Value = "string",
     ///                     },
     ///                 },
     ///                 Priority = 1,
@@ -67,19 +67,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/flagshipFlag:FlagshipFlag example '&lt;account_id&gt;/&lt;app_id&gt;/&lt;flag_key&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/flagshipFlag:FlagshipFlag")]
     public partial class FlagshipFlag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -90,6 +92,9 @@ namespace Pulumi.Cloudflare
         [Output("defaultVariation")]
         public Output<string> DefaultVariation { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional operator-facing description. It does not affect flag evaluation.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
@@ -98,12 +103,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
-
-        /// <summary>
-        /// Flag key (slug).
-        /// </summary>
-        [Output("flagKey")]
-        public Output<string?> FlagKey { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
@@ -118,11 +117,11 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.FlagshipFlagRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        /// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
         /// Available values: "boolean", "string", "number", "json".
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -183,13 +182,13 @@ namespace Pulumi.Cloudflare
     public sealed class FlagshipFlagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -200,6 +199,9 @@ namespace Pulumi.Cloudflare
         [Input("defaultVariation", required: true)]
         public Input<string> DefaultVariation { get; set; } = null!;
 
+        /// <summary>
+        /// Optional operator-facing description. It does not affect flag evaluation.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -208,12 +210,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
-
-        /// <summary>
-        /// Flag key (slug).
-        /// </summary>
-        [Input("flagKey")]
-        public Input<string>? FlagKey { get; set; }
 
         /// <summary>
         /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
@@ -234,7 +230,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        /// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
         /// Available values: "boolean", "string", "number", "json".
         /// </summary>
         [Input("type")]
@@ -261,13 +257,13 @@ namespace Pulumi.Cloudflare
     public sealed class FlagshipFlagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -278,6 +274,9 @@ namespace Pulumi.Cloudflare
         [Input("defaultVariation")]
         public Input<string>? DefaultVariation { get; set; }
 
+        /// <summary>
+        /// Optional operator-facing description. It does not affect flag evaluation.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -286,12 +285,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
-
-        /// <summary>
-        /// Flag key (slug).
-        /// </summary>
-        [Input("flagKey")]
-        public Input<string>? FlagKey { get; set; }
 
         /// <summary>
         /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
@@ -312,7 +305,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        /// Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations.
         /// Available values: "boolean", "string", "number", "json".
         /// </summary>
         [Input("type")]

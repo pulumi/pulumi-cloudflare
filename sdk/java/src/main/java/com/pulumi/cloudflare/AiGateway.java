@@ -39,6 +39,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.AiGateway;
  * import com.pulumi.cloudflare.AiGatewayArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewayDlpArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewayGuardrailsArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewayGuardrailsPromptArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewayGuardrailsResponseArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewayOtelArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewaySpendLimitsArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewaySpendLimitsRuleArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewaySpendLimitsRuleMetadataArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewaySpendLimitsRuleModelArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewaySpendLimitsRuleAiGatewayProviderArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewayStripeArgs;
+ * import com.pulumi.cloudflare.inputs.AiGatewayStripeUsageEventArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -61,15 +73,90 @@ import javax.annotation.Nullable;
  *             .rateLimitingInterval(0)
  *             .rateLimitingLimit(0)
  *             .authentication(true)
+ *             .byokOnly(true)
+ *             .dlp(AiGatewayDlpArgs.builder()
+ *                 .action("BLOCK")
+ *                 .enabled(true)
+ *                 .profiles("string")
+ *                 .build())
+ *             .guardrails(AiGatewayGuardrailsArgs.builder()
+ *                 .prompt(AiGatewayGuardrailsPromptArgs.builder()
+ *                     .p1("FLAG")
+ *                     .s1("FLAG")
+ *                     .s10("FLAG")
+ *                     .s11("FLAG")
+ *                     .s12("FLAG")
+ *                     .s13("FLAG")
+ *                     .s2("FLAG")
+ *                     .s3("FLAG")
+ *                     .s4("FLAG")
+ *                     .s5("FLAG")
+ *                     .s6("FLAG")
+ *                     .s7("FLAG")
+ *                     .s8("FLAG")
+ *                     .s9("FLAG")
+ *                     .build())
+ *                 .response(AiGatewayGuardrailsResponseArgs.builder()
+ *                     .p1("FLAG")
+ *                     .s1("FLAG")
+ *                     .s10("FLAG")
+ *                     .s11("FLAG")
+ *                     .s12("FLAG")
+ *                     .s13("FLAG")
+ *                     .s2("FLAG")
+ *                     .s3("FLAG")
+ *                     .s4("FLAG")
+ *                     .s5("FLAG")
+ *                     .s6("FLAG")
+ *                     .s7("FLAG")
+ *                     .s8("FLAG")
+ *                     .s9("FLAG")
+ *                     .build())
+ *                 .build())
+ *             .logClassification(true)
  *             .logManagement(10000)
  *             .logManagementStrategy("STOP_INSERTING")
  *             .logpush(true)
  *             .logpushPublicKey("xxxxxxxxxxxxxxxx")
+ *             .otels(AiGatewayOtelArgs.builder()
+ *                 .headers(Map.of("foo", "string"))
+ *                 .url("https://example.com")
+ *                 .authorization("authorization")
+ *                 .contentType("json")
+ *                 .build())
  *             .rateLimitingTechnique("fixed")
  *             .retryBackoff("constant")
  *             .retryDelay(0)
  *             .retryMaxAttempts(1)
+ *             .spendLimits(AiGatewaySpendLimitsArgs.builder()
+ *                 .enabled(true)
+ *                 .rules(AiGatewaySpendLimitsRuleArgs.builder()
+ *                     .limit(1.0)
+ *                     .limitType("cost")
+ *                     .window(1)
+ *                     .id("x")
+ *                     .enabled(true)
+ *                     .metadata(Map.of("foo", AiGatewaySpendLimitsRuleMetadataArgs.builder()
+ *                         .mode("partition")
+ *                         .build()))
+ *                     .model(AiGatewaySpendLimitsRuleModelArgs.builder()
+ *                         .mode("filter")
+ *                         .values("string")
+ *                         .build())
+ *                     .aiGatewayProvider(AiGatewaySpendLimitsRuleAiGatewayProviderArgs.builder()
+ *                         .mode("filter")
+ *                         .values("string")
+ *                         .build())
+ *                     .technique("fixed")
+ *                     .build())
+ *                 .build())
  *             .storeId("store_id")
+ *             .stripe(AiGatewayStripeArgs.builder()
+ *                 .authorization("authorization")
+ *                 .usageEvents(AiGatewayStripeUsageEventArgs.builder()
+ *                     .payload("payload")
+ *                     .build())
+ *                 .build())
  *             .workersAiBillingMode("postpaid")
  *             .zdr(true)
  *             .build());
@@ -95,24 +182,38 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * gateway id
+     * Unique identifier of the AI Gateway within the account.
      * 
      */
     @Export(name="aiGatewayId", refs={String.class}, tree="[0]")
     private Output<String> aiGatewayId;
 
     /**
-     * @return gateway id
+     * @return Unique identifier of the AI Gateway within the account.
      * 
      */
     public Output<String> aiGatewayId() {
         return this.aiGatewayId;
     }
     @Export(name="authentication", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> authentication;
+    private Output<Boolean> authentication;
 
-    public Output<Optional<Boolean>> authentication() {
-        return Codegen.optional(this.authentication);
+    public Output<Boolean> authentication() {
+        return this.authentication;
+    }
+    /**
+     * Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     * 
+     */
+    @Export(name="byokOnly", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> byokOnly;
+
+    /**
+     * @return Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+     * 
+     */
+    public Output<Boolean> byokOnly() {
+        return this.byokOnly;
     }
     @Export(name="cacheInvalidateOnUpdate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> cacheInvalidateOnUpdate;
@@ -157,36 +258,36 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
         return this.isDefault;
     }
     @Export(name="logClassification", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> logClassification;
+    private Output<Boolean> logClassification;
 
-    public Output<Optional<Boolean>> logClassification() {
-        return Codegen.optional(this.logClassification);
+    public Output<Boolean> logClassification() {
+        return this.logClassification;
     }
     @Export(name="logManagement", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> logManagement;
+    private Output<Integer> logManagement;
 
-    public Output<Optional<Integer>> logManagement() {
-        return Codegen.optional(this.logManagement);
+    public Output<Integer> logManagement() {
+        return this.logManagement;
     }
     /**
      * Available values: &#34;STOP*INSERTING&#34;, &#34;DELETE*OLDEST&#34;.
      * 
      */
     @Export(name="logManagementStrategy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> logManagementStrategy;
+    private Output<String> logManagementStrategy;
 
     /**
      * @return Available values: &#34;STOP*INSERTING&#34;, &#34;DELETE*OLDEST&#34;.
      * 
      */
-    public Output<Optional<String>> logManagementStrategy() {
-        return Codegen.optional(this.logManagementStrategy);
+    public Output<String> logManagementStrategy() {
+        return this.logManagementStrategy;
     }
     @Export(name="logpush", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> logpush;
+    private Output<Boolean> logpush;
 
-    public Output<Optional<Boolean>> logpush() {
-        return Codegen.optional(this.logpush);
+    public Output<Boolean> logpush() {
+        return this.logpush;
     }
     @Export(name="logpushPublicKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logpushPublicKey;
@@ -249,14 +350,14 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retryBackoff);
     }
     /**
-     * Delay between retry attempts in milliseconds (0-5000)
+     * Delay between retry attempts in milliseconds (0-60000)
      * 
      */
     @Export(name="retryDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retryDelay;
 
     /**
-     * @return Delay between retry attempts in milliseconds (0-5000)
+     * @return Delay between retry attempts in milliseconds (0-60000)
      * 
      */
     public Output<Optional<Integer>> retryDelay() {
@@ -283,10 +384,10 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
         return this.spendLimits;
     }
     @Export(name="storeId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> storeId;
+    private Output<String> storeId;
 
-    public Output<Optional<String>> storeId() {
-        return Codegen.optional(this.storeId);
+    public Output<String> storeId() {
+        return this.storeId;
     }
     @Export(name="stripe", refs={AiGatewayStripe.class}, tree="[0]")
     private Output</* @Nullable */ AiGatewayStripe> stripe;
@@ -311,10 +412,10 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
         return this.workersAiBillingMode;
     }
     @Export(name="zdr", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> zdr;
+    private Output<Boolean> zdr;
 
-    public Output<Optional<Boolean>> zdr() {
-        return Codegen.optional(this.zdr);
+    public Output<Boolean> zdr() {
+        return this.zdr;
     }
 
     /**

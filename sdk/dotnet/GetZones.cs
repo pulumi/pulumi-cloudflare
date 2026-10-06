@@ -37,6 +37,10 @@ namespace Pulumi.Cloudflare
         ///         Name = "name",
         ///         Order = "status",
         ///         Status = "initializing",
+        ///         Types = new[]
+        ///         {
+        ///             "full",
+        ///         },
         ///     });
         /// 
         /// });
@@ -71,6 +75,10 @@ namespace Pulumi.Cloudflare
         ///         Name = "name",
         ///         Order = "status",
         ///         Status = "initializing",
+        ///         Types = new[]
+        ///         {
+        ///             "full",
+        ///         },
         ///     });
         /// 
         /// });
@@ -105,6 +113,10 @@ namespace Pulumi.Cloudflare
         ///         Name = "name",
         ///         Order = "status",
         ///         Status = "initializing",
+        ///         Types = new[]
+        ///         {
+        ///             "full",
+        ///         },
         ///     });
         /// 
         /// });

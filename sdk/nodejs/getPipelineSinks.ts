@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *
  * const examplePipelineSinks = cloudflare.getPipelineSinks({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
+ *     name: "x",
  *     pipelineId: "pipeline_id",
  * });
  * ```
@@ -90,6 +91,7 @@ export interface GetPipelineSinksResult {
  *
  * const examplePipelineSinks = cloudflare.getPipelineSinks({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
+ *     name: "x",
  *     pipelineId: "pipeline_id",
  * });
  * ```

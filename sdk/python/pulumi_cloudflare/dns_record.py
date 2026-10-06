@@ -28,6 +28,7 @@ class DnsRecordArgs:
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  data: pulumi.Input[Optional['DnsRecordDataArgs']] = None,
+                 include_shadow_metadata: pulumi.Input[Optional[_builtins.bool]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
                  private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -44,6 +45,7 @@ class DnsRecordArgs:
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input['DnsRecordDataArgs'] data: Components of a MX record.
+        :param pulumi.Input[_builtins.bool] include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
         :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
@@ -60,6 +62,8 @@ class DnsRecordArgs:
             pulumi.set(__self__, "content", content)
         if data is not None:
             pulumi.set(__self__, "data", data)
+        if include_shadow_metadata is not None:
+            pulumi.set(__self__, "include_shadow_metadata", include_shadow_metadata)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if private_routing is not None:
@@ -157,6 +161,18 @@ class DnsRecordArgs:
         pulumi.set(self, "data", value)
 
     @_builtins.property
+    @pulumi.getter(name="includeShadowMetadata")
+    def include_shadow_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        """
+        return pulumi.get(self, "include_shadow_metadata")
+
+    @include_shadow_metadata.setter
+    def include_shadow_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_shadow_metadata", value)
+
+    @_builtins.property
     @pulumi.getter
     def priority(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
@@ -225,6 +241,7 @@ class _DnsRecordState:
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
                  data: pulumi.Input[Optional['DnsRecordDataArgs']] = None,
+                 include_shadow_metadata: pulumi.Input[Optional[_builtins.bool]] = None,
                  meta: pulumi.Input[Optional[_builtins.str]] = None,
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -246,6 +263,7 @@ class _DnsRecordState:
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input[_builtins.str] created_on: When the record was created.
         :param pulumi.Input['DnsRecordDataArgs'] data: Components of a MX record.
+        :param pulumi.Input[_builtins.bool] include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         :param pulumi.Input[_builtins.str] meta: Extra Cloudflare-specific information about the record.
         :param pulumi.Input[_builtins.str] modified_on: When the record was last modified.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
@@ -271,6 +289,8 @@ class _DnsRecordState:
             pulumi.set(__self__, "created_on", created_on)
         if data is not None:
             pulumi.set(__self__, "data", data)
+        if include_shadow_metadata is not None:
+            pulumi.set(__self__, "include_shadow_metadata", include_shadow_metadata)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
         if modified_on is not None:
@@ -357,6 +377,18 @@ class _DnsRecordState:
     @data.setter
     def data(self, value: pulumi.Input[Optional['DnsRecordDataArgs']]):
         pulumi.set(self, "data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeShadowMetadata")
+    def include_shadow_metadata(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        """
+        return pulumi.get(self, "include_shadow_metadata")
+
+    @include_shadow_metadata.setter
+    def include_shadow_metadata(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_shadow_metadata", value)
 
     @_builtins.property
     @pulumi.getter
@@ -525,6 +557,7 @@ class DnsRecord(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']]] = None,
+                 include_shadow_metadata: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
                  private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -575,6 +608,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']] data: Components of a MX record.
+        :param pulumi.Input[_builtins.bool] include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
         :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
@@ -645,6 +679,7 @@ class DnsRecord(pulumi.CustomResource):
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']]] = None,
+                 include_shadow_metadata: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.float]] = None,
                  private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -666,6 +701,7 @@ class DnsRecord(pulumi.CustomResource):
             __props__.__dict__["comment"] = comment
             __props__.__dict__["content"] = content
             __props__.__dict__["data"] = data
+            __props__.__dict__["include_shadow_metadata"] = include_shadow_metadata
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -706,6 +742,7 @@ class DnsRecord(pulumi.CustomResource):
             content: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']]] = None,
+            include_shadow_metadata: pulumi.Input[Optional[_builtins.bool]] = None,
             meta: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -731,6 +768,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input[_builtins.str] created_on: When the record was created.
         :param pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict', 'outputs.DnsRecordData']] data: Components of a MX record.
+        :param pulumi.Input[_builtins.bool] include_shadow_metadata: Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         :param pulumi.Input[_builtins.str] meta: Extra Cloudflare-specific information about the record.
         :param pulumi.Input[_builtins.str] modified_on: When the record was last modified.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
@@ -755,6 +793,7 @@ class DnsRecord(pulumi.CustomResource):
         __props__.__dict__["content"] = content
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["data"] = data
+        __props__.__dict__["include_shadow_metadata"] = include_shadow_metadata
         __props__.__dict__["meta"] = meta
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
@@ -809,6 +848,14 @@ class DnsRecord(pulumi.CustomResource):
         Components of a MX record.
         """
         return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="includeShadowMetadata")
+    def include_shadow_metadata(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        """
+        return pulumi.get(self, "include_shadow_metadata")
 
     @_builtins.property
     @pulumi.getter

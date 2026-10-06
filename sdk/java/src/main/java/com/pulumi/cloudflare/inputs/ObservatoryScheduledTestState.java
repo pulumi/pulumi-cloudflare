@@ -19,6 +19,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
 
     /**
      * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     @Import(name="frequency")
@@ -26,6 +27,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
 
     /**
      * @return The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
      * 
      */
     public Optional<Output<String>> frequency() {
@@ -132,6 +134,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
 
         /**
          * @param frequency The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+         * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
          * 
          * @return builder
          * 
@@ -143,6 +146,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
 
         /**
          * @param frequency The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+         * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
          * 
          * @return builder
          * 

@@ -28,7 +28,7 @@ class R2BucketLockArgs:
         """
         The set of arguments for constructing a R2BucketLock resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         """
@@ -43,7 +43,7 @@ class R2BucketLockArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -95,7 +95,7 @@ class _R2BucketLockState:
         """
         Input properties used for looking up and filtering R2BucketLock resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         """
@@ -112,7 +112,7 @@ class _R2BucketLockState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -193,7 +193,7 @@ class R2BucketLock(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         """
@@ -286,7 +286,7 @@ class R2BucketLock(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the R2 resource.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         """
@@ -304,7 +304,7 @@ class R2BucketLock(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Account ID.
+        Cloudflare account ID that owns the R2 resource.
         """
         return pulumi.get(self, "account_id")
 

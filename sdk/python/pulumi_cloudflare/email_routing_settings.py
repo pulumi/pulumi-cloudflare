@@ -19,13 +19,17 @@ __all__ = ['EmailRoutingSettingsArgs', 'EmailRoutingSettings']
 @pulumi.input_type
 class EmailRoutingSettingsArgs:
     def __init__(__self__, *,
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: pulumi.Input[_builtins.str],
+                 support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EmailRoutingSettings resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         """
         pulumi.set(__self__, "zone_id", zone_id)
+        if support_subaddress is not None:
+            pulumi.set(__self__, "support_subaddress", support_subaddress)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -39,6 +43,18 @@ class EmailRoutingSettingsArgs:
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="supportSubaddress")
+    def support_subaddress(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        """
+        return pulumi.get(self, "support_subaddress")
+
+    @support_subaddress.setter
+    def support_subaddress(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "support_subaddress", value)
+
 
 @pulumi.input_type
 class _EmailRoutingSettingsState:
@@ -49,6 +65,7 @@ class _EmailRoutingSettingsState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wizard: pulumi.Input[Optional[_builtins.bool]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None,
                  tag: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -61,6 +78,7 @@ class _EmailRoutingSettingsState:
         :param pulumi.Input[_builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[_builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         :param pulumi.Input[_builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -76,6 +94,8 @@ class _EmailRoutingSettingsState:
             pulumi.set(__self__, "skip_wizard", skip_wizard)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if support_subaddress is not None:
+            pulumi.set(__self__, "support_subaddress", support_subaddress)
         if tag is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""tag is deprecated: This attribute is deprecated.""")
@@ -158,6 +178,18 @@ class _EmailRoutingSettingsState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter(name="supportSubaddress")
+    def support_subaddress(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        """
+        return pulumi.get(self, "support_subaddress")
+
+    @support_subaddress.setter
+    def support_subaddress(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "support_subaddress", value)
+
+    @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
@@ -189,6 +221,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -215,6 +248,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -260,6 +294,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -270,6 +305,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailRoutingSettingsArgs.__new__(EmailRoutingSettingsArgs)
 
+            __props__.__dict__["support_subaddress"] = support_subaddress
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -296,6 +332,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             skip_wizard: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            support_subaddress: pulumi.Input[Optional[_builtins.bool]] = None,
             tag: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailRoutingSettings':
         """
@@ -312,6 +349,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[_builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
+        :param pulumi.Input[_builtins.bool] support_subaddress: Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         :param pulumi.Input[_builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -325,6 +363,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["skip_wizard"] = skip_wizard
         __props__.__dict__["status"] = status
+        __props__.__dict__["support_subaddress"] = support_subaddress
         __props__.__dict__["tag"] = tag
         __props__.__dict__["zone_id"] = zone_id
         return EmailRoutingSettings(resource_name, opts=opts, __props__=__props__)
@@ -377,6 +416,14 @@ class EmailRoutingSettings(pulumi.CustomResource):
         Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="supportSubaddress")
+    def support_subaddress(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+        """
+        return pulumi.get(self, "support_subaddress")
 
     @_builtins.property
     @pulumi.getter

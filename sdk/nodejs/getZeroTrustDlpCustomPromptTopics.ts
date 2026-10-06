@@ -11,6 +11,17 @@ import * as utilities from "./utilities";
  *
  * - `Zero Trust Read`
  * - `Zero Trust Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDlpCustomPromptTopics = cloudflare.getZeroTrustDlpCustomPromptTopics({
+ *     accountId: "account_id",
+ * });
+ * ```
  */
 export function getZeroTrustDlpCustomPromptTopics(args: GetZeroTrustDlpCustomPromptTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpCustomPromptTopicsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -50,6 +61,17 @@ export interface GetZeroTrustDlpCustomPromptTopicsResult {
  *
  * - `Zero Trust Read`
  * - `Zero Trust Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDlpCustomPromptTopics = cloudflare.getZeroTrustDlpCustomPromptTopics({
+ *     accountId: "account_id",
+ * });
+ * ```
  */
 export function getZeroTrustDlpCustomPromptTopicsOutput(args: GetZeroTrustDlpCustomPromptTopicsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpCustomPromptTopicsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

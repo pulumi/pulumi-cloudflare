@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
     public partial class R2BucketCors : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketCorsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketCorsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

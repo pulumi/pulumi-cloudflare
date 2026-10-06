@@ -28,9 +28,10 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         DestinationConf = "s3://mybucket/logs?region=us-west-2",
     ///         ZoneId = "zone_id",
-    ///         Dataset = "gateway_dns",
+    ///         Dataset = "http_requests",
     ///         Enabled = false,
     ///         Filter = "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+    ///         FilterAttackTraffic = true,
     ///         Frequency = "high",
     ///         Kind = "",
     ///         LogpullOptions = "fields=RayID,ClientIP,EdgeStartTimestamp&amp;timestamps=rfc3339",
@@ -40,23 +41,21 @@ namespace Pulumi.Cloudflare
     ///         Name = "example.com",
     ///         OutputOptions = new Cloudflare.Inputs.LogpushJobOutputOptionsArgs
     ///         {
-    ///             BatchPrefix = "",
-    ///             BatchSuffix = "",
-    ///             Cve202144228 = false,
-    ///             FieldDelimiter = ",",
+    ///             BatchPrefix = "batch_prefix",
+    ///             BatchSuffix = "batch_suffix",
+    ///             Cve202144228 = true,
+    ///             FieldDelimiter = "field_delimiter",
     ///             FieldNames = new[]
     ///             {
-    ///                 "Datetime",
-    ///                 "DstIP",
-    ///                 "SrcIP",
+    ///                 "ClientIP",
+    ///                 "EdgeStartTimestamp",
+    ///                 "RayID",
     ///             },
     ///             MergeSubrequests = true,
     ///             OutputType = "ndjson",
-    ///             RecordDelimiter = "",
-    ///             RecordPrefix = "{",
-    ///             RecordSuffix = @"    }
-    /// 
-    /// ",
+    ///             RecordDelimiter = "record_delimiter",
+    ///             RecordPrefix = "record_prefix",
+    ///             RecordSuffix = "record_suffix",
     ///             RecordTemplate = "record_template",
     ///             SampleRate = 1,
     ///             TimestampFormat = "unixnano",
@@ -112,6 +111,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("filter")]
         public Output<string> Filter { get; private set; } = null!;
+
+        /// <summary>
+        /// When true, excludes DDoS attack traffic from logs. This option is supported for the `HttpRequests`, `FirewallEvents`, and `NetworkAnalyticsLogs` datasets.
+        /// </summary>
+        [Output("filterAttackTraffic")]
+        public Output<bool> FilterAttackTraffic { get; private set; } = null!;
 
         /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
@@ -280,6 +285,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Filter { get; set; }
 
         /// <summary>
+        /// When true, excludes DDoS attack traffic from logs. This option is supported for the `HttpRequests`, `FirewallEvents`, and `NetworkAnalyticsLogs` datasets.
+        /// </summary>
+        [Input("filterAttackTraffic")]
+        public Input<bool>? FilterAttackTraffic { get; set; }
+
+        /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
         /// Available values: "high", "low".
         /// </summary>
@@ -405,6 +416,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// When true, excludes DDoS attack traffic from logs. This option is supported for the `HttpRequests`, `FirewallEvents`, and `NetworkAnalyticsLogs` datasets.
+        /// </summary>
+        [Input("filterAttackTraffic")]
+        public Input<bool>? FilterAttackTraffic { get; set; }
 
         /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.

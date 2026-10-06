@@ -96,6 +96,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPacfilesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
@@ -113,6 +116,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPacfilesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -132,6 +138,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayPacfilesResult
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
         /// Max items to fetch, default: 1000

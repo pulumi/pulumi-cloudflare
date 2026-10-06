@@ -63,7 +63,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .multiProvider(false)
  *             .nameservers(ZoneDnsSettingsNameserversArgs.builder()
- *                 .nsSet(1)
  *                 .type("cloudflare.standard")
  *                 .build())
  *             .nsTtl(86400.0)
@@ -107,14 +106,19 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.flattenAllCnames);
     }
     /**
-     * Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     * 
+     * @deprecated
+     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
+    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+ */
     @Export(name="foundationDns", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> foundationDns;
 
     /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
      * 
      */
     public Output<Optional<Boolean>> foundationDns() {
@@ -149,14 +153,14 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.multiProvider);
     }
     /**
-     * Settings determining the nameservers through which the zone should be available.
+     * Controls the nameservers through which the zone is available.
      * 
      */
     @Export(name="nameservers", refs={ZoneDnsSettingsNameservers.class}, tree="[0]")
     private Output<ZoneDnsSettingsNameservers> nameservers;
 
     /**
-     * @return Settings determining the nameservers through which the zone should be available.
+     * @return Controls the nameservers through which the zone is available.
      * 
      */
     public Output<ZoneDnsSettingsNameservers> nameservers() {

@@ -37,7 +37,7 @@ public final class GetCustomSslsResult {
     private GetCustomSslsResultGeoRestrictions geoRestrictions;
     private List<String> hosts;
     /**
-     * @return Identifier.
+     * @return Custom certificate identifier tag.
      * 
      */
     private String id;
@@ -120,7 +120,7 @@ public final class GetCustomSslsResult {
         return this.hosts;
     }
     /**
-     * @return Identifier.
+     * @return Custom certificate identifier tag.
      * 
      */
     public String id() {

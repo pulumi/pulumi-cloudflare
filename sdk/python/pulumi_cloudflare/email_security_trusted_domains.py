@@ -29,7 +29,9 @@ class EmailSecurityTrustedDomainsArgs:
         The set of arguments for constructing a EmailSecurityTrustedDomains resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] pattern: The domain pattern to trust, e.g. `example.com`.
         :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal domain.
         :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -58,6 +60,9 @@ class EmailSecurityTrustedDomainsArgs:
     @_builtins.property
     @pulumi.getter
     def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        The domain pattern to trust, e.g. `example.com`.
+        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -88,6 +93,9 @@ class EmailSecurityTrustedDomainsArgs:
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether `pattern` is a regular expression instead of a literal domain.
+        """
         return pulumi.get(self, "is_regex")
 
     @is_regex.setter
@@ -124,8 +132,10 @@ class _EmailSecurityTrustedDomainsState:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal domain.
         :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param pulumi.Input[_builtins.str] pattern: The domain pattern to trust, e.g. `example.com`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -194,6 +204,9 @@ class _EmailSecurityTrustedDomainsState:
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether `pattern` is a regular expression instead of a literal domain.
+        """
         return pulumi.get(self, "is_regex")
 
     @is_regex.setter
@@ -237,6 +250,9 @@ class _EmailSecurityTrustedDomainsState:
     @_builtins.property
     @pulumi.getter
     def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The domain pattern to trust, e.g. `example.com`.
+        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -275,7 +291,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
             is_regex=False,
             is_similarity=False,
             pattern="example.com",
-            comments=None)
+            comments="Trusted partner domain")
         ```
 
         ## Import
@@ -289,7 +305,9 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal domain.
         :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+        :param pulumi.Input[_builtins.str] pattern: The domain pattern to trust, e.g. `example.com`.
         """
         ...
     @overload
@@ -315,7 +333,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
             is_regex=False,
             is_similarity=False,
             pattern="example.com",
-            comments=None)
+            comments="Trusted partner domain")
         ```
 
         ## Import
@@ -396,8 +414,10 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal domain.
         :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param pulumi.Input[_builtins.str] pattern: The domain pattern to trust, e.g. `example.com`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -443,6 +463,9 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether `pattern` is a regular expression instead of a literal domain.
+        """
         return pulumi.get(self, "is_regex")
 
     @_builtins.property
@@ -470,5 +493,8 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def pattern(self) -> pulumi.Output[_builtins.str]:
+        """
+        The domain pattern to trust, e.g. `example.com`.
+        """
         return pulumi.get(self, "pattern")
 

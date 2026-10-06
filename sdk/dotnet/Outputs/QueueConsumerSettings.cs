@@ -17,6 +17,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// The maximum number of messages to include in a batch.
         /// </summary>
         public readonly double? BatchSize;
+        public readonly ImmutableArray<Outputs.QueueConsumerSettingsEmail> Emails;
         /// <summary>
         /// Maximum number of concurrent consumers that may consume from this Queue. Set to `Null` to automatically opt in to the platform's maximum (recommended).
         /// </summary>
@@ -30,6 +31,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? MaxWaitTimeMs;
         /// <summary>
+        /// PagerDuty notification destinations.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.QueueConsumerSettingsPagerduty> Pagerduties;
+        /// <summary>
         /// The number of seconds to delay before making the message available for another attempt.
         /// </summary>
         public readonly double? RetryDelay;
@@ -37,10 +42,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
         /// </summary>
         public readonly double? VisibilityTimeoutMs;
+        /// <summary>
+        /// Webhook notification destinations.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.QueueConsumerSettingsWebhook> Webhooks;
 
         [OutputConstructor]
         private QueueConsumerSettings(
             double? batchSize,
+
+            ImmutableArray<Outputs.QueueConsumerSettingsEmail> emails,
 
             double? maxConcurrency,
 
@@ -48,16 +59,23 @@ namespace Pulumi.Cloudflare.Outputs
 
             double? maxWaitTimeMs,
 
+            ImmutableArray<Outputs.QueueConsumerSettingsPagerduty> pagerduties,
+
             double? retryDelay,
 
-            double? visibilityTimeoutMs)
+            double? visibilityTimeoutMs,
+
+            ImmutableArray<Outputs.QueueConsumerSettingsWebhook> webhooks)
         {
             BatchSize = batchSize;
+            Emails = emails;
             MaxConcurrency = maxConcurrency;
             MaxRetries = maxRetries;
             MaxWaitTimeMs = maxWaitTimeMs;
+            Pagerduties = pagerduties;
             RetryDelay = retryDelay;
             VisibilityTimeoutMs = visibilityTimeoutMs;
+            Webhooks = webhooks;
         }
     }
 }

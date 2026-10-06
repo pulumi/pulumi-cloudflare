@@ -142,7 +142,11 @@ class GetD1DatabaseResult:
 
     @_builtins.property
     @pulumi.getter(name="numTables")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def num_tables(self) -> _builtins.float:
+        """
+        The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+        """
         return pulumi.get(self, "num_tables")
 
     @_builtins.property

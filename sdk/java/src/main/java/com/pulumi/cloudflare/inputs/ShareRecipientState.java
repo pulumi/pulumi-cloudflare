@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ShareRecipientResourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -66,6 +67,21 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> created() {
         return Optional.ofNullable(this.created);
+    }
+
+    /**
+     * Include resources in the response.
+     * 
+     */
+    @Import(name="includeResources")
+    private @Nullable Output<Boolean> includeResources;
+
+    /**
+     * @return Include resources in the response.
+     * 
+     */
+    public Optional<Output<Boolean>> includeResources() {
+        return Optional.ofNullable(this.includeResources);
     }
 
     /**
@@ -141,6 +157,7 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
         this.accountId = $.accountId;
         this.associationStatus = $.associationStatus;
         this.created = $.created;
+        this.includeResources = $.includeResources;
         this.modified = $.modified;
         this.organizationId = $.organizationId;
         this.recipientAccountId = $.recipientAccountId;
@@ -233,6 +250,27 @@ public final class ShareRecipientState extends com.pulumi.resources.ResourceArgs
          */
         public Builder created(String created) {
             return created(Output.of(created));
+        }
+
+        /**
+         * @param includeResources Include resources in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeResources(@Nullable Output<Boolean> includeResources) {
+            $.includeResources = includeResources;
+            return this;
+        }
+
+        /**
+         * @param includeResources Include resources in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeResources(Boolean includeResources) {
+            return includeResources(Output.of(includeResources));
         }
 
         /**

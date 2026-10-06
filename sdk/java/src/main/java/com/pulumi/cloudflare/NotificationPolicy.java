@@ -111,6 +111,7 @@ import javax.annotation.Nullable;
  *                 .targetHostnames("string")
  *                 .targetIps("string")
  *                 .targetZoneNames("string")
+ *                 .tokenIds("x")
  *                 .trafficExclusions("security_events")
  *                 .tunnelIds("string")
  *                 .tunnelNames("string")

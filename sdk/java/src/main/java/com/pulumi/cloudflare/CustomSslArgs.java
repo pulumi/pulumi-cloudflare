@@ -114,18 +114,18 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone&#39;s private key.
+     * The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      * 
      */
-    @Import(name="privateKey", required=true)
-    private Output<String> privateKey;
+    @Import(name="privateKey")
+    private @Nullable Output<String> privateKey;
 
     /**
-     * @return The zone&#39;s private key.
+     * @return The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      * 
      */
-    public Output<String> privateKey() {
-        return this.privateKey;
+    public Optional<Output<String>> privateKey() {
+        return Optional.ofNullable(this.privateKey);
     }
 
     /**
@@ -325,18 +325,18 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The zone&#39;s private key.
+         * @param privateKey The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
          * 
          * @return builder
          * 
          */
-        public Builder privateKey(Output<String> privateKey) {
+        public Builder privateKey(@Nullable Output<String> privateKey) {
             $.privateKey = privateKey;
             return this;
         }
 
         /**
-         * @param privateKey The zone&#39;s private key.
+         * @param privateKey The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
          * 
          * @return builder
          * 
@@ -392,9 +392,6 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
         public CustomSslArgs build() {
             if ($.certificate == null) {
                 throw new MissingRequiredPropertyException("CustomSslArgs", "certificate");
-            }
-            if ($.privateKey == null) {
-                throw new MissingRequiredPropertyException("CustomSslArgs", "privateKey");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("CustomSslArgs", "zoneId");

@@ -79,6 +79,8 @@ type GetLogpushDatasetJobResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage string `pulumi:"errorMessage"`
+	// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+	FilterAttackTraffic bool `pulumi:"filterAttackTraffic"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -176,6 +178,11 @@ func (o GetLogpushDatasetJobResultOutput) Enabled() pulumi.BoolOutput {
 // If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 func (o GetLogpushDatasetJobResultOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobResult) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+func (o GetLogpushDatasetJobResultOutput) FilterAttackTraffic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLogpushDatasetJobResult) bool { return v.FilterAttackTraffic }).(pulumi.BoolOutput)
 }
 
 // This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.

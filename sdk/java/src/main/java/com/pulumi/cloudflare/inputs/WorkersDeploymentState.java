@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.WorkersDeploymentAnnotationsArgs;
 import com.pulumi.cloudflare.inputs.WorkersDeploymentVersionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -55,14 +56,29 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Name of the script, used in URLs and route configuration.
+     * If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+     * 
+     */
+    @Import(name="force")
+    private @Nullable Output<Boolean> force;
+
+    /**
+     * @return If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+     * 
+     */
+    public Optional<Output<Boolean>> force() {
+        return Optional.ofNullable(this.force);
+    }
+
+    /**
+     * Name of the script.
      * 
      */
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public Optional<Output<String>> scriptName() {
@@ -91,9 +107,17 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.strategy);
     }
 
+    /**
+     * Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+     * 
+     */
     @Import(name="versions")
     private @Nullable Output<List<WorkersDeploymentVersionArgs>> versions;
 
+    /**
+     * @return Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+     * 
+     */
     public Optional<Output<List<WorkersDeploymentVersionArgs>>> versions() {
         return Optional.ofNullable(this.versions);
     }
@@ -105,6 +129,7 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         this.annotations = $.annotations;
         this.authorEmail = $.authorEmail;
         this.createdOn = $.createdOn;
+        this.force = $.force;
         this.scriptName = $.scriptName;
         this.source = $.source;
         this.strategy = $.strategy;
@@ -178,7 +203,28 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scriptName Name of the script, used in URLs and route configuration.
+         * @param force If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(@Nullable Output<Boolean> force) {
+            $.force = force;
+            return this;
+        }
+
+        /**
+         * @param force If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(Boolean force) {
+            return force(Output.of(force));
+        }
+
+        /**
+         * @param scriptName Name of the script.
          * 
          * @return builder
          * 
@@ -189,7 +235,7 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scriptName Name of the script, used in URLs and route configuration.
+         * @param scriptName Name of the script.
          * 
          * @return builder
          * 
@@ -228,15 +274,33 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
             return strategy(Output.of(strategy));
         }
 
+        /**
+         * @param versions Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versions(@Nullable Output<List<WorkersDeploymentVersionArgs>> versions) {
             $.versions = versions;
             return this;
         }
 
+        /**
+         * @param versions Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versions(List<WorkersDeploymentVersionArgs> versions) {
             return versions(Output.of(versions));
         }
 
+        /**
+         * @param versions Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions &#39;[{&#34;versionId&#34;:&#34;023e105f-2a42-4f8b-a1c1-73f6a2a30c0f&#34;,&#34;percentage&#34;:100}]&#39;`, or from a JSON file with `--versions {@literal @}versions.json`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versions(WorkersDeploymentVersionArgs... versions) {
             return versions(List.of(versions));
         }

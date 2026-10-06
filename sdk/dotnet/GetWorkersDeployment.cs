@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         public string DeploymentId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName", required: true)]
         public string ScriptName { get; set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         public Input<string> DeploymentId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         public readonly string ScriptName;
         public readonly string Source;
@@ -174,6 +174,9 @@ namespace Pulumi.Cloudflare
         /// Available values: "percentage".
         /// </summary>
         public readonly string Strategy;
+        /// <summary>
+        /// Worker versions included in this deployment. Each object must contain a `VersionId` UUID and a `Percentage`; percentages across all objects must total 100. In the `Cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"VersionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkersDeploymentVersionResult> Versions;
 
         [OutputConstructor]

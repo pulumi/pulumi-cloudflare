@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerVersionAssetsConfig {
     /**
+     * @return The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     * 
+     */
+    private @Nullable String basePath;
+    /**
      * @return Determines the redirects and rewrites of requests for HTML content.
      * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
      * 
@@ -31,6 +36,13 @@ public final class WorkerVersionAssetsConfig {
     private @Nullable Object runWorkerFirst;
 
     private WorkerVersionAssetsConfig() {}
+    /**
+     * @return The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     * 
+     */
+    public Optional<String> basePath() {
+        return Optional.ofNullable(this.basePath);
+    }
     /**
      * @return Determines the redirects and rewrites of requests for HTML content.
      * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
@@ -64,17 +76,25 @@ public final class WorkerVersionAssetsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String basePath;
         private @Nullable String htmlHandling;
         private @Nullable String notFoundHandling;
         private @Nullable Object runWorkerFirst;
         public Builder() {}
         public Builder(WorkerVersionAssetsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.basePath = defaults.basePath;
     	      this.htmlHandling = defaults.htmlHandling;
     	      this.notFoundHandling = defaults.notFoundHandling;
     	      this.runWorkerFirst = defaults.runWorkerFirst;
         }
 
+        @CustomType.Setter
+        public Builder basePath(@Nullable String basePath) {
+
+            this.basePath = basePath;
+            return this;
+        }
         @CustomType.Setter
         public Builder htmlHandling(@Nullable String htmlHandling) {
 
@@ -95,6 +115,7 @@ public final class WorkerVersionAssetsConfig {
         }
         public WorkerVersionAssetsConfig build() {
             final var _resultValue = new WorkerVersionAssetsConfig();
+            _resultValue.basePath = basePath;
             _resultValue.htmlHandling = htmlHandling;
             _resultValue.notFoundHandling = notFoundHandling;
             _resultValue.runWorkerFirst = runWorkerFirst;

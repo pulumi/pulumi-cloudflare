@@ -55,6 +55,7 @@ import (
 type ZeroTrustGatewayPacfile struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Actual contents of the PAC file
 	Contents  pulumi.StringOutput `pulumi:"contents"`
@@ -109,6 +110,7 @@ func GetZeroTrustGatewayPacfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustGatewayPacfile resources.
 type zeroTrustGatewayPacfileState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Actual contents of the PAC file
 	Contents  *string `pulumi:"contents"`
@@ -125,6 +127,7 @@ type zeroTrustGatewayPacfileState struct {
 }
 
 type ZeroTrustGatewayPacfileState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	// Actual contents of the PAC file
 	Contents  pulumi.StringPtrInput
@@ -145,6 +148,7 @@ func (ZeroTrustGatewayPacfileState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayPacfileArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Actual contents of the PAC file
 	Contents string `pulumi:"contents"`
@@ -158,6 +162,7 @@ type zeroTrustGatewayPacfileArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewayPacfile resource.
 type ZeroTrustGatewayPacfileArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Actual contents of the PAC file
 	Contents pulumi.StringInput
@@ -256,6 +261,7 @@ func (o ZeroTrustGatewayPacfileOutput) ToZeroTrustGatewayPacfileOutputWithContex
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o ZeroTrustGatewayPacfileOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPacfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

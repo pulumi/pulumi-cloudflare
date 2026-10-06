@@ -42,6 +42,13 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.caching);
     }
 
+    @Import(name="integration")
+    private @Nullable Output<String> integration;
+
+    public Optional<Output<String>> integration() {
+        return Optional.ofNullable(this.integration);
+    }
+
     /**
      * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
      * 
@@ -72,11 +79,19 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         return this.name;
     }
 
-    @Import(name="origin", required=true)
-    private Output<HyperdriveConfigOriginArgs> origin;
+    /**
+     * Combines database connection fields with exactly one supported network location.
+     * 
+     */
+    @Import(name="origin")
+    private @Nullable Output<HyperdriveConfigOriginArgs> origin;
 
-    public Output<HyperdriveConfigOriginArgs> origin() {
-        return this.origin;
+    /**
+     * @return Combines database connection fields with exactly one supported network location.
+     * 
+     */
+    public Optional<Output<HyperdriveConfigOriginArgs>> origin() {
+        return Optional.ofNullable(this.origin);
     }
 
     /**
@@ -99,6 +114,7 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
     private HyperdriveConfigArgs(HyperdriveConfigArgs $) {
         this.accountId = $.accountId;
         this.caching = $.caching;
+        this.integration = $.integration;
         this.mtls = $.mtls;
         this.name = $.name;
         this.origin = $.origin;
@@ -153,6 +169,15 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
             return caching(Output.of(caching));
         }
 
+        public Builder integration(@Nullable Output<String> integration) {
+            $.integration = integration;
+            return this;
+        }
+
+        public Builder integration(String integration) {
+            return integration(Output.of(integration));
+        }
+
         /**
          * @param mtls mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
          * 
@@ -195,11 +220,23 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
             return name(Output.of(name));
         }
 
-        public Builder origin(Output<HyperdriveConfigOriginArgs> origin) {
+        /**
+         * @param origin Combines database connection fields with exactly one supported network location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder origin(@Nullable Output<HyperdriveConfigOriginArgs> origin) {
             $.origin = origin;
             return this;
         }
 
+        /**
+         * @param origin Combines database connection fields with exactly one supported network location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder origin(HyperdriveConfigOriginArgs origin) {
             return origin(Output.of(origin));
         }
@@ -231,9 +268,6 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("HyperdriveConfigArgs", "name");
-            }
-            if ($.origin == null) {
-                throw new MissingRequiredPropertyException("HyperdriveConfigArgs", "origin");
             }
             return $;
         }

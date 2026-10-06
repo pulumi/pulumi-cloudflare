@@ -81,6 +81,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+        /// </summary>
+        [Output("subdomain")]
+        public Output<string?> Subdomain { get; private set; } = null!;
+
+        /// <summary>
         /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
         /// </summary>
         [Output("supportSubaddress")]
@@ -151,6 +157,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+        /// </summary>
+        [Input("subdomain")]
+        public Input<string>? Subdomain { get; set; }
+
+        /// <summary>
         /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
@@ -200,6 +212,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+        /// </summary>
+        [Input("subdomain")]
+        public Input<string>? Subdomain { get; set; }
 
         /// <summary>
         /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.

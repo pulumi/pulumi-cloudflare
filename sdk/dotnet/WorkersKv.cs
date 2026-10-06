@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
@@ -31,7 +32,9 @@ namespace Pulumi.Cloudflare
     ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",
     ///         KeyName = "My-Key",
     ///         Value = "Some Value",
-    ///         Metadata = null,
+    ///         Metadata = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///         }),
     ///     });
     /// 
     /// });
@@ -47,10 +50,22 @@ namespace Pulumi.Cloudflare
     public partial class WorkersKv : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        /// </summary>
+        [Output("expiration")]
+        public Output<double?> Expiration { get; private set; } = null!;
+
+        /// <summary>
+        /// Expires the key after a number of seconds. Must be at least 60.
+        /// </summary>
+        [Output("expirationTtl")]
+        public Output<double?> ExpirationTtl { get; private set; } = null!;
 
         /// <summary>
         /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
@@ -65,7 +80,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
@@ -123,10 +138,22 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        /// </summary>
+        [Input("expiration")]
+        public Input<double>? Expiration { get; set; }
+
+        /// <summary>
+        /// Expires the key after a number of seconds. Must be at least 60.
+        /// </summary>
+        [Input("expirationTtl")]
+        public Input<double>? ExpirationTtl { get; set; }
 
         /// <summary>
         /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
@@ -141,7 +168,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Metadata { get; set; }
 
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
@@ -161,10 +188,22 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+        /// </summary>
+        [Input("expiration")]
+        public Input<double>? Expiration { get; set; }
+
+        /// <summary>
+        /// Expires the key after a number of seconds. Must be at least 60.
+        /// </summary>
+        [Input("expirationTtl")]
+        public Input<double>? ExpirationTtl { get; set; }
 
         /// <summary>
         /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
@@ -179,7 +218,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Metadata { get; set; }
 
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }

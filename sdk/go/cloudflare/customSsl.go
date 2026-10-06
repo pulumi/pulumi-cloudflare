@@ -60,6 +60,13 @@ import (
 //
 // `),
 //
+//				BundleMethod: pulumi.String("ubiquitous"),
+//				CustomCsrId:  pulumi.String("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
+//				Deploy:       pulumi.String("staging"),
+//				GeoRestrictions: &cloudflare.CustomSslGeoRestrictionsArgs{
+//					Label: pulumi.String("us"),
+//				},
+//				Policy: pulumi.String("(country: US) or (region: EU)"),
 //				PrivateKey: pulumi.String(`  -----BEGIN RSA PRIVATE KEY-----
 //	  MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
 //	  dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -90,14 +97,7 @@ import (
 //
 // `),
 //
-//				BundleMethod: pulumi.String("ubiquitous"),
-//				CustomCsrId:  pulumi.String("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
-//				Deploy:       pulumi.String("staging"),
-//				GeoRestrictions: &cloudflare.CustomSslGeoRestrictionsArgs{
-//					Label: pulumi.String("us"),
-//				},
-//				Policy: pulumi.String("(country: US) or (region: EU)"),
-//				Type:   pulumi.String("sni_custom"),
+//				Type: pulumi.String("sni_custom"),
 //			})
 //			if err != nil {
 //				return err
@@ -145,8 +145,8 @@ type CustomSsl struct {
 	PolicyRestrictions pulumi.StringOutput `pulumi:"policyRestrictions"`
 	// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
 	Priority pulumi.Float64Output `pulumi:"priority"`
-	// The zone's private key.
-	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
+	// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
+	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
 	// The type of hash used for the certificate.
 	Signature pulumi.StringOutput `pulumi:"signature"`
 	// Status of the zone's custom SSL.
@@ -171,14 +171,11 @@ func NewCustomSsl(ctx *pulumi.Context,
 	if args.Certificate == nil {
 		return nil, errors.New("invalid value for required argument 'Certificate'")
 	}
-	if args.PrivateKey == nil {
-		return nil, errors.New("invalid value for required argument 'PrivateKey'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	if args.PrivateKey != nil {
-		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"privateKey",
@@ -236,7 +233,7 @@ type customSslState struct {
 	PolicyRestrictions *string `pulumi:"policyRestrictions"`
 	// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
 	Priority *float64 `pulumi:"priority"`
-	// The zone's private key.
+	// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
 	PrivateKey *string `pulumi:"privateKey"`
 	// The type of hash used for the certificate.
 	Signature *string `pulumi:"signature"`
@@ -282,7 +279,7 @@ type CustomSslState struct {
 	PolicyRestrictions pulumi.StringPtrInput
 	// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
 	Priority pulumi.Float64PtrInput
-	// The zone's private key.
+	// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
 	PrivateKey pulumi.StringPtrInput
 	// The type of hash used for the certificate.
 	Signature pulumi.StringPtrInput
@@ -318,8 +315,8 @@ type customSslArgs struct {
 	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
 	// Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policyRestrictions".
 	Policy *string `pulumi:"policy"`
-	// The zone's private key.
-	PrivateKey string `pulumi:"privateKey"`
+	// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
+	PrivateKey *string `pulumi:"privateKey"`
 	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
 	// Available values: "legacy*custom", "sniCustom".
 	Type *string `pulumi:"type"`
@@ -344,8 +341,8 @@ type CustomSslArgs struct {
 	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
 	// Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policyRestrictions".
 	Policy pulumi.StringPtrInput
-	// The zone's private key.
-	PrivateKey pulumi.StringInput
+	// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
+	PrivateKey pulumi.StringPtrInput
 	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
 	// Available values: "legacy*custom", "sniCustom".
 	Type pulumi.StringPtrInput
@@ -508,9 +505,9 @@ func (o CustomSslOutput) Priority() pulumi.Float64Output {
 	return o.ApplyT(func(v *CustomSsl) pulumi.Float64Output { return v.Priority }).(pulumi.Float64Output)
 }
 
-// The zone's private key.
-func (o CustomSslOutput) PrivateKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
+func (o CustomSslOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
 // The type of hash used for the certificate.

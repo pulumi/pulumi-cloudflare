@@ -11,8 +11,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -81,6 +83,20 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
 
     public Output<List<ApiShieldAuthIdCharacteristic>> authIdCharacteristics() {
         return this.authIdCharacteristics;
+    }
+    /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     * 
+     */
+    @Export(name="normalize", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> normalize;
+
+    /**
+     * @return Ensures that the configuration is written or retrieved in normalized fashion
+     * 
+     */
+    public Output<Optional<Boolean>> normalize() {
+        return Codegen.optional(this.normalize);
     }
     /**
      * Identifier.

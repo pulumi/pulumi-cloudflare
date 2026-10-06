@@ -197,6 +197,11 @@ public final class GetNotificationPoliciesResultFilters {
      */
     private List<String> targetZoneNames;
     /**
+     * @return Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     * 
+     */
+    private List<String> tokenIds;
+    /**
      * @return Used for configuring traffic*anomalies*alert
      * 
      */
@@ -488,6 +493,13 @@ public final class GetNotificationPoliciesResultFilters {
         return this.targetZoneNames;
     }
     /**
+     * @return Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+     * 
+     */
+    public List<String> tokenIds() {
+        return this.tokenIds;
+    }
+    /**
      * @return Used for configuring traffic*anomalies*alert
      * 
      */
@@ -576,6 +588,7 @@ public final class GetNotificationPoliciesResultFilters {
         private List<String> targetHostnames;
         private List<String> targetIps;
         private List<String> targetZoneNames;
+        private List<String> tokenIds;
         private List<String> trafficExclusions;
         private List<String> tunnelIds;
         private List<String> tunnelNames;
@@ -622,6 +635,7 @@ public final class GetNotificationPoliciesResultFilters {
     	      this.targetHostnames = defaults.targetHostnames;
     	      this.targetIps = defaults.targetIps;
     	      this.targetZoneNames = defaults.targetZoneNames;
+    	      this.tokenIds = defaults.tokenIds;
     	      this.trafficExclusions = defaults.trafficExclusions;
     	      this.tunnelIds = defaults.tunnelIds;
     	      this.tunnelNames = defaults.tunnelNames;
@@ -1038,6 +1052,17 @@ public final class GetNotificationPoliciesResultFilters {
             return targetZoneNames(List.of(targetZoneNames));
         }
         @CustomType.Setter
+        public Builder tokenIds(List<String> tokenIds) {
+            if (tokenIds == null) {
+              throw new MissingRequiredPropertyException("GetNotificationPoliciesResultFilters", "tokenIds");
+            }
+            this.tokenIds = tokenIds;
+            return this;
+        }
+        public Builder tokenIds(String... tokenIds) {
+            return tokenIds(List.of(tokenIds));
+        }
+        @CustomType.Setter
         public Builder trafficExclusions(List<String> trafficExclusions) {
             if (trafficExclusions == null) {
               throw new MissingRequiredPropertyException("GetNotificationPoliciesResultFilters", "trafficExclusions");
@@ -1142,6 +1167,7 @@ public final class GetNotificationPoliciesResultFilters {
             _resultValue.targetHostnames = targetHostnames;
             _resultValue.targetIps = targetIps;
             _resultValue.targetZoneNames = targetZoneNames;
+            _resultValue.tokenIds = tokenIds;
             _resultValue.trafficExclusions = trafficExclusions;
             _resultValue.tunnelIds = tunnelIds;
             _resultValue.tunnelNames = tunnelNames;

@@ -30,11 +30,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double AutoConnect;
         /// <summary>
+        /// Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfigResult BrowserExtensionConfig;
+        /// <summary>
         /// Turn on the captive portal after the specified amount of time.
         /// </summary>
         public readonly double CaptivePortal;
         /// <summary>
-        /// Whether the policy is the default policy for an account.
+        /// Whether the policy is the account default. WARP group profiles cannot set this field.
         /// </summary>
         public readonly bool Default;
         /// <summary>
@@ -90,6 +94,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double Precedence;
         /// <summary>
+        /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        /// Available values: "warp", "BrowserExtension".
+        /// </summary>
+        public readonly string ProfileType;
+        /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         public readonly bool RegisterInterfaceIpWithDns;
@@ -112,6 +121,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string TunnelProtocol;
         /// <summary>
+        /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        /// </summary>
+        public readonly bool UninstallProtection;
+        /// <summary>
         /// Virtual network access settings for the device.
         /// </summary>
         public readonly Outputs.GetZeroTrustDeviceCustomProfilesResultVirtualNetworksResult VirtualNetworks;
@@ -125,6 +138,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool allowedToLeave,
 
             double autoConnect,
+
+            Outputs.GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfigResult browserExtensionConfig,
 
             double captivePortal,
 
@@ -162,6 +177,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             double precedence,
 
+            string profileType,
+
             bool registerInterfaceIpWithDns,
 
             bool sccmVpnBoundarySupport,
@@ -176,12 +193,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string tunnelProtocol,
 
+            bool uninstallProtection,
+
             Outputs.GetZeroTrustDeviceCustomProfilesResultVirtualNetworksResult virtualNetworks)
         {
             AllowModeSwitch = allowModeSwitch;
             AllowUpdates = allowUpdates;
             AllowedToLeave = allowedToLeave;
             AutoConnect = autoConnect;
+            BrowserExtensionConfig = browserExtensionConfig;
             CaptivePortal = captivePortal;
             Default = @default;
             Description = description;
@@ -200,6 +220,7 @@ namespace Pulumi.Cloudflare.Outputs
             Name = name;
             PolicyId = policyId;
             Precedence = precedence;
+            ProfileType = profileType;
             RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
             SccmVpnBoundarySupport = sccmVpnBoundarySupport;
             ServiceModeV2 = serviceModeV2;
@@ -207,6 +228,7 @@ namespace Pulumi.Cloudflare.Outputs
             SwitchLocked = switchLocked;
             TargetTests = targetTests;
             TunnelProtocol = tunnelProtocol;
+            UninstallProtection = uninstallProtection;
             VirtualNetworks = virtualNetworks;
         }
     }

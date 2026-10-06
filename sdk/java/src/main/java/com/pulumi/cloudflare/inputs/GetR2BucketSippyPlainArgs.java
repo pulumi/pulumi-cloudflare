@@ -14,14 +14,14 @@ public final class GetR2BucketSippyPlainArgs extends com.pulumi.resources.Invoke
     public static final GetR2BucketSippyPlainArgs Empty = new GetR2BucketSippyPlainArgs();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public String accountId() {
@@ -69,7 +69,7 @@ public final class GetR2BucketSippyPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 

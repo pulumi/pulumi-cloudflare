@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvNamespaceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -109,7 +109,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetWorkersKvNamespaceFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         [Input("namespaceId")]
         public string? NamespaceId { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvNamespaceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetWorkersKvNamespaceFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
@@ -148,12 +148,12 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersKvNamespaceResult
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         public readonly string? AccountId;
         public readonly Outputs.GetWorkersKvNamespaceFilterResult? Filter;
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Jurisdiction;
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         public readonly string? NamespaceId;
         /// <summary>
@@ -170,7 +170,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool SupportsUrlEncoding;
         /// <summary>
-        /// A human-readable string name for a Namespace.
+        /// Human-readable string name for a Workers KV namespace.
         /// </summary>
         public readonly string Title;
 

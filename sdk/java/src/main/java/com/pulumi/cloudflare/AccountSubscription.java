@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example &#39;&lt;account_id&gt;&#39;
+ * $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example &#39;&lt;account_id&gt;/&lt;subscription_id&gt;&#39;
  * ```
  * 
  */

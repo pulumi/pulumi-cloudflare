@@ -55,6 +55,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleAccount = new Cloudflare.Account("example_account", new()
     ///     {
     ///         Name = "name",
+    ///         Standalone = true,
     ///         Type = "standard",
     ///         Unit = new Cloudflare.Inputs.AccountUnitArgs
     ///         {
@@ -99,13 +100,19 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AccountSettings> Settings { get; private set; } = null!;
 
         /// <summary>
+        /// Set to `True` and omit `Unit` to create a standalone Free Account. If provided, this field must be `True`.
+        /// </summary>
+        [Output("standalone")]
+        public Output<bool> Standalone { get; private set; } = null!;
+
+        /// <summary>
         /// Available values: "standard", "enterprise".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        /// Information related to the tenant unit. Provide its ID and omit `Standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         /// </summary>
         [Output("unit")]
         public Output<Outputs.AccountUnit> Unit { get; private set; } = null!;
@@ -175,13 +182,19 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccountSettingsArgs>? Settings { get; set; }
 
         /// <summary>
+        /// Set to `True` and omit `Unit` to create a standalone Free Account. If provided, this field must be `True`.
+        /// </summary>
+        [Input("standalone")]
+        public Input<bool>? Standalone { get; set; }
+
+        /// <summary>
         /// Available values: "standard", "enterprise".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        /// Information related to the tenant unit. Provide its ID and omit `Standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         /// </summary>
         [Input("unit")]
         public Input<Inputs.AccountUnitArgs>? Unit { get; set; }
@@ -219,13 +232,19 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccountSettingsGetArgs>? Settings { get; set; }
 
         /// <summary>
+        /// Set to `True` and omit `Unit` to create a standalone Free Account. If provided, this field must be `True`.
+        /// </summary>
+        [Input("standalone")]
+        public Input<bool>? Standalone { get; set; }
+
+        /// <summary>
         /// Available values: "standard", "enterprise".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        /// Information related to the tenant unit. Provide its ID and omit `Standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         /// </summary>
         [Input("unit")]
         public Input<Inputs.AccountUnitGetArgs>? Unit { get; set; }

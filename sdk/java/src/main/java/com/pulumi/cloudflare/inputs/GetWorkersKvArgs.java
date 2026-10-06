@@ -15,14 +15,14 @@ public final class GetWorkersKvArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetWorkersKvArgs Empty = new GetWorkersKvArgs();
 
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Output<String> accountId() {
@@ -45,14 +45,14 @@ public final class GetWorkersKvArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      * 
      */
     @Import(name="namespaceId", required=true)
     private Output<String> namespaceId;
 
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public Output<String> namespaceId() {
@@ -86,7 +86,7 @@ public final class GetWorkersKvArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetWorkersKvArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class GetWorkersKvArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId ID of the Workers KV namespace.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class GetWorkersKvArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId ID of the Workers KV namespace.
          * 
          * @return builder
          * 

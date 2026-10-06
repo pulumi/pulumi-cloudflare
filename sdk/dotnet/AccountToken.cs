@@ -94,6 +94,14 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AccountTokenCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
+        /// The email address of the user who created the token at the time of
+        /// creation. Only present for Account Owned API Tokens when a creator email
+        /// was available.
+        /// </summary>
+        [Output("creatorEmailAtCreation")]
+        public Output<string> CreatorEmailAtCreation { get; private set; } = null!;
+
+        /// <summary>
         /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
         /// </summary>
         [Output("expiresOn")]
@@ -130,10 +138,26 @@ namespace Pulumi.Cloudflare
         public Output<string?> NotBefore { get; private set; } = null!;
 
         /// <summary>
-        /// Set of access policies assigned to the token.
+        /// List of access policies assigned to the token.
         /// </summary>
         [Output("policies")]
         public Output<ImmutableArray<Outputs.AccountTokenPolicy>> Policies { get; private set; } = null!;
+
+        /// <summary>
+        /// The identifier of the service that provisioned the token. For an
+        /// OAuth-provisioned token, this is the OAuth client identifier. Present
+        /// when `ProvisionerType` is present and null when the identifier is
+        /// unavailable.
+        /// </summary>
+        [Output("provisionerId")]
+        public Output<string> ProvisionerId { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of service that provisioned the token. Only present for
+        /// provisioned Account Owned API Tokens.
+        /// </summary>
+        [Output("provisionerType")]
+        public Output<string> ProvisionerType { get; private set; } = null!;
 
         /// <summary>
         /// Status of the token.
@@ -229,7 +253,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccountTokenPolicyArgs>? _policies;
 
         /// <summary>
-        /// Set of access policies assigned to the token.
+        /// List of access policies assigned to the token.
         /// </summary>
         public InputList<Inputs.AccountTokenPolicyArgs> Policies
         {
@@ -260,6 +284,14 @@ namespace Pulumi.Cloudflare
 
         [Input("condition")]
         public Input<Inputs.AccountTokenConditionGetArgs>? Condition { get; set; }
+
+        /// <summary>
+        /// The email address of the user who created the token at the time of
+        /// creation. Only present for Account Owned API Tokens when a creator email
+        /// was available.
+        /// </summary>
+        [Input("creatorEmailAtCreation")]
+        public Input<string>? CreatorEmailAtCreation { get; set; }
 
         /// <summary>
         /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
@@ -301,13 +333,29 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccountTokenPolicyGetArgs>? _policies;
 
         /// <summary>
-        /// Set of access policies assigned to the token.
+        /// List of access policies assigned to the token.
         /// </summary>
         public InputList<Inputs.AccountTokenPolicyGetArgs> Policies
         {
             get => _policies ?? (_policies = new InputList<Inputs.AccountTokenPolicyGetArgs>());
             set => _policies = value;
         }
+
+        /// <summary>
+        /// The identifier of the service that provisioned the token. For an
+        /// OAuth-provisioned token, this is the OAuth client identifier. Present
+        /// when `ProvisionerType` is present and null when the identifier is
+        /// unavailable.
+        /// </summary>
+        [Input("provisionerId")]
+        public Input<string>? ProvisionerId { get; set; }
+
+        /// <summary>
+        /// The type of service that provisioned the token. Only present for
+        /// provisioned Account Owned API Tokens.
+        /// </summary>
+        [Input("provisionerType")]
+        public Input<string>? ProvisionerType { get; set; }
 
         /// <summary>
         /// Status of the token.

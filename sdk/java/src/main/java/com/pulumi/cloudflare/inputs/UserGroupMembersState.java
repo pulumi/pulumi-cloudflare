@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.UserGroupMembersMemberArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -32,11 +33,73 @@ public final class UserGroupMembersState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * The sort order of returned user group members by email.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    /**
+     * @return The sort order of returned user group members by email.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
+     * A string used for filtering members by partial email match.
+     * 
+     */
+    @Import(name="fuzzyEmail")
+    private @Nullable Output<String> fuzzyEmail;
+
+    /**
+     * @return A string used for filtering members by partial email match.
+     * 
+     */
+    public Optional<Output<String>> fuzzyEmail() {
+        return Optional.ofNullable(this.fuzzyEmail);
+    }
+
     @Import(name="members")
     private @Nullable Output<List<UserGroupMembersMemberArgs>> members;
 
     public Optional<Output<List<UserGroupMembersMemberArgs>>> members() {
         return Optional.ofNullable(this.members);
+    }
+
+    /**
+     * Page number of paginated results.
+     * 
+     */
+    @Import(name="page")
+    private @Nullable Output<Double> page;
+
+    /**
+     * @return Page number of paginated results.
+     * 
+     */
+    public Optional<Output<Double>> page() {
+        return Optional.ofNullable(this.page);
+    }
+
+    /**
+     * Maximum number of results per page.
+     * 
+     */
+    @Import(name="perPage")
+    private @Nullable Output<Double> perPage;
+
+    /**
+     * @return Maximum number of results per page.
+     * 
+     */
+    public Optional<Output<Double>> perPage() {
+        return Optional.ofNullable(this.perPage);
     }
 
     /**
@@ -58,7 +121,11 @@ public final class UserGroupMembersState extends com.pulumi.resources.ResourceAr
 
     private UserGroupMembersState(UserGroupMembersState $) {
         this.accountId = $.accountId;
+        this.direction = $.direction;
+        this.fuzzyEmail = $.fuzzyEmail;
         this.members = $.members;
+        this.page = $.page;
+        this.perPage = $.perPage;
         this.userGroupId = $.userGroupId;
     }
 
@@ -101,6 +168,50 @@ public final class UserGroupMembersState extends com.pulumi.resources.ResourceAr
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param direction The sort order of returned user group members by email.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction The sort order of returned user group members by email.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
+        }
+
+        /**
+         * @param fuzzyEmail A string used for filtering members by partial email match.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fuzzyEmail(@Nullable Output<String> fuzzyEmail) {
+            $.fuzzyEmail = fuzzyEmail;
+            return this;
+        }
+
+        /**
+         * @param fuzzyEmail A string used for filtering members by partial email match.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fuzzyEmail(String fuzzyEmail) {
+            return fuzzyEmail(Output.of(fuzzyEmail));
+        }
+
         public Builder members(@Nullable Output<List<UserGroupMembersMemberArgs>> members) {
             $.members = members;
             return this;
@@ -112,6 +223,48 @@ public final class UserGroupMembersState extends com.pulumi.resources.ResourceAr
 
         public Builder members(UserGroupMembersMemberArgs... members) {
             return members(List.of(members));
+        }
+
+        /**
+         * @param page Page number of paginated results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder page(@Nullable Output<Double> page) {
+            $.page = page;
+            return this;
+        }
+
+        /**
+         * @param page Page number of paginated results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder page(Double page) {
+            return page(Output.of(page));
+        }
+
+        /**
+         * @param perPage Maximum number of results per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(@Nullable Output<Double> perPage) {
+            $.perPage = perPage;
+            return this;
+        }
+
+        /**
+         * @param perPage Maximum number of results per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(Double perPage) {
+            return perPage(Output.of(perPage));
         }
 
         /**

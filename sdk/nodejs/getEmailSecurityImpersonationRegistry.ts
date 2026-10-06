@@ -13,6 +13,16 @@ import * as utilities from "./utilities";
  * - `Cloud Email Security: Write`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleEmailSecurityImpersonationRegistry = cloudflare.getEmailSecurityImpersonationRegistry({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     impersonationRegistryId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ * });
+ * ```
  */
 export function getEmailSecurityImpersonationRegistry(args?: GetEmailSecurityImpersonationRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityImpersonationRegistryResult> {
     args = args || {};
@@ -47,12 +57,26 @@ export interface GetEmailSecurityImpersonationRegistryResult {
      * Identifier.
      */
     readonly accountId?: string;
+    /**
+     * Optional note describing the entry.
+     */
     readonly comments: string;
     readonly createdAt: string;
+    /**
+     * Identifier of the directory the entry was synced from, when directory-synced.
+     */
     readonly directoryId: number;
+    /**
+     * Identifier of the directory node the entry was synced from, when directory-synced.
+     */
     readonly directoryNodeId: number;
+    /**
+     * Email address (or pattern) of the protected identity.
+     */
     readonly email: string;
     /**
+     * Deprecated. External identifier of the directory node.
+     *
      * @deprecated This field is deprecated.
      */
     readonly externalDirectoryNodeId: string;
@@ -65,6 +89,9 @@ export interface GetEmailSecurityImpersonationRegistryResult {
      * Impersonation registry entry identifier
      */
     readonly impersonationRegistryId?: string;
+    /**
+     * Whether `email` is a regular expression instead of a literal address.
+     */
     readonly isEmailRegex: boolean;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -73,8 +100,12 @@ export interface GetEmailSecurityImpersonationRegistryResult {
      */
     readonly lastModified: string;
     readonly modifiedAt: string;
+    /**
+     * Display name of the protected identity.
+     */
     readonly name: string;
     /**
+     * Source the entry was created from.
      * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
      */
     readonly provenance: string;
@@ -86,6 +117,16 @@ export interface GetEmailSecurityImpersonationRegistryResult {
  * - `Cloud Email Security: Write`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleEmailSecurityImpersonationRegistry = cloudflare.getEmailSecurityImpersonationRegistry({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     impersonationRegistryId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ * });
+ * ```
  */
 export function getEmailSecurityImpersonationRegistryOutput(args?: GetEmailSecurityImpersonationRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityImpersonationRegistryResult> {
     args = args || {};

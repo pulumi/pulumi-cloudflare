@@ -55,21 +55,21 @@ func LookupR2BucketEventNotification(ctx *pulumi.Context, args *LookupR2BucketEv
 
 // A collection of arguments for invoking getR2BucketEventNotification.
 type LookupR2BucketEventNotificationArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// Queue ID.
+	// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 	QueueId string `pulumi:"queueId"`
 }
 
 // A collection of values returned by getR2BucketEventNotification.
 type LookupR2BucketEventNotificationResult struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// Queue ID.
+	// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 	QueueId string `pulumi:"queueId"`
 	// Name of the queue.
 	QueueName string                             `pulumi:"queueName"`
@@ -83,11 +83,11 @@ func LookupR2BucketEventNotificationOutput(ctx *pulumi.Context, args LookupR2Buc
 
 // A collection of arguments for invoking getR2BucketEventNotification.
 type LookupR2BucketEventNotificationOutputArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// Queue ID.
+	// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
 
@@ -110,7 +110,7 @@ func (o LookupR2BucketEventNotificationResultOutput) ToLookupR2BucketEventNotifi
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o LookupR2BucketEventNotificationResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -120,7 +120,7 @@ func (o LookupR2BucketEventNotificationResultOutput) BucketName() pulumi.StringO
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Queue ID.
+// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
 func (o LookupR2BucketEventNotificationResultOutput) QueueId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.QueueId }).(pulumi.StringOutput)
 }

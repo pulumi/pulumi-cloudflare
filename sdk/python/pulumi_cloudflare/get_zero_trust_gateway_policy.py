@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZeroTrustGatewayPolicyResult',
@@ -27,7 +28,7 @@ class GetZeroTrustGatewayPolicyResult:
     """
     A collection of values returned by getZeroTrustGatewayPolicy.
     """
-    def __init__(__self__, account_id=None, action=None, created_at=None, deleted_at=None, description=None, device_posture=None, enabled=None, expiration=None, filters=None, id=None, identity=None, name=None, precedence=None, read_only=None, rule_id=None, rule_settings=None, schedule=None, sharable=None, source_account=None, traffic=None, updated_at=None, version=None, warning_status=None):
+    def __init__(__self__, account_id=None, action=None, created_at=None, deleted_at=None, description=None, device_posture=None, enabled=None, expiration=None, filter=None, filters=None, id=None, identity=None, name=None, precedence=None, read_only=None, rule_id=None, rule_settings=None, schedule=None, sharable=None, source_account=None, traffic=None, updated_at=None, version=None, warning_status=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -52,6 +53,9 @@ class GetZeroTrustGatewayPolicyResult:
         if expiration and not isinstance(expiration, dict):
             raise TypeError("Expected argument 'expiration' to be a dict")
         pulumi.set(__self__, "expiration", expiration)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         pulumi.set(__self__, "filters", filters)
@@ -101,6 +105,9 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -159,6 +166,11 @@ class GetZeroTrustGatewayPolicyResult:
 
     @_builtins.property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.GetZeroTrustGatewayPolicyFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
     def filters(self) -> Sequence[_builtins.str]:
         """
         Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
@@ -207,7 +219,7 @@ class GetZeroTrustGatewayPolicyResult:
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> _builtins.str:
+    def rule_id(self) -> Optional[_builtins.str]:
         """
         Identify the API resource with a UUID.
         """
@@ -289,6 +301,7 @@ class AwaitableGetZeroTrustGatewayPolicyResult(GetZeroTrustGatewayPolicyResult):
             device_posture=self.device_posture,
             enabled=self.enabled,
             expiration=self.expiration,
+            filter=self.filter,
             filters=self.filters,
             id=self.id,
             identity=self.identity,
@@ -307,6 +320,7 @@ class AwaitableGetZeroTrustGatewayPolicyResult(GetZeroTrustGatewayPolicyResult):
 
 
 def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
+                                  filter: Optional[Union['GetZeroTrustGatewayPolicyFilterArgs', 'GetZeroTrustGatewayPolicyFilterArgsDict', 'outputs.GetZeroTrustGatewayPolicyFilterResult']] = None,
                                   rule_id: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustGatewayPolicyResult:
     """
@@ -321,10 +335,12 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     :param _builtins.str rule_id: Identify the API resource with a UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['ruleId'] = rule_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy', __args__, opts=opts, typ=GetZeroTrustGatewayPolicyResult).value
@@ -338,6 +354,7 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
         device_posture=pulumi.get(__ret__, 'device_posture'),
         enabled=pulumi.get(__ret__, 'enabled'),
         expiration=pulumi.get(__ret__, 'expiration'),
+        filter=pulumi.get(__ret__, 'filter'),
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         identity=pulumi.get(__ret__, 'identity'),
@@ -354,7 +371,8 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
         version=pulumi.get(__ret__, 'version'),
         warning_status=pulumi.get(__ret__, 'warning_status'))
 def get_zero_trust_gateway_policy_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                         rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                         filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustGatewayPolicyFilterArgs', 'GetZeroTrustGatewayPolicyFilterArgsDict', 'outputs.GetZeroTrustGatewayPolicyFilterResult']]]] = None,
+                                         rule_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayPolicyResult]:
     """
     ## Example Usage
@@ -368,10 +386,12 @@ def get_zero_trust_gateway_policy_output(account_id: pulumi.Input[Optional[Optio
     ```
 
 
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     :param _builtins.str rule_id: Identify the API resource with a UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['ruleId'] = rule_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy', __args__, opts=opts, typ=GetZeroTrustGatewayPolicyResult)
@@ -384,6 +404,7 @@ def get_zero_trust_gateway_policy_output(account_id: pulumi.Input[Optional[Optio
         device_posture=pulumi.get(__response__, 'device_posture'),
         enabled=pulumi.get(__response__, 'enabled'),
         expiration=pulumi.get(__response__, 'expiration'),
+        filter=pulumi.get(__response__, 'filter'),
         filters=pulumi.get(__response__, 'filters'),
         id=pulumi.get(__response__, 'id'),
         identity=pulumi.get(__response__, 'identity'),

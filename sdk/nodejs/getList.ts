@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * const exampleList = cloudflare.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
- *     search: "1.1.1.1",
  * });
  * ```
  */
@@ -119,7 +118,6 @@ export interface GetListResult {
  * const exampleList = cloudflare.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
- *     search: "1.1.1.1",
  * });
  * ```
  */

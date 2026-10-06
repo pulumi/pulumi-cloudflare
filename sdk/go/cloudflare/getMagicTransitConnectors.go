@@ -31,7 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitConnectors(ctx, &cloudflare.LookupMagicTransitConnectorsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				DeviceType: pulumi.StringRef("MANAGED"),
 //			}, nil)
 //			if err != nil {
 //				return err

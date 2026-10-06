@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkerVersionsResultAssetsConfig {
     /**
+     * @return The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     * 
+     */
+    private String basePath;
+    /**
      * @return Determines the redirects and rewrites of requests for HTML content.
      * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
      * 
@@ -30,6 +35,13 @@ public final class GetWorkerVersionsResultAssetsConfig {
     private List<String> runWorkerFirsts;
 
     private GetWorkerVersionsResultAssetsConfig() {}
+    /**
+     * @return The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     * 
+     */
+    public String basePath() {
+        return this.basePath;
+    }
     /**
      * @return Determines the redirects and rewrites of requests for HTML content.
      * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
@@ -63,17 +75,27 @@ public final class GetWorkerVersionsResultAssetsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String basePath;
         private String htmlHandling;
         private String notFoundHandling;
         private List<String> runWorkerFirsts;
         public Builder() {}
         public Builder(GetWorkerVersionsResultAssetsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.basePath = defaults.basePath;
     	      this.htmlHandling = defaults.htmlHandling;
     	      this.notFoundHandling = defaults.notFoundHandling;
     	      this.runWorkerFirsts = defaults.runWorkerFirsts;
         }
 
+        @CustomType.Setter
+        public Builder basePath(String basePath) {
+            if (basePath == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResultAssetsConfig", "basePath");
+            }
+            this.basePath = basePath;
+            return this;
+        }
         @CustomType.Setter
         public Builder htmlHandling(String htmlHandling) {
             if (htmlHandling == null) {
@@ -103,6 +125,7 @@ public final class GetWorkerVersionsResultAssetsConfig {
         }
         public GetWorkerVersionsResultAssetsConfig build() {
             final var _resultValue = new GetWorkerVersionsResultAssetsConfig();
+            _resultValue.basePath = basePath;
             _resultValue.htmlHandling = htmlHandling;
             _resultValue.notFoundHandling = notFoundHandling;
             _resultValue.runWorkerFirsts = runWorkerFirsts;

@@ -188,7 +188,7 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Deprecated — use indexMethod instead.
+     * Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -199,7 +199,7 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> hybridSearchEnabled;
 
     /**
-     * @return Deprecated — use indexMethod instead.
+     * @return Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -211,14 +211,14 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     * Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      * 
      */
     @Import(name="indexMethod")
     private @Nullable Output<AiSearchInstanceIndexMethodArgs> indexMethod;
 
     /**
-     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
+     * @return Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
      * 
      */
     public Optional<Output<AiSearchInstanceIndexMethodArgs>> indexMethod() {
@@ -426,6 +426,7 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
      * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
@@ -433,7 +434,8 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
+     * @return Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+     * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -729,7 +731,7 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hybridSearchEnabled Deprecated — use indexMethod instead.
+         * @param hybridSearchEnabled Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
          * 
          * @return builder
          * 
@@ -744,7 +746,7 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hybridSearchEnabled Deprecated — use indexMethod instead.
+         * @param hybridSearchEnabled Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
          * 
          * @return builder
          * 
@@ -758,7 +760,7 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexMethod Controls which storage backends are used during indexing. Defaults to vector-only.
+         * @param indexMethod Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
          * 
          * @return builder
          * 
@@ -769,7 +771,7 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param indexMethod Controls which storage backends are used during indexing. Defaults to vector-only.
+         * @param indexMethod Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
          * 
          * @return builder
          * 
@@ -1039,7 +1041,8 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
+         * @param type Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+         * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
          * 
          * @return builder
          * 
@@ -1050,7 +1053,8 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
+         * @param type Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
+         * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
          * 
          * @return builder
          * 

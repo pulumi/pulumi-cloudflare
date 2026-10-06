@@ -32,7 +32,7 @@ export function getR2BucketLock(args: GetR2BucketLockArgs, opts?: pulumi.InvokeO
  */
 export interface GetR2BucketLockArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetR2BucketLockArgs {
  */
 export interface GetR2BucketLockResult {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     readonly accountId: string;
     /**
@@ -81,7 +81,7 @@ export function getR2BucketLockOutput(args: GetR2BucketLockOutputArgs, opts?: pu
  */
 export interface GetR2BucketLockOutputArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

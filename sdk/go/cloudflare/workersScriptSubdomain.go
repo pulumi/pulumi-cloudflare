@@ -63,7 +63,7 @@ type WorkersScriptSubdomain struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	PreviewsEnabled pulumi.BoolOutput `pulumi:"previewsEnabled"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
 }
 
@@ -112,7 +112,7 @@ type workersScriptSubdomainState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	PreviewsEnabled *bool `pulumi:"previewsEnabled"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName *string `pulumi:"scriptName"`
 }
 
@@ -123,7 +123,7 @@ type WorkersScriptSubdomainState struct {
 	Enabled pulumi.BoolPtrInput
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	PreviewsEnabled pulumi.BoolPtrInput
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringPtrInput
 }
 
@@ -138,7 +138,7 @@ type workersScriptSubdomainArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	PreviewsEnabled *bool `pulumi:"previewsEnabled"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 }
 
@@ -150,7 +150,7 @@ type WorkersScriptSubdomainArgs struct {
 	Enabled pulumi.BoolInput
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
 	PreviewsEnabled pulumi.BoolPtrInput
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringInput
 }
 
@@ -256,7 +256,7 @@ func (o WorkersScriptSubdomainOutput) PreviewsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.BoolOutput { return v.PreviewsEnabled }).(pulumi.BoolOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script.
 func (o WorkersScriptSubdomainOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.StringOutput { return v.ScriptName }).(pulumi.StringOutput)
 }

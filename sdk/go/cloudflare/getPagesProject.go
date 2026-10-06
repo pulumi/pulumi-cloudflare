@@ -56,7 +56,7 @@ func LookupPagesProject(ctx *pulumi.Context, args *LookupPagesProjectArgs, opts 
 type LookupPagesProjectArgs struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName string `pulumi:"projectName"`
 }
 
@@ -78,11 +78,11 @@ type LookupPagesProjectResult struct {
 	Framework string `pulumi:"framework"`
 	// Version of the framework the project is using.
 	FrameworkVersion string `pulumi:"frameworkVersion"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	Id string `pulumi:"id"`
 	// Most recent deployment of the project.
 	LatestDeployment GetPagesProjectLatestDeployment `pulumi:"latestDeployment"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	Name string `pulumi:"name"`
 	// Name of the preview script.
 	PreviewScriptName string `pulumi:"previewScriptName"`
@@ -90,7 +90,7 @@ type LookupPagesProjectResult struct {
 	ProductionBranch string `pulumi:"productionBranch"`
 	// Name of the production script.
 	ProductionScriptName string `pulumi:"productionScriptName"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName string `pulumi:"projectName"`
 	// Configs for the project source control.
 	Source GetPagesProjectSource `pulumi:"source"`
@@ -109,7 +109,7 @@ func LookupPagesProjectOutput(ctx *pulumi.Context, args LookupPagesProjectOutput
 type LookupPagesProjectOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 }
 
@@ -172,7 +172,7 @@ func (o LookupPagesProjectResultOutput) FrameworkVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.FrameworkVersion }).(pulumi.StringOutput)
 }
 
-// Name of the project.
+// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 func (o LookupPagesProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -182,7 +182,7 @@ func (o LookupPagesProjectResultOutput) LatestDeployment() GetPagesProjectLatest
 	return o.ApplyT(func(v LookupPagesProjectResult) GetPagesProjectLatestDeployment { return v.LatestDeployment }).(GetPagesProjectLatestDeploymentOutput)
 }
 
-// Name of the project.
+// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 func (o LookupPagesProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -202,7 +202,7 @@ func (o LookupPagesProjectResultOutput) ProductionScriptName() pulumi.StringOutp
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.ProductionScriptName }).(pulumi.StringOutput)
 }
 
-// Name of the project.
+// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 func (o LookupPagesProjectResultOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.ProjectName }).(pulumi.StringOutput)
 }

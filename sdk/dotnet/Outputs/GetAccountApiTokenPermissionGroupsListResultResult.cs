@@ -14,9 +14,18 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAccountApiTokenPermissionGroupsListResultResult
     {
         /// <summary>
+        /// Product category that this permission group belongs to.
+        /// Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
+        /// </summary>
+        public readonly string Category;
+        /// <summary>
         /// Public ID.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Whether the caller can select this permission group when creating a token.
+        /// </summary>
+        public readonly bool IsSelectable;
         /// <summary>
         /// Permission Group Name
         /// </summary>
@@ -28,13 +37,19 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetAccountApiTokenPermissionGroupsListResultResult(
+            string category,
+
             string id,
+
+            bool isSelectable,
 
             string name,
 
             ImmutableArray<string> scopes)
         {
+            Category = category;
             Id = id;
+            IsSelectable = isSelectable;
             Name = name;
             Scopes = scopes;
         }

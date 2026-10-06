@@ -175,6 +175,7 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         public readonly string Id;
+        public readonly bool LoadBalanceInnerFlows;
         public readonly string Name;
         public readonly int Physport;
         /// <summary>
@@ -206,6 +207,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            bool loadBalanceInnerFlows,
+
             string name,
 
             int physport,
@@ -223,6 +226,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             HealthCheckRate = healthCheckRate;
             Id = id;
+            LoadBalanceInnerFlows = loadBalanceInnerFlows;
             Name = name;
             Physport = physport;
             Priority = priority;

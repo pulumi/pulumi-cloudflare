@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetClientCertificate(ctx, &cloudflare.LookupClientCertificateArgs{
 //				ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				ClientCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ClientCertificateId: pulumi.StringRef("0d89c70d-ad9f-4843-b99f-6cc0252067e9"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,7 +54,7 @@ func LookupClientCertificate(ctx *pulumi.Context, args *LookupClientCertificateA
 
 // A collection of arguments for invoking getClientCertificate.
 type LookupClientCertificateArgs struct {
-	// Identifier.
+	// Client Certificate Tag
 	ClientCertificateId *string                     `pulumi:"clientCertificateId"`
 	Filter              *GetClientCertificateFilter `pulumi:"filter"`
 	// Identifier.
@@ -67,7 +67,7 @@ type LookupClientCertificateResult struct {
 	Certificate string `pulumi:"certificate"`
 	// Certificate Authority used to issue the Client Certificate.
 	CertificateAuthority GetClientCertificateCertificateAuthority `pulumi:"certificateAuthority"`
-	// Identifier.
+	// Client Certificate Tag
 	ClientCertificateId *string `pulumi:"clientCertificateId"`
 	// Common Name of the Client Certificate.
 	CommonName string `pulumi:"commonName"`
@@ -80,7 +80,7 @@ type LookupClientCertificateResult struct {
 	Filter    *GetClientCertificateFilter `pulumi:"filter"`
 	// Unique identifier of the Client Certificate.
 	FingerprintSha256 string `pulumi:"fingerprintSha256"`
-	// Identifier.
+	// Client Certificate Tag
 	Id string `pulumi:"id"`
 	// Date that the Client Certificate was issued by the Certificate Authority.
 	IssuedOn string `pulumi:"issuedOn"`
@@ -114,7 +114,7 @@ func LookupClientCertificateOutput(ctx *pulumi.Context, args LookupClientCertifi
 
 // A collection of arguments for invoking getClientCertificate.
 type LookupClientCertificateOutputArgs struct {
-	// Identifier.
+	// Client Certificate Tag
 	ClientCertificateId pulumi.StringPtrInput              `pulumi:"clientCertificateId"`
 	Filter              GetClientCertificateFilterPtrInput `pulumi:"filter"`
 	// Identifier.
@@ -152,7 +152,7 @@ func (o LookupClientCertificateResultOutput) CertificateAuthority() GetClientCer
 	}).(GetClientCertificateCertificateAuthorityOutput)
 }
 
-// Identifier.
+// Client Certificate Tag
 func (o LookupClientCertificateResultOutput) ClientCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) *string { return v.ClientCertificateId }).(pulumi.StringPtrOutput)
 }
@@ -186,7 +186,7 @@ func (o LookupClientCertificateResultOutput) FingerprintSha256() pulumi.StringOu
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.FingerprintSha256 }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Client Certificate Tag
 func (o LookupClientCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }

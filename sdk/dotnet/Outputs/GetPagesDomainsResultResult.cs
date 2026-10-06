@@ -21,7 +21,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string DomainId;
         public readonly string Id;
         /// <summary>
-        /// The domain name.
+        /// Fully qualified domain name for the Pages project, such as `example.com`.
         /// </summary>
         public readonly string Name;
         /// <summary>

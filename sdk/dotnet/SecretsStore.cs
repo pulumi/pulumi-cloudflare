@@ -53,6 +53,14 @@ namespace Pulumi.Cloudflare
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
+        /// When true, cascade-deletes all secrets in the store before deleting the store itself.
+        /// Required when deleting a non-empty store. Without this parameter, attempting to
+        /// delete a non-empty store returns 409.
+        /// </summary>
+        [Output("force")]
+        public Output<bool> Force { get; private set; } = null!;
+
+        /// <summary>
         /// When the secret was modified.
         /// </summary>
         [Output("modified")]
@@ -114,6 +122,14 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// When true, cascade-deletes all secrets in the store before deleting the store itself.
+        /// Required when deleting a non-empty store. Without this parameter, attempting to
+        /// delete a non-empty store returns 409.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
         /// The name of the store.
         /// </summary>
         [Input("name", required: true)]
@@ -135,6 +151,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
+
+        /// <summary>
+        /// When true, cascade-deletes all secrets in the store before deleting the store itself.
+        /// Required when deleting a non-empty store. Without this parameter, attempting to
+        /// delete a non-empty store returns 409.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
 
         /// <summary>
         /// When the secret was modified.

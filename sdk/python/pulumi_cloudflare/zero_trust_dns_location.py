@@ -32,6 +32,7 @@ class ZeroTrustDnsLocationArgs:
         """
         The set of arguments for constructing a ZeroTrustDnsLocation resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] name: Specify the location name.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -58,6 +59,9 @@ class ZeroTrustDnsLocationArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -170,6 +174,7 @@ class _ZeroTrustDnsLocationState:
         """
         Input properties used for looking up and filtering ZeroTrustDnsLocation resources.
 
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.str] dns_destination_ipv6_block_id: Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -217,6 +222,9 @@ class _ZeroTrustDnsLocationState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -462,6 +470,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.bool] ecs_support: Indicate whether the location must resolve EDNS queries.
@@ -620,6 +629,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.bool] client_default: Indicate whether this location is the default location.
         :param pulumi.Input[_builtins.str] dns_destination_ips_id: Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         :param pulumi.Input[_builtins.str] dns_destination_ipv6_block_id: Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
@@ -657,6 +667,9 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property

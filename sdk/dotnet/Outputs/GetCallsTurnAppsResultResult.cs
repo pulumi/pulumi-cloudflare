@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Modified;
         /// <summary>
-        /// A short description of Calls app, not shown to end users.
+        /// A short description of a Realtime SFU app, not shown to end users.
         /// </summary>
         public readonly string Name;
         /// <summary>

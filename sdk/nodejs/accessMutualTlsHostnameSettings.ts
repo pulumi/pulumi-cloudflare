@@ -30,7 +30,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example '<{accounts|zones}/{account_id|zone_id}>'
+ * ```
  *
  * @deprecated cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
  */

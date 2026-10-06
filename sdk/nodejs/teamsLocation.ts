@@ -96,6 +96,9 @@ export class TeamsLocation extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsLocation.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Indicate whether this location is the default location.
@@ -214,6 +217,9 @@ export class TeamsLocation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsLocation resources.
  */
 export interface TeamsLocationState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether this location is the default location.
@@ -271,6 +277,9 @@ export interface TeamsLocationState {
  * The set of arguments for constructing a TeamsLocation resource.
  */
 export interface TeamsLocationArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Indicate whether this location is the default location.

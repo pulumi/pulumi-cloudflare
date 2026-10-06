@@ -52,13 +52,13 @@ type LookupAiSearchInstanceResult struct {
 	Filter          *GetAiSearchInstanceFilter          `pulumi:"filter"`
 	// Available values: "max", "rrf".
 	FusionMethod string `pulumi:"fusionMethod"`
-	// Deprecated — use indexMethod instead.
+	// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled bool `pulumi:"hybridSearchEnabled"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// Controls which storage backends are used during indexing. Defaults to vector-only.
+	// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
 	IndexMethod          GetAiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
 	IndexingOptions      GetAiSearchInstanceIndexingOptions      `pulumi:"indexingOptions"`
 	LastActivity         string                                  `pulumi:"lastActivity"`
@@ -84,6 +84,7 @@ type LookupAiSearchInstanceResult struct {
 	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
 	SyncInterval float64 `pulumi:"syncInterval"`
 	TokenId      string  `pulumi:"tokenId"`
+	// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 	// Available values: "r2", "web-crawler".
 	Type string `pulumi:"type"`
 }
@@ -189,7 +190,7 @@ func (o LookupAiSearchInstanceResultOutput) FusionMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.FusionMethod }).(pulumi.StringOutput)
 }
 
-// Deprecated — use indexMethod instead.
+// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
 //
 // Deprecated: This attribute is deprecated.
 func (o LookupAiSearchInstanceResultOutput) HybridSearchEnabled() pulumi.BoolOutput {
@@ -201,7 +202,7 @@ func (o LookupAiSearchInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Controls which storage backends are used during indexing. Defaults to vector-only.
+// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
 func (o LookupAiSearchInstanceResultOutput) IndexMethod() GetAiSearchInstanceIndexMethodOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) GetAiSearchInstanceIndexMethod { return v.IndexMethod }).(GetAiSearchInstanceIndexMethodOutput)
 }
@@ -295,6 +296,7 @@ func (o LookupAiSearchInstanceResultOutput) TokenId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.TokenId }).(pulumi.StringOutput)
 }
 
+// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
 // Available values: "r2", "web-crawler".
 func (o LookupAiSearchInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Type }).(pulumi.StringOutput)

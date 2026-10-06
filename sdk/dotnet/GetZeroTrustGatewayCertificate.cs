@@ -84,6 +84,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayCertificateArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
@@ -101,6 +104,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -120,6 +126,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayCertificateResult
     {
+        /// <summary>
+        /// Specify the Cloudflare account identifier.
+        /// </summary>
         public readonly string? AccountId;
         /// <summary>
         /// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.

@@ -63,6 +63,10 @@ export interface GetQueueResult {
      * A Resource identifier.
      */
     readonly id: string;
+    /**
+     * Available values: "eu", "us", "fedramp".
+     */
+    readonly jurisdiction: string;
     readonly modifiedOn: string;
     readonly producers: outputs.GetQueueProducer[];
     readonly producersTotalCount: number;

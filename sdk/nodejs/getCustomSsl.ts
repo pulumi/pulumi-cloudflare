@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * const exampleCustomSsl = cloudflare.getCustomSsl({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     customCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customCertificateId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
  * });
  * ```
  */
@@ -41,7 +41,7 @@ export function getCustomSsl(args?: GetCustomSslArgs, opts?: pulumi.InvokeOption
  */
 export interface GetCustomSslArgs {
     /**
-     * Identifier.
+     * Custom certificate identifier tag.
      */
     customCertificateId?: string;
     filter?: inputs.GetCustomSslFilter;
@@ -61,7 +61,7 @@ export interface GetCustomSslResult {
      */
     readonly bundleMethod: string;
     /**
-     * Identifier.
+     * Custom certificate identifier tag.
      */
     readonly customCertificateId?: string;
     /**
@@ -79,7 +79,7 @@ export interface GetCustomSslResult {
     readonly geoRestrictions: outputs.GetCustomSslGeoRestrictions;
     readonly hosts: string[];
     /**
-     * Identifier.
+     * Custom certificate identifier tag.
      */
     readonly id: string;
     /**
@@ -122,7 +122,7 @@ export interface GetCustomSslResult {
  *
  * const exampleCustomSsl = cloudflare.getCustomSsl({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     customCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customCertificateId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
  * });
  * ```
  */
@@ -141,7 +141,7 @@ export function getCustomSslOutput(args?: GetCustomSslOutputArgs, opts?: pulumi.
  */
 export interface GetCustomSslOutputArgs {
     /**
-     * Identifier.
+     * Custom certificate identifier tag.
      */
     customCertificateId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetCustomSslFilterArgs | undefined>;

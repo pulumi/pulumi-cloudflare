@@ -9,6 +9,18 @@ import * as utilities from "./utilities";
  *
  * - `Zero Trust Read`
  * - `Zero Trust Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDlpCustomPromptTopic = cloudflare.getZeroTrustDlpCustomPromptTopic({
+ *     accountId: "account_id",
+ *     entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ * });
+ * ```
  */
 export function getZeroTrustDlpCustomPromptTopic(args: GetZeroTrustDlpCustomPromptTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpCustomPromptTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +67,18 @@ export interface GetZeroTrustDlpCustomPromptTopicResult {
  *
  * - `Zero Trust Read`
  * - `Zero Trust Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDlpCustomPromptTopic = cloudflare.getZeroTrustDlpCustomPromptTopic({
+ *     accountId: "account_id",
+ *     entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ * });
+ * ```
  */
 export function getZeroTrustDlpCustomPromptTopicOutput(args: GetZeroTrustDlpCustomPromptTopicOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpCustomPromptTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

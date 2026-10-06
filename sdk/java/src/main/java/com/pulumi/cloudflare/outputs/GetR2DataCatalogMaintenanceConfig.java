@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetR2DataCatalogMaintenanceConfigCompaction
 import com.pulumi.cloudflare.outputs.GetR2DataCatalogMaintenanceConfigSnapshotExpiration;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
@@ -16,6 +17,11 @@ public final class GetR2DataCatalogMaintenanceConfig {
      * 
      */
     private GetR2DataCatalogMaintenanceConfigCompaction compaction;
+    /**
+     * @return Scheduling interval between normal table maintenance runs.
+     * 
+     */
+    private String interval;
     /**
      * @return Configures snapshot expiration settings.
      * 
@@ -29,6 +35,13 @@ public final class GetR2DataCatalogMaintenanceConfig {
      */
     public GetR2DataCatalogMaintenanceConfigCompaction compaction() {
         return this.compaction;
+    }
+    /**
+     * @return Scheduling interval between normal table maintenance runs.
+     * 
+     */
+    public String interval() {
+        return this.interval;
     }
     /**
      * @return Configures snapshot expiration settings.
@@ -48,11 +61,13 @@ public final class GetR2DataCatalogMaintenanceConfig {
     @CustomType.Builder
     public static final class Builder {
         private GetR2DataCatalogMaintenanceConfigCompaction compaction;
+        private String interval;
         private GetR2DataCatalogMaintenanceConfigSnapshotExpiration snapshotExpiration;
         public Builder() {}
         public Builder(GetR2DataCatalogMaintenanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compaction = defaults.compaction;
+    	      this.interval = defaults.interval;
     	      this.snapshotExpiration = defaults.snapshotExpiration;
         }
 
@@ -62,6 +77,14 @@ public final class GetR2DataCatalogMaintenanceConfig {
               throw new MissingRequiredPropertyException("GetR2DataCatalogMaintenanceConfig", "compaction");
             }
             this.compaction = compaction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interval(String interval) {
+            if (interval == null) {
+              throw new MissingRequiredPropertyException("GetR2DataCatalogMaintenanceConfig", "interval");
+            }
+            this.interval = interval;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +98,7 @@ public final class GetR2DataCatalogMaintenanceConfig {
         public GetR2DataCatalogMaintenanceConfig build() {
             final var _resultValue = new GetR2DataCatalogMaintenanceConfig();
             _resultValue.compaction = compaction;
+            _resultValue.interval = interval;
             _resultValue.snapshotExpiration = snapshotExpiration;
             return _resultValue;
         }

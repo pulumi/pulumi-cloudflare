@@ -73,6 +73,9 @@ class GetZeroTrustGatewayCertificateResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -207,6 +210,7 @@ def get_zero_trust_gateway_certificate(account_id: Optional[_builtins.str] = Non
     ```
 
 
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     :param _builtins.str certificate_id: Identify the certificate with a UUID.
     """
     __args__ = dict()
@@ -245,6 +249,7 @@ def get_zero_trust_gateway_certificate_output(account_id: pulumi.Input[Optional[
     ```
 
 
+    :param _builtins.str account_id: Specify the Cloudflare account identifier.
     :param _builtins.str certificate_id: Identify the certificate with a UUID.
     """
     __args__ = dict()

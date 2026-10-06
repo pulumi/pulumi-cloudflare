@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,10 +13,21 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountApiTokenPermissionGroupsListResult {
     /**
+     * @return Product category that this permission group belongs to.
+     * Available values: &#34;developer*platform&#34;, &#34;ai*and*machine*learning&#34;, &#34;dns*and*zones&#34;, &#34;app*security&#34;, &#34;rules*and*configuration&#34;, &#34;cloudflare*one*and*zero*trust&#34;, &#34;analytics*and*logs&#34;, &#34;network*services&#34;, &#34;media&#34;, &#34;email*and*messaging&#34;, &#34;cache*and*performance&#34;, &#34;account*and*billing&#34;, &#34;other&#34;.
+     * 
+     */
+    private String category;
+    /**
      * @return Public ID.
      * 
      */
     private String id;
+    /**
+     * @return Whether the caller can select this permission group when creating a token.
+     * 
+     */
+    private Boolean isSelectable;
     /**
      * @return Permission Group Name
      * 
@@ -29,11 +41,26 @@ public final class GetAccountApiTokenPermissionGroupsListResult {
 
     private GetAccountApiTokenPermissionGroupsListResult() {}
     /**
+     * @return Product category that this permission group belongs to.
+     * Available values: &#34;developer*platform&#34;, &#34;ai*and*machine*learning&#34;, &#34;dns*and*zones&#34;, &#34;app*security&#34;, &#34;rules*and*configuration&#34;, &#34;cloudflare*one*and*zero*trust&#34;, &#34;analytics*and*logs&#34;, &#34;network*services&#34;, &#34;media&#34;, &#34;email*and*messaging&#34;, &#34;cache*and*performance&#34;, &#34;account*and*billing&#34;, &#34;other&#34;.
+     * 
+     */
+    public String category() {
+        return this.category;
+    }
+    /**
      * @return Public ID.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Whether the caller can select this permission group when creating a token.
+     * 
+     */
+    public Boolean isSelectable() {
+        return this.isSelectable;
     }
     /**
      * @return Permission Group Name
@@ -59,23 +86,43 @@ public final class GetAccountApiTokenPermissionGroupsListResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String category;
         private String id;
+        private Boolean isSelectable;
         private String name;
         private List<String> scopes;
         public Builder() {}
         public Builder(GetAccountApiTokenPermissionGroupsListResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.category = defaults.category;
     	      this.id = defaults.id;
+    	      this.isSelectable = defaults.isSelectable;
     	      this.name = defaults.name;
     	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
+        public Builder category(String category) {
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsListResult", "category");
+            }
+            this.category = category;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsListResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isSelectable(Boolean isSelectable) {
+            if (isSelectable == null) {
+              throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsListResult", "isSelectable");
+            }
+            this.isSelectable = isSelectable;
             return this;
         }
         @CustomType.Setter
@@ -99,7 +146,9 @@ public final class GetAccountApiTokenPermissionGroupsListResult {
         }
         public GetAccountApiTokenPermissionGroupsListResult build() {
             final var _resultValue = new GetAccountApiTokenPermissionGroupsListResult();
+            _resultValue.category = category;
             _resultValue.id = id;
+            _resultValue.isSelectable = isSelectable;
             _resultValue.name = name;
             _resultValue.scopes = scopes;
             return _resultValue;

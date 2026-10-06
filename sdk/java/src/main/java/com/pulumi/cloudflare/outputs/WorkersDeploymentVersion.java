@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class WorkersDeploymentVersion {
+    /**
+     * @return Percentage of traffic served by this version.
+     * 
+     */
     private Double percentage;
+    /**
+     * @return Identifier of the Worker Version.
+     * 
+     */
     private String versionId;
 
     private WorkersDeploymentVersion() {}
+    /**
+     * @return Percentage of traffic served by this version.
+     * 
+     */
     public Double percentage() {
         return this.percentage;
     }
+    /**
+     * @return Identifier of the Worker Version.
+     * 
+     */
     public String versionId() {
         return this.versionId;
     }

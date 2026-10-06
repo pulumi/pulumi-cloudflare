@@ -39,10 +39,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfile;
  * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfileArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileSensitivityLevelArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileSharedEntryArgs;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomEntry;
- * import com.pulumi.cloudflare.ZeroTrustDlpCustomEntryArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryPatternArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -57,25 +57,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleZeroTrustDlpCustomProfile = new ZeroTrustDlpCustomProfile("exampleZeroTrustDlpCustomProfile", ZeroTrustDlpCustomProfileArgs.builder()
+ *             .accountId("account_id")
  *             .name("name")
- *             .accountId("account_id")
- *             .description("Custom profile with entries")
- *             .sharedEntries(ZeroTrustDlpCustomProfileSharedEntryArgs.builder()
- *                 .entryId("56a8c060-01bb-4f89-ba1e-3ad42770a342")
- *                 .entryType("predefined")
+ *             .aiContextEnabled(true)
+ *             .allowedMatchCount(5)
+ *             .confidenceThreshold("confidence_threshold")
+ *             .contextAwareness(ZeroTrustDlpCustomProfileContextAwarenessArgs.builder()
  *                 .enabled(true)
+ *                 .skip(ZeroTrustDlpCustomProfileContextAwarenessSkipArgs.builder()
+ *                     .files(true)
+ *                     .build())
  *                 .build())
- *             .build());
- * 
- *         // Custom entry that is a part of this new profile
- *         var exampleCustomEntry = new ZeroTrustDlpCustomEntry("exampleCustomEntry", ZeroTrustDlpCustomEntryArgs.builder()
- *             .name("custom")
- *             .accountId("account_id")
- *             .profileId(exampleZeroTrustDlpCustomProfile.id())
- *             .pattern(ZeroTrustDlpCustomEntryPatternArgs.builder()
- *                 .regex("customentryregex")
+ *             .dataClasses("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *             .dataTags("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *             .description("description")
+ *             .ocrEnabled(true)
+ *             .sensitivityLevels(ZeroTrustDlpCustomProfileSensitivityLevelArgs.builder()
+ *                 .groupId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *                 .levelId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *                 .build())
- *             .enabled(true)
+ *             .sharedEntries(ZeroTrustDlpCustomProfileSharedEntryArgs.builder()
+ *                 .enabled(true)
+ *                 .entryId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -221,6 +225,12 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<DlpCustomProfileEntry>>> entries() {
         return Codegen.optional(this.entries);
+    }
+    @Export(name="integrationId", refs={String.class}, tree="[0]")
+    private Output<String> integrationId;
+
+    public Output<String> integrationId() {
+        return this.integrationId;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;

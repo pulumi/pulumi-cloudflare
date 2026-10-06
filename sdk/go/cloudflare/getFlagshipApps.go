@@ -52,7 +52,7 @@ func LookupFlagshipApps(ctx *pulumi.Context, args *LookupFlagshipAppsArgs, opts 
 
 // A collection of arguments for invoking getFlagshipApps.
 type LookupFlagshipAppsArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -60,7 +60,7 @@ type LookupFlagshipAppsArgs struct {
 
 // A collection of values returned by getFlagshipApps.
 type LookupFlagshipAppsResult struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -75,7 +75,7 @@ func LookupFlagshipAppsOutput(ctx *pulumi.Context, args LookupFlagshipAppsOutput
 
 // A collection of arguments for invoking getFlagshipApps.
 type LookupFlagshipAppsOutputArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -100,7 +100,7 @@ func (o LookupFlagshipAppsResultOutput) ToLookupFlagshipAppsResultOutputWithCont
 	return o
 }
 
-// Cloudflare account ID.
+// Cloudflare account ID that owns the Flagship app.
 func (o LookupFlagshipAppsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipAppsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -71,7 +71,7 @@ export class CallsSfuApp extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
-     * A short description of Calls app, not shown to end users.
+     * A short description of a Realtime SFU app, not shown to end users.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export interface CallsSfuAppState {
      */
     modified?: pulumi.Input<string | undefined>;
     /**
-     * A short description of Calls app, not shown to end users.
+     * A short description of a Realtime SFU app, not shown to end users.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -170,7 +170,7 @@ export interface CallsSfuAppArgs {
      */
     appId?: pulumi.Input<string | undefined>;
     /**
-     * A short description of Calls app, not shown to end users.
+     * A short description of a Realtime SFU app, not shown to end users.
      */
     name?: pulumi.Input<string | undefined>;
 }

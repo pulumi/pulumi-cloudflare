@@ -58,7 +58,7 @@ type LookupPagesDomainsArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName string `pulumi:"projectName"`
 }
 
@@ -68,7 +68,7 @@ type LookupPagesDomainsResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName string `pulumi:"projectName"`
 	// The items returned by the data source
 	Results []GetPagesDomainsResult `pulumi:"results"`
@@ -85,7 +85,7 @@ type LookupPagesDomainsOutputArgs struct {
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Name of the project.
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 }
 
@@ -118,7 +118,7 @@ func (o LookupPagesDomainsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupPagesDomainsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Name of the project.
+// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
 func (o LookupPagesDomainsResultOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPagesDomainsResult) string { return v.ProjectName }).(pulumi.StringOutput)
 }

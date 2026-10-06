@@ -66,7 +66,24 @@ export class UserGroupMembers extends pulumi.CustomResource {
      * Account identifier tag.
      */
     declare public readonly accountId: pulumi.Output<string>;
+    /**
+     * The sort order of returned user group members by email.
+     * Available values: "asc", "desc".
+     */
+    declare public readonly direction: pulumi.Output<string>;
+    /**
+     * A string used for filtering members by partial email match.
+     */
+    declare public readonly fuzzyEmail: pulumi.Output<string | undefined>;
     declare public readonly members: pulumi.Output<outputs.UserGroupMembersMember[]>;
+    /**
+     * Page number of paginated results.
+     */
+    declare public readonly page: pulumi.Output<number>;
+    /**
+     * Maximum number of results per page.
+     */
+    declare public readonly perPage: pulumi.Output<number>;
     /**
      * User Group identifier tag.
      */
@@ -86,7 +103,11 @@ export class UserGroupMembers extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as UserGroupMembersState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["fuzzyEmail"] = state?.fuzzyEmail;
             resourceInputs["members"] = state?.members;
+            resourceInputs["page"] = state?.page;
+            resourceInputs["perPage"] = state?.perPage;
             resourceInputs["userGroupId"] = state?.userGroupId;
         } else {
             const args = argsOrState as UserGroupMembersArgs | undefined;
@@ -100,7 +121,11 @@ export class UserGroupMembers extends pulumi.CustomResource {
                 throw new Error("Missing required property 'userGroupId'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["fuzzyEmail"] = args?.fuzzyEmail;
             resourceInputs["members"] = args?.members;
+            resourceInputs["page"] = args?.page;
+            resourceInputs["perPage"] = args?.perPage;
             resourceInputs["userGroupId"] = args?.userGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -116,7 +141,24 @@ export interface UserGroupMembersState {
      * Account identifier tag.
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * The sort order of returned user group members by email.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * A string used for filtering members by partial email match.
+     */
+    fuzzyEmail?: pulumi.Input<string | undefined>;
     members?: pulumi.Input<pulumi.Input<inputs.UserGroupMembersMember>[] | undefined>;
+    /**
+     * Page number of paginated results.
+     */
+    page?: pulumi.Input<number | undefined>;
+    /**
+     * Maximum number of results per page.
+     */
+    perPage?: pulumi.Input<number | undefined>;
     /**
      * User Group identifier tag.
      */
@@ -131,7 +173,24 @@ export interface UserGroupMembersArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * The sort order of returned user group members by email.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * A string used for filtering members by partial email match.
+     */
+    fuzzyEmail?: pulumi.Input<string | undefined>;
     members: pulumi.Input<pulumi.Input<inputs.UserGroupMembersMember>[]>;
+    /**
+     * Page number of paginated results.
+     */
+    page?: pulumi.Input<number | undefined>;
+    /**
+     * Maximum number of results per page.
+     */
+    perPage?: pulumi.Input<number | undefined>;
     /**
      * User Group identifier tag.
      */

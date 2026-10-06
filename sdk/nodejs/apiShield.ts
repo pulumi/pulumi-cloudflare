@@ -71,6 +71,10 @@ export class ApiShield extends pulumi.CustomResource {
 
     declare public readonly authIdCharacteristics: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[]>;
     /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     */
+    declare public readonly normalize: pulumi.Output<boolean | undefined>;
+    /**
      * Identifier.
      */
     declare public readonly zoneId: pulumi.Output<string>;
@@ -89,6 +93,7 @@ export class ApiShield extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApiShieldState | undefined;
             resourceInputs["authIdCharacteristics"] = state?.authIdCharacteristics;
+            resourceInputs["normalize"] = state?.normalize;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldArgs | undefined;
@@ -99,6 +104,7 @@ export class ApiShield extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["authIdCharacteristics"] = args?.authIdCharacteristics;
+            resourceInputs["normalize"] = args?.normalize;
             resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -112,6 +118,10 @@ export class ApiShield extends pulumi.CustomResource {
 export interface ApiShieldState {
     authIdCharacteristics?: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[] | undefined>;
     /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     */
+    normalize?: pulumi.Input<boolean | undefined>;
+    /**
      * Identifier.
      */
     zoneId?: pulumi.Input<string | undefined>;
@@ -122,6 +132,10 @@ export interface ApiShieldState {
  */
 export interface ApiShieldArgs {
     authIdCharacteristics: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
+    /**
+     * Ensures that the configuration is written or retrieved in normalized fashion
+     */
+    normalize?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

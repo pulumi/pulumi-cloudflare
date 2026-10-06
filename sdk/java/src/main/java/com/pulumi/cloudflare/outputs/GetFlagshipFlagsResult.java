@@ -19,12 +19,21 @@ public final class GetFlagshipFlagsResult {
      * 
      */
     private String defaultVariation;
+    /**
+     * @return Optional operator-facing description. It does not affect flag evaluation.
+     * 
+     */
     private String description;
     /**
      * @return When false, the flag bypasses all rules and always serves `defaultVariation`.
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+     * 
+     */
+    private String id;
     /**
      * @return Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
      * 
@@ -36,7 +45,7 @@ public final class GetFlagshipFlagsResult {
      */
     private List<GetFlagshipFlagsResultRule> rules;
     /**
-     * @return Value type of the flag&#39;s variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * @return Server-inferred value type shared by all of the flag&#39;s variations.
      * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
      * 
      */
@@ -44,7 +53,7 @@ public final class GetFlagshipFlagsResult {
     private String updatedAt;
     private String updatedBy;
     /**
-     * @return Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
+     * @return Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.
      * 
      */
     private Map<String,String> variations;
@@ -57,6 +66,10 @@ public final class GetFlagshipFlagsResult {
     public String defaultVariation() {
         return this.defaultVariation;
     }
+    /**
+     * @return Optional operator-facing description. It does not affect flag evaluation.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -66,6 +79,13 @@ public final class GetFlagshipFlagsResult {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
@@ -82,7 +102,7 @@ public final class GetFlagshipFlagsResult {
         return this.rules;
     }
     /**
-     * @return Value type of the flag&#39;s variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * @return Server-inferred value type shared by all of the flag&#39;s variations.
      * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
      * 
      */
@@ -96,7 +116,7 @@ public final class GetFlagshipFlagsResult {
         return this.updatedBy;
     }
     /**
-     * @return Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
+     * @return Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.
      * 
      */
     public Map<String,String> variations() {
@@ -115,6 +135,7 @@ public final class GetFlagshipFlagsResult {
         private String defaultVariation;
         private String description;
         private Boolean enabled;
+        private String id;
         private String key;
         private List<GetFlagshipFlagsResultRule> rules;
         private String type;
@@ -127,6 +148,7 @@ public final class GetFlagshipFlagsResult {
     	      this.defaultVariation = defaults.defaultVariation;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
+    	      this.id = defaults.id;
     	      this.key = defaults.key;
     	      this.rules = defaults.rules;
     	      this.type = defaults.type;
@@ -157,6 +179,14 @@ public final class GetFlagshipFlagsResult {
               throw new MissingRequiredPropertyException("GetFlagshipFlagsResult", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFlagshipFlagsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -215,6 +245,7 @@ public final class GetFlagshipFlagsResult {
             _resultValue.defaultVariation = defaultVariation;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
+            _resultValue.id = id;
             _resultValue.key = key;
             _resultValue.rules = rules;
             _resultValue.type = type;

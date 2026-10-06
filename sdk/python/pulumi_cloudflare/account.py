@@ -24,6 +24,7 @@ class AccountArgs:
                  name: pulumi.Input[_builtins.str],
                  managed_by: pulumi.Input[Optional['AccountManagedByArgs']] = None,
                  settings: pulumi.Input[Optional['AccountSettingsArgs']] = None,
+                 standalone: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  unit: pulumi.Input[Optional['AccountUnitArgs']] = None):
         """
@@ -32,14 +33,17 @@ class AccountArgs:
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input['AccountManagedByArgs'] managed_by: Parent container details
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
+        :param pulumi.Input[_builtins.bool] standalone: Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
-        :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        :param pulumi.Input['AccountUnitArgs'] unit: Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         pulumi.set(__self__, "name", name)
         if managed_by is not None:
             pulumi.set(__self__, "managed_by", managed_by)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+        if standalone is not None:
+            pulumi.set(__self__, "standalone", standalone)
         if type is not None:
             warnings.warn("""The 'type' field should no longer be set through the API.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: The 'type' field should no longer be set through the API.""")
@@ -86,6 +90,18 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter
+    def standalone(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+        """
+        return pulumi.get(self, "standalone")
+
+    @standalone.setter
+    def standalone(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "standalone", value)
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -101,7 +117,7 @@ class AccountArgs:
     @pulumi.getter
     def unit(self) -> pulumi.Input[Optional['AccountUnitArgs']]:
         """
-        information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         return pulumi.get(self, "unit")
 
@@ -117,6 +133,7 @@ class _AccountState:
                  managed_by: pulumi.Input[Optional['AccountManagedByArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional['AccountSettingsArgs']] = None,
+                 standalone: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  unit: pulumi.Input[Optional['AccountUnitArgs']] = None):
         """
@@ -126,8 +143,9 @@ class _AccountState:
         :param pulumi.Input['AccountManagedByArgs'] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
+        :param pulumi.Input[_builtins.bool] standalone: Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
-        :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        :param pulumi.Input['AccountUnitArgs'] unit: Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
@@ -137,6 +155,8 @@ class _AccountState:
             pulumi.set(__self__, "name", name)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+        if standalone is not None:
+            pulumi.set(__self__, "standalone", standalone)
         if type is not None:
             warnings.warn("""The 'type' field should no longer be set through the API.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: The 'type' field should no longer be set through the API.""")
@@ -195,6 +215,18 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter
+    def standalone(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+        """
+        return pulumi.get(self, "standalone")
+
+    @standalone.setter
+    def standalone(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "standalone", value)
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -210,7 +242,7 @@ class _AccountState:
     @pulumi.getter
     def unit(self) -> pulumi.Input[Optional['AccountUnitArgs']]:
         """
-        information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         return pulumi.get(self, "unit")
 
@@ -228,6 +260,7 @@ class Account(pulumi.CustomResource):
                  managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
+                 standalone: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']]] = None,
                  __props__=None):
@@ -272,6 +305,7 @@ class Account(pulumi.CustomResource):
 
         example_account = cloudflare.Account("example_account",
             name="name",
+            standalone=True,
             type="standard",
             unit={
                 "id": "f267e341f3dd4697bd3b9f71dd96247f",
@@ -290,8 +324,9 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']] settings: Account settings
+        :param pulumi.Input[_builtins.bool] standalone: Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
-        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']] unit: Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         ...
     @overload
@@ -340,6 +375,7 @@ class Account(pulumi.CustomResource):
 
         example_account = cloudflare.Account("example_account",
             name="name",
+            standalone=True,
             type="standard",
             unit={
                 "id": "f267e341f3dd4697bd3b9f71dd96247f",
@@ -371,6 +407,7 @@ class Account(pulumi.CustomResource):
                  managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
+                 standalone: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']]] = None,
                  __props__=None):
@@ -387,6 +424,7 @@ class Account(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["settings"] = settings
+            __props__.__dict__["standalone"] = standalone
             __props__.__dict__["type"] = type
             __props__.__dict__["unit"] = unit
             __props__.__dict__["created_on"] = None
@@ -404,6 +442,7 @@ class Account(pulumi.CustomResource):
             managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']]] = None,
+            standalone: pulumi.Input[Optional[_builtins.bool]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']]] = None) -> 'Account':
         """
@@ -417,8 +456,9 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict', 'outputs.AccountManagedBy']] managed_by: Parent container details
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict', 'outputs.AccountSettings']] settings: Account settings
+        :param pulumi.Input[_builtins.bool] standalone: Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
         :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
-        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict', 'outputs.AccountUnit']] unit: Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -428,6 +468,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["managed_by"] = managed_by
         __props__.__dict__["name"] = name
         __props__.__dict__["settings"] = settings
+        __props__.__dict__["standalone"] = standalone
         __props__.__dict__["type"] = type
         __props__.__dict__["unit"] = unit
         return Account(resource_name, opts=opts, __props__=__props__)
@@ -466,6 +507,14 @@ class Account(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def standalone(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+        """
+        return pulumi.get(self, "standalone")
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
     def type(self) -> pulumi.Output[_builtins.str]:
         """
@@ -477,7 +526,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def unit(self) -> pulumi.Output['outputs.AccountUnit']:
         """
-        information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
         """
         return pulumi.get(self, "unit")
 

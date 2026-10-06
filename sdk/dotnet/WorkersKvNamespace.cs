@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
     public partial class WorkersKvNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> SupportsUrlEncoding { get; private set; } = null!;
 
         /// <summary>
-        /// A human-readable string name for a Namespace.
+        /// Human-readable string name for a Workers KV namespace.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// A human-readable string name for a Namespace.
+        /// Human-readable string name for a Workers KV namespace.
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier.
+        /// ID of the Cloudflare account that owns the Workers KV namespaces.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? SupportsUrlEncoding { get; set; }
 
         /// <summary>
-        /// A human-readable string name for a Namespace.
+        /// Human-readable string name for a Workers KV namespace.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

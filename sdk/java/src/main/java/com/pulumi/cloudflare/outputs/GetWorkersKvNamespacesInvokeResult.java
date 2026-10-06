@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkersKvNamespacesInvokeResult {
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     private @Nullable String accountId;
     /**
-     * @return Direction to order namespaces.
+     * @return Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -32,7 +32,7 @@ public final class GetWorkersKvNamespacesInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Field to order results by.
+     * @return Namespace field to sort by (`id` or `title`).
      * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
@@ -45,14 +45,14 @@ public final class GetWorkersKvNamespacesInvokeResult {
 
     private GetWorkersKvNamespacesInvokeResult() {}
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Direction to order namespaces.
+     * @return Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -67,7 +67,7 @@ public final class GetWorkersKvNamespacesInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Field to order results by.
+     * @return Namespace field to sort by (`id` or `title`).
      * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */

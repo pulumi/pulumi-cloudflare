@@ -32,7 +32,7 @@ import (
 //			_, err := cloudflare.GetFlagshipFlags(ctx, &cloudflare.LookupFlagshipFlagsArgs{
 //				AccountId: "account_id",
 //				AppId:     "app_id",
-//				Limit:     pulumi.StringRef("limit"),
+//				Limit:     pulumi.IntRef(1),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,24 +54,24 @@ func LookupFlagshipFlags(ctx *pulumi.Context, args *LookupFlagshipFlagsArgs, opt
 
 // A collection of arguments for invoking getFlagshipFlags.
 type LookupFlagshipFlagsArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId string `pulumi:"appId"`
 	// Max items to return (1–200).
-	Limit *string `pulumi:"limit"`
+	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getFlagshipFlags.
 type LookupFlagshipFlagsResult struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId string `pulumi:"appId"`
 	// Max items to return (1–200).
-	Limit *string `pulumi:"limit"`
+	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
@@ -85,12 +85,12 @@ func LookupFlagshipFlagsOutput(ctx *pulumi.Context, args LookupFlagshipFlagsOutp
 
 // A collection of arguments for invoking getFlagshipFlags.
 type LookupFlagshipFlagsOutputArgs struct {
-	// Cloudflare account ID.
+	// Cloudflare account ID that owns the Flagship app.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// App identifier.
+	// Flagship app ID returned when the app was created.
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// Max items to return (1–200).
-	Limit pulumi.StringPtrInput `pulumi:"limit"`
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -114,19 +114,19 @@ func (o LookupFlagshipFlagsResultOutput) ToLookupFlagshipFlagsResultOutputWithCo
 	return o
 }
 
-// Cloudflare account ID.
+// Cloudflare account ID that owns the Flagship app.
 func (o LookupFlagshipFlagsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// App identifier.
+// Flagship app ID returned when the app was created.
 func (o LookupFlagshipFlagsResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlagshipFlagsResult) string { return v.AppId }).(pulumi.StringOutput)
 }
 
 // Max items to return (1–200).
-func (o LookupFlagshipFlagsResultOutput) Limit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupFlagshipFlagsResult) *string { return v.Limit }).(pulumi.StringPtrOutput)
+func (o LookupFlagshipFlagsResultOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupFlagshipFlagsResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
 }
 
 // Max items to fetch, default: 1000

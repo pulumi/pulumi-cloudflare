@@ -89,6 +89,8 @@ type LookupSpectrumApplicationResult struct {
 	// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
 	// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
 	OriginPort interface{} `pulumi:"originPort"`
+	// Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+	OriginWorkerId string `pulumi:"originWorkerId"`
 	// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 	Protocol string `pulumi:"protocol"`
 	// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
@@ -97,8 +99,8 @@ type LookupSpectrumApplicationResult struct {
 	// The type of TLS termination associated with the application.
 	// Available values: "off", "flexible", "full", "strict".
 	Tls string `pulumi:"tls"`
-	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-	// Available values: "direct", "http", "https".
+	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to "worker", traffic is sent to the Worker specified by `originWorkerId`.
+	// Available values: "direct", "http", "https", "worker".
 	TrafficType string `pulumi:"trafficType"`
 	// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
 	VirtualNetworkId string `pulumi:"virtualNetworkId"`
@@ -201,6 +203,11 @@ func (o LookupSpectrumApplicationResultOutput) OriginPort() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) interface{} { return v.OriginPort }).(pulumi.AnyOutput)
 }
 
+// Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+func (o LookupSpectrumApplicationResultOutput) OriginWorkerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.OriginWorkerId }).(pulumi.StringOutput)
+}
+
 // The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
 func (o LookupSpectrumApplicationResultOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.Protocol }).(pulumi.StringOutput)
@@ -218,8 +225,8 @@ func (o LookupSpectrumApplicationResultOutput) Tls() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.Tls }).(pulumi.StringOutput)
 }
 
-// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-// Available values: "direct", "http", "https".
+// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to "worker", traffic is sent to the Worker specified by `originWorkerId`.
+// Available values: "direct", "http", "https", "worker".
 func (o LookupSpectrumApplicationResultOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.TrafficType }).(pulumi.StringOutput)
 }

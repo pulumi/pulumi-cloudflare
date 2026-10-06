@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ public final class AiSearchInstanceIndexingOptions {
      * 
      */
     private @Nullable String keywordTokenizer;
+    /**
+     * @return Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+     * 
+     */
+    private @Nullable Boolean useOcr;
 
     private AiSearchInstanceIndexingOptions() {}
     /**
@@ -26,6 +32,13 @@ public final class AiSearchInstanceIndexingOptions {
      */
     public Optional<String> keywordTokenizer() {
         return Optional.ofNullable(this.keywordTokenizer);
+    }
+    /**
+     * @return Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+     * 
+     */
+    public Optional<Boolean> useOcr() {
+        return Optional.ofNullable(this.useOcr);
     }
 
     public static Builder builder() {
@@ -38,10 +51,12 @@ public final class AiSearchInstanceIndexingOptions {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String keywordTokenizer;
+        private @Nullable Boolean useOcr;
         public Builder() {}
         public Builder(AiSearchInstanceIndexingOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keywordTokenizer = defaults.keywordTokenizer;
+    	      this.useOcr = defaults.useOcr;
         }
 
         @CustomType.Setter
@@ -50,9 +65,16 @@ public final class AiSearchInstanceIndexingOptions {
             this.keywordTokenizer = keywordTokenizer;
             return this;
         }
+        @CustomType.Setter
+        public Builder useOcr(@Nullable Boolean useOcr) {
+
+            this.useOcr = useOcr;
+            return this;
+        }
         public AiSearchInstanceIndexingOptions build() {
             final var _resultValue = new AiSearchInstanceIndexingOptions();
             _resultValue.keywordTokenizer = keywordTokenizer;
+            _resultValue.useOcr = useOcr;
             return _resultValue;
         }
     }

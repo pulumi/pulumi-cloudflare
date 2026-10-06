@@ -60,6 +60,7 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
 
     /**
      * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * Available values: "DAILY", "WEEKLY".
      */
     declare public readonly frequency: pulumi.Output<string>;
     /**
@@ -126,6 +127,7 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
 export interface ObservatoryScheduledTestState {
     /**
      * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * Available values: "DAILY", "WEEKLY".
      */
     frequency?: pulumi.Input<string | undefined>;
     /**
@@ -154,6 +156,7 @@ export interface ObservatoryScheduledTestState {
 export interface ObservatoryScheduledTestArgs {
     /**
      * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * Available values: "DAILY", "WEEKLY".
      */
     frequency?: pulumi.Input<string | undefined>;
     /**

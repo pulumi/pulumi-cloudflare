@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleMtlsCertificateAssociations = Cloudflare.GetMtlsCertificateAssociations.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         MtlsCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         MtlsCertificateId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleMtlsCertificateAssociations = Cloudflare.GetMtlsCertificateAssociations.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         MtlsCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         MtlsCertificateId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleMtlsCertificateAssociations = Cloudflare.GetMtlsCertificateAssociations.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         MtlsCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         MtlsCertificateId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier.
+        /// Certificate identifier tag.
         /// </summary>
         [Input("mtlsCertificateId", required: true)]
         public string MtlsCertificateId { get; set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier.
+        /// Certificate identifier tag.
         /// </summary>
         [Input("mtlsCertificateId", required: true)]
         public Input<string> MtlsCertificateId { get; set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Identifier.
+        /// Certificate identifier tag.
         /// </summary>
         public readonly string MtlsCertificateId;
         /// <summary>

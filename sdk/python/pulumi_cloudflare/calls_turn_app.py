@@ -222,7 +222,9 @@ class CallsTurnApp(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/callsTurnApp:CallsTurnApp example '<account_id>/<key_id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -256,7 +258,9 @@ class CallsTurnApp(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/callsTurnApp:CallsTurnApp example '<account_id>/<key_id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -368,7 +372,7 @@ class CallsTurnApp(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def key_id(self) -> pulumi.Output[_builtins.str]:
         """
         A Cloudflare-generated unique identifier for a item.
         """

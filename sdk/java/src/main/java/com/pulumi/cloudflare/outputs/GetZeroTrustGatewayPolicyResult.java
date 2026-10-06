@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyExpiration;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyFilter;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettings;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicySchedule;
 import com.pulumi.core.annotations.CustomType;
@@ -18,6 +19,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayPolicyResult {
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     private @Nullable String accountId;
     /**
      * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -51,6 +56,7 @@ public final class GetZeroTrustGatewayPolicyResult {
      * 
      */
     private GetZeroTrustGatewayPolicyExpiration expiration;
+    private @Nullable GetZeroTrustGatewayPolicyFilter filter;
     /**
      * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
@@ -85,7 +91,7 @@ public final class GetZeroTrustGatewayPolicyResult {
      * @return Identify the API resource with a UUID.
      * 
      */
-    private String ruleId;
+    private @Nullable String ruleId;
     /**
      * @return Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
      * 
@@ -124,6 +130,10 @@ public final class GetZeroTrustGatewayPolicyResult {
     private String warningStatus;
 
     private GetZeroTrustGatewayPolicyResult() {}
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -173,6 +183,9 @@ public final class GetZeroTrustGatewayPolicyResult {
     public GetZeroTrustGatewayPolicyExpiration expiration() {
         return this.expiration;
     }
+    public Optional<GetZeroTrustGatewayPolicyFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
     /**
      * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
@@ -219,8 +232,8 @@ public final class GetZeroTrustGatewayPolicyResult {
      * @return Identify the API resource with a UUID.
      * 
      */
-    public String ruleId() {
-        return this.ruleId;
+    public Optional<String> ruleId() {
+        return Optional.ofNullable(this.ruleId);
     }
     /**
      * @return Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
@@ -292,13 +305,14 @@ public final class GetZeroTrustGatewayPolicyResult {
         private String devicePosture;
         private Boolean enabled;
         private GetZeroTrustGatewayPolicyExpiration expiration;
+        private @Nullable GetZeroTrustGatewayPolicyFilter filter;
         private List<String> filters;
         private String id;
         private String identity;
         private String name;
         private Integer precedence;
         private Boolean readOnly;
-        private String ruleId;
+        private @Nullable String ruleId;
         private GetZeroTrustGatewayPolicyRuleSettings ruleSettings;
         private GetZeroTrustGatewayPolicySchedule schedule;
         private Boolean sharable;
@@ -318,6 +332,7 @@ public final class GetZeroTrustGatewayPolicyResult {
     	      this.devicePosture = defaults.devicePosture;
     	      this.enabled = defaults.enabled;
     	      this.expiration = defaults.expiration;
+    	      this.filter = defaults.filter;
     	      this.filters = defaults.filters;
     	      this.id = defaults.id;
     	      this.identity = defaults.identity;
@@ -398,6 +413,12 @@ public final class GetZeroTrustGatewayPolicyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder filter(@Nullable GetZeroTrustGatewayPolicyFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder filters(List<String> filters) {
             if (filters == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "filters");
@@ -449,10 +470,8 @@ public final class GetZeroTrustGatewayPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ruleId(String ruleId) {
-            if (ruleId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "ruleId");
-            }
+        public Builder ruleId(@Nullable String ruleId) {
+
             this.ruleId = ruleId;
             return this;
         }
@@ -530,6 +549,7 @@ public final class GetZeroTrustGatewayPolicyResult {
             _resultValue.devicePosture = devicePosture;
             _resultValue.enabled = enabled;
             _resultValue.expiration = expiration;
+            _resultValue.filter = filter;
             _resultValue.filters = filters;
             _resultValue.id = id;
             _resultValue.identity = identity;

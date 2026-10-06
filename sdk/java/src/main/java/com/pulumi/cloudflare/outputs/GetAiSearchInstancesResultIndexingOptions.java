@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -16,6 +17,7 @@ public final class GetAiSearchInstancesResultIndexingOptions {
      * 
      */
     private String keywordTokenizer;
+    private Boolean useOcr;
 
     private GetAiSearchInstancesResultIndexingOptions() {}
     /**
@@ -25,6 +27,9 @@ public final class GetAiSearchInstancesResultIndexingOptions {
      */
     public String keywordTokenizer() {
         return this.keywordTokenizer;
+    }
+    public Boolean useOcr() {
+        return this.useOcr;
     }
 
     public static Builder builder() {
@@ -37,10 +42,12 @@ public final class GetAiSearchInstancesResultIndexingOptions {
     @CustomType.Builder
     public static final class Builder {
         private String keywordTokenizer;
+        private Boolean useOcr;
         public Builder() {}
         public Builder(GetAiSearchInstancesResultIndexingOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keywordTokenizer = defaults.keywordTokenizer;
+    	      this.useOcr = defaults.useOcr;
         }
 
         @CustomType.Setter
@@ -51,9 +58,18 @@ public final class GetAiSearchInstancesResultIndexingOptions {
             this.keywordTokenizer = keywordTokenizer;
             return this;
         }
+        @CustomType.Setter
+        public Builder useOcr(Boolean useOcr) {
+            if (useOcr == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResultIndexingOptions", "useOcr");
+            }
+            this.useOcr = useOcr;
+            return this;
+        }
         public GetAiSearchInstancesResultIndexingOptions build() {
             final var _resultValue = new GetAiSearchInstancesResultIndexingOptions();
             _resultValue.keywordTokenizer = keywordTokenizer;
+            _resultValue.useOcr = useOcr;
             return _resultValue;
         }
     }

@@ -21,6 +21,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// List of values for the action. Currently limited to a single value.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

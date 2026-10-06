@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,6 +70,23 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.clearanceLevel);
     }
 
+    /**
+     * Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    /**
+     * @return Direction to order widgets.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
     @Import(name="domains", required=true)
     private Output<List<String>> domains;
 
@@ -89,6 +107,23 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Boolean>> ephemeralId() {
         return Optional.ofNullable(this.ephemeralId);
+    }
+
+    /**
+     * Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<String> filter;
+
+    /**
+     * @return Filter widgets by field using case-insensitive substring matching.
+     * Format: `field:value`
+     * 
+     */
+    public Optional<Output<String>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -143,6 +178,53 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
+     * 
+     */
+    @Import(name="order")
+    private @Nullable Output<String> order;
+
+    /**
+     * @return Field to order widgets by.
+     * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
+     * 
+     */
+    public Optional<Output<String>> order() {
+        return Optional.ofNullable(this.order);
+    }
+
+    /**
+     * Page number of paginated results.
+     * 
+     */
+    @Import(name="page")
+    private @Nullable Output<Double> page;
+
+    /**
+     * @return Page number of paginated results.
+     * 
+     */
+    public Optional<Output<Double>> page() {
+        return Optional.ofNullable(this.page);
+    }
+
+    /**
+     * Number of items per page.
+     * 
+     */
+    @Import(name="perPage")
+    private @Nullable Output<Double> perPage;
+
+    /**
+     * @return Number of items per page.
+     * 
+     */
+    public Optional<Output<Double>> perPage() {
+        return Optional.ofNullable(this.perPage);
+    }
+
+    /**
      * Region where this widget can be used. This cannot be changed after creation.
      * Available values: &#34;world&#34;, &#34;china&#34;.
      * 
@@ -165,11 +247,16 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         this.accountId = $.accountId;
         this.botFightMode = $.botFightMode;
         this.clearanceLevel = $.clearanceLevel;
+        this.direction = $.direction;
         this.domains = $.domains;
         this.ephemeralId = $.ephemeralId;
+        this.filter = $.filter;
         this.mode = $.mode;
         this.name = $.name;
         this.offlabel = $.offlabel;
+        this.order = $.order;
+        this.page = $.page;
+        this.perPage = $.perPage;
         this.region = $.region;
     }
 
@@ -260,6 +347,29 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
             return clearanceLevel(Output.of(clearanceLevel));
         }
 
+        /**
+         * @param direction Direction to order widgets.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction Direction to order widgets.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
+        }
+
         public Builder domains(Output<List<String>> domains) {
             $.domains = domains;
             return this;
@@ -292,6 +402,29 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder ephemeralId(Boolean ephemeralId) {
             return ephemeralId(Output.of(ephemeralId));
+        }
+
+        /**
+         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * Format: `field:value`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<String> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * Format: `field:value`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(String filter) {
+            return filter(Output.of(filter));
         }
 
         /**
@@ -361,6 +494,71 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder offlabel(Boolean offlabel) {
             return offlabel(Output.of(offlabel));
+        }
+
+        /**
+         * @param order Field to order widgets by.
+         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder order(@Nullable Output<String> order) {
+            $.order = order;
+            return this;
+        }
+
+        /**
+         * @param order Field to order widgets by.
+         * Available values: &#34;id&#34;, &#34;sitekey&#34;, &#34;name&#34;, &#34;createdOn&#34;, &#34;modifiedOn&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder order(String order) {
+            return order(Output.of(order));
+        }
+
+        /**
+         * @param page Page number of paginated results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder page(@Nullable Output<Double> page) {
+            $.page = page;
+            return this;
+        }
+
+        /**
+         * @param page Page number of paginated results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder page(Double page) {
+            return page(Output.of(page));
+        }
+
+        /**
+         * @param perPage Number of items per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(@Nullable Output<Double> perPage) {
+            $.perPage = perPage;
+            return this;
+        }
+
+        /**
+         * @param perPage Number of items per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(Double perPage) {
+            return perPage(Output.of(perPage));
         }
 
         /**

@@ -79,6 +79,8 @@ type LookupWorkerResult struct {
 	Name string `pulumi:"name"`
 	// Observability settings for the Worker.
 	Observability GetWorkerObservability `pulumi:"observability"`
+	// Template configuration used when creating new Previews for this Worker.
+	PreviewsBaseConfig GetWorkerPreviewsBaseConfig `pulumi:"previewsBaseConfig"`
 	// Other resources that reference the Worker and depend on it existing.
 	References GetWorkerReferences `pulumi:"references"`
 	// Subdomain settings for the Worker.
@@ -163,6 +165,11 @@ func (o LookupWorkerResultOutput) Name() pulumi.StringOutput {
 // Observability settings for the Worker.
 func (o LookupWorkerResultOutput) Observability() GetWorkerObservabilityOutput {
 	return o.ApplyT(func(v LookupWorkerResult) GetWorkerObservability { return v.Observability }).(GetWorkerObservabilityOutput)
+}
+
+// Template configuration used when creating new Previews for this Worker.
+func (o LookupWorkerResultOutput) PreviewsBaseConfig() GetWorkerPreviewsBaseConfigOutput {
+	return o.ApplyT(func(v LookupWorkerResult) GetWorkerPreviewsBaseConfig { return v.PreviewsBaseConfig }).(GetWorkerPreviewsBaseConfigOutput)
 }
 
 // Other resources that reference the Worker and depend on it existing.

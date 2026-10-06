@@ -49,6 +49,7 @@ func LookupZeroTrustGatewayCertificate(ctx *pulumi.Context, args *LookupZeroTrus
 
 // A collection of arguments for invoking getZeroTrustGatewayCertificate.
 type LookupZeroTrustGatewayCertificateArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Identify the certificate with a UUID.
 	CertificateId string `pulumi:"certificateId"`
@@ -56,6 +57,7 @@ type LookupZeroTrustGatewayCertificateArgs struct {
 
 // A collection of values returned by getZeroTrustGatewayCertificate.
 type LookupZeroTrustGatewayCertificateResult struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
 	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
@@ -90,6 +92,7 @@ func LookupZeroTrustGatewayCertificateOutput(ctx *pulumi.Context, args LookupZer
 
 // A collection of arguments for invoking getZeroTrustGatewayCertificate.
 type LookupZeroTrustGatewayCertificateOutputArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identify the certificate with a UUID.
 	CertificateId pulumi.StringInput `pulumi:"certificateId"`
@@ -114,6 +117,7 @@ func (o LookupZeroTrustGatewayCertificateResultOutput) ToLookupZeroTrustGatewayC
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewayCertificateResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }

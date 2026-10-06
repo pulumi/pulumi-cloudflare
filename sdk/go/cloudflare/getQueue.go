@@ -70,7 +70,9 @@ type LookupQueueResult struct {
 	ConsumersTotalCount float64                `pulumi:"consumersTotalCount"`
 	CreatedOn           string                 `pulumi:"createdOn"`
 	// A Resource identifier.
-	Id                  string             `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Available values: "eu", "us", "fedramp".
+	Jurisdiction        string             `pulumi:"jurisdiction"`
 	ModifiedOn          string             `pulumi:"modifiedOn"`
 	Producers           []GetQueueProducer `pulumi:"producers"`
 	ProducersTotalCount float64            `pulumi:"producersTotalCount"`
@@ -132,6 +134,11 @@ func (o LookupQueueResultOutput) CreatedOn() pulumi.StringOutput {
 // A Resource identifier.
 func (o LookupQueueResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Available values: "eu", "us", "fedramp".
+func (o LookupQueueResultOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 func (o LookupQueueResultOutput) ModifiedOn() pulumi.StringOutput {

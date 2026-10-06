@@ -73,9 +73,17 @@ import javax.annotation.Nullable;
 @Deprecated /* cloudflare.index/teamslist.TeamsList has been deprecated in favor of cloudflare.index/zerotrustlist.ZeroTrustList */
 @ResourceType(type="cloudflare:index/teamsList:TeamsList")
 public class TeamsList extends com.pulumi.resources.CustomResource {
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }

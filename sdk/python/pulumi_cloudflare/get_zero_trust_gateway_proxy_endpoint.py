@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZeroTrustGatewayProxyEndpointResult',
@@ -26,13 +28,16 @@ class GetZeroTrustGatewayProxyEndpointResult:
     """
     A collection of values returned by getZeroTrustGatewayProxyEndpoint.
     """
-    def __init__(__self__, account_id=None, created_at=None, id=None, ips=None, kind=None, name=None, proxy_endpoint_id=None, subdomain=None, updated_at=None):
+    def __init__(__self__, account_id=None, created_at=None, filter=None, id=None, ips=None, kind=None, name=None, proxy_endpoint_id=None, subdomain=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -67,48 +72,37 @@ class GetZeroTrustGatewayProxyEndpointResult:
 
     @_builtins.property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.GetZeroTrustGatewayProxyEndpointFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def ips(self) -> Sequence[_builtins.str]:
-        """
-        Specify the list of CIDRs to restrict ingress connections.
-        """
         return pulumi.get(self, "ips")
 
     @_builtins.property
     @pulumi.getter
     def kind(self) -> _builtins.str:
-        """
-        The proxy endpoint kind
-        Available values: "ip", "identity".
-        """
         return pulumi.get(self, "kind")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specify the name of the proxy endpoint.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="proxyEndpointId")
-    def proxy_endpoint_id(self) -> _builtins.str:
+    def proxy_endpoint_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "proxy_endpoint_id")
 
     @_builtins.property
     @pulumi.getter
     def subdomain(self) -> _builtins.str:
-        """
-        Specify the subdomain to use as the destination in the proxy client.
-        """
         return pulumi.get(self, "subdomain")
 
     @_builtins.property
@@ -125,6 +119,7 @@ class AwaitableGetZeroTrustGatewayProxyEndpointResult(GetZeroTrustGatewayProxyEn
         return GetZeroTrustGatewayProxyEndpointResult(
             account_id=self.account_id,
             created_at=self.created_at,
+            filter=self.filter,
             id=self.id,
             ips=self.ips,
             kind=self.kind,
@@ -135,6 +130,7 @@ class AwaitableGetZeroTrustGatewayProxyEndpointResult(GetZeroTrustGatewayProxyEn
 
 
 def get_zero_trust_gateway_proxy_endpoint(account_id: Optional[_builtins.str] = None,
+                                          filter: Optional[Union['GetZeroTrustGatewayProxyEndpointFilterArgs', 'GetZeroTrustGatewayProxyEndpointFilterArgsDict', 'outputs.GetZeroTrustGatewayProxyEndpointFilterResult']] = None,
                                           proxy_endpoint_id: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustGatewayProxyEndpointResult:
     """
@@ -150,6 +146,7 @@ def get_zero_trust_gateway_proxy_endpoint(account_id: Optional[_builtins.str] = 
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['proxyEndpointId'] = proxy_endpoint_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint', __args__, opts=opts, typ=GetZeroTrustGatewayProxyEndpointResult).value
@@ -157,6 +154,7 @@ def get_zero_trust_gateway_proxy_endpoint(account_id: Optional[_builtins.str] = 
     return AwaitableGetZeroTrustGatewayProxyEndpointResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         ips=pulumi.get(__ret__, 'ips'),
         kind=pulumi.get(__ret__, 'kind'),
@@ -165,7 +163,8 @@ def get_zero_trust_gateway_proxy_endpoint(account_id: Optional[_builtins.str] = 
         subdomain=pulumi.get(__ret__, 'subdomain'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_zero_trust_gateway_proxy_endpoint_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                 proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustGatewayProxyEndpointFilterArgs', 'GetZeroTrustGatewayProxyEndpointFilterArgsDict', 'outputs.GetZeroTrustGatewayProxyEndpointFilterResult']]]] = None,
+                                                 proxy_endpoint_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayProxyEndpointResult]:
     """
     ## Example Usage
@@ -180,12 +179,14 @@ def get_zero_trust_gateway_proxy_endpoint_output(account_id: pulumi.Input[Option
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['proxyEndpointId'] = proxy_endpoint_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint', __args__, opts=opts, typ=GetZeroTrustGatewayProxyEndpointResult)
     return __ret__.apply(lambda __response__: GetZeroTrustGatewayProxyEndpointResult(
         account_id=pulumi.get(__response__, 'account_id'),
         created_at=pulumi.get(__response__, 'created_at'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         ips=pulumi.get(__response__, 'ips'),
         kind=pulumi.get(__response__, 'kind'),

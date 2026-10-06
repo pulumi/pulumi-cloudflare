@@ -17,6 +17,10 @@ public final class GetEmailRoutingCatchAllAction {
      * 
      */
     private String type;
+    /**
+     * @return List of values for the action. Currently limited to a single value.
+     * 
+     */
     private List<String> values;
 
     private GetEmailRoutingCatchAllAction() {}
@@ -28,6 +32,10 @@ public final class GetEmailRoutingCatchAllAction {
     public String type() {
         return this.type;
     }
+    /**
+     * @return List of values for the action. Currently limited to a single value.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

@@ -113,6 +113,7 @@ def get_pipeline_sinks(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_pipeline_sinks = cloudflare.get_pipeline_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+        name="x",
         pipeline_id="pipeline_id")
     ```
 
@@ -153,6 +154,7 @@ def get_pipeline_sinks_output(account_id: pulumi.Input[Optional[Optional[_builti
     import pulumi_cloudflare as cloudflare
 
     example_pipeline_sinks = cloudflare.get_pipeline_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+        name="x",
         pipeline_id="pipeline_id")
     ```
 

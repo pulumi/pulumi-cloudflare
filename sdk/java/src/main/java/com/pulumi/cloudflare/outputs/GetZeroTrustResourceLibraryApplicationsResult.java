@@ -69,7 +69,7 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
      */
     private Integer id;
     /**
-     * @return IP subnets matched by the application.
+     * @return IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      * 
      */
     private List<String> ipSubnets;
@@ -189,7 +189,7 @@ public final class GetZeroTrustResourceLibraryApplicationsResult {
         return this.id;
     }
     /**
-     * @return IP subnets matched by the application.
+     * @return IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      * 
      */
     public List<String> ipSubnets() {

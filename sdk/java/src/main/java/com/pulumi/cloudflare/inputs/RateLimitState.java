@@ -4,14 +4,11 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.RateLimitActionArgs;
-import com.pulumi.cloudflare.inputs.RateLimitBypassArgs;
 import com.pulumi.cloudflare.inputs.RateLimitMatchArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,51 +31,6 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<RateLimitActionArgs>> action() {
         return Optional.ofNullable(this.action);
-    }
-
-    /**
-     * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-     * 
-     */
-    @Import(name="bypasses")
-    private @Nullable Output<List<RateLimitBypassArgs>> bypasses;
-
-    /**
-     * @return Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-     * 
-     */
-    public Optional<Output<List<RateLimitBypassArgs>>> bypasses() {
-        return Optional.ofNullable(this.bypasses);
-    }
-
-    /**
-     * An informative summary of the rule. This value is sanitized and any tags will be removed.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * When true, indicates that the rate limit is currently disabled.
-     * 
-     */
-    @Import(name="disabled")
-    private @Nullable Output<Boolean> disabled;
-
-    /**
-     * @return When true, indicates that the rate limit is currently disabled.
-     * 
-     */
-    public Optional<Output<Boolean>> disabled() {
-        return Optional.ofNullable(this.disabled);
     }
 
     /**
@@ -109,6 +61,21 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Double>> period() {
         return Optional.ofNullable(this.period);
+    }
+
+    /**
+     * Defines the unique identifier of the rate limit.
+     * 
+     */
+    @Import(name="rateLimitId")
+    private @Nullable Output<String> rateLimitId;
+
+    /**
+     * @return Defines the unique identifier of the rate limit.
+     * 
+     */
+    public Optional<Output<String>> rateLimitId() {
+        return Optional.ofNullable(this.rateLimitId);
     }
 
     /**
@@ -145,11 +112,9 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
 
     private RateLimitState(RateLimitState $) {
         this.action = $.action;
-        this.bypasses = $.bypasses;
-        this.description = $.description;
-        this.disabled = $.disabled;
         this.match = $.match;
         this.period = $.period;
+        this.rateLimitId = $.rateLimitId;
         this.threshold = $.threshold;
         this.zoneId = $.zoneId;
     }
@@ -194,79 +159,6 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bypasses Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bypasses(@Nullable Output<List<RateLimitBypassArgs>> bypasses) {
-            $.bypasses = bypasses;
-            return this;
-        }
-
-        /**
-         * @param bypasses Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bypasses(List<RateLimitBypassArgs> bypasses) {
-            return bypasses(Output.of(bypasses));
-        }
-
-        /**
-         * @param bypasses Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder bypasses(RateLimitBypassArgs... bypasses) {
-            return bypasses(List.of(bypasses));
-        }
-
-        /**
-         * @param description An informative summary of the rule. This value is sanitized and any tags will be removed.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description An informative summary of the rule. This value is sanitized and any tags will be removed.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
-         * @param disabled When true, indicates that the rate limit is currently disabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disabled(@Nullable Output<Boolean> disabled) {
-            $.disabled = disabled;
-            return this;
-        }
-
-        /**
-         * @param disabled When true, indicates that the rate limit is currently disabled.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disabled(Boolean disabled) {
-            return disabled(Output.of(disabled));
-        }
-
-        /**
          * @param match Determines which traffic the rate limit counts towards the threshold.
          * 
          * @return builder
@@ -306,6 +198,27 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder period(Double period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param rateLimitId Defines the unique identifier of the rate limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateLimitId(@Nullable Output<String> rateLimitId) {
+            $.rateLimitId = rateLimitId;
+            return this;
+        }
+
+        /**
+         * @param rateLimitId Defines the unique identifier of the rate limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateLimitId(String rateLimitId) {
+            return rateLimitId(Output.of(rateLimitId));
         }
 
         /**

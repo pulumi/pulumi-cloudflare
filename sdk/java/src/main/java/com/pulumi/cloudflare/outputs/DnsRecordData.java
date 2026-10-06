@@ -126,7 +126,7 @@ public final class DnsRecordData {
      */
     private @Nullable Double preference;
     /**
-     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * @return Priority.
      * 
      */
     private @Nullable Double priority;
@@ -171,7 +171,7 @@ public final class DnsRecordData {
      */
     private @Nullable String tag;
     /**
-     * @return A valid mail server hostname, or &#34;.&#34; for a NULL MX record.
+     * @return Target.
      * 
      */
     private @Nullable String target;
@@ -354,7 +354,7 @@ public final class DnsRecordData {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * @return Priority.
      * 
      */
     public Optional<Double> priority() {
@@ -417,7 +417,7 @@ public final class DnsRecordData {
         return Optional.ofNullable(this.tag);
     }
     /**
-     * @return A valid mail server hostname, or &#34;.&#34; for a NULL MX record.
+     * @return Target.
      * 
      */
     public Optional<String> target() {

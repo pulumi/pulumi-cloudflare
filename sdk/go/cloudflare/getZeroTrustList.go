@@ -51,31 +51,22 @@ func LookupZeroTrustList(ctx *pulumi.Context, args *LookupZeroTrustListArgs, opt
 type LookupZeroTrustListArgs struct {
 	AccountId *string                 `pulumi:"accountId"`
 	Filter    *GetZeroTrustListFilter `pulumi:"filter"`
-	// Identify the API resource with a UUID.
-	ListId *string `pulumi:"listId"`
+	ListId    *string                 `pulumi:"listId"`
 }
 
 // A collection of values returned by getZeroTrustList.
 type LookupZeroTrustListResult struct {
-	AccountId *string `pulumi:"accountId"`
-	CreatedAt string  `pulumi:"createdAt"`
-	// Provide the list description.
+	AccountId   *string                 `pulumi:"accountId"`
+	CreatedAt   string                  `pulumi:"createdAt"`
 	Description string                  `pulumi:"description"`
 	Filter      *GetZeroTrustListFilter `pulumi:"filter"`
-	// Identify the API resource with a UUID.
-	Id string `pulumi:"id"`
-	// Provide the list items.
-	Items []GetZeroTrustListItem `pulumi:"items"`
-	// Indicate the number of items in the list.
-	ListCount float64 `pulumi:"listCount"`
-	// Identify the API resource with a UUID.
-	ListId *string `pulumi:"listId"`
-	// Specify the list name.
-	Name string `pulumi:"name"`
-	// Specify the list type.
-	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-	Type      string `pulumi:"type"`
-	UpdatedAt string `pulumi:"updatedAt"`
+	Id          string                  `pulumi:"id"`
+	Items       []GetZeroTrustListItem  `pulumi:"items"`
+	ListCount   float64                 `pulumi:"listCount"`
+	ListId      *string                 `pulumi:"listId"`
+	Name        string                  `pulumi:"name"`
+	Type        string                  `pulumi:"type"`
+	UpdatedAt   string                  `pulumi:"updatedAt"`
 }
 
 func LookupZeroTrustListOutput(ctx *pulumi.Context, args LookupZeroTrustListOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustListResultOutput {
@@ -87,8 +78,7 @@ func LookupZeroTrustListOutput(ctx *pulumi.Context, args LookupZeroTrustListOutp
 type LookupZeroTrustListOutputArgs struct {
 	AccountId pulumi.StringPtrInput          `pulumi:"accountId"`
 	Filter    GetZeroTrustListFilterPtrInput `pulumi:"filter"`
-	// Identify the API resource with a UUID.
-	ListId pulumi.StringPtrInput `pulumi:"listId"`
+	ListId    pulumi.StringPtrInput          `pulumi:"listId"`
 }
 
 func (LookupZeroTrustListOutputArgs) ElementType() reflect.Type {
@@ -118,7 +108,6 @@ func (o LookupZeroTrustListResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Provide the list description.
 func (o LookupZeroTrustListResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -127,33 +116,26 @@ func (o LookupZeroTrustListResultOutput) Filter() GetZeroTrustListFilterPtrOutpu
 	return o.ApplyT(func(v LookupZeroTrustListResult) *GetZeroTrustListFilter { return v.Filter }).(GetZeroTrustListFilterPtrOutput)
 }
 
-// Identify the API resource with a UUID.
 func (o LookupZeroTrustListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Provide the list items.
 func (o LookupZeroTrustListResultOutput) Items() GetZeroTrustListItemArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) []GetZeroTrustListItem { return v.Items }).(GetZeroTrustListItemArrayOutput)
 }
 
-// Indicate the number of items in the list.
 func (o LookupZeroTrustListResultOutput) ListCount() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupZeroTrustListResult) float64 { return v.ListCount }).(pulumi.Float64Output)
 }
 
-// Identify the API resource with a UUID.
 func (o LookupZeroTrustListResultOutput) ListId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) *string { return v.ListId }).(pulumi.StringPtrOutput)
 }
 
-// Specify the list name.
 func (o LookupZeroTrustListResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specify the list type.
-// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
 func (o LookupZeroTrustListResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) string { return v.Type }).(pulumi.StringOutput)
 }

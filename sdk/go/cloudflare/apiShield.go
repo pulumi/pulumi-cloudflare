@@ -66,6 +66,8 @@ type ApiShield struct {
 	pulumi.CustomResourceState
 
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayOutput `pulumi:"authIdCharacteristics"`
+	// Ensures that the configuration is written or retrieved in normalized fashion
+	Normalize pulumi.BoolPtrOutput `pulumi:"normalize"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -107,12 +109,16 @@ func GetApiShield(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ApiShield resources.
 type apiShieldState struct {
 	AuthIdCharacteristics []ApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
+	// Ensures that the configuration is written or retrieved in normalized fashion
+	Normalize *bool `pulumi:"normalize"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ApiShieldState struct {
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayInput
+	// Ensures that the configuration is written or retrieved in normalized fashion
+	Normalize pulumi.BoolPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -123,6 +129,8 @@ func (ApiShieldState) ElementType() reflect.Type {
 
 type apiShieldArgs struct {
 	AuthIdCharacteristics []ApiShieldAuthIdCharacteristic `pulumi:"authIdCharacteristics"`
+	// Ensures that the configuration is written or retrieved in normalized fashion
+	Normalize *bool `pulumi:"normalize"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -130,6 +138,8 @@ type apiShieldArgs struct {
 // The set of arguments for constructing a ApiShield resource.
 type ApiShieldArgs struct {
 	AuthIdCharacteristics ApiShieldAuthIdCharacteristicArrayInput
+	// Ensures that the configuration is written or retrieved in normalized fashion
+	Normalize pulumi.BoolPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -223,6 +233,11 @@ func (o ApiShieldOutput) ToApiShieldOutputWithContext(ctx context.Context) ApiSh
 
 func (o ApiShieldOutput) AuthIdCharacteristics() ApiShieldAuthIdCharacteristicArrayOutput {
 	return o.ApplyT(func(v *ApiShield) ApiShieldAuthIdCharacteristicArrayOutput { return v.AuthIdCharacteristics }).(ApiShieldAuthIdCharacteristicArrayOutput)
+}
+
+// Ensures that the configuration is written or retrieved in normalized fashion
+func (o ApiShieldOutput) Normalize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApiShield) pulumi.BoolPtrOutput { return v.Normalize }).(pulumi.BoolPtrOutput)
 }
 
 // Identifier.

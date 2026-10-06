@@ -15,16 +15,32 @@ public final class WorkersDeploymentVersionArgs extends com.pulumi.resources.Res
 
     public static final WorkersDeploymentVersionArgs Empty = new WorkersDeploymentVersionArgs();
 
+    /**
+     * Percentage of traffic served by this version.
+     * 
+     */
     @Import(name="percentage", required=true)
     private Output<Double> percentage;
 
+    /**
+     * @return Percentage of traffic served by this version.
+     * 
+     */
     public Output<Double> percentage() {
         return this.percentage;
     }
 
+    /**
+     * Identifier of the Worker Version.
+     * 
+     */
     @Import(name="versionId", required=true)
     private Output<String> versionId;
 
+    /**
+     * @return Identifier of the Worker Version.
+     * 
+     */
     public Output<String> versionId() {
         return this.versionId;
     }
@@ -54,20 +70,44 @@ public final class WorkersDeploymentVersionArgs extends com.pulumi.resources.Res
             $ = new WorkersDeploymentVersionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param percentage Percentage of traffic served by this version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder percentage(Output<Double> percentage) {
             $.percentage = percentage;
             return this;
         }
 
+        /**
+         * @param percentage Percentage of traffic served by this version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder percentage(Double percentage) {
             return percentage(Output.of(percentage));
         }
 
+        /**
+         * @param versionId Identifier of the Worker Version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionId(Output<String> versionId) {
             $.versionId = versionId;
             return this;
         }
 
+        /**
+         * @param versionId Identifier of the Worker Version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionId(String versionId) {
             return versionId(Output.of(versionId));
         }

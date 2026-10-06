@@ -26,6 +26,7 @@ class LogpushJobArgs:
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_attack_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
@@ -45,6 +46,7 @@ class LogpushJobArgs:
                Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
         :param pulumi.Input[_builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        :param pulumi.Input[_builtins.bool] filter_attack_traffic: When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
@@ -67,6 +69,8 @@ class LogpushJobArgs:
             pulumi.set(__self__, "enabled", enabled)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if filter_attack_traffic is not None:
+            pulumi.set(__self__, "filter_attack_traffic", filter_attack_traffic)
         if frequency is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""frequency is deprecated: This attribute is deprecated.""")
@@ -154,6 +158,18 @@ class LogpushJobArgs:
     @filter.setter
     def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterAttackTraffic")
+    def filter_attack_traffic(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
+        """
+        return pulumi.get(self, "filter_attack_traffic")
+
+    @filter_attack_traffic.setter
+    def filter_attack_traffic(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "filter_attack_traffic", value)
 
     @_builtins.property
     @pulumi.getter
@@ -289,6 +305,7 @@ class _LogpushJobState:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  error_message: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_attack_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  last_complete: pulumi.Input[Optional[_builtins.str]] = None,
@@ -311,6 +328,7 @@ class _LogpushJobState:
         :param pulumi.Input[_builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[_builtins.str] error_message: If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        :param pulumi.Input[_builtins.bool] filter_attack_traffic: When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
@@ -338,6 +356,8 @@ class _LogpushJobState:
             pulumi.set(__self__, "error_message", error_message)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if filter_attack_traffic is not None:
+            pulumi.set(__self__, "filter_attack_traffic", filter_attack_traffic)
         if frequency is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""frequency is deprecated: This attribute is deprecated.""")
@@ -441,6 +461,18 @@ class _LogpushJobState:
     @filter.setter
     def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterAttackTraffic")
+    def filter_attack_traffic(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
+        """
+        return pulumi.get(self, "filter_attack_traffic")
+
+    @filter_attack_traffic.setter
+    def filter_attack_traffic(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "filter_attack_traffic", value)
 
     @_builtins.property
     @pulumi.getter
@@ -602,6 +634,7 @@ class LogpushJob(pulumi.CustomResource):
                  destination_conf: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_attack_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
@@ -627,9 +660,10 @@ class LogpushJob(pulumi.CustomResource):
         example_logpush_job = cloudflare.LogpushJob("example_logpush_job",
             destination_conf="s3://mybucket/logs?region=us-west-2",
             zone_id="zone_id",
-            dataset="gateway_dns",
+            dataset="http_requests",
             enabled=False,
             filter="{\\"where\\":{\\"and\\":[{\\"key\\":\\"ClientRequestPath\\",\\"operator\\":\\"contains\\",\\"value\\":\\"/static\\"},{\\"key\\":\\"ClientRequestHost\\",\\"operator\\":\\"eq\\",\\"value\\":\\"example.com\\"}]}}",
+            filter_attack_traffic=True,
             frequency="high",
             kind="",
             logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
@@ -638,22 +672,20 @@ class LogpushJob(pulumi.CustomResource):
             max_upload_records=1000,
             name="example.com",
             output_options={
-                "batch_prefix": "",
-                "batch_suffix": "",
-                "cve202144228": False,
-                "field_delimiter": ",",
+                "batch_prefix": "batch_prefix",
+                "batch_suffix": "batch_suffix",
+                "cve202144228": True,
+                "field_delimiter": "field_delimiter",
                 "field_names": [
-                    "Datetime",
-                    "DstIP",
-                    "SrcIP",
+                    "ClientIP",
+                    "EdgeStartTimestamp",
+                    "RayID",
                 ],
                 "merge_subrequests": True,
                 "output_type": "ndjson",
-                "record_delimiter": "",
-                "record_prefix": "{",
-                "record_suffix": \"\"\"    }
-
-        \"\"\",
+                "record_delimiter": "record_delimiter",
+                "record_prefix": "record_prefix",
+                "record_suffix": "record_suffix",
                 "record_template": "record_template",
                 "sample_rate": float(1),
                 "timestamp_format": "unixnano",
@@ -676,6 +708,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[_builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        :param pulumi.Input[_builtins.bool] filter_attack_traffic: When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
@@ -709,9 +742,10 @@ class LogpushJob(pulumi.CustomResource):
         example_logpush_job = cloudflare.LogpushJob("example_logpush_job",
             destination_conf="s3://mybucket/logs?region=us-west-2",
             zone_id="zone_id",
-            dataset="gateway_dns",
+            dataset="http_requests",
             enabled=False,
             filter="{\\"where\\":{\\"and\\":[{\\"key\\":\\"ClientRequestPath\\",\\"operator\\":\\"contains\\",\\"value\\":\\"/static\\"},{\\"key\\":\\"ClientRequestHost\\",\\"operator\\":\\"eq\\",\\"value\\":\\"example.com\\"}]}}",
+            filter_attack_traffic=True,
             frequency="high",
             kind="",
             logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
@@ -720,22 +754,20 @@ class LogpushJob(pulumi.CustomResource):
             max_upload_records=1000,
             name="example.com",
             output_options={
-                "batch_prefix": "",
-                "batch_suffix": "",
-                "cve202144228": False,
-                "field_delimiter": ",",
+                "batch_prefix": "batch_prefix",
+                "batch_suffix": "batch_suffix",
+                "cve202144228": True,
+                "field_delimiter": "field_delimiter",
                 "field_names": [
-                    "Datetime",
-                    "DstIP",
-                    "SrcIP",
+                    "ClientIP",
+                    "EdgeStartTimestamp",
+                    "RayID",
                 ],
                 "merge_subrequests": True,
                 "output_type": "ndjson",
-                "record_delimiter": "",
-                "record_prefix": "{",
-                "record_suffix": \"\"\"    }
-
-        \"\"\",
+                "record_delimiter": "record_delimiter",
+                "record_prefix": "record_prefix",
+                "record_suffix": "record_suffix",
                 "record_template": "record_template",
                 "sample_rate": float(1),
                 "timestamp_format": "unixnano",
@@ -770,6 +802,7 @@ class LogpushJob(pulumi.CustomResource):
                  destination_conf: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_attack_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
@@ -796,6 +829,7 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["destination_conf"] = None if destination_conf is None else pulumi.Output.secret(destination_conf)
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["filter"] = filter
+            __props__.__dict__["filter_attack_traffic"] = filter_attack_traffic
             __props__.__dict__["frequency"] = frequency
             __props__.__dict__["kind"] = kind
             __props__.__dict__["logpull_options"] = logpull_options
@@ -827,6 +861,7 @@ class LogpushJob(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             error_message: pulumi.Input[Optional[_builtins.str]] = None,
             filter: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_attack_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
             frequency: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             last_complete: pulumi.Input[Optional[_builtins.str]] = None,
@@ -853,6 +888,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[_builtins.str] error_message: If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        :param pulumi.Input[_builtins.bool] filter_attack_traffic: When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
@@ -878,6 +914,7 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["error_message"] = error_message
         __props__.__dict__["filter"] = filter
+        __props__.__dict__["filter_attack_traffic"] = filter_attack_traffic
         __props__.__dict__["frequency"] = frequency
         __props__.__dict__["kind"] = kind
         __props__.__dict__["last_complete"] = last_complete
@@ -940,6 +977,14 @@ class LogpushJob(pulumi.CustomResource):
         The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         """
         return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter(name="filterAttackTraffic")
+    def filter_attack_traffic(self) -> pulumi.Output[_builtins.bool]:
+        """
+        When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
+        """
+        return pulumi.get(self, "filter_attack_traffic")
 
     @_builtins.property
     @pulumi.getter

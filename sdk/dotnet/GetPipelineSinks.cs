@@ -30,6 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var examplePipelineSinks = Cloudflare.GetPipelineSinks.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "x",
         ///         PipelineId = "pipeline_id",
         ///     });
         /// 
@@ -58,6 +59,7 @@ namespace Pulumi.Cloudflare
         ///     var examplePipelineSinks = Cloudflare.GetPipelineSinks.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "x",
         ///         PipelineId = "pipeline_id",
         ///     });
         /// 
@@ -86,6 +88,7 @@ namespace Pulumi.Cloudflare
         ///     var examplePipelineSinks = Cloudflare.GetPipelineSinks.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "x",
         ///         PipelineId = "pipeline_id",
         ///     });
         /// 

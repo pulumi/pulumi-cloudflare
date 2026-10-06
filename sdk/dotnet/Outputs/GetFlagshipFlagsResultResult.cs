@@ -17,11 +17,18 @@ namespace Pulumi.Cloudflare.Outputs
         /// Variation served when no rule matches or the flag is disabled. Must be a key in `Variations`.
         /// </summary>
         public readonly string DefaultVariation;
+        /// <summary>
+        /// Optional operator-facing description. It does not affect flag evaluation.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// When false, the flag bypasses all rules and always serves `DefaultVariation`.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         /// </summary>
@@ -31,14 +38,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlagshipFlagsResultRuleResult> Rules;
         /// <summary>
-        /// Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        /// Server-inferred value type shared by all of the flag's variations.
         /// Available values: "boolean", "string", "number", "json".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
         public readonly string UpdatedBy;
         /// <summary>
-        /// Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
+        /// Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Variations;
 
@@ -49,6 +56,8 @@ namespace Pulumi.Cloudflare.Outputs
             string description,
 
             bool enabled,
+
+            string id,
 
             string key,
 
@@ -65,6 +74,7 @@ namespace Pulumi.Cloudflare.Outputs
             DefaultVariation = defaultVariation;
             Description = description;
             Enabled = enabled;
+            Id = id;
             Key = key;
             Rules = rules;
             Type = type;

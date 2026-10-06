@@ -27,6 +27,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayPolicies(ctx, &cloudflare.LookupZeroTrustGatewayPoliciesArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+//				Direction: pulumi.StringRef("asc"),
+//				Filters: []string{
+//					"string",
+//				},
+//				OrderBy: pulumi.StringRef("name"),
+//				Search:  pulumi.StringRef("search"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,18 +54,37 @@ func LookupZeroTrustGatewayPolicies(ctx *pulumi.Context, args *LookupZeroTrustGa
 
 // A collection of arguments for invoking getZeroTrustGatewayPolicies.
 type LookupZeroTrustGatewayPoliciesArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
+	// Sort direction. When `orderBy` is omitted, this controls the direction
+	// of the existing precedence ordering. Shared rules remain first in either
+	// direction. Accepted values are `asc` and `desc`.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
+	// Filter the returned rules by one or more `field:value` pairs. Repeat the
+	// parameter to combine filters with logical AND.
+	Filters  []string `pulumi:"filters"`
+	MaxItems *int     `pulumi:"maxItems"`
+	OrderBy  *string  `pulumi:"orderBy"`
+	Search   *string  `pulumi:"search"`
 }
 
 // A collection of values returned by getZeroTrustGatewayPolicies.
 type LookupZeroTrustGatewayPoliciesResult struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// The items returned by the data source
-	Results []GetZeroTrustGatewayPoliciesResult `pulumi:"results"`
+	// Sort direction. When `orderBy` is omitted, this controls the direction
+	// of the existing precedence ordering. Shared rules remain first in either
+	// direction. Accepted values are `asc` and `desc`.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
+	// Filter the returned rules by one or more `field:value` pairs. Repeat the
+	// parameter to combine filters with logical AND.
+	Filters  []string                            `pulumi:"filters"`
+	MaxItems *int                                `pulumi:"maxItems"`
+	OrderBy  *string                             `pulumi:"orderBy"`
+	Results  []GetZeroTrustGatewayPoliciesResult `pulumi:"results"`
+	Search   *string                             `pulumi:"search"`
 }
 
 func LookupZeroTrustGatewayPoliciesOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayPoliciesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayPoliciesResultOutput {
@@ -69,9 +94,19 @@ func LookupZeroTrustGatewayPoliciesOutput(ctx *pulumi.Context, args LookupZeroTr
 
 // A collection of arguments for invoking getZeroTrustGatewayPolicies.
 type LookupZeroTrustGatewayPoliciesOutputArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Sort direction. When `orderBy` is omitted, this controls the direction
+	// of the existing precedence ordering. Shared rules remain first in either
+	// direction. Accepted values are `asc` and `desc`.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Filter the returned rules by one or more `field:value` pairs. Repeat the
+	// parameter to combine filters with logical AND.
+	Filters  pulumi.StringArrayInput `pulumi:"filters"`
+	MaxItems pulumi.IntPtrInput      `pulumi:"maxItems"`
+	OrderBy  pulumi.StringPtrInput   `pulumi:"orderBy"`
+	Search   pulumi.StringPtrInput   `pulumi:"search"`
 }
 
 func (LookupZeroTrustGatewayPoliciesOutputArgs) ElementType() reflect.Type {
@@ -93,18 +128,39 @@ func (o LookupZeroTrustGatewayPoliciesResultOutput) ToLookupZeroTrustGatewayPoli
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewayPoliciesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPoliciesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Max items to fetch, default: 1000
+// Sort direction. When `orderBy` is omitted, this controls the direction
+// of the existing precedence ordering. Shared rules remain first in either
+// direction. Accepted values are `asc` and `desc`.
+// Available values: "asc", "desc".
+func (o LookupZeroTrustGatewayPoliciesResultOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPoliciesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Filter the returned rules by one or more `field:value` pairs. Repeat the
+// parameter to combine filters with logical AND.
+func (o LookupZeroTrustGatewayPoliciesResultOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPoliciesResult) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupZeroTrustGatewayPoliciesResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPoliciesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// The items returned by the data source
+func (o LookupZeroTrustGatewayPoliciesResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPoliciesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
 func (o LookupZeroTrustGatewayPoliciesResultOutput) Results() GetZeroTrustGatewayPoliciesResultArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPoliciesResult) []GetZeroTrustGatewayPoliciesResult { return v.Results }).(GetZeroTrustGatewayPoliciesResultArrayOutput)
+}
+
+func (o LookupZeroTrustGatewayPoliciesResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPoliciesResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
 
 func init() {

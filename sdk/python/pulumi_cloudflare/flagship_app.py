@@ -24,7 +24,8 @@ class FlagshipAppArgs:
         """
         The set of arguments for constructing a FlagshipApp resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the Flagship app.
+        :param pulumi.Input[_builtins.str] name: Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -33,7 +34,7 @@ class FlagshipAppArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -44,6 +45,9 @@ class FlagshipAppArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -62,7 +66,8 @@ class _FlagshipAppState:
         """
         Input properties used for looking up and filtering FlagshipApp resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the Flagship app.
+        :param pulumi.Input[_builtins.str] name: Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
         :param pulumi.Input[_builtins.str] updated_by: Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.
         """
         if account_id is not None:
@@ -80,7 +85,7 @@ class _FlagshipAppState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -100,6 +105,9 @@ class _FlagshipAppState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -163,7 +171,8 @@ class FlagshipApp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the Flagship app.
+        :param pulumi.Input[_builtins.str] name: Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
         """
         ...
     @overload
@@ -252,7 +261,8 @@ class FlagshipApp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID that owns the Flagship app.
+        :param pulumi.Input[_builtins.str] name: Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
         :param pulumi.Input[_builtins.str] updated_by: Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -270,7 +280,7 @@ class FlagshipApp(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -282,6 +292,9 @@ class FlagshipApp(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property

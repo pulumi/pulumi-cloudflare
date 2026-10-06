@@ -13,17 +13,65 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetApiTokenPolicyPermissionGroupMetaResult
     {
-        public readonly string Key;
-        public readonly string Value;
+        /// <summary>
+        /// A category used to group permission groups.
+        /// </summary>
+        public readonly string Category;
+        /// <summary>
+        /// Indicates whether the permission group is deprecated.
+        /// </summary>
+        public readonly string Deprecated;
+        /// <summary>
+        /// Additional information about the permission group.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
+        /// Indicates whether the permission group can be edited.
+        /// </summary>
+        public readonly string Editable;
+        /// <summary>
+        /// The planned end-of-life date and time, when provided.
+        /// </summary>
+        public readonly string EolAt;
+        /// <summary>
+        /// A label identifying the permission group.
+        /// </summary>
+        public readonly string Label;
+        /// <summary>
+        /// The scope associated with the permission group.
+        /// </summary>
+        public readonly string Scopes;
+        /// <summary>
+        /// Indicates the permission group's availability or visibility.
+        /// </summary>
+        public readonly string Visibility;
 
         [OutputConstructor]
         private GetApiTokenPolicyPermissionGroupMetaResult(
-            string key,
+            string category,
 
-            string value)
+            string deprecated,
+
+            string description,
+
+            string editable,
+
+            string eolAt,
+
+            string label,
+
+            string scopes,
+
+            string visibility)
         {
-            Key = key;
-            Value = value;
+            Category = category;
+            Deprecated = deprecated;
+            Description = description;
+            Editable = editable;
+            EolAt = eolAt;
+            Label = label;
+            Scopes = scopes;
+            Visibility = visibility;
         }
     }
 }

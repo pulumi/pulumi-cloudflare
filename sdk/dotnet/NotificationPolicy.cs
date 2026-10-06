@@ -210,6 +210,10 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 "string",
     ///             },
+    ///             TokenIds = new[]
+    ///             {
+    ///                 "x",
+    ///             },
     ///             TrafficExclusions = new[]
     ///             {
     ///                 "security_events",

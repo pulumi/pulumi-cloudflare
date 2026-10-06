@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkersResultObservability;
+import com.pulumi.cloudflare.outputs.GetWorkersResultPreviewsBaseConfig;
 import com.pulumi.cloudflare.outputs.GetWorkersResultReferences;
 import com.pulumi.cloudflare.outputs.GetWorkersResultSubdomain;
 import com.pulumi.cloudflare.outputs.GetWorkersResultTailConsumer;
@@ -46,6 +47,11 @@ public final class GetWorkersResult {
      * 
      */
     private GetWorkersResultObservability observability;
+    /**
+     * @return Template configuration used when creating new Previews for this Worker.
+     * 
+     */
+    private GetWorkersResultPreviewsBaseConfig previewsBaseConfig;
     /**
      * @return Other resources that reference the Worker and depend on it existing.
      * 
@@ -116,6 +122,13 @@ public final class GetWorkersResult {
         return this.observability;
     }
     /**
+     * @return Template configuration used when creating new Previews for this Worker.
+     * 
+     */
+    public GetWorkersResultPreviewsBaseConfig previewsBaseConfig() {
+        return this.previewsBaseConfig;
+    }
+    /**
      * @return Other resources that reference the Worker and depend on it existing.
      * 
      */
@@ -166,6 +179,7 @@ public final class GetWorkersResult {
         private Boolean logpush;
         private String name;
         private GetWorkersResultObservability observability;
+        private GetWorkersResultPreviewsBaseConfig previewsBaseConfig;
         private GetWorkersResultReferences references;
         private GetWorkersResultSubdomain subdomain;
         private List<String> tags;
@@ -180,6 +194,7 @@ public final class GetWorkersResult {
     	      this.logpush = defaults.logpush;
     	      this.name = defaults.name;
     	      this.observability = defaults.observability;
+    	      this.previewsBaseConfig = defaults.previewsBaseConfig;
     	      this.references = defaults.references;
     	      this.subdomain = defaults.subdomain;
     	      this.tags = defaults.tags;
@@ -236,6 +251,14 @@ public final class GetWorkersResult {
             return this;
         }
         @CustomType.Setter
+        public Builder previewsBaseConfig(GetWorkersResultPreviewsBaseConfig previewsBaseConfig) {
+            if (previewsBaseConfig == null) {
+              throw new MissingRequiredPropertyException("GetWorkersResult", "previewsBaseConfig");
+            }
+            this.previewsBaseConfig = previewsBaseConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder references(GetWorkersResultReferences references) {
             if (references == null) {
               throw new MissingRequiredPropertyException("GetWorkersResult", "references");
@@ -289,6 +312,7 @@ public final class GetWorkersResult {
             _resultValue.logpush = logpush;
             _resultValue.name = name;
             _resultValue.observability = observability;
+            _resultValue.previewsBaseConfig = previewsBaseConfig;
             _resultValue.references = references;
             _resultValue.subdomain = subdomain;
             _resultValue.tags = tags;

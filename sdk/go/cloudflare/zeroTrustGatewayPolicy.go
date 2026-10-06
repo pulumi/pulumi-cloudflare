@@ -187,6 +187,7 @@ import (
 type ZeroTrustGatewayPolicy struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -274,6 +275,7 @@ func GetZeroTrustGatewayPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustGatewayPolicy resources.
 type zeroTrustGatewayPolicyState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -317,6 +319,7 @@ type zeroTrustGatewayPolicyState struct {
 }
 
 type ZeroTrustGatewayPolicyState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -364,6 +367,7 @@ func (ZeroTrustGatewayPolicyState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayPolicyArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -394,6 +398,7 @@ type zeroTrustGatewayPolicyArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewayPolicy resource.
 type ZeroTrustGatewayPolicyArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -509,6 +514,7 @@ func (o ZeroTrustGatewayPolicyOutput) ToZeroTrustGatewayPolicyOutputWithContext(
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o ZeroTrustGatewayPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

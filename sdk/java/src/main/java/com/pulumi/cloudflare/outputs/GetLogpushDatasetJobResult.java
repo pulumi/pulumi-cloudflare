@@ -48,6 +48,11 @@ public final class GetLogpushDatasetJobResult {
      */
     private String errorMessage;
     /**
+     * @return When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     * 
+     */
+    private Boolean filterAttackTraffic;
+    /**
      * @return This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
@@ -164,6 +169,13 @@ public final class GetLogpushDatasetJobResult {
         return this.errorMessage;
     }
     /**
+     * @return When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     * 
+     */
+    public Boolean filterAttackTraffic() {
+        return this.filterAttackTraffic;
+    }
+    /**
      * @return This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
@@ -273,6 +285,7 @@ public final class GetLogpushDatasetJobResult {
         private String destinationConf;
         private Boolean enabled;
         private String errorMessage;
+        private Boolean filterAttackTraffic;
         private String frequency;
         private Integer id;
         private String kind;
@@ -294,6 +307,7 @@ public final class GetLogpushDatasetJobResult {
     	      this.destinationConf = defaults.destinationConf;
     	      this.enabled = defaults.enabled;
     	      this.errorMessage = defaults.errorMessage;
+    	      this.filterAttackTraffic = defaults.filterAttackTraffic;
     	      this.frequency = defaults.frequency;
     	      this.id = defaults.id;
     	      this.kind = defaults.kind;
@@ -352,6 +366,14 @@ public final class GetLogpushDatasetJobResult {
               throw new MissingRequiredPropertyException("GetLogpushDatasetJobResult", "errorMessage");
             }
             this.errorMessage = errorMessage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filterAttackTraffic(Boolean filterAttackTraffic) {
+            if (filterAttackTraffic == null) {
+              throw new MissingRequiredPropertyException("GetLogpushDatasetJobResult", "filterAttackTraffic");
+            }
+            this.filterAttackTraffic = filterAttackTraffic;
             return this;
         }
         @CustomType.Setter
@@ -456,6 +478,7 @@ public final class GetLogpushDatasetJobResult {
             _resultValue.destinationConf = destinationConf;
             _resultValue.enabled = enabled;
             _resultValue.errorMessage = errorMessage;
+            _resultValue.filterAttackTraffic = filterAttackTraffic;
             _resultValue.frequency = frequency;
             _resultValue.id = id;
             _resultValue.kind = kind;

@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipAppsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipAppsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipAppsResult
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

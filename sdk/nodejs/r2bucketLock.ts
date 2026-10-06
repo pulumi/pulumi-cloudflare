@@ -61,7 +61,7 @@ export class R2BucketLock extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
@@ -114,7 +114,7 @@ export class R2BucketLock extends pulumi.CustomResource {
  */
 export interface R2BucketLockState {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -133,7 +133,7 @@ export interface R2BucketLockState {
  */
 export interface R2BucketLockArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

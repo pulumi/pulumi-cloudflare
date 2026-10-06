@@ -44,7 +44,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example '&lt;{accounts|zones}/{account_id|zone_id}&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")]
     public partial class ZeroTrustAccessMtlsHostnameSettings : global::Pulumi.CustomResource

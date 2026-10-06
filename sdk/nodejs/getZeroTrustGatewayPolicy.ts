@@ -19,10 +19,12 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewayPolicy(args: GetZeroTrustGatewayPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPolicyResult> {
+export function getZeroTrustGatewayPolicy(args?: GetZeroTrustGatewayPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPolicyResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "ruleId": args.ruleId,
     }, opts);
 }
@@ -31,17 +33,24 @@ export function getZeroTrustGatewayPolicy(args: GetZeroTrustGatewayPolicyArgs, o
  * A collection of arguments for invoking getZeroTrustGatewayPolicy.
  */
 export interface GetZeroTrustGatewayPolicyArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: string;
+    filter?: inputs.GetZeroTrustGatewayPolicyFilter;
     /**
      * Identify the API resource with a UUID.
      */
-    ruleId: string;
+    ruleId?: string;
 }
 
 /**
  * A collection of values returned by getZeroTrustGatewayPolicy.
  */
 export interface GetZeroTrustGatewayPolicyResult {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     readonly accountId?: string;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -69,6 +78,7 @@ export interface GetZeroTrustGatewayPolicyResult {
      * Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      */
     readonly expiration: outputs.GetZeroTrustGatewayPolicyExpiration;
+    readonly filter?: outputs.GetZeroTrustGatewayPolicyFilter;
     /**
      * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
@@ -96,7 +106,7 @@ export interface GetZeroTrustGatewayPolicyResult {
     /**
      * Identify the API resource with a UUID.
      */
-    readonly ruleId: string;
+    readonly ruleId?: string;
     /**
      * Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
      */
@@ -140,10 +150,12 @@ export interface GetZeroTrustGatewayPolicyResult {
  * });
  * ```
  */
-export function getZeroTrustGatewayPolicyOutput(args: GetZeroTrustGatewayPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPolicyResult> {
+export function getZeroTrustGatewayPolicyOutput(args?: GetZeroTrustGatewayPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPolicyResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayPolicy:getZeroTrustGatewayPolicy", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "ruleId": args.ruleId,
     }, opts);
 }
@@ -152,9 +164,13 @@ export function getZeroTrustGatewayPolicyOutput(args: GetZeroTrustGatewayPolicyO
  * A collection of arguments for invoking getZeroTrustGatewayPolicy.
  */
 export interface GetZeroTrustGatewayPolicyOutputArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustGatewayPolicyFilterArgs | undefined>;
     /**
      * Identify the API resource with a UUID.
      */
-    ruleId: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
 }

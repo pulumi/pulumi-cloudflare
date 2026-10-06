@@ -12,9 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class WorkersDeploymentVersionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Percentage of traffic served by this version.
+        /// </summary>
         [Input("percentage", required: true)]
         public Input<double> Percentage { get; set; } = null!;
 
+        /// <summary>
+        /// Identifier of the Worker Version.
+        /// </summary>
         [Input("versionId", required: true)]
         public Input<string> VersionId { get; set; } = null!;
 

@@ -87,7 +87,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Name of the AWS availability zone.
+        /// AWS region containing the source S3 bucket.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

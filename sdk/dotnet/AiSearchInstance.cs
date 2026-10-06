@@ -12,7 +12,9 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/aiSearchInstance:AiSearchInstance example '&lt;account_id&gt;/&lt;id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/aiSearchInstance:AiSearchInstance")]
     public partial class AiSearchInstance : global::Pulumi.CustomResource
@@ -85,13 +87,13 @@ namespace Pulumi.Cloudflare
         public Output<string> FusionMethod { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated — use IndexMethod instead.
+        /// Deprecated — use IndexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
         /// </summary>
         [Output("hybridSearchEnabled")]
         public Output<bool> HybridSearchEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector-only.
+        /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         /// </summary>
         [Output("indexMethod")]
         public Output<Outputs.AiSearchInstanceIndexMethod> IndexMethod { get; private set; } = null!;
@@ -182,6 +184,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> TokenId { get; private set; } = null!;
 
         /// <summary>
+        /// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         /// Available values: "r2", "web-crawler".
         /// </summary>
         [Output("type")]
@@ -294,13 +297,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? FusionMethod { get; set; }
 
         /// <summary>
-        /// Deprecated — use IndexMethod instead.
+        /// Deprecated — use IndexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
         /// </summary>
         [Input("hybridSearchEnabled")]
         public Input<bool>? HybridSearchEnabled { get; set; }
 
         /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector-only.
+        /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         /// </summary>
         [Input("indexMethod")]
         public Input<Inputs.AiSearchInstanceIndexMethodArgs>? IndexMethod { get; set; }
@@ -373,6 +376,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? TokenId { get; set; }
 
         /// <summary>
+        /// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         /// Available values: "r2", "web-crawler".
         /// </summary>
         [Input("type")]
@@ -459,13 +463,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? FusionMethod { get; set; }
 
         /// <summary>
-        /// Deprecated — use IndexMethod instead.
+        /// Deprecated — use IndexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
         /// </summary>
         [Input("hybridSearchEnabled")]
         public Input<bool>? HybridSearchEnabled { get; set; }
 
         /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector-only.
+        /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         /// </summary>
         [Input("indexMethod")]
         public Input<Inputs.AiSearchInstanceIndexMethodGetArgs>? IndexMethod { get; set; }
@@ -556,6 +560,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? TokenId { get; set; }
 
         /// <summary>
+        /// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         /// Available values: "r2", "web-crawler".
         /// </summary>
         [Input("type")]

@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.WorkersKv;
  * import com.pulumi.cloudflare.WorkersKvArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -49,8 +51,10 @@ import javax.annotation.Nullable;
  *             .namespaceId("0f2ac74b498b48028cb68387c421e279")
  *             .keyName("My-Key")
  *             .value("Some Value")
- *             .metadata(Map.ofEntries(
- *             ))
+ *             .metadata(serializeJson(
+ *                 jsonObject(
+ * 
+ *                 )))
  *             .build());
  * 
  *     }
@@ -68,18 +72,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workersKv:WorkersKv")
 public class WorkersKv extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+     * 
+     */
+    @Export(name="expiration", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> expiration;
+
+    /**
+     * @return Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+     * 
+     */
+    public Output<Optional<Double>> expiration() {
+        return Codegen.optional(this.expiration);
+    }
+    /**
+     * Expires the key after a number of seconds. Must be at least 60.
+     * 
+     */
+    @Export(name="expirationTtl", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> expirationTtl;
+
+    /**
+     * @return Expires the key after a number of seconds. Must be at least 60.
+     * 
+     */
+    public Output<Optional<Double>> expirationTtl() {
+        return Codegen.optional(this.expirationTtl);
     }
     /**
      * A key&#39;s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
@@ -110,14 +142,14 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      * 
      */
     @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
 
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public Output<String> namespaceId() {

@@ -182,15 +182,30 @@ namespace Pulumi.Cloudflare
         /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
         /// </summary>
         public readonly bool MfaRequiredForAllApps;
+        /// <summary>
+        /// Configures SSH PIV key requirements for MFA using hardware security keys.
+        /// </summary>
         public readonly Outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult MfaSshPivKeyRequirements;
         /// <summary>
         /// The name of your Zero Trust organization.
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustOrganizationServiceTokenInactivityResult ServiceTokenInactivity;
+        /// <summary>
         /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         public readonly string SessionDuration;
+        /// <summary>
+        /// Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+        /// </summary>
+        public readonly bool StrictServiceTokenAuth;
+        /// <summary>
+        /// The account tags of organizations trusted by this organization for policy and device posture sharing.
+        /// </summary>
+        public readonly ImmutableArray<string> TrustedAccounts;
         /// <summary>
         /// A description of the reason why the UI read only field is being toggled.
         /// </summary>
@@ -240,7 +255,13 @@ namespace Pulumi.Cloudflare
 
             string name,
 
+            Outputs.GetZeroTrustOrganizationServiceTokenInactivityResult serviceTokenInactivity,
+
             string sessionDuration,
+
+            bool strictServiceTokenAuth,
+
+            ImmutableArray<string> trustedAccounts,
 
             string uiReadOnlyToggleReason,
 
@@ -265,7 +286,10 @@ namespace Pulumi.Cloudflare
             MfaRequiredForAllApps = mfaRequiredForAllApps;
             MfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
             Name = name;
+            ServiceTokenInactivity = serviceTokenInactivity;
             SessionDuration = sessionDuration;
+            StrictServiceTokenAuth = strictServiceTokenAuth;
+            TrustedAccounts = trustedAccounts;
             UiReadOnlyToggleReason = uiReadOnlyToggleReason;
             UserSeatExpirationInactiveTime = userSeatExpirationInactiveTime;
             WarpAuthNonBrowser401 = warpAuthNonBrowser401;

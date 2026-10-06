@@ -25,8 +25,13 @@ class TurnstileWidgetArgs:
                  name: pulumi.Input[_builtins.str],
                  bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
                  ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
                  offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 page: pulumi.Input[Optional[_builtins.float]] = None,
+                 per_page: pulumi.Input[Optional[_builtins.float]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TurnstileWidget resource.
@@ -42,8 +47,16 @@ class TurnstileWidgetArgs:
         :param pulumi.Input[_builtins.str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
                this setting can determine the clearance level to be set
                Available values: "no_clearance", "jschallenge", "managed", "interactive".
+        :param pulumi.Input[_builtins.str] direction: Direction to order widgets.
+               Available values: "asc", "desc".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[_builtins.str] filter: Filter widgets by field using case-insensitive substring matching.
+               Format: `field:value`
         :param pulumi.Input[_builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
+        :param pulumi.Input[_builtins.str] order: Field to order widgets by.
+               Available values: "id", "sitekey", "name", "created_on", "modified_on".
+        :param pulumi.Input[_builtins.float] page: Page number of paginated results.
+        :param pulumi.Input[_builtins.float] per_page: Number of items per page.
         :param pulumi.Input[_builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
                Available values: "world", "china".
         """
@@ -55,10 +68,20 @@ class TurnstileWidgetArgs:
             pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
         if clearance_level is not None:
             pulumi.set(__self__, "clearance_level", clearance_level)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if ephemeral_id is not None:
             pulumi.set(__self__, "ephemeral_id", ephemeral_id)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if offlabel is not None:
             pulumi.set(__self__, "offlabel", offlabel)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if page is not None:
+            pulumi.set(__self__, "page", page)
+        if per_page is not None:
+            pulumi.set(__self__, "per_page", per_page)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -138,6 +161,19 @@ class TurnstileWidgetArgs:
         pulumi.set(self, "clearance_level", value)
 
     @_builtins.property
+    @pulumi.getter
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Direction to order widgets.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
     @pulumi.getter(name="ephemeralId")
     def ephemeral_id(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -151,6 +187,19 @@ class TurnstileWidgetArgs:
 
     @_builtins.property
     @pulumi.getter
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Filter widgets by field using case-insensitive substring matching.
+        Format: `field:value`
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter
     def offlabel(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do not show any Cloudflare branding on the widget (ENT only).
@@ -160,6 +209,43 @@ class TurnstileWidgetArgs:
     @offlabel.setter
     def offlabel(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "offlabel", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field to order widgets by.
+        Available values: "id", "sitekey", "name", "created_on", "modified_on".
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "order", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Page number of paginated results.
+        """
+        return pulumi.get(self, "page")
+
+    @page.setter
+    def page(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "page", value)
+
+    @_builtins.property
+    @pulumi.getter(name="perPage")
+    def per_page(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Number of items per page.
+        """
+        return pulumi.get(self, "per_page")
+
+    @per_page.setter
+    def per_page(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "per_page", value)
 
     @_builtins.property
     @pulumi.getter
@@ -183,13 +269,18 @@ class _TurnstileWidgetState:
                  clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
                  deployed_via: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
                  domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
                  last_modified_via: pulumi.Input[Optional[_builtins.str]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 page: pulumi.Input[Optional[_builtins.float]] = None,
+                 per_page: pulumi.Input[Optional[_builtins.float]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  sitekey: pulumi.Input[Optional[_builtins.str]] = None):
@@ -208,7 +299,11 @@ class _TurnstileWidgetState:
                client-settable. Omitted from the response for widgets created
                before this field existed.
                Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        :param pulumi.Input[_builtins.str] direction: Direction to order widgets.
+               Available values: "asc", "desc".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[_builtins.str] filter: Filter widgets by field using case-insensitive substring matching.
+               Format: `field:value`
         :param pulumi.Input[_builtins.str] last_modified_via: Origin of the most recent mutation (create, update, delete, or
                secret rotation). Server-derived; not client-settable. Omitted for
                widgets last mutated before this field existed.
@@ -220,6 +315,10 @@ class _TurnstileWidgetState:
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[_builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
+        :param pulumi.Input[_builtins.str] order: Field to order widgets by.
+               Available values: "id", "sitekey", "name", "created_on", "modified_on".
+        :param pulumi.Input[_builtins.float] page: Page number of paginated results.
+        :param pulumi.Input[_builtins.float] per_page: Number of items per page.
         :param pulumi.Input[_builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
                Available values: "world", "china".
         :param pulumi.Input[_builtins.str] secret: Secret key for this widget.
@@ -235,10 +334,14 @@ class _TurnstileWidgetState:
             pulumi.set(__self__, "created_on", created_on)
         if deployed_via is not None:
             pulumi.set(__self__, "deployed_via", deployed_via)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
         if ephemeral_id is not None:
             pulumi.set(__self__, "ephemeral_id", ephemeral_id)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if last_modified_via is not None:
             pulumi.set(__self__, "last_modified_via", last_modified_via)
         if mode is not None:
@@ -249,6 +352,12 @@ class _TurnstileWidgetState:
             pulumi.set(__self__, "name", name)
         if offlabel is not None:
             pulumi.set(__self__, "offlabel", offlabel)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if page is not None:
+            pulumi.set(__self__, "page", page)
+        if per_page is not None:
+            pulumi.set(__self__, "per_page", per_page)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if secret is not None:
@@ -325,6 +434,19 @@ class _TurnstileWidgetState:
 
     @_builtins.property
     @pulumi.getter
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Direction to order widgets.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter
     def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "domains")
 
@@ -343,6 +465,19 @@ class _TurnstileWidgetState:
     @ephemeral_id.setter
     def ephemeral_id(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ephemeral_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Filter widgets by field using case-insensitive substring matching.
+        Format: `field:value`
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedVia")
@@ -412,6 +547,43 @@ class _TurnstileWidgetState:
 
     @_builtins.property
     @pulumi.getter
+    def order(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field to order widgets by.
+        Available values: "id", "sitekey", "name", "created_on", "modified_on".
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "order", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Page number of paginated results.
+        """
+        return pulumi.get(self, "page")
+
+    @page.setter
+    def page(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "page", value)
+
+    @_builtins.property
+    @pulumi.getter(name="perPage")
+    def per_page(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Number of items per page.
+        """
+        return pulumi.get(self, "per_page")
+
+    @per_page.setter
+    def per_page(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "per_page", value)
+
+    @_builtins.property
+    @pulumi.getter
     def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where this widget can be used. This cannot be changed after creation.
@@ -457,11 +629,16 @@ class TurnstileWidget(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
                  domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 page: pulumi.Input[Optional[_builtins.float]] = None,
+                 per_page: pulumi.Input[Optional[_builtins.float]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -509,13 +686,21 @@ class TurnstileWidget(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
                this setting can determine the clearance level to be set
                Available values: "no_clearance", "jschallenge", "managed", "interactive".
+        :param pulumi.Input[_builtins.str] direction: Direction to order widgets.
+               Available values: "asc", "desc".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[_builtins.str] filter: Filter widgets by field using case-insensitive substring matching.
+               Format: `field:value`
         :param pulumi.Input[_builtins.str] mode: Widget Mode
                Available values: "non-interactive", "invisible", "managed".
         :param pulumi.Input[_builtins.str] name: Human readable widget name. Not unique. Cloudflare suggests that you
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[_builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
+        :param pulumi.Input[_builtins.str] order: Field to order widgets by.
+               Available values: "id", "sitekey", "name", "created_on", "modified_on".
+        :param pulumi.Input[_builtins.float] page: Page number of paginated results.
+        :param pulumi.Input[_builtins.float] per_page: Number of items per page.
         :param pulumi.Input[_builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
                Available values: "world", "china".
         """
@@ -580,11 +765,16 @@ class TurnstileWidget(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
                  domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 page: pulumi.Input[Optional[_builtins.float]] = None,
+                 per_page: pulumi.Input[Optional[_builtins.float]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -600,10 +790,12 @@ class TurnstileWidget(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["bot_fight_mode"] = bot_fight_mode
             __props__.__dict__["clearance_level"] = clearance_level
+            __props__.__dict__["direction"] = direction
             if domains is None and not opts.urn:
                 raise TypeError("Missing required property 'domains'")
             __props__.__dict__["domains"] = domains
             __props__.__dict__["ephemeral_id"] = ephemeral_id
+            __props__.__dict__["filter"] = filter
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
             __props__.__dict__["mode"] = mode
@@ -611,6 +803,9 @@ class TurnstileWidget(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["offlabel"] = offlabel
+            __props__.__dict__["order"] = order
+            __props__.__dict__["page"] = page
+            __props__.__dict__["per_page"] = per_page
             __props__.__dict__["region"] = region
             __props__.__dict__["created_on"] = None
             __props__.__dict__["deployed_via"] = None
@@ -635,13 +830,18 @@ class TurnstileWidget(pulumi.CustomResource):
             clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             deployed_via: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
             domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified_via: pulumi.Input[Optional[_builtins.str]] = None,
             mode: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+            order: pulumi.Input[Optional[_builtins.str]] = None,
+            page: pulumi.Input[Optional[_builtins.float]] = None,
+            per_page: pulumi.Input[Optional[_builtins.float]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             secret: pulumi.Input[Optional[_builtins.str]] = None,
             sitekey: pulumi.Input[Optional[_builtins.str]] = None) -> 'TurnstileWidget':
@@ -664,7 +864,11 @@ class TurnstileWidget(pulumi.CustomResource):
                client-settable. Omitted from the response for widgets created
                before this field existed.
                Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        :param pulumi.Input[_builtins.str] direction: Direction to order widgets.
+               Available values: "asc", "desc".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
+        :param pulumi.Input[_builtins.str] filter: Filter widgets by field using case-insensitive substring matching.
+               Format: `field:value`
         :param pulumi.Input[_builtins.str] last_modified_via: Origin of the most recent mutation (create, update, delete, or
                secret rotation). Server-derived; not client-settable. Omitted for
                widgets last mutated before this field existed.
@@ -676,6 +880,10 @@ class TurnstileWidget(pulumi.CustomResource):
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[_builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
+        :param pulumi.Input[_builtins.str] order: Field to order widgets by.
+               Available values: "id", "sitekey", "name", "created_on", "modified_on".
+        :param pulumi.Input[_builtins.float] page: Page number of paginated results.
+        :param pulumi.Input[_builtins.float] per_page: Number of items per page.
         :param pulumi.Input[_builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
                Available values: "world", "china".
         :param pulumi.Input[_builtins.str] secret: Secret key for this widget.
@@ -690,13 +898,18 @@ class TurnstileWidget(pulumi.CustomResource):
         __props__.__dict__["clearance_level"] = clearance_level
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["deployed_via"] = deployed_via
+        __props__.__dict__["direction"] = direction
         __props__.__dict__["domains"] = domains
         __props__.__dict__["ephemeral_id"] = ephemeral_id
+        __props__.__dict__["filter"] = filter
         __props__.__dict__["last_modified_via"] = last_modified_via
         __props__.__dict__["mode"] = mode
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["offlabel"] = offlabel
+        __props__.__dict__["order"] = order
+        __props__.__dict__["page"] = page
+        __props__.__dict__["per_page"] = per_page
         __props__.__dict__["region"] = region
         __props__.__dict__["secret"] = secret
         __props__.__dict__["sitekey"] = sitekey
@@ -751,6 +964,15 @@ class TurnstileWidget(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def direction(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Direction to order widgets.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
     def domains(self) -> pulumi.Output[Sequence[_builtins.str]]:
         return pulumi.get(self, "domains")
 
@@ -761,6 +983,15 @@ class TurnstileWidget(pulumi.CustomResource):
         Return the Ephemeral ID in /siteverify (ENT only).
         """
         return pulumi.get(self, "ephemeral_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Filter widgets by field using case-insensitive substring matching.
+        Format: `field:value`
+        """
+        return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedVia")
@@ -807,6 +1038,31 @@ class TurnstileWidget(pulumi.CustomResource):
         Do not show any Cloudflare branding on the widget (ENT only).
         """
         return pulumi.get(self, "offlabel")
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Field to order widgets by.
+        Available values: "id", "sitekey", "name", "created_on", "modified_on".
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> pulumi.Output[_builtins.float]:
+        """
+        Page number of paginated results.
+        """
+        return pulumi.get(self, "page")
+
+    @_builtins.property
+    @pulumi.getter(name="perPage")
+    def per_page(self) -> pulumi.Output[_builtins.float]:
+        """
+        Number of items per page.
+        """
+        return pulumi.get(self, "per_page")
 
     @_builtins.property
     @pulumi.getter

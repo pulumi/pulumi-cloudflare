@@ -49,7 +49,7 @@ func LookupR2Bucket(ctx *pulumi.Context, args *LookupR2BucketArgs, opts ...pulum
 
 // A collection of arguments for invoking getR2Bucket.
 type LookupR2BucketArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -57,7 +57,7 @@ type LookupR2BucketArgs struct {
 
 // A collection of values returned by getR2Bucket.
 type LookupR2BucketResult struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -66,7 +66,7 @@ type LookupR2BucketResult struct {
 	// Name of the bucket.
 	Id string `pulumi:"id"`
 	// Jurisdiction where objects in this bucket are guaranteed to be stored.
-	// Available values: "default", "eu", "fedramp", "us".
+	// Available values: "default", "eu", "us", "fedramp", "fedramp-high".
 	Jurisdiction string `pulumi:"jurisdiction"`
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
@@ -85,7 +85,7 @@ func LookupR2BucketOutput(ctx *pulumi.Context, args LookupR2BucketOutputArgs, op
 
 // A collection of arguments for invoking getR2Bucket.
 type LookupR2BucketOutputArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
@@ -110,7 +110,7 @@ func (o LookupR2BucketResultOutput) ToLookupR2BucketResultOutputWithContext(ctx 
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o LookupR2BucketResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -131,7 +131,7 @@ func (o LookupR2BucketResultOutput) Id() pulumi.StringOutput {
 }
 
 // Jurisdiction where objects in this bucket are guaranteed to be stored.
-// Available values: "default", "eu", "fedramp", "us".
+// Available values: "default", "eu", "us", "fedramp", "fedramp-high".
 func (o LookupR2BucketResultOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }

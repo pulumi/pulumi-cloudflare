@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? LogicalOperator;
         /// <summary>
-        /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "NotHas".
         /// </summary>
         public readonly string? Operator;
         /// <summary>

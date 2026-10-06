@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.MagicTransitSiteWanStaticAddressingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -31,6 +32,30 @@ public final class MagicTransitSiteWanArgs extends com.pulumi.resources.Resource
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
+     * 
+     */
+    @Import(name="healthCheckRate")
+    private @Nullable Output<String> healthCheckRate;
+
+    /**
+     * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+     * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
+     * 
+     */
+    public Optional<Output<String>> healthCheckRate() {
+        return Optional.ofNullable(this.healthCheckRate);
+    }
+
+    @Import(name="loadBalanceInnerFlows")
+    private @Nullable Output<Boolean> loadBalanceInnerFlows;
+
+    public Optional<Output<Boolean>> loadBalanceInnerFlows() {
+        return Optional.ofNullable(this.loadBalanceInnerFlows);
     }
 
     @Import(name="name")
@@ -103,6 +128,8 @@ public final class MagicTransitSiteWanArgs extends com.pulumi.resources.Resource
 
     private MagicTransitSiteWanArgs(MagicTransitSiteWanArgs $) {
         this.accountId = $.accountId;
+        this.healthCheckRate = $.healthCheckRate;
+        this.loadBalanceInnerFlows = $.loadBalanceInnerFlows;
         this.name = $.name;
         this.physport = $.physport;
         this.priority = $.priority;
@@ -148,6 +175,38 @@ public final class MagicTransitSiteWanArgs extends com.pulumi.resources.Resource
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param healthCheckRate Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+         * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckRate(@Nullable Output<String> healthCheckRate) {
+            $.healthCheckRate = healthCheckRate;
+            return this;
+        }
+
+        /**
+         * @param healthCheckRate Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+         * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckRate(String healthCheckRate) {
+            return healthCheckRate(Output.of(healthCheckRate));
+        }
+
+        public Builder loadBalanceInnerFlows(@Nullable Output<Boolean> loadBalanceInnerFlows) {
+            $.loadBalanceInnerFlows = loadBalanceInnerFlows;
+            return this;
+        }
+
+        public Builder loadBalanceInnerFlows(Boolean loadBalanceInnerFlows) {
+            return loadBalanceInnerFlows(Output.of(loadBalanceInnerFlows));
         }
 
         public Builder name(@Nullable Output<String> name) {

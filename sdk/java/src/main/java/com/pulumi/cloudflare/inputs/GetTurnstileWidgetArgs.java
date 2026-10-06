@@ -39,14 +39,14 @@ public final class GetTurnstileWidgetArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Widget item identifier tag.
+     * Unique identifier for a Turnstile widget.
      * 
      */
     @Import(name="sitekey")
     private @Nullable Output<String> sitekey;
 
     /**
-     * @return Widget item identifier tag.
+     * @return Unique identifier for a Turnstile widget.
      * 
      */
     public Optional<Output<String>> sitekey() {
@@ -110,7 +110,7 @@ public final class GetTurnstileWidgetArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param sitekey Widget item identifier tag.
+         * @param sitekey Unique identifier for a Turnstile widget.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetTurnstileWidgetArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param sitekey Widget item identifier tag.
+         * @param sitekey Unique identifier for a Turnstile widget.
          * 
          * @return builder
          * 

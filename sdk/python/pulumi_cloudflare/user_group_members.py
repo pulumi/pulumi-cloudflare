@@ -23,16 +23,33 @@ class UserGroupMembersArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  members: pulumi.Input[Sequence[pulumi.Input['UserGroupMembersMemberArgs']]],
-                 user_group_id: pulumi.Input[_builtins.str]):
+                 user_group_id: pulumi.Input[_builtins.str],
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 fuzzy_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 page: pulumi.Input[Optional[_builtins.float]] = None,
+                 per_page: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a UserGroupMembers resource.
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] user_group_id: User Group identifier tag.
+        :param pulumi.Input[_builtins.str] direction: The sort order of returned user group members by email.
+               Available values: "asc", "desc".
+        :param pulumi.Input[_builtins.str] fuzzy_email: A string used for filtering members by partial email match.
+        :param pulumi.Input[_builtins.float] page: Page number of paginated results.
+        :param pulumi.Input[_builtins.float] per_page: Maximum number of results per page.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "user_group_id", user_group_id)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if fuzzy_email is not None:
+            pulumi.set(__self__, "fuzzy_email", fuzzy_email)
+        if page is not None:
+            pulumi.set(__self__, "page", page)
+        if per_page is not None:
+            pulumi.set(__self__, "per_page", per_page)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -67,23 +84,89 @@ class UserGroupMembersArgs:
     def user_group_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "user_group_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The sort order of returned user group members by email.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fuzzyEmail")
+    def fuzzy_email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string used for filtering members by partial email match.
+        """
+        return pulumi.get(self, "fuzzy_email")
+
+    @fuzzy_email.setter
+    def fuzzy_email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "fuzzy_email", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Page number of paginated results.
+        """
+        return pulumi.get(self, "page")
+
+    @page.setter
+    def page(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "page", value)
+
+    @_builtins.property
+    @pulumi.getter(name="perPage")
+    def per_page(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Maximum number of results per page.
+        """
+        return pulumi.get(self, "per_page")
+
+    @per_page.setter
+    def per_page(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "per_page", value)
+
 
 @pulumi.input_type
 class _UserGroupMembersState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 fuzzy_email: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupMembersMemberArgs']]]] = None,
+                 page: pulumi.Input[Optional[_builtins.float]] = None,
+                 per_page: pulumi.Input[Optional[_builtins.float]] = None,
                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserGroupMembers resources.
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] direction: The sort order of returned user group members by email.
+               Available values: "asc", "desc".
+        :param pulumi.Input[_builtins.str] fuzzy_email: A string used for filtering members by partial email match.
+        :param pulumi.Input[_builtins.float] page: Page number of paginated results.
+        :param pulumi.Input[_builtins.float] per_page: Maximum number of results per page.
         :param pulumi.Input[_builtins.str] user_group_id: User Group identifier tag.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if fuzzy_email is not None:
+            pulumi.set(__self__, "fuzzy_email", fuzzy_email)
         if members is not None:
             pulumi.set(__self__, "members", members)
+        if page is not None:
+            pulumi.set(__self__, "page", page)
+        if per_page is not None:
+            pulumi.set(__self__, "per_page", per_page)
         if user_group_id is not None:
             pulumi.set(__self__, "user_group_id", user_group_id)
 
@@ -101,12 +184,61 @@ class _UserGroupMembersState:
 
     @_builtins.property
     @pulumi.getter
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The sort order of returned user group members by email.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fuzzyEmail")
+    def fuzzy_email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string used for filtering members by partial email match.
+        """
+        return pulumi.get(self, "fuzzy_email")
+
+    @fuzzy_email.setter
+    def fuzzy_email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "fuzzy_email", value)
+
+    @_builtins.property
+    @pulumi.getter
     def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupMembersMemberArgs']]]]:
         return pulumi.get(self, "members")
 
     @members.setter
     def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupMembersMemberArgs']]]]):
         pulumi.set(self, "members", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Page number of paginated results.
+        """
+        return pulumi.get(self, "page")
+
+    @page.setter
+    def page(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "page", value)
+
+    @_builtins.property
+    @pulumi.getter(name="perPage")
+    def per_page(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Maximum number of results per page.
+        """
+        return pulumi.get(self, "per_page")
+
+    @per_page.setter
+    def per_page(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "per_page", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupId")
@@ -128,7 +260,11 @@ class UserGroupMembers(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 fuzzy_email: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict', 'outputs.UserGroupMembersMember']]]]] = None,
+                 page: pulumi.Input[Optional[_builtins.float]] = None,
+                 per_page: pulumi.Input[Optional[_builtins.float]] = None,
                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -162,6 +298,11 @@ class UserGroupMembers(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] direction: The sort order of returned user group members by email.
+               Available values: "asc", "desc".
+        :param pulumi.Input[_builtins.str] fuzzy_email: A string used for filtering members by partial email match.
+        :param pulumi.Input[_builtins.float] page: Page number of paginated results.
+        :param pulumi.Input[_builtins.float] per_page: Maximum number of results per page.
         :param pulumi.Input[_builtins.str] user_group_id: User Group identifier tag.
         """
         ...
@@ -214,7 +355,11 @@ class UserGroupMembers(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 fuzzy_email: pulumi.Input[Optional[_builtins.str]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict', 'outputs.UserGroupMembersMember']]]]] = None,
+                 page: pulumi.Input[Optional[_builtins.float]] = None,
+                 per_page: pulumi.Input[Optional[_builtins.float]] = None,
                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -228,9 +373,13 @@ class UserGroupMembers(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["direction"] = direction
+            __props__.__dict__["fuzzy_email"] = fuzzy_email
             if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__.__dict__["members"] = members
+            __props__.__dict__["page"] = page
+            __props__.__dict__["per_page"] = per_page
             if user_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_group_id'")
             __props__.__dict__["user_group_id"] = user_group_id
@@ -245,7 +394,11 @@ class UserGroupMembers(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            fuzzy_email: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupMembersMemberArgs', 'UserGroupMembersMemberArgsDict', 'outputs.UserGroupMembersMember']]]]] = None,
+            page: pulumi.Input[Optional[_builtins.float]] = None,
+            per_page: pulumi.Input[Optional[_builtins.float]] = None,
             user_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserGroupMembers':
         """
         Get an existing UserGroupMembers resource's state with the given name, id, and optional extra
@@ -255,6 +408,11 @@ class UserGroupMembers(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] direction: The sort order of returned user group members by email.
+               Available values: "asc", "desc".
+        :param pulumi.Input[_builtins.str] fuzzy_email: A string used for filtering members by partial email match.
+        :param pulumi.Input[_builtins.float] page: Page number of paginated results.
+        :param pulumi.Input[_builtins.float] per_page: Maximum number of results per page.
         :param pulumi.Input[_builtins.str] user_group_id: User Group identifier tag.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -262,7 +420,11 @@ class UserGroupMembers(pulumi.CustomResource):
         __props__ = _UserGroupMembersState.__new__(_UserGroupMembersState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["direction"] = direction
+        __props__.__dict__["fuzzy_email"] = fuzzy_email
         __props__.__dict__["members"] = members
+        __props__.__dict__["page"] = page
+        __props__.__dict__["per_page"] = per_page
         __props__.__dict__["user_group_id"] = user_group_id
         return UserGroupMembers(resource_name, opts=opts, __props__=__props__)
 
@@ -276,8 +438,41 @@ class UserGroupMembers(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def direction(self) -> pulumi.Output[_builtins.str]:
+        """
+        The sort order of returned user group members by email.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="fuzzyEmail")
+    def fuzzy_email(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A string used for filtering members by partial email match.
+        """
+        return pulumi.get(self, "fuzzy_email")
+
+    @_builtins.property
+    @pulumi.getter
     def members(self) -> pulumi.Output[Sequence['outputs.UserGroupMembersMember']]:
         return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> pulumi.Output[_builtins.float]:
+        """
+        Page number of paginated results.
+        """
+        return pulumi.get(self, "page")
+
+    @_builtins.property
+    @pulumi.getter(name="perPage")
+    def per_page(self) -> pulumi.Output[_builtins.float]:
+        """
+        Maximum number of results per page.
+        """
+        return pulumi.get(self, "per_page")
 
     @_builtins.property
     @pulumi.getter(name="userGroupId")

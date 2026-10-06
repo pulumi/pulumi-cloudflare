@@ -29,14 +29,14 @@ public final class GetMtlsCertificateAssociationsPlainArgs extends com.pulumi.re
     }
 
     /**
-     * Identifier.
+     * Certificate identifier tag.
      * 
      */
     @Import(name="mtlsCertificateId", required=true)
     private String mtlsCertificateId;
 
     /**
-     * @return Identifier.
+     * @return Certificate identifier tag.
      * 
      */
     public String mtlsCertificateId() {
@@ -80,7 +80,7 @@ public final class GetMtlsCertificateAssociationsPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param mtlsCertificateId Identifier.
+         * @param mtlsCertificateId Certificate identifier tag.
          * 
          * @return builder
          * 

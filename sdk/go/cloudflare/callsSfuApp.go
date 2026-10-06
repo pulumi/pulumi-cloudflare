@@ -58,7 +58,7 @@ type CallsSfuApp struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The date and time the item was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
-	// A short description of Calls app, not shown to end users.
+	// A short description of a Realtime SFU app, not shown to end users.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Bearer token
 	Secret pulumi.StringOutput `pulumi:"secret"`
@@ -111,7 +111,7 @@ type callsSfuAppState struct {
 	Created *string `pulumi:"created"`
 	// The date and time the item was last modified.
 	Modified *string `pulumi:"modified"`
-	// A short description of Calls app, not shown to end users.
+	// A short description of a Realtime SFU app, not shown to end users.
 	Name *string `pulumi:"name"`
 	// Bearer token
 	Secret *string `pulumi:"secret"`
@@ -128,7 +128,7 @@ type CallsSfuAppState struct {
 	Created pulumi.StringPtrInput
 	// The date and time the item was last modified.
 	Modified pulumi.StringPtrInput
-	// A short description of Calls app, not shown to end users.
+	// A short description of a Realtime SFU app, not shown to end users.
 	Name pulumi.StringPtrInput
 	// Bearer token
 	Secret pulumi.StringPtrInput
@@ -145,7 +145,7 @@ type callsSfuAppArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a item.
 	AppId *string `pulumi:"appId"`
-	// A short description of Calls app, not shown to end users.
+	// A short description of a Realtime SFU app, not shown to end users.
 	Name *string `pulumi:"name"`
 }
 
@@ -155,7 +155,7 @@ type CallsSfuAppArgs struct {
 	AccountId pulumi.StringInput
 	// A Cloudflare-generated unique identifier for a item.
 	AppId pulumi.StringPtrInput
-	// A short description of Calls app, not shown to end users.
+	// A short description of a Realtime SFU app, not shown to end users.
 	Name pulumi.StringPtrInput
 }
 
@@ -266,7 +266,7 @@ func (o CallsSfuAppOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *CallsSfuApp) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
 }
 
-// A short description of Calls app, not shown to end users.
+// A short description of a Realtime SFU app, not shown to end users.
 func (o CallsSfuAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CallsSfuApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -38,6 +38,9 @@ import (
 //				Name:      pulumi.StringRef("name"),
 //				Order:     pulumi.StringRef("status"),
 //				Status:    pulumi.StringRef("initializing"),
+//				Types: []string{
+//					"full",
+//				},
 //			}, nil)
 //			if err != nil {
 //				return err

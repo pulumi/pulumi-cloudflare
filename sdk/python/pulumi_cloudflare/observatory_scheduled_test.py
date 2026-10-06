@@ -31,6 +31,7 @@ class ObservatoryScheduledTestArgs:
         :param pulumi.Input[_builtins.str] url: A URL.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+               Available values: "DAILY", "WEEKLY".
         :param pulumi.Input[_builtins.str] region: A test region.
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         """
@@ -70,6 +71,7 @@ class ObservatoryScheduledTestArgs:
     def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        Available values: "DAILY", "WEEKLY".
         """
         return pulumi.get(self, "frequency")
 
@@ -104,6 +106,7 @@ class _ObservatoryScheduledTestState:
         Input properties used for looking up and filtering ObservatoryScheduledTest resources.
 
         :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+               Available values: "DAILY", "WEEKLY".
         :param pulumi.Input[_builtins.str] region: A test region.
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input['ObservatoryScheduledTestScheduleArgs'] schedule: The test schedule.
@@ -128,6 +131,7 @@ class _ObservatoryScheduledTestState:
     def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        Available values: "DAILY", "WEEKLY".
         """
         return pulumi.get(self, "frequency")
 
@@ -232,6 +236,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+               Available values: "DAILY", "WEEKLY".
         :param pulumi.Input[_builtins.str] region: A test region.
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input[_builtins.str] url: A URL.
@@ -329,6 +334,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+               Available values: "DAILY", "WEEKLY".
         :param pulumi.Input[_builtins.str] region: A test region.
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict', 'outputs.ObservatoryScheduledTestSchedule']] schedule: The test schedule.
@@ -352,6 +358,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     def frequency(self) -> pulumi.Output[_builtins.str]:
         """
         The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        Available values: "DAILY", "WEEKLY".
         """
         return pulumi.get(self, "frequency")
 

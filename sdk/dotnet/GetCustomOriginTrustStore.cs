@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomOriginTrustStoreId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomOriginTrustStoreId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         CustomOriginTrustStoreId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
         ///     });
         /// 
         /// });
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomOriginTrustStoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Certificate identifier tag.
         /// </summary>
         [Input("customOriginTrustStoreId")]
         public string? CustomOriginTrustStoreId { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomOriginTrustStoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier.
+        /// Certificate identifier tag.
         /// </summary>
         [Input("customOriginTrustStoreId")]
         public Input<string>? CustomOriginTrustStoreId { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// Identifier.
+        /// Certificate identifier tag.
         /// </summary>
         public readonly string? CustomOriginTrustStoreId;
         /// <summary>
@@ -161,7 +161,7 @@ namespace Pulumi.Cloudflare
         public readonly string ExpiresOn;
         public readonly Outputs.GetCustomOriginTrustStoreFilterResult? Filter;
         /// <summary>
-        /// Identifier.
+        /// Certificate identifier tag.
         /// </summary>
         public readonly string Id;
         /// <summary>

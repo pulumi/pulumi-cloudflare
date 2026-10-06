@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustGatewayProxyEndpointResult> InvokeAsync(GetZeroTrustGatewayProxyEndpointArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustGatewayProxyEndpointResult> InvokeAsync(GetZeroTrustGatewayProxyEndpointArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustGatewayProxyEndpointResult>("cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint", args ?? new GetZeroTrustGatewayProxyEndpointArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustGatewayProxyEndpointResult> Invoke(GetZeroTrustGatewayProxyEndpointInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustGatewayProxyEndpointResult> Invoke(GetZeroTrustGatewayProxyEndpointInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustGatewayProxyEndpointResult>("cloudflare:index/getZeroTrustGatewayProxyEndpoint:getZeroTrustGatewayProxyEndpoint", args ?? new GetZeroTrustGatewayProxyEndpointInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -87,8 +87,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        [Input("proxyEndpointId", required: true)]
-        public string ProxyEndpointId { get; set; } = null!;
+        [Input("filter")]
+        public Inputs.GetZeroTrustGatewayProxyEndpointFilterArgs? Filter { get; set; }
+
+        [Input("proxyEndpointId")]
+        public string? ProxyEndpointId { get; set; }
 
         public GetZeroTrustGatewayProxyEndpointArgs()
         {
@@ -101,8 +104,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("proxyEndpointId", required: true)]
-        public Input<string> ProxyEndpointId { get; set; } = null!;
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustGatewayProxyEndpointFilterInputArgs>? Filter { get; set; }
+
+        [Input("proxyEndpointId")]
+        public Input<string>? ProxyEndpointId { get; set; }
 
         public GetZeroTrustGatewayProxyEndpointInvokeArgs()
         {
@@ -116,27 +122,12 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         public readonly string CreatedAt;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
+        public readonly Outputs.GetZeroTrustGatewayProxyEndpointFilterResult? Filter;
         public readonly string Id;
-        /// <summary>
-        /// Specify the list of CIDRs to restrict ingress connections.
-        /// </summary>
         public readonly ImmutableArray<string> Ips;
-        /// <summary>
-        /// The proxy endpoint kind
-        /// Available values: "ip", "identity".
-        /// </summary>
         public readonly string Kind;
-        /// <summary>
-        /// Specify the name of the proxy endpoint.
-        /// </summary>
         public readonly string Name;
-        public readonly string ProxyEndpointId;
-        /// <summary>
-        /// Specify the subdomain to use as the destination in the proxy client.
-        /// </summary>
+        public readonly string? ProxyEndpointId;
         public readonly string Subdomain;
         public readonly string UpdatedAt;
 
@@ -146,6 +137,8 @@ namespace Pulumi.Cloudflare
 
             string createdAt,
 
+            Outputs.GetZeroTrustGatewayProxyEndpointFilterResult? filter,
+
             string id,
 
             ImmutableArray<string> ips,
@@ -154,7 +147,7 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            string proxyEndpointId,
+            string? proxyEndpointId,
 
             string subdomain,
 
@@ -162,6 +155,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             CreatedAt = createdAt;
+            Filter = filter;
             Id = id;
             Ips = ips;
             Kind = kind;

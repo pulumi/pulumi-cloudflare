@@ -86,6 +86,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Order;
         /// <summary>
+        /// Filter by tag key:value pairs. Multiple `Tag` params are AND'd.
+        /// Format: `tag=key:value` (e.g., `tag=environment:production`).
+        /// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
         /// Filters for targets that have any of the following UUIDs. Specify
         /// `TargetIds` multiple times in query parameter to build list of
         /// candidates.
@@ -130,6 +136,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? order,
 
+            ImmutableArray<string> tags,
+
             ImmutableArray<string> targetIds,
 
             string? virtualNetworkId)
@@ -150,6 +158,7 @@ namespace Pulumi.Cloudflare.Outputs
             ModifiedAfter = modifiedAfter;
             ModifiedBefore = modifiedBefore;
             Order = order;
+            Tags = tags;
             TargetIds = targetIds;
             VirtualNetworkId = virtualNetworkId;
         }

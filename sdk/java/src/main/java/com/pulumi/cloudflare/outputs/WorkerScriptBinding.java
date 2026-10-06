@@ -198,6 +198,11 @@ public final class WorkerScriptBinding {
      */
     private @Nullable String storeId;
     /**
+     * @return ID of a K2 stream owned by the account deploying the Worker.
+     * 
+     */
+    private @Nullable String stream;
+    /**
      * @return The text value to use.
      * 
      */
@@ -209,7 +214,7 @@ public final class WorkerScriptBinding {
     private @Nullable String tunnelId;
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     private String type;
@@ -485,6 +490,13 @@ public final class WorkerScriptBinding {
         return Optional.ofNullable(this.storeId);
     }
     /**
+     * @return ID of a K2 stream owned by the account deploying the Worker.
+     * 
+     */
+    public Optional<String> stream() {
+        return Optional.ofNullable(this.stream);
+    }
+    /**
      * @return The text value to use.
      * 
      */
@@ -500,7 +512,7 @@ public final class WorkerScriptBinding {
     }
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;messaging&#34;, &#34;analytics*engine&#34;, &#34;artifacts&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;k2&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     public String type() {
@@ -573,6 +585,7 @@ public final class WorkerScriptBinding {
         private @Nullable String serviceId;
         private @Nullable WorkerScriptBindingSimple simple;
         private @Nullable String storeId;
+        private @Nullable String stream;
         private @Nullable String text;
         private @Nullable String tunnelId;
         private String type;
@@ -618,6 +631,7 @@ public final class WorkerScriptBinding {
     	      this.serviceId = defaults.serviceId;
     	      this.simple = defaults.simple;
     	      this.storeId = defaults.storeId;
+    	      this.stream = defaults.stream;
     	      this.text = defaults.text;
     	      this.tunnelId = defaults.tunnelId;
     	      this.type = defaults.type;
@@ -851,6 +865,12 @@ public final class WorkerScriptBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder stream(@Nullable String stream) {
+
+            this.stream = stream;
+            return this;
+        }
+        @CustomType.Setter
         public Builder text(@Nullable String text) {
 
             this.text = text;
@@ -929,6 +949,7 @@ public final class WorkerScriptBinding {
             _resultValue.serviceId = serviceId;
             _resultValue.simple = simple;
             _resultValue.storeId = storeId;
+            _resultValue.stream = stream;
             _resultValue.text = text;
             _resultValue.tunnelId = tunnelId;
             _resultValue.type = type;

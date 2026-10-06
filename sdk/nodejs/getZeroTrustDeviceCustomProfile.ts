@@ -19,10 +19,12 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDeviceCustomProfile(args: GetZeroTrustDeviceCustomProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceCustomProfileResult> {
+export function getZeroTrustDeviceCustomProfile(args?: GetZeroTrustDeviceCustomProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceCustomProfileResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceCustomProfile:getZeroTrustDeviceCustomProfile", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "policyId": args.policyId,
     }, opts);
 }
@@ -32,7 +34,8 @@ export function getZeroTrustDeviceCustomProfile(args: GetZeroTrustDeviceCustomPr
  */
 export interface GetZeroTrustDeviceCustomProfileArgs {
     accountId?: string;
-    policyId: string;
+    filter?: inputs.GetZeroTrustDeviceCustomProfileFilter;
+    policyId?: string;
 }
 
 /**
@@ -57,11 +60,15 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      */
     readonly autoConnect: number;
     /**
+     * Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+     */
+    readonly browserExtensionConfig: outputs.GetZeroTrustDeviceCustomProfileBrowserExtensionConfig;
+    /**
      * Turn on the captive portal after the specified amount of time.
      */
     readonly captivePortal: number;
     /**
-     * Whether the policy is the default policy for an account.
+     * Whether the policy is the account default. WARP group profiles cannot set this field.
      */
     readonly default: boolean;
     /**
@@ -89,6 +96,7 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      */
     readonly excludes: outputs.GetZeroTrustDeviceCustomProfileExclude[];
     readonly fallbackDomains: outputs.GetZeroTrustDeviceCustomProfileFallbackDomain[];
+    readonly filter?: outputs.GetZeroTrustDeviceCustomProfileFilter;
     readonly gatewayUniqueId: string;
     /**
      * The ID of this resource.
@@ -120,6 +128,11 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      */
     readonly precedence: number;
     /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: "warp", "browserExtension".
+     */
+    readonly profileType: string;
+    /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     readonly registerInterfaceIpWithDns: boolean;
@@ -142,6 +155,10 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      */
     readonly tunnelProtocol: string;
     /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     */
+    readonly uninstallProtection: boolean;
+    /**
      * Virtual network access settings for the device.
      */
     readonly virtualNetworks: outputs.GetZeroTrustDeviceCustomProfileVirtualNetworks;
@@ -159,10 +176,12 @@ export interface GetZeroTrustDeviceCustomProfileResult {
  * });
  * ```
  */
-export function getZeroTrustDeviceCustomProfileOutput(args: GetZeroTrustDeviceCustomProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceCustomProfileResult> {
+export function getZeroTrustDeviceCustomProfileOutput(args?: GetZeroTrustDeviceCustomProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceCustomProfileResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceCustomProfile:getZeroTrustDeviceCustomProfile", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "policyId": args.policyId,
     }, opts);
 }
@@ -172,5 +191,6 @@ export function getZeroTrustDeviceCustomProfileOutput(args: GetZeroTrustDeviceCu
  */
 export interface GetZeroTrustDeviceCustomProfileOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
-    policyId: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetZeroTrustDeviceCustomProfileFilterArgs | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
 }

@@ -11,6 +11,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetZeroTrustDeviceDeploymentGroupsList(ctx, &cloudflare.LookupZeroTrustDeviceDeploymentGroupsListArgs{
+//				AccountId: "account_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZeroTrustDeviceDeploymentGroupsList(ctx *pulumi.Context, args *LookupZeroTrustDeviceDeploymentGroupsListArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustDeviceDeploymentGroupsListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustDeviceDeploymentGroupsListResult

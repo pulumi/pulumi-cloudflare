@@ -94,6 +94,11 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
     readonly includes: outputs.GetZeroTrustDeviceDefaultProfileInclude[];
     readonly policyId: string;
     /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: "warp", "browserExtension".
+     */
+    readonly profileType: string;
+    /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     readonly registerInterfaceIpWithDns: boolean;
@@ -114,6 +119,10 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
      * Determines which tunnel protocol to use.
      */
     readonly tunnelProtocol: string;
+    /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     */
+    readonly uninstallProtection: boolean;
     /**
      * Virtual network access settings for the device.
      */

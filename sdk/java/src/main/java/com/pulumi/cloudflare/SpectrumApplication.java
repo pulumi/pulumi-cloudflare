@@ -74,8 +74,10 @@ import javax.annotation.Nullable;
  *                 .type("")
  *                 .build())
  *             .originPort(22)
+ *             .originWorkerId("277b7815c871434b960b60729659000a")
  *             .proxyProtocol("off")
  *             .tls("off")
+ *             .virtualNetworkId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *             .build());
  * 
  *     }
@@ -94,7 +96,7 @@ import javax.annotation.Nullable;
 public class SpectrumApplication extends com.pulumi.resources.CustomResource {
     /**
      * Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
+     * Notes: Only available for TCP or UDP applications with trafficType set to &#34;direct&#34;.
      * 
      */
     @Export(name="argoSmartRouting", refs={Boolean.class}, tree="[0]")
@@ -102,7 +104,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
+     * Notes: Only available for TCP or UDP applications with trafficType set to &#34;direct&#34;.
      * 
      */
     public Output<Boolean> argoSmartRouting() {
@@ -225,6 +227,20 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.originPort);
     }
     /**
+     * Optional Worker script tag (worker ID) to use as the application&#39;s origin. Only supported for TCP applications with traffic*type &#34;worker&#34;; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be &#34;off&#34; or &#34;flexible&#34;.
+     * 
+     */
+    @Export(name="originWorkerId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> originWorkerId;
+
+    /**
+     * @return Optional Worker script tag (worker ID) to use as the application&#39;s origin. Only supported for TCP applications with traffic*type &#34;worker&#34;; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be &#34;off&#34; or &#34;flexible&#34;.
+     * 
+     */
+    public Output<Optional<String>> originWorkerId() {
+        return Codegen.optional(this.originWorkerId);
+    }
+    /**
      * The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */
@@ -271,16 +287,16 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return this.tls;
     }
     /**
-     * Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
+     * Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to &#34;worker&#34;, traffic is sent to the Worker specified by `originWorkerId`.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;, &#34;worker&#34;.
      * 
      */
     @Export(name="trafficType", refs={String.class}, tree="[0]")
     private Output<String> trafficType;
 
     /**
-     * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
+     * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to &#34;worker&#34;, traffic is sent to the Worker specified by `originWorkerId`.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;, &#34;worker&#34;.
      * 
      */
     public Output<String> trafficType() {

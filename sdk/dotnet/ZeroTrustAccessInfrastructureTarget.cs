@@ -37,6 +37,10 @@ namespace Pulumi.Cloudflare
     ///                 VirtualNetworkId = "c77b744e-acc8-428f-9257-6878c046ed55",
     ///             },
     ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "foo", "string" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -83,6 +87,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("modifiedAt")]
         public Output<string> ModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional tags to associate with the target. Keys and values are
+        /// user-defined strings.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -151,6 +162,19 @@ namespace Pulumi.Cloudflare
         [Input("ip", required: true)]
         public Input<Inputs.ZeroTrustAccessInfrastructureTargetIpArgs> Ip { get; set; } = null!;
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Optional tags to associate with the target. Keys and values are
+        /// user-defined strings.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public ZeroTrustAccessInfrastructureTargetArgs()
         {
         }
@@ -191,6 +215,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("modifiedAt")]
         public Input<string>? ModifiedAt { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Optional tags to associate with the target. Keys and values are
+        /// user-defined strings.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public ZeroTrustAccessInfrastructureTargetState()
         {

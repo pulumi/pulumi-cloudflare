@@ -68,7 +68,8 @@ class GetTurnstileWidgetsResult:
     @pulumi.getter
     def filter(self) -> Optional[_builtins.str]:
         """
-        Filter widgets by field using case-insensitive substring matching.
+        Filter widgets by field. The `name` field uses case-insensitive
+        substring matching; `sitekey` uses exact matching.
         Format: `field:value`
         """
         return pulumi.get(self, "filter")
@@ -133,7 +134,8 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: Identifier
     :param _builtins.str direction: Direction to order widgets.
            Available values: "asc", "desc".
-    :param _builtins.str filter: Filter widgets by field using case-insensitive substring matching.
+    :param _builtins.str filter: Filter widgets by field. The `name` field uses case-insensitive
+           substring matching; `sitekey` uses exact matching.
            Format: `field:value`
     """
     __args__ = dict()
@@ -182,7 +184,8 @@ def get_turnstile_widgets_output(account_id: pulumi.Input[Optional[Optional[_bui
     :param _builtins.str account_id: Identifier
     :param _builtins.str direction: Direction to order widgets.
            Available values: "asc", "desc".
-    :param _builtins.str filter: Filter widgets by field using case-insensitive substring matching.
+    :param _builtins.str filter: Filter widgets by field. The `name` field uses case-insensitive
+           substring matching; `sitekey` uses exact matching.
            Format: `field:value`
     """
     __args__ = dict()

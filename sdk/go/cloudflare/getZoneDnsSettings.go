@@ -63,13 +63,15 @@ type LookupZoneDnsSettingsArgs struct {
 type LookupZoneDnsSettingsResult struct {
 	// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
 	FlattenAllCnames bool `pulumi:"flattenAllCnames"`
-	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+	// Deprecated. Use nameservers.type to configure Advanced Nameservers.
+	//
+	// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
 	FoundationDns bool `pulumi:"foundationDns"`
 	// Settings for this internal zone.
 	InternalDns GetZoneDnsSettingsInternalDns `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider bool `pulumi:"multiProvider"`
-	// Settings determining the nameservers through which the zone should be available.
+	// Controls the nameservers through which the zone is available.
 	Nameservers GetZoneDnsSettingsNameservers `pulumi:"nameservers"`
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTtl float64 `pulumi:"nsTtl"`
@@ -119,7 +121,9 @@ func (o LookupZoneDnsSettingsResultOutput) FlattenAllCnames() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupZoneDnsSettingsResult) bool { return v.FlattenAllCnames }).(pulumi.BoolOutput)
 }
 
-// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+// Deprecated. Use nameservers.type to configure Advanced Nameservers.
+//
+// Deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
 func (o LookupZoneDnsSettingsResultOutput) FoundationDns() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneDnsSettingsResult) bool { return v.FoundationDns }).(pulumi.BoolOutput)
 }
@@ -134,7 +138,7 @@ func (o LookupZoneDnsSettingsResultOutput) MultiProvider() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneDnsSettingsResult) bool { return v.MultiProvider }).(pulumi.BoolOutput)
 }
 
-// Settings determining the nameservers through which the zone should be available.
+// Controls the nameservers through which the zone is available.
 func (o LookupZoneDnsSettingsResultOutput) Nameservers() GetZoneDnsSettingsNameserversOutput {
 	return o.ApplyT(func(v LookupZoneDnsSettingsResult) GetZoneDnsSettingsNameservers { return v.Nameservers }).(GetZoneDnsSettingsNameserversOutput)
 }

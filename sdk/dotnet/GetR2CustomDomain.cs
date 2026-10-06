@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2CustomDomainArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2CustomDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2CustomDomainResult
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

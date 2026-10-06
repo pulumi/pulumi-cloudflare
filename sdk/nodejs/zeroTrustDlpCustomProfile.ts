@@ -19,24 +19,29 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleZeroTrustDlpCustomProfile = new cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", {
+ *     accountId: "account_id",
  *     name: "name",
- *     accountId: "account_id",
- *     description: "Custom profile with entries",
- *     sharedEntries: [{
- *         entryId: "56a8c060-01bb-4f89-ba1e-3ad42770a342",
- *         entryType: "predefined",
+ *     aiContextEnabled: true,
+ *     allowedMatchCount: 5,
+ *     confidenceThreshold: "confidence_threshold",
+ *     contextAwareness: {
  *         enabled: true,
- *     }],
- * });
- * // Custom entry that is a part of this new profile
- * const exampleCustomEntry = new cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry", {
- *     name: "custom",
- *     accountId: "account_id",
- *     profileId: exampleZeroTrustDlpCustomProfile.id,
- *     pattern: {
- *         regex: "customentryregex",
+ *         skip: {
+ *             files: true,
+ *         },
  *     },
- *     enabled: true,
+ *     dataClasses: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+ *     dataTags: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+ *     description: "description",
+ *     ocrEnabled: true,
+ *     sensitivityLevels: [{
+ *         groupId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *         levelId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *     }],
+ *     sharedEntries: [{
+ *         enabled: true,
+ *         entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *     }],
  * });
  * ```
  *
@@ -110,6 +115,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
      * @deprecated This attribute will be sunset on 01/01/2026
      */
     declare public readonly entries: pulumi.Output<outputs.ZeroTrustDlpCustomProfileEntry[] | undefined>;
+    declare public /*out*/ readonly integrationId: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
     declare public readonly ocrEnabled: pulumi.Output<boolean>;
     /**
@@ -156,6 +162,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["dataTags"] = state?.dataTags;
             resourceInputs["description"] = state?.description;
             resourceInputs["entries"] = state?.entries;
+            resourceInputs["integrationId"] = state?.integrationId;
             resourceInputs["name"] = state?.name;
             resourceInputs["ocrEnabled"] = state?.ocrEnabled;
             resourceInputs["openAccess"] = state?.openAccess;
@@ -185,6 +192,7 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["sensitivityLevels"] = args?.sensitivityLevels;
             resourceInputs["sharedEntries"] = args?.sharedEntries;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["integrationId"] = undefined /*out*/;
             resourceInputs["openAccess"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -236,6 +244,7 @@ export interface ZeroTrustDlpCustomProfileState {
      * @deprecated This attribute will be sunset on 01/01/2026
      */
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileEntry>[] | undefined>;
+    integrationId?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
     ocrEnabled?: pulumi.Input<boolean | undefined>;
     /**

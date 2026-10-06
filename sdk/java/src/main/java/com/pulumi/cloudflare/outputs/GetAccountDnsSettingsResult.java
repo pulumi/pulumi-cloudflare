@@ -24,6 +24,10 @@ public final class GetAccountDnsSettingsResult {
      * 
      */
     private Boolean enforceDnsOnly;
+    /**
+     * @return Default settings for new zones created in this account.
+     * 
+     */
     private GetAccountDnsSettingsZoneDefaults zoneDefaults;
 
     private GetAccountDnsSettingsResult() {}
@@ -41,6 +45,10 @@ public final class GetAccountDnsSettingsResult {
     public Boolean enforceDnsOnly() {
         return this.enforceDnsOnly;
     }
+    /**
+     * @return Default settings for new zones created in this account.
+     * 
+     */
     public GetAccountDnsSettingsZoneDefaults zoneDefaults() {
         return this.zoneDefaults;
     }

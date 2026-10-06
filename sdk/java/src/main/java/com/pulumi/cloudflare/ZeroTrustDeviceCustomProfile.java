@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileState;
+import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileBrowserExtensionConfig;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileFallbackDomain;
@@ -42,9 +43,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfile;
  * import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileBrowserExtensionConfigArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileExcludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileGlobalAccelerationArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileIncludeArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileServiceModeV2Args;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileVirtualNetworksArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -60,28 +65,44 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var exampleZeroTrustDeviceCustomProfile = new ZeroTrustDeviceCustomProfile("exampleZeroTrustDeviceCustomProfile", ZeroTrustDeviceCustomProfileArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .match("identity.email == \"test}{@literal @}{@code cloudflare.com\"")
  *             .name("Allow Developers")
- *             .precedence(100.0)
  *             .allowModeSwitch(true)
  *             .allowUpdates(true)
  *             .allowedToLeave(true)
  *             .autoConnect(0.0)
+ *             .browserExtensionConfig(ZeroTrustDeviceCustomProfileBrowserExtensionConfigArgs.builder()
+ *                 .proxyControl("unlocked")
+ *                 .proxyEnabled(true)
+ *                 .build())
  *             .captivePortal(180.0)
+ *             .default_(false)
  *             .description("Policy for test teams.")
  *             .disableAutoFallback(true)
+ *             .dnsSearchSuffixes(ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs.builder()
+ *                 .suffix("internal.corp")
+ *                 .description("Example internal domains")
+ *                 .build())
  *             .enabled(true)
  *             .excludes(ZeroTrustDeviceCustomProfileExcludeArgs.builder()
  *                 .address("192.0.2.0/24")
  *                 .description("Exclude testing domains from the tunnel")
  *                 .build())
  *             .excludeOfficeIps(true)
+ *             .globalAcceleration(ZeroTrustDeviceCustomProfileGlobalAccelerationArgs.builder()
+ *                 .apiEndpoints("198.51.100.1:443")
+ *                 .enabled(true)
+ *                 .masqueEndpoints("198.51.100.1:443")
+ *                 .wireguardEndpoints("198.51.100.1:2408")
+ *                 .build())
  *             .includes(ZeroTrustDeviceCustomProfileIncludeArgs.builder()
  *                 .address("192.0.2.0/24")
  *                 .description("Include testing domains in the tunnel")
  *                 .build())
  *             .lanAllowMinutes(30.0)
  *             .lanAllowSubnetSize(24.0)
+ *             .match("identity.email == \"test}{@literal @}{@code cloudflare.com\"")
+ *             .precedence(100.0)
+ *             .profileType("warp")
  *             .registerInterfaceIpWithDns(true)
  *             .sccmVpnBoundarySupport(false)
  *             .serviceModeV2(ZeroTrustDeviceCustomProfileServiceModeV2Args.builder()
@@ -91,6 +112,11 @@ import javax.annotation.Nullable;
  *             .supportUrl("https://1.1.1.1/help")
  *             .switchLocked(true)
  *             .tunnelProtocol("wireguard")
+ *             .uninstallProtection(false)
+ *             .virtualNetworks(ZeroTrustDeviceCustomProfileVirtualNetworksArgs.builder()
+ *                 .alloweds("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *                 .default_("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *                 .build())
  *             .build());
  * 
  *     }}{@code
@@ -168,6 +194,20 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      */
     public Output<Double> autoConnect() {
         return this.autoConnect;
+    }
+    /**
+     * Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+     * 
+     */
+    @Export(name="browserExtensionConfig", refs={ZeroTrustDeviceCustomProfileBrowserExtensionConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustDeviceCustomProfileBrowserExtensionConfig> browserExtensionConfig;
+
+    /**
+     * @return Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+     * 
+     */
+    public Output<Optional<ZeroTrustDeviceCustomProfileBrowserExtensionConfig>> browserExtensionConfig() {
+        return Codegen.optional(this.browserExtensionConfig);
     }
     /**
      * Turn on the captive portal after the specified amount of time.
@@ -354,14 +394,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
-    private Output<String> match;
+    private Output</* @Nullable */ String> match;
 
     /**
      * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
-    public Output<String> match() {
-        return this.match;
+    public Output<Optional<String>> match() {
+        return Codegen.optional(this.match);
     }
     /**
      * The name of the device settings profile.
@@ -396,6 +436,22 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      */
     public Output<Double> precedence() {
         return this.precedence;
+    }
+    /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    @Export(name="profileType", refs={String.class}, tree="[0]")
+    private Output<String> profileType;
+
+    /**
+     * @return The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public Output<String> profileType() {
+        return this.profileType;
     }
     /**
      * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
@@ -478,6 +534,20 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      */
     public Output<String> tunnelProtocol() {
         return this.tunnelProtocol;
+    }
+    /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    @Export(name="uninstallProtection", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> uninstallProtection;
+
+    /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    public Output<Boolean> uninstallProtection() {
+        return this.uninstallProtection;
     }
     /**
      * Virtual network access settings for the device.

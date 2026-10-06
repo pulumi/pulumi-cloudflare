@@ -28,6 +28,7 @@ class EmailSecurityBlockSenderArgs:
         The set of arguments for constructing a EmailSecurityBlockSender resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal value.
         :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
                - EMAIL: matches a full email address (e.g. `user@example.com`)
@@ -58,6 +59,9 @@ class EmailSecurityBlockSenderArgs:
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether `pattern` is a regular expression instead of a literal value.
+        """
         return pulumi.get(self, "is_regex")
 
     @is_regex.setter
@@ -118,6 +122,7 @@ class _EmailSecurityBlockSenderState:
         Input properties used for looking up and filtering EmailSecurityBlockSender resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal value.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
         :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
@@ -180,6 +185,9 @@ class _EmailSecurityBlockSenderState:
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether `pattern` is a regular expression instead of a literal value.
+        """
         return pulumi.get(self, "is_regex")
 
     @is_regex.setter
@@ -267,7 +275,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             is_regex=False,
             pattern="test@example.com",
             pattern_type="EMAIL",
-            comments="block sender with email test@example.com")
+            comments="Block sender with email test@example.com")
         ```
 
         ## Import
@@ -280,6 +288,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal value.
         :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
                - EMAIL: matches a full email address (e.g. `user@example.com`)
@@ -311,7 +320,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             is_regex=False,
             pattern="test@example.com",
             pattern_type="EMAIL",
-            comments="block sender with email test@example.com")
+            comments="Block sender with email test@example.com")
         ```
 
         ## Import
@@ -392,6 +401,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal value.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
         :param pulumi.Input[_builtins.str] pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
         :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
@@ -436,6 +446,9 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether `pattern` is a regular expression instead of a literal value.
+        """
         return pulumi.get(self, "is_regex")
 
     @_builtins.property

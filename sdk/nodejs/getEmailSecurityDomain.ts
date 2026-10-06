@@ -72,6 +72,7 @@ export interface GetEmailSecurityDomainResult {
     readonly emailsProcessed: outputs.GetEmailSecurityDomainEmailsProcessed;
     readonly filter?: outputs.GetEmailSecurityDomainFilter;
     /**
+     * The mailbox folder to scan, for API-scanning domains.
      * Available values: "AllItems", "Inbox".
      */
     readonly folder: string;

@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceCustomProfileFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,17 +22,25 @@ public final class GetZeroTrustDeviceCustomProfilePlainArgs extends com.pulumi.r
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="policyId", required=true)
-    private String policyId;
+    @Import(name="filter")
+    private @Nullable GetZeroTrustDeviceCustomProfileFilter filter;
 
-    public String policyId() {
-        return this.policyId;
+    public Optional<GetZeroTrustDeviceCustomProfileFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    @Import(name="policyId")
+    private @Nullable String policyId;
+
+    public Optional<String> policyId() {
+        return Optional.ofNullable(this.policyId);
     }
 
     private GetZeroTrustDeviceCustomProfilePlainArgs() {}
 
     private GetZeroTrustDeviceCustomProfilePlainArgs(GetZeroTrustDeviceCustomProfilePlainArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.policyId = $.policyId;
     }
 
@@ -59,15 +67,17 @@ public final class GetZeroTrustDeviceCustomProfilePlainArgs extends com.pulumi.r
             return this;
         }
 
-        public Builder policyId(String policyId) {
+        public Builder filter(@Nullable GetZeroTrustDeviceCustomProfileFilter filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder policyId(@Nullable String policyId) {
             $.policyId = policyId;
             return this;
         }
 
         public GetZeroTrustDeviceCustomProfilePlainArgs build() {
-            if ($.policyId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfilePlainArgs", "policyId");
-            }
             return $;
         }
     }

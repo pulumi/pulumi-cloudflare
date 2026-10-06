@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDnsLocationResult> InvokeAsync(GetZeroTrustDnsLocationArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDnsLocationResult> InvokeAsync(GetZeroTrustDnsLocationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDnsLocationResult>("cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation", args ?? new GetZeroTrustDnsLocationArgs(), options.WithDefaults());
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDnsLocationResult> Invoke(GetZeroTrustDnsLocationInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDnsLocationResult> Invoke(GetZeroTrustDnsLocationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDnsLocationResult>("cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation", args ?? new GetZeroTrustDnsLocationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -105,8 +105,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        [Input("locationId", required: true)]
-        public string LocationId { get; set; } = null!;
+        [Input("filter")]
+        public Inputs.GetZeroTrustDnsLocationFilterArgs? Filter { get; set; }
+
+        [Input("locationId")]
+        public string? LocationId { get; set; }
 
         public GetZeroTrustDnsLocationArgs()
         {
@@ -119,8 +122,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("locationId", required: true)]
-        public Input<string> LocationId { get; set; } = null!;
+        [Input("filter")]
+        public Input<Inputs.GetZeroTrustDnsLocationFilterInputArgs>? Filter { get; set; }
+
+        [Input("locationId")]
+        public Input<string>? LocationId { get; set; }
 
         public GetZeroTrustDnsLocationInvokeArgs()
         {
@@ -133,59 +139,21 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustDnsLocationResult
     {
         public readonly string? AccountId;
-        /// <summary>
-        /// Indicate whether this location is the default location.
-        /// </summary>
         public readonly bool ClientDefault;
         public readonly string CreatedAt;
-        /// <summary>
-        /// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-        /// </summary>
         public readonly string DnsDestinationIpsId;
-        /// <summary>
-        /// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
-        /// </summary>
         public readonly string DnsDestinationIpv6BlockId;
-        /// <summary>
-        /// Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
-        /// </summary>
         public readonly string DohSubdomain;
-        /// <summary>
-        /// Indicate whether the location must resolve EDNS queries.
-        /// </summary>
         public readonly bool EcsSupport;
-        /// <summary>
-        /// Configure the destination endpoints for this location.
-        /// </summary>
         public readonly Outputs.GetZeroTrustDnsLocationEndpointsResult Endpoints;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
+        public readonly Outputs.GetZeroTrustDnsLocationFilterResult? Filter;
         public readonly string Id;
-        /// <summary>
-        /// Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-        /// </summary>
         public readonly string Ip;
-        /// <summary>
-        /// Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-        /// </summary>
         public readonly string Ipv4Destination;
-        /// <summary>
-        /// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-        /// </summary>
         public readonly string Ipv4DestinationBackup;
-        public readonly string LocationId;
-        /// <summary>
-        /// Controls how DNS response TTLs are capped for this location relative to the account `MaxTtlSecs` setting. Omitting `MaxTtl` on update resets it to `Inherit`.
-        /// </summary>
+        public readonly string? LocationId;
         public readonly Outputs.GetZeroTrustDnsLocationMaxTtlResult MaxTtl;
-        /// <summary>
-        /// Specify the location name.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDnsLocationNetworkResult> Networks;
         public readonly string UpdatedAt;
 
@@ -207,6 +175,8 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetZeroTrustDnsLocationEndpointsResult endpoints,
 
+            Outputs.GetZeroTrustDnsLocationFilterResult? filter,
+
             string id,
 
             string ip,
@@ -215,7 +185,7 @@ namespace Pulumi.Cloudflare
 
             string ipv4DestinationBackup,
 
-            string locationId,
+            string? locationId,
 
             Outputs.GetZeroTrustDnsLocationMaxTtlResult maxTtl,
 
@@ -233,6 +203,7 @@ namespace Pulumi.Cloudflare
             DohSubdomain = dohSubdomain;
             EcsSupport = ecsSupport;
             Endpoints = endpoints;
+            Filter = filter;
             Id = id;
             Ip = ip;
             Ipv4Destination = ipv4Destination;

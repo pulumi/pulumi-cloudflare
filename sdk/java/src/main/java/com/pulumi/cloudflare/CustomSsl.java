@@ -78,6 +78,13 @@ import javax.annotation.Nullable;
  *   -----END CERTIFICATE-----
  * 
  *             """)
+ *             .bundleMethod("ubiquitous")
+ *             .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
+ *             .deploy("staging")
+ *             .geoRestrictions(CustomSslGeoRestrictionsArgs.builder()
+ *                 .label("us")
+ *                 .build())
+ *             .policy("(country: US) or (region: EU)")
  *             .privateKey("""
  *   -----BEGIN RSA PRIVATE KEY-----
  *   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
@@ -108,13 +115,6 @@ import javax.annotation.Nullable;
  *   -----END RSA PRIVATE KEY-----
  * 
  *             """)
- *             .bundleMethod("ubiquitous")
- *             .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
- *             .deploy("staging")
- *             .geoRestrictions(CustomSslGeoRestrictionsArgs.builder()
- *                 .label("us")
- *                 .build())
- *             .policy("(country: US) or (region: EU)")
  *             .type("sni_custom")
  *             .build());
  * 
@@ -309,18 +309,18 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
         return this.priority;
     }
     /**
-     * The zone&#39;s private key.
+     * The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
-    private Output<String> privateKey;
+    private Output</* @Nullable */ String> privateKey;
 
     /**
-     * @return The zone&#39;s private key.
+     * @return The zone&#39;s private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
      * 
      */
-    public Output<String> privateKey() {
-        return this.privateKey;
+    public Output<Optional<String>> privateKey() {
+        return Codegen.optional(this.privateKey);
     }
     /**
      * The type of hash used for the certificate.

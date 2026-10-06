@@ -19,6 +19,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -26,7 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewShare(ctx, "example_share", &cloudflare.ShareArgs{
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudflare.NewShare(ctx, "example_share", &cloudflare.ShareArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("My Shared WAF Managed Rule"),
 //				Recipients: cloudflare.ShareRecipientTypeArray{
@@ -37,7 +44,7 @@ import (
 //				},
 //				Resources: cloudflare.ShareResourceTypeArray{
 //					&cloudflare.ShareResourceTypeArgs{
-//						Meta:              pulumi.String{},
+//						Meta:              pulumi.String(json0),
 //						ResourceAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //						ResourceId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //						ResourceType:      pulumi.String("custom-ruleset"),
@@ -75,6 +82,10 @@ type Share struct {
 	DisassociatedRecipientCount pulumi.IntOutput `pulumi:"disassociatedRecipientCount"`
 	// The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatingRecipientCount pulumi.IntOutput `pulumi:"disassociatingRecipientCount"`
+	// Include recipient counts in the response.
+	IncludeRecipientCounts pulumi.BoolPtrOutput `pulumi:"includeRecipientCounts"`
+	// Include resources in the response.
+	IncludeResources pulumi.BoolPtrOutput `pulumi:"includeResources"`
 	// Available values: "sent", "received".
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// When the share was modified.
@@ -147,6 +158,10 @@ type shareState struct {
 	DisassociatedRecipientCount *int `pulumi:"disassociatedRecipientCount"`
 	// The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatingRecipientCount *int `pulumi:"disassociatingRecipientCount"`
+	// Include recipient counts in the response.
+	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
+	// Include resources in the response.
+	IncludeResources *bool `pulumi:"includeResources"`
 	// Available values: "sent", "received".
 	Kind *string `pulumi:"kind"`
 	// When the share was modified.
@@ -178,6 +193,10 @@ type ShareState struct {
 	DisassociatedRecipientCount pulumi.IntPtrInput
 	// The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 	DisassociatingRecipientCount pulumi.IntPtrInput
+	// Include recipient counts in the response.
+	IncludeRecipientCounts pulumi.BoolPtrInput
+	// Include resources in the response.
+	IncludeResources pulumi.BoolPtrInput
 	// Available values: "sent", "received".
 	Kind pulumi.StringPtrInput
 	// When the share was modified.
@@ -201,6 +220,10 @@ func (ShareState) ElementType() reflect.Type {
 type shareArgs struct {
 	// Account identifier.
 	AccountId string `pulumi:"accountId"`
+	// Include recipient counts in the response.
+	IncludeRecipientCounts *bool `pulumi:"includeRecipientCounts"`
+	// Include resources in the response.
+	IncludeResources *bool `pulumi:"includeResources"`
 	// The name of the share.
 	Name       string               `pulumi:"name"`
 	Recipients []ShareRecipientType `pulumi:"recipients"`
@@ -211,6 +234,10 @@ type shareArgs struct {
 type ShareArgs struct {
 	// Account identifier.
 	AccountId pulumi.StringInput
+	// Include recipient counts in the response.
+	IncludeRecipientCounts pulumi.BoolPtrInput
+	// Include resources in the response.
+	IncludeResources pulumi.BoolPtrInput
 	// The name of the share.
 	Name       pulumi.StringInput
 	Recipients ShareRecipientTypeArrayInput
@@ -337,6 +364,16 @@ func (o ShareOutput) DisassociatedRecipientCount() pulumi.IntOutput {
 // The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
 func (o ShareOutput) DisassociatingRecipientCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Share) pulumi.IntOutput { return v.DisassociatingRecipientCount }).(pulumi.IntOutput)
+}
+
+// Include recipient counts in the response.
+func (o ShareOutput) IncludeRecipientCounts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.BoolPtrOutput { return v.IncludeRecipientCounts }).(pulumi.BoolPtrOutput)
+}
+
+// Include resources in the response.
+func (o ShareOutput) IncludeResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.BoolPtrOutput { return v.IncludeResources }).(pulumi.BoolPtrOutput)
 }
 
 // Available values: "sent", "received".

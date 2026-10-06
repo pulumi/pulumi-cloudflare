@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkersResultObservabilityIssues;
 import com.pulumi.cloudflare.outputs.GetWorkersResultObservabilityLogs;
 import com.pulumi.cloudflare.outputs.GetWorkersResultObservabilityTraces;
 import com.pulumi.core.annotations.CustomType;
@@ -23,6 +24,11 @@ public final class GetWorkersResultObservability {
      * 
      */
     private Double headSamplingRate;
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    private GetWorkersResultObservabilityIssues issues;
     /**
      * @return Log settings for the Worker.
      * 
@@ -53,6 +59,13 @@ public final class GetWorkersResultObservability {
      */
     public Double headSamplingRate() {
         return this.headSamplingRate;
+    }
+    /**
+     * @return Real-time Issues settings for the Worker.
+     * 
+     */
+    public GetWorkersResultObservabilityIssues issues() {
+        return this.issues;
     }
     /**
      * @return Log settings for the Worker.
@@ -87,6 +100,7 @@ public final class GetWorkersResultObservability {
     public static final class Builder {
         private Boolean enabled;
         private Double headSamplingRate;
+        private GetWorkersResultObservabilityIssues issues;
         private GetWorkersResultObservabilityLogs logs;
         private Boolean redactQueryString;
         private GetWorkersResultObservabilityTraces traces;
@@ -95,6 +109,7 @@ public final class GetWorkersResultObservability {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
+    	      this.issues = defaults.issues;
     	      this.logs = defaults.logs;
     	      this.redactQueryString = defaults.redactQueryString;
     	      this.traces = defaults.traces;
@@ -114,6 +129,14 @@ public final class GetWorkersResultObservability {
               throw new MissingRequiredPropertyException("GetWorkersResultObservability", "headSamplingRate");
             }
             this.headSamplingRate = headSamplingRate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issues(GetWorkersResultObservabilityIssues issues) {
+            if (issues == null) {
+              throw new MissingRequiredPropertyException("GetWorkersResultObservability", "issues");
+            }
+            this.issues = issues;
             return this;
         }
         @CustomType.Setter
@@ -144,6 +167,7 @@ public final class GetWorkersResultObservability {
             final var _resultValue = new GetWorkersResultObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
+            _resultValue.issues = issues;
             _resultValue.logs = logs;
             _resultValue.redactQueryString = redactQueryString;
             _resultValue.traces = traces;

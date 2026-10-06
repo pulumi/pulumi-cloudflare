@@ -36,10 +36,10 @@ class ZoneDnsSettingsArgs:
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
-        :param pulumi.Input[_builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        :param pulumi.Input[_builtins.bool] foundation_dns: Deprecated. Use nameservers.type to configure Advanced Nameservers.
         :param pulumi.Input['ZoneDnsSettingsInternalDnsArgs'] internal_dns: Settings for this internal zone.
         :param pulumi.Input[_builtins.bool] multi_provider: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
-        :param pulumi.Input['ZoneDnsSettingsNameserversArgs'] nameservers: Settings determining the nameservers through which the zone should be available.
+        :param pulumi.Input['ZoneDnsSettingsNameserversArgs'] nameservers: Controls the nameservers through which the zone is available.
         :param pulumi.Input[_builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[_builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         :param pulumi.Input['ZoneDnsSettingsSoaArgs'] soa: Components of the zone's SOA record.
@@ -49,6 +49,11 @@ class ZoneDnsSettingsArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if flatten_all_cnames is not None:
             pulumi.set(__self__, "flatten_all_cnames", flatten_all_cnames)
+        if foundation_dns is not None:
+            warnings.warn("""foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+""", DeprecationWarning)
+            pulumi.log.warn("""foundation_dns is deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+""")
         if foundation_dns is not None:
             pulumi.set(__self__, "foundation_dns", foundation_dns)
         if internal_dns is not None:
@@ -92,9 +97,11 @@ class ZoneDnsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="foundationDns")
+    @_utilities.deprecated("""foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+""")
     def foundation_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        Deprecated. Use nameservers.type to configure Advanced Nameservers.
         """
         return pulumi.get(self, "foundation_dns")
 
@@ -130,7 +137,7 @@ class ZoneDnsSettingsArgs:
     @pulumi.getter
     def nameservers(self) -> pulumi.Input[Optional['ZoneDnsSettingsNameserversArgs']]:
         """
-        Settings determining the nameservers through which the zone should be available.
+        Controls the nameservers through which the zone is available.
         """
         return pulumi.get(self, "nameservers")
 
@@ -205,10 +212,10 @@ class _ZoneDnsSettingsState:
         Input properties used for looking up and filtering ZoneDnsSettings resources.
 
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
-        :param pulumi.Input[_builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        :param pulumi.Input[_builtins.bool] foundation_dns: Deprecated. Use nameservers.type to configure Advanced Nameservers.
         :param pulumi.Input['ZoneDnsSettingsInternalDnsArgs'] internal_dns: Settings for this internal zone.
         :param pulumi.Input[_builtins.bool] multi_provider: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
-        :param pulumi.Input['ZoneDnsSettingsNameserversArgs'] nameservers: Settings determining the nameservers through which the zone should be available.
+        :param pulumi.Input['ZoneDnsSettingsNameserversArgs'] nameservers: Controls the nameservers through which the zone is available.
         :param pulumi.Input[_builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[_builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         :param pulumi.Input['ZoneDnsSettingsSoaArgs'] soa: Components of the zone's SOA record.
@@ -218,6 +225,11 @@ class _ZoneDnsSettingsState:
         """
         if flatten_all_cnames is not None:
             pulumi.set(__self__, "flatten_all_cnames", flatten_all_cnames)
+        if foundation_dns is not None:
+            warnings.warn("""foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+""", DeprecationWarning)
+            pulumi.log.warn("""foundation_dns is deprecated: foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+""")
         if foundation_dns is not None:
             pulumi.set(__self__, "foundation_dns", foundation_dns)
         if internal_dns is not None:
@@ -251,9 +263,11 @@ class _ZoneDnsSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="foundationDns")
+    @_utilities.deprecated("""foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+""")
     def foundation_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        Deprecated. Use nameservers.type to configure Advanced Nameservers.
         """
         return pulumi.get(self, "foundation_dns")
 
@@ -289,7 +303,7 @@ class _ZoneDnsSettingsState:
     @pulumi.getter
     def nameservers(self) -> pulumi.Input[Optional['ZoneDnsSettingsNameserversArgs']]:
         """
-        Settings determining the nameservers through which the zone should be available.
+        Controls the nameservers through which the zone is available.
         """
         return pulumi.get(self, "nameservers")
 
@@ -399,7 +413,6 @@ class ZoneDnsSettings(pulumi.CustomResource):
             },
             multi_provider=False,
             nameservers={
-                "ns_set": 1,
                 "type": "cloudflare.standard",
             },
             ns_ttl=float(86400),
@@ -424,10 +437,10 @@ class ZoneDnsSettings(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
-        :param pulumi.Input[_builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        :param pulumi.Input[_builtins.bool] foundation_dns: Deprecated. Use nameservers.type to configure Advanced Nameservers.
         :param pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict', 'outputs.ZoneDnsSettingsInternalDns']] internal_dns: Settings for this internal zone.
         :param pulumi.Input[_builtins.bool] multi_provider: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
-        :param pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']] nameservers: Settings determining the nameservers through which the zone should be available.
+        :param pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']] nameservers: Controls the nameservers through which the zone is available.
         :param pulumi.Input[_builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[_builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         :param pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict', 'outputs.ZoneDnsSettingsSoa']] soa: Components of the zone's SOA record.
@@ -464,7 +477,6 @@ class ZoneDnsSettings(pulumi.CustomResource):
             },
             multi_provider=False,
             nameservers={
-                "ns_set": 1,
                 "type": "cloudflare.standard",
             },
             ns_ttl=float(86400),
@@ -560,10 +572,10 @@ class ZoneDnsSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
-        :param pulumi.Input[_builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        :param pulumi.Input[_builtins.bool] foundation_dns: Deprecated. Use nameservers.type to configure Advanced Nameservers.
         :param pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict', 'outputs.ZoneDnsSettingsInternalDns']] internal_dns: Settings for this internal zone.
         :param pulumi.Input[_builtins.bool] multi_provider: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
-        :param pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']] nameservers: Settings determining the nameservers through which the zone should be available.
+        :param pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict', 'outputs.ZoneDnsSettingsNameservers']] nameservers: Controls the nameservers through which the zone is available.
         :param pulumi.Input[_builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[_builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         :param pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict', 'outputs.ZoneDnsSettingsSoa']] soa: Components of the zone's SOA record.
@@ -597,9 +609,11 @@ class ZoneDnsSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="foundationDns")
+    @_utilities.deprecated("""foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+""")
     def foundation_dns(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        Deprecated. Use nameservers.type to configure Advanced Nameservers.
         """
         return pulumi.get(self, "foundation_dns")
 
@@ -623,7 +637,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
     @pulumi.getter
     def nameservers(self) -> pulumi.Output['outputs.ZoneDnsSettingsNameservers']:
         """
-        Settings determining the nameservers through which the zone should be available.
+        Controls the nameservers through which the zone is available.
         """
         return pulumi.get(self, "nameservers")
 

@@ -53,7 +53,7 @@ class GetWorkersCronTriggerResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "id")
 
@@ -66,7 +66,7 @@ class GetWorkersCronTriggerResult:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> _builtins.str:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 
@@ -104,7 +104,7 @@ def get_workers_cron_trigger(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account_id: Identifier.
-    :param _builtins.str script_name: Name of the script, used in URLs and route configuration.
+    :param _builtins.str script_name: Name of the script.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -138,7 +138,7 @@ def get_workers_cron_trigger_output(account_id: pulumi.Input[Optional[Optional[_
 
 
     :param _builtins.str account_id: Identifier.
-    :param _builtins.str script_name: Name of the script, used in URLs and route configuration.
+    :param _builtins.str script_name: Name of the script.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

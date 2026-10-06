@@ -150,6 +150,10 @@ namespace Pulumi.Cloudflare
         public readonly string ModifiedOn;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetWorkflowScheduleResult> Schedules;
+        /// <summary>
+        /// Whether the bound Worker was deleted, leaving this Workflow inactive.
+        /// </summary>
+        public readonly bool ScriptDeleted;
         public readonly string ScriptName;
         public readonly string TriggeredOn;
         public readonly string? WorkflowName;
@@ -174,6 +178,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetWorkflowScheduleResult> schedules,
 
+            bool scriptDeleted,
+
             string scriptName,
 
             string triggeredOn,
@@ -189,6 +195,7 @@ namespace Pulumi.Cloudflare
             ModifiedOn = modifiedOn;
             Name = name;
             Schedules = schedules;
+            ScriptDeleted = scriptDeleted;
             ScriptName = scriptName;
             TriggeredOn = triggeredOn;
             WorkflowName = workflowName;

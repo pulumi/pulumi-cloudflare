@@ -54,28 +54,28 @@ func LookupWorkersKvNamespace(ctx *pulumi.Context, args *LookupWorkersKvNamespac
 
 // A collection of arguments for invoking getWorkersKvNamespace.
 type LookupWorkersKvNamespaceArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId *string                      `pulumi:"accountId"`
 	Filter    *GetWorkersKvNamespaceFilter `pulumi:"filter"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId *string `pulumi:"namespaceId"`
 }
 
 // A collection of values returned by getWorkersKvNamespace.
 type LookupWorkersKvNamespaceResult struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId *string                      `pulumi:"accountId"`
 	Filter    *GetWorkersKvNamespaceFilter `pulumi:"filter"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	Id string `pulumi:"id"`
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction string `pulumi:"jurisdiction"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding bool `pulumi:"supportsUrlEncoding"`
-	// A human-readable string name for a Namespace.
+	// Human-readable string name for a Workers KV namespace.
 	Title string `pulumi:"title"`
 }
 
@@ -86,10 +86,10 @@ func LookupWorkersKvNamespaceOutput(ctx *pulumi.Context, args LookupWorkersKvNam
 
 // A collection of arguments for invoking getWorkersKvNamespace.
 type LookupWorkersKvNamespaceOutputArgs struct {
-	// Identifier.
+	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId pulumi.StringPtrInput               `pulumi:"accountId"`
 	Filter    GetWorkersKvNamespaceFilterPtrInput `pulumi:"filter"`
-	// Namespace identifier tag.
+	// ID of the Workers KV namespace.
 	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
 }
 
@@ -112,7 +112,7 @@ func (o LookupWorkersKvNamespaceResultOutput) ToLookupWorkersKvNamespaceResultOu
 	return o
 }
 
-// Identifier.
+// ID of the Cloudflare account that owns the Workers KV namespaces.
 func (o LookupWorkersKvNamespaceResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -121,7 +121,7 @@ func (o LookupWorkersKvNamespaceResultOutput) Filter() GetWorkersKvNamespaceFilt
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) *GetWorkersKvNamespaceFilter { return v.Filter }).(GetWorkersKvNamespaceFilterPtrOutput)
 }
 
-// Namespace identifier tag.
+// ID of the Workers KV namespace.
 func (o LookupWorkersKvNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -132,7 +132,7 @@ func (o LookupWorkersKvNamespaceResultOutput) Jurisdiction() pulumi.StringOutput
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
-// Namespace identifier tag.
+// ID of the Workers KV namespace.
 func (o LookupWorkersKvNamespaceResultOutput) NamespaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) *string { return v.NamespaceId }).(pulumi.StringPtrOutput)
 }
@@ -142,7 +142,7 @@ func (o LookupWorkersKvNamespaceResultOutput) SupportsUrlEncoding() pulumi.BoolO
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) bool { return v.SupportsUrlEncoding }).(pulumi.BoolOutput)
 }
 
-// A human-readable string name for a Namespace.
+// Human-readable string name for a Workers KV namespace.
 func (o LookupWorkersKvNamespaceResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.Title }).(pulumi.StringOutput)
 }

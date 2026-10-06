@@ -39,9 +39,17 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.comments);
     }
 
+    /**
+     * Whether `pattern` is a regular expression instead of a literal value.
+     * 
+     */
     @Import(name="isRegex", required=true)
     private Output<Boolean> isRegex;
 
+    /**
+     * @return Whether `pattern` is a regular expression instead of a literal value.
+     * 
+     */
     public Output<Boolean> isRegex() {
         return this.isRegex;
     }
@@ -144,11 +152,23 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
             return comments(Output.of(comments));
         }
 
+        /**
+         * @param isRegex Whether `pattern` is a regular expression instead of a literal value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRegex(Output<Boolean> isRegex) {
             $.isRegex = isRegex;
             return this;
         }
 
+        /**
+         * @param isRegex Whether `pattern` is a regular expression instead of a literal value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRegex(Boolean isRegex) {
             return isRegex(Output.of(isRegex));
         }

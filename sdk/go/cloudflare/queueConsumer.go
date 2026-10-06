@@ -74,7 +74,7 @@ type QueueConsumer struct {
 	// Name of a Worker
 	ScriptName pulumi.StringOutput         `pulumi:"scriptName"`
 	Settings   QueueConsumerSettingsOutput `pulumi:"settings"`
-	// Available values: "worker", "httpPull".
+	// Available values: "worker", "httpPull", "notification".
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -129,7 +129,7 @@ type queueConsumerState struct {
 	// Name of a Worker
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
-	// Available values: "worker", "httpPull".
+	// Available values: "worker", "httpPull", "notification".
 	Type *string `pulumi:"type"`
 }
 
@@ -146,7 +146,7 @@ type QueueConsumerState struct {
 	// Name of a Worker
 	ScriptName pulumi.StringPtrInput
 	Settings   QueueConsumerSettingsPtrInput
-	// Available values: "worker", "httpPull".
+	// Available values: "worker", "httpPull", "notification".
 	Type pulumi.StringPtrInput
 }
 
@@ -163,7 +163,7 @@ type queueConsumerArgs struct {
 	// Name of a Worker
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
-	// Available values: "worker", "httpPull".
+	// Available values: "worker", "httpPull", "notification".
 	Type string `pulumi:"type"`
 }
 
@@ -177,7 +177,7 @@ type QueueConsumerArgs struct {
 	// Name of a Worker
 	ScriptName pulumi.StringPtrInput
 	Settings   QueueConsumerSettingsPtrInput
-	// Available values: "worker", "httpPull".
+	// Available values: "worker", "httpPull", "notification".
 	Type pulumi.StringInput
 }
 
@@ -304,7 +304,7 @@ func (o QueueConsumerOutput) Settings() QueueConsumerSettingsOutput {
 	return o.ApplyT(func(v *QueueConsumer) QueueConsumerSettingsOutput { return v.Settings }).(QueueConsumerSettingsOutput)
 }
 
-// Available values: "worker", "httpPull".
+// Available values: "worker", "httpPull", "notification".
 func (o QueueConsumerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

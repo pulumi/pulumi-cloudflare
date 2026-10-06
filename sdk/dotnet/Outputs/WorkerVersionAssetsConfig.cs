@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkerVersionAssetsConfig
     {
         /// <summary>
+        /// The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+        /// </summary>
+        public readonly string? BasePath;
+        /// <summary>
         /// Determines the redirects and rewrites of requests for HTML content.
         /// Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         /// </summary>
@@ -30,12 +34,15 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private WorkerVersionAssetsConfig(
+            string? basePath,
+
             string? htmlHandling,
 
             string? notFoundHandling,
 
             object? runWorkerFirst)
         {
+            BasePath = basePath;
             HtmlHandling = htmlHandling;
             NotFoundHandling = notFoundHandling;
             RunWorkerFirst = runWorkerFirst;

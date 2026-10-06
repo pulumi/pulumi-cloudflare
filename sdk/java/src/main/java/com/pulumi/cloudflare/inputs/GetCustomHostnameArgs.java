@@ -17,14 +17,14 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
     public static final GetCustomHostnameArgs Empty = new GetCustomHostnameArgs();
 
     /**
-     * Identifier.
+     * Custom hostname identifier tag.
      * 
      */
     @Import(name="customHostnameId")
     private @Nullable Output<String> customHostnameId;
 
     /**
-     * @return Identifier.
+     * @return Custom hostname identifier tag.
      * 
      */
     public Optional<Output<String>> customHostnameId() {
@@ -80,7 +80,7 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param customHostnameId Identifier.
+         * @param customHostnameId Custom hostname identifier tag.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param customHostnameId Identifier.
+         * @param customHostnameId Custom hostname identifier tag.
          * 
          * @return builder
          * 

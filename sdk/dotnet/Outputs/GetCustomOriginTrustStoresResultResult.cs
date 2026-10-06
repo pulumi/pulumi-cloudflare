@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ExpiresOn;
         /// <summary>
-        /// Identifier.
+        /// Certificate identifier tag.
         /// </summary>
         public readonly string Id;
         /// <summary>

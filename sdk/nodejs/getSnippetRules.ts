@@ -9,6 +9,17 @@ import * as utilities from "./utilities";
  *
  * - `Snippets Read`
  * - `Snippets Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleSnippetRules = cloudflare.getSnippetRules({
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ * });
+ * ```
  */
 export function getSnippetRules(args: GetSnippetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,6 +56,17 @@ export interface GetSnippetRulesResult {
  *
  * - `Snippets Read`
  * - `Snippets Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleSnippetRules = cloudflare.getSnippetRules({
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ * });
+ * ```
  */
 export function getSnippetRulesOutput(args: GetSnippetRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

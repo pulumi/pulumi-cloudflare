@@ -58,7 +58,7 @@ export class R2Bucket extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
@@ -129,7 +129,7 @@ export class R2Bucket extends pulumi.CustomResource {
  */
 export interface R2BucketState {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -162,7 +162,7 @@ export interface R2BucketState {
  */
 export interface R2BucketArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

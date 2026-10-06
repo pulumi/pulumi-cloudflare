@@ -28,6 +28,12 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
+        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// </summary>
+        [Input("hostname")]
+        public string? Hostname { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -69,6 +75,12 @@ namespace Pulumi.Cloudflare
     {
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -114,6 +126,10 @@ namespace Pulumi.Cloudflare
     {
         public readonly string? AccountId;
         /// <summary>
+        /// Filter by exact Search for Agents hostname (case-insensitive).
+        /// </summary>
+        public readonly string? Hostname;
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
@@ -144,6 +160,8 @@ namespace Pulumi.Cloudflare
         private GetAiSearchInstancesResult(
             string? accountId,
 
+            string? hostname,
+
             int? maxItems,
 
             string? @namespace,
@@ -157,6 +175,7 @@ namespace Pulumi.Cloudflare
             string? search)
         {
             AccountId = accountId;
+            Hostname = hostname;
             MaxItems = maxItems;
             Namespace = @namespace;
             OrderBy = orderBy;

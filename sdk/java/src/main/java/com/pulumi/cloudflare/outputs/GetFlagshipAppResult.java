@@ -11,18 +11,18 @@ import java.util.Objects;
 @CustomType
 public final class GetFlagshipAppResult {
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     private String accountId;
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     private String appId;
     private String createdAt;
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     private String id;
@@ -36,14 +36,14 @@ public final class GetFlagshipAppResult {
 
     private GetFlagshipAppResult() {}
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public String appId() {
@@ -53,7 +53,7 @@ public final class GetFlagshipAppResult {
         return this.createdAt;
     }
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public String id() {

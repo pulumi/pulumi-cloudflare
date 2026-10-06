@@ -76,14 +76,14 @@ public final class CallsSfuAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A short description of Calls app, not shown to end users.
+     * A short description of a Realtime SFU app, not shown to end users.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A short description of Calls app, not shown to end users.
+     * @return A short description of a Realtime SFU app, not shown to end users.
      * 
      */
     public Optional<Output<String>> name() {
@@ -235,7 +235,7 @@ public final class CallsSfuAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A short description of Calls app, not shown to end users.
+         * @param name A short description of a Realtime SFU app, not shown to end users.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class CallsSfuAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A short description of Calls app, not shown to end users.
+         * @param name A short description of a Realtime SFU app, not shown to end users.
          * 
          * @return builder
          * 

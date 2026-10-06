@@ -18,6 +18,21 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
     public static final WorkersScriptAssetsConfigArgs Empty = new WorkersScriptAssetsConfigArgs();
 
     /**
+     * The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     * 
+     */
+    @Import(name="basePath")
+    private @Nullable Output<String> basePath;
+
+    /**
+     * @return The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+     * 
+     */
+    public Optional<Output<String>> basePath() {
+        return Optional.ofNullable(this.basePath);
+    }
+
+    /**
      * The contents of a _headers file (used to attach custom headers on asset responses).
      * 
      */
@@ -122,6 +137,7 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
     private WorkersScriptAssetsConfigArgs() {}
 
     private WorkersScriptAssetsConfigArgs(WorkersScriptAssetsConfigArgs $) {
+        this.basePath = $.basePath;
         this.headers = $.headers;
         this.htmlHandling = $.htmlHandling;
         this.notFoundHandling = $.notFoundHandling;
@@ -146,6 +162,27 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
 
         public Builder(WorkersScriptAssetsConfigArgs defaults) {
             $ = new WorkersScriptAssetsConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param basePath The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePath(@Nullable Output<String> basePath) {
+            $.basePath = basePath;
+            return this;
+        }
+
+        /**
+         * @param basePath The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePath(String basePath) {
+            return basePath(Output.of(basePath));
         }
 
         /**

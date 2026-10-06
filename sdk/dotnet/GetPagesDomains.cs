@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName", required: true)]
         public string ProjectName { get; set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// Name of the project.
+        /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         /// </summary>
         public readonly string ProjectName;
         /// <summary>

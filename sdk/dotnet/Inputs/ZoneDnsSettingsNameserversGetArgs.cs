@@ -13,17 +13,23 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZoneDnsSettingsNameserversGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configured nameserver set to be used for this zone
+        /// Identifier of the account-owned Custom Nameserver Set to use for this zone.
+        /// </summary>
+        [Input("nameserverSetId")]
+        public Input<string>? NameserverSetId { get; set; }
+
+        /// <summary>
+        /// Configured nameserver set number to use for this zone.
         /// </summary>
         [Input("nsSet")]
         public Input<int>? NsSet { get; set; }
 
         /// <summary>
-        /// Nameserver type
-        /// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+        /// Nameserver type.
+        /// Available values: "cloudflare.standard", "cloudflare.advanced", "custom.account", "custom.tenant", "custom.zone", "custom".
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public ZoneDnsSettingsNameserversGetArgs()
         {

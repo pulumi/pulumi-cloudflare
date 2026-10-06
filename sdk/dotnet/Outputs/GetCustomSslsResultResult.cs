@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetCustomSslsResultGeoRestrictionsResult GeoRestrictions;
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Identifier.
+        /// Custom certificate identifier tag.
         /// </summary>
         public readonly string Id;
         /// <summary>

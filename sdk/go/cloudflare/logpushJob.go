@@ -33,9 +33,10 @@ import (
 //			_, err := cloudflare.NewLogpushJob(ctx, "example_logpush_job", &cloudflare.LogpushJobArgs{
 //				DestinationConf:          pulumi.String("s3://mybucket/logs?region=us-west-2"),
 //				ZoneId:                   pulumi.String("zone_id"),
-//				Dataset:                  pulumi.String("gateway_dns"),
+//				Dataset:                  pulumi.String("http_requests"),
 //				Enabled:                  pulumi.Bool(false),
 //				Filter:                   pulumi.String("{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}"),
+//				FilterAttackTraffic:      pulumi.Bool(true),
 //				Frequency:                pulumi.String("high"),
 //				Kind:                     pulumi.String(""),
 //				LogpullOptions:           pulumi.String("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339"),
@@ -44,20 +45,20 @@ import (
 //				MaxUploadRecords:         pulumi.Int(1000),
 //				Name:                     pulumi.String("example.com"),
 //				OutputOptions: &cloudflare.LogpushJobOutputOptionsArgs{
-//					BatchPrefix:    pulumi.String(""),
-//					BatchSuffix:    pulumi.String(""),
-//					Cve202144228:   pulumi.Bool(false),
-//					FieldDelimiter: pulumi.String(","),
+//					BatchPrefix:    pulumi.String("batch_prefix"),
+//					BatchSuffix:    pulumi.String("batch_suffix"),
+//					Cve202144228:   pulumi.Bool(true),
+//					FieldDelimiter: pulumi.String("field_delimiter"),
 //					FieldNames: pulumi.StringArray{
-//						pulumi.String("Datetime"),
-//						pulumi.String("DstIP"),
-//						pulumi.String("SrcIP"),
+//						pulumi.String("ClientIP"),
+//						pulumi.String("EdgeStartTimestamp"),
+//						pulumi.String("RayID"),
 //					},
 //					MergeSubrequests: pulumi.Bool(true),
 //					OutputType:       pulumi.String("ndjson"),
-//					RecordDelimiter:  pulumi.String(""),
-//					RecordPrefix:     pulumi.String("{"),
-//					RecordSuffix:     pulumi.String("    }\n\n"),
+//					RecordDelimiter:  pulumi.String("record_delimiter"),
+//					RecordPrefix:     pulumi.String("record_prefix"),
+//					RecordSuffix:     pulumi.String("record_suffix"),
 //					RecordTemplate:   pulumi.String("record_template"),
 //					SampleRate:       pulumi.Float64(1),
 //					TimestampFormat:  pulumi.String("unixnano"),
@@ -94,6 +95,8 @@ type LogpushJob struct {
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
 	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
 	Filter pulumi.StringOutput `pulumi:"filter"`
+	// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+	FilterAttackTraffic pulumi.BoolOutput `pulumi:"filterAttackTraffic"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -183,6 +186,8 @@ type logpushJobState struct {
 	ErrorMessage *string `pulumi:"errorMessage"`
 	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
 	Filter *string `pulumi:"filter"`
+	// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+	FilterAttackTraffic *bool `pulumi:"filterAttackTraffic"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -229,6 +234,8 @@ type LogpushJobState struct {
 	ErrorMessage pulumi.StringPtrInput
 	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
 	Filter pulumi.StringPtrInput
+	// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+	FilterAttackTraffic pulumi.BoolPtrInput
 	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -277,6 +284,8 @@ type logpushJobArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
 	Filter *string `pulumi:"filter"`
+	// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+	FilterAttackTraffic *bool `pulumi:"filterAttackTraffic"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -318,6 +327,8 @@ type LogpushJobArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
 	Filter pulumi.StringPtrInput
+	// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+	FilterAttackTraffic pulumi.BoolPtrInput
 	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -462,6 +473,11 @@ func (o LogpushJobOutput) ErrorMessage() pulumi.StringOutput {
 // The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
 func (o LogpushJobOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
+}
+
+// When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+func (o LogpushJobOutput) FilterAttackTraffic() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.BoolOutput { return v.FilterAttackTraffic }).(pulumi.BoolOutput)
 }
 
 // This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.

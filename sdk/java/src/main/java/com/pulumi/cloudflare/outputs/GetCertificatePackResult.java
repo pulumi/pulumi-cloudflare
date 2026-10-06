@@ -27,7 +27,7 @@ public final class GetCertificatePackResult {
      */
     private String certificateAuthority;
     /**
-     * @return Identifier.
+     * @return The unique identifier for a certificate_pack.
      * 
      */
     private @Nullable String certificatePackId;
@@ -53,7 +53,7 @@ public final class GetCertificatePackResult {
      */
     private List<String> hosts;
     /**
-     * @return Identifier.
+     * @return The unique identifier for a certificate_pack.
      * 
      */
     private String id;
@@ -112,7 +112,7 @@ public final class GetCertificatePackResult {
         return this.certificateAuthority;
     }
     /**
-     * @return Identifier.
+     * @return The unique identifier for a certificate_pack.
      * 
      */
     public Optional<String> certificatePackId() {
@@ -150,7 +150,7 @@ public final class GetCertificatePackResult {
         return this.hosts;
     }
     /**
-     * @return Identifier.
+     * @return The unique identifier for a certificate_pack.
      * 
      */
     public String id() {

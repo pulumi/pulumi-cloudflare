@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool PkceEnabled;
         /// <summary>
         /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an InteractionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-        /// Available values: "login", "SelectAccount", "none".
+        /// Available values: "login", "SelectAccount", "none", "consent".
         /// </summary>
         public readonly string Prompt;
         public readonly string RedirectUrl;
@@ -143,6 +143,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The TokenEndpoint URL of your IdP
         /// </summary>
         public readonly string TokenUrl;
+        /// <summary>
+        /// Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+        /// </summary>
+        public readonly bool UseLoginHint;
 
         [OutputConstructor]
         private GetZeroTrustAccessIdentityProviderConfigResult(
@@ -208,7 +212,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool supportGroups,
 
-            string tokenUrl)
+            string tokenUrl,
+
+            bool useLoginHint)
         {
             AppsDomain = appsDomain;
             Attributes = attributes;
@@ -242,6 +248,7 @@ namespace Pulumi.Cloudflare.Outputs
             SsoTargetUrl = ssoTargetUrl;
             SupportGroups = supportGroups;
             TokenUrl = tokenUrl;
+            UseLoginHint = useLoginHint;
         }
     }
 }

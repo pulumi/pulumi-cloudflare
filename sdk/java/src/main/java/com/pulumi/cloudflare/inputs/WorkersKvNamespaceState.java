@@ -17,14 +17,14 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     public static final WorkersKvNamespaceState Empty = new WorkersKvNamespaceState();
 
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -64,14 +64,14 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A human-readable string name for a Namespace.
+     * Human-readable string name for a Workers KV namespace.
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return A human-readable string name for a Namespace.
+     * @return Human-readable string name for a Workers KV namespace.
      * 
      */
     public Optional<Output<String>> title() {
@@ -106,7 +106,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param title A human-readable string name for a Namespace.
+         * @param title Human-readable string name for a Workers KV namespace.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param title A human-readable string name for a Namespace.
+         * @param title Human-readable string name for a Workers KV namespace.
          * 
          * @return builder
          * 

@@ -28,7 +28,7 @@ class GetSpectrumApplicationResult:
     """
     A collection of values returned by getSpectrumApplication.
     """
-    def __init__(__self__, app_id=None, argo_smart_routing=None, created_on=None, dns=None, edge_ips=None, filter=None, id=None, ip_firewall=None, modified_on=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, virtual_network_id=None, zone_id=None):
+    def __init__(__self__, app_id=None, argo_smart_routing=None, created_on=None, dns=None, edge_ips=None, filter=None, id=None, ip_firewall=None, modified_on=None, origin_directs=None, origin_dns=None, origin_port=None, origin_worker_id=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, virtual_network_id=None, zone_id=None):
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -65,6 +65,9 @@ class GetSpectrumApplicationResult:
         if origin_port and not isinstance(origin_port, dict):
             raise TypeError("Expected argument 'origin_port' to be a dict")
         pulumi.set(__self__, "origin_port", origin_port)
+        if origin_worker_id and not isinstance(origin_worker_id, str):
+            raise TypeError("Expected argument 'origin_worker_id' to be a str")
+        pulumi.set(__self__, "origin_worker_id", origin_worker_id)
         if protocol and not isinstance(protocol, str):
             raise TypeError("Expected argument 'protocol' to be a str")
         pulumi.set(__self__, "protocol", protocol)
@@ -181,6 +184,14 @@ class GetSpectrumApplicationResult:
         return pulumi.get(self, "origin_port")
 
     @_builtins.property
+    @pulumi.getter(name="originWorkerId")
+    def origin_worker_id(self) -> _builtins.str:
+        """
+        Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+        """
+        return pulumi.get(self, "origin_worker_id")
+
+    @_builtins.property
     @pulumi.getter
     def protocol(self) -> _builtins.str:
         """
@@ -210,8 +221,8 @@ class GetSpectrumApplicationResult:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> _builtins.str:
         """
-        Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-        Available values: "direct", "http", "https".
+        Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to "worker", traffic is sent to the Worker specified by `origin_worker_id`.
+        Available values: "direct", "http", "https", "worker".
         """
         return pulumi.get(self, "traffic_type")
 
@@ -250,6 +261,7 @@ class AwaitableGetSpectrumApplicationResult(GetSpectrumApplicationResult):
             origin_directs=self.origin_directs,
             origin_dns=self.origin_dns,
             origin_port=self.origin_port,
+            origin_worker_id=self.origin_worker_id,
             protocol=self.protocol,
             proxy_protocol=self.proxy_protocol,
             tls=self.tls,
@@ -302,6 +314,7 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
         origin_directs=pulumi.get(__ret__, 'origin_directs'),
         origin_dns=pulumi.get(__ret__, 'origin_dns'),
         origin_port=pulumi.get(__ret__, 'origin_port'),
+        origin_worker_id=pulumi.get(__ret__, 'origin_worker_id'),
         protocol=pulumi.get(__ret__, 'protocol'),
         proxy_protocol=pulumi.get(__ret__, 'proxy_protocol'),
         tls=pulumi.get(__ret__, 'tls'),
@@ -351,6 +364,7 @@ def get_spectrum_application_output(app_id: pulumi.Input[Optional[Optional[_buil
         origin_directs=pulumi.get(__response__, 'origin_directs'),
         origin_dns=pulumi.get(__response__, 'origin_dns'),
         origin_port=pulumi.get(__response__, 'origin_port'),
+        origin_worker_id=pulumi.get(__response__, 'origin_worker_id'),
         protocol=pulumi.get(__response__, 'protocol'),
         proxy_protocol=pulumi.get(__response__, 'proxy_protocol'),
         tls=pulumi.get(__response__, 'tls'),

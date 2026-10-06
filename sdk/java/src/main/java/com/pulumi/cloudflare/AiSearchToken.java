@@ -18,7 +18,9 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * &gt; This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/aiSearchToken:AiSearchToken example &#39;&lt;account_id&gt;/&lt;id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/aiSearchToken:AiSearchToken")

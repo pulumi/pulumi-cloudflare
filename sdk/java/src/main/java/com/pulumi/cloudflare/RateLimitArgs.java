@@ -11,6 +11,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RateLimitArgs extends com.pulumi.resources.ResourceArgs {
@@ -63,6 +65,21 @@ public final class RateLimitArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the unique identifier of the rate limit.
+     * 
+     */
+    @Import(name="rateLimitId")
+    private @Nullable Output<String> rateLimitId;
+
+    /**
+     * @return Defines the unique identifier of the rate limit.
+     * 
+     */
+    public Optional<Output<String>> rateLimitId() {
+        return Optional.ofNullable(this.rateLimitId);
+    }
+
+    /**
      * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      * 
      */
@@ -98,6 +115,7 @@ public final class RateLimitArgs extends com.pulumi.resources.ResourceArgs {
         this.action = $.action;
         this.match = $.match;
         this.period = $.period;
+        this.rateLimitId = $.rateLimitId;
         this.threshold = $.threshold;
         this.zoneId = $.zoneId;
     }
@@ -181,6 +199,27 @@ public final class RateLimitArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder period(Double period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param rateLimitId Defines the unique identifier of the rate limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateLimitId(@Nullable Output<String> rateLimitId) {
+            $.rateLimitId = rateLimitId;
+            return this;
+        }
+
+        /**
+         * @param rateLimitId Defines the unique identifier of the rate limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateLimitId(String rateLimitId) {
+            return rateLimitId(Output.of(rateLimitId));
         }
 
         /**

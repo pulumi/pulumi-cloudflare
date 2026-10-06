@@ -93,7 +93,7 @@ class GetKeylessCertificateResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        Keyless certificate identifier tag.
         """
         return pulumi.get(self, "id")
 
@@ -101,7 +101,7 @@ class GetKeylessCertificateResult:
     @pulumi.getter(name="keylessCertificateId")
     def keyless_certificate_id(self) -> _builtins.str:
         """
-        Identifier.
+        Keyless certificate identifier tag.
         """
         return pulumi.get(self, "keyless_certificate_id")
 
@@ -233,11 +233,11 @@ def get_keyless_certificate(keyless_certificate_id: Optional[_builtins.str] = No
     import pulumi_cloudflare as cloudflare
 
     example_keyless_certificate = cloudflare.get_keyless_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        keyless_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+        keyless_certificate_id="4d2844d2ce78891c34d0b6c0535a291e")
     ```
 
 
-    :param _builtins.str keyless_certificate_id: Identifier.
+    :param _builtins.str keyless_certificate_id: Keyless certificate identifier tag.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
@@ -309,11 +309,11 @@ def get_keyless_certificate_output(keyless_certificate_id: pulumi.Input[Optional
     import pulumi_cloudflare as cloudflare
 
     example_keyless_certificate = cloudflare.get_keyless_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        keyless_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+        keyless_certificate_id="4d2844d2ce78891c34d0b6c0535a291e")
     ```
 
 
-    :param _builtins.str keyless_certificate_id: Identifier.
+    :param _builtins.str keyless_certificate_id: Keyless certificate identifier tag.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()

@@ -27,7 +27,7 @@ class GetMagicTransitSiteWanResult:
     """
     A collection of values returned by getMagicTransitSiteWan.
     """
-    def __init__(__self__, account_id=None, health_check_rate=None, id=None, name=None, physport=None, priority=None, site_id=None, static_addressing=None, vlan_tag=None, wan_id=None):
+    def __init__(__self__, account_id=None, health_check_rate=None, id=None, load_balance_inner_flows=None, name=None, physport=None, priority=None, site_id=None, static_addressing=None, vlan_tag=None, wan_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +37,9 @@ class GetMagicTransitSiteWanResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if load_balance_inner_flows and not isinstance(load_balance_inner_flows, bool):
+            raise TypeError("Expected argument 'load_balance_inner_flows' to be a bool")
+        pulumi.set(__self__, "load_balance_inner_flows", load_balance_inner_flows)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -83,6 +86,11 @@ class GetMagicTransitSiteWanResult:
         Identifier
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalanceInnerFlows")
+    def load_balance_inner_flows(self) -> _builtins.bool:
+        return pulumi.get(self, "load_balance_inner_flows")
 
     @_builtins.property
     @pulumi.getter
@@ -144,6 +152,7 @@ class AwaitableGetMagicTransitSiteWanResult(GetMagicTransitSiteWanResult):
             account_id=self.account_id,
             health_check_rate=self.health_check_rate,
             id=self.id,
+            load_balance_inner_flows=self.load_balance_inner_flows,
             name=self.name,
             physport=self.physport,
             priority=self.priority,
@@ -192,6 +201,7 @@ def get_magic_transit_site_wan(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         health_check_rate=pulumi.get(__ret__, 'health_check_rate'),
         id=pulumi.get(__ret__, 'id'),
+        load_balance_inner_flows=pulumi.get(__ret__, 'load_balance_inner_flows'),
         name=pulumi.get(__ret__, 'name'),
         physport=pulumi.get(__ret__, 'physport'),
         priority=pulumi.get(__ret__, 'priority'),
@@ -237,6 +247,7 @@ def get_magic_transit_site_wan_output(account_id: pulumi.Input[Optional[_builtin
         account_id=pulumi.get(__response__, 'account_id'),
         health_check_rate=pulumi.get(__response__, 'health_check_rate'),
         id=pulumi.get(__response__, 'id'),
+        load_balance_inner_flows=pulumi.get(__response__, 'load_balance_inner_flows'),
         name=pulumi.get(__response__, 'name'),
         physport=pulumi.get(__response__, 'physport'),
         priority=pulumi.get(__response__, 'priority'),

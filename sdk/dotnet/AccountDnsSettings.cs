@@ -80,6 +80,9 @@ namespace Pulumi.Cloudflare
         [Output("enforceDnsOnly")]
         public Output<bool?> EnforceDnsOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// Default settings for new zones created in this account.
+        /// </summary>
         [Output("zoneDefaults")]
         public Output<Outputs.AccountDnsSettingsZoneDefaults> ZoneDefaults { get; private set; } = null!;
 
@@ -141,6 +144,9 @@ namespace Pulumi.Cloudflare
         [Input("enforceDnsOnly")]
         public Input<bool>? EnforceDnsOnly { get; set; }
 
+        /// <summary>
+        /// Default settings for new zones created in this account.
+        /// </summary>
         [Input("zoneDefaults")]
         public Input<Inputs.AccountDnsSettingsZoneDefaultsArgs>? ZoneDefaults { get; set; }
 
@@ -164,6 +170,9 @@ namespace Pulumi.Cloudflare
         [Input("enforceDnsOnly")]
         public Input<bool>? EnforceDnsOnly { get; set; }
 
+        /// <summary>
+        /// Default settings for new zones created in this account.
+        /// </summary>
         [Input("zoneDefaults")]
         public Input<Inputs.AccountDnsSettingsZoneDefaultsGetArgs>? ZoneDefaults { get; set; }
 

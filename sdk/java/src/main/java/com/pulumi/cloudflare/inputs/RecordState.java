@@ -96,6 +96,21 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    @Import(name="includeShadowMetadata")
+    private @Nullable Output<Boolean> includeShadowMetadata;
+
+    /**
+     * @return Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+     * 
+     */
+    public Optional<Output<Boolean>> includeShadowMetadata() {
+        return Optional.ofNullable(this.includeShadowMetadata);
+    }
+
+    /**
      * Extra Cloudflare-specific information about the record.
      * 
      */
@@ -300,6 +315,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         this.content = $.content;
         this.createdOn = $.createdOn;
         this.data = $.data;
+        this.includeShadowMetadata = $.includeShadowMetadata;
         this.meta = $.meta;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
@@ -436,6 +452,27 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder data(RecordDataArgs data) {
             return data(Output.of(data));
+        }
+
+        /**
+         * @param includeShadowMetadata Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeShadowMetadata(@Nullable Output<Boolean> includeShadowMetadata) {
+            $.includeShadowMetadata = includeShadowMetadata;
+            return this;
+        }
+
+        /**
+         * @param includeShadowMetadata Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeShadowMetadata(Boolean includeShadowMetadata) {
+            return includeShadowMetadata(Output.of(includeShadowMetadata));
         }
 
         /**

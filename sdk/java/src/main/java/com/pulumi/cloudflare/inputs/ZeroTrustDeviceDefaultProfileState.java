@@ -279,6 +279,23 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
     }
 
     /**
+     * The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    @Import(name="profileType")
+    private @Nullable Output<String> profileType;
+
+    /**
+     * @return The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public Optional<Output<String>> profileType() {
+        return Optional.ofNullable(this.profileType);
+    }
+
+    /**
      * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
      */
@@ -361,6 +378,21 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
     }
 
     /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    @Import(name="uninstallProtection")
+    private @Nullable Output<Boolean> uninstallProtection;
+
+    /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    public Optional<Output<Boolean>> uninstallProtection() {
+        return Optional.ofNullable(this.uninstallProtection);
+    }
+
+    /**
      * Virtual network access settings for the device.
      * 
      */
@@ -397,12 +429,14 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         this.lanAllowMinutes = $.lanAllowMinutes;
         this.lanAllowSubnetSize = $.lanAllowSubnetSize;
         this.policyId = $.policyId;
+        this.profileType = $.profileType;
         this.registerInterfaceIpWithDns = $.registerInterfaceIpWithDns;
         this.sccmVpnBoundarySupport = $.sccmVpnBoundarySupport;
         this.serviceModeV2 = $.serviceModeV2;
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
         this.tunnelProtocol = $.tunnelProtocol;
+        this.uninstallProtection = $.uninstallProtection;
         this.virtualNetworks = $.virtualNetworks;
     }
 
@@ -810,6 +844,29 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         }
 
         /**
+         * @param profileType The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+         * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profileType(@Nullable Output<String> profileType) {
+            $.profileType = profileType;
+            return this;
+        }
+
+        /**
+         * @param profileType The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+         * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profileType(String profileType) {
+            return profileType(Output.of(profileType));
+        }
+
+        /**
          * @param registerInterfaceIpWithDns Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
          * 
          * @return builder
@@ -921,6 +978,27 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
          */
         public Builder tunnelProtocol(String tunnelProtocol) {
             return tunnelProtocol(Output.of(tunnelProtocol));
+        }
+
+        /**
+         * @param uninstallProtection Determines whether uninstalling the WARP client requires an override code. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uninstallProtection(@Nullable Output<Boolean> uninstallProtection) {
+            $.uninstallProtection = uninstallProtection;
+            return this;
+        }
+
+        /**
+         * @param uninstallProtection Determines whether uninstalling the WARP client requires an override code. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uninstallProtection(Boolean uninstallProtection) {
+            return uninstallProtection(Output.of(uninstallProtection));
         }
 
         /**

@@ -61,7 +61,7 @@ import (
 type R2BucketSippy struct {
 	pulumi.CustomResourceState
 
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
@@ -111,7 +111,7 @@ func GetR2BucketSippy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2BucketSippy resources.
 type r2bucketSippyState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
@@ -126,7 +126,7 @@ type r2bucketSippyState struct {
 }
 
 type R2BucketSippyState struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
@@ -145,7 +145,7 @@ func (R2BucketSippyState) ElementType() reflect.Type {
 }
 
 type r2bucketSippyArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
@@ -159,7 +159,7 @@ type r2bucketSippyArgs struct {
 
 // The set of arguments for constructing a R2BucketSippy resource.
 type R2BucketSippyArgs struct {
-	// Account ID.
+	// Cloudflare account ID that owns the R2 resource.
 	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
@@ -258,7 +258,7 @@ func (o R2BucketSippyOutput) ToR2BucketSippyOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Account ID.
+// Cloudflare account ID that owns the R2 resource.
 func (o R2BucketSippyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketSippy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         QueueName = "example-queue",
+    ///         Jurisdiction = "eu",
     ///     });
     /// 
     /// });
@@ -59,6 +60,12 @@ namespace Pulumi.Cloudflare
 
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Available values: "eu", "us", "fedramp".
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string?> Jurisdiction { get; private set; } = null!;
 
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
@@ -130,6 +137,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Available values: "eu", "us", "fedramp".
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
         [Input("queueName", required: true)]
         public Input<string> QueueName { get; set; } = null!;
 
@@ -163,6 +176,12 @@ namespace Pulumi.Cloudflare
 
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// Available values: "eu", "us", "fedramp".
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }

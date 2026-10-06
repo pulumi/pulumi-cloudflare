@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessInfrastructureTargetIpArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -97,6 +98,23 @@ public final class ZeroTrustAccessInfrastructureTargetState extends com.pulumi.r
         return Optional.ofNullable(this.modifiedAt);
     }
 
+    /**
+     * Optional tags to associate with the target. Keys and values are
+     * user-defined strings.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Optional tags to associate with the target. Keys and values are
+     * user-defined strings.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private ZeroTrustAccessInfrastructureTargetState() {}
 
     private ZeroTrustAccessInfrastructureTargetState(ZeroTrustAccessInfrastructureTargetState $) {
@@ -105,6 +123,7 @@ public final class ZeroTrustAccessInfrastructureTargetState extends com.pulumi.r
         this.hostname = $.hostname;
         this.ip = $.ip;
         this.modifiedAt = $.modifiedAt;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -234,6 +253,29 @@ public final class ZeroTrustAccessInfrastructureTargetState extends com.pulumi.r
          */
         public Builder modifiedAt(String modifiedAt) {
             return modifiedAt(Output.of(modifiedAt));
+        }
+
+        /**
+         * @param tags Optional tags to associate with the target. Keys and values are
+         * user-defined strings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Optional tags to associate with the target. Keys and values are
+         * user-defined strings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public ZeroTrustAccessInfrastructureTargetState build() {

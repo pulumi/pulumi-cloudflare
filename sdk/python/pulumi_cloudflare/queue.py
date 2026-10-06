@@ -23,14 +23,18 @@ class QueueArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  queue_name: pulumi.Input[_builtins.str],
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional['QueueSettingsArgs']] = None):
         """
         The set of arguments for constructing a Queue resource.
 
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
+        :param pulumi.Input[_builtins.str] jurisdiction: Available values: "eu", "us", "fedramp".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "queue_name", queue_name)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
 
@@ -57,6 +61,18 @@ class QueueArgs:
 
     @_builtins.property
     @pulumi.getter
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Available values: "eu", "us", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @_builtins.property
+    @pulumi.getter
     def settings(self) -> pulumi.Input[Optional['QueueSettingsArgs']]:
         return pulumi.get(self, "settings")
 
@@ -72,6 +88,7 @@ class _QueueState:
                  consumers: pulumi.Input[Optional[Sequence[pulumi.Input['QueueConsumerArgs']]]] = None,
                  consumers_total_count: pulumi.Input[Optional[_builtins.float]] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  producers: pulumi.Input[Optional[Sequence[pulumi.Input['QueueProducerArgs']]]] = None,
                  producers_total_count: pulumi.Input[Optional[_builtins.float]] = None,
@@ -82,6 +99,7 @@ class _QueueState:
         Input properties used for looking up and filtering Queue resources.
 
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
+        :param pulumi.Input[_builtins.str] jurisdiction: Available values: "eu", "us", "fedramp".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -91,6 +109,8 @@ class _QueueState:
             pulumi.set(__self__, "consumers_total_count", consumers_total_count)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if producers is not None:
@@ -142,6 +162,18 @@ class _QueueState:
     @created_on.setter
     def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Available values: "eu", "us", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
@@ -205,6 +237,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict', 'outputs.QueueSettings']]] = None,
                  __props__=None):
@@ -224,7 +257,8 @@ class Queue(pulumi.CustomResource):
 
         example_queue = cloudflare.Queue("example_queue",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            queue_name="example-queue")
+            queue_name="example-queue",
+            jurisdiction="eu")
         ```
 
         ## Import
@@ -237,6 +271,7 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
+        :param pulumi.Input[_builtins.str] jurisdiction: Available values: "eu", "us", "fedramp".
         """
         ...
     @overload
@@ -260,7 +295,8 @@ class Queue(pulumi.CustomResource):
 
         example_queue = cloudflare.Queue("example_queue",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            queue_name="example-queue")
+            queue_name="example-queue",
+            jurisdiction="eu")
         ```
 
         ## Import
@@ -286,6 +322,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional[Union['QueueSettingsArgs', 'QueueSettingsArgsDict', 'outputs.QueueSettings']]] = None,
                  __props__=None):
@@ -300,6 +337,7 @@ class Queue(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["jurisdiction"] = jurisdiction
             if queue_name is None and not opts.urn:
                 raise TypeError("Missing required property 'queue_name'")
             __props__.__dict__["queue_name"] = queue_name
@@ -325,6 +363,7 @@ class Queue(pulumi.CustomResource):
             consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueConsumerArgs', 'QueueConsumerArgsDict', 'outputs.QueueConsumer']]]]] = None,
             consumers_total_count: pulumi.Input[Optional[_builtins.float]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             producers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueProducerArgs', 'QueueProducerArgsDict', 'outputs.QueueProducer']]]]] = None,
             producers_total_count: pulumi.Input[Optional[_builtins.float]] = None,
@@ -339,6 +378,7 @@ class Queue(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
+        :param pulumi.Input[_builtins.str] jurisdiction: Available values: "eu", "us", "fedramp".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -348,6 +388,7 @@ class Queue(pulumi.CustomResource):
         __props__.__dict__["consumers"] = consumers
         __props__.__dict__["consumers_total_count"] = consumers_total_count
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["producers"] = producers
         __props__.__dict__["producers_total_count"] = producers_total_count
@@ -378,6 +419,14 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Available values: "eu", "us", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")

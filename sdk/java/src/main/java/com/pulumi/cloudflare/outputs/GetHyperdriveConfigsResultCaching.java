@@ -12,38 +12,38 @@ import java.util.Objects;
 @CustomType
 public final class GetHyperdriveConfigsResultCaching {
     /**
-     * @return Set to true to disable caching of SQL responses. Default is false.
+     * @return Defines whether caching is disabled.
      * 
      */
     private Boolean disabled;
     /**
-     * @return Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+     * @return Defines the maximum duration (in seconds) items persist in the cache.
      * 
      */
     private Integer maxAge;
     /**
-     * @return Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+     * @return Defines the number of seconds the cache may serve a stale response.
      * 
      */
     private Integer staleWhileRevalidate;
 
     private GetHyperdriveConfigsResultCaching() {}
     /**
-     * @return Set to true to disable caching of SQL responses. Default is false.
+     * @return Defines whether caching is disabled.
      * 
      */
     public Boolean disabled() {
         return this.disabled;
     }
     /**
-     * @return Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+     * @return Defines the maximum duration (in seconds) items persist in the cache.
      * 
      */
     public Integer maxAge() {
         return this.maxAge;
     }
     /**
-     * @return Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+     * @return Defines the number of seconds the cache may serve a stale response.
      * 
      */
     public Integer staleWhileRevalidate() {

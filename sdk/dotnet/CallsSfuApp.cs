@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Modified { get; private set; } = null!;
 
         /// <summary>
-        /// A short description of Calls app, not shown to end users.
+        /// A short description of a Realtime SFU app, not shown to end users.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AppId { get; set; }
 
         /// <summary>
-        /// A short description of Calls app, not shown to end users.
+        /// A short description of a Realtime SFU app, not shown to end users.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Modified { get; set; }
 
         /// <summary>
-        /// A short description of Calls app, not shown to end users.
+        /// A short description of a Realtime SFU app, not shown to end users.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

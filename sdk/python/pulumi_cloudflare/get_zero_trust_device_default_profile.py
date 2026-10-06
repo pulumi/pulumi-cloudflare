@@ -27,7 +27,7 @@ class GetZeroTrustDeviceDefaultProfileResult:
     """
     A collection of values returned by getZeroTrustDeviceDefaultProfile.
     """
-    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, disable_auto_fallback=None, dns_search_suffixes=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, policy_id=None, register_interface_ip_with_dns=None, sccm_vpn_boundary_support=None, service_mode_v2=None, support_url=None, switch_locked=None, tunnel_protocol=None, virtual_networks=None):
+    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, disable_auto_fallback=None, dns_search_suffixes=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, policy_id=None, profile_type=None, register_interface_ip_with_dns=None, sccm_vpn_boundary_support=None, service_mode_v2=None, support_url=None, switch_locked=None, tunnel_protocol=None, uninstall_protection=None, virtual_networks=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -79,6 +79,9 @@ class GetZeroTrustDeviceDefaultProfileResult:
         if policy_id and not isinstance(policy_id, str):
             raise TypeError("Expected argument 'policy_id' to be a str")
         pulumi.set(__self__, "policy_id", policy_id)
+        if profile_type and not isinstance(profile_type, str):
+            raise TypeError("Expected argument 'profile_type' to be a str")
+        pulumi.set(__self__, "profile_type", profile_type)
         if register_interface_ip_with_dns and not isinstance(register_interface_ip_with_dns, bool):
             raise TypeError("Expected argument 'register_interface_ip_with_dns' to be a bool")
         pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
@@ -97,6 +100,9 @@ class GetZeroTrustDeviceDefaultProfileResult:
         if tunnel_protocol and not isinstance(tunnel_protocol, str):
             raise TypeError("Expected argument 'tunnel_protocol' to be a str")
         pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
+        if uninstall_protection and not isinstance(uninstall_protection, bool):
+            raise TypeError("Expected argument 'uninstall_protection' to be a bool")
+        pulumi.set(__self__, "uninstall_protection", uninstall_protection)
         if virtual_networks and not isinstance(virtual_networks, dict):
             raise TypeError("Expected argument 'virtual_networks' to be a dict")
         pulumi.set(__self__, "virtual_networks", virtual_networks)
@@ -226,6 +232,15 @@ class GetZeroTrustDeviceDefaultProfileResult:
         return pulumi.get(self, "policy_id")
 
     @_builtins.property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> _builtins.str:
+        """
+        The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        Available values: "warp", "browser_extension".
+        """
+        return pulumi.get(self, "profile_type")
+
+    @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")
     def register_interface_ip_with_dns(self) -> _builtins.bool:
         """
@@ -271,6 +286,14 @@ class GetZeroTrustDeviceDefaultProfileResult:
         return pulumi.get(self, "tunnel_protocol")
 
     @_builtins.property
+    @pulumi.getter(name="uninstallProtection")
+    def uninstall_protection(self) -> _builtins.bool:
+        """
+        Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        """
+        return pulumi.get(self, "uninstall_protection")
+
+    @_builtins.property
     @pulumi.getter(name="virtualNetworks")
     def virtual_networks(self) -> 'outputs.GetZeroTrustDeviceDefaultProfileVirtualNetworksResult':
         """
@@ -302,12 +325,14 @@ class AwaitableGetZeroTrustDeviceDefaultProfileResult(GetZeroTrustDeviceDefaultP
             id=self.id,
             includes=self.includes,
             policy_id=self.policy_id,
+            profile_type=self.profile_type,
             register_interface_ip_with_dns=self.register_interface_ip_with_dns,
             sccm_vpn_boundary_support=self.sccm_vpn_boundary_support,
             service_mode_v2=self.service_mode_v2,
             support_url=self.support_url,
             switch_locked=self.switch_locked,
             tunnel_protocol=self.tunnel_protocol,
+            uninstall_protection=self.uninstall_protection,
             virtual_networks=self.virtual_networks)
 
 
@@ -346,12 +371,14 @@ def get_zero_trust_device_default_profile(account_id: Optional[_builtins.str] = 
         id=pulumi.get(__ret__, 'id'),
         includes=pulumi.get(__ret__, 'includes'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
+        profile_type=pulumi.get(__ret__, 'profile_type'),
         register_interface_ip_with_dns=pulumi.get(__ret__, 'register_interface_ip_with_dns'),
         sccm_vpn_boundary_support=pulumi.get(__ret__, 'sccm_vpn_boundary_support'),
         service_mode_v2=pulumi.get(__ret__, 'service_mode_v2'),
         support_url=pulumi.get(__ret__, 'support_url'),
         switch_locked=pulumi.get(__ret__, 'switch_locked'),
         tunnel_protocol=pulumi.get(__ret__, 'tunnel_protocol'),
+        uninstall_protection=pulumi.get(__ret__, 'uninstall_protection'),
         virtual_networks=pulumi.get(__ret__, 'virtual_networks'))
 def get_zero_trust_device_default_profile_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceDefaultProfileResult]:
@@ -387,10 +414,12 @@ def get_zero_trust_device_default_profile_output(account_id: pulumi.Input[Option
         id=pulumi.get(__response__, 'id'),
         includes=pulumi.get(__response__, 'includes'),
         policy_id=pulumi.get(__response__, 'policy_id'),
+        profile_type=pulumi.get(__response__, 'profile_type'),
         register_interface_ip_with_dns=pulumi.get(__response__, 'register_interface_ip_with_dns'),
         sccm_vpn_boundary_support=pulumi.get(__response__, 'sccm_vpn_boundary_support'),
         service_mode_v2=pulumi.get(__response__, 'service_mode_v2'),
         support_url=pulumi.get(__response__, 'support_url'),
         switch_locked=pulumi.get(__response__, 'switch_locked'),
         tunnel_protocol=pulumi.get(__response__, 'tunnel_protocol'),
+        uninstall_protection=pulumi.get(__response__, 'uninstall_protection'),
         virtual_networks=pulumi.get(__response__, 'virtual_networks')))

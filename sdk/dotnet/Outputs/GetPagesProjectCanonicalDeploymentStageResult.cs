@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string StartedOn;
         /// <summary>
         /// State of the current stage.
-        /// Available values: "success", "idle", "active", "failure", "canceled".
+        /// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         /// </summary>
         public readonly string Status;
 

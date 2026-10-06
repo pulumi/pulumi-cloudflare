@@ -162,6 +162,11 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileIncludeResult> Includes;
         public readonly string PolicyId;
         /// <summary>
+        /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        /// Available values: "warp", "BrowserExtension".
+        /// </summary>
+        public readonly string ProfileType;
+        /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         public readonly bool RegisterInterfaceIpWithDns;
@@ -182,6 +187,10 @@ namespace Pulumi.Cloudflare
         /// Determines which tunnel protocol to use.
         /// </summary>
         public readonly string TunnelProtocol;
+        /// <summary>
+        /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        /// </summary>
+        public readonly bool UninstallProtection;
         /// <summary>
         /// Virtual network access settings for the device.
         /// </summary>
@@ -223,6 +232,8 @@ namespace Pulumi.Cloudflare
 
             string policyId,
 
+            string profileType,
+
             bool registerInterfaceIpWithDns,
 
             bool sccmVpnBoundarySupport,
@@ -234,6 +245,8 @@ namespace Pulumi.Cloudflare
             bool switchLocked,
 
             string tunnelProtocol,
+
+            bool uninstallProtection,
 
             Outputs.GetZeroTrustDeviceDefaultProfileVirtualNetworksResult virtualNetworks)
         {
@@ -254,12 +267,14 @@ namespace Pulumi.Cloudflare
             Id = id;
             Includes = includes;
             PolicyId = policyId;
+            ProfileType = profileType;
             RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
             SccmVpnBoundarySupport = sccmVpnBoundarySupport;
             ServiceModeV2 = serviceModeV2;
             SupportUrl = supportUrl;
             SwitchLocked = switchLocked;
             TunnelProtocol = tunnelProtocol;
+            UninstallProtection = uninstallProtection;
             VirtualNetworks = virtualNetworks;
         }
     }

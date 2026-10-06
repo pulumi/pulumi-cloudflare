@@ -34,9 +34,9 @@ import (
 //			_, err := cloudflare.NewWorkersCronTrigger(ctx, "example_workers_cron_trigger", &cloudflare.WorkersCronTriggerArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptName: pulumi.String("this-is_my_script-01"),
-//				Body: []map[string]string{
-//					{
-//						"cron": "*/30 * * * *",
+//				Schedules: cloudflare.WorkersCronTriggerScheduleArray{
+//					&cloudflare.WorkersCronTriggerScheduleArgs{
+//						Cron: pulumi.String("*/30 * * * *"),
 //					},
 //				},
 //			})
@@ -60,7 +60,7 @@ type WorkersCronTrigger struct {
 	// Identifier.
 	AccountId pulumi.StringOutput                   `pulumi:"accountId"`
 	Schedules WorkersCronTriggerScheduleArrayOutput `pulumi:"schedules"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
 }
 
@@ -112,7 +112,7 @@ type workersCronTriggerState struct {
 	// Identifier.
 	AccountId *string                      `pulumi:"accountId"`
 	Schedules []WorkersCronTriggerSchedule `pulumi:"schedules"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName *string `pulumi:"scriptName"`
 }
 
@@ -120,7 +120,7 @@ type WorkersCronTriggerState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
 	Schedules WorkersCronTriggerScheduleArrayInput
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringPtrInput
 }
 
@@ -132,7 +132,7 @@ type workersCronTriggerArgs struct {
 	// Identifier.
 	AccountId string                       `pulumi:"accountId"`
 	Schedules []WorkersCronTriggerSchedule `pulumi:"schedules"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
 }
 
@@ -141,7 +141,7 @@ type WorkersCronTriggerArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
 	Schedules WorkersCronTriggerScheduleArrayInput
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script.
 	ScriptName pulumi.StringInput
 }
 
@@ -241,7 +241,7 @@ func (o WorkersCronTriggerOutput) Schedules() WorkersCronTriggerScheduleArrayOut
 	return o.ApplyT(func(v *WorkersCronTrigger) WorkersCronTriggerScheduleArrayOutput { return v.Schedules }).(WorkersCronTriggerScheduleArrayOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script.
 func (o WorkersCronTriggerOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersCronTrigger) pulumi.StringOutput { return v.ScriptName }).(pulumi.StringOutput)
 }

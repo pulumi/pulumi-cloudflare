@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.MagicTransitSiteWanStaticAddressingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,6 +48,13 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> healthCheckRate() {
         return Optional.ofNullable(this.healthCheckRate);
+    }
+
+    @Import(name="loadBalanceInnerFlows")
+    private @Nullable Output<Boolean> loadBalanceInnerFlows;
+
+    public Optional<Output<Boolean>> loadBalanceInnerFlows() {
+        return Optional.ofNullable(this.loadBalanceInnerFlows);
     }
 
     @Import(name="name")
@@ -120,6 +128,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
     private MagicTransitSiteWanState(MagicTransitSiteWanState $) {
         this.accountId = $.accountId;
         this.healthCheckRate = $.healthCheckRate;
+        this.loadBalanceInnerFlows = $.loadBalanceInnerFlows;
         this.name = $.name;
         this.physport = $.physport;
         this.priority = $.priority;
@@ -188,6 +197,15 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
          */
         public Builder healthCheckRate(String healthCheckRate) {
             return healthCheckRate(Output.of(healthCheckRate));
+        }
+
+        public Builder loadBalanceInnerFlows(@Nullable Output<Boolean> loadBalanceInnerFlows) {
+            $.loadBalanceInnerFlows = loadBalanceInnerFlows;
+            return this;
+        }
+
+        public Builder loadBalanceInnerFlows(Boolean loadBalanceInnerFlows) {
+            return loadBalanceInnerFlows(Output.of(loadBalanceInnerFlows));
         }
 
         public Builder name(@Nullable Output<String> name) {

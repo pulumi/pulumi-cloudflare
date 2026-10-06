@@ -26,6 +26,7 @@ import * as utilities from "./utilities";
  *     name: "name",
  *     order: "status",
  *     status: "initializing",
+ *     types: ["full"],
  * });
  * ```
  */
@@ -92,6 +93,7 @@ export interface GetZonesResult {
  *     name: "name",
  *     order: "status",
  *     status: "initializing",
+ *     types: ["full"],
  * });
  * ```
  */

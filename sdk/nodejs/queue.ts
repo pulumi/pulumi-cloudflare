@@ -23,6 +23,7 @@ import * as utilities from "./utilities";
  * const exampleQueue = new cloudflare.Queue("example_queue", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     queueName: "example-queue",
+ *     jurisdiction: "eu",
  * });
  * ```
  *
@@ -67,6 +68,10 @@ export class Queue extends pulumi.CustomResource {
     declare public /*out*/ readonly consumers: pulumi.Output<outputs.QueueConsumer[]>;
     declare public /*out*/ readonly consumersTotalCount: pulumi.Output<number>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    /**
+     * Available values: "eu", "us", "fedramp".
+     */
+    declare public readonly jurisdiction: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     declare public /*out*/ readonly producers: pulumi.Output<outputs.QueueProducer[]>;
     declare public /*out*/ readonly producersTotalCount: pulumi.Output<number>;
@@ -91,6 +96,7 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["consumers"] = state?.consumers;
             resourceInputs["consumersTotalCount"] = state?.consumersTotalCount;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["producers"] = state?.producers;
             resourceInputs["producersTotalCount"] = state?.producersTotalCount;
@@ -106,6 +112,7 @@ export class Queue extends pulumi.CustomResource {
                 throw new Error("Missing required property 'queueName'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
             resourceInputs["queueName"] = args?.queueName;
             resourceInputs["settings"] = args?.settings;
             resourceInputs["consumers"] = undefined /*out*/;
@@ -132,6 +139,10 @@ export interface QueueState {
     consumers?: pulumi.Input<pulumi.Input<inputs.QueueConsumer>[] | undefined>;
     consumersTotalCount?: pulumi.Input<number | undefined>;
     createdOn?: pulumi.Input<string | undefined>;
+    /**
+     * Available values: "eu", "us", "fedramp".
+     */
+    jurisdiction?: pulumi.Input<string | undefined>;
     modifiedOn?: pulumi.Input<string | undefined>;
     producers?: pulumi.Input<pulumi.Input<inputs.QueueProducer>[] | undefined>;
     producersTotalCount?: pulumi.Input<number | undefined>;
@@ -148,6 +159,10 @@ export interface QueueArgs {
      * A Resource identifier.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Available values: "eu", "us", "fedramp".
+     */
+    jurisdiction?: pulumi.Input<string | undefined>;
     queueName: pulumi.Input<string>;
     settings?: pulumi.Input<inputs.QueueSettings | undefined>;
 }

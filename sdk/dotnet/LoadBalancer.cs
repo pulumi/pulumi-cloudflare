@@ -239,7 +239,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;load_balancer_id&gt;'
+    /// $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '&lt;zone_id&gt;/&lt;load_balancer_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancer:LoadBalancer")]

@@ -295,7 +295,7 @@ export class PagesProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly latestDeployment: pulumi.Output<outputs.PagesProjectLatestDeployment>;
     /**
-     * Name of the project.
+     * Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -426,7 +426,7 @@ export interface PagesProjectState {
      */
     latestDeployment?: pulumi.Input<inputs.PagesProjectLatestDeployment | undefined>;
     /**
-     * Name of the project.
+     * Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -472,7 +472,7 @@ export interface PagesProjectArgs {
      */
     deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs | undefined>;
     /**
-     * Name of the project.
+     * Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     name: pulumi.Input<string>;
     /**

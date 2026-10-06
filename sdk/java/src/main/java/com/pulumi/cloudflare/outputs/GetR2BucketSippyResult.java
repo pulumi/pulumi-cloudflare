@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketSippyResult {
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     private String accountId;
@@ -41,7 +41,7 @@ public final class GetR2BucketSippyResult {
 
     private GetR2BucketSippyResult() {}
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public String accountId() {

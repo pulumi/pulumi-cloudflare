@@ -41,7 +41,7 @@ export interface GetWorkersCronTriggerArgs {
      */
     accountId?: string;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName: string;
 }
@@ -55,12 +55,12 @@ export interface GetWorkersCronTriggerResult {
      */
     readonly accountId?: string;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     readonly id: string;
     readonly schedules: outputs.GetWorkersCronTriggerSchedule[];
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     readonly scriptName: string;
 }
@@ -99,7 +99,7 @@ export interface GetWorkersCronTriggerOutputArgs {
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      */
     scriptName: pulumi.Input<string>;
 }

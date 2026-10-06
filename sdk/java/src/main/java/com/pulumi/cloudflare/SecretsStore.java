@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -81,6 +82,24 @@ public class SecretsStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> created() {
         return this.created;
+    }
+    /**
+     * When true, cascade-deletes all secrets in the store before deleting the store itself.
+     * Required when deleting a non-empty store. Without this parameter, attempting to
+     * delete a non-empty store returns 409.
+     * 
+     */
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> force;
+
+    /**
+     * @return When true, cascade-deletes all secrets in the store before deleting the store itself.
+     * Required when deleting a non-empty store. Without this parameter, attempting to
+     * delete a non-empty store returns 409.
+     * 
+     */
+    public Output<Boolean> force() {
+        return this.force;
     }
     /**
      * When the secret was modified.

@@ -151,14 +151,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the AWS availability zone.
+     * AWS region containing the source S3 bucket.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Name of the AWS availability zone.
+     * @return AWS region containing the source S3 bucket.
      * 
      */
     public Optional<Output<String>> region() {
@@ -420,7 +420,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param region Name of the AWS availability zone.
+         * @param region AWS region containing the source S3 bucket.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param region Name of the AWS availability zone.
+         * @param region AWS region containing the source S3 bucket.
          * 
          * @return builder
          * 

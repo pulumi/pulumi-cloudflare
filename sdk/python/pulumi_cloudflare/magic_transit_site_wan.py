@@ -24,6 +24,8 @@ class MagicTransitSiteWanArgs:
                  account_id: pulumi.Input[_builtins.str],
                  physport: pulumi.Input[_builtins.int],
                  site_id: pulumi.Input[_builtins.str],
+                 health_check_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balance_inner_flows: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  static_addressing: pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']] = None,
@@ -33,12 +35,18 @@ class MagicTransitSiteWanArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] site_id: Identifier
+        :param pulumi.Input[_builtins.str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+               Available values: "low", "mid", "high".
         :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "physport", physport)
         pulumi.set(__self__, "site_id", site_id)
+        if health_check_rate is not None:
+            pulumi.set(__self__, "health_check_rate", health_check_rate)
+        if load_balance_inner_flows is not None:
+            pulumi.set(__self__, "load_balance_inner_flows", load_balance_inner_flows)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if priority is not None:
@@ -80,6 +88,28 @@ class MagicTransitSiteWanArgs:
     @site_id.setter
     def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckRate")
+    def health_check_rate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        Available values: "low", "mid", "high".
+        """
+        return pulumi.get(self, "health_check_rate")
+
+    @health_check_rate.setter
+    def health_check_rate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "health_check_rate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalanceInnerFlows")
+    def load_balance_inner_flows(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "load_balance_inner_flows")
+
+    @load_balance_inner_flows.setter
+    def load_balance_inner_flows(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "load_balance_inner_flows", value)
 
     @_builtins.property
     @pulumi.getter
@@ -129,6 +159,7 @@ class _MagicTransitSiteWanState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  health_check_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balance_inner_flows: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
@@ -149,6 +180,8 @@ class _MagicTransitSiteWanState:
             pulumi.set(__self__, "account_id", account_id)
         if health_check_rate is not None:
             pulumi.set(__self__, "health_check_rate", health_check_rate)
+        if load_balance_inner_flows is not None:
+            pulumi.set(__self__, "load_balance_inner_flows", load_balance_inner_flows)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if physport is not None:
@@ -186,6 +219,15 @@ class _MagicTransitSiteWanState:
     @health_check_rate.setter
     def health_check_rate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_rate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalanceInnerFlows")
+    def load_balance_inner_flows(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "load_balance_inner_flows")
+
+    @load_balance_inner_flows.setter
+    def load_balance_inner_flows(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "load_balance_inner_flows", value)
 
     @_builtins.property
     @pulumi.getter
@@ -258,6 +300,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balance_inner_flows: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
@@ -283,6 +327,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
             physport=1,
+            health_check_rate="low",
+            load_balance_inner_flows=True,
             name="name",
             priority=0,
             static_addressing={
@@ -303,6 +349,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] health_check_rate: Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+               Available values: "low", "mid", "high".
         :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict', 'outputs.MagicTransitSiteWanStaticAddressing']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
@@ -331,6 +379,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             site_id="023e105f4ecef8ad9ca31a8372d0c353",
             physport=1,
+            health_check_rate="low",
+            load_balance_inner_flows=True,
             name="name",
             priority=0,
             static_addressing={
@@ -364,6 +414,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balance_inner_flows: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  physport: pulumi.Input[Optional[_builtins.int]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
@@ -382,6 +434,8 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["health_check_rate"] = health_check_rate
+            __props__.__dict__["load_balance_inner_flows"] = load_balance_inner_flows
             __props__.__dict__["name"] = name
             if physport is None and not opts.urn:
                 raise TypeError("Missing required property 'physport'")
@@ -392,7 +446,6 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["static_addressing"] = static_addressing
             __props__.__dict__["vlan_tag"] = vlan_tag
-            __props__.__dict__["health_check_rate"] = None
         super(MagicTransitSiteWan, __self__).__init__(
             'cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan',
             resource_name,
@@ -405,6 +458,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             health_check_rate: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balance_inner_flows: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             physport: pulumi.Input[Optional[_builtins.int]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
@@ -431,6 +485,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["health_check_rate"] = health_check_rate
+        __props__.__dict__["load_balance_inner_flows"] = load_balance_inner_flows
         __props__.__dict__["name"] = name
         __props__.__dict__["physport"] = physport
         __props__.__dict__["priority"] = priority
@@ -455,6 +510,11 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         Available values: "low", "mid", "high".
         """
         return pulumi.get(self, "health_check_rate")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalanceInnerFlows")
+    def load_balance_inner_flows(self) -> pulumi.Output[_builtins.bool]:
+        return pulumi.get(self, "load_balance_inner_flows")
 
     @_builtins.property
     @pulumi.getter

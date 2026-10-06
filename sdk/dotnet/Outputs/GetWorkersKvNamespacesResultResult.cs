@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersKvNamespacesResultResult
     {
         /// <summary>
-        /// Namespace identifier tag.
+        /// ID of the Workers KV namespace.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool SupportsUrlEncoding;
         /// <summary>
-        /// A human-readable string name for a Namespace.
+        /// Human-readable string name for a Workers KV namespace.
         /// </summary>
         public readonly string Title;
 

@@ -97,24 +97,6 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.RateLimitAction> Action { get; private set; } = null!;
 
         /// <summary>
-        /// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-        /// </summary>
-        [Output("bypasses")]
-        public Output<ImmutableArray<Outputs.RateLimitBypass>> Bypasses { get; private set; } = null!;
-
-        /// <summary>
-        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
-        /// </summary>
-        [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
-
-        /// <summary>
-        /// When true, indicates that the rate limit is currently disabled.
-        /// </summary>
-        [Output("disabled")]
-        public Output<bool> Disabled { get; private set; } = null!;
-
-        /// <summary>
         /// Determines which traffic the rate limit counts towards the threshold.
         /// </summary>
         [Output("match")]
@@ -125,6 +107,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("period")]
         public Output<double> Period { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the unique identifier of the rate limit.
+        /// </summary>
+        [Output("rateLimitId")]
+        public Output<string?> RateLimitId { get; private set; } = null!;
 
         /// <summary>
         /// The threshold that will trigger the configured mitigation action. Configure this value along with the `Period` property to establish a threshold per period.
@@ -203,6 +191,12 @@ namespace Pulumi.Cloudflare
         public Input<double> Period { get; set; } = null!;
 
         /// <summary>
+        /// Defines the unique identifier of the rate limit.
+        /// </summary>
+        [Input("rateLimitId")]
+        public Input<string>? RateLimitId { get; set; }
+
+        /// <summary>
         /// The threshold that will trigger the configured mitigation action. Configure this value along with the `Period` property to establish a threshold per period.
         /// </summary>
         [Input("threshold", required: true)]
@@ -228,30 +222,6 @@ namespace Pulumi.Cloudflare
         [Input("action")]
         public Input<Inputs.RateLimitActionGetArgs>? Action { get; set; }
 
-        [Input("bypasses")]
-        private InputList<Inputs.RateLimitBypassGetArgs>? _bypasses;
-
-        /// <summary>
-        /// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-        /// </summary>
-        public InputList<Inputs.RateLimitBypassGetArgs> Bypasses
-        {
-            get => _bypasses ?? (_bypasses = new InputList<Inputs.RateLimitBypassGetArgs>());
-            set => _bypasses = value;
-        }
-
-        /// <summary>
-        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// When true, indicates that the rate limit is currently disabled.
-        /// </summary>
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
-
         /// <summary>
         /// Determines which traffic the rate limit counts towards the threshold.
         /// </summary>
@@ -263,6 +233,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("period")]
         public Input<double>? Period { get; set; }
+
+        /// <summary>
+        /// Defines the unique identifier of the rate limit.
+        /// </summary>
+        [Input("rateLimitId")]
+        public Input<string>? RateLimitId { get; set; }
 
         /// <summary>
         /// The threshold that will trigger the configured mitigation action. Configure this value along with the `Period` property to establish a threshold per period.

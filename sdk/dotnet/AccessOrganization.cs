@@ -81,7 +81,14 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         MfaRequiredForAllApps = false,
     ///         Name = "Widget Corps Internal Applications",
+    ///         ServiceTokenInactivity = new Cloudflare.Inputs.ZeroTrustOrganizationServiceTokenInactivityArgs
+    ///         {
+    ///             Action = "disable",
+    ///             Enabled = true,
+    ///             InactivityThresholdDays = 30,
+    ///         },
     ///         SessionDuration = "24h",
+    ///         StrictServiceTokenAuth = true,
     ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
     ///         UserSeatExpirationInactiveTime = "730h",
     ///         WarpAuthNonBrowser401 = false,
@@ -93,7 +100,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example '&lt;account_id&gt;'
+    /// ```
     /// </summary>
     [Obsolete(@"cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization")]
     [CloudflareResourceType("cloudflare:index/accessOrganization:AccessOrganization")]
@@ -178,10 +187,28 @@ namespace Pulumi.Cloudflare
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+        /// </summary>
+        [Output("serviceTokenInactivity")]
+        public Output<Outputs.AccessOrganizationServiceTokenInactivity?> ServiceTokenInactivity { get; private set; } = null!;
+
+        /// <summary>
         /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+        /// </summary>
+        [Output("strictServiceTokenAuth")]
+        public Output<bool> StrictServiceTokenAuth { get; private set; } = null!;
+
+        /// <summary>
+        /// The account tags of organizations trusted by this organization for policy and device posture sharing.
+        /// </summary>
+        [Output("trustedAccounts")]
+        public Output<ImmutableArray<string>> TrustedAccounts { get; private set; } = null!;
 
         /// <summary>
         /// A description of the reason why the UI read only field is being toggled.
@@ -348,10 +375,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+        /// </summary>
+        [Input("serviceTokenInactivity")]
+        public Input<Inputs.AccessOrganizationServiceTokenInactivityArgs>? ServiceTokenInactivity { get; set; }
+
+        /// <summary>
         /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
+
+        /// <summary>
+        /// Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+        /// </summary>
+        [Input("strictServiceTokenAuth")]
+        public Input<bool>? StrictServiceTokenAuth { get; set; }
 
         /// <summary>
         /// A description of the reason why the UI read only field is being toggled.
@@ -476,10 +515,34 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+        /// </summary>
+        [Input("serviceTokenInactivity")]
+        public Input<Inputs.AccessOrganizationServiceTokenInactivityGetArgs>? ServiceTokenInactivity { get; set; }
+
+        /// <summary>
         /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
+
+        /// <summary>
+        /// Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+        /// </summary>
+        [Input("strictServiceTokenAuth")]
+        public Input<bool>? StrictServiceTokenAuth { get; set; }
+
+        [Input("trustedAccounts")]
+        private InputList<string>? _trustedAccounts;
+
+        /// <summary>
+        /// The account tags of organizations trusted by this organization for policy and device posture sharing.
+        /// </summary>
+        public InputList<string> TrustedAccounts
+        {
+            get => _trustedAccounts ?? (_trustedAccounts = new InputList<string>());
+            set => _trustedAccounts = value;
+        }
 
         /// <summary>
         /// A description of the reason why the UI read only field is being toggled.

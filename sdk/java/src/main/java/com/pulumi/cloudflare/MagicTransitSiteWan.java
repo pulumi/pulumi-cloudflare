@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -53,6 +54,8 @@ import javax.annotation.Nullable;
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .physport(1)
+ *             .healthCheckRate("low")
+ *             .loadBalanceInnerFlows(true)
  *             .name("name")
  *             .priority(0)
  *             .staticAddressing(MagicTransitSiteWanStaticAddressingArgs.builder()
@@ -106,6 +109,12 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
      */
     public Output<String> healthCheckRate() {
         return this.healthCheckRate;
+    }
+    @Export(name="loadBalanceInnerFlows", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> loadBalanceInnerFlows;
+
+    public Output<Boolean> loadBalanceInnerFlows() {
+        return this.loadBalanceInnerFlows;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;

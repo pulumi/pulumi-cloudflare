@@ -140,6 +140,20 @@ public class Stream extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.creator);
     }
     /**
+     * Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     * 
+     */
+    @Export(name="directUser", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> directUser;
+
+    /**
+     * @return Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+     * 
+     */
+    public Output<Boolean> directUser() {
+        return this.directUser;
+    }
+    /**
      * The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
      * 
      */

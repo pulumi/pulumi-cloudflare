@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        /// Available values: "DAILY", "WEEKLY".
         /// </summary>
         [Output("frequency")]
         public Output<string> Frequency { get; private set; } = null!;
@@ -125,6 +126,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        /// Available values: "DAILY", "WEEKLY".
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }
@@ -158,6 +160,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+        /// Available values: "DAILY", "WEEKLY".
         /// </summary>
         [Input("frequency")]
         public Input<string>? Frequency { get; set; }

@@ -20,7 +20,11 @@ import * as utilities from "./utilities";
  *
  * const exampleBotManagement = new cloudflare.BotManagement("example_bot_management", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     aiBotsMigrationOptOut: false,
  *     aiBotsProtection: "block",
+ *     aisearch: "block",
+ *     aiTraining: "disallow",
+ *     aiUser: "only_on_ad_pages",
  *     botPreferenceSyncEnabled: true,
  *     cfRobotsVariant: "policy_only",
  *     contentBotsProtection: "disabled",
@@ -28,6 +32,7 @@ import * as utilities from "./utilities";
  *     enableJs: true,
  *     fightMode: true,
  *     isRobotsTxtManaged: false,
+ *     jsdApiResultsEnabled: true,
  * });
  * ```
  *
@@ -66,10 +71,29 @@ export class BotManagement extends pulumi.CustomResource {
     }
 
     /**
+     * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     */
+    declare public readonly aiBotsMigrationOptOut: pulumi.Output<boolean>;
+    /**
      * Enable rule to block AI Scrapers and Crawlers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
     declare public readonly aiBotsProtection: pulumi.Output<string>;
+    /**
+     * Configure robots.txt policy for AI model training bots.
+     * Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+     */
+    declare public readonly aiTraining: pulumi.Output<string>;
+    /**
+     * Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    declare public readonly aiUser: pulumi.Output<string>;
+    /**
+     * Configure robots.txt policy for AI search bots.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    declare public readonly aisearch: pulumi.Output<string>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
@@ -109,6 +133,10 @@ export class BotManagement extends pulumi.CustomResource {
      * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
      */
     declare public readonly isRobotsTxtManaged: pulumi.Output<boolean>;
+    /**
+     * Whether to use JavaScript Detection results submitted through the API for this zone.
+     */
+    declare public readonly jsdApiResultsEnabled: pulumi.Output<boolean>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
@@ -164,7 +192,11 @@ export class BotManagement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BotManagementState | undefined;
+            resourceInputs["aiBotsMigrationOptOut"] = state?.aiBotsMigrationOptOut;
             resourceInputs["aiBotsProtection"] = state?.aiBotsProtection;
+            resourceInputs["aiTraining"] = state?.aiTraining;
+            resourceInputs["aiUser"] = state?.aiUser;
+            resourceInputs["aisearch"] = state?.aisearch;
             resourceInputs["autoUpdateModel"] = state?.autoUpdateModel;
             resourceInputs["bmCookieEnabled"] = state?.bmCookieEnabled;
             resourceInputs["botPreferenceSyncEnabled"] = state?.botPreferenceSyncEnabled;
@@ -174,6 +206,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["enableJs"] = state?.enableJs;
             resourceInputs["fightMode"] = state?.fightMode;
             resourceInputs["isRobotsTxtManaged"] = state?.isRobotsTxtManaged;
+            resourceInputs["jsdApiResultsEnabled"] = state?.jsdApiResultsEnabled;
             resourceInputs["optimizeWordpress"] = state?.optimizeWordpress;
             resourceInputs["sbfmDefinitelyAutomated"] = state?.sbfmDefinitelyAutomated;
             resourceInputs["sbfmLikelyAutomated"] = state?.sbfmLikelyAutomated;
@@ -188,7 +221,11 @@ export class BotManagement extends pulumi.CustomResource {
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["aiBotsMigrationOptOut"] = args?.aiBotsMigrationOptOut;
             resourceInputs["aiBotsProtection"] = args?.aiBotsProtection;
+            resourceInputs["aiTraining"] = args?.aiTraining;
+            resourceInputs["aiUser"] = args?.aiUser;
+            resourceInputs["aisearch"] = args?.aisearch;
             resourceInputs["autoUpdateModel"] = args?.autoUpdateModel;
             resourceInputs["bmCookieEnabled"] = args?.bmCookieEnabled;
             resourceInputs["botPreferenceSyncEnabled"] = args?.botPreferenceSyncEnabled;
@@ -198,6 +235,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["enableJs"] = args?.enableJs;
             resourceInputs["fightMode"] = args?.fightMode;
             resourceInputs["isRobotsTxtManaged"] = args?.isRobotsTxtManaged;
+            resourceInputs["jsdApiResultsEnabled"] = args?.jsdApiResultsEnabled;
             resourceInputs["optimizeWordpress"] = args?.optimizeWordpress;
             resourceInputs["sbfmDefinitelyAutomated"] = args?.sbfmDefinitelyAutomated;
             resourceInputs["sbfmLikelyAutomated"] = args?.sbfmLikelyAutomated;
@@ -218,10 +256,29 @@ export class BotManagement extends pulumi.CustomResource {
  */
 export interface BotManagementState {
     /**
+     * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     */
+    aiBotsMigrationOptOut?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable rule to block AI Scrapers and Crawlers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
     aiBotsProtection?: pulumi.Input<string | undefined>;
+    /**
+     * Configure robots.txt policy for AI model training bots.
+     * Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+     */
+    aiTraining?: pulumi.Input<string | undefined>;
+    /**
+     * Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    aiUser?: pulumi.Input<string | undefined>;
+    /**
+     * Configure robots.txt policy for AI search bots.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    aisearch?: pulumi.Input<string | undefined>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
@@ -261,6 +318,10 @@ export interface BotManagementState {
      * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
      */
     isRobotsTxtManaged?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to use JavaScript Detection results submitted through the API for this zone.
+     */
+    jsdApiResultsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
@@ -309,10 +370,29 @@ export interface BotManagementState {
  */
 export interface BotManagementArgs {
     /**
+     * Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+     */
+    aiBotsMigrationOptOut?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable rule to block AI Scrapers and Crawlers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
     aiBotsProtection?: pulumi.Input<string | undefined>;
+    /**
+     * Configure robots.txt policy for AI model training bots.
+     * Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+     */
+    aiTraining?: pulumi.Input<string | undefined>;
+    /**
+     * Configure robots.txt policy for AI assistant and agent bots.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    aiUser?: pulumi.Input<string | undefined>;
+    /**
+     * Configure robots.txt policy for AI search bots.
+     * Available values: "disabled", "block", "only*on*ad_pages".
+     */
+    aisearch?: pulumi.Input<string | undefined>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
@@ -352,6 +432,10 @@ export interface BotManagementArgs {
      * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
      */
     isRobotsTxtManaged?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to use JavaScript Detection results submitted through the API for this zone.
+     */
+    jsdApiResultsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */

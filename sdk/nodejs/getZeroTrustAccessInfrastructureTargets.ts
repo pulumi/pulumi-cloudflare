@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *     modifiedAfter: "2019-12-27T18:11:19.117Z",
  *     modifiedBefore: "2019-12-27T18:11:19.117Z",
  *     order: "hostname",
+ *     tags: ["string"],
  *     targetIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
  *     virtualNetworkId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
@@ -58,6 +59,7 @@ export function getZeroTrustAccessInfrastructureTargets(args?: GetZeroTrustAcces
         "modifiedAfter": args.modifiedAfter,
         "modifiedBefore": args.modifiedBefore,
         "order": args.order,
+        "tags": args.tags,
         "targetIds": args.targetIds,
         "virtualNetworkId": args.virtualNetworkId,
     }, opts);
@@ -147,6 +149,12 @@ export interface GetZeroTrustAccessInfrastructureTargetsArgs {
      * Available values: "hostname", "createdAt".
      */
     order?: string;
+    /**
+     * Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+     * Format: `tag=key:value` (e.g., `tag=environment:production`).
+     * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+     */
+    tags?: string[];
     /**
      * Filters for targets that have any of the following UUIDs. Specify
      * `targetIds` multiple times in query parameter to build list of
@@ -248,6 +256,12 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
      */
     readonly results: outputs.GetZeroTrustAccessInfrastructureTargetsResult[];
     /**
+     * Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+     * Format: `tag=key:value` (e.g., `tag=environment:production`).
+     * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+     */
+    readonly tags?: string[];
+    /**
      * Filters for targets that have any of the following UUIDs. Specify
      * `targetIds` multiple times in query parameter to build list of
      * candidates.
@@ -283,6 +297,7 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
  *     modifiedAfter: "2019-12-27T18:11:19.117Z",
  *     modifiedBefore: "2019-12-27T18:11:19.117Z",
  *     order: "hostname",
+ *     tags: ["string"],
  *     targetIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
  *     virtualNetworkId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
@@ -310,6 +325,7 @@ export function getZeroTrustAccessInfrastructureTargetsOutput(args?: GetZeroTrus
         "modifiedAfter": args.modifiedAfter,
         "modifiedBefore": args.modifiedBefore,
         "order": args.order,
+        "tags": args.tags,
         "targetIds": args.targetIds,
         "virtualNetworkId": args.virtualNetworkId,
     }, opts);
@@ -399,6 +415,12 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
      * Available values: "hostname", "createdAt".
      */
     order?: pulumi.Input<string | undefined>;
+    /**
+     * Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+     * Format: `tag=key:value` (e.g., `tag=environment:production`).
+     * Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filters for targets that have any of the following UUIDs. Specify
      * `targetIds` multiple times in query parameter to build list of

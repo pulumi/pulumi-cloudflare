@@ -118,9 +118,17 @@ public class AccountDnsSettings extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> enforceDnsOnly() {
         return Codegen.optional(this.enforceDnsOnly);
     }
+    /**
+     * Default settings for new zones created in this account.
+     * 
+     */
     @Export(name="zoneDefaults", refs={AccountDnsSettingsZoneDefaults.class}, tree="[0]")
     private Output<AccountDnsSettingsZoneDefaults> zoneDefaults;
 
+    /**
+     * @return Default settings for new zones created in this account.
+     * 
+     */
     public Output<AccountDnsSettingsZoneDefaults> zoneDefaults() {
         return this.zoneDefaults;
     }

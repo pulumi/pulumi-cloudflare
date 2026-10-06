@@ -23,19 +23,19 @@ namespace Pulumi.Cloudflare
     ///     var exampleZeroTrustResourceLibraryApplication = new Cloudflare.ZeroTrustResourceLibraryApplication("example_zero_trust_resource_library_application", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         CategoryId = 12,
-    ///         HumanId = "HR",
-    ///         Name = "HR",
     ///         Hostnames = new[]
     ///         {
     ///             "example.com",
     ///             "foo.com",
     ///         },
+    ///         CategoryId = 12,
+    ///         HumanId = "HR",
     ///         IpSubnets = new[]
     ///         {
     ///             "192.168.1.0/24",
-    ///             "10.0.0.0/8",
+    ///             "2001:db8::/48",
     ///         },
+    ///         Name = "HR",
     ///         PortProtocols = new[]
     ///         {
     ///             "tcp/80",
@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         /// Returns the category ID.
         /// </summary>
         [Output("categoryId")]
-        public Output<int> CategoryId { get; private set; } = null!;
+        public Output<int?> CategoryId { get; private set; } = null!;
 
         /// <summary>
         /// Returns the application creation time.
@@ -121,10 +121,10 @@ namespace Pulumi.Cloudflare
         /// Returns the human readable ID.
         /// </summary>
         [Output("humanId")]
-        public Output<string> HumanId { get; private set; } = null!;
+        public Output<string?> HumanId { get; private set; } = null!;
 
         /// <summary>
-        /// IP subnets matched by the application.
+        /// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         /// </summary>
         [Output("ipSubnets")]
         public Output<ImmutableArray<string>> IpSubnets { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         /// Returns the application name.
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
         /// Port and protocol pairs matched by the application.
@@ -217,8 +217,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Returns the category ID.
         /// </summary>
-        [Input("categoryId", required: true)]
-        public Input<int> CategoryId { get; set; } = null!;
+        [Input("categoryId")]
+        public Input<int>? CategoryId { get; set; }
 
         [Input("hostnames")]
         private InputList<string>? _hostnames;
@@ -235,14 +235,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Returns the human readable ID.
         /// </summary>
-        [Input("humanId", required: true)]
-        public Input<string> HumanId { get; set; } = null!;
+        [Input("humanId")]
+        public Input<string>? HumanId { get; set; }
 
         [Input("ipSubnets")]
         private InputList<string>? _ipSubnets;
 
         /// <summary>
-        /// IP subnets matched by the application.
+        /// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         /// </summary>
         public InputList<string> IpSubnets
         {
@@ -253,8 +253,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Returns the application name.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("portProtocols")]
         private InputList<string>? _portProtocols;
@@ -361,7 +361,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _ipSubnets;
 
         /// <summary>
-        /// IP subnets matched by the application.
+        /// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         /// </summary>
         public InputList<string> IpSubnets
         {

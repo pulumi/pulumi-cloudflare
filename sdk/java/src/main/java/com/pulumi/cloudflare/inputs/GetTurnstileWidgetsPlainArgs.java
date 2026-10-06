@@ -48,7 +48,8 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      * 
      */
@@ -56,7 +57,8 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
     private @Nullable String filter;
 
     /**
-     * @return Filter widgets by field using case-insensitive substring matching.
+     * @return Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      * 
      */
@@ -130,7 +132,8 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * @param filter Filter widgets by field. The `name` field uses case-insensitive
+         * substring matching; `sitekey` uses exact matching.
          * Format: `field:value`
          * 
          * @return builder

@@ -20,6 +20,7 @@ namespace Pulumi.Cloudflare
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
@@ -41,7 +42,12 @@ namespace Pulumi.Cloudflare
     ///         Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs
     ///         {
     ///             Disabled = true,
+    ///             MaxAge = 0,
+    ///             StaleWhileRevalidate = 0,
     ///         },
+    ///         Integration = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///         }),
     ///         Mtls = new Cloudflare.Inputs.HyperdriveConfigMtlsArgs
     ///         {
     ///             CaCertificateId = "00000000-0000-0000-0000-0000000000",
@@ -78,6 +84,9 @@ namespace Pulumi.Cloudflare
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
+        [Output("integration")]
+        public Output<string?> Integration { get; private set; } = null!;
+
         /// <summary>
         /// Defines the last modified time of the Hyperdrive configuration.
         /// </summary>
@@ -96,8 +105,11 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Combines database connection fields with exactly one supported network location.
+        /// </summary>
         [Output("origin")]
-        public Output<Outputs.HyperdriveConfigOrigin> Origin { get; private set; } = null!;
+        public Output<Outputs.HyperdriveConfigOrigin?> Origin { get; private set; } = null!;
 
         /// <summary>
         /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -166,6 +178,9 @@ namespace Pulumi.Cloudflare
         [Input("caching")]
         public Input<Inputs.HyperdriveConfigCachingArgs>? Caching { get; set; }
 
+        [Input("integration")]
+        public Input<string>? Integration { get; set; }
+
         /// <summary>
         /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         /// </summary>
@@ -178,8 +193,11 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("origin", required: true)]
-        public Input<Inputs.HyperdriveConfigOriginArgs> Origin { get; set; } = null!;
+        /// <summary>
+        /// Combines database connection fields with exactly one supported network location.
+        /// </summary>
+        [Input("origin")]
+        public Input<Inputs.HyperdriveConfigOriginArgs>? Origin { get; set; }
 
         /// <summary>
         /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -210,6 +228,9 @@ namespace Pulumi.Cloudflare
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
+        [Input("integration")]
+        public Input<string>? Integration { get; set; }
+
         /// <summary>
         /// Defines the last modified time of the Hyperdrive configuration.
         /// </summary>
@@ -228,6 +249,9 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Combines database connection fields with exactly one supported network location.
+        /// </summary>
         [Input("origin")]
         public Input<Inputs.HyperdriveConfigOriginGetArgs>? Origin { get; set; }
 

@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
     public partial class FlagshipApp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -52,6 +52,9 @@ namespace Pulumi.Cloudflare
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -111,11 +114,14 @@ namespace Pulumi.Cloudflare
     public sealed class FlagshipAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -128,7 +134,7 @@ namespace Pulumi.Cloudflare
     public sealed class FlagshipAppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -136,6 +142,9 @@ namespace Pulumi.Cloudflare
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

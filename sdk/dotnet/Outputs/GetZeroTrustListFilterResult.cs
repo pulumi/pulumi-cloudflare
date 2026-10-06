@@ -14,14 +14,74 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustListFilterResult
     {
         /// <summary>
+        /// Sort direction. Applies to the field named in `OrderBy`; when `OrderBy`
+        /// is omitted it applies to the default `CreatedAt` ordering. When
+        /// `Direction` is omitted the default is field-specific: explicitly choosing
+        /// `CreatedAt` or `UpdatedAt` defaults to descending (newest first); `Name`
+        /// and `ItemCount` default to ascending; and the default `CreatedAt`
+        /// ordering used when `OrderBy` is omitted is ascending (for backwards
+        /// compatibility).
+        ///   * `Asc` — ascending.
+        ///   * `Desc` — descending.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string? Direction;
+        /// <summary>
+        /// Filter the returned lists by one or more `field:value` pairs.
+        /// Repeat the parameter to apply multiple filters; they are combined with
+        /// logical AND (a list must satisfy every filter to be returned).
+        /// 
+        /// Supported fields and their matching behaviour:
+        ///   * `Name` — case-insensitive substring match on the list name.
+        ///   * `Id` — substring match on the list ID (UUID), with or without dashes.
+        ///   * `Type` — exact match on the list type. Supersedes the legacy `Type` query
+        ///     parameter when both are supplied. Must be one of the valid type values.
+        ///   * `ItemCount` — exact integer match on the number of items in the list.
+        /// 
+        /// Each entry must match one of the per-field patterns below: the field must be
+        /// one of `Name`, `Id`, `Type`, or `ItemCount`; `Name`/`Id` accept any value,
+        /// `Type` is restricted to the valid list type values, and `ItemCount` must be
+        /// a non-negative integer.
+        /// </summary>
+        public readonly ImmutableArray<string> Filters;
+        /// <summary>
+        /// Field to sort the returned lists by. When omitted, results are ordered by
+        /// `CreatedAt` in ascending order (i.e. creation order) for backwards
+        /// compatibility. Supported values:
+        ///   * `Name` — sort alphabetically by list name.
+        ///   * `CreatedAt` — sort by creation time; defaults to descending unless `Direction` is set.
+        ///   * `UpdatedAt` — sort by last-modified time; defaults to descending unless `Direction` is set.
+        ///   * `ItemCount` — sort by number of items in the list.
+        /// Available values: "name", "CreatedAt", "UpdatedAt", "ItemCount".
+        /// </summary>
+        public readonly string? OrderBy;
+        /// <summary>
+        /// Case-insensitive substring match on the list name or description. When
+        /// combined with `Filter`, both must match (logical AND).
+        /// </summary>
+        public readonly string? Search;
+        /// <summary>
         /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]
-        private GetZeroTrustListFilterResult(string? type)
+        private GetZeroTrustListFilterResult(
+            string? direction,
+
+            ImmutableArray<string> filters,
+
+            string? orderBy,
+
+            string? search,
+
+            string? type)
         {
+            Direction = direction;
+            Filters = filters;
+            OrderBy = orderBy;
+            Search = search;
             Type = type;
         }
     }

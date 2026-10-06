@@ -44,6 +44,10 @@ namespace Pulumi.Cloudflare
         ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
         ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
         ///         Order = "hostname",
+        ///         Tags = new[]
+        ///         {
+        ///             "string",
+        ///         },
         ///         TargetIds = new[]
         ///         {
         ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -90,6 +94,10 @@ namespace Pulumi.Cloudflare
         ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
         ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
         ///         Order = "hostname",
+        ///         Tags = new[]
+        ///         {
+        ///             "string",
+        ///         },
         ///         TargetIds = new[]
         ///         {
         ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -136,6 +144,10 @@ namespace Pulumi.Cloudflare
         ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
         ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
         ///         Order = "hostname",
+        ///         Tags = new[]
+        ///         {
+        ///             "string",
+        ///         },
         ///         TargetIds = new[]
         ///         {
         ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -274,6 +286,20 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
+
+        [Input("tags")]
+        private List<string>? _tags;
+
+        /// <summary>
+        /// Filter by tag key:value pairs. Multiple `Tag` params are AND'd.
+        /// Format: `tag=key:value` (e.g., `tag=environment:production`).
+        /// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+        /// </summary>
+        public List<string> Tags
+        {
+            get => _tags ?? (_tags = new List<string>());
+            set => _tags = value;
+        }
 
         [Input("targetIds")]
         private List<string>? _targetIds;
@@ -425,6 +451,20 @@ namespace Pulumi.Cloudflare
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Filter by tag key:value pairs. Multiple `Tag` params are AND'd.
+        /// Format: `tag=key:value` (e.g., `tag=environment:production`).
+        /// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("targetIds")]
         private InputList<string>? _targetIds;
 
@@ -540,6 +580,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessInfrastructureTargetsResultResult> Results;
         /// <summary>
+        /// Filter by tag key:value pairs. Multiple `Tag` params are AND'd.
+        /// Format: `tag=key:value` (e.g., `tag=environment:production`).
+        /// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
         /// Filters for targets that have any of the following UUIDs. Specify
         /// `TargetIds` multiple times in query parameter to build list of
         /// candidates.
@@ -590,6 +636,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZeroTrustAccessInfrastructureTargetsResultResult> results,
 
+            ImmutableArray<string> tags,
+
             ImmutableArray<string> targetIds,
 
             string? virtualNetworkId)
@@ -613,6 +661,7 @@ namespace Pulumi.Cloudflare
             ModifiedBefore = modifiedBefore;
             Order = order;
             Results = results;
+            Tags = tags;
             TargetIds = targetIds;
             VirtualNetworkId = virtualNetworkId;
         }

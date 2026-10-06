@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZeroTrustDnsLocationResult',
@@ -27,7 +28,7 @@ class GetZeroTrustDnsLocationResult:
     """
     A collection of values returned by getZeroTrustDnsLocation.
     """
-    def __init__(__self__, account_id=None, client_default=None, created_at=None, dns_destination_ips_id=None, dns_destination_ipv6_block_id=None, doh_subdomain=None, ecs_support=None, endpoints=None, id=None, ip=None, ipv4_destination=None, ipv4_destination_backup=None, location_id=None, max_ttl=None, name=None, networks=None, updated_at=None):
+    def __init__(__self__, account_id=None, client_default=None, created_at=None, dns_destination_ips_id=None, dns_destination_ipv6_block_id=None, doh_subdomain=None, ecs_support=None, endpoints=None, filter=None, id=None, ip=None, ipv4_destination=None, ipv4_destination_backup=None, location_id=None, max_ttl=None, name=None, networks=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -52,6 +53,9 @@ class GetZeroTrustDnsLocationResult:
         if endpoints and not isinstance(endpoints, dict):
             raise TypeError("Expected argument 'endpoints' to be a dict")
         pulumi.set(__self__, "endpoints", endpoints)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -88,9 +92,6 @@ class GetZeroTrustDnsLocationResult:
     @_builtins.property
     @pulumi.getter(name="clientDefault")
     def client_default(self) -> _builtins.bool:
-        """
-        Indicate whether this location is the default location.
-        """
         return pulumi.get(self, "client_default")
 
     @_builtins.property
@@ -101,102 +102,71 @@ class GetZeroTrustDnsLocationResult:
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpsId")
     def dns_destination_ips_id(self) -> _builtins.str:
-        """
-        Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-        """
         return pulumi.get(self, "dns_destination_ips_id")
 
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpv6BlockId")
     def dns_destination_ipv6_block_id(self) -> _builtins.str:
-        """
-        Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
-        """
         return pulumi.get(self, "dns_destination_ipv6_block_id")
 
     @_builtins.property
     @pulumi.getter(name="dohSubdomain")
     def doh_subdomain(self) -> _builtins.str:
-        """
-        Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
-        """
         return pulumi.get(self, "doh_subdomain")
 
     @_builtins.property
     @pulumi.getter(name="ecsSupport")
     def ecs_support(self) -> _builtins.bool:
-        """
-        Indicate whether the location must resolve EDNS queries.
-        """
         return pulumi.get(self, "ecs_support")
 
     @_builtins.property
     @pulumi.getter
     def endpoints(self) -> 'outputs.GetZeroTrustDnsLocationEndpointsResult':
-        """
-        Configure the destination endpoints for this location.
-        """
         return pulumi.get(self, "endpoints")
 
     @_builtins.property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.GetZeroTrustDnsLocationFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def ip(self) -> _builtins.str:
-        """
-        Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-        """
         return pulumi.get(self, "ip")
 
     @_builtins.property
     @pulumi.getter(name="ipv4Destination")
     def ipv4_destination(self) -> _builtins.str:
-        """
-        Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-        """
         return pulumi.get(self, "ipv4_destination")
 
     @_builtins.property
     @pulumi.getter(name="ipv4DestinationBackup")
     def ipv4_destination_backup(self) -> _builtins.str:
-        """
-        Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-        """
         return pulumi.get(self, "ipv4_destination_backup")
 
     @_builtins.property
     @pulumi.getter(name="locationId")
-    def location_id(self) -> _builtins.str:
+    def location_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "location_id")
 
     @_builtins.property
     @pulumi.getter(name="maxTtl")
     def max_ttl(self) -> 'outputs.GetZeroTrustDnsLocationMaxTtlResult':
-        """
-        Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
-        """
         return pulumi.get(self, "max_ttl")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specify the location name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> Sequence['outputs.GetZeroTrustDnsLocationNetworkResult']:
-        """
-        Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
-        """
         return pulumi.get(self, "networks")
 
     @_builtins.property
@@ -219,6 +189,7 @@ class AwaitableGetZeroTrustDnsLocationResult(GetZeroTrustDnsLocationResult):
             doh_subdomain=self.doh_subdomain,
             ecs_support=self.ecs_support,
             endpoints=self.endpoints,
+            filter=self.filter,
             id=self.id,
             ip=self.ip,
             ipv4_destination=self.ipv4_destination,
@@ -231,6 +202,7 @@ class AwaitableGetZeroTrustDnsLocationResult(GetZeroTrustDnsLocationResult):
 
 
 def get_zero_trust_dns_location(account_id: Optional[_builtins.str] = None,
+                                filter: Optional[Union['GetZeroTrustDnsLocationFilterArgs', 'GetZeroTrustDnsLocationFilterArgsDict', 'outputs.GetZeroTrustDnsLocationFilterResult']] = None,
                                 location_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDnsLocationResult:
     """
@@ -252,6 +224,7 @@ def get_zero_trust_dns_location(account_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['locationId'] = location_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation', __args__, opts=opts, typ=GetZeroTrustDnsLocationResult).value
@@ -265,6 +238,7 @@ def get_zero_trust_dns_location(account_id: Optional[_builtins.str] = None,
         doh_subdomain=pulumi.get(__ret__, 'doh_subdomain'),
         ecs_support=pulumi.get(__ret__, 'ecs_support'),
         endpoints=pulumi.get(__ret__, 'endpoints'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         ip=pulumi.get(__ret__, 'ip'),
         ipv4_destination=pulumi.get(__ret__, 'ipv4_destination'),
@@ -275,7 +249,8 @@ def get_zero_trust_dns_location(account_id: Optional[_builtins.str] = None,
         networks=pulumi.get(__ret__, 'networks'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_zero_trust_dns_location_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                       location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustDnsLocationFilterArgs', 'GetZeroTrustDnsLocationFilterArgsDict', 'outputs.GetZeroTrustDnsLocationFilterResult']]]] = None,
+                                       location_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDnsLocationResult]:
     """
     Accepted Permissions
@@ -296,6 +271,7 @@ def get_zero_trust_dns_location_output(account_id: pulumi.Input[Optional[Optiona
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['locationId'] = location_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation', __args__, opts=opts, typ=GetZeroTrustDnsLocationResult)
@@ -308,6 +284,7 @@ def get_zero_trust_dns_location_output(account_id: pulumi.Input[Optional[Optiona
         doh_subdomain=pulumi.get(__response__, 'doh_subdomain'),
         ecs_support=pulumi.get(__response__, 'ecs_support'),
         endpoints=pulumi.get(__response__, 'endpoints'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         ip=pulumi.get(__response__, 'ip'),
         ipv4_destination=pulumi.get(__response__, 'ipv4_destination'),

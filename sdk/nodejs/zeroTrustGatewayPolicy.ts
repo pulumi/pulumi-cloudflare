@@ -181,6 +181,9 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayPolicy.__pulumiType;
     }
 
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -336,6 +339,9 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayPolicy resources.
  */
 export interface ZeroTrustGatewayPolicyState {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -418,6 +424,9 @@ export interface ZeroTrustGatewayPolicyState {
  * The set of arguments for constructing a ZeroTrustGatewayPolicy resource.
  */
 export interface ZeroTrustGatewayPolicyArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.

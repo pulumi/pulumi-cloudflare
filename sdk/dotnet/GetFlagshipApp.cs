@@ -97,13 +97,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipAppArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -117,13 +117,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -139,16 +139,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetFlagshipAppResult
     {
         /// <summary>
-        /// Cloudflare account ID.
+        /// Cloudflare account ID that owns the Flagship app.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         public readonly string AppId;
         public readonly string CreatedAt;
         /// <summary>
-        /// App identifier.
+        /// Flagship app ID returned when the app was created.
         /// </summary>
         public readonly string Id;
         public readonly string Name;

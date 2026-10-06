@@ -65,9 +65,17 @@ import javax.annotation.Nullable;
 @Deprecated /* cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint */
 @ResourceType(type="cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint")
 public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }

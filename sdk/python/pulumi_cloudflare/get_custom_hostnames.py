@@ -234,7 +234,6 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
             "starts_with": "app",
         },
         hostname_status="provisioned",
-        ssl=0,
         ssl_status="active",
         wildcard=False)
     ```
@@ -324,7 +323,6 @@ def get_custom_hostnames_output(certificate_authority: pulumi.Input[Optional[Opt
             "starts_with": "app",
         },
         hostname_status="provisioned",
-        ssl=0,
         ssl_status="active",
         wildcard=False)
     ```

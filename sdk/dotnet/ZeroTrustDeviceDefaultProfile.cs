@@ -33,6 +33,14 @@ namespace Pulumi.Cloudflare
     ///         AutoConnect = 0,
     ///         CaptivePortal = 180,
     ///         DisableAutoFallback = true,
+    ///         DnsSearchSuffixes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs
+    ///             {
+    ///                 Suffix = "internal.corp",
+    ///                 Description = "Example internal domains",
+    ///             },
+    ///         },
     ///         Excludes = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileExcludeArgs
@@ -42,6 +50,22 @@ namespace Pulumi.Cloudflare
     ///             },
     ///         },
     ///         ExcludeOfficeIps = true,
+    ///         GlobalAcceleration = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs
+    ///         {
+    ///             ApiEndpoints = new[]
+    ///             {
+    ///                 "198.51.100.1:443",
+    ///             },
+    ///             Enabled = true,
+    ///             MasqueEndpoints = new[]
+    ///             {
+    ///                 "198.51.100.1:443",
+    ///             },
+    ///             WireguardEndpoints = new[]
+    ///             {
+    ///                 "198.51.100.1:2408",
+    ///             },
+    ///         },
     ///         Includes = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileIncludeArgs
@@ -62,6 +86,15 @@ namespace Pulumi.Cloudflare
     ///         SupportUrl = "https://1.1.1.1/help",
     ///         SwitchLocked = true,
     ///         TunnelProtocol = "wireguard",
+    ///         UninstallProtection = false,
+    ///         VirtualNetworks = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileVirtualNetworksArgs
+    ///         {
+    ///             Alloweds = new[]
+    ///             {
+    ///                 "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///             },
+    ///             Default = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///         },
     ///     });
     /// 
     /// });
@@ -179,6 +212,13 @@ namespace Pulumi.Cloudflare
         public Output<string> PolicyId { get; private set; } = null!;
 
         /// <summary>
+        /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        /// Available values: "warp", "BrowserExtension".
+        /// </summary>
+        [Output("profileType")]
+        public Output<string> ProfileType { get; private set; } = null!;
+
+        /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         [Output("registerInterfaceIpWithDns")]
@@ -210,6 +250,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("tunnelProtocol")]
         public Output<string> TunnelProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        /// </summary>
+        [Output("uninstallProtection")]
+        public Output<bool> UninstallProtection { get; private set; } = null!;
 
         /// <summary>
         /// Virtual network access settings for the device.
@@ -401,6 +447,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? TunnelProtocol { get; set; }
 
         /// <summary>
+        /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        /// </summary>
+        [Input("uninstallProtection")]
+        public Input<bool>? UninstallProtection { get; set; }
+
+        /// <summary>
         /// Virtual network access settings for the device.
         /// </summary>
         [Input("virtualNetworks")]
@@ -540,6 +592,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
+        /// The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        /// Available values: "warp", "BrowserExtension".
+        /// </summary>
+        [Input("profileType")]
+        public Input<string>? ProfileType { get; set; }
+
+        /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         [Input("registerInterfaceIpWithDns")]
@@ -571,6 +630,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("tunnelProtocol")]
         public Input<string>? TunnelProtocol { get; set; }
+
+        /// <summary>
+        /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        /// </summary>
+        [Input("uninstallProtection")]
+        public Input<bool>? UninstallProtection { get; set; }
 
         /// <summary>
         /// Virtual network access settings for the device.

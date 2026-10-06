@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCustomHostname(ctx, &cloudflare.LookupCustomHostnameArgs{
 //				ZoneId:           pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CustomHostnameId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CustomHostnameId: pulumi.StringRef("0d89c70d-ad9f-4843-b99f-6cc0252067e9"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,7 +54,7 @@ func LookupCustomHostname(ctx *pulumi.Context, args *LookupCustomHostnameArgs, o
 
 // A collection of arguments for invoking getCustomHostname.
 type LookupCustomHostnameArgs struct {
-	// Identifier.
+	// Custom hostname identifier tag.
 	CustomHostnameId *string                  `pulumi:"customHostnameId"`
 	Filter           *GetCustomHostnameFilter `pulumi:"filter"`
 	// Identifier.
@@ -65,7 +65,7 @@ type LookupCustomHostnameArgs struct {
 type LookupCustomHostnameResult struct {
 	// This is the time the hostname was created.
 	CreatedAt string `pulumi:"createdAt"`
-	// Identifier.
+	// Custom hostname identifier tag.
 	CustomHostnameId *string `pulumi:"customHostnameId"`
 	// Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
 	CustomMetadata map[string]string `pulumi:"customMetadata"`
@@ -76,7 +76,7 @@ type LookupCustomHostnameResult struct {
 	Filter          *GetCustomHostnameFilter `pulumi:"filter"`
 	// The custom hostname that will point to your hostname via CNAME.
 	Hostname string `pulumi:"hostname"`
-	// Identifier.
+	// Custom hostname identifier tag.
 	Id string `pulumi:"id"`
 	// This is a record which can be placed to activate a hostname.
 	OwnershipVerification GetCustomHostnameOwnershipVerification `pulumi:"ownershipVerification"`
@@ -99,7 +99,7 @@ func LookupCustomHostnameOutput(ctx *pulumi.Context, args LookupCustomHostnameOu
 
 // A collection of arguments for invoking getCustomHostname.
 type LookupCustomHostnameOutputArgs struct {
-	// Identifier.
+	// Custom hostname identifier tag.
 	CustomHostnameId pulumi.StringPtrInput           `pulumi:"customHostnameId"`
 	Filter           GetCustomHostnameFilterPtrInput `pulumi:"filter"`
 	// Identifier.
@@ -130,7 +130,7 @@ func (o LookupCustomHostnameResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Custom hostname identifier tag.
 func (o LookupCustomHostnameResultOutput) CustomHostnameId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) *string { return v.CustomHostnameId }).(pulumi.StringPtrOutput)
 }
@@ -159,7 +159,7 @@ func (o LookupCustomHostnameResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Custom hostname identifier tag.
 func (o LookupCustomHostnameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) string { return v.Id }).(pulumi.StringOutput)
 }

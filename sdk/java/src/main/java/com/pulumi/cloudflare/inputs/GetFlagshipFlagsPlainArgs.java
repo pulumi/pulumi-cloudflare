@@ -17,14 +17,14 @@ public final class GetFlagshipFlagsPlainArgs extends com.pulumi.resources.Invoke
     public static final GetFlagshipFlagsPlainArgs Empty = new GetFlagshipFlagsPlainArgs();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public String accountId() {
@@ -32,14 +32,14 @@ public final class GetFlagshipFlagsPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      * 
      */
     @Import(name="appId", required=true)
     private String appId;
 
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public String appId() {
@@ -51,13 +51,13 @@ public final class GetFlagshipFlagsPlainArgs extends com.pulumi.resources.Invoke
      * 
      */
     @Import(name="limit")
-    private @Nullable String limit;
+    private @Nullable Integer limit;
 
     /**
      * @return Max items to return (1–200).
      * 
      */
-    public Optional<String> limit() {
+    public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
 
@@ -104,7 +104,7 @@ public final class GetFlagshipFlagsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GetFlagshipFlagsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetFlagshipFlagsPlainArgs extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder limit(@Nullable String limit) {
+        public Builder limit(@Nullable Integer limit) {
             $.limit = limit;
             return this;
         }

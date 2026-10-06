@@ -65,7 +65,7 @@ export interface GetCallsSfuAppResult {
      */
     readonly modified: string;
     /**
-     * A short description of Calls app, not shown to end users.
+     * A short description of a Realtime SFU app, not shown to end users.
      */
     readonly name: string;
     /**

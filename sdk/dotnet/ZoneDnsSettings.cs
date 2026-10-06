@@ -39,7 +39,6 @@ namespace Pulumi.Cloudflare
     ///         MultiProvider = false,
     ///         Nameservers = new Cloudflare.Inputs.ZoneDnsSettingsNameserversArgs
     ///         {
-    ///             NsSet = 1,
     ///             Type = "cloudflare.standard",
     ///         },
     ///         NsTtl = 86400,
@@ -74,7 +73,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> FlattenAllCnames { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
         /// </summary>
         [Output("foundationDns")]
         public Output<bool?> FoundationDns { get; private set; } = null!;
@@ -92,7 +91,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> MultiProvider { get; private set; } = null!;
 
         /// <summary>
-        /// Settings determining the nameservers through which the zone should be available.
+        /// Controls the nameservers through which the zone is available.
         /// </summary>
         [Output("nameservers")]
         public Output<Outputs.ZoneDnsSettingsNameservers> Nameservers { get; private set; } = null!;
@@ -181,7 +180,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? FlattenAllCnames { get; set; }
 
         /// <summary>
-        /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
         /// </summary>
         [Input("foundationDns")]
         public Input<bool>? FoundationDns { get; set; }
@@ -199,7 +198,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? MultiProvider { get; set; }
 
         /// <summary>
-        /// Settings determining the nameservers through which the zone should be available.
+        /// Controls the nameservers through which the zone is available.
         /// </summary>
         [Input("nameservers")]
         public Input<Inputs.ZoneDnsSettingsNameserversArgs>? Nameservers { get; set; }
@@ -250,7 +249,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? FlattenAllCnames { get; set; }
 
         /// <summary>
-        /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
         /// </summary>
         [Input("foundationDns")]
         public Input<bool>? FoundationDns { get; set; }
@@ -268,7 +267,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? MultiProvider { get; set; }
 
         /// <summary>
-        /// Settings determining the nameservers through which the zone should be available.
+        /// Controls the nameservers through which the zone is available.
         /// </summary>
         [Input("nameservers")]
         public Input<Inputs.ZoneDnsSettingsNameserversGetArgs>? Nameservers { get; set; }

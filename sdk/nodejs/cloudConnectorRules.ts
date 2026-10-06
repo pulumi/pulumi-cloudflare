@@ -67,7 +67,7 @@ export class CloudConnectorRules extends pulumi.CustomResource {
         return obj['__pulumiType'] === CloudConnectorRules.__pulumiType;
     }
 
-    declare public readonly rules: pulumi.Output<outputs.CloudConnectorRulesRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.CloudConnectorRulesRule[]>;
     /**
      * Identifier.
      */
@@ -90,6 +90,9 @@ export class CloudConnectorRules extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as CloudConnectorRulesArgs | undefined;
+            if (args?.rules === undefined && !opts.urn) {
+                throw new Error("Missing required property 'rules'");
+            }
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -116,7 +119,7 @@ export interface CloudConnectorRulesState {
  * The set of arguments for constructing a CloudConnectorRules resource.
  */
 export interface CloudConnectorRulesArgs {
-    rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[] | undefined>;
+    rules: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
     /**
      * Identifier.
      */

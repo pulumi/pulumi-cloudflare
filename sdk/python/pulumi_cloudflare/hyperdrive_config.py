@@ -23,9 +23,10 @@ class HyperdriveConfigArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 origin: pulumi.Input['HyperdriveConfigOriginArgs'],
                  caching: pulumi.Input[Optional['HyperdriveConfigCachingArgs']] = None,
+                 integration: pulumi.Input[Optional[_builtins.str]] = None,
                  mtls: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']] = None,
+                 origin: pulumi.Input[Optional['HyperdriveConfigOriginArgs']] = None,
                  origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
@@ -33,15 +34,19 @@ class HyperdriveConfigArgs:
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input['HyperdriveConfigMtlsArgs'] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        :param pulumi.Input['HyperdriveConfigOriginArgs'] origin: Combines database connection fields with exactly one supported network location.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "origin", origin)
         if caching is not None:
             pulumi.set(__self__, "caching", caching)
+        if integration is not None:
+            pulumi.set(__self__, "integration", integration)
         if mtls is not None:
             pulumi.set(__self__, "mtls", mtls)
+        if origin is not None:
+            pulumi.set(__self__, "origin", origin)
         if origin_connection_limit is not None:
             pulumi.set(__self__, "origin_connection_limit", origin_connection_limit)
 
@@ -71,21 +76,21 @@ class HyperdriveConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> pulumi.Input['HyperdriveConfigOriginArgs']:
-        return pulumi.get(self, "origin")
-
-    @origin.setter
-    def origin(self, value: pulumi.Input['HyperdriveConfigOriginArgs']):
-        pulumi.set(self, "origin", value)
-
-    @_builtins.property
-    @pulumi.getter
     def caching(self) -> pulumi.Input[Optional['HyperdriveConfigCachingArgs']]:
         return pulumi.get(self, "caching")
 
     @caching.setter
     def caching(self, value: pulumi.Input[Optional['HyperdriveConfigCachingArgs']]):
         pulumi.set(self, "caching", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def integration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "integration")
+
+    @integration.setter
+    def integration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "integration", value)
 
     @_builtins.property
     @pulumi.getter
@@ -98,6 +103,18 @@ class HyperdriveConfigArgs:
     @mtls.setter
     def mtls(self, value: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']]):
         pulumi.set(self, "mtls", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def origin(self) -> pulumi.Input[Optional['HyperdriveConfigOriginArgs']]:
+        """
+        Combines database connection fields with exactly one supported network location.
+        """
+        return pulumi.get(self, "origin")
+
+    @origin.setter
+    def origin(self, value: pulumi.Input[Optional['HyperdriveConfigOriginArgs']]):
+        pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter(name="originConnectionLimit")
@@ -118,6 +135,7 @@ class _HyperdriveConfigState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  caching: pulumi.Input[Optional['HyperdriveConfigCachingArgs']] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 integration: pulumi.Input[Optional[_builtins.str]] = None,
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  mtls: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -132,6 +150,7 @@ class _HyperdriveConfigState:
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
         :param pulumi.Input['HyperdriveConfigMtlsArgs'] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        :param pulumi.Input['HyperdriveConfigOriginArgs'] origin: Combines database connection fields with exactly one supported network location.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         :param pulumi.Input[_builtins.str] restarted_on: Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
         """
@@ -141,6 +160,8 @@ class _HyperdriveConfigState:
             pulumi.set(__self__, "caching", caching)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if integration is not None:
+            pulumi.set(__self__, "integration", integration)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if mtls is not None:
@@ -188,6 +209,15 @@ class _HyperdriveConfigState:
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
+    @pulumi.getter
+    def integration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "integration")
+
+    @integration.setter
+    def integration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "integration", value)
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -226,6 +256,9 @@ class _HyperdriveConfigState:
     @_builtins.property
     @pulumi.getter
     def origin(self) -> pulumi.Input[Optional['HyperdriveConfigOriginArgs']]:
+        """
+        Combines database connection fields with exactly one supported network location.
+        """
         return pulumi.get(self, "origin")
 
     @origin.setter
@@ -265,6 +298,7 @@ class HyperdriveConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict', 'outputs.HyperdriveConfigCaching']]] = None,
+                 integration: pulumi.Input[Optional[_builtins.str]] = None,
                  mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict', 'outputs.HyperdriveConfigOrigin']]] = None,
@@ -280,6 +314,7 @@ class HyperdriveConfig(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
         example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
@@ -295,7 +330,10 @@ class HyperdriveConfig(pulumi.CustomResource):
             },
             caching={
                 "disabled": True,
+                "max_age": 0,
+                "stale_while_revalidate": 0,
             },
+            integration=json.dumps({}),
             mtls={
                 "ca_certificate_id": "00000000-0000-0000-0000-0000000000",
                 "mtls_certificate_id": "00000000-0000-0000-0000-0000000000",
@@ -316,6 +354,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        :param pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict', 'outputs.HyperdriveConfigOrigin']] origin: Combines database connection fields with exactly one supported network location.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         ...
@@ -334,6 +373,7 @@ class HyperdriveConfig(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
         example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
@@ -349,7 +389,10 @@ class HyperdriveConfig(pulumi.CustomResource):
             },
             caching={
                 "disabled": True,
+                "max_age": 0,
+                "stale_while_revalidate": 0,
             },
+            integration=json.dumps({}),
             mtls={
                 "ca_certificate_id": "00000000-0000-0000-0000-0000000000",
                 "mtls_certificate_id": "00000000-0000-0000-0000-0000000000",
@@ -382,6 +425,7 @@ class HyperdriveConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict', 'outputs.HyperdriveConfigCaching']]] = None,
+                 integration: pulumi.Input[Optional[_builtins.str]] = None,
                  mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict', 'outputs.HyperdriveConfigOrigin']]] = None,
@@ -399,12 +443,11 @@ class HyperdriveConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["caching"] = caching
+            __props__.__dict__["integration"] = integration
             __props__.__dict__["mtls"] = mtls
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if origin is None and not opts.urn:
-                raise TypeError("Missing required property 'origin'")
             __props__.__dict__["origin"] = origin
             __props__.__dict__["origin_connection_limit"] = origin_connection_limit
             __props__.__dict__["created_on"] = None
@@ -423,6 +466,7 @@ class HyperdriveConfig(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict', 'outputs.HyperdriveConfigCaching']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            integration: pulumi.Input[Optional[_builtins.str]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -441,6 +485,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
         :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict', 'outputs.HyperdriveConfigMtls']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        :param pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict', 'outputs.HyperdriveConfigOrigin']] origin: Combines database connection fields with exactly one supported network location.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         :param pulumi.Input[_builtins.str] restarted_on: Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
         """
@@ -451,6 +496,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["caching"] = caching
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["integration"] = integration
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["mtls"] = mtls
         __props__.__dict__["name"] = name
@@ -481,6 +527,11 @@ class HyperdriveConfig(pulumi.CustomResource):
         return pulumi.get(self, "created_on")
 
     @_builtins.property
+    @pulumi.getter
+    def integration(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "integration")
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[_builtins.str]:
         """
@@ -506,7 +557,10 @@ class HyperdriveConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> pulumi.Output['outputs.HyperdriveConfigOrigin']:
+    def origin(self) -> pulumi.Output[Optional['outputs.HyperdriveConfigOrigin']]:
+        """
+        Combines database connection fields with exactly one supported network location.
+        """
         return pulumi.get(self, "origin")
 
     @_builtins.property

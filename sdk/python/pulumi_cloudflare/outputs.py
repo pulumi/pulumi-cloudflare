@@ -209,6 +209,7 @@ __all__ = [
     'AccessOrganizationLoginDesign',
     'AccessOrganizationMfaConfig',
     'AccessOrganizationMfaSshPivKeyRequirements',
+    'AccessOrganizationServiceTokenInactivity',
     'AccessPolicyApprovalGroup',
     'AccessPolicyConnectionRules',
     'AccessPolicyConnectionRulesRdp',
@@ -438,6 +439,8 @@ __all__ = [
     'EmailRoutingRuleMatcher',
     'EmailSecurityDomainAuthorization',
     'EmailSecurityDomainEmailsProcessed',
+    'FieldExtractorRule',
+    'FieldExtractorRuleField',
     'FilterBody',
     'FirewallRuleAction',
     'FirewallRuleActionResponse',
@@ -615,6 +618,9 @@ __all__ = [
     'PrecursorEnforcementRule',
     'QueueConsumer',
     'QueueConsumerSettings',
+    'QueueConsumerSettingsEmail',
+    'QueueConsumerSettingsPagerduty',
+    'QueueConsumerSettingsWebhook',
     'QueueProducer',
     'QueueSettings',
     'R2BucketCorsRule',
@@ -638,7 +644,6 @@ __all__ = [
     'R2DataCatalogMaintenanceConfigSnapshotExpiration',
     'RateLimitAction',
     'RateLimitActionResponse',
-    'RateLimitBypass',
     'RateLimitMatch',
     'RateLimitMatchHeader',
     'RateLimitMatchRequest',
@@ -805,8 +810,20 @@ __all__ = [
     'WebAnalyticsSiteRuleset',
     'WorkerCronTriggerSchedule',
     'WorkerObservability',
+    'WorkerObservabilityIssues',
     'WorkerObservabilityLogs',
     'WorkerObservabilityTraces',
+    'WorkerPreviewsBaseConfig',
+    'WorkerPreviewsBaseConfigCacheOptions',
+    'WorkerPreviewsBaseConfigEnv',
+    'WorkerPreviewsBaseConfigLimits',
+    'WorkerPreviewsBaseConfigObservability',
+    'WorkerPreviewsBaseConfigObservabilityIssues',
+    'WorkerPreviewsBaseConfigObservabilityLogs',
+    'WorkerPreviewsBaseConfigObservabilityTraces',
+    'WorkerPreviewsBaseConfigPlacement',
+    'WorkerPreviewsBaseConfigPlacementTarget',
+    'WorkerPreviewsBaseConfigTailConsumer',
     'WorkerReferences',
     'WorkerReferencesDispatchNamespaceOutbound',
     'WorkerReferencesDomain',
@@ -833,6 +850,7 @@ __all__ = [
     'WorkerScriptMigrationsTransferredClass',
     'WorkerScriptNamedHandler',
     'WorkerScriptObservability',
+    'WorkerScriptObservabilityIssues',
     'WorkerScriptObservabilityLogs',
     'WorkerScriptObservabilityTraces',
     'WorkerScriptPackageDependency',
@@ -853,6 +871,12 @@ __all__ = [
     'WorkerVersionContainer',
     'WorkerVersionExports',
     'WorkerVersionExportsCache',
+    'WorkerVersionExportsReconciliation',
+    'WorkerVersionExportsReconciliationInfo',
+    'WorkerVersionExportsReconciliationRenamed',
+    'WorkerVersionExportsReconciliationTransferPending',
+    'WorkerVersionExportsReconciliationTransferred',
+    'WorkerVersionExportsReconciliationWarning',
     'WorkerVersionLimits',
     'WorkerVersionMigrations',
     'WorkerVersionMigrationsRenamedClass',
@@ -887,6 +911,7 @@ __all__ = [
     'WorkersScriptMigrationsTransferredClass',
     'WorkersScriptNamedHandler',
     'WorkersScriptObservability',
+    'WorkersScriptObservabilityIssues',
     'WorkersScriptObservabilityLogs',
     'WorkersScriptObservabilityTraces',
     'WorkersScriptPackageDependency',
@@ -1183,6 +1208,26 @@ __all__ = [
     'ZeroTrustAccessPolicyRequireSaml',
     'ZeroTrustAccessPolicyRequireServiceToken',
     'ZeroTrustAccessPolicyRequireUserRiskScore',
+    'ZeroTrustCasbIntegrationAnthropic',
+    'ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey',
+    'ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey',
+    'ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey',
+    'ZeroTrustCasbIntegrationAws',
+    'ZeroTrustCasbIntegrationAwsAwsIamRole',
+    'ZeroTrustCasbIntegrationBox',
+    'ZeroTrustCasbIntegrationBoxBoxServerAuthentication',
+    'ZeroTrustCasbIntegrationGoogleCloudPlatform',
+    'ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount',
+    'ZeroTrustCasbIntegrationGoogleWorkspace',
+    'ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount',
+    'ZeroTrustCasbIntegrationOpenai',
+    'ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey',
+    'ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey',
+    'ZeroTrustCasbPolicyActions',
+    'ZeroTrustCasbPolicyActionsRemediationType',
+    'ZeroTrustCasbPolicyActionsWebhookConfig',
+    'ZeroTrustCasbWebhookHeader',
+    'ZeroTrustDeviceCustomProfileBrowserExtensionConfig',
     'ZeroTrustDeviceCustomProfileDnsSearchSuffix',
     'ZeroTrustDeviceCustomProfileExclude',
     'ZeroTrustDeviceCustomProfileFallbackDomain',
@@ -1298,6 +1343,7 @@ __all__ = [
     'ZeroTrustOrganizationLoginDesign',
     'ZeroTrustOrganizationMfaConfig',
     'ZeroTrustOrganizationMfaSshPivKeyRequirements',
+    'ZeroTrustOrganizationServiceTokenInactivity',
     'ZeroTrustRiskBehaviorBehaviors',
     'ZeroTrustTunnelCloudflaredConfigConfig',
     'ZeroTrustTunnelCloudflaredConfigConfigIngress',
@@ -1322,6 +1368,8 @@ __all__ = [
     'ZoneSubscriptionRatePlan',
     'ZoneTenant',
     'ZoneTenantUnit',
+    'ZoneTracingRulesRule',
+    'ZoneTracingRulesRuleActionParameters',
     'GetAccessRuleConfigurationResult',
     'GetAccessRuleFilterResult',
     'GetAccessRuleFilterConfigurationResult',
@@ -1693,11 +1741,14 @@ __all__ = [
     'GetEmailSecurityTrustedDomainsFilterResult',
     'GetEmailSecurityTrustedDomainsListResultResult',
     'GetEmailSendingSubdomainsResultResult',
+    'GetFieldExtractorRuleResult',
+    'GetFieldExtractorRuleFieldResult',
     'GetFilterFilterResult',
     'GetFiltersResultResult',
     'GetFirewallRulesResultResult',
     'GetFirewallRulesResultFilterResult',
     'GetFlagshipAppsResultResult',
+    'GetFlagshipFlagFilterResult',
     'GetFlagshipFlagRuleResult',
     'GetFlagshipFlagRuleConditionResult',
     'GetFlagshipFlagRuleConditionClauseResult',
@@ -1722,10 +1773,12 @@ __all__ = [
     'GetHealthchecksResultTcpConfigResult',
     'GetHostnameTlsSettingsResultResult',
     'GetHyperdriveConfigCachingResult',
+    'GetHyperdriveConfigIntegrationResult',
     'GetHyperdriveConfigMtlsResult',
     'GetHyperdriveConfigOriginResult',
     'GetHyperdriveConfigsResultResult',
     'GetHyperdriveConfigsResultCachingResult',
+    'GetHyperdriveConfigsResultIntegrationResult',
     'GetHyperdriveConfigsResultMtlsResult',
     'GetHyperdriveConfigsResultOriginResult',
     'GetImageVariantVariantResult',
@@ -1826,6 +1879,7 @@ __all__ = [
     'GetMagicTransitSiteWansResultStaticAddressingResult',
     'GetMagicTransitSitesResultResult',
     'GetMagicTransitSitesResultLocationResult',
+    'GetMagicWanBgpFilterProfilesResultResult',
     'GetMagicWanGreTunnelGreTunnelResult',
     'GetMagicWanGreTunnelGreTunnelBgpResult',
     'GetMagicWanGreTunnelGreTunnelBgpStatusResult',
@@ -2073,14 +2127,6 @@ __all__ = [
     'GetRateLimitMatchHeaderResult',
     'GetRateLimitMatchRequestResult',
     'GetRateLimitMatchResponseResult',
-    'GetRateLimitsResultResult',
-    'GetRateLimitsResultActionResult',
-    'GetRateLimitsResultActionResponseResult',
-    'GetRateLimitsResultBypassResult',
-    'GetRateLimitsResultMatchResult',
-    'GetRateLimitsResultMatchHeaderResult',
-    'GetRateLimitsResultMatchRequestResult',
-    'GetRateLimitsResultMatchResponseResult',
     'GetRegionalHostnamesResultResult',
     'GetRegistrarDomainsResultResult',
     'GetRegistrarDomainsResultRegistrantContactResult',
@@ -2261,8 +2307,20 @@ __all__ = [
     'GetWebAnalyticsSitesResultRulesetResult',
     'GetWorkerFilterResult',
     'GetWorkerObservabilityResult',
+    'GetWorkerObservabilityIssuesResult',
     'GetWorkerObservabilityLogsResult',
     'GetWorkerObservabilityTracesResult',
+    'GetWorkerPreviewsBaseConfigResult',
+    'GetWorkerPreviewsBaseConfigCacheOptionsResult',
+    'GetWorkerPreviewsBaseConfigEnvResult',
+    'GetWorkerPreviewsBaseConfigLimitsResult',
+    'GetWorkerPreviewsBaseConfigObservabilityResult',
+    'GetWorkerPreviewsBaseConfigObservabilityIssuesResult',
+    'GetWorkerPreviewsBaseConfigObservabilityLogsResult',
+    'GetWorkerPreviewsBaseConfigObservabilityTracesResult',
+    'GetWorkerPreviewsBaseConfigPlacementResult',
+    'GetWorkerPreviewsBaseConfigPlacementTargetResult',
+    'GetWorkerPreviewsBaseConfigTailConsumerResult',
     'GetWorkerReferencesResult',
     'GetWorkerReferencesDispatchNamespaceOutboundResult',
     'GetWorkerReferencesDomainResult',
@@ -2323,13 +2381,29 @@ __all__ = [
     'GetWorkersCustomDomainsResultResult',
     'GetWorkersDeploymentAnnotationsResult',
     'GetWorkersDeploymentVersionResult',
+    'GetWorkersDeploymentsResultResult',
+    'GetWorkersDeploymentsResultDeploymentResult',
+    'GetWorkersDeploymentsResultDeploymentAnnotationsResult',
+    'GetWorkersDeploymentsResultDeploymentVersionResult',
     'GetWorkersForPlatformsDispatchNamespacesResultResult',
     'GetWorkersKvNamespaceFilterResult',
     'GetWorkersKvNamespacesResultResult',
     'GetWorkersResultResult',
     'GetWorkersResultObservabilityResult',
+    'GetWorkersResultObservabilityIssuesResult',
     'GetWorkersResultObservabilityLogsResult',
     'GetWorkersResultObservabilityTracesResult',
+    'GetWorkersResultPreviewsBaseConfigResult',
+    'GetWorkersResultPreviewsBaseConfigCacheOptionsResult',
+    'GetWorkersResultPreviewsBaseConfigEnvResult',
+    'GetWorkersResultPreviewsBaseConfigLimitsResult',
+    'GetWorkersResultPreviewsBaseConfigObservabilityResult',
+    'GetWorkersResultPreviewsBaseConfigObservabilityIssuesResult',
+    'GetWorkersResultPreviewsBaseConfigObservabilityLogsResult',
+    'GetWorkersResultPreviewsBaseConfigObservabilityTracesResult',
+    'GetWorkersResultPreviewsBaseConfigPlacementResult',
+    'GetWorkersResultPreviewsBaseConfigPlacementTargetResult',
+    'GetWorkersResultPreviewsBaseConfigTailConsumerResult',
     'GetWorkersResultReferencesResult',
     'GetWorkersResultReferencesDispatchNamespaceOutboundResult',
     'GetWorkersResultReferencesDomainResult',
@@ -2346,6 +2420,7 @@ __all__ = [
     'GetWorkersScriptsResultExportsCacheResult',
     'GetWorkersScriptsResultNamedHandlerResult',
     'GetWorkersScriptsResultObservabilityResult',
+    'GetWorkersScriptsResultObservabilityIssuesResult',
     'GetWorkersScriptsResultObservabilityLogsResult',
     'GetWorkersScriptsResultObservabilityTracesResult',
     'GetWorkersScriptsResultPlacementResult',
@@ -3000,14 +3075,30 @@ __all__ = [
     'GetZeroTrustAccessServiceTokensResultResult',
     'GetZeroTrustAccessShortLivedCertificatesResultResult',
     'GetZeroTrustAccessTagsResultResult',
+    'GetZeroTrustCasbIntegrationAuthorizationLinkResult',
+    'GetZeroTrustCasbIntegrationFilterResult',
+    'GetZeroTrustCasbIntegrationsResultResult',
+    'GetZeroTrustCasbPoliciesResultResult',
+    'GetZeroTrustCasbPoliciesResultActionsResult',
+    'GetZeroTrustCasbPoliciesResultActionsRemediationTypeResult',
+    'GetZeroTrustCasbPoliciesResultActionsWebhookConfigResult',
+    'GetZeroTrustCasbPolicyActionsResult',
+    'GetZeroTrustCasbPolicyActionsRemediationTypeResult',
+    'GetZeroTrustCasbPolicyActionsWebhookConfigResult',
+    'GetZeroTrustCasbWebhookHeaderResult',
+    'GetZeroTrustCasbWebhooksResultResult',
+    'GetZeroTrustCasbWebhooksResultHeaderResult',
+    'GetZeroTrustDeviceCustomProfileBrowserExtensionConfigResult',
     'GetZeroTrustDeviceCustomProfileDnsSearchSuffixResult',
     'GetZeroTrustDeviceCustomProfileExcludeResult',
     'GetZeroTrustDeviceCustomProfileFallbackDomainResult',
+    'GetZeroTrustDeviceCustomProfileFilterResult',
     'GetZeroTrustDeviceCustomProfileIncludeResult',
     'GetZeroTrustDeviceCustomProfileServiceModeV2Result',
     'GetZeroTrustDeviceCustomProfileTargetTestResult',
     'GetZeroTrustDeviceCustomProfileVirtualNetworksResult',
     'GetZeroTrustDeviceCustomProfilesResultResult',
+    'GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfigResult',
     'GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffixResult',
     'GetZeroTrustDeviceCustomProfilesResultExcludeResult',
     'GetZeroTrustDeviceCustomProfilesResultFallbackDomainResult',
@@ -3125,6 +3216,7 @@ __all__ = [
     'GetZeroTrustDnsLocationEndpointsIpv4Result',
     'GetZeroTrustDnsLocationEndpointsIpv6Result',
     'GetZeroTrustDnsLocationEndpointsIpv6NetworkResult',
+    'GetZeroTrustDnsLocationFilterResult',
     'GetZeroTrustDnsLocationMaxTtlResult',
     'GetZeroTrustDnsLocationNetworkResult',
     'GetZeroTrustDnsLocationsResultResult',
@@ -3168,6 +3260,7 @@ __all__ = [
     'GetZeroTrustGatewayPoliciesResultRuleSettingsUntrustedCertResult',
     'GetZeroTrustGatewayPoliciesResultScheduleResult',
     'GetZeroTrustGatewayPolicyExpirationResult',
+    'GetZeroTrustGatewayPolicyFilterResult',
     'GetZeroTrustGatewayPolicyRuleSettingsResult',
     'GetZeroTrustGatewayPolicyRuleSettingsAuditSshResult',
     'GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsResult',
@@ -3186,6 +3279,7 @@ __all__ = [
     'GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyResult',
     'GetZeroTrustGatewayPolicyRuleSettingsUntrustedCertResult',
     'GetZeroTrustGatewayPolicyScheduleResult',
+    'GetZeroTrustGatewayProxyEndpointFilterResult',
     'GetZeroTrustGatewayProxyEndpointsResultResult',
     'GetZeroTrustGatewaySettingsSettingsResult',
     'GetZeroTrustGatewaySettingsSettingsActivityLogResult',
@@ -3213,6 +3307,7 @@ __all__ = [
     'GetZeroTrustOrganizationLoginDesignResult',
     'GetZeroTrustOrganizationMfaConfigResult',
     'GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult',
+    'GetZeroTrustOrganizationServiceTokenInactivityResult',
     'GetZeroTrustResourceLibraryApplicationFilterResult',
     'GetZeroTrustResourceLibraryApplicationsResultResult',
     'GetZeroTrustResourceLibraryCategoriesResultResult',
@@ -3256,6 +3351,8 @@ __all__ = [
     'GetZoneSubscriptionRatePlanResult',
     'GetZoneTenantResult',
     'GetZoneTenantUnitResult',
+    'GetZoneTracingRulesRuleResult',
+    'GetZoneTracingRulesRuleActionParametersResult',
     'GetZonesAccountResult',
     'GetZonesResultResult',
     'GetZonesResultAccountResult',
@@ -11952,6 +12049,8 @@ class AccessIdentityProviderConfig(dict):
             suggest = "support_groups"
         elif key == "tokenUrl":
             suggest = "token_url"
+        elif key == "useLoginHint":
+            suggest = "use_login_hint"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessIdentityProviderConfig. Access the value via the '{suggest}' property getter instead.")
@@ -11996,7 +12095,8 @@ class AccessIdentityProviderConfig(dict):
                  sign_request: Optional[_builtins.bool] = None,
                  sso_target_url: Optional[_builtins.str] = None,
                  support_groups: Optional[_builtins.bool] = None,
-                 token_url: Optional[_builtins.str] = None):
+                 token_url: Optional[_builtins.str] = None,
+                 use_login_hint: Optional[_builtins.bool] = None):
         """
         :param _builtins.str apps_domain: Your companies TLD
         :param Sequence[_builtins.str] attributes: A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
@@ -12027,13 +12127,14 @@ class AccessIdentityProviderConfig(dict):
         :param _builtins.str ping_env_id: Your PingOne environment identifier
         :param _builtins.bool pkce_enabled: Enable Proof Key for Code Exchange (PKCE)
         :param _builtins.str prompt: Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-               Available values: "login", "select_account", "none".
+               Available values: "login", "select_account", "none", "consent".
         :param _builtins.bool restrict_to_account_members: When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
         :param Sequence[_builtins.str] scopes: OAuth scopes
         :param _builtins.bool sign_request: Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
         :param _builtins.str sso_target_url: URL to send the SAML authentication requests to
         :param _builtins.bool support_groups: Should Cloudflare try to load groups from your account
         :param _builtins.str token_url: The token_endpoint URL of your IdP
+        :param _builtins.bool use_login_hint: Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
         """
         if apps_domain is not None:
             pulumi.set(__self__, "apps_domain", apps_domain)
@@ -12099,6 +12200,8 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "support_groups", support_groups)
         if token_url is not None:
             pulumi.set(__self__, "token_url", token_url)
+        if use_login_hint is not None:
+            pulumi.set(__self__, "use_login_hint", use_login_hint)
 
     @_builtins.property
     @pulumi.getter(name="appsDomain")
@@ -12301,7 +12404,7 @@ class AccessIdentityProviderConfig(dict):
     def prompt(self) -> Optional[_builtins.str]:
         """
         Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-        Available values: "login", "select_account", "none".
+        Available values: "login", "select_account", "none", "consent".
         """
         return pulumi.get(self, "prompt")
 
@@ -12357,6 +12460,14 @@ class AccessIdentityProviderConfig(dict):
         The token_endpoint URL of your IdP
         """
         return pulumi.get(self, "token_url")
+
+    @_builtins.property
+    @pulumi.getter(name="useLoginHint")
+    def use_login_hint(self) -> Optional[_builtins.bool]:
+        """
+        Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+        """
+        return pulumi.get(self, "use_login_hint")
 
 
 @pulumi.output_type
@@ -13052,6 +13163,65 @@ class AccessOrganizationMfaSshPivKeyRequirements(dict):
         Available values: "never", "always", "cached".
         """
         return pulumi.get(self, "touch_policy")
+
+
+@pulumi.output_type
+class AccessOrganizationServiceTokenInactivity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inactivityThresholdDays":
+            suggest = "inactivity_threshold_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessOrganizationServiceTokenInactivity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessOrganizationServiceTokenInactivity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessOrganizationServiceTokenInactivity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 enabled: _builtins.bool,
+                 inactivity_threshold_days: _builtins.int):
+        """
+        :param _builtins.str action: The action applied to an inactive service token.
+               Available values: "disable", "delete".
+        :param _builtins.bool enabled: Whether automatic enforcement for inactive service tokens is enabled.
+        :param _builtins.int inactivity_threshold_days: The number of days a service token must be inactive before the configured action is applied.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "inactivity_threshold_days", inactivity_threshold_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The action applied to an inactive service token.
+        Available values: "disable", "delete".
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether automatic enforcement for inactive service tokens is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="inactivityThresholdDays")
+    def inactivity_threshold_days(self) -> _builtins.int:
+        """
+        The number of days a service token must be inactive before the configured action is applied.
+        """
+        return pulumi.get(self, "inactivity_threshold_days")
 
 
 @pulumi.output_type
@@ -19562,6 +19732,8 @@ class AiSearchInstanceIndexingOptions(dict):
         suggest = None
         if key == "keywordTokenizer":
             suggest = "keyword_tokenizer"
+        elif key == "useOcr":
+            suggest = "use_ocr"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AiSearchInstanceIndexingOptions. Access the value via the '{suggest}' property getter instead.")
@@ -19575,13 +19747,17 @@ class AiSearchInstanceIndexingOptions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 keyword_tokenizer: Optional[_builtins.str] = None):
+                 keyword_tokenizer: Optional[_builtins.str] = None,
+                 use_ocr: Optional[_builtins.bool] = None):
         """
         :param _builtins.str keyword_tokenizer: Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
                Available values: "porter", "trigram".
+        :param _builtins.bool use_ocr: Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
         """
         if keyword_tokenizer is not None:
             pulumi.set(__self__, "keyword_tokenizer", keyword_tokenizer)
+        if use_ocr is not None:
+            pulumi.set(__self__, "use_ocr", use_ocr)
 
     @_builtins.property
     @pulumi.getter(name="keywordTokenizer")
@@ -19591,6 +19767,14 @@ class AiSearchInstanceIndexingOptions(dict):
         Available values: "porter", "trigram".
         """
         return pulumi.get(self, "keyword_tokenizer")
+
+    @_builtins.property
+    @pulumi.getter(name="useOcr")
+    def use_ocr(self) -> Optional[_builtins.bool]:
+        """
+        Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+        """
+        return pulumi.get(self, "use_ocr")
 
 
 @pulumi.output_type
@@ -24588,7 +24772,7 @@ class DnsRecordData(dict):
         :param _builtins.float precision_horz: Horizontal precision of location.
         :param _builtins.float precision_vert: Vertical precision of location.
         :param _builtins.float preference: Preference.
-        :param _builtins.float priority: Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+        :param _builtins.float priority: Priority.
         :param _builtins.float protocol: Protocol.
         :param _builtins.str public_key: Public Key.
         :param _builtins.str regex: Regex.
@@ -24597,7 +24781,7 @@ class DnsRecordData(dict):
         :param _builtins.str service: Service.
         :param _builtins.float size: Size of location in meters.
         :param _builtins.str tag: Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
-        :param _builtins.str target: A valid mail server hostname, or "." for a NULL MX record.
+        :param _builtins.str target: Target.
         :param _builtins.float type: Type.
         :param _builtins.float usage: Usage.
         :param _builtins.str value: Value of the record. This field's semantics depend on the chosen tag.
@@ -24858,7 +25042,7 @@ class DnsRecordData(dict):
     @pulumi.getter
     def priority(self) -> Optional[_builtins.float]:
         """
-        Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+        Priority.
         """
         return pulumi.get(self, "priority")
 
@@ -24930,7 +25114,7 @@ class DnsRecordData(dict):
     @pulumi.getter
     def target(self) -> Optional[_builtins.str]:
         """
-        A valid mail server hostname, or "." for a NULL MX record.
+        Target.
         """
         return pulumi.get(self, "target")
 
@@ -25039,6 +25223,7 @@ class EmailRoutingCatchAllAction(dict):
         """
         :param _builtins.str type: Type of action for catch-all rule.
                Available values: "drop", "forward", "worker".
+        :param Sequence[_builtins.str] values: List of values for the action. Currently limited to a single value.
         """
         pulumi.set(__self__, "type", type)
         if values is not None:
@@ -25056,6 +25241,9 @@ class EmailRoutingCatchAllAction(dict):
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of values for the action. Currently limited to a single value.
+        """
         return pulumi.get(self, "values")
 
 
@@ -25087,6 +25275,7 @@ class EmailRoutingRuleAction(dict):
         """
         :param _builtins.str type: Type of supported action.
                Available values: "drop", "forward", "worker".
+        :param Sequence[_builtins.str] values: List of values for the action. Currently limited to a single value.
         """
         pulumi.set(__self__, "type", type)
         if values is not None:
@@ -25104,6 +25293,9 @@ class EmailRoutingRuleAction(dict):
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of values for the action. Currently limited to a single value.
+        """
         return pulumi.get(self, "values")
 
 
@@ -25245,6 +25437,52 @@ class EmailSecurityDomainEmailsProcessed(dict):
     @pulumi.getter(name="totalEmailsProcessedPrevious")
     def total_emails_processed_previous(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "total_emails_processed_previous")
+
+
+@pulumi.output_type
+class FieldExtractorRule(dict):
+    def __init__(__self__, *,
+                 fields: Sequence['outputs.FieldExtractorRuleField'],
+                 ref: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "fields", fields)
+        pulumi.set(__self__, "ref", ref)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Sequence['outputs.FieldExtractorRuleField']:
+        return pulumi.get(self, "fields")
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> _builtins.str:
+        return pulumi.get(self, "ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class FieldExtractorRuleField(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 name: _builtins.str):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -25570,7 +25808,7 @@ class FlagshipFlagRuleCondition(dict):
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         if attribute is not None:
@@ -25606,7 +25844,7 @@ class FlagshipFlagRuleCondition(dict):
     @pulumi.getter
     def operator(self) -> Optional[_builtins.str]:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -25646,7 +25884,7 @@ class FlagshipFlagRuleConditionClause(dict):
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         if attribute is not None:
@@ -25682,7 +25920,7 @@ class FlagshipFlagRuleConditionClause(dict):
     @pulumi.getter
     def operator(self) -> Optional[_builtins.str]:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -25722,7 +25960,7 @@ class FlagshipFlagRuleConditionClauseClause(dict):
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         if attribute is not None:
@@ -25758,7 +25996,7 @@ class FlagshipFlagRuleConditionClauseClause(dict):
     @pulumi.getter
     def operator(self) -> Optional[_builtins.str]:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -25798,7 +26036,7 @@ class FlagshipFlagRuleConditionClauseClauseClause(dict):
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         if attribute is not None:
@@ -25834,7 +26072,7 @@ class FlagshipFlagRuleConditionClauseClauseClause(dict):
     @pulumi.getter
     def operator(self) -> Optional[_builtins.str]:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -25874,7 +26112,7 @@ class FlagshipFlagRuleConditionClauseClauseClauseClause(dict):
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         if attribute is not None:
@@ -25910,7 +26148,7 @@ class FlagshipFlagRuleConditionClauseClauseClauseClause(dict):
     @pulumi.getter
     def operator(self) -> Optional[_builtins.str]:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -25950,7 +26188,7 @@ class FlagshipFlagRuleConditionClauseClauseClauseClauseClause(dict):
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         if attribute is not None:
@@ -25986,7 +26224,7 @@ class FlagshipFlagRuleConditionClauseClauseClauseClauseClause(dict):
     @pulumi.getter
     def operator(self) -> Optional[_builtins.str]:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -26005,7 +26243,7 @@ class FlagshipFlagRuleRollout(dict):
                  percentage: _builtins.float,
                  attribute: Optional[_builtins.str] = None):
         """
-        :param _builtins.float percentage: Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+        :param _builtins.float percentage: Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
         :param _builtins.str attribute: Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
         """
         pulumi.set(__self__, "percentage", percentage)
@@ -26016,7 +26254,7 @@ class FlagshipFlagRuleRollout(dict):
     @pulumi.getter
     def percentage(self) -> _builtins.float:
         """
-        Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+        Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
         """
         return pulumi.get(self, "percentage")
 
@@ -26215,11 +26453,6 @@ class HyperdriveConfigCaching(dict):
                  disabled: Optional[_builtins.bool] = None,
                  max_age: Optional[_builtins.int] = None,
                  stale_while_revalidate: Optional[_builtins.int] = None):
-        """
-        :param _builtins.bool disabled: Set to true to disable caching of SQL responses. Default is false.
-        :param _builtins.int max_age: Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-        :param _builtins.int stale_while_revalidate: Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-        """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if max_age is not None:
@@ -26230,25 +26463,16 @@ class HyperdriveConfigCaching(dict):
     @_builtins.property
     @pulumi.getter
     def disabled(self) -> Optional[_builtins.bool]:
-        """
-        Set to true to disable caching of SQL responses. Default is false.
-        """
         return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[_builtins.int]:
-        """
-        Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-        """
         return pulumi.get(self, "max_age")
 
     @_builtins.property
     @pulumi.getter(name="staleWhileRevalidate")
     def stale_while_revalidate(self) -> Optional[_builtins.int]:
-        """
-        Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-        """
         return pulumi.get(self, "stale_while_revalidate")
 
 
@@ -26280,7 +26504,7 @@ class HyperdriveConfigMtls(dict):
         """
         :param _builtins.str ca_certificate_id: Define CA certificate ID obtained after uploading CA cert.
         :param _builtins.str mtls_certificate_id: Define mTLS certificate ID obtained after uploading client cert.
-        :param _builtins.str sslmode: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+        :param _builtins.str sslmode: PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
         """
         if ca_certificate_id is not None:
             pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
@@ -26309,7 +26533,7 @@ class HyperdriveConfigMtls(dict):
     @pulumi.getter
     def sslmode(self) -> Optional[_builtins.str]:
         """
-        Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+        PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
         """
         return pulumi.get(self, "sslmode")
 
@@ -26355,7 +26579,7 @@ class HyperdriveConfigOrigin(dict):
         :param _builtins.str user: Set the user of your origin database.
         :param _builtins.str access_client_id: Defines the Client ID of the Access token to use when connecting to the origin database.
         :param _builtins.str access_client_secret: Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
-        :param _builtins.str host: Defines the host (hostname or IP) of your origin database.
+        :param _builtins.str host: Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
         :param _builtins.int port: Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
         :param _builtins.str service_id: The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
         """
@@ -26427,7 +26651,7 @@ class HyperdriveConfigOrigin(dict):
     @pulumi.getter
     def host(self) -> Optional[_builtins.str]:
         """
-        Defines the host (hostname or IP) of your origin database.
+        Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
         """
         return pulumi.get(self, "host")
 
@@ -28135,14 +28359,14 @@ class LogpushJobOutputOptions(dict):
         :param _builtins.bool cve202144228: If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
         :param _builtins.str field_delimiter: String to join fields. This field be ignored when `record_template` is set.
         :param Sequence[_builtins.str] field_names: List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
-        :param _builtins.bool merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
+        :param _builtins.bool merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
         :param _builtins.str output_type: Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
                Available values: "ndjson", "csv".
         :param _builtins.str record_delimiter: String to be inserted in-between the records as separator.
         :param _builtins.str record_prefix: String to be prepended before each record.
         :param _builtins.str record_suffix: String to be appended after each record.
         :param _builtins.str record_template: String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
-        :param _builtins.float sample_rate: Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        :param _builtins.float sample_rate: Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         :param _builtins.str timestamp_format: String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
         """
@@ -28217,7 +28441,7 @@ class LogpushJobOutputOptions(dict):
     @pulumi.getter(name="mergeSubrequests")
     def merge_subrequests(self) -> Optional[_builtins.bool]:
         """
-        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
+        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
         """
         return pulumi.get(self, "merge_subrequests")
 
@@ -28266,7 +28490,7 @@ class LogpushJobOutputOptions(dict):
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> Optional[_builtins.float]:
         """
-        Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         """
         return pulumi.get(self, "sample_rate")
 
@@ -29220,8 +29444,12 @@ class MagicWanGreTunnelBgp(dict):
         suggest = None
         if key == "customerAsn":
             suggest = "customer_asn"
+        elif key == "exportFilterId":
+            suggest = "export_filter_id"
         elif key == "extraPrefixes":
             suggest = "extra_prefixes"
+        elif key == "importFilterId":
+            suggest = "import_filter_id"
         elif key == "md5Key":
             suggest = "md5_key"
 
@@ -29238,16 +29466,24 @@ class MagicWanGreTunnelBgp(dict):
 
     def __init__(__self__, *,
                  customer_asn: _builtins.int,
+                 export_filter_id: Optional[_builtins.str] = None,
                  extra_prefixes: Optional[Sequence[_builtins.str]] = None,
+                 import_filter_id: Optional[_builtins.str] = None,
                  md5_key: Optional[_builtins.str] = None):
         """
         :param _builtins.int customer_asn: ASN used on the customer end of the BGP session
+        :param _builtins.str export_filter_id: UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
         :param Sequence[_builtins.str] extra_prefixes: Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        :param _builtins.str import_filter_id: UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
         :param _builtins.str md5_key: MD5 key to use for session authentication.
         """
         pulumi.set(__self__, "customer_asn", customer_asn)
+        if export_filter_id is not None:
+            pulumi.set(__self__, "export_filter_id", export_filter_id)
         if extra_prefixes is not None:
             pulumi.set(__self__, "extra_prefixes", extra_prefixes)
+        if import_filter_id is not None:
+            pulumi.set(__self__, "import_filter_id", import_filter_id)
         if md5_key is not None:
             pulumi.set(__self__, "md5_key", md5_key)
 
@@ -29260,12 +29496,28 @@ class MagicWanGreTunnelBgp(dict):
         return pulumi.get(self, "customer_asn")
 
     @_builtins.property
+    @pulumi.getter(name="exportFilterId")
+    def export_filter_id(self) -> Optional[_builtins.str]:
+        """
+        UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+        """
+        return pulumi.get(self, "export_filter_id")
+
+    @_builtins.property
     @pulumi.getter(name="extraPrefixes")
     def extra_prefixes(self) -> Optional[Sequence[_builtins.str]]:
         """
         Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
         """
         return pulumi.get(self, "extra_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="importFilterId")
+    def import_filter_id(self) -> Optional[_builtins.str]:
+        """
+        UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+        """
+        return pulumi.get(self, "import_filter_id")
 
     @_builtins.property
     @pulumi.getter(name="md5Key")
@@ -29491,8 +29743,12 @@ class MagicWanIpsecTunnelBgp(dict):
         suggest = None
         if key == "customerAsn":
             suggest = "customer_asn"
+        elif key == "exportFilterId":
+            suggest = "export_filter_id"
         elif key == "extraPrefixes":
             suggest = "extra_prefixes"
+        elif key == "importFilterId":
+            suggest = "import_filter_id"
         elif key == "md5Key":
             suggest = "md5_key"
 
@@ -29509,16 +29765,24 @@ class MagicWanIpsecTunnelBgp(dict):
 
     def __init__(__self__, *,
                  customer_asn: _builtins.int,
+                 export_filter_id: Optional[_builtins.str] = None,
                  extra_prefixes: Optional[Sequence[_builtins.str]] = None,
+                 import_filter_id: Optional[_builtins.str] = None,
                  md5_key: Optional[_builtins.str] = None):
         """
         :param _builtins.int customer_asn: ASN used on the customer end of the BGP session
+        :param _builtins.str export_filter_id: UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
         :param Sequence[_builtins.str] extra_prefixes: Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        :param _builtins.str import_filter_id: UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
         :param _builtins.str md5_key: MD5 key to use for session authentication.
         """
         pulumi.set(__self__, "customer_asn", customer_asn)
+        if export_filter_id is not None:
+            pulumi.set(__self__, "export_filter_id", export_filter_id)
         if extra_prefixes is not None:
             pulumi.set(__self__, "extra_prefixes", extra_prefixes)
+        if import_filter_id is not None:
+            pulumi.set(__self__, "import_filter_id", import_filter_id)
         if md5_key is not None:
             pulumi.set(__self__, "md5_key", md5_key)
 
@@ -29531,12 +29795,28 @@ class MagicWanIpsecTunnelBgp(dict):
         return pulumi.get(self, "customer_asn")
 
     @_builtins.property
+    @pulumi.getter(name="exportFilterId")
+    def export_filter_id(self) -> Optional[_builtins.str]:
+        """
+        UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+        """
+        return pulumi.get(self, "export_filter_id")
+
+    @_builtins.property
     @pulumi.getter(name="extraPrefixes")
     def extra_prefixes(self) -> Optional[Sequence[_builtins.str]]:
         """
         Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
         """
         return pulumi.get(self, "extra_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="importFilterId")
+    def import_filter_id(self) -> Optional[_builtins.str]:
+        """
+        UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+        """
+        return pulumi.get(self, "import_filter_id")
 
     @_builtins.property
     @pulumi.getter(name="md5Key")
@@ -30214,6 +30494,8 @@ class NotificationPolicyFilters(dict):
             suggest = "target_ips"
         elif key == "targetZoneNames":
             suggest = "target_zone_names"
+        elif key == "tokenIds":
+            suggest = "token_ids"
         elif key == "trafficExclusions":
             suggest = "traffic_exclusions"
         elif key == "tunnelIds":
@@ -30270,6 +30552,7 @@ class NotificationPolicyFilters(dict):
                  target_hostnames: Optional[Sequence[_builtins.str]] = None,
                  target_ips: Optional[Sequence[_builtins.str]] = None,
                  target_zone_names: Optional[Sequence[_builtins.str]] = None,
+                 token_ids: Optional[Sequence[_builtins.str]] = None,
                  traffic_exclusions: Optional[Sequence[_builtins.str]] = None,
                  tunnel_ids: Optional[Sequence[_builtins.str]] = None,
                  tunnel_names: Optional[Sequence[_builtins.str]] = None,
@@ -30314,6 +30597,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[_builtins.str] target_hostnames: Used for configuring advanced*ddos*attack*l7*alert
         :param Sequence[_builtins.str] target_ips: Used for configuring advanced*ddos*attack*l4*alert
         :param Sequence[_builtins.str] target_zone_names: Used for configuring advanced*ddos*attack*l7*alert
+        :param Sequence[_builtins.str] token_ids: Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
         :param Sequence[_builtins.str] traffic_exclusions: Used for configuring traffic*anomalies*alert
         :param Sequence[_builtins.str] tunnel_ids: Used for configuring tunnel*health*event
         :param Sequence[_builtins.str] tunnel_names: Usage depends on specific alert type
@@ -30395,6 +30679,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "target_ips", target_ips)
         if target_zone_names is not None:
             pulumi.set(__self__, "target_zone_names", target_zone_names)
+        if token_ids is not None:
+            pulumi.set(__self__, "token_ids", token_ids)
         if traffic_exclusions is not None:
             pulumi.set(__self__, "traffic_exclusions", traffic_exclusions)
         if tunnel_ids is not None:
@@ -30703,6 +30989,14 @@ class NotificationPolicyFilters(dict):
         Used for configuring advanced*ddos*attack*l7*alert
         """
         return pulumi.get(self, "target_zone_names")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenIds")
+    def token_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+        """
+        return pulumi.get(self, "token_ids")
 
     @_builtins.property
     @pulumi.getter(name="trafficExclusions")
@@ -32687,11 +32981,11 @@ class PagesProjectCanonicalDeployment(dict):
         :param _builtins.str environment: Type of deploy.
                Available values: "preview", "production".
         :param _builtins.str id: Id of the deployment.
-        :param _builtins.bool is_skipped: If the deployment has been skipped.
+        :param _builtins.bool is_skipped: Whether the deployment was skipped.
         :param 'PagesProjectCanonicalDeploymentLatestStageArgs' latest_stage: The status of the deployment.
         :param _builtins.str modified_on: When the deployment was last modified.
         :param _builtins.str project_id: Id of the project.
-        :param _builtins.str project_name: Name of the project.
+        :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param _builtins.str short_id: Short Id (8 character) of the deployment.
         :param 'PagesProjectCanonicalDeploymentSourceArgs' source: Configs for the project source control.
         :param Sequence['PagesProjectCanonicalDeploymentStageArgs'] stages: List of past stages.
@@ -32794,7 +33088,7 @@ class PagesProjectCanonicalDeployment(dict):
     @pulumi.getter(name="isSkipped")
     def is_skipped(self) -> Optional[_builtins.bool]:
         """
-        If the deployment has been skipped.
+        Whether the deployment was skipped.
         """
         return pulumi.get(self, "is_skipped")
 
@@ -32826,7 +33120,7 @@ class PagesProjectCanonicalDeployment(dict):
     @pulumi.getter(name="projectName")
     def project_name(self) -> Optional[_builtins.str]:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -33149,7 +33443,7 @@ class PagesProjectCanonicalDeploymentLatestStage(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         if ended_on is not None:
             pulumi.set(__self__, "ended_on", ended_on)
@@ -33190,7 +33484,7 @@ class PagesProjectCanonicalDeploymentLatestStage(dict):
     def status(self) -> Optional[_builtins.str]:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -33463,7 +33757,7 @@ class PagesProjectCanonicalDeploymentStage(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         if ended_on is not None:
             pulumi.set(__self__, "ended_on", ended_on)
@@ -33504,7 +33798,7 @@ class PagesProjectCanonicalDeploymentStage(dict):
     def status(self) -> Optional[_builtins.str]:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -35024,11 +35318,11 @@ class PagesProjectLatestDeployment(dict):
         :param _builtins.str environment: Type of deploy.
                Available values: "preview", "production".
         :param _builtins.str id: Id of the deployment.
-        :param _builtins.bool is_skipped: If the deployment has been skipped.
+        :param _builtins.bool is_skipped: Whether the deployment was skipped.
         :param 'PagesProjectLatestDeploymentLatestStageArgs' latest_stage: The status of the deployment.
         :param _builtins.str modified_on: When the deployment was last modified.
         :param _builtins.str project_id: Id of the project.
-        :param _builtins.str project_name: Name of the project.
+        :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param _builtins.str short_id: Short Id (8 character) of the deployment.
         :param 'PagesProjectLatestDeploymentSourceArgs' source: Configs for the project source control.
         :param Sequence['PagesProjectLatestDeploymentStageArgs'] stages: List of past stages.
@@ -35131,7 +35425,7 @@ class PagesProjectLatestDeployment(dict):
     @pulumi.getter(name="isSkipped")
     def is_skipped(self) -> Optional[_builtins.bool]:
         """
-        If the deployment has been skipped.
+        Whether the deployment was skipped.
         """
         return pulumi.get(self, "is_skipped")
 
@@ -35163,7 +35457,7 @@ class PagesProjectLatestDeployment(dict):
     @pulumi.getter(name="projectName")
     def project_name(self) -> Optional[_builtins.str]:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -35486,7 +35780,7 @@ class PagesProjectLatestDeploymentLatestStage(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         if ended_on is not None:
             pulumi.set(__self__, "ended_on", ended_on)
@@ -35527,7 +35821,7 @@ class PagesProjectLatestDeploymentLatestStage(dict):
     def status(self) -> Optional[_builtins.str]:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -35800,7 +36094,7 @@ class PagesProjectLatestDeploymentStage(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         if ended_on is not None:
             pulumi.set(__self__, "ended_on", ended_on)
@@ -35841,7 +36135,7 @@ class PagesProjectLatestDeploymentStage(dict):
     def status(self) -> Optional[_builtins.str]:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -37162,31 +37456,42 @@ class QueueConsumerSettings(dict):
 
     def __init__(__self__, *,
                  batch_size: Optional[_builtins.float] = None,
+                 emails: Optional[Sequence['outputs.QueueConsumerSettingsEmail']] = None,
                  max_concurrency: Optional[_builtins.float] = None,
                  max_retries: Optional[_builtins.float] = None,
                  max_wait_time_ms: Optional[_builtins.float] = None,
+                 pagerduties: Optional[Sequence['outputs.QueueConsumerSettingsPagerduty']] = None,
                  retry_delay: Optional[_builtins.float] = None,
-                 visibility_timeout_ms: Optional[_builtins.float] = None):
+                 visibility_timeout_ms: Optional[_builtins.float] = None,
+                 webhooks: Optional[Sequence['outputs.QueueConsumerSettingsWebhook']] = None):
         """
         :param _builtins.float batch_size: The maximum number of messages to include in a batch.
         :param _builtins.float max_concurrency: Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
         :param _builtins.float max_retries: The maximum number of retries
         :param _builtins.float max_wait_time_ms: The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+        :param Sequence['QueueConsumerSettingsPagerdutyArgs'] pagerduties: PagerDuty notification destinations.
         :param _builtins.float retry_delay: The number of seconds to delay before making the message available for another attempt.
         :param _builtins.float visibility_timeout_ms: The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+        :param Sequence['QueueConsumerSettingsWebhookArgs'] webhooks: Webhook notification destinations.
         """
         if batch_size is not None:
             pulumi.set(__self__, "batch_size", batch_size)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if max_concurrency is not None:
             pulumi.set(__self__, "max_concurrency", max_concurrency)
         if max_retries is not None:
             pulumi.set(__self__, "max_retries", max_retries)
         if max_wait_time_ms is not None:
             pulumi.set(__self__, "max_wait_time_ms", max_wait_time_ms)
+        if pagerduties is not None:
+            pulumi.set(__self__, "pagerduties", pagerduties)
         if retry_delay is not None:
             pulumi.set(__self__, "retry_delay", retry_delay)
         if visibility_timeout_ms is not None:
             pulumi.set(__self__, "visibility_timeout_ms", visibility_timeout_ms)
+        if webhooks is not None:
+            pulumi.set(__self__, "webhooks", webhooks)
 
     @_builtins.property
     @pulumi.getter(name="batchSize")
@@ -37195,6 +37500,11 @@ class QueueConsumerSettings(dict):
         The maximum number of messages to include in a batch.
         """
         return pulumi.get(self, "batch_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence['outputs.QueueConsumerSettingsEmail']]:
+        return pulumi.get(self, "emails")
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrency")
@@ -37221,6 +37531,14 @@ class QueueConsumerSettings(dict):
         return pulumi.get(self, "max_wait_time_ms")
 
     @_builtins.property
+    @pulumi.getter
+    def pagerduties(self) -> Optional[Sequence['outputs.QueueConsumerSettingsPagerduty']]:
+        """
+        PagerDuty notification destinations.
+        """
+        return pulumi.get(self, "pagerduties")
+
+    @_builtins.property
     @pulumi.getter(name="retryDelay")
     def retry_delay(self) -> Optional[_builtins.float]:
         """
@@ -37235,6 +37553,68 @@ class QueueConsumerSettings(dict):
         The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
         """
         return pulumi.get(self, "visibility_timeout_ms")
+
+    @_builtins.property
+    @pulumi.getter
+    def webhooks(self) -> Optional[Sequence['outputs.QueueConsumerSettingsWebhook']]:
+        """
+        Webhook notification destinations.
+        """
+        return pulumi.get(self, "webhooks")
+
+
+@pulumi.output_type
+class QueueConsumerSettingsEmail(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: The email address.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The email address.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class QueueConsumerSettingsPagerduty(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: UUID.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        UUID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class QueueConsumerSettingsWebhook(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: UUID.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        UUID.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -38103,7 +38483,7 @@ class R2BucketSippySource(dict):
         :param _builtins.str cloud_provider: Available values: "aws", "gcs", "s3", "azure".
         :param _builtins.str container: Name of the Azure Blob Storage container.
         :param _builtins.str private_key: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
-        :param _builtins.str region: Name of the AWS availability zone.
+        :param _builtins.str region: AWS region containing the source S3 bucket.
         :param _builtins.str sas_token: Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.
         :param _builtins.str secret_access_key: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         """
@@ -38208,7 +38588,7 @@ class R2BucketSippySource(dict):
     @pulumi.getter
     def region(self) -> Optional[_builtins.str]:
         """
-        Name of the AWS availability zone.
+        AWS region containing the source S3 bucket.
         """
         return pulumi.get(self, "region")
 
@@ -38285,13 +38665,17 @@ class R2DataCatalogMaintenanceConfig(dict):
 
     def __init__(__self__, *,
                  compaction: Optional['outputs.R2DataCatalogMaintenanceConfigCompaction'] = None,
+                 interval: Optional[_builtins.str] = None,
                  snapshot_expiration: Optional['outputs.R2DataCatalogMaintenanceConfigSnapshotExpiration'] = None):
         """
         :param 'R2DataCatalogMaintenanceConfigCompactionArgs' compaction: Configures compaction for catalog maintenance.
+        :param _builtins.str interval: Scheduling interval between normal table maintenance runs.
         :param 'R2DataCatalogMaintenanceConfigSnapshotExpirationArgs' snapshot_expiration: Configures snapshot expiration settings.
         """
         if compaction is not None:
             pulumi.set(__self__, "compaction", compaction)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
         if snapshot_expiration is not None:
             pulumi.set(__self__, "snapshot_expiration", snapshot_expiration)
 
@@ -38302,6 +38686,14 @@ class R2DataCatalogMaintenanceConfig(dict):
         Configures compaction for catalog maintenance.
         """
         return pulumi.get(self, "compaction")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.str]:
+        """
+        Scheduling interval between normal table maintenance runs.
+        """
+        return pulumi.get(self, "interval")
 
     @_builtins.property
     @pulumi.getter(name="snapshotExpiration")
@@ -38529,37 +38921,6 @@ class RateLimitActionResponse(dict):
         The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
         """
         return pulumi.get(self, "content_type")
-
-
-@pulumi.output_type
-class RateLimitBypass(dict):
-    def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Available values: "url".
-        :param _builtins.str value: The URL to bypass.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        Available values: "url".
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        The URL to bypass.
-        """
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -38824,7 +39185,7 @@ class RecordData(dict):
         :param _builtins.float precision_horz: Horizontal precision of location.
         :param _builtins.float precision_vert: Vertical precision of location.
         :param _builtins.float preference: Preference.
-        :param _builtins.float priority: Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+        :param _builtins.float priority: Priority.
         :param _builtins.float protocol: Protocol.
         :param _builtins.str public_key: Public Key.
         :param _builtins.str regex: Regex.
@@ -38833,7 +39194,7 @@ class RecordData(dict):
         :param _builtins.str service: Service.
         :param _builtins.float size: Size of location in meters.
         :param _builtins.str tag: Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
-        :param _builtins.str target: A valid mail server hostname, or "." for a NULL MX record.
+        :param _builtins.str target: Target.
         :param _builtins.float type: Type.
         :param _builtins.float usage: Usage.
         :param _builtins.str value: Value of the record. This field's semantics depend on the chosen tag.
@@ -39094,7 +39455,7 @@ class RecordData(dict):
     @pulumi.getter
     def priority(self) -> Optional[_builtins.float]:
         """
-        Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+        Priority.
         """
         return pulumi.get(self, "priority")
 
@@ -39166,7 +39527,7 @@ class RecordData(dict):
     @pulumi.getter
     def target(self) -> Optional[_builtins.str]:
         """
-        A valid mail server hostname, or "." for a NULL MX record.
+        Target.
         """
         return pulumi.get(self, "target")
 
@@ -49161,11 +49522,13 @@ class WorkerObservability(dict):
     def __init__(__self__, *,
                  enabled: Optional[_builtins.bool] = None,
                  head_sampling_rate: Optional[_builtins.float] = None,
+                 issues: Optional['outputs.WorkerObservabilityIssues'] = None,
                  logs: Optional['outputs.WorkerObservabilityLogs'] = None,
                  traces: Optional['outputs.WorkerObservabilityTraces'] = None):
         """
         :param _builtins.bool enabled: Whether observability is enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param 'WorkerObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
         :param 'WorkerObservabilityLogsArgs' logs: Log settings for the Worker.
         :param 'WorkerObservabilityTracesArgs' traces: Trace settings for the Worker.
         """
@@ -49173,6 +49536,8 @@ class WorkerObservability(dict):
             pulumi.set(__self__, "enabled", enabled)
         if head_sampling_rate is not None:
             pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        if issues is not None:
+            pulumi.set(__self__, "issues", issues)
         if logs is not None:
             pulumi.set(__self__, "logs", logs)
         if traces is not None:
@@ -49196,6 +49561,14 @@ class WorkerObservability(dict):
 
     @_builtins.property
     @pulumi.getter
+    def issues(self) -> Optional['outputs.WorkerObservabilityIssues']:
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
+
+    @_builtins.property
+    @pulumi.getter
     def logs(self) -> Optional['outputs.WorkerObservabilityLogs']:
         """
         Log settings for the Worker.
@@ -49209,6 +49582,25 @@ class WorkerObservability(dict):
         Trace settings for the Worker.
         """
         return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class WorkerObservabilityIssues(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -49383,6 +49775,657 @@ class WorkerObservabilityTraces(dict):
         Available values: "authenticated", "accept".
         """
         return pulumi.get(self, "propagation_policy")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cacheOptions":
+            suggest = "cache_options"
+        elif key == "tailConsumers":
+            suggest = "tail_consumers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPreviewsBaseConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPreviewsBaseConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPreviewsBaseConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cache_options: Optional['outputs.WorkerPreviewsBaseConfigCacheOptions'] = None,
+                 env: Optional[Mapping[str, 'outputs.WorkerPreviewsBaseConfigEnv']] = None,
+                 limits: Optional['outputs.WorkerPreviewsBaseConfigLimits'] = None,
+                 logpush: Optional[_builtins.bool] = None,
+                 observability: Optional['outputs.WorkerPreviewsBaseConfigObservability'] = None,
+                 placement: Optional['outputs.WorkerPreviewsBaseConfigPlacement'] = None,
+                 tail_consumers: Optional[Sequence['outputs.WorkerPreviewsBaseConfigTailConsumer']] = None):
+        """
+        :param 'WorkerPreviewsBaseConfigCacheOptionsArgs' cache_options: Cache options used when creating new Previews.
+        :param Mapping[str, 'WorkerPreviewsBaseConfigEnvArgs'] env: Bindings used when creating new Previews, keyed by binding name.
+        :param 'WorkerPreviewsBaseConfigLimitsArgs' limits: Resource limits enforced at runtime for newly created Previews.
+        :param _builtins.bool logpush: Whether logpush is enabled when creating new Previews.
+        :param 'WorkerPreviewsBaseConfigObservabilityArgs' observability: Observability settings used when creating new Previews.
+        :param 'WorkerPreviewsBaseConfigPlacementArgs' placement: Placement configuration used when creating new Previews.
+        :param Sequence['WorkerPreviewsBaseConfigTailConsumerArgs'] tail_consumers: Other Workers that should consume logs from newly created Previews.
+        """
+        if cache_options is not None:
+            pulumi.set(__self__, "cache_options", cache_options)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if logpush is not None:
+            pulumi.set(__self__, "logpush", logpush)
+        if observability is not None:
+            pulumi.set(__self__, "observability", observability)
+        if placement is not None:
+            pulumi.set(__self__, "placement", placement)
+        if tail_consumers is not None:
+            pulumi.set(__self__, "tail_consumers", tail_consumers)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> Optional['outputs.WorkerPreviewsBaseConfigCacheOptions']:
+        """
+        Cache options used when creating new Previews.
+        """
+        return pulumi.get(self, "cache_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Optional[Mapping[str, 'outputs.WorkerPreviewsBaseConfigEnv']]:
+        """
+        Bindings used when creating new Previews, keyed by binding name.
+        """
+        return pulumi.get(self, "env")
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional['outputs.WorkerPreviewsBaseConfigLimits']:
+        """
+        Resource limits enforced at runtime for newly created Previews.
+        """
+        return pulumi.get(self, "limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def logpush(self) -> Optional[_builtins.bool]:
+        """
+        Whether logpush is enabled when creating new Previews.
+        """
+        return pulumi.get(self, "logpush")
+
+    @_builtins.property
+    @pulumi.getter
+    def observability(self) -> Optional['outputs.WorkerPreviewsBaseConfigObservability']:
+        """
+        Observability settings used when creating new Previews.
+        """
+        return pulumi.get(self, "observability")
+
+    @_builtins.property
+    @pulumi.getter
+    def placement(self) -> Optional['outputs.WorkerPreviewsBaseConfigPlacement']:
+        """
+        Placement configuration used when creating new Previews.
+        """
+        return pulumi.get(self, "placement")
+
+    @_builtins.property
+    @pulumi.getter(name="tailConsumers")
+    def tail_consumers(self) -> Optional[Sequence['outputs.WorkerPreviewsBaseConfigTailConsumer']]:
+        """
+        Other Workers that should consume logs from newly created Previews.
+        """
+        return pulumi.get(self, "tail_consumers")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigCacheOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crossVersionCache":
+            suggest = "cross_version_cache"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPreviewsBaseConfigCacheOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPreviewsBaseConfigCacheOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPreviewsBaseConfigCacheOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cross_version_cache: Optional[_builtins.bool] = None,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool cross_version_cache: Whether cached responses are shared across Worker version
+               uploads. This is independent of `enabled`. It can stay true
+               while caching is off, so the preference survives turning
+               caching off and back on.
+        :param _builtins.bool enabled: Whether caching is enabled for this Worker.
+        """
+        if cross_version_cache is not None:
+            pulumi.set(__self__, "cross_version_cache", cross_version_cache)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="crossVersionCache")
+    def cross_version_cache(self) -> Optional[_builtins.bool]:
+        """
+        Whether cached responses are shared across Worker version
+        uploads. This is independent of `enabled`. It can stay true
+        while caching is off, so the preference survives turning
+        caching off and back on.
+        """
+        return pulumi.get(self, "cross_version_cache")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether caching is enabled for this Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigEnv(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str):
+        """
+        :param _builtins.str type: The kind of resource that the binding provides.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The kind of resource that the binding provides.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuMs":
+            suggest = "cpu_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPreviewsBaseConfigLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPreviewsBaseConfigLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPreviewsBaseConfigLimits.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_ms: Optional[_builtins.int] = None,
+                 subrequests: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int cpu_ms: The amount of CPU time this Worker can use in milliseconds.
+        :param _builtins.int subrequests: The number of subrequests this Worker can make per request.
+        """
+        if cpu_ms is not None:
+            pulumi.set(__self__, "cpu_ms", cpu_ms)
+        if subrequests is not None:
+            pulumi.set(__self__, "subrequests", subrequests)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuMs")
+    def cpu_ms(self) -> Optional[_builtins.int]:
+        """
+        The amount of CPU time this Worker can use in milliseconds.
+        """
+        return pulumi.get(self, "cpu_ms")
+
+    @_builtins.property
+    @pulumi.getter
+    def subrequests(self) -> Optional[_builtins.int]:
+        """
+        The number of subrequests this Worker can make per request.
+        """
+        return pulumi.get(self, "subrequests")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigObservability(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headSamplingRate":
+            suggest = "head_sampling_rate"
+        elif key == "redactQueryString":
+            suggest = "redact_query_string"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPreviewsBaseConfigObservability. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPreviewsBaseConfigObservability.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPreviewsBaseConfigObservability.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 head_sampling_rate: Optional[_builtins.float] = None,
+                 issues: Optional['outputs.WorkerPreviewsBaseConfigObservabilityIssues'] = None,
+                 logs: Optional['outputs.WorkerPreviewsBaseConfigObservabilityLogs'] = None,
+                 redact_query_string: Optional[_builtins.bool] = None,
+                 traces: Optional['outputs.WorkerPreviewsBaseConfigObservabilityTraces'] = None):
+        """
+        :param _builtins.bool enabled: Whether observability is enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param 'WorkerPreviewsBaseConfigObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
+        :param 'WorkerPreviewsBaseConfigObservabilityLogsArgs' logs: Log settings for the Worker.
+        :param _builtins.bool redact_query_string: Whether query strings are removed from request URLs in logs and traces.
+        :param 'WorkerPreviewsBaseConfigObservabilityTracesArgs' traces: Trace settings for the Worker.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if head_sampling_rate is not None:
+            pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        if issues is not None:
+            pulumi.set(__self__, "issues", issues)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if redact_query_string is not None:
+            pulumi.set(__self__, "redact_query_string", redact_query_string)
+        if traces is not None:
+            pulumi.set(__self__, "traces", traces)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether observability is enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> Optional[_builtins.float]:
+        """
+        The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter
+    def issues(self) -> Optional['outputs.WorkerPreviewsBaseConfigObservabilityIssues']:
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
+
+    @_builtins.property
+    @pulumi.getter
+    def logs(self) -> Optional['outputs.WorkerPreviewsBaseConfigObservabilityLogs']:
+        """
+        Log settings for the Worker.
+        """
+        return pulumi.get(self, "logs")
+
+    @_builtins.property
+    @pulumi.getter(name="redactQueryString")
+    def redact_query_string(self) -> Optional[_builtins.bool]:
+        """
+        Whether query strings are removed from request URLs in logs and traces.
+        """
+        return pulumi.get(self, "redact_query_string")
+
+    @_builtins.property
+    @pulumi.getter
+    def traces(self) -> Optional['outputs.WorkerPreviewsBaseConfigObservabilityTraces']:
+        """
+        Trace settings for the Worker.
+        """
+        return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigObservabilityIssues(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigObservabilityLogs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headSamplingRate":
+            suggest = "head_sampling_rate"
+        elif key == "invocationLogs":
+            suggest = "invocation_logs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPreviewsBaseConfigObservabilityLogs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPreviewsBaseConfigObservabilityLogs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPreviewsBaseConfigObservabilityLogs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destinations: Optional[Sequence[_builtins.str]] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 head_sampling_rate: Optional[_builtins.float] = None,
+                 invocation_logs: Optional[_builtins.bool] = None,
+                 persist: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] destinations: A list of destinations where logs will be exported to.
+        :param _builtins.bool enabled: Whether logs are enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param _builtins.bool invocation_logs: Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+        :param _builtins.bool persist: Whether log persistence is enabled for the Worker.
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if head_sampling_rate is not None:
+            pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        if invocation_logs is not None:
+            pulumi.set(__self__, "invocation_logs", invocation_logs)
+        if persist is not None:
+            pulumi.set(__self__, "persist", persist)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of destinations where logs will be exported to.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether logs are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> Optional[_builtins.float]:
+        """
+        The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter(name="invocationLogs")
+    def invocation_logs(self) -> Optional[_builtins.bool]:
+        """
+        Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+        """
+        return pulumi.get(self, "invocation_logs")
+
+    @_builtins.property
+    @pulumi.getter
+    def persist(self) -> Optional[_builtins.bool]:
+        """
+        Whether log persistence is enabled for the Worker.
+        """
+        return pulumi.get(self, "persist")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigObservabilityTraces(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headSamplingRate":
+            suggest = "head_sampling_rate"
+        elif key == "propagationPolicy":
+            suggest = "propagation_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPreviewsBaseConfigObservabilityTraces. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPreviewsBaseConfigObservabilityTraces.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPreviewsBaseConfigObservabilityTraces.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destinations: Optional[Sequence[_builtins.str]] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 head_sampling_rate: Optional[_builtins.float] = None,
+                 persist: Optional[_builtins.bool] = None,
+                 propagation_policy: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] destinations: A list of destinations where traces will be exported to.
+        :param _builtins.bool enabled: Whether traces are enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param _builtins.bool persist: Whether trace persistence is enabled for the Worker.
+        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+               Available values: "authenticated", "accept".
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if head_sampling_rate is not None:
+            pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        if persist is not None:
+            pulumi.set(__self__, "persist", persist)
+        if propagation_policy is not None:
+            pulumi.set(__self__, "propagation_policy", propagation_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of destinations where traces will be exported to.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether traces are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> Optional[_builtins.float]:
+        """
+        The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter
+    def persist(self) -> Optional[_builtins.bool]:
+        """
+        Whether trace persistence is enabled for the Worker.
+        """
+        return pulumi.get(self, "persist")
+
+    @_builtins.property
+    @pulumi.getter(name="propagationPolicy")
+    def propagation_policy(self) -> Optional[_builtins.str]:
+        """
+        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+        Available values: "authenticated", "accept".
+        """
+        return pulumi.get(self, "propagation_policy")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigPlacement(dict):
+    def __init__(__self__, *,
+                 host: Optional[_builtins.str] = None,
+                 hostname: Optional[_builtins.str] = None,
+                 mode: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 targets: Optional[Sequence['outputs.WorkerPreviewsBaseConfigPlacementTarget']] = None):
+        """
+        :param _builtins.str host: TCP host and port for targeted placement.
+        :param _builtins.str hostname: HTTP hostname for targeted placement.
+        :param _builtins.str mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+               Available values: "smart", "targeted".
+        :param _builtins.str region: Cloud region for targeted placement in format 'provider:region'.
+        :param Sequence['WorkerPreviewsBaseConfigPlacementTargetArgs'] targets: Array of placement targets (currently limited to single target).
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        TCP host and port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Available values: "smart", "targeted".
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Cloud region for targeted placement in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Optional[Sequence['outputs.WorkerPreviewsBaseConfigPlacementTarget']]:
+        """
+        Array of placement targets (currently limited to single target).
+        """
+        return pulumi.get(self, "targets")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigPlacementTarget(dict):
+    def __init__(__self__, *,
+                 host: Optional[_builtins.str] = None,
+                 hostname: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str host: TCP host:port for targeted placement.
+        :param _builtins.str hostname: HTTP hostname for targeted placement.
+        :param _builtins.str region: Cloud region in format 'provider:region'.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        TCP host:port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Cloud region in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class WorkerPreviewsBaseConfigTailConsumer(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Name of the consumer Worker.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the consumer Worker.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -49951,7 +50994,9 @@ class WorkerScriptAssetsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "htmlHandling":
+        if key == "basePath":
+            suggest = "base_path"
+        elif key == "htmlHandling":
             suggest = "html_handling"
         elif key == "notFoundHandling":
             suggest = "not_found_handling"
@@ -49972,6 +51017,7 @@ class WorkerScriptAssetsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 base_path: Optional[_builtins.str] = None,
                  headers: Optional[_builtins.str] = None,
                  html_handling: Optional[_builtins.str] = None,
                  not_found_handling: Optional[_builtins.str] = None,
@@ -49979,6 +51025,7 @@ class WorkerScriptAssetsConfig(dict):
                  run_worker_first: Optional[Any] = None,
                  serve_directly: Optional[_builtins.bool] = None):
         """
+        :param _builtins.str base_path: The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
         :param _builtins.str headers: The contents of a _headers file (used to attach custom headers on asset responses).
         :param _builtins.str html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
@@ -49988,6 +51035,8 @@ class WorkerScriptAssetsConfig(dict):
         :param Any run_worker_first: When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
         :param _builtins.bool serve_directly: When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
         """
+        if base_path is not None:
+            pulumi.set(__self__, "base_path", base_path)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if html_handling is not None:
@@ -50000,6 +51049,14 @@ class WorkerScriptAssetsConfig(dict):
             pulumi.set(__self__, "run_worker_first", run_worker_first)
         if serve_directly is not None:
             pulumi.set(__self__, "serve_directly", serve_directly)
+
+    @_builtins.property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> Optional[_builtins.str]:
+        """
+        The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+        """
+        return pulumi.get(self, "base_path")
 
     @_builtins.property
     @pulumi.getter
@@ -50156,6 +51213,7 @@ class WorkerScriptBinding(dict):
                  service_id: Optional[_builtins.str] = None,
                  simple: Optional['outputs.WorkerScriptBindingSimple'] = None,
                  store_id: Optional[_builtins.str] = None,
+                 stream: Optional[_builtins.str] = None,
                  text: Optional[_builtins.str] = None,
                  tunnel_id: Optional[_builtins.str] = None,
                  usages: Optional[Sequence[_builtins.str]] = None,
@@ -50164,7 +51222,7 @@ class WorkerScriptBinding(dict):
         """
         :param _builtins.str name: A JavaScript variable name for the binding.
         :param _builtins.str type: The kind of resource that the binding provides.
-               Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+               Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         :param _builtins.str algorithm: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         :param Sequence[_builtins.str] allowed_destination_addresses: List of allowed destination addresses.
         :param Sequence[_builtins.str] allowed_sender_addresses: List of allowed sender addresses.
@@ -50202,6 +51260,7 @@ class WorkerScriptBinding(dict):
         :param _builtins.str service_id: Identifier of the VPC service to bind to.
         :param 'WorkerScriptBindingSimpleArgs' simple: A simple rate limit.
         :param _builtins.str store_id: ID of the store containing the secret.
+        :param _builtins.str stream: ID of a K2 stream owned by the account deploying the Worker.
         :param _builtins.str text: The text value to use.
         :param _builtins.str tunnel_id: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
         :param Sequence[_builtins.str] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
@@ -50280,6 +51339,8 @@ class WorkerScriptBinding(dict):
             pulumi.set(__self__, "simple", simple)
         if store_id is not None:
             pulumi.set(__self__, "store_id", store_id)
+        if stream is not None:
+            pulumi.set(__self__, "stream", stream)
         if text is not None:
             pulumi.set(__self__, "text", text)
         if tunnel_id is not None:
@@ -50304,7 +51365,7 @@ class WorkerScriptBinding(dict):
     def type(self) -> _builtins.str:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+        Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         """
         return pulumi.get(self, "type")
 
@@ -50589,6 +51650,14 @@ class WorkerScriptBinding(dict):
         ID of the store containing the secret.
         """
         return pulumi.get(self, "store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def stream(self) -> Optional[_builtins.str]:
+        """
+        ID of a K2 stream owned by the account deploying the Worker.
+        """
+        return pulumi.get(self, "stream")
 
     @_builtins.property
     @pulumi.getter
@@ -51427,17 +52496,21 @@ class WorkerScriptObservability(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool,
                  head_sampling_rate: Optional[_builtins.float] = None,
+                 issues: Optional['outputs.WorkerScriptObservabilityIssues'] = None,
                  logs: Optional['outputs.WorkerScriptObservabilityLogs'] = None,
                  traces: Optional['outputs.WorkerScriptObservabilityTraces'] = None):
         """
         :param _builtins.bool enabled: Whether observability is enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+        :param 'WorkerScriptObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
         :param 'WorkerScriptObservabilityLogsArgs' logs: Log settings for the Worker.
         :param 'WorkerScriptObservabilityTracesArgs' traces: Trace settings for the Worker.
         """
         pulumi.set(__self__, "enabled", enabled)
         if head_sampling_rate is not None:
             pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        if issues is not None:
+            pulumi.set(__self__, "issues", issues)
         if logs is not None:
             pulumi.set(__self__, "logs", logs)
         if traces is not None:
@@ -51461,6 +52534,14 @@ class WorkerScriptObservability(dict):
 
     @_builtins.property
     @pulumi.getter
+    def issues(self) -> Optional['outputs.WorkerScriptObservabilityIssues']:
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
+
+    @_builtins.property
+    @pulumi.getter
     def logs(self) -> Optional['outputs.WorkerScriptObservabilityLogs']:
         """
         Log settings for the Worker.
@@ -51474,6 +52555,25 @@ class WorkerScriptObservability(dict):
         Trace settings for the Worker.
         """
         return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class WorkerScriptObservabilityIssues(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -52137,7 +53237,9 @@ class WorkerVersionAssetsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "htmlHandling":
+        if key == "basePath":
+            suggest = "base_path"
+        elif key == "htmlHandling":
             suggest = "html_handling"
         elif key == "notFoundHandling":
             suggest = "not_found_handling"
@@ -52156,22 +53258,34 @@ class WorkerVersionAssetsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 base_path: Optional[_builtins.str] = None,
                  html_handling: Optional[_builtins.str] = None,
                  not_found_handling: Optional[_builtins.str] = None,
                  run_worker_first: Optional[Any] = None):
         """
+        :param _builtins.str base_path: The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
         :param _builtins.str html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         :param _builtins.str not_found_handling: Determines the response when a request does not match a static asset, and there is no Worker script.
                Available values: "none", "404-page", "single-page-application".
         :param Any run_worker_first: When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
         """
+        if base_path is not None:
+            pulumi.set(__self__, "base_path", base_path)
         if html_handling is not None:
             pulumi.set(__self__, "html_handling", html_handling)
         if not_found_handling is not None:
             pulumi.set(__self__, "not_found_handling", not_found_handling)
         if run_worker_first is not None:
             pulumi.set(__self__, "run_worker_first", run_worker_first)
+
+    @_builtins.property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> Optional[_builtins.str]:
+        """
+        The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+        """
+        return pulumi.get(self, "base_path")
 
     @_builtins.property
     @pulumi.getter(name="htmlHandling")
@@ -52304,6 +53418,7 @@ class WorkerVersionBinding(dict):
                  service_id: Optional[_builtins.str] = None,
                  simple: Optional['outputs.WorkerVersionBindingSimple'] = None,
                  store_id: Optional[_builtins.str] = None,
+                 stream: Optional[_builtins.str] = None,
                  text: Optional[_builtins.str] = None,
                  tunnel_id: Optional[_builtins.str] = None,
                  usages: Optional[Sequence[_builtins.str]] = None,
@@ -52312,7 +53427,7 @@ class WorkerVersionBinding(dict):
         """
         :param _builtins.str name: A JavaScript variable name for the binding.
         :param _builtins.str type: The kind of resource that the binding provides.
-               Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+               Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         :param _builtins.str algorithm: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         :param Sequence[_builtins.str] allowed_destination_addresses: List of allowed destination addresses.
         :param Sequence[_builtins.str] allowed_sender_addresses: List of allowed sender addresses.
@@ -52352,6 +53467,7 @@ class WorkerVersionBinding(dict):
         :param _builtins.str service_id: Identifier of the VPC service to bind to.
         :param 'WorkerVersionBindingSimpleArgs' simple: The rate limit configuration.
         :param _builtins.str store_id: ID of the store containing the secret.
+        :param _builtins.str stream: ID of a K2 stream owned by the account deploying the Worker.
         :param _builtins.str text: The text value to use.
         :param _builtins.str tunnel_id: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
         :param Sequence[_builtins.str] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
@@ -52432,6 +53548,8 @@ class WorkerVersionBinding(dict):
             pulumi.set(__self__, "simple", simple)
         if store_id is not None:
             pulumi.set(__self__, "store_id", store_id)
+        if stream is not None:
+            pulumi.set(__self__, "stream", stream)
         if text is not None:
             pulumi.set(__self__, "text", text)
         if tunnel_id is not None:
@@ -52456,7 +53574,7 @@ class WorkerVersionBinding(dict):
     def type(self) -> _builtins.str:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+        Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         """
         return pulumi.get(self, "type")
 
@@ -52750,6 +53868,14 @@ class WorkerVersionBinding(dict):
         ID of the store containing the secret.
         """
         return pulumi.get(self, "store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def stream(self) -> Optional[_builtins.str]:
+        """
+        ID of a K2 stream owned by the account deploying the Worker.
+        """
+        return pulumi.get(self, "stream")
 
     @_builtins.property
     @pulumi.getter
@@ -53190,6 +54316,460 @@ class WorkerVersionExportsCache(dict):
         Whether caching is enabled for this entrypoint.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class WorkerVersionExportsReconciliation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "removableEntries":
+            suggest = "removable_entries"
+        elif key == "transferPendings":
+            suggest = "transfer_pendings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerVersionExportsReconciliation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerVersionExportsReconciliation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerVersionExportsReconciliation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 createds: Optional[Sequence[_builtins.str]] = None,
+                 deleteds: Optional[Sequence[_builtins.str]] = None,
+                 infos: Optional[Sequence['outputs.WorkerVersionExportsReconciliationInfo']] = None,
+                 removable_entries: Optional[Sequence[_builtins.str]] = None,
+                 renameds: Optional[Sequence['outputs.WorkerVersionExportsReconciliationRenamed']] = None,
+                 transfer_pendings: Optional[Sequence['outputs.WorkerVersionExportsReconciliationTransferPending']] = None,
+                 transferreds: Optional[Sequence['outputs.WorkerVersionExportsReconciliationTransferred']] = None,
+                 updateds: Optional[Sequence[_builtins.str]] = None,
+                 warnings: Optional[Sequence['outputs.WorkerVersionExportsReconciliationWarning']] = None):
+        """
+        :param Sequence[_builtins.str] createds: Class names for which a new namespace was provisioned.
+        :param Sequence[_builtins.str] deleteds: Class names whose namespace was deleted by a `deleted` tombstone.
+        :param Sequence['WorkerVersionExportsReconciliationInfoArgs'] infos: Non-blocking info entries (stale tombstones, tombstone applied with class still in code). See `exports_reconciliation_info`.
+        :param Sequence[_builtins.str] removable_entries: Source class names whose tombstone entry is now stale and safe to delete from `exports` (no remaining referencing scripts).
+        :param Sequence['WorkerVersionExportsReconciliationRenamedArgs'] renameds: Applied `renamed` tombstones.
+        :param Sequence['WorkerVersionExportsReconciliationTransferPendingArgs'] transfer_pendings: Phase-1 transfer hints recorded on the target side.
+        :param Sequence['WorkerVersionExportsReconciliationTransferredArgs'] transferreds: Committed `transferred` tombstones (phase-2).
+        :param Sequence[_builtins.str] updateds: Class names whose provisioned namespace was mutated in place.
+        :param Sequence['WorkerVersionExportsReconciliationWarningArgs'] warnings: Non-blocking warnings. See `exports_reconciliation_warning`.
+        """
+        if createds is not None:
+            pulumi.set(__self__, "createds", createds)
+        if deleteds is not None:
+            pulumi.set(__self__, "deleteds", deleteds)
+        if infos is not None:
+            pulumi.set(__self__, "infos", infos)
+        if removable_entries is not None:
+            pulumi.set(__self__, "removable_entries", removable_entries)
+        if renameds is not None:
+            pulumi.set(__self__, "renameds", renameds)
+        if transfer_pendings is not None:
+            pulumi.set(__self__, "transfer_pendings", transfer_pendings)
+        if transferreds is not None:
+            pulumi.set(__self__, "transferreds", transferreds)
+        if updateds is not None:
+            pulumi.set(__self__, "updateds", updateds)
+        if warnings is not None:
+            pulumi.set(__self__, "warnings", warnings)
+
+    @_builtins.property
+    @pulumi.getter
+    def createds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Class names for which a new namespace was provisioned.
+        """
+        return pulumi.get(self, "createds")
+
+    @_builtins.property
+    @pulumi.getter
+    def deleteds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Class names whose namespace was deleted by a `deleted` tombstone.
+        """
+        return pulumi.get(self, "deleteds")
+
+    @_builtins.property
+    @pulumi.getter
+    def infos(self) -> Optional[Sequence['outputs.WorkerVersionExportsReconciliationInfo']]:
+        """
+        Non-blocking info entries (stale tombstones, tombstone applied with class still in code). See `exports_reconciliation_info`.
+        """
+        return pulumi.get(self, "infos")
+
+    @_builtins.property
+    @pulumi.getter(name="removableEntries")
+    def removable_entries(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Source class names whose tombstone entry is now stale and safe to delete from `exports` (no remaining referencing scripts).
+        """
+        return pulumi.get(self, "removable_entries")
+
+    @_builtins.property
+    @pulumi.getter
+    def renameds(self) -> Optional[Sequence['outputs.WorkerVersionExportsReconciliationRenamed']]:
+        """
+        Applied `renamed` tombstones.
+        """
+        return pulumi.get(self, "renameds")
+
+    @_builtins.property
+    @pulumi.getter(name="transferPendings")
+    def transfer_pendings(self) -> Optional[Sequence['outputs.WorkerVersionExportsReconciliationTransferPending']]:
+        """
+        Phase-1 transfer hints recorded on the target side.
+        """
+        return pulumi.get(self, "transfer_pendings")
+
+    @_builtins.property
+    @pulumi.getter
+    def transferreds(self) -> Optional[Sequence['outputs.WorkerVersionExportsReconciliationTransferred']]:
+        """
+        Committed `transferred` tombstones (phase-2).
+        """
+        return pulumi.get(self, "transferreds")
+
+    @_builtins.property
+    @pulumi.getter
+    def updateds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Class names whose provisioned namespace was mutated in place.
+        """
+        return pulumi.get(self, "updateds")
+
+    @_builtins.property
+    @pulumi.getter
+    def warnings(self) -> Optional[Sequence['outputs.WorkerVersionExportsReconciliationWarning']]:
+        """
+        Non-blocking warnings. See `exports_reconciliation_warning`.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
+class WorkerVersionExportsReconciliationInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "class":
+            suggest = "class_"
+        elif key == "namespaceId":
+            suggest = "namespace_id"
+        elif key == "referencingScripts":
+            suggest = "referencing_scripts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerVersionExportsReconciliationInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerVersionExportsReconciliationInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerVersionExportsReconciliationInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 class_: Optional[_builtins.str] = None,
+                 message: Optional[_builtins.str] = None,
+                 namespace_id: Optional[_builtins.str] = None,
+                 referencing_scripts: Optional[Sequence[_builtins.str]] = None,
+                 scenario: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str class_: The class name the info entry is about.
+        :param _builtins.str message: Human-readable explanation.
+        :param _builtins.str namespace_id: The provisioned namespace the entry relates to, when applicable.
+        :param Sequence[_builtins.str] referencing_scripts: Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first.
+        :param _builtins.str scenario: Stable, machine-readable tag identifying which reconciliation scenario produced an error, warning, or info entry. Clients may branch on this value instead of parsing `message`.
+        """
+        if class_ is not None:
+            pulumi.set(__self__, "class_", class_)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if referencing_scripts is not None:
+            pulumi.set(__self__, "referencing_scripts", referencing_scripts)
+        if scenario is not None:
+            pulumi.set(__self__, "scenario", scenario)
+
+    @_builtins.property
+    @pulumi.getter(name="class")
+    def class_(self) -> Optional[_builtins.str]:
+        """
+        The class name the info entry is about.
+        """
+        return pulumi.get(self, "class_")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Human-readable explanation.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[_builtins.str]:
+        """
+        The provisioned namespace the entry relates to, when applicable.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="referencingScripts")
+    def referencing_scripts(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove — redeploy these Workers with bindings re-pointed first.
+        """
+        return pulumi.get(self, "referencing_scripts")
+
+    @_builtins.property
+    @pulumi.getter
+    def scenario(self) -> Optional[_builtins.str]:
+        """
+        Stable, machine-readable tag identifying which reconciliation scenario produced an error, warning, or info entry. Clients may branch on this value instead of parsing `message`.
+        """
+        return pulumi.get(self, "scenario")
+
+
+@pulumi.output_type
+class WorkerVersionExportsReconciliationRenamed(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerVersionExportsReconciliationRenamed. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerVersionExportsReconciliationRenamed.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerVersionExportsReconciliationRenamed.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_: Optional[_builtins.str] = None,
+                 to: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str from_: The original (source) class name.
+        :param _builtins.str to: The new class name (`renamed_to`).
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[_builtins.str]:
+        """
+        The original (source) class name.
+        """
+        return pulumi.get(self, "from_")
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[_builtins.str]:
+        """
+        The new class name (`renamed_to`).
+        """
+        return pulumi.get(self, "to")
+
+
+@pulumi.output_type
+class WorkerVersionExportsReconciliationTransferPending(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "class":
+            suggest = "class_"
+        elif key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerVersionExportsReconciliationTransferPending. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerVersionExportsReconciliationTransferPending.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerVersionExportsReconciliationTransferPending.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 class_: Optional[_builtins.str] = None,
+                 from_: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str class_: The target-side class name awaiting transfer.
+        :param _builtins.str from_: The source script the namespace will be transferred from.
+        """
+        if class_ is not None:
+            pulumi.set(__self__, "class_", class_)
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+
+    @_builtins.property
+    @pulumi.getter(name="class")
+    def class_(self) -> Optional[_builtins.str]:
+        """
+        The target-side class name awaiting transfer.
+        """
+        return pulumi.get(self, "class_")
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[_builtins.str]:
+        """
+        The source script the namespace will be transferred from.
+        """
+        return pulumi.get(self, "from_")
+
+
+@pulumi.output_type
+class WorkerVersionExportsReconciliationTransferred(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "class":
+            suggest = "class_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerVersionExportsReconciliationTransferred. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerVersionExportsReconciliationTransferred.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerVersionExportsReconciliationTransferred.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 class_: Optional[_builtins.str] = None,
+                 phase: Optional[_builtins.str] = None,
+                 to: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str class_: The source class name that was transferred.
+        :param _builtins.str phase: The transfer phase. Currently always `committed`.
+        :param _builtins.str to: The destination script that now owns the namespace.
+        """
+        if class_ is not None:
+            pulumi.set(__self__, "class_", class_)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="class")
+    def class_(self) -> Optional[_builtins.str]:
+        """
+        The source class name that was transferred.
+        """
+        return pulumi.get(self, "class_")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[_builtins.str]:
+        """
+        The transfer phase. Currently always `committed`.
+        """
+        return pulumi.get(self, "phase")
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[_builtins.str]:
+        """
+        The destination script that now owns the namespace.
+        """
+        return pulumi.get(self, "to")
+
+
+@pulumi.output_type
+class WorkerVersionExportsReconciliationWarning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "class":
+            suggest = "class_"
+        elif key == "namespaceId":
+            suggest = "namespace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerVersionExportsReconciliationWarning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerVersionExportsReconciliationWarning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerVersionExportsReconciliationWarning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 class_: Optional[_builtins.str] = None,
+                 message: Optional[_builtins.str] = None,
+                 namespace_id: Optional[_builtins.str] = None,
+                 scenario: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str class_: The class name the warning is about.
+        :param _builtins.str message: Human-readable explanation of the warning.
+        :param _builtins.str namespace_id: The provisioned namespace the warning relates to, when applicable.
+        :param _builtins.str scenario: Stable, machine-readable tag identifying which reconciliation scenario produced an error, warning, or info entry. Clients may branch on this value instead of parsing `message`.
+        """
+        if class_ is not None:
+            pulumi.set(__self__, "class_", class_)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if scenario is not None:
+            pulumi.set(__self__, "scenario", scenario)
+
+    @_builtins.property
+    @pulumi.getter(name="class")
+    def class_(self) -> Optional[_builtins.str]:
+        """
+        The class name the warning is about.
+        """
+        return pulumi.get(self, "class_")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Human-readable explanation of the warning.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[_builtins.str]:
+        """
+        The provisioned namespace the warning relates to, when applicable.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def scenario(self) -> Optional[_builtins.str]:
+        """
+        Stable, machine-readable tag identifying which reconciliation scenario produced an error, warning, or info entry. Clients may branch on this value instead of parsing `message`.
+        """
+        return pulumi.get(self, "scenario")
 
 
 @pulumi.output_type
@@ -54014,17 +55594,27 @@ class WorkersDeploymentVersion(dict):
     def __init__(__self__, *,
                  percentage: _builtins.float,
                  version_id: _builtins.str):
+        """
+        :param _builtins.float percentage: Percentage of traffic served by this version.
+        :param _builtins.str version_id: Identifier of the Worker Version.
+        """
         pulumi.set(__self__, "percentage", percentage)
         pulumi.set(__self__, "version_id", version_id)
 
     @_builtins.property
     @pulumi.getter
     def percentage(self) -> _builtins.float:
+        """
+        Percentage of traffic served by this version.
+        """
         return pulumi.get(self, "percentage")
 
     @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> _builtins.str:
+        """
+        Identifier of the Worker Version.
+        """
         return pulumi.get(self, "version_id")
 
 
@@ -54169,7 +55759,9 @@ class WorkersScriptAssetsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "htmlHandling":
+        if key == "basePath":
+            suggest = "base_path"
+        elif key == "htmlHandling":
             suggest = "html_handling"
         elif key == "notFoundHandling":
             suggest = "not_found_handling"
@@ -54190,6 +55782,7 @@ class WorkersScriptAssetsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 base_path: Optional[_builtins.str] = None,
                  headers: Optional[_builtins.str] = None,
                  html_handling: Optional[_builtins.str] = None,
                  not_found_handling: Optional[_builtins.str] = None,
@@ -54197,6 +55790,7 @@ class WorkersScriptAssetsConfig(dict):
                  run_worker_first: Optional[Any] = None,
                  serve_directly: Optional[_builtins.bool] = None):
         """
+        :param _builtins.str base_path: The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
         :param _builtins.str headers: The contents of a _headers file (used to attach custom headers on asset responses).
         :param _builtins.str html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
@@ -54206,6 +55800,8 @@ class WorkersScriptAssetsConfig(dict):
         :param Any run_worker_first: When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
         :param _builtins.bool serve_directly: When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
         """
+        if base_path is not None:
+            pulumi.set(__self__, "base_path", base_path)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if html_handling is not None:
@@ -54218,6 +55814,14 @@ class WorkersScriptAssetsConfig(dict):
             pulumi.set(__self__, "run_worker_first", run_worker_first)
         if serve_directly is not None:
             pulumi.set(__self__, "serve_directly", serve_directly)
+
+    @_builtins.property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> Optional[_builtins.str]:
+        """
+        The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+        """
+        return pulumi.get(self, "base_path")
 
     @_builtins.property
     @pulumi.getter
@@ -54374,6 +55978,7 @@ class WorkersScriptBinding(dict):
                  service_id: Optional[_builtins.str] = None,
                  simple: Optional['outputs.WorkersScriptBindingSimple'] = None,
                  store_id: Optional[_builtins.str] = None,
+                 stream: Optional[_builtins.str] = None,
                  text: Optional[_builtins.str] = None,
                  tunnel_id: Optional[_builtins.str] = None,
                  usages: Optional[Sequence[_builtins.str]] = None,
@@ -54382,7 +55987,7 @@ class WorkersScriptBinding(dict):
         """
         :param _builtins.str name: A JavaScript variable name for the binding.
         :param _builtins.str type: The kind of resource that the binding provides.
-               Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+               Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         :param _builtins.str algorithm: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         :param Sequence[_builtins.str] allowed_destination_addresses: List of allowed destination addresses.
         :param Sequence[_builtins.str] allowed_sender_addresses: List of allowed sender addresses.
@@ -54420,6 +56025,7 @@ class WorkersScriptBinding(dict):
         :param _builtins.str service_id: Identifier of the VPC service to bind to.
         :param 'WorkersScriptBindingSimpleArgs' simple: A simple rate limit.
         :param _builtins.str store_id: ID of the store containing the secret.
+        :param _builtins.str stream: ID of a K2 stream owned by the account deploying the Worker.
         :param _builtins.str text: The text value to use.
         :param _builtins.str tunnel_id: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
         :param Sequence[_builtins.str] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
@@ -54498,6 +56104,8 @@ class WorkersScriptBinding(dict):
             pulumi.set(__self__, "simple", simple)
         if store_id is not None:
             pulumi.set(__self__, "store_id", store_id)
+        if stream is not None:
+            pulumi.set(__self__, "stream", stream)
         if text is not None:
             pulumi.set(__self__, "text", text)
         if tunnel_id is not None:
@@ -54522,7 +56130,7 @@ class WorkersScriptBinding(dict):
     def type(self) -> _builtins.str:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+        Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         """
         return pulumi.get(self, "type")
 
@@ -54807,6 +56415,14 @@ class WorkersScriptBinding(dict):
         ID of the store containing the secret.
         """
         return pulumi.get(self, "store_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def stream(self) -> Optional[_builtins.str]:
+        """
+        ID of a K2 stream owned by the account deploying the Worker.
+        """
+        return pulumi.get(self, "stream")
 
     @_builtins.property
     @pulumi.getter
@@ -55645,17 +57261,21 @@ class WorkersScriptObservability(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool,
                  head_sampling_rate: Optional[_builtins.float] = None,
+                 issues: Optional['outputs.WorkersScriptObservabilityIssues'] = None,
                  logs: Optional['outputs.WorkersScriptObservabilityLogs'] = None,
                  traces: Optional['outputs.WorkersScriptObservabilityTraces'] = None):
         """
         :param _builtins.bool enabled: Whether observability is enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+        :param 'WorkersScriptObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
         :param 'WorkersScriptObservabilityLogsArgs' logs: Log settings for the Worker.
         :param 'WorkersScriptObservabilityTracesArgs' traces: Trace settings for the Worker.
         """
         pulumi.set(__self__, "enabled", enabled)
         if head_sampling_rate is not None:
             pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        if issues is not None:
+            pulumi.set(__self__, "issues", issues)
         if logs is not None:
             pulumi.set(__self__, "logs", logs)
         if traces is not None:
@@ -55679,6 +57299,14 @@ class WorkersScriptObservability(dict):
 
     @_builtins.property
     @pulumi.getter
+    def issues(self) -> Optional['outputs.WorkersScriptObservabilityIssues']:
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
+
+    @_builtins.property
+    @pulumi.getter
     def logs(self) -> Optional['outputs.WorkersScriptObservabilityLogs']:
         """
         Log settings for the Worker.
@@ -55692,6 +57320,25 @@ class WorkersScriptObservability(dict):
         Trace settings for the Worker.
         """
         return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class WorkersScriptObservabilityIssues(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -65495,6 +67142,8 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
             suggest = "support_groups"
         elif key == "tokenUrl":
             suggest = "token_url"
+        elif key == "useLoginHint":
+            suggest = "use_login_hint"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ZeroTrustAccessIdentityProviderConfig. Access the value via the '{suggest}' property getter instead.")
@@ -65539,7 +67188,8 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
                  sign_request: Optional[_builtins.bool] = None,
                  sso_target_url: Optional[_builtins.str] = None,
                  support_groups: Optional[_builtins.bool] = None,
-                 token_url: Optional[_builtins.str] = None):
+                 token_url: Optional[_builtins.str] = None,
+                 use_login_hint: Optional[_builtins.bool] = None):
         """
         :param _builtins.str apps_domain: Your companies TLD
         :param Sequence[_builtins.str] attributes: A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
@@ -65570,13 +67220,14 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
         :param _builtins.str ping_env_id: Your PingOne environment identifier
         :param _builtins.bool pkce_enabled: Enable Proof Key for Code Exchange (PKCE)
         :param _builtins.str prompt: Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-               Available values: "login", "select_account", "none".
+               Available values: "login", "select_account", "none", "consent".
         :param _builtins.bool restrict_to_account_members: When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
         :param Sequence[_builtins.str] scopes: OAuth scopes
         :param _builtins.bool sign_request: Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
         :param _builtins.str sso_target_url: URL to send the SAML authentication requests to
         :param _builtins.bool support_groups: Should Cloudflare try to load groups from your account
         :param _builtins.str token_url: The token_endpoint URL of your IdP
+        :param _builtins.bool use_login_hint: Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
         """
         if apps_domain is not None:
             pulumi.set(__self__, "apps_domain", apps_domain)
@@ -65642,6 +67293,8 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "support_groups", support_groups)
         if token_url is not None:
             pulumi.set(__self__, "token_url", token_url)
+        if use_login_hint is not None:
+            pulumi.set(__self__, "use_login_hint", use_login_hint)
 
     @_builtins.property
     @pulumi.getter(name="appsDomain")
@@ -65844,7 +67497,7 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
     def prompt(self) -> Optional[_builtins.str]:
         """
         Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-        Available values: "login", "select_account", "none".
+        Available values: "login", "select_account", "none", "consent".
         """
         return pulumi.get(self, "prompt")
 
@@ -65900,6 +67553,14 @@ class ZeroTrustAccessIdentityProviderConfig(dict):
         The token_endpoint URL of your IdP
         """
         return pulumi.get(self, "token_url")
+
+    @_builtins.property
+    @pulumi.getter(name="useLoginHint")
+    def use_login_hint(self) -> Optional[_builtins.bool]:
+        """
+        Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+        """
+        return pulumi.get(self, "use_login_hint")
 
 
 @pulumi.output_type
@@ -70010,6 +71671,974 @@ class ZeroTrustAccessPolicyRequireUserRiskScore(dict):
         A list of risk score levels to match. Values can be low, medium, high, or unscored.
         """
         return pulumi.get(self, "user_risk_scores")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationAnthropic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anthropicAdminApiKey":
+            suggest = "anthropic_admin_api_key"
+        elif key == "anthropicComplianceApiKey":
+            suggest = "anthropic_compliance_api_key"
+        elif key == "anthropicWorkspaceApiKey":
+            suggest = "anthropic_workspace_api_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationAnthropic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationAnthropic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationAnthropic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anthropic_admin_api_key: Optional['outputs.ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey'] = None,
+                 anthropic_compliance_api_key: Optional['outputs.ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey'] = None,
+                 anthropic_workspace_api_key: Optional['outputs.ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey'] = None):
+        """
+        :param 'ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKeyArgs' anthropic_admin_api_key: Authenticate with an Anthropic Admin API key.
+        :param 'ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKeyArgs' anthropic_compliance_api_key: Authenticate with an Anthropic Compliance API key.
+        :param 'ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKeyArgs' anthropic_workspace_api_key: Authenticate with an Anthropic Workspace API key.
+        """
+        if anthropic_admin_api_key is not None:
+            pulumi.set(__self__, "anthropic_admin_api_key", anthropic_admin_api_key)
+        if anthropic_compliance_api_key is not None:
+            pulumi.set(__self__, "anthropic_compliance_api_key", anthropic_compliance_api_key)
+        if anthropic_workspace_api_key is not None:
+            pulumi.set(__self__, "anthropic_workspace_api_key", anthropic_workspace_api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="anthropicAdminApiKey")
+    def anthropic_admin_api_key(self) -> Optional['outputs.ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey']:
+        """
+        Authenticate with an Anthropic Admin API key.
+        """
+        return pulumi.get(self, "anthropic_admin_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="anthropicComplianceApiKey")
+    def anthropic_compliance_api_key(self) -> Optional['outputs.ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey']:
+        """
+        Authenticate with an Anthropic Compliance API key.
+        """
+        return pulumi.get(self, "anthropic_compliance_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="anthropicWorkspaceApiKey")
+    def anthropic_workspace_api_key(self) -> Optional['outputs.ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey']:
+        """
+        Authenticate with an Anthropic Workspace API key.
+        """
+        return pulumi.get(self, "anthropic_workspace_api_key")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationAnthropicAnthropicAdminApiKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: _builtins.str,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str api_key: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Anthropic Admin API key. This value is write-only and is never persisted to Terraform state.
+        :param _builtins.str tenant_id: Organization ID. Auto-extracted from the key if not provided.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Anthropic Admin API key. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Organization ID. Auto-extracted from the key if not provided.
+        """
+        return pulumi.get(self, "tenant_id")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "complianceApiKey":
+            suggest = "compliance_api_key"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationAnthropicAnthropicComplianceApiKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compliance_api_key: _builtins.str,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str compliance_api_key: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Anthropic Compliance API key. This value is write-only and is never persisted to Terraform state.
+        :param _builtins.str tenant_id: Organization ID. Auto-extracted from the key if not provided.
+        """
+        pulumi.set(__self__, "compliance_api_key", compliance_api_key)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="complianceApiKey")
+    def compliance_api_key(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Anthropic Compliance API key. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "compliance_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Organization ID. Auto-extracted from the key if not provided.
+        """
+        return pulumi.get(self, "tenant_id")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationAnthropicAnthropicWorkspaceApiKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: _builtins.str,
+                 tenant_id: _builtins.str):
+        """
+        :param _builtins.str api_key: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Anthropic Workspace API key. This value is write-only and is never persisted to Terraform state.
+        :param _builtins.str tenant_id: Workspace ID, found in the Anthropic Console URL after /workspaces/.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Anthropic Workspace API key. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> _builtins.str:
+        """
+        Workspace ID, found in the Anthropic Console URL after /workspaces/.
+        """
+        return pulumi.get(self, "tenant_id")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationAws(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsIamRole":
+            suggest = "aws_iam_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationAws. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationAws.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationAws.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aws_iam_role: Optional['outputs.ZeroTrustCasbIntegrationAwsAwsIamRole'] = None):
+        """
+        :param 'ZeroTrustCasbIntegrationAwsAwsIamRoleArgs' aws_iam_role: Authenticate by delegating to a cross-account IAM role.
+        """
+        if aws_iam_role is not None:
+            pulumi.set(__self__, "aws_iam_role", aws_iam_role)
+
+    @_builtins.property
+    @pulumi.getter(name="awsIamRole")
+    def aws_iam_role(self) -> Optional['outputs.ZeroTrustCasbIntegrationAwsAwsIamRole']:
+        """
+        Authenticate by delegating to a cross-account IAM role.
+        """
+        return pulumi.get(self, "aws_iam_role")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationAwsAwsIamRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalId":
+            suggest = "external_id"
+        elif key == "roleArn":
+            suggest = "role_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationAwsAwsIamRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationAwsAwsIamRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationAwsAwsIamRole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_id: _builtins.str,
+                 role_arn: _builtins.str):
+        """
+        :param _builtins.str external_id: External ID required when assuming the IAM role.
+        :param _builtins.str role_arn: ARN of the cross-account IAM role Cloudflare will assume.
+        """
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> _builtins.str:
+        """
+        External ID required when assuming the IAM role.
+        """
+        return pulumi.get(self, "external_id")
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> _builtins.str:
+        """
+        ARN of the cross-account IAM role Cloudflare will assume.
+        """
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationBox(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boxServerAuthentication":
+            suggest = "box_server_authentication"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationBox. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationBox.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationBox.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 box_server_authentication: Optional['outputs.ZeroTrustCasbIntegrationBoxBoxServerAuthentication'] = None):
+        """
+        :param 'ZeroTrustCasbIntegrationBoxBoxServerAuthenticationArgs' box_server_authentication: Authenticate with Box server authentication. Before creating the integration, add the Cloudflare CASB application in Box Admin Console > Integrations > Platform Apps Manager > Server Authentication Apps using client ID `puaghckpy0578r8p6f3g0rf860unup4r`.
+        """
+        if box_server_authentication is not None:
+            pulumi.set(__self__, "box_server_authentication", box_server_authentication)
+
+    @_builtins.property
+    @pulumi.getter(name="boxServerAuthentication")
+    def box_server_authentication(self) -> Optional['outputs.ZeroTrustCasbIntegrationBoxBoxServerAuthentication']:
+        """
+        Authenticate with Box server authentication. Before creating the integration, add the Cloudflare CASB application in Box Admin Console > Integrations > Platform Apps Manager > Server Authentication Apps using client ID `puaghckpy0578r8p6f3g0rf860unup4r`.
+        """
+        return pulumi.get(self, "box_server_authentication")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationBoxBoxServerAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enterpriseId":
+            suggest = "enterprise_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationBoxBoxServerAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationBoxBoxServerAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationBoxBoxServerAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enterprise_id: _builtins.str):
+        """
+        :param _builtins.str enterprise_id: Box Enterprise ID from Admin Console > Accounts & Billing.
+        """
+        pulumi.set(__self__, "enterprise_id", enterprise_id)
+
+    @_builtins.property
+    @pulumi.getter(name="enterpriseId")
+    def enterprise_id(self) -> _builtins.str:
+        """
+        Box Enterprise ID from Admin Console > Accounts & Billing.
+        """
+        return pulumi.get(self, "enterprise_id")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationGoogleCloudPlatform(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleCloudPlatformServiceAccount":
+            suggest = "google_cloud_platform_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationGoogleCloudPlatform. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationGoogleCloudPlatform.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationGoogleCloudPlatform.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_cloud_platform_service_account: Optional['outputs.ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount'] = None):
+        """
+        :param 'ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccountArgs' google_cloud_platform_service_account: Authenticate with a service account key.
+        """
+        if google_cloud_platform_service_account is not None:
+            pulumi.set(__self__, "google_cloud_platform_service_account", google_cloud_platform_service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloudPlatformServiceAccount")
+    def google_cloud_platform_service_account(self) -> Optional['outputs.ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount']:
+        """
+        Authenticate with a service account key.
+        """
+        return pulumi.get(self, "google_cloud_platform_service_account")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountKeyJson":
+            suggest = "service_account_key_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationGoogleCloudPlatformGoogleCloudPlatformServiceAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_key_json: _builtins.str):
+        """
+        :param _builtins.str service_account_key_json: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Contents of a Google service account JSON key file. This value is write-only and is never persisted to Terraform state.
+        """
+        pulumi.set(__self__, "service_account_key_json", service_account_key_json)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyJson")
+    def service_account_key_json(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Contents of a Google service account JSON key file. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "service_account_key_json")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationGoogleWorkspace(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleDomainWideDelegationServiceAccount":
+            suggest = "google_domain_wide_delegation_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationGoogleWorkspace. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationGoogleWorkspace.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationGoogleWorkspace.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_domain_wide_delegation_service_account: Optional['outputs.ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount'] = None):
+        """
+        :param 'ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccountArgs' google_domain_wide_delegation_service_account: Authenticate with a service account granted domain-wide delegation.
+        """
+        if google_domain_wide_delegation_service_account is not None:
+            pulumi.set(__self__, "google_domain_wide_delegation_service_account", google_domain_wide_delegation_service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="googleDomainWideDelegationServiceAccount")
+    def google_domain_wide_delegation_service_account(self) -> Optional['outputs.ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount']:
+        """
+        Authenticate with a service account granted domain-wide delegation.
+        """
+        return pulumi.get(self, "google_domain_wide_delegation_service_account")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "administratorEmail":
+            suggest = "administrator_email"
+        elif key == "serviceAccountKeyJson":
+            suggest = "service_account_key_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationGoogleWorkspaceGoogleDomainWideDelegationServiceAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 administrator_email: _builtins.str,
+                 service_account_key_json: _builtins.str):
+        """
+        :param _builtins.str administrator_email: A Google Workspace super administrator email address.
+        :param _builtins.str service_account_key_json: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Contents of a Google service account JSON key file. This value is write-only and is never persisted to Terraform state.
+        """
+        pulumi.set(__self__, "administrator_email", administrator_email)
+        pulumi.set(__self__, "service_account_key_json", service_account_key_json)
+
+    @_builtins.property
+    @pulumi.getter(name="administratorEmail")
+    def administrator_email(self) -> _builtins.str:
+        """
+        A Google Workspace super administrator email address.
+        """
+        return pulumi.get(self, "administrator_email")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyJson")
+    def service_account_key_json(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Contents of a Google service account JSON key file. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "service_account_key_json")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationOpenai(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chatgptComplianceApiKey":
+            suggest = "chatgpt_compliance_api_key"
+        elif key == "chatgptStandardApiKey":
+            suggest = "chatgpt_standard_api_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationOpenai. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationOpenai.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationOpenai.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chatgpt_compliance_api_key: Optional['outputs.ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey'] = None,
+                 chatgpt_standard_api_key: Optional['outputs.ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey'] = None):
+        """
+        :param 'ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKeyArgs' chatgpt_compliance_api_key: Authenticate with an OpenAI Compliance API key. Requires an Enterprise plan.
+        :param 'ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKeyArgs' chatgpt_standard_api_key: Authenticate with an OpenAI Admin API key.
+        """
+        if chatgpt_compliance_api_key is not None:
+            pulumi.set(__self__, "chatgpt_compliance_api_key", chatgpt_compliance_api_key)
+        if chatgpt_standard_api_key is not None:
+            pulumi.set(__self__, "chatgpt_standard_api_key", chatgpt_standard_api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="chatgptComplianceApiKey")
+    def chatgpt_compliance_api_key(self) -> Optional['outputs.ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey']:
+        """
+        Authenticate with an OpenAI Compliance API key. Requires an Enterprise plan.
+        """
+        return pulumi.get(self, "chatgpt_compliance_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="chatgptStandardApiKey")
+    def chatgpt_standard_api_key(self) -> Optional['outputs.ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey']:
+        """
+        Authenticate with an OpenAI Admin API key.
+        """
+        return pulumi.get(self, "chatgpt_standard_api_key")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminApiKey":
+            suggest = "admin_api_key"
+        elif key == "complianceApiKey":
+            suggest = "compliance_api_key"
+        elif key == "organizationId":
+            suggest = "organization_id"
+        elif key == "workspaceId":
+            suggest = "workspace_id"
+        elif key == "projectApiKey":
+            suggest = "project_api_key"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationOpenaiChatgptComplianceApiKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_api_key: _builtins.str,
+                 compliance_api_key: _builtins.str,
+                 organization_id: _builtins.str,
+                 workspace_id: _builtins.str,
+                 project_api_key: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str admin_api_key: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenAI Admin API key with api.management.read access. This value is write-only and is never persisted to Terraform state.
+        :param _builtins.str compliance_api_key: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenAI Compliance API key for audit logs. This value is write-only and is never persisted to Terraform state.
+        :param _builtins.str organization_id: OpenAI Organization ID.
+        :param _builtins.str workspace_id: OpenAI Workspace ID for compliance data.
+        :param _builtins.str project_api_key: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenAI Project API key, used for DLP. This value is write-only and is never persisted to Terraform state.
+        :param _builtins.str project_id: OpenAI Project ID, used for DLP.
+        """
+        pulumi.set(__self__, "admin_api_key", admin_api_key)
+        pulumi.set(__self__, "compliance_api_key", compliance_api_key)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "workspace_id", workspace_id)
+        if project_api_key is not None:
+            pulumi.set(__self__, "project_api_key", project_api_key)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="adminApiKey")
+    def admin_api_key(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        OpenAI Admin API key with api.management.read access. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "admin_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="complianceApiKey")
+    def compliance_api_key(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        OpenAI Compliance API key for audit logs. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "compliance_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.str:
+        """
+        OpenAI Organization ID.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        OpenAI Workspace ID for compliance data.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="projectApiKey")
+    def project_api_key(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        OpenAI Project API key, used for DLP. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "project_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        OpenAI Project ID, used for DLP.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminApiKey":
+            suggest = "admin_api_key"
+        elif key == "organizationId":
+            suggest = "organization_id"
+        elif key == "projectApiKey":
+            suggest = "project_api_key"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbIntegrationOpenaiChatgptStandardApiKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_api_key: _builtins.str,
+                 organization_id: _builtins.str,
+                 project_api_key: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str admin_api_key: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenAI Admin API key with api.management.read access. This value is write-only and is never persisted to Terraform state.
+        :param _builtins.str organization_id: OpenAI Organization ID.
+        :param _builtins.str project_api_key: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenAI Project API key, used for DLP. This value is write-only and is never persisted to Terraform state.
+        :param _builtins.str project_id: OpenAI Project ID, used for DLP.
+        """
+        pulumi.set(__self__, "admin_api_key", admin_api_key)
+        pulumi.set(__self__, "organization_id", organization_id)
+        if project_api_key is not None:
+            pulumi.set(__self__, "project_api_key", project_api_key)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter(name="adminApiKey")
+    def admin_api_key(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        OpenAI Admin API key with api.management.read access. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "admin_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.str:
+        """
+        OpenAI Organization ID.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter(name="projectApiKey")
+    def project_api_key(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        OpenAI Project API key, used for DLP. This value is write-only and is never persisted to Terraform state.
+        """
+        return pulumi.get(self, "project_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        OpenAI Project ID, used for DLP.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class ZeroTrustCasbPolicyActions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "remediationTypes":
+            suggest = "remediation_types"
+        elif key == "webhookConfigs":
+            suggest = "webhook_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbPolicyActions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbPolicyActions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbPolicyActions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 remediation_types: Optional[Sequence['outputs.ZeroTrustCasbPolicyActionsRemediationType']] = None,
+                 webhook_configs: Optional[Sequence['outputs.ZeroTrustCasbPolicyActionsWebhookConfig']] = None):
+        """
+        :param Sequence['ZeroTrustCasbPolicyActionsRemediationTypeArgs'] remediation_types: Remediation actions to execute (at most one).
+        :param Sequence['ZeroTrustCasbPolicyActionsWebhookConfigArgs'] webhook_configs: Webhook actions to execute.
+        """
+        if remediation_types is not None:
+            pulumi.set(__self__, "remediation_types", remediation_types)
+        if webhook_configs is not None:
+            pulumi.set(__self__, "webhook_configs", webhook_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="remediationTypes")
+    def remediation_types(self) -> Optional[Sequence['outputs.ZeroTrustCasbPolicyActionsRemediationType']]:
+        """
+        Remediation actions to execute (at most one).
+        """
+        return pulumi.get(self, "remediation_types")
+
+    @_builtins.property
+    @pulumi.getter(name="webhookConfigs")
+    def webhook_configs(self) -> Optional[Sequence['outputs.ZeroTrustCasbPolicyActionsWebhookConfig']]:
+        """
+        Webhook actions to execute.
+        """
+        return pulumi.get(self, "webhook_configs")
+
+
+@pulumi.output_type
+class ZeroTrustCasbPolicyActionsRemediationType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "remediationTypeId":
+            suggest = "remediation_type_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbPolicyActionsRemediationType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbPolicyActionsRemediationType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbPolicyActionsRemediationType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 remediation_type_id: _builtins.str):
+        """
+        :param _builtins.str remediation_type_id: The ID of the remediation type to execute.
+        """
+        pulumi.set(__self__, "remediation_type_id", remediation_type_id)
+
+    @_builtins.property
+    @pulumi.getter(name="remediationTypeId")
+    def remediation_type_id(self) -> _builtins.str:
+        """
+        The ID of the remediation type to execute.
+        """
+        return pulumi.get(self, "remediation_type_id")
+
+
+@pulumi.output_type
+class ZeroTrustCasbPolicyActionsWebhookConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "webhookConfigId":
+            suggest = "webhook_config_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustCasbPolicyActionsWebhookConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustCasbPolicyActionsWebhookConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustCasbPolicyActionsWebhookConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 webhook_config_id: _builtins.str):
+        """
+        :param _builtins.str webhook_config_id: The ID of the webhook configuration to use.
+        """
+        pulumi.set(__self__, "webhook_config_id", webhook_config_id)
+
+    @_builtins.property
+    @pulumi.getter(name="webhookConfigId")
+    def webhook_config_id(self) -> _builtins.str:
+        """
+        The ID of the webhook configuration to use.
+        """
+        return pulumi.get(self, "webhook_config_id")
+
+
+@pulumi.output_type
+class ZeroTrustCasbWebhookHeader(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Header key name.
+        :param _builtins.str value: Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Header key name.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Header value. Required on Create and Evaluate. On Update, omit or set to null to keep existing value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ZeroTrustDeviceCustomProfileBrowserExtensionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "proxyControl":
+            suggest = "proxy_control"
+        elif key == "proxyEnabled":
+            suggest = "proxy_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustDeviceCustomProfileBrowserExtensionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustDeviceCustomProfileBrowserExtensionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustDeviceCustomProfileBrowserExtensionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 proxy_control: _builtins.str,
+                 proxy_enabled: _builtins.bool):
+        """
+        :param _builtins.str proxy_control: Whether the user may disable the browser extension proxy.
+               Available values: "unlocked", "locked".
+        :param _builtins.bool proxy_enabled: Whether the browser extension proxy is active.
+        """
+        pulumi.set(__self__, "proxy_control", proxy_control)
+        pulumi.set(__self__, "proxy_enabled", proxy_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="proxyControl")
+    def proxy_control(self) -> _builtins.str:
+        """
+        Whether the user may disable the browser extension proxy.
+        Available values: "unlocked", "locked".
+        """
+        return pulumi.get(self, "proxy_control")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyEnabled")
+    def proxy_enabled(self) -> _builtins.bool:
+        """
+        Whether the browser extension proxy is active.
+        """
+        return pulumi.get(self, "proxy_enabled")
 
 
 @pulumi.output_type
@@ -76728,6 +79357,65 @@ class ZeroTrustOrganizationMfaSshPivKeyRequirements(dict):
 
 
 @pulumi.output_type
+class ZeroTrustOrganizationServiceTokenInactivity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inactivityThresholdDays":
+            suggest = "inactivity_threshold_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZeroTrustOrganizationServiceTokenInactivity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZeroTrustOrganizationServiceTokenInactivity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZeroTrustOrganizationServiceTokenInactivity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 enabled: _builtins.bool,
+                 inactivity_threshold_days: _builtins.int):
+        """
+        :param _builtins.str action: The action applied to an inactive service token.
+               Available values: "disable", "delete".
+        :param _builtins.bool enabled: Whether automatic enforcement for inactive service tokens is enabled.
+        :param _builtins.int inactivity_threshold_days: The number of days a service token must be inactive before the configured action is applied.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "inactivity_threshold_days", inactivity_threshold_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The action applied to an inactive service token.
+        Available values: "disable", "delete".
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether automatic enforcement for inactive service tokens is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="inactivityThresholdDays")
+    def inactivity_threshold_days(self) -> _builtins.int:
+        """
+        The number of days a service token must be inactive before the configured action is applied.
+        """
+        return pulumi.get(self, "inactivity_threshold_days")
+
+
+@pulumi.output_type
 class ZeroTrustRiskBehaviorBehaviors(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -78004,7 +80692,9 @@ class ZoneDnsSettingsNameservers(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "nsSet":
+        if key == "nameserverSetId":
+            suggest = "nameserver_set_id"
+        elif key == "nsSet":
             suggest = "ns_set"
 
         if suggest:
@@ -78019,34 +80709,45 @@ class ZoneDnsSettingsNameservers(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 ns_set: Optional[_builtins.int] = None,
-                 type: Optional[_builtins.str] = None):
+                 type: _builtins.str,
+                 nameserver_set_id: Optional[_builtins.str] = None,
+                 ns_set: Optional[_builtins.int] = None):
         """
-        :param _builtins.int ns_set: Configured nameserver set to be used for this zone
-        :param _builtins.str type: Nameserver type
-               Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+        :param _builtins.str type: Nameserver type.
+               Available values: "cloudflare.standard", "cloudflare.advanced", "custom.account", "custom.tenant", "custom.zone", "custom".
+        :param _builtins.str nameserver_set_id: Identifier of the account-owned Custom Nameserver Set to use for this zone.
+        :param _builtins.int ns_set: Configured nameserver set number to use for this zone.
         """
+        pulumi.set(__self__, "type", type)
+        if nameserver_set_id is not None:
+            pulumi.set(__self__, "nameserver_set_id", nameserver_set_id)
         if ns_set is not None:
             pulumi.set(__self__, "ns_set", ns_set)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Nameserver type.
+        Available values: "cloudflare.standard", "cloudflare.advanced", "custom.account", "custom.tenant", "custom.zone", "custom".
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="nameserverSetId")
+    def nameserver_set_id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the account-owned Custom Nameserver Set to use for this zone.
+        """
+        return pulumi.get(self, "nameserver_set_id")
 
     @_builtins.property
     @pulumi.getter(name="nsSet")
     def ns_set(self) -> Optional[_builtins.int]:
         """
-        Configured nameserver set to be used for this zone
+        Configured nameserver set number to use for this zone.
         """
         return pulumi.get(self, "ns_set")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[_builtins.str]:
-        """
-        Nameserver type
-        Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
-        """
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -78664,6 +81365,108 @@ class ZoneTenantUnit(dict):
 
 
 @pulumi.output_type
+class ZoneTracingRulesRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionParameters":
+            suggest = "action_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneTracingRulesRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneTracingRulesRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneTracingRulesRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 action_parameters: 'outputs.ZoneTracingRulesRuleActionParameters',
+                 description: _builtins.str,
+                 enabled: _builtins.bool,
+                 expression: _builtins.str):
+        """
+        :param _builtins.str action: Available values: "set*trace*settings".
+        :param _builtins.str expression: A Rules language expression that selects requests.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "action_parameters", action_parameters)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Available values: "set*trace*settings".
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="actionParameters")
+    def action_parameters(self) -> 'outputs.ZoneTracingRulesRuleActionParameters':
+        return pulumi.get(self, "action_parameters")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        A Rules language expression that selects requests.
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class ZoneTracingRulesRuleActionParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingRatio":
+            suggest = "sampling_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneTracingRulesRuleActionParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneTracingRulesRuleActionParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneTracingRulesRuleActionParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sampling_ratio: _builtins.float):
+        """
+        :param _builtins.float sampling_ratio: The ratio of requests sampled for tracing, from 0 to 1.
+        """
+        pulumi.set(__self__, "sampling_ratio", sampling_ratio)
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRatio")
+    def sampling_ratio(self) -> _builtins.float:
+        """
+        The ratio of requests sampled for tracing, from 0 to 1.
+        """
+        return pulumi.get(self, "sampling_ratio")
+
+
+@pulumi.output_type
 class GetAccessRuleConfigurationResult(dict):
     def __init__(__self__, *,
                  target: _builtins.str,
@@ -79063,17 +81866,33 @@ class GetAccessRulesResultScopeResult(dict):
 @pulumi.output_type
 class GetAccountApiTokenPermissionGroupsListResultResult(dict):
     def __init__(__self__, *,
+                 category: _builtins.str,
                  id: _builtins.str,
+                 is_selectable: _builtins.bool,
                  name: _builtins.str,
                  scopes: Sequence[_builtins.str]):
         """
+        :param _builtins.str category: Product category that this permission group belongs to.
+               Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
         :param _builtins.str id: Public ID.
+        :param _builtins.bool is_selectable: Whether the caller can select this permission group when creating a token.
         :param _builtins.str name: Permission Group Name
         :param Sequence[_builtins.str] scopes: Resources to which the Permission Group is scoped
         """
+        pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_selectable", is_selectable)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        Product category that this permission group belongs to.
+        Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
@@ -79082,6 +81901,14 @@ class GetAccountApiTokenPermissionGroupsListResultResult(dict):
         Public ID.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isSelectable")
+    def is_selectable(self) -> _builtins.bool:
+        """
+        Whether the caller can select this permission group when creating a token.
+        """
+        return pulumi.get(self, "is_selectable")
 
     @_builtins.property
     @pulumi.getter
@@ -79103,17 +81930,33 @@ class GetAccountApiTokenPermissionGroupsListResultResult(dict):
 @pulumi.output_type
 class GetAccountApiTokenPermissionGroupsPermissionGroupResult(dict):
     def __init__(__self__, *,
+                 category: _builtins.str,
                  id: _builtins.str,
+                 is_selectable: _builtins.bool,
                  name: _builtins.str,
                  scopes: Sequence[_builtins.str]):
         """
+        :param _builtins.str category: Product category that this permission group belongs to.
+               Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
         :param _builtins.str id: Public ID.
+        :param _builtins.bool is_selectable: Whether the caller can select this permission group when creating a token.
         :param _builtins.str name: Permission Group Name
         :param Sequence[_builtins.str] scopes: Resources to which the Permission Group is scoped
         """
+        pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_selectable", is_selectable)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        Product category that this permission group belongs to.
+        Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
@@ -79122,6 +81965,14 @@ class GetAccountApiTokenPermissionGroupsPermissionGroupResult(dict):
         Public ID.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isSelectable")
+    def is_selectable(self) -> _builtins.bool:
+        """
+        Whether the caller can select this permission group when creating a token.
+        """
+        return pulumi.get(self, "is_selectable")
 
     @_builtins.property
     @pulumi.getter
@@ -79828,20 +82679,96 @@ class GetAccountMemberPolicyPermissionGroupResult(dict):
 @pulumi.output_type
 class GetAccountMemberPolicyPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -80558,20 +83485,96 @@ class GetAccountMembersResultPolicyPermissionGroupResult(dict):
 @pulumi.output_type
 class GetAccountMembersResultPolicyPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -81120,20 +84123,96 @@ class GetAccountMembersResultUserResult(dict):
 @pulumi.output_type
 class GetAccountPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -81179,20 +84258,96 @@ class GetAccountPermissionGroupsResultResult(dict):
 @pulumi.output_type
 class GetAccountPermissionGroupsResultMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -82168,26 +85323,103 @@ class GetAccountTokenPolicyPermissionGroupResult(dict):
 @pulumi.output_type
 class GetAccountTokenPolicyPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
 class GetAccountTokensResultResult(dict):
     def __init__(__self__, *,
                  condition: 'outputs.GetAccountTokensResultConditionResult',
+                 creator_email_at_creation: _builtins.str,
                  expires_on: _builtins.str,
                  id: _builtins.str,
                  issued_on: _builtins.str,
@@ -82196,8 +85428,13 @@ class GetAccountTokensResultResult(dict):
                  name: _builtins.str,
                  not_before: _builtins.str,
                  policies: Sequence['outputs.GetAccountTokensResultPolicyResult'],
+                 provisioner_id: _builtins.str,
+                 provisioner_type: _builtins.str,
                  status: _builtins.str):
         """
+        :param _builtins.str creator_email_at_creation: The email address of the user who created the token at the time of
+               creation. Only present for Account Owned API Tokens when a creator email
+               was available.
         :param _builtins.str expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param _builtins.str id: Token identifier tag.
         :param _builtins.str issued_on: The time on which the token was created.
@@ -82206,10 +85443,17 @@ class GetAccountTokensResultResult(dict):
         :param _builtins.str name: Token name.
         :param _builtins.str not_before: The time before which the token MUST NOT be accepted for processing.
         :param Sequence['GetAccountTokensResultPolicyArgs'] policies: List of access policies assigned to the token.
+        :param _builtins.str provisioner_id: The identifier of the service that provisioned the token. For an
+               OAuth-provisioned token, this is the OAuth client identifier. Present
+               when `provisioner_type` is present and null when the identifier is
+               unavailable.
+        :param _builtins.str provisioner_type: The type of service that provisioned the token. Only present for
+               provisioned Account Owned API Tokens.
         :param _builtins.str status: Status of the token.
                Available values: "active", "disabled", "expired".
         """
         pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "creator_email_at_creation", creator_email_at_creation)
         pulumi.set(__self__, "expires_on", expires_on)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "issued_on", issued_on)
@@ -82218,12 +85462,24 @@ class GetAccountTokensResultResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "not_before", not_before)
         pulumi.set(__self__, "policies", policies)
+        pulumi.set(__self__, "provisioner_id", provisioner_id)
+        pulumi.set(__self__, "provisioner_type", provisioner_type)
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter
     def condition(self) -> 'outputs.GetAccountTokensResultConditionResult':
         return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter(name="creatorEmailAtCreation")
+    def creator_email_at_creation(self) -> _builtins.str:
+        """
+        The email address of the user who created the token at the time of
+        creation. Only present for Account Owned API Tokens when a creator email
+        was available.
+        """
+        return pulumi.get(self, "creator_email_at_creation")
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -82288,6 +85544,26 @@ class GetAccountTokensResultResult(dict):
         List of access policies assigned to the token.
         """
         return pulumi.get(self, "policies")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerId")
+    def provisioner_id(self) -> _builtins.str:
+        """
+        The identifier of the service that provisioned the token. For an
+        OAuth-provisioned token, this is the OAuth client identifier. Present
+        when `provisioner_type` is present and null when the identifier is
+        unavailable.
+        """
+        return pulumi.get(self, "provisioner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerType")
+    def provisioner_type(self) -> _builtins.str:
+        """
+        The type of service that provisioned the token. Only present for
+        provisioned Account Owned API Tokens.
+        """
+        return pulumi.get(self, "provisioner_type")
 
     @_builtins.property
     @pulumi.getter
@@ -82442,20 +85718,96 @@ class GetAccountTokensResultPolicyPermissionGroupResult(dict):
 @pulumi.output_type
 class GetAccountTokensResultPolicyPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -83735,6 +87087,7 @@ class GetAiGatewayStripeUsageEventResult(dict):
 class GetAiGatewaysResultResult(dict):
     def __init__(__self__, *,
                  authentication: _builtins.bool,
+                 byok_only: _builtins.bool,
                  cache_invalidate_on_update: _builtins.bool,
                  cache_ttl: _builtins.int,
                  collect_logs: _builtins.bool,
@@ -83762,17 +87115,19 @@ class GetAiGatewaysResultResult(dict):
                  workers_ai_billing_mode: _builtins.str,
                  zdr: _builtins.bool):
         """
-        :param _builtins.str id: gateway id
+        :param _builtins.bool byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        :param _builtins.str id: Unique identifier of the AI Gateway within the account.
         :param _builtins.str log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param _builtins.str rate_limiting_technique: Available values: "fixed", "sliding".
         :param _builtins.str retry_backoff: Backoff strategy for retry delays
                Available values: "constant", "linear", "exponential".
-        :param _builtins.int retry_delay: Delay between retry attempts in milliseconds (0-5000)
+        :param _builtins.int retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param _builtins.int retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
         :param _builtins.str workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
         """
         pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "byok_only", byok_only)
         pulumi.set(__self__, "cache_invalidate_on_update", cache_invalidate_on_update)
         pulumi.set(__self__, "cache_ttl", cache_ttl)
         pulumi.set(__self__, "collect_logs", collect_logs)
@@ -83804,6 +87159,14 @@ class GetAiGatewaysResultResult(dict):
     @pulumi.getter
     def authentication(self) -> _builtins.bool:
         return pulumi.get(self, "authentication")
+
+    @_builtins.property
+    @pulumi.getter(name="byokOnly")
+    def byok_only(self) -> _builtins.bool:
+        """
+        Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        """
+        return pulumi.get(self, "byok_only")
 
     @_builtins.property
     @pulumi.getter(name="cacheInvalidateOnUpdate")
@@ -83839,7 +87202,7 @@ class GetAiGatewaysResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        gateway id
+        Unique identifier of the AI Gateway within the account.
         """
         return pulumi.get(self, "id")
 
@@ -83917,7 +87280,7 @@ class GetAiGatewaysResultResult(dict):
     @pulumi.getter(name="retryDelay")
     def retry_delay(self) -> _builtins.int:
         """
-        Delay between retry attempts in milliseconds (0-5000)
+        Delay between retry attempts in milliseconds (0-60000)
         """
         return pulumi.get(self, "retry_delay")
 
@@ -84657,6 +88020,7 @@ class GetAiSearchInstanceFilterResult(dict):
     def __init__(__self__, *,
                  order_by: _builtins.str,
                  order_by_direction: _builtins.str,
+                 hostname: Optional[_builtins.str] = None,
                  namespace: Optional[_builtins.str] = None,
                  search: Optional[_builtins.str] = None):
         """
@@ -84664,11 +88028,14 @@ class GetAiSearchInstanceFilterResult(dict):
                Available values: "created_at".
         :param _builtins.str order_by_direction: Order direction.
                Available values: "asc", "desc".
+        :param _builtins.str hostname: Filter by exact Search for Agents hostname (case-insensitive).
         :param _builtins.str namespace: Filter by namespace.
         :param _builtins.str search: Filter instances whose id contains this string (case-insensitive).
         """
         pulumi.set(__self__, "order_by", order_by)
         pulumi.set(__self__, "order_by_direction", order_by_direction)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if search is not None:
@@ -84691,6 +88058,14 @@ class GetAiSearchInstanceFilterResult(dict):
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "order_by_direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        Filter by exact Search for Agents hostname (case-insensitive).
+        """
+        return pulumi.get(self, "hostname")
 
     @_builtins.property
     @pulumi.getter
@@ -84741,12 +88116,15 @@ class GetAiSearchInstanceIndexMethodResult(dict):
 @pulumi.output_type
 class GetAiSearchInstanceIndexingOptionsResult(dict):
     def __init__(__self__, *,
-                 keyword_tokenizer: _builtins.str):
+                 keyword_tokenizer: _builtins.str,
+                 use_ocr: _builtins.bool):
         """
         :param _builtins.str keyword_tokenizer: Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
                Available values: "porter", "trigram".
+        :param _builtins.bool use_ocr: Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
         """
         pulumi.set(__self__, "keyword_tokenizer", keyword_tokenizer)
+        pulumi.set(__self__, "use_ocr", use_ocr)
 
     @_builtins.property
     @pulumi.getter(name="keywordTokenizer")
@@ -84756,6 +88134,14 @@ class GetAiSearchInstanceIndexingOptionsResult(dict):
         Available values: "porter", "trigram".
         """
         return pulumi.get(self, "keyword_tokenizer")
+
+    @_builtins.property
+    @pulumi.getter(name="useOcr")
+    def use_ocr(self) -> _builtins.bool:
+        """
+        Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+        """
+        return pulumi.get(self, "use_ocr")
 
 
 @pulumi.output_type
@@ -85678,12 +89064,14 @@ class GetAiSearchInstancesResultIndexMethodResult(dict):
 @pulumi.output_type
 class GetAiSearchInstancesResultIndexingOptionsResult(dict):
     def __init__(__self__, *,
-                 keyword_tokenizer: _builtins.str):
+                 keyword_tokenizer: _builtins.str,
+                 use_ocr: _builtins.bool):
         """
         :param _builtins.str keyword_tokenizer: Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.
                Available values: "porter", "trigram".
         """
         pulumi.set(__self__, "keyword_tokenizer", keyword_tokenizer)
+        pulumi.set(__self__, "use_ocr", use_ocr)
 
     @_builtins.property
     @pulumi.getter(name="keywordTokenizer")
@@ -85693,6 +89081,11 @@ class GetAiSearchInstancesResultIndexingOptionsResult(dict):
         Available values: "porter", "trigram".
         """
         return pulumi.get(self, "keyword_tokenizer")
+
+    @_builtins.property
+    @pulumi.getter(name="useOcr")
+    def use_ocr(self) -> _builtins.bool:
+        return pulumi.get(self, "use_ocr")
 
 
 @pulumi.output_type
@@ -88191,17 +91584,33 @@ class GetApiTokenFilterResult(dict):
 @pulumi.output_type
 class GetApiTokenPermissionGroupsListResultResult(dict):
     def __init__(__self__, *,
+                 category: _builtins.str,
                  id: _builtins.str,
+                 is_selectable: _builtins.bool,
                  name: _builtins.str,
                  scopes: Sequence[_builtins.str]):
         """
+        :param _builtins.str category: Product category that this permission group belongs to.
+               Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
         :param _builtins.str id: Public ID.
+        :param _builtins.bool is_selectable: Whether the caller can select this permission group when creating a token.
         :param _builtins.str name: Permission Group Name
         :param Sequence[_builtins.str] scopes: Resources to which the Permission Group is scoped
         """
+        pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_selectable", is_selectable)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        Product category that this permission group belongs to.
+        Available values: "developer*platform", "ai*and*machine*learning", "dns*and*zones", "app*security", "rules*and*configuration", "cloudflare*one*and*zero*trust", "analytics*and*logs", "network*services", "media", "email*and*messaging", "cache*and*performance", "account*and*billing", "other".
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
@@ -88210,6 +91619,14 @@ class GetApiTokenPermissionGroupsListResultResult(dict):
         Public ID.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isSelectable")
+    def is_selectable(self) -> _builtins.bool:
+        """
+        Whether the caller can select this permission group when creating a token.
+        """
+        return pulumi.get(self, "is_selectable")
 
     @_builtins.property
     @pulumi.getter
@@ -88324,26 +91741,103 @@ class GetApiTokenPolicyPermissionGroupResult(dict):
 @pulumi.output_type
 class GetApiTokenPolicyPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
 class GetApiTokensResultResult(dict):
     def __init__(__self__, *,
                  condition: 'outputs.GetApiTokensResultConditionResult',
+                 creator_email_at_creation: _builtins.str,
                  expires_on: _builtins.str,
                  id: _builtins.str,
                  issued_on: _builtins.str,
@@ -88352,8 +91846,13 @@ class GetApiTokensResultResult(dict):
                  name: _builtins.str,
                  not_before: _builtins.str,
                  policies: Sequence['outputs.GetApiTokensResultPolicyResult'],
+                 provisioner_id: _builtins.str,
+                 provisioner_type: _builtins.str,
                  status: _builtins.str):
         """
+        :param _builtins.str creator_email_at_creation: The email address of the user who created the token at the time of
+               creation. Only present for Account Owned API Tokens when a creator email
+               was available.
         :param _builtins.str expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param _builtins.str id: Token identifier tag.
         :param _builtins.str issued_on: The time on which the token was created.
@@ -88362,10 +91861,17 @@ class GetApiTokensResultResult(dict):
         :param _builtins.str name: Token name.
         :param _builtins.str not_before: The time before which the token MUST NOT be accepted for processing.
         :param Sequence['GetApiTokensResultPolicyArgs'] policies: List of access policies assigned to the token.
+        :param _builtins.str provisioner_id: The identifier of the service that provisioned the token. For an
+               OAuth-provisioned token, this is the OAuth client identifier. Present
+               when `provisioner_type` is present and null when the identifier is
+               unavailable.
+        :param _builtins.str provisioner_type: The type of service that provisioned the token. Only present for
+               provisioned Account Owned API Tokens.
         :param _builtins.str status: Status of the token.
                Available values: "active", "disabled", "expired".
         """
         pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "creator_email_at_creation", creator_email_at_creation)
         pulumi.set(__self__, "expires_on", expires_on)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "issued_on", issued_on)
@@ -88374,12 +91880,24 @@ class GetApiTokensResultResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "not_before", not_before)
         pulumi.set(__self__, "policies", policies)
+        pulumi.set(__self__, "provisioner_id", provisioner_id)
+        pulumi.set(__self__, "provisioner_type", provisioner_type)
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter
     def condition(self) -> 'outputs.GetApiTokensResultConditionResult':
         return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter(name="creatorEmailAtCreation")
+    def creator_email_at_creation(self) -> _builtins.str:
+        """
+        The email address of the user who created the token at the time of
+        creation. Only present for Account Owned API Tokens when a creator email
+        was available.
+        """
+        return pulumi.get(self, "creator_email_at_creation")
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -88444,6 +91962,26 @@ class GetApiTokensResultResult(dict):
         List of access policies assigned to the token.
         """
         return pulumi.get(self, "policies")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerId")
+    def provisioner_id(self) -> _builtins.str:
+        """
+        The identifier of the service that provisioned the token. For an
+        OAuth-provisioned token, this is the OAuth client identifier. Present
+        when `provisioner_type` is present and null when the identifier is
+        unavailable.
+        """
+        return pulumi.get(self, "provisioner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerType")
+    def provisioner_type(self) -> _builtins.str:
+        """
+        The type of service that provisioned the token. Only present for
+        provisioned Account Owned API Tokens.
+        """
+        return pulumi.get(self, "provisioner_type")
 
     @_builtins.property
     @pulumi.getter
@@ -88598,20 +92136,96 @@ class GetApiTokensResultPolicyPermissionGroupResult(dict):
 @pulumi.output_type
 class GetApiTokensResultPolicyPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -89103,7 +92717,7 @@ class GetCallsSfuAppsResultResult(dict):
         """
         :param _builtins.str created: The date and time the item was created.
         :param _builtins.str modified: The date and time the item was last modified.
-        :param _builtins.str name: A short description of Calls app, not shown to end users.
+        :param _builtins.str name: A short description of a Realtime SFU app, not shown to end users.
         :param _builtins.str uid: A Cloudflare-generated unique identifier for a item.
         """
         pulumi.set(__self__, "created", created)
@@ -89131,7 +92745,7 @@ class GetCallsSfuAppsResultResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        A short description of Calls app, not shown to end users.
+        A short description of a Realtime SFU app, not shown to end users.
         """
         return pulumi.get(self, "name")
 
@@ -89154,7 +92768,7 @@ class GetCallsTurnAppsResultResult(dict):
         """
         :param _builtins.str created: The date and time the item was created.
         :param _builtins.str modified: The date and time the item was last modified.
-        :param _builtins.str name: A short description of Calls app, not shown to end users.
+        :param _builtins.str name: A short description of a Realtime SFU app, not shown to end users.
         :param _builtins.str uid: A Cloudflare-generated unique identifier for a item.
         """
         pulumi.set(__self__, "created", created)
@@ -89182,7 +92796,7 @@ class GetCallsTurnAppsResultResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        A short description of Calls app, not shown to end users.
+        A short description of a Realtime SFU app, not shown to end users.
         """
         return pulumi.get(self, "name")
 
@@ -89618,7 +93232,7 @@ class GetCertificatePacksResultResult(dict):
         :param _builtins.bool cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         :param Sequence['GetCertificatePacksResultDcvDelegationRecordArgs'] dcv_delegation_records: DCV Delegation records for domain validation.
         :param Sequence[_builtins.str] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
-        :param _builtins.str id: Identifier.
+        :param _builtins.str id: The unique identifier for a certificate_pack.
         :param _builtins.str primary_certificate: Identifier of the primary certificate in a pack.
         :param _builtins.str status: Status of certificate pack.
                Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
@@ -89690,7 +93304,7 @@ class GetCertificatePacksResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        The unique identifier for a certificate_pack.
         """
         return pulumi.get(self, "id")
 
@@ -90213,7 +93827,7 @@ class GetClientCertificatesResultResult(dict):
         :param _builtins.str csr: The Certificate Signing Request (CSR). Must be newline-encoded.
         :param _builtins.str expires_on: Date that the Client Certificate expires.
         :param _builtins.str fingerprint_sha256: Unique identifier of the Client Certificate.
-        :param _builtins.str id: Identifier.
+        :param _builtins.str id: Client Certificate Tag
         :param _builtins.str issued_on: Date that the Client Certificate was issued by the Certificate Authority.
         :param _builtins.str location: Location, provided by the CSR.
         :param _builtins.str organization: Organization, provided by the CSR.
@@ -90305,7 +93919,7 @@ class GetClientCertificatesResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        Client Certificate Tag
         """
         return pulumi.get(self, "id")
 
@@ -92008,7 +95622,7 @@ class GetCustomHostnamesResultResult(dict):
         :param _builtins.str custom_origin_server: a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         :param _builtins.str custom_origin_sni: A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         :param _builtins.str hostname: The custom hostname that will point to your hostname via CNAME.
-        :param _builtins.str id: Identifier.
+        :param _builtins.str id: Custom hostname identifier tag.
         :param 'GetCustomHostnamesResultOwnershipVerificationArgs' ownership_verification: This is a record which can be placed to activate a hostname.
         :param 'GetCustomHostnamesResultOwnershipVerificationHttpArgs' ownership_verification_http: This presents the token to be served by the given http url to activate a hostname.
         :param _builtins.str status: Status of the hostname's activation.
@@ -92071,7 +95685,7 @@ class GetCustomHostnamesResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        Custom hostname identifier tag.
         """
         return pulumi.get(self, "id")
 
@@ -92737,7 +96351,7 @@ class GetCustomOriginTrustStoresResultResult(dict):
         """
         :param _builtins.str certificate: The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         :param _builtins.str expires_on: When the certificate expires.
-        :param _builtins.str id: Identifier.
+        :param _builtins.str id: Certificate identifier tag.
         :param _builtins.str issuer: The certificate authority that issued the certificate.
         :param _builtins.str signature: The type of hash used for the certificate.
         :param _builtins.str status: Status of the zone's custom SSL.
@@ -92774,7 +96388,7 @@ class GetCustomOriginTrustStoresResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        Certificate identifier tag.
         """
         return pulumi.get(self, "id")
 
@@ -93186,7 +96800,7 @@ class GetCustomSslsResultResult(dict):
         :param _builtins.str custom_csr_id: The identifier for the Custom CSR that was used.
         :param _builtins.str expires_on: When the certificate from the authority expires.
         :param 'GetCustomSslsResultGeoRestrictionsArgs' geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
-        :param _builtins.str id: Identifier.
+        :param _builtins.str id: Custom certificate identifier tag.
         :param _builtins.str issuer: The certificate authority that issued the certificate.
         :param _builtins.str modified_on: When the certificate was last modified.
         :param _builtins.str policy_restrictions: The policy restrictions returned by the API. This field is returned in responses
@@ -93257,7 +96871,7 @@ class GetCustomSslsResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        Custom certificate identifier tag.
         """
         return pulumi.get(self, "id")
 
@@ -94335,7 +97949,7 @@ class GetDnsRecordFilterResult(dict):
         :param _builtins.str tag_match: Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
                Available values: "any", "all".
         :param _builtins.str search: Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
-        :param _builtins.str shadowed_by_name: Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        :param _builtins.str shadowed_by_name: Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         :param _builtins.str shadowing_name: Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         :param _builtins.str type: Record type.
                Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
@@ -94433,7 +98047,7 @@ class GetDnsRecordFilterResult(dict):
     @pulumi.getter(name="shadowedByName")
     def shadowed_by_name(self) -> Optional[_builtins.str]:
         """
-        Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+        Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
         """
         return pulumi.get(self, "shadowed_by_name")
 
@@ -96006,6 +99620,7 @@ class GetEmailRoutingCatchAllActionResult(dict):
         """
         :param _builtins.str type: Type of action for catch-all rule.
                Available values: "drop", "forward", "worker".
+        :param Sequence[_builtins.str] values: List of values for the action. Currently limited to a single value.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "values", values)
@@ -96022,6 +99637,9 @@ class GetEmailRoutingCatchAllActionResult(dict):
     @_builtins.property
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
+        """
+        List of values for the action. Currently limited to a single value.
+        """
         return pulumi.get(self, "values")
 
 
@@ -96117,6 +99735,7 @@ class GetEmailRoutingRuleActionResult(dict):
         """
         :param _builtins.str type: Type of supported action.
                Available values: "drop", "forward", "worker".
+        :param Sequence[_builtins.str] values: List of values for the action. Currently limited to a single value.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "values", values)
@@ -96133,6 +99752,9 @@ class GetEmailRoutingRuleActionResult(dict):
     @_builtins.property
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
+        """
+        List of values for the action. Currently limited to a single value.
+        """
         return pulumi.get(self, "values")
 
 
@@ -96292,6 +99914,7 @@ class GetEmailRoutingRulesResultActionResult(dict):
         """
         :param _builtins.str type: Type of supported action.
                Available values: "drop", "forward", "worker".
+        :param Sequence[_builtins.str] values: List of values for the action. Currently limited to a single value.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "values", values)
@@ -96308,6 +99931,9 @@ class GetEmailRoutingRulesResultActionResult(dict):
     @_builtins.property
     @pulumi.getter
     def values(self) -> Sequence[_builtins.str]:
+        """
+        List of values for the action. Currently limited to a single value.
+        """
         return pulumi.get(self, "values")
 
 
@@ -96545,12 +100171,9 @@ class GetEmailSecurityAllowPolicyFilterResult(dict):
         :param _builtins.bool is_trusted_sender: Filter to show only policies where messages from the sender bypass all detections and link following.
         :param _builtins.str order: Field to sort by.
                Available values: "pattern", "created_at".
-        :param _builtins.str pattern_type: Type of pattern matching.
-               - EMAIL: matches a full email address (e.g. `user@example.com`)
-               - DOMAIN: matches a domain name (e.g. `example.com`)
-               - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-               - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
-                 Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        :param _builtins.str pattern: Filter by exact pattern value.
+        :param _builtins.str pattern_type: Filter by pattern type.
+               Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         :param _builtins.str search: Search term for filtering records. Behavior may change.
         :param _builtins.bool verify_sender: Filter to show only policies that enforce DMARC, SPF, or DKIM authentication.
         """
@@ -96618,18 +100241,17 @@ class GetEmailSecurityAllowPolicyFilterResult(dict):
     @_builtins.property
     @pulumi.getter
     def pattern(self) -> Optional[_builtins.str]:
+        """
+        Filter by exact pattern value.
+        """
         return pulumi.get(self, "pattern")
 
     @_builtins.property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> Optional[_builtins.str]:
         """
-        Type of pattern matching.
-        - EMAIL: matches a full email address (e.g. `user@example.com`)
-        - DOMAIN: matches a domain name (e.g. `example.com`)
-        - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
-        - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
-          Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        Filter by pattern type.
+        Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         return pulumi.get(self, "pattern_type")
 
@@ -96736,6 +100358,7 @@ class GetEmailSecurityBlockSendersResultResult(dict):
                  pattern_type: _builtins.str):
         """
         :param _builtins.str id: Blocked sender pattern identifier.
+        :param _builtins.bool is_regex: Whether `pattern` is a regular expression instead of a literal value.
         :param _builtins.str last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
         :param _builtins.str pattern: The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
         :param _builtins.str pattern_type: Type of pattern matching.
@@ -96775,6 +100398,9 @@ class GetEmailSecurityBlockSendersResultResult(dict):
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> _builtins.bool:
+        """
+        Whether `pattern` is a regular expression instead of a literal value.
+        """
         return pulumi.get(self, "is_regex")
 
     @_builtins.property
@@ -97005,7 +100631,8 @@ class GetEmailSecurityDomainsResultResult(dict):
                  transport: _builtins.str):
         """
         :param _builtins.str dmarc_status: Available values: "none", "good", "invalid".
-        :param _builtins.str folder: Available values: "AllItems", "Inbox".
+        :param _builtins.str folder: The mailbox folder to scan, for API-scanning domains.
+               Available values: "AllItems", "Inbox".
         :param _builtins.str id: Domain identifier.
         :param _builtins.str inbox_provider: Available values: "Microsoft", "Google".
         :param _builtins.str last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
@@ -97077,6 +100704,7 @@ class GetEmailSecurityDomainsResultResult(dict):
     @pulumi.getter
     def folder(self) -> _builtins.str:
         """
+        The mailbox folder to scan, for API-scanning domains.
         Available values: "AllItems", "Inbox".
         """
         return pulumi.get(self, "folder")
@@ -97236,9 +100864,17 @@ class GetEmailSecurityImpersonationRegistriesResultResult(dict):
                  name: _builtins.str,
                  provenance: _builtins.str):
         """
+        :param _builtins.str comments: Optional note describing the entry.
+        :param _builtins.int directory_id: Identifier of the directory the entry was synced from, when directory-synced.
+        :param _builtins.int directory_node_id: Identifier of the directory node the entry was synced from, when directory-synced.
+        :param _builtins.str email: Email address (or pattern) of the protected identity.
+        :param _builtins.str external_directory_node_id: Deprecated. External identifier of the directory node.
         :param _builtins.str id: Impersonation registry entry identifier
+        :param _builtins.bool is_email_regex: Whether `email` is a regular expression instead of a literal address.
         :param _builtins.str last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
-        :param _builtins.str provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        :param _builtins.str name: Display name of the protected identity.
+        :param _builtins.str provenance: Source the entry was created from.
+               Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         pulumi.set(__self__, "comments", comments)
         pulumi.set(__self__, "created_at", created_at)
@@ -97256,6 +100892,9 @@ class GetEmailSecurityImpersonationRegistriesResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def comments(self) -> _builtins.str:
+        """
+        Optional note describing the entry.
+        """
         return pulumi.get(self, "comments")
 
     @_builtins.property
@@ -97266,22 +100905,34 @@ class GetEmailSecurityImpersonationRegistriesResultResult(dict):
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> _builtins.int:
+        """
+        Identifier of the directory the entry was synced from, when directory-synced.
+        """
         return pulumi.get(self, "directory_id")
 
     @_builtins.property
     @pulumi.getter(name="directoryNodeId")
     def directory_node_id(self) -> _builtins.int:
+        """
+        Identifier of the directory node the entry was synced from, when directory-synced.
+        """
         return pulumi.get(self, "directory_node_id")
 
     @_builtins.property
     @pulumi.getter
     def email(self) -> _builtins.str:
+        """
+        Email address (or pattern) of the protected identity.
+        """
         return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter(name="externalDirectoryNodeId")
     @_utilities.deprecated("""This field is deprecated.""")
     def external_directory_node_id(self) -> _builtins.str:
+        """
+        Deprecated. External identifier of the directory node.
+        """
         return pulumi.get(self, "external_directory_node_id")
 
     @_builtins.property
@@ -97295,6 +100946,9 @@ class GetEmailSecurityImpersonationRegistriesResultResult(dict):
     @_builtins.property
     @pulumi.getter(name="isEmailRegex")
     def is_email_regex(self) -> _builtins.bool:
+        """
+        Whether `email` is a regular expression instead of a literal address.
+        """
         return pulumi.get(self, "is_email_regex")
 
     @_builtins.property
@@ -97314,12 +100968,16 @@ class GetEmailSecurityImpersonationRegistriesResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Display name of the protected identity.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def provenance(self) -> _builtins.str:
         """
+        Source the entry was created from.
         Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         return pulumi.get(self, "provenance")
@@ -97478,8 +101136,10 @@ class GetEmailSecurityTrustedDomainsListResultResult(dict):
         """
         :param _builtins.str id: Trusted domain identifier
         :param _builtins.bool is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param _builtins.bool is_regex: Whether `pattern` is a regular expression instead of a literal domain.
         :param _builtins.bool is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         :param _builtins.str last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param _builtins.str pattern: The domain pattern to trust, e.g. `example.com`.
         """
         pulumi.set(__self__, "comments", comments)
         pulumi.set(__self__, "created_at", created_at)
@@ -97520,6 +101180,9 @@ class GetEmailSecurityTrustedDomainsListResultResult(dict):
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> _builtins.bool:
+        """
+        Whether `pattern` is a regular expression instead of a literal domain.
+        """
         return pulumi.get(self, "is_regex")
 
     @_builtins.property
@@ -97547,6 +101210,9 @@ class GetEmailSecurityTrustedDomainsListResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def pattern(self) -> _builtins.str:
+        """
+        The domain pattern to trust, e.g. `example.com`.
+        """
         return pulumi.get(self, "pattern")
 
 
@@ -97669,6 +101335,71 @@ class GetEmailSendingSubdomainsResultResult(dict):
         Sending subdomain identifier.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetFieldExtractorRuleResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 fields: Sequence['outputs.GetFieldExtractorRuleFieldResult'],
+                 ref: _builtins.str):
+        """
+        :param _builtins.str description: Human-readable rule description.
+        :param _builtins.str ref: Stable rule identifier.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "fields", fields)
+        pulumi.set(__self__, "ref", ref)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Human-readable rule description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Sequence['outputs.GetFieldExtractorRuleFieldResult']:
+        return pulumi.get(self, "fields")
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> _builtins.str:
+        """
+        Stable rule identifier.
+        """
+        return pulumi.get(self, "ref")
+
+
+@pulumi.output_type
+class GetFieldExtractorRuleFieldResult(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str expression: Wirefilter value expression.
+        :param _builtins.str name: Field name.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        Wirefilter value expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -98009,6 +101740,25 @@ class GetFlagshipAppsResultResult(dict):
 
 
 @pulumi.output_type
+class GetFlagshipFlagFilterResult(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int limit: Max items to return (1–200).
+        """
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        """
+        Max items to return (1–200).
+        """
+        return pulumi.get(self, "limit")
+
+
+@pulumi.output_type
 class GetFlagshipFlagRuleResult(dict):
     def __init__(__self__, *,
                  conditions: Sequence['outputs.GetFlagshipFlagRuleConditionResult'],
@@ -98065,7 +101815,7 @@ class GetFlagshipFlagRuleConditionResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98096,7 +101846,7 @@ class GetFlagshipFlagRuleConditionResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98119,7 +101869,7 @@ class GetFlagshipFlagRuleConditionClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98150,7 +101900,7 @@ class GetFlagshipFlagRuleConditionClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98173,7 +101923,7 @@ class GetFlagshipFlagRuleConditionClauseClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98204,7 +101954,7 @@ class GetFlagshipFlagRuleConditionClauseClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98227,7 +101977,7 @@ class GetFlagshipFlagRuleConditionClauseClauseClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98258,7 +102008,7 @@ class GetFlagshipFlagRuleConditionClauseClauseClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98281,7 +102031,7 @@ class GetFlagshipFlagRuleConditionClauseClauseClauseClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98312,7 +102062,7 @@ class GetFlagshipFlagRuleConditionClauseClauseClauseClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98335,7 +102085,7 @@ class GetFlagshipFlagRuleConditionClauseClauseClauseClauseClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98366,7 +102116,7 @@ class GetFlagshipFlagRuleConditionClauseClauseClauseClauseClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98386,7 +102136,7 @@ class GetFlagshipFlagRuleRolloutResult(dict):
                  percentage: _builtins.float):
         """
         :param _builtins.str attribute: Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
-        :param _builtins.float percentage: Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+        :param _builtins.float percentage: Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
         """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "percentage", percentage)
@@ -98403,7 +102153,7 @@ class GetFlagshipFlagRuleRolloutResult(dict):
     @pulumi.getter
     def percentage(self) -> _builtins.float:
         """
-        Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+        Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
         """
         return pulumi.get(self, "percentage")
 
@@ -98414,6 +102164,7 @@ class GetFlagshipFlagsResultResult(dict):
                  default_variation: _builtins.str,
                  description: _builtins.str,
                  enabled: _builtins.bool,
+                 id: _builtins.str,
                  key: _builtins.str,
                  rules: Sequence['outputs.GetFlagshipFlagsResultRuleResult'],
                  type: _builtins.str,
@@ -98422,16 +102173,19 @@ class GetFlagshipFlagsResultResult(dict):
                  variations: Mapping[str, _builtins.str]):
         """
         :param _builtins.str default_variation: Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
+        :param _builtins.str description: Optional operator-facing description. It does not affect flag evaluation.
         :param _builtins.bool enabled: When false, the flag bypasses all rules and always serves `default_variation`.
+        :param _builtins.str id: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         :param _builtins.str key: Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
         :param Sequence['GetFlagshipFlagsResultRuleArgs'] rules: Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.
-        :param _builtins.str type: Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        :param _builtins.str type: Server-inferred value type shared by all of the flag's variations.
                Available values: "boolean", "string", "number", "json".
-        :param Mapping[str, _builtins.str] variations: Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
+        :param Mapping[str, _builtins.str] variations: Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.
         """
         pulumi.set(__self__, "default_variation", default_variation)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "type", type)
@@ -98450,6 +102204,9 @@ class GetFlagshipFlagsResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Optional operator-facing description. It does not affect flag evaluation.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -98459,6 +102216,14 @@ class GetFlagshipFlagsResultResult(dict):
         When false, the flag bypasses all rules and always serves `default_variation`.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -98480,7 +102245,7 @@ class GetFlagshipFlagsResultResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+        Server-inferred value type shared by all of the flag's variations.
         Available values: "boolean", "string", "number", "json".
         """
         return pulumi.get(self, "type")
@@ -98499,7 +102264,7 @@ class GetFlagshipFlagsResultResult(dict):
     @pulumi.getter
     def variations(self) -> Mapping[str, _builtins.str]:
         """
-        Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
+        Map of variation name to value. All values share the same type (boolean, string, number, or JSON object/array), and each serialized value stays within 10KB.
         """
         return pulumi.get(self, "variations")
 
@@ -98561,7 +102326,7 @@ class GetFlagshipFlagsResultRuleConditionResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98592,7 +102357,7 @@ class GetFlagshipFlagsResultRuleConditionResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98615,7 +102380,7 @@ class GetFlagshipFlagsResultRuleConditionClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98646,7 +102411,7 @@ class GetFlagshipFlagsResultRuleConditionClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98669,7 +102434,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98700,7 +102465,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98723,7 +102488,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98754,7 +102519,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98777,7 +102542,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98808,7 +102573,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseResult(dict):
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98831,7 +102596,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClauseResult(di
                  value: _builtins.str):
         """
         :param _builtins.str logical_operator: Available values: "AND", "OR".
-        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        :param _builtins.str operator: Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         :param _builtins.str value: Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -98862,7 +102627,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClauseResult(di
     @pulumi.getter
     def operator(self) -> _builtins.str:
         """
-        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "not_has".
         """
         return pulumi.get(self, "operator")
 
@@ -98882,7 +102647,7 @@ class GetFlagshipFlagsResultRuleRolloutResult(dict):
                  percentage: _builtins.float):
         """
         :param _builtins.str attribute: Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
-        :param _builtins.float percentage: Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+        :param _builtins.float percentage: Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
         """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "percentage", percentage)
@@ -98899,7 +102664,7 @@ class GetFlagshipFlagsResultRuleRolloutResult(dict):
     @pulumi.getter
     def percentage(self) -> _builtins.float:
         """
-        Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+        Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
         """
         return pulumi.get(self, "percentage")
 
@@ -99430,9 +103195,9 @@ class GetHyperdriveConfigCachingResult(dict):
                  max_age: _builtins.int,
                  stale_while_revalidate: _builtins.int):
         """
-        :param _builtins.bool disabled: Set to true to disable caching of SQL responses. Default is false.
-        :param _builtins.int max_age: Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-        :param _builtins.int stale_while_revalidate: Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+        :param _builtins.bool disabled: Defines whether caching is disabled.
+        :param _builtins.int max_age: Defines the maximum duration (in seconds) items persist in the cache.
+        :param _builtins.int stale_while_revalidate: Defines the number of seconds the cache may serve a stale response.
         """
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "max_age", max_age)
@@ -99442,7 +103207,7 @@ class GetHyperdriveConfigCachingResult(dict):
     @pulumi.getter
     def disabled(self) -> _builtins.bool:
         """
-        Set to true to disable caching of SQL responses. Default is false.
+        Defines whether caching is disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -99450,7 +103215,7 @@ class GetHyperdriveConfigCachingResult(dict):
     @pulumi.getter(name="maxAge")
     def max_age(self) -> _builtins.int:
         """
-        Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+        Defines the maximum duration (in seconds) items persist in the cache.
         """
         return pulumi.get(self, "max_age")
 
@@ -99458,9 +103223,86 @@ class GetHyperdriveConfigCachingResult(dict):
     @pulumi.getter(name="staleWhileRevalidate")
     def stale_while_revalidate(self) -> _builtins.int:
         """
-        Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+        Defines the number of seconds the cache may serve a stale response.
         """
         return pulumi.get(self, "stale_while_revalidate")
+
+
+@pulumi.output_type
+class GetHyperdriveConfigIntegrationResult(dict):
+    def __init__(__self__, *,
+                 custom_database_name: _builtins.str,
+                 database_branch_name: _builtins.str,
+                 database_name: _builtins.str,
+                 hyperdrive_config_provider: _builtins.str,
+                 organization_name: _builtins.str,
+                 scheme: _builtins.str):
+        """
+        :param _builtins.str custom_database_name: The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL.
+        :param _builtins.str database_branch_name: The name of the PlanetScale database branch.
+        :param _builtins.str database_name: The name of the PlanetScale database.
+        :param _builtins.str hyperdrive_config_provider: The database integration provider used by this operation.
+               Available values: "planetscale".
+        :param _builtins.str organization_name: The name of the PlanetScale organization.
+        :param _builtins.str scheme: Specifies the URL scheme used to connect to your origin database.
+               Available values: "postgres", "postgresql", "mysql".
+        """
+        pulumi.set(__self__, "custom_database_name", custom_database_name)
+        pulumi.set(__self__, "database_branch_name", database_branch_name)
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "hyperdrive_config_provider", hyperdrive_config_provider)
+        pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "scheme", scheme)
+
+    @_builtins.property
+    @pulumi.getter(name="customDatabaseName")
+    def custom_database_name(self) -> _builtins.str:
+        """
+        The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL.
+        """
+        return pulumi.get(self, "custom_database_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseBranchName")
+    def database_branch_name(self) -> _builtins.str:
+        """
+        The name of the PlanetScale database branch.
+        """
+        return pulumi.get(self, "database_branch_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> _builtins.str:
+        """
+        The name of the PlanetScale database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @_builtins.property
+    @pulumi.getter(name="hyperdriveConfigProvider")
+    def hyperdrive_config_provider(self) -> _builtins.str:
+        """
+        The database integration provider used by this operation.
+        Available values: "planetscale".
+        """
+        return pulumi.get(self, "hyperdrive_config_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> _builtins.str:
+        """
+        The name of the PlanetScale organization.
+        """
+        return pulumi.get(self, "organization_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def scheme(self) -> _builtins.str:
+        """
+        Specifies the URL scheme used to connect to your origin database.
+        Available values: "postgres", "postgresql", "mysql".
+        """
+        return pulumi.get(self, "scheme")
 
 
 @pulumi.output_type
@@ -99472,7 +103314,7 @@ class GetHyperdriveConfigMtlsResult(dict):
         """
         :param _builtins.str ca_certificate_id: Define CA certificate ID obtained after uploading CA cert.
         :param _builtins.str mtls_certificate_id: Define mTLS certificate ID obtained after uploading client cert.
-        :param _builtins.str sslmode: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+        :param _builtins.str sslmode: PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
         """
         pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
         pulumi.set(__self__, "mtls_certificate_id", mtls_certificate_id)
@@ -99498,7 +103340,7 @@ class GetHyperdriveConfigMtlsResult(dict):
     @pulumi.getter
     def sslmode(self) -> _builtins.str:
         """
-        Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+        PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
         """
         return pulumi.get(self, "sslmode")
 
@@ -99519,7 +103361,7 @@ class GetHyperdriveConfigOriginResult(dict):
         :param _builtins.str access_client_id: Defines the Client ID of the Access token to use when connecting to the origin database.
         :param _builtins.str access_client_secret: Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
         :param _builtins.str database: Set the name of your origin database.
-        :param _builtins.str host: Defines the host (hostname or IP) of your origin database.
+        :param _builtins.str host: Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
         :param _builtins.str password: Set the password needed to access your origin database. The API never returns this write-only value.
         :param _builtins.int port: Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
         :param _builtins.str scheme: Specifies the URL scheme used to connect to your origin database.
@@ -99565,7 +103407,7 @@ class GetHyperdriveConfigOriginResult(dict):
     @pulumi.getter
     def host(self) -> _builtins.str:
         """
-        Defines the host (hostname or IP) of your origin database.
+        Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
         """
         return pulumi.get(self, "host")
 
@@ -99617,6 +103459,7 @@ class GetHyperdriveConfigsResultResult(dict):
                  caching: 'outputs.GetHyperdriveConfigsResultCachingResult',
                  created_on: _builtins.str,
                  id: _builtins.str,
+                 integration: 'outputs.GetHyperdriveConfigsResultIntegrationResult',
                  modified_on: _builtins.str,
                  mtls: 'outputs.GetHyperdriveConfigsResultMtlsResult',
                  name: _builtins.str,
@@ -99626,15 +103469,18 @@ class GetHyperdriveConfigsResultResult(dict):
         """
         :param _builtins.str created_on: Defines the creation time of the Hyperdrive configuration.
         :param _builtins.str id: Define configurations using a unique string identifier.
+        :param 'GetHyperdriveConfigsResultIntegrationArgs' integration: Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
         :param _builtins.str modified_on: Defines the last modified time of the Hyperdrive configuration.
         :param 'GetHyperdriveConfigsResultMtlsArgs' mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param _builtins.str name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        :param 'GetHyperdriveConfigsResultOriginArgs' origin: Combines database connection fields with exactly one supported network location.
         :param _builtins.int origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         :param _builtins.str restarted_on: Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
         """
         pulumi.set(__self__, "caching", caching)
         pulumi.set(__self__, "created_on", created_on)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "integration", integration)
         pulumi.set(__self__, "modified_on", modified_on)
         pulumi.set(__self__, "mtls", mtls)
         pulumi.set(__self__, "name", name)
@@ -99664,6 +103510,14 @@ class GetHyperdriveConfigsResultResult(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def integration(self) -> 'outputs.GetHyperdriveConfigsResultIntegrationResult':
+        """
+        Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+        """
+        return pulumi.get(self, "integration")
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> _builtins.str:
         """
@@ -99690,6 +103544,9 @@ class GetHyperdriveConfigsResultResult(dict):
     @_builtins.property
     @pulumi.getter
     def origin(self) -> 'outputs.GetHyperdriveConfigsResultOriginResult':
+        """
+        Combines database connection fields with exactly one supported network location.
+        """
         return pulumi.get(self, "origin")
 
     @_builtins.property
@@ -99716,9 +103573,9 @@ class GetHyperdriveConfigsResultCachingResult(dict):
                  max_age: _builtins.int,
                  stale_while_revalidate: _builtins.int):
         """
-        :param _builtins.bool disabled: Set to true to disable caching of SQL responses. Default is false.
-        :param _builtins.int max_age: Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-        :param _builtins.int stale_while_revalidate: Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+        :param _builtins.bool disabled: Defines whether caching is disabled.
+        :param _builtins.int max_age: Defines the maximum duration (in seconds) items persist in the cache.
+        :param _builtins.int stale_while_revalidate: Defines the number of seconds the cache may serve a stale response.
         """
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "max_age", max_age)
@@ -99728,7 +103585,7 @@ class GetHyperdriveConfigsResultCachingResult(dict):
     @pulumi.getter
     def disabled(self) -> _builtins.bool:
         """
-        Set to true to disable caching of SQL responses. Default is false.
+        Defines whether caching is disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -99736,7 +103593,7 @@ class GetHyperdriveConfigsResultCachingResult(dict):
     @pulumi.getter(name="maxAge")
     def max_age(self) -> _builtins.int:
         """
-        Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
+        Defines the maximum duration (in seconds) items persist in the cache.
         """
         return pulumi.get(self, "max_age")
 
@@ -99744,9 +103601,86 @@ class GetHyperdriveConfigsResultCachingResult(dict):
     @pulumi.getter(name="staleWhileRevalidate")
     def stale_while_revalidate(self) -> _builtins.int:
         """
-        Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+        Defines the number of seconds the cache may serve a stale response.
         """
         return pulumi.get(self, "stale_while_revalidate")
+
+
+@pulumi.output_type
+class GetHyperdriveConfigsResultIntegrationResult(dict):
+    def __init__(__self__, *,
+                 custom_database_name: _builtins.str,
+                 database_branch_name: _builtins.str,
+                 database_name: _builtins.str,
+                 hyperdrive_config_provider: _builtins.str,
+                 organization_name: _builtins.str,
+                 scheme: _builtins.str):
+        """
+        :param _builtins.str custom_database_name: The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL.
+        :param _builtins.str database_branch_name: The name of the PlanetScale database branch.
+        :param _builtins.str database_name: The name of the PlanetScale database.
+        :param _builtins.str hyperdrive_config_provider: The database integration provider used by this operation.
+               Available values: "planetscale".
+        :param _builtins.str organization_name: The name of the PlanetScale organization.
+        :param _builtins.str scheme: Specifies the URL scheme used to connect to your origin database.
+               Available values: "postgres", "postgresql", "mysql".
+        """
+        pulumi.set(__self__, "custom_database_name", custom_database_name)
+        pulumi.set(__self__, "database_branch_name", database_branch_name)
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "hyperdrive_config_provider", hyperdrive_config_provider)
+        pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "scheme", scheme)
+
+    @_builtins.property
+    @pulumi.getter(name="customDatabaseName")
+    def custom_database_name(self) -> _builtins.str:
+        """
+        The database name to use when connecting. Defaults to `postgres` for PostgreSQL and `mysql` for MySQL.
+        """
+        return pulumi.get(self, "custom_database_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseBranchName")
+    def database_branch_name(self) -> _builtins.str:
+        """
+        The name of the PlanetScale database branch.
+        """
+        return pulumi.get(self, "database_branch_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> _builtins.str:
+        """
+        The name of the PlanetScale database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @_builtins.property
+    @pulumi.getter(name="hyperdriveConfigProvider")
+    def hyperdrive_config_provider(self) -> _builtins.str:
+        """
+        The database integration provider used by this operation.
+        Available values: "planetscale".
+        """
+        return pulumi.get(self, "hyperdrive_config_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> _builtins.str:
+        """
+        The name of the PlanetScale organization.
+        """
+        return pulumi.get(self, "organization_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def scheme(self) -> _builtins.str:
+        """
+        Specifies the URL scheme used to connect to your origin database.
+        Available values: "postgres", "postgresql", "mysql".
+        """
+        return pulumi.get(self, "scheme")
 
 
 @pulumi.output_type
@@ -99758,7 +103692,7 @@ class GetHyperdriveConfigsResultMtlsResult(dict):
         """
         :param _builtins.str ca_certificate_id: Define CA certificate ID obtained after uploading CA cert.
         :param _builtins.str mtls_certificate_id: Define mTLS certificate ID obtained after uploading client cert.
-        :param _builtins.str sslmode: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+        :param _builtins.str sslmode: PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
         """
         pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
         pulumi.set(__self__, "mtls_certificate_id", mtls_certificate_id)
@@ -99784,7 +103718,7 @@ class GetHyperdriveConfigsResultMtlsResult(dict):
     @pulumi.getter
     def sslmode(self) -> _builtins.str:
         """
-        Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
+        PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
         """
         return pulumi.get(self, "sslmode")
 
@@ -99805,7 +103739,7 @@ class GetHyperdriveConfigsResultOriginResult(dict):
         :param _builtins.str access_client_id: Defines the Client ID of the Access token to use when connecting to the origin database.
         :param _builtins.str access_client_secret: Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
         :param _builtins.str database: Set the name of your origin database.
-        :param _builtins.str host: Defines the host (hostname or IP) of your origin database.
+        :param _builtins.str host: Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
         :param _builtins.str password: Set the password needed to access your origin database. The API never returns this write-only value.
         :param _builtins.int port: Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.
         :param _builtins.str scheme: Specifies the URL scheme used to connect to your origin database.
@@ -99851,7 +103785,7 @@ class GetHyperdriveConfigsResultOriginResult(dict):
     @pulumi.getter
     def host(self) -> _builtins.str:
         """
-        Defines the host (hostname or IP) of your origin database.
+        Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
         """
         return pulumi.get(self, "host")
 
@@ -103403,14 +107337,14 @@ class GetLogpushDatasetJobOutputOptionsResult(dict):
         :param _builtins.bool cve202144228: If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
         :param _builtins.str field_delimiter: String to join fields. This field be ignored when `record_template` is set.
         :param Sequence[_builtins.str] field_names: List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
-        :param _builtins.bool merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
+        :param _builtins.bool merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
         :param _builtins.str output_type: Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
                Available values: "ndjson", "csv".
         :param _builtins.str record_delimiter: String to be inserted in-between the records as separator.
         :param _builtins.str record_prefix: String to be prepended before each record.
         :param _builtins.str record_suffix: String to be appended after each record.
         :param _builtins.str record_template: String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
-        :param _builtins.float sample_rate: Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        :param _builtins.float sample_rate: Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         :param _builtins.str timestamp_format: String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
         """
@@ -103472,7 +107406,7 @@ class GetLogpushDatasetJobOutputOptionsResult(dict):
     @pulumi.getter(name="mergeSubrequests")
     def merge_subrequests(self) -> _builtins.bool:
         """
-        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
+        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
         """
         return pulumi.get(self, "merge_subrequests")
 
@@ -103521,7 +107455,7 @@ class GetLogpushDatasetJobOutputOptionsResult(dict):
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> _builtins.float:
         """
-        Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         """
         return pulumi.get(self, "sample_rate")
 
@@ -103557,14 +107491,14 @@ class GetLogpushJobOutputOptionsResult(dict):
         :param _builtins.bool cve202144228: If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
         :param _builtins.str field_delimiter: String to join fields. This field be ignored when `record_template` is set.
         :param Sequence[_builtins.str] field_names: List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
-        :param _builtins.bool merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
+        :param _builtins.bool merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
         :param _builtins.str output_type: Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
                Available values: "ndjson", "csv".
         :param _builtins.str record_delimiter: String to be inserted in-between the records as separator.
         :param _builtins.str record_prefix: String to be prepended before each record.
         :param _builtins.str record_suffix: String to be appended after each record.
         :param _builtins.str record_template: String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
-        :param _builtins.float sample_rate: Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        :param _builtins.float sample_rate: Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         :param _builtins.str timestamp_format: String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
         """
@@ -103626,7 +107560,7 @@ class GetLogpushJobOutputOptionsResult(dict):
     @pulumi.getter(name="mergeSubrequests")
     def merge_subrequests(self) -> _builtins.bool:
         """
-        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
+        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
         """
         return pulumi.get(self, "merge_subrequests")
 
@@ -103675,7 +107609,7 @@ class GetLogpushJobOutputOptionsResult(dict):
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> _builtins.float:
         """
-        Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         """
         return pulumi.get(self, "sample_rate")
 
@@ -103696,6 +107630,7 @@ class GetLogpushJobsResultResult(dict):
                  destination_conf: _builtins.str,
                  enabled: _builtins.bool,
                  error_message: _builtins.str,
+                 filter_attack_traffic: _builtins.bool,
                  frequency: _builtins.str,
                  id: _builtins.int,
                  kind: _builtins.str,
@@ -103713,6 +107648,7 @@ class GetLogpushJobsResultResult(dict):
         :param _builtins.str destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         :param _builtins.bool enabled: Flag that indicates if the job is enabled.
         :param _builtins.str error_message: If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+        :param _builtins.bool filter_attack_traffic: When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
         :param _builtins.str frequency: This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param _builtins.int id: Unique id of the job.
@@ -103731,6 +107667,7 @@ class GetLogpushJobsResultResult(dict):
         pulumi.set(__self__, "destination_conf", destination_conf)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "filter_attack_traffic", filter_attack_traffic)
         pulumi.set(__self__, "frequency", frequency)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "kind", kind)
@@ -103775,6 +107712,14 @@ class GetLogpushJobsResultResult(dict):
         If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         """
         return pulumi.get(self, "error_message")
+
+    @_builtins.property
+    @pulumi.getter(name="filterAttackTraffic")
+    def filter_attack_traffic(self) -> _builtins.bool:
+        """
+        When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
+        """
+        return pulumi.get(self, "filter_attack_traffic")
 
     @_builtins.property
     @pulumi.getter
@@ -103891,14 +107836,14 @@ class GetLogpushJobsResultOutputOptionsResult(dict):
         :param _builtins.bool cve202144228: If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
         :param _builtins.str field_delimiter: String to join fields. This field be ignored when `record_template` is set.
         :param Sequence[_builtins.str] field_names: List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
-        :param _builtins.bool merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
+        :param _builtins.bool merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
         :param _builtins.str output_type: Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
                Available values: "ndjson", "csv".
         :param _builtins.str record_delimiter: String to be inserted in-between the records as separator.
         :param _builtins.str record_prefix: String to be prepended before each record.
         :param _builtins.str record_suffix: String to be appended after each record.
         :param _builtins.str record_template: String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
-        :param _builtins.float sample_rate: Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        :param _builtins.float sample_rate: Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         :param _builtins.str timestamp_format: String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
                Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
         """
@@ -103960,7 +107905,7 @@ class GetLogpushJobsResultOutputOptionsResult(dict):
     @pulumi.getter(name="mergeSubrequests")
     def merge_subrequests(self) -> _builtins.bool:
         """
-        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
+        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
         """
         return pulumi.get(self, "merge_subrequests")
 
@@ -104009,7 +107954,7 @@ class GetLogpushJobsResultOutputOptionsResult(dict):
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> _builtins.float:
         """
-        Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         """
         return pulumi.get(self, "sample_rate")
 
@@ -105598,6 +109543,7 @@ class GetMagicTransitSiteWansResultResult(dict):
     def __init__(__self__, *,
                  health_check_rate: _builtins.str,
                  id: _builtins.str,
+                 load_balance_inner_flows: _builtins.bool,
                  name: _builtins.str,
                  physport: _builtins.int,
                  priority: _builtins.int,
@@ -105615,6 +109561,7 @@ class GetMagicTransitSiteWansResultResult(dict):
         """
         pulumi.set(__self__, "health_check_rate", health_check_rate)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "load_balance_inner_flows", load_balance_inner_flows)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "physport", physport)
         pulumi.set(__self__, "priority", priority)
@@ -105638,6 +109585,11 @@ class GetMagicTransitSiteWansResultResult(dict):
         Identifier
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalanceInnerFlows")
+    def load_balance_inner_flows(self) -> _builtins.bool:
+        return pulumi.get(self, "load_balance_inner_flows")
 
     @_builtins.property
     @pulumi.getter
@@ -105832,6 +109784,84 @@ class GetMagicTransitSitesResultLocationResult(dict):
 
 
 @pulumi.output_type
+class GetMagicWanBgpFilterProfilesResultResult(dict):
+    def __init__(__self__, *,
+                 created_on: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 match_action: _builtins.str,
+                 modified_on: _builtins.str,
+                 name: _builtins.str,
+                 targets: Sequence[_builtins.str]):
+        """
+        :param _builtins.str description: Description of the filter profile
+        :param _builtins.str id: Identifier
+        :param _builtins.str match_action: Action to take when a route matches one of the targets in this profile
+               Available values: "allow", "deny".
+        :param _builtins.str name: Friendly name for the filter profile
+        :param Sequence[_builtins.str] targets: List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.
+        """
+        pulumi.set(__self__, "created_on", created_on)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "match_action", match_action)
+        pulumi.set(__self__, "modified_on", modified_on)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "targets", targets)
+
+    @_builtins.property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> _builtins.str:
+        return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the filter profile
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="matchAction")
+    def match_action(self) -> _builtins.str:
+        """
+        Action to take when a route matches one of the targets in this profile
+        Available values: "allow", "deny".
+        """
+        return pulumi.get(self, "match_action")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> _builtins.str:
+        return pulumi.get(self, "modified_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Friendly name for the filter profile
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Sequence[_builtins.str]:
+        """
+        List of CIDR prefixes. Each entry may carry an optional suffix that specifies which prefix lengths to match relative to the prefix length N: '{X,Y}' matches prefix lengths in the inclusive range [X, Y] where N <= X <= Y <= max (max is 32 for IPv4, 128 for IPv6), '{X}' matches exactly length X (equivalent to {X,X}), '+' is shorthand for {N, max} (the prefix and all more-specific subnets, including at length N itself; valid even when N is the maximum length). Omit the suffix to match the prefix exactly at length N.
+        """
+        return pulumi.get(self, "targets")
+
+
+@pulumi.output_type
 class GetMagicWanGreTunnelGreTunnelResult(dict):
     def __init__(__self__, *,
                  automatic_return_routing: _builtins.bool,
@@ -105995,15 +110025,21 @@ class GetMagicWanGreTunnelGreTunnelResult(dict):
 class GetMagicWanGreTunnelGreTunnelBgpResult(dict):
     def __init__(__self__, *,
                  customer_asn: _builtins.int,
+                 export_filter_id: _builtins.str,
                  extra_prefixes: Sequence[_builtins.str],
+                 import_filter_id: _builtins.str,
                  md5_key: _builtins.str):
         """
         :param _builtins.int customer_asn: ASN used on the customer end of the BGP session
+        :param _builtins.str export_filter_id: ID of the BGP filter profile applied to routes advertised to the customer.
         :param Sequence[_builtins.str] extra_prefixes: Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        :param _builtins.str import_filter_id: ID of the BGP filter profile applied to routes received from the customer.
         :param _builtins.str md5_key: MD5 key to use for session authentication.
         """
         pulumi.set(__self__, "customer_asn", customer_asn)
+        pulumi.set(__self__, "export_filter_id", export_filter_id)
         pulumi.set(__self__, "extra_prefixes", extra_prefixes)
+        pulumi.set(__self__, "import_filter_id", import_filter_id)
         pulumi.set(__self__, "md5_key", md5_key)
 
     @_builtins.property
@@ -106015,12 +110051,28 @@ class GetMagicWanGreTunnelGreTunnelBgpResult(dict):
         return pulumi.get(self, "customer_asn")
 
     @_builtins.property
+    @pulumi.getter(name="exportFilterId")
+    def export_filter_id(self) -> _builtins.str:
+        """
+        ID of the BGP filter profile applied to routes advertised to the customer.
+        """
+        return pulumi.get(self, "export_filter_id")
+
+    @_builtins.property
     @pulumi.getter(name="extraPrefixes")
     def extra_prefixes(self) -> Sequence[_builtins.str]:
         """
         Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
         """
         return pulumi.get(self, "extra_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="importFilterId")
+    def import_filter_id(self) -> _builtins.str:
+        """
+        ID of the BGP filter profile applied to routes received from the customer.
+        """
+        return pulumi.get(self, "import_filter_id")
 
     @_builtins.property
     @pulumi.getter(name="md5Key")
@@ -106377,15 +110429,21 @@ class GetMagicWanIpsecTunnelIpsecTunnelResult(dict):
 class GetMagicWanIpsecTunnelIpsecTunnelBgpResult(dict):
     def __init__(__self__, *,
                  customer_asn: _builtins.int,
+                 export_filter_id: _builtins.str,
                  extra_prefixes: Sequence[_builtins.str],
+                 import_filter_id: _builtins.str,
                  md5_key: _builtins.str):
         """
         :param _builtins.int customer_asn: ASN used on the customer end of the BGP session
+        :param _builtins.str export_filter_id: ID of the BGP filter profile applied to routes advertised to the customer.
         :param Sequence[_builtins.str] extra_prefixes: Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+        :param _builtins.str import_filter_id: ID of the BGP filter profile applied to routes received from the customer.
         :param _builtins.str md5_key: MD5 key to use for session authentication.
         """
         pulumi.set(__self__, "customer_asn", customer_asn)
+        pulumi.set(__self__, "export_filter_id", export_filter_id)
         pulumi.set(__self__, "extra_prefixes", extra_prefixes)
+        pulumi.set(__self__, "import_filter_id", import_filter_id)
         pulumi.set(__self__, "md5_key", md5_key)
 
     @_builtins.property
@@ -106397,12 +110455,28 @@ class GetMagicWanIpsecTunnelIpsecTunnelBgpResult(dict):
         return pulumi.get(self, "customer_asn")
 
     @_builtins.property
+    @pulumi.getter(name="exportFilterId")
+    def export_filter_id(self) -> _builtins.str:
+        """
+        ID of the BGP filter profile applied to routes advertised to the customer.
+        """
+        return pulumi.get(self, "export_filter_id")
+
+    @_builtins.property
     @pulumi.getter(name="extraPrefixes")
     def extra_prefixes(self) -> Sequence[_builtins.str]:
         """
         Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
         """
         return pulumi.get(self, "extra_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="importFilterId")
+    def import_filter_id(self) -> _builtins.str:
+        """
+        ID of the BGP filter profile applied to routes received from the customer.
+        """
+        return pulumi.get(self, "import_filter_id")
 
     @_builtins.property
     @pulumi.getter(name="md5Key")
@@ -107291,6 +111365,7 @@ class GetNotificationPoliciesResultFiltersResult(dict):
                  target_hostnames: Sequence[_builtins.str],
                  target_ips: Sequence[_builtins.str],
                  target_zone_names: Sequence[_builtins.str],
+                 token_ids: Sequence[_builtins.str],
                  traffic_exclusions: Sequence[_builtins.str],
                  tunnel_ids: Sequence[_builtins.str],
                  tunnel_names: Sequence[_builtins.str],
@@ -107335,6 +111410,7 @@ class GetNotificationPoliciesResultFiltersResult(dict):
         :param Sequence[_builtins.str] target_hostnames: Used for configuring advanced*ddos*attack*l7*alert
         :param Sequence[_builtins.str] target_ips: Used for configuring advanced*ddos*attack*l4*alert
         :param Sequence[_builtins.str] target_zone_names: Used for configuring advanced*ddos*attack*l7*alert
+        :param Sequence[_builtins.str] token_ids: Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
         :param Sequence[_builtins.str] traffic_exclusions: Used for configuring traffic*anomalies*alert
         :param Sequence[_builtins.str] tunnel_ids: Used for configuring tunnel*health*event
         :param Sequence[_builtins.str] tunnel_names: Usage depends on specific alert type
@@ -107379,6 +111455,7 @@ class GetNotificationPoliciesResultFiltersResult(dict):
         pulumi.set(__self__, "target_hostnames", target_hostnames)
         pulumi.set(__self__, "target_ips", target_ips)
         pulumi.set(__self__, "target_zone_names", target_zone_names)
+        pulumi.set(__self__, "token_ids", token_ids)
         pulumi.set(__self__, "traffic_exclusions", traffic_exclusions)
         pulumi.set(__self__, "tunnel_ids", tunnel_ids)
         pulumi.set(__self__, "tunnel_names", tunnel_names)
@@ -107681,6 +111758,14 @@ class GetNotificationPoliciesResultFiltersResult(dict):
         Used for configuring advanced*ddos*attack*l7*alert
         """
         return pulumi.get(self, "target_zone_names")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenIds")
+    def token_ids(self) -> Sequence[_builtins.str]:
+        """
+        Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+        """
+        return pulumi.get(self, "token_ids")
 
     @_builtins.property
     @pulumi.getter(name="trafficExclusions")
@@ -107851,6 +111936,7 @@ class GetNotificationPolicyFiltersResult(dict):
                  target_hostnames: Sequence[_builtins.str],
                  target_ips: Sequence[_builtins.str],
                  target_zone_names: Sequence[_builtins.str],
+                 token_ids: Sequence[_builtins.str],
                  traffic_exclusions: Sequence[_builtins.str],
                  tunnel_ids: Sequence[_builtins.str],
                  tunnel_names: Sequence[_builtins.str],
@@ -107895,6 +111981,7 @@ class GetNotificationPolicyFiltersResult(dict):
         :param Sequence[_builtins.str] target_hostnames: Used for configuring advanced*ddos*attack*l7*alert
         :param Sequence[_builtins.str] target_ips: Used for configuring advanced*ddos*attack*l4*alert
         :param Sequence[_builtins.str] target_zone_names: Used for configuring advanced*ddos*attack*l7*alert
+        :param Sequence[_builtins.str] token_ids: Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
         :param Sequence[_builtins.str] traffic_exclusions: Used for configuring traffic*anomalies*alert
         :param Sequence[_builtins.str] tunnel_ids: Used for configuring tunnel*health*event
         :param Sequence[_builtins.str] tunnel_names: Usage depends on specific alert type
@@ -107939,6 +112026,7 @@ class GetNotificationPolicyFiltersResult(dict):
         pulumi.set(__self__, "target_hostnames", target_hostnames)
         pulumi.set(__self__, "target_ips", target_ips)
         pulumi.set(__self__, "target_zone_names", target_zone_names)
+        pulumi.set(__self__, "token_ids", token_ids)
         pulumi.set(__self__, "traffic_exclusions", traffic_exclusions)
         pulumi.set(__self__, "tunnel_ids", tunnel_ids)
         pulumi.set(__self__, "tunnel_names", tunnel_names)
@@ -108241,6 +112329,14 @@ class GetNotificationPolicyFiltersResult(dict):
         Used for configuring advanced*ddos*attack*l7*alert
         """
         return pulumi.get(self, "target_zone_names")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenIds")
+    def token_ids(self) -> Sequence[_builtins.str]:
+        """
+        Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+        """
+        return pulumi.get(self, "token_ids")
 
     @_builtins.property
     @pulumi.getter(name="trafficExclusions")
@@ -109557,7 +113653,7 @@ class GetOriginCaCertificatesResultResult(dict):
         :param _builtins.str expires_on: When the certificate will expire.
         :param Sequence[_builtins.str] hostnames: Array of hostnames or wildcard names bound to the certificate.
                Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
-        :param _builtins.str id: Identifier.
+        :param _builtins.str id: The x509 serial number of the Origin CA certificate.
         :param _builtins.str request_type: Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
                Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         :param _builtins.float requested_validity: The number of days for which the certificate should be valid.
@@ -109608,7 +113704,7 @@ class GetOriginCaCertificatesResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        The x509 serial number of the Origin CA certificate.
         """
         return pulumi.get(self, "id")
 
@@ -110367,7 +114463,7 @@ class GetPagesDomainsResultResult(dict):
                  zone_tag: _builtins.str):
         """
         :param _builtins.str certificate_authority: Available values: "google", "lets_encrypt".
-        :param _builtins.str name: The domain name.
+        :param _builtins.str name: Fully qualified domain name for the Pages project, such as `example.com`.
         :param _builtins.str status: Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
@@ -110407,7 +114503,7 @@ class GetPagesDomainsResultResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The domain name.
+        Fully qualified domain name for the Pages project, such as `example.com`.
         """
         return pulumi.get(self, "name")
 
@@ -110613,14 +114709,14 @@ class GetPagesProjectCanonicalDeploymentResult(dict):
         :param _builtins.str environment: Type of deploy.
                Available values: "preview", "production".
         :param _builtins.str id: Id of the deployment.
-        :param _builtins.bool is_skipped: If the deployment has been skipped.
+        :param _builtins.bool is_skipped: Whether the deployment was skipped.
         :param 'GetPagesProjectCanonicalDeploymentLatestStageArgs' latest_stage: The status of the deployment.
         :param _builtins.str modified_on: When the deployment was last modified.
         :param _builtins.str project_id: Id of the project.
-        :param _builtins.str project_name: Name of the project.
+        :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param _builtins.str short_id: Short Id (8 character) of the deployment.
         :param _builtins.str skip_reason: Why the deployment was skipped.
-               Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+               Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         :param 'GetPagesProjectCanonicalDeploymentSourceArgs' source: Configs for the project source control.
         :param Sequence['GetPagesProjectCanonicalDeploymentStageArgs'] stages: List of past stages.
         :param _builtins.str url: The live URL to view this deployment.
@@ -110706,7 +114802,7 @@ class GetPagesProjectCanonicalDeploymentResult(dict):
     @pulumi.getter(name="isSkipped")
     def is_skipped(self) -> _builtins.bool:
         """
-        If the deployment has been skipped.
+        Whether the deployment was skipped.
         """
         return pulumi.get(self, "is_skipped")
 
@@ -110738,7 +114834,7 @@ class GetPagesProjectCanonicalDeploymentResult(dict):
     @pulumi.getter(name="projectName")
     def project_name(self) -> _builtins.str:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -110755,7 +114851,7 @@ class GetPagesProjectCanonicalDeploymentResult(dict):
     def skip_reason(self) -> _builtins.str:
         """
         Why the deployment was skipped.
-        Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+        Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         """
         return pulumi.get(self, "skip_reason")
 
@@ -110989,7 +115085,7 @@ class GetPagesProjectCanonicalDeploymentLatestStageResult(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         pulumi.set(__self__, "ended_on", ended_on)
         pulumi.set(__self__, "name", name)
@@ -111026,7 +115122,7 @@ class GetPagesProjectCanonicalDeploymentLatestStageResult(dict):
     def status(self) -> _builtins.str:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -111226,7 +115322,7 @@ class GetPagesProjectCanonicalDeploymentStageResult(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         pulumi.set(__self__, "ended_on", ended_on)
         pulumi.set(__self__, "name", name)
@@ -111263,7 +115359,7 @@ class GetPagesProjectCanonicalDeploymentStageResult(dict):
     def status(self) -> _builtins.str:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -112387,14 +116483,14 @@ class GetPagesProjectLatestDeploymentResult(dict):
         :param _builtins.str environment: Type of deploy.
                Available values: "preview", "production".
         :param _builtins.str id: Id of the deployment.
-        :param _builtins.bool is_skipped: If the deployment has been skipped.
+        :param _builtins.bool is_skipped: Whether the deployment was skipped.
         :param 'GetPagesProjectLatestDeploymentLatestStageArgs' latest_stage: The status of the deployment.
         :param _builtins.str modified_on: When the deployment was last modified.
         :param _builtins.str project_id: Id of the project.
-        :param _builtins.str project_name: Name of the project.
+        :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param _builtins.str short_id: Short Id (8 character) of the deployment.
         :param _builtins.str skip_reason: Why the deployment was skipped.
-               Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+               Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         :param 'GetPagesProjectLatestDeploymentSourceArgs' source: Configs for the project source control.
         :param Sequence['GetPagesProjectLatestDeploymentStageArgs'] stages: List of past stages.
         :param _builtins.str url: The live URL to view this deployment.
@@ -112480,7 +116576,7 @@ class GetPagesProjectLatestDeploymentResult(dict):
     @pulumi.getter(name="isSkipped")
     def is_skipped(self) -> _builtins.bool:
         """
-        If the deployment has been skipped.
+        Whether the deployment was skipped.
         """
         return pulumi.get(self, "is_skipped")
 
@@ -112512,7 +116608,7 @@ class GetPagesProjectLatestDeploymentResult(dict):
     @pulumi.getter(name="projectName")
     def project_name(self) -> _builtins.str:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -112529,7 +116625,7 @@ class GetPagesProjectLatestDeploymentResult(dict):
     def skip_reason(self) -> _builtins.str:
         """
         Why the deployment was skipped.
-        Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+        Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         """
         return pulumi.get(self, "skip_reason")
 
@@ -112763,7 +116859,7 @@ class GetPagesProjectLatestDeploymentLatestStageResult(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         pulumi.set(__self__, "ended_on", ended_on)
         pulumi.set(__self__, "name", name)
@@ -112800,7 +116896,7 @@ class GetPagesProjectLatestDeploymentLatestStageResult(dict):
     def status(self) -> _builtins.str:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -113000,7 +117096,7 @@ class GetPagesProjectLatestDeploymentStageResult(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         pulumi.set(__self__, "ended_on", ended_on)
         pulumi.set(__self__, "name", name)
@@ -113037,7 +117133,7 @@ class GetPagesProjectLatestDeploymentStageResult(dict):
     def status(self) -> _builtins.str:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -113253,7 +117349,7 @@ class GetPagesProjectsResultResult(dict):
         :param _builtins.str framework_version: Version of the framework the project is using.
         :param _builtins.str id: ID of the project.
         :param 'GetPagesProjectsResultLatestDeploymentArgs' latest_deployment: Most recent deployment of the project.
-        :param _builtins.str name: Name of the project.
+        :param _builtins.str name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param _builtins.str preview_script_name: Name of the preview script.
         :param _builtins.str production_branch: Production branch of the project. Used to identify production deployments.
         :param _builtins.str production_script_name: Name of the production script.
@@ -113354,7 +117450,7 @@ class GetPagesProjectsResultResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "name")
 
@@ -113510,14 +117606,14 @@ class GetPagesProjectsResultCanonicalDeploymentResult(dict):
         :param _builtins.str environment: Type of deploy.
                Available values: "preview", "production".
         :param _builtins.str id: Id of the deployment.
-        :param _builtins.bool is_skipped: If the deployment has been skipped.
+        :param _builtins.bool is_skipped: Whether the deployment was skipped.
         :param 'GetPagesProjectsResultCanonicalDeploymentLatestStageArgs' latest_stage: The status of the deployment.
         :param _builtins.str modified_on: When the deployment was last modified.
         :param _builtins.str project_id: Id of the project.
-        :param _builtins.str project_name: Name of the project.
+        :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param _builtins.str short_id: Short Id (8 character) of the deployment.
         :param _builtins.str skip_reason: Why the deployment was skipped.
-               Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+               Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         :param 'GetPagesProjectsResultCanonicalDeploymentSourceArgs' source: Configs for the project source control.
         :param Sequence['GetPagesProjectsResultCanonicalDeploymentStageArgs'] stages: List of past stages.
         :param _builtins.str url: The live URL to view this deployment.
@@ -113603,7 +117699,7 @@ class GetPagesProjectsResultCanonicalDeploymentResult(dict):
     @pulumi.getter(name="isSkipped")
     def is_skipped(self) -> _builtins.bool:
         """
-        If the deployment has been skipped.
+        Whether the deployment was skipped.
         """
         return pulumi.get(self, "is_skipped")
 
@@ -113635,7 +117731,7 @@ class GetPagesProjectsResultCanonicalDeploymentResult(dict):
     @pulumi.getter(name="projectName")
     def project_name(self) -> _builtins.str:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -113652,7 +117748,7 @@ class GetPagesProjectsResultCanonicalDeploymentResult(dict):
     def skip_reason(self) -> _builtins.str:
         """
         Why the deployment was skipped.
-        Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+        Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         """
         return pulumi.get(self, "skip_reason")
 
@@ -113886,7 +117982,7 @@ class GetPagesProjectsResultCanonicalDeploymentLatestStageResult(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         pulumi.set(__self__, "ended_on", ended_on)
         pulumi.set(__self__, "name", name)
@@ -113923,7 +118019,7 @@ class GetPagesProjectsResultCanonicalDeploymentLatestStageResult(dict):
     def status(self) -> _builtins.str:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -114123,7 +118219,7 @@ class GetPagesProjectsResultCanonicalDeploymentStageResult(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         pulumi.set(__self__, "ended_on", ended_on)
         pulumi.set(__self__, "name", name)
@@ -114160,7 +118256,7 @@ class GetPagesProjectsResultCanonicalDeploymentStageResult(dict):
     def status(self) -> _builtins.str:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -115284,14 +119380,14 @@ class GetPagesProjectsResultLatestDeploymentResult(dict):
         :param _builtins.str environment: Type of deploy.
                Available values: "preview", "production".
         :param _builtins.str id: Id of the deployment.
-        :param _builtins.bool is_skipped: If the deployment has been skipped.
+        :param _builtins.bool is_skipped: Whether the deployment was skipped.
         :param 'GetPagesProjectsResultLatestDeploymentLatestStageArgs' latest_stage: The status of the deployment.
         :param _builtins.str modified_on: When the deployment was last modified.
         :param _builtins.str project_id: Id of the project.
-        :param _builtins.str project_name: Name of the project.
+        :param _builtins.str project_name: Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         :param _builtins.str short_id: Short Id (8 character) of the deployment.
         :param _builtins.str skip_reason: Why the deployment was skipped.
-               Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+               Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         :param 'GetPagesProjectsResultLatestDeploymentSourceArgs' source: Configs for the project source control.
         :param Sequence['GetPagesProjectsResultLatestDeploymentStageArgs'] stages: List of past stages.
         :param _builtins.str url: The live URL to view this deployment.
@@ -115377,7 +119473,7 @@ class GetPagesProjectsResultLatestDeploymentResult(dict):
     @pulumi.getter(name="isSkipped")
     def is_skipped(self) -> _builtins.bool:
         """
-        If the deployment has been skipped.
+        Whether the deployment was skipped.
         """
         return pulumi.get(self, "is_skipped")
 
@@ -115409,7 +119505,7 @@ class GetPagesProjectsResultLatestDeploymentResult(dict):
     @pulumi.getter(name="projectName")
     def project_name(self) -> _builtins.str:
         """
-        Name of the project.
+        Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
         """
         return pulumi.get(self, "project_name")
 
@@ -115426,7 +119522,7 @@ class GetPagesProjectsResultLatestDeploymentResult(dict):
     def skip_reason(self) -> _builtins.str:
         """
         Why the deployment was skipped.
-        Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion".
+        Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
         """
         return pulumi.get(self, "skip_reason")
 
@@ -115660,7 +119756,7 @@ class GetPagesProjectsResultLatestDeploymentLatestStageResult(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         pulumi.set(__self__, "ended_on", ended_on)
         pulumi.set(__self__, "name", name)
@@ -115697,7 +119793,7 @@ class GetPagesProjectsResultLatestDeploymentLatestStageResult(dict):
     def status(self) -> _builtins.str:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -115897,7 +119993,7 @@ class GetPagesProjectsResultLatestDeploymentStageResult(dict):
                Available values: "queued", "initialize", "clone_repo", "build", "deploy".
         :param _builtins.str started_on: When the stage started.
         :param _builtins.str status: State of the current stage.
-               Available values: "success", "idle", "active", "failure", "canceled".
+               Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         pulumi.set(__self__, "ended_on", ended_on)
         pulumi.set(__self__, "name", name)
@@ -115934,7 +120030,7 @@ class GetPagesProjectsResultLatestDeploymentStageResult(dict):
     def status(self) -> _builtins.str:
         """
         State of the current stage.
-        Available values: "success", "idle", "active", "failure", "canceled".
+        Available values: "success", "idle", "active", "failure", "canceled", "skipped".
         """
         return pulumi.get(self, "status")
 
@@ -116515,7 +120611,7 @@ class GetPipelineSinksResultResult(dict):
         :param _builtins.str name: Defines the name of the Sink.
         :param 'GetPipelineSinksResultSchemaArgs' schema: Defines the schema of the events in the data stream.
         :param _builtins.str type: Specifies the type of sink.
-               Available values: "r2", "r2*data*catalog".
+               Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "created_at", created_at)
@@ -116581,7 +120677,7 @@ class GetPipelineSinksResultResult(dict):
     def type(self) -> _builtins.str:
         """
         Specifies the type of sink.
-        Available values: "r2", "r2*data*catalog".
+        Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         return pulumi.get(self, "type")
 
@@ -117988,16 +122084,21 @@ class GetQueuesResultResult(dict):
                  consumers_total_count: _builtins.float,
                  created_on: _builtins.str,
                  id: _builtins.str,
+                 jurisdiction: _builtins.str,
                  modified_on: _builtins.str,
                  producers: Sequence['outputs.GetQueuesResultProducerResult'],
                  producers_total_count: _builtins.float,
                  queue_id: _builtins.str,
                  queue_name: _builtins.str,
                  settings: 'outputs.GetQueuesResultSettingsResult'):
+        """
+        :param _builtins.str jurisdiction: Available values: "eu", "us", "fedramp".
+        """
         pulumi.set(__self__, "consumers", consumers)
         pulumi.set(__self__, "consumers_total_count", consumers_total_count)
         pulumi.set(__self__, "created_on", created_on)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "jurisdiction", jurisdiction)
         pulumi.set(__self__, "modified_on", modified_on)
         pulumi.set(__self__, "producers", producers)
         pulumi.set(__self__, "producers_total_count", producers_total_count)
@@ -118024,6 +122125,14 @@ class GetQueuesResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> _builtins.str:
+        """
+        Available values: "eu", "us", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
@@ -118913,12 +123022,15 @@ class GetR2CustomDomainStatusResult(dict):
 class GetR2DataCatalogMaintenanceConfigResult(dict):
     def __init__(__self__, *,
                  compaction: 'outputs.GetR2DataCatalogMaintenanceConfigCompactionResult',
+                 interval: _builtins.str,
                  snapshot_expiration: 'outputs.GetR2DataCatalogMaintenanceConfigSnapshotExpirationResult'):
         """
         :param 'GetR2DataCatalogMaintenanceConfigCompactionArgs' compaction: Configures compaction for catalog maintenance.
+        :param _builtins.str interval: Scheduling interval between normal table maintenance runs.
         :param 'GetR2DataCatalogMaintenanceConfigSnapshotExpirationArgs' snapshot_expiration: Configures snapshot expiration settings.
         """
         pulumi.set(__self__, "compaction", compaction)
+        pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "snapshot_expiration", snapshot_expiration)
 
     @_builtins.property
@@ -118928,6 +123040,14 @@ class GetR2DataCatalogMaintenanceConfigResult(dict):
         Configures compaction for catalog maintenance.
         """
         return pulumi.get(self, "compaction")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.str:
+        """
+        Scheduling interval between normal table maintenance runs.
+        """
+        return pulumi.get(self, "interval")
 
     @_builtins.property
     @pulumi.getter(name="snapshotExpiration")
@@ -119233,333 +123353,6 @@ class GetRateLimitMatchRequestResult(dict):
 
 @pulumi.output_type
 class GetRateLimitMatchResponseResult(dict):
-    def __init__(__self__, *,
-                 origin_traffic: _builtins.bool):
-        """
-        :param _builtins.bool origin_traffic: When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
-               Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
-        """
-        pulumi.set(__self__, "origin_traffic", origin_traffic)
-
-    @_builtins.property
-    @pulumi.getter(name="originTraffic")
-    def origin_traffic(self) -> _builtins.bool:
-        """
-        When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
-        Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
-        """
-        return pulumi.get(self, "origin_traffic")
-
-
-@pulumi.output_type
-class GetRateLimitsResultResult(dict):
-    def __init__(__self__, *,
-                 action: 'outputs.GetRateLimitsResultActionResult',
-                 bypasses: Sequence['outputs.GetRateLimitsResultBypassResult'],
-                 description: _builtins.str,
-                 disabled: _builtins.bool,
-                 id: _builtins.str,
-                 match: 'outputs.GetRateLimitsResultMatchResult',
-                 period: _builtins.float,
-                 threshold: _builtins.float):
-        """
-        :param 'GetRateLimitsResultActionArgs' action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
-        :param Sequence['GetRateLimitsResultBypassArgs'] bypasses: Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-        :param _builtins.str description: An informative summary of the rule. This value is sanitized and any tags will be removed.
-        :param _builtins.bool disabled: When true, indicates that the rate limit is currently disabled.
-        :param _builtins.str id: The unique identifier of the rate limit.
-        :param 'GetRateLimitsResultMatchArgs' match: Determines which traffic the rate limit counts towards the threshold.
-        :param _builtins.float period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
-        :param _builtins.float threshold: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
-        """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "bypasses", bypasses)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disabled", disabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "match", match)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "threshold", threshold)
-
-    @_builtins.property
-    @pulumi.getter
-    def action(self) -> 'outputs.GetRateLimitsResultActionResult':
-        """
-        The action to perform when the threshold of matched traffic within the configured period is exceeded.
-        """
-        return pulumi.get(self, "action")
-
-    @_builtins.property
-    @pulumi.getter
-    def bypasses(self) -> Sequence['outputs.GetRateLimitsResultBypassResult']:
-        """
-        Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-        """
-        return pulumi.get(self, "bypasses")
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> _builtins.str:
-        """
-        An informative summary of the rule. This value is sanitized and any tags will be removed.
-        """
-        return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter
-    def disabled(self) -> _builtins.bool:
-        """
-        When true, indicates that the rate limit is currently disabled.
-        """
-        return pulumi.get(self, "disabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The unique identifier of the rate limit.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def match(self) -> 'outputs.GetRateLimitsResultMatchResult':
-        """
-        Determines which traffic the rate limit counts towards the threshold.
-        """
-        return pulumi.get(self, "match")
-
-    @_builtins.property
-    @pulumi.getter
-    def period(self) -> _builtins.float:
-        """
-        The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
-        """
-        return pulumi.get(self, "period")
-
-    @_builtins.property
-    @pulumi.getter
-    def threshold(self) -> _builtins.float:
-        """
-        The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
-        """
-        return pulumi.get(self, "threshold")
-
-
-@pulumi.output_type
-class GetRateLimitsResultActionResult(dict):
-    def __init__(__self__, *,
-                 mode: _builtins.str,
-                 response: 'outputs.GetRateLimitsResultActionResponseResult',
-                 timeout: _builtins.float):
-        """
-        :param _builtins.str mode: The action to perform.
-               Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
-        :param 'GetRateLimitsResultActionResponseArgs' response: A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
-               Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
-        :param _builtins.float timeout: The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
-               Notes: If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.
-        """
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "response", response)
-        pulumi.set(__self__, "timeout", timeout)
-
-    @_builtins.property
-    @pulumi.getter
-    def mode(self) -> _builtins.str:
-        """
-        The action to perform.
-        Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
-        """
-        return pulumi.get(self, "mode")
-
-    @_builtins.property
-    @pulumi.getter
-    def response(self) -> 'outputs.GetRateLimitsResultActionResponseResult':
-        """
-        A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
-        Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
-        """
-        return pulumi.get(self, "response")
-
-    @_builtins.property
-    @pulumi.getter
-    def timeout(self) -> _builtins.float:
-        """
-        The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.
-        Notes: If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.
-        """
-        return pulumi.get(self, "timeout")
-
-
-@pulumi.output_type
-class GetRateLimitsResultActionResponseResult(dict):
-    def __init__(__self__, *,
-                 body: _builtins.str,
-                 content_type: _builtins.str):
-        """
-        :param _builtins.str body: The response body to return. The value must conform to the configured content type.
-        :param _builtins.str content_type: The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
-        """
-        pulumi.set(__self__, "body", body)
-        pulumi.set(__self__, "content_type", content_type)
-
-    @_builtins.property
-    @pulumi.getter
-    def body(self) -> _builtins.str:
-        """
-        The response body to return. The value must conform to the configured content type.
-        """
-        return pulumi.get(self, "body")
-
-    @_builtins.property
-    @pulumi.getter(name="contentType")
-    def content_type(self) -> _builtins.str:
-        """
-        The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
-        """
-        return pulumi.get(self, "content_type")
-
-
-@pulumi.output_type
-class GetRateLimitsResultBypassResult(dict):
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 value: _builtins.str):
-        """
-        :param _builtins.str name: Available values: "url".
-        :param _builtins.str value: The URL to bypass.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        Available values: "url".
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        """
-        The URL to bypass.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class GetRateLimitsResultMatchResult(dict):
-    def __init__(__self__, *,
-                 headers: Sequence['outputs.GetRateLimitsResultMatchHeaderResult'],
-                 request: 'outputs.GetRateLimitsResultMatchRequestResult',
-                 response: 'outputs.GetRateLimitsResultMatchResponseResult'):
-        pulumi.set(__self__, "headers", headers)
-        pulumi.set(__self__, "request", request)
-        pulumi.set(__self__, "response", response)
-
-    @_builtins.property
-    @pulumi.getter
-    def headers(self) -> Sequence['outputs.GetRateLimitsResultMatchHeaderResult']:
-        return pulumi.get(self, "headers")
-
-    @_builtins.property
-    @pulumi.getter
-    def request(self) -> 'outputs.GetRateLimitsResultMatchRequestResult':
-        return pulumi.get(self, "request")
-
-    @_builtins.property
-    @pulumi.getter
-    def response(self) -> 'outputs.GetRateLimitsResultMatchResponseResult':
-        return pulumi.get(self, "response")
-
-
-@pulumi.output_type
-class GetRateLimitsResultMatchHeaderResult(dict):
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 op: _builtins.str,
-                 value: _builtins.str):
-        """
-        :param _builtins.str name: The name of the response header to match.
-        :param _builtins.str op: The operator used when matching: `eq` means "equal" and `ne` means "not equal".
-               Available values: "eq", "ne".
-        :param _builtins.str value: The value of the response header, which must match exactly.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "op", op)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        The name of the response header to match.
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def op(self) -> _builtins.str:
-        """
-        The operator used when matching: `eq` means "equal" and `ne` means "not equal".
-        Available values: "eq", "ne".
-        """
-        return pulumi.get(self, "op")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        """
-        The value of the response header, which must match exactly.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class GetRateLimitsResultMatchRequestResult(dict):
-    def __init__(__self__, *,
-                 methods: Sequence[_builtins.str],
-                 schemes: Sequence[_builtins.str],
-                 url: _builtins.str):
-        """
-        :param Sequence[_builtins.str] methods: The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
-        :param Sequence[_builtins.str] schemes: The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
-        :param _builtins.str url: The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
-        """
-        pulumi.set(__self__, "methods", methods)
-        pulumi.set(__self__, "schemes", schemes)
-        pulumi.set(__self__, "url", url)
-
-    @_builtins.property
-    @pulumi.getter
-    def methods(self) -> Sequence[_builtins.str]:
-        """
-        The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
-        """
-        return pulumi.get(self, "methods")
-
-    @_builtins.property
-    @pulumi.getter
-    def schemes(self) -> Sequence[_builtins.str]:
-        """
-        The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
-        """
-        return pulumi.get(self, "schemes")
-
-    @_builtins.property
-    @pulumi.getter
-    def url(self) -> _builtins.str:
-        """
-        The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
-        """
-        return pulumi.get(self, "url")
-
-
-@pulumi.output_type
-class GetRateLimitsResultMatchResponseResult(dict):
     def __init__(__self__, *,
                  origin_traffic: _builtins.bool):
         """
@@ -124619,12 +128412,12 @@ class GetSnippetRulesListResultResult(dict):
                  last_updated: _builtins.str,
                  snippet_name: _builtins.str):
         """
-        :param _builtins.str description: An informative description of the rule.
-        :param _builtins.bool enabled: Whether the rule should be executed.
-        :param _builtins.str expression: The expression defining which traffic will match the rule.
-        :param _builtins.str id: The unique ID of the rule.
-        :param _builtins.str last_updated: The timestamp of when the rule was last modified.
-        :param _builtins.str snippet_name: The identifying name of the snippet.
+        :param _builtins.str description: Provide an informative description of the rule.
+        :param _builtins.bool enabled: Indicate whether to execute the rule.
+        :param _builtins.str expression: Define the expression that determines which traffic matches the rule.
+        :param _builtins.str id: Specify the unique ID of the rule.
+        :param _builtins.str last_updated: Specify the timestamp of when the rule was last modified.
+        :param _builtins.str snippet_name: Identify the snippet.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
@@ -124637,7 +128430,7 @@ class GetSnippetRulesListResultResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        An informative description of the rule.
+        Provide an informative description of the rule.
         """
         return pulumi.get(self, "description")
 
@@ -124645,7 +128438,7 @@ class GetSnippetRulesListResultResult(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Whether the rule should be executed.
+        Indicate whether to execute the rule.
         """
         return pulumi.get(self, "enabled")
 
@@ -124653,7 +128446,7 @@ class GetSnippetRulesListResultResult(dict):
     @pulumi.getter
     def expression(self) -> _builtins.str:
         """
-        The expression defining which traffic will match the rule.
+        Define the expression that determines which traffic matches the rule.
         """
         return pulumi.get(self, "expression")
 
@@ -124661,7 +128454,7 @@ class GetSnippetRulesListResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The unique ID of the rule.
+        Specify the unique ID of the rule.
         """
         return pulumi.get(self, "id")
 
@@ -124669,7 +128462,7 @@ class GetSnippetRulesListResultResult(dict):
     @pulumi.getter(name="lastUpdated")
     def last_updated(self) -> _builtins.str:
         """
-        The timestamp of when the rule was last modified.
+        Specify the timestamp of when the rule was last modified.
         """
         return pulumi.get(self, "last_updated")
 
@@ -124677,7 +128470,7 @@ class GetSnippetRulesListResultResult(dict):
     @pulumi.getter(name="snippetName")
     def snippet_name(self) -> _builtins.str:
         """
-        The identifying name of the snippet.
+        Identify the snippet.
         """
         return pulumi.get(self, "snippet_name")
 
@@ -127255,7 +131048,8 @@ class GetTurnstileWidgetFilterResult(dict):
         """
         :param _builtins.str direction: Direction to order widgets.
                Available values: "asc", "desc".
-        :param _builtins.str filter: Filter widgets by field using case-insensitive substring matching.
+        :param _builtins.str filter: Filter widgets by field. The `name` field uses case-insensitive
+               substring matching; `sitekey` uses exact matching.
                Format: `field:value`
         :param _builtins.str order: Field to order widgets by.
                Available values: "id", "sitekey", "name", "created_on", "modified_on".
@@ -127280,7 +131074,8 @@ class GetTurnstileWidgetFilterResult(dict):
     @pulumi.getter
     def filter(self) -> Optional[_builtins.str]:
         """
-        Filter widgets by field using case-insensitive substring matching.
+        Filter widgets by field. The `name` field uses case-insensitive
+        substring matching; `sitekey` uses exact matching.
         Format: `field:value`
         """
         return pulumi.get(self, "filter")
@@ -127301,9 +131096,11 @@ class GetTurnstileWidgetsResultResult(dict):
                  bot_fight_mode: _builtins.bool,
                  clearance_level: _builtins.str,
                  created_on: _builtins.str,
+                 deployed_via: _builtins.str,
                  domains: Sequence[_builtins.str],
                  ephemeral_id: _builtins.bool,
                  id: _builtins.str,
+                 last_modified_via: _builtins.str,
                  mode: _builtins.str,
                  modified_on: _builtins.str,
                  name: _builtins.str,
@@ -127317,8 +131114,17 @@ class GetTurnstileWidgetsResultResult(dict):
                this setting can determine the clearance level to be set
                Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param _builtins.str created_on: When the widget was created.
+        :param _builtins.str deployed_via: Origin that created this widget, recorded at creation time and
+               immutable afterward. Server-derived from the create request; not
+               client-settable. Omitted from the response for widgets created
+               before this field existed.
+               Available values: "wrangler", "dashboard", "spin", "api", "unknown".
         :param _builtins.bool ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
-        :param _builtins.str id: Widget item identifier tag.
+        :param _builtins.str id: Unique identifier for a Turnstile widget.
+        :param _builtins.str last_modified_via: Origin of the most recent mutation (create, update, delete, or
+               secret rotation). Server-derived; not client-settable. Omitted for
+               widgets last mutated before this field existed.
+               Available values: "wrangler", "dashboard", "spin", "api", "unknown".
         :param _builtins.str mode: Widget Mode
                Available values: "non-interactive", "invisible", "managed".
         :param _builtins.str modified_on: When the widget was modified.
@@ -127328,14 +131134,16 @@ class GetTurnstileWidgetsResultResult(dict):
         :param _builtins.bool offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param _builtins.str region: Region where this widget can be used. This cannot be changed after creation.
                Available values: "world", "china".
-        :param _builtins.str sitekey: Widget item identifier tag.
+        :param _builtins.str sitekey: Unique identifier for a Turnstile widget.
         """
         pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
         pulumi.set(__self__, "clearance_level", clearance_level)
         pulumi.set(__self__, "created_on", created_on)
+        pulumi.set(__self__, "deployed_via", deployed_via)
         pulumi.set(__self__, "domains", domains)
         pulumi.set(__self__, "ephemeral_id", ephemeral_id)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_modified_via", last_modified_via)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "modified_on", modified_on)
         pulumi.set(__self__, "name", name)
@@ -127371,6 +131179,18 @@ class GetTurnstileWidgetsResultResult(dict):
         return pulumi.get(self, "created_on")
 
     @_builtins.property
+    @pulumi.getter(name="deployedVia")
+    def deployed_via(self) -> _builtins.str:
+        """
+        Origin that created this widget, recorded at creation time and
+        immutable afterward. Server-derived from the create request; not
+        client-settable. Omitted from the response for widgets created
+        before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
+        return pulumi.get(self, "deployed_via")
+
+    @_builtins.property
     @pulumi.getter
     def domains(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "domains")
@@ -127387,9 +131207,20 @@ class GetTurnstileWidgetsResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Widget item identifier tag.
+        Unique identifier for a Turnstile widget.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedVia")
+    def last_modified_via(self) -> _builtins.str:
+        """
+        Origin of the most recent mutation (create, update, delete, or
+        secret rotation). Server-derived; not client-settable. Omitted for
+        widgets last mutated before this field existed.
+        Available values: "wrangler", "dashboard", "spin", "api", "unknown".
+        """
+        return pulumi.get(self, "last_modified_via")
 
     @_builtins.property
     @pulumi.getter
@@ -127439,7 +131270,7 @@ class GetTurnstileWidgetsResultResult(dict):
     @pulumi.getter
     def sitekey(self) -> _builtins.str:
         """
-        Widget item identifier tag.
+        Unique identifier for a Turnstile widget.
         """
         return pulumi.get(self, "sitekey")
 
@@ -127803,20 +131634,96 @@ class GetUserGroupPolicyPermissionGroupResult(dict):
 @pulumi.output_type
 class GetUserGroupPolicyPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -128094,20 +132001,96 @@ class GetUserGroupsResultPolicyPermissionGroupResult(dict):
 @pulumi.output_type
 class GetUserGroupsResultPolicyPermissionGroupMetaResult(dict):
     def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 category: _builtins.str,
+                 deprecated: _builtins.str,
+                 description: _builtins.str,
+                 editable: _builtins.str,
+                 eol_at: _builtins.str,
+                 label: _builtins.str,
+                 scopes: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str category: A category used to group permission groups.
+        :param _builtins.str deprecated: Indicates whether the permission group is deprecated.
+        :param _builtins.str description: Additional information about the permission group.
+        :param _builtins.str editable: Indicates whether the permission group can be edited.
+        :param _builtins.str eol_at: The planned end-of-life date and time, when provided.
+        :param _builtins.str label: A label identifying the permission group.
+        :param _builtins.str scopes: The scope associated with the permission group.
+        :param _builtins.str visibility: Indicates the permission group's availability or visibility.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "editable", editable)
+        pulumi.set(__self__, "eol_at", eol_at)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "visibility", visibility)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
+    def category(self) -> _builtins.str:
+        """
+        A category used to group permission groups.
+        """
+        return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
+    def deprecated(self) -> _builtins.str:
+        """
+        Indicates whether the permission group is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Additional information about the permission group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def editable(self) -> _builtins.str:
+        """
+        Indicates whether the permission group can be edited.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="eolAt")
+    def eol_at(self) -> _builtins.str:
+        """
+        The planned end-of-life date and time, when provided.
+        """
+        return pulumi.get(self, "eol_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label identifying the permission group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> _builtins.str:
+        """
+        The scope associated with the permission group.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Indicates the permission group's availability or visibility.
+        """
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -128789,7 +132772,7 @@ class GetWaitingRoomsResultResult(dict):
         :param _builtins.str cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
         :param _builtins.str custom_page_html: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
         :param _builtins.str default_template_language: The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.
-               Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+               Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
         :param _builtins.str description: A note that you can use to add more details about the waiting room.
         :param _builtins.bool disable_session_renewal: Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.
         :param Sequence[_builtins.str] enabled_origin_commands: A list of enabled origin commands.
@@ -128984,7 +132967,7 @@ class GetWaitingRoomsResultResult(dict):
     def default_template_language(self) -> _builtins.str:
         """
         The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.
-        Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+        Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
         """
         return pulumi.get(self, "default_template_language")
 
@@ -129794,17 +133777,23 @@ class GetWorkerObservabilityResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool,
                  head_sampling_rate: _builtins.float,
+                 issues: 'outputs.GetWorkerObservabilityIssuesResult',
                  logs: 'outputs.GetWorkerObservabilityLogsResult',
+                 redact_query_string: _builtins.bool,
                  traces: 'outputs.GetWorkerObservabilityTracesResult'):
         """
         :param _builtins.bool enabled: Whether observability is enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param 'GetWorkerObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
         :param 'GetWorkerObservabilityLogsArgs' logs: Log settings for the Worker.
+        :param _builtins.bool redact_query_string: Whether query strings are removed from request URLs in logs and traces.
         :param 'GetWorkerObservabilityTracesArgs' traces: Trace settings for the Worker.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "issues", issues)
         pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "redact_query_string", redact_query_string)
         pulumi.set(__self__, "traces", traces)
 
     @_builtins.property
@@ -129825,11 +133814,27 @@ class GetWorkerObservabilityResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def issues(self) -> 'outputs.GetWorkerObservabilityIssuesResult':
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
+
+    @_builtins.property
+    @pulumi.getter
     def logs(self) -> 'outputs.GetWorkerObservabilityLogsResult':
         """
         Log settings for the Worker.
         """
         return pulumi.get(self, "logs")
+
+    @_builtins.property
+    @pulumi.getter(name="redactQueryString")
+    def redact_query_string(self) -> _builtins.bool:
+        """
+        Whether query strings are removed from request URLs in logs and traces.
+        """
+        return pulumi.get(self, "redact_query_string")
 
     @_builtins.property
     @pulumi.getter
@@ -129838,6 +133843,24 @@ class GetWorkerObservabilityResult(dict):
         Trace settings for the Worker.
         """
         return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class GetWorkerObservabilityIssuesResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -129964,6 +133987,511 @@ class GetWorkerObservabilityTracesResult(dict):
         Available values: "authenticated", "accept".
         """
         return pulumi.get(self, "propagation_policy")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigResult(dict):
+    def __init__(__self__, *,
+                 cache_options: 'outputs.GetWorkerPreviewsBaseConfigCacheOptionsResult',
+                 env: Mapping[str, 'outputs.GetWorkerPreviewsBaseConfigEnvResult'],
+                 limits: 'outputs.GetWorkerPreviewsBaseConfigLimitsResult',
+                 logpush: _builtins.bool,
+                 observability: 'outputs.GetWorkerPreviewsBaseConfigObservabilityResult',
+                 placement: 'outputs.GetWorkerPreviewsBaseConfigPlacementResult',
+                 tail_consumers: Sequence['outputs.GetWorkerPreviewsBaseConfigTailConsumerResult']):
+        """
+        :param 'GetWorkerPreviewsBaseConfigCacheOptionsArgs' cache_options: Cache options used when creating new Previews.
+        :param Mapping[str, 'GetWorkerPreviewsBaseConfigEnvArgs'] env: Bindings used when creating new Previews, keyed by binding name.
+        :param 'GetWorkerPreviewsBaseConfigLimitsArgs' limits: Resource limits enforced at runtime for newly created Previews.
+        :param _builtins.bool logpush: Whether logpush is enabled when creating new Previews.
+        :param 'GetWorkerPreviewsBaseConfigObservabilityArgs' observability: Observability settings used when creating new Previews.
+        :param 'GetWorkerPreviewsBaseConfigPlacementArgs' placement: Placement configuration used when creating new Previews.
+        :param Sequence['GetWorkerPreviewsBaseConfigTailConsumerArgs'] tail_consumers: Other Workers that should consume logs from newly created Previews.
+        """
+        pulumi.set(__self__, "cache_options", cache_options)
+        pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "limits", limits)
+        pulumi.set(__self__, "logpush", logpush)
+        pulumi.set(__self__, "observability", observability)
+        pulumi.set(__self__, "placement", placement)
+        pulumi.set(__self__, "tail_consumers", tail_consumers)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> 'outputs.GetWorkerPreviewsBaseConfigCacheOptionsResult':
+        """
+        Cache options used when creating new Previews.
+        """
+        return pulumi.get(self, "cache_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Mapping[str, 'outputs.GetWorkerPreviewsBaseConfigEnvResult']:
+        """
+        Bindings used when creating new Previews, keyed by binding name.
+        """
+        return pulumi.get(self, "env")
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> 'outputs.GetWorkerPreviewsBaseConfigLimitsResult':
+        """
+        Resource limits enforced at runtime for newly created Previews.
+        """
+        return pulumi.get(self, "limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def logpush(self) -> _builtins.bool:
+        """
+        Whether logpush is enabled when creating new Previews.
+        """
+        return pulumi.get(self, "logpush")
+
+    @_builtins.property
+    @pulumi.getter
+    def observability(self) -> 'outputs.GetWorkerPreviewsBaseConfigObservabilityResult':
+        """
+        Observability settings used when creating new Previews.
+        """
+        return pulumi.get(self, "observability")
+
+    @_builtins.property
+    @pulumi.getter
+    def placement(self) -> 'outputs.GetWorkerPreviewsBaseConfigPlacementResult':
+        """
+        Placement configuration used when creating new Previews.
+        """
+        return pulumi.get(self, "placement")
+
+    @_builtins.property
+    @pulumi.getter(name="tailConsumers")
+    def tail_consumers(self) -> Sequence['outputs.GetWorkerPreviewsBaseConfigTailConsumerResult']:
+        """
+        Other Workers that should consume logs from newly created Previews.
+        """
+        return pulumi.get(self, "tail_consumers")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigCacheOptionsResult(dict):
+    def __init__(__self__, *,
+                 cross_version_cache: _builtins.bool,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool cross_version_cache: Whether cached responses are shared across Worker version
+               uploads. This is independent of `enabled`. It can stay true
+               while caching is off, so the preference survives turning
+               caching off and back on.
+        :param _builtins.bool enabled: Whether caching is enabled for this Worker.
+        """
+        pulumi.set(__self__, "cross_version_cache", cross_version_cache)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="crossVersionCache")
+    def cross_version_cache(self) -> _builtins.bool:
+        """
+        Whether cached responses are shared across Worker version
+        uploads. This is independent of `enabled`. It can stay true
+        while caching is off, so the preference survives turning
+        caching off and back on.
+        """
+        return pulumi.get(self, "cross_version_cache")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether caching is enabled for this Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigEnvResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str):
+        """
+        :param _builtins.str type: The kind of resource that the binding provides.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The kind of resource that the binding provides.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigLimitsResult(dict):
+    def __init__(__self__, *,
+                 cpu_ms: _builtins.int,
+                 subrequests: _builtins.int):
+        """
+        :param _builtins.int cpu_ms: The amount of CPU time this Worker can use in milliseconds.
+        :param _builtins.int subrequests: The number of subrequests this Worker can make per request.
+        """
+        pulumi.set(__self__, "cpu_ms", cpu_ms)
+        pulumi.set(__self__, "subrequests", subrequests)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuMs")
+    def cpu_ms(self) -> _builtins.int:
+        """
+        The amount of CPU time this Worker can use in milliseconds.
+        """
+        return pulumi.get(self, "cpu_ms")
+
+    @_builtins.property
+    @pulumi.getter
+    def subrequests(self) -> _builtins.int:
+        """
+        The number of subrequests this Worker can make per request.
+        """
+        return pulumi.get(self, "subrequests")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigObservabilityResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 head_sampling_rate: _builtins.float,
+                 issues: 'outputs.GetWorkerPreviewsBaseConfigObservabilityIssuesResult',
+                 logs: 'outputs.GetWorkerPreviewsBaseConfigObservabilityLogsResult',
+                 redact_query_string: _builtins.bool,
+                 traces: 'outputs.GetWorkerPreviewsBaseConfigObservabilityTracesResult'):
+        """
+        :param _builtins.bool enabled: Whether observability is enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param 'GetWorkerPreviewsBaseConfigObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
+        :param 'GetWorkerPreviewsBaseConfigObservabilityLogsArgs' logs: Log settings for the Worker.
+        :param _builtins.bool redact_query_string: Whether query strings are removed from request URLs in logs and traces.
+        :param 'GetWorkerPreviewsBaseConfigObservabilityTracesArgs' traces: Trace settings for the Worker.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "issues", issues)
+        pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "redact_query_string", redact_query_string)
+        pulumi.set(__self__, "traces", traces)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether observability is enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> _builtins.float:
+        """
+        The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter
+    def issues(self) -> 'outputs.GetWorkerPreviewsBaseConfigObservabilityIssuesResult':
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
+
+    @_builtins.property
+    @pulumi.getter
+    def logs(self) -> 'outputs.GetWorkerPreviewsBaseConfigObservabilityLogsResult':
+        """
+        Log settings for the Worker.
+        """
+        return pulumi.get(self, "logs")
+
+    @_builtins.property
+    @pulumi.getter(name="redactQueryString")
+    def redact_query_string(self) -> _builtins.bool:
+        """
+        Whether query strings are removed from request URLs in logs and traces.
+        """
+        return pulumi.get(self, "redact_query_string")
+
+    @_builtins.property
+    @pulumi.getter
+    def traces(self) -> 'outputs.GetWorkerPreviewsBaseConfigObservabilityTracesResult':
+        """
+        Trace settings for the Worker.
+        """
+        return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigObservabilityIssuesResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigObservabilityLogsResult(dict):
+    def __init__(__self__, *,
+                 destinations: Sequence[_builtins.str],
+                 enabled: _builtins.bool,
+                 head_sampling_rate: _builtins.float,
+                 invocation_logs: _builtins.bool,
+                 persist: _builtins.bool):
+        """
+        :param Sequence[_builtins.str] destinations: A list of destinations where logs will be exported to.
+        :param _builtins.bool enabled: Whether logs are enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param _builtins.bool invocation_logs: Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+        :param _builtins.bool persist: Whether log persistence is enabled for the Worker.
+        """
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "invocation_logs", invocation_logs)
+        pulumi.set(__self__, "persist", persist)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Sequence[_builtins.str]:
+        """
+        A list of destinations where logs will be exported to.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether logs are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> _builtins.float:
+        """
+        The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter(name="invocationLogs")
+    def invocation_logs(self) -> _builtins.bool:
+        """
+        Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+        """
+        return pulumi.get(self, "invocation_logs")
+
+    @_builtins.property
+    @pulumi.getter
+    def persist(self) -> _builtins.bool:
+        """
+        Whether log persistence is enabled for the Worker.
+        """
+        return pulumi.get(self, "persist")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigObservabilityTracesResult(dict):
+    def __init__(__self__, *,
+                 destinations: Sequence[_builtins.str],
+                 enabled: _builtins.bool,
+                 head_sampling_rate: _builtins.float,
+                 persist: _builtins.bool,
+                 propagation_policy: _builtins.str):
+        """
+        :param Sequence[_builtins.str] destinations: A list of destinations where traces will be exported to.
+        :param _builtins.bool enabled: Whether traces are enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param _builtins.bool persist: Whether trace persistence is enabled for the Worker.
+        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+               Available values: "authenticated", "accept".
+        """
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "persist", persist)
+        pulumi.set(__self__, "propagation_policy", propagation_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Sequence[_builtins.str]:
+        """
+        A list of destinations where traces will be exported to.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether traces are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> _builtins.float:
+        """
+        The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter
+    def persist(self) -> _builtins.bool:
+        """
+        Whether trace persistence is enabled for the Worker.
+        """
+        return pulumi.get(self, "persist")
+
+    @_builtins.property
+    @pulumi.getter(name="propagationPolicy")
+    def propagation_policy(self) -> _builtins.str:
+        """
+        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+        Available values: "authenticated", "accept".
+        """
+        return pulumi.get(self, "propagation_policy")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigPlacementResult(dict):
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 hostname: _builtins.str,
+                 mode: _builtins.str,
+                 region: _builtins.str,
+                 targets: Sequence['outputs.GetWorkerPreviewsBaseConfigPlacementTargetResult']):
+        """
+        :param _builtins.str host: TCP host and port for targeted placement.
+        :param _builtins.str hostname: HTTP hostname for targeted placement.
+        :param _builtins.str mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+               Available values: "smart", "targeted".
+        :param _builtins.str region: Cloud region for targeted placement in format 'provider:region'.
+        :param Sequence['GetWorkerPreviewsBaseConfigPlacementTargetArgs'] targets: Array of placement targets (currently limited to single target).
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "targets", targets)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        TCP host and port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Available values: "smart", "targeted".
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Cloud region for targeted placement in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Sequence['outputs.GetWorkerPreviewsBaseConfigPlacementTargetResult']:
+        """
+        Array of placement targets (currently limited to single target).
+        """
+        return pulumi.get(self, "targets")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigPlacementTargetResult(dict):
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 hostname: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str host: TCP host:port for targeted placement.
+        :param _builtins.str hostname: HTTP hostname for targeted placement.
+        :param _builtins.str region: Cloud region in format 'provider:region'.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        TCP host:port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Cloud region in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetWorkerPreviewsBaseConfigTailConsumerResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Name of the consumer Worker.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the consumer Worker.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -130402,19 +134930,30 @@ class GetWorkerVersionAssetsResult(dict):
 @pulumi.output_type
 class GetWorkerVersionAssetsConfigResult(dict):
     def __init__(__self__, *,
+                 base_path: _builtins.str,
                  html_handling: _builtins.str,
                  not_found_handling: _builtins.str,
                  run_worker_firsts: Sequence[_builtins.str]):
         """
+        :param _builtins.str base_path: The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
         :param _builtins.str html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         :param _builtins.str not_found_handling: Determines the response when a request does not match a static asset, and there is no Worker script.
                Available values: "none", "404-page", "single-page-application".
         :param Sequence[_builtins.str] run_worker_firsts: Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
         """
+        pulumi.set(__self__, "base_path", base_path)
         pulumi.set(__self__, "html_handling", html_handling)
         pulumi.set(__self__, "not_found_handling", not_found_handling)
         pulumi.set(__self__, "run_worker_firsts", run_worker_firsts)
+
+    @_builtins.property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> _builtins.str:
+        """
+        The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+        """
+        return pulumi.get(self, "base_path")
 
     @_builtins.property
     @pulumi.getter(name="htmlHandling")
@@ -130483,6 +135022,7 @@ class GetWorkerVersionBindingResult(dict):
                  service_id: _builtins.str,
                  simple: 'outputs.GetWorkerVersionBindingSimpleResult',
                  store_id: _builtins.str,
+                 stream: _builtins.str,
                  text: _builtins.str,
                  tunnel_id: _builtins.str,
                  type: _builtins.str,
@@ -130530,10 +135070,11 @@ class GetWorkerVersionBindingResult(dict):
         :param _builtins.str service_id: Identifier of the VPC service to bind to.
         :param 'GetWorkerVersionBindingSimpleArgs' simple: The rate limit configuration.
         :param _builtins.str store_id: ID of the store containing the secret.
+        :param _builtins.str stream: ID of a K2 stream owned by the account deploying the Worker.
         :param _builtins.str text: The text value to use.
         :param _builtins.str tunnel_id: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
         :param _builtins.str type: The kind of resource that the binding provides.
-               Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+               Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         :param Sequence[_builtins.str] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         :param _builtins.str version_id: Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
         :param _builtins.str workflow_name: Name of the Workflow to bind to.
@@ -130575,6 +135116,7 @@ class GetWorkerVersionBindingResult(dict):
         pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "simple", simple)
         pulumi.set(__self__, "store_id", store_id)
+        pulumi.set(__self__, "stream", stream)
         pulumi.set(__self__, "text", text)
         pulumi.set(__self__, "tunnel_id", tunnel_id)
         pulumi.set(__self__, "type", type)
@@ -130883,6 +135425,14 @@ class GetWorkerVersionBindingResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def stream(self) -> _builtins.str:
+        """
+        ID of a K2 stream owned by the account deploying the Worker.
+        """
+        return pulumi.get(self, "stream")
+
+    @_builtins.property
+    @pulumi.getter
     def text(self) -> _builtins.str:
         """
         The text value to use.
@@ -130902,7 +135452,7 @@ class GetWorkerVersionBindingResult(dict):
     def type(self) -> _builtins.str:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+        Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         """
         return pulumi.get(self, "type")
 
@@ -131710,6 +136260,8 @@ class GetWorkerVersionsResultResult(dict):
     def __init__(__self__, *,
                  annotations: 'outputs.GetWorkerVersionsResultAnnotationsResult',
                  assets: 'outputs.GetWorkerVersionsResultAssetsResult',
+                 author_email: _builtins.str,
+                 author_id: _builtins.str,
                  bindings: Sequence['outputs.GetWorkerVersionsResultBindingResult'],
                  cache_options: 'outputs.GetWorkerVersionsResultCacheOptionsResult',
                  compatibility_date: _builtins.str,
@@ -131734,6 +136286,8 @@ class GetWorkerVersionsResultResult(dict):
         """
         :param 'GetWorkerVersionsResultAnnotationsArgs' annotations: Metadata about the version.
         :param 'GetWorkerVersionsResultAssetsArgs' assets: Configuration for assets within a Worker.
+        :param _builtins.str author_email: Email of the user who created the version.
+        :param _builtins.str author_id: Identifier of the user who created the version.
         :param Sequence['GetWorkerVersionsResultBindingArgs'] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param 'GetWorkerVersionsResultCacheOptionsArgs' cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
@@ -131773,6 +136327,8 @@ class GetWorkerVersionsResultResult(dict):
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "assets", assets)
+        pulumi.set(__self__, "author_email", author_email)
+        pulumi.set(__self__, "author_id", author_id)
         pulumi.set(__self__, "bindings", bindings)
         pulumi.set(__self__, "cache_options", cache_options)
         pulumi.set(__self__, "compatibility_date", compatibility_date)
@@ -131810,6 +136366,22 @@ class GetWorkerVersionsResultResult(dict):
         Configuration for assets within a Worker.
         """
         return pulumi.get(self, "assets")
+
+    @_builtins.property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> _builtins.str:
+        """
+        Email of the user who created the version.
+        """
+        return pulumi.get(self, "author_email")
+
+    @_builtins.property
+    @pulumi.getter(name="authorId")
+    def author_id(self) -> _builtins.str:
+        """
+        Identifier of the user who created the version.
+        """
+        return pulumi.get(self, "author_id")
 
     @_builtins.property
     @pulumi.getter
@@ -132068,19 +136640,30 @@ class GetWorkerVersionsResultAssetsResult(dict):
 @pulumi.output_type
 class GetWorkerVersionsResultAssetsConfigResult(dict):
     def __init__(__self__, *,
+                 base_path: _builtins.str,
                  html_handling: _builtins.str,
                  not_found_handling: _builtins.str,
                  run_worker_firsts: Sequence[_builtins.str]):
         """
+        :param _builtins.str base_path: The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
         :param _builtins.str html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         :param _builtins.str not_found_handling: Determines the response when a request does not match a static asset, and there is no Worker script.
                Available values: "none", "404-page", "single-page-application".
         :param Sequence[_builtins.str] run_worker_firsts: Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
         """
+        pulumi.set(__self__, "base_path", base_path)
         pulumi.set(__self__, "html_handling", html_handling)
         pulumi.set(__self__, "not_found_handling", not_found_handling)
         pulumi.set(__self__, "run_worker_firsts", run_worker_firsts)
+
+    @_builtins.property
+    @pulumi.getter(name="basePath")
+    def base_path(self) -> _builtins.str:
+        """
+        The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%.
+        """
+        return pulumi.get(self, "base_path")
 
     @_builtins.property
     @pulumi.getter(name="htmlHandling")
@@ -132149,6 +136732,7 @@ class GetWorkerVersionsResultBindingResult(dict):
                  service_id: _builtins.str,
                  simple: 'outputs.GetWorkerVersionsResultBindingSimpleResult',
                  store_id: _builtins.str,
+                 stream: _builtins.str,
                  text: _builtins.str,
                  tunnel_id: _builtins.str,
                  type: _builtins.str,
@@ -132196,10 +136780,11 @@ class GetWorkerVersionsResultBindingResult(dict):
         :param _builtins.str service_id: Identifier of the VPC service to bind to.
         :param 'GetWorkerVersionsResultBindingSimpleArgs' simple: The rate limit configuration.
         :param _builtins.str store_id: ID of the store containing the secret.
+        :param _builtins.str stream: ID of a K2 stream owned by the account deploying the Worker.
         :param _builtins.str text: The text value to use.
         :param _builtins.str tunnel_id: UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
         :param _builtins.str type: The kind of resource that the binding provides.
-               Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+               Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         :param Sequence[_builtins.str] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         :param _builtins.str version_id: Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
         :param _builtins.str workflow_name: Name of the Workflow to bind to.
@@ -132241,6 +136826,7 @@ class GetWorkerVersionsResultBindingResult(dict):
         pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "simple", simple)
         pulumi.set(__self__, "store_id", store_id)
+        pulumi.set(__self__, "stream", stream)
         pulumi.set(__self__, "text", text)
         pulumi.set(__self__, "tunnel_id", tunnel_id)
         pulumi.set(__self__, "type", type)
@@ -132549,6 +137135,14 @@ class GetWorkerVersionsResultBindingResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def stream(self) -> _builtins.str:
+        """
+        ID of a K2 stream owned by the account deploying the Worker.
+        """
+        return pulumi.get(self, "stream")
+
+    @_builtins.property
+    @pulumi.getter
     def text(self) -> _builtins.str:
         """
         The text value to use.
@@ -132568,7 +137162,7 @@ class GetWorkerVersionsResultBindingResult(dict):
     def type(self) -> _builtins.str:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+        Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         """
         return pulumi.get(self, "type")
 
@@ -133583,17 +138177,161 @@ class GetWorkersDeploymentVersionResult(dict):
     def __init__(__self__, *,
                  percentage: _builtins.float,
                  version_id: _builtins.str):
+        """
+        :param _builtins.float percentage: Percentage of traffic served by this version.
+        :param _builtins.str version_id: Identifier of the Worker Version.
+        """
         pulumi.set(__self__, "percentage", percentage)
         pulumi.set(__self__, "version_id", version_id)
 
     @_builtins.property
     @pulumi.getter
     def percentage(self) -> _builtins.float:
+        """
+        Percentage of traffic served by this version.
+        """
         return pulumi.get(self, "percentage")
 
     @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> _builtins.str:
+        """
+        Identifier of the Worker Version.
+        """
+        return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class GetWorkersDeploymentsResultResult(dict):
+    def __init__(__self__, *,
+                 deployments: Sequence['outputs.GetWorkersDeploymentsResultDeploymentResult']):
+        pulumi.set(__self__, "deployments", deployments)
+
+    @_builtins.property
+    @pulumi.getter
+    def deployments(self) -> Sequence['outputs.GetWorkersDeploymentsResultDeploymentResult']:
+        return pulumi.get(self, "deployments")
+
+
+@pulumi.output_type
+class GetWorkersDeploymentsResultDeploymentResult(dict):
+    def __init__(__self__, *,
+                 annotations: 'outputs.GetWorkersDeploymentsResultDeploymentAnnotationsResult',
+                 author_email: _builtins.str,
+                 created_on: _builtins.str,
+                 id: _builtins.str,
+                 source: _builtins.str,
+                 strategy: _builtins.str,
+                 versions: Sequence['outputs.GetWorkersDeploymentsResultDeploymentVersionResult']):
+        """
+        :param _builtins.str strategy: Available values: "percentage".
+        :param Sequence['GetWorkersDeploymentsResultDeploymentVersionArgs'] versions: Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "author_email", author_email)
+        pulumi.set(__self__, "created_on", created_on)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "strategy", strategy)
+        pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> 'outputs.GetWorkersDeploymentsResultDeploymentAnnotationsResult':
+        return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter(name="authorEmail")
+    def author_email(self) -> _builtins.str:
+        return pulumi.get(self, "author_email")
+
+    @_builtins.property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> _builtins.str:
+        return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter
+    def strategy(self) -> _builtins.str:
+        """
+        Available values: "percentage".
+        """
+        return pulumi.get(self, "strategy")
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Sequence['outputs.GetWorkersDeploymentsResultDeploymentVersionResult']:
+        """
+        Worker versions included in this deployment. Each object must contain a `version_id` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"version_id":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
+        """
+        return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class GetWorkersDeploymentsResultDeploymentAnnotationsResult(dict):
+    def __init__(__self__, *,
+                 workers_message: _builtins.str,
+                 workers_triggered_by: _builtins.str):
+        """
+        :param _builtins.str workers_message: Human-readable message about the deployment. Truncated to 1000 bytes if longer.
+        :param _builtins.str workers_triggered_by: Operation that triggered the creation of the deployment.
+        """
+        pulumi.set(__self__, "workers_message", workers_message)
+        pulumi.set(__self__, "workers_triggered_by", workers_triggered_by)
+
+    @_builtins.property
+    @pulumi.getter(name="workersMessage")
+    def workers_message(self) -> _builtins.str:
+        """
+        Human-readable message about the deployment. Truncated to 1000 bytes if longer.
+        """
+        return pulumi.get(self, "workers_message")
+
+    @_builtins.property
+    @pulumi.getter(name="workersTriggeredBy")
+    def workers_triggered_by(self) -> _builtins.str:
+        """
+        Operation that triggered the creation of the deployment.
+        """
+        return pulumi.get(self, "workers_triggered_by")
+
+
+@pulumi.output_type
+class GetWorkersDeploymentsResultDeploymentVersionResult(dict):
+    def __init__(__self__, *,
+                 percentage: _builtins.float,
+                 version_id: _builtins.str):
+        """
+        :param _builtins.float percentage: Percentage of traffic served by this version.
+        :param _builtins.str version_id: Identifier of the Worker Version.
+        """
+        pulumi.set(__self__, "percentage", percentage)
+        pulumi.set(__self__, "version_id", version_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> _builtins.float:
+        """
+        Percentage of traffic served by this version.
+        """
+        return pulumi.get(self, "percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> _builtins.str:
+        """
+        Identifier of the Worker Version.
+        """
         return pulumi.get(self, "version_id")
 
 
@@ -133698,9 +138436,9 @@ class GetWorkersKvNamespaceFilterResult(dict):
                  direction: Optional[_builtins.str] = None,
                  order: Optional[_builtins.str] = None):
         """
-        :param _builtins.str direction: Direction to order namespaces.
+        :param _builtins.str direction: Sort namespaces in ascending (`asc`) or descending (`desc`) order.
                Available values: "asc", "desc".
-        :param _builtins.str order: Field to order results by.
+        :param _builtins.str order: Namespace field to sort by (`id` or `title`).
                Available values: "id", "title".
         """
         if direction is not None:
@@ -133712,7 +138450,7 @@ class GetWorkersKvNamespaceFilterResult(dict):
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
         """
-        Direction to order namespaces.
+        Sort namespaces in ascending (`asc`) or descending (`desc`) order.
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
@@ -133721,7 +138459,7 @@ class GetWorkersKvNamespaceFilterResult(dict):
     @pulumi.getter
     def order(self) -> Optional[_builtins.str]:
         """
-        Field to order results by.
+        Namespace field to sort by (`id` or `title`).
         Available values: "id", "title".
         """
         return pulumi.get(self, "order")
@@ -133735,11 +138473,11 @@ class GetWorkersKvNamespacesResultResult(dict):
                  supports_url_encoding: _builtins.bool,
                  title: _builtins.str):
         """
-        :param _builtins.str id: Namespace identifier tag.
+        :param _builtins.str id: ID of the Workers KV namespace.
         :param _builtins.str jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
                Available values: "eu", "fedramp", "us".
         :param _builtins.bool supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
-        :param _builtins.str title: A human-readable string name for a Namespace.
+        :param _builtins.str title: Human-readable string name for a Workers KV namespace.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "jurisdiction", jurisdiction)
@@ -133750,7 +138488,7 @@ class GetWorkersKvNamespacesResultResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Namespace identifier tag.
+        ID of the Workers KV namespace.
         """
         return pulumi.get(self, "id")
 
@@ -133775,7 +138513,7 @@ class GetWorkersKvNamespacesResultResult(dict):
     @pulumi.getter
     def title(self) -> _builtins.str:
         """
-        A human-readable string name for a Namespace.
+        Human-readable string name for a Workers KV namespace.
         """
         return pulumi.get(self, "title")
 
@@ -133789,6 +138527,7 @@ class GetWorkersResultResult(dict):
                  logpush: _builtins.bool,
                  name: _builtins.str,
                  observability: 'outputs.GetWorkersResultObservabilityResult',
+                 previews_base_config: 'outputs.GetWorkersResultPreviewsBaseConfigResult',
                  references: 'outputs.GetWorkersResultReferencesResult',
                  subdomain: 'outputs.GetWorkersResultSubdomainResult',
                  tags: Sequence[_builtins.str],
@@ -133801,6 +138540,7 @@ class GetWorkersResultResult(dict):
         :param _builtins.bool logpush: Whether logpush is enabled for the Worker.
         :param _builtins.str name: Name of the Worker.
         :param 'GetWorkersResultObservabilityArgs' observability: Observability settings for the Worker.
+        :param 'GetWorkersResultPreviewsBaseConfigArgs' previews_base_config: Template configuration used when creating new Previews for this Worker.
         :param 'GetWorkersResultReferencesArgs' references: Other resources that reference the Worker and depend on it existing.
         :param 'GetWorkersResultSubdomainArgs' subdomain: Subdomain settings for the Worker.
         :param Sequence[_builtins.str] tags: Tags associated with the Worker.
@@ -133813,6 +138553,7 @@ class GetWorkersResultResult(dict):
         pulumi.set(__self__, "logpush", logpush)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "observability", observability)
+        pulumi.set(__self__, "previews_base_config", previews_base_config)
         pulumi.set(__self__, "references", references)
         pulumi.set(__self__, "subdomain", subdomain)
         pulumi.set(__self__, "tags", tags)
@@ -133868,6 +138609,14 @@ class GetWorkersResultResult(dict):
         return pulumi.get(self, "observability")
 
     @_builtins.property
+    @pulumi.getter(name="previewsBaseConfig")
+    def previews_base_config(self) -> 'outputs.GetWorkersResultPreviewsBaseConfigResult':
+        """
+        Template configuration used when creating new Previews for this Worker.
+        """
+        return pulumi.get(self, "previews_base_config")
+
+    @_builtins.property
     @pulumi.getter
     def references(self) -> 'outputs.GetWorkersResultReferencesResult':
         """
@@ -133913,18 +138662,21 @@ class GetWorkersResultObservabilityResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool,
                  head_sampling_rate: _builtins.float,
+                 issues: 'outputs.GetWorkersResultObservabilityIssuesResult',
                  logs: 'outputs.GetWorkersResultObservabilityLogsResult',
                  redact_query_string: _builtins.bool,
                  traces: 'outputs.GetWorkersResultObservabilityTracesResult'):
         """
         :param _builtins.bool enabled: Whether observability is enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param 'GetWorkersResultObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
         :param 'GetWorkersResultObservabilityLogsArgs' logs: Log settings for the Worker.
         :param _builtins.bool redact_query_string: Whether query strings are removed from request URLs in logs and traces.
         :param 'GetWorkersResultObservabilityTracesArgs' traces: Trace settings for the Worker.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "issues", issues)
         pulumi.set(__self__, "logs", logs)
         pulumi.set(__self__, "redact_query_string", redact_query_string)
         pulumi.set(__self__, "traces", traces)
@@ -133944,6 +138696,14 @@ class GetWorkersResultObservabilityResult(dict):
         The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
         """
         return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter
+    def issues(self) -> 'outputs.GetWorkersResultObservabilityIssuesResult':
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
 
     @_builtins.property
     @pulumi.getter
@@ -133968,6 +138728,24 @@ class GetWorkersResultObservabilityResult(dict):
         Trace settings for the Worker.
         """
         return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class GetWorkersResultObservabilityIssuesResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -134094,6 +138872,511 @@ class GetWorkersResultObservabilityTracesResult(dict):
         Available values: "authenticated", "accept".
         """
         return pulumi.get(self, "propagation_policy")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigResult(dict):
+    def __init__(__self__, *,
+                 cache_options: 'outputs.GetWorkersResultPreviewsBaseConfigCacheOptionsResult',
+                 env: Mapping[str, 'outputs.GetWorkersResultPreviewsBaseConfigEnvResult'],
+                 limits: 'outputs.GetWorkersResultPreviewsBaseConfigLimitsResult',
+                 logpush: _builtins.bool,
+                 observability: 'outputs.GetWorkersResultPreviewsBaseConfigObservabilityResult',
+                 placement: 'outputs.GetWorkersResultPreviewsBaseConfigPlacementResult',
+                 tail_consumers: Sequence['outputs.GetWorkersResultPreviewsBaseConfigTailConsumerResult']):
+        """
+        :param 'GetWorkersResultPreviewsBaseConfigCacheOptionsArgs' cache_options: Cache options used when creating new Previews.
+        :param Mapping[str, 'GetWorkersResultPreviewsBaseConfigEnvArgs'] env: Bindings used when creating new Previews, keyed by binding name.
+        :param 'GetWorkersResultPreviewsBaseConfigLimitsArgs' limits: Resource limits enforced at runtime for newly created Previews.
+        :param _builtins.bool logpush: Whether logpush is enabled when creating new Previews.
+        :param 'GetWorkersResultPreviewsBaseConfigObservabilityArgs' observability: Observability settings used when creating new Previews.
+        :param 'GetWorkersResultPreviewsBaseConfigPlacementArgs' placement: Placement configuration used when creating new Previews.
+        :param Sequence['GetWorkersResultPreviewsBaseConfigTailConsumerArgs'] tail_consumers: Other Workers that should consume logs from newly created Previews.
+        """
+        pulumi.set(__self__, "cache_options", cache_options)
+        pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "limits", limits)
+        pulumi.set(__self__, "logpush", logpush)
+        pulumi.set(__self__, "observability", observability)
+        pulumi.set(__self__, "placement", placement)
+        pulumi.set(__self__, "tail_consumers", tail_consumers)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheOptions")
+    def cache_options(self) -> 'outputs.GetWorkersResultPreviewsBaseConfigCacheOptionsResult':
+        """
+        Cache options used when creating new Previews.
+        """
+        return pulumi.get(self, "cache_options")
+
+    @_builtins.property
+    @pulumi.getter
+    def env(self) -> Mapping[str, 'outputs.GetWorkersResultPreviewsBaseConfigEnvResult']:
+        """
+        Bindings used when creating new Previews, keyed by binding name.
+        """
+        return pulumi.get(self, "env")
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> 'outputs.GetWorkersResultPreviewsBaseConfigLimitsResult':
+        """
+        Resource limits enforced at runtime for newly created Previews.
+        """
+        return pulumi.get(self, "limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def logpush(self) -> _builtins.bool:
+        """
+        Whether logpush is enabled when creating new Previews.
+        """
+        return pulumi.get(self, "logpush")
+
+    @_builtins.property
+    @pulumi.getter
+    def observability(self) -> 'outputs.GetWorkersResultPreviewsBaseConfigObservabilityResult':
+        """
+        Observability settings used when creating new Previews.
+        """
+        return pulumi.get(self, "observability")
+
+    @_builtins.property
+    @pulumi.getter
+    def placement(self) -> 'outputs.GetWorkersResultPreviewsBaseConfigPlacementResult':
+        """
+        Placement configuration used when creating new Previews.
+        """
+        return pulumi.get(self, "placement")
+
+    @_builtins.property
+    @pulumi.getter(name="tailConsumers")
+    def tail_consumers(self) -> Sequence['outputs.GetWorkersResultPreviewsBaseConfigTailConsumerResult']:
+        """
+        Other Workers that should consume logs from newly created Previews.
+        """
+        return pulumi.get(self, "tail_consumers")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigCacheOptionsResult(dict):
+    def __init__(__self__, *,
+                 cross_version_cache: _builtins.bool,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool cross_version_cache: Whether cached responses are shared across Worker version
+               uploads. This is independent of `enabled`. It can stay true
+               while caching is off, so the preference survives turning
+               caching off and back on.
+        :param _builtins.bool enabled: Whether caching is enabled for this Worker.
+        """
+        pulumi.set(__self__, "cross_version_cache", cross_version_cache)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="crossVersionCache")
+    def cross_version_cache(self) -> _builtins.bool:
+        """
+        Whether cached responses are shared across Worker version
+        uploads. This is independent of `enabled`. It can stay true
+        while caching is off, so the preference survives turning
+        caching off and back on.
+        """
+        return pulumi.get(self, "cross_version_cache")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether caching is enabled for this Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigEnvResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str):
+        """
+        :param _builtins.str type: The kind of resource that the binding provides.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The kind of resource that the binding provides.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigLimitsResult(dict):
+    def __init__(__self__, *,
+                 cpu_ms: _builtins.int,
+                 subrequests: _builtins.int):
+        """
+        :param _builtins.int cpu_ms: The amount of CPU time this Worker can use in milliseconds.
+        :param _builtins.int subrequests: The number of subrequests this Worker can make per request.
+        """
+        pulumi.set(__self__, "cpu_ms", cpu_ms)
+        pulumi.set(__self__, "subrequests", subrequests)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuMs")
+    def cpu_ms(self) -> _builtins.int:
+        """
+        The amount of CPU time this Worker can use in milliseconds.
+        """
+        return pulumi.get(self, "cpu_ms")
+
+    @_builtins.property
+    @pulumi.getter
+    def subrequests(self) -> _builtins.int:
+        """
+        The number of subrequests this Worker can make per request.
+        """
+        return pulumi.get(self, "subrequests")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigObservabilityResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 head_sampling_rate: _builtins.float,
+                 issues: 'outputs.GetWorkersResultPreviewsBaseConfigObservabilityIssuesResult',
+                 logs: 'outputs.GetWorkersResultPreviewsBaseConfigObservabilityLogsResult',
+                 redact_query_string: _builtins.bool,
+                 traces: 'outputs.GetWorkersResultPreviewsBaseConfigObservabilityTracesResult'):
+        """
+        :param _builtins.bool enabled: Whether observability is enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param 'GetWorkersResultPreviewsBaseConfigObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
+        :param 'GetWorkersResultPreviewsBaseConfigObservabilityLogsArgs' logs: Log settings for the Worker.
+        :param _builtins.bool redact_query_string: Whether query strings are removed from request URLs in logs and traces.
+        :param 'GetWorkersResultPreviewsBaseConfigObservabilityTracesArgs' traces: Trace settings for the Worker.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "issues", issues)
+        pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "redact_query_string", redact_query_string)
+        pulumi.set(__self__, "traces", traces)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether observability is enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> _builtins.float:
+        """
+        The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter
+    def issues(self) -> 'outputs.GetWorkersResultPreviewsBaseConfigObservabilityIssuesResult':
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
+
+    @_builtins.property
+    @pulumi.getter
+    def logs(self) -> 'outputs.GetWorkersResultPreviewsBaseConfigObservabilityLogsResult':
+        """
+        Log settings for the Worker.
+        """
+        return pulumi.get(self, "logs")
+
+    @_builtins.property
+    @pulumi.getter(name="redactQueryString")
+    def redact_query_string(self) -> _builtins.bool:
+        """
+        Whether query strings are removed from request URLs in logs and traces.
+        """
+        return pulumi.get(self, "redact_query_string")
+
+    @_builtins.property
+    @pulumi.getter
+    def traces(self) -> 'outputs.GetWorkersResultPreviewsBaseConfigObservabilityTracesResult':
+        """
+        Trace settings for the Worker.
+        """
+        return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigObservabilityIssuesResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigObservabilityLogsResult(dict):
+    def __init__(__self__, *,
+                 destinations: Sequence[_builtins.str],
+                 enabled: _builtins.bool,
+                 head_sampling_rate: _builtins.float,
+                 invocation_logs: _builtins.bool,
+                 persist: _builtins.bool):
+        """
+        :param Sequence[_builtins.str] destinations: A list of destinations where logs will be exported to.
+        :param _builtins.bool enabled: Whether logs are enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param _builtins.bool invocation_logs: Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+        :param _builtins.bool persist: Whether log persistence is enabled for the Worker.
+        """
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "invocation_logs", invocation_logs)
+        pulumi.set(__self__, "persist", persist)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Sequence[_builtins.str]:
+        """
+        A list of destinations where logs will be exported to.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether logs are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> _builtins.float:
+        """
+        The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter(name="invocationLogs")
+    def invocation_logs(self) -> _builtins.bool:
+        """
+        Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+        """
+        return pulumi.get(self, "invocation_logs")
+
+    @_builtins.property
+    @pulumi.getter
+    def persist(self) -> _builtins.bool:
+        """
+        Whether log persistence is enabled for the Worker.
+        """
+        return pulumi.get(self, "persist")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigObservabilityTracesResult(dict):
+    def __init__(__self__, *,
+                 destinations: Sequence[_builtins.str],
+                 enabled: _builtins.bool,
+                 head_sampling_rate: _builtins.float,
+                 persist: _builtins.bool,
+                 propagation_policy: _builtins.str):
+        """
+        :param Sequence[_builtins.str] destinations: A list of destinations where traces will be exported to.
+        :param _builtins.bool enabled: Whether traces are enabled for the Worker.
+        :param _builtins.float head_sampling_rate: The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        :param _builtins.bool persist: Whether trace persistence is enabled for the Worker.
+        :param _builtins.str propagation_policy: Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+               Available values: "authenticated", "accept".
+        """
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "persist", persist)
+        pulumi.set(__self__, "propagation_policy", propagation_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Sequence[_builtins.str]:
+        """
+        A list of destinations where traces will be exported to.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether traces are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="headSamplingRate")
+    def head_sampling_rate(self) -> _builtins.float:
+        """
+        The sampling rate for traces. From 0 to 1 (1 = 100%, 0.1 = 10%).
+        """
+        return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter
+    def persist(self) -> _builtins.bool:
+        """
+        Whether trace persistence is enabled for the Worker.
+        """
+        return pulumi.get(self, "persist")
+
+    @_builtins.property
+    @pulumi.getter(name="propagationPolicy")
+    def propagation_policy(self) -> _builtins.str:
+        """
+        Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account.
+        Available values: "authenticated", "accept".
+        """
+        return pulumi.get(self, "propagation_policy")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigPlacementResult(dict):
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 hostname: _builtins.str,
+                 mode: _builtins.str,
+                 region: _builtins.str,
+                 targets: Sequence['outputs.GetWorkersResultPreviewsBaseConfigPlacementTargetResult']):
+        """
+        :param _builtins.str host: TCP host and port for targeted placement.
+        :param _builtins.str hostname: HTTP hostname for targeted placement.
+        :param _builtins.str mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+               Available values: "smart", "targeted".
+        :param _builtins.str region: Cloud region for targeted placement in format 'provider:region'.
+        :param Sequence['GetWorkersResultPreviewsBaseConfigPlacementTargetArgs'] targets: Array of placement targets (currently limited to single target).
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "targets", targets)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        TCP host and port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        Available values: "smart", "targeted".
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Cloud region for targeted placement in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Sequence['outputs.GetWorkersResultPreviewsBaseConfigPlacementTargetResult']:
+        """
+        Array of placement targets (currently limited to single target).
+        """
+        return pulumi.get(self, "targets")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigPlacementTargetResult(dict):
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 hostname: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str host: TCP host:port for targeted placement.
+        :param _builtins.str hostname: HTTP hostname for targeted placement.
+        :param _builtins.str region: Cloud region in format 'provider:region'.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        TCP host:port for targeted placement.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        HTTP hostname for targeted placement.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Cloud region in format 'provider:region'.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetWorkersResultPreviewsBaseConfigTailConsumerResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str):
+        """
+        :param _builtins.str name: Name of the consumer Worker.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the consumer Worker.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -135011,18 +140294,21 @@ class GetWorkersScriptsResultObservabilityResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool,
                  head_sampling_rate: _builtins.float,
+                 issues: 'outputs.GetWorkersScriptsResultObservabilityIssuesResult',
                  logs: 'outputs.GetWorkersScriptsResultObservabilityLogsResult',
                  redact_query_string: _builtins.bool,
                  traces: 'outputs.GetWorkersScriptsResultObservabilityTracesResult'):
         """
         :param _builtins.bool enabled: Whether observability is enabled for the Worker.
         :param _builtins.float head_sampling_rate: The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+        :param 'GetWorkersScriptsResultObservabilityIssuesArgs' issues: Real-time Issues settings for the Worker.
         :param 'GetWorkersScriptsResultObservabilityLogsArgs' logs: Log settings for the Worker.
         :param _builtins.bool redact_query_string: Whether query strings are removed from request URLs in logs and traces.
         :param 'GetWorkersScriptsResultObservabilityTracesArgs' traces: Trace settings for the Worker.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "head_sampling_rate", head_sampling_rate)
+        pulumi.set(__self__, "issues", issues)
         pulumi.set(__self__, "logs", logs)
         pulumi.set(__self__, "redact_query_string", redact_query_string)
         pulumi.set(__self__, "traces", traces)
@@ -135042,6 +140328,14 @@ class GetWorkersScriptsResultObservabilityResult(dict):
         The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
         """
         return pulumi.get(self, "head_sampling_rate")
+
+    @_builtins.property
+    @pulumi.getter
+    def issues(self) -> 'outputs.GetWorkersScriptsResultObservabilityIssuesResult':
+        """
+        Real-time Issues settings for the Worker.
+        """
+        return pulumi.get(self, "issues")
 
     @_builtins.property
     @pulumi.getter
@@ -135066,6 +140360,24 @@ class GetWorkersScriptsResultObservabilityResult(dict):
         Trace settings for the Worker.
         """
         return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class GetWorkersScriptsResultObservabilityIssuesResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether real-time Issues are enabled for the Worker.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether real-time Issues are enabled for the Worker.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -135450,8 +140762,12 @@ class GetWorkflowsResultResult(dict):
                  modified_on: _builtins.str,
                  name: _builtins.str,
                  schedules: Sequence['outputs.GetWorkflowsResultScheduleResult'],
+                 script_deleted: _builtins.bool,
                  script_name: _builtins.str,
                  triggered_on: _builtins.str):
+        """
+        :param _builtins.bool script_deleted: Whether the bound Worker was deleted, leaving this Workflow inactive.
+        """
         pulumi.set(__self__, "class_name", class_name)
         pulumi.set(__self__, "created_on", created_on)
         pulumi.set(__self__, "id", id)
@@ -135459,6 +140775,7 @@ class GetWorkflowsResultResult(dict):
         pulumi.set(__self__, "modified_on", modified_on)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "schedules", schedules)
+        pulumi.set(__self__, "script_deleted", script_deleted)
         pulumi.set(__self__, "script_name", script_name)
         pulumi.set(__self__, "triggered_on", triggered_on)
 
@@ -135496,6 +140813,14 @@ class GetWorkflowsResultResult(dict):
     @pulumi.getter
     def schedules(self) -> Sequence['outputs.GetWorkflowsResultScheduleResult']:
         return pulumi.get(self, "schedules")
+
+    @_builtins.property
+    @pulumi.getter(name="scriptDeleted")
+    def script_deleted(self) -> _builtins.bool:
+        """
+        Whether the bound Worker was deleted, leaving this Workflow inactive.
+        """
+        return pulumi.get(self, "script_deleted")
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
@@ -135580,6 +140905,7 @@ class GetZeroTrustAccessAiControlsMcpPortalServerResult(dict):
                Available values: "oauth", "bearer", "unauthenticated".
         :param _builtins.str authentication_status: Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
                Available values: "not_required", "required", "connected", "stale", "manual".
+        :param _builtins.bool default_disabled: Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
         :param _builtins.str description: Optional description of the MCP server.
         :param _builtins.str hostname: URL of the upstream MCP endpoint.
         :param _builtins.str id: Unique identifier for the MCP server.
@@ -135655,6 +140981,9 @@ class GetZeroTrustAccessAiControlsMcpPortalServerResult(dict):
     @_builtins.property
     @pulumi.getter(name="defaultDisabled")
     def default_disabled(self) -> _builtins.bool:
+        """
+        Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
+        """
         return pulumi.get(self, "default_disabled")
 
     @_builtins.property
@@ -136209,6 +141538,7 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServerResult(dict):
                Available values: "oauth", "bearer", "unauthenticated".
         :param _builtins.str authentication_status: Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
                Available values: "not_required", "required", "connected", "stale", "manual".
+        :param _builtins.bool default_disabled: Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
         :param _builtins.str description: Optional description of the MCP server.
         :param _builtins.str hostname: URL of the upstream MCP endpoint.
         :param _builtins.str id: Unique identifier for the MCP server.
@@ -136284,6 +141614,9 @@ class GetZeroTrustAccessAiControlsMcpPortalsResultServerResult(dict):
     @_builtins.property
     @pulumi.getter(name="defaultDisabled")
     def default_disabled(self) -> _builtins.bool:
+        """
+        Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
+        """
         return pulumi.get(self, "default_disabled")
 
     @_builtins.property
@@ -151645,7 +156978,8 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
                  sign_request: _builtins.bool,
                  sso_target_url: _builtins.str,
                  support_groups: _builtins.bool,
-                 token_url: _builtins.str):
+                 token_url: _builtins.str,
+                 use_login_hint: _builtins.bool):
         """
         :param _builtins.str apps_domain: Your companies TLD
         :param Sequence[_builtins.str] attributes: A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
@@ -151676,13 +157010,14 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
         :param _builtins.str ping_env_id: Your PingOne environment identifier
         :param _builtins.bool pkce_enabled: Enable Proof Key for Code Exchange (PKCE)
         :param _builtins.str prompt: Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-               Available values: "login", "select_account", "none".
+               Available values: "login", "select_account", "none", "consent".
         :param _builtins.bool restrict_to_account_members: When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
         :param Sequence[_builtins.str] scopes: OAuth scopes
         :param _builtins.bool sign_request: Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
         :param _builtins.str sso_target_url: URL to send the SAML authentication requests to
         :param _builtins.bool support_groups: Should Cloudflare try to load groups from your account
         :param _builtins.str token_url: The token_endpoint URL of your IdP
+        :param _builtins.bool use_login_hint: Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
         """
         pulumi.set(__self__, "apps_domain", apps_domain)
         pulumi.set(__self__, "attributes", attributes)
@@ -151716,6 +157051,7 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
         pulumi.set(__self__, "sso_target_url", sso_target_url)
         pulumi.set(__self__, "support_groups", support_groups)
         pulumi.set(__self__, "token_url", token_url)
+        pulumi.set(__self__, "use_login_hint", use_login_hint)
 
     @_builtins.property
     @pulumi.getter(name="appsDomain")
@@ -151918,7 +157254,7 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
     def prompt(self) -> _builtins.str:
         """
         Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-        Available values: "login", "select_account", "none".
+        Available values: "login", "select_account", "none", "consent".
         """
         return pulumi.get(self, "prompt")
 
@@ -151974,6 +157310,14 @@ class GetZeroTrustAccessIdentityProviderConfigResult(dict):
         The token_endpoint URL of your IdP
         """
         return pulumi.get(self, "token_url")
+
+    @_builtins.property
+    @pulumi.getter(name="useLoginHint")
+    def use_login_hint(self) -> _builtins.bool:
+        """
+        Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+        """
+        return pulumi.get(self, "use_login_hint")
 
 
 @pulumi.output_type
@@ -152351,7 +157695,8 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
                  sign_request: _builtins.bool,
                  sso_target_url: _builtins.str,
                  support_groups: _builtins.bool,
-                 token_url: _builtins.str):
+                 token_url: _builtins.str,
+                 use_login_hint: _builtins.bool):
         """
         :param _builtins.str apps_domain: Your companies TLD
         :param Sequence[_builtins.str] attributes: A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
@@ -152382,13 +157727,14 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
         :param _builtins.str ping_env_id: Your PingOne environment identifier
         :param _builtins.bool pkce_enabled: Enable Proof Key for Code Exchange (PKCE)
         :param _builtins.str prompt: Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-               Available values: "login", "select_account", "none".
+               Available values: "login", "select_account", "none", "consent".
         :param _builtins.bool restrict_to_account_members: When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
         :param Sequence[_builtins.str] scopes: OAuth scopes
         :param _builtins.bool sign_request: Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
         :param _builtins.str sso_target_url: URL to send the SAML authentication requests to
         :param _builtins.bool support_groups: Should Cloudflare try to load groups from your account
         :param _builtins.str token_url: The token_endpoint URL of your IdP
+        :param _builtins.bool use_login_hint: Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
         """
         pulumi.set(__self__, "apps_domain", apps_domain)
         pulumi.set(__self__, "attributes", attributes)
@@ -152422,6 +157768,7 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
         pulumi.set(__self__, "sso_target_url", sso_target_url)
         pulumi.set(__self__, "support_groups", support_groups)
         pulumi.set(__self__, "token_url", token_url)
+        pulumi.set(__self__, "use_login_hint", use_login_hint)
 
     @_builtins.property
     @pulumi.getter(name="appsDomain")
@@ -152624,7 +157971,7 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
     def prompt(self) -> _builtins.str:
         """
         Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction_required error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-        Available values: "login", "select_account", "none".
+        Available values: "login", "select_account", "none", "consent".
         """
         return pulumi.get(self, "prompt")
 
@@ -152680,6 +158027,14 @@ class GetZeroTrustAccessIdentityProvidersResultConfigResult(dict):
         The token_endpoint URL of your IdP
         """
         return pulumi.get(self, "token_url")
+
+    @_builtins.property
+    @pulumi.getter(name="useLoginHint")
+    def use_login_hint(self) -> _builtins.bool:
+        """
+        Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+        """
+        return pulumi.get(self, "use_login_hint")
 
 
 @pulumi.output_type
@@ -152920,6 +158275,7 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
                  modified_after: Optional[_builtins.str] = None,
                  modified_before: Optional[_builtins.str] = None,
                  order: Optional[_builtins.str] = None,
+                 tags: Optional[Sequence[_builtins.str]] = None,
                  target_ids: Optional[Sequence[_builtins.str]] = None,
                  virtual_network_id: Optional[_builtins.str] = None):
         """
@@ -152947,6 +158303,9 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
         :param _builtins.str modified_before: Date and time at which the target was modified before (inclusive)
         :param _builtins.str order: The field to sort by.
                Available values: "hostname", "created_at".
+        :param Sequence[_builtins.str] tags: Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+               Format: `tag=key:value` (e.g., `tag=environment:production`).
+               Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
         :param Sequence[_builtins.str] target_ids: Filters for targets that have any of the following UUIDs. Specify
                `target_ids` multiple times in query parameter to build list of
                candidates.
@@ -152984,6 +158343,8 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
             pulumi.set(__self__, "modified_before", modified_before)
         if order is not None:
             pulumi.set(__self__, "order", order)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if target_ids is not None:
             pulumi.set(__self__, "target_ids", target_ids)
         if virtual_network_id is not None:
@@ -153126,6 +158487,16 @@ class GetZeroTrustAccessInfrastructureTargetFilterResult(dict):
         return pulumi.get(self, "order")
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+        Format: `tag=key:value` (e.g., `tag=environment:production`).
+        Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
     @pulumi.getter(name="targetIds")
     def target_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -153238,19 +158609,22 @@ class GetZeroTrustAccessInfrastructureTargetsResultResult(dict):
                  hostname: _builtins.str,
                  id: _builtins.str,
                  ip: 'outputs.GetZeroTrustAccessInfrastructureTargetsResultIpResult',
-                 modified_at: _builtins.str):
+                 modified_at: _builtins.str,
+                 tags: Mapping[str, _builtins.str]):
         """
         :param _builtins.str created_at: Date and time at which the target was created
         :param _builtins.str hostname: A non-unique field that refers to a target
         :param _builtins.str id: Target identifier
         :param 'GetZeroTrustAccessInfrastructureTargetsResultIpArgs' ip: The IPv4/IPv6 address that identifies where to reach a target
         :param _builtins.str modified_at: Date and time at which the target was modified
+        :param Mapping[str, _builtins.str] tags: Tags assigned to the target. Empty when no tags are assigned.
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "modified_at", modified_at)
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -153291,6 +158665,14 @@ class GetZeroTrustAccessInfrastructureTargetsResultResult(dict):
         Date and time at which the target was modified
         """
         return pulumi.get(self, "modified_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Tags assigned to the target. Empty when no tags are assigned.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
@@ -158700,6 +164082,768 @@ class GetZeroTrustAccessTagsResultResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustCasbIntegrationAuthorizationLinkResult(dict):
+    def __init__(__self__, *,
+                 components: Mapping[str, _builtins.str],
+                 link: _builtins.str):
+        pulumi.set(__self__, "components", components)
+        pulumi.set(__self__, "link", link)
+
+    @_builtins.property
+    @pulumi.getter
+    def components(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "components")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        return pulumi.get(self, "link")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbIntegrationFilterResult(dict):
+    def __init__(__self__, *,
+                 application: Optional[_builtins.str] = None,
+                 direction: Optional[_builtins.str] = None,
+                 dlp_enabled: Optional[_builtins.bool] = None,
+                 order: Optional[_builtins.str] = None,
+                 page: Optional[_builtins.int] = None,
+                 page_size: Optional[_builtins.int] = None,
+                 search: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 use_cases: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str application: Filter by application/vendor (e.g., GOOGLE*WORKSPACE, MICROSOFT*INTERNAL).
+        :param _builtins.str direction: Direction to order results.
+               Available values: "asc", "desc".
+        :param _builtins.bool dlp_enabled: Filter by DLP enabled status (true/false).
+        :param _builtins.str order: Field to order results by.
+               Available values: "application", "created", "name", "status".
+        :param _builtins.int page: Page number within the paginated result set.
+        :param _builtins.int page_size: Number of results per page.
+        :param _builtins.str search: Search integrations by name or application.
+        :param _builtins.str status: Filter by integration status.
+               Available values: "Healthy", "Initializing", "Offline", "Unhealthy".
+        :param _builtins.str use_cases: Filter by one enabled use case (for example, casb or ces).
+        """
+        if application is not None:
+            pulumi.set(__self__, "application", application)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if dlp_enabled is not None:
+            pulumi.set(__self__, "dlp_enabled", dlp_enabled)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if page is not None:
+            pulumi.set(__self__, "page", page)
+        if page_size is not None:
+            pulumi.set(__self__, "page_size", page_size)
+        if search is not None:
+            pulumi.set(__self__, "search", search)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if use_cases is not None:
+            pulumi.set(__self__, "use_cases", use_cases)
+
+    @_builtins.property
+    @pulumi.getter
+    def application(self) -> Optional[_builtins.str]:
+        """
+        Filter by application/vendor (e.g., GOOGLE*WORKSPACE, MICROSOFT*INTERNAL).
+        """
+        return pulumi.get(self, "application")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Direction to order results.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="dlpEnabled")
+    def dlp_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Filter by DLP enabled status (true/false).
+        """
+        return pulumi.get(self, "dlp_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> Optional[_builtins.str]:
+        """
+        Field to order results by.
+        Available values: "application", "created", "name", "status".
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> Optional[_builtins.int]:
+        """
+        Page number within the paginated result set.
+        """
+        return pulumi.get(self, "page")
+
+    @_builtins.property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        """
+        Number of results per page.
+        """
+        return pulumi.get(self, "page_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Search integrations by name or application.
+        """
+        return pulumi.get(self, "search")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Filter by integration status.
+        Available values: "Healthy", "Initializing", "Offline", "Unhealthy".
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="useCases")
+    def use_cases(self) -> Optional[_builtins.str]:
+        """
+        Filter by one enabled use case (for example, casb or ces).
+        """
+        return pulumi.get(self, "use_cases")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbIntegrationsResultResult(dict):
+    def __init__(__self__, *,
+                 application: Mapping[str, _builtins.str],
+                 created: _builtins.str,
+                 id: _builtins.str,
+                 is_paused: _builtins.bool,
+                 name: _builtins.str,
+                 status: _builtins.str,
+                 updated: _builtins.str):
+        """
+        :param _builtins.str created: When the integration was created.
+        :param _builtins.str id: Integration ID.
+        :param _builtins.bool is_paused: Whether the user paused the integration.
+        :param _builtins.str name: Name of the integration.
+        :param _builtins.str status: Integration status.
+        :param _builtins.str updated: When the integration was last updated.
+        """
+        pulumi.set(__self__, "application", application)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_paused", is_paused)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated", updated)
+
+    @_builtins.property
+    @pulumi.getter
+    def application(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "application")
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        When the integration was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Integration ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isPaused")
+    def is_paused(self) -> _builtins.bool:
+        """
+        Whether the user paused the integration.
+        """
+        return pulumi.get(self, "is_paused")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Integration status.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def updated(self) -> _builtins.str:
+        """
+        When the integration was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbPoliciesResultResult(dict):
+    def __init__(__self__, *,
+                 actions: 'outputs.GetZeroTrustCasbPoliciesResultActionsResult',
+                 applies_to_all_integrations: _builtins.bool,
+                 created_at: _builtins.str,
+                 description: _builtins.str,
+                 disabled_at: _builtins.str,
+                 display_name: _builtins.str,
+                 enabled: _builtins.bool,
+                 finding_type_id: _builtins.str,
+                 id: _builtins.str,
+                 integration_ids: Sequence[_builtins.str],
+                 last_triggered_at: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param 'GetZeroTrustCasbPoliciesResultActionsArgs' actions: The actions configured for this policy.
+        :param _builtins.bool applies_to_all_integrations: When true, the policy applies to all integrations for the account. When false, it applies only to the specified integration_ids.
+        :param _builtins.str created_at: Timestamp when the policy was created.
+        :param _builtins.str description: User-set description of what this policy does. Limited to 1000 characters.
+        :param _builtins.str disabled_at: Timestamp when the policy was disabled. Omitted from the response when the policy
+               is enabled.
+        :param _builtins.str display_name: Display name for the policy configuration. Limited to 255 characters.
+        :param _builtins.bool enabled: Whether the policy is enabled. Derived from disabled*at (enabled when disabled*at is unset).
+        :param _builtins.str finding_type_id: The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+        :param _builtins.str id: Unique identifier for the policy configuration.
+        :param Sequence[_builtins.str] integration_ids: The integrations this policy applies to.
+        :param _builtins.str last_triggered_at: Timestamp of the most recent successful policy invocation. Omitted
+               from the response when the policy has never been successfully
+               triggered. Only populated on GET responses; absent on responses from
+               create/update endpoints.
+        :param _builtins.str updated_at: Timestamp when the policy was last updated.
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "applies_to_all_integrations", applies_to_all_integrations)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disabled_at", disabled_at)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "finding_type_id", finding_type_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "integration_ids", integration_ids)
+        pulumi.set(__self__, "last_triggered_at", last_triggered_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> 'outputs.GetZeroTrustCasbPoliciesResultActionsResult':
+        """
+        The actions configured for this policy.
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter(name="appliesToAllIntegrations")
+    def applies_to_all_integrations(self) -> _builtins.bool:
+        """
+        When true, the policy applies to all integrations for the account. When false, it applies only to the specified integration_ids.
+        """
+        return pulumi.get(self, "applies_to_all_integrations")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp when the policy was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        User-set description of what this policy does. Limited to 1000 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="disabledAt")
+    def disabled_at(self) -> _builtins.str:
+        """
+        Timestamp when the policy was disabled. Omitted from the response when the policy
+        is enabled.
+        """
+        return pulumi.get(self, "disabled_at")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name for the policy configuration. Limited to 255 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the policy is enabled. Derived from disabled*at (enabled when disabled*at is unset).
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="findingTypeId")
+    def finding_type_id(self) -> _builtins.str:
+        """
+        The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+        """
+        return pulumi.get(self, "finding_type_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier for the policy configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="integrationIds")
+    def integration_ids(self) -> Sequence[_builtins.str]:
+        """
+        The integrations this policy applies to.
+        """
+        return pulumi.get(self, "integration_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="lastTriggeredAt")
+    def last_triggered_at(self) -> _builtins.str:
+        """
+        Timestamp of the most recent successful policy invocation. Omitted
+        from the response when the policy has never been successfully
+        triggered. Only populated on GET responses; absent on responses from
+        create/update endpoints.
+        """
+        return pulumi.get(self, "last_triggered_at")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the policy was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbPoliciesResultActionsResult(dict):
+    def __init__(__self__, *,
+                 remediation_types: Sequence['outputs.GetZeroTrustCasbPoliciesResultActionsRemediationTypeResult'],
+                 webhook_configs: Sequence['outputs.GetZeroTrustCasbPoliciesResultActionsWebhookConfigResult']):
+        """
+        :param Sequence['GetZeroTrustCasbPoliciesResultActionsRemediationTypeArgs'] remediation_types: List of remediation types that will be executed.
+        :param Sequence['GetZeroTrustCasbPoliciesResultActionsWebhookConfigArgs'] webhook_configs: List of webhook configurations that will be triggered.
+        """
+        pulumi.set(__self__, "remediation_types", remediation_types)
+        pulumi.set(__self__, "webhook_configs", webhook_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="remediationTypes")
+    def remediation_types(self) -> Sequence['outputs.GetZeroTrustCasbPoliciesResultActionsRemediationTypeResult']:
+        """
+        List of remediation types that will be executed.
+        """
+        return pulumi.get(self, "remediation_types")
+
+    @_builtins.property
+    @pulumi.getter(name="webhookConfigs")
+    def webhook_configs(self) -> Sequence['outputs.GetZeroTrustCasbPoliciesResultActionsWebhookConfigResult']:
+        """
+        List of webhook configurations that will be triggered.
+        """
+        return pulumi.get(self, "webhook_configs")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbPoliciesResultActionsRemediationTypeResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 remediation_type: _builtins.str,
+                 remediation_type_id: _builtins.str):
+        """
+        :param _builtins.str display_name: Display name/label of the remediation type.
+        :param _builtins.str remediation_type: The system name of the remediation type.
+        :param _builtins.str remediation_type_id: Unique identifier for the remediation type.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "remediation_type", remediation_type)
+        pulumi.set(__self__, "remediation_type_id", remediation_type_id)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name/label of the remediation type.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="remediationType")
+    def remediation_type(self) -> _builtins.str:
+        """
+        The system name of the remediation type.
+        """
+        return pulumi.get(self, "remediation_type")
+
+    @_builtins.property
+    @pulumi.getter(name="remediationTypeId")
+    def remediation_type_id(self) -> _builtins.str:
+        """
+        Unique identifier for the remediation type.
+        """
+        return pulumi.get(self, "remediation_type_id")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbPoliciesResultActionsWebhookConfigResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 webhook_config_id: _builtins.str):
+        """
+        :param _builtins.str display_name: Display name/label of the webhook configuration.
+        :param _builtins.str webhook_config_id: Unique identifier for the webhook configuration.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "webhook_config_id", webhook_config_id)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name/label of the webhook configuration.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="webhookConfigId")
+    def webhook_config_id(self) -> _builtins.str:
+        """
+        Unique identifier for the webhook configuration.
+        """
+        return pulumi.get(self, "webhook_config_id")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbPolicyActionsResult(dict):
+    def __init__(__self__, *,
+                 remediation_types: Sequence['outputs.GetZeroTrustCasbPolicyActionsRemediationTypeResult'],
+                 webhook_configs: Sequence['outputs.GetZeroTrustCasbPolicyActionsWebhookConfigResult']):
+        """
+        :param Sequence['GetZeroTrustCasbPolicyActionsRemediationTypeArgs'] remediation_types: List of remediation types that will be executed.
+        :param Sequence['GetZeroTrustCasbPolicyActionsWebhookConfigArgs'] webhook_configs: List of webhook configurations that will be triggered.
+        """
+        pulumi.set(__self__, "remediation_types", remediation_types)
+        pulumi.set(__self__, "webhook_configs", webhook_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="remediationTypes")
+    def remediation_types(self) -> Sequence['outputs.GetZeroTrustCasbPolicyActionsRemediationTypeResult']:
+        """
+        List of remediation types that will be executed.
+        """
+        return pulumi.get(self, "remediation_types")
+
+    @_builtins.property
+    @pulumi.getter(name="webhookConfigs")
+    def webhook_configs(self) -> Sequence['outputs.GetZeroTrustCasbPolicyActionsWebhookConfigResult']:
+        """
+        List of webhook configurations that will be triggered.
+        """
+        return pulumi.get(self, "webhook_configs")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbPolicyActionsRemediationTypeResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 remediation_type: _builtins.str,
+                 remediation_type_id: _builtins.str):
+        """
+        :param _builtins.str display_name: Display name/label of the remediation type.
+        :param _builtins.str remediation_type: The system name of the remediation type.
+        :param _builtins.str remediation_type_id: Unique identifier for the remediation type.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "remediation_type", remediation_type)
+        pulumi.set(__self__, "remediation_type_id", remediation_type_id)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name/label of the remediation type.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="remediationType")
+    def remediation_type(self) -> _builtins.str:
+        """
+        The system name of the remediation type.
+        """
+        return pulumi.get(self, "remediation_type")
+
+    @_builtins.property
+    @pulumi.getter(name="remediationTypeId")
+    def remediation_type_id(self) -> _builtins.str:
+        """
+        Unique identifier for the remediation type.
+        """
+        return pulumi.get(self, "remediation_type_id")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbPolicyActionsWebhookConfigResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 webhook_config_id: _builtins.str):
+        """
+        :param _builtins.str display_name: Display name/label of the webhook configuration.
+        :param _builtins.str webhook_config_id: Unique identifier for the webhook configuration.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "webhook_config_id", webhook_config_id)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name/label of the webhook configuration.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="webhookConfigId")
+    def webhook_config_id(self) -> _builtins.str:
+        """
+        Unique identifier for the webhook configuration.
+        """
+        return pulumi.get(self, "webhook_config_id")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbWebhookHeaderResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: Header key name (lowercase).
+        :param _builtins.str value: Header value. This field is never returned in API responses for security reasons.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Header key name (lowercase).
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Header value. This field is never returned in API responses for security reasons.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbWebhooksResultResult(dict):
+    def __init__(__self__, *,
+                 authentication_type: _builtins.str,
+                 created_at: _builtins.str,
+                 destination_url: _builtins.str,
+                 headers: Sequence['outputs.GetZeroTrustCasbWebhooksResultHeaderResult'],
+                 id: _builtins.str,
+                 label: _builtins.str,
+                 status: _builtins.str,
+                 updated_at: _builtins.str,
+                 version: _builtins.int):
+        """
+        :param _builtins.str authentication_type: Type of authentication used for the webhook.
+               Available values: "Basic Auth", "None", "Bearer Auth", "Static Headers", "HMAC-Signing".
+        :param _builtins.str created_at: Timestamp when the webhook configuration was created.
+        :param _builtins.str destination_url: Target URL for the webhook configuration. Where resulting data will be sent.
+        :param Sequence['GetZeroTrustCasbWebhooksResultHeaderArgs'] headers: List of header keys configured for this webhook. Values are not included for security reasons.
+        :param _builtins.str id: Unique identifier for the specific webhook configuration.
+        :param _builtins.str label: Account-specified display label for the webhook configuration.
+        :param _builtins.str status: Current status of the webhook configuration. If disabled, data cannot be sent through this configuration.
+               Available values: "enabled", "disabled".
+        :param _builtins.str updated_at: Timestamp when the webhook configuration was last updated.
+        :param _builtins.int version: Version number of the configuration.
+        """
+        pulumi.set(__self__, "authentication_type", authentication_type)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "destination_url", destination_url)
+        pulumi.set(__self__, "headers", headers)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> _builtins.str:
+        """
+        Type of authentication used for the webhook.
+        Available values: "Basic Auth", "None", "Bearer Auth", "Static Headers", "HMAC-Signing".
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp when the webhook configuration was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUrl")
+    def destination_url(self) -> _builtins.str:
+        """
+        Target URL for the webhook configuration. Where resulting data will be sent.
+        """
+        return pulumi.get(self, "destination_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Sequence['outputs.GetZeroTrustCasbWebhooksResultHeaderResult']:
+        """
+        List of header keys configured for this webhook. Values are not included for security reasons.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier for the specific webhook configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        Account-specified display label for the webhook configuration.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current status of the webhook configuration. If disabled, data cannot be sent through this configuration.
+        Available values: "enabled", "disabled".
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the webhook configuration was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.int:
+        """
+        Version number of the configuration.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetZeroTrustCasbWebhooksResultHeaderResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: Header key name (lowercase).
+        :param _builtins.str value: Header value. This field is never returned in API responses for security reasons.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Header key name (lowercase).
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Header value. This field is never returned in API responses for security reasons.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetZeroTrustDeviceCustomProfileBrowserExtensionConfigResult(dict):
+    def __init__(__self__, *,
+                 proxy_control: _builtins.str,
+                 proxy_enabled: _builtins.bool):
+        """
+        :param _builtins.str proxy_control: Whether the user may disable the browser extension proxy.
+               Available values: "unlocked", "locked".
+        :param _builtins.bool proxy_enabled: Whether the browser extension proxy is active.
+        """
+        pulumi.set(__self__, "proxy_control", proxy_control)
+        pulumi.set(__self__, "proxy_enabled", proxy_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="proxyControl")
+    def proxy_control(self) -> _builtins.str:
+        """
+        Whether the user may disable the browser extension proxy.
+        Available values: "unlocked", "locked".
+        """
+        return pulumi.get(self, "proxy_control")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyEnabled")
+    def proxy_enabled(self) -> _builtins.bool:
+        """
+        Whether the browser extension proxy is active.
+        """
+        return pulumi.get(self, "proxy_enabled")
+
+
+@pulumi.output_type
 class GetZeroTrustDeviceCustomProfileDnsSearchSuffixResult(dict):
     def __init__(__self__, *,
                  description: _builtins.str,
@@ -158806,6 +164950,26 @@ class GetZeroTrustDeviceCustomProfileFallbackDomainResult(dict):
         The domain suffix to match when resolving locally.
         """
         return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class GetZeroTrustDeviceCustomProfileFilterResult(dict):
+    def __init__(__self__, *,
+                 profile_type: _builtins.str):
+        """
+        :param _builtins.str profile_type: Filter profiles by client type. When omitted, only WARP profiles are returned.
+               Available values: "warp", "browser_extension".
+        """
+        pulumi.set(__self__, "profile_type", profile_type)
+
+    @_builtins.property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> _builtins.str:
+        """
+        Filter profiles by client type. When omitted, only WARP profiles are returned.
+        Available values: "warp", "browser_extension".
+        """
+        return pulumi.get(self, "profile_type")
 
 
 @pulumi.output_type
@@ -158942,6 +165106,7 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
                  allow_updates: _builtins.bool,
                  allowed_to_leave: _builtins.bool,
                  auto_connect: _builtins.float,
+                 browser_extension_config: 'outputs.GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfigResult',
                  captive_portal: _builtins.float,
                  default: _builtins.bool,
                  description: _builtins.str,
@@ -158960,6 +165125,7 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
                  name: _builtins.str,
                  policy_id: _builtins.str,
                  precedence: _builtins.float,
+                 profile_type: _builtins.str,
                  register_interface_ip_with_dns: _builtins.bool,
                  sccm_vpn_boundary_support: _builtins.bool,
                  service_mode_v2: 'outputs.GetZeroTrustDeviceCustomProfilesResultServiceModeV2Result',
@@ -158967,14 +165133,16 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
                  switch_locked: _builtins.bool,
                  target_tests: Sequence['outputs.GetZeroTrustDeviceCustomProfilesResultTargetTestResult'],
                  tunnel_protocol: _builtins.str,
+                 uninstall_protection: _builtins.bool,
                  virtual_networks: 'outputs.GetZeroTrustDeviceCustomProfilesResultVirtualNetworksResult'):
         """
         :param _builtins.bool allow_mode_switch: Whether to allow the user to switch WARP between modes.
         :param _builtins.bool allow_updates: Whether to receive update notifications when a new version of the client is available.
         :param _builtins.bool allowed_to_leave: Whether to allow devices to leave the organization.
         :param _builtins.float auto_connect: The amount of time in seconds to reconnect after having been disabled.
+        :param 'GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfigArgs' browser_extension_config: Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
         :param _builtins.float captive_portal: Turn on the captive portal after the specified amount of time.
-        :param _builtins.bool default: Whether the policy is the default policy for an account.
+        :param _builtins.bool default: Whether the policy is the account default. WARP group profiles cannot set this field.
         :param _builtins.str description: A description of the policy.
         :param _builtins.bool disable_auto_fallback: If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         :param Sequence['GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffixArgs'] dns_search_suffixes: List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
@@ -158987,17 +165155,21 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
         :param _builtins.str match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         :param _builtins.str name: The name of the device settings profile.
         :param _builtins.float precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
+        :param _builtins.str profile_type: The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+               Available values: "warp", "browser_extension".
         :param _builtins.bool register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param _builtins.bool sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param _builtins.str support_url: The URL to launch when the Send Feedback button is clicked.
         :param _builtins.bool switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param _builtins.str tunnel_protocol: Determines which tunnel protocol to use.
+        :param _builtins.bool uninstall_protection: Determines whether uninstalling the WARP client requires an override code. (Windows only).
         :param 'GetZeroTrustDeviceCustomProfilesResultVirtualNetworksArgs' virtual_networks: Virtual network access settings for the device.
         """
         pulumi.set(__self__, "allow_mode_switch", allow_mode_switch)
         pulumi.set(__self__, "allow_updates", allow_updates)
         pulumi.set(__self__, "allowed_to_leave", allowed_to_leave)
         pulumi.set(__self__, "auto_connect", auto_connect)
+        pulumi.set(__self__, "browser_extension_config", browser_extension_config)
         pulumi.set(__self__, "captive_portal", captive_portal)
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "description", description)
@@ -159016,6 +165188,7 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "policy_id", policy_id)
         pulumi.set(__self__, "precedence", precedence)
+        pulumi.set(__self__, "profile_type", profile_type)
         pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
         pulumi.set(__self__, "sccm_vpn_boundary_support", sccm_vpn_boundary_support)
         pulumi.set(__self__, "service_mode_v2", service_mode_v2)
@@ -159023,6 +165196,7 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
         pulumi.set(__self__, "switch_locked", switch_locked)
         pulumi.set(__self__, "target_tests", target_tests)
         pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
+        pulumi.set(__self__, "uninstall_protection", uninstall_protection)
         pulumi.set(__self__, "virtual_networks", virtual_networks)
 
     @_builtins.property
@@ -159058,6 +165232,14 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
         return pulumi.get(self, "auto_connect")
 
     @_builtins.property
+    @pulumi.getter(name="browserExtensionConfig")
+    def browser_extension_config(self) -> 'outputs.GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfigResult':
+        """
+        Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+        """
+        return pulumi.get(self, "browser_extension_config")
+
+    @_builtins.property
     @pulumi.getter(name="captivePortal")
     def captive_portal(self) -> _builtins.float:
         """
@@ -159069,7 +165251,7 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
     @pulumi.getter
     def default(self) -> _builtins.bool:
         """
-        Whether the policy is the default policy for an account.
+        Whether the policy is the account default. WARP group profiles cannot set this field.
         """
         return pulumi.get(self, "default")
 
@@ -159190,6 +165372,15 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
         return pulumi.get(self, "precedence")
 
     @_builtins.property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> _builtins.str:
+        """
+        The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+        Available values: "warp", "browser_extension".
+        """
+        return pulumi.get(self, "profile_type")
+
+    @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")
     def register_interface_ip_with_dns(self) -> _builtins.bool:
         """
@@ -159240,12 +165431,51 @@ class GetZeroTrustDeviceCustomProfilesResultResult(dict):
         return pulumi.get(self, "tunnel_protocol")
 
     @_builtins.property
+    @pulumi.getter(name="uninstallProtection")
+    def uninstall_protection(self) -> _builtins.bool:
+        """
+        Determines whether uninstalling the WARP client requires an override code. (Windows only).
+        """
+        return pulumi.get(self, "uninstall_protection")
+
+    @_builtins.property
     @pulumi.getter(name="virtualNetworks")
     def virtual_networks(self) -> 'outputs.GetZeroTrustDeviceCustomProfilesResultVirtualNetworksResult':
         """
         Virtual network access settings for the device.
         """
         return pulumi.get(self, "virtual_networks")
+
+
+@pulumi.output_type
+class GetZeroTrustDeviceCustomProfilesResultBrowserExtensionConfigResult(dict):
+    def __init__(__self__, *,
+                 proxy_control: _builtins.str,
+                 proxy_enabled: _builtins.bool):
+        """
+        :param _builtins.str proxy_control: Whether the user may disable the browser extension proxy.
+               Available values: "unlocked", "locked".
+        :param _builtins.bool proxy_enabled: Whether the browser extension proxy is active.
+        """
+        pulumi.set(__self__, "proxy_control", proxy_control)
+        pulumi.set(__self__, "proxy_enabled", proxy_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="proxyControl")
+    def proxy_control(self) -> _builtins.str:
+        """
+        Whether the user may disable the browser extension proxy.
+        Available values: "unlocked", "locked".
+        """
+        return pulumi.get(self, "proxy_control")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyEnabled")
+    def proxy_enabled(self) -> _builtins.bool:
+        """
+        Whether the browser extension proxy is active.
+        """
+        return pulumi.get(self, "proxy_enabled")
 
 
 @pulumi.output_type
@@ -165162,6 +171392,109 @@ class GetZeroTrustDnsLocationEndpointsIpv6NetworkResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustDnsLocationFilterResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 filters: Optional[Sequence[_builtins.str]] = None,
+                 order_by: Optional[_builtins.str] = None,
+                 search: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str direction: Sort direction. Only takes effect when `order_by` is also provided; it
+               is ignored otherwise. When `direction` is omitted the effective
+               direction is field-specific: `created_at` and `updated_at` default to
+               descending (newest first); `name` defaults to ascending.
+                 * `asc` — ascending.
+                 * `desc` — descending.
+                   Available values: "asc", "desc".
+        :param Sequence[_builtins.str] filters: Filter the returned locations by one or more `field:value` pairs.
+               Repeat the parameter to apply multiple filters; they are combined with
+               logical AND (a location must satisfy every filter to be returned).
+               
+               Supported fields and their matching behaviour:
+                 * `name` — case-insensitive substring match on the location name.
+                 * `id` — substring match on the location ID (UUID), with or without dashes.
+                 * `is_default` — whether it is the default for the account.
+               
+               Each entry must match one of the per-field patterns below:
+                 * the field must be one of `name`, `id`, or `is_default`;
+                 * `name`/`id` accept any value;
+                 * `is_default` only accepts `true` or `false`; any other value returns `400`
+        :param _builtins.str order_by: Field to sort the returned locations by. When omitted, the order of
+               results is unspecified. Supported values:
+                 * `name` — sort alphabetically by location name.
+                 * `created_at` — sort by creation time; defaults to descending unless `direction` is set.
+                 * `updated_at` — sort by last-modified time; defaults to descending unless `direction` is set.
+                   Available values: "name", "created_at", "updated_at".
+        :param _builtins.str search: Case-insensitive substring match on the location name. When combined
+               with `filter`, both must match (logical AND).
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if order_by is not None:
+            pulumi.set(__self__, "order_by", order_by)
+        if search is not None:
+            pulumi.set(__self__, "search", search)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Sort direction. Only takes effect when `order_by` is also provided; it
+        is ignored otherwise. When `direction` is omitted the effective
+        direction is field-specific: `created_at` and `updated_at` default to
+        descending (newest first); `name` defaults to ascending.
+          * `asc` — ascending.
+          * `desc` — descending.
+            Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Filter the returned locations by one or more `field:value` pairs.
+        Repeat the parameter to apply multiple filters; they are combined with
+        logical AND (a location must satisfy every filter to be returned).
+
+        Supported fields and their matching behaviour:
+          * `name` — case-insensitive substring match on the location name.
+          * `id` — substring match on the location ID (UUID), with or without dashes.
+          * `is_default` — whether it is the default for the account.
+
+        Each entry must match one of the per-field patterns below:
+          * the field must be one of `name`, `id`, or `is_default`;
+          * `name`/`id` accept any value;
+          * `is_default` only accepts `true` or `false`; any other value returns `400`
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Field to sort the returned locations by. When omitted, the order of
+        results is unspecified. Supported values:
+          * `name` — sort alphabetically by location name.
+          * `created_at` — sort by creation time; defaults to descending unless `direction` is set.
+          * `updated_at` — sort by last-modified time; defaults to descending unless `direction` is set.
+            Available values: "name", "created_at", "updated_at".
+        """
+        return pulumi.get(self, "order_by")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Case-insensitive substring match on the location name. When combined
+        with `filter`, both must match (logical AND).
+        """
+        return pulumi.get(self, "search")
+
+
+@pulumi.output_type
 class GetZeroTrustDnsLocationMaxTtlResult(dict):
     def __init__(__self__, *,
                  mode: _builtins.str,
@@ -165236,8 +171569,8 @@ class GetZeroTrustDnsLocationsResultResult(dict):
         :param _builtins.bool ecs_support: Indicate whether the location must resolve EDNS queries.
         :param 'GetZeroTrustDnsLocationsResultEndpointsArgs' endpoints: Configure the destination endpoints for this location.
         :param _builtins.str ip: Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-        :param _builtins.str ipv4_destination: Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-        :param _builtins.str ipv4_destination_backup: Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+        :param _builtins.str ipv4_destination: Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
+        :param _builtins.str ipv4_destination_backup: Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
         :param 'GetZeroTrustDnsLocationsResultMaxTtlArgs' max_ttl: Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
         :param _builtins.str name: Specify the location name.
         :param Sequence['GetZeroTrustDnsLocationsResultNetworkArgs'] networks: Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -165328,7 +171661,7 @@ class GetZeroTrustDnsLocationsResultResult(dict):
     @pulumi.getter(name="ipv4Destination")
     def ipv4_destination(self) -> _builtins.str:
         """
-        Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+        Show the primary destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
         """
         return pulumi.get(self, "ipv4_destination")
 
@@ -165336,7 +171669,7 @@ class GetZeroTrustDnsLocationsResultResult(dict):
     @pulumi.getter(name="ipv4DestinationBackup")
     def ipv4_destination_backup(self) -> _builtins.str:
         """
-        Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+        Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
         """
         return pulumi.get(self, "ipv4_destination_backup")
 
@@ -167494,6 +173827,73 @@ class GetZeroTrustGatewayPolicyExpirationResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustGatewayPolicyFilterResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 filters: Optional[Sequence[_builtins.str]] = None,
+                 order_by: Optional[_builtins.str] = None,
+                 search: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str direction: Sort direction. When `order_by` is omitted, this controls the direction
+               of the existing precedence ordering. Shared rules remain first in either
+               direction. Accepted values are `asc` and `desc`.
+               Available values: "asc", "desc".
+        :param Sequence[_builtins.str] filters: Filter the returned rules by one or more `field:value` pairs. Repeat the
+               parameter to combine filters with logical AND.
+        :param _builtins.str order_by: Field to sort the returned rules by. Supported values are `name`,
+               `created_at`, `updated_at`, and `precedence`.
+               Available values: "name", "created_at", "updated_at", "precedence".
+        :param _builtins.str search: Case-insensitive substring search across rule name and description.
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if order_by is not None:
+            pulumi.set(__self__, "order_by", order_by)
+        if search is not None:
+            pulumi.set(__self__, "search", search)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Sort direction. When `order_by` is omitted, this controls the direction
+        of the existing precedence ordering. Shared rules remain first in either
+        direction. Accepted values are `asc` and `desc`.
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Filter the returned rules by one or more `field:value` pairs. Repeat the
+        parameter to combine filters with logical AND.
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Field to sort the returned rules by. Supported values are `name`,
+        `created_at`, `updated_at`, and `precedence`.
+        Available values: "name", "created_at", "updated_at", "precedence".
+        """
+        return pulumi.get(self, "order_by")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Case-insensitive substring search across rule name and description.
+        """
+        return pulumi.get(self, "search")
+
+
+@pulumi.output_type
 class GetZeroTrustGatewayPolicyRuleSettingsResult(dict):
     def __init__(__self__, *,
                  add_headers: Mapping[str, Sequence[_builtins.str]],
@@ -168530,6 +174930,107 @@ class GetZeroTrustGatewayPolicyScheduleResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustGatewayProxyEndpointFilterResult(dict):
+    def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 filters: Optional[Sequence[_builtins.str]] = None,
+                 order_by: Optional[_builtins.str] = None,
+                 search: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str direction: Sort direction. Only takes effect when `order_by` is also provided; it
+               is ignored otherwise. When `direction` is omitted the effective
+               direction is field-specific: `created_at` and `updated_at` default to
+               descending (newest first); `name` defaults to ascending.
+                 * `asc` — ascending.
+                 * `desc` — descending.
+                   Available values: "asc", "desc".
+        :param Sequence[_builtins.str] filters: Filter the returned proxy endpoints by one or more `field:value` pairs.
+               Repeat the parameter to apply multiple filters; they are combined with
+               logical AND (an endpoint must satisfy every filter to be returned).
+               
+               Supported fields and their matching behaviour:
+                 * `name` — case-insensitive substring match on the endpoint name.
+                 * `id` — substring match on the endpoint ID (UUID), with or without dashes.
+                 * `kind` — exact match on the endpoint kind. The value must be `ip` or `identity`; any other value returns `400`.
+               
+               Each entry must match one of the per-field patterns below: the field
+               must be one of `name`, `id`, or `kind`; `name`/`id` accept any value,
+               while `kind` only accepts `ip` or `identity`.
+        :param _builtins.str order_by: Field to sort the returned endpoints by. When omitted, the order of
+               results is unspecified. Supported values:
+                 * `name` — sort alphabetically by endpoint name.
+                 * `created_at` — sort by creation time; defaults to descending unless `direction` is set.
+                 * `updated_at` — sort by last-modified time; defaults to descending unless `direction` is set.
+                   Available values: "name", "created_at", "updated_at".
+        :param _builtins.str search: Case-insensitive substring match on the endpoint name. When combined
+               with `filter`, both must match (logical AND).
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if order_by is not None:
+            pulumi.set(__self__, "order_by", order_by)
+        if search is not None:
+            pulumi.set(__self__, "search", search)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Sort direction. Only takes effect when `order_by` is also provided; it
+        is ignored otherwise. When `direction` is omitted the effective
+        direction is field-specific: `created_at` and `updated_at` default to
+        descending (newest first); `name` defaults to ascending.
+          * `asc` — ascending.
+          * `desc` — descending.
+            Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Filter the returned proxy endpoints by one or more `field:value` pairs.
+        Repeat the parameter to apply multiple filters; they are combined with
+        logical AND (an endpoint must satisfy every filter to be returned).
+
+        Supported fields and their matching behaviour:
+          * `name` — case-insensitive substring match on the endpoint name.
+          * `id` — substring match on the endpoint ID (UUID), with or without dashes.
+          * `kind` — exact match on the endpoint kind. The value must be `ip` or `identity`; any other value returns `400`.
+
+        Each entry must match one of the per-field patterns below: the field
+        must be one of `name`, `id`, or `kind`; `name`/`id` accept any value,
+        while `kind` only accepts `ip` or `identity`.
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Field to sort the returned endpoints by. When omitted, the order of
+        results is unspecified. Supported values:
+          * `name` — sort alphabetically by endpoint name.
+          * `created_at` — sort by creation time; defaults to descending unless `direction` is set.
+          * `updated_at` — sort by last-modified time; defaults to descending unless `direction` is set.
+            Available values: "name", "created_at", "updated_at".
+        """
+        return pulumi.get(self, "order_by")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Case-insensitive substring match on the endpoint name. When combined
+        with `filter`, both must match (logical AND).
+        """
+        return pulumi.get(self, "search")
+
+
+@pulumi.output_type
 class GetZeroTrustGatewayProxyEndpointsResultResult(dict):
     def __init__(__self__, *,
                  created_at: _builtins.str,
@@ -169361,13 +175862,123 @@ class GetZeroTrustGatewaySettingsSettingsTlsDecryptResult(dict):
 @pulumi.output_type
 class GetZeroTrustListFilterResult(dict):
     def __init__(__self__, *,
+                 direction: Optional[_builtins.str] = None,
+                 filters: Optional[Sequence[_builtins.str]] = None,
+                 order_by: Optional[_builtins.str] = None,
+                 search: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
         """
+        :param _builtins.str direction: Sort direction. Applies to the field named in `order_by`; when `order_by`
+               is omitted it applies to the default `created_at` ordering. When
+               `direction` is omitted the default is field-specific: explicitly choosing
+               `created_at` or `updated_at` defaults to descending (newest first); `name`
+               and `item_count` default to ascending; and the default `created_at`
+               ordering used when `order_by` is omitted is ascending (for backwards
+               compatibility).
+                 * `asc` — ascending.
+                 * `desc` — descending.
+                   Available values: "asc", "desc".
+        :param Sequence[_builtins.str] filters: Filter the returned lists by one or more `field:value` pairs.
+               Repeat the parameter to apply multiple filters; they are combined with
+               logical AND (a list must satisfy every filter to be returned).
+               
+               Supported fields and their matching behaviour:
+                 * `name` — case-insensitive substring match on the list name.
+                 * `id` — substring match on the list ID (UUID), with or without dashes.
+                 * `type` — exact match on the list type. Supersedes the legacy `type` query
+                   parameter when both are supplied. Must be one of the valid type values.
+                 * `item_count` — exact integer match on the number of items in the list.
+               
+               Each entry must match one of the per-field patterns below: the field must be
+               one of `name`, `id`, `type`, or `item_count`; `name`/`id` accept any value,
+               `type` is restricted to the valid list type values, and `item_count` must be
+               a non-negative integer.
+        :param _builtins.str order_by: Field to sort the returned lists by. When omitted, results are ordered by
+               `created_at` in ascending order (i.e. creation order) for backwards
+               compatibility. Supported values:
+                 * `name` — sort alphabetically by list name.
+                 * `created_at` — sort by creation time; defaults to descending unless `direction` is set.
+                 * `updated_at` — sort by last-modified time; defaults to descending unless `direction` is set.
+                 * `item_count` — sort by number of items in the list.
+                   Available values: "name", "created_at", "updated_at", "item_count".
+        :param _builtins.str search: Case-insensitive substring match on the list name or description. When
+               combined with `filter`, both must match (logical AND).
         :param _builtins.str type: Specify the list type.
                Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if order_by is not None:
+            pulumi.set(__self__, "order_by", order_by)
+        if search is not None:
+            pulumi.set(__self__, "search", search)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Sort direction. Applies to the field named in `order_by`; when `order_by`
+        is omitted it applies to the default `created_at` ordering. When
+        `direction` is omitted the default is field-specific: explicitly choosing
+        `created_at` or `updated_at` defaults to descending (newest first); `name`
+        and `item_count` default to ascending; and the default `created_at`
+        ordering used when `order_by` is omitted is ascending (for backwards
+        compatibility).
+          * `asc` — ascending.
+          * `desc` — descending.
+            Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Filter the returned lists by one or more `field:value` pairs.
+        Repeat the parameter to apply multiple filters; they are combined with
+        logical AND (a list must satisfy every filter to be returned).
+
+        Supported fields and their matching behaviour:
+          * `name` — case-insensitive substring match on the list name.
+          * `id` — substring match on the list ID (UUID), with or without dashes.
+          * `type` — exact match on the list type. Supersedes the legacy `type` query
+            parameter when both are supplied. Must be one of the valid type values.
+          * `item_count` — exact integer match on the number of items in the list.
+
+        Each entry must match one of the per-field patterns below: the field must be
+        one of `name`, `id`, `type`, or `item_count`; `name`/`id` accept any value,
+        `type` is restricted to the valid list type values, and `item_count` must be
+        a non-negative integer.
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> Optional[_builtins.str]:
+        """
+        Field to sort the returned lists by. When omitted, results are ordered by
+        `created_at` in ascending order (i.e. creation order) for backwards
+        compatibility. Supported values:
+          * `name` — sort alphabetically by list name.
+          * `created_at` — sort by creation time; defaults to descending unless `direction` is set.
+          * `updated_at` — sort by last-modified time; defaults to descending unless `direction` is set.
+          * `item_count` — sort by number of items in the list.
+            Available values: "name", "created_at", "updated_at", "item_count".
+        """
+        return pulumi.get(self, "order_by")
+
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        Case-insensitive substring match on the list name or description. When
+        combined with `filter`, both must match (logical AND).
+        """
+        return pulumi.get(self, "search")
 
     @_builtins.property
     @pulumi.getter
@@ -169924,6 +176535,48 @@ class GetZeroTrustOrganizationMfaSshPivKeyRequirementsResult(dict):
 
 
 @pulumi.output_type
+class GetZeroTrustOrganizationServiceTokenInactivityResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 enabled: _builtins.bool,
+                 inactivity_threshold_days: _builtins.int):
+        """
+        :param _builtins.str action: The action applied to an inactive service token.
+               Available values: "disable", "delete".
+        :param _builtins.bool enabled: Whether automatic enforcement for inactive service tokens is enabled.
+        :param _builtins.int inactivity_threshold_days: The number of days a service token must be inactive before the configured action is applied.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "inactivity_threshold_days", inactivity_threshold_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The action applied to an inactive service token.
+        Available values: "disable", "delete".
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether automatic enforcement for inactive service tokens is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="inactivityThresholdDays")
+    def inactivity_threshold_days(self) -> _builtins.int:
+        """
+        The number of days a service token must be inactive before the configured action is applied.
+        """
+        return pulumi.get(self, "inactivity_threshold_days")
+
+
+@pulumi.output_type
 class GetZeroTrustResourceLibraryApplicationFilterResult(dict):
     def __init__(__self__, *,
                  limit: _builtins.int,
@@ -170068,7 +176721,7 @@ class GetZeroTrustResourceLibraryApplicationsResultResult(dict):
         :param Sequence[_builtins.str] hostnames: Hostnames matched by the application.
         :param _builtins.str human_id: Returns the human readable ID.
         :param _builtins.int id: Returns the application ID.
-        :param Sequence[_builtins.str] ip_subnets: IP subnets matched by the application.
+        :param Sequence[_builtins.str] ip_subnets: IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         :param _builtins.str name: Returns the application name.
         :param Sequence[_builtins.str] port_protocols: Port and protocol pairs matched by the application.
         :param _builtins.str review_status: The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
@@ -170190,7 +176843,7 @@ class GetZeroTrustResourceLibraryApplicationsResultResult(dict):
     @pulumi.getter(name="ipSubnets")
     def ip_subnets(self) -> Sequence[_builtins.str]:
         """
-        IP subnets matched by the application.
+        IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
         """
         return pulumi.get(self, "ip_subnets")
 
@@ -172429,21 +179082,32 @@ class GetZoneDnsSettingsInternalDnsResult(dict):
 @pulumi.output_type
 class GetZoneDnsSettingsNameserversResult(dict):
     def __init__(__self__, *,
+                 nameserver_set_id: _builtins.str,
                  ns_set: _builtins.int,
                  type: _builtins.str):
         """
-        :param _builtins.int ns_set: Configured nameserver set to be used for this zone
-        :param _builtins.str type: Nameserver type
-               Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+        :param _builtins.str nameserver_set_id: Identifier of the account-owned Custom Nameserver Set to use for this zone.
+        :param _builtins.int ns_set: Configured nameserver set number to use for this zone.
+        :param _builtins.str type: Nameserver type.
+               Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone", "custom".
         """
+        pulumi.set(__self__, "nameserver_set_id", nameserver_set_id)
         pulumi.set(__self__, "ns_set", ns_set)
         pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="nameserverSetId")
+    def nameserver_set_id(self) -> _builtins.str:
+        """
+        Identifier of the account-owned Custom Nameserver Set to use for this zone.
+        """
+        return pulumi.get(self, "nameserver_set_id")
 
     @_builtins.property
     @pulumi.getter(name="nsSet")
     def ns_set(self) -> _builtins.int:
         """
-        Configured nameserver set to be used for this zone
+        Configured nameserver set number to use for this zone.
         """
         return pulumi.get(self, "ns_set")
 
@@ -172451,8 +179115,8 @@ class GetZoneDnsSettingsNameserversResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Nameserver type
-        Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+        Nameserver type.
+        Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone", "custom".
         """
         return pulumi.get(self, "type")
 
@@ -173327,6 +179991,74 @@ class GetZoneTenantUnitResult(dict):
         Identifier
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetZoneTracingRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 action_parameters: 'outputs.GetZoneTracingRulesRuleActionParametersResult',
+                 description: _builtins.str,
+                 enabled: _builtins.bool,
+                 expression: _builtins.str):
+        """
+        :param _builtins.str action: Available values: "set*trace*settings".
+        :param _builtins.str expression: A Rules language expression that selects requests.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "action_parameters", action_parameters)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Available values: "set*trace*settings".
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="actionParameters")
+    def action_parameters(self) -> 'outputs.GetZoneTracingRulesRuleActionParametersResult':
+        return pulumi.get(self, "action_parameters")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        A Rules language expression that selects requests.
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class GetZoneTracingRulesRuleActionParametersResult(dict):
+    def __init__(__self__, *,
+                 sampling_ratio: _builtins.float):
+        """
+        :param _builtins.float sampling_ratio: The ratio of requests sampled for tracing, from 0 to 1.
+        """
+        pulumi.set(__self__, "sampling_ratio", sampling_ratio)
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRatio")
+    def sampling_ratio(self) -> _builtins.float:
+        """
+        The ratio of requests sampled for tracing, from 0 to 1.
+        """
+        return pulumi.get(self, "sampling_ratio")
 
 
 @pulumi.output_type

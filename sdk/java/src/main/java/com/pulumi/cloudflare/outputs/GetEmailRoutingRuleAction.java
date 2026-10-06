@@ -17,6 +17,10 @@ public final class GetEmailRoutingRuleAction {
      * 
      */
     private String type;
+    /**
+     * @return List of values for the action. Currently limited to a single value.
+     * 
+     */
     private List<String> values;
 
     private GetEmailRoutingRuleAction() {}
@@ -28,6 +32,10 @@ public final class GetEmailRoutingRuleAction {
     public String type() {
         return this.type;
     }
+    /**
+     * @return List of values for the action. Currently limited to a single value.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

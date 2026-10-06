@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
     public partial class R2BucketLock : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketLockArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketLockState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

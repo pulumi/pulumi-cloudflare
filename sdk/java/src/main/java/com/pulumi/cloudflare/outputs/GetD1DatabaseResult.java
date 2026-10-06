@@ -59,6 +59,14 @@ public final class GetD1DatabaseResult {
      * 
      */
     private String name;
+    /**
+     * @return The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private Double numTables;
     /**
      * @return Configuration for D1 read replication.
@@ -134,6 +142,14 @@ public final class GetD1DatabaseResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Double numTables() {
         return this.numTables;
     }

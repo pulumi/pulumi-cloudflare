@@ -88,6 +88,10 @@ export class Workflow extends pulumi.CustomResource {
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     declare public /*out*/ readonly name: pulumi.Output<string>;
     declare public readonly schedules: pulumi.Output<outputs.WorkflowSchedule[] | undefined>;
+    /**
+     * Whether the bound Worker was deleted, leaving this Workflow inactive.
+     */
+    declare public /*out*/ readonly scriptDeleted: pulumi.Output<boolean>;
     declare public readonly scriptName: pulumi.Output<string>;
     declare public /*out*/ readonly terminatorRunning: pulumi.Output<number>;
     declare public /*out*/ readonly triggeredOn: pulumi.Output<string>;
@@ -118,6 +122,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
             resourceInputs["schedules"] = state?.schedules;
+            resourceInputs["scriptDeleted"] = state?.scriptDeleted;
             resourceInputs["scriptName"] = state?.scriptName;
             resourceInputs["terminatorRunning"] = state?.terminatorRunning;
             resourceInputs["triggeredOn"] = state?.triggeredOn;
@@ -150,6 +155,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["isDeleted"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["scriptDeleted"] = undefined /*out*/;
             resourceInputs["terminatorRunning"] = undefined /*out*/;
             resourceInputs["triggeredOn"] = undefined /*out*/;
             resourceInputs["versionId"] = undefined /*out*/;
@@ -177,6 +183,10 @@ export interface WorkflowState {
     modifiedOn?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
     schedules?: pulumi.Input<pulumi.Input<inputs.WorkflowSchedule>[] | undefined>;
+    /**
+     * Whether the bound Worker was deleted, leaving this Workflow inactive.
+     */
+    scriptDeleted?: pulumi.Input<boolean | undefined>;
     scriptName?: pulumi.Input<string | undefined>;
     terminatorRunning?: pulumi.Input<number | undefined>;
     triggeredOn?: pulumi.Input<string | undefined>;

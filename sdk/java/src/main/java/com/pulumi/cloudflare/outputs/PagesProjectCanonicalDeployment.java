@@ -57,7 +57,7 @@ public final class PagesProjectCanonicalDeployment {
      */
     private @Nullable String id;
     /**
-     * @return If the deployment has been skipped.
+     * @return Whether the deployment was skipped.
      * 
      */
     private @Nullable Boolean isSkipped;
@@ -77,7 +77,7 @@ public final class PagesProjectCanonicalDeployment {
      */
     private @Nullable String projectId;
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     private @Nullable String projectName;
@@ -159,7 +159,7 @@ public final class PagesProjectCanonicalDeployment {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return If the deployment has been skipped.
+     * @return Whether the deployment was skipped.
      * 
      */
     public Optional<Boolean> isSkipped() {
@@ -187,7 +187,7 @@ public final class PagesProjectCanonicalDeployment {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public Optional<String> projectName() {

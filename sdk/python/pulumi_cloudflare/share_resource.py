@@ -308,12 +308,13 @@ class ShareResource(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
         example_share_resource = cloudflare.ShareResource("example_share_resource",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             share_id="3fd85f74b32742f1bff64a85009dda07",
-            meta={},
+            meta=json.dumps({}),
             resource_account_id="023e105f4ecef8ad9ca31a8372d0c353",
             resource_id="023e105f4ecef8ad9ca31a8372d0c353",
             resource_type="custom-ruleset")
@@ -347,12 +348,13 @@ class ShareResource(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
         example_share_resource = cloudflare.ShareResource("example_share_resource",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             share_id="3fd85f74b32742f1bff64a85009dda07",
-            meta={},
+            meta=json.dumps({}),
             resource_account_id="023e105f4ecef8ad9ca31a8372d0c353",
             resource_id="023e105f4ecef8ad9ca31a8372d0c353",
             resource_type="custom-ruleset")

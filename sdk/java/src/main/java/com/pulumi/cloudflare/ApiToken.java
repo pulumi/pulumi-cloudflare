@@ -103,6 +103,24 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.condition);
     }
     /**
+     * The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     * 
+     */
+    @Export(name="creatorEmailAtCreation", refs={String.class}, tree="[0]")
+    private Output<String> creatorEmailAtCreation;
+
+    /**
+     * @return The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     * 
+     */
+    public Output<String> creatorEmailAtCreation() {
+        return this.creatorEmailAtCreation;
+    }
+    /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
@@ -187,18 +205,54 @@ public class ApiToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notBefore);
     }
     /**
-     * Set of access policies assigned to the token.
+     * List of access policies assigned to the token.
      * 
      */
     @Export(name="policies", refs={List.class,ApiTokenPolicy.class}, tree="[0,1]")
     private Output<List<ApiTokenPolicy>> policies;
 
     /**
-     * @return Set of access policies assigned to the token.
+     * @return List of access policies assigned to the token.
      * 
      */
     public Output<List<ApiTokenPolicy>> policies() {
         return this.policies;
+    }
+    /**
+     * The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     * 
+     */
+    @Export(name="provisionerId", refs={String.class}, tree="[0]")
+    private Output<String> provisionerId;
+
+    /**
+     * @return The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     * 
+     */
+    public Output<String> provisionerId() {
+        return this.provisionerId;
+    }
+    /**
+     * The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     * 
+     */
+    @Export(name="provisionerType", refs={String.class}, tree="[0]")
+    private Output<String> provisionerType;
+
+    /**
+     * @return The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     * 
+     */
+    public Output<String> provisionerType() {
+        return this.provisionerType;
     }
     /**
      * Status of the token.

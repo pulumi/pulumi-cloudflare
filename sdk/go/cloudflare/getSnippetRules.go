@@ -15,6 +15,32 @@ import (
 //
 // - `Snippets Read`
 // - `Snippets Write`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetSnippetRules(ctx, &cloudflare.LookupSnippetRulesArgs{
+//				ZoneId: "9f1839b6152d298aca64c4e906b6d074",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSnippetRules(ctx *pulumi.Context, args *LookupSnippetRulesArgs, opts ...pulumi.InvokeOption) (*LookupSnippetRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetRulesResult

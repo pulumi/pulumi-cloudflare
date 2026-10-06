@@ -13,17 +13,17 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustResourceLibraryApplication = new cloudflare.ZeroTrustResourceLibraryApplication("example_zero_trust_resource_library_application", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     categoryId: 12,
- *     humanId: "HR",
- *     name: "HR",
  *     hostnames: [
  *         "example.com",
  *         "foo.com",
  *     ],
+ *     categoryId: 12,
+ *     humanId: "HR",
  *     ipSubnets: [
  *         "192.168.1.0/24",
- *         "10.0.0.0/8",
+ *         "2001:db8::/48",
  *     ],
+ *     name: "HR",
  *     portProtocols: [
  *         "tcp/80",
  *         "tcp/443",
@@ -93,7 +93,7 @@ export class ZeroTrustResourceLibraryApplication extends pulumi.CustomResource {
     /**
      * Returns the category ID.
      */
-    declare public readonly categoryId: pulumi.Output<number>;
+    declare public readonly categoryId: pulumi.Output<number | undefined>;
     /**
      * Returns the application creation time.
      */
@@ -109,15 +109,15 @@ export class ZeroTrustResourceLibraryApplication extends pulumi.CustomResource {
     /**
      * Returns the human readable ID.
      */
-    declare public readonly humanId: pulumi.Output<string>;
+    declare public readonly humanId: pulumi.Output<string | undefined>;
     /**
-     * IP subnets matched by the application.
+     * IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      */
     declare public readonly ipSubnets: pulumi.Output<string[] | undefined>;
     /**
      * Returns the application name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * Port and protocol pairs matched by the application.
      */
@@ -174,15 +174,6 @@ export class ZeroTrustResourceLibraryApplication extends pulumi.CustomResource {
             const args = argsOrState as ZeroTrustResourceLibraryApplicationArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
-            }
-            if (args?.categoryId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'categoryId'");
-            }
-            if (args?.humanId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'humanId'");
-            }
-            if (args?.name === undefined && !opts.urn) {
-                throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["categoryId"] = args?.categoryId;
@@ -254,7 +245,7 @@ export interface ZeroTrustResourceLibraryApplicationState {
      */
     humanId?: pulumi.Input<string | undefined>;
     /**
-     * IP subnets matched by the application.
+     * IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      */
     ipSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -291,7 +282,7 @@ export interface ZeroTrustResourceLibraryApplicationArgs {
     /**
      * Returns the category ID.
      */
-    categoryId: pulumi.Input<number>;
+    categoryId?: pulumi.Input<number | undefined>;
     /**
      * Hostnames matched by the application.
      */
@@ -299,15 +290,15 @@ export interface ZeroTrustResourceLibraryApplicationArgs {
     /**
      * Returns the human readable ID.
      */
-    humanId: pulumi.Input<string>;
+    humanId?: pulumi.Input<string | undefined>;
     /**
-     * IP subnets matched by the application.
+     * IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      */
     ipSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Returns the application name.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Port and protocol pairs matched by the application.
      */

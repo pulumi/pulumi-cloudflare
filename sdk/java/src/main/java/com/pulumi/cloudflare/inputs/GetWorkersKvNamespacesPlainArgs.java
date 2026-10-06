@@ -16,14 +16,14 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
     public static final GetWorkersKvNamespacesPlainArgs Empty = new GetWorkersKvNamespacesPlainArgs();
 
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Optional<String> accountId() {
@@ -31,7 +31,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * Direction to order namespaces.
+     * Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -39,7 +39,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
     private @Nullable String direction;
 
     /**
-     * @return Direction to order namespaces.
+     * @return Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -63,7 +63,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * Field to order results by.
+     * Namespace field to sort by (`id` or `title`).
      * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
@@ -71,7 +71,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
     private @Nullable String order;
 
     /**
-     * @return Field to order results by.
+     * @return Namespace field to sort by (`id` or `title`).
      * Available values: &#34;id&#34;, &#34;title&#34;.
      * 
      */
@@ -107,7 +107,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param direction Direction to order namespaces.
+         * @param direction Sort namespaces in ascending (`asc`) or descending (`desc`) order.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -141,7 +141,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param order Field to order results by.
+         * @param order Namespace field to sort by (`id` or `title`).
          * Available values: &#34;id&#34;, &#34;title&#34;.
          * 
          * @return builder

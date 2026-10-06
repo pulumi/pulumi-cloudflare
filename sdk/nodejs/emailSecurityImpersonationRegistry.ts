@@ -18,16 +18,21 @@ import * as utilities from "./utilities";
  *
  * const exampleEmailSecurityImpersonationRegistry = new cloudflare.EmailSecurityImpersonationRegistry("example_email_security_impersonation_registry", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     email: "email",
- *     isEmailRegex: true,
- *     name: "name",
+ *     email: "john.doe@example.com",
+ *     isEmailRegex: false,
+ *     name: "John Doe",
+ *     comments: "comments",
+ *     directoryId: 0,
+ *     directoryNodeId: 0,
+ *     externalDirectoryNodeId: "external_directory_node_id",
+ *     provenance: "A1S_INTERNAL",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<display_name_id>'
+ * $ pulumi import cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry example '<account_id>/<impersonation_registry_id>'
  * ```
  */
 export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
@@ -62,15 +67,32 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
      * Identifier.
      */
     declare public readonly accountId: pulumi.Output<string>;
+    /**
+     * Optional note describing the entry.
+     */
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Identifier of the directory the entry was synced from, when directory-synced.
+     */
     declare public readonly directoryId: pulumi.Output<number | undefined>;
+    /**
+     * Identifier of the directory node the entry was synced from, when directory-synced.
+     */
     declare public readonly directoryNodeId: pulumi.Output<number | undefined>;
+    /**
+     * Email address (or pattern) of the protected identity.
+     */
     declare public readonly email: pulumi.Output<string>;
     /**
+     * Deprecated. External identifier of the directory node.
+     *
      * @deprecated This field is deprecated.
      */
     declare public readonly externalDirectoryNodeId: pulumi.Output<string | undefined>;
+    /**
+     * Whether `email` is a regular expression instead of a literal address.
+     */
     declare public readonly isEmailRegex: pulumi.Output<boolean>;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -79,8 +101,12 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
+    /**
+     * Display name of the protected identity.
+     */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Source the entry was created from.
      * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
      */
     declare public readonly provenance: pulumi.Output<string | undefined>;
@@ -150,15 +176,32 @@ export interface EmailSecurityImpersonationRegistryState {
      * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Optional note describing the entry.
+     */
     comments?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the directory the entry was synced from, when directory-synced.
+     */
     directoryId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the directory node the entry was synced from, when directory-synced.
+     */
     directoryNodeId?: pulumi.Input<number | undefined>;
+    /**
+     * Email address (or pattern) of the protected identity.
+     */
     email?: pulumi.Input<string | undefined>;
     /**
+     * Deprecated. External identifier of the directory node.
+     *
      * @deprecated This field is deprecated.
      */
     externalDirectoryNodeId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether `email` is a regular expression instead of a literal address.
+     */
     isEmailRegex?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -167,8 +210,12 @@ export interface EmailSecurityImpersonationRegistryState {
      */
     lastModified?: pulumi.Input<string | undefined>;
     modifiedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the protected identity.
+     */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Source the entry was created from.
      * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
      */
     provenance?: pulumi.Input<string | undefined>;
@@ -182,17 +229,38 @@ export interface EmailSecurityImpersonationRegistryArgs {
      * Identifier.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Optional note describing the entry.
+     */
     comments?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the directory the entry was synced from, when directory-synced.
+     */
     directoryId?: pulumi.Input<number | undefined>;
+    /**
+     * Identifier of the directory node the entry was synced from, when directory-synced.
+     */
     directoryNodeId?: pulumi.Input<number | undefined>;
+    /**
+     * Email address (or pattern) of the protected identity.
+     */
     email: pulumi.Input<string>;
     /**
+     * Deprecated. External identifier of the directory node.
+     *
      * @deprecated This field is deprecated.
      */
     externalDirectoryNodeId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether `email` is a regular expression instead of a literal address.
+     */
     isEmailRegex: pulumi.Input<boolean>;
+    /**
+     * Display name of the protected identity.
+     */
     name: pulumi.Input<string>;
     /**
+     * Source the entry was created from.
      * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
      */
     provenance?: pulumi.Input<string | undefined>;

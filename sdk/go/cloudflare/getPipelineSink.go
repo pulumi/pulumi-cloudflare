@@ -81,7 +81,7 @@ type LookupPipelineSinkResult struct {
 	// Specifies the publid ID of the sink.
 	SinkId *string `pulumi:"sinkId"`
 	// Specifies the type of sink.
-	// Available values: "r2", "r2*data*catalog".
+	// Available values: "r2", "r2*data*catalog", "basinCatalog".
 	Type string `pulumi:"type"`
 }
 
@@ -166,7 +166,7 @@ func (o LookupPipelineSinkResultOutput) SinkId() pulumi.StringPtrOutput {
 }
 
 // Specifies the type of sink.
-// Available values: "r2", "r2*data*catalog".
+// Available values: "r2", "r2*data*catalog", "basinCatalog".
 func (o LookupPipelineSinkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineSinkResult) string { return v.Type }).(pulumi.StringOutput)
 }

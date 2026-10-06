@@ -176,14 +176,14 @@ public final class ZeroTrustResourceLibraryApplicationState extends com.pulumi.r
     }
 
     /**
-     * IP subnets matched by the application.
+     * IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      * 
      */
     @Import(name="ipSubnets")
     private @Nullable Output<List<String>> ipSubnets;
 
     /**
-     * @return IP subnets matched by the application.
+     * @return IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
      * 
      */
     public Optional<Output<List<String>>> ipSubnets() {
@@ -551,7 +551,7 @@ public final class ZeroTrustResourceLibraryApplicationState extends com.pulumi.r
         }
 
         /**
-         * @param ipSubnets IP subnets matched by the application.
+         * @param ipSubnets IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class ZeroTrustResourceLibraryApplicationState extends com.pulumi.r
         }
 
         /**
-         * @param ipSubnets IP subnets matched by the application.
+         * @param ipSubnets IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
          * 
          * @return builder
          * 
@@ -572,7 +572,7 @@ public final class ZeroTrustResourceLibraryApplicationState extends com.pulumi.r
         }
 
         /**
-         * @param ipSubnets IP subnets matched by the application.
+         * @param ipSubnets IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
          * 
          * @return builder
          * 

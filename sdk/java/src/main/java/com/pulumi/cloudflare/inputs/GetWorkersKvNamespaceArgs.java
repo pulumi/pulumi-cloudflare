@@ -17,14 +17,14 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
     public static final GetWorkersKvNamespaceArgs Empty = new GetWorkersKvNamespaceArgs();
 
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -39,14 +39,14 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      * 
      */
     @Import(name="namespaceId")
     private @Nullable Output<String> namespaceId;
 
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public Optional<Output<String>> namespaceId() {
@@ -80,7 +80,7 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId ID of the Workers KV namespace.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId ID of the Workers KV namespace.
          * 
          * @return builder
          * 

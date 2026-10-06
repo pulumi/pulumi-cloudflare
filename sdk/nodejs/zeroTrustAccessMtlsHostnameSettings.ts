@@ -30,7 +30,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * > This resource does not currently support `pulumi import`.
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example '<{accounts|zones}/{account_id|zone_id}>'
+ * ```
  */
 export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
     /**

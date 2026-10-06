@@ -389,7 +389,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
+     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
      * 
      */
     @Import(name="prompt")
@@ -397,7 +397,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
     /**
      * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
+     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
      * 
      */
     public Optional<Output<String>> prompt() {
@@ -501,6 +501,21 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.tokenUrl);
     }
 
+    /**
+     * Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+     * 
+     */
+    @Import(name="useLoginHint")
+    private @Nullable Output<Boolean> useLoginHint;
+
+    /**
+     * @return Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+     * 
+     */
+    public Optional<Output<Boolean>> useLoginHint() {
+        return Optional.ofNullable(this.useLoginHint);
+    }
+
     private AccessIdentityProviderConfigArgs() {}
 
     private AccessIdentityProviderConfigArgs(AccessIdentityProviderConfigArgs $) {
@@ -536,6 +551,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         this.ssoTargetUrl = $.ssoTargetUrl;
         this.supportGroups = $.supportGroups;
         this.tokenUrl = $.tokenUrl;
+        this.useLoginHint = $.useLoginHint;
     }
 
     public static Builder builder() {
@@ -1110,7 +1126,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         /**
          * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-         * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
+         * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
          * 
          * @return builder
          * 
@@ -1122,7 +1138,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         /**
          * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-         * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
+         * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;, &#34;consent&#34;.
          * 
          * @return builder
          * 
@@ -1274,6 +1290,27 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
          */
         public Builder tokenUrl(String tokenUrl) {
             return tokenUrl(Output.of(tokenUrl));
+        }
+
+        /**
+         * @param useLoginHint Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useLoginHint(@Nullable Output<Boolean> useLoginHint) {
+            $.useLoginHint = useLoginHint;
+            return this;
+        }
+
+        /**
+         * @param useLoginHint Whether to use a previously authenticated Access email as a Google login hint when exactly one email matches the Workspace domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useLoginHint(Boolean useLoginHint) {
+            return useLoginHint(Output.of(useLoginHint));
         }
 
         public AccessIdentityProviderConfigArgs build() {

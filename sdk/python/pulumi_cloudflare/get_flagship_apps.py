@@ -42,7 +42,7 @@ class GetFlagshipAppsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -92,7 +92,7 @@ def get_flagship_apps(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Cloudflare account ID.
+    :param _builtins.str account_id: Cloudflare account ID that owns the Flagship app.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -123,7 +123,7 @@ def get_flagship_apps_output(account_id: pulumi.Input[Optional[_builtins.str]] =
     ```
 
 
-    :param _builtins.str account_id: Cloudflare account ID.
+    :param _builtins.str account_id: Cloudflare account ID that owns the Flagship app.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

@@ -23,6 +23,7 @@ class D1DatabaseArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
                  read_replication: pulumi.Input[Optional['D1DatabaseReadReplicationArgs']] = None):
@@ -31,6 +32,8 @@ class D1DatabaseArgs:
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] name: D1 database name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Comma-separated list of fields to include in the response. When omitted,
+               all fields are returned.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
                Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
@@ -39,6 +42,8 @@ class D1DatabaseArgs:
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
         if primary_location_hint is not None:
@@ -69,6 +74,19 @@ class D1DatabaseArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Comma-separated list of fields to include in the response. When omitted,
+        all fields are returned.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter
@@ -114,6 +132,7 @@ class _D1DatabaseState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  file_size: pulumi.Input[Optional[_builtins.float]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -127,10 +146,13 @@ class _D1DatabaseState:
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Comma-separated list of fields to include in the response. When omitted,
+               all fields are returned.
         :param pulumi.Input[_builtins.float] file_size: The D1 database's size, in bytes.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
                Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] name: D1 database name.
+        :param pulumi.Input[_builtins.float] num_tables: The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         :param pulumi.Input['D1DatabaseReadReplicationArgs'] read_replication: Configuration for D1 read replication.
@@ -140,12 +162,17 @@ class _D1DatabaseState:
             pulumi.set(__self__, "account_id", account_id)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
         if file_size is not None:
             pulumi.set(__self__, "file_size", file_size)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if num_tables is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""num_tables is deprecated: This attribute is deprecated.""")
         if num_tables is not None:
             pulumi.set(__self__, "num_tables", num_tables)
         if primary_location_hint is not None:
@@ -180,6 +207,19 @@ class _D1DatabaseState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Comma-separated list of fields to include in the response. When omitted,
+        all fields are returned.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSize")
@@ -220,7 +260,11 @@ class _D1DatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="numTables")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def num_tables(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+        """
         return pulumi.get(self, "num_tables")
 
     @num_tables.setter
@@ -281,6 +325,7 @@ class D1Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -305,7 +350,10 @@ class D1Database(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-database",
             jurisdiction="eu",
-            primary_location_hint="wnam")
+            primary_location_hint="wnam",
+            read_replication={
+                "mode": "auto",
+            })
         ```
 
         ## Import
@@ -318,6 +366,8 @@ class D1Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Comma-separated list of fields to include in the response. When omitted,
+               all fields are returned.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
                Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] name: D1 database name.
@@ -350,7 +400,10 @@ class D1Database(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="my-database",
             jurisdiction="eu",
-            primary_location_hint="wnam")
+            primary_location_hint="wnam",
+            read_replication={
+                "mode": "auto",
+            })
         ```
 
         ## Import
@@ -376,6 +429,7 @@ class D1Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -392,6 +446,7 @@ class D1Database(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["fields"] = fields
             __props__.__dict__["jurisdiction"] = jurisdiction
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -415,6 +470,7 @@ class D1Database(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             file_size: pulumi.Input[Optional[_builtins.float]] = None,
             jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -432,10 +488,13 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[_builtins.str] created_at: Specifies the timestamp the resource was created as an ISO8601 string.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: Comma-separated list of fields to include in the response. When omitted,
+               all fields are returned.
         :param pulumi.Input[_builtins.float] file_size: The D1 database's size, in bytes.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
                Available values: "eu", "fedramp", "us".
         :param pulumi.Input[_builtins.str] name: D1 database name.
+        :param pulumi.Input[_builtins.float] num_tables: The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
         :param pulumi.Input[_builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         :param pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict', 'outputs.D1DatabaseReadReplication']] read_replication: Configuration for D1 read replication.
@@ -447,6 +506,7 @@ class D1Database(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["fields"] = fields
         __props__.__dict__["file_size"] = file_size
         __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["name"] = name
@@ -472,6 +532,15 @@ class D1Database(pulumi.CustomResource):
         Specifies the timestamp the resource was created as an ISO8601 string.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Comma-separated list of fields to include in the response. When omitted,
+        all fields are returned.
+        """
+        return pulumi.get(self, "fields")
 
     @_builtins.property
     @pulumi.getter(name="fileSize")
@@ -500,7 +569,11 @@ class D1Database(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="numTables")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def num_tables(self) -> pulumi.Output[_builtins.float]:
+        """
+        The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+        """
         return pulumi.get(self, "num_tables")
 
     @_builtins.property

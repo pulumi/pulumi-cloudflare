@@ -94,14 +94,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      * 
      */
     @Import(name="mergeSubrequests")
     private @Nullable Output<Boolean> mergeSubrequests;
 
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      * 
      */
     public Optional<Output<Boolean>> mergeSubrequests() {
@@ -186,14 +186,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     @Import(name="sampleRate")
     private @Nullable Output<Double> sampleRate;
 
     /**
-     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * @return Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     public Optional<Output<Double>> sampleRate() {
@@ -369,7 +369,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mergeSubrequests If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+         * @param mergeSubrequests If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mergeSubrequests If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+         * @param mergeSubrequests If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sampleRate Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+         * @param sampleRate Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sampleRate Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+         * @param sampleRate Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
          * 
          * @return builder
          * 

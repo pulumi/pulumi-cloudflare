@@ -39,7 +39,7 @@ export function getR2CustomDomain(args: GetR2CustomDomainArgs, opts?: pulumi.Inv
  */
 export interface GetR2CustomDomainArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: string;
     /**
@@ -57,7 +57,7 @@ export interface GetR2CustomDomainArgs {
  */
 export interface GetR2CustomDomainResult {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     readonly accountId: string;
     /**
@@ -124,7 +124,7 @@ export function getR2CustomDomainOutput(args: GetR2CustomDomainOutputArgs, opts?
  */
 export interface GetR2CustomDomainOutputArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

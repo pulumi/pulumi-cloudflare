@@ -19,14 +19,14 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
     public static final R2BucketEventNotificationArgs Empty = new R2BucketEventNotificationArgs();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Output<String> accountId() {
@@ -64,14 +64,14 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Queue ID.
+     * ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     @Import(name="queueId", required=true)
     private Output<String> queueId;
 
     /**
-     * @return Queue ID.
+     * @return ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     public Output<String> queueId() {
@@ -122,7 +122,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param queueId Queue ID.
+         * @param queueId ID of the Cloudflare Queue that receives notifications for matching R2 object events.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param queueId Queue ID.
+         * @param queueId ID of the Cloudflare Queue that receives notifications for matching R2 object events.
          * 
          * @return builder
          * 

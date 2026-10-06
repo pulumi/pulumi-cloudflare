@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? LogicalOperator { get; set; }
 
         /// <summary>
-        /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+        /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "NotHas".
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }

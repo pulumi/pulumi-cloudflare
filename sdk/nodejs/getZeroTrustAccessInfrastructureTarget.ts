@@ -74,6 +74,10 @@ export interface GetZeroTrustAccessInfrastructureTargetResult {
      */
     readonly modifiedAt: string;
     /**
+     * Tags assigned to the target. Empty when no tags are assigned.
+     */
+    readonly tags: {[key: string]: string};
+    /**
      * Target identifier
      */
     readonly targetId?: string;

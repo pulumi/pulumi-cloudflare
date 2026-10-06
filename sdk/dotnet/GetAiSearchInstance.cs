@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string FusionMethod;
         /// <summary>
-        /// Deprecated — use IndexMethod instead.
+        /// Deprecated — use IndexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
         /// </summary>
         public readonly bool HybridSearchEnabled;
         /// <summary>
@@ -104,7 +104,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Controls which storage backends are used during indexing. Defaults to vector-only.
+        /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
         /// </summary>
         public readonly Outputs.GetAiSearchInstanceIndexMethodResult IndexMethod;
         public readonly Outputs.GetAiSearchInstanceIndexingOptionsResult IndexingOptions;
@@ -136,6 +136,7 @@ namespace Pulumi.Cloudflare
         public readonly double SyncInterval;
         public readonly string TokenId;
         /// <summary>
+        /// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
         /// Available values: "r2", "web-crawler".
         /// </summary>
         public readonly string Type;

@@ -29,7 +29,7 @@ public final class PagesProjectLatestDeploymentStage {
     private @Nullable String startedOn;
     /**
      * @return State of the current stage.
-     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;, &#34;skipped&#34;.
      * 
      */
     private @Nullable String status;
@@ -59,7 +59,7 @@ public final class PagesProjectLatestDeploymentStage {
     }
     /**
      * @return State of the current stage.
-     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;.
+     * Available values: &#34;success&#34;, &#34;idle&#34;, &#34;active&#34;, &#34;failure&#34;, &#34;canceled&#34;, &#34;skipped&#34;.
      * 
      */
     public Optional<String> status() {

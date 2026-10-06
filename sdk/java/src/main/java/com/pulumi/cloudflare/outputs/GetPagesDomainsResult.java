@@ -21,7 +21,7 @@ public final class GetPagesDomainsResult {
     private String domainId;
     private String id;
     /**
-     * @return The domain name.
+     * @return Fully qualified domain name for the Pages project, such as `example.com`.
      * 
      */
     private String name;
@@ -52,7 +52,7 @@ public final class GetPagesDomainsResult {
         return this.id;
     }
     /**
-     * @return The domain name.
+     * @return Fully qualified domain name for the Pages project, such as `example.com`.
      * 
      */
     public String name() {

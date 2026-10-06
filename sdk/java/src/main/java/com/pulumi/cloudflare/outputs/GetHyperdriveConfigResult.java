@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigCaching;
+import com.pulumi.cloudflare.outputs.GetHyperdriveConfigIntegration;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigMtls;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigOrigin;
 import com.pulumi.core.annotations.CustomType;
@@ -38,6 +39,11 @@ public final class GetHyperdriveConfigResult {
      */
     private String id;
     /**
+     * @return Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+     * 
+     */
+    private GetHyperdriveConfigIntegration integration;
+    /**
      * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
@@ -52,6 +58,10 @@ public final class GetHyperdriveConfigResult {
      * 
      */
     private String name;
+    /**
+     * @return Combines database connection fields with exactly one supported network location.
+     * 
+     */
     private GetHyperdriveConfigOrigin origin;
     /**
      * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -93,6 +103,13 @@ public final class GetHyperdriveConfigResult {
         return this.id;
     }
     /**
+     * @return Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+     * 
+     */
+    public GetHyperdriveConfigIntegration integration() {
+        return this.integration;
+    }
+    /**
      * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
@@ -113,6 +130,10 @@ public final class GetHyperdriveConfigResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Combines database connection fields with exactly one supported network location.
+     * 
+     */
     public GetHyperdriveConfigOrigin origin() {
         return this.origin;
     }
@@ -141,6 +162,7 @@ public final class GetHyperdriveConfigResult {
         private String createdOn;
         private String hyperdriveId;
         private String id;
+        private GetHyperdriveConfigIntegration integration;
         private String modifiedOn;
         private GetHyperdriveConfigMtls mtls;
         private String name;
@@ -155,6 +177,7 @@ public final class GetHyperdriveConfigResult {
     	      this.createdOn = defaults.createdOn;
     	      this.hyperdriveId = defaults.hyperdriveId;
     	      this.id = defaults.id;
+    	      this.integration = defaults.integration;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.mtls = defaults.mtls;
     	      this.name = defaults.name;
@@ -199,6 +222,14 @@ public final class GetHyperdriveConfigResult {
               throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder integration(GetHyperdriveConfigIntegration integration) {
+            if (integration == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "integration");
+            }
+            this.integration = integration;
             return this;
         }
         @CustomType.Setter
@@ -256,6 +287,7 @@ public final class GetHyperdriveConfigResult {
             _resultValue.createdOn = createdOn;
             _resultValue.hyperdriveId = hyperdriveId;
             _resultValue.id = id;
+            _resultValue.integration = integration;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.mtls = mtls;
             _resultValue.name = name;

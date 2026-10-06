@@ -21,16 +21,24 @@ __all__ = ['CloudConnectorRulesArgs', 'CloudConnectorRules']
 @pulumi.input_type
 class CloudConnectorRulesArgs:
     def __init__(__self__, *,
-                 zone_id: pulumi.Input[_builtins.str],
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]] = None):
+                 rules: pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]],
+                 zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a CloudConnectorRules resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
+        pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "zone_id", zone_id)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]:
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]):
+        pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -43,15 +51,6 @@ class CloudConnectorRulesArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]]:
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudConnectorRulesRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
@@ -202,6 +201,8 @@ class CloudConnectorRules(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudConnectorRulesArgs.__new__(CloudConnectorRulesArgs)
 
+            if rules is None and not opts.urn:
+                raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -237,7 +238,7 @@ class CloudConnectorRules(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.CloudConnectorRulesRule']]]:
+    def rules(self) -> pulumi.Output[Sequence['outputs.CloudConnectorRulesRule']]:
         return pulumi.get(self, "rules")
 
     @_builtins.property

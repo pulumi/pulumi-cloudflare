@@ -62,8 +62,9 @@ type LookupAccountDnsSettingsResult struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
-	EnforceDnsOnly bool                              `pulumi:"enforceDnsOnly"`
-	ZoneDefaults   GetAccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
+	EnforceDnsOnly bool `pulumi:"enforceDnsOnly"`
+	// Default settings for new zones created in this account.
+	ZoneDefaults GetAccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
 }
 
 func LookupAccountDnsSettingsOutput(ctx *pulumi.Context, args LookupAccountDnsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupAccountDnsSettingsResultOutput {
@@ -106,6 +107,7 @@ func (o LookupAccountDnsSettingsResultOutput) EnforceDnsOnly() pulumi.BoolOutput
 	return o.ApplyT(func(v LookupAccountDnsSettingsResult) bool { return v.EnforceDnsOnly }).(pulumi.BoolOutput)
 }
 
+// Default settings for new zones created in this account.
 func (o LookupAccountDnsSettingsResultOutput) ZoneDefaults() GetAccountDnsSettingsZoneDefaultsOutput {
 	return o.ApplyT(func(v LookupAccountDnsSettingsResult) GetAccountDnsSettingsZoneDefaults { return v.ZoneDefaults }).(GetAccountDnsSettingsZoneDefaultsOutput)
 }

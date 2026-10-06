@@ -24,6 +24,8 @@ func LookupAiSearchInstances(ctx *pulumi.Context, args *LookupAiSearchInstancesA
 // A collection of arguments for invoking getAiSearchInstances.
 type LookupAiSearchInstancesArgs struct {
 	AccountId *string `pulumi:"accountId"`
+	// Filter by exact Search for Agents hostname (case-insensitive).
+	Hostname *string `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter by namespace.
@@ -41,6 +43,8 @@ type LookupAiSearchInstancesArgs struct {
 // A collection of values returned by getAiSearchInstances.
 type LookupAiSearchInstancesResult struct {
 	AccountId *string `pulumi:"accountId"`
+	// Filter by exact Search for Agents hostname (case-insensitive).
+	Hostname *string `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Filter by namespace.
@@ -65,6 +69,8 @@ func LookupAiSearchInstancesOutput(ctx *pulumi.Context, args LookupAiSearchInsta
 // A collection of arguments for invoking getAiSearchInstances.
 type LookupAiSearchInstancesOutputArgs struct {
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Filter by exact Search for Agents hostname (case-insensitive).
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Filter by namespace.
@@ -100,6 +106,11 @@ func (o LookupAiSearchInstancesResultOutput) ToLookupAiSearchInstancesResultOutp
 
 func (o LookupAiSearchInstancesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAiSearchInstancesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Filter by exact Search for Agents hostname (case-insensitive).
+func (o LookupAiSearchInstancesResultOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAiSearchInstancesResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
 // Max items to fetch, default: 1000

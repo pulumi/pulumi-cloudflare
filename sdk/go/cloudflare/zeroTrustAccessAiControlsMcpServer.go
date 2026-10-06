@@ -24,40 +24,45 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessAiControlsMcpServer(ctx, "example_zero_trust_access_ai_controls_mcp_server", &cloudflare.ZeroTrustAccessAiControlsMcpServerArgs{
-//				AccountId:                            pulumi.String("a86a8f5c339544d7bdc89926de14fb8c"),
-//				ZeroTrustAccessAiControlsMcpServerId: pulumi.String("my-mcp-server"),
-//				AuthType:                             pulumi.String("unauthenticated"),
-//				Hostname:                             pulumi.String("https://example.com/mcp"),
-//				Name:                                 pulumi.String("My MCP Server"),
-//				AuthCredentials:                      pulumi.String("sk-my-bearer-token"),
-//				ClientSecret:                         pulumi.String("client_secret"),
-//				Description:                          pulumi.String("This is one remote MCP server"),
+//			cfg := config.New(ctx, "")
+//			cloudflareAccountId := cfg.Require("cloudflareAccountId")
+//			mcpOauthClientId := cfg.Require("mcpOauthClientId")
+//			mcpOauthClientSecret := cfg.Require("mcpOauthClientSecret")
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"auth_mode": "manual",
+//				"config": map[string]string{
+//					"authorization_endpoint": "https://github.com/login/oauth/authorize",
+//					"token_endpoint":         "https://github.com/login/oauth/access_token",
+//				},
+//				"registration_info": map[string]string{
+//					"client_id":                  mcpOauthClientId,
+//					"token_endpoint_auth_method": "client_secret_basic",
+//					"scope":                      "repo read:user",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudflare.NewZeroTrustAccessAiControlsMcpServer(ctx, "example_zero_trust_access_ai_controls_mcp_server", &cloudflare.ZeroTrustAccessAiControlsMcpServerArgs{
+//				AccountId:                            pulumi.String(cloudflareAccountId),
+//				ZeroTrustAccessAiControlsMcpServerId: pulumi.String("github"),
+//				AuthType:                             pulumi.String("oauth"),
+//				Hostname:                             pulumi.String("https://github-mcp.example.com/mcp"),
+//				Name:                                 pulumi.String("GitHub MCP Server"),
+//				AuthCredentials:                      pulumi.String(json0),
+//				ClientSecret:                         pulumi.String(mcpOauthClientSecret),
 //				IsSharedOauthCallbackEnabled:         pulumi.Bool(true),
-//				SecureWebGateway:                     pulumi.Bool(false),
-//				UpdatedPrompts: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArray{
-//					&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs{
-//						Name:        pulumi.String("name"),
-//						Alias:       pulumi.String("my-custom-alias"),
-//						Description: pulumi.String("description"),
-//						Enabled:     pulumi.Bool(true),
-//					},
-//				},
-//				UpdatedTools: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedToolArray{
-//					&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs{
-//						Name:        pulumi.String("name"),
-//						Alias:       pulumi.String("my-custom-alias"),
-//						Description: pulumi.String("description"),
-//						Enabled:     pulumi.Bool(true),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -67,6 +72,8 @@ import (
 //	}
 //
 // ```
+//
+// `authCredentials` and `clientSecret` are write-only and cannot be recovered by import. Omitting either value on update preserves the existing credential. Because the API does not return `authCredentials`, Terraform cannot automatically detect and restore out-of-band OAuth metadata changes; inspect the computed `authConfigSummary` for the current non-secret metadata. Terraform's `sensitive` marker hides credential values from normal output but still stores them in state, so use a protected state backend with restricted access.
 //
 // ## Import
 //

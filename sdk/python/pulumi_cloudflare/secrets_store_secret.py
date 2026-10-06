@@ -296,7 +296,10 @@ class SecretsStoreSecret(pulumi.CustomResource):
 
         example_secrets_store_secret = cloudflare.SecretsStoreSecret("example_secrets_store_secret",
             account_id="985e105f4ecef8ad9ca31a8372d0c353",
-            store_id="023e105f4ecef8ad9ca31a8372d0c353")
+            store_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="MY_API_KEY",
+            scopes=["workers"],
+            value="my-secret-value")
         ```
 
         ## Import
@@ -335,7 +338,10 @@ class SecretsStoreSecret(pulumi.CustomResource):
 
         example_secrets_store_secret = cloudflare.SecretsStoreSecret("example_secrets_store_secret",
             account_id="985e105f4ecef8ad9ca31a8372d0c353",
-            store_id="023e105f4ecef8ad9ca31a8372d0c353")
+            store_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="MY_API_KEY",
+            scopes=["workers"],
+            value="my-secret-value")
         ```
 
         ## Import

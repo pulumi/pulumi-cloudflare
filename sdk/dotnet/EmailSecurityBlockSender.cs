@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     ///         IsRegex = false,
     ///         Pattern = "test@example.com",
     ///         PatternType = "EMAIL",
-    ///         Comments = "block sender with email test@example.com",
+    ///         Comments = "Block sender with email test@example.com",
     ///     });
     /// 
     /// });
@@ -58,6 +58,9 @@ namespace Pulumi.Cloudflare
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal value.
+        /// </summary>
         [Output("isRegex")]
         public Output<bool> IsRegex { get; private set; } = null!;
 
@@ -142,6 +145,9 @@ namespace Pulumi.Cloudflare
         [Input("comments")]
         public Input<string>? Comments { get; set; }
 
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal value.
+        /// </summary>
         [Input("isRegex", required: true)]
         public Input<bool> IsRegex { get; set; } = null!;
 
@@ -182,6 +188,9 @@ namespace Pulumi.Cloudflare
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Whether `Pattern` is a regular expression instead of a literal value.
+        /// </summary>
         [Input("isRegex")]
         public Input<bool>? IsRegex { get; set; }
 

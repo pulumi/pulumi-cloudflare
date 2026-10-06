@@ -32,7 +32,6 @@ import (
 //			_, err := cloudflare.GetList(ctx, &cloudflare.LookupListArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
-//				Search:    pulumi.StringRef("1.1.1.1"),
 //			}, nil)
 //			if err != nil {
 //				return err

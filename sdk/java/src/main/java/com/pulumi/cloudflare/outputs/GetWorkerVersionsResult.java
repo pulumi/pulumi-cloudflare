@@ -35,6 +35,16 @@ public final class GetWorkerVersionsResult {
      */
     private GetWorkerVersionsResultAssets assets;
     /**
+     * @return Email of the user who created the version.
+     * 
+     */
+    private String authorEmail;
+    /**
+     * @return Identifier of the user who created the version.
+     * 
+     */
+    private String authorId;
+    /**
      * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      * 
      */
@@ -173,6 +183,20 @@ public final class GetWorkerVersionsResult {
      */
     public GetWorkerVersionsResultAssets assets() {
         return this.assets;
+    }
+    /**
+     * @return Email of the user who created the version.
+     * 
+     */
+    public String authorEmail() {
+        return this.authorEmail;
+    }
+    /**
+     * @return Identifier of the user who created the version.
+     * 
+     */
+    public String authorId() {
+        return this.authorId;
     }
     /**
      * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
@@ -352,6 +376,8 @@ public final class GetWorkerVersionsResult {
     public static final class Builder {
         private GetWorkerVersionsResultAnnotations annotations;
         private GetWorkerVersionsResultAssets assets;
+        private String authorEmail;
+        private String authorId;
         private List<GetWorkerVersionsResultBinding> bindings;
         private GetWorkerVersionsResultCacheOptions cacheOptions;
         private String compatibilityDate;
@@ -378,6 +404,8 @@ public final class GetWorkerVersionsResult {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
     	      this.assets = defaults.assets;
+    	      this.authorEmail = defaults.authorEmail;
+    	      this.authorId = defaults.authorId;
     	      this.bindings = defaults.bindings;
     	      this.cacheOptions = defaults.cacheOptions;
     	      this.compatibilityDate = defaults.compatibilityDate;
@@ -415,6 +443,22 @@ public final class GetWorkerVersionsResult {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "assets");
             }
             this.assets = assets;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authorEmail(String authorEmail) {
+            if (authorEmail == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "authorEmail");
+            }
+            this.authorEmail = authorEmail;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authorId(String authorId) {
+            if (authorId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "authorId");
+            }
+            this.authorId = authorId;
             return this;
         }
         @CustomType.Setter
@@ -607,6 +651,8 @@ public final class GetWorkerVersionsResult {
             final var _resultValue = new GetWorkerVersionsResult();
             _resultValue.annotations = annotations;
             _resultValue.assets = assets;
+            _resultValue.authorEmail = authorEmail;
+            _resultValue.authorId = authorId;
             _resultValue.bindings = bindings;
             _resultValue.cacheOptions = cacheOptions;
             _resultValue.compatibilityDate = compatibilityDate;

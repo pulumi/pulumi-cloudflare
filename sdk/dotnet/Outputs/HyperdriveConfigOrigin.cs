@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Database;
         /// <summary>
-        /// Defines the host (hostname or IP) of your origin database.
+        /// Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
         /// </summary>
         public readonly string? Host;
         /// <summary>

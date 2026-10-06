@@ -456,6 +456,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _targetZoneNames = value;
         }
 
+        [Input("tokenIds")]
+        private InputList<string>? _tokenIds;
+
+        /// <summary>
+        /// Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+        /// </summary>
+        public InputList<string> TokenIds
+        {
+            get => _tokenIds ?? (_tokenIds = new InputList<string>());
+            set => _tokenIds = value;
+        }
+
         [Input("trafficExclusions")]
         private InputList<string>? _trafficExclusions;
 

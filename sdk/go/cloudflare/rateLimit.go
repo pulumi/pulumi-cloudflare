@@ -93,16 +93,12 @@ type RateLimit struct {
 
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action RateLimitActionOutput `pulumi:"action"`
-	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-	Bypasses RateLimitBypassArrayOutput `pulumi:"bypasses"`
-	// An informative summary of the rule. This value is sanitized and any tags will be removed.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// When true, indicates that the rate limit is currently disabled.
-	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// Determines which traffic the rate limit counts towards the threshold.
 	Match RateLimitMatchOutput `pulumi:"match"`
 	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
 	Period pulumi.Float64Output `pulumi:"period"`
+	// Defines the unique identifier of the rate limit.
+	RateLimitId pulumi.StringPtrOutput `pulumi:"rateLimitId"`
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold pulumi.Float64Output `pulumi:"threshold"`
 	// Defines an identifier.
@@ -156,16 +152,12 @@ func GetRateLimit(ctx *pulumi.Context,
 type rateLimitState struct {
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action *RateLimitAction `pulumi:"action"`
-	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-	Bypasses []RateLimitBypass `pulumi:"bypasses"`
-	// An informative summary of the rule. This value is sanitized and any tags will be removed.
-	Description *string `pulumi:"description"`
-	// When true, indicates that the rate limit is currently disabled.
-	Disabled *bool `pulumi:"disabled"`
 	// Determines which traffic the rate limit counts towards the threshold.
 	Match *RateLimitMatch `pulumi:"match"`
 	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
 	Period *float64 `pulumi:"period"`
+	// Defines the unique identifier of the rate limit.
+	RateLimitId *string `pulumi:"rateLimitId"`
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold *float64 `pulumi:"threshold"`
 	// Defines an identifier.
@@ -175,16 +167,12 @@ type rateLimitState struct {
 type RateLimitState struct {
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action RateLimitActionPtrInput
-	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-	Bypasses RateLimitBypassArrayInput
-	// An informative summary of the rule. This value is sanitized and any tags will be removed.
-	Description pulumi.StringPtrInput
-	// When true, indicates that the rate limit is currently disabled.
-	Disabled pulumi.BoolPtrInput
 	// Determines which traffic the rate limit counts towards the threshold.
 	Match RateLimitMatchPtrInput
 	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
 	Period pulumi.Float64PtrInput
+	// Defines the unique identifier of the rate limit.
+	RateLimitId pulumi.StringPtrInput
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold pulumi.Float64PtrInput
 	// Defines an identifier.
@@ -202,6 +190,8 @@ type rateLimitArgs struct {
 	Match RateLimitMatch `pulumi:"match"`
 	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
 	Period float64 `pulumi:"period"`
+	// Defines the unique identifier of the rate limit.
+	RateLimitId *string `pulumi:"rateLimitId"`
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold float64 `pulumi:"threshold"`
 	// Defines an identifier.
@@ -216,6 +206,8 @@ type RateLimitArgs struct {
 	Match RateLimitMatchInput
 	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
 	Period pulumi.Float64Input
+	// Defines the unique identifier of the rate limit.
+	RateLimitId pulumi.StringPtrInput
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold pulumi.Float64Input
 	// Defines an identifier.
@@ -314,21 +306,6 @@ func (o RateLimitOutput) Action() RateLimitActionOutput {
 	return o.ApplyT(func(v *RateLimit) RateLimitActionOutput { return v.Action }).(RateLimitActionOutput)
 }
 
-// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-func (o RateLimitOutput) Bypasses() RateLimitBypassArrayOutput {
-	return o.ApplyT(func(v *RateLimit) RateLimitBypassArrayOutput { return v.Bypasses }).(RateLimitBypassArrayOutput)
-}
-
-// An informative summary of the rule. This value is sanitized and any tags will be removed.
-func (o RateLimitOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *RateLimit) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
-}
-
-// When true, indicates that the rate limit is currently disabled.
-func (o RateLimitOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *RateLimit) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
-}
-
 // Determines which traffic the rate limit counts towards the threshold.
 func (o RateLimitOutput) Match() RateLimitMatchOutput {
 	return o.ApplyT(func(v *RateLimit) RateLimitMatchOutput { return v.Match }).(RateLimitMatchOutput)
@@ -337,6 +314,11 @@ func (o RateLimitOutput) Match() RateLimitMatchOutput {
 // The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
 func (o RateLimitOutput) Period() pulumi.Float64Output {
 	return o.ApplyT(func(v *RateLimit) pulumi.Float64Output { return v.Period }).(pulumi.Float64Output)
+}
+
+// Defines the unique identifier of the rate limit.
+func (o RateLimitOutput) RateLimitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.StringPtrOutput { return v.RateLimitId }).(pulumi.StringPtrOutput)
 }
 
 // The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.

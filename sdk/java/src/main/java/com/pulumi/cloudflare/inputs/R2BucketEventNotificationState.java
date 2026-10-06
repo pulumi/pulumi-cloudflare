@@ -18,14 +18,14 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
     public static final R2BucketEventNotificationState Empty = new R2BucketEventNotificationState();
 
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID.
+     * @return Cloudflare account ID that owns the R2 resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -63,14 +63,14 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
     }
 
     /**
-     * Queue ID.
+     * ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     @Import(name="queueId")
     private @Nullable Output<String> queueId;
 
     /**
-     * @return Queue ID.
+     * @return ID of the Cloudflare Queue that receives notifications for matching R2 object events.
      * 
      */
     public Optional<Output<String>> queueId() {
@@ -137,7 +137,7 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId Account ID.
+         * @param accountId Cloudflare account ID that owns the R2 resource.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param queueId Queue ID.
+         * @param queueId ID of the Cloudflare Queue that receives notifications for matching R2 object events.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param queueId Queue ID.
+         * @param queueId ID of the Cloudflare Queue that receives notifications for matching R2 object events.
          * 
          * @return builder
          * 

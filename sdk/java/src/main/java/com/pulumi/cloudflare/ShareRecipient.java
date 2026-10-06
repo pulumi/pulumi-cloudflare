@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -109,6 +110,20 @@ public class ShareRecipient extends com.pulumi.resources.CustomResource {
      */
     public Output<String> created() {
         return this.created;
+    }
+    /**
+     * Include resources in the response.
+     * 
+     */
+    @Export(name="includeResources", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> includeResources;
+
+    /**
+     * @return Include resources in the response.
+     * 
+     */
+    public Output<Optional<Boolean>> includeResources() {
+        return Codegen.optional(this.includeResources);
     }
     /**
      * When the share was modified.

@@ -16,14 +16,14 @@ public final class FlagshipAppState extends com.pulumi.resources.ResourceArgs {
     public static final FlagshipAppState Empty = new FlagshipAppState();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -37,9 +37,17 @@ public final class FlagshipAppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -95,7 +103,7 @@ public final class FlagshipAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -106,7 +114,7 @@ public final class FlagshipAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -124,11 +132,23 @@ public final class FlagshipAppState extends com.pulumi.resources.ResourceArgs {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param name Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

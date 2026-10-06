@@ -69,9 +69,11 @@ class GetZoneDnsSettingsResult:
 
     @_builtins.property
     @pulumi.getter(name="foundationDns")
+    @_utilities.deprecated("""foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+""")
     def foundation_dns(self) -> _builtins.bool:
         """
-        Whether to enable Foundation DNS Advanced Nameservers on the zone.
+        Deprecated. Use nameservers.type to configure Advanced Nameservers.
         """
         return pulumi.get(self, "foundation_dns")
 
@@ -95,7 +97,7 @@ class GetZoneDnsSettingsResult:
     @pulumi.getter
     def nameservers(self) -> 'outputs.GetZoneDnsSettingsNameserversResult':
         """
-        Settings determining the nameservers through which the zone should be available.
+        Controls the nameservers through which the zone is available.
         """
         return pulumi.get(self, "nameservers")
 

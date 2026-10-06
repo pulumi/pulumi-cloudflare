@@ -310,6 +310,21 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
     }
 
     /**
+     * Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    @Import(name="uninstallProtection")
+    private @Nullable Output<Boolean> uninstallProtection;
+
+    /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    public Optional<Output<Boolean>> uninstallProtection() {
+        return Optional.ofNullable(this.uninstallProtection);
+    }
+
+    /**
      * Virtual network access settings for the device.
      * 
      */
@@ -347,6 +362,7 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
         this.tunnelProtocol = $.tunnelProtocol;
+        this.uninstallProtection = $.uninstallProtection;
         this.virtualNetworks = $.virtualNetworks;
     }
 
@@ -792,6 +808,27 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
          */
         public Builder tunnelProtocol(String tunnelProtocol) {
             return tunnelProtocol(Output.of(tunnelProtocol));
+        }
+
+        /**
+         * @param uninstallProtection Determines whether uninstalling the WARP client requires an override code. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uninstallProtection(@Nullable Output<Boolean> uninstallProtection) {
+            $.uninstallProtection = uninstallProtection;
+            return this;
+        }
+
+        /**
+         * @param uninstallProtection Determines whether uninstalling the WARP client requires an override code. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uninstallProtection(Boolean uninstallProtection) {
+            return uninstallProtection(Output.of(uninstallProtection));
         }
 
         /**

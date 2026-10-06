@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * const examplePagesDomain = cloudflare.getPagesDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     projectName: "this-is-my-project-01",
- *     domainName: "this-is-my-domain-01.com",
+ *     domainName: "example.com",
  * });
  * ```
  */
@@ -43,11 +43,11 @@ export interface GetPagesDomainArgs {
      */
     accountId: string;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     domainName: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: string;
 }
@@ -67,19 +67,19 @@ export interface GetPagesDomainResult {
     readonly createdOn: string;
     readonly domainId: string;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     readonly domainName: string;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     readonly id: string;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     readonly name: string;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     readonly projectName: string;
     /**
@@ -105,7 +105,7 @@ export interface GetPagesDomainResult {
  * const examplePagesDomain = cloudflare.getPagesDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     projectName: "this-is-my-project-01",
- *     domainName: "this-is-my-domain-01.com",
+ *     domainName: "example.com",
  * });
  * ```
  */
@@ -127,11 +127,11 @@ export interface GetPagesDomainOutputArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      */
     domainName: pulumi.Input<string>;
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      */
     projectName: pulumi.Input<string>;
 }

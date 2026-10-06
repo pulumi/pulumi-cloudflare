@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// Identifier.
+        /// Custom hostname identifier tag.
         /// </summary>
         public readonly string Id;
         /// <summary>

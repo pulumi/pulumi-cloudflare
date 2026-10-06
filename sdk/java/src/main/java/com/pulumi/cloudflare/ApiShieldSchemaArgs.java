@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,6 +64,21 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    @Import(name="omitSource")
+    private @Nullable Output<Boolean> omitSource;
+
+    /**
+     * @return Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    public Optional<Output<Boolean>> omitSource() {
+        return Optional.ofNullable(this.omitSource);
+    }
+
     @Import(name="schemaId")
     private @Nullable Output<String> schemaId;
 
@@ -108,6 +124,7 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
         this.file = $.file;
         this.kind = $.kind;
         this.name = $.name;
+        this.omitSource = $.omitSource;
         this.schemaId = $.schemaId;
         this.validationEnabled = $.validationEnabled;
         this.zoneId = $.zoneId;
@@ -194,6 +211,27 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder omitSource(@Nullable Output<Boolean> omitSource) {
+            $.omitSource = omitSource;
+            return this;
+        }
+
+        /**
+         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder omitSource(Boolean omitSource) {
+            return omitSource(Output.of(omitSource));
         }
 
         public Builder schemaId(@Nullable Output<String> schemaId) {

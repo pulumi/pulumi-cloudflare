@@ -32,7 +32,7 @@ export function getR2BucketCors(args: GetR2BucketCorsArgs, opts?: pulumi.InvokeO
  */
 export interface GetR2BucketCorsArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetR2BucketCorsArgs {
  */
 export interface GetR2BucketCorsResult {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     readonly accountId: string;
     /**
@@ -81,7 +81,7 @@ export function getR2BucketCorsOutput(args: GetR2BucketCorsOutputArgs, opts?: pu
  */
 export interface GetR2BucketCorsOutputArgs {
     /**
-     * Account ID.
+     * Cloudflare account ID that owns the R2 resource.
      */
     accountId: pulumi.Input<string>;
     /**

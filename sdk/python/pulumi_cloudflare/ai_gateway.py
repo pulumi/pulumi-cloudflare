@@ -29,6 +29,7 @@ class AiGatewayArgs:
                  rate_limiting_interval: pulumi.Input[_builtins.int],
                  rate_limiting_limit: pulumi.Input[_builtins.int],
                  authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 byok_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  dlp: pulumi.Input[Optional['AiGatewayDlpArgs']] = None,
                  guardrails: pulumi.Input[Optional['AiGatewayGuardrailsArgs']] = None,
                  log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -49,12 +50,13 @@ class AiGatewayArgs:
         """
         The set of arguments for constructing a AiGateway resource.
 
-        :param pulumi.Input[_builtins.str] ai_gateway_id: gateway id
+        :param pulumi.Input[_builtins.str] ai_gateway_id: Unique identifier of the AI Gateway within the account.
+        :param pulumi.Input[_builtins.bool] byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
         :param pulumi.Input[_builtins.str] log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param pulumi.Input[_builtins.str] rate_limiting_technique: Available values: "fixed", "sliding".
         :param pulumi.Input[_builtins.str] retry_backoff: Backoff strategy for retry delays
                Available values: "constant", "linear", "exponential".
-        :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-5000)
+        :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
         :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
@@ -68,6 +70,8 @@ class AiGatewayArgs:
         pulumi.set(__self__, "rate_limiting_limit", rate_limiting_limit)
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
+        if byok_only is not None:
+            pulumi.set(__self__, "byok_only", byok_only)
         if dlp is not None:
             pulumi.set(__self__, "dlp", dlp)
         if guardrails is not None:
@@ -116,7 +120,7 @@ class AiGatewayArgs:
     @pulumi.getter(name="aiGatewayId")
     def ai_gateway_id(self) -> pulumi.Input[_builtins.str]:
         """
-        gateway id
+        Unique identifier of the AI Gateway within the account.
         """
         return pulumi.get(self, "ai_gateway_id")
 
@@ -177,6 +181,18 @@ class AiGatewayArgs:
     @authentication.setter
     def authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="byokOnly")
+    def byok_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        """
+        return pulumi.get(self, "byok_only")
+
+    @byok_only.setter
+    def byok_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "byok_only", value)
 
     @_builtins.property
     @pulumi.getter
@@ -282,7 +298,7 @@ class AiGatewayArgs:
     @pulumi.getter(name="retryDelay")
     def retry_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Delay between retry attempts in milliseconds (0-5000)
+        Delay between retry attempts in milliseconds (0-60000)
         """
         return pulumi.get(self, "retry_delay")
 
@@ -358,6 +374,7 @@ class _AiGatewayState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 byok_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -386,12 +403,13 @@ class _AiGatewayState:
         """
         Input properties used for looking up and filtering AiGateway resources.
 
-        :param pulumi.Input[_builtins.str] ai_gateway_id: gateway id
+        :param pulumi.Input[_builtins.str] ai_gateway_id: Unique identifier of the AI Gateway within the account.
+        :param pulumi.Input[_builtins.bool] byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
         :param pulumi.Input[_builtins.str] log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param pulumi.Input[_builtins.str] rate_limiting_technique: Available values: "fixed", "sliding".
         :param pulumi.Input[_builtins.str] retry_backoff: Backoff strategy for retry delays
                Available values: "constant", "linear", "exponential".
-        :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-5000)
+        :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
         :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
@@ -402,6 +420,8 @@ class _AiGatewayState:
             pulumi.set(__self__, "ai_gateway_id", ai_gateway_id)
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
+        if byok_only is not None:
+            pulumi.set(__self__, "byok_only", byok_only)
         if cache_invalidate_on_update is not None:
             pulumi.set(__self__, "cache_invalidate_on_update", cache_invalidate_on_update)
         if cache_ttl is not None:
@@ -466,7 +486,7 @@ class _AiGatewayState:
     @pulumi.getter(name="aiGatewayId")
     def ai_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        gateway id
+        Unique identifier of the AI Gateway within the account.
         """
         return pulumi.get(self, "ai_gateway_id")
 
@@ -482,6 +502,18 @@ class _AiGatewayState:
     @authentication.setter
     def authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="byokOnly")
+    def byok_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        """
+        return pulumi.get(self, "byok_only")
+
+    @byok_only.setter
+    def byok_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "byok_only", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheInvalidateOnUpdate")
@@ -659,7 +691,7 @@ class _AiGatewayState:
     @pulumi.getter(name="retryDelay")
     def retry_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Delay between retry attempts in milliseconds (0-5000)
+        Delay between retry attempts in milliseconds (0-60000)
         """
         return pulumi.get(self, "retry_delay")
 
@@ -738,6 +770,7 @@ class AiGateway(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 byok_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -782,15 +815,94 @@ class AiGateway(pulumi.CustomResource):
             rate_limiting_interval=0,
             rate_limiting_limit=0,
             authentication=True,
+            byok_only=True,
+            dlp={
+                "action": "BLOCK",
+                "enabled": True,
+                "profiles": ["string"],
+            },
+            guardrails={
+                "prompt": {
+                    "p1": "FLAG",
+                    "s1": "FLAG",
+                    "s10": "FLAG",
+                    "s11": "FLAG",
+                    "s12": "FLAG",
+                    "s13": "FLAG",
+                    "s2": "FLAG",
+                    "s3": "FLAG",
+                    "s4": "FLAG",
+                    "s5": "FLAG",
+                    "s6": "FLAG",
+                    "s7": "FLAG",
+                    "s8": "FLAG",
+                    "s9": "FLAG",
+                },
+                "response": {
+                    "p1": "FLAG",
+                    "s1": "FLAG",
+                    "s10": "FLAG",
+                    "s11": "FLAG",
+                    "s12": "FLAG",
+                    "s13": "FLAG",
+                    "s2": "FLAG",
+                    "s3": "FLAG",
+                    "s4": "FLAG",
+                    "s5": "FLAG",
+                    "s6": "FLAG",
+                    "s7": "FLAG",
+                    "s8": "FLAG",
+                    "s9": "FLAG",
+                },
+            },
+            log_classification=True,
             log_management=10000,
             log_management_strategy="STOP_INSERTING",
             logpush=True,
             logpush_public_key="xxxxxxxxxxxxxxxx",
+            otels=[{
+                "headers": {
+                    "foo": "string",
+                },
+                "url": "https://example.com",
+                "authorization": "authorization",
+                "content_type": "json",
+            }],
             rate_limiting_technique="fixed",
             retry_backoff="constant",
             retry_delay=0,
             retry_max_attempts=1,
+            spend_limits={
+                "enabled": True,
+                "rules": [{
+                    "limit": float(1),
+                    "limit_type": "cost",
+                    "window": 1,
+                    "id": "x",
+                    "enabled": True,
+                    "metadata": {
+                        "foo": {
+                            "mode": "partition",
+                        },
+                    },
+                    "model": {
+                        "mode": "filter",
+                        "values": ["string"],
+                    },
+                    "ai_gateway_provider": {
+                        "mode": "filter",
+                        "values": ["string"],
+                    },
+                    "technique": "fixed",
+                }],
+            },
             store_id="store_id",
+            stripe={
+                "authorization": "authorization",
+                "usage_events": [{
+                    "payload": "payload",
+                }],
+            },
             workers_ai_billing_mode="postpaid",
             zdr=True)
         ```
@@ -804,12 +916,13 @@ class AiGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] ai_gateway_id: gateway id
+        :param pulumi.Input[_builtins.str] ai_gateway_id: Unique identifier of the AI Gateway within the account.
+        :param pulumi.Input[_builtins.bool] byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
         :param pulumi.Input[_builtins.str] log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param pulumi.Input[_builtins.str] rate_limiting_technique: Available values: "fixed", "sliding".
         :param pulumi.Input[_builtins.str] retry_backoff: Backoff strategy for retry delays
                Available values: "constant", "linear", "exponential".
-        :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-5000)
+        :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
         :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
@@ -841,15 +954,94 @@ class AiGateway(pulumi.CustomResource):
             rate_limiting_interval=0,
             rate_limiting_limit=0,
             authentication=True,
+            byok_only=True,
+            dlp={
+                "action": "BLOCK",
+                "enabled": True,
+                "profiles": ["string"],
+            },
+            guardrails={
+                "prompt": {
+                    "p1": "FLAG",
+                    "s1": "FLAG",
+                    "s10": "FLAG",
+                    "s11": "FLAG",
+                    "s12": "FLAG",
+                    "s13": "FLAG",
+                    "s2": "FLAG",
+                    "s3": "FLAG",
+                    "s4": "FLAG",
+                    "s5": "FLAG",
+                    "s6": "FLAG",
+                    "s7": "FLAG",
+                    "s8": "FLAG",
+                    "s9": "FLAG",
+                },
+                "response": {
+                    "p1": "FLAG",
+                    "s1": "FLAG",
+                    "s10": "FLAG",
+                    "s11": "FLAG",
+                    "s12": "FLAG",
+                    "s13": "FLAG",
+                    "s2": "FLAG",
+                    "s3": "FLAG",
+                    "s4": "FLAG",
+                    "s5": "FLAG",
+                    "s6": "FLAG",
+                    "s7": "FLAG",
+                    "s8": "FLAG",
+                    "s9": "FLAG",
+                },
+            },
+            log_classification=True,
             log_management=10000,
             log_management_strategy="STOP_INSERTING",
             logpush=True,
             logpush_public_key="xxxxxxxxxxxxxxxx",
+            otels=[{
+                "headers": {
+                    "foo": "string",
+                },
+                "url": "https://example.com",
+                "authorization": "authorization",
+                "content_type": "json",
+            }],
             rate_limiting_technique="fixed",
             retry_backoff="constant",
             retry_delay=0,
             retry_max_attempts=1,
+            spend_limits={
+                "enabled": True,
+                "rules": [{
+                    "limit": float(1),
+                    "limit_type": "cost",
+                    "window": 1,
+                    "id": "x",
+                    "enabled": True,
+                    "metadata": {
+                        "foo": {
+                            "mode": "partition",
+                        },
+                    },
+                    "model": {
+                        "mode": "filter",
+                        "values": ["string"],
+                    },
+                    "ai_gateway_provider": {
+                        "mode": "filter",
+                        "values": ["string"],
+                    },
+                    "technique": "fixed",
+                }],
+            },
             store_id="store_id",
+            stripe={
+                "authorization": "authorization",
+                "usage_events": [{
+                    "payload": "payload",
+                }],
+            },
             workers_ai_billing_mode="postpaid",
             zdr=True)
         ```
@@ -879,6 +1071,7 @@ class AiGateway(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 byok_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -917,6 +1110,7 @@ class AiGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ai_gateway_id'")
             __props__.__dict__["ai_gateway_id"] = ai_gateway_id
             __props__.__dict__["authentication"] = authentication
+            __props__.__dict__["byok_only"] = byok_only
             if cache_invalidate_on_update is None and not opts.urn:
                 raise TypeError("Missing required property 'cache_invalidate_on_update'")
             __props__.__dict__["cache_invalidate_on_update"] = cache_invalidate_on_update
@@ -965,6 +1159,7 @@ class AiGateway(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+            byok_only: pulumi.Input[Optional[_builtins.bool]] = None,
             cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
             cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
             collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -997,12 +1192,13 @@ class AiGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] ai_gateway_id: gateway id
+        :param pulumi.Input[_builtins.str] ai_gateway_id: Unique identifier of the AI Gateway within the account.
+        :param pulumi.Input[_builtins.bool] byok_only: Requires customer-provided provider credentials and prevents fallback to Unified Billing.
         :param pulumi.Input[_builtins.str] log_management_strategy: Available values: "STOP*INSERTING", "DELETE*OLDEST".
         :param pulumi.Input[_builtins.str] rate_limiting_technique: Available values: "fixed", "sliding".
         :param pulumi.Input[_builtins.str] retry_backoff: Backoff strategy for retry delays
                Available values: "constant", "linear", "exponential".
-        :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-5000)
+        :param pulumi.Input[_builtins.int] retry_delay: Delay between retry attempts in milliseconds (0-60000)
         :param pulumi.Input[_builtins.int] retry_max_attempts: Maximum number of retry attempts for failed requests (1-5)
         :param pulumi.Input[_builtins.str] workers_ai_billing_mode: Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
                Available values: "postpaid", "unified".
@@ -1014,6 +1210,7 @@ class AiGateway(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["ai_gateway_id"] = ai_gateway_id
         __props__.__dict__["authentication"] = authentication
+        __props__.__dict__["byok_only"] = byok_only
         __props__.__dict__["cache_invalidate_on_update"] = cache_invalidate_on_update
         __props__.__dict__["cache_ttl"] = cache_ttl
         __props__.__dict__["collect_logs"] = collect_logs
@@ -1050,14 +1247,22 @@ class AiGateway(pulumi.CustomResource):
     @pulumi.getter(name="aiGatewayId")
     def ai_gateway_id(self) -> pulumi.Output[_builtins.str]:
         """
-        gateway id
+        Unique identifier of the AI Gateway within the account.
         """
         return pulumi.get(self, "ai_gateway_id")
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def authentication(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "authentication")
+
+    @_builtins.property
+    @pulumi.getter(name="byokOnly")
+    def byok_only(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        """
+        return pulumi.get(self, "byok_only")
 
     @_builtins.property
     @pulumi.getter(name="cacheInvalidateOnUpdate")
@@ -1096,17 +1301,17 @@ class AiGateway(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="logClassification")
-    def log_classification(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def log_classification(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "log_classification")
 
     @_builtins.property
     @pulumi.getter(name="logManagement")
-    def log_management(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def log_management(self) -> pulumi.Output[_builtins.int]:
         return pulumi.get(self, "log_management")
 
     @_builtins.property
     @pulumi.getter(name="logManagementStrategy")
-    def log_management_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def log_management_strategy(self) -> pulumi.Output[_builtins.str]:
         """
         Available values: "STOP*INSERTING", "DELETE*OLDEST".
         """
@@ -1114,7 +1319,7 @@ class AiGateway(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def logpush(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def logpush(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "logpush")
 
     @_builtins.property
@@ -1163,7 +1368,7 @@ class AiGateway(pulumi.CustomResource):
     @pulumi.getter(name="retryDelay")
     def retry_delay(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Delay between retry attempts in milliseconds (0-5000)
+        Delay between retry attempts in milliseconds (0-60000)
         """
         return pulumi.get(self, "retry_delay")
 
@@ -1182,7 +1387,7 @@ class AiGateway(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="storeId")
-    def store_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def store_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "store_id")
 
     @_builtins.property
@@ -1201,6 +1406,6 @@ class AiGateway(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def zdr(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def zdr(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "zdr")
 

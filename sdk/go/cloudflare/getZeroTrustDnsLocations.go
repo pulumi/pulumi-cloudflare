@@ -33,6 +33,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDnsLocations(ctx, &cloudflare.LookupZeroTrustDnsLocationsArgs{
 //				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+//				Direction: pulumi.StringRef("asc"),
+//				Filters: []string{
+//					"string",
+//				},
+//				OrderBy: pulumi.StringRef("name"),
+//				Search:  pulumi.StringRef("search"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,18 +60,23 @@ func LookupZeroTrustDnsLocations(ctx *pulumi.Context, args *LookupZeroTrustDnsLo
 
 // A collection of arguments for invoking getZeroTrustDnsLocations.
 type LookupZeroTrustDnsLocationsArgs struct {
-	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
+	AccountId *string  `pulumi:"accountId"`
+	Direction *string  `pulumi:"direction"`
+	Filters   []string `pulumi:"filters"`
+	MaxItems  *int     `pulumi:"maxItems"`
+	OrderBy   *string  `pulumi:"orderBy"`
+	Search    *string  `pulumi:"search"`
 }
 
 // A collection of values returned by getZeroTrustDnsLocations.
 type LookupZeroTrustDnsLocationsResult struct {
-	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems *int `pulumi:"maxItems"`
-	// The items returned by the data source
-	Results []GetZeroTrustDnsLocationsResult `pulumi:"results"`
+	AccountId *string                          `pulumi:"accountId"`
+	Direction *string                          `pulumi:"direction"`
+	Filters   []string                         `pulumi:"filters"`
+	MaxItems  *int                             `pulumi:"maxItems"`
+	OrderBy   *string                          `pulumi:"orderBy"`
+	Results   []GetZeroTrustDnsLocationsResult `pulumi:"results"`
+	Search    *string                          `pulumi:"search"`
 }
 
 func LookupZeroTrustDnsLocationsOutput(ctx *pulumi.Context, args LookupZeroTrustDnsLocationsOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDnsLocationsResultOutput {
@@ -75,9 +86,12 @@ func LookupZeroTrustDnsLocationsOutput(ctx *pulumi.Context, args LookupZeroTrust
 
 // A collection of arguments for invoking getZeroTrustDnsLocations.
 type LookupZeroTrustDnsLocationsOutputArgs struct {
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
-	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	AccountId pulumi.StringPtrInput   `pulumi:"accountId"`
+	Direction pulumi.StringPtrInput   `pulumi:"direction"`
+	Filters   pulumi.StringArrayInput `pulumi:"filters"`
+	MaxItems  pulumi.IntPtrInput      `pulumi:"maxItems"`
+	OrderBy   pulumi.StringPtrInput   `pulumi:"orderBy"`
+	Search    pulumi.StringPtrInput   `pulumi:"search"`
 }
 
 func (LookupZeroTrustDnsLocationsOutputArgs) ElementType() reflect.Type {
@@ -103,14 +117,28 @@ func (o LookupZeroTrustDnsLocationsResultOutput) AccountId() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Max items to fetch, default: 1000
+func (o LookupZeroTrustDnsLocationsResultOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupZeroTrustDnsLocationsResultOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupZeroTrustDnsLocationsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// The items returned by the data source
+func (o LookupZeroTrustDnsLocationsResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
 func (o LookupZeroTrustDnsLocationsResultOutput) Results() GetZeroTrustDnsLocationsResultArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) []GetZeroTrustDnsLocationsResult { return v.Results }).(GetZeroTrustDnsLocationsResultArrayOutput)
+}
+
+func (o LookupZeroTrustDnsLocationsResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationsResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
 
 func init() {

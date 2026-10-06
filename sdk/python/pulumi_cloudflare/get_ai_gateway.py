@@ -28,13 +28,16 @@ class GetAiGatewayResult:
     """
     A collection of values returned by getAiGateway.
     """
-    def __init__(__self__, account_id=None, authentication=None, cache_invalidate_on_update=None, cache_ttl=None, collect_logs=None, created_at=None, dlp=None, filter=None, guardrails=None, id=None, is_default=None, log_classification=None, log_management=None, log_management_strategy=None, logpush=None, logpush_public_key=None, modified_at=None, otels=None, rate_limiting_interval=None, rate_limiting_limit=None, rate_limiting_technique=None, retry_backoff=None, retry_delay=None, retry_max_attempts=None, spend_limits=None, store_id=None, stripe=None, workers_ai_billing_mode=None, zdr=None):
+    def __init__(__self__, account_id=None, authentication=None, byok_only=None, cache_invalidate_on_update=None, cache_ttl=None, collect_logs=None, created_at=None, dlp=None, filter=None, guardrails=None, id=None, is_default=None, log_classification=None, log_management=None, log_management_strategy=None, logpush=None, logpush_public_key=None, modified_at=None, otels=None, rate_limiting_interval=None, rate_limiting_limit=None, rate_limiting_technique=None, retry_backoff=None, retry_delay=None, retry_max_attempts=None, spend_limits=None, store_id=None, stripe=None, workers_ai_billing_mode=None, zdr=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if authentication and not isinstance(authentication, bool):
             raise TypeError("Expected argument 'authentication' to be a bool")
         pulumi.set(__self__, "authentication", authentication)
+        if byok_only and not isinstance(byok_only, bool):
+            raise TypeError("Expected argument 'byok_only' to be a bool")
+        pulumi.set(__self__, "byok_only", byok_only)
         if cache_invalidate_on_update and not isinstance(cache_invalidate_on_update, bool):
             raise TypeError("Expected argument 'cache_invalidate_on_update' to be a bool")
         pulumi.set(__self__, "cache_invalidate_on_update", cache_invalidate_on_update)
@@ -128,6 +131,14 @@ class GetAiGatewayResult:
         return pulumi.get(self, "authentication")
 
     @_builtins.property
+    @pulumi.getter(name="byokOnly")
+    def byok_only(self) -> _builtins.bool:
+        """
+        Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+        """
+        return pulumi.get(self, "byok_only")
+
+    @_builtins.property
     @pulumi.getter(name="cacheInvalidateOnUpdate")
     def cache_invalidate_on_update(self) -> _builtins.bool:
         return pulumi.get(self, "cache_invalidate_on_update")
@@ -166,7 +177,7 @@ class GetAiGatewayResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        gateway id
+        Unique identifier of the AI Gateway within the account.
         """
         return pulumi.get(self, "id")
 
@@ -244,7 +255,7 @@ class GetAiGatewayResult:
     @pulumi.getter(name="retryDelay")
     def retry_delay(self) -> _builtins.int:
         """
-        Delay between retry attempts in milliseconds (0-5000)
+        Delay between retry attempts in milliseconds (0-60000)
         """
         return pulumi.get(self, "retry_delay")
 
@@ -294,6 +305,7 @@ class AwaitableGetAiGatewayResult(GetAiGatewayResult):
         return GetAiGatewayResult(
             account_id=self.account_id,
             authentication=self.authentication,
+            byok_only=self.byok_only,
             cache_invalidate_on_update=self.cache_invalidate_on_update,
             cache_ttl=self.cache_ttl,
             collect_logs=self.collect_logs,
@@ -344,7 +356,7 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str id: gateway id
+    :param _builtins.str id: Unique identifier of the AI Gateway within the account.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -356,6 +368,7 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
     return AwaitableGetAiGatewayResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         authentication=pulumi.get(__ret__, 'authentication'),
+        byok_only=pulumi.get(__ret__, 'byok_only'),
         cache_invalidate_on_update=pulumi.get(__ret__, 'cache_invalidate_on_update'),
         cache_ttl=pulumi.get(__ret__, 'cache_ttl'),
         collect_logs=pulumi.get(__ret__, 'collect_logs'),
@@ -404,7 +417,7 @@ def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     ```
 
 
-    :param _builtins.str id: gateway id
+    :param _builtins.str id: Unique identifier of the AI Gateway within the account.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -415,6 +428,7 @@ def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
     return __ret__.apply(lambda __response__: GetAiGatewayResult(
         account_id=pulumi.get(__response__, 'account_id'),
         authentication=pulumi.get(__response__, 'authentication'),
+        byok_only=pulumi.get(__response__, 'byok_only'),
         cache_invalidate_on_update=pulumi.get(__response__, 'cache_invalidate_on_update'),
         cache_ttl=pulumi.get(__response__, 'cache_ttl'),
         collect_logs=pulumi.get(__response__, 'collect_logs'),

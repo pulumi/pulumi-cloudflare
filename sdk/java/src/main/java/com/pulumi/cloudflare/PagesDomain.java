@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *         var examplePagesDomain = new PagesDomain("examplePagesDomain", PagesDomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .projectName("this-is-my-project-01")
- *             .name("this-is-my-domain-01.com")
+ *             .name("example.com")
  *             .build());
  * 
  *     }
@@ -109,28 +109,28 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
         return this.domainId;
     }
     /**
-     * The domain name.
+     * Fully qualified domain name for the Pages project, such as `example.com`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The domain name.
+     * @return Fully qualified domain name for the Pages project, such as `example.com`.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Name of the project.
+     * Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public Output<String> projectName() {

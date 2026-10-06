@@ -41,11 +41,11 @@ export function getWorkersKvNamespaces(args?: GetWorkersKvNamespacesArgs, opts?:
  */
 export interface GetWorkersKvNamespacesArgs {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId?: string;
     /**
-     * Direction to order namespaces.
+     * Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: "asc", "desc".
      */
     direction?: string;
@@ -54,7 +54,7 @@ export interface GetWorkersKvNamespacesArgs {
      */
     maxItems?: number;
     /**
-     * Field to order results by.
+     * Namespace field to sort by (`id` or `title`).
      * Available values: "id", "title".
      */
     order?: string;
@@ -65,11 +65,11 @@ export interface GetWorkersKvNamespacesArgs {
  */
 export interface GetWorkersKvNamespacesResult {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     readonly accountId?: string;
     /**
-     * Direction to order namespaces.
+     * Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: "asc", "desc".
      */
     readonly direction?: string;
@@ -78,7 +78,7 @@ export interface GetWorkersKvNamespacesResult {
      */
     readonly maxItems?: number;
     /**
-     * Field to order results by.
+     * Namespace field to sort by (`id` or `title`).
      * Available values: "id", "title".
      */
     readonly order?: string;
@@ -122,11 +122,11 @@ export function getWorkersKvNamespacesOutput(args?: GetWorkersKvNamespacesOutput
  */
 export interface GetWorkersKvNamespacesOutputArgs {
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Direction to order namespaces.
+     * Sort namespaces in ascending (`asc`) or descending (`desc`) order.
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
@@ -135,7 +135,7 @@ export interface GetWorkersKvNamespacesOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Field to order results by.
+     * Namespace field to sort by (`id` or `title`).
      * Available values: "id", "title".
      */
     order?: pulumi.Input<string | undefined>;

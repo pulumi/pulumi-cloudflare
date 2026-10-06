@@ -17,14 +17,14 @@ public final class GetClientCertificateArgs extends com.pulumi.resources.InvokeA
     public static final GetClientCertificateArgs Empty = new GetClientCertificateArgs();
 
     /**
-     * Identifier.
+     * Client Certificate Tag
      * 
      */
     @Import(name="clientCertificateId")
     private @Nullable Output<String> clientCertificateId;
 
     /**
-     * @return Identifier.
+     * @return Client Certificate Tag
      * 
      */
     public Optional<Output<String>> clientCertificateId() {
@@ -80,7 +80,7 @@ public final class GetClientCertificateArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param clientCertificateId Identifier.
+         * @param clientCertificateId Client Certificate Tag
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetClientCertificateArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param clientCertificateId Identifier.
+         * @param clientCertificateId Client Certificate Tag
          * 
          * @return builder
          * 

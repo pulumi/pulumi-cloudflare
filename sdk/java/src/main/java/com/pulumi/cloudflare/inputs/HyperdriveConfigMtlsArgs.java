@@ -46,14 +46,14 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
+     * PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
      * 
      */
     @Import(name="sslmode")
     private @Nullable Output<String> sslmode;
 
     /**
-     * @return Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
+     * @return PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
      * 
      */
     public Optional<Output<String>> sslmode() {
@@ -129,7 +129,7 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sslmode Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
+         * @param sslmode PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sslmode Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
+         * @param sslmode PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.
          * 
          * @return builder
          * 

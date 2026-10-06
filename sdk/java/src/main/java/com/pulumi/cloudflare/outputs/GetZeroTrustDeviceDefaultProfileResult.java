@@ -91,6 +91,12 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     private List<GetZeroTrustDeviceDefaultProfileInclude> includes;
     private String policyId;
     /**
+     * @return The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    private String profileType;
+    /**
      * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
      */
@@ -116,6 +122,11 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
      * 
      */
     private String tunnelProtocol;
+    /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    private Boolean uninstallProtection;
     /**
      * @return Virtual network access settings for the device.
      * 
@@ -227,6 +238,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         return this.policyId;
     }
     /**
+     * @return The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public String profileType() {
+        return this.profileType;
+    }
+    /**
      * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
      */
@@ -265,6 +284,13 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         return this.tunnelProtocol;
     }
     /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    public Boolean uninstallProtection() {
+        return this.uninstallProtection;
+    }
+    /**
      * @return Virtual network access settings for the device.
      * 
      */
@@ -298,12 +324,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         private String id;
         private List<GetZeroTrustDeviceDefaultProfileInclude> includes;
         private String policyId;
+        private String profileType;
         private Boolean registerInterfaceIpWithDns;
         private Boolean sccmVpnBoundarySupport;
         private GetZeroTrustDeviceDefaultProfileServiceModeV2 serviceModeV2;
         private String supportUrl;
         private Boolean switchLocked;
         private String tunnelProtocol;
+        private Boolean uninstallProtection;
         private GetZeroTrustDeviceDefaultProfileVirtualNetworks virtualNetworks;
         public Builder() {}
         public Builder(GetZeroTrustDeviceDefaultProfileResult defaults) {
@@ -325,12 +353,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
     	      this.policyId = defaults.policyId;
+    	      this.profileType = defaults.profileType;
     	      this.registerInterfaceIpWithDns = defaults.registerInterfaceIpWithDns;
     	      this.sccmVpnBoundarySupport = defaults.sccmVpnBoundarySupport;
     	      this.serviceModeV2 = defaults.serviceModeV2;
     	      this.supportUrl = defaults.supportUrl;
     	      this.switchLocked = defaults.switchLocked;
     	      this.tunnelProtocol = defaults.tunnelProtocol;
+    	      this.uninstallProtection = defaults.uninstallProtection;
     	      this.virtualNetworks = defaults.virtualNetworks;
         }
 
@@ -481,6 +511,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder profileType(String profileType) {
+            if (profileType == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "profileType");
+            }
+            this.profileType = profileType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder registerInterfaceIpWithDns(Boolean registerInterfaceIpWithDns) {
             if (registerInterfaceIpWithDns == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "registerInterfaceIpWithDns");
@@ -529,6 +567,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder uninstallProtection(Boolean uninstallProtection) {
+            if (uninstallProtection == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "uninstallProtection");
+            }
+            this.uninstallProtection = uninstallProtection;
+            return this;
+        }
+        @CustomType.Setter
         public Builder virtualNetworks(GetZeroTrustDeviceDefaultProfileVirtualNetworks virtualNetworks) {
             if (virtualNetworks == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "virtualNetworks");
@@ -555,12 +601,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
             _resultValue.id = id;
             _resultValue.includes = includes;
             _resultValue.policyId = policyId;
+            _resultValue.profileType = profileType;
             _resultValue.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
             _resultValue.sccmVpnBoundarySupport = sccmVpnBoundarySupport;
             _resultValue.serviceModeV2 = serviceModeV2;
             _resultValue.supportUrl = supportUrl;
             _resultValue.switchLocked = switchLocked;
             _resultValue.tunnelProtocol = tunnelProtocol;
+            _resultValue.uninstallProtection = uninstallProtection;
             _resultValue.virtualNetworks = virtualNetworks;
             return _resultValue;
         }

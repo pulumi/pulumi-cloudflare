@@ -211,9 +211,17 @@ import javax.annotation.Nullable;
 @Deprecated /* cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy */
 @ResourceType(type="cloudflare:index/teamsRule:TeamsRule")
 public class TeamsRule extends com.pulumi.resources.CustomResource {
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }

@@ -37,7 +37,18 @@ class EmailSecurityDomainArgs:
         The set of arguments for constructing a EmailSecurityDomain resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] folder: Available values: "AllItems", "Inbox".
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_delivery_modes: Delivery modes to onboard the domain through.
+        :param pulumi.Input[_builtins.str] domain: The email domain to protect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drop_dispositions: Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restrictions: Source IP ranges mail is accepted from. Any other source is rejected.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        :param pulumi.Input[_builtins.str] folder: The mailbox folder to scan, for API-scanning domains.
+               Available values: "AllItems", "Inbox".
+        :param pulumi.Input[_builtins.str] integration_id: Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        :param pulumi.Input[_builtins.int] lookback_hops: Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        :param pulumi.Input[_builtins.bool] require_tls_inbound: Require TLS on inbound connections.
+        :param pulumi.Input[_builtins.bool] require_tls_outbound: Require TLS on outbound connections.
+        :param pulumi.Input[_builtins.str] transport: The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "allowed_delivery_modes", allowed_delivery_modes)
@@ -73,6 +84,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter(name="allowedDeliveryModes")
     def allowed_delivery_modes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Delivery modes to onboard the domain through.
+        """
         return pulumi.get(self, "allowed_delivery_modes")
 
     @allowed_delivery_modes.setter
@@ -82,6 +96,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter
     def domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The email domain to protect.
+        """
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -91,6 +108,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter(name="dropDispositions")
     def drop_dispositions(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        """
         return pulumi.get(self, "drop_dispositions")
 
     @drop_dispositions.setter
@@ -100,6 +120,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Source IP ranges mail is accepted from. Any other source is rejected.
+        """
         return pulumi.get(self, "ip_restrictions")
 
     @ip_restrictions.setter
@@ -109,6 +132,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter
     def regions(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        """
         return pulumi.get(self, "regions")
 
     @regions.setter
@@ -119,6 +145,7 @@ class EmailSecurityDomainArgs:
     @pulumi.getter
     def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        The mailbox folder to scan, for API-scanning domains.
         Available values: "AllItems", "Inbox".
         """
         return pulumi.get(self, "folder")
@@ -130,6 +157,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        """
         return pulumi.get(self, "integration_id")
 
     @integration_id.setter
@@ -139,6 +169,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter(name="lookbackHops")
     def lookback_hops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        """
         return pulumi.get(self, "lookback_hops")
 
     @lookback_hops.setter
@@ -148,6 +181,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter(name="requireTlsInbound")
     def require_tls_inbound(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Require TLS on inbound connections.
+        """
         return pulumi.get(self, "require_tls_inbound")
 
     @require_tls_inbound.setter
@@ -157,6 +193,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter(name="requireTlsOutbound")
     def require_tls_outbound(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Require TLS on outbound connections.
+        """
         return pulumi.get(self, "require_tls_outbound")
 
     @require_tls_outbound.setter
@@ -166,6 +205,9 @@ class EmailSecurityDomainArgs:
     @_builtins.property
     @pulumi.getter
     def transport(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+        """
         return pulumi.get(self, "transport")
 
     @transport.setter
@@ -202,12 +244,23 @@ class _EmailSecurityDomainState:
         Input properties used for looking up and filtering EmailSecurityDomain resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_delivery_modes: Delivery modes to onboard the domain through.
         :param pulumi.Input[_builtins.str] dmarc_status: Available values: "none", "good", "invalid".
-        :param pulumi.Input[_builtins.str] folder: Available values: "AllItems", "Inbox".
+        :param pulumi.Input[_builtins.str] domain: The email domain to protect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drop_dispositions: Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        :param pulumi.Input[_builtins.str] folder: The mailbox folder to scan, for API-scanning domains.
+               Available values: "AllItems", "Inbox".
         :param pulumi.Input[_builtins.str] inbox_provider: Available values: "Microsoft", "Google".
+        :param pulumi.Input[_builtins.str] integration_id: Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restrictions: Source IP ranges mail is accepted from. Any other source is rejected.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param pulumi.Input[_builtins.int] lookback_hops: Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        :param pulumi.Input[_builtins.bool] require_tls_inbound: Require TLS on inbound connections.
+        :param pulumi.Input[_builtins.bool] require_tls_outbound: Require TLS on outbound connections.
         :param pulumi.Input[_builtins.str] spf_status: Available values: "none", "good", "neutral", "open", "invalid".
         :param pulumi.Input[_builtins.str] status: Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+        :param pulumi.Input[_builtins.str] transport: The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -272,6 +325,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter(name="allowedDeliveryModes")
     def allowed_delivery_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Delivery modes to onboard the domain through.
+        """
         return pulumi.get(self, "allowed_delivery_modes")
 
     @allowed_delivery_modes.setter
@@ -311,6 +367,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter
     def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The email domain to protect.
+        """
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -320,6 +379,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter(name="dropDispositions")
     def drop_dispositions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        """
         return pulumi.get(self, "drop_dispositions")
 
     @drop_dispositions.setter
@@ -339,6 +401,7 @@ class _EmailSecurityDomainState:
     @pulumi.getter
     def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        The mailbox folder to scan, for API-scanning domains.
         Available values: "AllItems", "Inbox".
         """
         return pulumi.get(self, "folder")
@@ -362,6 +425,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        """
         return pulumi.get(self, "integration_id")
 
     @integration_id.setter
@@ -371,6 +437,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Source IP ranges mail is accepted from. Any other source is rejected.
+        """
         return pulumi.get(self, "ip_restrictions")
 
     @ip_restrictions.setter
@@ -393,6 +462,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter(name="lookbackHops")
     def lookback_hops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        """
         return pulumi.get(self, "lookback_hops")
 
     @lookback_hops.setter
@@ -420,6 +492,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter
     def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        """
         return pulumi.get(self, "regions")
 
     @regions.setter
@@ -429,6 +504,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter(name="requireTlsInbound")
     def require_tls_inbound(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Require TLS on inbound connections.
+        """
         return pulumi.get(self, "require_tls_inbound")
 
     @require_tls_inbound.setter
@@ -438,6 +516,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter(name="requireTlsOutbound")
     def require_tls_outbound(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Require TLS on outbound connections.
+        """
         return pulumi.get(self, "require_tls_outbound")
 
     @require_tls_outbound.setter
@@ -471,6 +552,9 @@ class _EmailSecurityDomainState:
     @_builtins.property
     @pulumi.getter
     def transport(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+        """
         return pulumi.get(self, "transport")
 
     @transport.setter
@@ -537,7 +621,18 @@ class EmailSecurityDomain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] folder: Available values: "AllItems", "Inbox".
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_delivery_modes: Delivery modes to onboard the domain through.
+        :param pulumi.Input[_builtins.str] domain: The email domain to protect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drop_dispositions: Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        :param pulumi.Input[_builtins.str] folder: The mailbox folder to scan, for API-scanning domains.
+               Available values: "AllItems", "Inbox".
+        :param pulumi.Input[_builtins.str] integration_id: Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restrictions: Source IP ranges mail is accepted from. Any other source is rejected.
+        :param pulumi.Input[_builtins.int] lookback_hops: Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        :param pulumi.Input[_builtins.bool] require_tls_inbound: Require TLS on inbound connections.
+        :param pulumi.Input[_builtins.bool] require_tls_outbound: Require TLS on outbound connections.
+        :param pulumi.Input[_builtins.str] transport: The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
         """
         ...
     @overload
@@ -692,12 +787,23 @@ class EmailSecurityDomain(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_delivery_modes: Delivery modes to onboard the domain through.
         :param pulumi.Input[_builtins.str] dmarc_status: Available values: "none", "good", "invalid".
-        :param pulumi.Input[_builtins.str] folder: Available values: "AllItems", "Inbox".
+        :param pulumi.Input[_builtins.str] domain: The email domain to protect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drop_dispositions: Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        :param pulumi.Input[_builtins.str] folder: The mailbox folder to scan, for API-scanning domains.
+               Available values: "AllItems", "Inbox".
         :param pulumi.Input[_builtins.str] inbox_provider: Available values: "Microsoft", "Google".
+        :param pulumi.Input[_builtins.str] integration_id: Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restrictions: Source IP ranges mail is accepted from. Any other source is rejected.
         :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param pulumi.Input[_builtins.int] lookback_hops: Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        :param pulumi.Input[_builtins.bool] require_tls_inbound: Require TLS on inbound connections.
+        :param pulumi.Input[_builtins.bool] require_tls_outbound: Require TLS on outbound connections.
         :param pulumi.Input[_builtins.str] spf_status: Available values: "none", "good", "neutral", "open", "invalid".
         :param pulumi.Input[_builtins.str] status: Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
+        :param pulumi.Input[_builtins.str] transport: The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -738,6 +844,9 @@ class EmailSecurityDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="allowedDeliveryModes")
     def allowed_delivery_modes(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Delivery modes to onboard the domain through.
+        """
         return pulumi.get(self, "allowed_delivery_modes")
 
     @_builtins.property
@@ -761,11 +870,17 @@ class EmailSecurityDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def domain(self) -> pulumi.Output[_builtins.str]:
+        """
+        The email domain to protect.
+        """
         return pulumi.get(self, "domain")
 
     @_builtins.property
     @pulumi.getter(name="dropDispositions")
     def drop_dispositions(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+        """
         return pulumi.get(self, "drop_dispositions")
 
     @_builtins.property
@@ -777,6 +892,7 @@ class EmailSecurityDomain(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[_builtins.str]:
         """
+        The mailbox folder to scan, for API-scanning domains.
         Available values: "AllItems", "Inbox".
         """
         return pulumi.get(self, "folder")
@@ -792,11 +908,17 @@ class EmailSecurityDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+        """
         return pulumi.get(self, "integration_id")
 
     @_builtins.property
     @pulumi.getter(name="ipRestrictions")
     def ip_restrictions(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Source IP ranges mail is accepted from. Any other source is rejected.
+        """
         return pulumi.get(self, "ip_restrictions")
 
     @_builtins.property
@@ -811,6 +933,9 @@ class EmailSecurityDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="lookbackHops")
     def lookback_hops(self) -> pulumi.Output[_builtins.int]:
+        """
+        Number of hops to trace back through received headers when reconstructing the original message (1-20).
+        """
         return pulumi.get(self, "lookback_hops")
 
     @_builtins.property
@@ -826,16 +951,25 @@ class EmailSecurityDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def regions(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+        """
         return pulumi.get(self, "regions")
 
     @_builtins.property
     @pulumi.getter(name="requireTlsInbound")
     def require_tls_inbound(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Require TLS on inbound connections.
+        """
         return pulumi.get(self, "require_tls_inbound")
 
     @_builtins.property
     @pulumi.getter(name="requireTlsOutbound")
     def require_tls_outbound(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Require TLS on outbound connections.
+        """
         return pulumi.get(self, "require_tls_outbound")
 
     @_builtins.property
@@ -857,5 +991,8 @@ class EmailSecurityDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def transport(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+        """
         return pulumi.get(self, "transport")
 

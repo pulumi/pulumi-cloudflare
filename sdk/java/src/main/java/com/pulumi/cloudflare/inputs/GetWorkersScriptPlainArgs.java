@@ -38,14 +38,14 @@ public final class GetWorkersScriptPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      * 
      */
     @Import(name="scriptName")
     private @Nullable String scriptName;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public Optional<String> scriptName() {
@@ -95,7 +95,7 @@ public final class GetWorkersScriptPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param scriptName Name of the script, used in URLs and route configuration.
+         * @param scriptName Name of the script.
          * 
          * @return builder
          * 

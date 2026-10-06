@@ -39,7 +39,7 @@ public final class GetLogpushDatasetJobOutputOptions {
      */
     private List<String> fieldNames;
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      * 
      */
     private Boolean mergeSubrequests;
@@ -70,7 +70,7 @@ public final class GetLogpushDatasetJobOutputOptions {
      */
     private String recordTemplate;
     /**
-     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * @return Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     private Double sampleRate;
@@ -118,7 +118,7 @@ public final class GetLogpushDatasetJobOutputOptions {
         return this.fieldNames;
     }
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
      * 
      */
     public Boolean mergeSubrequests() {
@@ -161,7 +161,7 @@ public final class GetLogpushDatasetJobOutputOptions {
         return this.recordTemplate;
     }
     /**
-     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+     * @return Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     public Double sampleRate() {

@@ -6,6 +6,18 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDeviceDeploymentGroupsList = cloudflare.getZeroTrustDeviceDeploymentGroupsList({
+ *     accountId: "account_id",
+ * });
+ * ```
+ */
 export function getZeroTrustDeviceDeploymentGroupsList(args: GetZeroTrustDeviceDeploymentGroupsListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDeploymentGroupsListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", {
@@ -39,6 +51,18 @@ export interface GetZeroTrustDeviceDeploymentGroupsListResult {
      */
     readonly results: outputs.GetZeroTrustDeviceDeploymentGroupsListResult[];
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDeviceDeploymentGroupsList = cloudflare.getZeroTrustDeviceDeploymentGroupsList({
+ *     accountId: "account_id",
+ * });
+ * ```
+ */
 export function getZeroTrustDeviceDeploymentGroupsListOutput(args: GetZeroTrustDeviceDeploymentGroupsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDeploymentGroupsListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceDeploymentGroupsList:getZeroTrustDeviceDeploymentGroupsList", {

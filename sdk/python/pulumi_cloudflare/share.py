@@ -24,17 +24,25 @@ class ShareArgs:
                  account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  recipients: pulumi.Input[Sequence[pulumi.Input['ShareRecipientArgs']]],
-                 resources: pulumi.Input[Sequence[pulumi.Input['ShareResourceArgs']]]):
+                 resources: pulumi.Input[Sequence[pulumi.Input['ShareResourceArgs']]],
+                 include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Share resource.
 
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
         :param pulumi.Input[_builtins.str] name: The name of the share.
+        :param pulumi.Input[_builtins.bool] include_recipient_counts: Include recipient counts in the response.
+        :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "recipients", recipients)
         pulumi.set(__self__, "resources", resources)
+        if include_recipient_counts is not None:
+            pulumi.set(__self__, "include_recipient_counts", include_recipient_counts)
+        if include_resources is not None:
+            pulumi.set(__self__, "include_resources", include_resources)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -78,6 +86,30 @@ class ShareArgs:
     def resources(self, value: pulumi.Input[Sequence[pulumi.Input['ShareResourceArgs']]]):
         pulumi.set(self, "resources", value)
 
+    @_builtins.property
+    @pulumi.getter(name="includeRecipientCounts")
+    def include_recipient_counts(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Include recipient counts in the response.
+        """
+        return pulumi.get(self, "include_recipient_counts")
+
+    @include_recipient_counts.setter
+    def include_recipient_counts(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_recipient_counts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeResources")
+    def include_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Include resources in the response.
+        """
+        return pulumi.get(self, "include_resources")
+
+    @include_resources.setter
+    def include_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_resources", value)
+
 
 @pulumi.input_type
 class _ShareState:
@@ -89,6 +121,8 @@ class _ShareState:
                  created: pulumi.Input[Optional[_builtins.str]] = None,
                  disassociated_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
                  disassociating_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  modified: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -107,6 +141,8 @@ class _ShareState:
         :param pulumi.Input[_builtins.str] created: When the share was created.
         :param pulumi.Input[_builtins.int] disassociated_recipient_count: The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
         :param pulumi.Input[_builtins.int] disassociating_recipient_count: The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+        :param pulumi.Input[_builtins.bool] include_recipient_counts: Include recipient counts in the response.
+        :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
         :param pulumi.Input[_builtins.str] kind: Available values: "sent", "received".
         :param pulumi.Input[_builtins.str] modified: When the share was modified.
         :param pulumi.Input[_builtins.str] name: The name of the share.
@@ -128,6 +164,10 @@ class _ShareState:
             pulumi.set(__self__, "disassociated_recipient_count", disassociated_recipient_count)
         if disassociating_recipient_count is not None:
             pulumi.set(__self__, "disassociating_recipient_count", disassociating_recipient_count)
+        if include_recipient_counts is not None:
+            pulumi.set(__self__, "include_recipient_counts", include_recipient_counts)
+        if include_resources is not None:
+            pulumi.set(__self__, "include_resources", include_resources)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if modified is not None:
@@ -230,6 +270,30 @@ class _ShareState:
         pulumi.set(self, "disassociating_recipient_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="includeRecipientCounts")
+    def include_recipient_counts(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Include recipient counts in the response.
+        """
+        return pulumi.get(self, "include_recipient_counts")
+
+    @include_recipient_counts.setter
+    def include_recipient_counts(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_recipient_counts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeResources")
+    def include_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Include resources in the response.
+        """
+        return pulumi.get(self, "include_resources")
+
+    @include_resources.setter
+    def include_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_resources", value)
+
+    @_builtins.property
     @pulumi.getter
     def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -327,6 +391,8 @@ class Share(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
@@ -336,6 +402,7 @@ class Share(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
         example_share = cloudflare.Share("example_share",
@@ -346,7 +413,7 @@ class Share(pulumi.CustomResource):
                 "recipient_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
             }],
             resources=[{
-                "meta": {},
+                "meta": json.dumps({}),
                 "resource_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
                 "resource_id": "023e105f4ecef8ad9ca31a8372d0c353",
                 "resource_type": "custom-ruleset",
@@ -363,6 +430,8 @@ class Share(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
+        :param pulumi.Input[_builtins.bool] include_recipient_counts: Include recipient counts in the response.
+        :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
         :param pulumi.Input[_builtins.str] name: The name of the share.
         """
         ...
@@ -376,6 +445,7 @@ class Share(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_cloudflare as cloudflare
 
         example_share = cloudflare.Share("example_share",
@@ -386,7 +456,7 @@ class Share(pulumi.CustomResource):
                 "recipient_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
             }],
             resources=[{
-                "meta": {},
+                "meta": json.dumps({}),
                 "resource_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
                 "resource_id": "023e105f4ecef8ad9ca31a8372d0c353",
                 "resource_type": "custom-ruleset",
@@ -416,6 +486,8 @@ class Share(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
@@ -431,6 +503,8 @@ class Share(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["include_recipient_counts"] = include_recipient_counts
+            __props__.__dict__["include_resources"] = include_resources
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -468,6 +542,8 @@ class Share(pulumi.CustomResource):
             created: pulumi.Input[Optional[_builtins.str]] = None,
             disassociated_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
             disassociating_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+            include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
+            include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             modified: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -490,6 +566,8 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created: When the share was created.
         :param pulumi.Input[_builtins.int] disassociated_recipient_count: The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
         :param pulumi.Input[_builtins.int] disassociating_recipient_count: The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+        :param pulumi.Input[_builtins.bool] include_recipient_counts: Include recipient counts in the response.
+        :param pulumi.Input[_builtins.bool] include_resources: Include resources in the response.
         :param pulumi.Input[_builtins.str] kind: Available values: "sent", "received".
         :param pulumi.Input[_builtins.str] modified: When the share was modified.
         :param pulumi.Input[_builtins.str] name: The name of the share.
@@ -508,6 +586,8 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["created"] = created
         __props__.__dict__["disassociated_recipient_count"] = disassociated_recipient_count
         __props__.__dict__["disassociating_recipient_count"] = disassociating_recipient_count
+        __props__.__dict__["include_recipient_counts"] = include_recipient_counts
+        __props__.__dict__["include_resources"] = include_resources
         __props__.__dict__["kind"] = kind
         __props__.__dict__["modified"] = modified
         __props__.__dict__["name"] = name
@@ -573,6 +653,22 @@ class Share(pulumi.CustomResource):
         The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
         """
         return pulumi.get(self, "disassociating_recipient_count")
+
+    @_builtins.property
+    @pulumi.getter(name="includeRecipientCounts")
+    def include_recipient_counts(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Include recipient counts in the response.
+        """
+        return pulumi.get(self, "include_recipient_counts")
+
+    @_builtins.property
+    @pulumi.getter(name="includeResources")
+    def include_resources(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Include resources in the response.
+        """
+        return pulumi.get(self, "include_resources")
 
     @_builtins.property
     @pulumi.getter

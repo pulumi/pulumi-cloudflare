@@ -32,9 +32,17 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Optional note describing the entry.
+     * 
+     */
     @Import(name="comments")
     private @Nullable Output<String> comments;
 
+    /**
+     * @return Optional note describing the entry.
+     * 
+     */
     public Optional<Output<String>> comments() {
         return Optional.ofNullable(this.comments);
     }
@@ -46,28 +54,54 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Identifier of the directory the entry was synced from, when directory-synced.
+     * 
+     */
     @Import(name="directoryId")
     private @Nullable Output<Integer> directoryId;
 
+    /**
+     * @return Identifier of the directory the entry was synced from, when directory-synced.
+     * 
+     */
     public Optional<Output<Integer>> directoryId() {
         return Optional.ofNullable(this.directoryId);
     }
 
+    /**
+     * Identifier of the directory node the entry was synced from, when directory-synced.
+     * 
+     */
     @Import(name="directoryNodeId")
     private @Nullable Output<Integer> directoryNodeId;
 
+    /**
+     * @return Identifier of the directory node the entry was synced from, when directory-synced.
+     * 
+     */
     public Optional<Output<Integer>> directoryNodeId() {
         return Optional.ofNullable(this.directoryNodeId);
     }
 
+    /**
+     * Email address (or pattern) of the protected identity.
+     * 
+     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
+    /**
+     * @return Email address (or pattern) of the protected identity.
+     * 
+     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
 
     /**
+     * Deprecated. External identifier of the directory node.
+     * 
      * @deprecated
      * This field is deprecated.
      * 
@@ -77,6 +111,8 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
     private @Nullable Output<String> externalDirectoryNodeId;
 
     /**
+     * @return Deprecated. External identifier of the directory node.
+     * 
      * @deprecated
      * This field is deprecated.
      * 
@@ -86,9 +122,17 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         return Optional.ofNullable(this.externalDirectoryNodeId);
     }
 
+    /**
+     * Whether `email` is a regular expression instead of a literal address.
+     * 
+     */
     @Import(name="isEmailRegex")
     private @Nullable Output<Boolean> isEmailRegex;
 
+    /**
+     * @return Whether `email` is a regular expression instead of a literal address.
+     * 
+     */
     public Optional<Output<Boolean>> isEmailRegex() {
         return Optional.ofNullable(this.isEmailRegex);
     }
@@ -123,14 +167,23 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         return Optional.ofNullable(this.modifiedAt);
     }
 
+    /**
+     * Display name of the protected identity.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the protected identity.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
+     * Source the entry was created from.
      * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
      * 
      */
@@ -138,7 +191,8 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
     private @Nullable Output<String> provenance;
 
     /**
-     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * @return Source the entry was created from.
+     * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
      * 
      */
     public Optional<Output<String>> provenance() {
@@ -201,11 +255,23 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param comments Optional note describing the entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comments(@Nullable Output<String> comments) {
             $.comments = comments;
             return this;
         }
 
+        /**
+         * @param comments Optional note describing the entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comments(String comments) {
             return comments(Output.of(comments));
         }
@@ -219,34 +285,72 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param directoryId Identifier of the directory the entry was synced from, when directory-synced.
+         * 
+         * @return builder
+         * 
+         */
         public Builder directoryId(@Nullable Output<Integer> directoryId) {
             $.directoryId = directoryId;
             return this;
         }
 
+        /**
+         * @param directoryId Identifier of the directory the entry was synced from, when directory-synced.
+         * 
+         * @return builder
+         * 
+         */
         public Builder directoryId(Integer directoryId) {
             return directoryId(Output.of(directoryId));
         }
 
+        /**
+         * @param directoryNodeId Identifier of the directory node the entry was synced from, when directory-synced.
+         * 
+         * @return builder
+         * 
+         */
         public Builder directoryNodeId(@Nullable Output<Integer> directoryNodeId) {
             $.directoryNodeId = directoryNodeId;
             return this;
         }
 
+        /**
+         * @param directoryNodeId Identifier of the directory node the entry was synced from, when directory-synced.
+         * 
+         * @return builder
+         * 
+         */
         public Builder directoryNodeId(Integer directoryNodeId) {
             return directoryNodeId(Output.of(directoryNodeId));
         }
 
+        /**
+         * @param email Email address (or pattern) of the protected identity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email Email address (or pattern) of the protected identity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }
 
         /**
+         * @param externalDirectoryNodeId Deprecated. External identifier of the directory node.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -260,6 +364,8 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         }
 
         /**
+         * @param externalDirectoryNodeId Deprecated. External identifier of the directory node.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -271,11 +377,23 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
             return externalDirectoryNodeId(Output.of(externalDirectoryNodeId));
         }
 
+        /**
+         * @param isEmailRegex Whether `email` is a regular expression instead of a literal address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEmailRegex(@Nullable Output<Boolean> isEmailRegex) {
             $.isEmailRegex = isEmailRegex;
             return this;
         }
 
+        /**
+         * @param isEmailRegex Whether `email` is a regular expression instead of a literal address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isEmailRegex(Boolean isEmailRegex) {
             return isEmailRegex(Output.of(isEmailRegex));
         }
@@ -318,17 +436,30 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
             return modifiedAt(Output.of(modifiedAt));
         }
 
+        /**
+         * @param name Display name of the protected identity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the protected identity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param provenance Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+         * @param provenance Source the entry was created from.
+         * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
          * 
          * @return builder
          * 
@@ -339,7 +470,8 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         }
 
         /**
-         * @param provenance Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+         * @param provenance Source the entry was created from.
+         * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
          * 
          * @return builder
          * 

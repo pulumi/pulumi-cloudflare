@@ -57,10 +57,13 @@ export class FlagshipApp extends pulumi.CustomResource {
     }
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     */
     declare public readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
@@ -110,10 +113,13 @@ export class FlagshipApp extends pulumi.CustomResource {
  */
 export interface FlagshipAppState {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     */
     name?: pulumi.Input<string | undefined>;
     updatedAt?: pulumi.Input<string | undefined>;
     /**
@@ -127,8 +133,11 @@ export interface FlagshipAppState {
  */
 export interface FlagshipAppArgs {
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
+     */
     name: pulumi.Input<string>;
 }

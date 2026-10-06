@@ -204,7 +204,9 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example '<{accounts|zones}/{account_id|zone_id}>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -241,7 +243,9 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example '<{accounts|zones}/{account_id|zone_id}>'
+        ```
 
 
         :param str resource_name: The name of the resource.

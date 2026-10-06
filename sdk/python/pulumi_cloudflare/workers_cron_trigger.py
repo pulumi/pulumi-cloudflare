@@ -28,7 +28,7 @@ class WorkersCronTriggerArgs:
         The set of arguments for constructing a WorkersCronTrigger resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "schedules", schedules)
@@ -59,7 +59,7 @@ class WorkersCronTriggerArgs:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 
@@ -78,7 +78,7 @@ class _WorkersCronTriggerState:
         Input properties used for looking up and filtering WorkersCronTrigger resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -112,7 +112,7 @@ class _WorkersCronTriggerState:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 
@@ -146,7 +146,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
         example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
-            body=[{
+            schedules=[{
                 "cron": "*/30 * * * *",
             }])
         ```
@@ -161,7 +161,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         """
         ...
     @overload
@@ -184,7 +184,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
         example_workers_cron_trigger = cloudflare.WorkersCronTrigger("example_workers_cron_trigger",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
-            body=[{
+            schedules=[{
                 "cron": "*/30 * * * *",
             }])
         ```
@@ -255,7 +255,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -283,7 +283,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script.
         """
         return pulumi.get(self, "script_name")
 

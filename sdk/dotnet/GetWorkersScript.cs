@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetWorkersScriptFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName")]
         public string? ScriptName { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetWorkersScriptFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
@@ -156,12 +156,12 @@ namespace Pulumi.Cloudflare
         public readonly string? AccountId;
         public readonly Outputs.GetWorkersScriptFilterResult? Filter;
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         public readonly string Id;
         public readonly string Script;
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script.
         /// </summary>
         public readonly string? ScriptName;
 

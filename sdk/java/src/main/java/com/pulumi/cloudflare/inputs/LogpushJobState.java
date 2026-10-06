@@ -111,6 +111,21 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     * 
+     */
+    @Import(name="filterAttackTraffic")
+    private @Nullable Output<Boolean> filterAttackTraffic;
+
+    /**
+     * @return When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     * 
+     */
+    public Optional<Output<Boolean>> filterAttackTraffic() {
+        return Optional.ofNullable(this.filterAttackTraffic);
+    }
+
+    /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
@@ -319,6 +334,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         this.enabled = $.enabled;
         this.errorMessage = $.errorMessage;
         this.filter = $.filter;
+        this.filterAttackTraffic = $.filterAttackTraffic;
         this.frequency = $.frequency;
         this.kind = $.kind;
         this.lastComplete = $.lastComplete;
@@ -477,6 +493,27 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder filter(String filter) {
             return filter(Output.of(filter));
+        }
+
+        /**
+         * @param filterAttackTraffic When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterAttackTraffic(@Nullable Output<Boolean> filterAttackTraffic) {
+            $.filterAttackTraffic = filterAttackTraffic;
+            return this;
+        }
+
+        /**
+         * @param filterAttackTraffic When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterAttackTraffic(Boolean filterAttackTraffic) {
+            return filterAttackTraffic(Output.of(filterAttackTraffic));
         }
 
         /**

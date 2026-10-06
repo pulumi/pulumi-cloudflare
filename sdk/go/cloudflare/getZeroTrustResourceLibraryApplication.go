@@ -81,7 +81,7 @@ type LookupZeroTrustResourceLibraryApplicationResult struct {
 	HumanId string `pulumi:"humanId"`
 	// Returns the application ID.
 	Id int `pulumi:"id"`
-	// IP subnets matched by the application.
+	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets []string `pulumi:"ipSubnets"`
 	// Returns the application name.
 	Name string `pulumi:"name"`
@@ -194,7 +194,7 @@ func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Id() pulumi.IntOu
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// IP subnets matched by the application.
+// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 func (o LookupZeroTrustResourceLibraryApplicationResultOutput) IpSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.IpSubnets }).(pulumi.StringArrayOutput)
 }

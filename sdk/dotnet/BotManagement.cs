@@ -28,7 +28,11 @@ namespace Pulumi.Cloudflare
     ///     var exampleBotManagement = new Cloudflare.BotManagement("example_bot_management", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         AiBotsMigrationOptOut = false,
     ///         AiBotsProtection = "block",
+    ///         Aisearch = "block",
+    ///         AiTraining = "disallow",
+    ///         AiUser = "only_on_ad_pages",
     ///         BotPreferenceSyncEnabled = true,
     ///         CfRobotsVariant = "policy_only",
     ///         ContentBotsProtection = "disabled",
@@ -36,6 +40,7 @@ namespace Pulumi.Cloudflare
     ///         EnableJs = true,
     ///         FightMode = true,
     ///         IsRobotsTxtManaged = false,
+    ///         JsdApiResultsEnabled = true,
     ///     });
     /// 
     /// });
@@ -51,11 +56,38 @@ namespace Pulumi.Cloudflare
     public partial class BotManagement : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+        /// </summary>
+        [Output("aiBotsMigrationOptOut")]
+        public Output<bool> AiBotsMigrationOptOut { get; private set; } = null!;
+
+        /// <summary>
         /// Enable rule to block AI Scrapers and Crawlers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Output("aiBotsProtection")]
         public Output<string> AiBotsProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure robots.txt policy for AI model training bots.
+        /// Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        /// </summary>
+        [Output("aiTraining")]
+        public Output<string> AiTraining { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure robots.txt policy for AI assistant and agent bots.
+        /// Available values: "disabled", "block", "only*on*ad_pages".
+        /// </summary>
+        [Output("aiUser")]
+        public Output<string> AiUser { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure robots.txt policy for AI search bots.
+        /// Available values: "disabled", "block", "only*on*ad_pages".
+        /// </summary>
+        [Output("aisearch")]
+        public Output<string> Aisearch { get; private set; } = null!;
 
         /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -113,6 +145,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("isRobotsTxtManaged")]
         public Output<bool> IsRobotsTxtManaged { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to use JavaScript Detection results submitted through the API for this zone.
+        /// </summary>
+        [Output("jsdApiResultsEnabled")]
+        public Output<bool> JsdApiResultsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
@@ -220,11 +258,38 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+        /// </summary>
+        [Input("aiBotsMigrationOptOut")]
+        public Input<bool>? AiBotsMigrationOptOut { get; set; }
+
+        /// <summary>
         /// Enable rule to block AI Scrapers and Crawlers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Input("aiBotsProtection")]
         public Input<string>? AiBotsProtection { get; set; }
+
+        /// <summary>
+        /// Configure robots.txt policy for AI model training bots.
+        /// Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        /// </summary>
+        [Input("aiTraining")]
+        public Input<string>? AiTraining { get; set; }
+
+        /// <summary>
+        /// Configure robots.txt policy for AI assistant and agent bots.
+        /// Available values: "disabled", "block", "only*on*ad_pages".
+        /// </summary>
+        [Input("aiUser")]
+        public Input<string>? AiUser { get; set; }
+
+        /// <summary>
+        /// Configure robots.txt policy for AI search bots.
+        /// Available values: "disabled", "block", "only*on*ad_pages".
+        /// </summary>
+        [Input("aisearch")]
+        public Input<string>? Aisearch { get; set; }
 
         /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -282,6 +347,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("isRobotsTxtManaged")]
         public Input<bool>? IsRobotsTxtManaged { get; set; }
+
+        /// <summary>
+        /// Whether to use JavaScript Detection results submitted through the API for this zone.
+        /// </summary>
+        [Input("jsdApiResultsEnabled")]
+        public Input<bool>? JsdApiResultsEnabled { get; set; }
 
         /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
@@ -339,11 +410,38 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+        /// </summary>
+        [Input("aiBotsMigrationOptOut")]
+        public Input<bool>? AiBotsMigrationOptOut { get; set; }
+
+        /// <summary>
         /// Enable rule to block AI Scrapers and Crawlers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Input("aiBotsProtection")]
         public Input<string>? AiBotsProtection { get; set; }
+
+        /// <summary>
+        /// Configure robots.txt policy for AI model training bots.
+        /// Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+        /// </summary>
+        [Input("aiTraining")]
+        public Input<string>? AiTraining { get; set; }
+
+        /// <summary>
+        /// Configure robots.txt policy for AI assistant and agent bots.
+        /// Available values: "disabled", "block", "only*on*ad_pages".
+        /// </summary>
+        [Input("aiUser")]
+        public Input<string>? AiUser { get; set; }
+
+        /// <summary>
+        /// Configure robots.txt policy for AI search bots.
+        /// Available values: "disabled", "block", "only*on*ad_pages".
+        /// </summary>
+        [Input("aisearch")]
+        public Input<string>? Aisearch { get; set; }
 
         /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -401,6 +499,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("isRobotsTxtManaged")]
         public Input<bool>? IsRobotsTxtManaged { get; set; }
+
+        /// <summary>
+        /// Whether to use JavaScript Detection results submitted through the API for this zone.
+        /// </summary>
+        [Input("jsdApiResultsEnabled")]
+        public Input<bool>? JsdApiResultsEnabled { get; set; }
 
         /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.

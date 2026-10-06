@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// Defines the host (hostname or IP) of your origin database.
+        /// Defines the publicly reachable hostname or IP of your origin database. Private, loopback, and link-local IP addresses are not allowed.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }

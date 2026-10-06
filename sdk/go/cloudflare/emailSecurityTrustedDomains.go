@@ -37,7 +37,7 @@ import (
 //				IsRegex:      pulumi.Bool(false),
 //				IsSimilarity: pulumi.Bool(false),
 //				Pattern:      pulumi.String("example.com"),
-//				Comments:     nil,
+//				Comments:     pulumi.String("Trusted partner domain"),
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +62,8 @@ type EmailSecurityTrustedDomains struct {
 	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
 	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent pulumi.BoolPtrOutput `pulumi:"isRecent"`
-	IsRegex  pulumi.BoolPtrOutput `pulumi:"isRegex"`
+	// Whether `pattern` is a regular expression instead of a literal domain.
+	IsRegex pulumi.BoolPtrOutput `pulumi:"isRegex"`
 	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 	IsSimilarity pulumi.BoolPtrOutput `pulumi:"isSimilarity"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -70,7 +71,8 @@ type EmailSecurityTrustedDomains struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
 	ModifiedAt   pulumi.StringOutput `pulumi:"modifiedAt"`
-	Pattern      pulumi.StringOutput `pulumi:"pattern"`
+	// The domain pattern to trust, e.g. `example.com`.
+	Pattern pulumi.StringOutput `pulumi:"pattern"`
 }
 
 // NewEmailSecurityTrustedDomains registers a new resource with the given unique name, arguments, and options.
@@ -115,7 +117,8 @@ type emailSecurityTrustedDomainsState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent *bool `pulumi:"isRecent"`
-	IsRegex  *bool `pulumi:"isRegex"`
+	// Whether `pattern` is a regular expression instead of a literal domain.
+	IsRegex *bool `pulumi:"isRegex"`
 	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 	IsSimilarity *bool `pulumi:"isSimilarity"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -123,7 +126,8 @@ type emailSecurityTrustedDomainsState struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified *string `pulumi:"lastModified"`
 	ModifiedAt   *string `pulumi:"modifiedAt"`
-	Pattern      *string `pulumi:"pattern"`
+	// The domain pattern to trust, e.g. `example.com`.
+	Pattern *string `pulumi:"pattern"`
 }
 
 type EmailSecurityTrustedDomainsState struct {
@@ -133,7 +137,8 @@ type EmailSecurityTrustedDomainsState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent pulumi.BoolPtrInput
-	IsRegex  pulumi.BoolPtrInput
+	// Whether `pattern` is a regular expression instead of a literal domain.
+	IsRegex pulumi.BoolPtrInput
 	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 	IsSimilarity pulumi.BoolPtrInput
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
@@ -141,7 +146,8 @@ type EmailSecurityTrustedDomainsState struct {
 	// Deprecated: Use `modifiedAt` instead.
 	LastModified pulumi.StringPtrInput
 	ModifiedAt   pulumi.StringPtrInput
-	Pattern      pulumi.StringPtrInput
+	// The domain pattern to trust, e.g. `example.com`.
+	Pattern pulumi.StringPtrInput
 }
 
 func (EmailSecurityTrustedDomainsState) ElementType() reflect.Type {
@@ -154,10 +160,12 @@ type emailSecurityTrustedDomainsArgs struct {
 	Comments  *string `pulumi:"comments"`
 	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent *bool `pulumi:"isRecent"`
-	IsRegex  *bool `pulumi:"isRegex"`
+	// Whether `pattern` is a regular expression instead of a literal domain.
+	IsRegex *bool `pulumi:"isRegex"`
 	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
-	IsSimilarity *bool  `pulumi:"isSimilarity"`
-	Pattern      string `pulumi:"pattern"`
+	IsSimilarity *bool `pulumi:"isSimilarity"`
+	// The domain pattern to trust, e.g. `example.com`.
+	Pattern string `pulumi:"pattern"`
 }
 
 // The set of arguments for constructing a EmailSecurityTrustedDomains resource.
@@ -167,10 +175,12 @@ type EmailSecurityTrustedDomainsArgs struct {
 	Comments  pulumi.StringPtrInput
 	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent pulumi.BoolPtrInput
-	IsRegex  pulumi.BoolPtrInput
+	// Whether `pattern` is a regular expression instead of a literal domain.
+	IsRegex pulumi.BoolPtrInput
 	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 	IsSimilarity pulumi.BoolPtrInput
-	Pattern      pulumi.StringInput
+	// The domain pattern to trust, e.g. `example.com`.
+	Pattern pulumi.StringInput
 }
 
 func (EmailSecurityTrustedDomainsArgs) ElementType() reflect.Type {
@@ -278,6 +288,7 @@ func (o EmailSecurityTrustedDomainsOutput) IsRecent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.BoolPtrOutput { return v.IsRecent }).(pulumi.BoolPtrOutput)
 }
 
+// Whether `pattern` is a regular expression instead of a literal domain.
 func (o EmailSecurityTrustedDomainsOutput) IsRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.BoolPtrOutput { return v.IsRegex }).(pulumi.BoolPtrOutput)
 }
@@ -298,6 +309,7 @@ func (o EmailSecurityTrustedDomainsOutput) ModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
+// The domain pattern to trust, e.g. `example.com`.
 func (o EmailSecurityTrustedDomainsOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }

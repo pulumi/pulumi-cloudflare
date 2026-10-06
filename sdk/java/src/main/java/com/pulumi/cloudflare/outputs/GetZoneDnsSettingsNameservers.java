@@ -12,28 +12,40 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneDnsSettingsNameservers {
     /**
-     * @return Configured nameserver set to be used for this zone
+     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * 
+     */
+    private String nameserverSetId;
+    /**
+     * @return Configured nameserver set number to use for this zone.
      * 
      */
     private Integer nsSet;
     /**
-     * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
+     * @return Nameserver type.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;, &#34;custom&#34;.
      * 
      */
     private String type;
 
     private GetZoneDnsSettingsNameservers() {}
     /**
-     * @return Configured nameserver set to be used for this zone
+     * @return Identifier of the account-owned Custom Nameserver Set to use for this zone.
+     * 
+     */
+    public String nameserverSetId() {
+        return this.nameserverSetId;
+    }
+    /**
+     * @return Configured nameserver set number to use for this zone.
      * 
      */
     public Integer nsSet() {
         return this.nsSet;
     }
     /**
-     * @return Nameserver type
-     * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
+     * @return Nameserver type.
+     * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;, &#34;custom&#34;.
      * 
      */
     public String type() {
@@ -49,15 +61,25 @@ public final class GetZoneDnsSettingsNameservers {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String nameserverSetId;
         private Integer nsSet;
         private String type;
         public Builder() {}
         public Builder(GetZoneDnsSettingsNameservers defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.nameserverSetId = defaults.nameserverSetId;
     	      this.nsSet = defaults.nsSet;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder nameserverSetId(String nameserverSetId) {
+            if (nameserverSetId == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnsSettingsNameservers", "nameserverSetId");
+            }
+            this.nameserverSetId = nameserverSetId;
+            return this;
+        }
         @CustomType.Setter
         public Builder nsSet(Integer nsSet) {
             if (nsSet == null) {
@@ -76,6 +98,7 @@ public final class GetZoneDnsSettingsNameservers {
         }
         public GetZoneDnsSettingsNameservers build() {
             final var _resultValue = new GetZoneDnsSettingsNameservers();
+            _resultValue.nameserverSetId = nameserverSetId;
             _resultValue.nsSet = nsSet;
             _resultValue.type = type;
             return _resultValue;

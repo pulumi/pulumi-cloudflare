@@ -20,9 +20,10 @@ import * as utilities from "./utilities";
  * const exampleLogpushJob = new cloudflare.LogpushJob("example_logpush_job", {
  *     destinationConf: "s3://mybucket/logs?region=us-west-2",
  *     zoneId: "zone_id",
- *     dataset: "gateway_dns",
+ *     dataset: "http_requests",
  *     enabled: false,
  *     filter: "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
+ *     filterAttackTraffic: true,
  *     frequency: "high",
  *     kind: "",
  *     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
@@ -31,22 +32,20 @@ import * as utilities from "./utilities";
  *     maxUploadRecords: 1000,
  *     name: "example.com",
  *     outputOptions: {
- *         batchPrefix: "",
- *         batchSuffix: "",
- *         cve202144228: false,
- *         fieldDelimiter: ",",
+ *         batchPrefix: "batch_prefix",
+ *         batchSuffix: "batch_suffix",
+ *         cve202144228: true,
+ *         fieldDelimiter: "field_delimiter",
  *         fieldNames: [
- *             "Datetime",
- *             "DstIP",
- *             "SrcIP",
+ *             "ClientIP",
+ *             "EdgeStartTimestamp",
+ *             "RayID",
  *         ],
  *         mergeSubrequests: true,
  *         outputType: "ndjson",
- *         recordDelimiter: "",
- *         recordPrefix: "{",
- *         recordSuffix: `    }
- *
- * `,
+ *         recordDelimiter: "record_delimiter",
+ *         recordPrefix: "record_prefix",
+ *         recordSuffix: "record_suffix",
  *         recordTemplate: "record_template",
  *         sampleRate: 1,
  *         timestampFormat: "unixnano",
@@ -114,6 +113,10 @@ export class LogpushJob extends pulumi.CustomResource {
      * The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
      */
     declare public readonly filter: pulumi.Output<string>;
+    /**
+     * When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     */
+    declare public readonly filterAttackTraffic: pulumi.Output<boolean>;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
@@ -188,6 +191,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["errorMessage"] = state?.errorMessage;
             resourceInputs["filter"] = state?.filter;
+            resourceInputs["filterAttackTraffic"] = state?.filterAttackTraffic;
             resourceInputs["frequency"] = state?.frequency;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["lastComplete"] = state?.lastComplete;
@@ -210,6 +214,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["destinationConf"] = args?.destinationConf ? pulumi.secret(args.destinationConf) : undefined;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["filter"] = args?.filter;
+            resourceInputs["filterAttackTraffic"] = args?.filterAttackTraffic;
             resourceInputs["frequency"] = args?.frequency;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["logpullOptions"] = args?.logpullOptions;
@@ -260,6 +265,10 @@ export interface LogpushJobState {
      * The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
      */
     filter?: pulumi.Input<string | undefined>;
+    /**
+     * When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     */
+    filterAttackTraffic?: pulumi.Input<boolean | undefined>;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
@@ -341,6 +350,10 @@ export interface LogpushJobArgs {
      * The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
      */
     filter?: pulumi.Input<string | undefined>;
+    /**
+     * When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     */
+    filterAttackTraffic?: pulumi.Input<boolean | undefined>;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".

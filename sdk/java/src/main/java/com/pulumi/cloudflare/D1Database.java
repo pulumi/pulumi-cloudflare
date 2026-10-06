@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -36,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.D1Database;
  * import com.pulumi.cloudflare.D1DatabaseArgs;
+ * import com.pulumi.cloudflare.inputs.D1DatabaseReadReplicationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -54,6 +56,9 @@ import javax.annotation.Nullable;
  *             .name("my-database")
  *             .jurisdiction("eu")
  *             .primaryLocationHint("wnam")
+ *             .readReplication(D1DatabaseReadReplicationArgs.builder()
+ *                 .mode("auto")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -99,6 +104,22 @@ public class D1Database extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    @Export(name="fields", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> fields;
+
+    /**
+     * @return Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    public Output<Optional<List<String>>> fields() {
+        return Codegen.optional(this.fields);
+    }
+    /**
      * The D1 database&#39;s size, in bytes.
      * 
      */
@@ -142,9 +163,21 @@ public class D1Database extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="numTables", refs={Double.class}, tree="[0]")
     private Output<Double> numTables;
 
+    /**
+     * @return The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
+     * 
+     */
     public Output<Double> numTables() {
         return this.numTables;
     }

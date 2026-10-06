@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *
  * const examplePipelineStreams = cloudflare.getPipelineStreams({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
+ *     name: "x",
  *     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
@@ -96,6 +97,7 @@ export interface GetPipelineStreamsResult {
  *
  * const examplePipelineStreams = cloudflare.getPipelineStreams({
  *     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
+ *     name: "x",
  *     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```

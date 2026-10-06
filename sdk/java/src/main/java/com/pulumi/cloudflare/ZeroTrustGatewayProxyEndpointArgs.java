@@ -17,9 +17,17 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
 
     public static final ZeroTrustGatewayProxyEndpointArgs Empty = new ZeroTrustGatewayProxyEndpointArgs();
 
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -98,11 +106,23 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
             $ = new ZeroTrustGatewayProxyEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

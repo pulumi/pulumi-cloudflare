@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetOriginCaCertificate(ctx, &cloudflare.LookupOriginCaCertificateArgs{
-//				CertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CertificateId: pulumi.StringRef("328578533902268680212849205732770752308931942346"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,7 +48,7 @@ func LookupOriginCaCertificate(ctx *pulumi.Context, args *LookupOriginCaCertific
 
 // A collection of arguments for invoking getOriginCaCertificate.
 type LookupOriginCaCertificateArgs struct {
-	// Identifier.
+	// The x509 serial number of the Origin CA certificate.
 	CertificateId *string                       `pulumi:"certificateId"`
 	Filter        *GetOriginCaCertificateFilter `pulumi:"filter"`
 }
@@ -57,7 +57,7 @@ type LookupOriginCaCertificateArgs struct {
 type LookupOriginCaCertificateResult struct {
 	// The Origin CA certificate. Will be newline-encoded.
 	Certificate string `pulumi:"certificate"`
-	// Identifier.
+	// The x509 serial number of the Origin CA certificate.
 	CertificateId *string `pulumi:"certificateId"`
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	Csr string `pulumi:"csr"`
@@ -67,7 +67,7 @@ type LookupOriginCaCertificateResult struct {
 	// Array of hostnames or wildcard names bound to the certificate.
 	// Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
 	Hostnames []string `pulumi:"hostnames"`
-	// Identifier.
+	// The x509 serial number of the Origin CA certificate.
 	Id string `pulumi:"id"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -84,7 +84,7 @@ func LookupOriginCaCertificateOutput(ctx *pulumi.Context, args LookupOriginCaCer
 
 // A collection of arguments for invoking getOriginCaCertificate.
 type LookupOriginCaCertificateOutputArgs struct {
-	// Identifier.
+	// The x509 serial number of the Origin CA certificate.
 	CertificateId pulumi.StringPtrInput                `pulumi:"certificateId"`
 	Filter        GetOriginCaCertificateFilterPtrInput `pulumi:"filter"`
 }
@@ -113,7 +113,7 @@ func (o LookupOriginCaCertificateResultOutput) Certificate() pulumi.StringOutput
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// The x509 serial number of the Origin CA certificate.
 func (o LookupOriginCaCertificateResultOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
@@ -138,7 +138,7 @@ func (o LookupOriginCaCertificateResultOutput) Hostnames() pulumi.StringArrayOut
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-// Identifier.
+// The x509 serial number of the Origin CA certificate.
 func (o LookupOriginCaCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }

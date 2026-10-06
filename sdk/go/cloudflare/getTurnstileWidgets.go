@@ -63,7 +63,8 @@ type LookupTurnstileWidgetsArgs struct {
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// Filter widgets by field using case-insensitive substring matching.
+	// Filter widgets by field. The `name` field uses case-insensitive
+	// substring matching; `sitekey` uses exact matching.
 	// Format: `field:value`
 	Filter   *string `pulumi:"filter"`
 	MaxItems *int    `pulumi:"maxItems"`
@@ -77,7 +78,8 @@ type LookupTurnstileWidgetsResult struct {
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
-	// Filter widgets by field using case-insensitive substring matching.
+	// Filter widgets by field. The `name` field uses case-insensitive
+	// substring matching; `sitekey` uses exact matching.
 	// Format: `field:value`
 	Filter   *string                     `pulumi:"filter"`
 	MaxItems *int                        `pulumi:"maxItems"`
@@ -97,7 +99,8 @@ type LookupTurnstileWidgetsOutputArgs struct {
 	// Direction to order widgets.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Filter widgets by field using case-insensitive substring matching.
+	// Filter widgets by field. The `name` field uses case-insensitive
+	// substring matching; `sitekey` uses exact matching.
 	// Format: `field:value`
 	Filter   pulumi.StringPtrInput `pulumi:"filter"`
 	MaxItems pulumi.IntPtrInput    `pulumi:"maxItems"`
@@ -134,7 +137,8 @@ func (o LookupTurnstileWidgetsResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// Filter widgets by field using case-insensitive substring matching.
+// Filter widgets by field. The `name` field uses case-insensitive
+// substring matching; `sitekey` uses exact matching.
 // Format: `field:value`
 func (o LookupTurnstileWidgetsResultOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetsResult) *string { return v.Filter }).(pulumi.StringPtrOutput)

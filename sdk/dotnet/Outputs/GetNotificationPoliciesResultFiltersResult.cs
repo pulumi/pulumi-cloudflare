@@ -162,6 +162,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TargetZoneNames;
         /// <summary>
+        /// Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+        /// </summary>
+        public readonly ImmutableArray<string> TokenIds;
+        /// <summary>
         /// Used for configuring traffic*anomalies*alert
         /// </summary>
         public readonly ImmutableArray<string> TrafficExclusions;
@@ -262,6 +266,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> targetZoneNames,
 
+            ImmutableArray<string> tokenIds,
+
             ImmutableArray<string> trafficExclusions,
 
             ImmutableArray<string> tunnelIds,
@@ -311,6 +317,7 @@ namespace Pulumi.Cloudflare.Outputs
             TargetHostnames = targetHostnames;
             TargetIps = targetIps;
             TargetZoneNames = targetZoneNames;
+            TokenIds = tokenIds;
             TrafficExclusions = trafficExclusions;
             TunnelIds = tunnelIds;
             TunnelNames = tunnelNames;

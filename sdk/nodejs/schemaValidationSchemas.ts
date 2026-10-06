@@ -72,6 +72,10 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    declare public readonly omitSource: pulumi.Output<boolean>;
+    /**
      * A unique identifier of this schema
      */
     declare public /*out*/ readonly schemaId: pulumi.Output<string>;
@@ -104,6 +108,7 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["name"] = state?.name;
+            resourceInputs["omitSource"] = state?.omitSource;
             resourceInputs["schemaId"] = state?.schemaId;
             resourceInputs["source"] = state?.source;
             resourceInputs["validationEnabled"] = state?.validationEnabled;
@@ -127,6 +132,7 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
             }
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
+            resourceInputs["omitSource"] = args?.omitSource;
             resourceInputs["source"] = args?.source;
             resourceInputs["validationEnabled"] = args?.validationEnabled;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -152,6 +158,10 @@ export interface SchemaValidationSchemasState {
      * A human-readable name for the schema
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    omitSource?: pulumi.Input<boolean | undefined>;
     /**
      * A unique identifier of this schema
      */
@@ -183,6 +193,10 @@ export interface SchemaValidationSchemasArgs {
      * A human-readable name for the schema
      */
     name: pulumi.Input<string>;
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    omitSource?: pulumi.Input<boolean | undefined>;
     /**
      * The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
      */

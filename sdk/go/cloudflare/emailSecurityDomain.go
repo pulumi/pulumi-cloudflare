@@ -72,35 +72,46 @@ type EmailSecurityDomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId            pulumi.StringOutput                    `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Delivery modes to onboard the domain through.
 	AllowedDeliveryModes pulumi.StringArrayOutput               `pulumi:"allowedDeliveryModes"`
 	Authorization        EmailSecurityDomainAuthorizationOutput `pulumi:"authorization"`
 	CreatedAt            pulumi.StringOutput                    `pulumi:"createdAt"`
 	// Available values: "none", "good", "invalid".
-	DmarcStatus      pulumi.StringOutput                      `pulumi:"dmarcStatus"`
-	Domain           pulumi.StringOutput                      `pulumi:"domain"`
+	DmarcStatus pulumi.StringOutput `pulumi:"dmarcStatus"`
+	// The email domain to protect.
+	Domain pulumi.StringOutput `pulumi:"domain"`
+	// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
 	DropDispositions pulumi.StringArrayOutput                 `pulumi:"dropDispositions"`
 	EmailsProcessed  EmailSecurityDomainEmailsProcessedOutput `pulumi:"emailsProcessed"`
+	// The mailbox folder to scan, for API-scanning domains.
 	// Available values: "AllItems", "Inbox".
 	Folder pulumi.StringOutput `pulumi:"folder"`
 	// Available values: "Microsoft", "Google".
-	InboxProvider  pulumi.StringOutput      `pulumi:"inboxProvider"`
-	IntegrationId  pulumi.StringPtrOutput   `pulumi:"integrationId"`
+	InboxProvider pulumi.StringOutput `pulumi:"inboxProvider"`
+	// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+	IntegrationId pulumi.StringPtrOutput `pulumi:"integrationId"`
+	// Source IP ranges mail is accepted from. Any other source is rejected.
 	IpRestrictions pulumi.StringArrayOutput `pulumi:"ipRestrictions"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
 	//
 	// Deprecated: Use `modifiedAt` instead.
-	LastModified       pulumi.StringOutput      `pulumi:"lastModified"`
-	LookbackHops       pulumi.IntOutput         `pulumi:"lookbackHops"`
-	ModifiedAt         pulumi.StringOutput      `pulumi:"modifiedAt"`
-	O365TenantId       pulumi.StringOutput      `pulumi:"o365TenantId"`
-	Regions            pulumi.StringArrayOutput `pulumi:"regions"`
-	RequireTlsInbound  pulumi.BoolOutput        `pulumi:"requireTlsInbound"`
-	RequireTlsOutbound pulumi.BoolOutput        `pulumi:"requireTlsOutbound"`
+	LastModified pulumi.StringOutput `pulumi:"lastModified"`
+	// Number of hops to trace back through received headers when reconstructing the original message (1-20).
+	LookbackHops pulumi.IntOutput    `pulumi:"lookbackHops"`
+	ModifiedAt   pulumi.StringOutput `pulumi:"modifiedAt"`
+	O365TenantId pulumi.StringOutput `pulumi:"o365TenantId"`
+	// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+	Regions pulumi.StringArrayOutput `pulumi:"regions"`
+	// Require TLS on inbound connections.
+	RequireTlsInbound pulumi.BoolOutput `pulumi:"requireTlsInbound"`
+	// Require TLS on outbound connections.
+	RequireTlsOutbound pulumi.BoolOutput `pulumi:"requireTlsOutbound"`
 	// Available values: "none", "good", "neutral", "open", "invalid".
 	SpfStatus pulumi.StringOutput `pulumi:"spfStatus"`
 	// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
-	Status    pulumi.StringOutput    `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
 	Transport pulumi.StringPtrOutput `pulumi:"transport"`
 }
 
@@ -153,69 +164,91 @@ func GetEmailSecurityDomain(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EmailSecurityDomain resources.
 type emailSecurityDomainState struct {
 	// Identifier.
-	AccountId            *string                           `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// Delivery modes to onboard the domain through.
 	AllowedDeliveryModes []string                          `pulumi:"allowedDeliveryModes"`
 	Authorization        *EmailSecurityDomainAuthorization `pulumi:"authorization"`
 	CreatedAt            *string                           `pulumi:"createdAt"`
 	// Available values: "none", "good", "invalid".
-	DmarcStatus      *string                             `pulumi:"dmarcStatus"`
-	Domain           *string                             `pulumi:"domain"`
+	DmarcStatus *string `pulumi:"dmarcStatus"`
+	// The email domain to protect.
+	Domain *string `pulumi:"domain"`
+	// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
 	DropDispositions []string                            `pulumi:"dropDispositions"`
 	EmailsProcessed  *EmailSecurityDomainEmailsProcessed `pulumi:"emailsProcessed"`
+	// The mailbox folder to scan, for API-scanning domains.
 	// Available values: "AllItems", "Inbox".
 	Folder *string `pulumi:"folder"`
 	// Available values: "Microsoft", "Google".
-	InboxProvider  *string  `pulumi:"inboxProvider"`
-	IntegrationId  *string  `pulumi:"integrationId"`
+	InboxProvider *string `pulumi:"inboxProvider"`
+	// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+	IntegrationId *string `pulumi:"integrationId"`
+	// Source IP ranges mail is accepted from. Any other source is rejected.
 	IpRestrictions []string `pulumi:"ipRestrictions"`
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
 	//
 	// Deprecated: Use `modifiedAt` instead.
-	LastModified       *string  `pulumi:"lastModified"`
-	LookbackHops       *int     `pulumi:"lookbackHops"`
-	ModifiedAt         *string  `pulumi:"modifiedAt"`
-	O365TenantId       *string  `pulumi:"o365TenantId"`
-	Regions            []string `pulumi:"regions"`
-	RequireTlsInbound  *bool    `pulumi:"requireTlsInbound"`
-	RequireTlsOutbound *bool    `pulumi:"requireTlsOutbound"`
+	LastModified *string `pulumi:"lastModified"`
+	// Number of hops to trace back through received headers when reconstructing the original message (1-20).
+	LookbackHops *int    `pulumi:"lookbackHops"`
+	ModifiedAt   *string `pulumi:"modifiedAt"`
+	O365TenantId *string `pulumi:"o365TenantId"`
+	// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+	Regions []string `pulumi:"regions"`
+	// Require TLS on inbound connections.
+	RequireTlsInbound *bool `pulumi:"requireTlsInbound"`
+	// Require TLS on outbound connections.
+	RequireTlsOutbound *bool `pulumi:"requireTlsOutbound"`
 	// Available values: "none", "good", "neutral", "open", "invalid".
 	SpfStatus *string `pulumi:"spfStatus"`
 	// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
-	Status    *string `pulumi:"status"`
+	Status *string `pulumi:"status"`
+	// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
 	Transport *string `pulumi:"transport"`
 }
 
 type EmailSecurityDomainState struct {
 	// Identifier.
-	AccountId            pulumi.StringPtrInput
+	AccountId pulumi.StringPtrInput
+	// Delivery modes to onboard the domain through.
 	AllowedDeliveryModes pulumi.StringArrayInput
 	Authorization        EmailSecurityDomainAuthorizationPtrInput
 	CreatedAt            pulumi.StringPtrInput
 	// Available values: "none", "good", "invalid".
-	DmarcStatus      pulumi.StringPtrInput
-	Domain           pulumi.StringPtrInput
+	DmarcStatus pulumi.StringPtrInput
+	// The email domain to protect.
+	Domain pulumi.StringPtrInput
+	// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
 	DropDispositions pulumi.StringArrayInput
 	EmailsProcessed  EmailSecurityDomainEmailsProcessedPtrInput
+	// The mailbox folder to scan, for API-scanning domains.
 	// Available values: "AllItems", "Inbox".
 	Folder pulumi.StringPtrInput
 	// Available values: "Microsoft", "Google".
-	InboxProvider  pulumi.StringPtrInput
-	IntegrationId  pulumi.StringPtrInput
+	InboxProvider pulumi.StringPtrInput
+	// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+	IntegrationId pulumi.StringPtrInput
+	// Source IP ranges mail is accepted from. Any other source is rejected.
 	IpRestrictions pulumi.StringArrayInput
 	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
 	//
 	// Deprecated: Use `modifiedAt` instead.
-	LastModified       pulumi.StringPtrInput
-	LookbackHops       pulumi.IntPtrInput
-	ModifiedAt         pulumi.StringPtrInput
-	O365TenantId       pulumi.StringPtrInput
-	Regions            pulumi.StringArrayInput
-	RequireTlsInbound  pulumi.BoolPtrInput
+	LastModified pulumi.StringPtrInput
+	// Number of hops to trace back through received headers when reconstructing the original message (1-20).
+	LookbackHops pulumi.IntPtrInput
+	ModifiedAt   pulumi.StringPtrInput
+	O365TenantId pulumi.StringPtrInput
+	// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+	Regions pulumi.StringArrayInput
+	// Require TLS on inbound connections.
+	RequireTlsInbound pulumi.BoolPtrInput
+	// Require TLS on outbound connections.
 	RequireTlsOutbound pulumi.BoolPtrInput
 	// Available values: "none", "good", "neutral", "open", "invalid".
 	SpfStatus pulumi.StringPtrInput
 	// Available values: "PENDING", "ACTIVE", "FAILED", "TIMEOUT".
-	Status    pulumi.StringPtrInput
+	Status pulumi.StringPtrInput
+	// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
 	Transport pulumi.StringPtrInput
 }
 
@@ -225,37 +258,59 @@ func (EmailSecurityDomainState) ElementType() reflect.Type {
 
 type emailSecurityDomainArgs struct {
 	// Identifier.
-	AccountId            string   `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
+	// Delivery modes to onboard the domain through.
 	AllowedDeliveryModes []string `pulumi:"allowedDeliveryModes"`
-	Domain               string   `pulumi:"domain"`
-	DropDispositions     []string `pulumi:"dropDispositions"`
+	// The email domain to protect.
+	Domain string `pulumi:"domain"`
+	// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+	DropDispositions []string `pulumi:"dropDispositions"`
+	// The mailbox folder to scan, for API-scanning domains.
 	// Available values: "AllItems", "Inbox".
-	Folder             *string  `pulumi:"folder"`
-	IntegrationId      *string  `pulumi:"integrationId"`
-	IpRestrictions     []string `pulumi:"ipRestrictions"`
-	LookbackHops       *int     `pulumi:"lookbackHops"`
-	Regions            []string `pulumi:"regions"`
-	RequireTlsInbound  *bool    `pulumi:"requireTlsInbound"`
-	RequireTlsOutbound *bool    `pulumi:"requireTlsOutbound"`
-	Transport          *string  `pulumi:"transport"`
+	Folder *string `pulumi:"folder"`
+	// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+	IntegrationId *string `pulumi:"integrationId"`
+	// Source IP ranges mail is accepted from. Any other source is rejected.
+	IpRestrictions []string `pulumi:"ipRestrictions"`
+	// Number of hops to trace back through received headers when reconstructing the original message (1-20).
+	LookbackHops *int `pulumi:"lookbackHops"`
+	// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+	Regions []string `pulumi:"regions"`
+	// Require TLS on inbound connections.
+	RequireTlsInbound *bool `pulumi:"requireTlsInbound"`
+	// Require TLS on outbound connections.
+	RequireTlsOutbound *bool `pulumi:"requireTlsOutbound"`
+	// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+	Transport *string `pulumi:"transport"`
 }
 
 // The set of arguments for constructing a EmailSecurityDomain resource.
 type EmailSecurityDomainArgs struct {
 	// Identifier.
-	AccountId            pulumi.StringInput
+	AccountId pulumi.StringInput
+	// Delivery modes to onboard the domain through.
 	AllowedDeliveryModes pulumi.StringArrayInput
-	Domain               pulumi.StringInput
-	DropDispositions     pulumi.StringArrayInput
+	// The email domain to protect.
+	Domain pulumi.StringInput
+	// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
+	DropDispositions pulumi.StringArrayInput
+	// The mailbox folder to scan, for API-scanning domains.
 	// Available values: "AllItems", "Inbox".
-	Folder             pulumi.StringPtrInput
-	IntegrationId      pulumi.StringPtrInput
-	IpRestrictions     pulumi.StringArrayInput
-	LookbackHops       pulumi.IntPtrInput
-	Regions            pulumi.StringArrayInput
-	RequireTlsInbound  pulumi.BoolPtrInput
+	Folder pulumi.StringPtrInput
+	// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
+	IntegrationId pulumi.StringPtrInput
+	// Source IP ranges mail is accepted from. Any other source is rejected.
+	IpRestrictions pulumi.StringArrayInput
+	// Number of hops to trace back through received headers when reconstructing the original message (1-20).
+	LookbackHops pulumi.IntPtrInput
+	// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
+	Regions pulumi.StringArrayInput
+	// Require TLS on inbound connections.
+	RequireTlsInbound pulumi.BoolPtrInput
+	// Require TLS on outbound connections.
 	RequireTlsOutbound pulumi.BoolPtrInput
-	Transport          pulumi.StringPtrInput
+	// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
+	Transport pulumi.StringPtrInput
 }
 
 func (EmailSecurityDomainArgs) ElementType() reflect.Type {
@@ -350,6 +405,7 @@ func (o EmailSecurityDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Delivery modes to onboard the domain through.
 func (o EmailSecurityDomainOutput) AllowedDeliveryModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringArrayOutput { return v.AllowedDeliveryModes }).(pulumi.StringArrayOutput)
 }
@@ -367,10 +423,12 @@ func (o EmailSecurityDomainOutput) DmarcStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringOutput { return v.DmarcStatus }).(pulumi.StringOutput)
 }
 
+// The email domain to protect.
 func (o EmailSecurityDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
+// Dispositions to drop instead of delivering, e.g. `["MALICIOUS", "SPAM"]`.
 func (o EmailSecurityDomainOutput) DropDispositions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringArrayOutput { return v.DropDispositions }).(pulumi.StringArrayOutput)
 }
@@ -379,6 +437,7 @@ func (o EmailSecurityDomainOutput) EmailsProcessed() EmailSecurityDomainEmailsPr
 	return o.ApplyT(func(v *EmailSecurityDomain) EmailSecurityDomainEmailsProcessedOutput { return v.EmailsProcessed }).(EmailSecurityDomainEmailsProcessedOutput)
 }
 
+// The mailbox folder to scan, for API-scanning domains.
 // Available values: "AllItems", "Inbox".
 func (o EmailSecurityDomainOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
@@ -389,10 +448,12 @@ func (o EmailSecurityDomainOutput) InboxProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringOutput { return v.InboxProvider }).(pulumi.StringOutput)
 }
 
+// Identifier of the CASB integration that authorizes this domain. The integration also enables API scanning, post-delivery actions, and directory sync.
 func (o EmailSecurityDomainOutput) IntegrationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringPtrOutput { return v.IntegrationId }).(pulumi.StringPtrOutput)
 }
 
+// Source IP ranges mail is accepted from. Any other source is rejected.
 func (o EmailSecurityDomainOutput) IpRestrictions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringArrayOutput { return v.IpRestrictions }).(pulumi.StringArrayOutput)
 }
@@ -404,6 +465,7 @@ func (o EmailSecurityDomainOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
 }
 
+// Number of hops to trace back through received headers when reconstructing the original message (1-20).
 func (o EmailSecurityDomainOutput) LookbackHops() pulumi.IntOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.IntOutput { return v.LookbackHops }).(pulumi.IntOutput)
 }
@@ -416,14 +478,17 @@ func (o EmailSecurityDomainOutput) O365TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringOutput { return v.O365TenantId }).(pulumi.StringOutput)
 }
 
+// Regions that process messages for this domain, e.g. `["GLOBAL"]` or `["US"]`.
 func (o EmailSecurityDomainOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
+// Require TLS on inbound connections.
 func (o EmailSecurityDomainOutput) RequireTlsInbound() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.BoolOutput { return v.RequireTlsInbound }).(pulumi.BoolOutput)
 }
 
+// Require TLS on outbound connections.
 func (o EmailSecurityDomainOutput) RequireTlsOutbound() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.BoolOutput { return v.RequireTlsOutbound }).(pulumi.BoolOutput)
 }
@@ -438,6 +503,7 @@ func (o EmailSecurityDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// The mail transport hostname for MX/Inline delivery — the MX record Cloudflare delivers email to (e.g. `mx.example.com`).
 func (o EmailSecurityDomainOutput) Transport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailSecurityDomain) pulumi.StringPtrOutput { return v.Transport }).(pulumi.StringPtrOutput)
 }

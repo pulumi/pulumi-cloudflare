@@ -17,6 +17,42 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleStreamLiveInput = new Cloudflare.StreamLiveInput("example_stream_live_input", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         DefaultCreator = "defaultCreator",
+    ///         DeleteRecordingAfterDays = 45,
+    ///         Enabled = true,
+    ///         Meta = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["name"] = "test stream 1",
+    ///         }),
+    ///         PreferLowLatency = true,
+    ///         Recording = new Cloudflare.Inputs.StreamLiveInputRecordingArgs
+    ///         {
+    ///             AllowedOrigins = new[]
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///             HideLiveViewerCount = false,
+    ///             Mode = "off",
+    ///             RequireSignedUrls = false,
+    ///             TimeoutSeconds = 0,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// &gt; This resource does not currently support `pulumi import`.

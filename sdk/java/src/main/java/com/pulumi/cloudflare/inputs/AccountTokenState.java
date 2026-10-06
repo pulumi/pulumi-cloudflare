@@ -41,6 +41,25 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     * 
+     */
+    @Import(name="creatorEmailAtCreation")
+    private @Nullable Output<String> creatorEmailAtCreation;
+
+    /**
+     * @return The email address of the user who created the token at the time of
+     * creation. Only present for Account Owned API Tokens when a creator email
+     * was available.
+     * 
+     */
+    public Optional<Output<String>> creatorEmailAtCreation() {
+        return Optional.ofNullable(this.creatorEmailAtCreation);
+    }
+
+    /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      * 
      */
@@ -131,18 +150,56 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of access policies assigned to the token.
+     * List of access policies assigned to the token.
      * 
      */
     @Import(name="policies")
     private @Nullable Output<List<AccountTokenPolicyArgs>> policies;
 
     /**
-     * @return Set of access policies assigned to the token.
+     * @return List of access policies assigned to the token.
      * 
      */
     public Optional<Output<List<AccountTokenPolicyArgs>>> policies() {
         return Optional.ofNullable(this.policies);
+    }
+
+    /**
+     * The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     * 
+     */
+    @Import(name="provisionerId")
+    private @Nullable Output<String> provisionerId;
+
+    /**
+     * @return The identifier of the service that provisioned the token. For an
+     * OAuth-provisioned token, this is the OAuth client identifier. Present
+     * when `provisionerType` is present and null when the identifier is
+     * unavailable.
+     * 
+     */
+    public Optional<Output<String>> provisionerId() {
+        return Optional.ofNullable(this.provisionerId);
+    }
+
+    /**
+     * The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     * 
+     */
+    @Import(name="provisionerType")
+    private @Nullable Output<String> provisionerType;
+
+    /**
+     * @return The type of service that provisioned the token. Only present for
+     * provisioned Account Owned API Tokens.
+     * 
+     */
+    public Optional<Output<String>> provisionerType() {
+        return Optional.ofNullable(this.provisionerType);
     }
 
     /**
@@ -182,6 +239,7 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
     private AccountTokenState(AccountTokenState $) {
         this.accountId = $.accountId;
         this.condition = $.condition;
+        this.creatorEmailAtCreation = $.creatorEmailAtCreation;
         this.expiresOn = $.expiresOn;
         this.issuedOn = $.issuedOn;
         this.lastUsedOn = $.lastUsedOn;
@@ -189,6 +247,8 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notBefore = $.notBefore;
         this.policies = $.policies;
+        this.provisionerId = $.provisionerId;
+        this.provisionerType = $.provisionerType;
         this.status = $.status;
         this.value = $.value;
     }
@@ -239,6 +299,31 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
 
         public Builder condition(AccountTokenConditionArgs condition) {
             return condition(Output.of(condition));
+        }
+
+        /**
+         * @param creatorEmailAtCreation The email address of the user who created the token at the time of
+         * creation. Only present for Account Owned API Tokens when a creator email
+         * was available.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creatorEmailAtCreation(@Nullable Output<String> creatorEmailAtCreation) {
+            $.creatorEmailAtCreation = creatorEmailAtCreation;
+            return this;
+        }
+
+        /**
+         * @param creatorEmailAtCreation The email address of the user who created the token at the time of
+         * creation. Only present for Account Owned API Tokens when a creator email
+         * was available.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creatorEmailAtCreation(String creatorEmailAtCreation) {
+            return creatorEmailAtCreation(Output.of(creatorEmailAtCreation));
         }
 
         /**
@@ -368,7 +453,7 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Set of access policies assigned to the token.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -379,7 +464,7 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Set of access policies assigned to the token.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
@@ -389,13 +474,63 @@ public final class AccountTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies Set of access policies assigned to the token.
+         * @param policies List of access policies assigned to the token.
          * 
          * @return builder
          * 
          */
         public Builder policies(AccountTokenPolicyArgs... policies) {
             return policies(List.of(policies));
+        }
+
+        /**
+         * @param provisionerId The identifier of the service that provisioned the token. For an
+         * OAuth-provisioned token, this is the OAuth client identifier. Present
+         * when `provisionerType` is present and null when the identifier is
+         * unavailable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionerId(@Nullable Output<String> provisionerId) {
+            $.provisionerId = provisionerId;
+            return this;
+        }
+
+        /**
+         * @param provisionerId The identifier of the service that provisioned the token. For an
+         * OAuth-provisioned token, this is the OAuth client identifier. Present
+         * when `provisionerType` is present and null when the identifier is
+         * unavailable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionerId(String provisionerId) {
+            return provisionerId(Output.of(provisionerId));
+        }
+
+        /**
+         * @param provisionerType The type of service that provisioned the token. Only present for
+         * provisioned Account Owned API Tokens.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionerType(@Nullable Output<String> provisionerType) {
+            $.provisionerType = provisionerType;
+            return this;
+        }
+
+        /**
+         * @param provisionerType The type of service that provisioned the token. Only present for
+         * provisioned Account Owned API Tokens.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionerType(String provisionerType) {
+            return provisionerType(Output.of(provisionerType));
         }
 
         /**

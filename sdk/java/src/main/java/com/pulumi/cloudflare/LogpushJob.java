@@ -51,9 +51,10 @@ import javax.annotation.Nullable;
  *         var exampleLogpushJob = new LogpushJob("exampleLogpushJob", LogpushJobArgs.builder()
  *             .destinationConf("s3://mybucket/logs?region=us-west-2")
  *             .zoneId("zone_id")
- *             .dataset("gateway_dns")
+ *             .dataset("http_requests")
  *             .enabled(false)
  *             .filter("{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}")
+ *             .filterAttackTraffic(true)
  *             .frequency("high")
  *             .kind("")
  *             .logpullOptions("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339")
@@ -62,22 +63,19 @@ import javax.annotation.Nullable;
  *             .maxUploadRecords(1000)
  *             .name("example.com")
  *             .outputOptions(LogpushJobOutputOptionsArgs.builder()
- *                 .batchPrefix("")
- *                 .batchSuffix("")
- *                 .cve202144228(false)
- *                 .fieldDelimiter(",")
+ *                 .batchPrefix("batch_prefix")
+ *                 .batchSuffix("batch_suffix")
+ *                 .cve202144228(true)
+ *                 .fieldDelimiter("field_delimiter")
  *                 .fieldNames(                
- *                     "Datetime",
- *                     "DstIP",
- *                     "SrcIP")
+ *                     "ClientIP",
+ *                     "EdgeStartTimestamp",
+ *                     "RayID")
  *                 .mergeSubrequests(true)
  *                 .outputType("ndjson")
- *                 .recordDelimiter("")
- *                 .recordPrefix("{")
- *                 .recordSuffix("""
- *     }
- * 
- *                 """)
+ *                 .recordDelimiter("record_delimiter")
+ *                 .recordPrefix("record_prefix")
+ *                 .recordSuffix("record_suffix")
  *                 .recordTemplate("record_template")
  *                 .sampleRate(1.0)
  *                 .timestampFormat("unixnano")
@@ -184,6 +182,20 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> filter() {
         return this.filter;
+    }
+    /**
+     * When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     * 
+     */
+    @Export(name="filterAttackTraffic", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> filterAttackTraffic;
+
+    /**
+     * @return When true, excludes DDoS attack traffic from logs. This option is supported for the `httpRequests`, `firewallEvents`, and `networkAnalyticsLogs` datasets.
+     * 
+     */
+    public Output<Boolean> filterAttackTraffic() {
+        return this.filterAttackTraffic;
     }
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.

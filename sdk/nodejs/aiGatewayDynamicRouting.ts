@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         },
  *         type: "start",
  *     }],
- *     name: "name",
+ *     name: "x",
  * });
  * ```
  *

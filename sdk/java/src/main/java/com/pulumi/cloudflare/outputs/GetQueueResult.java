@@ -30,6 +30,11 @@ public final class GetQueueResult {
      * 
      */
     private String id;
+    /**
+     * @return Available values: &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    private String jurisdiction;
     private String modifiedOn;
     private List<GetQueueProducer> producers;
     private Double producersTotalCount;
@@ -64,6 +69,13 @@ public final class GetQueueResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Available values: &#34;eu&#34;, &#34;us&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public String jurisdiction() {
+        return this.jurisdiction;
     }
     public String modifiedOn() {
         return this.modifiedOn;
@@ -102,6 +114,7 @@ public final class GetQueueResult {
         private Double consumersTotalCount;
         private String createdOn;
         private String id;
+        private String jurisdiction;
         private String modifiedOn;
         private List<GetQueueProducer> producers;
         private Double producersTotalCount;
@@ -116,6 +129,7 @@ public final class GetQueueResult {
     	      this.consumersTotalCount = defaults.consumersTotalCount;
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.producers = defaults.producers;
     	      this.producersTotalCount = defaults.producersTotalCount;
@@ -163,6 +177,14 @@ public final class GetQueueResult {
               throw new MissingRequiredPropertyException("GetQueueResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jurisdiction(String jurisdiction) {
+            if (jurisdiction == null) {
+              throw new MissingRequiredPropertyException("GetQueueResult", "jurisdiction");
+            }
+            this.jurisdiction = jurisdiction;
             return this;
         }
         @CustomType.Setter
@@ -223,6 +245,7 @@ public final class GetQueueResult {
             _resultValue.consumersTotalCount = consumersTotalCount;
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.producers = producers;
             _resultValue.producersTotalCount = producersTotalCount;

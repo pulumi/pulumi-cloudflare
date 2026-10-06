@@ -16,14 +16,14 @@ public final class GetOriginCaCertificatePlainArgs extends com.pulumi.resources.
     public static final GetOriginCaCertificatePlainArgs Empty = new GetOriginCaCertificatePlainArgs();
 
     /**
-     * Identifier.
+     * The x509 serial number of the Origin CA certificate.
      * 
      */
     @Import(name="certificateId")
     private @Nullable String certificateId;
 
     /**
-     * @return Identifier.
+     * @return The x509 serial number of the Origin CA certificate.
      * 
      */
     public Optional<String> certificateId() {
@@ -63,7 +63,7 @@ public final class GetOriginCaCertificatePlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param certificateId Identifier.
+         * @param certificateId The x509 serial number of the Origin CA certificate.
          * 
          * @return builder
          * 

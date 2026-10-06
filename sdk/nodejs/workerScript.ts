@@ -105,6 +105,9 @@ import * as utilities from "./utilities";
  *     observability: {
  *         enabled: true,
  *         headSamplingRate: 0.1,
+ *         issues: {
+ *             enabled: true,
+ *         },
  *         logs: {
  *             enabled: true,
  *             invocationLogs: true,
@@ -249,6 +252,10 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     declare public readonly files: pulumi.Output<{[key: string]: outputs.WorkerScriptFiles} | undefined>;
     /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     */
+    declare public readonly force: pulumi.Output<boolean | undefined>;
+    /**
      * The names of handlers exported as part of the default export.
      */
     declare public /*out*/ readonly handlers: pulumi.Output<string[]>;
@@ -371,6 +378,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["etag"] = state?.etag;
             resourceInputs["exports"] = state?.exports;
             resourceInputs["files"] = state?.files;
+            resourceInputs["force"] = state?.force;
             resourceInputs["handlers"] = state?.handlers;
             resourceInputs["hasAssets"] = state?.hasAssets;
             resourceInputs["hasModules"] = state?.hasModules;
@@ -415,6 +423,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["contentType"] = args?.contentType;
             resourceInputs["exports"] = args?.exports;
             resourceInputs["files"] = args?.files;
+            resourceInputs["force"] = args?.force;
             resourceInputs["keepAssets"] = args?.keepAssets;
             resourceInputs["keepBindings"] = args?.keepBindings;
             resourceInputs["limits"] = args?.limits;
@@ -518,6 +527,10 @@ export interface WorkerScriptState {
      * Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
      */
     files?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerScriptFiles>} | undefined>;
+    /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     */
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The names of handlers exported as part of the default export.
      */
@@ -673,6 +686,10 @@ export interface WorkerScriptArgs {
      * Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
      */
     files?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkerScriptFiles>} | undefined>;
+    /**
+     * If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+     */
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
      */

@@ -59,8 +59,17 @@ type UserGroupMembers struct {
 	pulumi.CustomResourceState
 
 	// Account identifier tag.
-	AccountId pulumi.StringOutput               `pulumi:"accountId"`
-	Members   UserGroupMembersMemberArrayOutput `pulumi:"members"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The sort order of returned user group members by email.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringOutput `pulumi:"direction"`
+	// A string used for filtering members by partial email match.
+	FuzzyEmail pulumi.StringPtrOutput            `pulumi:"fuzzyEmail"`
+	Members    UserGroupMembersMemberArrayOutput `pulumi:"members"`
+	// Page number of paginated results.
+	Page pulumi.Float64Output `pulumi:"page"`
+	// Maximum number of results per page.
+	PerPage pulumi.Float64Output `pulumi:"perPage"`
 	// User Group identifier tag.
 	UserGroupId pulumi.StringOutput `pulumi:"userGroupId"`
 }
@@ -105,8 +114,17 @@ func GetUserGroupMembers(ctx *pulumi.Context,
 // Input properties used for looking up and filtering UserGroupMembers resources.
 type userGroupMembersState struct {
 	// Account identifier tag.
-	AccountId *string                  `pulumi:"accountId"`
-	Members   []UserGroupMembersMember `pulumi:"members"`
+	AccountId *string `pulumi:"accountId"`
+	// The sort order of returned user group members by email.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
+	// A string used for filtering members by partial email match.
+	FuzzyEmail *string                  `pulumi:"fuzzyEmail"`
+	Members    []UserGroupMembersMember `pulumi:"members"`
+	// Page number of paginated results.
+	Page *float64 `pulumi:"page"`
+	// Maximum number of results per page.
+	PerPage *float64 `pulumi:"perPage"`
 	// User Group identifier tag.
 	UserGroupId *string `pulumi:"userGroupId"`
 }
@@ -114,7 +132,16 @@ type userGroupMembersState struct {
 type UserGroupMembersState struct {
 	// Account identifier tag.
 	AccountId pulumi.StringPtrInput
-	Members   UserGroupMembersMemberArrayInput
+	// The sort order of returned user group members by email.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput
+	// A string used for filtering members by partial email match.
+	FuzzyEmail pulumi.StringPtrInput
+	Members    UserGroupMembersMemberArrayInput
+	// Page number of paginated results.
+	Page pulumi.Float64PtrInput
+	// Maximum number of results per page.
+	PerPage pulumi.Float64PtrInput
 	// User Group identifier tag.
 	UserGroupId pulumi.StringPtrInput
 }
@@ -125,8 +152,17 @@ func (UserGroupMembersState) ElementType() reflect.Type {
 
 type userGroupMembersArgs struct {
 	// Account identifier tag.
-	AccountId string                   `pulumi:"accountId"`
-	Members   []UserGroupMembersMember `pulumi:"members"`
+	AccountId string `pulumi:"accountId"`
+	// The sort order of returned user group members by email.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
+	// A string used for filtering members by partial email match.
+	FuzzyEmail *string                  `pulumi:"fuzzyEmail"`
+	Members    []UserGroupMembersMember `pulumi:"members"`
+	// Page number of paginated results.
+	Page *float64 `pulumi:"page"`
+	// Maximum number of results per page.
+	PerPage *float64 `pulumi:"perPage"`
 	// User Group identifier tag.
 	UserGroupId string `pulumi:"userGroupId"`
 }
@@ -135,7 +171,16 @@ type userGroupMembersArgs struct {
 type UserGroupMembersArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput
-	Members   UserGroupMembersMemberArrayInput
+	// The sort order of returned user group members by email.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput
+	// A string used for filtering members by partial email match.
+	FuzzyEmail pulumi.StringPtrInput
+	Members    UserGroupMembersMemberArrayInput
+	// Page number of paginated results.
+	Page pulumi.Float64PtrInput
+	// Maximum number of results per page.
+	PerPage pulumi.Float64PtrInput
 	// User Group identifier tag.
 	UserGroupId pulumi.StringInput
 }
@@ -232,8 +277,29 @@ func (o UserGroupMembersOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserGroupMembers) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// The sort order of returned user group members by email.
+// Available values: "asc", "desc".
+func (o UserGroupMembersOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserGroupMembers) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
+}
+
+// A string used for filtering members by partial email match.
+func (o UserGroupMembersOutput) FuzzyEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserGroupMembers) pulumi.StringPtrOutput { return v.FuzzyEmail }).(pulumi.StringPtrOutput)
+}
+
 func (o UserGroupMembersOutput) Members() UserGroupMembersMemberArrayOutput {
 	return o.ApplyT(func(v *UserGroupMembers) UserGroupMembersMemberArrayOutput { return v.Members }).(UserGroupMembersMemberArrayOutput)
+}
+
+// Page number of paginated results.
+func (o UserGroupMembersOutput) Page() pulumi.Float64Output {
+	return o.ApplyT(func(v *UserGroupMembers) pulumi.Float64Output { return v.Page }).(pulumi.Float64Output)
+}
+
+// Maximum number of results per page.
+func (o UserGroupMembersOutput) PerPage() pulumi.Float64Output {
+	return o.ApplyT(func(v *UserGroupMembers) pulumi.Float64Output { return v.PerPage }).(pulumi.Float64Output)
 }
 
 // User Group identifier tag.

@@ -62,6 +62,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
+        /// Include resources in the response.
+        /// </summary>
+        [Output("includeResources")]
+        public Output<bool?> IncludeResources { get; private set; } = null!;
+
+        /// <summary>
         /// When the share was modified.
         /// </summary>
         [Output("modified")]
@@ -141,6 +147,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Include resources in the response.
+        /// </summary>
+        [Input("includeResources")]
+        public Input<bool>? IncludeResources { get; set; }
+
+        /// <summary>
         /// Organization identifier.
         /// </summary>
         [Input("organizationId")]
@@ -186,6 +198,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
+
+        /// <summary>
+        /// Include resources in the response.
+        /// </summary>
+        [Input("includeResources")]
+        public Input<bool>? IncludeResources { get; set; }
 
         /// <summary>
         /// When the share was modified.

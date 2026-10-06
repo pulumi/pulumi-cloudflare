@@ -352,14 +352,14 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * Priority.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Double> priority;
 
     /**
-     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+     * @return Priority.
      * 
      */
     public Optional<Output<Double>> priority() {
@@ -487,14 +487,14 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A valid mail server hostname, or &#34;.&#34; for a NULL MX record.
+     * Target.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return A valid mail server hostname, or &#34;.&#34; for a NULL MX record.
+     * @return Target.
      * 
      */
     public Optional<Output<String>> target() {
@@ -1087,7 +1087,7 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+         * @param priority Priority.
          * 
          * @return builder
          * 
@@ -1098,7 +1098,7 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
+         * @param priority Priority.
          * 
          * @return builder
          * 
@@ -1276,7 +1276,7 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target A valid mail server hostname, or &#34;.&#34; for a NULL MX record.
+         * @param target Target.
          * 
          * @return builder
          * 
@@ -1287,7 +1287,7 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target A valid mail server hostname, or &#34;.&#34; for a NULL MX record.
+         * @param target Target.
          * 
          * @return builder
          * 

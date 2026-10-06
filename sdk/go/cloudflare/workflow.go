@@ -75,18 +75,20 @@ type Workflow struct {
 	Concurrency WorkflowConcurrencyPtrOutput `pulumi:"concurrency"`
 	CreatedOn   pulumi.StringOutput          `pulumi:"createdOn"`
 	// Default retention applied to instances of this version when they do not set their own retention.
-	DefaultRetention  WorkflowDefaultRetentionPtrOutput `pulumi:"defaultRetention"`
-	Instances         pulumi.Float64MapOutput           `pulumi:"instances"`
-	IsDeleted         pulumi.Float64Output              `pulumi:"isDeleted"`
-	Limits            WorkflowLimitsPtrOutput           `pulumi:"limits"`
-	ModifiedOn        pulumi.StringOutput               `pulumi:"modifiedOn"`
-	Name              pulumi.StringOutput               `pulumi:"name"`
-	Schedules         WorkflowScheduleArrayOutput       `pulumi:"schedules"`
-	ScriptName        pulumi.StringOutput               `pulumi:"scriptName"`
-	TerminatorRunning pulumi.Float64Output              `pulumi:"terminatorRunning"`
-	TriggeredOn       pulumi.StringOutput               `pulumi:"triggeredOn"`
-	VersionId         pulumi.StringOutput               `pulumi:"versionId"`
-	WorkflowName      pulumi.StringOutput               `pulumi:"workflowName"`
+	DefaultRetention WorkflowDefaultRetentionPtrOutput `pulumi:"defaultRetention"`
+	Instances        pulumi.Float64MapOutput           `pulumi:"instances"`
+	IsDeleted        pulumi.Float64Output              `pulumi:"isDeleted"`
+	Limits           WorkflowLimitsPtrOutput           `pulumi:"limits"`
+	ModifiedOn       pulumi.StringOutput               `pulumi:"modifiedOn"`
+	Name             pulumi.StringOutput               `pulumi:"name"`
+	Schedules        WorkflowScheduleArrayOutput       `pulumi:"schedules"`
+	// Whether the bound Worker was deleted, leaving this Workflow inactive.
+	ScriptDeleted     pulumi.BoolOutput    `pulumi:"scriptDeleted"`
+	ScriptName        pulumi.StringOutput  `pulumi:"scriptName"`
+	TerminatorRunning pulumi.Float64Output `pulumi:"terminatorRunning"`
+	TriggeredOn       pulumi.StringOutput  `pulumi:"triggeredOn"`
+	VersionId         pulumi.StringOutput  `pulumi:"versionId"`
+	WorkflowName      pulumi.StringOutput  `pulumi:"workflowName"`
 }
 
 // NewWorkflow registers a new resource with the given unique name, arguments, and options.
@@ -136,18 +138,20 @@ type workflowState struct {
 	Concurrency *WorkflowConcurrency `pulumi:"concurrency"`
 	CreatedOn   *string              `pulumi:"createdOn"`
 	// Default retention applied to instances of this version when they do not set their own retention.
-	DefaultRetention  *WorkflowDefaultRetention `pulumi:"defaultRetention"`
-	Instances         map[string]float64        `pulumi:"instances"`
-	IsDeleted         *float64                  `pulumi:"isDeleted"`
-	Limits            *WorkflowLimits           `pulumi:"limits"`
-	ModifiedOn        *string                   `pulumi:"modifiedOn"`
-	Name              *string                   `pulumi:"name"`
-	Schedules         []WorkflowSchedule        `pulumi:"schedules"`
-	ScriptName        *string                   `pulumi:"scriptName"`
-	TerminatorRunning *float64                  `pulumi:"terminatorRunning"`
-	TriggeredOn       *string                   `pulumi:"triggeredOn"`
-	VersionId         *string                   `pulumi:"versionId"`
-	WorkflowName      *string                   `pulumi:"workflowName"`
+	DefaultRetention *WorkflowDefaultRetention `pulumi:"defaultRetention"`
+	Instances        map[string]float64        `pulumi:"instances"`
+	IsDeleted        *float64                  `pulumi:"isDeleted"`
+	Limits           *WorkflowLimits           `pulumi:"limits"`
+	ModifiedOn       *string                   `pulumi:"modifiedOn"`
+	Name             *string                   `pulumi:"name"`
+	Schedules        []WorkflowSchedule        `pulumi:"schedules"`
+	// Whether the bound Worker was deleted, leaving this Workflow inactive.
+	ScriptDeleted     *bool    `pulumi:"scriptDeleted"`
+	ScriptName        *string  `pulumi:"scriptName"`
+	TerminatorRunning *float64 `pulumi:"terminatorRunning"`
+	TriggeredOn       *string  `pulumi:"triggeredOn"`
+	VersionId         *string  `pulumi:"versionId"`
+	WorkflowName      *string  `pulumi:"workflowName"`
 }
 
 type WorkflowState struct {
@@ -156,13 +160,15 @@ type WorkflowState struct {
 	Concurrency WorkflowConcurrencyPtrInput
 	CreatedOn   pulumi.StringPtrInput
 	// Default retention applied to instances of this version when they do not set their own retention.
-	DefaultRetention  WorkflowDefaultRetentionPtrInput
-	Instances         pulumi.Float64MapInput
-	IsDeleted         pulumi.Float64PtrInput
-	Limits            WorkflowLimitsPtrInput
-	ModifiedOn        pulumi.StringPtrInput
-	Name              pulumi.StringPtrInput
-	Schedules         WorkflowScheduleArrayInput
+	DefaultRetention WorkflowDefaultRetentionPtrInput
+	Instances        pulumi.Float64MapInput
+	IsDeleted        pulumi.Float64PtrInput
+	Limits           WorkflowLimitsPtrInput
+	ModifiedOn       pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
+	Schedules        WorkflowScheduleArrayInput
+	// Whether the bound Worker was deleted, leaving this Workflow inactive.
+	ScriptDeleted     pulumi.BoolPtrInput
 	ScriptName        pulumi.StringPtrInput
 	TerminatorRunning pulumi.Float64PtrInput
 	TriggeredOn       pulumi.StringPtrInput
@@ -329,6 +335,11 @@ func (o WorkflowOutput) Name() pulumi.StringOutput {
 
 func (o WorkflowOutput) Schedules() WorkflowScheduleArrayOutput {
 	return o.ApplyT(func(v *Workflow) WorkflowScheduleArrayOutput { return v.Schedules }).(WorkflowScheduleArrayOutput)
+}
+
+// Whether the bound Worker was deleted, leaving this Workflow inactive.
+func (o WorkflowOutput) ScriptDeleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.BoolOutput { return v.ScriptDeleted }).(pulumi.BoolOutput)
 }
 
 func (o WorkflowOutput) ScriptName() pulumi.StringOutput {

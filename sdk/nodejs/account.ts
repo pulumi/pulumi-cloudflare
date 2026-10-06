@@ -47,6 +47,7 @@ import * as utilities from "./utilities";
  *
  * const exampleAccount = new cloudflare.Account("example_account", {
  *     name: "name",
+ *     standalone: true,
  *     type: "standard",
  *     unit: {
  *         id: "f267e341f3dd4697bd3b9f71dd96247f",
@@ -105,13 +106,17 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly settings: pulumi.Output<outputs.AccountSettings>;
     /**
+     * Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+     */
+    declare public readonly standalone: pulumi.Output<boolean>;
+    /**
      * Available values: "standard", "enterprise".
      *
      * @deprecated The 'type' field should no longer be set through the API.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
-     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
      */
     declare public readonly unit: pulumi.Output<outputs.AccountUnit>;
 
@@ -132,6 +137,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["settings"] = state?.settings;
+            resourceInputs["standalone"] = state?.standalone;
             resourceInputs["type"] = state?.type;
             resourceInputs["unit"] = state?.unit;
         } else {
@@ -142,6 +148,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["managedBy"] = args?.managedBy;
             resourceInputs["name"] = args?.name;
             resourceInputs["settings"] = args?.settings;
+            resourceInputs["standalone"] = args?.standalone;
             resourceInputs["type"] = args?.type;
             resourceInputs["unit"] = args?.unit;
             resourceInputs["createdOn"] = undefined /*out*/;
@@ -172,13 +179,17 @@ export interface AccountState {
      */
     settings?: pulumi.Input<inputs.AccountSettings | undefined>;
     /**
+     * Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+     */
+    standalone?: pulumi.Input<boolean | undefined>;
+    /**
      * Available values: "standard", "enterprise".
      *
      * @deprecated The 'type' field should no longer be set through the API.
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
      */
     unit?: pulumi.Input<inputs.AccountUnit | undefined>;
 }
@@ -200,13 +211,17 @@ export interface AccountArgs {
      */
     settings?: pulumi.Input<inputs.AccountSettings | undefined>;
     /**
+     * Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+     */
+    standalone?: pulumi.Input<boolean | undefined>;
+    /**
      * Available values: "standard", "enterprise".
      *
      * @deprecated The 'type' field should no longer be set through the API.
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+     * Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
      */
     unit?: pulumi.Input<inputs.AccountUnit | undefined>;
 }

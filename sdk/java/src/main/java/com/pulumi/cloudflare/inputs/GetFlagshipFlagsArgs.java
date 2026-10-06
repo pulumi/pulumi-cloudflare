@@ -18,14 +18,14 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetFlagshipFlagsArgs Empty = new GetFlagshipFlagsArgs();
 
     /**
-     * Cloudflare account ID.
+     * Cloudflare account ID that owns the Flagship app.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Cloudflare account ID.
+     * @return Cloudflare account ID that owns the Flagship app.
      * 
      */
     public Output<String> accountId() {
@@ -33,14 +33,14 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * App identifier.
+     * Flagship app ID returned when the app was created.
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
-     * @return App identifier.
+     * @return Flagship app ID returned when the app was created.
      * 
      */
     public Output<String> appId() {
@@ -52,13 +52,13 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
      * 
      */
     @Import(name="limit")
-    private @Nullable Output<String> limit;
+    private @Nullable Output<Integer> limit;
 
     /**
      * @return Max items to return (1–200).
      * 
      */
-    public Optional<Output<String>> limit() {
+    public Optional<Output<Integer>> limit() {
         return Optional.ofNullable(this.limit);
     }
 
@@ -105,7 +105,7 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param accountId Cloudflare account ID.
+         * @param accountId Cloudflare account ID that owns the Flagship app.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param appId App identifier.
+         * @param appId Flagship app ID returned when the app was created.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder limit(@Nullable Output<String> limit) {
+        public Builder limit(@Nullable Output<Integer> limit) {
             $.limit = limit;
             return this;
         }
@@ -163,7 +163,7 @@ public final class GetFlagshipFlagsArgs extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder limit(String limit) {
+        public Builder limit(Integer limit) {
             return limit(Output.of(limit));
         }
 

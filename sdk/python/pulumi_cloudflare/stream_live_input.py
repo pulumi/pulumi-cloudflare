@@ -508,6 +508,29 @@ class StreamLiveInput(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import json
+        import pulumi_cloudflare as cloudflare
+
+        example_stream_live_input = cloudflare.StreamLiveInput("example_stream_live_input",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            default_creator="defaultCreator",
+            delete_recording_after_days=float(45),
+            enabled=True,
+            meta=json.dumps({
+                "name": "test stream 1",
+            }),
+            prefer_low_latency=True,
+            recording={
+                "allowed_origins": ["example.com"],
+                "hide_live_viewer_count": False,
+                "mode": "off",
+                "require_signed_urls": False,
+                "timeout_seconds": 0,
+            })
+        ```
+
         ## Import
 
         > This resource does not currently support `pulumi import`.
@@ -537,6 +560,29 @@ class StreamLiveInput(pulumi.CustomResource):
         - `Stream Write`
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_cloudflare as cloudflare
+
+        example_stream_live_input = cloudflare.StreamLiveInput("example_stream_live_input",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            default_creator="defaultCreator",
+            delete_recording_after_days=float(45),
+            enabled=True,
+            meta=json.dumps({
+                "name": "test stream 1",
+            }),
+            prefer_low_latency=True,
+            recording={
+                "allowed_origins": ["example.com"],
+                "hide_live_viewer_count": False,
+                "mode": "off",
+                "require_signed_urls": False,
+                "timeout_seconds": 0,
+            })
+        ```
 
         ## Import
 

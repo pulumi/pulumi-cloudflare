@@ -16,6 +16,25 @@ namespace Pulumi.Cloudflare
         /// 
         /// - `Zero Trust Read`
         /// - `Zero Trust Write`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustDlpCustomPromptTopic = Cloudflare.GetZeroTrustDlpCustomPromptTopic.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetZeroTrustDlpCustomPromptTopicResult> InvokeAsync(GetZeroTrustDlpCustomPromptTopicArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDlpCustomPromptTopicResult>("cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic", args ?? new GetZeroTrustDlpCustomPromptTopicArgs(), options.WithDefaults());
@@ -25,6 +44,25 @@ namespace Pulumi.Cloudflare
         /// 
         /// - `Zero Trust Read`
         /// - `Zero Trust Write`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustDlpCustomPromptTopic = Cloudflare.GetZeroTrustDlpCustomPromptTopic.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZeroTrustDlpCustomPromptTopicResult> Invoke(GetZeroTrustDlpCustomPromptTopicInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDlpCustomPromptTopicResult>("cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic", args ?? new GetZeroTrustDlpCustomPromptTopicInvokeArgs(), options.WithDefaults());
@@ -34,6 +72,25 @@ namespace Pulumi.Cloudflare
         /// 
         /// - `Zero Trust Read`
         /// - `Zero Trust Write`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZeroTrustDlpCustomPromptTopic = Cloudflare.GetZeroTrustDlpCustomPromptTopic.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZeroTrustDlpCustomPromptTopicResult> Invoke(GetZeroTrustDlpCustomPromptTopicInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDlpCustomPromptTopicResult>("cloudflare:index/getZeroTrustDlpCustomPromptTopic:getZeroTrustDlpCustomPromptTopic", args ?? new GetZeroTrustDlpCustomPromptTopicInvokeArgs(), options.WithDefaults());

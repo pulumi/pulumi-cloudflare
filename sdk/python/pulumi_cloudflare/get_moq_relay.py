@@ -147,7 +147,16 @@ def get_moq_relay(account_id: Optional[_builtins.str] = None,
                   relay_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMoqRelayResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_moq_relay = cloudflare.get_moq_relay(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        relay_id="a1b2c3d4e5f67890a1b2c3d4e5f67890")
+    ```
+
 
     :param _builtins.str account_id: Cloudflare account identifier.
     """
@@ -174,7 +183,16 @@ def get_moq_relay_output(account_id: pulumi.Input[Optional[_builtins.str]] = Non
                          relay_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMoqRelayResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_moq_relay = cloudflare.get_moq_relay(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        relay_id="a1b2c3d4e5f67890a1b2c3d4e5f67890")
+    ```
+
 
     :param _builtins.str account_id: Cloudflare account identifier.
     """

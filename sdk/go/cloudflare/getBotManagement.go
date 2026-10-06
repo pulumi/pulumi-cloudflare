@@ -59,9 +59,20 @@ type LookupBotManagementArgs struct {
 
 // A collection of values returned by getBotManagement.
 type LookupBotManagementResult struct {
+	// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+	AiBotsMigrationOptOut bool `pulumi:"aiBotsMigrationOptOut"`
 	// Enable rule to block AI Scrapers and Crawlers.
 	// Available values: "block", "disabled", "only*on*ad_pages".
 	AiBotsProtection string `pulumi:"aiBotsProtection"`
+	// Configure robots.txt policy for AI model training bots.
+	// Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+	AiTraining string `pulumi:"aiTraining"`
+	// Configure robots.txt policy for AI assistant and agent bots.
+	// Available values: "disabled", "block", "only*on*ad_pages".
+	AiUser string `pulumi:"aiUser"`
+	// Configure robots.txt policy for AI search bots.
+	// Available values: "disabled", "block", "only*on*ad_pages".
+	Aisearch string `pulumi:"aisearch"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel bool `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
@@ -85,6 +96,8 @@ type LookupBotManagementResult struct {
 	Id string `pulumi:"id"`
 	// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
 	IsRobotsTxtManaged bool `pulumi:"isRobotsTxtManaged"`
+	// Whether to use JavaScript Detection results submitted through the API for this zone.
+	JsdApiResultsEnabled bool `pulumi:"jsdApiResultsEnabled"`
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress bool `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -140,10 +153,33 @@ func (o LookupBotManagementResultOutput) ToLookupBotManagementResultOutputWithCo
 	return o
 }
 
+// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+func (o LookupBotManagementResultOutput) AiBotsMigrationOptOut() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.AiBotsMigrationOptOut }).(pulumi.BoolOutput)
+}
+
 // Enable rule to block AI Scrapers and Crawlers.
 // Available values: "block", "disabled", "only*on*ad_pages".
 func (o LookupBotManagementResultOutput) AiBotsProtection() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.AiBotsProtection }).(pulumi.StringOutput)
+}
+
+// Configure robots.txt policy for AI model training bots.
+// Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+func (o LookupBotManagementResultOutput) AiTraining() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) string { return v.AiTraining }).(pulumi.StringOutput)
+}
+
+// Configure robots.txt policy for AI assistant and agent bots.
+// Available values: "disabled", "block", "only*on*ad_pages".
+func (o LookupBotManagementResultOutput) AiUser() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) string { return v.AiUser }).(pulumi.StringOutput)
+}
+
+// Configure robots.txt policy for AI search bots.
+// Available values: "disabled", "block", "only*on*ad_pages".
+func (o LookupBotManagementResultOutput) Aisearch() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) string { return v.Aisearch }).(pulumi.StringOutput)
 }
 
 // Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -197,6 +233,11 @@ func (o LookupBotManagementResultOutput) Id() pulumi.StringOutput {
 // Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
 func (o LookupBotManagementResultOutput) IsRobotsTxtManaged() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.IsRobotsTxtManaged }).(pulumi.BoolOutput)
+}
+
+// Whether to use JavaScript Detection results submitted through the API for this zone.
+func (o LookupBotManagementResultOutput) JsdApiResultsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.JsdApiResultsEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether to optimize Super Bot Fight Mode protections for Wordpress.

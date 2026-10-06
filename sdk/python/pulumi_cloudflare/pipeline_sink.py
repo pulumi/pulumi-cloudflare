@@ -33,7 +33,7 @@ class PipelineSinkArgs:
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
-               Available values: "r2", "r2*data*catalog".
+               Available values: "r2", "r2*data*catalog", "basin_catalog".
         :param pulumi.Input['PipelineSinkConfigArgs'] config: Defines the configuration of the R2 Sink.
         :param pulumi.Input['PipelineSinkFormatArgs'] format: Defines the output data format of a sink.
         :param pulumi.Input['PipelineSinkSchemaArgs'] schema: Defines the schema of the events in the data stream.
@@ -77,7 +77,7 @@ class PipelineSinkArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the type of sink.
-        Available values: "r2", "r2*data*catalog".
+        Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         return pulumi.get(self, "type")
 
@@ -142,7 +142,7 @@ class _PipelineSinkState:
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
         :param pulumi.Input['PipelineSinkSchemaArgs'] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
-               Available values: "r2", "r2*data*catalog".
+               Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -244,7 +244,7 @@ class _PipelineSinkState:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of sink.
-        Available values: "r2", "r2*data*catalog".
+        Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         return pulumi.get(self, "type")
 
@@ -339,7 +339,7 @@ class PipelineSink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
         :param pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict', 'outputs.PipelineSinkSchema']] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
-               Available values: "r2", "r2*data*catalog".
+               Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         ...
     @overload
@@ -487,7 +487,7 @@ class PipelineSink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
         :param pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict', 'outputs.PipelineSinkSchema']] schema: Defines the schema of the events in the data stream.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
-               Available values: "r2", "r2*data*catalog".
+               Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -558,7 +558,7 @@ class PipelineSink(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the type of sink.
-        Available values: "r2", "r2*data*catalog".
+        Available values: "r2", "r2*data*catalog", "basin_catalog".
         """
         return pulumi.get(self, "type")
 

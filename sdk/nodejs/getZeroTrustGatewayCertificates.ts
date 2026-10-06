@@ -31,6 +31,9 @@ export function getZeroTrustGatewayCertificates(args?: GetZeroTrustGatewayCertif
  * A collection of arguments for invoking getZeroTrustGatewayCertificates.
  */
 export interface GetZeroTrustGatewayCertificatesArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: string;
     /**
      * Max items to fetch, default: 1000
@@ -42,6 +45,9 @@ export interface GetZeroTrustGatewayCertificatesArgs {
  * A collection of values returned by getZeroTrustGatewayCertificates.
  */
 export interface GetZeroTrustGatewayCertificatesResult {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     readonly accountId?: string;
     /**
      * Max items to fetch, default: 1000
@@ -77,6 +83,9 @@ export function getZeroTrustGatewayCertificatesOutput(args?: GetZeroTrustGateway
  * A collection of arguments for invoking getZeroTrustGatewayCertificates.
  */
 export interface GetZeroTrustGatewayCertificatesOutputArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000

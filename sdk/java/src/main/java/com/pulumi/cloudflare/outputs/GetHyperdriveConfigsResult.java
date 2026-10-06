@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultCaching;
+import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultIntegration;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultMtls;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultOrigin;
 import com.pulumi.core.annotations.CustomType;
@@ -26,6 +27,11 @@ public final class GetHyperdriveConfigsResult {
      */
     private String id;
     /**
+     * @return Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+     * 
+     */
+    private GetHyperdriveConfigsResultIntegration integration;
+    /**
      * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
@@ -40,6 +46,10 @@ public final class GetHyperdriveConfigsResult {
      * 
      */
     private String name;
+    /**
+     * @return Combines database connection fields with exactly one supported network location.
+     * 
+     */
     private GetHyperdriveConfigsResultOrigin origin;
     /**
      * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
@@ -71,6 +81,13 @@ public final class GetHyperdriveConfigsResult {
         return this.id;
     }
     /**
+     * @return Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+     * 
+     */
+    public GetHyperdriveConfigsResultIntegration integration() {
+        return this.integration;
+    }
+    /**
      * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
@@ -91,6 +108,10 @@ public final class GetHyperdriveConfigsResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Combines database connection fields with exactly one supported network location.
+     * 
+     */
     public GetHyperdriveConfigsResultOrigin origin() {
         return this.origin;
     }
@@ -121,6 +142,7 @@ public final class GetHyperdriveConfigsResult {
         private GetHyperdriveConfigsResultCaching caching;
         private String createdOn;
         private String id;
+        private GetHyperdriveConfigsResultIntegration integration;
         private String modifiedOn;
         private GetHyperdriveConfigsResultMtls mtls;
         private String name;
@@ -133,6 +155,7 @@ public final class GetHyperdriveConfigsResult {
     	      this.caching = defaults.caching;
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
+    	      this.integration = defaults.integration;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.mtls = defaults.mtls;
     	      this.name = defaults.name;
@@ -163,6 +186,14 @@ public final class GetHyperdriveConfigsResult {
               throw new MissingRequiredPropertyException("GetHyperdriveConfigsResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder integration(GetHyperdriveConfigsResultIntegration integration) {
+            if (integration == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigsResult", "integration");
+            }
+            this.integration = integration;
             return this;
         }
         @CustomType.Setter
@@ -218,6 +249,7 @@ public final class GetHyperdriveConfigsResult {
             _resultValue.caching = caching;
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
+            _resultValue.integration = integration;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.mtls = mtls;
             _resultValue.name = name;

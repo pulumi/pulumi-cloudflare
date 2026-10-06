@@ -23,9 +23,14 @@ public final class GetZoneDnsSettingsResult {
      */
     private Boolean flattenAllCnames;
     /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     * 
+     * @deprecated
+     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
+    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+ */
     private Boolean foundationDns;
     /**
      * @return Settings for this internal zone.
@@ -38,7 +43,7 @@ public final class GetZoneDnsSettingsResult {
      */
     private Boolean multiProvider;
     /**
-     * @return Settings determining the nameservers through which the zone should be available.
+     * @return Controls the nameservers through which the zone is available.
      * 
      */
     private GetZoneDnsSettingsNameservers nameservers;
@@ -78,9 +83,14 @@ public final class GetZoneDnsSettingsResult {
         return this.flattenAllCnames;
     }
     /**
-     * @return Whether to enable Foundation DNS Advanced Nameservers on the zone.
+     * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
+     * 
+     * @deprecated
+     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
+    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+ */
     public Boolean foundationDns() {
         return this.foundationDns;
     }
@@ -99,7 +109,7 @@ public final class GetZoneDnsSettingsResult {
         return this.multiProvider;
     }
     /**
-     * @return Settings determining the nameservers through which the zone should be available.
+     * @return Controls the nameservers through which the zone is available.
      * 
      */
     public GetZoneDnsSettingsNameservers nameservers() {

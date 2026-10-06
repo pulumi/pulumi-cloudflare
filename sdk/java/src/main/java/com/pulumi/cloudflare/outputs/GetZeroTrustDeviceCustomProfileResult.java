@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfileBrowserExtensionConfig;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfileDnsSearchSuffix;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfileExclude;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfileFallbackDomain;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfileFilter;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfileInclude;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfileServiceModeV2;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfileTargetTest;
@@ -44,12 +46,17 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      */
     private Double autoConnect;
     /**
+     * @return Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+     * 
+     */
+    private GetZeroTrustDeviceCustomProfileBrowserExtensionConfig browserExtensionConfig;
+    /**
      * @return Turn on the captive portal after the specified amount of time.
      * 
      */
     private Double captivePortal;
     /**
-     * @return Whether the policy is the default policy for an account.
+     * @return Whether the policy is the account default. WARP group profiles cannot set this field.
      * 
      */
     private Boolean default_;
@@ -84,6 +91,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      */
     private List<GetZeroTrustDeviceCustomProfileExclude> excludes;
     private List<GetZeroTrustDeviceCustomProfileFallbackDomain> fallbackDomains;
+    private @Nullable GetZeroTrustDeviceCustomProfileFilter filter;
     private String gatewayUniqueId;
     /**
      * @return The ID of this resource.
@@ -122,6 +130,12 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      */
     private Double precedence;
     /**
+     * @return The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    private String profileType;
+    /**
      * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
      */
@@ -148,6 +162,11 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      * 
      */
     private String tunnelProtocol;
+    /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    private Boolean uninstallProtection;
     /**
      * @return Virtual network access settings for the device.
      * 
@@ -187,6 +206,13 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         return this.autoConnect;
     }
     /**
+     * @return Browser extension proxy settings. Required when profile*type is browser*extension and invalid for WARP profiles.
+     * 
+     */
+    public GetZeroTrustDeviceCustomProfileBrowserExtensionConfig browserExtensionConfig() {
+        return this.browserExtensionConfig;
+    }
+    /**
      * @return Turn on the captive portal after the specified amount of time.
      * 
      */
@@ -194,7 +220,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         return this.captivePortal;
     }
     /**
-     * @return Whether the policy is the default policy for an account.
+     * @return Whether the policy is the account default. WARP group profiles cannot set this field.
      * 
      */
     public Boolean default_() {
@@ -244,6 +270,9 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     }
     public List<GetZeroTrustDeviceCustomProfileFallbackDomain> fallbackDomains() {
         return this.fallbackDomains;
+    }
+    public Optional<GetZeroTrustDeviceCustomProfileFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     public String gatewayUniqueId() {
         return this.gatewayUniqueId;
@@ -301,6 +330,14 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         return this.precedence;
     }
     /**
+     * @return The client type to which the device settings profile applies. This field is set when the profile is created and cannot be changed.
+     * Available values: &#34;warp&#34;, &#34;browserExtension&#34;.
+     * 
+     */
+    public String profileType() {
+        return this.profileType;
+    }
+    /**
      * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
      */
@@ -342,6 +379,13 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         return this.tunnelProtocol;
     }
     /**
+     * @return Determines whether uninstalling the WARP client requires an override code. (Windows only).
+     * 
+     */
+    public Boolean uninstallProtection() {
+        return this.uninstallProtection;
+    }
+    /**
      * @return Virtual network access settings for the device.
      * 
      */
@@ -363,6 +407,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         private Boolean allowUpdates;
         private Boolean allowedToLeave;
         private Double autoConnect;
+        private GetZeroTrustDeviceCustomProfileBrowserExtensionConfig browserExtensionConfig;
         private Double captivePortal;
         private Boolean default_;
         private String description;
@@ -372,6 +417,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         private Boolean excludeOfficeIps;
         private List<GetZeroTrustDeviceCustomProfileExclude> excludes;
         private List<GetZeroTrustDeviceCustomProfileFallbackDomain> fallbackDomains;
+        private @Nullable GetZeroTrustDeviceCustomProfileFilter filter;
         private String gatewayUniqueId;
         private String id;
         private List<GetZeroTrustDeviceCustomProfileInclude> includes;
@@ -381,6 +427,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         private String name;
         private String policyId;
         private Double precedence;
+        private String profileType;
         private Boolean registerInterfaceIpWithDns;
         private Boolean sccmVpnBoundarySupport;
         private GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2;
@@ -388,6 +435,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         private Boolean switchLocked;
         private List<GetZeroTrustDeviceCustomProfileTargetTest> targetTests;
         private String tunnelProtocol;
+        private Boolean uninstallProtection;
         private GetZeroTrustDeviceCustomProfileVirtualNetworks virtualNetworks;
         public Builder() {}
         public Builder(GetZeroTrustDeviceCustomProfileResult defaults) {
@@ -397,6 +445,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     	      this.allowUpdates = defaults.allowUpdates;
     	      this.allowedToLeave = defaults.allowedToLeave;
     	      this.autoConnect = defaults.autoConnect;
+    	      this.browserExtensionConfig = defaults.browserExtensionConfig;
     	      this.captivePortal = defaults.captivePortal;
     	      this.default_ = defaults.default_;
     	      this.description = defaults.description;
@@ -406,6 +455,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     	      this.excludeOfficeIps = defaults.excludeOfficeIps;
     	      this.excludes = defaults.excludes;
     	      this.fallbackDomains = defaults.fallbackDomains;
+    	      this.filter = defaults.filter;
     	      this.gatewayUniqueId = defaults.gatewayUniqueId;
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
@@ -415,6 +465,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     	      this.name = defaults.name;
     	      this.policyId = defaults.policyId;
     	      this.precedence = defaults.precedence;
+    	      this.profileType = defaults.profileType;
     	      this.registerInterfaceIpWithDns = defaults.registerInterfaceIpWithDns;
     	      this.sccmVpnBoundarySupport = defaults.sccmVpnBoundarySupport;
     	      this.serviceModeV2 = defaults.serviceModeV2;
@@ -422,6 +473,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     	      this.switchLocked = defaults.switchLocked;
     	      this.targetTests = defaults.targetTests;
     	      this.tunnelProtocol = defaults.tunnelProtocol;
+    	      this.uninstallProtection = defaults.uninstallProtection;
     	      this.virtualNetworks = defaults.virtualNetworks;
         }
 
@@ -461,6 +513,14 @@ public final class GetZeroTrustDeviceCustomProfileResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "autoConnect");
             }
             this.autoConnect = autoConnect;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder browserExtensionConfig(GetZeroTrustDeviceCustomProfileBrowserExtensionConfig browserExtensionConfig) {
+            if (browserExtensionConfig == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "browserExtensionConfig");
+            }
+            this.browserExtensionConfig = browserExtensionConfig;
             return this;
         }
         @CustomType.Setter
@@ -545,6 +605,12 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             return fallbackDomains(List.of(fallbackDomains));
         }
         @CustomType.Setter
+        public Builder filter(@Nullable GetZeroTrustDeviceCustomProfileFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder gatewayUniqueId(String gatewayUniqueId) {
             if (gatewayUniqueId == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "gatewayUniqueId");
@@ -620,6 +686,14 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder profileType(String profileType) {
+            if (profileType == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "profileType");
+            }
+            this.profileType = profileType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder registerInterfaceIpWithDns(Boolean registerInterfaceIpWithDns) {
             if (registerInterfaceIpWithDns == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "registerInterfaceIpWithDns");
@@ -679,6 +753,14 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder uninstallProtection(Boolean uninstallProtection) {
+            if (uninstallProtection == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "uninstallProtection");
+            }
+            this.uninstallProtection = uninstallProtection;
+            return this;
+        }
+        @CustomType.Setter
         public Builder virtualNetworks(GetZeroTrustDeviceCustomProfileVirtualNetworks virtualNetworks) {
             if (virtualNetworks == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "virtualNetworks");
@@ -693,6 +775,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             _resultValue.allowUpdates = allowUpdates;
             _resultValue.allowedToLeave = allowedToLeave;
             _resultValue.autoConnect = autoConnect;
+            _resultValue.browserExtensionConfig = browserExtensionConfig;
             _resultValue.captivePortal = captivePortal;
             _resultValue.default_ = default_;
             _resultValue.description = description;
@@ -702,6 +785,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             _resultValue.excludeOfficeIps = excludeOfficeIps;
             _resultValue.excludes = excludes;
             _resultValue.fallbackDomains = fallbackDomains;
+            _resultValue.filter = filter;
             _resultValue.gatewayUniqueId = gatewayUniqueId;
             _resultValue.id = id;
             _resultValue.includes = includes;
@@ -711,6 +795,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             _resultValue.name = name;
             _resultValue.policyId = policyId;
             _resultValue.precedence = precedence;
+            _resultValue.profileType = profileType;
             _resultValue.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
             _resultValue.sccmVpnBoundarySupport = sccmVpnBoundarySupport;
             _resultValue.serviceModeV2 = serviceModeV2;
@@ -718,6 +803,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             _resultValue.switchLocked = switchLocked;
             _resultValue.targetTests = targetTests;
             _resultValue.tunnelProtocol = tunnelProtocol;
+            _resultValue.uninstallProtection = uninstallProtection;
             _resultValue.virtualNetworks = virtualNetworks;
             return _resultValue;
         }

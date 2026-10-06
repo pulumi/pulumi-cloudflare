@@ -236,6 +236,7 @@ class _ZeroTrustDlpCustomProfileState:
                  data_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  entries: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileEntryArgs']]]] = None,
+                 integration_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  open_access: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -286,6 +287,8 @@ class _ZeroTrustDlpCustomProfileState:
             pulumi.log.warn("""entries is deprecated: This attribute will be sunset on 01/01/2026""")
         if entries is not None:
             pulumi.set(__self__, "entries", entries)
+        if integration_id is not None:
+            pulumi.set(__self__, "integration_id", integration_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if ocr_enabled is not None:
@@ -416,6 +419,15 @@ class _ZeroTrustDlpCustomProfileState:
         pulumi.set(self, "entries", value)
 
     @_builtins.property
+    @pulumi.getter(name="integrationId")
+    def integration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "integration_id")
+
+    @integration_id.setter
+    def integration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "integration_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
@@ -527,23 +539,29 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_zero_trust_dlp_custom_profile = cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile",
+            account_id="account_id",
             name="name",
-            account_id="account_id",
-            description="Custom profile with entries",
-            shared_entries=[{
-                "entry_id": "56a8c060-01bb-4f89-ba1e-3ad42770a342",
-                "entry_type": "predefined",
+            ai_context_enabled=True,
+            allowed_match_count=5,
+            confidence_threshold="confidence_threshold",
+            context_awareness={
                 "enabled": True,
-            }])
-        # Custom entry that is a part of this new profile
-        example_custom_entry = cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry",
-            name="custom",
-            account_id="account_id",
-            profile_id=example_zero_trust_dlp_custom_profile.id,
-            pattern={
-                "regex": "customentryregex",
+                "skip": {
+                    "files": True,
+                },
             },
-            enabled=True)
+            data_classes=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            data_tags=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            description="description",
+            ocr_enabled=True,
+            sensitivity_levels=[{
+                "group_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                "level_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            }],
+            shared_entries=[{
+                "enabled": True,
+                "entry_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            }])
         ```
 
         ## Import
@@ -584,23 +602,29 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_zero_trust_dlp_custom_profile = cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile",
+            account_id="account_id",
             name="name",
-            account_id="account_id",
-            description="Custom profile with entries",
-            shared_entries=[{
-                "entry_id": "56a8c060-01bb-4f89-ba1e-3ad42770a342",
-                "entry_type": "predefined",
+            ai_context_enabled=True,
+            allowed_match_count=5,
+            confidence_threshold="confidence_threshold",
+            context_awareness={
                 "enabled": True,
-            }])
-        # Custom entry that is a part of this new profile
-        example_custom_entry = cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry",
-            name="custom",
-            account_id="account_id",
-            profile_id=example_zero_trust_dlp_custom_profile.id,
-            pattern={
-                "regex": "customentryregex",
+                "skip": {
+                    "files": True,
+                },
             },
-            enabled=True)
+            data_classes=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            data_tags=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
+            description="description",
+            ocr_enabled=True,
+            sensitivity_levels=[{
+                "group_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                "level_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            }],
+            shared_entries=[{
+                "enabled": True,
+                "entry_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            }])
         ```
 
         ## Import
@@ -665,6 +689,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
             __props__.__dict__["sensitivity_levels"] = sensitivity_levels
             __props__.__dict__["shared_entries"] = shared_entries
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["integration_id"] = None
             __props__.__dict__["open_access"] = None
             __props__.__dict__["type"] = None
             __props__.__dict__["updated_at"] = None
@@ -690,6 +715,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
             data_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileEntryArgs', 'ZeroTrustDlpCustomProfileEntryArgsDict', 'outputs.ZeroTrustDlpCustomProfileEntry']]]]] = None,
+            integration_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             open_access: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -732,6 +758,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         __props__.__dict__["data_tags"] = data_tags
         __props__.__dict__["description"] = description
         __props__.__dict__["entries"] = entries
+        __props__.__dict__["integration_id"] = integration_id
         __props__.__dict__["name"] = name
         __props__.__dict__["ocr_enabled"] = ocr_enabled
         __props__.__dict__["open_access"] = open_access
@@ -814,6 +841,11 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         If this field is omitted, entries owned by this profile will not be changed.
         """
         return pulumi.get(self, "entries")
+
+    @_builtins.property
+    @pulumi.getter(name="integrationId")
+    def integration_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "integration_id")
 
     @_builtins.property
     @pulumi.getter

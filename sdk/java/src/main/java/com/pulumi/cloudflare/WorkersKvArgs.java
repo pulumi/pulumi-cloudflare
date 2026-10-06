@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,18 +18,48 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
     public static final WorkersKvArgs Empty = new WorkersKvArgs();
 
     /**
-     * Identifier.
+     * ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier.
+     * @return ID of the Cloudflare account that owns the Workers KV namespaces.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+     * 
+     */
+    @Import(name="expiration")
+    private @Nullable Output<Double> expiration;
+
+    /**
+     * @return Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+     * 
+     */
+    public Optional<Output<Double>> expiration() {
+        return Optional.ofNullable(this.expiration);
+    }
+
+    /**
+     * Expires the key after a number of seconds. Must be at least 60.
+     * 
+     */
+    @Import(name="expirationTtl")
+    private @Nullable Output<Double> expirationTtl;
+
+    /**
+     * @return Expires the key after a number of seconds. Must be at least 60.
+     * 
+     */
+    public Optional<Output<Double>> expirationTtl() {
+        return Optional.ofNullable(this.expirationTtl);
     }
 
     /**
@@ -62,14 +93,14 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Namespace identifier tag.
+     * ID of the Workers KV namespace.
      * 
      */
     @Import(name="namespaceId", required=true)
     private Output<String> namespaceId;
 
     /**
-     * @return Namespace identifier tag.
+     * @return ID of the Workers KV namespace.
      * 
      */
     public Output<String> namespaceId() {
@@ -95,6 +126,8 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
 
     private WorkersKvArgs(WorkersKvArgs $) {
         this.accountId = $.accountId;
+        this.expiration = $.expiration;
+        this.expirationTtl = $.expirationTtl;
         this.keyName = $.keyName;
         this.metadata = $.metadata;
         this.namespaceId = $.namespaceId;
@@ -120,7 +153,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
@@ -131,13 +164,55 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId ID of the Cloudflare account that owns the Workers KV namespaces.
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param expiration Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiration(@Nullable Output<Double> expiration) {
+            $.expiration = expiration;
+            return this;
+        }
+
+        /**
+         * @param expiration Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiration(Double expiration) {
+            return expiration(Output.of(expiration));
+        }
+
+        /**
+         * @param expirationTtl Expires the key after a number of seconds. Must be at least 60.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationTtl(@Nullable Output<Double> expirationTtl) {
+            $.expirationTtl = expirationTtl;
+            return this;
+        }
+
+        /**
+         * @param expirationTtl Expires the key after a number of seconds. Must be at least 60.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationTtl(Double expirationTtl) {
+            return expirationTtl(Output.of(expirationTtl));
         }
 
         /**
@@ -183,7 +258,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId ID of the Workers KV namespace.
          * 
          * @return builder
          * 
@@ -194,7 +269,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId Namespace identifier tag.
+         * @param namespaceId ID of the Workers KV namespace.
          * 
          * @return builder
          * 

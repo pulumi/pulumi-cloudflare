@@ -82,12 +82,19 @@ type LookupZeroTrustOrganizationResult struct {
 	// Configures multi-factor authentication (MFA) settings for an organization.
 	MfaConfig GetZeroTrustOrganizationMfaConfig `pulumi:"mfaConfig"`
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-	MfaRequiredForAllApps    bool                                             `pulumi:"mfaRequiredForAllApps"`
+	MfaRequiredForAllApps bool `pulumi:"mfaRequiredForAllApps"`
+	// Configures SSH PIV key requirements for MFA using hardware security keys.
 	MfaSshPivKeyRequirements GetZeroTrustOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
 	// The name of your Zero Trust organization.
 	Name string `pulumi:"name"`
+	// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+	ServiceTokenInactivity GetZeroTrustOrganizationServiceTokenInactivity `pulumi:"serviceTokenInactivity"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration string `pulumi:"sessionDuration"`
+	// Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+	StrictServiceTokenAuth bool `pulumi:"strictServiceTokenAuth"`
+	// The account tags of organizations trusted by this organization for policy and device posture sharing.
+	TrustedAccounts []string `pulumi:"trustedAccounts"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason string `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
@@ -185,6 +192,7 @@ func (o LookupZeroTrustOrganizationResultOutput) MfaRequiredForAllApps() pulumi.
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.MfaRequiredForAllApps }).(pulumi.BoolOutput)
 }
 
+// Configures SSH PIV key requirements for MFA using hardware security keys.
 func (o LookupZeroTrustOrganizationResultOutput) MfaSshPivKeyRequirements() GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaSshPivKeyRequirements {
 		return v.MfaSshPivKeyRequirements
@@ -196,9 +204,26 @@ func (o LookupZeroTrustOrganizationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+func (o LookupZeroTrustOrganizationResultOutput) ServiceTokenInactivity() GetZeroTrustOrganizationServiceTokenInactivityOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationServiceTokenInactivity {
+		return v.ServiceTokenInactivity
+	}).(GetZeroTrustOrganizationServiceTokenInactivityOutput)
+}
+
 // The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 func (o LookupZeroTrustOrganizationResultOutput) SessionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.SessionDuration }).(pulumi.StringOutput)
+}
+
+// Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+func (o LookupZeroTrustOrganizationResultOutput) StrictServiceTokenAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.StrictServiceTokenAuth }).(pulumi.BoolOutput)
+}
+
+// The account tags of organizations trusted by this organization for policy and device posture sharing.
+func (o LookupZeroTrustOrganizationResultOutput) TrustedAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) []string { return v.TrustedAccounts }).(pulumi.StringArrayOutput)
 }
 
 // A description of the reason why the UI read only field is being toggled.

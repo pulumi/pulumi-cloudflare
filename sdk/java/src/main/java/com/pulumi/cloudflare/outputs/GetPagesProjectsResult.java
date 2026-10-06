@@ -63,7 +63,7 @@ public final class GetPagesProjectsResult {
      */
     private GetPagesProjectsResultLatestDeployment latestDeployment;
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     private String name;
@@ -163,7 +163,7 @@ public final class GetPagesProjectsResult {
         return this.latestDeployment;
     }
     /**
-     * @return Name of the project.
+     * @return Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
      * 
      */
     public String name() {

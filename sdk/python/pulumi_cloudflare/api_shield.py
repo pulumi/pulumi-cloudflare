@@ -22,14 +22,18 @@ __all__ = ['ApiShieldArgs', 'ApiShield']
 class ApiShieldArgs:
     def __init__(__self__, *,
                  auth_id_characteristics: pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: pulumi.Input[_builtins.str],
+                 normalize: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ApiShield resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
+        :param pulumi.Input[_builtins.bool] normalize: Ensures that the configuration is written or retrieved in normalized fashion
         """
         pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
         pulumi.set(__self__, "zone_id", zone_id)
+        if normalize is not None:
+            pulumi.set(__self__, "normalize", normalize)
 
     @_builtins.property
     @pulumi.getter(name="authIdCharacteristics")
@@ -52,19 +56,35 @@ class ApiShieldArgs:
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def normalize(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Ensures that the configuration is written or retrieved in normalized fashion
+        """
+        return pulumi.get(self, "normalize")
+
+    @normalize.setter
+    def normalize(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "normalize", value)
+
 
 @pulumi.input_type
 class _ApiShieldState:
     def __init__(__self__, *,
                  auth_id_characteristics: pulumi.Input[Optional[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
+                 normalize: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShield resources.
 
+        :param pulumi.Input[_builtins.bool] normalize: Ensures that the configuration is written or retrieved in normalized fashion
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if auth_id_characteristics is not None:
             pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
+        if normalize is not None:
+            pulumi.set(__self__, "normalize", normalize)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -76,6 +96,18 @@ class _ApiShieldState:
     @auth_id_characteristics.setter
     def auth_id_characteristics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]]):
         pulumi.set(self, "auth_id_characteristics", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def normalize(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Ensures that the configuration is written or retrieved in normalized fashion
+        """
+        return pulumi.get(self, "normalize")
+
+    @normalize.setter
+    def normalize(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "normalize", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -97,6 +129,7 @@ class ApiShield(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_id_characteristics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict', 'outputs.ApiShieldAuthIdCharacteristic']]]]] = None,
+                 normalize: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -136,6 +169,7 @@ class ApiShield(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] normalize: Ensures that the configuration is written or retrieved in normalized fashion
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -195,6 +229,7 @@ class ApiShield(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_id_characteristics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict', 'outputs.ApiShieldAuthIdCharacteristic']]]]] = None,
+                 normalize: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -208,6 +243,7 @@ class ApiShield(pulumi.CustomResource):
             if auth_id_characteristics is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_id_characteristics'")
             __props__.__dict__["auth_id_characteristics"] = auth_id_characteristics
+            __props__.__dict__["normalize"] = normalize
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -222,6 +258,7 @@ class ApiShield(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auth_id_characteristics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict', 'outputs.ApiShieldAuthIdCharacteristic']]]]] = None,
+            normalize: pulumi.Input[Optional[_builtins.bool]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiShield':
         """
         Get an existing ApiShield resource's state with the given name, id, and optional extra
@@ -230,6 +267,7 @@ class ApiShield(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] normalize: Ensures that the configuration is written or retrieved in normalized fashion
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -237,6 +275,7 @@ class ApiShield(pulumi.CustomResource):
         __props__ = _ApiShieldState.__new__(_ApiShieldState)
 
         __props__.__dict__["auth_id_characteristics"] = auth_id_characteristics
+        __props__.__dict__["normalize"] = normalize
         __props__.__dict__["zone_id"] = zone_id
         return ApiShield(resource_name, opts=opts, __props__=__props__)
 
@@ -244,6 +283,14 @@ class ApiShield(pulumi.CustomResource):
     @pulumi.getter(name="authIdCharacteristics")
     def auth_id_characteristics(self) -> pulumi.Output[Sequence['outputs.ApiShieldAuthIdCharacteristic']]:
         return pulumi.get(self, "auth_id_characteristics")
+
+    @_builtins.property
+    @pulumi.getter
+    def normalize(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Ensures that the configuration is written or retrieved in normalized fashion
+        """
+        return pulumi.get(self, "normalize")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

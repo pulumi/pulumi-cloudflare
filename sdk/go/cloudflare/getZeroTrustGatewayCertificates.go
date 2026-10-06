@@ -48,6 +48,7 @@ func LookupZeroTrustGatewayCertificates(ctx *pulumi.Context, args *LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustGatewayCertificates.
 type LookupZeroTrustGatewayCertificatesArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -55,6 +56,7 @@ type LookupZeroTrustGatewayCertificatesArgs struct {
 
 // A collection of values returned by getZeroTrustGatewayCertificates.
 type LookupZeroTrustGatewayCertificatesResult struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -69,6 +71,7 @@ func LookupZeroTrustGatewayCertificatesOutput(ctx *pulumi.Context, args LookupZe
 
 // A collection of arguments for invoking getZeroTrustGatewayCertificates.
 type LookupZeroTrustGatewayCertificatesOutputArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -93,6 +96,7 @@ func (o LookupZeroTrustGatewayCertificatesResultOutput) ToLookupZeroTrustGateway
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o LookupZeroTrustGatewayCertificatesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificatesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }

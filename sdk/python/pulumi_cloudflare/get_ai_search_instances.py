@@ -27,10 +27,13 @@ class GetAiSearchInstancesResult:
     """
     A collection of values returned by getAiSearchInstances.
     """
-    def __init__(__self__, account_id=None, max_items=None, namespace=None, order_by=None, order_by_direction=None, results=None, search=None):
+    def __init__(__self__, account_id=None, hostname=None, max_items=None, namespace=None, order_by=None, order_by_direction=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if hostname and not isinstance(hostname, str):
+            raise TypeError("Expected argument 'hostname' to be a str")
+        pulumi.set(__self__, "hostname", hostname)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -54,6 +57,14 @@ class GetAiSearchInstancesResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        Filter by exact Search for Agents hostname (case-insensitive).
+        """
+        return pulumi.get(self, "hostname")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -113,6 +124,7 @@ class AwaitableGetAiSearchInstancesResult(GetAiSearchInstancesResult):
             yield self
         return GetAiSearchInstancesResult(
             account_id=self.account_id,
+            hostname=self.hostname,
             max_items=self.max_items,
             namespace=self.namespace,
             order_by=self.order_by,
@@ -122,6 +134,7 @@ class AwaitableGetAiSearchInstancesResult(GetAiSearchInstancesResult):
 
 
 def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
+                            hostname: Optional[_builtins.str] = None,
                             max_items: Optional[_builtins.int] = None,
                             namespace: Optional[_builtins.str] = None,
                             order_by: Optional[_builtins.str] = None,
@@ -131,6 +144,7 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
 
+    :param _builtins.str hostname: Filter by exact Search for Agents hostname (case-insensitive).
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str namespace: Filter by namespace.
     :param _builtins.str order_by: Field to order results by.
@@ -141,6 +155,7 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['hostname'] = hostname
     __args__['maxItems'] = max_items
     __args__['namespace'] = namespace
     __args__['orderBy'] = order_by
@@ -151,6 +166,7 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetAiSearchInstancesResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        hostname=pulumi.get(__ret__, 'hostname'),
         max_items=pulumi.get(__ret__, 'max_items'),
         namespace=pulumi.get(__ret__, 'namespace'),
         order_by=pulumi.get(__ret__, 'order_by'),
@@ -158,6 +174,7 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
 def get_ai_search_instances_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   hostname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                    namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -167,6 +184,7 @@ def get_ai_search_instances_output(account_id: pulumi.Input[Optional[Optional[_b
     """
     Use this data source to access information about an existing resource.
 
+    :param _builtins.str hostname: Filter by exact Search for Agents hostname (case-insensitive).
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str namespace: Filter by namespace.
     :param _builtins.str order_by: Field to order results by.
@@ -177,6 +195,7 @@ def get_ai_search_instances_output(account_id: pulumi.Input[Optional[Optional[_b
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['hostname'] = hostname
     __args__['maxItems'] = max_items
     __args__['namespace'] = namespace
     __args__['orderBy'] = order_by
@@ -186,6 +205,7 @@ def get_ai_search_instances_output(account_id: pulumi.Input[Optional[Optional[_b
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAiSearchInstances:getAiSearchInstances', __args__, opts=opts, typ=GetAiSearchInstancesResult)
     return __ret__.apply(lambda __response__: GetAiSearchInstancesResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        hostname=pulumi.get(__response__, 'hostname'),
         max_items=pulumi.get(__response__, 'max_items'),
         namespace=pulumi.get(__response__, 'namespace'),
         order_by=pulumi.get(__response__, 'order_by'),

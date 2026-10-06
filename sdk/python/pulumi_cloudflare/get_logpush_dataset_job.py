@@ -27,7 +27,7 @@ class GetLogpushDatasetJobResult:
     """
     A collection of values returned by getLogpushDatasetJob.
     """
-    def __init__(__self__, account_id=None, dataset=None, dataset_id=None, destination_conf=None, enabled=None, error_message=None, frequency=None, id=None, kind=None, last_complete=None, last_error=None, logpull_options=None, max_upload_bytes=None, max_upload_interval_seconds=None, max_upload_records=None, name=None, output_options=None, zone_id=None):
+    def __init__(__self__, account_id=None, dataset=None, dataset_id=None, destination_conf=None, enabled=None, error_message=None, filter_attack_traffic=None, frequency=None, id=None, kind=None, last_complete=None, last_error=None, logpull_options=None, max_upload_bytes=None, max_upload_interval_seconds=None, max_upload_records=None, name=None, output_options=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -46,6 +46,9 @@ class GetLogpushDatasetJobResult:
         if error_message and not isinstance(error_message, str):
             raise TypeError("Expected argument 'error_message' to be a str")
         pulumi.set(__self__, "error_message", error_message)
+        if filter_attack_traffic and not isinstance(filter_attack_traffic, bool):
+            raise TypeError("Expected argument 'filter_attack_traffic' to be a bool")
+        pulumi.set(__self__, "filter_attack_traffic", filter_attack_traffic)
         if frequency and not isinstance(frequency, str):
             raise TypeError("Expected argument 'frequency' to be a str")
         pulumi.set(__self__, "frequency", frequency)
@@ -132,6 +135,14 @@ class GetLogpushDatasetJobResult:
         If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         """
         return pulumi.get(self, "error_message")
+
+    @_builtins.property
+    @pulumi.getter(name="filterAttackTraffic")
+    def filter_attack_traffic(self) -> _builtins.bool:
+        """
+        When true, excludes DDoS attack traffic from logs. This option is supported for the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
+        """
+        return pulumi.get(self, "filter_attack_traffic")
 
     @_builtins.property
     @pulumi.getter
@@ -246,6 +257,7 @@ class AwaitableGetLogpushDatasetJobResult(GetLogpushDatasetJobResult):
             destination_conf=self.destination_conf,
             enabled=self.enabled,
             error_message=self.error_message,
+            filter_attack_traffic=self.filter_attack_traffic,
             frequency=self.frequency,
             id=self.id,
             kind=self.kind,
@@ -300,6 +312,7 @@ def get_logpush_dataset_job(account_id: Optional[_builtins.str] = None,
         destination_conf=pulumi.get(__ret__, 'destination_conf'),
         enabled=pulumi.get(__ret__, 'enabled'),
         error_message=pulumi.get(__ret__, 'error_message'),
+        filter_attack_traffic=pulumi.get(__ret__, 'filter_attack_traffic'),
         frequency=pulumi.get(__ret__, 'frequency'),
         id=pulumi.get(__ret__, 'id'),
         kind=pulumi.get(__ret__, 'kind'),
@@ -351,6 +364,7 @@ def get_logpush_dataset_job_output(account_id: pulumi.Input[Optional[Optional[_b
         destination_conf=pulumi.get(__response__, 'destination_conf'),
         enabled=pulumi.get(__response__, 'enabled'),
         error_message=pulumi.get(__response__, 'error_message'),
+        filter_attack_traffic=pulumi.get(__response__, 'filter_attack_traffic'),
         frequency=pulumi.get(__response__, 'frequency'),
         id=pulumi.get(__response__, 'id'),
         kind=pulumi.get(__response__, 'kind'),

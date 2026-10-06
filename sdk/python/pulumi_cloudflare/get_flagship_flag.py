@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetFlagshipFlagResult',
@@ -27,7 +28,7 @@ class GetFlagshipFlagResult:
     """
     A collection of values returned by getFlagshipFlag.
     """
-    def __init__(__self__, account_id=None, app_id=None, default_variation=None, description=None, enabled=None, flag_key=None, key=None, rules=None, type=None, updated_at=None, updated_by=None, variations=None):
+    def __init__(__self__, account_id=None, app_id=None, default_variation=None, description=None, enabled=None, filter=None, flag_key=None, id=None, key=None, rules=None, type=None, updated_at=None, updated_by=None, variations=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,9 +44,15 @@ class GetFlagshipFlagResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if flag_key and not isinstance(flag_key, str):
             raise TypeError("Expected argument 'flag_key' to be a str")
         pulumi.set(__self__, "flag_key", flag_key)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
         pulumi.set(__self__, "key", key)
@@ -69,7 +76,7 @@ class GetFlagshipFlagResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Cloudflare account ID.
+        Cloudflare account ID that owns the Flagship app.
         """
         return pulumi.get(self, "account_id")
 
@@ -77,7 +84,7 @@ class GetFlagshipFlagResult:
     @pulumi.getter(name="appId")
     def app_id(self) -> _builtins.str:
         """
-        App identifier.
+        Flagship app ID returned when the app was created.
         """
         return pulumi.get(self, "app_id")
 
@@ -92,6 +99,9 @@ class GetFlagshipFlagResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Optional operator-facing description. It does not affect flag evaluation.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -103,12 +113,25 @@ class GetFlagshipFlagResult:
         return pulumi.get(self, "enabled")
 
     @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetFlagshipFlagFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
     @pulumi.getter(name="flagKey")
-    def flag_key(self) -> _builtins.str:
+    def flag_key(self) -> Optional[_builtins.str]:
         """
-        Flag key (slug).
+        Case-sensitive key identifying the flag within the app.
         """
         return pulumi.get(self, "flag_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Case-sensitive key identifying the flag within the app.
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -165,7 +188,9 @@ class AwaitableGetFlagshipFlagResult(GetFlagshipFlagResult):
             default_variation=self.default_variation,
             description=self.description,
             enabled=self.enabled,
+            filter=self.filter,
             flag_key=self.flag_key,
+            id=self.id,
             key=self.key,
             rules=self.rules,
             type=self.type,
@@ -176,6 +201,7 @@ class AwaitableGetFlagshipFlagResult(GetFlagshipFlagResult):
 
 def get_flagship_flag(account_id: Optional[_builtins.str] = None,
                       app_id: Optional[_builtins.str] = None,
+                      filter: Optional[Union['GetFlagshipFlagFilterArgs', 'GetFlagshipFlagFilterArgsDict', 'outputs.GetFlagshipFlagFilterResult']] = None,
                       flag_key: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlagshipFlagResult:
     """
@@ -195,13 +221,14 @@ def get_flagship_flag(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Cloudflare account ID.
-    :param _builtins.str app_id: App identifier.
-    :param _builtins.str flag_key: Flag key (slug).
+    :param _builtins.str account_id: Cloudflare account ID that owns the Flagship app.
+    :param _builtins.str app_id: Flagship app ID returned when the app was created.
+    :param _builtins.str flag_key: Case-sensitive key identifying the flag within the app.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['appId'] = app_id
+    __args__['filter'] = filter
     __args__['flagKey'] = flag_key
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getFlagshipFlag:getFlagshipFlag', __args__, opts=opts, typ=GetFlagshipFlagResult).value
@@ -212,7 +239,9 @@ def get_flagship_flag(account_id: Optional[_builtins.str] = None,
         default_variation=pulumi.get(__ret__, 'default_variation'),
         description=pulumi.get(__ret__, 'description'),
         enabled=pulumi.get(__ret__, 'enabled'),
+        filter=pulumi.get(__ret__, 'filter'),
         flag_key=pulumi.get(__ret__, 'flag_key'),
+        id=pulumi.get(__ret__, 'id'),
         key=pulumi.get(__ret__, 'key'),
         rules=pulumi.get(__ret__, 'rules'),
         type=pulumi.get(__ret__, 'type'),
@@ -221,7 +250,8 @@ def get_flagship_flag(account_id: Optional[_builtins.str] = None,
         variations=pulumi.get(__ret__, 'variations'))
 def get_flagship_flag_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                              app_id: pulumi.Input[Optional[_builtins.str]] = None,
-                             flag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                             filter: pulumi.Input[Optional[Optional[Union['GetFlagshipFlagFilterArgs', 'GetFlagshipFlagFilterArgsDict', 'outputs.GetFlagshipFlagFilterResult']]]] = None,
+                             flag_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlagshipFlagResult]:
     """
     Accepted Permissions
@@ -240,13 +270,14 @@ def get_flagship_flag_output(account_id: pulumi.Input[Optional[_builtins.str]] =
     ```
 
 
-    :param _builtins.str account_id: Cloudflare account ID.
-    :param _builtins.str app_id: App identifier.
-    :param _builtins.str flag_key: Flag key (slug).
+    :param _builtins.str account_id: Cloudflare account ID that owns the Flagship app.
+    :param _builtins.str app_id: Flagship app ID returned when the app was created.
+    :param _builtins.str flag_key: Case-sensitive key identifying the flag within the app.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['appId'] = app_id
+    __args__['filter'] = filter
     __args__['flagKey'] = flag_key
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getFlagshipFlag:getFlagshipFlag', __args__, opts=opts, typ=GetFlagshipFlagResult)
@@ -256,7 +287,9 @@ def get_flagship_flag_output(account_id: pulumi.Input[Optional[_builtins.str]] =
         default_variation=pulumi.get(__response__, 'default_variation'),
         description=pulumi.get(__response__, 'description'),
         enabled=pulumi.get(__response__, 'enabled'),
+        filter=pulumi.get(__response__, 'filter'),
         flag_key=pulumi.get(__response__, 'flag_key'),
+        id=pulumi.get(__response__, 'id'),
         key=pulumi.get(__response__, 'key'),
         rules=pulumi.get(__response__, 'rules'),
         type=pulumi.get(__response__, 'type'),

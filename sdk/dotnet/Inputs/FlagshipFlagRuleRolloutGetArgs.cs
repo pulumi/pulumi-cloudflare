@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Attribute { get; set; }
 
         /// <summary>
-        /// Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+        /// Percentage of matching traffic (0–100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
         /// </summary>
         [Input("percentage", required: true)]
         public Input<double> Percentage { get; set; } = null!;

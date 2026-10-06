@@ -17,9 +17,17 @@ public final class ZeroTrustGatewaySettingsArgs extends com.pulumi.resources.Res
 
     public static final ZeroTrustGatewaySettingsArgs Empty = new ZeroTrustGatewaySettingsArgs();
 
+    /**
+     * Specify the Cloudflare account identifier.
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return Specify the Cloudflare account identifier.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -64,11 +72,23 @@ public final class ZeroTrustGatewaySettingsArgs extends com.pulumi.resources.Res
             $ = new ZeroTrustGatewaySettingsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Specify the Cloudflare account identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

@@ -56,14 +56,16 @@ func LookupAiGateway(ctx *pulumi.Context, args *LookupAiGatewayArgs, opts ...pul
 type LookupAiGatewayArgs struct {
 	AccountId *string             `pulumi:"accountId"`
 	Filter    *GetAiGatewayFilter `pulumi:"filter"`
-	// gateway id
+	// Unique identifier of the AI Gateway within the account.
 	Id *string `pulumi:"id"`
 }
 
 // A collection of values returned by getAiGateway.
 type LookupAiGatewayResult struct {
-	AccountId               *string                `pulumi:"accountId"`
-	Authentication          bool                   `pulumi:"authentication"`
+	AccountId      *string `pulumi:"accountId"`
+	Authentication bool    `pulumi:"authentication"`
+	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+	ByokOnly                bool                   `pulumi:"byokOnly"`
 	CacheInvalidateOnUpdate bool                   `pulumi:"cacheInvalidateOnUpdate"`
 	CacheTtl                int                    `pulumi:"cacheTtl"`
 	CollectLogs             bool                   `pulumi:"collectLogs"`
@@ -71,7 +73,7 @@ type LookupAiGatewayResult struct {
 	Dlp                     GetAiGatewayDlp        `pulumi:"dlp"`
 	Filter                  *GetAiGatewayFilter    `pulumi:"filter"`
 	Guardrails              GetAiGatewayGuardrails `pulumi:"guardrails"`
-	// gateway id
+	// Unique identifier of the AI Gateway within the account.
 	Id                string `pulumi:"id"`
 	IsDefault         bool   `pulumi:"isDefault"`
 	LogClassification bool   `pulumi:"logClassification"`
@@ -89,7 +91,7 @@ type LookupAiGatewayResult struct {
 	// Backoff strategy for retry delays
 	// Available values: "constant", "linear", "exponential".
 	RetryBackoff string `pulumi:"retryBackoff"`
-	// Delay between retry attempts in milliseconds (0-5000)
+	// Delay between retry attempts in milliseconds (0-60000)
 	RetryDelay int `pulumi:"retryDelay"`
 	// Maximum number of retry attempts for failed requests (1-5)
 	RetryMaxAttempts int                     `pulumi:"retryMaxAttempts"`
@@ -111,7 +113,7 @@ func LookupAiGatewayOutput(ctx *pulumi.Context, args LookupAiGatewayOutputArgs, 
 type LookupAiGatewayOutputArgs struct {
 	AccountId pulumi.StringPtrInput      `pulumi:"accountId"`
 	Filter    GetAiGatewayFilterPtrInput `pulumi:"filter"`
-	// gateway id
+	// Unique identifier of the AI Gateway within the account.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -142,6 +144,11 @@ func (o LookupAiGatewayResultOutput) Authentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) bool { return v.Authentication }).(pulumi.BoolOutput)
 }
 
+// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+func (o LookupAiGatewayResultOutput) ByokOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAiGatewayResult) bool { return v.ByokOnly }).(pulumi.BoolOutput)
+}
+
 func (o LookupAiGatewayResultOutput) CacheInvalidateOnUpdate() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) bool { return v.CacheInvalidateOnUpdate }).(pulumi.BoolOutput)
 }
@@ -170,7 +177,7 @@ func (o LookupAiGatewayResultOutput) Guardrails() GetAiGatewayGuardrailsOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) GetAiGatewayGuardrails { return v.Guardrails }).(GetAiGatewayGuardrailsOutput)
 }
 
-// gateway id
+// Unique identifier of the AI Gateway within the account.
 func (o LookupAiGatewayResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -227,7 +234,7 @@ func (o LookupAiGatewayResultOutput) RetryBackoff() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) string { return v.RetryBackoff }).(pulumi.StringOutput)
 }
 
-// Delay between retry attempts in milliseconds (0-5000)
+// Delay between retry attempts in milliseconds (0-60000)
 func (o LookupAiGatewayResultOutput) RetryDelay() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) int { return v.RetryDelay }).(pulumi.IntOutput)
 }

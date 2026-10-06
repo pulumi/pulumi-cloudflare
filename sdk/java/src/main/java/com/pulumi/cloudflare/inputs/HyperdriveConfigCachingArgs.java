@@ -16,47 +16,23 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
 
     public static final HyperdriveConfigCachingArgs Empty = new HyperdriveConfigCachingArgs();
 
-    /**
-     * Set to true to disable caching of SQL responses. Default is false.
-     * 
-     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
-    /**
-     * @return Set to true to disable caching of SQL responses. Default is false.
-     * 
-     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
-    /**
-     * Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-     * 
-     */
     @Import(name="maxAge")
     private @Nullable Output<Integer> maxAge;
 
-    /**
-     * @return Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-     * 
-     */
     public Optional<Output<Integer>> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
 
-    /**
-     * Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-     * 
-     */
     @Import(name="staleWhileRevalidate")
     private @Nullable Output<Integer> staleWhileRevalidate;
 
-    /**
-     * @return Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-     * 
-     */
     public Optional<Output<Integer>> staleWhileRevalidate() {
         return Optional.ofNullable(this.staleWhileRevalidate);
     }
@@ -87,65 +63,29 @@ public final class HyperdriveConfigCachingArgs extends com.pulumi.resources.Reso
             $ = new HyperdriveConfigCachingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param disabled Set to true to disable caching of SQL responses. Default is false.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
-        /**
-         * @param disabled Set to true to disable caching of SQL responses. Default is false.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
-        /**
-         * @param maxAge Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxAge(@Nullable Output<Integer> maxAge) {
             $.maxAge = maxAge;
             return this;
         }
 
-        /**
-         * @param maxAge Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxAge(Integer maxAge) {
             return maxAge(Output.of(maxAge));
         }
 
-        /**
-         * @param staleWhileRevalidate Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder staleWhileRevalidate(@Nullable Output<Integer> staleWhileRevalidate) {
             $.staleWhileRevalidate = staleWhileRevalidate;
             return this;
         }
 
-        /**
-         * @param staleWhileRevalidate Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder staleWhileRevalidate(Integer staleWhileRevalidate) {
             return staleWhileRevalidate(Output.of(staleWhileRevalidate));
         }

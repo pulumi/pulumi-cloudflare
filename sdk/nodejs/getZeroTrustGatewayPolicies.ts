@@ -15,6 +15,10 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustGatewayPolicies = cloudflare.getZeroTrustGatewayPolicies({
  *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     direction: "asc",
+ *     filters: ["string"],
+ *     orderBy: "name",
+ *     search: "search",
  * });
  * ```
  */
@@ -23,7 +27,11 @@ export function getZeroTrustGatewayPolicies(args?: GetZeroTrustGatewayPoliciesAr
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", {
         "accountId": args.accountId,
+        "direction": args.direction,
+        "filters": args.filters,
         "maxItems": args.maxItems,
+        "orderBy": args.orderBy,
+        "search": args.search,
     }, opts);
 }
 
@@ -31,26 +39,51 @@ export function getZeroTrustGatewayPolicies(args?: GetZeroTrustGatewayPoliciesAr
  * A collection of arguments for invoking getZeroTrustGatewayPolicies.
  */
 export interface GetZeroTrustGatewayPoliciesArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: string;
     /**
-     * Max items to fetch, default: 1000
+     * Sort direction. When `orderBy` is omitted, this controls the direction
+     * of the existing precedence ordering. Shared rules remain first in either
+     * direction. Accepted values are `asc` and `desc`.
+     * Available values: "asc", "desc".
      */
+    direction?: string;
+    /**
+     * Filter the returned rules by one or more `field:value` pairs. Repeat the
+     * parameter to combine filters with logical AND.
+     */
+    filters?: string[];
     maxItems?: number;
+    orderBy?: string;
+    search?: string;
 }
 
 /**
  * A collection of values returned by getZeroTrustGatewayPolicies.
  */
 export interface GetZeroTrustGatewayPoliciesResult {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     readonly accountId?: string;
     /**
-     * Max items to fetch, default: 1000
+     * Sort direction. When `orderBy` is omitted, this controls the direction
+     * of the existing precedence ordering. Shared rules remain first in either
+     * direction. Accepted values are `asc` and `desc`.
+     * Available values: "asc", "desc".
      */
-    readonly maxItems?: number;
+    readonly direction?: string;
     /**
-     * The items returned by the data source
+     * Filter the returned rules by one or more `field:value` pairs. Repeat the
+     * parameter to combine filters with logical AND.
      */
+    readonly filters?: string[];
+    readonly maxItems?: number;
+    readonly orderBy?: string;
     readonly results: outputs.GetZeroTrustGatewayPoliciesResult[];
+    readonly search?: string;
 }
 /**
  * ## Example Usage
@@ -61,6 +94,10 @@ export interface GetZeroTrustGatewayPoliciesResult {
  *
  * const exampleZeroTrustGatewayPolicies = cloudflare.getZeroTrustGatewayPolicies({
  *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     direction: "asc",
+ *     filters: ["string"],
+ *     orderBy: "name",
+ *     search: "search",
  * });
  * ```
  */
@@ -69,7 +106,11 @@ export function getZeroTrustGatewayPoliciesOutput(args?: GetZeroTrustGatewayPoli
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", {
         "accountId": args.accountId,
+        "direction": args.direction,
+        "filters": args.filters,
         "maxItems": args.maxItems,
+        "orderBy": args.orderBy,
+        "search": args.search,
     }, opts);
 }
 
@@ -77,9 +118,23 @@ export function getZeroTrustGatewayPoliciesOutput(args?: GetZeroTrustGatewayPoli
  * A collection of arguments for invoking getZeroTrustGatewayPolicies.
  */
 export interface GetZeroTrustGatewayPoliciesOutputArgs {
+    /**
+     * Specify the Cloudflare account identifier.
+     */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * Max items to fetch, default: 1000
+     * Sort direction. When `orderBy` is omitted, this controls the direction
+     * of the existing precedence ordering. Shared rules remain first in either
+     * direction. Accepted values are `asc` and `desc`.
+     * Available values: "asc", "desc".
      */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * Filter the returned rules by one or more `field:value` pairs. Repeat the
+     * parameter to combine filters with logical AND.
+     */
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     maxItems?: pulumi.Input<number | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
+    search?: pulumi.Input<string | undefined>;
 }

@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
     /// 
@@ -36,7 +37,9 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ShareResourceArgs
     ///             {
-    ///                 Meta = null,
+    ///                 Meta = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                 }),
     ///                 ResourceAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///                 ResourceId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///                 ResourceType = "custom-ruleset",
@@ -97,6 +100,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("disassociatingRecipientCount")]
         public Output<int> DisassociatingRecipientCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Include recipient counts in the response.
+        /// </summary>
+        [Output("includeRecipientCounts")]
+        public Output<bool?> IncludeRecipientCounts { get; private set; } = null!;
+
+        /// <summary>
+        /// Include resources in the response.
+        /// </summary>
+        [Output("includeResources")]
+        public Output<bool?> IncludeResources { get; private set; } = null!;
 
         /// <summary>
         /// Available values: "sent", "received".
@@ -193,6 +208,18 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Include recipient counts in the response.
+        /// </summary>
+        [Input("includeRecipientCounts")]
+        public Input<bool>? IncludeRecipientCounts { get; set; }
+
+        /// <summary>
+        /// Include resources in the response.
+        /// </summary>
+        [Input("includeResources")]
+        public Input<bool>? IncludeResources { get; set; }
+
+        /// <summary>
         /// The name of the share.
         /// </summary>
         [Input("name", required: true)]
@@ -263,6 +290,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("disassociatingRecipientCount")]
         public Input<int>? DisassociatingRecipientCount { get; set; }
+
+        /// <summary>
+        /// Include recipient counts in the response.
+        /// </summary>
+        [Input("includeRecipientCounts")]
+        public Input<bool>? IncludeRecipientCounts { get; set; }
+
+        /// <summary>
+        /// Include resources in the response.
+        /// </summary>
+        [Input("includeResources")]
+        public Input<bool>? IncludeResources { get; set; }
 
         /// <summary>
         /// Available values: "sent", "received".

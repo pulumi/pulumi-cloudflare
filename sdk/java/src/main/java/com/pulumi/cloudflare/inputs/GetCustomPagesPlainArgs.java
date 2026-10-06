@@ -31,7 +31,7 @@ public final class GetCustomPagesPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Error Page Types
+     * Custom page type.
      * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
      * 
      */
@@ -39,7 +39,7 @@ public final class GetCustomPagesPlainArgs extends com.pulumi.resources.InvokeAr
     private String identifier;
 
     /**
-     * @return Error Page Types
+     * @return Custom page type.
      * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
      * 
      */
@@ -100,7 +100,7 @@ public final class GetCustomPagesPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param identifier Error Page Types
+         * @param identifier Custom page type.
          * Available values: &#34;1000*errors&#34;, &#34;500*errors&#34;, &#34;basic*challenge&#34;, &#34;country*challenge&#34;, &#34;ip*block&#34;, &#34;managed*challenge&#34;, &#34;ratelimit*block&#34;, &#34;under*attack&#34;, &#34;waf*block&#34;, &#34;waf*challenge&#34;.
          * 
          * @return builder

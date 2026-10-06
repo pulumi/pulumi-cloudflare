@@ -18,9 +18,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int CustomerAsn;
         /// <summary>
+        /// UUID of the BGP filter profile to apply to routes advertised by Cloudflare.
+        /// </summary>
+        public readonly string? ExportFilterId;
+        /// <summary>
         /// Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
         /// </summary>
         public readonly ImmutableArray<string> ExtraPrefixes;
+        /// <summary>
+        /// UUID of the BGP filter profile to apply to routes advertised to Cloudflare.
+        /// </summary>
+        public readonly string? ImportFilterId;
         /// <summary>
         /// MD5 key to use for session authentication.
         /// </summary>
@@ -30,12 +38,18 @@ namespace Pulumi.Cloudflare.Outputs
         private MagicWanIpsecTunnelBgp(
             int customerAsn,
 
+            string? exportFilterId,
+
             ImmutableArray<string> extraPrefixes,
+
+            string? importFilterId,
 
             string? md5Key)
         {
             CustomerAsn = customerAsn;
+            ExportFilterId = exportFilterId;
             ExtraPrefixes = extraPrefixes;
+            ImportFilterId = importFilterId;
             Md5Key = md5Key;
         }
     }

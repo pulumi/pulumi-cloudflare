@@ -56,6 +56,21 @@ public final class SchemaValidationSchemasState extends com.pulumi.resources.Res
     }
 
     /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    @Import(name="omitSource")
+    private @Nullable Output<Boolean> omitSource;
+
+    /**
+     * @return Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    public Optional<Output<Boolean>> omitSource() {
+        return Optional.ofNullable(this.omitSource);
+    }
+
+    /**
      * A unique identifier of this schema
      * 
      */
@@ -121,6 +136,7 @@ public final class SchemaValidationSchemasState extends com.pulumi.resources.Res
         this.createdAt = $.createdAt;
         this.kind = $.kind;
         this.name = $.name;
+        this.omitSource = $.omitSource;
         this.schemaId = $.schemaId;
         this.source = $.source;
         this.validationEnabled = $.validationEnabled;
@@ -196,6 +212,27 @@ public final class SchemaValidationSchemasState extends com.pulumi.resources.Res
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder omitSource(@Nullable Output<Boolean> omitSource) {
+            $.omitSource = omitSource;
+            return this;
+        }
+
+        /**
+         * @param omitSource Omit the source-files of schemas and only retrieve their meta-data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder omitSource(Boolean omitSource) {
+            return omitSource(Output.of(omitSource));
         }
 
         /**

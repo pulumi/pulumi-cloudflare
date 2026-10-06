@@ -35,9 +35,6 @@ export function getZeroTrustList(args?: GetZeroTrustListArgs, opts?: pulumi.Invo
 export interface GetZeroTrustListArgs {
     accountId?: string;
     filter?: inputs.GetZeroTrustListFilter;
-    /**
-     * Identify the API resource with a UUID.
-     */
     listId?: string;
 }
 
@@ -47,35 +44,13 @@ export interface GetZeroTrustListArgs {
 export interface GetZeroTrustListResult {
     readonly accountId?: string;
     readonly createdAt: string;
-    /**
-     * Provide the list description.
-     */
     readonly description: string;
     readonly filter?: outputs.GetZeroTrustListFilter;
-    /**
-     * Identify the API resource with a UUID.
-     */
     readonly id: string;
-    /**
-     * Provide the list items.
-     */
     readonly items: outputs.GetZeroTrustListItem[];
-    /**
-     * Indicate the number of items in the list.
-     */
     readonly listCount: number;
-    /**
-     * Identify the API resource with a UUID.
-     */
     readonly listId?: string;
-    /**
-     * Specify the list name.
-     */
     readonly name: string;
-    /**
-     * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
-     */
     readonly type: string;
     readonly updatedAt: string;
 }
@@ -108,8 +83,5 @@ export function getZeroTrustListOutput(args?: GetZeroTrustListOutputArgs, opts?:
 export interface GetZeroTrustListOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetZeroTrustListFilterArgs | undefined>;
-    /**
-     * Identify the API resource with a UUID.
-     */
     listId?: pulumi.Input<string | undefined>;
 }

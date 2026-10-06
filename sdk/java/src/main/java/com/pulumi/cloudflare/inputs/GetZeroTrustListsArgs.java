@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,34 +24,44 @@ public final class GetZeroTrustListsArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * Max items to fetch, default: 1000
-     * 
-     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    @Import(name="filters")
+    private @Nullable Output<List<String>> filters;
+
+    public Optional<Output<List<String>>> filters() {
+        return Optional.ofNullable(this.filters);
+    }
+
     @Import(name="maxItems")
     private @Nullable Output<Integer> maxItems;
 
-    /**
-     * @return Max items to fetch, default: 1000
-     * 
-     */
     public Optional<Output<Integer>> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
 
-    /**
-     * Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
-     * 
-     */
+    @Import(name="orderBy")
+    private @Nullable Output<String> orderBy;
+
+    public Optional<Output<String>> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
+    @Import(name="search")
+    private @Nullable Output<String> search;
+
+    public Optional<Output<String>> search() {
+        return Optional.ofNullable(this.search);
+    }
+
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -59,7 +70,11 @@ public final class GetZeroTrustListsArgs extends com.pulumi.resources.InvokeArgs
 
     private GetZeroTrustListsArgs(GetZeroTrustListsArgs $) {
         this.accountId = $.accountId;
+        this.direction = $.direction;
+        this.filters = $.filters;
         this.maxItems = $.maxItems;
+        this.orderBy = $.orderBy;
+        this.search = $.search;
         this.type = $.type;
     }
 
@@ -90,46 +105,60 @@ public final class GetZeroTrustListsArgs extends com.pulumi.resources.InvokeArgs
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param maxItems Max items to fetch, default: 1000
-         * 
-         * @return builder
-         * 
-         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
+        }
+
+        public Builder filters(@Nullable Output<List<String>> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        public Builder filters(List<String> filters) {
+            return filters(Output.of(filters));
+        }
+
+        public Builder filters(String... filters) {
+            return filters(List.of(filters));
+        }
+
         public Builder maxItems(@Nullable Output<Integer> maxItems) {
             $.maxItems = maxItems;
             return this;
         }
 
-        /**
-         * @param maxItems Max items to fetch, default: 1000
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
         }
 
-        /**
-         * @param type Specify the list type.
-         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
-         * 
-         * @return builder
-         * 
-         */
+        public Builder orderBy(@Nullable Output<String> orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        public Builder orderBy(String orderBy) {
+            return orderBy(Output.of(orderBy));
+        }
+
+        public Builder search(@Nullable Output<String> search) {
+            $.search = search;
+            return this;
+        }
+
+        public Builder search(String search) {
+            return search(Output.of(search));
+        }
+
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type Specify the list type.
-         * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

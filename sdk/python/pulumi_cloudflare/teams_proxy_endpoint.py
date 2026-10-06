@@ -26,6 +26,7 @@ class TeamsProxyEndpointArgs:
         """
         The set of arguments for constructing a TeamsProxyEndpoint resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
         :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
@@ -41,6 +42,9 @@ class TeamsProxyEndpointArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -98,6 +102,7 @@ class _TeamsProxyEndpointState:
         """
         Input properties used for looking up and filtering TeamsProxyEndpoint resources.
 
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
         :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
                Available values: "ip", "identity".
@@ -122,6 +127,9 @@ class _TeamsProxyEndpointState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -234,6 +242,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
         :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
                Available values: "ip", "identity".
@@ -331,6 +340,7 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_id: Specify the Cloudflare account identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
         :param pulumi.Input[_builtins.str] kind: The proxy endpoint kind
                Available values: "ip", "identity".
@@ -353,6 +363,9 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specify the Cloudflare account identifier.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property

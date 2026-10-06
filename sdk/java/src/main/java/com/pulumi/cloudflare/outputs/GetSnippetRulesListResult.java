@@ -12,74 +12,74 @@ import java.util.Objects;
 @CustomType
 public final class GetSnippetRulesListResult {
     /**
-     * @return An informative description of the rule.
+     * @return Provide an informative description of the rule.
      * 
      */
     private String description;
     /**
-     * @return Whether the rule should be executed.
+     * @return Indicate whether to execute the rule.
      * 
      */
     private Boolean enabled;
     /**
-     * @return The expression defining which traffic will match the rule.
+     * @return Define the expression that determines which traffic matches the rule.
      * 
      */
     private String expression;
     /**
-     * @return The unique ID of the rule.
+     * @return Specify the unique ID of the rule.
      * 
      */
     private String id;
     /**
-     * @return The timestamp of when the rule was last modified.
+     * @return Specify the timestamp of when the rule was last modified.
      * 
      */
     private String lastUpdated;
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     private String snippetName;
 
     private GetSnippetRulesListResult() {}
     /**
-     * @return An informative description of the rule.
+     * @return Provide an informative description of the rule.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return Whether the rule should be executed.
+     * @return Indicate whether to execute the rule.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return The expression defining which traffic will match the rule.
+     * @return Define the expression that determines which traffic matches the rule.
      * 
      */
     public String expression() {
         return this.expression;
     }
     /**
-     * @return The unique ID of the rule.
+     * @return Specify the unique ID of the rule.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The timestamp of when the rule was last modified.
+     * @return Specify the timestamp of when the rule was last modified.
      * 
      */
     public String lastUpdated() {
         return this.lastUpdated;
     }
     /**
-     * @return The identifying name of the snippet.
+     * @return Identify the snippet.
      * 
      */
     public String snippetName() {

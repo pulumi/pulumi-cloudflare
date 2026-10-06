@@ -24,6 +24,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -31,7 +33,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewHyperdriveConfig(ctx, "example_hyperdrive_config", &cloudflare.HyperdriveConfigArgs{
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudflare.NewHyperdriveConfig(ctx, "example_hyperdrive_config", &cloudflare.HyperdriveConfigArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.String("example-hyperdrive"),
 //				Origin: &cloudflare.HyperdriveConfigOriginArgs{
@@ -43,8 +50,11 @@ import (
 //					User:     pulumi.String("postgres"),
 //				},
 //				Caching: &cloudflare.HyperdriveConfigCachingArgs{
-//					Disabled: pulumi.Bool(true),
+//					Disabled:             pulumi.Bool(true),
+//					MaxAge:               pulumi.Int(0),
+//					StaleWhileRevalidate: pulumi.Int(0),
 //				},
+//				Integration: pulumi.String(json0),
 //				Mtls: &cloudflare.HyperdriveConfigMtlsArgs{
 //					CaCertificateId:   pulumi.String("00000000-0000-0000-0000-0000000000"),
 //					MtlsCertificateId: pulumi.String("00000000-0000-0000-0000-0000000000"),
@@ -73,14 +83,16 @@ type HyperdriveConfig struct {
 	AccountId pulumi.StringOutput              `pulumi:"accountId"`
 	Caching   HyperdriveConfigCachingPtrOutput `pulumi:"caching"`
 	// Defines the creation time of the Hyperdrive configuration.
-	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	CreatedOn   pulumi.StringOutput    `pulumi:"createdOn"`
+	Integration pulumi.StringPtrOutput `pulumi:"integration"`
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls HyperdriveConfigMtlsPtrOutput `pulumi:"mtls"`
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-	Name   pulumi.StringOutput          `pulumi:"name"`
-	Origin HyperdriveConfigOriginOutput `pulumi:"origin"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Combines database connection fields with exactly one supported network location.
+	Origin HyperdriveConfigOriginPtrOutput `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntPtrOutput `pulumi:"originConnectionLimit"`
 	// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
@@ -99,9 +111,6 @@ func NewHyperdriveConfig(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.Origin == nil {
-		return nil, errors.New("invalid value for required argument 'Origin'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HyperdriveConfig
@@ -130,13 +139,15 @@ type hyperdriveConfigState struct {
 	AccountId *string                  `pulumi:"accountId"`
 	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
 	// Defines the creation time of the Hyperdrive configuration.
-	CreatedOn *string `pulumi:"createdOn"`
+	CreatedOn   *string `pulumi:"createdOn"`
+	Integration *string `pulumi:"integration"`
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls *HyperdriveConfigMtls `pulumi:"mtls"`
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-	Name   *string                 `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Combines database connection fields with exactly one supported network location.
 	Origin *HyperdriveConfigOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit *int `pulumi:"originConnectionLimit"`
@@ -149,13 +160,15 @@ type HyperdriveConfigState struct {
 	AccountId pulumi.StringPtrInput
 	Caching   HyperdriveConfigCachingPtrInput
 	// Defines the creation time of the Hyperdrive configuration.
-	CreatedOn pulumi.StringPtrInput
+	CreatedOn   pulumi.StringPtrInput
+	Integration pulumi.StringPtrInput
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringPtrInput
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls HyperdriveConfigMtlsPtrInput
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-	Name   pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Combines database connection fields with exactly one supported network location.
 	Origin HyperdriveConfigOriginPtrInput
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntPtrInput
@@ -169,13 +182,15 @@ func (HyperdriveConfigState) ElementType() reflect.Type {
 
 type hyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId string                   `pulumi:"accountId"`
-	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
+	AccountId   string                   `pulumi:"accountId"`
+	Caching     *HyperdriveConfigCaching `pulumi:"caching"`
+	Integration *string                  `pulumi:"integration"`
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls *HyperdriveConfigMtls `pulumi:"mtls"`
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-	Name   string                 `pulumi:"name"`
-	Origin HyperdriveConfigOrigin `pulumi:"origin"`
+	Name string `pulumi:"name"`
+	// Combines database connection fields with exactly one supported network location.
+	Origin *HyperdriveConfigOrigin `pulumi:"origin"`
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit *int `pulumi:"originConnectionLimit"`
 }
@@ -183,13 +198,15 @@ type hyperdriveConfigArgs struct {
 // The set of arguments for constructing a HyperdriveConfig resource.
 type HyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId pulumi.StringInput
-	Caching   HyperdriveConfigCachingPtrInput
+	AccountId   pulumi.StringInput
+	Caching     HyperdriveConfigCachingPtrInput
+	Integration pulumi.StringPtrInput
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls HyperdriveConfigMtlsPtrInput
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
-	Name   pulumi.StringInput
-	Origin HyperdriveConfigOriginInput
+	Name pulumi.StringInput
+	// Combines database connection fields with exactly one supported network location.
+	Origin HyperdriveConfigOriginPtrInput
 	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
 	OriginConnectionLimit pulumi.IntPtrInput
 }
@@ -295,6 +312,10 @@ func (o HyperdriveConfigOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
+func (o HyperdriveConfigOutput) Integration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringPtrOutput { return v.Integration }).(pulumi.StringPtrOutput)
+}
+
 // Defines the last modified time of the Hyperdrive configuration.
 func (o HyperdriveConfigOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
@@ -310,8 +331,9 @@ func (o HyperdriveConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o HyperdriveConfigOutput) Origin() HyperdriveConfigOriginOutput {
-	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigOriginOutput { return v.Origin }).(HyperdriveConfigOriginOutput)
+// Combines database connection fields with exactly one supported network location.
+func (o HyperdriveConfigOutput) Origin() HyperdriveConfigOriginPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigOriginPtrOutput { return v.Origin }).(HyperdriveConfigOriginPtrOutput)
 }
 
 // The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.

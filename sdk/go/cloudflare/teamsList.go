@@ -57,6 +57,7 @@ import (
 type TeamsList struct {
 	pulumi.CustomResourceState
 
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Provide the list description.
@@ -118,6 +119,7 @@ func GetTeamsList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsList resources.
 type teamsListState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Provide the list description.
@@ -135,6 +137,7 @@ type teamsListState struct {
 }
 
 type TeamsListState struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Provide the list description.
@@ -156,6 +159,7 @@ func (TeamsListState) ElementType() reflect.Type {
 }
 
 type teamsListArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`
 	// Provide the list description.
 	Description *string `pulumi:"description"`
@@ -170,6 +174,7 @@ type teamsListArgs struct {
 
 // The set of arguments for constructing a TeamsList resource.
 type TeamsListArgs struct {
+	// Specify the Cloudflare account identifier.
 	AccountId pulumi.StringInput
 	// Provide the list description.
 	Description pulumi.StringPtrInput
@@ -269,6 +274,7 @@ func (o TeamsListOutput) ToTeamsListOutputWithContext(ctx context.Context) Teams
 	return o
 }
 
+// Specify the Cloudflare account identifier.
 func (o TeamsListOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

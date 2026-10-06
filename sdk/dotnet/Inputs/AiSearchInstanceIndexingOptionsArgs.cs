@@ -19,6 +19,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("keywordTokenizer")]
         public Input<string>? KeywordTokenizer { get; set; }
 
+        /// <summary>
+        /// Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+        /// </summary>
+        [Input("useOcr")]
+        public Input<bool>? UseOcr { get; set; }
+
         public AiSearchInstanceIndexingOptionsArgs()
         {
         }

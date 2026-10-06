@@ -151,6 +151,20 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
+     * Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     * 
+     */
+    @Export(name="subdomain", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> subdomain;
+
+    /**
+     * @return Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+     * 
+     */
+    public Output<Optional<String>> subdomain() {
+        return Codegen.optional(this.subdomain);
+    }
+    /**
      * Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
      * 
      */

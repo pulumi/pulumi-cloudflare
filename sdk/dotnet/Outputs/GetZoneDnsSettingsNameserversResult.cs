@@ -14,21 +14,28 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZoneDnsSettingsNameserversResult
     {
         /// <summary>
-        /// Configured nameserver set to be used for this zone
+        /// Identifier of the account-owned Custom Nameserver Set to use for this zone.
+        /// </summary>
+        public readonly string NameserverSetId;
+        /// <summary>
+        /// Configured nameserver set number to use for this zone.
         /// </summary>
         public readonly int NsSet;
         /// <summary>
-        /// Nameserver type
-        /// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
+        /// Nameserver type.
+        /// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone", "custom".
         /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
         private GetZoneDnsSettingsNameserversResult(
+            string nameserverSetId,
+
             int nsSet,
 
             string type)
         {
+            NameserverSetId = nameserverSetId;
             NsSet = nsSet;
             Type = type;
         }

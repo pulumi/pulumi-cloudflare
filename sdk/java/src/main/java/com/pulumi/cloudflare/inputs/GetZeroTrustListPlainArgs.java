@@ -29,17 +29,9 @@ public final class GetZeroTrustListPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.filter);
     }
 
-    /**
-     * Identify the API resource with a UUID.
-     * 
-     */
     @Import(name="listId")
     private @Nullable String listId;
 
-    /**
-     * @return Identify the API resource with a UUID.
-     * 
-     */
     public Optional<String> listId() {
         return Optional.ofNullable(this.listId);
     }
@@ -80,12 +72,6 @@ public final class GetZeroTrustListPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param listId Identify the API resource with a UUID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder listId(@Nullable String listId) {
             $.listId = listId;
             return this;

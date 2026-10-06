@@ -41,7 +41,6 @@ namespace Pulumi.Cloudflare
         ///             StartsWith = "app",
         ///         },
         ///         HostnameStatus = "provisioned",
-        ///         Ssl = 0,
         ///         SslStatus = "active",
         ///         Wildcard = false,
         ///     });
@@ -82,7 +81,6 @@ namespace Pulumi.Cloudflare
         ///             StartsWith = "app",
         ///         },
         ///         HostnameStatus = "provisioned",
-        ///         Ssl = 0,
         ///         SslStatus = "active",
         ///         Wildcard = false,
         ///     });
@@ -123,7 +121,6 @@ namespace Pulumi.Cloudflare
         ///             StartsWith = "app",
         ///         },
         ///         HostnameStatus = "provisioned",
-        ///         Ssl = 0,
         ///         SslStatus = "active",
         ///         Wildcard = false,
         ///     });

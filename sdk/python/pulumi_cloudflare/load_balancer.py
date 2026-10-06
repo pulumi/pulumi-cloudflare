@@ -890,7 +890,7 @@ class LoadBalancer(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
+        $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
         ```
 
 
@@ -1082,7 +1082,7 @@ class LoadBalancer(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<{accounts|zones}/{account_id|zone_id}>/<load_balancer_id>'
+        $ pulumi import cloudflare:index/loadBalancer:LoadBalancer example '<zone_id>/<load_balancer_id>'
         ```
 
 

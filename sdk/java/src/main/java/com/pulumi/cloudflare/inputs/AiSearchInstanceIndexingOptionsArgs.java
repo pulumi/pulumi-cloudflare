@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,10 +33,26 @@ public final class AiSearchInstanceIndexingOptionsArgs extends com.pulumi.resour
         return Optional.ofNullable(this.keywordTokenizer);
     }
 
+    /**
+     * Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+     * 
+     */
+    @Import(name="useOcr")
+    private @Nullable Output<Boolean> useOcr;
+
+    /**
+     * @return Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> useOcr() {
+        return Optional.ofNullable(this.useOcr);
+    }
+
     private AiSearchInstanceIndexingOptionsArgs() {}
 
     private AiSearchInstanceIndexingOptionsArgs(AiSearchInstanceIndexingOptionsArgs $) {
         this.keywordTokenizer = $.keywordTokenizer;
+        this.useOcr = $.useOcr;
     }
 
     public static Builder builder() {
@@ -77,6 +94,27 @@ public final class AiSearchInstanceIndexingOptionsArgs extends com.pulumi.resour
          */
         public Builder keywordTokenizer(String keywordTokenizer) {
             return keywordTokenizer(Output.of(keywordTokenizer));
+        }
+
+        /**
+         * @param useOcr Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useOcr(@Nullable Output<Boolean> useOcr) {
+            $.useOcr = useOcr;
+            return this;
+        }
+
+        /**
+         * @param useOcr Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useOcr(Boolean useOcr) {
+            return useOcr(Output.of(useOcr));
         }
 
         public AiSearchInstanceIndexingOptionsArgs build() {

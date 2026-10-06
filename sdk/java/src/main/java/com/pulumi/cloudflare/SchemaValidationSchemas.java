@@ -105,6 +105,20 @@ public class SchemaValidationSchemas extends com.pulumi.resources.CustomResource
         return this.name;
     }
     /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    @Export(name="omitSource", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> omitSource;
+
+    /**
+     * @return Omit the source-files of schemas and only retrieve their meta-data.
+     * 
+     */
+    public Output<Boolean> omitSource() {
+        return this.omitSource;
+    }
+    /**
      * A unique identifier of this schema
      * 
      */

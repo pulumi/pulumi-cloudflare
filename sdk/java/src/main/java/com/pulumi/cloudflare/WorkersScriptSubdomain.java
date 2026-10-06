@@ -111,14 +111,14 @@ public class WorkersScriptSubdomain extends com.pulumi.resources.CustomResource 
         return this.previewsEnabled;
     }
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script.
      * 
      */
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script.
      * 
      */
     public Output<String> scriptName() {

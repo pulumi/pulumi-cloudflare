@@ -69,7 +69,7 @@ class GetOriginCaCertificateResult:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[_builtins.str]:
         """
-        Identifier.
+        The x509 serial number of the Origin CA certificate.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -107,7 +107,7 @@ class GetOriginCaCertificateResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier.
+        The x509 serial number of the Origin CA certificate.
         """
         return pulumi.get(self, "id")
 
@@ -157,11 +157,11 @@ def get_origin_ca_certificate(certificate_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="328578533902268680212849205732770752308931942346")
     ```
 
 
-    :param _builtins.str certificate_id: Identifier.
+    :param _builtins.str certificate_id: The x509 serial number of the Origin CA certificate.
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id
@@ -189,11 +189,11 @@ def get_origin_ca_certificate_output(certificate_id: pulumi.Input[Optional[Optio
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="328578533902268680212849205732770752308931942346")
     ```
 
 
-    :param _builtins.str certificate_id: Identifier.
+    :param _builtins.str certificate_id: The x509 serial number of the Origin CA certificate.
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id

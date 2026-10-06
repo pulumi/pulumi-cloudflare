@@ -87,6 +87,9 @@ export class AccountDnsSettings extends pulumi.CustomResource {
      * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
      */
     declare public readonly enforceDnsOnly: pulumi.Output<boolean | undefined>;
+    /**
+     * Default settings for new zones created in this account.
+     */
     declare public readonly zoneDefaults: pulumi.Output<outputs.AccountDnsSettingsZoneDefaults>;
 
     /**
@@ -131,6 +134,9 @@ export interface AccountDnsSettingsState {
      * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
      */
     enforceDnsOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * Default settings for new zones created in this account.
+     */
     zoneDefaults?: pulumi.Input<inputs.AccountDnsSettingsZoneDefaults | undefined>;
 }
 
@@ -146,5 +152,8 @@ export interface AccountDnsSettingsArgs {
      * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
      */
     enforceDnsOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * Default settings for new zones created in this account.
+     */
     zoneDefaults?: pulumi.Input<inputs.AccountDnsSettingsZoneDefaults | undefined>;
 }

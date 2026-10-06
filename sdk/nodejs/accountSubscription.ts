@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+ * $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>/<subscription_id>'
  * ```
  */
 export class AccountSubscription extends pulumi.CustomResource {

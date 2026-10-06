@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketResult
     {
         /// <summary>
-        /// Account ID.
+        /// Cloudflare account ID that owns the R2 resource.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Jurisdiction where objects in this bucket are guaranteed to be stored.
-        /// Available values: "default", "eu", "fedramp", "us".
+        /// Available values: "default", "eu", "us", "fedramp", "fedramp-high".
         /// </summary>
         public readonly string Jurisdiction;
         /// <summary>

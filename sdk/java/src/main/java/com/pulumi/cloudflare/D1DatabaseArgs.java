@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +31,23 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+
+    /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    @Import(name="fields")
+    private @Nullable Output<List<String>> fields;
+
+    /**
+     * @return Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    public Optional<Output<List<String>>> fields() {
+        return Optional.ofNullable(this.fields);
     }
 
     /**
@@ -100,6 +118,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     private D1DatabaseArgs(D1DatabaseArgs $) {
         this.accountId = $.accountId;
+        this.fields = $.fields;
         this.jurisdiction = $.jurisdiction;
         this.name = $.name;
         this.primaryLocationHint = $.primaryLocationHint;
@@ -143,6 +162,40 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(@Nullable Output<List<String>> fields) {
+            $.fields = fields;
+            return this;
+        }
+
+        /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(List<String> fields) {
+            return fields(Output.of(fields));
+        }
+
+        /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(String... fields) {
+            return fields(List.of(fields));
         }
 
         /**

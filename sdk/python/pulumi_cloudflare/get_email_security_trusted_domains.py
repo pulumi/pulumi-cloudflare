@@ -108,6 +108,9 @@ class GetEmailSecurityTrustedDomainsResult:
     @_builtins.property
     @pulumi.getter(name="isRegex")
     def is_regex(self) -> _builtins.bool:
+        """
+        Whether `pattern` is a regular expression instead of a literal domain.
+        """
         return pulumi.get(self, "is_regex")
 
     @_builtins.property
@@ -135,6 +138,9 @@ class GetEmailSecurityTrustedDomainsResult:
     @_builtins.property
     @pulumi.getter
     def pattern(self) -> _builtins.str:
+        """
+        The domain pattern to trust, e.g. `example.com`.
+        """
         return pulumi.get(self, "pattern")
 
     @_builtins.property
@@ -183,7 +189,7 @@ def get_email_security_trusted_domains(account_id: Optional[_builtins.str] = Non
     import pulumi_cloudflare as cloudflare
 
     example_email_security_trusted_domains = cloudflare.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        trusted_domain_id="2401")
+        trusted_domain_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
@@ -227,7 +233,7 @@ def get_email_security_trusted_domains_output(account_id: pulumi.Input[Optional[
     import pulumi_cloudflare as cloudflare
 
     example_email_security_trusted_domains = cloudflare.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        trusted_domain_id="2401")
+        trusted_domain_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
