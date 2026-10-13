@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
     ///             RecordPrefix = "record_prefix",
     ///             RecordSuffix = "record_suffix",
     ///             RecordTemplate = "record_template",
-    ///             SampleRate = 1,
+    ///             SampleRate = 1.0,
     ///             TimestampFormat = "unixnano",
     ///         },
     ///         OwnershipChallenge = "00000000000000000000",

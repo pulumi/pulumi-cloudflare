@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///                 Body = "&lt;error&gt;This request has been rate-limited.&lt;/error&gt;",
     ///                 ContentType = "text/xml",
     ///             },
-    ///             Timeout = 86400,
+    ///             Timeout = 86400.0,
     ///         },
     ///         Match = new Cloudflare.Inputs.RateLimitMatchArgs
     ///         {
@@ -74,8 +74,8 @@ namespace Pulumi.Cloudflare
     ///                 OriginTraffic = true,
     ///             },
     ///         },
-    ///         Period = 900,
-    ///         Threshold = 60,
+    ///         Period = 900.0,
+    ///         Threshold = 60.0,
     ///     });
     /// 
     /// });

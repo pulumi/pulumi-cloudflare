@@ -32,9 +32,9 @@ namespace Pulumi.Cloudflare
     ///         Options = new Cloudflare.Inputs.ImageVariantOptionsArgs
     ///         {
     ///             Fit = "scale-down",
-    ///             Height = 768,
+    ///             Height = 768.0,
     ///             Metadata = "none",
-    ///             Width = 1366,
+    ///             Width = 1366.0,
     ///         },
     ///         NeverRequireSignedUrls = true,
     ///     });

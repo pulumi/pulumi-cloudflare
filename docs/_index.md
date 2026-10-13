@@ -182,7 +182,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     cloudflare = {
       source = "pulumi/cloudflare"
@@ -191,7 +191,10 @@ pulumi {
 }
 
 # Create a DNS record
-resource "cloudflare_dnsrecord" "www" {
+resource "cloudflare_dns_record" "www" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 

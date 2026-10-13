@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example.com",
-    ///         Ttl = 3600,
+    ///         Ttl = 3600.0,
     ///         Type = "A",
     ///         Comment = "Domain verification record",
     ///         Content = "198.51.100.4",

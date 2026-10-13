@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         Name = "CI/CD token",
     ///         ZoneId = "zone_id",
-    ///         ClientSecretVersion = 0,
+    ///         ClientSecretVersion = 0.0,
     ///         Duration = "60m",
     ///         Enabled = true,
     ///         PreviousClientSecretExpiresAt = "2014-01-01T05:20:00.12345Z",

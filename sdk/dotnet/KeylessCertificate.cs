@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
     ///   -----END CERTIFICATE-----
     /// ",
     ///         Host = "example.com",
-    ///         Port = 24008,
+    ///         Port = 24008.0,
     ///         BundleMethod = "ubiquitous",
     ///         Name = "example.com Keyless SSL",
     ///         Tunnel = new Cloudflare.Inputs.KeylessCertificateTunnelArgs

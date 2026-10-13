@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare
         ///         IpRangeSearch = "1.2.3.0/16",
         ///         IpSearch = "1.2.3.4",
         ///         ModifiedOn = "2014-01-01T05:20:00.12345Z",
-        ///         Priority = 5,
+        ///         Priority = 5.0,
         ///         UriSearch = "/some/path",
         ///     });
         /// 
@@ -73,7 +73,7 @@ namespace Pulumi.Cloudflare
         ///         IpRangeSearch = "1.2.3.0/16",
         ///         IpSearch = "1.2.3.4",
         ///         ModifiedOn = "2014-01-01T05:20:00.12345Z",
-        ///         Priority = 5,
+        ///         Priority = 5.0,
         ///         UriSearch = "/some/path",
         ///     });
         /// 
@@ -109,7 +109,7 @@ namespace Pulumi.Cloudflare
         ///         IpRangeSearch = "1.2.3.0/16",
         ///         IpSearch = "1.2.3.4",
         ///         ModifiedOn = "2014-01-01T05:20:00.12345Z",
-        ///         Priority = 5,
+        ///         Priority = 5.0,
         ///         UriSearch = "/some/path",
         ///     });
         /// 

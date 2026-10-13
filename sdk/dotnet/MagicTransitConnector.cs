@@ -34,12 +34,12 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             "Sunday",
     ///         },
-    ///         InterruptWindowDurationHours = 1,
+    ///         InterruptWindowDurationHours = 1.0,
     ///         InterruptWindowEmbargoDates = new[]
     ///         {
     ///             "string",
     ///         },
-    ///         InterruptWindowHourOfDay = 0,
+    ///         InterruptWindowHourOfDay = 0.0,
     ///         Notes = "notes",
     ///         Timezone = "timezone",
     ///     });

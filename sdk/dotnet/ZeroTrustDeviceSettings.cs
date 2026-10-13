@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleZeroTrustDeviceSettings = new Cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
-    ///         DisableForTime = 0,
+    ///         DisableForTime = 0.0,
     ///         ExternalEmergencySignalEnabled = true,
     ///         ExternalEmergencySignalFingerprint = "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
     ///         ExternalEmergencySignalInterval = "5m",

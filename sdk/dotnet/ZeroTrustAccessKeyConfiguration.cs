@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleZeroTrustAccessKeyConfiguration = new Cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         KeyRotationIntervalDays = 30,
+    ///         KeyRotationIntervalDays = 30.0,
     ///     });
     /// 
     /// });

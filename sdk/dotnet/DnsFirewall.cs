@@ -43,11 +43,11 @@ namespace Pulumi.Cloudflare
     ///         DeprecateAnyRequests = true,
     ///         DnsFirewallIpCount = 2,
     ///         EcsFallback = false,
-    ///         MaximumCacheTtl = 900,
-    ///         MinimumCacheTtl = 60,
-    ///         NegativeCacheTtl = 900,
-    ///         Ratelimit = 600,
-    ///         Retries = 2,
+    ///         MaximumCacheTtl = 900.0,
+    ///         MinimumCacheTtl = 60.0,
+    ///         NegativeCacheTtl = 900.0,
+    ///         Ratelimit = 600.0,
+    ///         Retries = 2.0,
     ///     });
     /// 
     /// });

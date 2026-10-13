@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
     ///             {
-    ///                 ApprovalsNeeded = 1,
+    ///                 ApprovalsNeeded = 1.0,
     ///                 EmailAddresses = new[]
     ///                 {
     ///                     "test1@cloudflare.com",
@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
     ///             {
-    ///                 ApprovalsNeeded = 3,
+    ///                 ApprovalsNeeded = 3.0,
     ///                 EmailAddresses = new[]
     ///                 {
     ///                     "test@cloudflare.com",

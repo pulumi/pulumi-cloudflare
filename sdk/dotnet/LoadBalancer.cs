@@ -197,7 +197,7 @@ namespace Pulumi.Cloudflare
     ///                     SessionAffinity = "cookie",
     ///                     SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs
     ///                     {
-    ///                         DrainDuration = 100,
+    ///                         DrainDuration = 100.0,
     ///                         Headers = new[]
     ///                         {
     ///                             "x",
@@ -207,9 +207,9 @@ namespace Pulumi.Cloudflare
     ///                         Secure = "Auto",
     ///                         ZeroDowntimeFailover = "sticky",
     ///                     },
-    ///                     SessionAffinityTtl = 1800,
+    ///                     SessionAffinityTtl = 1800.0,
     ///                     SteeringPolicy = "dynamic_latency",
-    ///                     Ttl = 30,
+    ///                     Ttl = 30.0,
     ///                 },
     ///                 Priority = 0,
     ///                 Terminates = true,
@@ -218,7 +218,7 @@ namespace Pulumi.Cloudflare
     ///         SessionAffinity = "cookie",
     ///         SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerSessionAffinityAttributesArgs
     ///         {
-    ///             DrainDuration = 100,
+    ///             DrainDuration = 100.0,
     ///             Headers = new[]
     ///             {
     ///                 "x",
@@ -228,9 +228,9 @@ namespace Pulumi.Cloudflare
     ///             Secure = "Auto",
     ///             ZeroDowntimeFailover = "sticky",
     ///         },
-    ///         SessionAffinityTtl = 1800,
+    ///         SessionAffinityTtl = 1800.0,
     ///         SteeringPolicy = "dynamic_latency",
-    ///         Ttl = 30,
+    ///         Ttl = 30.0,
     ///     });
     /// 
     /// });

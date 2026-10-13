@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         Description = "Prevent multiple login failures to mitigate brute force attacks",
     ///         Paused = false,
-    ///         Priority = 5,
+    ///         Priority = 5.0,
     ///     });
     /// 
     /// });

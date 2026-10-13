@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare
     ///         Observability = new Cloudflare.Inputs.WorkerObservabilityArgs
     ///         {
     ///             Enabled = true,
-    ///             HeadSamplingRate = 1,
+    ///             HeadSamplingRate = 1.0,
     ///             Issues = new Cloudflare.Inputs.WorkerObservabilityIssuesArgs
     ///             {
     ///                 Enabled = true,
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///                     "string",
     ///                 },
     ///                 Enabled = true,
-    ///                 HeadSamplingRate = 1,
+    ///                 HeadSamplingRate = 1.0,
     ///                 InvocationLogs = true,
     ///                 Persist = true,
     ///             },
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
     ///                     "string",
     ///                 },
     ///                 Enabled = true,
-    ///                 HeadSamplingRate = 1,
+    ///                 HeadSamplingRate = 1.0,
     ///                 Persist = true,
     ///                 PropagationPolicy = "authenticated",
     ///             },
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
     ///             Observability = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityArgs
     ///             {
     ///                 Enabled = true,
-    ///                 HeadSamplingRate = 1,
+    ///                 HeadSamplingRate = 1.0,
     ///                 Issues = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityIssuesArgs
     ///                 {
     ///                     Enabled = true,
@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
     ///                         "string",
     ///                     },
     ///                     Enabled = true,
-    ///                     HeadSamplingRate = 1,
+    ///                     HeadSamplingRate = 1.0,
     ///                     InvocationLogs = true,
     ///                     Persist = true,
     ///                 },
@@ -110,7 +110,7 @@ namespace Pulumi.Cloudflare
     ///                         "string",
     ///                     },
     ///                     Enabled = true,
-    ///                     HeadSamplingRate = 1,
+    ///                     HeadSamplingRate = 1.0,
     ///                     Persist = true,
     ///                     PropagationPolicy = "authenticated",
     ///                 },

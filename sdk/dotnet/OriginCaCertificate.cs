@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
     ///             "sub.example.com",
     ///         },
     ///         RequestType = "origin-rsa",
-    ///         RequestedValidity = 5475,
+    ///         RequestedValidity = 5475.0,
     ///     });
     /// 
     /// });

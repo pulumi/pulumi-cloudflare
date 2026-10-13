@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 new Cloudflare.Inputs.AiGatewaySpendLimitsRuleArgs
     ///                 {
-    ///                     Limit = 1,
+    ///                     Limit = 1.0,
     ///                     LimitType = "cost",
     ///                     Window = 1,
     ///                     Id = "x",

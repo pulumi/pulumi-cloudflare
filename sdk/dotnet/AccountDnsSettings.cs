@@ -42,17 +42,17 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 Type = "cloudflare.standard",
     ///             },
-    ///             NsTtl = 86400,
+    ///             NsTtl = 86400.0,
     ///             SecondaryOverrides = false,
     ///             Soa = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsSoaArgs
     ///             {
-    ///                 Expire = 604800,
-    ///                 MinTtl = 1800,
+    ///                 Expire = 604800.0,
+    ///                 MinTtl = 1800.0,
     ///                 Mname = "kristina.ns.cloudflare.com",
-    ///                 Refresh = 10000,
-    ///                 Retry = 2400,
+    ///                 Refresh = 10000.0,
+    ///                 Retry = 2400.0,
     ///                 Rname = "admin.example.com",
-    ///                 Ttl = 3600,
+    ///                 Ttl = 3600.0,
     ///             },
     ///             ZoneMode = "dns_only",
     ///         },

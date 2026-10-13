@@ -30,8 +30,8 @@ namespace Pulumi.Cloudflare
     ///         AllowModeSwitch = true,
     ///         AllowUpdates = true,
     ///         AllowedToLeave = true,
-    ///         AutoConnect = 0,
-    ///         CaptivePortal = 180,
+    ///         AutoConnect = 0.0,
+    ///         CaptivePortal = 180.0,
     ///         DisableAutoFallback = true,
     ///         DnsSearchSuffixes = new[]
     ///         {
@@ -74,14 +74,14 @@ namespace Pulumi.Cloudflare
     ///                 Description = "Include testing domains in the tunnel",
     ///             },
     ///         },
-    ///         LanAllowMinutes = 30,
-    ///         LanAllowSubnetSize = 24,
+    ///         LanAllowMinutes = 30.0,
+    ///         LanAllowSubnetSize = 24.0,
     ///         RegisterInterfaceIpWithDns = true,
     ///         SccmVpnBoundarySupport = false,
     ///         ServiceModeV2 = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args
     ///         {
     ///             Mode = "proxy",
-    ///             Port = 3000,
+    ///             Port = 3000.0,
     ///         },
     ///         SupportUrl = "https://1.1.1.1/help",
     ///         SwitchLocked = true,

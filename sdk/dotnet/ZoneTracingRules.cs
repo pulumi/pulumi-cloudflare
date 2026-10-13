@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
     ///                 Action = "set_trace_settings",
     ///                 ActionParameters = new Cloudflare.Inputs.ZoneTracingRulesRuleActionParametersArgs
     ///                 {
-    ///                     SamplingRatio = 0,
+    ///                     SamplingRatio = 0.0,
     ///                 },
     ///                 Description = "description",
     ///                 Enabled = true,
