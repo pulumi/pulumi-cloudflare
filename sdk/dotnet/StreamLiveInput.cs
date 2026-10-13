@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         DefaultCreator = "defaultCreator",
-    ///         DeleteRecordingAfterDays = 45,
+    ///         DeleteRecordingAfterDays = 45.0,
     ///         Enabled = true,
     ///         Meta = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {

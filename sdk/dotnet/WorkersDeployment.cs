@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.WorkersDeploymentVersionArgs
     ///             {
-    ///                 Percentage = 100,
+    ///                 Percentage = 100.0,
     ///                 VersionId = "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
     ///             },
     ///         },

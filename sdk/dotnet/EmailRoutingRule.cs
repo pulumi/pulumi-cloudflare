@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
     ///         Enabled = true,
     ///         Name = "Send to user@example.net rule.",
     ///         OwnerWorkerTag = "a7e6fb77503c41d8a7f3113c6918f10c",
-    ///         Priority = 0,
+    ///         Priority = 0.0,
     ///         Source = "api",
     ///     });
     /// 

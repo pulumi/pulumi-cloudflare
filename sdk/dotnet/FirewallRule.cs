@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///                 Body = "&lt;error&gt;This request has been rate-limited.&lt;/error&gt;",
     ///                 ContentType = "text/xml",
     ///             },
-    ///             Timeout = 86400,
+    ///             Timeout = 86400.0,
     ///         },
     ///         Filter = new Cloudflare.Inputs.FirewallRuleFilterArgs
     ///         {

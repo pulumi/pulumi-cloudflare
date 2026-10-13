@@ -36,11 +36,11 @@ namespace Pulumi.Cloudflare
     ///         DeadLetterQueue = "example-queue",
     ///         Settings = new Cloudflare.Inputs.QueueConsumerSettingsArgs
     ///         {
-    ///             BatchSize = 50,
-    ///             MaxConcurrency = 10,
-    ///             MaxRetries = 3,
-    ///             MaxWaitTimeMs = 5000,
-    ///             RetryDelay = 10,
+    ///             BatchSize = 50.0,
+    ///             MaxConcurrency = 10.0,
+    ///             MaxRetries = 3.0,
+    ///             MaxWaitTimeMs = 5000.0,
+    ///             RetryDelay = 10.0,
     ///         },
     ///     });
     /// 

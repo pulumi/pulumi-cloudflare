@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     "Content-Encoding",
     ///                 },
-    ///                 MaxAgeSeconds = 3600,
+    ///                 MaxAgeSeconds = 3600.0,
     ///             },
     ///         },
     ///     });

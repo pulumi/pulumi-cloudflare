@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * // Exactly one vendor and exactly one authentication method must be configured.
  * //
  * // Confidential arguments (API keys, service account keys) are write-only:
- * // Terraform sends them to the provider but does not store them directly in state.
- * // Only a secure digest is stored so Terraform can detect secret rotation. Rotating
+ * // Pulumi sends them to the provider but does not store them directly in state.
+ * // Only a secure digest is stored so Pulumi can detect secret rotation. Rotating
  * // a secret updates the integration in place; it does not recreate it.
  * //
  * // Non-confidential arguments are stored in state and diffed normally.
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * // Changing the vendor or the authentication method does force the integration to
  * // be recreated, because the update API cannot change either one.
  * //
- * // Write-only arguments require Terraform 1.11 or later, and may be fed from
+ * // Write-only arguments require Pulumi 1.11 or later, and may be fed from
  * // ephemeral resources so the secret never touches disk.
  * const googleCloudPlatform = new cloudflare.ZeroTrustCasbIntegration("google_cloud_platform", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",

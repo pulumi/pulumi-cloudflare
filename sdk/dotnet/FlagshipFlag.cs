@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     ///                 ServeVariation = "x",
     ///                 Rollout = new Cloudflare.Inputs.FlagshipFlagRuleRolloutArgs
     ///                 {
-    ///                     Percentage = 0,
+    ///                     Percentage = 0.0,
     ///                     Attribute = "x",
     ///                 },
     ///             },

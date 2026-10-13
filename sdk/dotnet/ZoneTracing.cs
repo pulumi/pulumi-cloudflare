@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     ///         ForwardContext = true,
     ///         Persist = true,
     ///         PropagationPolicy = "accept",
-    ///         SamplingRatio = 0,
+    ///         SamplingRatio = 0.0,
     ///     });
     /// 
     /// });
