@@ -267,6 +267,10 @@ export class PagesProject extends pulumi.CustomResource {
      */
     declare public readonly buildConfig: pulumi.Output<outputs.PagesProjectBuildConfig>;
     /**
+     * Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     */
+    declare public /*out*/ readonly buildImageAutoUpgrade: pulumi.Output<outputs.PagesProjectBuildImageAutoUpgrade>;
+    /**
      * Most recent production deployment of the project.
      */
     declare public /*out*/ readonly canonicalDeployment: pulumi.Output<outputs.PagesProjectCanonicalDeployment>;
@@ -338,6 +342,7 @@ export class PagesProject extends pulumi.CustomResource {
             const state = argsOrState as PagesProjectState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["buildConfig"] = state?.buildConfig;
+            resourceInputs["buildImageAutoUpgrade"] = state?.buildImageAutoUpgrade;
             resourceInputs["canonicalDeployment"] = state?.canonicalDeployment;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["deploymentConfigs"] = state?.deploymentConfigs;
@@ -369,6 +374,7 @@ export class PagesProject extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["productionBranch"] = args?.productionBranch;
             resourceInputs["source"] = args?.source;
+            resourceInputs["buildImageAutoUpgrade"] = undefined /*out*/;
             resourceInputs["canonicalDeployment"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["domains"] = undefined /*out*/;
@@ -397,6 +403,10 @@ export interface PagesProjectState {
      * Configs for the project build process.
      */
     buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig | undefined>;
+    /**
+     * Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     */
+    buildImageAutoUpgrade?: pulumi.Input<inputs.PagesProjectBuildImageAutoUpgrade | undefined>;
     /**
      * Most recent production deployment of the project.
      */

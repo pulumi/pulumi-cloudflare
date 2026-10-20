@@ -31,7 +31,7 @@ export function getZeroTrustResourceLibraryCategory(args: GetZeroTrustResourceLi
 export interface GetZeroTrustResourceLibraryCategoryArgs {
     accountId: string;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     id: number;
 }
@@ -50,7 +50,7 @@ export interface GetZeroTrustResourceLibraryCategoryResult {
      */
     readonly description: string;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     readonly id: number;
     /**
@@ -85,7 +85,7 @@ export function getZeroTrustResourceLibraryCategoryOutput(args: GetZeroTrustReso
 export interface GetZeroTrustResourceLibraryCategoryOutputArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     id: pulumi.Input<number>;
 }

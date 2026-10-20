@@ -35,6 +35,7 @@ import (
 //				AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Title:        pulumi.String("My Own Namespace"),
 //				Jurisdiction: pulumi.String("eu"),
+//				Mode:         pulumi.String("instant"),
 //			})
 //			if err != nil {
 //				return err
@@ -58,6 +59,9 @@ type WorkersKvNamespace struct {
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrOutput `pulumi:"jurisdiction"`
+	// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+	// Available values: "instant".
+	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolOutput `pulumi:"supportsUrlEncoding"`
 	// Human-readable string name for a Workers KV namespace.
@@ -105,6 +109,9 @@ type workersKvNamespaceState struct {
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
+	// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+	// Available values: "instant".
+	Mode *string `pulumi:"mode"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding *bool `pulumi:"supportsUrlEncoding"`
 	// Human-readable string name for a Workers KV namespace.
@@ -117,6 +124,9 @@ type WorkersKvNamespaceState struct {
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrInput
+	// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+	// Available values: "instant".
+	Mode pulumi.StringPtrInput
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolPtrInput
 	// Human-readable string name for a Workers KV namespace.
@@ -133,6 +143,9 @@ type workersKvNamespaceArgs struct {
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction *string `pulumi:"jurisdiction"`
+	// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+	// Available values: "instant".
+	Mode *string `pulumi:"mode"`
 	// Human-readable string name for a Workers KV namespace.
 	Title string `pulumi:"title"`
 }
@@ -144,6 +157,9 @@ type WorkersKvNamespaceArgs struct {
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringPtrInput
+	// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+	// Available values: "instant".
+	Mode pulumi.StringPtrInput
 	// Human-readable string name for a Workers KV namespace.
 	Title pulumi.StringInput
 }
@@ -244,6 +260,12 @@ func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
 // Available values: "eu", "fedramp", "us".
 func (o WorkersKvNamespaceOutput) Jurisdiction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringPtrOutput { return v.Jurisdiction }).(pulumi.StringPtrOutput)
+}
+
+// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+// Available values: "instant".
+func (o WorkersKvNamespaceOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 // True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".

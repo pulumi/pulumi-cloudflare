@@ -29,7 +29,7 @@ class ZeroTrustTunnelWarpConnectorConfigArgs:
         The set of arguments for constructing a ZeroTrustTunnelWarpConnectorConfig resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+        :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
                Available values: "none", "disabled", "aws", "local".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input['ZeroTrustTunnelWarpConnectorConfigConfigArgs'] config: Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
@@ -56,7 +56,7 @@ class ZeroTrustTunnelWarpConnectorConfigArgs:
     @pulumi.getter(name="haMode")
     def ha_mode(self) -> pulumi.Input[_builtins.str]:
         """
-        High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+        High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
         Available values: "none", "disabled", "aws", "local".
         """
         return pulumi.get(self, "ha_mode")
@@ -107,7 +107,7 @@ class _ZeroTrustTunnelWarpConnectorConfigState:
         :param pulumi.Input['ZeroTrustTunnelWarpConnectorConfigConfigArgs'] config: Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
         :param pulumi.Input[_builtins.int] configuration_version: Monotonically increasing configuration version, incremented on each PUT.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
-        :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+        :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
                Available values: "none", "disabled", "aws", "local".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input[_builtins.str] updated_at: Timestamp of the last update. Null if never updated.
@@ -179,7 +179,7 @@ class _ZeroTrustTunnelWarpConnectorConfigState:
     @pulumi.getter(name="haMode")
     def ha_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+        High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
         Available values: "none", "disabled", "aws", "local".
         """
         return pulumi.get(self, "ha_mode")
@@ -258,7 +258,7 @@ class ZeroTrustTunnelWarpConnectorConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict', 'outputs.ZeroTrustTunnelWarpConnectorConfigConfig']] config: Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
-        :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+        :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
                Available values: "none", "disabled", "aws", "local".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         """
@@ -367,7 +367,7 @@ class ZeroTrustTunnelWarpConnectorConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConfigConfigArgs', 'ZeroTrustTunnelWarpConnectorConfigConfigArgsDict', 'outputs.ZeroTrustTunnelWarpConnectorConfigConfig']] config: Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.
         :param pulumi.Input[_builtins.int] configuration_version: Monotonically increasing configuration version, incremented on each PUT.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
-        :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+        :param pulumi.Input[_builtins.str] ha_mode: High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
                Available values: "none", "disabled", "aws", "local".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input[_builtins.str] updated_at: Timestamp of the last update. Null if never updated.
@@ -421,7 +421,7 @@ class ZeroTrustTunnelWarpConnectorConfig(pulumi.CustomResource):
     @pulumi.getter(name="haMode")
     def ha_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+        High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
         Available values: "none", "disabled", "aws", "local".
         """
         return pulumi.get(self, "ha_mode")

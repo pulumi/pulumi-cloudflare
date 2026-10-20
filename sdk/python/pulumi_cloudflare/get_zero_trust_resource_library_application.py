@@ -139,7 +139,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter(name="categoryId")
     def category_id(self) -> _builtins.int:
         """
-        Returns the category ID.
+        Numeric identifier for an application category.
         """
         return pulumi.get(self, "category_id")
 
@@ -176,7 +176,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter(name="humanId")
     def human_id(self) -> _builtins.str:
         """
-        Returns the human readable ID.
+        Human-readable identifier for the application.
         """
         return pulumi.get(self, "human_id")
 
@@ -184,7 +184,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        Returns the application ID.
+        Numeric identifier for the application.
         """
         return pulumi.get(self, "id")
 
@@ -200,7 +200,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Returns the application name.
+        Application name.
         """
         return pulumi.get(self, "name")
 
@@ -208,7 +208,7 @@ class GetZeroTrustResourceLibraryApplicationResult:
     @pulumi.getter(name="portProtocols")
     def port_protocols(self) -> Sequence[_builtins.str]:
         """
-        Port and protocol pairs matched by the application.
+        Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
         """
         return pulumi.get(self, "port_protocols")
 
@@ -289,7 +289,7 @@ def get_zero_trust_resource_library_application(account_id: Optional[_builtins.s
     ```
 
 
-    :param _builtins.int id: Returns the application ID.
+    :param _builtins.int id: Numeric identifier for the application.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -335,7 +335,7 @@ def get_zero_trust_resource_library_application_output(account_id: pulumi.Input[
     ```
 
 
-    :param _builtins.int id: Returns the application ID.
+    :param _builtins.int id: Numeric identifier for the application.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

@@ -168,7 +168,7 @@ namespace Pulumi.Cloudflare
         /// A Predefined AI prompt classification topic entry.
         /// </summary>
         public readonly Outputs.GetZeroTrustDlpIntegrationEntryVariantResult Variant;
-        public readonly string WordList;
+        public readonly ImmutableArray<string> WordLists;
 
         [OutputConstructor]
         private GetZeroTrustDlpIntegrationEntryResult(
@@ -208,7 +208,7 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetZeroTrustDlpIntegrationEntryVariantResult variant,
 
-            string wordList)
+            ImmutableArray<string> wordLists)
         {
             AccountId = accountId;
             CaseSensitive = caseSensitive;
@@ -228,7 +228,7 @@ namespace Pulumi.Cloudflare
             UpdatedAt = updatedAt;
             UploadStatus = uploadStatus;
             Variant = variant;
-            WordList = wordList;
+            WordLists = wordLists;
         }
     }
 }

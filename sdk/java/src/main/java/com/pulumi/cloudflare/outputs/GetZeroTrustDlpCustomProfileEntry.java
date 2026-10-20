@@ -10,6 +10,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -47,7 +48,7 @@ public final class GetZeroTrustDlpCustomProfileEntry {
      * 
      */
     private GetZeroTrustDlpCustomProfileEntryVariant variant;
-    private String wordList;
+    private List<String> wordLists;
 
     private GetZeroTrustDlpCustomProfileEntry() {}
     /**
@@ -111,8 +112,8 @@ public final class GetZeroTrustDlpCustomProfileEntry {
     public GetZeroTrustDlpCustomProfileEntryVariant variant() {
         return this.variant;
     }
-    public String wordList() {
-        return this.wordList;
+    public List<String> wordLists() {
+        return this.wordLists;
     }
 
     public static Builder builder() {
@@ -138,7 +139,7 @@ public final class GetZeroTrustDlpCustomProfileEntry {
         private String type;
         private String updatedAt;
         private GetZeroTrustDlpCustomProfileEntryVariant variant;
-        private String wordList;
+        private List<String> wordLists;
         public Builder() {}
         public Builder(GetZeroTrustDlpCustomProfileEntry defaults) {
     	      Objects.requireNonNull(defaults);
@@ -156,7 +157,7 @@ public final class GetZeroTrustDlpCustomProfileEntry {
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
     	      this.variant = defaults.variant;
-    	      this.wordList = defaults.wordList;
+    	      this.wordLists = defaults.wordLists;
         }
 
         @CustomType.Setter
@@ -272,12 +273,15 @@ public final class GetZeroTrustDlpCustomProfileEntry {
             return this;
         }
         @CustomType.Setter
-        public Builder wordList(String wordList) {
-            if (wordList == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileEntry", "wordList");
+        public Builder wordLists(List<String> wordLists) {
+            if (wordLists == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileEntry", "wordLists");
             }
-            this.wordList = wordList;
+            this.wordLists = wordLists;
             return this;
+        }
+        public Builder wordLists(String... wordLists) {
+            return wordLists(List.of(wordLists));
         }
         public GetZeroTrustDlpCustomProfileEntry build() {
             final var _resultValue = new GetZeroTrustDlpCustomProfileEntry();
@@ -295,7 +299,7 @@ public final class GetZeroTrustDlpCustomProfileEntry {
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
             _resultValue.variant = variant;
-            _resultValue.wordList = wordList;
+            _resultValue.wordLists = wordLists;
             return _resultValue;
         }
     }

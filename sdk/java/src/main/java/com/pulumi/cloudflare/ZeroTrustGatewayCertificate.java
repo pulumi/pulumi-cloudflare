@@ -187,6 +187,20 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
         return this.issuerRaw;
     }
     /**
+     * Indicate the read-only region the certificate authority&#39;s key material is pinned to. Omitted for certificates that were created without a region.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output<String> region;
+
+    /**
+     * @return Indicate the read-only region the certificate authority&#39;s key material is pinned to. Omitted for certificates that were created without a region.
+     * 
+     */
+    public Output<String> region() {
+        return this.region;
+    }
+    /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 

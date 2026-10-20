@@ -99,42 +99,42 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
      * 
      */
     @Export(name="isRecent", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isRecent;
+    private Output<Boolean> isRecent;
 
     /**
      * @return Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
-    public Output<Optional<Boolean>> isRecent() {
-        return Codegen.optional(this.isRecent);
+    public Output<Boolean> isRecent() {
+        return this.isRecent;
     }
     /**
      * Whether `pattern` is a regular expression instead of a literal domain.
      * 
      */
     @Export(name="isRegex", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isRegex;
+    private Output<Boolean> isRegex;
 
     /**
      * @return Whether `pattern` is a regular expression instead of a literal domain.
      * 
      */
-    public Output<Optional<Boolean>> isRegex() {
-        return Codegen.optional(this.isRegex);
+    public Output<Boolean> isRegex() {
+        return this.isRegex;
     }
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     @Export(name="isSimilarity", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isSimilarity;
+    private Output<Boolean> isSimilarity;
 
     /**
      * @return Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
-    public Output<Optional<Boolean>> isSimilarity() {
-        return Codegen.optional(this.isSimilarity);
+    public Output<Boolean> isSimilarity() {
+        return this.isSimilarity;
     }
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.

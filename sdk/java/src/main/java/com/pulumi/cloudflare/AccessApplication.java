@@ -520,14 +520,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceAuth401Redirect);
     }
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
     private Output<String> sessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
      * 
      */
     public Output<String> sessionDuration() {
@@ -575,9 +575,17 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+     * 
+     */
     @Export(name="targetCriterias", refs={List.class,AccessApplicationTargetCriteria.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessApplicationTargetCriteria>> targetCriterias;
 
+    /**
+     * @return Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+     * 
+     */
     public Output<Optional<List<AccessApplicationTargetCriteria>>> targetCriterias() {
         return Codegen.optional(this.targetCriterias);
     }

@@ -26,14 +26,14 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
     }
 
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      * 
      */
     @Import(name="categoryId")
     private @Nullable Output<Integer> categoryId;
 
     /**
-     * @return Returns the category ID.
+     * @return Numeric identifier for an application category.
      * 
      */
     public Optional<Output<Integer>> categoryId() {
@@ -56,14 +56,14 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
     }
 
     /**
-     * Returns the human readable ID.
+     * Human-readable identifier for the application.
      * 
      */
     @Import(name="humanId")
     private @Nullable Output<String> humanId;
 
     /**
-     * @return Returns the human readable ID.
+     * @return Human-readable identifier for the application.
      * 
      */
     public Optional<Output<String>> humanId() {
@@ -86,14 +86,14 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
     }
 
     /**
-     * Returns the application name.
+     * Application name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Returns the application name.
+     * @return Application name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -101,14 +101,14 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
     }
 
     /**
-     * Port and protocol pairs matched by the application.
+     * Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      * 
      */
     @Import(name="portProtocols")
     private @Nullable Output<List<String>> portProtocols;
 
     /**
-     * @return Port and protocol pairs matched by the application.
+     * @return Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      * 
      */
     public Optional<Output<List<String>>> portProtocols() {
@@ -171,7 +171,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param categoryId Returns the category ID.
+         * @param categoryId Numeric identifier for an application category.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param categoryId Returns the category ID.
+         * @param categoryId Numeric identifier for an application category.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param humanId Returns the human readable ID.
+         * @param humanId Human-readable identifier for the application.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param humanId Returns the human readable ID.
+         * @param humanId Human-readable identifier for the application.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Returns the application name.
+         * @param name Application name.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Returns the application name.
+         * @param name Application name.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param portProtocols Port and protocol pairs matched by the application.
+         * @param portProtocols Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param portProtocols Port and protocol pairs matched by the application.
+         * @param portProtocols Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class ZeroTrustResourceLibraryApplicationArgs extends com.pulumi.re
         }
 
         /**
-         * @param portProtocols Port and protocol pairs matched by the application.
+         * @param portProtocols Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
          * 
          * @return builder
          * 

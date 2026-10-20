@@ -1380,6 +1380,11 @@ export const getManagedTransforms: typeof import("./getManagedTransforms").getMa
 export const getManagedTransformsOutput: typeof import("./getManagedTransforms").getManagedTransformsOutput = null as any;
 utilities.lazyLoad(exports, ["getManagedTransforms","getManagedTransformsOutput"], () => require("./getManagedTransforms"));
 
+export { GetMonetizationRulesArgs, GetMonetizationRulesResult, GetMonetizationRulesOutputArgs } from "./getMonetizationRules";
+export const getMonetizationRules: typeof import("./getMonetizationRules").getMonetizationRules = null as any;
+export const getMonetizationRulesOutput: typeof import("./getMonetizationRules").getMonetizationRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getMonetizationRules","getMonetizationRulesOutput"], () => require("./getMonetizationRules"));
+
 export { GetMoqRelayArgs, GetMoqRelayResult, GetMoqRelayOutputArgs } from "./getMoqRelay";
 export const getMoqRelay: typeof import("./getMoqRelay").getMoqRelay = null as any;
 export const getMoqRelayOutput: typeof import("./getMoqRelay").getMoqRelayOutput = null as any;
@@ -1664,16 +1669,6 @@ export { GetRegionalTieredCacheArgs, GetRegionalTieredCacheResult, GetRegionalTi
 export const getRegionalTieredCache: typeof import("./getRegionalTieredCache").getRegionalTieredCache = null as any;
 export const getRegionalTieredCacheOutput: typeof import("./getRegionalTieredCache").getRegionalTieredCacheOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionalTieredCache","getRegionalTieredCacheOutput"], () => require("./getRegionalTieredCache"));
-
-export { GetRegistrarDomainArgs, GetRegistrarDomainResult, GetRegistrarDomainOutputArgs } from "./getRegistrarDomain";
-export const getRegistrarDomain: typeof import("./getRegistrarDomain").getRegistrarDomain = null as any;
-export const getRegistrarDomainOutput: typeof import("./getRegistrarDomain").getRegistrarDomainOutput = null as any;
-utilities.lazyLoad(exports, ["getRegistrarDomain","getRegistrarDomainOutput"], () => require("./getRegistrarDomain"));
-
-export { GetRegistrarDomainsArgs, GetRegistrarDomainsResult, GetRegistrarDomainsOutputArgs } from "./getRegistrarDomains";
-export const getRegistrarDomains: typeof import("./getRegistrarDomains").getRegistrarDomains = null as any;
-export const getRegistrarDomainsOutput: typeof import("./getRegistrarDomains").getRegistrarDomainsOutput = null as any;
-utilities.lazyLoad(exports, ["getRegistrarDomains","getRegistrarDomainsOutput"], () => require("./getRegistrarDomains"));
 
 export { GetResourceGroupArgs, GetResourceGroupResult, GetResourceGroupOutputArgs } from "./getResourceGroup";
 export const getResourceGroup: typeof import("./getResourceGroup").getResourceGroup = null as any;
@@ -2965,6 +2960,11 @@ export type ManagedTransforms = import("./managedTransforms").ManagedTransforms;
 export const ManagedTransforms: typeof import("./managedTransforms").ManagedTransforms = null as any;
 utilities.lazyLoad(exports, ["ManagedTransforms"], () => require("./managedTransforms"));
 
+export { MonetizationRulesArgs, MonetizationRulesState } from "./monetizationRules";
+export type MonetizationRules = import("./monetizationRules").MonetizationRules;
+export const MonetizationRules: typeof import("./monetizationRules").MonetizationRules = null as any;
+utilities.lazyLoad(exports, ["MonetizationRules"], () => require("./monetizationRules"));
+
 export { MoqRelayArgs, MoqRelayState } from "./moqRelay";
 export type MoqRelay = import("./moqRelay").MoqRelay;
 export const MoqRelay: typeof import("./moqRelay").MoqRelay = null as any;
@@ -3142,11 +3142,6 @@ export { RegionalTieredCacheArgs, RegionalTieredCacheState } from "./regionalTie
 export type RegionalTieredCache = import("./regionalTieredCache").RegionalTieredCache;
 export const RegionalTieredCache: typeof import("./regionalTieredCache").RegionalTieredCache = null as any;
 utilities.lazyLoad(exports, ["RegionalTieredCache"], () => require("./regionalTieredCache"));
-
-export { RegistrarDomainArgs, RegistrarDomainState } from "./registrarDomain";
-export type RegistrarDomain = import("./registrarDomain").RegistrarDomain;
-export const RegistrarDomain: typeof import("./registrarDomain").RegistrarDomain = null as any;
-utilities.lazyLoad(exports, ["RegistrarDomain"], () => require("./registrarDomain"));
 
 export { RiskBehaviorArgs, RiskBehaviorState } from "./riskBehavior";
 export type RiskBehavior = import("./riskBehavior").RiskBehavior;
@@ -4148,6 +4143,8 @@ const _module = {
                 return new ManagedHeaders(name, <any>undefined, { urn })
             case "cloudflare:index/managedTransforms:ManagedTransforms":
                 return new ManagedTransforms(name, <any>undefined, { urn })
+            case "cloudflare:index/monetizationRules:MonetizationRules":
+                return new MonetizationRules(name, <any>undefined, { urn })
             case "cloudflare:index/moqRelay:MoqRelay":
                 return new MoqRelay(name, <any>undefined, { urn })
             case "cloudflare:index/mtlsCertificate:MtlsCertificate":
@@ -4218,8 +4215,6 @@ const _module = {
                 return new RegionalHostname(name, <any>undefined, { urn })
             case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
                 return new RegionalTieredCache(name, <any>undefined, { urn })
-            case "cloudflare:index/registrarDomain:RegistrarDomain":
-                return new RegistrarDomain(name, <any>undefined, { urn })
             case "cloudflare:index/riskBehavior:RiskBehavior":
                 return new RiskBehavior(name, <any>undefined, { urn })
             case "cloudflare:index/ruleset:Ruleset":
@@ -4644,6 +4639,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/magicWanIpsecTunnel",
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicWanStaticRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/managedHeaders", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/managedTransforms", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/monetizationRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/moqRelay", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/mtlsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/nelSetting", _module)
@@ -4679,7 +4675,6 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalTieredCache", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/registrarDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/riskBehavior", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/schemaValidationOperationSettings", _module)

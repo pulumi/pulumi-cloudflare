@@ -51,11 +51,11 @@ import * as utilities from "./utilities";
  *     mfaPivKeyRequirements: {
  *         pinPolicy: "always",
  *         requireFipsDevice: true,
- *         sshKeySize: [
+ *         sshKeySizes: [
  *             256,
  *             2048,
  *         ],
- *         sshKeyType: [
+ *         sshKeyTypes: [
  *             "ecdsa",
  *             "rsa",
  *         ],
@@ -123,7 +123,7 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     declare public readonly allowAuthenticateViaWarp: pulumi.Output<boolean>;
     /**
-     * The unique subdomain assigned to your Zero Trust organization.
+     * The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      */
     declare public readonly authDomain: pulumi.Output<string | undefined>;
     /**
@@ -153,15 +153,15 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     declare public readonly mfaConfigurationAllowed: pulumi.Output<boolean>;
     /**
+     * Configures PIV key requirements for MFA using hardware security keys.
+     */
+    declare public readonly mfaPivKeyRequirements: pulumi.Output<outputs.AccessOrganizationMfaPivKeyRequirements | undefined>;
+    /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     declare public readonly mfaRequiredForAllApps: pulumi.Output<boolean>;
     /**
-     * Configures SSH PIV key requirements for MFA using hardware security keys.
-     */
-    declare public readonly mfaSshPivKeyRequirements: pulumi.Output<outputs.AccessOrganizationMfaSshPivKeyRequirements | undefined>;
-    /**
-     * The name of your Zero Trust organization.
+     * The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      */
     declare public readonly name: pulumi.Output<string | undefined>;
     /**
@@ -228,8 +228,8 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["loginDesign"] = state?.loginDesign;
             resourceInputs["mfaConfig"] = state?.mfaConfig;
             resourceInputs["mfaConfigurationAllowed"] = state?.mfaConfigurationAllowed;
+            resourceInputs["mfaPivKeyRequirements"] = state?.mfaPivKeyRequirements;
             resourceInputs["mfaRequiredForAllApps"] = state?.mfaRequiredForAllApps;
-            resourceInputs["mfaSshPivKeyRequirements"] = state?.mfaSshPivKeyRequirements;
             resourceInputs["name"] = state?.name;
             resourceInputs["serviceTokenInactivity"] = state?.serviceTokenInactivity;
             resourceInputs["sessionDuration"] = state?.sessionDuration;
@@ -253,8 +253,8 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["loginDesign"] = args?.loginDesign;
             resourceInputs["mfaConfig"] = args?.mfaConfig;
             resourceInputs["mfaConfigurationAllowed"] = args?.mfaConfigurationAllowed;
+            resourceInputs["mfaPivKeyRequirements"] = args?.mfaPivKeyRequirements;
             resourceInputs["mfaRequiredForAllApps"] = args?.mfaRequiredForAllApps;
-            resourceInputs["mfaSshPivKeyRequirements"] = args?.mfaSshPivKeyRequirements;
             resourceInputs["name"] = args?.name;
             resourceInputs["serviceTokenInactivity"] = args?.serviceTokenInactivity;
             resourceInputs["sessionDuration"] = args?.sessionDuration;
@@ -286,7 +286,7 @@ export interface AccessOrganizationState {
      */
     allowAuthenticateViaWarp?: pulumi.Input<boolean | undefined>;
     /**
-     * The unique subdomain assigned to your Zero Trust organization.
+     * The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      */
     authDomain?: pulumi.Input<string | undefined>;
     /**
@@ -316,15 +316,15 @@ export interface AccessOrganizationState {
      */
     mfaConfigurationAllowed?: pulumi.Input<boolean | undefined>;
     /**
+     * Configures PIV key requirements for MFA using hardware security keys.
+     */
+    mfaPivKeyRequirements?: pulumi.Input<inputs.AccessOrganizationMfaPivKeyRequirements | undefined>;
+    /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     mfaRequiredForAllApps?: pulumi.Input<boolean | undefined>;
     /**
-     * Configures SSH PIV key requirements for MFA using hardware security keys.
-     */
-    mfaSshPivKeyRequirements?: pulumi.Input<inputs.AccessOrganizationMfaSshPivKeyRequirements | undefined>;
-    /**
-     * The name of your Zero Trust organization.
+     * The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -378,7 +378,7 @@ export interface AccessOrganizationArgs {
      */
     allowAuthenticateViaWarp?: pulumi.Input<boolean | undefined>;
     /**
-     * The unique subdomain assigned to your Zero Trust organization.
+     * The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      */
     authDomain?: pulumi.Input<string | undefined>;
     /**
@@ -408,15 +408,15 @@ export interface AccessOrganizationArgs {
      */
     mfaConfigurationAllowed?: pulumi.Input<boolean | undefined>;
     /**
+     * Configures PIV key requirements for MFA using hardware security keys.
+     */
+    mfaPivKeyRequirements?: pulumi.Input<inputs.AccessOrganizationMfaPivKeyRequirements | undefined>;
+    /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     mfaRequiredForAllApps?: pulumi.Input<boolean | undefined>;
     /**
-     * Configures SSH PIV key requirements for MFA using hardware security keys.
-     */
-    mfaSshPivKeyRequirements?: pulumi.Input<inputs.AccessOrganizationMfaSshPivKeyRequirements | undefined>;
-    /**
-     * The name of your Zero Trust organization.
+     * The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      */
     name?: pulumi.Input<string | undefined>;
     /**

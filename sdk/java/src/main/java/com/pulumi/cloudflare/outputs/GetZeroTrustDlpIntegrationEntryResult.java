@@ -63,7 +63,7 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
      * 
      */
     private GetZeroTrustDlpIntegrationEntryVariant variant;
-    private String wordList;
+    private List<String> wordLists;
 
     private GetZeroTrustDlpIntegrationEntryResult() {}
     public Optional<String> accountId() {
@@ -147,8 +147,8 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
     public GetZeroTrustDlpIntegrationEntryVariant variant() {
         return this.variant;
     }
-    public String wordList() {
-        return this.wordList;
+    public List<String> wordLists() {
+        return this.wordLists;
     }
 
     public static Builder builder() {
@@ -178,7 +178,7 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
         private String updatedAt;
         private String uploadStatus;
         private GetZeroTrustDlpIntegrationEntryVariant variant;
-        private String wordList;
+        private List<String> wordLists;
         public Builder() {}
         public Builder(GetZeroTrustDlpIntegrationEntryResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -200,7 +200,7 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
     	      this.updatedAt = defaults.updatedAt;
     	      this.uploadStatus = defaults.uploadStatus;
     	      this.variant = defaults.variant;
-    	      this.wordList = defaults.wordList;
+    	      this.wordLists = defaults.wordLists;
         }
 
         @CustomType.Setter
@@ -349,12 +349,15 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder wordList(String wordList) {
-            if (wordList == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpIntegrationEntryResult", "wordList");
+        public Builder wordLists(List<String> wordLists) {
+            if (wordLists == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpIntegrationEntryResult", "wordLists");
             }
-            this.wordList = wordList;
+            this.wordLists = wordLists;
             return this;
+        }
+        public Builder wordLists(String... wordLists) {
+            return wordLists(List.of(wordLists));
         }
         public GetZeroTrustDlpIntegrationEntryResult build() {
             final var _resultValue = new GetZeroTrustDlpIntegrationEntryResult();
@@ -376,7 +379,7 @@ public final class GetZeroTrustDlpIntegrationEntryResult {
             _resultValue.updatedAt = updatedAt;
             _resultValue.uploadStatus = uploadStatus;
             _resultValue.variant = variant;
-            _resultValue.wordList = wordList;
+            _resultValue.wordLists = wordLists;
             return _resultValue;
         }
     }

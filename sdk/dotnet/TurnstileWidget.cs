@@ -111,7 +111,8 @@ namespace Pulumi.Cloudflare
         public Output<bool> EphemeralId { get; private set; } = null!;
 
         /// <summary>
-        /// Filter widgets by field using case-insensitive substring matching.
+        /// Filter widgets by field. The `Name` field uses case-insensitive
+        /// substring matching; `Sitekey` uses exact matching.
         /// Format: `field:value`
         /// </summary>
         [Output("filter")]
@@ -284,7 +285,8 @@ namespace Pulumi.Cloudflare
         public Input<bool>? EphemeralId { get; set; }
 
         /// <summary>
-        /// Filter widgets by field using case-insensitive substring matching.
+        /// Filter widgets by field. The `Name` field uses case-insensitive
+        /// substring matching; `Sitekey` uses exact matching.
         /// Format: `field:value`
         /// </summary>
         [Input("filter")]
@@ -404,7 +406,8 @@ namespace Pulumi.Cloudflare
         public Input<bool>? EphemeralId { get; set; }
 
         /// <summary>
-        /// Filter widgets by field using case-insensitive substring matching.
+        /// Filter widgets by field. The `Name` field uses case-insensitive
+        /// substring matching; `Sitekey` uses exact matching.
         /// Format: `field:value`
         /// </summary>
         [Input("filter")]

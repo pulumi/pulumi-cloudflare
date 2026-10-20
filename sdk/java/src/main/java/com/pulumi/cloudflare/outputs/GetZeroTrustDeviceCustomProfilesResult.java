@@ -105,7 +105,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
      */
     private Double lanAllowSubnetSize;
     /**
-     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;, &#34;device.tags&#34;.
      * 
      */
     private String match;
@@ -147,6 +147,12 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
      * 
      */
     private Boolean switchLocked;
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private List<GetZeroTrustDeviceCustomProfilesResultTargetTest> targetTests;
     /**
      * @return Determines which tunnel protocol to use.
@@ -287,7 +293,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
         return this.lanAllowSubnetSize;
     }
     /**
-     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;, &#34;device.tags&#34;.
      * 
      */
     public String match() {
@@ -349,6 +355,12 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
     public Boolean switchLocked() {
         return this.switchLocked;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public List<GetZeroTrustDeviceCustomProfilesResultTargetTest> targetTests() {
         return this.targetTests;
     }

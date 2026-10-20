@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummary> AuthConfigSummary { get; private set; } = null!;
 
         /// <summary>
-        /// Static credential for the upstream MCP server. For AuthType "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
+        /// Credential configuration for the upstream MCP server. For auth*type "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`). For auth*type "oauth" with a pre-registered client, send a JSON-encoded object containing `auth_mode:"manual"`, `config.authorization_endpoint`, `config.token_endpoint`, and `registration_info.client_id`. Also provide `registration_info.redirect_uris` unless `IsSharedOauthCallbackEnabled` is true. Optional fields include `config.issuer`, `config.revocation_endpoint`, `registration_info.scope`, and `registration_info.token_endpoint_auth_method`. Send the client secret in the separate `ClientSecret` field. Omit `AuthCredentials` on update to preserve the existing configuration.
         /// </summary>
         [Output("authCredentials")]
         public Output<string?> AuthCredentials { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AuthenticationStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
         /// </summary>
         [Output("clientSecret")]
         public Output<string?> ClientSecret { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _authCredentials;
 
         /// <summary>
-        /// Static credential for the upstream MCP server. For AuthType "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
+        /// Credential configuration for the upstream MCP server. For auth*type "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`). For auth*type "oauth" with a pre-registered client, send a JSON-encoded object containing `auth_mode:"manual"`, `config.authorization_endpoint`, `config.token_endpoint`, and `registration_info.client_id`. Also provide `registration_info.redirect_uris` unless `IsSharedOauthCallbackEnabled` is true. Optional fields include `config.issuer`, `config.revocation_endpoint`, `registration_info.scope`, and `registration_info.token_endpoint_auth_method`. Send the client secret in the separate `ClientSecret` field. Omit `AuthCredentials` on update to preserve the existing configuration.
         /// </summary>
         public Input<string>? AuthCredentials
         {
@@ -267,7 +267,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
         /// </summary>
         public Input<string>? ClientSecret
         {
@@ -360,7 +360,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _authCredentials;
 
         /// <summary>
-        /// Static credential for the upstream MCP server. For AuthType "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`).
+        /// Credential configuration for the upstream MCP server. For auth*type "bearer", either a raw token string (e.g. "sk-abc123"), which is wrapped server-side as `Authorization: Bearer &lt;token&gt;`, or a JSON-encoded object of the form `{"headers":{"Header-Name":"value",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{"headers":{"cf-access-client-id":"...","cf-access-client-secret":"..."}}`). For auth*type "oauth" with a pre-registered client, send a JSON-encoded object containing `auth_mode:"manual"`, `config.authorization_endpoint`, `config.token_endpoint`, and `registration_info.client_id`. Also provide `registration_info.redirect_uris` unless `IsSharedOauthCallbackEnabled` is true. Optional fields include `config.issuer`, `config.revocation_endpoint`, `registration_info.scope`, and `registration_info.token_endpoint_auth_method`. Send the client secret in the separate `ClientSecret` field. Omit `AuthCredentials` on update to preserve the existing configuration.
         /// </summary>
         public Input<string>? AuthCredentials
         {
@@ -390,7 +390,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
+        /// Pre-registered OAuth client*secret. Write-only - accepted on create/update when auth*credentials.auth*mode is 'manual'. Required when creating a manual OAuth server or converting an existing server to manual mode. Omit it on update to preserve the existing secret; provide it to rotate the secret. Stored AES-GCM-encrypted in server*oauth_secrets; never returned by read endpoints.
         /// </summary>
         public Input<string>? ClientSecret
         {

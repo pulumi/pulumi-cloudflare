@@ -86,8 +86,8 @@ type LookupZeroTrustDlpIntegrationEntryResult struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus string `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpIntegrationEntryVariant `pulumi:"variant"`
-	WordList string                                 `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpIntegrationEntryVariant `pulumi:"variant"`
+	WordLists []string                               `pulumi:"wordLists"`
 }
 
 func LookupZeroTrustDlpIntegrationEntryOutput(ctx *pulumi.Context, args LookupZeroTrustDlpIntegrationEntryOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpIntegrationEntryResultOutput {
@@ -209,8 +209,8 @@ func (o LookupZeroTrustDlpIntegrationEntryResultOutput) Variant() GetZeroTrustDl
 	}).(GetZeroTrustDlpIntegrationEntryVariantOutput)
 }
 
-func (o LookupZeroTrustDlpIntegrationEntryResultOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpIntegrationEntryResult) string { return v.WordList }).(pulumi.StringOutput)
+func (o LookupZeroTrustDlpIntegrationEntryResultOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpIntegrationEntryResult) []string { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 func init() {

@@ -23,6 +23,12 @@ public final class GetWorkersKvNamespacesResult {
      */
     private String jurisdiction;
     /**
+     * @return The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: &#34;instant&#34;.
+     * 
+     */
+    private String mode;
+    /**
      * @return True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
      * 
      */
@@ -50,6 +56,14 @@ public final class GetWorkersKvNamespacesResult {
         return this.jurisdiction;
     }
     /**
+     * @return The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: &#34;instant&#34;.
+     * 
+     */
+    public String mode() {
+        return this.mode;
+    }
+    /**
      * @return True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
      * 
      */
@@ -75,6 +89,7 @@ public final class GetWorkersKvNamespacesResult {
     public static final class Builder {
         private String id;
         private String jurisdiction;
+        private String mode;
         private Boolean supportsUrlEncoding;
         private String title;
         public Builder() {}
@@ -82,6 +97,7 @@ public final class GetWorkersKvNamespacesResult {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.jurisdiction = defaults.jurisdiction;
+    	      this.mode = defaults.mode;
     	      this.supportsUrlEncoding = defaults.supportsUrlEncoding;
     	      this.title = defaults.title;
         }
@@ -100,6 +116,14 @@ public final class GetWorkersKvNamespacesResult {
               throw new MissingRequiredPropertyException("GetWorkersKvNamespacesResult", "jurisdiction");
             }
             this.jurisdiction = jurisdiction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mode(String mode) {
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetWorkersKvNamespacesResult", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
@@ -122,6 +146,7 @@ public final class GetWorkersKvNamespacesResult {
             final var _resultValue = new GetWorkersKvNamespacesResult();
             _resultValue.id = id;
             _resultValue.jurisdiction = jurisdiction;
+            _resultValue.mode = mode;
             _resultValue.supportsUrlEncoding = supportsUrlEncoding;
             _resultValue.title = title;
             return _resultValue;

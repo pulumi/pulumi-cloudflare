@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> FieldNames;
         /// <summary>
-        /// If set to true, subrequests will be merged into the parent request. Only supported for the `HttpRequests` dataset. Not supported for account-scoped jobs.
+        /// If set to true, subrequests will be merged into the parent request. Only supported for the `HttpRequests` dataset.
         /// </summary>
         public readonly bool? MergeSubrequests;
         /// <summary>

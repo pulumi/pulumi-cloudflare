@@ -9,7 +9,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationState;
 import com.pulumi.cloudflare.outputs.ZeroTrustOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.ZeroTrustOrganizationLoginDesign;
 import com.pulumi.cloudflare.outputs.ZeroTrustOrganizationMfaConfig;
-import com.pulumi.cloudflare.outputs.ZeroTrustOrganizationMfaSshPivKeyRequirements;
+import com.pulumi.cloudflare.outputs.ZeroTrustOrganizationMfaPivKeyRequirements;
 import com.pulumi.cloudflare.outputs.ZeroTrustOrganizationServiceTokenInactivity;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaPivKeyRequirementsArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationServiceTokenInactivityArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -85,17 +86,17 @@ import javax.annotation.Nullable;
  *                 .requiredAaguids("2fc0579f-8113-47ea-b116-bb5a8db9202a")
  *                 .sessionDuration("24h")
  *                 .build())
- *             .mfaPivKeyRequirements(Map.ofEntries(
- *                 Map.entry("pinPolicy", "always"),
- *                 Map.entry("requireFipsDevice", true),
- *                 Map.entry("sshKeySize", Arrays.asList(                
+ *             .mfaPivKeyRequirements(ZeroTrustOrganizationMfaPivKeyRequirementsArgs.builder()
+ *                 .pinPolicy("always")
+ *                 .requireFipsDevice(true)
+ *                 .sshKeySizes(                
  *                     256,
- *                     2048)),
- *                 Map.entry("sshKeyType", Arrays.asList(                
+ *                     2048)
+ *                 .sshKeyTypes(                
  *                     "ecdsa",
- *                     "rsa")),
- *                 Map.entry("touchPolicy", "always")
- *             ))
+ *                     "rsa")
+ *                 .touchPolicy("always")
+ *                 .build())
  *             .mfaRequiredForAllApps(false)
  *             .name("Widget Corps Internal Applications")
  *             .serviceTokenInactivity(ZeroTrustOrganizationServiceTokenInactivityArgs.builder()
@@ -154,14 +155,14 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
         return this.allowAuthenticateViaWarp;
     }
     /**
-     * The unique subdomain assigned to your Zero Trust organization.
+     * The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      * 
      */
     @Export(name="authDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authDomain;
 
     /**
-     * @return The unique subdomain assigned to your Zero Trust organization.
+     * @return The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      * 
      */
     public Output<Optional<String>> authDomain() {
@@ -264,6 +265,20 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
         return this.mfaConfigurationAllowed;
     }
     /**
+     * Configures PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    @Export(name="mfaPivKeyRequirements", refs={ZeroTrustOrganizationMfaPivKeyRequirements.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustOrganizationMfaPivKeyRequirements> mfaPivKeyRequirements;
+
+    /**
+     * @return Configures PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    public Output<Optional<ZeroTrustOrganizationMfaPivKeyRequirements>> mfaPivKeyRequirements() {
+        return Codegen.optional(this.mfaPivKeyRequirements);
+    }
+    /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
@@ -278,28 +293,14 @@ public class ZeroTrustOrganization extends com.pulumi.resources.CustomResource {
         return this.mfaRequiredForAllApps;
     }
     /**
-     * Configures SSH PIV key requirements for MFA using hardware security keys.
-     * 
-     */
-    @Export(name="mfaSshPivKeyRequirements", refs={ZeroTrustOrganizationMfaSshPivKeyRequirements.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustOrganizationMfaSshPivKeyRequirements> mfaSshPivKeyRequirements;
-
-    /**
-     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
-     * 
-     */
-    public Output<Optional<ZeroTrustOrganizationMfaSshPivKeyRequirements>> mfaSshPivKeyRequirements() {
-        return Codegen.optional(this.mfaSshPivKeyRequirements);
-    }
-    /**
-     * The name of your Zero Trust organization.
+     * The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
-     * @return The name of your Zero Trust organization.
+     * @return The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      * 
      */
     public Output<Optional<String>> name() {

@@ -59,6 +59,10 @@ export interface GetPagesProjectResult {
      */
     readonly buildConfig: outputs.GetPagesProjectBuildConfig;
     /**
+     * Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     */
+    readonly buildImageAutoUpgrade: outputs.GetPagesProjectBuildImageAutoUpgrade;
+    /**
      * Most recent production deployment of the project.
      */
     readonly canonicalDeployment: outputs.GetPagesProjectCanonicalDeployment;

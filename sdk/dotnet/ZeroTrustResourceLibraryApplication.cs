@@ -38,8 +38,8 @@ namespace Pulumi.Cloudflare
     ///         Name = "HR",
     ///         PortProtocols = new[]
     ///         {
-    ///             "tcp/80",
     ///             "tcp/443",
+    ///             "udp/10000-20000",
     ///         },
     ///         SupportDomains = new[]
     ///         {
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ApplicationTypeDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Returns the category ID.
+        /// Numeric identifier for an application category.
         /// </summary>
         [Output("categoryId")]
         public Output<int?> CategoryId { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
 
         /// <summary>
-        /// Returns the human readable ID.
+        /// Human-readable identifier for the application.
         /// </summary>
         [Output("humanId")]
         public Output<string?> HumanId { get; private set; } = null!;
@@ -130,13 +130,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> IpSubnets { get; private set; } = null!;
 
         /// <summary>
-        /// Returns the application name.
+        /// Application name.
         /// </summary>
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Port and protocol pairs matched by the application.
+        /// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
         /// </summary>
         [Output("portProtocols")]
         public Output<ImmutableArray<string>> PortProtocols { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Returns the category ID.
+        /// Numeric identifier for an application category.
         /// </summary>
         [Input("categoryId")]
         public Input<int>? CategoryId { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Returns the human readable ID.
+        /// Human-readable identifier for the application.
         /// </summary>
         [Input("humanId")]
         public Input<string>? HumanId { get; set; }
@@ -251,7 +251,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Returns the application name.
+        /// Application name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _portProtocols;
 
         /// <summary>
-        /// Port and protocol pairs matched by the application.
+        /// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
         /// </summary>
         public InputList<string> PortProtocols
         {
@@ -322,7 +322,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ApplicationTypeDescription { get; set; }
 
         /// <summary>
-        /// Returns the category ID.
+        /// Numeric identifier for an application category.
         /// </summary>
         [Input("categoryId")]
         public Input<int>? CategoryId { get; set; }
@@ -352,7 +352,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Returns the human readable ID.
+        /// Human-readable identifier for the application.
         /// </summary>
         [Input("humanId")]
         public Input<string>? HumanId { get; set; }
@@ -370,7 +370,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Returns the application name.
+        /// Application name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _portProtocols;
 
         /// <summary>
-        /// Port and protocol pairs matched by the application.
+        /// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
         /// </summary>
         public InputList<string> PortProtocols
         {

@@ -71,7 +71,7 @@ type LookupHyperdriveConfigResult struct {
 	HyperdriveId string `pulumi:"hyperdriveId"`
 	// Define configurations using a unique string identifier.
 	Id string `pulumi:"id"`
-	// Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+	// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 	Integration GetHyperdriveConfigIntegration `pulumi:"integration"`
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -142,7 +142,7 @@ func (o LookupHyperdriveConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 func (o LookupHyperdriveConfigResultOutput) Integration() GetHyperdriveConfigIntegrationOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) GetHyperdriveConfigIntegration { return v.Integration }).(GetHyperdriveConfigIntegrationOutput)
 }

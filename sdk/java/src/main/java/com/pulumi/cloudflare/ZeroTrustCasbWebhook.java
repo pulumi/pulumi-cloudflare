@@ -50,18 +50,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleZeroTrustCasbWebhook = new ZeroTrustCasbWebhook("exampleZeroTrustCasbWebhook", ZeroTrustCasbWebhookArgs.builder()
  *             .accountId("46148281d8a93d002ef242d8b0d5f9f6")
- *             .authenticationType("Bearer Auth")
+ *             .authenticationType("HMAC-Signing")
  *             .destinationUrl("https://example.com/webhook")
  *             .label("Send to Slack")
- *             .headers(            
- *                 ZeroTrustCasbWebhookHeaderArgs.builder()
- *                     .key("Authorization")
- *                     .value("Bearer token123")
- *                     .build(),
- *                 ZeroTrustCasbWebhookHeaderArgs.builder()
- *                     .key("X-Custom-Header")
- *                     .value("value")
- *                     .build())
+ *             .headers(ZeroTrustCasbWebhookHeaderArgs.builder()
+ *                 .key("X-Custom-Header")
+ *                 .value("value")
+ *                 .build())
  *             .signingSecret("my-secret-key")
  *             .status("enabled")
  *             .build());

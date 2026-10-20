@@ -34,7 +34,7 @@ export function getZeroTrustResourceLibraryCategories(args: GetZeroTrustResource
 export interface GetZeroTrustResourceLibraryCategoriesArgs {
     accountId: string;
     /**
-     * Limit of number of results to return.
+     * Number of results to return. Defaults to 25; values are clamped to 1–250.
      */
     limit?: number;
     /**
@@ -42,7 +42,7 @@ export interface GetZeroTrustResourceLibraryCategoriesArgs {
      */
     maxItems?: number;
     /**
-     * Offset of results to return.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
      */
     offset?: number;
 }
@@ -53,7 +53,7 @@ export interface GetZeroTrustResourceLibraryCategoriesArgs {
 export interface GetZeroTrustResourceLibraryCategoriesResult {
     readonly accountId: string;
     /**
-     * Limit of number of results to return.
+     * Number of results to return. Defaults to 25; values are clamped to 1–250.
      */
     readonly limit: number;
     /**
@@ -61,7 +61,7 @@ export interface GetZeroTrustResourceLibraryCategoriesResult {
      */
     readonly maxItems?: number;
     /**
-     * Offset of results to return.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
      */
     readonly offset: number;
     /**
@@ -97,7 +97,7 @@ export function getZeroTrustResourceLibraryCategoriesOutput(args: GetZeroTrustRe
 export interface GetZeroTrustResourceLibraryCategoriesOutputArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Limit of number of results to return.
+     * Number of results to return. Defaults to 25; values are clamped to 1–250.
      */
     limit?: pulumi.Input<number | undefined>;
     /**
@@ -105,7 +105,7 @@ export interface GetZeroTrustResourceLibraryCategoriesOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Offset of results to return.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
      */
     offset?: pulumi.Input<number | undefined>;
 }

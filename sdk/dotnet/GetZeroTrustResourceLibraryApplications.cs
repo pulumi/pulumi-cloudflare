@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Fields = "fields",
         ///         Filter = "filter",
+        ///         Lookup = "xx",
         ///         OrderBy = "order_by",
         ///         Search = "xx",
         ///     });
@@ -53,6 +54,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Fields = "fields",
         ///         Filter = "filter",
+        ///         Lookup = "xx",
         ///         OrderBy = "order_by",
         ///         Search = "xx",
         ///     });
@@ -79,6 +81,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Fields = "fields",
         ///         Filter = "filter",
+        ///         Lookup = "xx",
         ///         OrderBy = "order_by",
         ///         Search = "xx",
         ///     });
@@ -98,7 +101,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Return only the listed properties on each application, as a comma-separated list.
-        /// Use this to keep responses small when you only need part of each application — for
+        /// Use this to keep responses small when you only need part of each application, for
         /// example populating a picker with `fields=id,name` instead of downloading every
         /// hostname and IP subnet.
         /// </summary>
@@ -110,6 +113,9 @@ namespace Pulumi.Cloudflare
 
         [Input("limit")]
         public int? Limit { get; set; }
+
+        [Input("lookup")]
+        public string? Lookup { get; set; }
 
         [Input("maxItems")]
         public int? MaxItems { get; set; }
@@ -136,7 +142,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Return only the listed properties on each application, as a comma-separated list.
-        /// Use this to keep responses small when you only need part of each application — for
+        /// Use this to keep responses small when you only need part of each application, for
         /// example populating a picker with `fields=id,name` instead of downloading every
         /// hostname and IP subnet.
         /// </summary>
@@ -148,6 +154,9 @@ namespace Pulumi.Cloudflare
 
         [Input("limit")]
         public Input<int>? Limit { get; set; }
+
+        [Input("lookup")]
+        public Input<string>? Lookup { get; set; }
 
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
@@ -174,13 +183,14 @@ namespace Pulumi.Cloudflare
         public readonly string AccountId;
         /// <summary>
         /// Return only the listed properties on each application, as a comma-separated list.
-        /// Use this to keep responses small when you only need part of each application — for
+        /// Use this to keep responses small when you only need part of each application, for
         /// example populating a picker with `fields=id,name` instead of downloading every
         /// hostname and IP subnet.
         /// </summary>
         public readonly string? Fields;
         public readonly string? Filter;
         public readonly int Limit;
+        public readonly string? Lookup;
         public readonly int? MaxItems;
         public readonly int Offset;
         public readonly string? OrderBy;
@@ -197,6 +207,8 @@ namespace Pulumi.Cloudflare
 
             int limit,
 
+            string? lookup,
+
             int? maxItems,
 
             int offset,
@@ -211,6 +223,7 @@ namespace Pulumi.Cloudflare
             Fields = fields;
             Filter = filter;
             Limit = limit;
+            Lookup = lookup;
             MaxItems = maxItems;
             Offset = offset;
             OrderBy = orderBy;

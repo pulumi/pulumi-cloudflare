@@ -106,7 +106,7 @@ export class D1Database extends pulumi.CustomResource {
     /**
      * Configuration for D1 read replication.
      */
-    declare public readonly readReplication: pulumi.Output<outputs.D1DatabaseReadReplication | undefined>;
+    declare public readonly readReplication: pulumi.Output<outputs.D1DatabaseReadReplication>;
     /**
      * D1 database identifier (UUID).
      */

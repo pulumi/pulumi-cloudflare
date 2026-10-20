@@ -180,7 +180,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
      */
     declare public readonly lanAllowSubnetSize: pulumi.Output<number | undefined>;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
      */
     declare public readonly match: pulumi.Output<string | undefined>;
     /**
@@ -214,6 +214,9 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      */
     declare public readonly switchLocked: pulumi.Output<boolean>;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     declare public /*out*/ readonly targetTests: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileTargetTest[]>;
     /**
      * Determines which tunnel protocol to use.
@@ -401,7 +404,7 @@ export interface ZeroTrustDeviceCustomProfileState {
      */
     lanAllowSubnetSize?: pulumi.Input<number | undefined>;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
      */
     match?: pulumi.Input<string | undefined>;
     /**
@@ -435,6 +438,9 @@ export interface ZeroTrustDeviceCustomProfileState {
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      */
     switchLocked?: pulumi.Input<boolean | undefined>;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     targetTests?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileTargetTest>[] | undefined>;
     /**
      * Determines which tunnel protocol to use.
@@ -520,7 +526,7 @@ export interface ZeroTrustDeviceCustomProfileArgs {
      */
     lanAllowSubnetSize?: pulumi.Input<number | undefined>;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
      */
     match?: pulumi.Input<string | undefined>;
     /**

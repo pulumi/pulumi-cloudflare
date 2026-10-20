@@ -3,6 +3,9 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationTargetCriteriaExclude;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationTargetCriteriaInclude;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationTargetCriteriaRequire;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -13,6 +16,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustAccessApplicationTargetCriteria {
+    /**
+     * @return Target is excluded when any selector in this rule matches.
+     * 
+     */
+    private GetZeroTrustAccessApplicationTargetCriteriaExclude exclude;
+    /**
+     * @return Target matches when any selector in this rule matches.
+     * 
+     */
+    private GetZeroTrustAccessApplicationTargetCriteriaInclude include;
     /**
      * @return The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      * 
@@ -25,12 +38,31 @@ public final class GetZeroTrustAccessApplicationTargetCriteria {
      */
     private String protocol;
     /**
-     * @return Contains a map of target attribute keys to target attribute values.
+     * @return Target matches only when every selector in this rule matches.
+     * 
+     */
+    private GetZeroTrustAccessApplicationTargetCriteriaRequire require;
+    /**
+     * @return Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
      * 
      */
     private Map<String,List<String>> targetAttributes;
 
     private GetZeroTrustAccessApplicationTargetCriteria() {}
+    /**
+     * @return Target is excluded when any selector in this rule matches.
+     * 
+     */
+    public GetZeroTrustAccessApplicationTargetCriteriaExclude exclude() {
+        return this.exclude;
+    }
+    /**
+     * @return Target matches when any selector in this rule matches.
+     * 
+     */
+    public GetZeroTrustAccessApplicationTargetCriteriaInclude include() {
+        return this.include;
+    }
     /**
      * @return The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      * 
@@ -47,7 +79,14 @@ public final class GetZeroTrustAccessApplicationTargetCriteria {
         return this.protocol;
     }
     /**
-     * @return Contains a map of target attribute keys to target attribute values.
+     * @return Target matches only when every selector in this rule matches.
+     * 
+     */
+    public GetZeroTrustAccessApplicationTargetCriteriaRequire require() {
+        return this.require;
+    }
+    /**
+     * @return Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
      * 
      */
     public Map<String,List<String>> targetAttributes() {
@@ -63,17 +102,39 @@ public final class GetZeroTrustAccessApplicationTargetCriteria {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetZeroTrustAccessApplicationTargetCriteriaExclude exclude;
+        private GetZeroTrustAccessApplicationTargetCriteriaInclude include;
         private Integer port;
         private String protocol;
+        private GetZeroTrustAccessApplicationTargetCriteriaRequire require;
         private Map<String,List<String>> targetAttributes;
         public Builder() {}
         public Builder(GetZeroTrustAccessApplicationTargetCriteria defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.exclude = defaults.exclude;
+    	      this.include = defaults.include;
     	      this.port = defaults.port;
     	      this.protocol = defaults.protocol;
+    	      this.require = defaults.require;
     	      this.targetAttributes = defaults.targetAttributes;
         }
 
+        @CustomType.Setter
+        public Builder exclude(GetZeroTrustAccessApplicationTargetCriteriaExclude exclude) {
+            if (exclude == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationTargetCriteria", "exclude");
+            }
+            this.exclude = exclude;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder include(GetZeroTrustAccessApplicationTargetCriteriaInclude include) {
+            if (include == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationTargetCriteria", "include");
+            }
+            this.include = include;
+            return this;
+        }
         @CustomType.Setter
         public Builder port(Integer port) {
             if (port == null) {
@@ -91,6 +152,14 @@ public final class GetZeroTrustAccessApplicationTargetCriteria {
             return this;
         }
         @CustomType.Setter
+        public Builder require(GetZeroTrustAccessApplicationTargetCriteriaRequire require) {
+            if (require == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationTargetCriteria", "require");
+            }
+            this.require = require;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetAttributes(Map<String,List<String>> targetAttributes) {
             if (targetAttributes == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationTargetCriteria", "targetAttributes");
@@ -100,8 +169,11 @@ public final class GetZeroTrustAccessApplicationTargetCriteria {
         }
         public GetZeroTrustAccessApplicationTargetCriteria build() {
             final var _resultValue = new GetZeroTrustAccessApplicationTargetCriteria();
+            _resultValue.exclude = exclude;
+            _resultValue.include = include;
             _resultValue.port = port;
             _resultValue.protocol = protocol;
+            _resultValue.require = require;
             _resultValue.targetAttributes = targetAttributes;
             return _resultValue;
         }

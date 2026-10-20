@@ -201,6 +201,11 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     declare public readonly bindings: pulumi.Output<outputs.WorkerScriptBinding[]>;
     /**
+     * When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * Available values: "strict".
+     */
+    declare public readonly bindingsInherit: pulumi.Output<string | undefined>;
+    /**
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
     declare public readonly bodyPart: pulumi.Output<string>;
@@ -366,6 +371,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["assets"] = state?.assets;
             resourceInputs["bindings"] = state?.bindings;
+            resourceInputs["bindingsInherit"] = state?.bindingsInherit;
             resourceInputs["bodyPart"] = state?.bodyPart;
             resourceInputs["cacheOptions"] = state?.cacheOptions;
             resourceInputs["compatibilityDate"] = state?.compatibilityDate;
@@ -413,6 +419,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["assets"] = args?.assets;
             resourceInputs["bindings"] = args?.bindings;
+            resourceInputs["bindingsInherit"] = args?.bindingsInherit;
             resourceInputs["bodyPart"] = args?.bodyPart;
             resourceInputs["cacheOptions"] = args?.cacheOptions;
             resourceInputs["compatibilityDate"] = args?.compatibilityDate;
@@ -476,6 +483,11 @@ export interface WorkerScriptState {
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptBinding>[] | undefined>;
+    /**
+     * When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * Available values: "strict".
+     */
+    bindingsInherit?: pulumi.Input<string | undefined>;
     /**
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
@@ -643,6 +655,11 @@ export interface WorkerScriptArgs {
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptBinding>[] | undefined>;
+    /**
+     * When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * Available values: "strict".
+     */
+    bindingsInherit?: pulumi.Input<string | undefined>;
     /**
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */

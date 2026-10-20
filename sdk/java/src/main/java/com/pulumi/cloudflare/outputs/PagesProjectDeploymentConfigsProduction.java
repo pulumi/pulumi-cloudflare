@@ -51,7 +51,7 @@ public final class PagesProjectDeploymentConfigsProduction {
      */
     private @Nullable Map<String,PagesProjectDeploymentConfigsProductionBrowsers> browsers;
     /**
-     * @return The major version of the build image to use for Pages Functions.
+     * @return The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project&#39;s builds have been moved, a request that sets version 1 is rejected.
      * 
      */
     private @Nullable Integer buildImageMajorVersion;
@@ -176,7 +176,7 @@ public final class PagesProjectDeploymentConfigsProduction {
         return this.browsers == null ? Map.of() : this.browsers;
     }
     /**
-     * @return The major version of the build image to use for Pages Functions.
+     * @return The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project&#39;s builds have been moved, a request that sets version 1 is rejected.
      * 
      */
     public Optional<Integer> buildImageMajorVersion() {

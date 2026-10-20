@@ -85,6 +85,7 @@ class _ZeroTrustGatewayCertificateState:
                  in_use: pulumi.Input[Optional[_builtins.bool]] = None,
                  issuer_org: pulumi.Input[Optional[_builtins.str]] = None,
                  issuer_raw: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -101,6 +102,7 @@ class _ZeroTrustGatewayCertificateState:
         :param pulumi.Input[_builtins.bool] in_use: Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         :param pulumi.Input[_builtins.str] issuer_org: Indicate the organization that issued the certificate (read-only).
         :param pulumi.Input[_builtins.str] issuer_raw: Provide the entire issuer field of the certificate (read-only).
+        :param pulumi.Input[_builtins.str] region: Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
         :param pulumi.Input[_builtins.str] type: Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
                Available values: "custom", "gateway_managed".
         :param pulumi.Input[_builtins.int] validity_period_days: Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
@@ -125,6 +127,8 @@ class _ZeroTrustGatewayCertificateState:
             pulumi.set(__self__, "issuer_org", issuer_org)
         if issuer_raw is not None:
             pulumi.set(__self__, "issuer_raw", issuer_raw)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if updated_at is not None:
@@ -248,6 +252,18 @@ class _ZeroTrustGatewayCertificateState:
     @issuer_raw.setter
     def issuer_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer_raw", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
@@ -393,6 +409,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
             __props__.__dict__["in_use"] = None
             __props__.__dict__["issuer_org"] = None
             __props__.__dict__["issuer_raw"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["type"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["uploaded_on"] = None
@@ -416,6 +433,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
             in_use: pulumi.Input[Optional[_builtins.bool]] = None,
             issuer_org: pulumi.Input[Optional[_builtins.str]] = None,
             issuer_raw: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -436,6 +454,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] in_use: Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         :param pulumi.Input[_builtins.str] issuer_org: Indicate the organization that issued the certificate (read-only).
         :param pulumi.Input[_builtins.str] issuer_raw: Provide the entire issuer field of the certificate (read-only).
+        :param pulumi.Input[_builtins.str] region: Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
         :param pulumi.Input[_builtins.str] type: Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
                Available values: "custom", "gateway_managed".
         :param pulumi.Input[_builtins.int] validity_period_days: Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
@@ -454,6 +473,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         __props__.__dict__["in_use"] = in_use
         __props__.__dict__["issuer_org"] = issuer_org
         __props__.__dict__["issuer_raw"] = issuer_raw
+        __props__.__dict__["region"] = region
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["uploaded_on"] = uploaded_on
@@ -534,6 +554,14 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         Provide the entire issuer field of the certificate (read-only).
         """
         return pulumi.get(self, "issuer_raw")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter

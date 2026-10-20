@@ -50,7 +50,8 @@ class TurnstileWidgetArgs:
         :param pulumi.Input[_builtins.str] direction: Direction to order widgets.
                Available values: "asc", "desc".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
-        :param pulumi.Input[_builtins.str] filter: Filter widgets by field using case-insensitive substring matching.
+        :param pulumi.Input[_builtins.str] filter: Filter widgets by field. The `name` field uses case-insensitive
+               substring matching; `sitekey` uses exact matching.
                Format: `field:value`
         :param pulumi.Input[_builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
         :param pulumi.Input[_builtins.str] order: Field to order widgets by.
@@ -189,7 +190,8 @@ class TurnstileWidgetArgs:
     @pulumi.getter
     def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Filter widgets by field using case-insensitive substring matching.
+        Filter widgets by field. The `name` field uses case-insensitive
+        substring matching; `sitekey` uses exact matching.
         Format: `field:value`
         """
         return pulumi.get(self, "filter")
@@ -302,7 +304,8 @@ class _TurnstileWidgetState:
         :param pulumi.Input[_builtins.str] direction: Direction to order widgets.
                Available values: "asc", "desc".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
-        :param pulumi.Input[_builtins.str] filter: Filter widgets by field using case-insensitive substring matching.
+        :param pulumi.Input[_builtins.str] filter: Filter widgets by field. The `name` field uses case-insensitive
+               substring matching; `sitekey` uses exact matching.
                Format: `field:value`
         :param pulumi.Input[_builtins.str] last_modified_via: Origin of the most recent mutation (create, update, delete, or
                secret rotation). Server-derived; not client-settable. Omitted for
@@ -470,7 +473,8 @@ class _TurnstileWidgetState:
     @pulumi.getter
     def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Filter widgets by field using case-insensitive substring matching.
+        Filter widgets by field. The `name` field uses case-insensitive
+        substring matching; `sitekey` uses exact matching.
         Format: `field:value`
         """
         return pulumi.get(self, "filter")
@@ -689,7 +693,8 @@ class TurnstileWidget(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] direction: Direction to order widgets.
                Available values: "asc", "desc".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
-        :param pulumi.Input[_builtins.str] filter: Filter widgets by field using case-insensitive substring matching.
+        :param pulumi.Input[_builtins.str] filter: Filter widgets by field. The `name` field uses case-insensitive
+               substring matching; `sitekey` uses exact matching.
                Format: `field:value`
         :param pulumi.Input[_builtins.str] mode: Widget Mode
                Available values: "non-interactive", "invisible", "managed".
@@ -867,7 +872,8 @@ class TurnstileWidget(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] direction: Direction to order widgets.
                Available values: "asc", "desc".
         :param pulumi.Input[_builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
-        :param pulumi.Input[_builtins.str] filter: Filter widgets by field using case-insensitive substring matching.
+        :param pulumi.Input[_builtins.str] filter: Filter widgets by field. The `name` field uses case-insensitive
+               substring matching; `sitekey` uses exact matching.
                Format: `field:value`
         :param pulumi.Input[_builtins.str] last_modified_via: Origin of the most recent mutation (create, update, delete, or
                secret rotation). Server-derived; not client-settable. Omitted for
@@ -988,7 +994,8 @@ class TurnstileWidget(pulumi.CustomResource):
     @pulumi.getter
     def filter(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Filter widgets by field using case-insensitive substring matching.
+        Filter widgets by field. The `name` field uses case-insensitive
+        substring matching; `sitekey` uses exact matching.
         Format: `field:value`
         """
         return pulumi.get(self, "filter")

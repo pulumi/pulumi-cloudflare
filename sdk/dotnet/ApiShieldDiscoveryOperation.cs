@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleApiShieldDiscoveryOperation = new Cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///         DiscoveryId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
     ///         State = "review",
     ///     });
     /// 
@@ -45,8 +45,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        [Output("operationId")]
-        public Output<string> OperationId { get; private set; } = null!;
+        [Output("discoveryId")]
+        public Output<string> DiscoveryId { get; private set; } = null!;
 
         /// <summary>
         /// Mark state of operation in API Discovery
@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -112,8 +112,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        [Input("operationId", required: true)]
-        public Input<string> OperationId { get; set; } = null!;
+        [Input("discoveryId", required: true)]
+        public Input<string> DiscoveryId { get; set; } = null!;
 
         /// <summary>
         /// Mark state of operation in API Discovery
@@ -127,8 +127,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public ApiShieldDiscoveryOperationArgs()
         {
@@ -141,8 +141,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// UUID.
         /// </summary>
-        [Input("operationId")]
-        public Input<string>? OperationId { get; set; }
+        [Input("discoveryId")]
+        public Input<string>? DiscoveryId { get; set; }
 
         /// <summary>
         /// Mark state of operation in API Discovery

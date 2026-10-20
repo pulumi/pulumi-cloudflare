@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationTargetCriteria
     {
         /// <summary>
+        /// Target is excluded when any selector in this rule matches.
+        /// </summary>
+        public readonly Outputs.ZeroTrustAccessApplicationTargetCriteriaExclude? Exclude;
+        /// <summary>
+        /// Target matches when any selector in this rule matches.
+        /// </summary>
+        public readonly Outputs.ZeroTrustAccessApplicationTargetCriteriaInclude? Include;
+        /// <summary>
         /// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
         /// </summary>
         public readonly int Port;
@@ -23,20 +31,33 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// Contains a map of target attribute keys to target attribute values.
+        /// Target matches only when every selector in this rule matches.
         /// </summary>
-        public readonly ImmutableDictionary<string, ImmutableArray<string>> TargetAttributes;
+        public readonly Outputs.ZeroTrustAccessApplicationTargetCriteriaRequire? Require;
+        /// <summary>
+        /// Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+        /// </summary>
+        public readonly ImmutableDictionary<string, ImmutableArray<string>>? TargetAttributes;
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationTargetCriteria(
+            Outputs.ZeroTrustAccessApplicationTargetCriteriaExclude? exclude,
+
+            Outputs.ZeroTrustAccessApplicationTargetCriteriaInclude? include,
+
             int port,
 
             string protocol,
 
-            ImmutableDictionary<string, ImmutableArray<string>> targetAttributes)
+            Outputs.ZeroTrustAccessApplicationTargetCriteriaRequire? require,
+
+            ImmutableDictionary<string, ImmutableArray<string>>? targetAttributes)
         {
+            Exclude = exclude;
+            Include = include;
             Port = port;
             Protocol = protocol;
+            Require = require;
             TargetAttributes = targetAttributes;
         }
     }

@@ -66,7 +66,7 @@ type WorkersKv struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
 	Expiration pulumi.Float64PtrOutput `pulumi:"expiration"`
-	// Expires the key after a number of seconds. Must be at least 60.
+	// Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
 	ExpirationTtl pulumi.Float64PtrOutput `pulumi:"expirationTtl"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
@@ -124,7 +124,7 @@ type workersKvState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
 	Expiration *float64 `pulumi:"expiration"`
-	// Expires the key after a number of seconds. Must be at least 60.
+	// Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
 	ExpirationTtl *float64 `pulumi:"expirationTtl"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName *string `pulumi:"keyName"`
@@ -141,7 +141,7 @@ type WorkersKvState struct {
 	AccountId pulumi.StringPtrInput
 	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
 	Expiration pulumi.Float64PtrInput
-	// Expires the key after a number of seconds. Must be at least 60.
+	// Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
 	ExpirationTtl pulumi.Float64PtrInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringPtrInput
@@ -162,7 +162,7 @@ type workersKvArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
 	Expiration *float64 `pulumi:"expiration"`
-	// Expires the key after a number of seconds. Must be at least 60.
+	// Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
 	ExpirationTtl *float64 `pulumi:"expirationTtl"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName string `pulumi:"keyName"`
@@ -180,7 +180,7 @@ type WorkersKvArgs struct {
 	AccountId pulumi.StringInput
 	// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
 	Expiration pulumi.Float64PtrInput
-	// Expires the key after a number of seconds. Must be at least 60.
+	// Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
 	ExpirationTtl pulumi.Float64PtrInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringInput
@@ -289,7 +289,7 @@ func (o WorkersKvOutput) Expiration() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.Float64PtrOutput { return v.Expiration }).(pulumi.Float64PtrOutput)
 }
 
-// Expires the key after a number of seconds. Must be at least 60.
+// Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
 func (o WorkersKvOutput) ExpirationTtl() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.Float64PtrOutput { return v.ExpirationTtl }).(pulumi.Float64PtrOutput)
 }

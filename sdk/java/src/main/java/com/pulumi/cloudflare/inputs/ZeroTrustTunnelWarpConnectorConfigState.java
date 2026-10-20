@@ -78,7 +78,7 @@ public final class ZeroTrustTunnelWarpConnectorConfigState extends com.pulumi.re
     }
 
     /**
-     * High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+     * High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
      * Available values: &#34;none&#34;, &#34;disabled&#34;, &#34;aws&#34;, &#34;local&#34;.
      * 
      */
@@ -86,7 +86,7 @@ public final class ZeroTrustTunnelWarpConnectorConfigState extends com.pulumi.re
     private @Nullable Output<String> haMode;
 
     /**
-     * @return High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+     * @return High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
      * Available values: &#34;none&#34;, &#34;disabled&#34;, &#34;aws&#34;, &#34;local&#34;.
      * 
      */
@@ -239,7 +239,7 @@ public final class ZeroTrustTunnelWarpConnectorConfigState extends com.pulumi.re
         }
 
         /**
-         * @param haMode High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+         * @param haMode High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
          * Available values: &#34;none&#34;, &#34;disabled&#34;, &#34;aws&#34;, &#34;local&#34;.
          * 
          * @return builder
@@ -251,7 +251,7 @@ public final class ZeroTrustTunnelWarpConnectorConfigState extends com.pulumi.re
         }
 
         /**
-         * @param haMode High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+         * @param haMode High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
          * Available values: &#34;none&#34;, &#34;disabled&#34;, &#34;aws&#34;, &#34;local&#34;.
          * 
          * @return builder

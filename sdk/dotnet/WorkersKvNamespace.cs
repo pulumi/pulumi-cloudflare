@@ -30,6 +30,7 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Title = "My Own Namespace",
     ///         Jurisdiction = "eu",
+    ///         Mode = "instant",
     ///     });
     /// 
     /// });
@@ -56,6 +57,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("jurisdiction")]
         public Output<string?> Jurisdiction { get; private set; } = null!;
+
+        /// <summary>
+        /// The mode of the Workers KV namespace. Specify `Instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `Instant` is the only supported explicit value.
+        /// Available values: "instant".
+        /// </summary>
+        [Output("mode")]
+        public Output<string?> Mode { get; private set; } = null!;
 
         /// <summary>
         /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -129,6 +137,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
+        /// The mode of the Workers KV namespace. Specify `Instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `Instant` is the only supported explicit value.
+        /// Available values: "instant".
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
         /// Human-readable string name for a Workers KV namespace.
         /// </summary>
         [Input("title", required: true)]
@@ -154,6 +169,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }
+
+        /// <summary>
+        /// The mode of the Workers KV namespace. Specify `Instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `Instant` is the only supported explicit value.
+        /// Available values: "instant".
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".

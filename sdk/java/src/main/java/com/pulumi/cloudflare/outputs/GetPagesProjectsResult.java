@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetPagesProjectsResultBuildConfig;
+import com.pulumi.cloudflare.outputs.GetPagesProjectsResultBuildImageAutoUpgrade;
 import com.pulumi.cloudflare.outputs.GetPagesProjectsResultCanonicalDeployment;
 import com.pulumi.cloudflare.outputs.GetPagesProjectsResultDeploymentConfigs;
 import com.pulumi.cloudflare.outputs.GetPagesProjectsResultLatestDeployment;
@@ -22,6 +23,11 @@ public final class GetPagesProjectsResult {
      * 
      */
     private GetPagesProjectsResultBuildConfig buildConfig;
+    /**
+     * @return Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     * 
+     */
+    private GetPagesProjectsResultBuildImageAutoUpgrade buildImageAutoUpgrade;
     /**
      * @return Most recent production deployment of the project.
      * 
@@ -105,6 +111,13 @@ public final class GetPagesProjectsResult {
      */
     public GetPagesProjectsResultBuildConfig buildConfig() {
         return this.buildConfig;
+    }
+    /**
+     * @return Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     * 
+     */
+    public GetPagesProjectsResultBuildImageAutoUpgrade buildImageAutoUpgrade() {
+        return this.buildImageAutoUpgrade;
     }
     /**
      * @return Most recent production deployment of the project.
@@ -222,6 +235,7 @@ public final class GetPagesProjectsResult {
     @CustomType.Builder
     public static final class Builder {
         private GetPagesProjectsResultBuildConfig buildConfig;
+        private GetPagesProjectsResultBuildImageAutoUpgrade buildImageAutoUpgrade;
         private GetPagesProjectsResultCanonicalDeployment canonicalDeployment;
         private String createdOn;
         private GetPagesProjectsResultDeploymentConfigs deploymentConfigs;
@@ -241,6 +255,7 @@ public final class GetPagesProjectsResult {
         public Builder(GetPagesProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.buildConfig = defaults.buildConfig;
+    	      this.buildImageAutoUpgrade = defaults.buildImageAutoUpgrade;
     	      this.canonicalDeployment = defaults.canonicalDeployment;
     	      this.createdOn = defaults.createdOn;
     	      this.deploymentConfigs = defaults.deploymentConfigs;
@@ -264,6 +279,14 @@ public final class GetPagesProjectsResult {
               throw new MissingRequiredPropertyException("GetPagesProjectsResult", "buildConfig");
             }
             this.buildConfig = buildConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder buildImageAutoUpgrade(GetPagesProjectsResultBuildImageAutoUpgrade buildImageAutoUpgrade) {
+            if (buildImageAutoUpgrade == null) {
+              throw new MissingRequiredPropertyException("GetPagesProjectsResult", "buildImageAutoUpgrade");
+            }
+            this.buildImageAutoUpgrade = buildImageAutoUpgrade;
             return this;
         }
         @CustomType.Setter
@@ -392,6 +415,7 @@ public final class GetPagesProjectsResult {
         public GetPagesProjectsResult build() {
             final var _resultValue = new GetPagesProjectsResult();
             _resultValue.buildConfig = buildConfig;
+            _resultValue.buildImageAutoUpgrade = buildImageAutoUpgrade;
             _resultValue.canonicalDeployment = canonicalDeployment;
             _resultValue.createdOn = createdOn;
             _resultValue.deploymentConfigs = deploymentConfigs;

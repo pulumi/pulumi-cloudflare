@@ -125,6 +125,7 @@ class _PagesProjectState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  build_config: pulumi.Input[Optional['PagesProjectBuildConfigArgs']] = None,
+                 build_image_auto_upgrade: pulumi.Input[Optional['PagesProjectBuildImageAutoUpgradeArgs']] = None,
                  canonical_deployment: pulumi.Input[Optional['PagesProjectCanonicalDeploymentArgs']] = None,
                  created_on: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_configs: pulumi.Input[Optional['PagesProjectDeploymentConfigsArgs']] = None,
@@ -144,6 +145,7 @@ class _PagesProjectState:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configs for the project build process.
+        :param pulumi.Input['PagesProjectBuildImageAutoUpgradeArgs'] build_image_auto_upgrade: Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on.
         :param pulumi.Input['PagesProjectCanonicalDeploymentArgs'] canonical_deployment: Most recent production deployment of the project.
         :param pulumi.Input[_builtins.str] created_on: When the project was created.
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configs for deployments in a project.
@@ -163,6 +165,8 @@ class _PagesProjectState:
             pulumi.set(__self__, "account_id", account_id)
         if build_config is not None:
             pulumi.set(__self__, "build_config", build_config)
+        if build_image_auto_upgrade is not None:
+            pulumi.set(__self__, "build_image_auto_upgrade", build_image_auto_upgrade)
         if canonical_deployment is not None:
             pulumi.set(__self__, "canonical_deployment", canonical_deployment)
         if created_on is not None:
@@ -215,6 +219,18 @@ class _PagesProjectState:
     @build_config.setter
     def build_config(self, value: pulumi.Input[Optional['PagesProjectBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="buildImageAutoUpgrade")
+    def build_image_auto_upgrade(self) -> pulumi.Input[Optional['PagesProjectBuildImageAutoUpgradeArgs']]:
+        """
+        Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on.
+        """
+        return pulumi.get(self, "build_image_auto_upgrade")
+
+    @build_image_auto_upgrade.setter
+    def build_image_auto_upgrade(self, value: pulumi.Input[Optional['PagesProjectBuildImageAutoUpgradeArgs']]):
+        pulumi.set(self, "build_image_auto_upgrade", value)
 
     @_builtins.property
     @pulumi.getter(name="canonicalDeployment")
@@ -903,6 +919,7 @@ class PagesProject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'production_branch'")
             __props__.__dict__["production_branch"] = production_branch
             __props__.__dict__["source"] = source
+            __props__.__dict__["build_image_auto_upgrade"] = None
             __props__.__dict__["canonical_deployment"] = None
             __props__.__dict__["created_on"] = None
             __props__.__dict__["domains"] = None
@@ -925,6 +942,7 @@ class PagesProject(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']]] = None,
+            build_image_auto_upgrade: pulumi.Input[Optional[Union['PagesProjectBuildImageAutoUpgradeArgs', 'PagesProjectBuildImageAutoUpgradeArgsDict', 'outputs.PagesProjectBuildImageAutoUpgrade']]] = None,
             canonical_deployment: pulumi.Input[Optional[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict', 'outputs.PagesProjectCanonicalDeployment']]] = None,
             created_on: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']]] = None,
@@ -948,6 +966,7 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict', 'outputs.PagesProjectBuildConfig']] build_config: Configs for the project build process.
+        :param pulumi.Input[Union['PagesProjectBuildImageAutoUpgradeArgs', 'PagesProjectBuildImageAutoUpgradeArgsDict', 'outputs.PagesProjectBuildImageAutoUpgrade']] build_image_auto_upgrade: Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on.
         :param pulumi.Input[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict', 'outputs.PagesProjectCanonicalDeployment']] canonical_deployment: Most recent production deployment of the project.
         :param pulumi.Input[_builtins.str] created_on: When the project was created.
         :param pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict', 'outputs.PagesProjectDeploymentConfigs']] deployment_configs: Configs for deployments in a project.
@@ -969,6 +988,7 @@ class PagesProject(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["build_config"] = build_config
+        __props__.__dict__["build_image_auto_upgrade"] = build_image_auto_upgrade
         __props__.__dict__["canonical_deployment"] = canonical_deployment
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["deployment_configs"] = deployment_configs
@@ -1000,6 +1020,14 @@ class PagesProject(pulumi.CustomResource):
         Configs for the project build process.
         """
         return pulumi.get(self, "build_config")
+
+    @_builtins.property
+    @pulumi.getter(name="buildImageAutoUpgrade")
+    def build_image_auto_upgrade(self) -> pulumi.Output['outputs.PagesProjectBuildImageAutoUpgrade']:
+        """
+        Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on.
+        """
+        return pulumi.get(self, "build_image_auto_upgrade")
 
     @_builtins.property
     @pulumi.getter(name="canonicalDeployment")

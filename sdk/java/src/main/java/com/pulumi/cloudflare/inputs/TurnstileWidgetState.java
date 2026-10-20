@@ -147,7 +147,8 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      * 
      */
@@ -155,7 +156,8 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> filter;
 
     /**
-     * @return Filter widgets by field using case-insensitive substring matching.
+     * @return Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      * 
      */
@@ -564,7 +566,8 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * @param filter Filter widgets by field. The `name` field uses case-insensitive
+         * substring matching; `sitekey` uses exact matching.
          * Format: `field:value`
          * 
          * @return builder
@@ -576,7 +579,8 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filter Filter widgets by field using case-insensitive substring matching.
+         * @param filter Filter widgets by field. The `name` field uses case-insensitive
+         * substring matching; `sitekey` uses exact matching.
          * Format: `field:value`
          * 
          * @return builder

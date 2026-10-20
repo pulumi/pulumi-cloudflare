@@ -13,6 +13,2713 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetPagesProjectLatestDeploymentDeploymentTrigger struct {
+	// Additional info about the trigger.
+	Metadata GetPagesProjectLatestDeploymentDeploymentTriggerMetadata `pulumi:"metadata"`
+	// What caused the deployment.
+	// Available values: "github:push", "ad*hoc", "deploy*hook".
+	Type string `pulumi:"type"`
+}
+
+// GetPagesProjectLatestDeploymentDeploymentTriggerInput is an input type that accepts GetPagesProjectLatestDeploymentDeploymentTriggerArgs and GetPagesProjectLatestDeploymentDeploymentTriggerOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentDeploymentTriggerInput` via:
+//
+//	GetPagesProjectLatestDeploymentDeploymentTriggerArgs{...}
+type GetPagesProjectLatestDeploymentDeploymentTriggerInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentDeploymentTriggerOutput() GetPagesProjectLatestDeploymentDeploymentTriggerOutput
+	ToGetPagesProjectLatestDeploymentDeploymentTriggerOutputWithContext(context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerOutput
+}
+
+type GetPagesProjectLatestDeploymentDeploymentTriggerArgs struct {
+	// Additional info about the trigger.
+	Metadata GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput `pulumi:"metadata"`
+	// What caused the deployment.
+	// Available values: "github:push", "ad*hoc", "deploy*hook".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPagesProjectLatestDeploymentDeploymentTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTrigger)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentDeploymentTriggerArgs) ToGetPagesProjectLatestDeploymentDeploymentTriggerOutput() GetPagesProjectLatestDeploymentDeploymentTriggerOutput {
+	return i.ToGetPagesProjectLatestDeploymentDeploymentTriggerOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentDeploymentTriggerArgs) ToGetPagesProjectLatestDeploymentDeploymentTriggerOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentDeploymentTriggerOutput)
+}
+
+type GetPagesProjectLatestDeploymentDeploymentTriggerOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentDeploymentTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTrigger)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerOutput) ToGetPagesProjectLatestDeploymentDeploymentTriggerOutput() GetPagesProjectLatestDeploymentDeploymentTriggerOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerOutput) ToGetPagesProjectLatestDeploymentDeploymentTriggerOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerOutput {
+	return o
+}
+
+// Additional info about the trigger.
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerOutput) Metadata() GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTrigger) GetPagesProjectLatestDeploymentDeploymentTriggerMetadata {
+		return v.Metadata
+	}).(GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput)
+}
+
+// What caused the deployment.
+// Available values: "github:push", "ad*hoc", "deploy*hook".
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTrigger) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectLatestDeploymentDeploymentTriggerMetadata struct {
+	// Where the trigger happened.
+	Branch string `pulumi:"branch"`
+	// Whether the deployment trigger commit was dirty.
+	CommitDirty bool `pulumi:"commitDirty"`
+	// Hash of the deployment trigger commit.
+	CommitHash string `pulumi:"commitHash"`
+	// Message of the deployment trigger commit.
+	CommitMessage string `pulumi:"commitMessage"`
+}
+
+// GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput is an input type that accepts GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs and GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput` via:
+//
+//	GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs{...}
+type GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput
+	ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutputWithContext(context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput
+}
+
+type GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs struct {
+	// Where the trigger happened.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Whether the deployment trigger commit was dirty.
+	CommitDirty pulumi.BoolInput `pulumi:"commitDirty"`
+	// Hash of the deployment trigger commit.
+	CommitHash pulumi.StringInput `pulumi:"commitHash"`
+	// Message of the deployment trigger commit.
+	CommitMessage pulumi.StringInput `pulumi:"commitMessage"`
+}
+
+func (GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTriggerMetadata)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs) ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
+	return i.ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs) ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput)
+}
+
+type GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTriggerMetadata)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
+	return o
+}
+
+// Where the trigger happened.
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTriggerMetadata) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Whether the deployment trigger commit was dirty.
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) CommitDirty() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTriggerMetadata) bool { return v.CommitDirty }).(pulumi.BoolOutput)
+}
+
+// Hash of the deployment trigger commit.
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) CommitHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTriggerMetadata) string { return v.CommitHash }).(pulumi.StringOutput)
+}
+
+// Message of the deployment trigger commit.
+func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) CommitMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTriggerMetadata) string { return v.CommitMessage }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectLatestDeploymentEnvVars struct {
+	// Available values: "plain*text", "secret*text".
+	Type string `pulumi:"type"`
+	// Environment variable value.
+	Value string `pulumi:"value"`
+}
+
+// GetPagesProjectLatestDeploymentEnvVarsInput is an input type that accepts GetPagesProjectLatestDeploymentEnvVarsArgs and GetPagesProjectLatestDeploymentEnvVarsOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentEnvVarsInput` via:
+//
+//	GetPagesProjectLatestDeploymentEnvVarsArgs{...}
+type GetPagesProjectLatestDeploymentEnvVarsInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentEnvVarsOutput() GetPagesProjectLatestDeploymentEnvVarsOutput
+	ToGetPagesProjectLatestDeploymentEnvVarsOutputWithContext(context.Context) GetPagesProjectLatestDeploymentEnvVarsOutput
+}
+
+type GetPagesProjectLatestDeploymentEnvVarsArgs struct {
+	// Available values: "plain*text", "secret*text".
+	Type pulumi.StringInput `pulumi:"type"`
+	// Environment variable value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetPagesProjectLatestDeploymentEnvVarsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentEnvVars)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentEnvVarsArgs) ToGetPagesProjectLatestDeploymentEnvVarsOutput() GetPagesProjectLatestDeploymentEnvVarsOutput {
+	return i.ToGetPagesProjectLatestDeploymentEnvVarsOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentEnvVarsArgs) ToGetPagesProjectLatestDeploymentEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentEnvVarsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentEnvVarsOutput)
+}
+
+// GetPagesProjectLatestDeploymentEnvVarsMapInput is an input type that accepts GetPagesProjectLatestDeploymentEnvVarsMap and GetPagesProjectLatestDeploymentEnvVarsMapOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentEnvVarsMapInput` via:
+//
+//	GetPagesProjectLatestDeploymentEnvVarsMap{ "key": GetPagesProjectLatestDeploymentEnvVarsArgs{...} }
+type GetPagesProjectLatestDeploymentEnvVarsMapInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentEnvVarsMapOutput() GetPagesProjectLatestDeploymentEnvVarsMapOutput
+	ToGetPagesProjectLatestDeploymentEnvVarsMapOutputWithContext(context.Context) GetPagesProjectLatestDeploymentEnvVarsMapOutput
+}
+
+type GetPagesProjectLatestDeploymentEnvVarsMap map[string]GetPagesProjectLatestDeploymentEnvVarsInput
+
+func (GetPagesProjectLatestDeploymentEnvVarsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetPagesProjectLatestDeploymentEnvVars)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentEnvVarsMap) ToGetPagesProjectLatestDeploymentEnvVarsMapOutput() GetPagesProjectLatestDeploymentEnvVarsMapOutput {
+	return i.ToGetPagesProjectLatestDeploymentEnvVarsMapOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentEnvVarsMap) ToGetPagesProjectLatestDeploymentEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentEnvVarsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentEnvVarsMapOutput)
+}
+
+type GetPagesProjectLatestDeploymentEnvVarsOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentEnvVarsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentEnvVars)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentEnvVarsOutput) ToGetPagesProjectLatestDeploymentEnvVarsOutput() GetPagesProjectLatestDeploymentEnvVarsOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentEnvVarsOutput) ToGetPagesProjectLatestDeploymentEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentEnvVarsOutput {
+	return o
+}
+
+// Available values: "plain*text", "secret*text".
+func (o GetPagesProjectLatestDeploymentEnvVarsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentEnvVars) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Environment variable value.
+func (o GetPagesProjectLatestDeploymentEnvVarsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentEnvVars) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectLatestDeploymentEnvVarsMapOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentEnvVarsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetPagesProjectLatestDeploymentEnvVars)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentEnvVarsMapOutput) ToGetPagesProjectLatestDeploymentEnvVarsMapOutput() GetPagesProjectLatestDeploymentEnvVarsMapOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentEnvVarsMapOutput) ToGetPagesProjectLatestDeploymentEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentEnvVarsMapOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentEnvVarsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectLatestDeploymentEnvVarsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectLatestDeploymentEnvVars {
+		return vs[0].(map[string]GetPagesProjectLatestDeploymentEnvVars)[vs[1].(string)]
+	}).(GetPagesProjectLatestDeploymentEnvVarsOutput)
+}
+
+type GetPagesProjectLatestDeploymentLatestStage struct {
+	// When the stage ended.
+	EndedOn string `pulumi:"endedOn"`
+	// The current build stage.
+	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+	Name string `pulumi:"name"`
+	// When the stage started.
+	StartedOn string `pulumi:"startedOn"`
+	// State of the current stage.
+	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+	Status string `pulumi:"status"`
+}
+
+// GetPagesProjectLatestDeploymentLatestStageInput is an input type that accepts GetPagesProjectLatestDeploymentLatestStageArgs and GetPagesProjectLatestDeploymentLatestStageOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentLatestStageInput` via:
+//
+//	GetPagesProjectLatestDeploymentLatestStageArgs{...}
+type GetPagesProjectLatestDeploymentLatestStageInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentLatestStageOutput() GetPagesProjectLatestDeploymentLatestStageOutput
+	ToGetPagesProjectLatestDeploymentLatestStageOutputWithContext(context.Context) GetPagesProjectLatestDeploymentLatestStageOutput
+}
+
+type GetPagesProjectLatestDeploymentLatestStageArgs struct {
+	// When the stage ended.
+	EndedOn pulumi.StringInput `pulumi:"endedOn"`
+	// The current build stage.
+	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+	Name pulumi.StringInput `pulumi:"name"`
+	// When the stage started.
+	StartedOn pulumi.StringInput `pulumi:"startedOn"`
+	// State of the current stage.
+	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetPagesProjectLatestDeploymentLatestStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentLatestStage)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentLatestStageArgs) ToGetPagesProjectLatestDeploymentLatestStageOutput() GetPagesProjectLatestDeploymentLatestStageOutput {
+	return i.ToGetPagesProjectLatestDeploymentLatestStageOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentLatestStageArgs) ToGetPagesProjectLatestDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentLatestStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentLatestStageOutput)
+}
+
+type GetPagesProjectLatestDeploymentLatestStageOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentLatestStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentLatestStage)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentLatestStageOutput) ToGetPagesProjectLatestDeploymentLatestStageOutput() GetPagesProjectLatestDeploymentLatestStageOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentLatestStageOutput) ToGetPagesProjectLatestDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentLatestStageOutput {
+	return o
+}
+
+// When the stage ended.
+func (o GetPagesProjectLatestDeploymentLatestStageOutput) EndedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentLatestStage) string { return v.EndedOn }).(pulumi.StringOutput)
+}
+
+// The current build stage.
+// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+func (o GetPagesProjectLatestDeploymentLatestStageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentLatestStage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// When the stage started.
+func (o GetPagesProjectLatestDeploymentLatestStageOutput) StartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentLatestStage) string { return v.StartedOn }).(pulumi.StringOutput)
+}
+
+// State of the current stage.
+// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+func (o GetPagesProjectLatestDeploymentLatestStageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentLatestStage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectLatestDeploymentSource struct {
+	Config GetPagesProjectLatestDeploymentSourceConfig `pulumi:"config"`
+	// The source control management provider.
+	// Available values: "github", "gitlab".
+	Type string `pulumi:"type"`
+}
+
+// GetPagesProjectLatestDeploymentSourceInput is an input type that accepts GetPagesProjectLatestDeploymentSourceArgs and GetPagesProjectLatestDeploymentSourceOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentSourceInput` via:
+//
+//	GetPagesProjectLatestDeploymentSourceArgs{...}
+type GetPagesProjectLatestDeploymentSourceInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentSourceOutput() GetPagesProjectLatestDeploymentSourceOutput
+	ToGetPagesProjectLatestDeploymentSourceOutputWithContext(context.Context) GetPagesProjectLatestDeploymentSourceOutput
+}
+
+type GetPagesProjectLatestDeploymentSourceArgs struct {
+	Config GetPagesProjectLatestDeploymentSourceConfigInput `pulumi:"config"`
+	// The source control management provider.
+	// Available values: "github", "gitlab".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPagesProjectLatestDeploymentSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentSource)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentSourceArgs) ToGetPagesProjectLatestDeploymentSourceOutput() GetPagesProjectLatestDeploymentSourceOutput {
+	return i.ToGetPagesProjectLatestDeploymentSourceOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentSourceArgs) ToGetPagesProjectLatestDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentSourceOutput)
+}
+
+type GetPagesProjectLatestDeploymentSourceOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentSource)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentSourceOutput) ToGetPagesProjectLatestDeploymentSourceOutput() GetPagesProjectLatestDeploymentSourceOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentSourceOutput) ToGetPagesProjectLatestDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentSourceOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentSourceOutput) Config() GetPagesProjectLatestDeploymentSourceConfigOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSource) GetPagesProjectLatestDeploymentSourceConfig {
+		return v.Config
+	}).(GetPagesProjectLatestDeploymentSourceConfigOutput)
+}
+
+// The source control management provider.
+// Available values: "github", "gitlab".
+func (o GetPagesProjectLatestDeploymentSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectLatestDeploymentSourceConfig struct {
+	// Whether to enable automatic deployments when pushing to the source repository.
+	// When disabled, no deployments (production or preview) will be triggered automatically.
+	//
+	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+	DeploymentsEnabled bool `pulumi:"deploymentsEnabled"`
+	// The owner of the repository.
+	Owner string `pulumi:"owner"`
+	// The owner ID of the repository.
+	OwnerId string `pulumi:"ownerId"`
+	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+	PathExcludes []string `pulumi:"pathExcludes"`
+	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+	PathIncludes []string `pulumi:"pathIncludes"`
+	// Whether to enable PR comments.
+	PrCommentsEnabled bool `pulumi:"prCommentsEnabled"`
+	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchExcludes []string `pulumi:"previewBranchExcludes"`
+	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchIncludes []string `pulumi:"previewBranchIncludes"`
+	// Controls whether commits to preview branches trigger a preview deployment.
+	// Available values: "all", "none", "custom".
+	PreviewDeploymentSetting string `pulumi:"previewDeploymentSetting"`
+	// The production branch of the repository.
+	ProductionBranch string `pulumi:"productionBranch"`
+	// Whether to trigger a production deployment on commits to the production branch.
+	ProductionDeploymentsEnabled bool `pulumi:"productionDeploymentsEnabled"`
+	// The ID of the repository.
+	RepoId string `pulumi:"repoId"`
+	// The name of the repository.
+	RepoName string `pulumi:"repoName"`
+}
+
+// GetPagesProjectLatestDeploymentSourceConfigInput is an input type that accepts GetPagesProjectLatestDeploymentSourceConfigArgs and GetPagesProjectLatestDeploymentSourceConfigOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentSourceConfigInput` via:
+//
+//	GetPagesProjectLatestDeploymentSourceConfigArgs{...}
+type GetPagesProjectLatestDeploymentSourceConfigInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentSourceConfigOutput() GetPagesProjectLatestDeploymentSourceConfigOutput
+	ToGetPagesProjectLatestDeploymentSourceConfigOutputWithContext(context.Context) GetPagesProjectLatestDeploymentSourceConfigOutput
+}
+
+type GetPagesProjectLatestDeploymentSourceConfigArgs struct {
+	// Whether to enable automatic deployments when pushing to the source repository.
+	// When disabled, no deployments (production or preview) will be triggered automatically.
+	//
+	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+	DeploymentsEnabled pulumi.BoolInput `pulumi:"deploymentsEnabled"`
+	// The owner of the repository.
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// The owner ID of the repository.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+	PathExcludes pulumi.StringArrayInput `pulumi:"pathExcludes"`
+	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+	PathIncludes pulumi.StringArrayInput `pulumi:"pathIncludes"`
+	// Whether to enable PR comments.
+	PrCommentsEnabled pulumi.BoolInput `pulumi:"prCommentsEnabled"`
+	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchExcludes pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
+	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchIncludes pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
+	// Controls whether commits to preview branches trigger a preview deployment.
+	// Available values: "all", "none", "custom".
+	PreviewDeploymentSetting pulumi.StringInput `pulumi:"previewDeploymentSetting"`
+	// The production branch of the repository.
+	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
+	// Whether to trigger a production deployment on commits to the production branch.
+	ProductionDeploymentsEnabled pulumi.BoolInput `pulumi:"productionDeploymentsEnabled"`
+	// The ID of the repository.
+	RepoId pulumi.StringInput `pulumi:"repoId"`
+	// The name of the repository.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+}
+
+func (GetPagesProjectLatestDeploymentSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentSourceConfig)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentSourceConfigArgs) ToGetPagesProjectLatestDeploymentSourceConfigOutput() GetPagesProjectLatestDeploymentSourceConfigOutput {
+	return i.ToGetPagesProjectLatestDeploymentSourceConfigOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentSourceConfigArgs) ToGetPagesProjectLatestDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentSourceConfigOutput)
+}
+
+type GetPagesProjectLatestDeploymentSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentSourceConfig)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) ToGetPagesProjectLatestDeploymentSourceConfigOutput() GetPagesProjectLatestDeploymentSourceConfigOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) ToGetPagesProjectLatestDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentSourceConfigOutput {
+	return o
+}
+
+// Whether to enable automatic deployments when pushing to the source repository.
+// When disabled, no deployments (production or preview) will be triggered automatically.
+//
+// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) DeploymentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) bool { return v.DeploymentsEnabled }).(pulumi.BoolOutput)
+}
+
+// The owner of the repository.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The owner ID of the repository.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PathExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) []string { return v.PathExcludes }).(pulumi.StringArrayOutput)
+}
+
+// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PathIncludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) []string { return v.PathIncludes }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable PR comments.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PrCommentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) bool { return v.PrCommentsEnabled }).(pulumi.BoolOutput)
+}
+
+// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) []string { return v.PreviewBranchExcludes }).(pulumi.StringArrayOutput)
+}
+
+// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether commits to preview branches trigger a preview deployment.
+// Available values: "all", "none", "custom".
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.PreviewDeploymentSetting }).(pulumi.StringOutput)
+}
+
+// The production branch of the repository.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) ProductionBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.ProductionBranch }).(pulumi.StringOutput)
+}
+
+// Whether to trigger a production deployment on commits to the production branch.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) ProductionDeploymentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) bool { return v.ProductionDeploymentsEnabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the repository.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) RepoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.RepoId }).(pulumi.StringOutput)
+}
+
+// The name of the repository.
+func (o GetPagesProjectLatestDeploymentSourceConfigOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectLatestDeploymentStage struct {
+	// When the stage ended.
+	EndedOn string `pulumi:"endedOn"`
+	// The current build stage.
+	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+	Name string `pulumi:"name"`
+	// When the stage started.
+	StartedOn string `pulumi:"startedOn"`
+	// State of the current stage.
+	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+	Status string `pulumi:"status"`
+}
+
+// GetPagesProjectLatestDeploymentStageInput is an input type that accepts GetPagesProjectLatestDeploymentStageArgs and GetPagesProjectLatestDeploymentStageOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentStageInput` via:
+//
+//	GetPagesProjectLatestDeploymentStageArgs{...}
+type GetPagesProjectLatestDeploymentStageInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentStageOutput() GetPagesProjectLatestDeploymentStageOutput
+	ToGetPagesProjectLatestDeploymentStageOutputWithContext(context.Context) GetPagesProjectLatestDeploymentStageOutput
+}
+
+type GetPagesProjectLatestDeploymentStageArgs struct {
+	// When the stage ended.
+	EndedOn pulumi.StringInput `pulumi:"endedOn"`
+	// The current build stage.
+	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+	Name pulumi.StringInput `pulumi:"name"`
+	// When the stage started.
+	StartedOn pulumi.StringInput `pulumi:"startedOn"`
+	// State of the current stage.
+	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetPagesProjectLatestDeploymentStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentStage)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentStageArgs) ToGetPagesProjectLatestDeploymentStageOutput() GetPagesProjectLatestDeploymentStageOutput {
+	return i.ToGetPagesProjectLatestDeploymentStageOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentStageArgs) ToGetPagesProjectLatestDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentStageOutput)
+}
+
+// GetPagesProjectLatestDeploymentStageArrayInput is an input type that accepts GetPagesProjectLatestDeploymentStageArray and GetPagesProjectLatestDeploymentStageArrayOutput values.
+// You can construct a concrete instance of `GetPagesProjectLatestDeploymentStageArrayInput` via:
+//
+//	GetPagesProjectLatestDeploymentStageArray{ GetPagesProjectLatestDeploymentStageArgs{...} }
+type GetPagesProjectLatestDeploymentStageArrayInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectLatestDeploymentStageArrayOutput() GetPagesProjectLatestDeploymentStageArrayOutput
+	ToGetPagesProjectLatestDeploymentStageArrayOutputWithContext(context.Context) GetPagesProjectLatestDeploymentStageArrayOutput
+}
+
+type GetPagesProjectLatestDeploymentStageArray []GetPagesProjectLatestDeploymentStageInput
+
+func (GetPagesProjectLatestDeploymentStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesProjectLatestDeploymentStage)(nil)).Elem()
+}
+
+func (i GetPagesProjectLatestDeploymentStageArray) ToGetPagesProjectLatestDeploymentStageArrayOutput() GetPagesProjectLatestDeploymentStageArrayOutput {
+	return i.ToGetPagesProjectLatestDeploymentStageArrayOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectLatestDeploymentStageArray) ToGetPagesProjectLatestDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentStageArrayOutput)
+}
+
+type GetPagesProjectLatestDeploymentStageOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectLatestDeploymentStage)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentStageOutput) ToGetPagesProjectLatestDeploymentStageOutput() GetPagesProjectLatestDeploymentStageOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentStageOutput) ToGetPagesProjectLatestDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentStageOutput {
+	return o
+}
+
+// When the stage ended.
+func (o GetPagesProjectLatestDeploymentStageOutput) EndedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentStage) string { return v.EndedOn }).(pulumi.StringOutput)
+}
+
+// The current build stage.
+// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+func (o GetPagesProjectLatestDeploymentStageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentStage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// When the stage started.
+func (o GetPagesProjectLatestDeploymentStageOutput) StartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentStage) string { return v.StartedOn }).(pulumi.StringOutput)
+}
+
+// State of the current stage.
+// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+func (o GetPagesProjectLatestDeploymentStageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectLatestDeploymentStage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectLatestDeploymentStageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectLatestDeploymentStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesProjectLatestDeploymentStage)(nil)).Elem()
+}
+
+func (o GetPagesProjectLatestDeploymentStageArrayOutput) ToGetPagesProjectLatestDeploymentStageArrayOutput() GetPagesProjectLatestDeploymentStageArrayOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentStageArrayOutput) ToGetPagesProjectLatestDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentStageArrayOutput {
+	return o
+}
+
+func (o GetPagesProjectLatestDeploymentStageArrayOutput) Index(i pulumi.IntInput) GetPagesProjectLatestDeploymentStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesProjectLatestDeploymentStage {
+		return vs[0].([]GetPagesProjectLatestDeploymentStage)[vs[1].(int)]
+	}).(GetPagesProjectLatestDeploymentStageOutput)
+}
+
+type GetPagesProjectSource struct {
+	Config GetPagesProjectSourceConfig `pulumi:"config"`
+	// The source control management provider.
+	// Available values: "github", "gitlab".
+	Type string `pulumi:"type"`
+}
+
+// GetPagesProjectSourceInput is an input type that accepts GetPagesProjectSourceArgs and GetPagesProjectSourceOutput values.
+// You can construct a concrete instance of `GetPagesProjectSourceInput` via:
+//
+//	GetPagesProjectSourceArgs{...}
+type GetPagesProjectSourceInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectSourceOutput() GetPagesProjectSourceOutput
+	ToGetPagesProjectSourceOutputWithContext(context.Context) GetPagesProjectSourceOutput
+}
+
+type GetPagesProjectSourceArgs struct {
+	Config GetPagesProjectSourceConfigInput `pulumi:"config"`
+	// The source control management provider.
+	// Available values: "github", "gitlab".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPagesProjectSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectSource)(nil)).Elem()
+}
+
+func (i GetPagesProjectSourceArgs) ToGetPagesProjectSourceOutput() GetPagesProjectSourceOutput {
+	return i.ToGetPagesProjectSourceOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectSourceArgs) ToGetPagesProjectSourceOutputWithContext(ctx context.Context) GetPagesProjectSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectSourceOutput)
+}
+
+type GetPagesProjectSourceOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectSource)(nil)).Elem()
+}
+
+func (o GetPagesProjectSourceOutput) ToGetPagesProjectSourceOutput() GetPagesProjectSourceOutput {
+	return o
+}
+
+func (o GetPagesProjectSourceOutput) ToGetPagesProjectSourceOutputWithContext(ctx context.Context) GetPagesProjectSourceOutput {
+	return o
+}
+
+func (o GetPagesProjectSourceOutput) Config() GetPagesProjectSourceConfigOutput {
+	return o.ApplyT(func(v GetPagesProjectSource) GetPagesProjectSourceConfig { return v.Config }).(GetPagesProjectSourceConfigOutput)
+}
+
+// The source control management provider.
+// Available values: "github", "gitlab".
+func (o GetPagesProjectSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectSourceConfig struct {
+	// Whether to enable automatic deployments when pushing to the source repository.
+	// When disabled, no deployments (production or preview) will be triggered automatically.
+	//
+	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+	DeploymentsEnabled bool `pulumi:"deploymentsEnabled"`
+	// The owner of the repository.
+	Owner string `pulumi:"owner"`
+	// The owner ID of the repository.
+	OwnerId string `pulumi:"ownerId"`
+	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+	PathExcludes []string `pulumi:"pathExcludes"`
+	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+	PathIncludes []string `pulumi:"pathIncludes"`
+	// Whether to enable PR comments.
+	PrCommentsEnabled bool `pulumi:"prCommentsEnabled"`
+	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchExcludes []string `pulumi:"previewBranchExcludes"`
+	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchIncludes []string `pulumi:"previewBranchIncludes"`
+	// Controls whether commits to preview branches trigger a preview deployment.
+	// Available values: "all", "none", "custom".
+	PreviewDeploymentSetting string `pulumi:"previewDeploymentSetting"`
+	// The production branch of the repository.
+	ProductionBranch string `pulumi:"productionBranch"`
+	// Whether to trigger a production deployment on commits to the production branch.
+	ProductionDeploymentsEnabled bool `pulumi:"productionDeploymentsEnabled"`
+	// The ID of the repository.
+	RepoId string `pulumi:"repoId"`
+	// The name of the repository.
+	RepoName string `pulumi:"repoName"`
+}
+
+// GetPagesProjectSourceConfigInput is an input type that accepts GetPagesProjectSourceConfigArgs and GetPagesProjectSourceConfigOutput values.
+// You can construct a concrete instance of `GetPagesProjectSourceConfigInput` via:
+//
+//	GetPagesProjectSourceConfigArgs{...}
+type GetPagesProjectSourceConfigInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectSourceConfigOutput() GetPagesProjectSourceConfigOutput
+	ToGetPagesProjectSourceConfigOutputWithContext(context.Context) GetPagesProjectSourceConfigOutput
+}
+
+type GetPagesProjectSourceConfigArgs struct {
+	// Whether to enable automatic deployments when pushing to the source repository.
+	// When disabled, no deployments (production or preview) will be triggered automatically.
+	//
+	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+	DeploymentsEnabled pulumi.BoolInput `pulumi:"deploymentsEnabled"`
+	// The owner of the repository.
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// The owner ID of the repository.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+	PathExcludes pulumi.StringArrayInput `pulumi:"pathExcludes"`
+	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+	PathIncludes pulumi.StringArrayInput `pulumi:"pathIncludes"`
+	// Whether to enable PR comments.
+	PrCommentsEnabled pulumi.BoolInput `pulumi:"prCommentsEnabled"`
+	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchExcludes pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
+	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchIncludes pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
+	// Controls whether commits to preview branches trigger a preview deployment.
+	// Available values: "all", "none", "custom".
+	PreviewDeploymentSetting pulumi.StringInput `pulumi:"previewDeploymentSetting"`
+	// The production branch of the repository.
+	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
+	// Whether to trigger a production deployment on commits to the production branch.
+	ProductionDeploymentsEnabled pulumi.BoolInput `pulumi:"productionDeploymentsEnabled"`
+	// The ID of the repository.
+	RepoId pulumi.StringInput `pulumi:"repoId"`
+	// The name of the repository.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+}
+
+func (GetPagesProjectSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectSourceConfig)(nil)).Elem()
+}
+
+func (i GetPagesProjectSourceConfigArgs) ToGetPagesProjectSourceConfigOutput() GetPagesProjectSourceConfigOutput {
+	return i.ToGetPagesProjectSourceConfigOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectSourceConfigArgs) ToGetPagesProjectSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectSourceConfigOutput)
+}
+
+type GetPagesProjectSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectSourceConfig)(nil)).Elem()
+}
+
+func (o GetPagesProjectSourceConfigOutput) ToGetPagesProjectSourceConfigOutput() GetPagesProjectSourceConfigOutput {
+	return o
+}
+
+func (o GetPagesProjectSourceConfigOutput) ToGetPagesProjectSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectSourceConfigOutput {
+	return o
+}
+
+// Whether to enable automatic deployments when pushing to the source repository.
+// When disabled, no deployments (production or preview) will be triggered automatically.
+//
+// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+func (o GetPagesProjectSourceConfigOutput) DeploymentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) bool { return v.DeploymentsEnabled }).(pulumi.BoolOutput)
+}
+
+// The owner of the repository.
+func (o GetPagesProjectSourceConfigOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The owner ID of the repository.
+func (o GetPagesProjectSourceConfigOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+func (o GetPagesProjectSourceConfigOutput) PathExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) []string { return v.PathExcludes }).(pulumi.StringArrayOutput)
+}
+
+// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+func (o GetPagesProjectSourceConfigOutput) PathIncludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) []string { return v.PathIncludes }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable PR comments.
+func (o GetPagesProjectSourceConfigOutput) PrCommentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) bool { return v.PrCommentsEnabled }).(pulumi.BoolOutput)
+}
+
+// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+func (o GetPagesProjectSourceConfigOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) []string { return v.PreviewBranchExcludes }).(pulumi.StringArrayOutput)
+}
+
+// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+func (o GetPagesProjectSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether commits to preview branches trigger a preview deployment.
+// Available values: "all", "none", "custom".
+func (o GetPagesProjectSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.PreviewDeploymentSetting }).(pulumi.StringOutput)
+}
+
+// The production branch of the repository.
+func (o GetPagesProjectSourceConfigOutput) ProductionBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.ProductionBranch }).(pulumi.StringOutput)
+}
+
+// Whether to trigger a production deployment on commits to the production branch.
+func (o GetPagesProjectSourceConfigOutput) ProductionDeploymentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) bool { return v.ProductionDeploymentsEnabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the repository.
+func (o GetPagesProjectSourceConfigOutput) RepoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.RepoId }).(pulumi.StringOutput)
+}
+
+// The name of the repository.
+func (o GetPagesProjectSourceConfigOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResult struct {
+	// Configs for the project build process.
+	BuildConfig GetPagesProjectsResultBuildConfig `pulumi:"buildConfig"`
+	// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+	BuildImageAutoUpgrade GetPagesProjectsResultBuildImageAutoUpgrade `pulumi:"buildImageAutoUpgrade"`
+	// Most recent production deployment of the project.
+	CanonicalDeployment GetPagesProjectsResultCanonicalDeployment `pulumi:"canonicalDeployment"`
+	// When the project was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// Configs for deployments in a project.
+	DeploymentConfigs GetPagesProjectsResultDeploymentConfigs `pulumi:"deploymentConfigs"`
+	// A list of associated custom domains for the project.
+	Domains []string `pulumi:"domains"`
+	// Framework the project is using.
+	Framework string `pulumi:"framework"`
+	// Version of the framework the project is using.
+	FrameworkVersion string `pulumi:"frameworkVersion"`
+	// ID of the project.
+	Id string `pulumi:"id"`
+	// Most recent deployment of the project.
+	LatestDeployment GetPagesProjectsResultLatestDeployment `pulumi:"latestDeployment"`
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
+	Name string `pulumi:"name"`
+	// Name of the preview script.
+	PreviewScriptName string `pulumi:"previewScriptName"`
+	// Production branch of the project. Used to identify production deployments.
+	ProductionBranch string `pulumi:"productionBranch"`
+	// Name of the production script.
+	ProductionScriptName string `pulumi:"productionScriptName"`
+	// Configs for the project source control.
+	Source GetPagesProjectsResultSource `pulumi:"source"`
+	// The Cloudflare subdomain associated with the project.
+	Subdomain string `pulumi:"subdomain"`
+	// Whether the project uses functions.
+	UsesFunctions bool `pulumi:"usesFunctions"`
+}
+
+// GetPagesProjectsResultInput is an input type that accepts GetPagesProjectsResultArgs and GetPagesProjectsResultOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultInput` via:
+//
+//	GetPagesProjectsResultArgs{...}
+type GetPagesProjectsResultInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultOutput() GetPagesProjectsResultOutput
+	ToGetPagesProjectsResultOutputWithContext(context.Context) GetPagesProjectsResultOutput
+}
+
+type GetPagesProjectsResultArgs struct {
+	// Configs for the project build process.
+	BuildConfig GetPagesProjectsResultBuildConfigInput `pulumi:"buildConfig"`
+	// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+	BuildImageAutoUpgrade GetPagesProjectsResultBuildImageAutoUpgradeInput `pulumi:"buildImageAutoUpgrade"`
+	// Most recent production deployment of the project.
+	CanonicalDeployment GetPagesProjectsResultCanonicalDeploymentInput `pulumi:"canonicalDeployment"`
+	// When the project was created.
+	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
+	// Configs for deployments in a project.
+	DeploymentConfigs GetPagesProjectsResultDeploymentConfigsInput `pulumi:"deploymentConfigs"`
+	// A list of associated custom domains for the project.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Framework the project is using.
+	Framework pulumi.StringInput `pulumi:"framework"`
+	// Version of the framework the project is using.
+	FrameworkVersion pulumi.StringInput `pulumi:"frameworkVersion"`
+	// ID of the project.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Most recent deployment of the project.
+	LatestDeployment GetPagesProjectsResultLatestDeploymentInput `pulumi:"latestDeployment"`
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the preview script.
+	PreviewScriptName pulumi.StringInput `pulumi:"previewScriptName"`
+	// Production branch of the project. Used to identify production deployments.
+	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
+	// Name of the production script.
+	ProductionScriptName pulumi.StringInput `pulumi:"productionScriptName"`
+	// Configs for the project source control.
+	Source GetPagesProjectsResultSourceInput `pulumi:"source"`
+	// The Cloudflare subdomain associated with the project.
+	Subdomain pulumi.StringInput `pulumi:"subdomain"`
+	// Whether the project uses functions.
+	UsesFunctions pulumi.BoolInput `pulumi:"usesFunctions"`
+}
+
+func (GetPagesProjectsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResult)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultArgs) ToGetPagesProjectsResultOutput() GetPagesProjectsResultOutput {
+	return i.ToGetPagesProjectsResultOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultArgs) ToGetPagesProjectsResultOutputWithContext(ctx context.Context) GetPagesProjectsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultOutput)
+}
+
+// GetPagesProjectsResultArrayInput is an input type that accepts GetPagesProjectsResultArray and GetPagesProjectsResultArrayOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultArrayInput` via:
+//
+//	GetPagesProjectsResultArray{ GetPagesProjectsResultArgs{...} }
+type GetPagesProjectsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultArrayOutput() GetPagesProjectsResultArrayOutput
+	ToGetPagesProjectsResultArrayOutputWithContext(context.Context) GetPagesProjectsResultArrayOutput
+}
+
+type GetPagesProjectsResultArray []GetPagesProjectsResultInput
+
+func (GetPagesProjectsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesProjectsResult)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultArray) ToGetPagesProjectsResultArrayOutput() GetPagesProjectsResultArrayOutput {
+	return i.ToGetPagesProjectsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultArray) ToGetPagesProjectsResultArrayOutputWithContext(ctx context.Context) GetPagesProjectsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultArrayOutput)
+}
+
+type GetPagesProjectsResultOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResult)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultOutput) ToGetPagesProjectsResultOutput() GetPagesProjectsResultOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultOutput) ToGetPagesProjectsResultOutputWithContext(ctx context.Context) GetPagesProjectsResultOutput {
+	return o
+}
+
+// Configs for the project build process.
+func (o GetPagesProjectsResultOutput) BuildConfig() GetPagesProjectsResultBuildConfigOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultBuildConfig { return v.BuildConfig }).(GetPagesProjectsResultBuildConfigOutput)
+}
+
+// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+func (o GetPagesProjectsResultOutput) BuildImageAutoUpgrade() GetPagesProjectsResultBuildImageAutoUpgradeOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultBuildImageAutoUpgrade {
+		return v.BuildImageAutoUpgrade
+	}).(GetPagesProjectsResultBuildImageAutoUpgradeOutput)
+}
+
+// Most recent production deployment of the project.
+func (o GetPagesProjectsResultOutput) CanonicalDeployment() GetPagesProjectsResultCanonicalDeploymentOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultCanonicalDeployment { return v.CanonicalDeployment }).(GetPagesProjectsResultCanonicalDeploymentOutput)
+}
+
+// When the project was created.
+func (o GetPagesProjectsResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Configs for deployments in a project.
+func (o GetPagesProjectsResultOutput) DeploymentConfigs() GetPagesProjectsResultDeploymentConfigsOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultDeploymentConfigs { return v.DeploymentConfigs }).(GetPagesProjectsResultDeploymentConfigsOutput)
+}
+
+// A list of associated custom domains for the project.
+func (o GetPagesProjectsResultOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// Framework the project is using.
+func (o GetPagesProjectsResultOutput) Framework() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.Framework }).(pulumi.StringOutput)
+}
+
+// Version of the framework the project is using.
+func (o GetPagesProjectsResultOutput) FrameworkVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.FrameworkVersion }).(pulumi.StringOutput)
+}
+
+// ID of the project.
+func (o GetPagesProjectsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Most recent deployment of the project.
+func (o GetPagesProjectsResultOutput) LatestDeployment() GetPagesProjectsResultLatestDeploymentOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultLatestDeployment { return v.LatestDeployment }).(GetPagesProjectsResultLatestDeploymentOutput)
+}
+
+// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
+func (o GetPagesProjectsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the preview script.
+func (o GetPagesProjectsResultOutput) PreviewScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.PreviewScriptName }).(pulumi.StringOutput)
+}
+
+// Production branch of the project. Used to identify production deployments.
+func (o GetPagesProjectsResultOutput) ProductionBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.ProductionBranch }).(pulumi.StringOutput)
+}
+
+// Name of the production script.
+func (o GetPagesProjectsResultOutput) ProductionScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.ProductionScriptName }).(pulumi.StringOutput)
+}
+
+// Configs for the project source control.
+func (o GetPagesProjectsResultOutput) Source() GetPagesProjectsResultSourceOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultSource { return v.Source }).(GetPagesProjectsResultSourceOutput)
+}
+
+// The Cloudflare subdomain associated with the project.
+func (o GetPagesProjectsResultOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+// Whether the project uses functions.
+func (o GetPagesProjectsResultOutput) UsesFunctions() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResult) bool { return v.UsesFunctions }).(pulumi.BoolOutput)
+}
+
+type GetPagesProjectsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesProjectsResult)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultArrayOutput) ToGetPagesProjectsResultArrayOutput() GetPagesProjectsResultArrayOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultArrayOutput) ToGetPagesProjectsResultArrayOutputWithContext(ctx context.Context) GetPagesProjectsResultArrayOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultArrayOutput) Index(i pulumi.IntInput) GetPagesProjectsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesProjectsResult {
+		return vs[0].([]GetPagesProjectsResult)[vs[1].(int)]
+	}).(GetPagesProjectsResultOutput)
+}
+
+type GetPagesProjectsResultBuildConfig struct {
+	// Enable build caching for the project.
+	BuildCaching bool `pulumi:"buildCaching"`
+	// Command used to build project.
+	BuildCommand string `pulumi:"buildCommand"`
+	// Assets output directory of the build.
+	DestinationDir string `pulumi:"destinationDir"`
+	// Directory to run the command.
+	RootDir string `pulumi:"rootDir"`
+	// The classifying tag for analytics.
+	WebAnalyticsTag string `pulumi:"webAnalyticsTag"`
+	// The auth token for analytics.
+	WebAnalyticsToken string `pulumi:"webAnalyticsToken"`
+}
+
+// GetPagesProjectsResultBuildConfigInput is an input type that accepts GetPagesProjectsResultBuildConfigArgs and GetPagesProjectsResultBuildConfigOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultBuildConfigInput` via:
+//
+//	GetPagesProjectsResultBuildConfigArgs{...}
+type GetPagesProjectsResultBuildConfigInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultBuildConfigOutput() GetPagesProjectsResultBuildConfigOutput
+	ToGetPagesProjectsResultBuildConfigOutputWithContext(context.Context) GetPagesProjectsResultBuildConfigOutput
+}
+
+type GetPagesProjectsResultBuildConfigArgs struct {
+	// Enable build caching for the project.
+	BuildCaching pulumi.BoolInput `pulumi:"buildCaching"`
+	// Command used to build project.
+	BuildCommand pulumi.StringInput `pulumi:"buildCommand"`
+	// Assets output directory of the build.
+	DestinationDir pulumi.StringInput `pulumi:"destinationDir"`
+	// Directory to run the command.
+	RootDir pulumi.StringInput `pulumi:"rootDir"`
+	// The classifying tag for analytics.
+	WebAnalyticsTag pulumi.StringInput `pulumi:"webAnalyticsTag"`
+	// The auth token for analytics.
+	WebAnalyticsToken pulumi.StringInput `pulumi:"webAnalyticsToken"`
+}
+
+func (GetPagesProjectsResultBuildConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultBuildConfig)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultBuildConfigArgs) ToGetPagesProjectsResultBuildConfigOutput() GetPagesProjectsResultBuildConfigOutput {
+	return i.ToGetPagesProjectsResultBuildConfigOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultBuildConfigArgs) ToGetPagesProjectsResultBuildConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultBuildConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultBuildConfigOutput)
+}
+
+type GetPagesProjectsResultBuildConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultBuildConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultBuildConfig)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultBuildConfigOutput) ToGetPagesProjectsResultBuildConfigOutput() GetPagesProjectsResultBuildConfigOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultBuildConfigOutput) ToGetPagesProjectsResultBuildConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultBuildConfigOutput {
+	return o
+}
+
+// Enable build caching for the project.
+func (o GetPagesProjectsResultBuildConfigOutput) BuildCaching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) bool { return v.BuildCaching }).(pulumi.BoolOutput)
+}
+
+// Command used to build project.
+func (o GetPagesProjectsResultBuildConfigOutput) BuildCommand() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.BuildCommand }).(pulumi.StringOutput)
+}
+
+// Assets output directory of the build.
+func (o GetPagesProjectsResultBuildConfigOutput) DestinationDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.DestinationDir }).(pulumi.StringOutput)
+}
+
+// Directory to run the command.
+func (o GetPagesProjectsResultBuildConfigOutput) RootDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.RootDir }).(pulumi.StringOutput)
+}
+
+// The classifying tag for analytics.
+func (o GetPagesProjectsResultBuildConfigOutput) WebAnalyticsTag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.WebAnalyticsTag }).(pulumi.StringOutput)
+}
+
+// The auth token for analytics.
+func (o GetPagesProjectsResultBuildConfigOutput) WebAnalyticsToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.WebAnalyticsToken }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultBuildImageAutoUpgrade struct {
+	// The retired build image major version the project is set to.
+	FromVersion int `pulumi:"fromVersion"`
+	// The build image major version the project's builds run on.
+	ToVersion int `pulumi:"toVersion"`
+}
+
+// GetPagesProjectsResultBuildImageAutoUpgradeInput is an input type that accepts GetPagesProjectsResultBuildImageAutoUpgradeArgs and GetPagesProjectsResultBuildImageAutoUpgradeOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultBuildImageAutoUpgradeInput` via:
+//
+//	GetPagesProjectsResultBuildImageAutoUpgradeArgs{...}
+type GetPagesProjectsResultBuildImageAutoUpgradeInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultBuildImageAutoUpgradeOutput() GetPagesProjectsResultBuildImageAutoUpgradeOutput
+	ToGetPagesProjectsResultBuildImageAutoUpgradeOutputWithContext(context.Context) GetPagesProjectsResultBuildImageAutoUpgradeOutput
+}
+
+type GetPagesProjectsResultBuildImageAutoUpgradeArgs struct {
+	// The retired build image major version the project is set to.
+	FromVersion pulumi.IntInput `pulumi:"fromVersion"`
+	// The build image major version the project's builds run on.
+	ToVersion pulumi.IntInput `pulumi:"toVersion"`
+}
+
+func (GetPagesProjectsResultBuildImageAutoUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultBuildImageAutoUpgrade)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultBuildImageAutoUpgradeArgs) ToGetPagesProjectsResultBuildImageAutoUpgradeOutput() GetPagesProjectsResultBuildImageAutoUpgradeOutput {
+	return i.ToGetPagesProjectsResultBuildImageAutoUpgradeOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultBuildImageAutoUpgradeArgs) ToGetPagesProjectsResultBuildImageAutoUpgradeOutputWithContext(ctx context.Context) GetPagesProjectsResultBuildImageAutoUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultBuildImageAutoUpgradeOutput)
+}
+
+type GetPagesProjectsResultBuildImageAutoUpgradeOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultBuildImageAutoUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultBuildImageAutoUpgrade)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultBuildImageAutoUpgradeOutput) ToGetPagesProjectsResultBuildImageAutoUpgradeOutput() GetPagesProjectsResultBuildImageAutoUpgradeOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultBuildImageAutoUpgradeOutput) ToGetPagesProjectsResultBuildImageAutoUpgradeOutputWithContext(ctx context.Context) GetPagesProjectsResultBuildImageAutoUpgradeOutput {
+	return o
+}
+
+// The retired build image major version the project is set to.
+func (o GetPagesProjectsResultBuildImageAutoUpgradeOutput) FromVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultBuildImageAutoUpgrade) int { return v.FromVersion }).(pulumi.IntOutput)
+}
+
+// The build image major version the project's builds run on.
+func (o GetPagesProjectsResultBuildImageAutoUpgradeOutput) ToVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultBuildImageAutoUpgrade) int { return v.ToVersion }).(pulumi.IntOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeployment struct {
+	// A list of alias URLs pointing to this deployment.
+	Aliases []string `pulumi:"aliases"`
+	// Configs for the project build process.
+	BuildConfig GetPagesProjectsResultCanonicalDeploymentBuildConfig `pulumi:"buildConfig"`
+	// When the deployment was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// Info about what caused the deployment.
+	DeploymentTrigger GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger `pulumi:"deploymentTrigger"`
+	// Environment variables used for builds and Pages Functions.
+	EnvVars map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars `pulumi:"envVars"`
+	// Type of deploy.
+	// Available values: "preview", "production".
+	Environment string `pulumi:"environment"`
+	// Id of the deployment.
+	Id string `pulumi:"id"`
+	// Whether the deployment was skipped.
+	IsSkipped bool `pulumi:"isSkipped"`
+	// The status of the deployment.
+	LatestStage GetPagesProjectsResultCanonicalDeploymentLatestStage `pulumi:"latestStage"`
+	// When the deployment was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// Id of the project.
+	ProjectId string `pulumi:"projectId"`
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
+	ProjectName string `pulumi:"projectName"`
+	// Short Id (8 character) of the deployment.
+	ShortId string `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
+	SkipReason string `pulumi:"skipReason"`
+	// Configs for the project source control.
+	Source GetPagesProjectsResultCanonicalDeploymentSource `pulumi:"source"`
+	// List of past stages.
+	Stages []GetPagesProjectsResultCanonicalDeploymentStage `pulumi:"stages"`
+	// The live URL to view this deployment.
+	Url string `pulumi:"url"`
+	// Whether the deployment uses functions.
+	UsesFunctions bool `pulumi:"usesFunctions"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentArgs and GetPagesProjectsResultCanonicalDeploymentOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentOutput() GetPagesProjectsResultCanonicalDeploymentOutput
+	ToGetPagesProjectsResultCanonicalDeploymentOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentArgs struct {
+	// A list of alias URLs pointing to this deployment.
+	Aliases pulumi.StringArrayInput `pulumi:"aliases"`
+	// Configs for the project build process.
+	BuildConfig GetPagesProjectsResultCanonicalDeploymentBuildConfigInput `pulumi:"buildConfig"`
+	// When the deployment was created.
+	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
+	// Info about what caused the deployment.
+	DeploymentTrigger GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput `pulumi:"deploymentTrigger"`
+	// Environment variables used for builds and Pages Functions.
+	EnvVars GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput `pulumi:"envVars"`
+	// Type of deploy.
+	// Available values: "preview", "production".
+	Environment pulumi.StringInput `pulumi:"environment"`
+	// Id of the deployment.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the deployment was skipped.
+	IsSkipped pulumi.BoolInput `pulumi:"isSkipped"`
+	// The status of the deployment.
+	LatestStage GetPagesProjectsResultCanonicalDeploymentLatestStageInput `pulumi:"latestStage"`
+	// When the deployment was last modified.
+	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
+	// Id of the project.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// Short Id (8 character) of the deployment.
+	ShortId pulumi.StringInput `pulumi:"shortId"`
+	// Why the deployment was skipped.
+	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
+	SkipReason pulumi.StringInput `pulumi:"skipReason"`
+	// Configs for the project source control.
+	Source GetPagesProjectsResultCanonicalDeploymentSourceInput `pulumi:"source"`
+	// List of past stages.
+	Stages GetPagesProjectsResultCanonicalDeploymentStageArrayInput `pulumi:"stages"`
+	// The live URL to view this deployment.
+	Url pulumi.StringInput `pulumi:"url"`
+	// Whether the deployment uses functions.
+	UsesFunctions pulumi.BoolInput `pulumi:"usesFunctions"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeployment)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentArgs) ToGetPagesProjectsResultCanonicalDeploymentOutput() GetPagesProjectsResultCanonicalDeploymentOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentArgs) ToGetPagesProjectsResultCanonicalDeploymentOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeployment)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) ToGetPagesProjectsResultCanonicalDeploymentOutput() GetPagesProjectsResultCanonicalDeploymentOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) ToGetPagesProjectsResultCanonicalDeploymentOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentOutput {
+	return o
+}
+
+// A list of alias URLs pointing to this deployment.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) Aliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) []string { return v.Aliases }).(pulumi.StringArrayOutput)
+}
+
+// Configs for the project build process.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) BuildConfig() GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) GetPagesProjectsResultCanonicalDeploymentBuildConfig {
+		return v.BuildConfig
+	}).(GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput)
+}
+
+// When the deployment was created.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Info about what caused the deployment.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) DeploymentTrigger() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger {
+		return v.DeploymentTrigger
+	}).(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput)
+}
+
+// Environment variables used for builds and Pages Functions.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) EnvVars() GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars {
+		return v.EnvVars
+	}).(GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput)
+}
+
+// Type of deploy.
+// Available values: "preview", "production".
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// Id of the deployment.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the deployment was skipped.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) IsSkipped() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) bool { return v.IsSkipped }).(pulumi.BoolOutput)
+}
+
+// The status of the deployment.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) LatestStage() GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) GetPagesProjectsResultCanonicalDeploymentLatestStage {
+		return v.LatestStage
+	}).(GetPagesProjectsResultCanonicalDeploymentLatestStageOutput)
+}
+
+// When the deployment was last modified.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Id of the project.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// Short Id (8 character) of the deployment.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) ShortId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ShortId }).(pulumi.StringOutput)
+}
+
+// Why the deployment was skipped.
+// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) SkipReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.SkipReason }).(pulumi.StringOutput)
+}
+
+// Configs for the project source control.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) Source() GetPagesProjectsResultCanonicalDeploymentSourceOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) GetPagesProjectsResultCanonicalDeploymentSource {
+		return v.Source
+	}).(GetPagesProjectsResultCanonicalDeploymentSourceOutput)
+}
+
+// List of past stages.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) Stages() GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) []GetPagesProjectsResultCanonicalDeploymentStage {
+		return v.Stages
+	}).(GetPagesProjectsResultCanonicalDeploymentStageArrayOutput)
+}
+
+// The live URL to view this deployment.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// Whether the deployment uses functions.
+func (o GetPagesProjectsResultCanonicalDeploymentOutput) UsesFunctions() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) bool { return v.UsesFunctions }).(pulumi.BoolOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentBuildConfig struct {
+	// Enable build caching for the project.
+	BuildCaching bool `pulumi:"buildCaching"`
+	// Command used to build project.
+	BuildCommand string `pulumi:"buildCommand"`
+	// Assets output directory of the build.
+	DestinationDir string `pulumi:"destinationDir"`
+	// Directory to run the command.
+	RootDir string `pulumi:"rootDir"`
+	// The classifying tag for analytics.
+	WebAnalyticsTag string `pulumi:"webAnalyticsTag"`
+	// The auth token for analytics.
+	WebAnalyticsToken string `pulumi:"webAnalyticsToken"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentBuildConfigInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs and GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentBuildConfigInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentBuildConfigInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutput() GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput
+	ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs struct {
+	// Enable build caching for the project.
+	BuildCaching pulumi.BoolInput `pulumi:"buildCaching"`
+	// Command used to build project.
+	BuildCommand pulumi.StringInput `pulumi:"buildCommand"`
+	// Assets output directory of the build.
+	DestinationDir pulumi.StringInput `pulumi:"destinationDir"`
+	// Directory to run the command.
+	RootDir pulumi.StringInput `pulumi:"rootDir"`
+	// The classifying tag for analytics.
+	WebAnalyticsTag pulumi.StringInput `pulumi:"webAnalyticsTag"`
+	// The auth token for analytics.
+	WebAnalyticsToken pulumi.StringInput `pulumi:"webAnalyticsToken"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentBuildConfig)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs) ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutput() GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs) ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentBuildConfig)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutput() GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
+	return o
+}
+
+// Enable build caching for the project.
+func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) BuildCaching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) bool { return v.BuildCaching }).(pulumi.BoolOutput)
+}
+
+// Command used to build project.
+func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) BuildCommand() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.BuildCommand }).(pulumi.StringOutput)
+}
+
+// Assets output directory of the build.
+func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) DestinationDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.DestinationDir }).(pulumi.StringOutput)
+}
+
+// Directory to run the command.
+func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) RootDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.RootDir }).(pulumi.StringOutput)
+}
+
+// The classifying tag for analytics.
+func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) WebAnalyticsTag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.WebAnalyticsTag }).(pulumi.StringOutput)
+}
+
+// The auth token for analytics.
+func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) WebAnalyticsToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.WebAnalyticsToken }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger struct {
+	// Additional info about the trigger.
+	Metadata GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata `pulumi:"metadata"`
+	// What caused the deployment.
+	// Available values: "github:push", "ad*hoc", "deploy*hook".
+	Type string `pulumi:"type"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs and GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput
+	ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs struct {
+	// Additional info about the trigger.
+	Metadata GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput `pulumi:"metadata"`
+	// What caused the deployment.
+	// Available values: "github:push", "ad*hoc", "deploy*hook".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
+	return o
+}
+
+// Additional info about the trigger.
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) Metadata() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata {
+		return v.Metadata
+	}).(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput)
+}
+
+// What caused the deployment.
+// Available values: "github:push", "ad*hoc", "deploy*hook".
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata struct {
+	// Where the trigger happened.
+	Branch string `pulumi:"branch"`
+	// Whether the deployment trigger commit was dirty.
+	CommitDirty bool `pulumi:"commitDirty"`
+	// Hash of the deployment trigger commit.
+	CommitHash string `pulumi:"commitHash"`
+	// Message of the deployment trigger commit.
+	CommitMessage string `pulumi:"commitMessage"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs and GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput
+	ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs struct {
+	// Where the trigger happened.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Whether the deployment trigger commit was dirty.
+	CommitDirty pulumi.BoolInput `pulumi:"commitDirty"`
+	// Hash of the deployment trigger commit.
+	CommitHash pulumi.StringInput `pulumi:"commitHash"`
+	// Message of the deployment trigger commit.
+	CommitMessage pulumi.StringInput `pulumi:"commitMessage"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
+	return o
+}
+
+// Where the trigger happened.
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Whether the deployment trigger commit was dirty.
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) CommitDirty() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata) bool { return v.CommitDirty }).(pulumi.BoolOutput)
+}
+
+// Hash of the deployment trigger commit.
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) CommitHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata) string { return v.CommitHash }).(pulumi.StringOutput)
+}
+
+// Message of the deployment trigger commit.
+func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) CommitMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata) string {
+		return v.CommitMessage
+	}).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentEnvVars struct {
+	// Available values: "plain*text", "secret*text".
+	Type string `pulumi:"type"`
+	// Environment variable value.
+	Value string `pulumi:"value"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentEnvVarsInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs and GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentEnvVarsInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentEnvVarsInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput
+	ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs struct {
+	// Available values: "plain*text", "secret*text".
+	Type pulumi.StringInput `pulumi:"type"`
+	// Environment variable value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentEnvVars)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput)
+}
+
+// GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentEnvVarsMap and GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentEnvVarsMap{ "key": GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs{...} }
+type GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput
+	ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentEnvVarsMap map[string]GetPagesProjectsResultCanonicalDeploymentEnvVarsInput
+
+func (GetPagesProjectsResultCanonicalDeploymentEnvVarsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentEnvVarsMap) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentEnvVarsMap) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentEnvVars)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
+	return o
+}
+
+// Available values: "plain*text", "secret*text".
+func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentEnvVars) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Environment variable value.
+func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentEnvVars) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectsResultCanonicalDeploymentEnvVars {
+		return vs[0].(map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars)[vs[1].(string)]
+	}).(GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentLatestStage struct {
+	// When the stage ended.
+	EndedOn string `pulumi:"endedOn"`
+	// The current build stage.
+	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+	Name string `pulumi:"name"`
+	// When the stage started.
+	StartedOn string `pulumi:"startedOn"`
+	// State of the current stage.
+	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+	Status string `pulumi:"status"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentLatestStageInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentLatestStageArgs and GetPagesProjectsResultCanonicalDeploymentLatestStageOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentLatestStageInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentLatestStageArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentLatestStageInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutput() GetPagesProjectsResultCanonicalDeploymentLatestStageOutput
+	ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentLatestStageOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentLatestStageArgs struct {
+	// When the stage ended.
+	EndedOn pulumi.StringInput `pulumi:"endedOn"`
+	// The current build stage.
+	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+	Name pulumi.StringInput `pulumi:"name"`
+	// When the stage started.
+	StartedOn pulumi.StringInput `pulumi:"startedOn"`
+	// State of the current stage.
+	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentLatestStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentLatestStage)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentLatestStageArgs) ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutput() GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentLatestStageArgs) ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentLatestStageOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentLatestStageOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentLatestStage)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutput() GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
+	return o
+}
+
+// When the stage ended.
+func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) EndedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentLatestStage) string { return v.EndedOn }).(pulumi.StringOutput)
+}
+
+// The current build stage.
+// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentLatestStage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// When the stage started.
+func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) StartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentLatestStage) string { return v.StartedOn }).(pulumi.StringOutput)
+}
+
+// State of the current stage.
+// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentLatestStage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentSource struct {
+	Config GetPagesProjectsResultCanonicalDeploymentSourceConfig `pulumi:"config"`
+	// The source control management provider.
+	// Available values: "github", "gitlab".
+	Type string `pulumi:"type"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentSourceInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentSourceArgs and GetPagesProjectsResultCanonicalDeploymentSourceOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentSourceInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentSourceArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentSourceInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentSourceOutput() GetPagesProjectsResultCanonicalDeploymentSourceOutput
+	ToGetPagesProjectsResultCanonicalDeploymentSourceOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentSourceOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentSourceArgs struct {
+	Config GetPagesProjectsResultCanonicalDeploymentSourceConfigInput `pulumi:"config"`
+	// The source control management provider.
+	// Available values: "github", "gitlab".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSource)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentSourceArgs) ToGetPagesProjectsResultCanonicalDeploymentSourceOutput() GetPagesProjectsResultCanonicalDeploymentSourceOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentSourceOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentSourceArgs) ToGetPagesProjectsResultCanonicalDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentSourceOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentSourceOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSource)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentSourceOutput) ToGetPagesProjectsResultCanonicalDeploymentSourceOutput() GetPagesProjectsResultCanonicalDeploymentSourceOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentSourceOutput) ToGetPagesProjectsResultCanonicalDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentSourceOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentSourceOutput) Config() GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSource) GetPagesProjectsResultCanonicalDeploymentSourceConfig {
+		return v.Config
+	}).(GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput)
+}
+
+// The source control management provider.
+// Available values: "github", "gitlab".
+func (o GetPagesProjectsResultCanonicalDeploymentSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentSourceConfig struct {
+	// Whether to enable automatic deployments when pushing to the source repository.
+	// When disabled, no deployments (production or preview) will be triggered automatically.
+	//
+	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+	DeploymentsEnabled bool `pulumi:"deploymentsEnabled"`
+	// The owner of the repository.
+	Owner string `pulumi:"owner"`
+	// The owner ID of the repository.
+	OwnerId string `pulumi:"ownerId"`
+	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+	PathExcludes []string `pulumi:"pathExcludes"`
+	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+	PathIncludes []string `pulumi:"pathIncludes"`
+	// Whether to enable PR comments.
+	PrCommentsEnabled bool `pulumi:"prCommentsEnabled"`
+	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchExcludes []string `pulumi:"previewBranchExcludes"`
+	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchIncludes []string `pulumi:"previewBranchIncludes"`
+	// Controls whether commits to preview branches trigger a preview deployment.
+	// Available values: "all", "none", "custom".
+	PreviewDeploymentSetting string `pulumi:"previewDeploymentSetting"`
+	// The production branch of the repository.
+	ProductionBranch string `pulumi:"productionBranch"`
+	// Whether to trigger a production deployment on commits to the production branch.
+	ProductionDeploymentsEnabled bool `pulumi:"productionDeploymentsEnabled"`
+	// The ID of the repository.
+	RepoId string `pulumi:"repoId"`
+	// The name of the repository.
+	RepoName string `pulumi:"repoName"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentSourceConfigInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs and GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentSourceConfigInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentSourceConfigInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutput() GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput
+	ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs struct {
+	// Whether to enable automatic deployments when pushing to the source repository.
+	// When disabled, no deployments (production or preview) will be triggered automatically.
+	//
+	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+	DeploymentsEnabled pulumi.BoolInput `pulumi:"deploymentsEnabled"`
+	// The owner of the repository.
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// The owner ID of the repository.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+	PathExcludes pulumi.StringArrayInput `pulumi:"pathExcludes"`
+	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+	PathIncludes pulumi.StringArrayInput `pulumi:"pathIncludes"`
+	// Whether to enable PR comments.
+	PrCommentsEnabled pulumi.BoolInput `pulumi:"prCommentsEnabled"`
+	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchExcludes pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
+	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+	PreviewBranchIncludes pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
+	// Controls whether commits to preview branches trigger a preview deployment.
+	// Available values: "all", "none", "custom".
+	PreviewDeploymentSetting pulumi.StringInput `pulumi:"previewDeploymentSetting"`
+	// The production branch of the repository.
+	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
+	// Whether to trigger a production deployment on commits to the production branch.
+	ProductionDeploymentsEnabled pulumi.BoolInput `pulumi:"productionDeploymentsEnabled"`
+	// The ID of the repository.
+	RepoId pulumi.StringInput `pulumi:"repoId"`
+	// The name of the repository.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSourceConfig)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs) ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutput() GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs) ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSourceConfig)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutput() GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
+	return o
+}
+
+// Whether to enable automatic deployments when pushing to the source repository.
+// When disabled, no deployments (production or preview) will be triggered automatically.
+//
+// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) DeploymentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) bool { return v.DeploymentsEnabled }).(pulumi.BoolOutput)
+}
+
+// The owner of the repository.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The owner ID of the repository.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PathExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) []string { return v.PathExcludes }).(pulumi.StringArrayOutput)
+}
+
+// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PathIncludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) []string { return v.PathIncludes }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable PR comments.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PrCommentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) bool { return v.PrCommentsEnabled }).(pulumi.BoolOutput)
+}
+
+// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) []string { return v.PreviewBranchExcludes }).(pulumi.StringArrayOutput)
+}
+
+// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether commits to preview branches trigger a preview deployment.
+// Available values: "all", "none", "custom".
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string {
+		return v.PreviewDeploymentSetting
+	}).(pulumi.StringOutput)
+}
+
+// The production branch of the repository.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ProductionBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.ProductionBranch }).(pulumi.StringOutput)
+}
+
+// Whether to trigger a production deployment on commits to the production branch.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ProductionDeploymentsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) bool {
+		return v.ProductionDeploymentsEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// The ID of the repository.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) RepoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.RepoId }).(pulumi.StringOutput)
+}
+
+// The name of the repository.
+func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentStage struct {
+	// When the stage ended.
+	EndedOn string `pulumi:"endedOn"`
+	// The current build stage.
+	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+	Name string `pulumi:"name"`
+	// When the stage started.
+	StartedOn string `pulumi:"startedOn"`
+	// State of the current stage.
+	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+	Status string `pulumi:"status"`
+}
+
+// GetPagesProjectsResultCanonicalDeploymentStageInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentStageArgs and GetPagesProjectsResultCanonicalDeploymentStageOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentStageInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentStageArgs{...}
+type GetPagesProjectsResultCanonicalDeploymentStageInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentStageOutput() GetPagesProjectsResultCanonicalDeploymentStageOutput
+	ToGetPagesProjectsResultCanonicalDeploymentStageOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentStageOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentStageArgs struct {
+	// When the stage ended.
+	EndedOn pulumi.StringInput `pulumi:"endedOn"`
+	// The current build stage.
+	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+	Name pulumi.StringInput `pulumi:"name"`
+	// When the stage started.
+	StartedOn pulumi.StringInput `pulumi:"startedOn"`
+	// State of the current stage.
+	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetPagesProjectsResultCanonicalDeploymentStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentStage)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentStageArgs) ToGetPagesProjectsResultCanonicalDeploymentStageOutput() GetPagesProjectsResultCanonicalDeploymentStageOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentStageOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentStageArgs) ToGetPagesProjectsResultCanonicalDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentStageOutput)
+}
+
+// GetPagesProjectsResultCanonicalDeploymentStageArrayInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentStageArray and GetPagesProjectsResultCanonicalDeploymentStageArrayOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentStageArrayInput` via:
+//
+//	GetPagesProjectsResultCanonicalDeploymentStageArray{ GetPagesProjectsResultCanonicalDeploymentStageArgs{...} }
+type GetPagesProjectsResultCanonicalDeploymentStageArrayInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutput() GetPagesProjectsResultCanonicalDeploymentStageArrayOutput
+	ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentStageArrayOutput
+}
+
+type GetPagesProjectsResultCanonicalDeploymentStageArray []GetPagesProjectsResultCanonicalDeploymentStageInput
+
+func (GetPagesProjectsResultCanonicalDeploymentStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesProjectsResultCanonicalDeploymentStage)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentStageArray) ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutput() GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
+	return i.ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultCanonicalDeploymentStageArray) ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentStageArrayOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentStageOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentStage)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) ToGetPagesProjectsResultCanonicalDeploymentStageOutput() GetPagesProjectsResultCanonicalDeploymentStageOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) ToGetPagesProjectsResultCanonicalDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentStageOutput {
+	return o
+}
+
+// When the stage ended.
+func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) EndedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentStage) string { return v.EndedOn }).(pulumi.StringOutput)
+}
+
+// The current build stage.
+// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
+func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentStage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// When the stage started.
+func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) StartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentStage) string { return v.StartedOn }).(pulumi.StringOutput)
+}
+
+// State of the current stage.
+// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
+func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentStage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetPagesProjectsResultCanonicalDeploymentStageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultCanonicalDeploymentStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPagesProjectsResultCanonicalDeploymentStage)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentStageArrayOutput) ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutput() GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentStageArrayOutput) ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultCanonicalDeploymentStageArrayOutput) Index(i pulumi.IntInput) GetPagesProjectsResultCanonicalDeploymentStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesProjectsResultCanonicalDeploymentStage {
+		return vs[0].([]GetPagesProjectsResultCanonicalDeploymentStage)[vs[1].(int)]
+	}).(GetPagesProjectsResultCanonicalDeploymentStageOutput)
+}
+
+type GetPagesProjectsResultDeploymentConfigs struct {
+	// Configs for preview deploys.
+	Preview GetPagesProjectsResultDeploymentConfigsPreview `pulumi:"preview"`
+	// Configs for production deploys.
+	Production GetPagesProjectsResultDeploymentConfigsProduction `pulumi:"production"`
+}
+
+// GetPagesProjectsResultDeploymentConfigsInput is an input type that accepts GetPagesProjectsResultDeploymentConfigsArgs and GetPagesProjectsResultDeploymentConfigsOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultDeploymentConfigsInput` via:
+//
+//	GetPagesProjectsResultDeploymentConfigsArgs{...}
+type GetPagesProjectsResultDeploymentConfigsInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultDeploymentConfigsOutput() GetPagesProjectsResultDeploymentConfigsOutput
+	ToGetPagesProjectsResultDeploymentConfigsOutputWithContext(context.Context) GetPagesProjectsResultDeploymentConfigsOutput
+}
+
+type GetPagesProjectsResultDeploymentConfigsArgs struct {
+	// Configs for preview deploys.
+	Preview GetPagesProjectsResultDeploymentConfigsPreviewInput `pulumi:"preview"`
+	// Configs for production deploys.
+	Production GetPagesProjectsResultDeploymentConfigsProductionInput `pulumi:"production"`
+}
+
+func (GetPagesProjectsResultDeploymentConfigsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigs)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultDeploymentConfigsArgs) ToGetPagesProjectsResultDeploymentConfigsOutput() GetPagesProjectsResultDeploymentConfigsOutput {
+	return i.ToGetPagesProjectsResultDeploymentConfigsOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultDeploymentConfigsArgs) ToGetPagesProjectsResultDeploymentConfigsOutputWithContext(ctx context.Context) GetPagesProjectsResultDeploymentConfigsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultDeploymentConfigsOutput)
+}
+
+type GetPagesProjectsResultDeploymentConfigsOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultDeploymentConfigsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigs)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultDeploymentConfigsOutput) ToGetPagesProjectsResultDeploymentConfigsOutput() GetPagesProjectsResultDeploymentConfigsOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultDeploymentConfigsOutput) ToGetPagesProjectsResultDeploymentConfigsOutputWithContext(ctx context.Context) GetPagesProjectsResultDeploymentConfigsOutput {
+	return o
+}
+
+// Configs for preview deploys.
+func (o GetPagesProjectsResultDeploymentConfigsOutput) Preview() GetPagesProjectsResultDeploymentConfigsPreviewOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigs) GetPagesProjectsResultDeploymentConfigsPreview {
+		return v.Preview
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewOutput)
+}
+
+// Configs for production deploys.
+func (o GetPagesProjectsResultDeploymentConfigsOutput) Production() GetPagesProjectsResultDeploymentConfigsProductionOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigs) GetPagesProjectsResultDeploymentConfigsProduction {
+		return v.Production
+	}).(GetPagesProjectsResultDeploymentConfigsProductionOutput)
+}
+
+type GetPagesProjectsResultDeploymentConfigsPreview struct {
+	// Constellation bindings used for Pages Functions.
+	AiBindings map[string]GetPagesProjectsResultDeploymentConfigsPreviewAiBindings `pulumi:"aiBindings"`
+	// Whether to always use the latest compatibility date for Pages Functions.
+	AlwaysUseLatestCompatibilityDate bool `pulumi:"alwaysUseLatestCompatibilityDate"`
+	// Analytics Engine bindings used for Pages Functions.
+	AnalyticsEngineDatasets map[string]GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
+	// Browser bindings used for Pages Functions.
+	Browsers map[string]GetPagesProjectsResultDeploymentConfigsPreviewBrowsers `pulumi:"browsers"`
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
+	BuildImageMajorVersion int `pulumi:"buildImageMajorVersion"`
+	// Compatibility date used for Pages Functions.
+	CompatibilityDate string `pulumi:"compatibilityDate"`
+	// Compatibility flags used for Pages Functions.
+	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
+	// D1 databases used for Pages Functions.
+	D1Databases map[string]GetPagesProjectsResultDeploymentConfigsPreviewD1Databases `pulumi:"d1Databases"`
+	// Durable Object namespaces used for Pages Functions.
+	DurableObjectNamespaces map[string]GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespaces `pulumi:"durableObjectNamespaces"`
+	// Environment variables used for builds and Pages Functions.
+	EnvVars map[string]GetPagesProjectsResultDeploymentConfigsPreviewEnvVars `pulumi:"envVars"`
+	// Whether to fail open when the deployment config cannot be applied.
+	FailOpen bool `pulumi:"failOpen"`
+	// Hyperdrive bindings used for Pages Functions.
+	HyperdriveBindings map[string]GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindings `pulumi:"hyperdriveBindings"`
+	// KV namespaces used for Pages Functions.
+	KvNamespaces map[string]GetPagesProjectsResultDeploymentConfigsPreviewKvNamespaces `pulumi:"kvNamespaces"`
+	// Limits for Pages Functions.
+	Limits GetPagesProjectsResultDeploymentConfigsPreviewLimits `pulumi:"limits"`
+	// mTLS bindings used for Pages Functions.
+	MtlsCertificates map[string]GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificates `pulumi:"mtlsCertificates"`
+	// Placement setting used for Pages Functions.
+	Placement GetPagesProjectsResultDeploymentConfigsPreviewPlacement `pulumi:"placement"`
+	// Queue Producer bindings used for Pages Functions.
+	QueueProducers map[string]GetPagesProjectsResultDeploymentConfigsPreviewQueueProducers `pulumi:"queueProducers"`
+	// R2 buckets used for Pages Functions.
+	R2Buckets map[string]GetPagesProjectsResultDeploymentConfigsPreviewR2Buckets `pulumi:"r2Buckets"`
+	// Services used for Pages Functions.
+	Services map[string]GetPagesProjectsResultDeploymentConfigsPreviewServices `pulumi:"services"`
+	// The usage model for Pages Functions.
+	// Available values: "standard", "bundled", "unbound".
+	//
+	// Deprecated: All new projects now use the Standard usage model.
+	UsageModel string `pulumi:"usageModel"`
+	// Vectorize bindings used for Pages Functions.
+	VectorizeBindings map[string]GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindings `pulumi:"vectorizeBindings"`
+	// Hash of the Wrangler configuration used for the deployment.
+	WranglerConfigHash string `pulumi:"wranglerConfigHash"`
+}
+
+// GetPagesProjectsResultDeploymentConfigsPreviewInput is an input type that accepts GetPagesProjectsResultDeploymentConfigsPreviewArgs and GetPagesProjectsResultDeploymentConfigsPreviewOutput values.
+// You can construct a concrete instance of `GetPagesProjectsResultDeploymentConfigsPreviewInput` via:
+//
+//	GetPagesProjectsResultDeploymentConfigsPreviewArgs{...}
+type GetPagesProjectsResultDeploymentConfigsPreviewInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectsResultDeploymentConfigsPreviewOutput() GetPagesProjectsResultDeploymentConfigsPreviewOutput
+	ToGetPagesProjectsResultDeploymentConfigsPreviewOutputWithContext(context.Context) GetPagesProjectsResultDeploymentConfigsPreviewOutput
+}
+
+type GetPagesProjectsResultDeploymentConfigsPreviewArgs struct {
+	// Constellation bindings used for Pages Functions.
+	AiBindings GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMapInput `pulumi:"aiBindings"`
+	// Whether to always use the latest compatibility date for Pages Functions.
+	AlwaysUseLatestCompatibilityDate pulumi.BoolInput `pulumi:"alwaysUseLatestCompatibilityDate"`
+	// Analytics Engine bindings used for Pages Functions.
+	AnalyticsEngineDatasets GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
+	// Browser bindings used for Pages Functions.
+	Browsers GetPagesProjectsResultDeploymentConfigsPreviewBrowsersMapInput `pulumi:"browsers"`
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
+	BuildImageMajorVersion pulumi.IntInput `pulumi:"buildImageMajorVersion"`
+	// Compatibility date used for Pages Functions.
+	CompatibilityDate pulumi.StringInput `pulumi:"compatibilityDate"`
+	// Compatibility flags used for Pages Functions.
+	CompatibilityFlags pulumi.StringArrayInput `pulumi:"compatibilityFlags"`
+	// D1 databases used for Pages Functions.
+	D1Databases GetPagesProjectsResultDeploymentConfigsPreviewD1DatabasesMapInput `pulumi:"d1Databases"`
+	// Durable Object namespaces used for Pages Functions.
+	DurableObjectNamespaces GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespacesMapInput `pulumi:"durableObjectNamespaces"`
+	// Environment variables used for builds and Pages Functions.
+	EnvVars GetPagesProjectsResultDeploymentConfigsPreviewEnvVarsMapInput `pulumi:"envVars"`
+	// Whether to fail open when the deployment config cannot be applied.
+	FailOpen pulumi.BoolInput `pulumi:"failOpen"`
+	// Hyperdrive bindings used for Pages Functions.
+	HyperdriveBindings GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindingsMapInput `pulumi:"hyperdriveBindings"`
+	// KV namespaces used for Pages Functions.
+	KvNamespaces GetPagesProjectsResultDeploymentConfigsPreviewKvNamespacesMapInput `pulumi:"kvNamespaces"`
+	// Limits for Pages Functions.
+	Limits GetPagesProjectsResultDeploymentConfigsPreviewLimitsInput `pulumi:"limits"`
+	// mTLS bindings used for Pages Functions.
+	MtlsCertificates GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificatesMapInput `pulumi:"mtlsCertificates"`
+	// Placement setting used for Pages Functions.
+	Placement GetPagesProjectsResultDeploymentConfigsPreviewPlacementInput `pulumi:"placement"`
+	// Queue Producer bindings used for Pages Functions.
+	QueueProducers GetPagesProjectsResultDeploymentConfigsPreviewQueueProducersMapInput `pulumi:"queueProducers"`
+	// R2 buckets used for Pages Functions.
+	R2Buckets GetPagesProjectsResultDeploymentConfigsPreviewR2BucketsMapInput `pulumi:"r2Buckets"`
+	// Services used for Pages Functions.
+	Services GetPagesProjectsResultDeploymentConfigsPreviewServicesMapInput `pulumi:"services"`
+	// The usage model for Pages Functions.
+	// Available values: "standard", "bundled", "unbound".
+	//
+	// Deprecated: All new projects now use the Standard usage model.
+	UsageModel pulumi.StringInput `pulumi:"usageModel"`
+	// Vectorize bindings used for Pages Functions.
+	VectorizeBindings GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindingsMapInput `pulumi:"vectorizeBindings"`
+	// Hash of the Wrangler configuration used for the deployment.
+	WranglerConfigHash pulumi.StringInput `pulumi:"wranglerConfigHash"`
+}
+
+func (GetPagesProjectsResultDeploymentConfigsPreviewArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreview)(nil)).Elem()
+}
+
+func (i GetPagesProjectsResultDeploymentConfigsPreviewArgs) ToGetPagesProjectsResultDeploymentConfigsPreviewOutput() GetPagesProjectsResultDeploymentConfigsPreviewOutput {
+	return i.ToGetPagesProjectsResultDeploymentConfigsPreviewOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectsResultDeploymentConfigsPreviewArgs) ToGetPagesProjectsResultDeploymentConfigsPreviewOutputWithContext(ctx context.Context) GetPagesProjectsResultDeploymentConfigsPreviewOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultDeploymentConfigsPreviewOutput)
+}
+
+type GetPagesProjectsResultDeploymentConfigsPreviewOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectsResultDeploymentConfigsPreviewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreview)(nil)).Elem()
+}
+
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) ToGetPagesProjectsResultDeploymentConfigsPreviewOutput() GetPagesProjectsResultDeploymentConfigsPreviewOutput {
+	return o
+}
+
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) ToGetPagesProjectsResultDeploymentConfigsPreviewOutputWithContext(ctx context.Context) GetPagesProjectsResultDeploymentConfigsPreviewOutput {
+	return o
+}
+
+// Constellation bindings used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) AiBindings() GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewAiBindings {
+		return v.AiBindings
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMapOutput)
+}
+
+// Whether to always use the latest compatibility date for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) AlwaysUseLatestCompatibilityDate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) bool { return v.AlwaysUseLatestCompatibilityDate }).(pulumi.BoolOutput)
+}
+
+// Analytics Engine bindings used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) AnalyticsEngineDatasets() GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasets {
+		return v.AnalyticsEngineDatasets
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput)
+}
+
+// Browser bindings used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) Browsers() GetPagesProjectsResultDeploymentConfigsPreviewBrowsersMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewBrowsers {
+		return v.Browsers
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewBrowsersMapOutput)
+}
+
+// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) BuildImageMajorVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) int { return v.BuildImageMajorVersion }).(pulumi.IntOutput)
+}
+
+// Compatibility date used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) CompatibilityDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) string { return v.CompatibilityDate }).(pulumi.StringOutput)
+}
+
+// Compatibility flags used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) CompatibilityFlags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) []string { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
+}
+
+// D1 databases used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) D1Databases() GetPagesProjectsResultDeploymentConfigsPreviewD1DatabasesMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewD1Databases {
+		return v.D1Databases
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewD1DatabasesMapOutput)
+}
+
+// Durable Object namespaces used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) DurableObjectNamespaces() GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespaces {
+		return v.DurableObjectNamespaces
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespacesMapOutput)
+}
+
+// Environment variables used for builds and Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) EnvVars() GetPagesProjectsResultDeploymentConfigsPreviewEnvVarsMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewEnvVars {
+		return v.EnvVars
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewEnvVarsMapOutput)
+}
+
+// Whether to fail open when the deployment config cannot be applied.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) FailOpen() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) bool { return v.FailOpen }).(pulumi.BoolOutput)
+}
+
+// Hyperdrive bindings used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) HyperdriveBindings() GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindingsMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindings {
+		return v.HyperdriveBindings
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindingsMapOutput)
+}
+
+// KV namespaces used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) KvNamespaces() GetPagesProjectsResultDeploymentConfigsPreviewKvNamespacesMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewKvNamespaces {
+		return v.KvNamespaces
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewKvNamespacesMapOutput)
+}
+
+// Limits for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) Limits() GetPagesProjectsResultDeploymentConfigsPreviewLimitsOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) GetPagesProjectsResultDeploymentConfigsPreviewLimits {
+		return v.Limits
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewLimitsOutput)
+}
+
+// mTLS bindings used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) MtlsCertificates() GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificatesMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificates {
+		return v.MtlsCertificates
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificatesMapOutput)
+}
+
+// Placement setting used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) Placement() GetPagesProjectsResultDeploymentConfigsPreviewPlacementOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) GetPagesProjectsResultDeploymentConfigsPreviewPlacement {
+		return v.Placement
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewPlacementOutput)
+}
+
+// Queue Producer bindings used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) QueueProducers() GetPagesProjectsResultDeploymentConfigsPreviewQueueProducersMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewQueueProducers {
+		return v.QueueProducers
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewQueueProducersMapOutput)
+}
+
+// R2 buckets used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) R2Buckets() GetPagesProjectsResultDeploymentConfigsPreviewR2BucketsMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewR2Buckets {
+		return v.R2Buckets
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewR2BucketsMapOutput)
+}
+
+// Services used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) Services() GetPagesProjectsResultDeploymentConfigsPreviewServicesMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewServices {
+		return v.Services
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewServicesMapOutput)
+}
+
+// The usage model for Pages Functions.
+// Available values: "standard", "bundled", "unbound".
+//
+// Deprecated: All new projects now use the Standard usage model.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) UsageModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) string { return v.UsageModel }).(pulumi.StringOutput)
+}
+
+// Vectorize bindings used for Pages Functions.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) VectorizeBindings() GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindingsMapOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindings {
+		return v.VectorizeBindings
+	}).(GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindingsMapOutput)
+}
+
+// Hash of the Wrangler configuration used for the deployment.
+func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) WranglerConfigHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) string { return v.WranglerConfigHash }).(pulumi.StringOutput)
+}
+
 type GetPagesProjectsResultDeploymentConfigsPreviewAiBindings struct {
 	ProjectId string `pulumi:"projectId"`
 }
@@ -1404,7 +4111,7 @@ type GetPagesProjectsResultDeploymentConfigsProduction struct {
 	AnalyticsEngineDatasets map[string]GetPagesProjectsResultDeploymentConfigsProductionAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers map[string]GetPagesProjectsResultDeploymentConfigsProductionBrowsers `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 	BuildImageMajorVersion int `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate string `pulumi:"compatibilityDate"`
@@ -1465,7 +4172,7 @@ type GetPagesProjectsResultDeploymentConfigsProductionArgs struct {
 	AnalyticsEngineDatasets GetPagesProjectsResultDeploymentConfigsProductionAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers GetPagesProjectsResultDeploymentConfigsProductionBrowsersMapInput `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 	BuildImageMajorVersion pulumi.IntInput `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate pulumi.StringInput `pulumi:"compatibilityDate"`
@@ -1560,7 +4267,7 @@ func (o GetPagesProjectsResultDeploymentConfigsProductionOutput) Browsers() GetP
 	}).(GetPagesProjectsResultDeploymentConfigsProductionBrowsersMapOutput)
 }
 
-// The major version of the build image to use for Pages Functions.
+// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 func (o GetPagesProjectsResultDeploymentConfigsProductionOutput) BuildImageMajorVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsProduction) int { return v.BuildImageMajorVersion }).(pulumi.IntOutput)
 }
@@ -10809,476 +13516,6 @@ func (o GetRegionalHostnamesResultArrayOutput) Index(i pulumi.IntInput) GetRegio
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalHostnamesResult {
 		return vs[0].([]GetRegionalHostnamesResult)[vs[1].(int)]
 	}).(GetRegionalHostnamesResultOutput)
-}
-
-type GetRegistrarDomainsResult struct {
-	// Shows if a domain is available for transferring into Cloudflare Registrar.
-	Available bool `pulumi:"available"`
-	// Indicates eligibility to register the domain as a new domain.
-	CanRegister bool `pulumi:"canRegister"`
-	// Shows time of creation.
-	CreatedAt string `pulumi:"createdAt"`
-	// Shows name of current registrar.
-	CurrentRegistrar string `pulumi:"currentRegistrar"`
-	// Shows when domain name registration expires.
-	ExpiresAt string `pulumi:"expiresAt"`
-	// Domain identifier.
-	Id string `pulumi:"id"`
-	// Shows whether a registrar lock is in place for a domain.
-	Locked bool `pulumi:"locked"`
-	// Shows contact information for domain registrant.
-	RegistrantContact GetRegistrarDomainsResultRegistrantContact `pulumi:"registrantContact"`
-	// A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
-	RegistryStatuses string `pulumi:"registryStatuses"`
-	// Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
-	SupportedTld bool `pulumi:"supportedTld"`
-	// Statuses for domain transfers into Cloudflare Registrar.
-	TransferIn GetRegistrarDomainsResultTransferIn `pulumi:"transferIn"`
-	// Last updated.
-	UpdatedAt string `pulumi:"updatedAt"`
-}
-
-// GetRegistrarDomainsResultInput is an input type that accepts GetRegistrarDomainsResultArgs and GetRegistrarDomainsResultOutput values.
-// You can construct a concrete instance of `GetRegistrarDomainsResultInput` via:
-//
-//	GetRegistrarDomainsResultArgs{...}
-type GetRegistrarDomainsResultInput interface {
-	pulumi.Input
-
-	ToGetRegistrarDomainsResultOutput() GetRegistrarDomainsResultOutput
-	ToGetRegistrarDomainsResultOutputWithContext(context.Context) GetRegistrarDomainsResultOutput
-}
-
-type GetRegistrarDomainsResultArgs struct {
-	// Shows if a domain is available for transferring into Cloudflare Registrar.
-	Available pulumi.BoolInput `pulumi:"available"`
-	// Indicates eligibility to register the domain as a new domain.
-	CanRegister pulumi.BoolInput `pulumi:"canRegister"`
-	// Shows time of creation.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Shows name of current registrar.
-	CurrentRegistrar pulumi.StringInput `pulumi:"currentRegistrar"`
-	// Shows when domain name registration expires.
-	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
-	// Domain identifier.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Shows whether a registrar lock is in place for a domain.
-	Locked pulumi.BoolInput `pulumi:"locked"`
-	// Shows contact information for domain registrant.
-	RegistrantContact GetRegistrarDomainsResultRegistrantContactInput `pulumi:"registrantContact"`
-	// A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
-	RegistryStatuses pulumi.StringInput `pulumi:"registryStatuses"`
-	// Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
-	SupportedTld pulumi.BoolInput `pulumi:"supportedTld"`
-	// Statuses for domain transfers into Cloudflare Registrar.
-	TransferIn GetRegistrarDomainsResultTransferInInput `pulumi:"transferIn"`
-	// Last updated.
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-}
-
-func (GetRegistrarDomainsResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegistrarDomainsResult)(nil)).Elem()
-}
-
-func (i GetRegistrarDomainsResultArgs) ToGetRegistrarDomainsResultOutput() GetRegistrarDomainsResultOutput {
-	return i.ToGetRegistrarDomainsResultOutputWithContext(context.Background())
-}
-
-func (i GetRegistrarDomainsResultArgs) ToGetRegistrarDomainsResultOutputWithContext(ctx context.Context) GetRegistrarDomainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegistrarDomainsResultOutput)
-}
-
-// GetRegistrarDomainsResultArrayInput is an input type that accepts GetRegistrarDomainsResultArray and GetRegistrarDomainsResultArrayOutput values.
-// You can construct a concrete instance of `GetRegistrarDomainsResultArrayInput` via:
-//
-//	GetRegistrarDomainsResultArray{ GetRegistrarDomainsResultArgs{...} }
-type GetRegistrarDomainsResultArrayInput interface {
-	pulumi.Input
-
-	ToGetRegistrarDomainsResultArrayOutput() GetRegistrarDomainsResultArrayOutput
-	ToGetRegistrarDomainsResultArrayOutputWithContext(context.Context) GetRegistrarDomainsResultArrayOutput
-}
-
-type GetRegistrarDomainsResultArray []GetRegistrarDomainsResultInput
-
-func (GetRegistrarDomainsResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRegistrarDomainsResult)(nil)).Elem()
-}
-
-func (i GetRegistrarDomainsResultArray) ToGetRegistrarDomainsResultArrayOutput() GetRegistrarDomainsResultArrayOutput {
-	return i.ToGetRegistrarDomainsResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetRegistrarDomainsResultArray) ToGetRegistrarDomainsResultArrayOutputWithContext(ctx context.Context) GetRegistrarDomainsResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegistrarDomainsResultArrayOutput)
-}
-
-type GetRegistrarDomainsResultOutput struct{ *pulumi.OutputState }
-
-func (GetRegistrarDomainsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegistrarDomainsResult)(nil)).Elem()
-}
-
-func (o GetRegistrarDomainsResultOutput) ToGetRegistrarDomainsResultOutput() GetRegistrarDomainsResultOutput {
-	return o
-}
-
-func (o GetRegistrarDomainsResultOutput) ToGetRegistrarDomainsResultOutputWithContext(ctx context.Context) GetRegistrarDomainsResultOutput {
-	return o
-}
-
-// Shows if a domain is available for transferring into Cloudflare Registrar.
-func (o GetRegistrarDomainsResultOutput) Available() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) bool { return v.Available }).(pulumi.BoolOutput)
-}
-
-// Indicates eligibility to register the domain as a new domain.
-func (o GetRegistrarDomainsResultOutput) CanRegister() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) bool { return v.CanRegister }).(pulumi.BoolOutput)
-}
-
-// Shows time of creation.
-func (o GetRegistrarDomainsResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Shows name of current registrar.
-func (o GetRegistrarDomainsResultOutput) CurrentRegistrar() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) string { return v.CurrentRegistrar }).(pulumi.StringOutput)
-}
-
-// Shows when domain name registration expires.
-func (o GetRegistrarDomainsResultOutput) ExpiresAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
-}
-
-// Domain identifier.
-func (o GetRegistrarDomainsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Shows whether a registrar lock is in place for a domain.
-func (o GetRegistrarDomainsResultOutput) Locked() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) bool { return v.Locked }).(pulumi.BoolOutput)
-}
-
-// Shows contact information for domain registrant.
-func (o GetRegistrarDomainsResultOutput) RegistrantContact() GetRegistrarDomainsResultRegistrantContactOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) GetRegistrarDomainsResultRegistrantContact {
-		return v.RegistrantContact
-	}).(GetRegistrarDomainsResultRegistrantContactOutput)
-}
-
-// A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
-func (o GetRegistrarDomainsResultOutput) RegistryStatuses() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) string { return v.RegistryStatuses }).(pulumi.StringOutput)
-}
-
-// Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
-func (o GetRegistrarDomainsResultOutput) SupportedTld() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) bool { return v.SupportedTld }).(pulumi.BoolOutput)
-}
-
-// Statuses for domain transfers into Cloudflare Registrar.
-func (o GetRegistrarDomainsResultOutput) TransferIn() GetRegistrarDomainsResultTransferInOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) GetRegistrarDomainsResultTransferIn { return v.TransferIn }).(GetRegistrarDomainsResultTransferInOutput)
-}
-
-// Last updated.
-func (o GetRegistrarDomainsResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-type GetRegistrarDomainsResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRegistrarDomainsResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRegistrarDomainsResult)(nil)).Elem()
-}
-
-func (o GetRegistrarDomainsResultArrayOutput) ToGetRegistrarDomainsResultArrayOutput() GetRegistrarDomainsResultArrayOutput {
-	return o
-}
-
-func (o GetRegistrarDomainsResultArrayOutput) ToGetRegistrarDomainsResultArrayOutputWithContext(ctx context.Context) GetRegistrarDomainsResultArrayOutput {
-	return o
-}
-
-func (o GetRegistrarDomainsResultArrayOutput) Index(i pulumi.IntInput) GetRegistrarDomainsResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegistrarDomainsResult {
-		return vs[0].([]GetRegistrarDomainsResult)[vs[1].(int)]
-	}).(GetRegistrarDomainsResultOutput)
-}
-
-type GetRegistrarDomainsResultRegistrantContact struct {
-	// Address.
-	Address string `pulumi:"address"`
-	// Optional address line for unit, floor, suite, etc.
-	Address2 string `pulumi:"address2"`
-	// City.
-	City string `pulumi:"city"`
-	// The country in which the user lives.
-	Country string `pulumi:"country"`
-	// The contact email address of the user.
-	Email string `pulumi:"email"`
-	// Contact fax number.
-	Fax string `pulumi:"fax"`
-	// User's first name.
-	FirstName string `pulumi:"firstName"`
-	// Contact Identifier.
-	Id string `pulumi:"id"`
-	// User's last name.
-	LastName string `pulumi:"lastName"`
-	// Name of organization.
-	Organization string `pulumi:"organization"`
-	// User's telephone number.
-	Phone string `pulumi:"phone"`
-	// State.
-	State string `pulumi:"state"`
-	// The zipcode or postal code where the user lives.
-	Zip string `pulumi:"zip"`
-}
-
-// GetRegistrarDomainsResultRegistrantContactInput is an input type that accepts GetRegistrarDomainsResultRegistrantContactArgs and GetRegistrarDomainsResultRegistrantContactOutput values.
-// You can construct a concrete instance of `GetRegistrarDomainsResultRegistrantContactInput` via:
-//
-//	GetRegistrarDomainsResultRegistrantContactArgs{...}
-type GetRegistrarDomainsResultRegistrantContactInput interface {
-	pulumi.Input
-
-	ToGetRegistrarDomainsResultRegistrantContactOutput() GetRegistrarDomainsResultRegistrantContactOutput
-	ToGetRegistrarDomainsResultRegistrantContactOutputWithContext(context.Context) GetRegistrarDomainsResultRegistrantContactOutput
-}
-
-type GetRegistrarDomainsResultRegistrantContactArgs struct {
-	// Address.
-	Address pulumi.StringInput `pulumi:"address"`
-	// Optional address line for unit, floor, suite, etc.
-	Address2 pulumi.StringInput `pulumi:"address2"`
-	// City.
-	City pulumi.StringInput `pulumi:"city"`
-	// The country in which the user lives.
-	Country pulumi.StringInput `pulumi:"country"`
-	// The contact email address of the user.
-	Email pulumi.StringInput `pulumi:"email"`
-	// Contact fax number.
-	Fax pulumi.StringInput `pulumi:"fax"`
-	// User's first name.
-	FirstName pulumi.StringInput `pulumi:"firstName"`
-	// Contact Identifier.
-	Id pulumi.StringInput `pulumi:"id"`
-	// User's last name.
-	LastName pulumi.StringInput `pulumi:"lastName"`
-	// Name of organization.
-	Organization pulumi.StringInput `pulumi:"organization"`
-	// User's telephone number.
-	Phone pulumi.StringInput `pulumi:"phone"`
-	// State.
-	State pulumi.StringInput `pulumi:"state"`
-	// The zipcode or postal code where the user lives.
-	Zip pulumi.StringInput `pulumi:"zip"`
-}
-
-func (GetRegistrarDomainsResultRegistrantContactArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegistrarDomainsResultRegistrantContact)(nil)).Elem()
-}
-
-func (i GetRegistrarDomainsResultRegistrantContactArgs) ToGetRegistrarDomainsResultRegistrantContactOutput() GetRegistrarDomainsResultRegistrantContactOutput {
-	return i.ToGetRegistrarDomainsResultRegistrantContactOutputWithContext(context.Background())
-}
-
-func (i GetRegistrarDomainsResultRegistrantContactArgs) ToGetRegistrarDomainsResultRegistrantContactOutputWithContext(ctx context.Context) GetRegistrarDomainsResultRegistrantContactOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegistrarDomainsResultRegistrantContactOutput)
-}
-
-type GetRegistrarDomainsResultRegistrantContactOutput struct{ *pulumi.OutputState }
-
-func (GetRegistrarDomainsResultRegistrantContactOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegistrarDomainsResultRegistrantContact)(nil)).Elem()
-}
-
-func (o GetRegistrarDomainsResultRegistrantContactOutput) ToGetRegistrarDomainsResultRegistrantContactOutput() GetRegistrarDomainsResultRegistrantContactOutput {
-	return o
-}
-
-func (o GetRegistrarDomainsResultRegistrantContactOutput) ToGetRegistrarDomainsResultRegistrantContactOutputWithContext(ctx context.Context) GetRegistrarDomainsResultRegistrantContactOutput {
-	return o
-}
-
-// Address.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// Optional address line for unit, floor, suite, etc.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Address2() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Address2 }).(pulumi.StringOutput)
-}
-
-// City.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) City() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.City }).(pulumi.StringOutput)
-}
-
-// The country in which the user lives.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Country() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Country }).(pulumi.StringOutput)
-}
-
-// The contact email address of the user.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Email }).(pulumi.StringOutput)
-}
-
-// Contact fax number.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Fax() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Fax }).(pulumi.StringOutput)
-}
-
-// User's first name.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) FirstName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.FirstName }).(pulumi.StringOutput)
-}
-
-// Contact Identifier.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// User's last name.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) LastName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.LastName }).(pulumi.StringOutput)
-}
-
-// Name of organization.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Organization() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Organization }).(pulumi.StringOutput)
-}
-
-// User's telephone number.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Phone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Phone }).(pulumi.StringOutput)
-}
-
-// State.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.State }).(pulumi.StringOutput)
-}
-
-// The zipcode or postal code where the user lives.
-func (o GetRegistrarDomainsResultRegistrantContactOutput) Zip() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultRegistrantContact) string { return v.Zip }).(pulumi.StringOutput)
-}
-
-type GetRegistrarDomainsResultTransferIn struct {
-	// Status of the registrant authorization step.
-	// Available values: "needed", "ok".
-	AcceptFoa string `pulumi:"acceptFoa"`
-	// Status of the registry transfer-approval step.
-	// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
-	ApproveTransfer string `pulumi:"approveTransfer"`
-	// Indicates if cancellation is still possible.
-	CanCancelTransfer bool `pulumi:"canCancelTransfer"`
-	// Status of the privacy-guard disabling step at the foreign registrar.
-	// Available values: "needed", "ok", "unknown".
-	DisablePrivacy string `pulumi:"disablePrivacy"`
-	// Status of the auth-code entry and verification step.
-	// Available values: "needed", "ok", "pending", "trying", "rejected".
-	EnterAuthCode string `pulumi:"enterAuthCode"`
-	// Status of the domain-unlock step at the foreign registrar.
-	// Available values: "needed", "ok", "pending", "trying", "unknown".
-	UnlockDomain string `pulumi:"unlockDomain"`
-}
-
-// GetRegistrarDomainsResultTransferInInput is an input type that accepts GetRegistrarDomainsResultTransferInArgs and GetRegistrarDomainsResultTransferInOutput values.
-// You can construct a concrete instance of `GetRegistrarDomainsResultTransferInInput` via:
-//
-//	GetRegistrarDomainsResultTransferInArgs{...}
-type GetRegistrarDomainsResultTransferInInput interface {
-	pulumi.Input
-
-	ToGetRegistrarDomainsResultTransferInOutput() GetRegistrarDomainsResultTransferInOutput
-	ToGetRegistrarDomainsResultTransferInOutputWithContext(context.Context) GetRegistrarDomainsResultTransferInOutput
-}
-
-type GetRegistrarDomainsResultTransferInArgs struct {
-	// Status of the registrant authorization step.
-	// Available values: "needed", "ok".
-	AcceptFoa pulumi.StringInput `pulumi:"acceptFoa"`
-	// Status of the registry transfer-approval step.
-	// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
-	ApproveTransfer pulumi.StringInput `pulumi:"approveTransfer"`
-	// Indicates if cancellation is still possible.
-	CanCancelTransfer pulumi.BoolInput `pulumi:"canCancelTransfer"`
-	// Status of the privacy-guard disabling step at the foreign registrar.
-	// Available values: "needed", "ok", "unknown".
-	DisablePrivacy pulumi.StringInput `pulumi:"disablePrivacy"`
-	// Status of the auth-code entry and verification step.
-	// Available values: "needed", "ok", "pending", "trying", "rejected".
-	EnterAuthCode pulumi.StringInput `pulumi:"enterAuthCode"`
-	// Status of the domain-unlock step at the foreign registrar.
-	// Available values: "needed", "ok", "pending", "trying", "unknown".
-	UnlockDomain pulumi.StringInput `pulumi:"unlockDomain"`
-}
-
-func (GetRegistrarDomainsResultTransferInArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegistrarDomainsResultTransferIn)(nil)).Elem()
-}
-
-func (i GetRegistrarDomainsResultTransferInArgs) ToGetRegistrarDomainsResultTransferInOutput() GetRegistrarDomainsResultTransferInOutput {
-	return i.ToGetRegistrarDomainsResultTransferInOutputWithContext(context.Background())
-}
-
-func (i GetRegistrarDomainsResultTransferInArgs) ToGetRegistrarDomainsResultTransferInOutputWithContext(ctx context.Context) GetRegistrarDomainsResultTransferInOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegistrarDomainsResultTransferInOutput)
-}
-
-type GetRegistrarDomainsResultTransferInOutput struct{ *pulumi.OutputState }
-
-func (GetRegistrarDomainsResultTransferInOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegistrarDomainsResultTransferIn)(nil)).Elem()
-}
-
-func (o GetRegistrarDomainsResultTransferInOutput) ToGetRegistrarDomainsResultTransferInOutput() GetRegistrarDomainsResultTransferInOutput {
-	return o
-}
-
-func (o GetRegistrarDomainsResultTransferInOutput) ToGetRegistrarDomainsResultTransferInOutputWithContext(ctx context.Context) GetRegistrarDomainsResultTransferInOutput {
-	return o
-}
-
-// Status of the registrant authorization step.
-// Available values: "needed", "ok".
-func (o GetRegistrarDomainsResultTransferInOutput) AcceptFoa() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.AcceptFoa }).(pulumi.StringOutput)
-}
-
-// Status of the registry transfer-approval step.
-// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
-func (o GetRegistrarDomainsResultTransferInOutput) ApproveTransfer() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.ApproveTransfer }).(pulumi.StringOutput)
-}
-
-// Indicates if cancellation is still possible.
-func (o GetRegistrarDomainsResultTransferInOutput) CanCancelTransfer() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) bool { return v.CanCancelTransfer }).(pulumi.BoolOutput)
-}
-
-// Status of the privacy-guard disabling step at the foreign registrar.
-// Available values: "needed", "ok", "unknown".
-func (o GetRegistrarDomainsResultTransferInOutput) DisablePrivacy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.DisablePrivacy }).(pulumi.StringOutput)
-}
-
-// Status of the auth-code entry and verification step.
-// Available values: "needed", "ok", "pending", "trying", "rejected".
-func (o GetRegistrarDomainsResultTransferInOutput) EnterAuthCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.EnterAuthCode }).(pulumi.StringOutput)
-}
-
-// Status of the domain-unlock step at the foreign registrar.
-// Available values: "needed", "ok", "pending", "trying", "unknown".
-func (o GetRegistrarDomainsResultTransferInOutput) UnlockDomain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegistrarDomainsResultTransferIn) string { return v.UnlockDomain }).(pulumi.StringOutput)
 }
 
 type GetResourceGroupMeta struct {
@@ -33424,6 +35661,8 @@ type GetWorkerVersionBinding struct {
 	Pipeline string `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName string `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry GetWorkerVersionBindingRetry `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName string `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -33530,6 +35769,8 @@ type GetWorkerVersionBindingArgs struct {
 	Pipeline pulumi.StringInput `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName pulumi.StringInput `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry GetWorkerVersionBindingRetryInput `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -33766,6 +36007,11 @@ func (o GetWorkerVersionBindingOutput) Pipeline() pulumi.StringOutput {
 // Name of the Queue to bind to.
 func (o GetWorkerVersionBindingOutput) QueueName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.QueueName }).(pulumi.StringOutput)
+}
+
+// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+func (o GetWorkerVersionBindingOutput) Retry() GetWorkerVersionBindingRetryOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) GetWorkerVersionBindingRetry { return v.Retry }).(GetWorkerVersionBindingRetryOutput)
 }
 
 // The script where the Durable Object is defined, if it is external to this Worker.
@@ -34080,6 +36326,67 @@ func (o GetWorkerVersionBindingOutboundWorkerOutput) Environment() pulumi.String
 // Name of the outbound worker.
 func (o GetWorkerVersionBindingOutboundWorkerOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBindingOutboundWorker) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetWorkerVersionBindingRetry struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts int `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs int `pulumi:"timeoutMs"`
+}
+
+// GetWorkerVersionBindingRetryInput is an input type that accepts GetWorkerVersionBindingRetryArgs and GetWorkerVersionBindingRetryOutput values.
+// You can construct a concrete instance of `GetWorkerVersionBindingRetryInput` via:
+//
+//	GetWorkerVersionBindingRetryArgs{...}
+type GetWorkerVersionBindingRetryInput interface {
+	pulumi.Input
+
+	ToGetWorkerVersionBindingRetryOutput() GetWorkerVersionBindingRetryOutput
+	ToGetWorkerVersionBindingRetryOutputWithContext(context.Context) GetWorkerVersionBindingRetryOutput
+}
+
+type GetWorkerVersionBindingRetryArgs struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts pulumi.IntInput `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs pulumi.IntInput `pulumi:"timeoutMs"`
+}
+
+func (GetWorkerVersionBindingRetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerVersionBindingRetry)(nil)).Elem()
+}
+
+func (i GetWorkerVersionBindingRetryArgs) ToGetWorkerVersionBindingRetryOutput() GetWorkerVersionBindingRetryOutput {
+	return i.ToGetWorkerVersionBindingRetryOutputWithContext(context.Background())
+}
+
+func (i GetWorkerVersionBindingRetryArgs) ToGetWorkerVersionBindingRetryOutputWithContext(ctx context.Context) GetWorkerVersionBindingRetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerVersionBindingRetryOutput)
+}
+
+type GetWorkerVersionBindingRetryOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerVersionBindingRetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerVersionBindingRetry)(nil)).Elem()
+}
+
+func (o GetWorkerVersionBindingRetryOutput) ToGetWorkerVersionBindingRetryOutput() GetWorkerVersionBindingRetryOutput {
+	return o
+}
+
+func (o GetWorkerVersionBindingRetryOutput) ToGetWorkerVersionBindingRetryOutputWithContext(ctx context.Context) GetWorkerVersionBindingRetryOutput {
+	return o
+}
+
+// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+func (o GetWorkerVersionBindingRetryOutput) MaxAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerVersionBindingRetry) int { return v.MaxAttempts }).(pulumi.IntOutput)
+}
+
+// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+func (o GetWorkerVersionBindingRetryOutput) TimeoutMs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerVersionBindingRetry) int { return v.TimeoutMs }).(pulumi.IntOutput)
 }
 
 type GetWorkerVersionBindingSimple struct {
@@ -36381,6 +38688,8 @@ type GetWorkerVersionsResultBinding struct {
 	Pipeline string `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName string `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry GetWorkerVersionsResultBindingRetry `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName string `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -36487,6 +38796,8 @@ type GetWorkerVersionsResultBindingArgs struct {
 	Pipeline pulumi.StringInput `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName pulumi.StringInput `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry GetWorkerVersionsResultBindingRetryInput `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -36723,6 +39034,11 @@ func (o GetWorkerVersionsResultBindingOutput) Pipeline() pulumi.StringOutput {
 // Name of the Queue to bind to.
 func (o GetWorkerVersionsResultBindingOutput) QueueName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.QueueName }).(pulumi.StringOutput)
+}
+
+// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+func (o GetWorkerVersionsResultBindingOutput) Retry() GetWorkerVersionsResultBindingRetryOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) GetWorkerVersionsResultBindingRetry { return v.Retry }).(GetWorkerVersionsResultBindingRetryOutput)
 }
 
 // The script where the Durable Object is defined, if it is external to this Worker.
@@ -37041,6 +39357,67 @@ func (o GetWorkerVersionsResultBindingOutboundWorkerOutput) Environment() pulumi
 // Name of the outbound worker.
 func (o GetWorkerVersionsResultBindingOutboundWorkerOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBindingOutboundWorker) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetWorkerVersionsResultBindingRetry struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts int `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs int `pulumi:"timeoutMs"`
+}
+
+// GetWorkerVersionsResultBindingRetryInput is an input type that accepts GetWorkerVersionsResultBindingRetryArgs and GetWorkerVersionsResultBindingRetryOutput values.
+// You can construct a concrete instance of `GetWorkerVersionsResultBindingRetryInput` via:
+//
+//	GetWorkerVersionsResultBindingRetryArgs{...}
+type GetWorkerVersionsResultBindingRetryInput interface {
+	pulumi.Input
+
+	ToGetWorkerVersionsResultBindingRetryOutput() GetWorkerVersionsResultBindingRetryOutput
+	ToGetWorkerVersionsResultBindingRetryOutputWithContext(context.Context) GetWorkerVersionsResultBindingRetryOutput
+}
+
+type GetWorkerVersionsResultBindingRetryArgs struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts pulumi.IntInput `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs pulumi.IntInput `pulumi:"timeoutMs"`
+}
+
+func (GetWorkerVersionsResultBindingRetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerVersionsResultBindingRetry)(nil)).Elem()
+}
+
+func (i GetWorkerVersionsResultBindingRetryArgs) ToGetWorkerVersionsResultBindingRetryOutput() GetWorkerVersionsResultBindingRetryOutput {
+	return i.ToGetWorkerVersionsResultBindingRetryOutputWithContext(context.Background())
+}
+
+func (i GetWorkerVersionsResultBindingRetryArgs) ToGetWorkerVersionsResultBindingRetryOutputWithContext(ctx context.Context) GetWorkerVersionsResultBindingRetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerVersionsResultBindingRetryOutput)
+}
+
+type GetWorkerVersionsResultBindingRetryOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerVersionsResultBindingRetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerVersionsResultBindingRetry)(nil)).Elem()
+}
+
+func (o GetWorkerVersionsResultBindingRetryOutput) ToGetWorkerVersionsResultBindingRetryOutput() GetWorkerVersionsResultBindingRetryOutput {
+	return o
+}
+
+func (o GetWorkerVersionsResultBindingRetryOutput) ToGetWorkerVersionsResultBindingRetryOutputWithContext(ctx context.Context) GetWorkerVersionsResultBindingRetryOutput {
+	return o
+}
+
+// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+func (o GetWorkerVersionsResultBindingRetryOutput) MaxAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBindingRetry) int { return v.MaxAttempts }).(pulumi.IntOutput)
+}
+
+// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+func (o GetWorkerVersionsResultBindingRetryOutput) TimeoutMs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBindingRetry) int { return v.TimeoutMs }).(pulumi.IntOutput)
 }
 
 type GetWorkerVersionsResultBindingSimple struct {
@@ -40070,6 +42447,9 @@ type GetWorkersKvNamespacesResult struct {
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction string `pulumi:"jurisdiction"`
+	// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+	// Available values: "instant".
+	Mode string `pulumi:"mode"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding bool `pulumi:"supportsUrlEncoding"`
 	// Human-readable string name for a Workers KV namespace.
@@ -40093,6 +42473,9 @@ type GetWorkersKvNamespacesResultArgs struct {
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
+	// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+	// Available values: "instant".
+	Mode pulumi.StringInput `pulumi:"mode"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolInput `pulumi:"supportsUrlEncoding"`
 	// Human-readable string name for a Workers KV namespace.
@@ -40159,6 +42542,12 @@ func (o GetWorkersKvNamespacesResultOutput) Id() pulumi.StringOutput {
 // Available values: "eu", "fedramp", "us".
 func (o GetWorkersKvNamespacesResultOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersKvNamespacesResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
+}
+
+// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+// Available values: "instant".
+func (o GetWorkersKvNamespacesResultOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkersKvNamespacesResult) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -51221,1441 +53610,35 @@ func (o GetZeroTrustAccessApplicationPolicyExcludeOktaOutput) Name() pulumi.Stri
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyExcludeOkta) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustAccessApplicationPolicyExcludeSaml struct {
-	// The name of the SAML attribute.
-	AttributeName string `pulumi:"attributeName"`
-	// The SAML attribute value to look for.
-	AttributeValue string `pulumi:"attributeValue"`
-	// The ID of your SAML identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// GetZeroTrustAccessApplicationPolicyExcludeSamlInput is an input type that accepts GetZeroTrustAccessApplicationPolicyExcludeSamlArgs and GetZeroTrustAccessApplicationPolicyExcludeSamlOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyExcludeSamlInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyExcludeSamlArgs{...}
-type GetZeroTrustAccessApplicationPolicyExcludeSamlInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyExcludeSamlOutput() GetZeroTrustAccessApplicationPolicyExcludeSamlOutput
-	ToGetZeroTrustAccessApplicationPolicyExcludeSamlOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyExcludeSamlOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyExcludeSamlArgs struct {
-	// The name of the SAML attribute.
-	AttributeName pulumi.StringInput `pulumi:"attributeName"`
-	// The SAML attribute value to look for.
-	AttributeValue pulumi.StringInput `pulumi:"attributeValue"`
-	// The ID of your SAML identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyExcludeSamlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeSaml)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyExcludeSamlArgs) ToGetZeroTrustAccessApplicationPolicyExcludeSamlOutput() GetZeroTrustAccessApplicationPolicyExcludeSamlOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyExcludeSamlOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyExcludeSamlArgs) ToGetZeroTrustAccessApplicationPolicyExcludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyExcludeSamlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyExcludeSamlOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyExcludeSamlOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyExcludeSamlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeSaml)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyExcludeSamlOutput) ToGetZeroTrustAccessApplicationPolicyExcludeSamlOutput() GetZeroTrustAccessApplicationPolicyExcludeSamlOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyExcludeSamlOutput) ToGetZeroTrustAccessApplicationPolicyExcludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyExcludeSamlOutput {
-	return o
-}
-
-// The name of the SAML attribute.
-func (o GetZeroTrustAccessApplicationPolicyExcludeSamlOutput) AttributeName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyExcludeSaml) string { return v.AttributeName }).(pulumi.StringOutput)
-}
-
-// The SAML attribute value to look for.
-func (o GetZeroTrustAccessApplicationPolicyExcludeSamlOutput) AttributeValue() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyExcludeSaml) string { return v.AttributeValue }).(pulumi.StringOutput)
-}
-
-// The ID of your SAML identity provider.
-func (o GetZeroTrustAccessApplicationPolicyExcludeSamlOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyExcludeSaml) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyExcludeServiceToken struct {
-	// The ID of a Service Token.
-	TokenId string `pulumi:"tokenId"`
-}
-
-// GetZeroTrustAccessApplicationPolicyExcludeServiceTokenInput is an input type that accepts GetZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs and GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyExcludeServiceTokenInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs{...}
-type GetZeroTrustAccessApplicationPolicyExcludeServiceTokenInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput() GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput
-	ToGetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs struct {
-	// The ID of a Service Token.
-	TokenId pulumi.StringInput `pulumi:"tokenId"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeServiceToken)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs) ToGetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput() GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs) ToGetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeServiceToken)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput) ToGetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput() GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput) ToGetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput {
-	return o
-}
-
-// The ID of a Service Token.
-func (o GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput) TokenId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyExcludeServiceToken) string { return v.TokenId }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyInclude struct {
-	// An empty object which matches on all service tokens.
-	AnyValidServiceToken GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceToken `pulumi:"anyValidServiceToken"`
-	AuthContext          GetZeroTrustAccessApplicationPolicyIncludeAuthContext          `pulumi:"authContext"`
-	AuthMethod           GetZeroTrustAccessApplicationPolicyIncludeAuthMethod           `pulumi:"authMethod"`
-	AzureAd              GetZeroTrustAccessApplicationPolicyIncludeAzureAd              `pulumi:"azureAd"`
-	Certificate          GetZeroTrustAccessApplicationPolicyIncludeCertificate          `pulumi:"certificate"`
-	CommonName           GetZeroTrustAccessApplicationPolicyIncludeCommonName           `pulumi:"commonName"`
-	DevicePosture        GetZeroTrustAccessApplicationPolicyIncludeDevicePosture        `pulumi:"devicePosture"`
-	Email                GetZeroTrustAccessApplicationPolicyIncludeEmail                `pulumi:"email"`
-	EmailDomain          GetZeroTrustAccessApplicationPolicyIncludeEmailDomain          `pulumi:"emailDomain"`
-	EmailList            GetZeroTrustAccessApplicationPolicyIncludeEmailList            `pulumi:"emailList"`
-	// An empty object which matches on all users.
-	Everyone           GetZeroTrustAccessApplicationPolicyIncludeEveryone           `pulumi:"everyone"`
-	ExternalEvaluation GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geo                GetZeroTrustAccessApplicationPolicyIncludeGeo                `pulumi:"geo"`
-	GithubOrganization GetZeroTrustAccessApplicationPolicyIncludeGithubOrganization `pulumi:"githubOrganization"`
-	Group              GetZeroTrustAccessApplicationPolicyIncludeGroup              `pulumi:"group"`
-	Gsuite             GetZeroTrustAccessApplicationPolicyIncludeGsuite             `pulumi:"gsuite"`
-	Ip                 GetZeroTrustAccessApplicationPolicyIncludeIp                 `pulumi:"ip"`
-	IpList             GetZeroTrustAccessApplicationPolicyIncludeIpList             `pulumi:"ipList"`
-	LinkedAppToken     GetZeroTrustAccessApplicationPolicyIncludeLinkedAppToken     `pulumi:"linkedAppToken"`
-	LoginMethod        GetZeroTrustAccessApplicationPolicyIncludeLoginMethod        `pulumi:"loginMethod"`
-	Oidc               GetZeroTrustAccessApplicationPolicyIncludeOidc               `pulumi:"oidc"`
-	Okta               GetZeroTrustAccessApplicationPolicyIncludeOkta               `pulumi:"okta"`
-	Saml               GetZeroTrustAccessApplicationPolicyIncludeSaml               `pulumi:"saml"`
-	ServiceToken       GetZeroTrustAccessApplicationPolicyIncludeServiceToken       `pulumi:"serviceToken"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeArgs and GetZeroTrustAccessApplicationPolicyIncludeOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeOutput() GetZeroTrustAccessApplicationPolicyIncludeOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeArgs struct {
-	// An empty object which matches on all service tokens.
-	AnyValidServiceToken GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenInput `pulumi:"anyValidServiceToken"`
-	AuthContext          GetZeroTrustAccessApplicationPolicyIncludeAuthContextInput          `pulumi:"authContext"`
-	AuthMethod           GetZeroTrustAccessApplicationPolicyIncludeAuthMethodInput           `pulumi:"authMethod"`
-	AzureAd              GetZeroTrustAccessApplicationPolicyIncludeAzureAdInput              `pulumi:"azureAd"`
-	Certificate          GetZeroTrustAccessApplicationPolicyIncludeCertificateInput          `pulumi:"certificate"`
-	CommonName           GetZeroTrustAccessApplicationPolicyIncludeCommonNameInput           `pulumi:"commonName"`
-	DevicePosture        GetZeroTrustAccessApplicationPolicyIncludeDevicePostureInput        `pulumi:"devicePosture"`
-	Email                GetZeroTrustAccessApplicationPolicyIncludeEmailInput                `pulumi:"email"`
-	EmailDomain          GetZeroTrustAccessApplicationPolicyIncludeEmailDomainInput          `pulumi:"emailDomain"`
-	EmailList            GetZeroTrustAccessApplicationPolicyIncludeEmailListInput            `pulumi:"emailList"`
-	// An empty object which matches on all users.
-	Everyone           GetZeroTrustAccessApplicationPolicyIncludeEveryoneInput           `pulumi:"everyone"`
-	ExternalEvaluation GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationInput `pulumi:"externalEvaluation"`
-	Geo                GetZeroTrustAccessApplicationPolicyIncludeGeoInput                `pulumi:"geo"`
-	GithubOrganization GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationInput `pulumi:"githubOrganization"`
-	Group              GetZeroTrustAccessApplicationPolicyIncludeGroupInput              `pulumi:"group"`
-	Gsuite             GetZeroTrustAccessApplicationPolicyIncludeGsuiteInput             `pulumi:"gsuite"`
-	Ip                 GetZeroTrustAccessApplicationPolicyIncludeIpInput                 `pulumi:"ip"`
-	IpList             GetZeroTrustAccessApplicationPolicyIncludeIpListInput             `pulumi:"ipList"`
-	LinkedAppToken     GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenInput     `pulumi:"linkedAppToken"`
-	LoginMethod        GetZeroTrustAccessApplicationPolicyIncludeLoginMethodInput        `pulumi:"loginMethod"`
-	Oidc               GetZeroTrustAccessApplicationPolicyIncludeOidcInput               `pulumi:"oidc"`
-	Okta               GetZeroTrustAccessApplicationPolicyIncludeOktaInput               `pulumi:"okta"`
-	Saml               GetZeroTrustAccessApplicationPolicyIncludeSamlInput               `pulumi:"saml"`
-	ServiceToken       GetZeroTrustAccessApplicationPolicyIncludeServiceTokenInput       `pulumi:"serviceToken"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyInclude)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeArgs) ToGetZeroTrustAccessApplicationPolicyIncludeOutput() GetZeroTrustAccessApplicationPolicyIncludeOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeArgs) ToGetZeroTrustAccessApplicationPolicyIncludeOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeOutput)
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeArrayInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeArray and GetZeroTrustAccessApplicationPolicyIncludeArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeArrayInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeArray{ GetZeroTrustAccessApplicationPolicyIncludeArgs{...} }
-type GetZeroTrustAccessApplicationPolicyIncludeArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeArrayOutput() GetZeroTrustAccessApplicationPolicyIncludeArrayOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeArrayOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeArrayOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeArray []GetZeroTrustAccessApplicationPolicyIncludeInput
-
-func (GetZeroTrustAccessApplicationPolicyIncludeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustAccessApplicationPolicyInclude)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeArray) ToGetZeroTrustAccessApplicationPolicyIncludeArrayOutput() GetZeroTrustAccessApplicationPolicyIncludeArrayOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeArray) ToGetZeroTrustAccessApplicationPolicyIncludeArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeArrayOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyInclude)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) ToGetZeroTrustAccessApplicationPolicyIncludeOutput() GetZeroTrustAccessApplicationPolicyIncludeOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) ToGetZeroTrustAccessApplicationPolicyIncludeOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeOutput {
-	return o
-}
-
-// An empty object which matches on all service tokens.
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) AnyValidServiceToken() GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceToken {
-		return v.AnyValidServiceToken
-	}).(GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) AuthContext() GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeAuthContext {
-		return v.AuthContext
-	}).(GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) AuthMethod() GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeAuthMethod {
-		return v.AuthMethod
-	}).(GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) AzureAd() GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeAzureAd {
-		return v.AzureAd
-	}).(GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Certificate() GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeCertificate {
-		return v.Certificate
-	}).(GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) CommonName() GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeCommonName {
-		return v.CommonName
-	}).(GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) DevicePosture() GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeDevicePosture {
-		return v.DevicePosture
-	}).(GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Email() GetZeroTrustAccessApplicationPolicyIncludeEmailOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeEmail {
-		return v.Email
-	}).(GetZeroTrustAccessApplicationPolicyIncludeEmailOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) EmailDomain() GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeEmailDomain {
-		return v.EmailDomain
-	}).(GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) EmailList() GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeEmailList {
-		return v.EmailList
-	}).(GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput)
-}
-
-// An empty object which matches on all users.
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Everyone() GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeEveryone {
-		return v.Everyone
-	}).(GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) ExternalEvaluation() GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluation {
-		return v.ExternalEvaluation
-	}).(GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Geo() GetZeroTrustAccessApplicationPolicyIncludeGeoOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeGeo {
-		return v.Geo
-	}).(GetZeroTrustAccessApplicationPolicyIncludeGeoOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) GithubOrganization() GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeGithubOrganization {
-		return v.GithubOrganization
-	}).(GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Group() GetZeroTrustAccessApplicationPolicyIncludeGroupOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeGroup {
-		return v.Group
-	}).(GetZeroTrustAccessApplicationPolicyIncludeGroupOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Gsuite() GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeGsuite {
-		return v.Gsuite
-	}).(GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Ip() GetZeroTrustAccessApplicationPolicyIncludeIpOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeIp {
-		return v.Ip
-	}).(GetZeroTrustAccessApplicationPolicyIncludeIpOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) IpList() GetZeroTrustAccessApplicationPolicyIncludeIpListOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeIpList {
-		return v.IpList
-	}).(GetZeroTrustAccessApplicationPolicyIncludeIpListOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) LinkedAppToken() GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeLinkedAppToken {
-		return v.LinkedAppToken
-	}).(GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) LoginMethod() GetZeroTrustAccessApplicationPolicyIncludeLoginMethodOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeLoginMethod {
-		return v.LoginMethod
-	}).(GetZeroTrustAccessApplicationPolicyIncludeLoginMethodOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Oidc() GetZeroTrustAccessApplicationPolicyIncludeOidcOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeOidc {
-		return v.Oidc
-	}).(GetZeroTrustAccessApplicationPolicyIncludeOidcOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Okta() GetZeroTrustAccessApplicationPolicyIncludeOktaOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeOkta {
-		return v.Okta
-	}).(GetZeroTrustAccessApplicationPolicyIncludeOktaOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) Saml() GetZeroTrustAccessApplicationPolicyIncludeSamlOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeSaml {
-		return v.Saml
-	}).(GetZeroTrustAccessApplicationPolicyIncludeSamlOutput)
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeOutput) ServiceToken() GetZeroTrustAccessApplicationPolicyIncludeServiceTokenOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyInclude) GetZeroTrustAccessApplicationPolicyIncludeServiceToken {
-		return v.ServiceToken
-	}).(GetZeroTrustAccessApplicationPolicyIncludeServiceTokenOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustAccessApplicationPolicyInclude)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeArrayOutput) ToGetZeroTrustAccessApplicationPolicyIncludeArrayOutput() GetZeroTrustAccessApplicationPolicyIncludeArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeArrayOutput) ToGetZeroTrustAccessApplicationPolicyIncludeArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeArrayOutput) Index(i pulumi.IntInput) GetZeroTrustAccessApplicationPolicyIncludeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustAccessApplicationPolicyInclude {
-		return vs[0].([]GetZeroTrustAccessApplicationPolicyInclude)[vs[1].(int)]
-	}).(GetZeroTrustAccessApplicationPolicyIncludeOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceToken struct {
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgs and GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput() GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgs struct {
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceToken)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgs) ToGetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput() GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgs) ToGetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceToken)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput) ToGetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput() GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput) ToGetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput {
-	return o
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAuthContext struct {
-	// The ACID of an Authentication context.
-	AcId string `pulumi:"acId"`
-	// The ID of an Authentication context.
-	Id string `pulumi:"id"`
-	// The ID of your Azure identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeAuthContextInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeAuthContextArgs and GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeAuthContextInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeAuthContextArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeAuthContextInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput() GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeAuthContextOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAuthContextArgs struct {
-	// The ACID of an Authentication context.
-	AcId pulumi.StringInput `pulumi:"acId"`
-	// The ID of an Authentication context.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of your Azure identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeAuthContextArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAuthContext)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeAuthContextArgs) ToGetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput() GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeAuthContextOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeAuthContextArgs) ToGetZeroTrustAccessApplicationPolicyIncludeAuthContextOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAuthContext)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput) ToGetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput() GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput) ToGetZeroTrustAccessApplicationPolicyIncludeAuthContextOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput {
-	return o
-}
-
-// The ACID of an Authentication context.
-func (o GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput) AcId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeAuthContext) string { return v.AcId }).(pulumi.StringOutput)
-}
-
-// The ID of an Authentication context.
-func (o GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The ID of your Azure identity provider.
-func (o GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAuthMethod struct {
-	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-	AuthMethod string `pulumi:"authMethod"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeAuthMethodInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeAuthMethodArgs and GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeAuthMethodInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeAuthMethodArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeAuthMethodInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput() GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAuthMethodArgs struct {
-	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-	AuthMethod pulumi.StringInput `pulumi:"authMethod"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeAuthMethodArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAuthMethod)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeAuthMethodArgs) ToGetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput() GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeAuthMethodArgs) ToGetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAuthMethod)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput) ToGetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput() GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput) ToGetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput {
-	return o
-}
-
-// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-func (o GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput) AuthMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeAuthMethod) string { return v.AuthMethod }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAzureAd struct {
-	// The ID of an Azure group.
-	Id string `pulumi:"id"`
-	// The ID of your Azure identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeAzureAdInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeAzureAdArgs and GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeAzureAdInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeAzureAdArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeAzureAdInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput() GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeAzureAdOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAzureAdArgs struct {
-	// The ID of an Azure group.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of your Azure identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeAzureAdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAzureAd)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeAzureAdArgs) ToGetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput() GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeAzureAdOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeAzureAdArgs) ToGetZeroTrustAccessApplicationPolicyIncludeAzureAdOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAzureAd)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput) ToGetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput() GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput) ToGetZeroTrustAccessApplicationPolicyIncludeAzureAdOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput {
-	return o
-}
-
-// The ID of an Azure group.
-func (o GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeAzureAd) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The ID of your Azure identity provider.
-func (o GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeCertificate struct {
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeCertificateInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeCertificateArgs and GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeCertificateInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeCertificateArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeCertificateInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeCertificateOutput() GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeCertificateOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeCertificateArgs struct {
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeCertificate)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeCertificateArgs) ToGetZeroTrustAccessApplicationPolicyIncludeCertificateOutput() GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeCertificateOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeCertificateArgs) ToGetZeroTrustAccessApplicationPolicyIncludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeCertificate)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput) ToGetZeroTrustAccessApplicationPolicyIncludeCertificateOutput() GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput) ToGetZeroTrustAccessApplicationPolicyIncludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput {
-	return o
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeCommonName struct {
-	// The common name to match.
-	CommonName string `pulumi:"commonName"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeCommonNameInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeCommonNameArgs and GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeCommonNameInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeCommonNameArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeCommonNameInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput() GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeCommonNameOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeCommonNameArgs struct {
-	// The common name to match.
-	CommonName pulumi.StringInput `pulumi:"commonName"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeCommonNameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeCommonName)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeCommonNameArgs) ToGetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput() GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeCommonNameOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeCommonNameArgs) ToGetZeroTrustAccessApplicationPolicyIncludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeCommonName)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput) ToGetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput() GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput) ToGetZeroTrustAccessApplicationPolicyIncludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput {
-	return o
-}
-
-// The common name to match.
-func (o GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput) CommonName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeCommonName) string { return v.CommonName }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeDevicePosture struct {
-	// The ID of a device posture integration.
-	IntegrationUid string `pulumi:"integrationUid"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeDevicePostureInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeDevicePostureArgs and GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeDevicePostureInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeDevicePostureArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeDevicePostureInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput() GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeDevicePostureArgs struct {
-	// The ID of a device posture integration.
-	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeDevicePostureArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeDevicePosture)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeDevicePostureArgs) ToGetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput() GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeDevicePostureArgs) ToGetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeDevicePosture)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput) ToGetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput() GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput) ToGetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput {
-	return o
-}
-
-// The ID of a device posture integration.
-func (o GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmail struct {
-	// The email of the user.
-	Email string `pulumi:"email"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeEmailInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeEmailArgs and GetZeroTrustAccessApplicationPolicyIncludeEmailOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeEmailInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeEmailArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeEmailInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeEmailOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeEmailOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmailArgs struct {
-	// The email of the user.
-	Email pulumi.StringInput `pulumi:"email"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeEmailArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmail)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeEmailArgs) ToGetZeroTrustAccessApplicationPolicyIncludeEmailOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeEmailOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeEmailArgs) ToGetZeroTrustAccessApplicationPolicyIncludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeEmailOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmailOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeEmailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmail)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailOutput) ToGetZeroTrustAccessApplicationPolicyIncludeEmailOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailOutput) ToGetZeroTrustAccessApplicationPolicyIncludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailOutput {
-	return o
-}
-
-// The email of the user.
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeEmail) string { return v.Email }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmailDomain struct {
-	// The email domain to match.
-	Domain string `pulumi:"domain"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeEmailDomainInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeEmailDomainArgs and GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeEmailDomainInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeEmailDomainArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeEmailDomainInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmailDomainArgs struct {
-	// The email domain to match.
-	Domain pulumi.StringInput `pulumi:"domain"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeEmailDomainArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmailDomain)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeEmailDomainArgs) ToGetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeEmailDomainArgs) ToGetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmailDomain)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput) ToGetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput) ToGetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput {
-	return o
-}
-
-// The email domain to match.
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeEmailDomain) string { return v.Domain }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmailList struct {
-	// The ID of a previously created email list.
-	Id string `pulumi:"id"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeEmailListInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeEmailListArgs and GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeEmailListInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeEmailListArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeEmailListInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeEmailListOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeEmailListOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmailListArgs struct {
-	// The ID of a previously created email list.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeEmailListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmailList)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeEmailListArgs) ToGetZeroTrustAccessApplicationPolicyIncludeEmailListOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeEmailListOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeEmailListArgs) ToGetZeroTrustAccessApplicationPolicyIncludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmailList)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput) ToGetZeroTrustAccessApplicationPolicyIncludeEmailListOutput() GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput) ToGetZeroTrustAccessApplicationPolicyIncludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput {
-	return o
-}
-
-// The ID of a previously created email list.
-func (o GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeEmailList) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEveryone struct {
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeEveryoneInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeEveryoneArgs and GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeEveryoneInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeEveryoneArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeEveryoneInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput() GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeEveryoneOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEveryoneArgs struct {
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeEveryoneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEveryone)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeEveryoneArgs) ToGetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput() GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeEveryoneOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeEveryoneArgs) ToGetZeroTrustAccessApplicationPolicyIncludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEveryone)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput) ToGetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput() GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput) ToGetZeroTrustAccessApplicationPolicyIncludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput {
-	return o
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluation struct {
-	// The API endpoint containing your business logic.
-	EvaluateUrl string `pulumi:"evaluateUrl"`
-	// The API endpoint containing the key that Access uses to verify that the response came from your API.
-	KeysUrl string `pulumi:"keysUrl"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgs and GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput() GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgs struct {
-	// The API endpoint containing your business logic.
-	EvaluateUrl pulumi.StringInput `pulumi:"evaluateUrl"`
-	// The API endpoint containing the key that Access uses to verify that the response came from your API.
-	KeysUrl pulumi.StringInput `pulumi:"keysUrl"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluation)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgs) ToGetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput() GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgs) ToGetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluation)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput) ToGetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput() GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput) ToGetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput {
-	return o
-}
-
-// The API endpoint containing your business logic.
-func (o GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluation) string { return v.EvaluateUrl }).(pulumi.StringOutput)
-}
-
-// The API endpoint containing the key that Access uses to verify that the response came from your API.
-func (o GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput) KeysUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluation) string { return v.KeysUrl }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGeo struct {
-	// The country code that should be matched.
-	CountryCode string `pulumi:"countryCode"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeGeoInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeGeoArgs and GetZeroTrustAccessApplicationPolicyIncludeGeoOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeGeoInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeGeoArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeGeoInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeGeoOutput() GetZeroTrustAccessApplicationPolicyIncludeGeoOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeGeoOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeGeoOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGeoArgs struct {
-	// The country code that should be matched.
-	CountryCode pulumi.StringInput `pulumi:"countryCode"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeGeoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGeo)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeGeoArgs) ToGetZeroTrustAccessApplicationPolicyIncludeGeoOutput() GetZeroTrustAccessApplicationPolicyIncludeGeoOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeGeoOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeGeoArgs) ToGetZeroTrustAccessApplicationPolicyIncludeGeoOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeGeoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeGeoOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGeoOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeGeoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGeo)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeGeoOutput) ToGetZeroTrustAccessApplicationPolicyIncludeGeoOutput() GetZeroTrustAccessApplicationPolicyIncludeGeoOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeGeoOutput) ToGetZeroTrustAccessApplicationPolicyIncludeGeoOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeGeoOutput {
-	return o
-}
-
-// The country code that should be matched.
-func (o GetZeroTrustAccessApplicationPolicyIncludeGeoOutput) CountryCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeGeo) string { return v.CountryCode }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGithubOrganization struct {
-	// The ID of your Github identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-	// The name of the organization.
-	Name string `pulumi:"name"`
-	// The name of the team
-	Team string `pulumi:"team"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgs and GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput() GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgs struct {
-	// The ID of your Github identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-	// The name of the organization.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the team
-	Team pulumi.StringInput `pulumi:"team"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGithubOrganization)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgs) ToGetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput() GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgs) ToGetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGithubOrganization)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput) ToGetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput() GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput) ToGetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput {
-	return o
-}
-
-// The ID of your Github identity provider.
-func (o GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeGithubOrganization) string {
-		return v.IdentityProviderId
-	}).(pulumi.StringOutput)
-}
-
-// The name of the organization.
-func (o GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeGithubOrganization) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The name of the team
-func (o GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput) Team() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeGithubOrganization) string { return v.Team }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGroup struct {
-	// The ID of a previously created Access group.
-	Id string `pulumi:"id"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeGroupInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeGroupArgs and GetZeroTrustAccessApplicationPolicyIncludeGroupOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeGroupInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeGroupArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeGroupInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeGroupOutput() GetZeroTrustAccessApplicationPolicyIncludeGroupOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeGroupOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeGroupOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGroupArgs struct {
-	// The ID of a previously created Access group.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGroup)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeGroupArgs) ToGetZeroTrustAccessApplicationPolicyIncludeGroupOutput() GetZeroTrustAccessApplicationPolicyIncludeGroupOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeGroupOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeGroupArgs) ToGetZeroTrustAccessApplicationPolicyIncludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeGroupOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGroupOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGroup)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeGroupOutput) ToGetZeroTrustAccessApplicationPolicyIncludeGroupOutput() GetZeroTrustAccessApplicationPolicyIncludeGroupOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeGroupOutput) ToGetZeroTrustAccessApplicationPolicyIncludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeGroupOutput {
-	return o
-}
-
-// The ID of a previously created Access group.
-func (o GetZeroTrustAccessApplicationPolicyIncludeGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeGroup) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGsuite struct {
-	// The email of the Google Workspace group.
-	Email string `pulumi:"email"`
-	// The ID of your Google Workspace identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeGsuiteInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeGsuiteArgs and GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeGsuiteInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeGsuiteArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeGsuiteInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput() GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeGsuiteOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGsuiteArgs struct {
-	// The email of the Google Workspace group.
-	Email pulumi.StringInput `pulumi:"email"`
-	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeGsuiteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGsuite)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeGsuiteArgs) ToGetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput() GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeGsuiteOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeGsuiteArgs) ToGetZeroTrustAccessApplicationPolicyIncludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGsuite)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput) ToGetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput() GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput) ToGetZeroTrustAccessApplicationPolicyIncludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput {
-	return o
-}
-
-// The email of the Google Workspace group.
-func (o GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeGsuite) string { return v.Email }).(pulumi.StringOutput)
-}
-
-// The ID of your Google Workspace identity provider.
-func (o GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeIp struct {
-	// An IPv4 or IPv6 CIDR block.
-	Ip string `pulumi:"ip"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeIpInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeIpArgs and GetZeroTrustAccessApplicationPolicyIncludeIpOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeIpInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeIpArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeIpInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeIpOutput() GetZeroTrustAccessApplicationPolicyIncludeIpOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeIpOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeIpOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeIpArgs struct {
-	// An IPv4 or IPv6 CIDR block.
-	Ip pulumi.StringInput `pulumi:"ip"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeIpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeIp)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeIpArgs) ToGetZeroTrustAccessApplicationPolicyIncludeIpOutput() GetZeroTrustAccessApplicationPolicyIncludeIpOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeIpOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeIpArgs) ToGetZeroTrustAccessApplicationPolicyIncludeIpOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeIpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeIpOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeIpOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeIp)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeIpOutput) ToGetZeroTrustAccessApplicationPolicyIncludeIpOutput() GetZeroTrustAccessApplicationPolicyIncludeIpOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeIpOutput) ToGetZeroTrustAccessApplicationPolicyIncludeIpOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeIpOutput {
-	return o
-}
-
-// An IPv4 or IPv6 CIDR block.
-func (o GetZeroTrustAccessApplicationPolicyIncludeIpOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeIp) string { return v.Ip }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeIpList struct {
-	// The ID of a previously created IP list.
-	Id string `pulumi:"id"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeIpListInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeIpListArgs and GetZeroTrustAccessApplicationPolicyIncludeIpListOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeIpListInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeIpListArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeIpListInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeIpListOutput() GetZeroTrustAccessApplicationPolicyIncludeIpListOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeIpListOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeIpListOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeIpListArgs struct {
-	// The ID of a previously created IP list.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeIpListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeIpList)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeIpListArgs) ToGetZeroTrustAccessApplicationPolicyIncludeIpListOutput() GetZeroTrustAccessApplicationPolicyIncludeIpListOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeIpListOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeIpListArgs) ToGetZeroTrustAccessApplicationPolicyIncludeIpListOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeIpListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeIpListOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeIpListOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeIpListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeIpList)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeIpListOutput) ToGetZeroTrustAccessApplicationPolicyIncludeIpListOutput() GetZeroTrustAccessApplicationPolicyIncludeIpListOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeIpListOutput) ToGetZeroTrustAccessApplicationPolicyIncludeIpListOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeIpListOutput {
-	return o
-}
-
-// The ID of a previously created IP list.
-func (o GetZeroTrustAccessApplicationPolicyIncludeIpListOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeIpList) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeLinkedAppToken struct {
-	// The ID of an Access OIDC SaaS application
-	AppUid string `pulumi:"appUid"`
-}
-
-// GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenInput is an input type that accepts GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs and GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenInput` via:
-//
-//	GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs{...}
-type GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput() GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput
-	ToGetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutputWithContext(context.Context) GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs struct {
-	// The ID of an Access OIDC SaaS application
-	AppUid pulumi.StringInput `pulumi:"appUid"`
-}
-
-func (GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeLinkedAppToken)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs) ToGetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput() GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput {
-	return i.ToGetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs) ToGetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput)
-}
-
-type GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeLinkedAppToken)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput) ToGetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput() GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput) ToGetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput {
-	return o
-}
-
-// The ID of an Access OIDC SaaS application
-func (o GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationPolicyIncludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTriggerInput)(nil)).Elem(), GetPagesProjectLatestDeploymentDeploymentTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput)(nil)).Elem(), GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentEnvVarsInput)(nil)).Elem(), GetPagesProjectLatestDeploymentEnvVarsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentEnvVarsMapInput)(nil)).Elem(), GetPagesProjectLatestDeploymentEnvVarsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentLatestStageInput)(nil)).Elem(), GetPagesProjectLatestDeploymentLatestStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentSourceInput)(nil)).Elem(), GetPagesProjectLatestDeploymentSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentSourceConfigInput)(nil)).Elem(), GetPagesProjectLatestDeploymentSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentStageInput)(nil)).Elem(), GetPagesProjectLatestDeploymentStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentStageArrayInput)(nil)).Elem(), GetPagesProjectLatestDeploymentStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectSourceInput)(nil)).Elem(), GetPagesProjectSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectSourceConfigInput)(nil)).Elem(), GetPagesProjectSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultInput)(nil)).Elem(), GetPagesProjectsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultArrayInput)(nil)).Elem(), GetPagesProjectsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultBuildConfigInput)(nil)).Elem(), GetPagesProjectsResultBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultBuildImageAutoUpgradeInput)(nil)).Elem(), GetPagesProjectsResultBuildImageAutoUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentBuildConfigInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentEnvVarsInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentEnvVarsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentLatestStageInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentLatestStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSourceInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSourceConfigInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentStageInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentStageArrayInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsInput)(nil)).Elem(), GetPagesProjectsResultDeploymentConfigsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreviewInput)(nil)).Elem(), GetPagesProjectsResultDeploymentConfigsPreviewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsInput)(nil)).Elem(), GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMapInput)(nil)).Elem(), GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsInput)(nil)).Elem(), GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs{})
@@ -52820,10 +53803,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitMatchResponseInput)(nil)).Elem(), GetRateLimitMatchResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalHostnamesResultInput)(nil)).Elem(), GetRegionalHostnamesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalHostnamesResultArrayInput)(nil)).Elem(), GetRegionalHostnamesResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistrarDomainsResultInput)(nil)).Elem(), GetRegistrarDomainsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistrarDomainsResultArrayInput)(nil)).Elem(), GetRegistrarDomainsResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistrarDomainsResultRegistrantContactInput)(nil)).Elem(), GetRegistrarDomainsResultRegistrantContactArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistrarDomainsResultTransferInInput)(nil)).Elem(), GetRegistrarDomainsResultTransferInArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupMetaInput)(nil)).Elem(), GetResourceGroupMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupScopeInput)(nil)).Elem(), GetResourceGroupScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupScopeArrayInput)(nil)).Elem(), GetResourceGroupScopeArray{})
@@ -53125,6 +54104,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionBindingOutboundParamInput)(nil)).Elem(), GetWorkerVersionBindingOutboundParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionBindingOutboundParamArrayInput)(nil)).Elem(), GetWorkerVersionBindingOutboundParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionBindingOutboundWorkerInput)(nil)).Elem(), GetWorkerVersionBindingOutboundWorkerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionBindingRetryInput)(nil)).Elem(), GetWorkerVersionBindingRetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionBindingSimpleInput)(nil)).Elem(), GetWorkerVersionBindingSimpleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionCacheOptionsInput)(nil)).Elem(), GetWorkerVersionCacheOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionContainerInput)(nil)).Elem(), GetWorkerVersionContainerArgs{})
@@ -53162,6 +54142,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionsResultBindingOutboundParamInput)(nil)).Elem(), GetWorkerVersionsResultBindingOutboundParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionsResultBindingOutboundParamArrayInput)(nil)).Elem(), GetWorkerVersionsResultBindingOutboundParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionsResultBindingOutboundWorkerInput)(nil)).Elem(), GetWorkerVersionsResultBindingOutboundWorkerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionsResultBindingRetryInput)(nil)).Elem(), GetWorkerVersionsResultBindingRetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionsResultBindingSimpleInput)(nil)).Elem(), GetWorkerVersionsResultBindingSimpleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionsResultCacheOptionsInput)(nil)).Elem(), GetWorkerVersionsResultCacheOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerVersionsResultContainerInput)(nil)).Elem(), GetWorkerVersionsResultContainerArgs{})
@@ -53358,29 +54339,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeLoginMethodInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeOidcInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyExcludeOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeOktaInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyExcludeOktaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeSamlInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyExcludeSamlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyExcludeServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeArrayInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAuthContextInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeAuthContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAuthMethodInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeAuthMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeAzureAdInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeAzureAdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeCertificateInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeCommonNameInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeCommonNameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeDevicePostureInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeDevicePostureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmailInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeEmailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmailDomainInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeEmailDomainArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEmailListInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeEmailListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeEveryoneInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeEveryoneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGeoInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeGeoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGroupInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeGsuiteInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeGsuiteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeIpInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeIpListInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeIpListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenInput)(nil)).Elem(), GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentDeploymentTriggerOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentEnvVarsOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentEnvVarsMapOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentLatestStageOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentSourceOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentSourceConfigOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentStageOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentStageArrayOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectSourceOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectSourceConfigOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultBuildConfigOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultBuildImageAutoUpgradeOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentLatestStageOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentSourceOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentStageOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentStageArrayOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultDeploymentConfigsOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectsResultDeploymentConfigsPreviewOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMapOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsOutput{})
@@ -53545,10 +54531,6 @@ func init() {
 	pulumi.RegisterOutputType(GetRateLimitMatchResponseOutput{})
 	pulumi.RegisterOutputType(GetRegionalHostnamesResultOutput{})
 	pulumi.RegisterOutputType(GetRegionalHostnamesResultArrayOutput{})
-	pulumi.RegisterOutputType(GetRegistrarDomainsResultOutput{})
-	pulumi.RegisterOutputType(GetRegistrarDomainsResultArrayOutput{})
-	pulumi.RegisterOutputType(GetRegistrarDomainsResultRegistrantContactOutput{})
-	pulumi.RegisterOutputType(GetRegistrarDomainsResultTransferInOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupMetaOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupScopeOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupScopeArrayOutput{})
@@ -53850,6 +54832,7 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkerVersionBindingOutboundParamOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionBindingOutboundParamArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionBindingOutboundWorkerOutput{})
+	pulumi.RegisterOutputType(GetWorkerVersionBindingRetryOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionBindingSimpleOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionCacheOptionsOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionContainerOutput{})
@@ -53887,6 +54870,7 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkerVersionsResultBindingOutboundParamOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionsResultBindingOutboundParamArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionsResultBindingOutboundWorkerOutput{})
+	pulumi.RegisterOutputType(GetWorkerVersionsResultBindingRetryOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionsResultBindingSimpleOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionsResultCacheOptionsOutput{})
 	pulumi.RegisterOutputType(GetWorkerVersionsResultContainerOutput{})
@@ -54083,27 +55067,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyExcludeLoginMethodOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyExcludeOidcOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyExcludeOktaOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyExcludeSamlOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyExcludeServiceTokenOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeArrayOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeAuthContextOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeAuthMethodOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeAzureAdOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeCertificateOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeCommonNameOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeDevicePostureOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeEmailOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeEmailDomainOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeEmailListOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeEveryoneOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeExternalEvaluationOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeGeoOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeGithubOrganizationOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeGroupOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeGsuiteOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeIpOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeIpListOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenOutput{})
 }

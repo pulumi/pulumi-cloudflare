@@ -101,10 +101,11 @@ class AccessApplicationArgs:
         :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[_builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
-        :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         :param pulumi.Input[_builtins.bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
         :param pulumi.Input[_builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]] target_criterias: Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
         :param pulumi.Input[_builtins.str] type: The application type.
                Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxy_endpoint".
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -594,7 +595,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         """
         return pulumi.get(self, "session_duration")
 
@@ -641,6 +642,9 @@ class AccessApplicationArgs:
     @_builtins.property
     @pulumi.getter(name="targetCriterias")
     def target_criterias(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]]:
+        """
+        Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+        """
         return pulumi.get(self, "target_criterias")
 
     @target_criterias.setter
@@ -758,10 +762,11 @@ class _AccessApplicationState:
         :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[_builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
-        :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         :param pulumi.Input[_builtins.bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
         :param pulumi.Input[_builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]] target_criterias: Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
         :param pulumi.Input[_builtins.str] type: The application type.
                Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxy_endpoint".
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -1265,7 +1270,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         """
         return pulumi.get(self, "session_duration")
 
@@ -1312,6 +1317,9 @@ class _AccessApplicationState:
     @_builtins.property
     @pulumi.getter(name="targetCriterias")
     def target_criterias(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]]:
+        """
+        Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+        """
         return pulumi.get(self, "target_criterias")
 
     @target_criterias.setter
@@ -1445,10 +1453,11 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict', 'outputs.AccessApplicationScimConfig']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[_builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
-        :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         :param pulumi.Input[_builtins.bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
         :param pulumi.Input[_builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict', 'outputs.AccessApplicationTargetCriteria']]]] target_criterias: Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
         :param pulumi.Input[_builtins.str] type: The application type.
                Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxy_endpoint".
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -1673,10 +1682,11 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict', 'outputs.AccessApplicationScimConfig']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[_builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
-        :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         :param pulumi.Input[_builtins.bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
         :param pulumi.Input[_builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict', 'outputs.AccessApplicationTargetCriteria']]]] target_criterias: Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
         :param pulumi.Input[_builtins.str] type: The application type.
                Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxy_endpoint".
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -2005,7 +2015,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Output[_builtins.str]:
         """
-        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         """
         return pulumi.get(self, "session_duration")
 
@@ -2036,6 +2046,9 @@ class AccessApplication(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="targetCriterias")
     def target_criterias(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationTargetCriteria']]]:
+        """
+        Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+        """
         return pulumi.get(self, "target_criterias")
 
     @_builtins.property

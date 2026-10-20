@@ -63,7 +63,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
      * 
      */
     private GetZeroTrustDlpCustomEntryVariant variant;
-    private String wordList;
+    private List<String> wordLists;
 
     private GetZeroTrustDlpCustomEntryResult() {}
     public Optional<String> accountId() {
@@ -147,8 +147,8 @@ public final class GetZeroTrustDlpCustomEntryResult {
     public GetZeroTrustDlpCustomEntryVariant variant() {
         return this.variant;
     }
-    public String wordList() {
-        return this.wordList;
+    public List<String> wordLists() {
+        return this.wordLists;
     }
 
     public static Builder builder() {
@@ -178,7 +178,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
         private String updatedAt;
         private String uploadStatus;
         private GetZeroTrustDlpCustomEntryVariant variant;
-        private String wordList;
+        private List<String> wordLists;
         public Builder() {}
         public Builder(GetZeroTrustDlpCustomEntryResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -200,7 +200,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
     	      this.updatedAt = defaults.updatedAt;
     	      this.uploadStatus = defaults.uploadStatus;
     	      this.variant = defaults.variant;
-    	      this.wordList = defaults.wordList;
+    	      this.wordLists = defaults.wordLists;
         }
 
         @CustomType.Setter
@@ -349,12 +349,15 @@ public final class GetZeroTrustDlpCustomEntryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder wordList(String wordList) {
-            if (wordList == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomEntryResult", "wordList");
+        public Builder wordLists(List<String> wordLists) {
+            if (wordLists == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomEntryResult", "wordLists");
             }
-            this.wordList = wordList;
+            this.wordLists = wordLists;
             return this;
+        }
+        public Builder wordLists(String... wordLists) {
+            return wordLists(List.of(wordLists));
         }
         public GetZeroTrustDlpCustomEntryResult build() {
             final var _resultValue = new GetZeroTrustDlpCustomEntryResult();
@@ -376,7 +379,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
             _resultValue.updatedAt = updatedAt;
             _resultValue.uploadStatus = uploadStatus;
             _resultValue.variant = variant;
-            _resultValue.wordList = wordList;
+            _resultValue.wordLists = wordLists;
             return _resultValue;
         }
     }

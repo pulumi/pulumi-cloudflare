@@ -118,8 +118,8 @@ namespace Pulumi.Cloudflare
         [Output("variant")]
         public Output<Outputs.ZeroTrustDlpPredefinedEntryVariant> Variant { get; private set; } = null!;
 
-        [Output("wordList")]
-        public Output<string> WordList { get; private set; } = null!;
+        [Output("wordLists")]
+        public Output<ImmutableArray<string>> WordLists { get; private set; } = null!;
 
 
         /// <summary>
@@ -269,8 +269,13 @@ namespace Pulumi.Cloudflare
         [Input("variant")]
         public Input<Inputs.ZeroTrustDlpPredefinedEntryVariantGetArgs>? Variant { get; set; }
 
-        [Input("wordList")]
-        public Input<string>? WordList { get; set; }
+        [Input("wordLists")]
+        private InputList<string>? _wordLists;
+        public InputList<string> WordLists
+        {
+            get => _wordLists ?? (_wordLists = new InputList<string>());
+            set => _wordLists = value;
+        }
 
         public ZeroTrustDlpPredefinedEntryState()
         {

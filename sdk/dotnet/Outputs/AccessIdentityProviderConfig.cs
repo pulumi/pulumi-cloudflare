@@ -91,6 +91,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? IssuerUrl;
         /// <summary>
+        /// When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+        /// </summary>
+        public readonly bool? LoginPageAutoPrompt;
+        /// <summary>
         /// The maximum URL length the IdP accepts for the SSO redirect URL.
         /// When the constructed SSO URL would exceed this length, the RelayState
         /// is stored server-side and a short nonce is passed to the IdP instead.
@@ -188,6 +192,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? issuerUrl,
 
+            bool? loginPageAutoPrompt,
+
             int? maxSsoUrlLength,
 
             string? oktaAccount,
@@ -235,6 +241,7 @@ namespace Pulumi.Cloudflare.Outputs
             HeaderAttributes = headerAttributes;
             IdpPublicCerts = idpPublicCerts;
             IssuerUrl = issuerUrl;
+            LoginPageAutoPrompt = loginPageAutoPrompt;
             MaxSsoUrlLength = maxSsoUrlLength;
             OktaAccount = oktaAccount;
             OneloginAccount = oneloginAccount;

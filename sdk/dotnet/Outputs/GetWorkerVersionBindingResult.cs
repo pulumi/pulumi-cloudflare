@@ -141,6 +141,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string QueueName;
         /// <summary>
+        /// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+        /// </summary>
+        public readonly Outputs.GetWorkerVersionBindingRetryResult Retry;
+        /// <summary>
         /// The script where the Durable Object is defined, if it is external to this Worker.
         /// </summary>
         public readonly string ScriptName;
@@ -258,6 +262,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string queueName,
 
+            Outputs.GetWorkerVersionBindingRetryResult retry,
+
             string scriptName,
 
             string secretName,
@@ -315,6 +321,7 @@ namespace Pulumi.Cloudflare.Outputs
             Part = part;
             Pipeline = pipeline;
             QueueName = queueName;
+            Retry = retry;
             ScriptName = scriptName;
             SecretName = secretName;
             Service = service;

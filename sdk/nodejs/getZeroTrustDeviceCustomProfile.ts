@@ -115,7 +115,7 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      */
     readonly lanAllowSubnetSize: number;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
      */
     readonly match: string;
     /**
@@ -149,6 +149,9 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      */
     readonly switchLocked: boolean;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     readonly targetTests: outputs.GetZeroTrustDeviceCustomProfileTargetTest[];
     /**
      * Determines which tunnel protocol to use.

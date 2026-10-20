@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("createdFromAisearchWizard")]
         public Input<bool>? CreatedFromAisearchWizard { get; set; }
 
+        [Input("createdFromEmdashPlugin")]
+        public Input<Inputs.AiSearchInstanceMetadataCreatedFromEmdashPluginArgs>? CreatedFromEmdashPlugin { get; set; }
+
         [Input("workerDomain")]
         public Input<string>? WorkerDomain { get; set; }
 

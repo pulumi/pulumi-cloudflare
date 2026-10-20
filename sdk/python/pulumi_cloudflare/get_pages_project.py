@@ -27,13 +27,16 @@ class GetPagesProjectResult:
     """
     A collection of values returned by getPagesProject.
     """
-    def __init__(__self__, account_id=None, build_config=None, canonical_deployment=None, created_on=None, deployment_configs=None, domains=None, framework=None, framework_version=None, id=None, latest_deployment=None, name=None, preview_script_name=None, production_branch=None, production_script_name=None, project_name=None, source=None, subdomain=None, uses_functions=None):
+    def __init__(__self__, account_id=None, build_config=None, build_image_auto_upgrade=None, canonical_deployment=None, created_on=None, deployment_configs=None, domains=None, framework=None, framework_version=None, id=None, latest_deployment=None, name=None, preview_script_name=None, production_branch=None, production_script_name=None, project_name=None, source=None, subdomain=None, uses_functions=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if build_config and not isinstance(build_config, dict):
             raise TypeError("Expected argument 'build_config' to be a dict")
         pulumi.set(__self__, "build_config", build_config)
+        if build_image_auto_upgrade and not isinstance(build_image_auto_upgrade, dict):
+            raise TypeError("Expected argument 'build_image_auto_upgrade' to be a dict")
+        pulumi.set(__self__, "build_image_auto_upgrade", build_image_auto_upgrade)
         if canonical_deployment and not isinstance(canonical_deployment, dict):
             raise TypeError("Expected argument 'canonical_deployment' to be a dict")
         pulumi.set(__self__, "canonical_deployment", canonical_deployment)
@@ -98,6 +101,14 @@ class GetPagesProjectResult:
         Configs for the project build process.
         """
         return pulumi.get(self, "build_config")
+
+    @_builtins.property
+    @pulumi.getter(name="buildImageAutoUpgrade")
+    def build_image_auto_upgrade(self) -> 'outputs.GetPagesProjectBuildImageAutoUpgradeResult':
+        """
+        Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on.
+        """
+        return pulumi.get(self, "build_image_auto_upgrade")
 
     @_builtins.property
     @pulumi.getter(name="canonicalDeployment")
@@ -236,6 +247,7 @@ class AwaitableGetPagesProjectResult(GetPagesProjectResult):
         return GetPagesProjectResult(
             account_id=self.account_id,
             build_config=self.build_config,
+            build_image_auto_upgrade=self.build_image_auto_upgrade,
             canonical_deployment=self.canonical_deployment,
             created_on=self.created_on,
             deployment_configs=self.deployment_configs,
@@ -286,6 +298,7 @@ def get_pages_project(account_id: Optional[_builtins.str] = None,
     return AwaitableGetPagesProjectResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         build_config=pulumi.get(__ret__, 'build_config'),
+        build_image_auto_upgrade=pulumi.get(__ret__, 'build_image_auto_upgrade'),
         canonical_deployment=pulumi.get(__ret__, 'canonical_deployment'),
         created_on=pulumi.get(__ret__, 'created_on'),
         deployment_configs=pulumi.get(__ret__, 'deployment_configs'),
@@ -333,6 +346,7 @@ def get_pages_project_output(account_id: pulumi.Input[Optional[Optional[_builtin
     return __ret__.apply(lambda __response__: GetPagesProjectResult(
         account_id=pulumi.get(__response__, 'account_id'),
         build_config=pulumi.get(__response__, 'build_config'),
+        build_image_auto_upgrade=pulumi.get(__response__, 'build_image_auto_upgrade'),
         canonical_deployment=pulumi.get(__response__, 'canonical_deployment'),
         created_on=pulumi.get(__response__, 'created_on'),
         deployment_configs=pulumi.get(__response__, 'deployment_configs'),

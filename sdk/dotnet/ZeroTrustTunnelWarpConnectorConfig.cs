@@ -75,7 +75,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// High-availability mode for the WARP Connector tunnel. `None` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `Disabled` means HA is explicitly turned off. `Aws` uses AWS ENI move for failover. `Local` uses virtual IPs (VIPs) on the local interface.
+        /// High-availability mode for the Mesh node. `None` means HA is enabled but no provider is configured yet (newly created nodes default to this). `Disabled` means HA is explicitly turned off. `Aws` uses AWS ENI move for failover. `Local` uses virtual IPs (VIPs) on the local interface.
         /// Available values: "none", "disabled", "aws", "local".
         /// </summary>
         [Output("haMode")]
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustTunnelWarpConnectorConfigConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// High-availability mode for the WARP Connector tunnel. `None` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `Disabled` means HA is explicitly turned off. `Aws` uses AWS ENI move for failover. `Local` uses virtual IPs (VIPs) on the local interface.
+        /// High-availability mode for the Mesh node. `None` means HA is enabled but no provider is configured yet (newly created nodes default to this). `Disabled` means HA is explicitly turned off. `Aws` uses AWS ENI move for failover. `Local` uses virtual IPs (VIPs) on the local interface.
         /// Available values: "none", "disabled", "aws", "local".
         /// </summary>
         [Input("haMode", required: true)]
@@ -197,7 +197,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// High-availability mode for the WARP Connector tunnel. `None` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `Disabled` means HA is explicitly turned off. `Aws` uses AWS ENI move for failover. `Local` uses virtual IPs (VIPs) on the local interface.
+        /// High-availability mode for the Mesh node. `None` means HA is enabled but no provider is configured yet (newly created nodes default to this). `Disabled` means HA is explicitly turned off. `Aws` uses AWS ENI move for failover. `Local` uses virtual IPs (VIPs) on the local interface.
         /// Available values: "none", "disabled", "aws", "local".
         /// </summary>
         [Input("haMode")]

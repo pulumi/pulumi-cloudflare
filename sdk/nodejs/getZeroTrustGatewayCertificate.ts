@@ -83,6 +83,10 @@ export interface GetZeroTrustGatewayCertificateResult {
      */
     readonly issuerRaw: string;
     /**
+     * Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+     */
+    readonly region: string;
+    /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".
      */

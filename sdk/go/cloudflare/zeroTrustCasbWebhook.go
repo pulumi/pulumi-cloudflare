@@ -33,14 +33,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustCasbWebhook(ctx, "example_zero_trust_casb_webhook", &cloudflare.ZeroTrustCasbWebhookArgs{
 //				AccountId:          pulumi.String("46148281d8a93d002ef242d8b0d5f9f6"),
-//				AuthenticationType: pulumi.String("Bearer Auth"),
+//				AuthenticationType: pulumi.String("HMAC-Signing"),
 //				DestinationUrl:     pulumi.String("https://example.com/webhook"),
 //				Label:              pulumi.String("Send to Slack"),
 //				Headers: cloudflare.ZeroTrustCasbWebhookHeaderArray{
-//					&cloudflare.ZeroTrustCasbWebhookHeaderArgs{
-//						Key:   pulumi.String("Authorization"),
-//						Value: pulumi.String("Bearer token123"),
-//					},
 //					&cloudflare.ZeroTrustCasbWebhookHeaderArgs{
 //						Key:   pulumi.String("X-Custom-Header"),
 //						Value: pulumi.String("value"),

@@ -202,14 +202,14 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="readReplication", refs={D1DatabaseReadReplication.class}, tree="[0]")
-    private Output</* @Nullable */ D1DatabaseReadReplication> readReplication;
+    private Output<D1DatabaseReadReplication> readReplication;
 
     /**
      * @return Configuration for D1 read replication.
      * 
      */
-    public Output<Optional<D1DatabaseReadReplication>> readReplication() {
-        return Codegen.optional(this.readReplication);
+    public Output<D1DatabaseReadReplication> readReplication() {
+        return this.readReplication;
     }
     /**
      * D1 database identifier (UUID).

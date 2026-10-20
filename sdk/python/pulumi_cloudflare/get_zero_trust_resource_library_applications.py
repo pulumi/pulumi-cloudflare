@@ -27,7 +27,7 @@ class GetZeroTrustResourceLibraryApplicationsResult:
     """
     A collection of values returned by getZeroTrustResourceLibraryApplications.
     """
-    def __init__(__self__, account_id=None, fields=None, filter=None, limit=None, max_items=None, offset=None, order_by=None, results=None, search=None):
+    def __init__(__self__, account_id=None, fields=None, filter=None, limit=None, lookup=None, max_items=None, offset=None, order_by=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetZeroTrustResourceLibraryApplicationsResult:
         if limit and not isinstance(limit, int):
             raise TypeError("Expected argument 'limit' to be a int")
         pulumi.set(__self__, "limit", limit)
+        if lookup and not isinstance(lookup, str):
+            raise TypeError("Expected argument 'lookup' to be a str")
+        pulumi.set(__self__, "lookup", lookup)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
@@ -66,7 +69,7 @@ class GetZeroTrustResourceLibraryApplicationsResult:
     def fields(self) -> Optional[_builtins.str]:
         """
         Return only the listed properties on each application, as a comma-separated list.
-        Use this to keep responses small when you only need part of each application — for
+        Use this to keep responses small when you only need part of each application, for
         example populating a picker with `fields=id,name` instead of downloading every
         hostname and IP subnet.
         """
@@ -81,6 +84,11 @@ class GetZeroTrustResourceLibraryApplicationsResult:
     @pulumi.getter
     def limit(self) -> _builtins.int:
         return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def lookup(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "lookup")
 
     @_builtins.property
     @pulumi.getter(name="maxItems")
@@ -118,6 +126,7 @@ class AwaitableGetZeroTrustResourceLibraryApplicationsResult(GetZeroTrustResourc
             fields=self.fields,
             filter=self.filter,
             limit=self.limit,
+            lookup=self.lookup,
             max_items=self.max_items,
             offset=self.offset,
             order_by=self.order_by,
@@ -129,6 +138,7 @@ def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.
                                                  fields: Optional[_builtins.str] = None,
                                                  filter: Optional[_builtins.str] = None,
                                                  limit: Optional[_builtins.int] = None,
+                                                 lookup: Optional[_builtins.str] = None,
                                                  max_items: Optional[_builtins.int] = None,
                                                  offset: Optional[_builtins.int] = None,
                                                  order_by: Optional[_builtins.str] = None,
@@ -144,13 +154,14 @@ def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.
     example_zero_trust_resource_library_applications = cloudflare.get_zero_trust_resource_library_applications(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         fields="fields",
         filter="filter",
+        lookup="xx",
         order_by="order_by",
         search="xx")
     ```
 
 
     :param _builtins.str fields: Return only the listed properties on each application, as a comma-separated list.
-           Use this to keep responses small when you only need part of each application — for
+           Use this to keep responses small when you only need part of each application, for
            example populating a picker with `fields=id,name` instead of downloading every
            hostname and IP subnet.
     """
@@ -159,6 +170,7 @@ def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.
     __args__['fields'] = fields
     __args__['filter'] = filter
     __args__['limit'] = limit
+    __args__['lookup'] = lookup
     __args__['maxItems'] = max_items
     __args__['offset'] = offset
     __args__['orderBy'] = order_by
@@ -171,6 +183,7 @@ def get_zero_trust_resource_library_applications(account_id: Optional[_builtins.
         fields=pulumi.get(__ret__, 'fields'),
         filter=pulumi.get(__ret__, 'filter'),
         limit=pulumi.get(__ret__, 'limit'),
+        lookup=pulumi.get(__ret__, 'lookup'),
         max_items=pulumi.get(__ret__, 'max_items'),
         offset=pulumi.get(__ret__, 'offset'),
         order_by=pulumi.get(__ret__, 'order_by'),
@@ -180,6 +193,7 @@ def get_zero_trust_resource_library_applications_output(account_id: pulumi.Input
                                                         fields: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                        lookup: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                         offset: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                         order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -195,13 +209,14 @@ def get_zero_trust_resource_library_applications_output(account_id: pulumi.Input
     example_zero_trust_resource_library_applications = cloudflare.get_zero_trust_resource_library_applications(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         fields="fields",
         filter="filter",
+        lookup="xx",
         order_by="order_by",
         search="xx")
     ```
 
 
     :param _builtins.str fields: Return only the listed properties on each application, as a comma-separated list.
-           Use this to keep responses small when you only need part of each application — for
+           Use this to keep responses small when you only need part of each application, for
            example populating a picker with `fields=id,name` instead of downloading every
            hostname and IP subnet.
     """
@@ -210,6 +225,7 @@ def get_zero_trust_resource_library_applications_output(account_id: pulumi.Input
     __args__['fields'] = fields
     __args__['filter'] = filter
     __args__['limit'] = limit
+    __args__['lookup'] = lookup
     __args__['maxItems'] = max_items
     __args__['offset'] = offset
     __args__['orderBy'] = order_by
@@ -221,6 +237,7 @@ def get_zero_trust_resource_library_applications_output(account_id: pulumi.Input
         fields=pulumi.get(__response__, 'fields'),
         filter=pulumi.get(__response__, 'filter'),
         limit=pulumi.get(__response__, 'limit'),
+        lookup=pulumi.get(__response__, 'lookup'),
         max_items=pulumi.get(__response__, 'max_items'),
         offset=pulumi.get(__response__, 'offset'),
         order_by=pulumi.get(__response__, 'order_by'),

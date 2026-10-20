@@ -13,6 +13,1042 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type MagicWanStaticRouteScope struct {
+	// List of colo names for the ECMP scope.
+	ColoNames []string `pulumi:"coloNames"`
+	// List of colo regions for the ECMP scope.
+	ColoRegions []string `pulumi:"coloRegions"`
+}
+
+// MagicWanStaticRouteScopeInput is an input type that accepts MagicWanStaticRouteScopeArgs and MagicWanStaticRouteScopeOutput values.
+// You can construct a concrete instance of `MagicWanStaticRouteScopeInput` via:
+//
+//	MagicWanStaticRouteScopeArgs{...}
+type MagicWanStaticRouteScopeInput interface {
+	pulumi.Input
+
+	ToMagicWanStaticRouteScopeOutput() MagicWanStaticRouteScopeOutput
+	ToMagicWanStaticRouteScopeOutputWithContext(context.Context) MagicWanStaticRouteScopeOutput
+}
+
+type MagicWanStaticRouteScopeArgs struct {
+	// List of colo names for the ECMP scope.
+	ColoNames pulumi.StringArrayInput `pulumi:"coloNames"`
+	// List of colo regions for the ECMP scope.
+	ColoRegions pulumi.StringArrayInput `pulumi:"coloRegions"`
+}
+
+func (MagicWanStaticRouteScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanStaticRouteScope)(nil)).Elem()
+}
+
+func (i MagicWanStaticRouteScopeArgs) ToMagicWanStaticRouteScopeOutput() MagicWanStaticRouteScopeOutput {
+	return i.ToMagicWanStaticRouteScopeOutputWithContext(context.Background())
+}
+
+func (i MagicWanStaticRouteScopeArgs) ToMagicWanStaticRouteScopeOutputWithContext(ctx context.Context) MagicWanStaticRouteScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteScopeOutput)
+}
+
+func (i MagicWanStaticRouteScopeArgs) ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput {
+	return i.ToMagicWanStaticRouteScopePtrOutputWithContext(context.Background())
+}
+
+func (i MagicWanStaticRouteScopeArgs) ToMagicWanStaticRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteScopeOutput).ToMagicWanStaticRouteScopePtrOutputWithContext(ctx)
+}
+
+// MagicWanStaticRouteScopePtrInput is an input type that accepts MagicWanStaticRouteScopeArgs, MagicWanStaticRouteScopePtr and MagicWanStaticRouteScopePtrOutput values.
+// You can construct a concrete instance of `MagicWanStaticRouteScopePtrInput` via:
+//
+//	        MagicWanStaticRouteScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MagicWanStaticRouteScopePtrInput interface {
+	pulumi.Input
+
+	ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput
+	ToMagicWanStaticRouteScopePtrOutputWithContext(context.Context) MagicWanStaticRouteScopePtrOutput
+}
+
+type magicWanStaticRouteScopePtrType MagicWanStaticRouteScopeArgs
+
+func MagicWanStaticRouteScopePtr(v *MagicWanStaticRouteScopeArgs) MagicWanStaticRouteScopePtrInput {
+	return (*magicWanStaticRouteScopePtrType)(v)
+}
+
+func (*magicWanStaticRouteScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanStaticRouteScope)(nil)).Elem()
+}
+
+func (i *magicWanStaticRouteScopePtrType) ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput {
+	return i.ToMagicWanStaticRouteScopePtrOutputWithContext(context.Background())
+}
+
+func (i *magicWanStaticRouteScopePtrType) ToMagicWanStaticRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteScopePtrOutput)
+}
+
+type MagicWanStaticRouteScopeOutput struct{ *pulumi.OutputState }
+
+func (MagicWanStaticRouteScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanStaticRouteScope)(nil)).Elem()
+}
+
+func (o MagicWanStaticRouteScopeOutput) ToMagicWanStaticRouteScopeOutput() MagicWanStaticRouteScopeOutput {
+	return o
+}
+
+func (o MagicWanStaticRouteScopeOutput) ToMagicWanStaticRouteScopeOutputWithContext(ctx context.Context) MagicWanStaticRouteScopeOutput {
+	return o
+}
+
+func (o MagicWanStaticRouteScopeOutput) ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput {
+	return o.ToMagicWanStaticRouteScopePtrOutputWithContext(context.Background())
+}
+
+func (o MagicWanStaticRouteScopeOutput) ToMagicWanStaticRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanStaticRouteScope) *MagicWanStaticRouteScope {
+		return &v
+	}).(MagicWanStaticRouteScopePtrOutput)
+}
+
+// List of colo names for the ECMP scope.
+func (o MagicWanStaticRouteScopeOutput) ColoNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MagicWanStaticRouteScope) []string { return v.ColoNames }).(pulumi.StringArrayOutput)
+}
+
+// List of colo regions for the ECMP scope.
+func (o MagicWanStaticRouteScopeOutput) ColoRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MagicWanStaticRouteScope) []string { return v.ColoRegions }).(pulumi.StringArrayOutput)
+}
+
+type MagicWanStaticRouteScopePtrOutput struct{ *pulumi.OutputState }
+
+func (MagicWanStaticRouteScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanStaticRouteScope)(nil)).Elem()
+}
+
+func (o MagicWanStaticRouteScopePtrOutput) ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput {
+	return o
+}
+
+func (o MagicWanStaticRouteScopePtrOutput) ToMagicWanStaticRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteScopePtrOutput {
+	return o
+}
+
+func (o MagicWanStaticRouteScopePtrOutput) Elem() MagicWanStaticRouteScopeOutput {
+	return o.ApplyT(func(v *MagicWanStaticRouteScope) MagicWanStaticRouteScope {
+		if v != nil {
+			return *v
+		}
+		var ret MagicWanStaticRouteScope
+		return ret
+	}).(MagicWanStaticRouteScopeOutput)
+}
+
+// List of colo names for the ECMP scope.
+func (o MagicWanStaticRouteScopePtrOutput) ColoNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MagicWanStaticRouteScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ColoNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of colo regions for the ECMP scope.
+func (o MagicWanStaticRouteScopePtrOutput) ColoRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MagicWanStaticRouteScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ColoRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+type ManagedHeadersManagedRequestHeader struct {
+	// Whether the Managed Transform is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id string `pulumi:"id"`
+}
+
+// ManagedHeadersManagedRequestHeaderInput is an input type that accepts ManagedHeadersManagedRequestHeaderArgs and ManagedHeadersManagedRequestHeaderOutput values.
+// You can construct a concrete instance of `ManagedHeadersManagedRequestHeaderInput` via:
+//
+//	ManagedHeadersManagedRequestHeaderArgs{...}
+type ManagedHeadersManagedRequestHeaderInput interface {
+	pulumi.Input
+
+	ToManagedHeadersManagedRequestHeaderOutput() ManagedHeadersManagedRequestHeaderOutput
+	ToManagedHeadersManagedRequestHeaderOutputWithContext(context.Context) ManagedHeadersManagedRequestHeaderOutput
+}
+
+type ManagedHeadersManagedRequestHeaderArgs struct {
+	// Whether the Managed Transform is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ManagedHeadersManagedRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedHeadersManagedRequestHeader)(nil)).Elem()
+}
+
+func (i ManagedHeadersManagedRequestHeaderArgs) ToManagedHeadersManagedRequestHeaderOutput() ManagedHeadersManagedRequestHeaderOutput {
+	return i.ToManagedHeadersManagedRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i ManagedHeadersManagedRequestHeaderArgs) ToManagedHeadersManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedHeadersManagedRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersManagedRequestHeaderOutput)
+}
+
+// ManagedHeadersManagedRequestHeaderArrayInput is an input type that accepts ManagedHeadersManagedRequestHeaderArray and ManagedHeadersManagedRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `ManagedHeadersManagedRequestHeaderArrayInput` via:
+//
+//	ManagedHeadersManagedRequestHeaderArray{ ManagedHeadersManagedRequestHeaderArgs{...} }
+type ManagedHeadersManagedRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToManagedHeadersManagedRequestHeaderArrayOutput() ManagedHeadersManagedRequestHeaderArrayOutput
+	ToManagedHeadersManagedRequestHeaderArrayOutputWithContext(context.Context) ManagedHeadersManagedRequestHeaderArrayOutput
+}
+
+type ManagedHeadersManagedRequestHeaderArray []ManagedHeadersManagedRequestHeaderInput
+
+func (ManagedHeadersManagedRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedHeadersManagedRequestHeader)(nil)).Elem()
+}
+
+func (i ManagedHeadersManagedRequestHeaderArray) ToManagedHeadersManagedRequestHeaderArrayOutput() ManagedHeadersManagedRequestHeaderArrayOutput {
+	return i.ToManagedHeadersManagedRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedHeadersManagedRequestHeaderArray) ToManagedHeadersManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedHeadersManagedRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersManagedRequestHeaderArrayOutput)
+}
+
+type ManagedHeadersManagedRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (ManagedHeadersManagedRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedHeadersManagedRequestHeader)(nil)).Elem()
+}
+
+func (o ManagedHeadersManagedRequestHeaderOutput) ToManagedHeadersManagedRequestHeaderOutput() ManagedHeadersManagedRequestHeaderOutput {
+	return o
+}
+
+func (o ManagedHeadersManagedRequestHeaderOutput) ToManagedHeadersManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedHeadersManagedRequestHeaderOutput {
+	return o
+}
+
+// Whether the Managed Transform is enabled.
+func (o ManagedHeadersManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedHeadersManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable identifier of the Managed Transform.
+func (o ManagedHeadersManagedRequestHeaderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedHeadersManagedRequestHeader) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ManagedHeadersManagedRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedHeadersManagedRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedHeadersManagedRequestHeader)(nil)).Elem()
+}
+
+func (o ManagedHeadersManagedRequestHeaderArrayOutput) ToManagedHeadersManagedRequestHeaderArrayOutput() ManagedHeadersManagedRequestHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedHeadersManagedRequestHeaderArrayOutput) ToManagedHeadersManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedHeadersManagedRequestHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedHeadersManagedRequestHeaderArrayOutput) Index(i pulumi.IntInput) ManagedHeadersManagedRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedHeadersManagedRequestHeader {
+		return vs[0].([]ManagedHeadersManagedRequestHeader)[vs[1].(int)]
+	}).(ManagedHeadersManagedRequestHeaderOutput)
+}
+
+type ManagedHeadersManagedResponseHeader struct {
+	// Whether the Managed Transform is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id string `pulumi:"id"`
+}
+
+// ManagedHeadersManagedResponseHeaderInput is an input type that accepts ManagedHeadersManagedResponseHeaderArgs and ManagedHeadersManagedResponseHeaderOutput values.
+// You can construct a concrete instance of `ManagedHeadersManagedResponseHeaderInput` via:
+//
+//	ManagedHeadersManagedResponseHeaderArgs{...}
+type ManagedHeadersManagedResponseHeaderInput interface {
+	pulumi.Input
+
+	ToManagedHeadersManagedResponseHeaderOutput() ManagedHeadersManagedResponseHeaderOutput
+	ToManagedHeadersManagedResponseHeaderOutputWithContext(context.Context) ManagedHeadersManagedResponseHeaderOutput
+}
+
+type ManagedHeadersManagedResponseHeaderArgs struct {
+	// Whether the Managed Transform is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ManagedHeadersManagedResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedHeadersManagedResponseHeader)(nil)).Elem()
+}
+
+func (i ManagedHeadersManagedResponseHeaderArgs) ToManagedHeadersManagedResponseHeaderOutput() ManagedHeadersManagedResponseHeaderOutput {
+	return i.ToManagedHeadersManagedResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i ManagedHeadersManagedResponseHeaderArgs) ToManagedHeadersManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedHeadersManagedResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersManagedResponseHeaderOutput)
+}
+
+// ManagedHeadersManagedResponseHeaderArrayInput is an input type that accepts ManagedHeadersManagedResponseHeaderArray and ManagedHeadersManagedResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `ManagedHeadersManagedResponseHeaderArrayInput` via:
+//
+//	ManagedHeadersManagedResponseHeaderArray{ ManagedHeadersManagedResponseHeaderArgs{...} }
+type ManagedHeadersManagedResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToManagedHeadersManagedResponseHeaderArrayOutput() ManagedHeadersManagedResponseHeaderArrayOutput
+	ToManagedHeadersManagedResponseHeaderArrayOutputWithContext(context.Context) ManagedHeadersManagedResponseHeaderArrayOutput
+}
+
+type ManagedHeadersManagedResponseHeaderArray []ManagedHeadersManagedResponseHeaderInput
+
+func (ManagedHeadersManagedResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedHeadersManagedResponseHeader)(nil)).Elem()
+}
+
+func (i ManagedHeadersManagedResponseHeaderArray) ToManagedHeadersManagedResponseHeaderArrayOutput() ManagedHeadersManagedResponseHeaderArrayOutput {
+	return i.ToManagedHeadersManagedResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedHeadersManagedResponseHeaderArray) ToManagedHeadersManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedHeadersManagedResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersManagedResponseHeaderArrayOutput)
+}
+
+type ManagedHeadersManagedResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (ManagedHeadersManagedResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedHeadersManagedResponseHeader)(nil)).Elem()
+}
+
+func (o ManagedHeadersManagedResponseHeaderOutput) ToManagedHeadersManagedResponseHeaderOutput() ManagedHeadersManagedResponseHeaderOutput {
+	return o
+}
+
+func (o ManagedHeadersManagedResponseHeaderOutput) ToManagedHeadersManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedHeadersManagedResponseHeaderOutput {
+	return o
+}
+
+// Whether the Managed Transform is enabled.
+func (o ManagedHeadersManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedHeadersManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable identifier of the Managed Transform.
+func (o ManagedHeadersManagedResponseHeaderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedHeadersManagedResponseHeader) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ManagedHeadersManagedResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedHeadersManagedResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedHeadersManagedResponseHeader)(nil)).Elem()
+}
+
+func (o ManagedHeadersManagedResponseHeaderArrayOutput) ToManagedHeadersManagedResponseHeaderArrayOutput() ManagedHeadersManagedResponseHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedHeadersManagedResponseHeaderArrayOutput) ToManagedHeadersManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedHeadersManagedResponseHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedHeadersManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput) ManagedHeadersManagedResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedHeadersManagedResponseHeader {
+		return vs[0].([]ManagedHeadersManagedResponseHeader)[vs[1].(int)]
+	}).(ManagedHeadersManagedResponseHeaderOutput)
+}
+
+type ManagedTransformsManagedRequestHeader struct {
+	// Whether the Managed Transform is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id string `pulumi:"id"`
+}
+
+// ManagedTransformsManagedRequestHeaderInput is an input type that accepts ManagedTransformsManagedRequestHeaderArgs and ManagedTransformsManagedRequestHeaderOutput values.
+// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderInput` via:
+//
+//	ManagedTransformsManagedRequestHeaderArgs{...}
+type ManagedTransformsManagedRequestHeaderInput interface {
+	pulumi.Input
+
+	ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput
+	ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderOutput
+}
+
+type ManagedTransformsManagedRequestHeaderArgs struct {
+	// Whether the Managed Transform is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ManagedTransformsManagedRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
+}
+
+func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
+	return i.ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderOutput)
+}
+
+// ManagedTransformsManagedRequestHeaderArrayInput is an input type that accepts ManagedTransformsManagedRequestHeaderArray and ManagedTransformsManagedRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderArrayInput` via:
+//
+//	ManagedTransformsManagedRequestHeaderArray{ ManagedTransformsManagedRequestHeaderArgs{...} }
+type ManagedTransformsManagedRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput
+	ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderArrayOutput
+}
+
+type ManagedTransformsManagedRequestHeaderArray []ManagedTransformsManagedRequestHeaderInput
+
+func (ManagedTransformsManagedRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
+}
+
+func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
+	return i.ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderArrayOutput)
+}
+
+type ManagedTransformsManagedRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (ManagedTransformsManagedRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
+}
+
+func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
+	return o
+}
+
+// Whether the Managed Transform is enabled.
+func (o ManagedTransformsManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable identifier of the Managed Transform.
+func (o ManagedTransformsManagedRequestHeaderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ManagedTransformsManagedRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedTransformsManagedRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
+}
+
+func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedRequestHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedRequestHeader {
+		return vs[0].([]ManagedTransformsManagedRequestHeader)[vs[1].(int)]
+	}).(ManagedTransformsManagedRequestHeaderOutput)
+}
+
+type ManagedTransformsManagedResponseHeader struct {
+	// Whether the Managed Transform is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id string `pulumi:"id"`
+}
+
+// ManagedTransformsManagedResponseHeaderInput is an input type that accepts ManagedTransformsManagedResponseHeaderArgs and ManagedTransformsManagedResponseHeaderOutput values.
+// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderInput` via:
+//
+//	ManagedTransformsManagedResponseHeaderArgs{...}
+type ManagedTransformsManagedResponseHeaderInput interface {
+	pulumi.Input
+
+	ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput
+	ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderOutput
+}
+
+type ManagedTransformsManagedResponseHeaderArgs struct {
+	// Whether the Managed Transform is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The human-readable identifier of the Managed Transform.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ManagedTransformsManagedResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
+}
+
+func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
+	return i.ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderOutput)
+}
+
+// ManagedTransformsManagedResponseHeaderArrayInput is an input type that accepts ManagedTransformsManagedResponseHeaderArray and ManagedTransformsManagedResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderArrayInput` via:
+//
+//	ManagedTransformsManagedResponseHeaderArray{ ManagedTransformsManagedResponseHeaderArgs{...} }
+type ManagedTransformsManagedResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput
+	ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderArrayOutput
+}
+
+type ManagedTransformsManagedResponseHeaderArray []ManagedTransformsManagedResponseHeaderInput
+
+func (ManagedTransformsManagedResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
+}
+
+func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
+	return i.ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderArrayOutput)
+}
+
+type ManagedTransformsManagedResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (ManagedTransformsManagedResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
+}
+
+func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
+	return o
+}
+
+// Whether the Managed Transform is enabled.
+func (o ManagedTransformsManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable identifier of the Managed Transform.
+func (o ManagedTransformsManagedResponseHeaderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ManagedTransformsManagedResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedTransformsManagedResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
+}
+
+func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
+	return o
+}
+
+func (o ManagedTransformsManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedResponseHeader {
+		return vs[0].([]ManagedTransformsManagedResponseHeader)[vs[1].(int)]
+	}).(ManagedTransformsManagedResponseHeaderOutput)
+}
+
+type MonetizationRulesRule struct {
+	// 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+	Address     string  `pulumi:"address"`
+	Description *string `pulumi:"description"`
+	Enabled     *bool   `pulumi:"enabled"`
+	// Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+	Expression string `pulumi:"expression"`
+	// Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+	Id *string `pulumi:"id"`
+	// Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+	Price *string `pulumi:"price"`
+	// X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+	// Available values: "exact", "upto", "originControlled".
+	Scheme string `pulumi:"scheme"`
+}
+
+// MonetizationRulesRuleInput is an input type that accepts MonetizationRulesRuleArgs and MonetizationRulesRuleOutput values.
+// You can construct a concrete instance of `MonetizationRulesRuleInput` via:
+//
+//	MonetizationRulesRuleArgs{...}
+type MonetizationRulesRuleInput interface {
+	pulumi.Input
+
+	ToMonetizationRulesRuleOutput() MonetizationRulesRuleOutput
+	ToMonetizationRulesRuleOutputWithContext(context.Context) MonetizationRulesRuleOutput
+}
+
+type MonetizationRulesRuleArgs struct {
+	// 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+	Address     pulumi.StringInput    `pulumi:"address"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+	Price pulumi.StringPtrInput `pulumi:"price"`
+	// X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+	// Available values: "exact", "upto", "originControlled".
+	Scheme pulumi.StringInput `pulumi:"scheme"`
+}
+
+func (MonetizationRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonetizationRulesRule)(nil)).Elem()
+}
+
+func (i MonetizationRulesRuleArgs) ToMonetizationRulesRuleOutput() MonetizationRulesRuleOutput {
+	return i.ToMonetizationRulesRuleOutputWithContext(context.Background())
+}
+
+func (i MonetizationRulesRuleArgs) ToMonetizationRulesRuleOutputWithContext(ctx context.Context) MonetizationRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonetizationRulesRuleOutput)
+}
+
+// MonetizationRulesRuleArrayInput is an input type that accepts MonetizationRulesRuleArray and MonetizationRulesRuleArrayOutput values.
+// You can construct a concrete instance of `MonetizationRulesRuleArrayInput` via:
+//
+//	MonetizationRulesRuleArray{ MonetizationRulesRuleArgs{...} }
+type MonetizationRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToMonetizationRulesRuleArrayOutput() MonetizationRulesRuleArrayOutput
+	ToMonetizationRulesRuleArrayOutputWithContext(context.Context) MonetizationRulesRuleArrayOutput
+}
+
+type MonetizationRulesRuleArray []MonetizationRulesRuleInput
+
+func (MonetizationRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonetizationRulesRule)(nil)).Elem()
+}
+
+func (i MonetizationRulesRuleArray) ToMonetizationRulesRuleArrayOutput() MonetizationRulesRuleArrayOutput {
+	return i.ToMonetizationRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i MonetizationRulesRuleArray) ToMonetizationRulesRuleArrayOutputWithContext(ctx context.Context) MonetizationRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonetizationRulesRuleArrayOutput)
+}
+
+type MonetizationRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (MonetizationRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonetizationRulesRule)(nil)).Elem()
+}
+
+func (o MonetizationRulesRuleOutput) ToMonetizationRulesRuleOutput() MonetizationRulesRuleOutput {
+	return o
+}
+
+func (o MonetizationRulesRuleOutput) ToMonetizationRulesRuleOutputWithContext(ctx context.Context) MonetizationRulesRuleOutput {
+	return o
+}
+
+// 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+func (o MonetizationRulesRuleOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v MonetizationRulesRule) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o MonetizationRulesRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonetizationRulesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MonetizationRulesRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonetizationRulesRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+func (o MonetizationRulesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MonetizationRulesRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+func (o MonetizationRulesRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonetizationRulesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+func (o MonetizationRulesRuleOutput) Price() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonetizationRulesRule) *string { return v.Price }).(pulumi.StringPtrOutput)
+}
+
+// X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+// Available values: "exact", "upto", "originControlled".
+func (o MonetizationRulesRuleOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v MonetizationRulesRule) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+type MonetizationRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (MonetizationRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonetizationRulesRule)(nil)).Elem()
+}
+
+func (o MonetizationRulesRuleArrayOutput) ToMonetizationRulesRuleArrayOutput() MonetizationRulesRuleArrayOutput {
+	return o
+}
+
+func (o MonetizationRulesRuleArrayOutput) ToMonetizationRulesRuleArrayOutputWithContext(ctx context.Context) MonetizationRulesRuleArrayOutput {
+	return o
+}
+
+func (o MonetizationRulesRuleArrayOutput) Index(i pulumi.IntInput) MonetizationRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonetizationRulesRule {
+		return vs[0].([]MonetizationRulesRule)[vs[1].(int)]
+	}).(MonetizationRulesRuleOutput)
+}
+
+type MoqRelayConfig struct {
+	LingeringSubscribe *MoqRelayConfigLingeringSubscribe `pulumi:"lingeringSubscribe"`
+	// Upstreams are external MOQT server publishers that a relay falls back
+	// to when it has no local publisher for a requested namespace/track.
+	Upstreams *MoqRelayConfigUpstreams `pulumi:"upstreams"`
+}
+
+// MoqRelayConfigInput is an input type that accepts MoqRelayConfigArgs and MoqRelayConfigOutput values.
+// You can construct a concrete instance of `MoqRelayConfigInput` via:
+//
+//	MoqRelayConfigArgs{...}
+type MoqRelayConfigInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigOutput() MoqRelayConfigOutput
+	ToMoqRelayConfigOutputWithContext(context.Context) MoqRelayConfigOutput
+}
+
+type MoqRelayConfigArgs struct {
+	LingeringSubscribe MoqRelayConfigLingeringSubscribePtrInput `pulumi:"lingeringSubscribe"`
+	// Upstreams are external MOQT server publishers that a relay falls back
+	// to when it has no local publisher for a requested namespace/track.
+	Upstreams MoqRelayConfigUpstreamsPtrInput `pulumi:"upstreams"`
+}
+
+func (MoqRelayConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
+}
+
+func (i MoqRelayConfigArgs) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
+	return i.ToMoqRelayConfigOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigArgs) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput)
+}
+
+func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
+	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput).ToMoqRelayConfigPtrOutputWithContext(ctx)
+}
+
+// MoqRelayConfigPtrInput is an input type that accepts MoqRelayConfigArgs, MoqRelayConfigPtr and MoqRelayConfigPtrOutput values.
+// You can construct a concrete instance of `MoqRelayConfigPtrInput` via:
+//
+//	        MoqRelayConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MoqRelayConfigPtrInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput
+	ToMoqRelayConfigPtrOutputWithContext(context.Context) MoqRelayConfigPtrOutput
+}
+
+type moqRelayConfigPtrType MoqRelayConfigArgs
+
+func MoqRelayConfigPtr(v *MoqRelayConfigArgs) MoqRelayConfigPtrInput {
+	return (*moqRelayConfigPtrType)(v)
+}
+
+func (*moqRelayConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
+}
+
+func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
+	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigPtrOutput)
+}
+
+type MoqRelayConfigOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
+}
+
+func (o MoqRelayConfigOutput) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
+	return o
+}
+
+func (o MoqRelayConfigOutput) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
+	return o
+}
+
+func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
+	return o.ToMoqRelayConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfig) *MoqRelayConfig {
+		return &v
+	}).(MoqRelayConfigPtrOutput)
+}
+
+func (o MoqRelayConfigOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
+	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigLingeringSubscribe { return v.LingeringSubscribe }).(MoqRelayConfigLingeringSubscribePtrOutput)
+}
+
+// Upstreams are external MOQT server publishers that a relay falls back
+// to when it has no local publisher for a requested namespace/track.
+func (o MoqRelayConfigOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
+	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigUpstreams { return v.Upstreams }).(MoqRelayConfigUpstreamsPtrOutput)
+}
+
+type MoqRelayConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
+}
+
+func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigPtrOutput) Elem() MoqRelayConfigOutput {
+	return o.ApplyT(func(v *MoqRelayConfig) MoqRelayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MoqRelayConfig
+		return ret
+	}).(MoqRelayConfigOutput)
+}
+
+func (o MoqRelayConfigPtrOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigLingeringSubscribe {
+		if v == nil {
+			return nil
+		}
+		return v.LingeringSubscribe
+	}).(MoqRelayConfigLingeringSubscribePtrOutput)
+}
+
+// Upstreams are external MOQT server publishers that a relay falls back
+// to when it has no local publisher for a requested namespace/track.
+func (o MoqRelayConfigPtrOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigUpstreams {
+		if v == nil {
+			return nil
+		}
+		return v.Upstreams
+	}).(MoqRelayConfigUpstreamsPtrOutput)
+}
+
+type MoqRelayConfigLingeringSubscribe struct {
+	Enabled *bool `pulumi:"enabled"`
+	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
+	MaxTimeoutMs *int `pulumi:"maxTimeoutMs"`
+}
+
+// MoqRelayConfigLingeringSubscribeInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs and MoqRelayConfigLingeringSubscribeOutput values.
+// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribeInput` via:
+//
+//	MoqRelayConfigLingeringSubscribeArgs{...}
+type MoqRelayConfigLingeringSubscribeInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput
+	ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribeOutput
+}
+
+type MoqRelayConfigLingeringSubscribeArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
+	MaxTimeoutMs pulumi.IntPtrInput `pulumi:"maxTimeoutMs"`
+}
+
+func (MoqRelayConfigLingeringSubscribeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
+}
+
+func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
+	return i.ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput)
+}
+
+func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
+	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
+}
+
+func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput).ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx)
+}
+
+// MoqRelayConfigLingeringSubscribePtrInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs, MoqRelayConfigLingeringSubscribePtr and MoqRelayConfigLingeringSubscribePtrOutput values.
+// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribePtrInput` via:
+//
+//	        MoqRelayConfigLingeringSubscribeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MoqRelayConfigLingeringSubscribePtrInput interface {
+	pulumi.Input
+
+	ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput
+	ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribePtrOutput
+}
+
+type moqRelayConfigLingeringSubscribePtrType MoqRelayConfigLingeringSubscribeArgs
+
+func MoqRelayConfigLingeringSubscribePtr(v *MoqRelayConfigLingeringSubscribeArgs) MoqRelayConfigLingeringSubscribePtrInput {
+	return (*moqRelayConfigLingeringSubscribePtrType)(v)
+}
+
+func (*moqRelayConfigLingeringSubscribePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
+}
+
+func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
+	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
+}
+
+func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribePtrOutput)
+}
+
+type MoqRelayConfigLingeringSubscribeOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigLingeringSubscribeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
+	return o
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
+	return o
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
+	return o.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigLingeringSubscribe) *MoqRelayConfigLingeringSubscribe {
+		return &v
+	}).(MoqRelayConfigLingeringSubscribePtrOutput)
+}
+
+func (o MoqRelayConfigLingeringSubscribeOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
+func (o MoqRelayConfigLingeringSubscribeOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *int { return v.MaxTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+type MoqRelayConfigLingeringSubscribePtrOutput struct{ *pulumi.OutputState }
+
+func (MoqRelayConfigLingeringSubscribePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
+}
+
+func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
+	return o
+}
+
+func (o MoqRelayConfigLingeringSubscribePtrOutput) Elem() MoqRelayConfigLingeringSubscribeOutput {
+	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) MoqRelayConfigLingeringSubscribe {
+		if v != nil {
+			return *v
+		}
+		var ret MoqRelayConfigLingeringSubscribe
+		return ret
+	}).(MoqRelayConfigLingeringSubscribeOutput)
+}
+
+func (o MoqRelayConfigLingeringSubscribePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
+func (o MoqRelayConfigLingeringSubscribePtrOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
 type MoqRelayConfigUpstreams struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Ordered list of upstream MOQT server publishers. Each entry is an
@@ -6714,6 +7750,162 @@ func (o PagesProjectBuildConfigPtrOutput) WebAnalyticsToken() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type PagesProjectBuildImageAutoUpgrade struct {
+	// The retired build image major version the project is set to.
+	FromVersion *int `pulumi:"fromVersion"`
+	// The build image major version the project's builds run on.
+	ToVersion *int `pulumi:"toVersion"`
+}
+
+// PagesProjectBuildImageAutoUpgradeInput is an input type that accepts PagesProjectBuildImageAutoUpgradeArgs and PagesProjectBuildImageAutoUpgradeOutput values.
+// You can construct a concrete instance of `PagesProjectBuildImageAutoUpgradeInput` via:
+//
+//	PagesProjectBuildImageAutoUpgradeArgs{...}
+type PagesProjectBuildImageAutoUpgradeInput interface {
+	pulumi.Input
+
+	ToPagesProjectBuildImageAutoUpgradeOutput() PagesProjectBuildImageAutoUpgradeOutput
+	ToPagesProjectBuildImageAutoUpgradeOutputWithContext(context.Context) PagesProjectBuildImageAutoUpgradeOutput
+}
+
+type PagesProjectBuildImageAutoUpgradeArgs struct {
+	// The retired build image major version the project is set to.
+	FromVersion pulumi.IntPtrInput `pulumi:"fromVersion"`
+	// The build image major version the project's builds run on.
+	ToVersion pulumi.IntPtrInput `pulumi:"toVersion"`
+}
+
+func (PagesProjectBuildImageAutoUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectBuildImageAutoUpgrade)(nil)).Elem()
+}
+
+func (i PagesProjectBuildImageAutoUpgradeArgs) ToPagesProjectBuildImageAutoUpgradeOutput() PagesProjectBuildImageAutoUpgradeOutput {
+	return i.ToPagesProjectBuildImageAutoUpgradeOutputWithContext(context.Background())
+}
+
+func (i PagesProjectBuildImageAutoUpgradeArgs) ToPagesProjectBuildImageAutoUpgradeOutputWithContext(ctx context.Context) PagesProjectBuildImageAutoUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectBuildImageAutoUpgradeOutput)
+}
+
+func (i PagesProjectBuildImageAutoUpgradeArgs) ToPagesProjectBuildImageAutoUpgradePtrOutput() PagesProjectBuildImageAutoUpgradePtrOutput {
+	return i.ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i PagesProjectBuildImageAutoUpgradeArgs) ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(ctx context.Context) PagesProjectBuildImageAutoUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectBuildImageAutoUpgradeOutput).ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(ctx)
+}
+
+// PagesProjectBuildImageAutoUpgradePtrInput is an input type that accepts PagesProjectBuildImageAutoUpgradeArgs, PagesProjectBuildImageAutoUpgradePtr and PagesProjectBuildImageAutoUpgradePtrOutput values.
+// You can construct a concrete instance of `PagesProjectBuildImageAutoUpgradePtrInput` via:
+//
+//	        PagesProjectBuildImageAutoUpgradeArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagesProjectBuildImageAutoUpgradePtrInput interface {
+	pulumi.Input
+
+	ToPagesProjectBuildImageAutoUpgradePtrOutput() PagesProjectBuildImageAutoUpgradePtrOutput
+	ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(context.Context) PagesProjectBuildImageAutoUpgradePtrOutput
+}
+
+type pagesProjectBuildImageAutoUpgradePtrType PagesProjectBuildImageAutoUpgradeArgs
+
+func PagesProjectBuildImageAutoUpgradePtr(v *PagesProjectBuildImageAutoUpgradeArgs) PagesProjectBuildImageAutoUpgradePtrInput {
+	return (*pagesProjectBuildImageAutoUpgradePtrType)(v)
+}
+
+func (*pagesProjectBuildImageAutoUpgradePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectBuildImageAutoUpgrade)(nil)).Elem()
+}
+
+func (i *pagesProjectBuildImageAutoUpgradePtrType) ToPagesProjectBuildImageAutoUpgradePtrOutput() PagesProjectBuildImageAutoUpgradePtrOutput {
+	return i.ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i *pagesProjectBuildImageAutoUpgradePtrType) ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(ctx context.Context) PagesProjectBuildImageAutoUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectBuildImageAutoUpgradePtrOutput)
+}
+
+type PagesProjectBuildImageAutoUpgradeOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectBuildImageAutoUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagesProjectBuildImageAutoUpgrade)(nil)).Elem()
+}
+
+func (o PagesProjectBuildImageAutoUpgradeOutput) ToPagesProjectBuildImageAutoUpgradeOutput() PagesProjectBuildImageAutoUpgradeOutput {
+	return o
+}
+
+func (o PagesProjectBuildImageAutoUpgradeOutput) ToPagesProjectBuildImageAutoUpgradeOutputWithContext(ctx context.Context) PagesProjectBuildImageAutoUpgradeOutput {
+	return o
+}
+
+func (o PagesProjectBuildImageAutoUpgradeOutput) ToPagesProjectBuildImageAutoUpgradePtrOutput() PagesProjectBuildImageAutoUpgradePtrOutput {
+	return o.ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (o PagesProjectBuildImageAutoUpgradeOutput) ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(ctx context.Context) PagesProjectBuildImageAutoUpgradePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagesProjectBuildImageAutoUpgrade) *PagesProjectBuildImageAutoUpgrade {
+		return &v
+	}).(PagesProjectBuildImageAutoUpgradePtrOutput)
+}
+
+// The retired build image major version the project is set to.
+func (o PagesProjectBuildImageAutoUpgradeOutput) FromVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PagesProjectBuildImageAutoUpgrade) *int { return v.FromVersion }).(pulumi.IntPtrOutput)
+}
+
+// The build image major version the project's builds run on.
+func (o PagesProjectBuildImageAutoUpgradeOutput) ToVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PagesProjectBuildImageAutoUpgrade) *int { return v.ToVersion }).(pulumi.IntPtrOutput)
+}
+
+type PagesProjectBuildImageAutoUpgradePtrOutput struct{ *pulumi.OutputState }
+
+func (PagesProjectBuildImageAutoUpgradePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagesProjectBuildImageAutoUpgrade)(nil)).Elem()
+}
+
+func (o PagesProjectBuildImageAutoUpgradePtrOutput) ToPagesProjectBuildImageAutoUpgradePtrOutput() PagesProjectBuildImageAutoUpgradePtrOutput {
+	return o
+}
+
+func (o PagesProjectBuildImageAutoUpgradePtrOutput) ToPagesProjectBuildImageAutoUpgradePtrOutputWithContext(ctx context.Context) PagesProjectBuildImageAutoUpgradePtrOutput {
+	return o
+}
+
+func (o PagesProjectBuildImageAutoUpgradePtrOutput) Elem() PagesProjectBuildImageAutoUpgradeOutput {
+	return o.ApplyT(func(v *PagesProjectBuildImageAutoUpgrade) PagesProjectBuildImageAutoUpgrade {
+		if v != nil {
+			return *v
+		}
+		var ret PagesProjectBuildImageAutoUpgrade
+		return ret
+	}).(PagesProjectBuildImageAutoUpgradeOutput)
+}
+
+// The retired build image major version the project is set to.
+func (o PagesProjectBuildImageAutoUpgradePtrOutput) FromVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PagesProjectBuildImageAutoUpgrade) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FromVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// The build image major version the project's builds run on.
+func (o PagesProjectBuildImageAutoUpgradePtrOutput) ToVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PagesProjectBuildImageAutoUpgrade) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ToVersion
+	}).(pulumi.IntPtrOutput)
+}
+
 type PagesProjectCanonicalDeployment struct {
 	// A list of alias URLs pointing to this deployment.
 	Aliases []string `pulumi:"aliases"`
@@ -8897,7 +10089,7 @@ type PagesProjectDeploymentConfigsPreview struct {
 	AnalyticsEngineDatasets map[string]PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers map[string]PagesProjectDeploymentConfigsPreviewBrowsers `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
 	BuildImageMajorVersion *int `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
@@ -8958,7 +10150,7 @@ type PagesProjectDeploymentConfigsPreviewArgs struct {
 	AnalyticsEngineDatasets PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers PagesProjectDeploymentConfigsPreviewBrowsersMapInput `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
 	BuildImageMajorVersion pulumi.IntPtrInput `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate pulumi.StringPtrInput `pulumi:"compatibilityDate"`
@@ -9102,7 +10294,7 @@ func (o PagesProjectDeploymentConfigsPreviewOutput) Browsers() PagesProjectDeplo
 	}).(PagesProjectDeploymentConfigsPreviewBrowsersMapOutput)
 }
 
-// The major version of the build image to use for Pages Functions.
+// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
 func (o PagesProjectDeploymentConfigsPreviewOutput) BuildImageMajorVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) *int { return v.BuildImageMajorVersion }).(pulumi.IntPtrOutput)
 }
@@ -9283,7 +10475,7 @@ func (o PagesProjectDeploymentConfigsPreviewPtrOutput) Browsers() PagesProjectDe
 	}).(PagesProjectDeploymentConfigsPreviewBrowsersMapOutput)
 }
 
-// The major version of the build image to use for Pages Functions.
+// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
 func (o PagesProjectDeploymentConfigsPreviewPtrOutput) BuildImageMajorVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) *int {
 		if v == nil {
@@ -11025,7 +12217,7 @@ type PagesProjectDeploymentConfigsProduction struct {
 	AnalyticsEngineDatasets map[string]PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers map[string]PagesProjectDeploymentConfigsProductionBrowsers `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
 	BuildImageMajorVersion *int `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
@@ -11086,7 +12278,7 @@ type PagesProjectDeploymentConfigsProductionArgs struct {
 	AnalyticsEngineDatasets PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers PagesProjectDeploymentConfigsProductionBrowsersMapInput `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
 	BuildImageMajorVersion pulumi.IntPtrInput `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate pulumi.StringPtrInput `pulumi:"compatibilityDate"`
@@ -11230,7 +12422,7 @@ func (o PagesProjectDeploymentConfigsProductionOutput) Browsers() PagesProjectDe
 	}).(PagesProjectDeploymentConfigsProductionBrowsersMapOutput)
 }
 
-// The major version of the build image to use for Pages Functions.
+// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
 func (o PagesProjectDeploymentConfigsProductionOutput) BuildImageMajorVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) *int { return v.BuildImageMajorVersion }).(pulumi.IntPtrOutput)
 }
@@ -11411,7 +12603,7 @@ func (o PagesProjectDeploymentConfigsProductionPtrOutput) Browsers() PagesProjec
 	}).(PagesProjectDeploymentConfigsProductionBrowsersMapOutput)
 }
 
-// The major version of the build image to use for Pages Functions.
+// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
 func (o PagesProjectDeploymentConfigsProductionPtrOutput) BuildImageMajorVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) *int {
 		if v == nil {
@@ -55788,6 +56980,8 @@ type WorkerScriptBinding struct {
 	Pipeline *string `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName *string `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry *WorkerScriptBindingRetry `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName *string `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -55891,6 +57085,8 @@ type WorkerScriptBindingArgs struct {
 	Pipeline pulumi.StringPtrInput `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName pulumi.StringPtrInput `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry WorkerScriptBindingRetryPtrInput `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName pulumi.StringPtrInput `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -56121,6 +57317,11 @@ func (o WorkerScriptBindingOutput) Pipeline() pulumi.StringPtrOutput {
 // Name of the Queue to bind to.
 func (o WorkerScriptBindingOutput) QueueName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerScriptBinding) *string { return v.QueueName }).(pulumi.StringPtrOutput)
+}
+
+// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+func (o WorkerScriptBindingOutput) Retry() WorkerScriptBindingRetryPtrOutput {
+	return o.ApplyT(func(v WorkerScriptBinding) *WorkerScriptBindingRetry { return v.Retry }).(WorkerScriptBindingRetryPtrOutput)
 }
 
 // The script where the Durable Object is defined, if it is external to this Worker.
@@ -56519,6 +57720,162 @@ func (o WorkerScriptBindingOutboundWorkerPtrOutput) Service() pulumi.StringPtrOu
 		}
 		return v.Service
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkerScriptBindingRetry struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs *int `pulumi:"timeoutMs"`
+}
+
+// WorkerScriptBindingRetryInput is an input type that accepts WorkerScriptBindingRetryArgs and WorkerScriptBindingRetryOutput values.
+// You can construct a concrete instance of `WorkerScriptBindingRetryInput` via:
+//
+//	WorkerScriptBindingRetryArgs{...}
+type WorkerScriptBindingRetryInput interface {
+	pulumi.Input
+
+	ToWorkerScriptBindingRetryOutput() WorkerScriptBindingRetryOutput
+	ToWorkerScriptBindingRetryOutputWithContext(context.Context) WorkerScriptBindingRetryOutput
+}
+
+type WorkerScriptBindingRetryArgs struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs pulumi.IntPtrInput `pulumi:"timeoutMs"`
+}
+
+func (WorkerScriptBindingRetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptBindingRetry)(nil)).Elem()
+}
+
+func (i WorkerScriptBindingRetryArgs) ToWorkerScriptBindingRetryOutput() WorkerScriptBindingRetryOutput {
+	return i.ToWorkerScriptBindingRetryOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptBindingRetryArgs) ToWorkerScriptBindingRetryOutputWithContext(ctx context.Context) WorkerScriptBindingRetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptBindingRetryOutput)
+}
+
+func (i WorkerScriptBindingRetryArgs) ToWorkerScriptBindingRetryPtrOutput() WorkerScriptBindingRetryPtrOutput {
+	return i.ToWorkerScriptBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptBindingRetryArgs) ToWorkerScriptBindingRetryPtrOutputWithContext(ctx context.Context) WorkerScriptBindingRetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptBindingRetryOutput).ToWorkerScriptBindingRetryPtrOutputWithContext(ctx)
+}
+
+// WorkerScriptBindingRetryPtrInput is an input type that accepts WorkerScriptBindingRetryArgs, WorkerScriptBindingRetryPtr and WorkerScriptBindingRetryPtrOutput values.
+// You can construct a concrete instance of `WorkerScriptBindingRetryPtrInput` via:
+//
+//	        WorkerScriptBindingRetryArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerScriptBindingRetryPtrInput interface {
+	pulumi.Input
+
+	ToWorkerScriptBindingRetryPtrOutput() WorkerScriptBindingRetryPtrOutput
+	ToWorkerScriptBindingRetryPtrOutputWithContext(context.Context) WorkerScriptBindingRetryPtrOutput
+}
+
+type workerScriptBindingRetryPtrType WorkerScriptBindingRetryArgs
+
+func WorkerScriptBindingRetryPtr(v *WorkerScriptBindingRetryArgs) WorkerScriptBindingRetryPtrInput {
+	return (*workerScriptBindingRetryPtrType)(v)
+}
+
+func (*workerScriptBindingRetryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerScriptBindingRetry)(nil)).Elem()
+}
+
+func (i *workerScriptBindingRetryPtrType) ToWorkerScriptBindingRetryPtrOutput() WorkerScriptBindingRetryPtrOutput {
+	return i.ToWorkerScriptBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (i *workerScriptBindingRetryPtrType) ToWorkerScriptBindingRetryPtrOutputWithContext(ctx context.Context) WorkerScriptBindingRetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptBindingRetryPtrOutput)
+}
+
+type WorkerScriptBindingRetryOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptBindingRetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptBindingRetry)(nil)).Elem()
+}
+
+func (o WorkerScriptBindingRetryOutput) ToWorkerScriptBindingRetryOutput() WorkerScriptBindingRetryOutput {
+	return o
+}
+
+func (o WorkerScriptBindingRetryOutput) ToWorkerScriptBindingRetryOutputWithContext(ctx context.Context) WorkerScriptBindingRetryOutput {
+	return o
+}
+
+func (o WorkerScriptBindingRetryOutput) ToWorkerScriptBindingRetryPtrOutput() WorkerScriptBindingRetryPtrOutput {
+	return o.ToWorkerScriptBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerScriptBindingRetryOutput) ToWorkerScriptBindingRetryPtrOutputWithContext(ctx context.Context) WorkerScriptBindingRetryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerScriptBindingRetry) *WorkerScriptBindingRetry {
+		return &v
+	}).(WorkerScriptBindingRetryPtrOutput)
+}
+
+// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+func (o WorkerScriptBindingRetryOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerScriptBindingRetry) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+}
+
+// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+func (o WorkerScriptBindingRetryOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerScriptBindingRetry) *int { return v.TimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+type WorkerScriptBindingRetryPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptBindingRetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerScriptBindingRetry)(nil)).Elem()
+}
+
+func (o WorkerScriptBindingRetryPtrOutput) ToWorkerScriptBindingRetryPtrOutput() WorkerScriptBindingRetryPtrOutput {
+	return o
+}
+
+func (o WorkerScriptBindingRetryPtrOutput) ToWorkerScriptBindingRetryPtrOutputWithContext(ctx context.Context) WorkerScriptBindingRetryPtrOutput {
+	return o
+}
+
+func (o WorkerScriptBindingRetryPtrOutput) Elem() WorkerScriptBindingRetryOutput {
+	return o.ApplyT(func(v *WorkerScriptBindingRetry) WorkerScriptBindingRetry {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerScriptBindingRetry
+		return ret
+	}).(WorkerScriptBindingRetryOutput)
+}
+
+// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+func (o WorkerScriptBindingRetryPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerScriptBindingRetry) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+func (o WorkerScriptBindingRetryPtrOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerScriptBindingRetry) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkerScriptBindingSimple struct {
@@ -60622,6 +61979,8 @@ type WorkerVersionBinding struct {
 	Pipeline *string `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName *string `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry *WorkerVersionBindingRetry `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName *string `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -60728,6 +62087,8 @@ type WorkerVersionBindingArgs struct {
 	Pipeline pulumi.StringPtrInput `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName pulumi.StringPtrInput `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry WorkerVersionBindingRetryPtrInput `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName pulumi.StringPtrInput `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -60964,6 +62325,11 @@ func (o WorkerVersionBindingOutput) Pipeline() pulumi.StringPtrOutput {
 // Name of the Queue to bind to.
 func (o WorkerVersionBindingOutput) QueueName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerVersionBinding) *string { return v.QueueName }).(pulumi.StringPtrOutput)
+}
+
+// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+func (o WorkerVersionBindingOutput) Retry() WorkerVersionBindingRetryPtrOutput {
+	return o.ApplyT(func(v WorkerVersionBinding) *WorkerVersionBindingRetry { return v.Retry }).(WorkerVersionBindingRetryPtrOutput)
 }
 
 // The script where the Durable Object is defined, if it is external to this Worker.
@@ -61478,6 +62844,162 @@ func (o WorkerVersionBindingOutboundWorkerPtrOutput) Service() pulumi.StringPtrO
 		}
 		return v.Service
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkerVersionBindingRetry struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs *int `pulumi:"timeoutMs"`
+}
+
+// WorkerVersionBindingRetryInput is an input type that accepts WorkerVersionBindingRetryArgs and WorkerVersionBindingRetryOutput values.
+// You can construct a concrete instance of `WorkerVersionBindingRetryInput` via:
+//
+//	WorkerVersionBindingRetryArgs{...}
+type WorkerVersionBindingRetryInput interface {
+	pulumi.Input
+
+	ToWorkerVersionBindingRetryOutput() WorkerVersionBindingRetryOutput
+	ToWorkerVersionBindingRetryOutputWithContext(context.Context) WorkerVersionBindingRetryOutput
+}
+
+type WorkerVersionBindingRetryArgs struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs pulumi.IntPtrInput `pulumi:"timeoutMs"`
+}
+
+func (WorkerVersionBindingRetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerVersionBindingRetry)(nil)).Elem()
+}
+
+func (i WorkerVersionBindingRetryArgs) ToWorkerVersionBindingRetryOutput() WorkerVersionBindingRetryOutput {
+	return i.ToWorkerVersionBindingRetryOutputWithContext(context.Background())
+}
+
+func (i WorkerVersionBindingRetryArgs) ToWorkerVersionBindingRetryOutputWithContext(ctx context.Context) WorkerVersionBindingRetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerVersionBindingRetryOutput)
+}
+
+func (i WorkerVersionBindingRetryArgs) ToWorkerVersionBindingRetryPtrOutput() WorkerVersionBindingRetryPtrOutput {
+	return i.ToWorkerVersionBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerVersionBindingRetryArgs) ToWorkerVersionBindingRetryPtrOutputWithContext(ctx context.Context) WorkerVersionBindingRetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerVersionBindingRetryOutput).ToWorkerVersionBindingRetryPtrOutputWithContext(ctx)
+}
+
+// WorkerVersionBindingRetryPtrInput is an input type that accepts WorkerVersionBindingRetryArgs, WorkerVersionBindingRetryPtr and WorkerVersionBindingRetryPtrOutput values.
+// You can construct a concrete instance of `WorkerVersionBindingRetryPtrInput` via:
+//
+//	        WorkerVersionBindingRetryArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerVersionBindingRetryPtrInput interface {
+	pulumi.Input
+
+	ToWorkerVersionBindingRetryPtrOutput() WorkerVersionBindingRetryPtrOutput
+	ToWorkerVersionBindingRetryPtrOutputWithContext(context.Context) WorkerVersionBindingRetryPtrOutput
+}
+
+type workerVersionBindingRetryPtrType WorkerVersionBindingRetryArgs
+
+func WorkerVersionBindingRetryPtr(v *WorkerVersionBindingRetryArgs) WorkerVersionBindingRetryPtrInput {
+	return (*workerVersionBindingRetryPtrType)(v)
+}
+
+func (*workerVersionBindingRetryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerVersionBindingRetry)(nil)).Elem()
+}
+
+func (i *workerVersionBindingRetryPtrType) ToWorkerVersionBindingRetryPtrOutput() WorkerVersionBindingRetryPtrOutput {
+	return i.ToWorkerVersionBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (i *workerVersionBindingRetryPtrType) ToWorkerVersionBindingRetryPtrOutputWithContext(ctx context.Context) WorkerVersionBindingRetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerVersionBindingRetryPtrOutput)
+}
+
+type WorkerVersionBindingRetryOutput struct{ *pulumi.OutputState }
+
+func (WorkerVersionBindingRetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerVersionBindingRetry)(nil)).Elem()
+}
+
+func (o WorkerVersionBindingRetryOutput) ToWorkerVersionBindingRetryOutput() WorkerVersionBindingRetryOutput {
+	return o
+}
+
+func (o WorkerVersionBindingRetryOutput) ToWorkerVersionBindingRetryOutputWithContext(ctx context.Context) WorkerVersionBindingRetryOutput {
+	return o
+}
+
+func (o WorkerVersionBindingRetryOutput) ToWorkerVersionBindingRetryPtrOutput() WorkerVersionBindingRetryPtrOutput {
+	return o.ToWorkerVersionBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerVersionBindingRetryOutput) ToWorkerVersionBindingRetryPtrOutputWithContext(ctx context.Context) WorkerVersionBindingRetryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerVersionBindingRetry) *WorkerVersionBindingRetry {
+		return &v
+	}).(WorkerVersionBindingRetryPtrOutput)
+}
+
+// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+func (o WorkerVersionBindingRetryOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerVersionBindingRetry) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+}
+
+// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+func (o WorkerVersionBindingRetryOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkerVersionBindingRetry) *int { return v.TimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+type WorkerVersionBindingRetryPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerVersionBindingRetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerVersionBindingRetry)(nil)).Elem()
+}
+
+func (o WorkerVersionBindingRetryPtrOutput) ToWorkerVersionBindingRetryPtrOutput() WorkerVersionBindingRetryPtrOutput {
+	return o
+}
+
+func (o WorkerVersionBindingRetryPtrOutput) ToWorkerVersionBindingRetryPtrOutputWithContext(ctx context.Context) WorkerVersionBindingRetryPtrOutput {
+	return o
+}
+
+func (o WorkerVersionBindingRetryPtrOutput) Elem() WorkerVersionBindingRetryOutput {
+	return o.ApplyT(func(v *WorkerVersionBindingRetry) WorkerVersionBindingRetry {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerVersionBindingRetry
+		return ret
+	}).(WorkerVersionBindingRetryOutput)
+}
+
+// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+func (o WorkerVersionBindingRetryPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerVersionBindingRetry) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+func (o WorkerVersionBindingRetryPtrOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkerVersionBindingRetry) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkerVersionBindingSimple struct {
@@ -65757,6 +67279,8 @@ type WorkersScriptBinding struct {
 	Pipeline *string `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName *string `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry *WorkersScriptBindingRetry `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName *string `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -65860,6 +67384,8 @@ type WorkersScriptBindingArgs struct {
 	Pipeline pulumi.StringPtrInput `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
 	QueueName pulumi.StringPtrInput `pulumi:"queueName"`
+	// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+	Retry WorkersScriptBindingRetryPtrInput `pulumi:"retry"`
 	// The script where the Durable Object is defined, if it is external to this Worker.
 	ScriptName pulumi.StringPtrInput `pulumi:"scriptName"`
 	// Name of the secret in the store.
@@ -66090,6 +67616,11 @@ func (o WorkersScriptBindingOutput) Pipeline() pulumi.StringPtrOutput {
 // Name of the Queue to bind to.
 func (o WorkersScriptBindingOutput) QueueName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkersScriptBinding) *string { return v.QueueName }).(pulumi.StringPtrOutput)
+}
+
+// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+func (o WorkersScriptBindingOutput) Retry() WorkersScriptBindingRetryPtrOutput {
+	return o.ApplyT(func(v WorkersScriptBinding) *WorkersScriptBindingRetry { return v.Retry }).(WorkersScriptBindingRetryPtrOutput)
 }
 
 // The script where the Durable Object is defined, if it is external to this Worker.
@@ -66488,6 +68019,162 @@ func (o WorkersScriptBindingOutboundWorkerPtrOutput) Service() pulumi.StringPtrO
 		}
 		return v.Service
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkersScriptBindingRetry struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs *int `pulumi:"timeoutMs"`
+}
+
+// WorkersScriptBindingRetryInput is an input type that accepts WorkersScriptBindingRetryArgs and WorkersScriptBindingRetryOutput values.
+// You can construct a concrete instance of `WorkersScriptBindingRetryInput` via:
+//
+//	WorkersScriptBindingRetryArgs{...}
+type WorkersScriptBindingRetryInput interface {
+	pulumi.Input
+
+	ToWorkersScriptBindingRetryOutput() WorkersScriptBindingRetryOutput
+	ToWorkersScriptBindingRetryOutputWithContext(context.Context) WorkersScriptBindingRetryOutput
+}
+
+type WorkersScriptBindingRetryArgs struct {
+	// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+	// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+	TimeoutMs pulumi.IntPtrInput `pulumi:"timeoutMs"`
+}
+
+func (WorkersScriptBindingRetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptBindingRetry)(nil)).Elem()
+}
+
+func (i WorkersScriptBindingRetryArgs) ToWorkersScriptBindingRetryOutput() WorkersScriptBindingRetryOutput {
+	return i.ToWorkersScriptBindingRetryOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptBindingRetryArgs) ToWorkersScriptBindingRetryOutputWithContext(ctx context.Context) WorkersScriptBindingRetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptBindingRetryOutput)
+}
+
+func (i WorkersScriptBindingRetryArgs) ToWorkersScriptBindingRetryPtrOutput() WorkersScriptBindingRetryPtrOutput {
+	return i.ToWorkersScriptBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (i WorkersScriptBindingRetryArgs) ToWorkersScriptBindingRetryPtrOutputWithContext(ctx context.Context) WorkersScriptBindingRetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptBindingRetryOutput).ToWorkersScriptBindingRetryPtrOutputWithContext(ctx)
+}
+
+// WorkersScriptBindingRetryPtrInput is an input type that accepts WorkersScriptBindingRetryArgs, WorkersScriptBindingRetryPtr and WorkersScriptBindingRetryPtrOutput values.
+// You can construct a concrete instance of `WorkersScriptBindingRetryPtrInput` via:
+//
+//	        WorkersScriptBindingRetryArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkersScriptBindingRetryPtrInput interface {
+	pulumi.Input
+
+	ToWorkersScriptBindingRetryPtrOutput() WorkersScriptBindingRetryPtrOutput
+	ToWorkersScriptBindingRetryPtrOutputWithContext(context.Context) WorkersScriptBindingRetryPtrOutput
+}
+
+type workersScriptBindingRetryPtrType WorkersScriptBindingRetryArgs
+
+func WorkersScriptBindingRetryPtr(v *WorkersScriptBindingRetryArgs) WorkersScriptBindingRetryPtrInput {
+	return (*workersScriptBindingRetryPtrType)(v)
+}
+
+func (*workersScriptBindingRetryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkersScriptBindingRetry)(nil)).Elem()
+}
+
+func (i *workersScriptBindingRetryPtrType) ToWorkersScriptBindingRetryPtrOutput() WorkersScriptBindingRetryPtrOutput {
+	return i.ToWorkersScriptBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (i *workersScriptBindingRetryPtrType) ToWorkersScriptBindingRetryPtrOutputWithContext(ctx context.Context) WorkersScriptBindingRetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersScriptBindingRetryPtrOutput)
+}
+
+type WorkersScriptBindingRetryOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptBindingRetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersScriptBindingRetry)(nil)).Elem()
+}
+
+func (o WorkersScriptBindingRetryOutput) ToWorkersScriptBindingRetryOutput() WorkersScriptBindingRetryOutput {
+	return o
+}
+
+func (o WorkersScriptBindingRetryOutput) ToWorkersScriptBindingRetryOutputWithContext(ctx context.Context) WorkersScriptBindingRetryOutput {
+	return o
+}
+
+func (o WorkersScriptBindingRetryOutput) ToWorkersScriptBindingRetryPtrOutput() WorkersScriptBindingRetryPtrOutput {
+	return o.ToWorkersScriptBindingRetryPtrOutputWithContext(context.Background())
+}
+
+func (o WorkersScriptBindingRetryOutput) ToWorkersScriptBindingRetryPtrOutputWithContext(ctx context.Context) WorkersScriptBindingRetryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkersScriptBindingRetry) *WorkersScriptBindingRetry {
+		return &v
+	}).(WorkersScriptBindingRetryPtrOutput)
+}
+
+// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+func (o WorkersScriptBindingRetryOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkersScriptBindingRetry) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+}
+
+// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+func (o WorkersScriptBindingRetryOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkersScriptBindingRetry) *int { return v.TimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+type WorkersScriptBindingRetryPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkersScriptBindingRetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkersScriptBindingRetry)(nil)).Elem()
+}
+
+func (o WorkersScriptBindingRetryPtrOutput) ToWorkersScriptBindingRetryPtrOutput() WorkersScriptBindingRetryPtrOutput {
+	return o
+}
+
+func (o WorkersScriptBindingRetryPtrOutput) ToWorkersScriptBindingRetryPtrOutputWithContext(ctx context.Context) WorkersScriptBindingRetryPtrOutput {
+	return o
+}
+
+func (o WorkersScriptBindingRetryPtrOutput) Elem() WorkersScriptBindingRetryOutput {
+	return o.ApplyT(func(v *WorkersScriptBindingRetry) WorkersScriptBindingRetry {
+		if v != nil {
+			return *v
+		}
+		var ret WorkersScriptBindingRetry
+		return ret
+	}).(WorkersScriptBindingRetryOutput)
+}
+
+// Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+func (o WorkersScriptBindingRetryPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkersScriptBindingRetry) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+func (o WorkersScriptBindingRetryPtrOutput) TimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkersScriptBindingRetry) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMs
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkersScriptBindingSimple struct {
@@ -82941,1746 +84628,23 @@ func (o ZeroTrustAccessApplicationPolicyRequireEmailDomainPtrOutput) Domain() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-type ZeroTrustAccessApplicationPolicyRequireEmailList struct {
-	// The ID of a previously created email list.
-	Id string `pulumi:"id"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireEmailListInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireEmailListArgs and ZeroTrustAccessApplicationPolicyRequireEmailListOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireEmailListInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireEmailListArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireEmailListInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireEmailListOutput() ZeroTrustAccessApplicationPolicyRequireEmailListOutput
-	ToZeroTrustAccessApplicationPolicyRequireEmailListOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireEmailListOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireEmailListArgs struct {
-	// The ID of a previously created email list.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireEmailListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEmailList)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireEmailListArgs) ToZeroTrustAccessApplicationPolicyRequireEmailListOutput() ZeroTrustAccessApplicationPolicyRequireEmailListOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireEmailListOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireEmailListArgs) ToZeroTrustAccessApplicationPolicyRequireEmailListOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEmailListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireEmailListOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireEmailListArgs) ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput() ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireEmailListArgs) ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireEmailListOutput).ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireEmailListPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireEmailListArgs, ZeroTrustAccessApplicationPolicyRequireEmailListPtr and ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireEmailListPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireEmailListArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireEmailListPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput() ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireEmailListPtrType ZeroTrustAccessApplicationPolicyRequireEmailListArgs
-
-func ZeroTrustAccessApplicationPolicyRequireEmailListPtr(v *ZeroTrustAccessApplicationPolicyRequireEmailListArgs) ZeroTrustAccessApplicationPolicyRequireEmailListPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireEmailListPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireEmailListPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireEmailList)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireEmailListPtrType) ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput() ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireEmailListPtrType) ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireEmailListOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireEmailListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEmailList)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListOutput) ToZeroTrustAccessApplicationPolicyRequireEmailListOutput() ZeroTrustAccessApplicationPolicyRequireEmailListOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListOutput) ToZeroTrustAccessApplicationPolicyRequireEmailListOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEmailListOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListOutput) ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput() ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListOutput) ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireEmailList) *ZeroTrustAccessApplicationPolicyRequireEmailList {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput)
-}
-
-// The ID of a previously created email list.
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireEmailList) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireEmailList)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput) ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput() ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput) ToZeroTrustAccessApplicationPolicyRequireEmailListPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireEmailListOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireEmailList) ZeroTrustAccessApplicationPolicyRequireEmailList {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireEmailList
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireEmailListOutput)
-}
-
-// The ID of a previously created email list.
-func (o ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireEmailList) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireEveryone struct {
-}
-
-// ZeroTrustAccessApplicationPolicyRequireEveryoneInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireEveryoneArgs and ZeroTrustAccessApplicationPolicyRequireEveryoneOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireEveryoneInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireEveryoneArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireEveryoneInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireEveryoneOutput() ZeroTrustAccessApplicationPolicyRequireEveryoneOutput
-	ToZeroTrustAccessApplicationPolicyRequireEveryoneOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireEveryoneOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireEveryoneArgs struct {
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireEveryoneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEveryone)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireEveryoneArgs) ToZeroTrustAccessApplicationPolicyRequireEveryoneOutput() ZeroTrustAccessApplicationPolicyRequireEveryoneOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireEveryoneOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireEveryoneArgs) ToZeroTrustAccessApplicationPolicyRequireEveryoneOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEveryoneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireEveryoneOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireEveryoneArgs) ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput() ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireEveryoneArgs) ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireEveryoneOutput).ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireEveryonePtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireEveryoneArgs, ZeroTrustAccessApplicationPolicyRequireEveryonePtr and ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireEveryonePtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireEveryoneArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireEveryonePtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput() ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireEveryonePtrType ZeroTrustAccessApplicationPolicyRequireEveryoneArgs
-
-func ZeroTrustAccessApplicationPolicyRequireEveryonePtr(v *ZeroTrustAccessApplicationPolicyRequireEveryoneArgs) ZeroTrustAccessApplicationPolicyRequireEveryonePtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireEveryonePtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireEveryonePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireEveryone)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireEveryonePtrType) ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput() ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireEveryonePtrType) ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireEveryoneOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireEveryoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEveryone)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEveryoneOutput) ToZeroTrustAccessApplicationPolicyRequireEveryoneOutput() ZeroTrustAccessApplicationPolicyRequireEveryoneOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEveryoneOutput) ToZeroTrustAccessApplicationPolicyRequireEveryoneOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEveryoneOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEveryoneOutput) ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput() ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEveryoneOutput) ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireEveryone) *ZeroTrustAccessApplicationPolicyRequireEveryone {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireEveryone)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput) ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput() ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput) ToZeroTrustAccessApplicationPolicyRequireEveryonePtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireEveryoneOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireEveryone) ZeroTrustAccessApplicationPolicyRequireEveryone {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireEveryone
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireEveryoneOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireExternalEvaluation struct {
-	// The API endpoint containing your business logic.
-	EvaluateUrl string `pulumi:"evaluateUrl"`
-	// The API endpoint containing the key that Access uses to verify that the response came from your API.
-	KeysUrl string `pulumi:"keysUrl"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireExternalEvaluationInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs and ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireExternalEvaluationInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireExternalEvaluationInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput
-	ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs struct {
-	// The API endpoint containing your business logic.
-	EvaluateUrl pulumi.StringInput `pulumi:"evaluateUrl"`
-	// The API endpoint containing the key that Access uses to verify that the response came from your API.
-	KeysUrl pulumi.StringInput `pulumi:"keysUrl"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireExternalEvaluation)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput).ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs, ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtr and ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrType ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs
-
-func ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtr(v *ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireExternalEvaluation)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrType) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrType) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireExternalEvaluation)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireExternalEvaluation) *ZeroTrustAccessApplicationPolicyRequireExternalEvaluation {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput)
-}
-
-// The API endpoint containing your business logic.
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput) EvaluateUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireExternalEvaluation) string { return v.EvaluateUrl }).(pulumi.StringOutput)
-}
-
-// The API endpoint containing the key that Access uses to verify that the response came from your API.
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput) KeysUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireExternalEvaluation) string { return v.KeysUrl }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireExternalEvaluation)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput) ToZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireExternalEvaluation) ZeroTrustAccessApplicationPolicyRequireExternalEvaluation {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireExternalEvaluation
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput)
-}
-
-// The API endpoint containing your business logic.
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireExternalEvaluation) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EvaluateUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// The API endpoint containing the key that Access uses to verify that the response came from your API.
-func (o ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireExternalEvaluation) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeysUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGeo struct {
-	// The country code that should be matched.
-	CountryCode string `pulumi:"countryCode"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireGeoInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireGeoArgs and ZeroTrustAccessApplicationPolicyRequireGeoOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireGeoInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireGeoArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireGeoInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireGeoOutput() ZeroTrustAccessApplicationPolicyRequireGeoOutput
-	ToZeroTrustAccessApplicationPolicyRequireGeoOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireGeoOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGeoArgs struct {
-	// The country code that should be matched.
-	CountryCode pulumi.StringInput `pulumi:"countryCode"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireGeoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGeo)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGeoArgs) ToZeroTrustAccessApplicationPolicyRequireGeoOutput() ZeroTrustAccessApplicationPolicyRequireGeoOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGeoOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGeoArgs) ToZeroTrustAccessApplicationPolicyRequireGeoOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGeoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGeoOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGeoArgs) ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutput() ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGeoArgs) ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGeoOutput).ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireGeoPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireGeoArgs, ZeroTrustAccessApplicationPolicyRequireGeoPtr and ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireGeoPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireGeoArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireGeoPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutput() ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireGeoPtrType ZeroTrustAccessApplicationPolicyRequireGeoArgs
-
-func ZeroTrustAccessApplicationPolicyRequireGeoPtr(v *ZeroTrustAccessApplicationPolicyRequireGeoArgs) ZeroTrustAccessApplicationPolicyRequireGeoPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireGeoPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireGeoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireGeo)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireGeoPtrType) ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutput() ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireGeoPtrType) ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGeoOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireGeoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGeo)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGeoOutput) ToZeroTrustAccessApplicationPolicyRequireGeoOutput() ZeroTrustAccessApplicationPolicyRequireGeoOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGeoOutput) ToZeroTrustAccessApplicationPolicyRequireGeoOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGeoOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGeoOutput) ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutput() ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGeoOutput) ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireGeo) *ZeroTrustAccessApplicationPolicyRequireGeo {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput)
-}
-
-// The country code that should be matched.
-func (o ZeroTrustAccessApplicationPolicyRequireGeoOutput) CountryCode() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireGeo) string { return v.CountryCode }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireGeo)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput) ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutput() ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput) ToZeroTrustAccessApplicationPolicyRequireGeoPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireGeoOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGeo) ZeroTrustAccessApplicationPolicyRequireGeo {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireGeo
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireGeoOutput)
-}
-
-// The country code that should be matched.
-func (o ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGeo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CountryCode
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGithubOrganization struct {
-	// The ID of your Github identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-	// The name of the organization.
-	Name string `pulumi:"name"`
-	// The name of the team
-	Team *string `pulumi:"team"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireGithubOrganizationInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs and ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireGithubOrganizationInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireGithubOrganizationInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput
-	ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs struct {
-	// The ID of your Github identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-	// The name of the organization.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the team
-	Team pulumi.StringPtrInput `pulumi:"team"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGithubOrganization)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput).ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs, ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtr and ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrType ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs
-
-func ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtr(v *ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireGithubOrganization)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrType) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrType) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGithubOrganization)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireGithubOrganization) *ZeroTrustAccessApplicationPolicyRequireGithubOrganization {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput)
-}
-
-// The ID of your Github identity provider.
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireGithubOrganization) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-// The name of the organization.
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireGithubOrganization) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The name of the team
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireGithubOrganization) *string { return v.Team }).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireGithubOrganization)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput) ToZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGithubOrganization) ZeroTrustAccessApplicationPolicyRequireGithubOrganization {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireGithubOrganization
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput)
-}
-
-// The ID of your Github identity provider.
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGithubOrganization) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IdentityProviderId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the organization.
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGithubOrganization) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the team
-func (o ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGithubOrganization) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Team
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGroup struct {
-	// The ID of a previously created Access group.
-	Id string `pulumi:"id"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireGroupInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireGroupArgs and ZeroTrustAccessApplicationPolicyRequireGroupOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireGroupInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireGroupArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireGroupInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireGroupOutput() ZeroTrustAccessApplicationPolicyRequireGroupOutput
-	ToZeroTrustAccessApplicationPolicyRequireGroupOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireGroupOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGroupArgs struct {
-	// The ID of a previously created Access group.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGroup)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGroupArgs) ToZeroTrustAccessApplicationPolicyRequireGroupOutput() ZeroTrustAccessApplicationPolicyRequireGroupOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGroupOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGroupArgs) ToZeroTrustAccessApplicationPolicyRequireGroupOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGroupOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGroupArgs) ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutput() ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGroupArgs) ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGroupOutput).ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireGroupPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireGroupArgs, ZeroTrustAccessApplicationPolicyRequireGroupPtr and ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireGroupPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireGroupArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireGroupPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutput() ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireGroupPtrType ZeroTrustAccessApplicationPolicyRequireGroupArgs
-
-func ZeroTrustAccessApplicationPolicyRequireGroupPtr(v *ZeroTrustAccessApplicationPolicyRequireGroupArgs) ZeroTrustAccessApplicationPolicyRequireGroupPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireGroupPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireGroup)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireGroupPtrType) ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutput() ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireGroupPtrType) ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGroupOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGroup)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGroupOutput) ToZeroTrustAccessApplicationPolicyRequireGroupOutput() ZeroTrustAccessApplicationPolicyRequireGroupOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGroupOutput) ToZeroTrustAccessApplicationPolicyRequireGroupOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGroupOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGroupOutput) ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutput() ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGroupOutput) ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireGroup) *ZeroTrustAccessApplicationPolicyRequireGroup {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput)
-}
-
-// The ID of a previously created Access group.
-func (o ZeroTrustAccessApplicationPolicyRequireGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireGroup) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireGroup)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput) ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutput() ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput) ToZeroTrustAccessApplicationPolicyRequireGroupPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireGroupOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGroup) ZeroTrustAccessApplicationPolicyRequireGroup {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireGroup
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireGroupOutput)
-}
-
-// The ID of a previously created Access group.
-func (o ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGroup) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGsuite struct {
-	// The email of the Google Workspace group.
-	Email string `pulumi:"email"`
-	// The ID of your Google Workspace identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireGsuiteInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireGsuiteArgs and ZeroTrustAccessApplicationPolicyRequireGsuiteOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireGsuiteInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireGsuiteArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireGsuiteInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireGsuiteOutput() ZeroTrustAccessApplicationPolicyRequireGsuiteOutput
-	ToZeroTrustAccessApplicationPolicyRequireGsuiteOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireGsuiteOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGsuiteArgs struct {
-	// The email of the Google Workspace group.
-	Email pulumi.StringInput `pulumi:"email"`
-	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireGsuiteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGsuite)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGsuiteArgs) ToZeroTrustAccessApplicationPolicyRequireGsuiteOutput() ZeroTrustAccessApplicationPolicyRequireGsuiteOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGsuiteOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGsuiteArgs) ToZeroTrustAccessApplicationPolicyRequireGsuiteOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGsuiteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGsuiteOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGsuiteArgs) ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput() ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireGsuiteArgs) ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGsuiteOutput).ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireGsuitePtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireGsuiteArgs, ZeroTrustAccessApplicationPolicyRequireGsuitePtr and ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireGsuitePtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireGsuiteArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireGsuitePtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput() ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireGsuitePtrType ZeroTrustAccessApplicationPolicyRequireGsuiteArgs
-
-func ZeroTrustAccessApplicationPolicyRequireGsuitePtr(v *ZeroTrustAccessApplicationPolicyRequireGsuiteArgs) ZeroTrustAccessApplicationPolicyRequireGsuitePtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireGsuitePtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireGsuitePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireGsuite)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireGsuitePtrType) ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput() ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireGsuitePtrType) ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGsuiteOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireGsuiteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGsuite)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGsuiteOutput) ToZeroTrustAccessApplicationPolicyRequireGsuiteOutput() ZeroTrustAccessApplicationPolicyRequireGsuiteOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGsuiteOutput) ToZeroTrustAccessApplicationPolicyRequireGsuiteOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGsuiteOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGsuiteOutput) ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput() ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGsuiteOutput) ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireGsuite) *ZeroTrustAccessApplicationPolicyRequireGsuite {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput)
-}
-
-// The email of the Google Workspace group.
-func (o ZeroTrustAccessApplicationPolicyRequireGsuiteOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireGsuite) string { return v.Email }).(pulumi.StringOutput)
-}
-
-// The ID of your Google Workspace identity provider.
-func (o ZeroTrustAccessApplicationPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireGsuite)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput) ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput() ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput) ToZeroTrustAccessApplicationPolicyRequireGsuitePtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireGsuiteOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGsuite) ZeroTrustAccessApplicationPolicyRequireGsuite {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireGsuite
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireGsuiteOutput)
-}
-
-// The email of the Google Workspace group.
-func (o ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGsuite) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of your Google Workspace identity provider.
-func (o ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireGsuite) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IdentityProviderId
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireIp struct {
-	// An IPv4 or IPv6 CIDR block.
-	Ip string `pulumi:"ip"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireIpInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireIpArgs and ZeroTrustAccessApplicationPolicyRequireIpOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireIpInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireIpArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireIpInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireIpOutput() ZeroTrustAccessApplicationPolicyRequireIpOutput
-	ToZeroTrustAccessApplicationPolicyRequireIpOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireIpOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireIpArgs struct {
-	// An IPv4 or IPv6 CIDR block.
-	Ip pulumi.StringInput `pulumi:"ip"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireIpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireIp)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireIpArgs) ToZeroTrustAccessApplicationPolicyRequireIpOutput() ZeroTrustAccessApplicationPolicyRequireIpOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireIpOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireIpArgs) ToZeroTrustAccessApplicationPolicyRequireIpOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireIpOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireIpArgs) ToZeroTrustAccessApplicationPolicyRequireIpPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireIpArgs) ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireIpOutput).ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireIpPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireIpArgs, ZeroTrustAccessApplicationPolicyRequireIpPtr and ZeroTrustAccessApplicationPolicyRequireIpPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireIpPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireIpArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireIpPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireIpPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireIpPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireIpPtrType ZeroTrustAccessApplicationPolicyRequireIpArgs
-
-func ZeroTrustAccessApplicationPolicyRequireIpPtr(v *ZeroTrustAccessApplicationPolicyRequireIpArgs) ZeroTrustAccessApplicationPolicyRequireIpPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireIpPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireIpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireIp)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireIpPtrType) ToZeroTrustAccessApplicationPolicyRequireIpPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireIpPtrType) ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireIpPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireIpOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireIp)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpOutput) ToZeroTrustAccessApplicationPolicyRequireIpOutput() ZeroTrustAccessApplicationPolicyRequireIpOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpOutput) ToZeroTrustAccessApplicationPolicyRequireIpOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpOutput) ToZeroTrustAccessApplicationPolicyRequireIpPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpOutput) ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireIp) *ZeroTrustAccessApplicationPolicyRequireIp {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireIpPtrOutput)
-}
-
-// An IPv4 or IPv6 CIDR block.
-func (o ZeroTrustAccessApplicationPolicyRequireIpOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireIp) string { return v.Ip }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireIpPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireIpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireIp)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpPtrOutput) ToZeroTrustAccessApplicationPolicyRequireIpPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpPtrOutput) ToZeroTrustAccessApplicationPolicyRequireIpPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireIpOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireIp) ZeroTrustAccessApplicationPolicyRequireIp {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireIp
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireIpOutput)
-}
-
-// An IPv4 or IPv6 CIDR block.
-func (o ZeroTrustAccessApplicationPolicyRequireIpPtrOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireIp) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Ip
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireIpList struct {
-	// The ID of a previously created IP list.
-	Id string `pulumi:"id"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireIpListInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireIpListArgs and ZeroTrustAccessApplicationPolicyRequireIpListOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireIpListInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireIpListArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireIpListInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireIpListOutput() ZeroTrustAccessApplicationPolicyRequireIpListOutput
-	ToZeroTrustAccessApplicationPolicyRequireIpListOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireIpListOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireIpListArgs struct {
-	// The ID of a previously created IP list.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireIpListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireIpList)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireIpListArgs) ToZeroTrustAccessApplicationPolicyRequireIpListOutput() ZeroTrustAccessApplicationPolicyRequireIpListOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireIpListOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireIpListArgs) ToZeroTrustAccessApplicationPolicyRequireIpListOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireIpListOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireIpListArgs) ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireIpListArgs) ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireIpListOutput).ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireIpListPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireIpListArgs, ZeroTrustAccessApplicationPolicyRequireIpListPtr and ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireIpListPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireIpListArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireIpListPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireIpListPtrType ZeroTrustAccessApplicationPolicyRequireIpListArgs
-
-func ZeroTrustAccessApplicationPolicyRequireIpListPtr(v *ZeroTrustAccessApplicationPolicyRequireIpListArgs) ZeroTrustAccessApplicationPolicyRequireIpListPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireIpListPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireIpListPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireIpList)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireIpListPtrType) ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireIpListPtrType) ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireIpListOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireIpListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireIpList)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpListOutput) ToZeroTrustAccessApplicationPolicyRequireIpListOutput() ZeroTrustAccessApplicationPolicyRequireIpListOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpListOutput) ToZeroTrustAccessApplicationPolicyRequireIpListOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpListOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpListOutput) ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpListOutput) ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireIpList) *ZeroTrustAccessApplicationPolicyRequireIpList {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput)
-}
-
-// The ID of a previously created IP list.
-func (o ZeroTrustAccessApplicationPolicyRequireIpListOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireIpList) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireIpList)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput) ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutput() ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput) ToZeroTrustAccessApplicationPolicyRequireIpListPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireIpListOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireIpList) ZeroTrustAccessApplicationPolicyRequireIpList {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireIpList
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireIpListOutput)
-}
-
-// The ID of a previously created IP list.
-func (o ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireIpList) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireLinkedAppToken struct {
-	// The ID of an Access OIDC SaaS application
-	AppUid string `pulumi:"appUid"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs and ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput
-	ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs struct {
-	// The ID of an Access OIDC SaaS application
-	AppUid pulumi.StringInput `pulumi:"appUid"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireLinkedAppToken)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput).ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs, ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtr and ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrType ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs
-
-func ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtr(v *ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireLinkedAppToken)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrType) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrType) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireLinkedAppToken)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireLinkedAppToken) *ZeroTrustAccessApplicationPolicyRequireLinkedAppToken {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput)
-}
-
-// The ID of an Access OIDC SaaS application
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireLinkedAppToken)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput) ToZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireLinkedAppToken) ZeroTrustAccessApplicationPolicyRequireLinkedAppToken {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireLinkedAppToken
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput)
-}
-
-// The ID of an Access OIDC SaaS application
-func (o ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireLinkedAppToken) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AppUid
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireLoginMethod struct {
-	// The ID of an identity provider.
-	Id string `pulumi:"id"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireLoginMethodInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs and ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireLoginMethodInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireLoginMethodInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireLoginMethodOutput() ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput
-	ToZeroTrustAccessApplicationPolicyRequireLoginMethodOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs struct {
-	// The ID of an identity provider.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireLoginMethod)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs) ToZeroTrustAccessApplicationPolicyRequireLoginMethodOutput() ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireLoginMethodOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs) ToZeroTrustAccessApplicationPolicyRequireLoginMethodOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs) ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput() ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs) ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput).ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs, ZeroTrustAccessApplicationPolicyRequireLoginMethodPtr and ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput() ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireLoginMethodPtrType ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs
-
-func ZeroTrustAccessApplicationPolicyRequireLoginMethodPtr(v *ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs) ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireLoginMethodPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireLoginMethodPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireLoginMethod)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireLoginMethodPtrType) ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput() ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireLoginMethodPtrType) ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireLoginMethod)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput) ToZeroTrustAccessApplicationPolicyRequireLoginMethodOutput() ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput) ToZeroTrustAccessApplicationPolicyRequireLoginMethodOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput) ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput() ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput) ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireLoginMethod) *ZeroTrustAccessApplicationPolicyRequireLoginMethod {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput)
-}
-
-// The ID of an identity provider.
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireLoginMethod) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireLoginMethod)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput) ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput() ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput) ToZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireLoginMethod) ZeroTrustAccessApplicationPolicyRequireLoginMethod {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireLoginMethod
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput)
-}
-
-// The ID of an identity provider.
-func (o ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireLoginMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireOidc struct {
-	// The name of the OIDC claim.
-	ClaimName string `pulumi:"claimName"`
-	// The OIDC claim value to look for.
-	ClaimValue string `pulumi:"claimValue"`
-	// The ID of your OIDC identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// ZeroTrustAccessApplicationPolicyRequireOidcInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireOidcArgs and ZeroTrustAccessApplicationPolicyRequireOidcOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireOidcInput` via:
-//
-//	ZeroTrustAccessApplicationPolicyRequireOidcArgs{...}
-type ZeroTrustAccessApplicationPolicyRequireOidcInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireOidcOutput() ZeroTrustAccessApplicationPolicyRequireOidcOutput
-	ToZeroTrustAccessApplicationPolicyRequireOidcOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireOidcOutput
-}
-
-type ZeroTrustAccessApplicationPolicyRequireOidcArgs struct {
-	// The name of the OIDC claim.
-	ClaimName pulumi.StringInput `pulumi:"claimName"`
-	// The OIDC claim value to look for.
-	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
-	// The ID of your OIDC identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (ZeroTrustAccessApplicationPolicyRequireOidcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireOidc)(nil)).Elem()
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireOidcArgs) ToZeroTrustAccessApplicationPolicyRequireOidcOutput() ZeroTrustAccessApplicationPolicyRequireOidcOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireOidcOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireOidcArgs) ToZeroTrustAccessApplicationPolicyRequireOidcOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireOidcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireOidcOutput)
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireOidcArgs) ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutput() ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(context.Background())
-}
-
-func (i ZeroTrustAccessApplicationPolicyRequireOidcArgs) ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireOidcOutput).ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx)
-}
-
-// ZeroTrustAccessApplicationPolicyRequireOidcPtrInput is an input type that accepts ZeroTrustAccessApplicationPolicyRequireOidcArgs, ZeroTrustAccessApplicationPolicyRequireOidcPtr and ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput values.
-// You can construct a concrete instance of `ZeroTrustAccessApplicationPolicyRequireOidcPtrInput` via:
-//
-//	        ZeroTrustAccessApplicationPolicyRequireOidcArgs{...}
-//
-//	or:
-//
-//	        nil
-type ZeroTrustAccessApplicationPolicyRequireOidcPtrInput interface {
-	pulumi.Input
-
-	ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutput() ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput
-	ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(context.Context) ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput
-}
-
-type zeroTrustAccessApplicationPolicyRequireOidcPtrType ZeroTrustAccessApplicationPolicyRequireOidcArgs
-
-func ZeroTrustAccessApplicationPolicyRequireOidcPtr(v *ZeroTrustAccessApplicationPolicyRequireOidcArgs) ZeroTrustAccessApplicationPolicyRequireOidcPtrInput {
-	return (*zeroTrustAccessApplicationPolicyRequireOidcPtrType)(v)
-}
-
-func (*zeroTrustAccessApplicationPolicyRequireOidcPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireOidc)(nil)).Elem()
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireOidcPtrType) ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutput() ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput {
-	return i.ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(context.Background())
-}
-
-func (i *zeroTrustAccessApplicationPolicyRequireOidcPtrType) ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireOidcOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireOidcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireOidc)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireOidcOutput) ToZeroTrustAccessApplicationPolicyRequireOidcOutput() ZeroTrustAccessApplicationPolicyRequireOidcOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireOidcOutput) ToZeroTrustAccessApplicationPolicyRequireOidcOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireOidcOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireOidcOutput) ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutput() ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput {
-	return o.ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(context.Background())
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireOidcOutput) ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustAccessApplicationPolicyRequireOidc) *ZeroTrustAccessApplicationPolicyRequireOidc {
-		return &v
-	}).(ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput)
-}
-
-// The name of the OIDC claim.
-func (o ZeroTrustAccessApplicationPolicyRequireOidcOutput) ClaimName() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireOidc) string { return v.ClaimName }).(pulumi.StringOutput)
-}
-
-// The OIDC claim value to look for.
-func (o ZeroTrustAccessApplicationPolicyRequireOidcOutput) ClaimValue() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
-}
-
-// The ID of your OIDC identity provider.
-func (o ZeroTrustAccessApplicationPolicyRequireOidcOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v ZeroTrustAccessApplicationPolicyRequireOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput struct{ *pulumi.OutputState }
-
-func (ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZeroTrustAccessApplicationPolicyRequireOidc)(nil)).Elem()
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput) ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutput() ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput) ToZeroTrustAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx context.Context) ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput {
-	return o
-}
-
-func (o ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput) Elem() ZeroTrustAccessApplicationPolicyRequireOidcOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireOidc) ZeroTrustAccessApplicationPolicyRequireOidc {
-		if v != nil {
-			return *v
-		}
-		var ret ZeroTrustAccessApplicationPolicyRequireOidc
-		return ret
-	}).(ZeroTrustAccessApplicationPolicyRequireOidcOutput)
-}
-
-// The name of the OIDC claim.
-func (o ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClaimName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The OIDC claim value to look for.
-func (o ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClaimValue
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of your OIDC identity provider.
-func (o ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplicationPolicyRequireOidc) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IdentityProviderId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteScopeInput)(nil)).Elem(), MagicWanStaticRouteScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteScopePtrInput)(nil)).Elem(), MagicWanStaticRouteScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonetizationRulesRuleInput)(nil)).Elem(), MonetizationRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonetizationRulesRuleArrayInput)(nil)).Elem(), MonetizationRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigInput)(nil)).Elem(), MoqRelayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigPtrInput)(nil)).Elem(), MoqRelayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribeInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribePtrInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsPtrInput)(nil)).Elem(), MoqRelayConfigUpstreamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigUpstreamsUpstreamInput)(nil)).Elem(), MoqRelayConfigUpstreamsUpstreamArgs{})
@@ -84743,6 +84707,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesDomainVerificationDataPtrInput)(nil)).Elem(), PagesDomainVerificationDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectBuildConfigInput)(nil)).Elem(), PagesProjectBuildConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectBuildConfigPtrInput)(nil)).Elem(), PagesProjectBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectBuildImageAutoUpgradeInput)(nil)).Elem(), PagesProjectBuildImageAutoUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectBuildImageAutoUpgradePtrInput)(nil)).Elem(), PagesProjectBuildImageAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectCanonicalDeploymentInput)(nil)).Elem(), PagesProjectCanonicalDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectCanonicalDeploymentPtrInput)(nil)).Elem(), PagesProjectCanonicalDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesProjectCanonicalDeploymentBuildConfigInput)(nil)).Elem(), PagesProjectCanonicalDeploymentBuildConfigArgs{})
@@ -85317,6 +85283,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptBindingOutboundPtrInput)(nil)).Elem(), WorkerScriptBindingOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptBindingOutboundWorkerInput)(nil)).Elem(), WorkerScriptBindingOutboundWorkerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptBindingOutboundWorkerPtrInput)(nil)).Elem(), WorkerScriptBindingOutboundWorkerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptBindingRetryInput)(nil)).Elem(), WorkerScriptBindingRetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptBindingRetryPtrInput)(nil)).Elem(), WorkerScriptBindingRetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptBindingSimpleInput)(nil)).Elem(), WorkerScriptBindingSimpleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptBindingSimplePtrInput)(nil)).Elem(), WorkerScriptBindingSimpleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptCacheOptionsInput)(nil)).Elem(), WorkerScriptCacheOptionsArgs{})
@@ -85377,6 +85345,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerVersionBindingOutboundParamArrayInput)(nil)).Elem(), WorkerVersionBindingOutboundParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerVersionBindingOutboundWorkerInput)(nil)).Elem(), WorkerVersionBindingOutboundWorkerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerVersionBindingOutboundWorkerPtrInput)(nil)).Elem(), WorkerVersionBindingOutboundWorkerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerVersionBindingRetryInput)(nil)).Elem(), WorkerVersionBindingRetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerVersionBindingRetryPtrInput)(nil)).Elem(), WorkerVersionBindingRetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerVersionBindingSimpleInput)(nil)).Elem(), WorkerVersionBindingSimpleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerVersionBindingSimplePtrInput)(nil)).Elem(), WorkerVersionBindingSimpleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerVersionCacheOptionsInput)(nil)).Elem(), WorkerVersionCacheOptionsArgs{})
@@ -85439,6 +85409,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptBindingOutboundPtrInput)(nil)).Elem(), WorkersScriptBindingOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptBindingOutboundWorkerInput)(nil)).Elem(), WorkersScriptBindingOutboundWorkerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptBindingOutboundWorkerPtrInput)(nil)).Elem(), WorkersScriptBindingOutboundWorkerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptBindingRetryInput)(nil)).Elem(), WorkersScriptBindingRetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptBindingRetryPtrInput)(nil)).Elem(), WorkersScriptBindingRetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptBindingSimpleInput)(nil)).Elem(), WorkersScriptBindingSimpleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptBindingSimplePtrInput)(nil)).Elem(), WorkersScriptBindingSimpleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersScriptCacheOptionsInput)(nil)).Elem(), WorkersScriptCacheOptionsArgs{})
@@ -85653,30 +85625,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEmailPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEmailDomainInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireEmailDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEmailDomainPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireEmailDomainArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEmailListInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireEmailListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEmailListPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireEmailListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEveryoneInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireEveryoneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireEveryonePtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireEveryoneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireExternalEvaluationInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGeoInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireGeoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGeoPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireGeoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGithubOrganizationInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGroupInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGroupPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGsuiteInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireGsuiteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireGsuitePtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireGsuiteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireIpInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireIpPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireIpListInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireIpListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireIpListPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireIpListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireLoginMethodInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireOidcInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustAccessApplicationPolicyRequireOidcPtrInput)(nil)).Elem(), ZeroTrustAccessApplicationPolicyRequireOidcArgs{})
+	pulumi.RegisterOutputType(MagicWanStaticRouteScopeOutput{})
+	pulumi.RegisterOutputType(MagicWanStaticRouteScopePtrOutput{})
+	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderOutput{})
+	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderOutput{})
+	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderOutput{})
+	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderOutput{})
+	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderArrayOutput{})
+	pulumi.RegisterOutputType(MonetizationRulesRuleOutput{})
+	pulumi.RegisterOutputType(MonetizationRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigPtrOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribeOutput{})
+	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribePtrOutput{})
 	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsOutput{})
 	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsPtrOutput{})
 	pulumi.RegisterOutputType(MoqRelayConfigUpstreamsUpstreamOutput{})
@@ -85739,6 +85703,8 @@ func init() {
 	pulumi.RegisterOutputType(PagesDomainVerificationDataPtrOutput{})
 	pulumi.RegisterOutputType(PagesProjectBuildConfigOutput{})
 	pulumi.RegisterOutputType(PagesProjectBuildConfigPtrOutput{})
+	pulumi.RegisterOutputType(PagesProjectBuildImageAutoUpgradeOutput{})
+	pulumi.RegisterOutputType(PagesProjectBuildImageAutoUpgradePtrOutput{})
 	pulumi.RegisterOutputType(PagesProjectCanonicalDeploymentOutput{})
 	pulumi.RegisterOutputType(PagesProjectCanonicalDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(PagesProjectCanonicalDeploymentBuildConfigOutput{})
@@ -86313,6 +86279,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptBindingOutboundPtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptBindingOutboundWorkerOutput{})
 	pulumi.RegisterOutputType(WorkerScriptBindingOutboundWorkerPtrOutput{})
+	pulumi.RegisterOutputType(WorkerScriptBindingRetryOutput{})
+	pulumi.RegisterOutputType(WorkerScriptBindingRetryPtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptBindingSimpleOutput{})
 	pulumi.RegisterOutputType(WorkerScriptBindingSimplePtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptCacheOptionsOutput{})
@@ -86373,6 +86341,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerVersionBindingOutboundParamArrayOutput{})
 	pulumi.RegisterOutputType(WorkerVersionBindingOutboundWorkerOutput{})
 	pulumi.RegisterOutputType(WorkerVersionBindingOutboundWorkerPtrOutput{})
+	pulumi.RegisterOutputType(WorkerVersionBindingRetryOutput{})
+	pulumi.RegisterOutputType(WorkerVersionBindingRetryPtrOutput{})
 	pulumi.RegisterOutputType(WorkerVersionBindingSimpleOutput{})
 	pulumi.RegisterOutputType(WorkerVersionBindingSimplePtrOutput{})
 	pulumi.RegisterOutputType(WorkerVersionCacheOptionsOutput{})
@@ -86435,6 +86405,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkersScriptBindingOutboundPtrOutput{})
 	pulumi.RegisterOutputType(WorkersScriptBindingOutboundWorkerOutput{})
 	pulumi.RegisterOutputType(WorkersScriptBindingOutboundWorkerPtrOutput{})
+	pulumi.RegisterOutputType(WorkersScriptBindingRetryOutput{})
+	pulumi.RegisterOutputType(WorkersScriptBindingRetryPtrOutput{})
 	pulumi.RegisterOutputType(WorkersScriptBindingSimpleOutput{})
 	pulumi.RegisterOutputType(WorkersScriptBindingSimplePtrOutput{})
 	pulumi.RegisterOutputType(WorkersScriptCacheOptionsOutput{})
@@ -86649,28 +86621,4 @@ func init() {
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireEmailPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireEmailDomainOutput{})
 	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireEmailDomainPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireEmailListOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireEmailListPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireEveryoneOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireEveryonePtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireExternalEvaluationOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireExternalEvaluationPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireGeoOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireGeoPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireGithubOrganizationOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireGithubOrganizationPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireGroupOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireGroupPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireGsuiteOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireGsuitePtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireIpOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireIpPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireIpListOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireIpListPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireLoginMethodOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireLoginMethodPtrOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireOidcOutput{})
-	pulumi.RegisterOutputType(ZeroTrustAccessApplicationPolicyRequireOidcPtrOutput{})
 }

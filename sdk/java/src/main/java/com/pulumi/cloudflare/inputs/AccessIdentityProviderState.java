@@ -132,7 +132,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;, &#34;passkeys&#34;.
      * 
      */
     @Import(name="type")
@@ -140,7 +140,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
     /**
      * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;, &#34;passkeys&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -349,7 +349,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
         /**
          * @param type The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
+         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;, &#34;passkeys&#34;.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
         /**
          * @param type The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
+         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;, &#34;passkeys&#34;.
          * 
          * @return builder
          * 

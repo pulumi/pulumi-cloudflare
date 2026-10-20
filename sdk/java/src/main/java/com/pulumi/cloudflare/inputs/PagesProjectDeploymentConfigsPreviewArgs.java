@@ -95,14 +95,14 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
     }
 
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project&#39;s builds have been moved, a request that sets version 1 is rejected.
      * 
      */
     @Import(name="buildImageMajorVersion")
     private @Nullable Output<Integer> buildImageMajorVersion;
 
     /**
-     * @return The major version of the build image to use for Pages Functions.
+     * @return The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project&#39;s builds have been moved, a request that sets version 1 is rejected.
      * 
      */
     public Optional<Output<Integer>> buildImageMajorVersion() {
@@ -504,7 +504,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
         }
 
         /**
-         * @param buildImageMajorVersion The major version of the build image to use for Pages Functions.
+         * @param buildImageMajorVersion The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project&#39;s builds have been moved, a request that sets version 1 is rejected.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
         }
 
         /**
-         * @param buildImageMajorVersion The major version of the build image to use for Pages Functions.
+         * @param buildImageMajorVersion The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project&#39;s builds have been moved, a request that sets version 1 is rejected.
          * 
          * @return builder
          * 

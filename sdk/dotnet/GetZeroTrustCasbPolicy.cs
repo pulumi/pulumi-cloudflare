@@ -160,7 +160,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+        /// The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
         /// </summary>
         public readonly string FindingTypeId;
         /// <summary>

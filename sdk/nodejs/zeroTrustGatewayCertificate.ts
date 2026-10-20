@@ -87,6 +87,10 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly issuerRaw: pulumi.Output<string>;
     /**
+     * Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+     */
+    declare public /*out*/ readonly region: pulumi.Output<string>;
+    /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".
      */
@@ -121,6 +125,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
             resourceInputs["inUse"] = state?.inUse;
             resourceInputs["issuerOrg"] = state?.issuerOrg;
             resourceInputs["issuerRaw"] = state?.issuerRaw;
+            resourceInputs["region"] = state?.region;
             resourceInputs["type"] = state?.type;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["uploadedOn"] = state?.uploadedOn;
@@ -141,6 +146,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
             resourceInputs["inUse"] = undefined /*out*/;
             resourceInputs["issuerOrg"] = undefined /*out*/;
             resourceInputs["issuerRaw"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["uploadedOn"] = undefined /*out*/;
@@ -189,6 +195,10 @@ export interface ZeroTrustGatewayCertificateState {
      * Provide the entire issuer field of the certificate (read-only).
      */
     issuerRaw?: pulumi.Input<string | undefined>;
+    /**
+     * Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+     */
+    region?: pulumi.Input<string | undefined>;
     /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".

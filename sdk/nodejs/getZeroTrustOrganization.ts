@@ -61,7 +61,7 @@ export interface GetZeroTrustOrganizationResult {
      */
     readonly allowAuthenticateViaWarp: boolean;
     /**
-     * The unique subdomain assigned to your Zero Trust organization.
+     * The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      */
     readonly authDomain: string;
     /**
@@ -87,15 +87,15 @@ export interface GetZeroTrustOrganizationResult {
      */
     readonly mfaConfig: outputs.GetZeroTrustOrganizationMfaConfig;
     /**
+     * Configures PIV key requirements for MFA using hardware security keys.
+     */
+    readonly mfaPivKeyRequirements: outputs.GetZeroTrustOrganizationMfaPivKeyRequirements;
+    /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
      */
     readonly mfaRequiredForAllApps: boolean;
     /**
-     * Configures SSH PIV key requirements for MFA using hardware security keys.
-     */
-    readonly mfaSshPivKeyRequirements: outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirements;
-    /**
-     * The name of your Zero Trust organization.
+     * The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      */
     readonly name: string;
     /**

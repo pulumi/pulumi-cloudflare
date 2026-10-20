@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.WorkersScriptBindingOutbound;
+import com.pulumi.cloudflare.outputs.WorkersScriptBindingRetry;
 import com.pulumi.cloudflare.outputs.WorkersScriptBindingSimple;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -167,6 +168,11 @@ public final class WorkersScriptBinding {
      * 
      */
     private @Nullable String queueName;
+    /**
+     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * 
+     */
+    private @Nullable WorkersScriptBindingRetry retry;
     /**
      * @return The script where the Durable Object is defined, if it is external to this Worker.
      * 
@@ -448,6 +454,13 @@ public final class WorkersScriptBinding {
         return Optional.ofNullable(this.queueName);
     }
     /**
+     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * 
+     */
+    public Optional<WorkersScriptBindingRetry> retry() {
+        return Optional.ofNullable(this.retry);
+    }
+    /**
      * @return The script where the Durable Object is defined, if it is external to this Worker.
      * 
      */
@@ -579,6 +592,7 @@ public final class WorkersScriptBinding {
         private @Nullable String part;
         private @Nullable String pipeline;
         private @Nullable String queueName;
+        private @Nullable WorkersScriptBindingRetry retry;
         private @Nullable String scriptName;
         private @Nullable String secretName;
         private @Nullable String service;
@@ -625,6 +639,7 @@ public final class WorkersScriptBinding {
     	      this.part = defaults.part;
     	      this.pipeline = defaults.pipeline;
     	      this.queueName = defaults.queueName;
+    	      this.retry = defaults.retry;
     	      this.scriptName = defaults.scriptName;
     	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
@@ -829,6 +844,12 @@ public final class WorkersScriptBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder retry(@Nullable WorkersScriptBindingRetry retry) {
+
+            this.retry = retry;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scriptName(@Nullable String scriptName) {
 
             this.scriptName = scriptName;
@@ -943,6 +964,7 @@ public final class WorkersScriptBinding {
             _resultValue.part = part;
             _resultValue.pipeline = pipeline;
             _resultValue.queueName = queueName;
+            _resultValue.retry = retry;
             _resultValue.scriptName = scriptName;
             _resultValue.secretName = secretName;
             _resultValue.service = service;

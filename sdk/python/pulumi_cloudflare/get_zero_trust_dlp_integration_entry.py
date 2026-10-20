@@ -27,7 +27,7 @@ class GetZeroTrustDlpIntegrationEntryResult:
     """
     A collection of values returned by getZeroTrustDlpIntegrationEntry.
     """
-    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, deprecated=None, description=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, profiles=None, secret=None, type=None, updated_at=None, upload_status=None, variant=None, word_list=None):
+    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, deprecated=None, description=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, profiles=None, secret=None, type=None, updated_at=None, upload_status=None, variant=None, word_lists=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -82,9 +82,9 @@ class GetZeroTrustDlpIntegrationEntryResult:
         if variant and not isinstance(variant, dict):
             raise TypeError("Expected argument 'variant' to be a dict")
         pulumi.set(__self__, "variant", variant)
-        if word_list and not isinstance(word_list, str):
-            raise TypeError("Expected argument 'word_list' to be a str")
-        pulumi.set(__self__, "word_list", word_list)
+        if word_lists and not isinstance(word_lists, list):
+            raise TypeError("Expected argument 'word_lists' to be a list")
+        pulumi.set(__self__, "word_lists", word_lists)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -198,9 +198,9 @@ class GetZeroTrustDlpIntegrationEntryResult:
         return pulumi.get(self, "variant")
 
     @_builtins.property
-    @pulumi.getter(name="wordList")
-    def word_list(self) -> _builtins.str:
-        return pulumi.get(self, "word_list")
+    @pulumi.getter(name="wordLists")
+    def word_lists(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "word_lists")
 
 
 class AwaitableGetZeroTrustDlpIntegrationEntryResult(GetZeroTrustDlpIntegrationEntryResult):
@@ -227,7 +227,7 @@ class AwaitableGetZeroTrustDlpIntegrationEntryResult(GetZeroTrustDlpIntegrationE
             updated_at=self.updated_at,
             upload_status=self.upload_status,
             variant=self.variant,
-            word_list=self.word_list)
+            word_lists=self.word_lists)
 
 
 def get_zero_trust_dlp_integration_entry(account_id: Optional[_builtins.str] = None,
@@ -274,7 +274,7 @@ def get_zero_trust_dlp_integration_entry(account_id: Optional[_builtins.str] = N
         updated_at=pulumi.get(__ret__, 'updated_at'),
         upload_status=pulumi.get(__ret__, 'upload_status'),
         variant=pulumi.get(__ret__, 'variant'),
-        word_list=pulumi.get(__ret__, 'word_list'))
+        word_lists=pulumi.get(__ret__, 'word_lists'))
 def get_zero_trust_dlp_integration_entry_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                 entry_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpIntegrationEntryResult]:
@@ -318,4 +318,4 @@ def get_zero_trust_dlp_integration_entry_output(account_id: pulumi.Input[Optiona
         updated_at=pulumi.get(__response__, 'updated_at'),
         upload_status=pulumi.get(__response__, 'upload_status'),
         variant=pulumi.get(__response__, 'variant'),
-        word_list=pulumi.get(__response__, 'word_list')))
+        word_lists=pulumi.get(__response__, 'word_lists')))

@@ -25,8 +25,8 @@ import * as utilities from "./utilities";
  *     ],
  *     name: "HR",
  *     portProtocols: [
- *         "tcp/80",
  *         "tcp/443",
+ *         "udp/10000-20000",
  *     ],
  *     supportDomains: [
  *         "example.com",
@@ -91,7 +91,7 @@ export class ZeroTrustResourceLibraryApplication extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly applicationTypeDescription: pulumi.Output<string>;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     declare public readonly categoryId: pulumi.Output<number | undefined>;
     /**
@@ -107,7 +107,7 @@ export class ZeroTrustResourceLibraryApplication extends pulumi.CustomResource {
      */
     declare public readonly hostnames: pulumi.Output<string[] | undefined>;
     /**
-     * Returns the human readable ID.
+     * Human-readable identifier for the application.
      */
     declare public readonly humanId: pulumi.Output<string | undefined>;
     /**
@@ -115,11 +115,11 @@ export class ZeroTrustResourceLibraryApplication extends pulumi.CustomResource {
      */
     declare public readonly ipSubnets: pulumi.Output<string[] | undefined>;
     /**
-     * Returns the application name.
+     * Application name.
      */
     declare public readonly name: pulumi.Output<string | undefined>;
     /**
-     * Port and protocol pairs matched by the application.
+     * Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      */
     declare public readonly portProtocols: pulumi.Output<string[] | undefined>;
     /**
@@ -225,7 +225,7 @@ export interface ZeroTrustResourceLibraryApplicationState {
      */
     applicationTypeDescription?: pulumi.Input<string | undefined>;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     categoryId?: pulumi.Input<number | undefined>;
     /**
@@ -241,7 +241,7 @@ export interface ZeroTrustResourceLibraryApplicationState {
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Returns the human readable ID.
+     * Human-readable identifier for the application.
      */
     humanId?: pulumi.Input<string | undefined>;
     /**
@@ -249,11 +249,11 @@ export interface ZeroTrustResourceLibraryApplicationState {
      */
     ipSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Returns the application name.
+     * Application name.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Port and protocol pairs matched by the application.
+     * Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      */
     portProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -280,7 +280,7 @@ export interface ZeroTrustResourceLibraryApplicationState {
 export interface ZeroTrustResourceLibraryApplicationArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     categoryId?: pulumi.Input<number | undefined>;
     /**
@@ -288,7 +288,7 @@ export interface ZeroTrustResourceLibraryApplicationArgs {
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Returns the human readable ID.
+     * Human-readable identifier for the application.
      */
     humanId?: pulumi.Input<string | undefined>;
     /**
@@ -296,11 +296,11 @@ export interface ZeroTrustResourceLibraryApplicationArgs {
      */
     ipSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Returns the application name.
+     * Application name.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Port and protocol pairs matched by the application.
+     * Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      */
     portProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

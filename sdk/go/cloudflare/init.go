@@ -267,6 +267,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ManagedHeaders{}
 	case "cloudflare:index/managedTransforms:ManagedTransforms":
 		r = &ManagedTransforms{}
+	case "cloudflare:index/monetizationRules:MonetizationRules":
+		r = &MonetizationRules{}
 	case "cloudflare:index/moqRelay:MoqRelay":
 		r = &MoqRelay{}
 	case "cloudflare:index/mtlsCertificate:MtlsCertificate":
@@ -337,8 +339,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionalHostname{}
 	case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
 		r = &RegionalTieredCache{}
-	case "cloudflare:index/registrarDomain:RegistrarDomain":
-		r = &RegistrarDomain{}
 	case "cloudflare:index/riskBehavior:RiskBehavior":
 		r = &RiskBehavior{}
 	case "cloudflare:index/ruleset:Ruleset":
@@ -1283,6 +1283,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/monetizationRules",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/moqRelay",
 		&module{version},
 	)
@@ -1454,11 +1459,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/regionalTieredCache",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/registrarDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

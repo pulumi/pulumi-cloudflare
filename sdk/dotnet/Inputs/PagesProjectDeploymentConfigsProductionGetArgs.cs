@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The major version of the build image to use for Pages Functions.
+        /// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
         /// </summary>
         [Input("buildImageMajorVersion")]
         public Input<int>? BuildImageMajorVersion { get; set; }

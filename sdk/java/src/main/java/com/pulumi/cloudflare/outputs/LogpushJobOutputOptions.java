@@ -40,7 +40,7 @@ public final class LogpushJobOutputOptions {
      */
     private @Nullable List<String> fieldNames;
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      * 
      */
     private @Nullable Boolean mergeSubrequests;
@@ -119,7 +119,7 @@ public final class LogpushJobOutputOptions {
         return this.fieldNames == null ? List.of() : this.fieldNames;
     }
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      * 
      */
     public Optional<Boolean> mergeSubrequests() {

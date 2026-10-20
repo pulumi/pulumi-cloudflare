@@ -179,11 +179,11 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.variant);
     }
 
-    @Import(name="wordList")
-    private @Nullable Output<String> wordList;
+    @Import(name="wordLists")
+    private @Nullable Output<List<String>> wordLists;
 
-    public Optional<Output<String>> wordList() {
-        return Optional.ofNullable(this.wordList);
+    public Optional<Output<List<String>>> wordLists() {
+        return Optional.ofNullable(this.wordLists);
     }
 
     private ZeroTrustDlpCustomEntryState() {}
@@ -205,7 +205,7 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
         this.updatedAt = $.updatedAt;
         this.uploadStatus = $.uploadStatus;
         this.variant = $.variant;
-        this.wordList = $.wordList;
+        this.wordLists = $.wordLists;
     }
 
     public static Builder builder() {
@@ -440,13 +440,17 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
             return variant(Output.of(variant));
         }
 
-        public Builder wordList(@Nullable Output<String> wordList) {
-            $.wordList = wordList;
+        public Builder wordLists(@Nullable Output<List<String>> wordLists) {
+            $.wordLists = wordLists;
             return this;
         }
 
-        public Builder wordList(String wordList) {
-            return wordList(Output.of(wordList));
+        public Builder wordLists(List<String> wordLists) {
+            return wordLists(Output.of(wordLists));
+        }
+
+        public Builder wordLists(String... wordLists) {
+            return wordLists(List.of(wordLists));
         }
 
         public ZeroTrustDlpCustomEntryState build() {

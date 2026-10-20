@@ -26,7 +26,7 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
 
     /**
      * Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      * 
@@ -36,7 +36,7 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
 
     /**
      * @return Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      * 
@@ -57,6 +57,13 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
 
     public Optional<Output<Integer>> limit() {
         return Optional.ofNullable(this.limit);
+    }
+
+    @Import(name="lookup")
+    private @Nullable Output<String> lookup;
+
+    public Optional<Output<String>> lookup() {
+        return Optional.ofNullable(this.lookup);
     }
 
     @Import(name="maxItems")
@@ -94,6 +101,7 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
         this.fields = $.fields;
         this.filter = $.filter;
         this.limit = $.limit;
+        this.lookup = $.lookup;
         this.maxItems = $.maxItems;
         this.offset = $.offset;
         this.orderBy = $.orderBy;
@@ -129,7 +137,7 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
 
         /**
          * @param fields Return only the listed properties on each application, as a comma-separated list.
-         * Use this to keep responses small when you only need part of each application — for
+         * Use this to keep responses small when you only need part of each application, for
          * example populating a picker with `fields=id,name` instead of downloading every
          * hostname and IP subnet.
          * 
@@ -143,7 +151,7 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
 
         /**
          * @param fields Return only the listed properties on each application, as a comma-separated list.
-         * Use this to keep responses small when you only need part of each application — for
+         * Use this to keep responses small when you only need part of each application, for
          * example populating a picker with `fields=id,name` instead of downloading every
          * hostname and IP subnet.
          * 
@@ -170,6 +178,15 @@ public final class GetZeroTrustResourceLibraryApplicationsArgs extends com.pulum
 
         public Builder limit(Integer limit) {
             return limit(Output.of(limit));
+        }
+
+        public Builder lookup(@Nullable Output<String> lookup) {
+            $.lookup = lookup;
+            return this;
+        }
+
+        public Builder lookup(String lookup) {
+            return lookup(Output.of(lookup));
         }
 
         public Builder maxItems(@Nullable Output<Integer> maxItems) {

@@ -39,7 +39,7 @@ public final class GetLogpushJobOutputOptions {
      */
     private List<String> fieldNames;
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      * 
      */
     private Boolean mergeSubrequests;
@@ -118,7 +118,7 @@ public final class GetLogpushJobOutputOptions {
         return this.fieldNames;
     }
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      * 
      */
     public Boolean mergeSubrequests() {

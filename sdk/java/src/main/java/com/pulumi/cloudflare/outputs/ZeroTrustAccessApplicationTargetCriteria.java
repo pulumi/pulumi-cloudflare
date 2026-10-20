@@ -3,6 +3,9 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationTargetCriteriaExclude;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationTargetCriteriaInclude;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationTargetCriteriaRequire;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -10,9 +13,21 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessApplicationTargetCriteria {
+    /**
+     * @return Target is excluded when any selector in this rule matches.
+     * 
+     */
+    private @Nullable ZeroTrustAccessApplicationTargetCriteriaExclude exclude;
+    /**
+     * @return Target matches when any selector in this rule matches.
+     * 
+     */
+    private @Nullable ZeroTrustAccessApplicationTargetCriteriaInclude include;
     /**
      * @return The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      * 
@@ -25,12 +40,31 @@ public final class ZeroTrustAccessApplicationTargetCriteria {
      */
     private String protocol;
     /**
-     * @return Contains a map of target attribute keys to target attribute values.
+     * @return Target matches only when every selector in this rule matches.
      * 
      */
-    private Map<String,List<String>> targetAttributes;
+    private @Nullable ZeroTrustAccessApplicationTargetCriteriaRequire require;
+    /**
+     * @return Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+     * 
+     */
+    private @Nullable Map<String,List<String>> targetAttributes;
 
     private ZeroTrustAccessApplicationTargetCriteria() {}
+    /**
+     * @return Target is excluded when any selector in this rule matches.
+     * 
+     */
+    public Optional<ZeroTrustAccessApplicationTargetCriteriaExclude> exclude() {
+        return Optional.ofNullable(this.exclude);
+    }
+    /**
+     * @return Target matches when any selector in this rule matches.
+     * 
+     */
+    public Optional<ZeroTrustAccessApplicationTargetCriteriaInclude> include() {
+        return Optional.ofNullable(this.include);
+    }
     /**
      * @return The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      * 
@@ -47,11 +81,18 @@ public final class ZeroTrustAccessApplicationTargetCriteria {
         return this.protocol;
     }
     /**
-     * @return Contains a map of target attribute keys to target attribute values.
+     * @return Target matches only when every selector in this rule matches.
+     * 
+     */
+    public Optional<ZeroTrustAccessApplicationTargetCriteriaRequire> require() {
+        return Optional.ofNullable(this.require);
+    }
+    /**
+     * @return Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
      * 
      */
     public Map<String,List<String>> targetAttributes() {
-        return this.targetAttributes;
+        return this.targetAttributes == null ? Map.of() : this.targetAttributes;
     }
 
     public static Builder builder() {
@@ -63,17 +104,35 @@ public final class ZeroTrustAccessApplicationTargetCriteria {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ZeroTrustAccessApplicationTargetCriteriaExclude exclude;
+        private @Nullable ZeroTrustAccessApplicationTargetCriteriaInclude include;
         private Integer port;
         private String protocol;
-        private Map<String,List<String>> targetAttributes;
+        private @Nullable ZeroTrustAccessApplicationTargetCriteriaRequire require;
+        private @Nullable Map<String,List<String>> targetAttributes;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationTargetCriteria defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.exclude = defaults.exclude;
+    	      this.include = defaults.include;
     	      this.port = defaults.port;
     	      this.protocol = defaults.protocol;
+    	      this.require = defaults.require;
     	      this.targetAttributes = defaults.targetAttributes;
         }
 
+        @CustomType.Setter
+        public Builder exclude(@Nullable ZeroTrustAccessApplicationTargetCriteriaExclude exclude) {
+
+            this.exclude = exclude;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder include(@Nullable ZeroTrustAccessApplicationTargetCriteriaInclude include) {
+
+            this.include = include;
+            return this;
+        }
         @CustomType.Setter
         public Builder port(Integer port) {
             if (port == null) {
@@ -91,17 +150,24 @@ public final class ZeroTrustAccessApplicationTargetCriteria {
             return this;
         }
         @CustomType.Setter
-        public Builder targetAttributes(Map<String,List<String>> targetAttributes) {
-            if (targetAttributes == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationTargetCriteria", "targetAttributes");
-            }
+        public Builder require(@Nullable ZeroTrustAccessApplicationTargetCriteriaRequire require) {
+
+            this.require = require;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder targetAttributes(@Nullable Map<String,List<String>> targetAttributes) {
+
             this.targetAttributes = targetAttributes;
             return this;
         }
         public ZeroTrustAccessApplicationTargetCriteria build() {
             final var _resultValue = new ZeroTrustAccessApplicationTargetCriteria();
+            _resultValue.exclude = exclude;
+            _resultValue.include = include;
             _resultValue.port = port;
             _resultValue.protocol = protocol;
+            _resultValue.require = require;
             _resultValue.targetAttributes = targetAttributes;
             return _resultValue;
         }

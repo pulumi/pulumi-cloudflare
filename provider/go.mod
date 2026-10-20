@@ -77,7 +77,7 @@ require (
 	github.com/cloudflare/circl v1.6.5 // indirect
 	github.com/cloudflare/cloudflare-go v0.118.0 // indirect
 	github.com/cloudflare/cloudflare-go/v6 v6.10.0 // indirect
-	github.com/cloudflare/cloudflare-go/v7 v7.12.0 // indirect
+	github.com/cloudflare/cloudflare-go/v7 v7.13.0 // indirect
 	github.com/cncf/xds/go v0.0.0-20260202195803-dba9d589def2 // indirect
 	github.com/danieljoos/wincred v1.2.3 // indirect
 	github.com/deckarep/golang-set/v2 v2.9.0 // indirect

@@ -83,7 +83,7 @@ export interface GetZeroTrustDlpIntegrationEntryResult {
      * A Predefined AI prompt classification topic entry.
      */
     readonly variant: outputs.GetZeroTrustDlpIntegrationEntryVariant;
-    readonly wordList: string;
+    readonly wordLists: string[];
 }
 /**
  * Accepted Permissions

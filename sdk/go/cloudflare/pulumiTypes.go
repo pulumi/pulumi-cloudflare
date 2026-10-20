@@ -15841,12 +15841,18 @@ func (o AccessApplicationScimConfigMappingOperationsPtrOutput) Update() pulumi.B
 }
 
 type AccessApplicationTargetCriteria struct {
+	// Target is excluded when any selector in this rule matches.
+	Exclude *AccessApplicationTargetCriteriaExclude `pulumi:"exclude"`
+	// Target matches when any selector in this rule matches.
+	Include *AccessApplicationTargetCriteriaInclude `pulumi:"include"`
 	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
 	Port int `pulumi:"port"`
 	// The communication protocol your application secures.
 	// Available values: "SSH", "RDP".
 	Protocol string `pulumi:"protocol"`
-	// Contains a map of target attribute keys to target attribute values.
+	// Target matches only when every selector in this rule matches.
+	Require *AccessApplicationTargetCriteriaRequire `pulumi:"require"`
+	// Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
 	TargetAttributes map[string][]string `pulumi:"targetAttributes"`
 }
 
@@ -15862,12 +15868,18 @@ type AccessApplicationTargetCriteriaInput interface {
 }
 
 type AccessApplicationTargetCriteriaArgs struct {
+	// Target is excluded when any selector in this rule matches.
+	Exclude AccessApplicationTargetCriteriaExcludePtrInput `pulumi:"exclude"`
+	// Target matches when any selector in this rule matches.
+	Include AccessApplicationTargetCriteriaIncludePtrInput `pulumi:"include"`
 	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The communication protocol your application secures.
 	// Available values: "SSH", "RDP".
 	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// Contains a map of target attribute keys to target attribute values.
+	// Target matches only when every selector in this rule matches.
+	Require AccessApplicationTargetCriteriaRequirePtrInput `pulumi:"require"`
+	// Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
 	TargetAttributes pulumi.StringArrayMapInput `pulumi:"targetAttributes"`
 }
 
@@ -15922,6 +15934,16 @@ func (o AccessApplicationTargetCriteriaOutput) ToAccessApplicationTargetCriteria
 	return o
 }
 
+// Target is excluded when any selector in this rule matches.
+func (o AccessApplicationTargetCriteriaOutput) Exclude() AccessApplicationTargetCriteriaExcludePtrOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteria) *AccessApplicationTargetCriteriaExclude { return v.Exclude }).(AccessApplicationTargetCriteriaExcludePtrOutput)
+}
+
+// Target matches when any selector in this rule matches.
+func (o AccessApplicationTargetCriteriaOutput) Include() AccessApplicationTargetCriteriaIncludePtrOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteria) *AccessApplicationTargetCriteriaInclude { return v.Include }).(AccessApplicationTargetCriteriaIncludePtrOutput)
+}
+
 // The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
 func (o AccessApplicationTargetCriteriaOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessApplicationTargetCriteria) int { return v.Port }).(pulumi.IntOutput)
@@ -15933,7 +15955,12 @@ func (o AccessApplicationTargetCriteriaOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationTargetCriteria) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// Contains a map of target attribute keys to target attribute values.
+// Target matches only when every selector in this rule matches.
+func (o AccessApplicationTargetCriteriaOutput) Require() AccessApplicationTargetCriteriaRequirePtrOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteria) *AccessApplicationTargetCriteriaRequire { return v.Require }).(AccessApplicationTargetCriteriaRequirePtrOutput)
+}
+
+// Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
 func (o AccessApplicationTargetCriteriaOutput) TargetAttributes() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v AccessApplicationTargetCriteria) map[string][]string { return v.TargetAttributes }).(pulumi.StringArrayMapOutput)
 }
@@ -15956,6 +15983,879 @@ func (o AccessApplicationTargetCriteriaArrayOutput) Index(i pulumi.IntInput) Acc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationTargetCriteria {
 		return vs[0].([]AccessApplicationTargetCriteria)[vs[1].(int)]
 	}).(AccessApplicationTargetCriteriaOutput)
+}
+
+type AccessApplicationTargetCriteriaExclude struct {
+	// Map of target tag keys to values. Values within a key are OR'd.
+	Tags map[string][]string `pulumi:"tags"`
+	// Hostname selector map. Only the hostname key is supported.
+	TargetAttributes *AccessApplicationTargetCriteriaExcludeTargetAttributes `pulumi:"targetAttributes"`
+}
+
+// AccessApplicationTargetCriteriaExcludeInput is an input type that accepts AccessApplicationTargetCriteriaExcludeArgs and AccessApplicationTargetCriteriaExcludeOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaExcludeInput` via:
+//
+//	AccessApplicationTargetCriteriaExcludeArgs{...}
+type AccessApplicationTargetCriteriaExcludeInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaExcludeOutput() AccessApplicationTargetCriteriaExcludeOutput
+	ToAccessApplicationTargetCriteriaExcludeOutputWithContext(context.Context) AccessApplicationTargetCriteriaExcludeOutput
+}
+
+type AccessApplicationTargetCriteriaExcludeArgs struct {
+	// Map of target tag keys to values. Values within a key are OR'd.
+	Tags pulumi.StringArrayMapInput `pulumi:"tags"`
+	// Hostname selector map. Only the hostname key is supported.
+	TargetAttributes AccessApplicationTargetCriteriaExcludeTargetAttributesPtrInput `pulumi:"targetAttributes"`
+}
+
+func (AccessApplicationTargetCriteriaExcludeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaExclude)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaExcludeArgs) ToAccessApplicationTargetCriteriaExcludeOutput() AccessApplicationTargetCriteriaExcludeOutput {
+	return i.ToAccessApplicationTargetCriteriaExcludeOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaExcludeArgs) ToAccessApplicationTargetCriteriaExcludeOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaExcludeOutput)
+}
+
+func (i AccessApplicationTargetCriteriaExcludeArgs) ToAccessApplicationTargetCriteriaExcludePtrOutput() AccessApplicationTargetCriteriaExcludePtrOutput {
+	return i.ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaExcludeArgs) ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaExcludeOutput).ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(ctx)
+}
+
+// AccessApplicationTargetCriteriaExcludePtrInput is an input type that accepts AccessApplicationTargetCriteriaExcludeArgs, AccessApplicationTargetCriteriaExcludePtr and AccessApplicationTargetCriteriaExcludePtrOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaExcludePtrInput` via:
+//
+//	        AccessApplicationTargetCriteriaExcludeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationTargetCriteriaExcludePtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaExcludePtrOutput() AccessApplicationTargetCriteriaExcludePtrOutput
+	ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(context.Context) AccessApplicationTargetCriteriaExcludePtrOutput
+}
+
+type accessApplicationTargetCriteriaExcludePtrType AccessApplicationTargetCriteriaExcludeArgs
+
+func AccessApplicationTargetCriteriaExcludePtr(v *AccessApplicationTargetCriteriaExcludeArgs) AccessApplicationTargetCriteriaExcludePtrInput {
+	return (*accessApplicationTargetCriteriaExcludePtrType)(v)
+}
+
+func (*accessApplicationTargetCriteriaExcludePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaExclude)(nil)).Elem()
+}
+
+func (i *accessApplicationTargetCriteriaExcludePtrType) ToAccessApplicationTargetCriteriaExcludePtrOutput() AccessApplicationTargetCriteriaExcludePtrOutput {
+	return i.ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationTargetCriteriaExcludePtrType) ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaExcludePtrOutput)
+}
+
+type AccessApplicationTargetCriteriaExcludeOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaExcludeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaExclude)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaExcludeOutput) ToAccessApplicationTargetCriteriaExcludeOutput() AccessApplicationTargetCriteriaExcludeOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaExcludeOutput) ToAccessApplicationTargetCriteriaExcludeOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludeOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaExcludeOutput) ToAccessApplicationTargetCriteriaExcludePtrOutput() AccessApplicationTargetCriteriaExcludePtrOutput {
+	return o.ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationTargetCriteriaExcludeOutput) ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationTargetCriteriaExclude) *AccessApplicationTargetCriteriaExclude {
+		return &v
+	}).(AccessApplicationTargetCriteriaExcludePtrOutput)
+}
+
+// Map of target tag keys to values. Values within a key are OR'd.
+func (o AccessApplicationTargetCriteriaExcludeOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaExclude) map[string][]string { return v.Tags }).(pulumi.StringArrayMapOutput)
+}
+
+// Hostname selector map. Only the hostname key is supported.
+func (o AccessApplicationTargetCriteriaExcludeOutput) TargetAttributes() AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaExclude) *AccessApplicationTargetCriteriaExcludeTargetAttributes {
+		return v.TargetAttributes
+	}).(AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaExcludePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaExcludePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaExclude)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaExcludePtrOutput) ToAccessApplicationTargetCriteriaExcludePtrOutput() AccessApplicationTargetCriteriaExcludePtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaExcludePtrOutput) ToAccessApplicationTargetCriteriaExcludePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludePtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaExcludePtrOutput) Elem() AccessApplicationTargetCriteriaExcludeOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaExclude) AccessApplicationTargetCriteriaExclude {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationTargetCriteriaExclude
+		return ret
+	}).(AccessApplicationTargetCriteriaExcludeOutput)
+}
+
+// Map of target tag keys to values. Values within a key are OR'd.
+func (o AccessApplicationTargetCriteriaExcludePtrOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaExclude) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayMapOutput)
+}
+
+// Hostname selector map. Only the hostname key is supported.
+func (o AccessApplicationTargetCriteriaExcludePtrOutput) TargetAttributes() AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaExclude) *AccessApplicationTargetCriteriaExcludeTargetAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAttributes
+	}).(AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaExcludeTargetAttributes struct {
+	Hostnames []string `pulumi:"hostnames"`
+}
+
+// AccessApplicationTargetCriteriaExcludeTargetAttributesInput is an input type that accepts AccessApplicationTargetCriteriaExcludeTargetAttributesArgs and AccessApplicationTargetCriteriaExcludeTargetAttributesOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaExcludeTargetAttributesInput` via:
+//
+//	AccessApplicationTargetCriteriaExcludeTargetAttributesArgs{...}
+type AccessApplicationTargetCriteriaExcludeTargetAttributesInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaExcludeTargetAttributesOutput() AccessApplicationTargetCriteriaExcludeTargetAttributesOutput
+	ToAccessApplicationTargetCriteriaExcludeTargetAttributesOutputWithContext(context.Context) AccessApplicationTargetCriteriaExcludeTargetAttributesOutput
+}
+
+type AccessApplicationTargetCriteriaExcludeTargetAttributesArgs struct {
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+}
+
+func (AccessApplicationTargetCriteriaExcludeTargetAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaExcludeTargetAttributes)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaExcludeTargetAttributesArgs) ToAccessApplicationTargetCriteriaExcludeTargetAttributesOutput() AccessApplicationTargetCriteriaExcludeTargetAttributesOutput {
+	return i.ToAccessApplicationTargetCriteriaExcludeTargetAttributesOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaExcludeTargetAttributesArgs) ToAccessApplicationTargetCriteriaExcludeTargetAttributesOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludeTargetAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaExcludeTargetAttributesOutput)
+}
+
+func (i AccessApplicationTargetCriteriaExcludeTargetAttributesArgs) ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return i.ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaExcludeTargetAttributesArgs) ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaExcludeTargetAttributesOutput).ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationTargetCriteriaExcludeTargetAttributesPtrInput is an input type that accepts AccessApplicationTargetCriteriaExcludeTargetAttributesArgs, AccessApplicationTargetCriteriaExcludeTargetAttributesPtr and AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaExcludeTargetAttributesPtrInput` via:
+//
+//	        AccessApplicationTargetCriteriaExcludeTargetAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationTargetCriteriaExcludeTargetAttributesPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput
+	ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(context.Context) AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput
+}
+
+type accessApplicationTargetCriteriaExcludeTargetAttributesPtrType AccessApplicationTargetCriteriaExcludeTargetAttributesArgs
+
+func AccessApplicationTargetCriteriaExcludeTargetAttributesPtr(v *AccessApplicationTargetCriteriaExcludeTargetAttributesArgs) AccessApplicationTargetCriteriaExcludeTargetAttributesPtrInput {
+	return (*accessApplicationTargetCriteriaExcludeTargetAttributesPtrType)(v)
+}
+
+func (*accessApplicationTargetCriteriaExcludeTargetAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaExcludeTargetAttributes)(nil)).Elem()
+}
+
+func (i *accessApplicationTargetCriteriaExcludeTargetAttributesPtrType) ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return i.ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationTargetCriteriaExcludeTargetAttributesPtrType) ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaExcludeTargetAttributesOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaExcludeTargetAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaExcludeTargetAttributes)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesOutput) ToAccessApplicationTargetCriteriaExcludeTargetAttributesOutput() AccessApplicationTargetCriteriaExcludeTargetAttributesOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesOutput) ToAccessApplicationTargetCriteriaExcludeTargetAttributesOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludeTargetAttributesOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesOutput) ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return o.ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesOutput) ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationTargetCriteriaExcludeTargetAttributes) *AccessApplicationTargetCriteriaExcludeTargetAttributes {
+		return &v
+	}).(AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput)
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaExcludeTargetAttributes) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaExcludeTargetAttributes)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput) ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput) ToAccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput) Elem() AccessApplicationTargetCriteriaExcludeTargetAttributesOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaExcludeTargetAttributes) AccessApplicationTargetCriteriaExcludeTargetAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationTargetCriteriaExcludeTargetAttributes
+		return ret
+	}).(AccessApplicationTargetCriteriaExcludeTargetAttributesOutput)
+}
+
+func (o AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaExcludeTargetAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaInclude struct {
+	// Map of target tag keys to values. Values within a key are OR'd.
+	Tags map[string][]string `pulumi:"tags"`
+	// Hostname selector map. Only the hostname key is supported.
+	TargetAttributes *AccessApplicationTargetCriteriaIncludeTargetAttributes `pulumi:"targetAttributes"`
+}
+
+// AccessApplicationTargetCriteriaIncludeInput is an input type that accepts AccessApplicationTargetCriteriaIncludeArgs and AccessApplicationTargetCriteriaIncludeOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaIncludeInput` via:
+//
+//	AccessApplicationTargetCriteriaIncludeArgs{...}
+type AccessApplicationTargetCriteriaIncludeInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaIncludeOutput() AccessApplicationTargetCriteriaIncludeOutput
+	ToAccessApplicationTargetCriteriaIncludeOutputWithContext(context.Context) AccessApplicationTargetCriteriaIncludeOutput
+}
+
+type AccessApplicationTargetCriteriaIncludeArgs struct {
+	// Map of target tag keys to values. Values within a key are OR'd.
+	Tags pulumi.StringArrayMapInput `pulumi:"tags"`
+	// Hostname selector map. Only the hostname key is supported.
+	TargetAttributes AccessApplicationTargetCriteriaIncludeTargetAttributesPtrInput `pulumi:"targetAttributes"`
+}
+
+func (AccessApplicationTargetCriteriaIncludeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaInclude)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaIncludeArgs) ToAccessApplicationTargetCriteriaIncludeOutput() AccessApplicationTargetCriteriaIncludeOutput {
+	return i.ToAccessApplicationTargetCriteriaIncludeOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaIncludeArgs) ToAccessApplicationTargetCriteriaIncludeOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaIncludeOutput)
+}
+
+func (i AccessApplicationTargetCriteriaIncludeArgs) ToAccessApplicationTargetCriteriaIncludePtrOutput() AccessApplicationTargetCriteriaIncludePtrOutput {
+	return i.ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaIncludeArgs) ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaIncludeOutput).ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(ctx)
+}
+
+// AccessApplicationTargetCriteriaIncludePtrInput is an input type that accepts AccessApplicationTargetCriteriaIncludeArgs, AccessApplicationTargetCriteriaIncludePtr and AccessApplicationTargetCriteriaIncludePtrOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaIncludePtrInput` via:
+//
+//	        AccessApplicationTargetCriteriaIncludeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationTargetCriteriaIncludePtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaIncludePtrOutput() AccessApplicationTargetCriteriaIncludePtrOutput
+	ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(context.Context) AccessApplicationTargetCriteriaIncludePtrOutput
+}
+
+type accessApplicationTargetCriteriaIncludePtrType AccessApplicationTargetCriteriaIncludeArgs
+
+func AccessApplicationTargetCriteriaIncludePtr(v *AccessApplicationTargetCriteriaIncludeArgs) AccessApplicationTargetCriteriaIncludePtrInput {
+	return (*accessApplicationTargetCriteriaIncludePtrType)(v)
+}
+
+func (*accessApplicationTargetCriteriaIncludePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaInclude)(nil)).Elem()
+}
+
+func (i *accessApplicationTargetCriteriaIncludePtrType) ToAccessApplicationTargetCriteriaIncludePtrOutput() AccessApplicationTargetCriteriaIncludePtrOutput {
+	return i.ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationTargetCriteriaIncludePtrType) ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaIncludePtrOutput)
+}
+
+type AccessApplicationTargetCriteriaIncludeOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaIncludeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaInclude)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaIncludeOutput) ToAccessApplicationTargetCriteriaIncludeOutput() AccessApplicationTargetCriteriaIncludeOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaIncludeOutput) ToAccessApplicationTargetCriteriaIncludeOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludeOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaIncludeOutput) ToAccessApplicationTargetCriteriaIncludePtrOutput() AccessApplicationTargetCriteriaIncludePtrOutput {
+	return o.ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationTargetCriteriaIncludeOutput) ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationTargetCriteriaInclude) *AccessApplicationTargetCriteriaInclude {
+		return &v
+	}).(AccessApplicationTargetCriteriaIncludePtrOutput)
+}
+
+// Map of target tag keys to values. Values within a key are OR'd.
+func (o AccessApplicationTargetCriteriaIncludeOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaInclude) map[string][]string { return v.Tags }).(pulumi.StringArrayMapOutput)
+}
+
+// Hostname selector map. Only the hostname key is supported.
+func (o AccessApplicationTargetCriteriaIncludeOutput) TargetAttributes() AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaInclude) *AccessApplicationTargetCriteriaIncludeTargetAttributes {
+		return v.TargetAttributes
+	}).(AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaIncludePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaIncludePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaInclude)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaIncludePtrOutput) ToAccessApplicationTargetCriteriaIncludePtrOutput() AccessApplicationTargetCriteriaIncludePtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaIncludePtrOutput) ToAccessApplicationTargetCriteriaIncludePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludePtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaIncludePtrOutput) Elem() AccessApplicationTargetCriteriaIncludeOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaInclude) AccessApplicationTargetCriteriaInclude {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationTargetCriteriaInclude
+		return ret
+	}).(AccessApplicationTargetCriteriaIncludeOutput)
+}
+
+// Map of target tag keys to values. Values within a key are OR'd.
+func (o AccessApplicationTargetCriteriaIncludePtrOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaInclude) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayMapOutput)
+}
+
+// Hostname selector map. Only the hostname key is supported.
+func (o AccessApplicationTargetCriteriaIncludePtrOutput) TargetAttributes() AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaInclude) *AccessApplicationTargetCriteriaIncludeTargetAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAttributes
+	}).(AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaIncludeTargetAttributes struct {
+	Hostnames []string `pulumi:"hostnames"`
+}
+
+// AccessApplicationTargetCriteriaIncludeTargetAttributesInput is an input type that accepts AccessApplicationTargetCriteriaIncludeTargetAttributesArgs and AccessApplicationTargetCriteriaIncludeTargetAttributesOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaIncludeTargetAttributesInput` via:
+//
+//	AccessApplicationTargetCriteriaIncludeTargetAttributesArgs{...}
+type AccessApplicationTargetCriteriaIncludeTargetAttributesInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaIncludeTargetAttributesOutput() AccessApplicationTargetCriteriaIncludeTargetAttributesOutput
+	ToAccessApplicationTargetCriteriaIncludeTargetAttributesOutputWithContext(context.Context) AccessApplicationTargetCriteriaIncludeTargetAttributesOutput
+}
+
+type AccessApplicationTargetCriteriaIncludeTargetAttributesArgs struct {
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+}
+
+func (AccessApplicationTargetCriteriaIncludeTargetAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaIncludeTargetAttributes)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaIncludeTargetAttributesArgs) ToAccessApplicationTargetCriteriaIncludeTargetAttributesOutput() AccessApplicationTargetCriteriaIncludeTargetAttributesOutput {
+	return i.ToAccessApplicationTargetCriteriaIncludeTargetAttributesOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaIncludeTargetAttributesArgs) ToAccessApplicationTargetCriteriaIncludeTargetAttributesOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludeTargetAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaIncludeTargetAttributesOutput)
+}
+
+func (i AccessApplicationTargetCriteriaIncludeTargetAttributesArgs) ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return i.ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaIncludeTargetAttributesArgs) ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaIncludeTargetAttributesOutput).ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationTargetCriteriaIncludeTargetAttributesPtrInput is an input type that accepts AccessApplicationTargetCriteriaIncludeTargetAttributesArgs, AccessApplicationTargetCriteriaIncludeTargetAttributesPtr and AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaIncludeTargetAttributesPtrInput` via:
+//
+//	        AccessApplicationTargetCriteriaIncludeTargetAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationTargetCriteriaIncludeTargetAttributesPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput
+	ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(context.Context) AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput
+}
+
+type accessApplicationTargetCriteriaIncludeTargetAttributesPtrType AccessApplicationTargetCriteriaIncludeTargetAttributesArgs
+
+func AccessApplicationTargetCriteriaIncludeTargetAttributesPtr(v *AccessApplicationTargetCriteriaIncludeTargetAttributesArgs) AccessApplicationTargetCriteriaIncludeTargetAttributesPtrInput {
+	return (*accessApplicationTargetCriteriaIncludeTargetAttributesPtrType)(v)
+}
+
+func (*accessApplicationTargetCriteriaIncludeTargetAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaIncludeTargetAttributes)(nil)).Elem()
+}
+
+func (i *accessApplicationTargetCriteriaIncludeTargetAttributesPtrType) ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return i.ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationTargetCriteriaIncludeTargetAttributesPtrType) ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaIncludeTargetAttributesOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaIncludeTargetAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaIncludeTargetAttributes)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesOutput) ToAccessApplicationTargetCriteriaIncludeTargetAttributesOutput() AccessApplicationTargetCriteriaIncludeTargetAttributesOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesOutput) ToAccessApplicationTargetCriteriaIncludeTargetAttributesOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludeTargetAttributesOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesOutput) ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return o.ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesOutput) ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationTargetCriteriaIncludeTargetAttributes) *AccessApplicationTargetCriteriaIncludeTargetAttributes {
+		return &v
+	}).(AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput)
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaIncludeTargetAttributes) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaIncludeTargetAttributes)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput) ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput() AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput) ToAccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput) Elem() AccessApplicationTargetCriteriaIncludeTargetAttributesOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaIncludeTargetAttributes) AccessApplicationTargetCriteriaIncludeTargetAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationTargetCriteriaIncludeTargetAttributes
+		return ret
+	}).(AccessApplicationTargetCriteriaIncludeTargetAttributesOutput)
+}
+
+func (o AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaIncludeTargetAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaRequire struct {
+	// Map of target tag keys to values. Values within a key are OR'd.
+	Tags map[string][]string `pulumi:"tags"`
+	// Hostname selector map. Only the hostname key is supported.
+	TargetAttributes *AccessApplicationTargetCriteriaRequireTargetAttributes `pulumi:"targetAttributes"`
+}
+
+// AccessApplicationTargetCriteriaRequireInput is an input type that accepts AccessApplicationTargetCriteriaRequireArgs and AccessApplicationTargetCriteriaRequireOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaRequireInput` via:
+//
+//	AccessApplicationTargetCriteriaRequireArgs{...}
+type AccessApplicationTargetCriteriaRequireInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaRequireOutput() AccessApplicationTargetCriteriaRequireOutput
+	ToAccessApplicationTargetCriteriaRequireOutputWithContext(context.Context) AccessApplicationTargetCriteriaRequireOutput
+}
+
+type AccessApplicationTargetCriteriaRequireArgs struct {
+	// Map of target tag keys to values. Values within a key are OR'd.
+	Tags pulumi.StringArrayMapInput `pulumi:"tags"`
+	// Hostname selector map. Only the hostname key is supported.
+	TargetAttributes AccessApplicationTargetCriteriaRequireTargetAttributesPtrInput `pulumi:"targetAttributes"`
+}
+
+func (AccessApplicationTargetCriteriaRequireArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaRequire)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaRequireArgs) ToAccessApplicationTargetCriteriaRequireOutput() AccessApplicationTargetCriteriaRequireOutput {
+	return i.ToAccessApplicationTargetCriteriaRequireOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaRequireArgs) ToAccessApplicationTargetCriteriaRequireOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequireOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaRequireOutput)
+}
+
+func (i AccessApplicationTargetCriteriaRequireArgs) ToAccessApplicationTargetCriteriaRequirePtrOutput() AccessApplicationTargetCriteriaRequirePtrOutput {
+	return i.ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaRequireArgs) ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequirePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaRequireOutput).ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(ctx)
+}
+
+// AccessApplicationTargetCriteriaRequirePtrInput is an input type that accepts AccessApplicationTargetCriteriaRequireArgs, AccessApplicationTargetCriteriaRequirePtr and AccessApplicationTargetCriteriaRequirePtrOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaRequirePtrInput` via:
+//
+//	        AccessApplicationTargetCriteriaRequireArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationTargetCriteriaRequirePtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaRequirePtrOutput() AccessApplicationTargetCriteriaRequirePtrOutput
+	ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(context.Context) AccessApplicationTargetCriteriaRequirePtrOutput
+}
+
+type accessApplicationTargetCriteriaRequirePtrType AccessApplicationTargetCriteriaRequireArgs
+
+func AccessApplicationTargetCriteriaRequirePtr(v *AccessApplicationTargetCriteriaRequireArgs) AccessApplicationTargetCriteriaRequirePtrInput {
+	return (*accessApplicationTargetCriteriaRequirePtrType)(v)
+}
+
+func (*accessApplicationTargetCriteriaRequirePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaRequire)(nil)).Elem()
+}
+
+func (i *accessApplicationTargetCriteriaRequirePtrType) ToAccessApplicationTargetCriteriaRequirePtrOutput() AccessApplicationTargetCriteriaRequirePtrOutput {
+	return i.ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationTargetCriteriaRequirePtrType) ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequirePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaRequirePtrOutput)
+}
+
+type AccessApplicationTargetCriteriaRequireOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaRequireOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaRequire)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaRequireOutput) ToAccessApplicationTargetCriteriaRequireOutput() AccessApplicationTargetCriteriaRequireOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaRequireOutput) ToAccessApplicationTargetCriteriaRequireOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequireOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaRequireOutput) ToAccessApplicationTargetCriteriaRequirePtrOutput() AccessApplicationTargetCriteriaRequirePtrOutput {
+	return o.ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationTargetCriteriaRequireOutput) ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequirePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationTargetCriteriaRequire) *AccessApplicationTargetCriteriaRequire {
+		return &v
+	}).(AccessApplicationTargetCriteriaRequirePtrOutput)
+}
+
+// Map of target tag keys to values. Values within a key are OR'd.
+func (o AccessApplicationTargetCriteriaRequireOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaRequire) map[string][]string { return v.Tags }).(pulumi.StringArrayMapOutput)
+}
+
+// Hostname selector map. Only the hostname key is supported.
+func (o AccessApplicationTargetCriteriaRequireOutput) TargetAttributes() AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaRequire) *AccessApplicationTargetCriteriaRequireTargetAttributes {
+		return v.TargetAttributes
+	}).(AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaRequirePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaRequirePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaRequire)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaRequirePtrOutput) ToAccessApplicationTargetCriteriaRequirePtrOutput() AccessApplicationTargetCriteriaRequirePtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaRequirePtrOutput) ToAccessApplicationTargetCriteriaRequirePtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequirePtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaRequirePtrOutput) Elem() AccessApplicationTargetCriteriaRequireOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaRequire) AccessApplicationTargetCriteriaRequire {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationTargetCriteriaRequire
+		return ret
+	}).(AccessApplicationTargetCriteriaRequireOutput)
+}
+
+// Map of target tag keys to values. Values within a key are OR'd.
+func (o AccessApplicationTargetCriteriaRequirePtrOutput) Tags() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaRequire) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayMapOutput)
+}
+
+// Hostname selector map. Only the hostname key is supported.
+func (o AccessApplicationTargetCriteriaRequirePtrOutput) TargetAttributes() AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaRequire) *AccessApplicationTargetCriteriaRequireTargetAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAttributes
+	}).(AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaRequireTargetAttributes struct {
+	Hostnames []string `pulumi:"hostnames"`
+}
+
+// AccessApplicationTargetCriteriaRequireTargetAttributesInput is an input type that accepts AccessApplicationTargetCriteriaRequireTargetAttributesArgs and AccessApplicationTargetCriteriaRequireTargetAttributesOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaRequireTargetAttributesInput` via:
+//
+//	AccessApplicationTargetCriteriaRequireTargetAttributesArgs{...}
+type AccessApplicationTargetCriteriaRequireTargetAttributesInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaRequireTargetAttributesOutput() AccessApplicationTargetCriteriaRequireTargetAttributesOutput
+	ToAccessApplicationTargetCriteriaRequireTargetAttributesOutputWithContext(context.Context) AccessApplicationTargetCriteriaRequireTargetAttributesOutput
+}
+
+type AccessApplicationTargetCriteriaRequireTargetAttributesArgs struct {
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+}
+
+func (AccessApplicationTargetCriteriaRequireTargetAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaRequireTargetAttributes)(nil)).Elem()
+}
+
+func (i AccessApplicationTargetCriteriaRequireTargetAttributesArgs) ToAccessApplicationTargetCriteriaRequireTargetAttributesOutput() AccessApplicationTargetCriteriaRequireTargetAttributesOutput {
+	return i.ToAccessApplicationTargetCriteriaRequireTargetAttributesOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaRequireTargetAttributesArgs) ToAccessApplicationTargetCriteriaRequireTargetAttributesOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequireTargetAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaRequireTargetAttributesOutput)
+}
+
+func (i AccessApplicationTargetCriteriaRequireTargetAttributesArgs) ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput() AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return i.ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationTargetCriteriaRequireTargetAttributesArgs) ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaRequireTargetAttributesOutput).ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationTargetCriteriaRequireTargetAttributesPtrInput is an input type that accepts AccessApplicationTargetCriteriaRequireTargetAttributesArgs, AccessApplicationTargetCriteriaRequireTargetAttributesPtr and AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationTargetCriteriaRequireTargetAttributesPtrInput` via:
+//
+//	        AccessApplicationTargetCriteriaRequireTargetAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationTargetCriteriaRequireTargetAttributesPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput() AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput
+	ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(context.Context) AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput
+}
+
+type accessApplicationTargetCriteriaRequireTargetAttributesPtrType AccessApplicationTargetCriteriaRequireTargetAttributesArgs
+
+func AccessApplicationTargetCriteriaRequireTargetAttributesPtr(v *AccessApplicationTargetCriteriaRequireTargetAttributesArgs) AccessApplicationTargetCriteriaRequireTargetAttributesPtrInput {
+	return (*accessApplicationTargetCriteriaRequireTargetAttributesPtrType)(v)
+}
+
+func (*accessApplicationTargetCriteriaRequireTargetAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaRequireTargetAttributes)(nil)).Elem()
+}
+
+func (i *accessApplicationTargetCriteriaRequireTargetAttributesPtrType) ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput() AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return i.ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationTargetCriteriaRequireTargetAttributesPtrType) ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput)
+}
+
+type AccessApplicationTargetCriteriaRequireTargetAttributesOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaRequireTargetAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationTargetCriteriaRequireTargetAttributes)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesOutput) ToAccessApplicationTargetCriteriaRequireTargetAttributesOutput() AccessApplicationTargetCriteriaRequireTargetAttributesOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesOutput) ToAccessApplicationTargetCriteriaRequireTargetAttributesOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequireTargetAttributesOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesOutput) ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput() AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return o.ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesOutput) ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationTargetCriteriaRequireTargetAttributes) *AccessApplicationTargetCriteriaRequireTargetAttributes {
+		return &v
+	}).(AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput)
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationTargetCriteriaRequireTargetAttributes) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+type AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationTargetCriteriaRequireTargetAttributes)(nil)).Elem()
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput) ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput() AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput) ToAccessApplicationTargetCriteriaRequireTargetAttributesPtrOutputWithContext(ctx context.Context) AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput {
+	return o
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput) Elem() AccessApplicationTargetCriteriaRequireTargetAttributesOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaRequireTargetAttributes) AccessApplicationTargetCriteriaRequireTargetAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationTargetCriteriaRequireTargetAttributes
+		return ret
+	}).(AccessApplicationTargetCriteriaRequireTargetAttributesOutput)
+}
+
+func (o AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationTargetCriteriaRequireTargetAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
+	}).(pulumi.StringArrayOutput)
 }
 
 type AccessCustomPageWarning struct {
@@ -28125,6 +29025,8 @@ type AccessIdentityProviderConfig struct {
 	IdpPublicCerts []string `pulumi:"idpPublicCerts"`
 	// IdP Entity ID or Issuer URL
 	IssuerUrl *string `pulumi:"issuerUrl"`
+	// When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+	LoginPageAutoPrompt *bool `pulumi:"loginPageAutoPrompt"`
 	// The maximum URL length the IdP accepts for the SSO redirect URL.
 	// When the constructed SSO URL would exceed this length, the RelayState
 	// is stored server-side and a short nonce is passed to the IdP instead.
@@ -28209,6 +29111,8 @@ type AccessIdentityProviderConfigArgs struct {
 	IdpPublicCerts pulumi.StringArrayInput `pulumi:"idpPublicCerts"`
 	// IdP Entity ID or Issuer URL
 	IssuerUrl pulumi.StringPtrInput `pulumi:"issuerUrl"`
+	// When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+	LoginPageAutoPrompt pulumi.BoolPtrInput `pulumi:"loginPageAutoPrompt"`
 	// The maximum URL length the IdP accepts for the SSO redirect URL.
 	// When the constructed SSO URL would exceed this length, the RelayState
 	// is stored server-side and a short nonce is passed to the IdP instead.
@@ -28415,6 +29319,11 @@ func (o AccessIdentityProviderConfigOutput) IdpPublicCerts() pulumi.StringArrayO
 // IdP Entity ID or Issuer URL
 func (o AccessIdentityProviderConfigOutput) IssuerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.IssuerUrl }).(pulumi.StringPtrOutput)
+}
+
+// When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+func (o AccessIdentityProviderConfigOutput) LoginPageAutoPrompt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *bool { return v.LoginPageAutoPrompt }).(pulumi.BoolPtrOutput)
 }
 
 // The maximum URL length the IdP accepts for the SSO redirect URL.
@@ -28703,6 +29612,16 @@ func (o AccessIdentityProviderConfigPtrOutput) IssuerUrl() pulumi.StringPtrOutpu
 		}
 		return v.IssuerUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+// When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+func (o AccessIdentityProviderConfigPtrOutput) LoginPageAutoPrompt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessIdentityProviderConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoginPageAutoPrompt
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The maximum URL length the IdP accepts for the SSO redirect URL.
@@ -30281,11 +31200,11 @@ func (o AccessOrganizationMfaConfigPtrOutput) SessionDuration() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-type AccessOrganizationMfaSshPivKeyRequirements struct {
+type AccessOrganizationMfaPivKeyRequirements struct {
 	// Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
 	// Available values: "never", "once", "always".
 	PinPolicy *string `pulumi:"pinPolicy"`
-	// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+	// Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 	RequireFipsDevice *bool `pulumi:"requireFipsDevice"`
 	// Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
 	SshKeySizes []int `pulumi:"sshKeySizes"`
@@ -30296,22 +31215,22 @@ type AccessOrganizationMfaSshPivKeyRequirements struct {
 	TouchPolicy *string `pulumi:"touchPolicy"`
 }
 
-// AccessOrganizationMfaSshPivKeyRequirementsInput is an input type that accepts AccessOrganizationMfaSshPivKeyRequirementsArgs and AccessOrganizationMfaSshPivKeyRequirementsOutput values.
-// You can construct a concrete instance of `AccessOrganizationMfaSshPivKeyRequirementsInput` via:
+// AccessOrganizationMfaPivKeyRequirementsInput is an input type that accepts AccessOrganizationMfaPivKeyRequirementsArgs and AccessOrganizationMfaPivKeyRequirementsOutput values.
+// You can construct a concrete instance of `AccessOrganizationMfaPivKeyRequirementsInput` via:
 //
-//	AccessOrganizationMfaSshPivKeyRequirementsArgs{...}
-type AccessOrganizationMfaSshPivKeyRequirementsInput interface {
+//	AccessOrganizationMfaPivKeyRequirementsArgs{...}
+type AccessOrganizationMfaPivKeyRequirementsInput interface {
 	pulumi.Input
 
-	ToAccessOrganizationMfaSshPivKeyRequirementsOutput() AccessOrganizationMfaSshPivKeyRequirementsOutput
-	ToAccessOrganizationMfaSshPivKeyRequirementsOutputWithContext(context.Context) AccessOrganizationMfaSshPivKeyRequirementsOutput
+	ToAccessOrganizationMfaPivKeyRequirementsOutput() AccessOrganizationMfaPivKeyRequirementsOutput
+	ToAccessOrganizationMfaPivKeyRequirementsOutputWithContext(context.Context) AccessOrganizationMfaPivKeyRequirementsOutput
 }
 
-type AccessOrganizationMfaSshPivKeyRequirementsArgs struct {
+type AccessOrganizationMfaPivKeyRequirementsArgs struct {
 	// Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
 	// Available values: "never", "once", "always".
 	PinPolicy pulumi.StringPtrInput `pulumi:"pinPolicy"`
-	// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+	// Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 	RequireFipsDevice pulumi.BoolPtrInput `pulumi:"requireFipsDevice"`
 	// Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
 	SshKeySizes pulumi.IntArrayInput `pulumi:"sshKeySizes"`
@@ -30322,138 +31241,138 @@ type AccessOrganizationMfaSshPivKeyRequirementsArgs struct {
 	TouchPolicy pulumi.StringPtrInput `pulumi:"touchPolicy"`
 }
 
-func (AccessOrganizationMfaSshPivKeyRequirementsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessOrganizationMfaSshPivKeyRequirements)(nil)).Elem()
+func (AccessOrganizationMfaPivKeyRequirementsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessOrganizationMfaPivKeyRequirements)(nil)).Elem()
 }
 
-func (i AccessOrganizationMfaSshPivKeyRequirementsArgs) ToAccessOrganizationMfaSshPivKeyRequirementsOutput() AccessOrganizationMfaSshPivKeyRequirementsOutput {
-	return i.ToAccessOrganizationMfaSshPivKeyRequirementsOutputWithContext(context.Background())
+func (i AccessOrganizationMfaPivKeyRequirementsArgs) ToAccessOrganizationMfaPivKeyRequirementsOutput() AccessOrganizationMfaPivKeyRequirementsOutput {
+	return i.ToAccessOrganizationMfaPivKeyRequirementsOutputWithContext(context.Background())
 }
 
-func (i AccessOrganizationMfaSshPivKeyRequirementsArgs) ToAccessOrganizationMfaSshPivKeyRequirementsOutputWithContext(ctx context.Context) AccessOrganizationMfaSshPivKeyRequirementsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationMfaSshPivKeyRequirementsOutput)
+func (i AccessOrganizationMfaPivKeyRequirementsArgs) ToAccessOrganizationMfaPivKeyRequirementsOutputWithContext(ctx context.Context) AccessOrganizationMfaPivKeyRequirementsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationMfaPivKeyRequirementsOutput)
 }
 
-func (i AccessOrganizationMfaSshPivKeyRequirementsArgs) ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutput() AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
-	return i.ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(context.Background())
+func (i AccessOrganizationMfaPivKeyRequirementsArgs) ToAccessOrganizationMfaPivKeyRequirementsPtrOutput() AccessOrganizationMfaPivKeyRequirementsPtrOutput {
+	return i.ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(context.Background())
 }
 
-func (i AccessOrganizationMfaSshPivKeyRequirementsArgs) ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(ctx context.Context) AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationMfaSshPivKeyRequirementsOutput).ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(ctx)
+func (i AccessOrganizationMfaPivKeyRequirementsArgs) ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(ctx context.Context) AccessOrganizationMfaPivKeyRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationMfaPivKeyRequirementsOutput).ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(ctx)
 }
 
-// AccessOrganizationMfaSshPivKeyRequirementsPtrInput is an input type that accepts AccessOrganizationMfaSshPivKeyRequirementsArgs, AccessOrganizationMfaSshPivKeyRequirementsPtr and AccessOrganizationMfaSshPivKeyRequirementsPtrOutput values.
-// You can construct a concrete instance of `AccessOrganizationMfaSshPivKeyRequirementsPtrInput` via:
+// AccessOrganizationMfaPivKeyRequirementsPtrInput is an input type that accepts AccessOrganizationMfaPivKeyRequirementsArgs, AccessOrganizationMfaPivKeyRequirementsPtr and AccessOrganizationMfaPivKeyRequirementsPtrOutput values.
+// You can construct a concrete instance of `AccessOrganizationMfaPivKeyRequirementsPtrInput` via:
 //
-//	        AccessOrganizationMfaSshPivKeyRequirementsArgs{...}
+//	        AccessOrganizationMfaPivKeyRequirementsArgs{...}
 //
 //	or:
 //
 //	        nil
-type AccessOrganizationMfaSshPivKeyRequirementsPtrInput interface {
+type AccessOrganizationMfaPivKeyRequirementsPtrInput interface {
 	pulumi.Input
 
-	ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutput() AccessOrganizationMfaSshPivKeyRequirementsPtrOutput
-	ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(context.Context) AccessOrganizationMfaSshPivKeyRequirementsPtrOutput
+	ToAccessOrganizationMfaPivKeyRequirementsPtrOutput() AccessOrganizationMfaPivKeyRequirementsPtrOutput
+	ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(context.Context) AccessOrganizationMfaPivKeyRequirementsPtrOutput
 }
 
-type accessOrganizationMfaSshPivKeyRequirementsPtrType AccessOrganizationMfaSshPivKeyRequirementsArgs
+type accessOrganizationMfaPivKeyRequirementsPtrType AccessOrganizationMfaPivKeyRequirementsArgs
 
-func AccessOrganizationMfaSshPivKeyRequirementsPtr(v *AccessOrganizationMfaSshPivKeyRequirementsArgs) AccessOrganizationMfaSshPivKeyRequirementsPtrInput {
-	return (*accessOrganizationMfaSshPivKeyRequirementsPtrType)(v)
+func AccessOrganizationMfaPivKeyRequirementsPtr(v *AccessOrganizationMfaPivKeyRequirementsArgs) AccessOrganizationMfaPivKeyRequirementsPtrInput {
+	return (*accessOrganizationMfaPivKeyRequirementsPtrType)(v)
 }
 
-func (*accessOrganizationMfaSshPivKeyRequirementsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessOrganizationMfaSshPivKeyRequirements)(nil)).Elem()
+func (*accessOrganizationMfaPivKeyRequirementsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessOrganizationMfaPivKeyRequirements)(nil)).Elem()
 }
 
-func (i *accessOrganizationMfaSshPivKeyRequirementsPtrType) ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutput() AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
-	return i.ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(context.Background())
+func (i *accessOrganizationMfaPivKeyRequirementsPtrType) ToAccessOrganizationMfaPivKeyRequirementsPtrOutput() AccessOrganizationMfaPivKeyRequirementsPtrOutput {
+	return i.ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(context.Background())
 }
 
-func (i *accessOrganizationMfaSshPivKeyRequirementsPtrType) ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(ctx context.Context) AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationMfaSshPivKeyRequirementsPtrOutput)
+func (i *accessOrganizationMfaPivKeyRequirementsPtrType) ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(ctx context.Context) AccessOrganizationMfaPivKeyRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationMfaPivKeyRequirementsPtrOutput)
 }
 
-type AccessOrganizationMfaSshPivKeyRequirementsOutput struct{ *pulumi.OutputState }
+type AccessOrganizationMfaPivKeyRequirementsOutput struct{ *pulumi.OutputState }
 
-func (AccessOrganizationMfaSshPivKeyRequirementsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessOrganizationMfaSshPivKeyRequirements)(nil)).Elem()
+func (AccessOrganizationMfaPivKeyRequirementsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessOrganizationMfaPivKeyRequirements)(nil)).Elem()
 }
 
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) ToAccessOrganizationMfaSshPivKeyRequirementsOutput() AccessOrganizationMfaSshPivKeyRequirementsOutput {
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) ToAccessOrganizationMfaPivKeyRequirementsOutput() AccessOrganizationMfaPivKeyRequirementsOutput {
 	return o
 }
 
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) ToAccessOrganizationMfaSshPivKeyRequirementsOutputWithContext(ctx context.Context) AccessOrganizationMfaSshPivKeyRequirementsOutput {
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) ToAccessOrganizationMfaPivKeyRequirementsOutputWithContext(ctx context.Context) AccessOrganizationMfaPivKeyRequirementsOutput {
 	return o
 }
 
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutput() AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
-	return o.ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(context.Background())
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) ToAccessOrganizationMfaPivKeyRequirementsPtrOutput() AccessOrganizationMfaPivKeyRequirementsPtrOutput {
+	return o.ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(context.Background())
 }
 
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(ctx context.Context) AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessOrganizationMfaSshPivKeyRequirements) *AccessOrganizationMfaSshPivKeyRequirements {
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(ctx context.Context) AccessOrganizationMfaPivKeyRequirementsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessOrganizationMfaPivKeyRequirements) *AccessOrganizationMfaPivKeyRequirements {
 		return &v
-	}).(AccessOrganizationMfaSshPivKeyRequirementsPtrOutput)
+	}).(AccessOrganizationMfaPivKeyRequirementsPtrOutput)
 }
 
 // Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
 // Available values: "never", "once", "always".
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) PinPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessOrganizationMfaSshPivKeyRequirements) *string { return v.PinPolicy }).(pulumi.StringPtrOutput)
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) PinPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessOrganizationMfaPivKeyRequirements) *string { return v.PinPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) RequireFipsDevice() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AccessOrganizationMfaSshPivKeyRequirements) *bool { return v.RequireFipsDevice }).(pulumi.BoolPtrOutput)
+// Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) RequireFipsDevice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessOrganizationMfaPivKeyRequirements) *bool { return v.RequireFipsDevice }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) SshKeySizes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v AccessOrganizationMfaSshPivKeyRequirements) []int { return v.SshKeySizes }).(pulumi.IntArrayOutput)
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) SshKeySizes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v AccessOrganizationMfaPivKeyRequirements) []int { return v.SshKeySizes }).(pulumi.IntArrayOutput)
 }
 
 // Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) SshKeyTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AccessOrganizationMfaSshPivKeyRequirements) []string { return v.SshKeyTypes }).(pulumi.StringArrayOutput)
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) SshKeyTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessOrganizationMfaPivKeyRequirements) []string { return v.SshKeyTypes }).(pulumi.StringArrayOutput)
 }
 
 // Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).
 // Available values: "never", "always", "cached".
-func (o AccessOrganizationMfaSshPivKeyRequirementsOutput) TouchPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessOrganizationMfaSshPivKeyRequirements) *string { return v.TouchPolicy }).(pulumi.StringPtrOutput)
+func (o AccessOrganizationMfaPivKeyRequirementsOutput) TouchPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessOrganizationMfaPivKeyRequirements) *string { return v.TouchPolicy }).(pulumi.StringPtrOutput)
 }
 
-type AccessOrganizationMfaSshPivKeyRequirementsPtrOutput struct{ *pulumi.OutputState }
+type AccessOrganizationMfaPivKeyRequirementsPtrOutput struct{ *pulumi.OutputState }
 
-func (AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessOrganizationMfaSshPivKeyRequirements)(nil)).Elem()
+func (AccessOrganizationMfaPivKeyRequirementsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessOrganizationMfaPivKeyRequirements)(nil)).Elem()
 }
 
-func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutput() AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
+func (o AccessOrganizationMfaPivKeyRequirementsPtrOutput) ToAccessOrganizationMfaPivKeyRequirementsPtrOutput() AccessOrganizationMfaPivKeyRequirementsPtrOutput {
 	return o
 }
 
-func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) ToAccessOrganizationMfaSshPivKeyRequirementsPtrOutputWithContext(ctx context.Context) AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
+func (o AccessOrganizationMfaPivKeyRequirementsPtrOutput) ToAccessOrganizationMfaPivKeyRequirementsPtrOutputWithContext(ctx context.Context) AccessOrganizationMfaPivKeyRequirementsPtrOutput {
 	return o
 }
 
-func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) Elem() AccessOrganizationMfaSshPivKeyRequirementsOutput {
-	return o.ApplyT(func(v *AccessOrganizationMfaSshPivKeyRequirements) AccessOrganizationMfaSshPivKeyRequirements {
+func (o AccessOrganizationMfaPivKeyRequirementsPtrOutput) Elem() AccessOrganizationMfaPivKeyRequirementsOutput {
+	return o.ApplyT(func(v *AccessOrganizationMfaPivKeyRequirements) AccessOrganizationMfaPivKeyRequirements {
 		if v != nil {
 			return *v
 		}
-		var ret AccessOrganizationMfaSshPivKeyRequirements
+		var ret AccessOrganizationMfaPivKeyRequirements
 		return ret
-	}).(AccessOrganizationMfaSshPivKeyRequirementsOutput)
+	}).(AccessOrganizationMfaPivKeyRequirementsOutput)
 }
 
 // Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
 // Available values: "never", "once", "always".
-func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) PinPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessOrganizationMfaSshPivKeyRequirements) *string {
+func (o AccessOrganizationMfaPivKeyRequirementsPtrOutput) PinPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganizationMfaPivKeyRequirements) *string {
 		if v == nil {
 			return nil
 		}
@@ -30461,9 +31380,9 @@ func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) PinPolicy() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
-func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) RequireFipsDevice() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessOrganizationMfaSshPivKeyRequirements) *bool {
+// Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+func (o AccessOrganizationMfaPivKeyRequirementsPtrOutput) RequireFipsDevice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessOrganizationMfaPivKeyRequirements) *bool {
 		if v == nil {
 			return nil
 		}
@@ -30472,8 +31391,8 @@ func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) RequireFipsDevice()
 }
 
 // Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
-func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) SshKeySizes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *AccessOrganizationMfaSshPivKeyRequirements) []int {
+func (o AccessOrganizationMfaPivKeyRequirementsPtrOutput) SshKeySizes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *AccessOrganizationMfaPivKeyRequirements) []int {
 		if v == nil {
 			return nil
 		}
@@ -30482,8 +31401,8 @@ func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) SshKeySizes() pulum
 }
 
 // Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.
-func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) SshKeyTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AccessOrganizationMfaSshPivKeyRequirements) []string {
+func (o AccessOrganizationMfaPivKeyRequirementsPtrOutput) SshKeyTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessOrganizationMfaPivKeyRequirements) []string {
 		if v == nil {
 			return nil
 		}
@@ -30493,8 +31412,8 @@ func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) SshKeyTypes() pulum
 
 // Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).
 // Available values: "never", "always", "cached".
-func (o AccessOrganizationMfaSshPivKeyRequirementsPtrOutput) TouchPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessOrganizationMfaSshPivKeyRequirements) *string {
+func (o AccessOrganizationMfaPivKeyRequirementsPtrOutput) TouchPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganizationMfaPivKeyRequirements) *string {
 		if v == nil {
 			return nil
 		}
@@ -52348,8 +53267,9 @@ func (o AiSearchInstanceIndexingOptionsPtrOutput) UseOcr() pulumi.BoolPtrOutput 
 }
 
 type AiSearchInstanceMetadata struct {
-	CreatedFromAisearchWizard *bool   `pulumi:"createdFromAisearchWizard"`
-	WorkerDomain              *string `pulumi:"workerDomain"`
+	CreatedFromAisearchWizard *bool                                            `pulumi:"createdFromAisearchWizard"`
+	CreatedFromEmdashPlugin   *AiSearchInstanceMetadataCreatedFromEmdashPlugin `pulumi:"createdFromEmdashPlugin"`
+	WorkerDomain              *string                                          `pulumi:"workerDomain"`
 }
 
 // AiSearchInstanceMetadataInput is an input type that accepts AiSearchInstanceMetadataArgs and AiSearchInstanceMetadataOutput values.
@@ -52364,8 +53284,9 @@ type AiSearchInstanceMetadataInput interface {
 }
 
 type AiSearchInstanceMetadataArgs struct {
-	CreatedFromAisearchWizard pulumi.BoolPtrInput   `pulumi:"createdFromAisearchWizard"`
-	WorkerDomain              pulumi.StringPtrInput `pulumi:"workerDomain"`
+	CreatedFromAisearchWizard pulumi.BoolPtrInput                                     `pulumi:"createdFromAisearchWizard"`
+	CreatedFromEmdashPlugin   AiSearchInstanceMetadataCreatedFromEmdashPluginPtrInput `pulumi:"createdFromEmdashPlugin"`
+	WorkerDomain              pulumi.StringPtrInput                                   `pulumi:"workerDomain"`
 }
 
 func (AiSearchInstanceMetadataArgs) ElementType() reflect.Type {
@@ -52449,6 +53370,12 @@ func (o AiSearchInstanceMetadataOutput) CreatedFromAisearchWizard() pulumi.BoolP
 	return o.ApplyT(func(v AiSearchInstanceMetadata) *bool { return v.CreatedFromAisearchWizard }).(pulumi.BoolPtrOutput)
 }
 
+func (o AiSearchInstanceMetadataOutput) CreatedFromEmdashPlugin() AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return o.ApplyT(func(v AiSearchInstanceMetadata) *AiSearchInstanceMetadataCreatedFromEmdashPlugin {
+		return v.CreatedFromEmdashPlugin
+	}).(AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput)
+}
+
 func (o AiSearchInstanceMetadataOutput) WorkerDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiSearchInstanceMetadata) *string { return v.WorkerDomain }).(pulumi.StringPtrOutput)
 }
@@ -52486,12 +53413,173 @@ func (o AiSearchInstanceMetadataPtrOutput) CreatedFromAisearchWizard() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o AiSearchInstanceMetadataPtrOutput) CreatedFromEmdashPlugin() AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceMetadata) *AiSearchInstanceMetadataCreatedFromEmdashPlugin {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedFromEmdashPlugin
+	}).(AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput)
+}
+
 func (o AiSearchInstanceMetadataPtrOutput) WorkerDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiSearchInstanceMetadata) *string {
 		if v == nil {
 			return nil
 		}
 		return v.WorkerDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiSearchInstanceMetadataCreatedFromEmdashPlugin struct {
+	// Available values: "native", "rest".
+	Type    string `pulumi:"type"`
+	Version string `pulumi:"version"`
+}
+
+// AiSearchInstanceMetadataCreatedFromEmdashPluginInput is an input type that accepts AiSearchInstanceMetadataCreatedFromEmdashPluginArgs and AiSearchInstanceMetadataCreatedFromEmdashPluginOutput values.
+// You can construct a concrete instance of `AiSearchInstanceMetadataCreatedFromEmdashPluginInput` via:
+//
+//	AiSearchInstanceMetadataCreatedFromEmdashPluginArgs{...}
+type AiSearchInstanceMetadataCreatedFromEmdashPluginInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceMetadataCreatedFromEmdashPluginOutput() AiSearchInstanceMetadataCreatedFromEmdashPluginOutput
+	ToAiSearchInstanceMetadataCreatedFromEmdashPluginOutputWithContext(context.Context) AiSearchInstanceMetadataCreatedFromEmdashPluginOutput
+}
+
+type AiSearchInstanceMetadataCreatedFromEmdashPluginArgs struct {
+	// Available values: "native", "rest".
+	Type    pulumi.StringInput `pulumi:"type"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (AiSearchInstanceMetadataCreatedFromEmdashPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceMetadataCreatedFromEmdashPlugin)(nil)).Elem()
+}
+
+func (i AiSearchInstanceMetadataCreatedFromEmdashPluginArgs) ToAiSearchInstanceMetadataCreatedFromEmdashPluginOutput() AiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return i.ToAiSearchInstanceMetadataCreatedFromEmdashPluginOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceMetadataCreatedFromEmdashPluginArgs) ToAiSearchInstanceMetadataCreatedFromEmdashPluginOutputWithContext(ctx context.Context) AiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceMetadataCreatedFromEmdashPluginOutput)
+}
+
+func (i AiSearchInstanceMetadataCreatedFromEmdashPluginArgs) ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput() AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return i.ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(context.Background())
+}
+
+func (i AiSearchInstanceMetadataCreatedFromEmdashPluginArgs) ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(ctx context.Context) AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceMetadataCreatedFromEmdashPluginOutput).ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(ctx)
+}
+
+// AiSearchInstanceMetadataCreatedFromEmdashPluginPtrInput is an input type that accepts AiSearchInstanceMetadataCreatedFromEmdashPluginArgs, AiSearchInstanceMetadataCreatedFromEmdashPluginPtr and AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput values.
+// You can construct a concrete instance of `AiSearchInstanceMetadataCreatedFromEmdashPluginPtrInput` via:
+//
+//	        AiSearchInstanceMetadataCreatedFromEmdashPluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiSearchInstanceMetadataCreatedFromEmdashPluginPtrInput interface {
+	pulumi.Input
+
+	ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput() AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput
+	ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(context.Context) AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput
+}
+
+type aiSearchInstanceMetadataCreatedFromEmdashPluginPtrType AiSearchInstanceMetadataCreatedFromEmdashPluginArgs
+
+func AiSearchInstanceMetadataCreatedFromEmdashPluginPtr(v *AiSearchInstanceMetadataCreatedFromEmdashPluginArgs) AiSearchInstanceMetadataCreatedFromEmdashPluginPtrInput {
+	return (*aiSearchInstanceMetadataCreatedFromEmdashPluginPtrType)(v)
+}
+
+func (*aiSearchInstanceMetadataCreatedFromEmdashPluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceMetadataCreatedFromEmdashPlugin)(nil)).Elem()
+}
+
+func (i *aiSearchInstanceMetadataCreatedFromEmdashPluginPtrType) ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput() AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return i.ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(context.Background())
+}
+
+func (i *aiSearchInstanceMetadataCreatedFromEmdashPluginPtrType) ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(ctx context.Context) AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput)
+}
+
+type AiSearchInstanceMetadataCreatedFromEmdashPluginOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceMetadataCreatedFromEmdashPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiSearchInstanceMetadataCreatedFromEmdashPlugin)(nil)).Elem()
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginOutput) ToAiSearchInstanceMetadataCreatedFromEmdashPluginOutput() AiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return o
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginOutput) ToAiSearchInstanceMetadataCreatedFromEmdashPluginOutputWithContext(ctx context.Context) AiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return o
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginOutput) ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput() AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return o.ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(context.Background())
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginOutput) ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(ctx context.Context) AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiSearchInstanceMetadataCreatedFromEmdashPlugin) *AiSearchInstanceMetadataCreatedFromEmdashPlugin {
+		return &v
+	}).(AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput)
+}
+
+// Available values: "native", "rest".
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AiSearchInstanceMetadataCreatedFromEmdashPlugin) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v AiSearchInstanceMetadataCreatedFromEmdashPlugin) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput struct{ *pulumi.OutputState }
+
+func (AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiSearchInstanceMetadataCreatedFromEmdashPlugin)(nil)).Elem()
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput) ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput() AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput) ToAiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutputWithContext(ctx context.Context) AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput {
+	return o
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput) Elem() AiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return o.ApplyT(func(v *AiSearchInstanceMetadataCreatedFromEmdashPlugin) AiSearchInstanceMetadataCreatedFromEmdashPlugin {
+		if v != nil {
+			return *v
+		}
+		var ret AiSearchInstanceMetadataCreatedFromEmdashPlugin
+		return ret
+	}).(AiSearchInstanceMetadataCreatedFromEmdashPluginOutput)
+}
+
+// Available values: "native", "rest".
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceMetadataCreatedFromEmdashPlugin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiSearchInstanceMetadataCreatedFromEmdashPlugin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -74987,7 +76075,7 @@ type LogpushJobOutputOptions struct {
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames []string `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 	MergeSubrequests *bool `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -75029,7 +76117,7 @@ type LogpushJobOutputOptionsArgs struct {
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 	MergeSubrequests pulumi.BoolPtrInput `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -75151,7 +76239,7 @@ func (o LogpushJobOutputOptionsOutput) FieldNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
 }
 
-// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 func (o LogpushJobOutputOptionsOutput) MergeSubrequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) *bool { return v.MergeSubrequests }).(pulumi.BoolPtrOutput)
 }
@@ -75267,7 +76355,7 @@ func (o LogpushJobOutputOptionsPtrOutput) FieldNames() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 func (o LogpushJobOutputOptionsPtrOutput) MergeSubrequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LogpushJobOutputOptions) *bool {
 		if v == nil {
@@ -79909,894 +80997,6 @@ func (o MagicWanIpsecTunnelPskMetadataPtrOutput) LastGeneratedOn() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-type MagicWanStaticRouteScope struct {
-	// List of colo names for the ECMP scope.
-	ColoNames []string `pulumi:"coloNames"`
-	// List of colo regions for the ECMP scope.
-	ColoRegions []string `pulumi:"coloRegions"`
-}
-
-// MagicWanStaticRouteScopeInput is an input type that accepts MagicWanStaticRouteScopeArgs and MagicWanStaticRouteScopeOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteScopeInput` via:
-//
-//	MagicWanStaticRouteScopeArgs{...}
-type MagicWanStaticRouteScopeInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteScopeOutput() MagicWanStaticRouteScopeOutput
-	ToMagicWanStaticRouteScopeOutputWithContext(context.Context) MagicWanStaticRouteScopeOutput
-}
-
-type MagicWanStaticRouteScopeArgs struct {
-	// List of colo names for the ECMP scope.
-	ColoNames pulumi.StringArrayInput `pulumi:"coloNames"`
-	// List of colo regions for the ECMP scope.
-	ColoRegions pulumi.StringArrayInput `pulumi:"coloRegions"`
-}
-
-func (MagicWanStaticRouteScopeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteScope)(nil)).Elem()
-}
-
-func (i MagicWanStaticRouteScopeArgs) ToMagicWanStaticRouteScopeOutput() MagicWanStaticRouteScopeOutput {
-	return i.ToMagicWanStaticRouteScopeOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteScopeArgs) ToMagicWanStaticRouteScopeOutputWithContext(ctx context.Context) MagicWanStaticRouteScopeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteScopeOutput)
-}
-
-func (i MagicWanStaticRouteScopeArgs) ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput {
-	return i.ToMagicWanStaticRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteScopeArgs) ToMagicWanStaticRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteScopeOutput).ToMagicWanStaticRouteScopePtrOutputWithContext(ctx)
-}
-
-// MagicWanStaticRouteScopePtrInput is an input type that accepts MagicWanStaticRouteScopeArgs, MagicWanStaticRouteScopePtr and MagicWanStaticRouteScopePtrOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteScopePtrInput` via:
-//
-//	        MagicWanStaticRouteScopeArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanStaticRouteScopePtrInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput
-	ToMagicWanStaticRouteScopePtrOutputWithContext(context.Context) MagicWanStaticRouteScopePtrOutput
-}
-
-type magicWanStaticRouteScopePtrType MagicWanStaticRouteScopeArgs
-
-func MagicWanStaticRouteScopePtr(v *MagicWanStaticRouteScopeArgs) MagicWanStaticRouteScopePtrInput {
-	return (*magicWanStaticRouteScopePtrType)(v)
-}
-
-func (*magicWanStaticRouteScopePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteScope)(nil)).Elem()
-}
-
-func (i *magicWanStaticRouteScopePtrType) ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput {
-	return i.ToMagicWanStaticRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanStaticRouteScopePtrType) ToMagicWanStaticRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteScopePtrOutput)
-}
-
-type MagicWanStaticRouteScopeOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteScopeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteScope)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteScopeOutput) ToMagicWanStaticRouteScopeOutput() MagicWanStaticRouteScopeOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteScopeOutput) ToMagicWanStaticRouteScopeOutputWithContext(ctx context.Context) MagicWanStaticRouteScopeOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteScopeOutput) ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput {
-	return o.ToMagicWanStaticRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanStaticRouteScopeOutput) ToMagicWanStaticRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteScopePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanStaticRouteScope) *MagicWanStaticRouteScope {
-		return &v
-	}).(MagicWanStaticRouteScopePtrOutput)
-}
-
-// List of colo names for the ECMP scope.
-func (o MagicWanStaticRouteScopeOutput) ColoNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteScope) []string { return v.ColoNames }).(pulumi.StringArrayOutput)
-}
-
-// List of colo regions for the ECMP scope.
-func (o MagicWanStaticRouteScopeOutput) ColoRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteScope) []string { return v.ColoRegions }).(pulumi.StringArrayOutput)
-}
-
-type MagicWanStaticRouteScopePtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteScopePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteScope)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteScopePtrOutput) ToMagicWanStaticRouteScopePtrOutput() MagicWanStaticRouteScopePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteScopePtrOutput) ToMagicWanStaticRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteScopePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteScopePtrOutput) Elem() MagicWanStaticRouteScopeOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteScope) MagicWanStaticRouteScope {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanStaticRouteScope
-		return ret
-	}).(MagicWanStaticRouteScopeOutput)
-}
-
-// List of colo names for the ECMP scope.
-func (o MagicWanStaticRouteScopePtrOutput) ColoNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteScope) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ColoNames
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of colo regions for the ECMP scope.
-func (o MagicWanStaticRouteScopePtrOutput) ColoRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteScope) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ColoRegions
-	}).(pulumi.StringArrayOutput)
-}
-
-type ManagedHeadersManagedRequestHeader struct {
-	// Whether the Managed Transform is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id string `pulumi:"id"`
-}
-
-// ManagedHeadersManagedRequestHeaderInput is an input type that accepts ManagedHeadersManagedRequestHeaderArgs and ManagedHeadersManagedRequestHeaderOutput values.
-// You can construct a concrete instance of `ManagedHeadersManagedRequestHeaderInput` via:
-//
-//	ManagedHeadersManagedRequestHeaderArgs{...}
-type ManagedHeadersManagedRequestHeaderInput interface {
-	pulumi.Input
-
-	ToManagedHeadersManagedRequestHeaderOutput() ManagedHeadersManagedRequestHeaderOutput
-	ToManagedHeadersManagedRequestHeaderOutputWithContext(context.Context) ManagedHeadersManagedRequestHeaderOutput
-}
-
-type ManagedHeadersManagedRequestHeaderArgs struct {
-	// Whether the Managed Transform is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ManagedHeadersManagedRequestHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedHeadersManagedRequestHeader)(nil)).Elem()
-}
-
-func (i ManagedHeadersManagedRequestHeaderArgs) ToManagedHeadersManagedRequestHeaderOutput() ManagedHeadersManagedRequestHeaderOutput {
-	return i.ToManagedHeadersManagedRequestHeaderOutputWithContext(context.Background())
-}
-
-func (i ManagedHeadersManagedRequestHeaderArgs) ToManagedHeadersManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedHeadersManagedRequestHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersManagedRequestHeaderOutput)
-}
-
-// ManagedHeadersManagedRequestHeaderArrayInput is an input type that accepts ManagedHeadersManagedRequestHeaderArray and ManagedHeadersManagedRequestHeaderArrayOutput values.
-// You can construct a concrete instance of `ManagedHeadersManagedRequestHeaderArrayInput` via:
-//
-//	ManagedHeadersManagedRequestHeaderArray{ ManagedHeadersManagedRequestHeaderArgs{...} }
-type ManagedHeadersManagedRequestHeaderArrayInput interface {
-	pulumi.Input
-
-	ToManagedHeadersManagedRequestHeaderArrayOutput() ManagedHeadersManagedRequestHeaderArrayOutput
-	ToManagedHeadersManagedRequestHeaderArrayOutputWithContext(context.Context) ManagedHeadersManagedRequestHeaderArrayOutput
-}
-
-type ManagedHeadersManagedRequestHeaderArray []ManagedHeadersManagedRequestHeaderInput
-
-func (ManagedHeadersManagedRequestHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedHeadersManagedRequestHeader)(nil)).Elem()
-}
-
-func (i ManagedHeadersManagedRequestHeaderArray) ToManagedHeadersManagedRequestHeaderArrayOutput() ManagedHeadersManagedRequestHeaderArrayOutput {
-	return i.ToManagedHeadersManagedRequestHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedHeadersManagedRequestHeaderArray) ToManagedHeadersManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedHeadersManagedRequestHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersManagedRequestHeaderArrayOutput)
-}
-
-type ManagedHeadersManagedRequestHeaderOutput struct{ *pulumi.OutputState }
-
-func (ManagedHeadersManagedRequestHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedHeadersManagedRequestHeader)(nil)).Elem()
-}
-
-func (o ManagedHeadersManagedRequestHeaderOutput) ToManagedHeadersManagedRequestHeaderOutput() ManagedHeadersManagedRequestHeaderOutput {
-	return o
-}
-
-func (o ManagedHeadersManagedRequestHeaderOutput) ToManagedHeadersManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedHeadersManagedRequestHeaderOutput {
-	return o
-}
-
-// Whether the Managed Transform is enabled.
-func (o ManagedHeadersManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedHeadersManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The human-readable identifier of the Managed Transform.
-func (o ManagedHeadersManagedRequestHeaderOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedHeadersManagedRequestHeader) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ManagedHeadersManagedRequestHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedHeadersManagedRequestHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedHeadersManagedRequestHeader)(nil)).Elem()
-}
-
-func (o ManagedHeadersManagedRequestHeaderArrayOutput) ToManagedHeadersManagedRequestHeaderArrayOutput() ManagedHeadersManagedRequestHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedHeadersManagedRequestHeaderArrayOutput) ToManagedHeadersManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedHeadersManagedRequestHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedHeadersManagedRequestHeaderArrayOutput) Index(i pulumi.IntInput) ManagedHeadersManagedRequestHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedHeadersManagedRequestHeader {
-		return vs[0].([]ManagedHeadersManagedRequestHeader)[vs[1].(int)]
-	}).(ManagedHeadersManagedRequestHeaderOutput)
-}
-
-type ManagedHeadersManagedResponseHeader struct {
-	// Whether the Managed Transform is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id string `pulumi:"id"`
-}
-
-// ManagedHeadersManagedResponseHeaderInput is an input type that accepts ManagedHeadersManagedResponseHeaderArgs and ManagedHeadersManagedResponseHeaderOutput values.
-// You can construct a concrete instance of `ManagedHeadersManagedResponseHeaderInput` via:
-//
-//	ManagedHeadersManagedResponseHeaderArgs{...}
-type ManagedHeadersManagedResponseHeaderInput interface {
-	pulumi.Input
-
-	ToManagedHeadersManagedResponseHeaderOutput() ManagedHeadersManagedResponseHeaderOutput
-	ToManagedHeadersManagedResponseHeaderOutputWithContext(context.Context) ManagedHeadersManagedResponseHeaderOutput
-}
-
-type ManagedHeadersManagedResponseHeaderArgs struct {
-	// Whether the Managed Transform is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ManagedHeadersManagedResponseHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedHeadersManagedResponseHeader)(nil)).Elem()
-}
-
-func (i ManagedHeadersManagedResponseHeaderArgs) ToManagedHeadersManagedResponseHeaderOutput() ManagedHeadersManagedResponseHeaderOutput {
-	return i.ToManagedHeadersManagedResponseHeaderOutputWithContext(context.Background())
-}
-
-func (i ManagedHeadersManagedResponseHeaderArgs) ToManagedHeadersManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedHeadersManagedResponseHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersManagedResponseHeaderOutput)
-}
-
-// ManagedHeadersManagedResponseHeaderArrayInput is an input type that accepts ManagedHeadersManagedResponseHeaderArray and ManagedHeadersManagedResponseHeaderArrayOutput values.
-// You can construct a concrete instance of `ManagedHeadersManagedResponseHeaderArrayInput` via:
-//
-//	ManagedHeadersManagedResponseHeaderArray{ ManagedHeadersManagedResponseHeaderArgs{...} }
-type ManagedHeadersManagedResponseHeaderArrayInput interface {
-	pulumi.Input
-
-	ToManagedHeadersManagedResponseHeaderArrayOutput() ManagedHeadersManagedResponseHeaderArrayOutput
-	ToManagedHeadersManagedResponseHeaderArrayOutputWithContext(context.Context) ManagedHeadersManagedResponseHeaderArrayOutput
-}
-
-type ManagedHeadersManagedResponseHeaderArray []ManagedHeadersManagedResponseHeaderInput
-
-func (ManagedHeadersManagedResponseHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedHeadersManagedResponseHeader)(nil)).Elem()
-}
-
-func (i ManagedHeadersManagedResponseHeaderArray) ToManagedHeadersManagedResponseHeaderArrayOutput() ManagedHeadersManagedResponseHeaderArrayOutput {
-	return i.ToManagedHeadersManagedResponseHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedHeadersManagedResponseHeaderArray) ToManagedHeadersManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedHeadersManagedResponseHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersManagedResponseHeaderArrayOutput)
-}
-
-type ManagedHeadersManagedResponseHeaderOutput struct{ *pulumi.OutputState }
-
-func (ManagedHeadersManagedResponseHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedHeadersManagedResponseHeader)(nil)).Elem()
-}
-
-func (o ManagedHeadersManagedResponseHeaderOutput) ToManagedHeadersManagedResponseHeaderOutput() ManagedHeadersManagedResponseHeaderOutput {
-	return o
-}
-
-func (o ManagedHeadersManagedResponseHeaderOutput) ToManagedHeadersManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedHeadersManagedResponseHeaderOutput {
-	return o
-}
-
-// Whether the Managed Transform is enabled.
-func (o ManagedHeadersManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedHeadersManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The human-readable identifier of the Managed Transform.
-func (o ManagedHeadersManagedResponseHeaderOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedHeadersManagedResponseHeader) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ManagedHeadersManagedResponseHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedHeadersManagedResponseHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedHeadersManagedResponseHeader)(nil)).Elem()
-}
-
-func (o ManagedHeadersManagedResponseHeaderArrayOutput) ToManagedHeadersManagedResponseHeaderArrayOutput() ManagedHeadersManagedResponseHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedHeadersManagedResponseHeaderArrayOutput) ToManagedHeadersManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedHeadersManagedResponseHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedHeadersManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput) ManagedHeadersManagedResponseHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedHeadersManagedResponseHeader {
-		return vs[0].([]ManagedHeadersManagedResponseHeader)[vs[1].(int)]
-	}).(ManagedHeadersManagedResponseHeaderOutput)
-}
-
-type ManagedTransformsManagedRequestHeader struct {
-	// Whether the Managed Transform is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id string `pulumi:"id"`
-}
-
-// ManagedTransformsManagedRequestHeaderInput is an input type that accepts ManagedTransformsManagedRequestHeaderArgs and ManagedTransformsManagedRequestHeaderOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderInput` via:
-//
-//	ManagedTransformsManagedRequestHeaderArgs{...}
-type ManagedTransformsManagedRequestHeaderInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput
-	ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderOutput
-}
-
-type ManagedTransformsManagedRequestHeaderArgs struct {
-	// Whether the Managed Transform is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ManagedTransformsManagedRequestHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
-	return i.ToManagedTransformsManagedRequestHeaderOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedRequestHeaderArgs) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderOutput)
-}
-
-// ManagedTransformsManagedRequestHeaderArrayInput is an input type that accepts ManagedTransformsManagedRequestHeaderArray and ManagedTransformsManagedRequestHeaderArrayOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedRequestHeaderArrayInput` via:
-//
-//	ManagedTransformsManagedRequestHeaderArray{ ManagedTransformsManagedRequestHeaderArgs{...} }
-type ManagedTransformsManagedRequestHeaderArrayInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput
-	ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedRequestHeaderArrayOutput
-}
-
-type ManagedTransformsManagedRequestHeaderArray []ManagedTransformsManagedRequestHeaderInput
-
-func (ManagedTransformsManagedRequestHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
-	return i.ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedRequestHeaderArray) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedRequestHeaderArrayOutput)
-}
-
-type ManagedTransformsManagedRequestHeaderOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedRequestHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutput() ManagedTransformsManagedRequestHeaderOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderOutput) ToManagedTransformsManagedRequestHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderOutput {
-	return o
-}
-
-// Whether the Managed Transform is enabled.
-func (o ManagedTransformsManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The human-readable identifier of the Managed Transform.
-func (o ManagedTransformsManagedRequestHeaderOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedRequestHeader) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ManagedTransformsManagedRequestHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedRequestHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedRequestHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutput() ManagedTransformsManagedRequestHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) ToManagedTransformsManagedRequestHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedRequestHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedRequestHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedRequestHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedRequestHeader {
-		return vs[0].([]ManagedTransformsManagedRequestHeader)[vs[1].(int)]
-	}).(ManagedTransformsManagedRequestHeaderOutput)
-}
-
-type ManagedTransformsManagedResponseHeader struct {
-	// Whether the Managed Transform is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id string `pulumi:"id"`
-}
-
-// ManagedTransformsManagedResponseHeaderInput is an input type that accepts ManagedTransformsManagedResponseHeaderArgs and ManagedTransformsManagedResponseHeaderOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderInput` via:
-//
-//	ManagedTransformsManagedResponseHeaderArgs{...}
-type ManagedTransformsManagedResponseHeaderInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput
-	ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderOutput
-}
-
-type ManagedTransformsManagedResponseHeaderArgs struct {
-	// Whether the Managed Transform is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The human-readable identifier of the Managed Transform.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (ManagedTransformsManagedResponseHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
-	return i.ToManagedTransformsManagedResponseHeaderOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedResponseHeaderArgs) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderOutput)
-}
-
-// ManagedTransformsManagedResponseHeaderArrayInput is an input type that accepts ManagedTransformsManagedResponseHeaderArray and ManagedTransformsManagedResponseHeaderArrayOutput values.
-// You can construct a concrete instance of `ManagedTransformsManagedResponseHeaderArrayInput` via:
-//
-//	ManagedTransformsManagedResponseHeaderArray{ ManagedTransformsManagedResponseHeaderArgs{...} }
-type ManagedTransformsManagedResponseHeaderArrayInput interface {
-	pulumi.Input
-
-	ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput
-	ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Context) ManagedTransformsManagedResponseHeaderArrayOutput
-}
-
-type ManagedTransformsManagedResponseHeaderArray []ManagedTransformsManagedResponseHeaderInput
-
-func (ManagedTransformsManagedResponseHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
-	return i.ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i ManagedTransformsManagedResponseHeaderArray) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedTransformsManagedResponseHeaderArrayOutput)
-}
-
-type ManagedTransformsManagedResponseHeaderOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedResponseHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutput() ManagedTransformsManagedResponseHeaderOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderOutput) ToManagedTransformsManagedResponseHeaderOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderOutput {
-	return o
-}
-
-// Whether the Managed Transform is enabled.
-func (o ManagedTransformsManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// The human-readable identifier of the Managed Transform.
-func (o ManagedTransformsManagedResponseHeaderOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedTransformsManagedResponseHeader) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ManagedTransformsManagedResponseHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (ManagedTransformsManagedResponseHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ManagedTransformsManagedResponseHeader)(nil)).Elem()
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutput() ManagedTransformsManagedResponseHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) ToManagedTransformsManagedResponseHeaderArrayOutputWithContext(ctx context.Context) ManagedTransformsManagedResponseHeaderArrayOutput {
-	return o
-}
-
-func (o ManagedTransformsManagedResponseHeaderArrayOutput) Index(i pulumi.IntInput) ManagedTransformsManagedResponseHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedTransformsManagedResponseHeader {
-		return vs[0].([]ManagedTransformsManagedResponseHeader)[vs[1].(int)]
-	}).(ManagedTransformsManagedResponseHeaderOutput)
-}
-
-type MoqRelayConfig struct {
-	LingeringSubscribe *MoqRelayConfigLingeringSubscribe `pulumi:"lingeringSubscribe"`
-	// Upstreams are external MOQT server publishers that a relay falls back
-	// to when it has no local publisher for a requested namespace/track.
-	Upstreams *MoqRelayConfigUpstreams `pulumi:"upstreams"`
-}
-
-// MoqRelayConfigInput is an input type that accepts MoqRelayConfigArgs and MoqRelayConfigOutput values.
-// You can construct a concrete instance of `MoqRelayConfigInput` via:
-//
-//	MoqRelayConfigArgs{...}
-type MoqRelayConfigInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigOutput() MoqRelayConfigOutput
-	ToMoqRelayConfigOutputWithContext(context.Context) MoqRelayConfigOutput
-}
-
-type MoqRelayConfigArgs struct {
-	LingeringSubscribe MoqRelayConfigLingeringSubscribePtrInput `pulumi:"lingeringSubscribe"`
-	// Upstreams are external MOQT server publishers that a relay falls back
-	// to when it has no local publisher for a requested namespace/track.
-	Upstreams MoqRelayConfigUpstreamsPtrInput `pulumi:"upstreams"`
-}
-
-func (MoqRelayConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
-	return i.ToMoqRelayConfigOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput)
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigArgs) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigOutput).ToMoqRelayConfigPtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigPtrInput is an input type that accepts MoqRelayConfigArgs, MoqRelayConfigPtr and MoqRelayConfigPtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigPtrInput` via:
-//
-//	        MoqRelayConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigPtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput
-	ToMoqRelayConfigPtrOutputWithContext(context.Context) MoqRelayConfigPtrOutput
-}
-
-type moqRelayConfigPtrType MoqRelayConfigArgs
-
-func MoqRelayConfigPtr(v *MoqRelayConfigArgs) MoqRelayConfigPtrInput {
-	return (*moqRelayConfigPtrType)(v)
-}
-
-func (*moqRelayConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
-}
-
-func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return i.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigPtrType) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigPtrOutput)
-}
-
-type MoqRelayConfigOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfig)(nil)).Elem()
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigOutput() MoqRelayConfigOutput {
-	return o
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigOutputWithContext(ctx context.Context) MoqRelayConfigOutput {
-	return o
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return o.ToMoqRelayConfigPtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfig) *MoqRelayConfig {
-		return &v
-	}).(MoqRelayConfigPtrOutput)
-}
-
-func (o MoqRelayConfigOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigLingeringSubscribe { return v.LingeringSubscribe }).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-// Upstreams are external MOQT server publishers that a relay falls back
-// to when it has no local publisher for a requested namespace/track.
-func (o MoqRelayConfigOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfig) *MoqRelayConfigUpstreams { return v.Upstreams }).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfig)(nil)).Elem()
-}
-
-func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutput() MoqRelayConfigPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigPtrOutput) ToMoqRelayConfigPtrOutputWithContext(ctx context.Context) MoqRelayConfigPtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigPtrOutput) Elem() MoqRelayConfigOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) MoqRelayConfig {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfig
-		return ret
-	}).(MoqRelayConfigOutput)
-}
-
-func (o MoqRelayConfigPtrOutput) LingeringSubscribe() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigLingeringSubscribe {
-		if v == nil {
-			return nil
-		}
-		return v.LingeringSubscribe
-	}).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-// Upstreams are external MOQT server publishers that a relay falls back
-// to when it has no local publisher for a requested namespace/track.
-func (o MoqRelayConfigPtrOutput) Upstreams() MoqRelayConfigUpstreamsPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfig) *MoqRelayConfigUpstreams {
-		if v == nil {
-			return nil
-		}
-		return v.Upstreams
-	}).(MoqRelayConfigUpstreamsPtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribe struct {
-	Enabled *bool `pulumi:"enabled"`
-	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-	MaxTimeoutMs *int `pulumi:"maxTimeoutMs"`
-}
-
-// MoqRelayConfigLingeringSubscribeInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs and MoqRelayConfigLingeringSubscribeOutput values.
-// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribeInput` via:
-//
-//	MoqRelayConfigLingeringSubscribeArgs{...}
-type MoqRelayConfigLingeringSubscribeInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput
-	ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribeOutput
-}
-
-type MoqRelayConfigLingeringSubscribeArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-	MaxTimeoutMs pulumi.IntPtrInput `pulumi:"maxTimeoutMs"`
-}
-
-func (MoqRelayConfigLingeringSubscribeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
-	return i.ToMoqRelayConfigLingeringSubscribeOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput)
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (i MoqRelayConfigLingeringSubscribeArgs) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribeOutput).ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx)
-}
-
-// MoqRelayConfigLingeringSubscribePtrInput is an input type that accepts MoqRelayConfigLingeringSubscribeArgs, MoqRelayConfigLingeringSubscribePtr and MoqRelayConfigLingeringSubscribePtrOutput values.
-// You can construct a concrete instance of `MoqRelayConfigLingeringSubscribePtrInput` via:
-//
-//	        MoqRelayConfigLingeringSubscribeArgs{...}
-//
-//	or:
-//
-//	        nil
-type MoqRelayConfigLingeringSubscribePtrInput interface {
-	pulumi.Input
-
-	ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput
-	ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Context) MoqRelayConfigLingeringSubscribePtrOutput
-}
-
-type moqRelayConfigLingeringSubscribePtrType MoqRelayConfigLingeringSubscribeArgs
-
-func MoqRelayConfigLingeringSubscribePtr(v *MoqRelayConfigLingeringSubscribeArgs) MoqRelayConfigLingeringSubscribePtrInput {
-	return (*moqRelayConfigLingeringSubscribePtrType)(v)
-}
-
-func (*moqRelayConfigLingeringSubscribePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return i.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (i *moqRelayConfigLingeringSubscribePtrType) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribeOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigLingeringSubscribeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutput() MoqRelayConfigLingeringSubscribeOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribeOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribeOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(context.Background())
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MoqRelayConfigLingeringSubscribe) *MoqRelayConfigLingeringSubscribe {
-		return &v
-	}).(MoqRelayConfigLingeringSubscribePtrOutput)
-}
-
-func (o MoqRelayConfigLingeringSubscribeOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-func (o MoqRelayConfigLingeringSubscribeOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MoqRelayConfigLingeringSubscribe) *int { return v.MaxTimeoutMs }).(pulumi.IntPtrOutput)
-}
-
-type MoqRelayConfigLingeringSubscribePtrOutput struct{ *pulumi.OutputState }
-
-func (MoqRelayConfigLingeringSubscribePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MoqRelayConfigLingeringSubscribe)(nil)).Elem()
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutput() MoqRelayConfigLingeringSubscribePtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) ToMoqRelayConfigLingeringSubscribePtrOutputWithContext(ctx context.Context) MoqRelayConfigLingeringSubscribePtrOutput {
-	return o
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) Elem() MoqRelayConfigLingeringSubscribeOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) MoqRelayConfigLingeringSubscribe {
-		if v != nil {
-			return *v
-		}
-		var ret MoqRelayConfigLingeringSubscribe
-		return ret
-	}).(MoqRelayConfigLingeringSubscribeOutput)
-}
-
-func (o MoqRelayConfigLingeringSubscribePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Relay-level ceiling on lingering subscribe timeout (ms). Default 30000.
-func (o MoqRelayConfigLingeringSubscribePtrOutput) MaxTimeoutMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MoqRelayConfigLingeringSubscribe) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxTimeoutMs
-	}).(pulumi.IntPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersPtrInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
@@ -81000,6 +81200,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingOperationsPtrInput)(nil)).Elem(), AccessApplicationScimConfigMappingOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaInput)(nil)).Elem(), AccessApplicationTargetCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaArrayInput)(nil)).Elem(), AccessApplicationTargetCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaExcludeInput)(nil)).Elem(), AccessApplicationTargetCriteriaExcludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaExcludePtrInput)(nil)).Elem(), AccessApplicationTargetCriteriaExcludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaExcludeTargetAttributesInput)(nil)).Elem(), AccessApplicationTargetCriteriaExcludeTargetAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaExcludeTargetAttributesPtrInput)(nil)).Elem(), AccessApplicationTargetCriteriaExcludeTargetAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaIncludeInput)(nil)).Elem(), AccessApplicationTargetCriteriaIncludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaIncludePtrInput)(nil)).Elem(), AccessApplicationTargetCriteriaIncludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaIncludeTargetAttributesInput)(nil)).Elem(), AccessApplicationTargetCriteriaIncludeTargetAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaIncludeTargetAttributesPtrInput)(nil)).Elem(), AccessApplicationTargetCriteriaIncludeTargetAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaRequireInput)(nil)).Elem(), AccessApplicationTargetCriteriaRequireArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaRequirePtrInput)(nil)).Elem(), AccessApplicationTargetCriteriaRequireArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaRequireTargetAttributesInput)(nil)).Elem(), AccessApplicationTargetCriteriaRequireTargetAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationTargetCriteriaRequireTargetAttributesPtrInput)(nil)).Elem(), AccessApplicationTargetCriteriaRequireTargetAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessCustomPageWarningInput)(nil)).Elem(), AccessCustomPageWarningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessCustomPageWarningArrayInput)(nil)).Elem(), AccessCustomPageWarningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeInput)(nil)).Elem(), AccessGroupExcludeArgs{})
@@ -81182,8 +81394,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationLoginDesignPtrInput)(nil)).Elem(), AccessOrganizationLoginDesignArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaConfigInput)(nil)).Elem(), AccessOrganizationMfaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaConfigPtrInput)(nil)).Elem(), AccessOrganizationMfaConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaSshPivKeyRequirementsInput)(nil)).Elem(), AccessOrganizationMfaSshPivKeyRequirementsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaSshPivKeyRequirementsPtrInput)(nil)).Elem(), AccessOrganizationMfaSshPivKeyRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaPivKeyRequirementsInput)(nil)).Elem(), AccessOrganizationMfaPivKeyRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationMfaPivKeyRequirementsPtrInput)(nil)).Elem(), AccessOrganizationMfaPivKeyRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationServiceTokenInactivityInput)(nil)).Elem(), AccessOrganizationServiceTokenInactivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationServiceTokenInactivityPtrInput)(nil)).Elem(), AccessOrganizationServiceTokenInactivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupInput)(nil)).Elem(), AccessPolicyApprovalGroupArgs{})
@@ -81469,6 +81681,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceIndexingOptionsPtrInput)(nil)).Elem(), AiSearchInstanceIndexingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceMetadataInput)(nil)).Elem(), AiSearchInstanceMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceMetadataPtrInput)(nil)).Elem(), AiSearchInstanceMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceMetadataCreatedFromEmdashPluginInput)(nil)).Elem(), AiSearchInstanceMetadataCreatedFromEmdashPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstanceMetadataCreatedFromEmdashPluginPtrInput)(nil)).Elem(), AiSearchInstanceMetadataCreatedFromEmdashPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsPtrInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiSearchInstancePublicEndpointParamsChatCompletionsEndpointInput)(nil)).Elem(), AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs{})
@@ -81782,20 +81996,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelPskMetadataInput)(nil)).Elem(), MagicWanIpsecTunnelPskMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelPskMetadataPtrInput)(nil)).Elem(), MagicWanIpsecTunnelPskMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteScopeInput)(nil)).Elem(), MagicWanStaticRouteScopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteScopePtrInput)(nil)).Elem(), MagicWanStaticRouteScopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedRequestHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ManagedTransformsManagedResponseHeaderArrayInput)(nil)).Elem(), ManagedTransformsManagedResponseHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigInput)(nil)).Elem(), MoqRelayConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigPtrInput)(nil)).Elem(), MoqRelayConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribeInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MoqRelayConfigLingeringSubscribePtrInput)(nil)).Elem(), MoqRelayConfigLingeringSubscribeArgs{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -81998,6 +82198,18 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingOperationsPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaOutput{})
 	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaExcludeOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaExcludePtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaExcludeTargetAttributesOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaExcludeTargetAttributesPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaIncludeOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaIncludePtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaIncludeTargetAttributesOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaIncludeTargetAttributesPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaRequireOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaRequirePtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaRequireTargetAttributesOutput{})
+	pulumi.RegisterOutputType(AccessApplicationTargetCriteriaRequireTargetAttributesPtrOutput{})
 	pulumi.RegisterOutputType(AccessCustomPageWarningOutput{})
 	pulumi.RegisterOutputType(AccessCustomPageWarningArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
@@ -82180,8 +82392,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessOrganizationLoginDesignPtrOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationMfaConfigOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationMfaConfigPtrOutput{})
-	pulumi.RegisterOutputType(AccessOrganizationMfaSshPivKeyRequirementsOutput{})
-	pulumi.RegisterOutputType(AccessOrganizationMfaSshPivKeyRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(AccessOrganizationMfaPivKeyRequirementsOutput{})
+	pulumi.RegisterOutputType(AccessOrganizationMfaPivKeyRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationServiceTokenInactivityOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationServiceTokenInactivityPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyApprovalGroupOutput{})
@@ -82467,6 +82679,8 @@ func init() {
 	pulumi.RegisterOutputType(AiSearchInstanceIndexingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceMetadataOutput{})
 	pulumi.RegisterOutputType(AiSearchInstanceMetadataPtrOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceMetadataCreatedFromEmdashPluginOutput{})
+	pulumi.RegisterOutputType(AiSearchInstanceMetadataCreatedFromEmdashPluginPtrOutput{})
 	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsOutput{})
 	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsPtrOutput{})
 	pulumi.RegisterOutputType(AiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput{})
@@ -82780,18 +82994,4 @@ func init() {
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckTargetPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelPskMetadataOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelPskMetadataPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteScopeOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteScopePtrOutput{})
-	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderOutput{})
-	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderArrayOutput{})
-	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderOutput{})
-	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderArrayOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedRequestHeaderArrayOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderOutput{})
-	pulumi.RegisterOutputType(ManagedTransformsManagedResponseHeaderArrayOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigPtrOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribeOutput{})
-	pulumi.RegisterOutputType(MoqRelayConfigLingeringSubscribePtrOutput{})
 }

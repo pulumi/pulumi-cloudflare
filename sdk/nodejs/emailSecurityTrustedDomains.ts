@@ -69,15 +69,15 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
     /**
      * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
-    declare public readonly isRecent: pulumi.Output<boolean | undefined>;
+    declare public readonly isRecent: pulumi.Output<boolean>;
     /**
      * Whether `pattern` is a regular expression instead of a literal domain.
      */
-    declare public readonly isRegex: pulumi.Output<boolean | undefined>;
+    declare public readonly isRegex: pulumi.Output<boolean>;
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      */
-    declare public readonly isSimilarity: pulumi.Output<boolean | undefined>;
+    declare public readonly isSimilarity: pulumi.Output<boolean>;
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      *
@@ -116,6 +116,15 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
             const args = argsOrState as EmailSecurityTrustedDomainsArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
+            }
+            if (args?.isRecent === undefined && !opts.urn) {
+                throw new Error("Missing required property 'isRecent'");
+            }
+            if (args?.isRegex === undefined && !opts.urn) {
+                throw new Error("Missing required property 'isRegex'");
+            }
+            if (args?.isSimilarity === undefined && !opts.urn) {
+                throw new Error("Missing required property 'isSimilarity'");
             }
             if (args?.pattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pattern'");
@@ -182,15 +191,15 @@ export interface EmailSecurityTrustedDomainsArgs {
     /**
      * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
-    isRecent?: pulumi.Input<boolean | undefined>;
+    isRecent: pulumi.Input<boolean>;
     /**
      * Whether `pattern` is a regular expression instead of a literal domain.
      */
-    isRegex?: pulumi.Input<boolean | undefined>;
+    isRegex: pulumi.Input<boolean>;
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      */
-    isSimilarity?: pulumi.Input<boolean | undefined>;
+    isSimilarity: pulumi.Input<boolean>;
     /**
      * The domain pattern to trust, e.g. `example.com`.
      */

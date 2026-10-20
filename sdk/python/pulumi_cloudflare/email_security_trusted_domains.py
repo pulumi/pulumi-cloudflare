@@ -20,30 +20,27 @@ __all__ = ['EmailSecurityTrustedDomainsArgs', 'EmailSecurityTrustedDomains']
 class EmailSecurityTrustedDomainsArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
+                 is_recent: pulumi.Input[_builtins.bool],
+                 is_regex: pulumi.Input[_builtins.bool],
+                 is_similarity: pulumi.Input[_builtins.bool],
                  pattern: pulumi.Input[_builtins.str],
-                 comments: pulumi.Input[Optional[_builtins.str]] = None,
-                 is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
-                 is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
-                 is_similarity: pulumi.Input[Optional[_builtins.bool]] = None):
+                 comments: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityTrustedDomains resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] pattern: The domain pattern to trust, e.g. `example.com`.
         :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         :param pulumi.Input[_builtins.bool] is_regex: Whether `pattern` is a regular expression instead of a literal domain.
         :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+        :param pulumi.Input[_builtins.str] pattern: The domain pattern to trust, e.g. `example.com`.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "is_recent", is_recent)
+        pulumi.set(__self__, "is_regex", is_regex)
+        pulumi.set(__self__, "is_similarity", is_similarity)
         pulumi.set(__self__, "pattern", pattern)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
-        if is_recent is not None:
-            pulumi.set(__self__, "is_recent", is_recent)
-        if is_regex is not None:
-            pulumi.set(__self__, "is_regex", is_regex)
-        if is_similarity is not None:
-            pulumi.set(__self__, "is_similarity", is_similarity)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -56,6 +53,42 @@ class EmailSecurityTrustedDomainsArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isRecent")
+    def is_recent(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        """
+        return pulumi.get(self, "is_recent")
+
+    @is_recent.setter
+    def is_recent(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "is_recent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isRegex")
+    def is_regex(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether `pattern` is a regular expression instead of a literal domain.
+        """
+        return pulumi.get(self, "is_regex")
+
+    @is_regex.setter
+    def is_regex(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "is_regex", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isSimilarity")
+    def is_similarity(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+        """
+        return pulumi.get(self, "is_similarity")
+
+    @is_similarity.setter
+    def is_similarity(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "is_similarity", value)
 
     @_builtins.property
     @pulumi.getter
@@ -77,42 +110,6 @@ class EmailSecurityTrustedDomainsArgs:
     @comments.setter
     def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isRecent")
-    def is_recent(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
-        """
-        return pulumi.get(self, "is_recent")
-
-    @is_recent.setter
-    def is_recent(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "is_recent", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isRegex")
-    def is_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Whether `pattern` is a regular expression instead of a literal domain.
-        """
-        return pulumi.get(self, "is_regex")
-
-    @is_regex.setter
-    def is_regex(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "is_regex", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isSimilarity")
-    def is_similarity(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
-        """
-        return pulumi.get(self, "is_similarity")
-
-    @is_similarity.setter
-    def is_similarity(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "is_similarity", value)
 
 
 @pulumi.input_type
@@ -377,8 +374,14 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["comments"] = comments
+            if is_recent is None and not opts.urn:
+                raise TypeError("Missing required property 'is_recent'")
             __props__.__dict__["is_recent"] = is_recent
+            if is_regex is None and not opts.urn:
+                raise TypeError("Missing required property 'is_regex'")
             __props__.__dict__["is_regex"] = is_regex
+            if is_similarity is None and not opts.urn:
+                raise TypeError("Missing required property 'is_similarity'")
             __props__.__dict__["is_similarity"] = is_similarity
             if pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'pattern'")
@@ -454,7 +457,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="isRecent")
-    def is_recent(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def is_recent(self) -> pulumi.Output[_builtins.bool]:
         """
         Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         """
@@ -462,7 +465,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="isRegex")
-    def is_regex(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def is_regex(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether `pattern` is a regular expression instead of a literal domain.
         """
@@ -470,7 +473,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="isSimilarity")
-    def is_similarity(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def is_similarity(self) -> pulumi.Output[_builtins.bool]:
         """
         Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         """

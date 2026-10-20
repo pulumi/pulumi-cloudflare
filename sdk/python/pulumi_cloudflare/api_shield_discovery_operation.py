@@ -19,36 +19,47 @@ __all__ = ['ApiShieldDiscoveryOperationArgs', 'ApiShieldDiscoveryOperation']
 @pulumi.input_type
 class ApiShieldDiscoveryOperationArgs:
     def __init__(__self__, *,
-                 operation_id: pulumi.Input[_builtins.str],
-                 state: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 discovery_id: pulumi.Input[_builtins.str],
+                 zone_id: pulumi.Input[_builtins.str],
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldDiscoveryOperation resource.
 
-        :param pulumi.Input[_builtins.str] operation_id: UUID.
+        :param pulumi.Input[_builtins.str] discovery_id: UUID.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] state: Mark state of operation in API Discovery
                  * `review` - Mark operation as for review
                  * `ignored` - Mark operation as ignored
                    Available values: "review", "ignored".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
-        pulumi.set(__self__, "operation_id", operation_id)
+        pulumi.set(__self__, "discovery_id", discovery_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
-    @pulumi.getter(name="operationId")
-    def operation_id(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="discoveryId")
+    def discovery_id(self) -> pulumi.Input[_builtins.str]:
         """
         UUID.
         """
-        return pulumi.get(self, "operation_id")
+        return pulumi.get(self, "discovery_id")
 
-    @operation_id.setter
-    def operation_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "operation_id", value)
+    @discovery_id.setter
+    def discovery_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "discovery_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -65,53 +76,41 @@ class ApiShieldDiscoveryOperationArgs:
     def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
-
 
 @pulumi.input_type
 class _ApiShieldDiscoveryOperationState:
     def __init__(__self__, *,
-                 operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldDiscoveryOperation resources.
 
-        :param pulumi.Input[_builtins.str] operation_id: UUID.
+        :param pulumi.Input[_builtins.str] discovery_id: UUID.
         :param pulumi.Input[_builtins.str] state: Mark state of operation in API Discovery
                  * `review` - Mark operation as for review
                  * `ignored` - Mark operation as ignored
                    Available values: "review", "ignored".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
-        if operation_id is not None:
-            pulumi.set(__self__, "operation_id", operation_id)
+        if discovery_id is not None:
+            pulumi.set(__self__, "discovery_id", discovery_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
-    @pulumi.getter(name="operationId")
-    def operation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    @pulumi.getter(name="discoveryId")
+    def discovery_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID.
         """
-        return pulumi.get(self, "operation_id")
+        return pulumi.get(self, "discovery_id")
 
-    @operation_id.setter
-    def operation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "operation_id", value)
+    @discovery_id.setter
+    def discovery_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "discovery_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -147,7 +146,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -165,7 +164,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
 
         example_api_shield_discovery_operation = cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+            discovery_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             state="review")
         ```
 
@@ -176,7 +175,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] operation_id: UUID.
+        :param pulumi.Input[_builtins.str] discovery_id: UUID.
         :param pulumi.Input[_builtins.str] state: Mark state of operation in API Discovery
                  * `review` - Mark operation as for review
                  * `ignored` - Mark operation as ignored
@@ -203,7 +202,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
 
         example_api_shield_discovery_operation = cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+            discovery_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             state="review")
         ```
 
@@ -227,7 +226,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -239,10 +238,12 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApiShieldDiscoveryOperationArgs.__new__(ApiShieldDiscoveryOperationArgs)
 
-            if operation_id is None and not opts.urn:
-                raise TypeError("Missing required property 'operation_id'")
-            __props__.__dict__["operation_id"] = operation_id
+            if discovery_id is None and not opts.urn:
+                raise TypeError("Missing required property 'discovery_id'")
+            __props__.__dict__["discovery_id"] = discovery_id
             __props__.__dict__["state"] = state
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(ApiShieldDiscoveryOperation, __self__).__init__(
             'cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation',
@@ -254,7 +255,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiShieldDiscoveryOperation':
         """
@@ -264,7 +265,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] operation_id: UUID.
+        :param pulumi.Input[_builtins.str] discovery_id: UUID.
         :param pulumi.Input[_builtins.str] state: Mark state of operation in API Discovery
                  * `review` - Mark operation as for review
                  * `ignored` - Mark operation as ignored
@@ -275,18 +276,18 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
 
         __props__ = _ApiShieldDiscoveryOperationState.__new__(_ApiShieldDiscoveryOperationState)
 
-        __props__.__dict__["operation_id"] = operation_id
+        __props__.__dict__["discovery_id"] = discovery_id
         __props__.__dict__["state"] = state
         __props__.__dict__["zone_id"] = zone_id
         return ApiShieldDiscoveryOperation(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
-    @pulumi.getter(name="operationId")
-    def operation_id(self) -> pulumi.Output[_builtins.str]:
+    @pulumi.getter(name="discoveryId")
+    def discovery_id(self) -> pulumi.Output[_builtins.str]:
         """
         UUID.
         """
-        return pulumi.get(self, "operation_id")
+        return pulumi.get(self, "discovery_id")
 
     @_builtins.property
     @pulumi.getter
@@ -301,7 +302,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

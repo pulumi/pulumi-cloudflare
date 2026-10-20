@@ -81,7 +81,7 @@ export class ZeroTrustTunnelWarpConnectorConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+     * High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
      * Available values: "none", "disabled", "aws", "local".
      */
     declare public readonly haMode: pulumi.Output<string>;
@@ -159,7 +159,7 @@ export interface ZeroTrustTunnelWarpConnectorConfigState {
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
-     * High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+     * High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
      * Available values: "none", "disabled", "aws", "local".
      */
     haMode?: pulumi.Input<string | undefined>;
@@ -186,7 +186,7 @@ export interface ZeroTrustTunnelWarpConnectorConfigArgs {
      */
     config?: pulumi.Input<inputs.ZeroTrustTunnelWarpConnectorConfigConfig | undefined>;
     /**
-     * High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
+     * High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.
      * Available values: "none", "disabled", "aws", "local".
      */
     haMode: pulumi.Input<string>;

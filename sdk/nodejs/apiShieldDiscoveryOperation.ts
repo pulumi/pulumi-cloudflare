@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const exampleApiShieldDiscoveryOperation = new cloudflare.ApiShieldDiscoveryOperation("example_api_shield_discovery_operation", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     discoveryId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     state: "review",
  * });
  * ```
@@ -58,7 +58,7 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
     /**
      * UUID.
      */
-    declare public readonly operationId: pulumi.Output<string>;
+    declare public readonly discoveryId: pulumi.Output<string>;
     /**
      * Mark state of operation in API Discovery
      *   * `review` - Mark operation as for review
@@ -69,7 +69,7 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ApiShieldDiscoveryOperation resource with the given unique name, arguments, and options.
@@ -84,15 +84,18 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiShieldDiscoveryOperationState | undefined;
-            resourceInputs["operationId"] = state?.operationId;
+            resourceInputs["discoveryId"] = state?.discoveryId;
             resourceInputs["state"] = state?.state;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldDiscoveryOperationArgs | undefined;
-            if (args?.operationId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'operationId'");
+            if (args?.discoveryId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'discoveryId'");
             }
-            resourceInputs["operationId"] = args?.operationId;
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
+            }
+            resourceInputs["discoveryId"] = args?.discoveryId;
             resourceInputs["state"] = args?.state;
             resourceInputs["zoneId"] = args?.zoneId;
         }
@@ -108,7 +111,7 @@ export interface ApiShieldDiscoveryOperationState {
     /**
      * UUID.
      */
-    operationId?: pulumi.Input<string | undefined>;
+    discoveryId?: pulumi.Input<string | undefined>;
     /**
      * Mark state of operation in API Discovery
      *   * `review` - Mark operation as for review
@@ -129,7 +132,7 @@ export interface ApiShieldDiscoveryOperationArgs {
     /**
      * UUID.
      */
-    operationId: pulumi.Input<string>;
+    discoveryId: pulumi.Input<string>;
     /**
      * Mark state of operation in API Discovery
      *   * `review` - Mark operation as for review
@@ -140,5 +143,5 @@ export interface ApiShieldDiscoveryOperationArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

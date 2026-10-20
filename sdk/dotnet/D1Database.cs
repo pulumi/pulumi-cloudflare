@@ -107,7 +107,7 @@ namespace Pulumi.Cloudflare
         /// Configuration for D1 read replication.
         /// </summary>
         [Output("readReplication")]
-        public Output<Outputs.D1DatabaseReadReplication?> ReadReplication { get; private set; } = null!;
+        public Output<Outputs.D1DatabaseReadReplication> ReadReplication { get; private set; } = null!;
 
         /// <summary>
         /// D1 database identifier (UUID).

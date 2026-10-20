@@ -233,7 +233,7 @@ namespace Pulumi.Cloudflare
         public Output<double?> LanAllowSubnetSize { get; private set; } = null!;
 
         /// <summary>
-        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -477,7 +477,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? LanAllowSubnetSize { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -689,7 +689,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? LanAllowSubnetSize { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -745,6 +745,7 @@ namespace Pulumi.Cloudflare
 
         [Input("targetTests")]
         private InputList<Inputs.ZeroTrustDeviceCustomProfileTargetTestGetArgs>? _targetTests;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.ZeroTrustDeviceCustomProfileTargetTestGetArgs> TargetTests
         {
             get => _targetTests ?? (_targetTests = new InputList<Inputs.ZeroTrustDeviceCustomProfileTargetTestGetArgs>());

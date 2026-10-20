@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AiSearchInstanceMetadataCreatedFromEmdashPlugin;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -13,11 +14,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchInstanceMetadata {
     private @Nullable Boolean createdFromAisearchWizard;
+    private @Nullable AiSearchInstanceMetadataCreatedFromEmdashPlugin createdFromEmdashPlugin;
     private @Nullable String workerDomain;
 
     private AiSearchInstanceMetadata() {}
     public Optional<Boolean> createdFromAisearchWizard() {
         return Optional.ofNullable(this.createdFromAisearchWizard);
+    }
+    public Optional<AiSearchInstanceMetadataCreatedFromEmdashPlugin> createdFromEmdashPlugin() {
+        return Optional.ofNullable(this.createdFromEmdashPlugin);
     }
     public Optional<String> workerDomain() {
         return Optional.ofNullable(this.workerDomain);
@@ -33,11 +38,13 @@ public final class AiSearchInstanceMetadata {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean createdFromAisearchWizard;
+        private @Nullable AiSearchInstanceMetadataCreatedFromEmdashPlugin createdFromEmdashPlugin;
         private @Nullable String workerDomain;
         public Builder() {}
         public Builder(AiSearchInstanceMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdFromAisearchWizard = defaults.createdFromAisearchWizard;
+    	      this.createdFromEmdashPlugin = defaults.createdFromEmdashPlugin;
     	      this.workerDomain = defaults.workerDomain;
         }
 
@@ -45,6 +52,12 @@ public final class AiSearchInstanceMetadata {
         public Builder createdFromAisearchWizard(@Nullable Boolean createdFromAisearchWizard) {
 
             this.createdFromAisearchWizard = createdFromAisearchWizard;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdFromEmdashPlugin(@Nullable AiSearchInstanceMetadataCreatedFromEmdashPlugin createdFromEmdashPlugin) {
+
+            this.createdFromEmdashPlugin = createdFromEmdashPlugin;
             return this;
         }
         @CustomType.Setter
@@ -56,6 +69,7 @@ public final class AiSearchInstanceMetadata {
         public AiSearchInstanceMetadata build() {
             final var _resultValue = new AiSearchInstanceMetadata();
             _resultValue.createdFromAisearchWizard = createdFromAisearchWizard;
+            _resultValue.createdFromEmdashPlugin = createdFromEmdashPlugin;
             _resultValue.workerDomain = workerDomain;
             return _resultValue;
         }

@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleApiShieldDiscoveryOperation = new ApiShieldDiscoveryOperation("exampleApiShieldDiscoveryOperation", ApiShieldDiscoveryOperationArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *             .discoveryId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .state("review")
  *             .build());
  * 
@@ -66,15 +66,15 @@ public class ApiShieldDiscoveryOperation extends com.pulumi.resources.CustomReso
      * UUID.
      * 
      */
-    @Export(name="operationId", refs={String.class}, tree="[0]")
-    private Output<String> operationId;
+    @Export(name="discoveryId", refs={String.class}, tree="[0]")
+    private Output<String> discoveryId;
 
     /**
      * @return UUID.
      * 
      */
-    public Output<String> operationId() {
-        return this.operationId;
+    public Output<String> discoveryId() {
+        return this.discoveryId;
     }
     /**
      * Mark state of operation in API Discovery
@@ -101,14 +101,14 @@ public class ApiShieldDiscoveryOperation extends com.pulumi.resources.CustomReso
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

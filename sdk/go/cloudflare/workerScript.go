@@ -211,6 +211,9 @@ type WorkerScript struct {
 	Assets WorkerScriptAssetsPtrOutput `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerScriptBindingArrayOutput `pulumi:"bindings"`
+	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// Available values: "strict".
+	BindingsInherit pulumi.StringPtrOutput `pulumi:"bindingsInherit"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringOutput `pulumi:"bodyPart"`
 	// Global CacheW configuration for the Worker. When caching is on,
@@ -340,6 +343,9 @@ type workerScriptState struct {
 	Assets *WorkerScriptAssets `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkerScriptBinding `pulumi:"bindings"`
+	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// Available values: "strict".
+	BindingsInherit *string `pulumi:"bindingsInherit"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart *string `pulumi:"bodyPart"`
 	// Global CacheW configuration for the Worker. When caching is on,
@@ -428,6 +434,9 @@ type WorkerScriptState struct {
 	Assets WorkerScriptAssetsPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerScriptBindingArrayInput
+	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// Available values: "strict".
+	BindingsInherit pulumi.StringPtrInput
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrInput
 	// Global CacheW configuration for the Worker. When caching is on,
@@ -520,6 +529,9 @@ type workerScriptArgs struct {
 	Assets *WorkerScriptAssets `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkerScriptBinding `pulumi:"bindings"`
+	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// Available values: "strict".
+	BindingsInherit *string `pulumi:"bindingsInherit"`
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart *string `pulumi:"bodyPart"`
 	// Global CacheW configuration for the Worker. When caching is on,
@@ -582,6 +594,9 @@ type WorkerScriptArgs struct {
 	Assets WorkerScriptAssetsPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkerScriptBindingArrayInput
+	// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+	// Available values: "strict".
+	BindingsInherit pulumi.StringPtrInput
 	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrInput
 	// Global CacheW configuration for the Worker. When caching is on,
@@ -739,6 +754,12 @@ func (o WorkerScriptOutput) Assets() WorkerScriptAssetsPtrOutput {
 // List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 func (o WorkerScriptOutput) Bindings() WorkerScriptBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptBindingArrayOutput { return v.Bindings }).(WorkerScriptBindingArrayOutput)
+}
+
+// When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+// Available values: "strict".
+func (o WorkerScriptOutput) BindingsInherit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.BindingsInherit }).(pulumi.StringPtrOutput)
 }
 
 // Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.

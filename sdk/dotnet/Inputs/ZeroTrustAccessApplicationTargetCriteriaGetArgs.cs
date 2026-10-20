@@ -13,6 +13,18 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustAccessApplicationTargetCriteriaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Target is excluded when any selector in this rule matches.
+        /// </summary>
+        [Input("exclude")]
+        public Input<Inputs.ZeroTrustAccessApplicationTargetCriteriaExcludeGetArgs>? Exclude { get; set; }
+
+        /// <summary>
+        /// Target matches when any selector in this rule matches.
+        /// </summary>
+        [Input("include")]
+        public Input<Inputs.ZeroTrustAccessApplicationTargetCriteriaIncludeGetArgs>? Include { get; set; }
+
+        /// <summary>
         /// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
         /// </summary>
         [Input("port", required: true)]
@@ -25,11 +37,17 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
-        [Input("targetAttributes", required: true)]
+        /// <summary>
+        /// Target matches only when every selector in this rule matches.
+        /// </summary>
+        [Input("require")]
+        public Input<Inputs.ZeroTrustAccessApplicationTargetCriteriaRequireGetArgs>? Require { get; set; }
+
+        [Input("targetAttributes")]
         private InputMap<ImmutableArray<string>>? _targetAttributes;
 
         /// <summary>
-        /// Contains a map of target attribute keys to target attribute values.
+        /// Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
         /// </summary>
         public InputMap<ImmutableArray<string>> TargetAttributes
         {
