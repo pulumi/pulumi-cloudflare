@@ -50,7 +50,7 @@ public final class GetZeroTrustCasbPoliciesResult {
      */
     private Boolean enabled;
     /**
-     * @return The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+     * @return The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
      * 
      */
     private String findingTypeId;
@@ -130,7 +130,7 @@ public final class GetZeroTrustCasbPoliciesResult {
         return this.enabled;
     }
     /**
-     * @return The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+     * @return The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
      * 
      */
     public String findingTypeId() {

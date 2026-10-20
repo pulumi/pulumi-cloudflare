@@ -18,7 +18,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     private String accountId;
     /**
      * @return Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      * 
@@ -26,6 +26,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     private @Nullable String fields;
     private @Nullable String filter;
     private Integer limit;
+    private @Nullable String lookup;
     private @Nullable Integer maxItems;
     private Integer offset;
     private @Nullable String orderBy;
@@ -38,7 +39,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     }
     /**
      * @return Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      * 
@@ -51,6 +52,9 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     }
     public Integer limit() {
         return this.limit;
+    }
+    public Optional<String> lookup() {
+        return Optional.ofNullable(this.lookup);
     }
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
@@ -81,6 +85,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
         private @Nullable String fields;
         private @Nullable String filter;
         private Integer limit;
+        private @Nullable String lookup;
         private @Nullable Integer maxItems;
         private Integer offset;
         private @Nullable String orderBy;
@@ -93,6 +98,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
     	      this.fields = defaults.fields;
     	      this.filter = defaults.filter;
     	      this.limit = defaults.limit;
+    	      this.lookup = defaults.lookup;
     	      this.maxItems = defaults.maxItems;
     	      this.offset = defaults.offset;
     	      this.orderBy = defaults.orderBy;
@@ -126,6 +132,12 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
               throw new MissingRequiredPropertyException("GetZeroTrustResourceLibraryApplicationsInvokeResult", "limit");
             }
             this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lookup(@Nullable String lookup) {
+
+            this.lookup = lookup;
             return this;
         }
         @CustomType.Setter
@@ -171,6 +183,7 @@ public final class GetZeroTrustResourceLibraryApplicationsInvokeResult {
             _resultValue.fields = fields;
             _resultValue.filter = filter;
             _resultValue.limit = limit;
+            _resultValue.lookup = lookup;
             _resultValue.maxItems = maxItems;
             _resultValue.offset = offset;
             _resultValue.orderBy = orderBy;

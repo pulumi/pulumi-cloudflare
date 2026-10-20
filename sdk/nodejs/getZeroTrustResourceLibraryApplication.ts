@@ -35,7 +35,7 @@ export interface GetZeroTrustResourceLibraryApplicationArgs {
     accountId: string;
     filter?: inputs.GetZeroTrustResourceLibraryApplicationFilter;
     /**
-     * Returns the application ID.
+     * Numeric identifier for the application.
      */
     id?: number;
 }
@@ -66,7 +66,7 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
      */
     readonly applicationTypeDescription: string;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     readonly categoryId: number;
     /**
@@ -83,11 +83,11 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
      */
     readonly hostnames: string[];
     /**
-     * Returns the human readable ID.
+     * Human-readable identifier for the application.
      */
     readonly humanId: string;
     /**
-     * Returns the application ID.
+     * Numeric identifier for the application.
      */
     readonly id: number;
     /**
@@ -95,11 +95,11 @@ export interface GetZeroTrustResourceLibraryApplicationResult {
      */
     readonly ipSubnets: string[];
     /**
-     * Returns the application name.
+     * Application name.
      */
     readonly name: string;
     /**
-     * Port and protocol pairs matched by the application.
+     * Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      */
     readonly portProtocols: string[];
     /**
@@ -148,7 +148,7 @@ export interface GetZeroTrustResourceLibraryApplicationOutputArgs {
     accountId: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustResourceLibraryApplicationFilterArgs | undefined>;
     /**
-     * Returns the application ID.
+     * Numeric identifier for the application.
      */
     id?: pulumi.Input<number | undefined>;
 }

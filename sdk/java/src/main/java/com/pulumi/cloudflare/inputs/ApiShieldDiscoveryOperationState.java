@@ -19,15 +19,15 @@ public final class ApiShieldDiscoveryOperationState extends com.pulumi.resources
      * UUID.
      * 
      */
-    @Import(name="operationId")
-    private @Nullable Output<String> operationId;
+    @Import(name="discoveryId")
+    private @Nullable Output<String> discoveryId;
 
     /**
      * @return UUID.
      * 
      */
-    public Optional<Output<String>> operationId() {
-        return Optional.ofNullable(this.operationId);
+    public Optional<Output<String>> discoveryId() {
+        return Optional.ofNullable(this.discoveryId);
     }
 
     /**
@@ -69,7 +69,7 @@ public final class ApiShieldDiscoveryOperationState extends com.pulumi.resources
     private ApiShieldDiscoveryOperationState() {}
 
     private ApiShieldDiscoveryOperationState(ApiShieldDiscoveryOperationState $) {
-        this.operationId = $.operationId;
+        this.discoveryId = $.discoveryId;
         this.state = $.state;
         this.zoneId = $.zoneId;
     }
@@ -93,24 +93,24 @@ public final class ApiShieldDiscoveryOperationState extends com.pulumi.resources
         }
 
         /**
-         * @param operationId UUID.
+         * @param discoveryId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder operationId(@Nullable Output<String> operationId) {
-            $.operationId = operationId;
+        public Builder discoveryId(@Nullable Output<String> discoveryId) {
+            $.discoveryId = discoveryId;
             return this;
         }
 
         /**
-         * @param operationId UUID.
+         * @param discoveryId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder operationId(String operationId) {
-            return operationId(Output.of(operationId));
+        public Builder discoveryId(String discoveryId) {
+            return discoveryId(Output.of(discoveryId));
         }
 
         /**

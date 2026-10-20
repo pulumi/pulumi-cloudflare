@@ -33,7 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewApiShieldDiscoveryOperation(ctx, "example_api_shield_discovery_operation", &cloudflare.ApiShieldDiscoveryOperationArgs{
 //				ZoneId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				OperationId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				DiscoveryId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //				State:       pulumi.String("review"),
 //			})
 //			if err != nil {
@@ -52,14 +52,14 @@ type ApiShieldDiscoveryOperation struct {
 	pulumi.CustomResourceState
 
 	// UUID.
-	OperationId pulumi.StringOutput `pulumi:"operationId"`
+	DiscoveryId pulumi.StringOutput `pulumi:"discoveryId"`
 	// Mark state of operation in API Discovery
 	//   * `review` - Mark operation as for review
 	//   * `ignored` - Mark operation as ignored
 	//     Available values: "review", "ignored".
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewApiShieldDiscoveryOperation registers a new resource with the given unique name, arguments, and options.
@@ -69,8 +69,11 @@ func NewApiShieldDiscoveryOperation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OperationId == nil {
-		return nil, errors.New("invalid value for required argument 'OperationId'")
+	if args.DiscoveryId == nil {
+		return nil, errors.New("invalid value for required argument 'DiscoveryId'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiShieldDiscoveryOperation
@@ -96,7 +99,7 @@ func GetApiShieldDiscoveryOperation(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ApiShieldDiscoveryOperation resources.
 type apiShieldDiscoveryOperationState struct {
 	// UUID.
-	OperationId *string `pulumi:"operationId"`
+	DiscoveryId *string `pulumi:"discoveryId"`
 	// Mark state of operation in API Discovery
 	//   * `review` - Mark operation as for review
 	//   * `ignored` - Mark operation as ignored
@@ -108,7 +111,7 @@ type apiShieldDiscoveryOperationState struct {
 
 type ApiShieldDiscoveryOperationState struct {
 	// UUID.
-	OperationId pulumi.StringPtrInput
+	DiscoveryId pulumi.StringPtrInput
 	// Mark state of operation in API Discovery
 	//   * `review` - Mark operation as for review
 	//   * `ignored` - Mark operation as ignored
@@ -124,27 +127,27 @@ func (ApiShieldDiscoveryOperationState) ElementType() reflect.Type {
 
 type apiShieldDiscoveryOperationArgs struct {
 	// UUID.
-	OperationId string `pulumi:"operationId"`
+	DiscoveryId string `pulumi:"discoveryId"`
 	// Mark state of operation in API Discovery
 	//   * `review` - Mark operation as for review
 	//   * `ignored` - Mark operation as ignored
 	//     Available values: "review", "ignored".
 	State *string `pulumi:"state"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldDiscoveryOperation resource.
 type ApiShieldDiscoveryOperationArgs struct {
 	// UUID.
-	OperationId pulumi.StringInput
+	DiscoveryId pulumi.StringInput
 	// Mark state of operation in API Discovery
 	//   * `review` - Mark operation as for review
 	//   * `ignored` - Mark operation as ignored
 	//     Available values: "review", "ignored".
 	State pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (ApiShieldDiscoveryOperationArgs) ElementType() reflect.Type {
@@ -235,8 +238,8 @@ func (o ApiShieldDiscoveryOperationOutput) ToApiShieldDiscoveryOperationOutputWi
 }
 
 // UUID.
-func (o ApiShieldDiscoveryOperationOutput) OperationId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApiShieldDiscoveryOperation) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
+func (o ApiShieldDiscoveryOperationOutput) DiscoveryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldDiscoveryOperation) pulumi.StringOutput { return v.DiscoveryId }).(pulumi.StringOutput)
 }
 
 // Mark state of operation in API Discovery
@@ -248,8 +251,8 @@ func (o ApiShieldDiscoveryOperationOutput) State() pulumi.StringPtrOutput {
 }
 
 // Identifier.
-func (o ApiShieldDiscoveryOperationOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiShieldDiscoveryOperation) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o ApiShieldDiscoveryOperationOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldDiscoveryOperation) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ApiShieldDiscoveryOperationArrayOutput struct{ *pulumi.OutputState }

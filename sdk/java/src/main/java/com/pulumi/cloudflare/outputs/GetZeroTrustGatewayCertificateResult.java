@@ -62,6 +62,11 @@ public final class GetZeroTrustGatewayCertificateResult {
      */
     private String issuerRaw;
     /**
+     * @return Indicate the read-only region the certificate authority&#39;s key material is pinned to. Omitted for certificates that were created without a region.
+     * 
+     */
+    private String region;
+    /**
      * @return Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
@@ -142,6 +147,13 @@ public final class GetZeroTrustGatewayCertificateResult {
         return this.issuerRaw;
     }
     /**
+     * @return Indicate the read-only region the certificate authority&#39;s key material is pinned to. Omitted for certificates that were created without a region.
+     * 
+     */
+    public String region() {
+        return this.region;
+    }
+    /**
      * @return Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
@@ -176,6 +188,7 @@ public final class GetZeroTrustGatewayCertificateResult {
         private Boolean inUse;
         private String issuerOrg;
         private String issuerRaw;
+        private String region;
         private String type;
         private String updatedAt;
         private String uploadedOn;
@@ -193,6 +206,7 @@ public final class GetZeroTrustGatewayCertificateResult {
     	      this.inUse = defaults.inUse;
     	      this.issuerOrg = defaults.issuerOrg;
     	      this.issuerRaw = defaults.issuerRaw;
+    	      this.region = defaults.region;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
     	      this.uploadedOn = defaults.uploadedOn;
@@ -285,6 +299,14 @@ public final class GetZeroTrustGatewayCertificateResult {
             return this;
         }
         @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayCertificateResult", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayCertificateResult", "type");
@@ -321,6 +343,7 @@ public final class GetZeroTrustGatewayCertificateResult {
             _resultValue.inUse = inUse;
             _resultValue.issuerOrg = issuerOrg;
             _resultValue.issuerRaw = issuerRaw;
+            _resultValue.region = region;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
             _resultValue.uploadedOn = uploadedOn;

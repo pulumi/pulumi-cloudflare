@@ -83,7 +83,7 @@ type D1Database struct {
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	PrimaryLocationHint pulumi.StringPtrOutput `pulumi:"primaryLocationHint"`
 	// Configuration for D1 read replication.
-	ReadReplication D1DatabaseReadReplicationPtrOutput `pulumi:"readReplication"`
+	ReadReplication D1DatabaseReadReplicationOutput `pulumi:"readReplication"`
 	// D1 database identifier (UUID).
 	Uuid    pulumi.StringOutput `pulumi:"uuid"`
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -356,8 +356,8 @@ func (o D1DatabaseOutput) PrimaryLocationHint() pulumi.StringPtrOutput {
 }
 
 // Configuration for D1 read replication.
-func (o D1DatabaseOutput) ReadReplication() D1DatabaseReadReplicationPtrOutput {
-	return o.ApplyT(func(v *D1Database) D1DatabaseReadReplicationPtrOutput { return v.ReadReplication }).(D1DatabaseReadReplicationPtrOutput)
+func (o D1DatabaseOutput) ReadReplication() D1DatabaseReadReplicationOutput {
+	return o.ApplyT(func(v *D1Database) D1DatabaseReadReplicationOutput { return v.ReadReplication }).(D1DatabaseReadReplicationOutput)
 }
 
 // D1 database identifier (UUID).

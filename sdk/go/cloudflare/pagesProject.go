@@ -269,6 +269,8 @@ type PagesProject struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigOutput `pulumi:"buildConfig"`
+	// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+	BuildImageAutoUpgrade PagesProjectBuildImageAutoUpgradeOutput `pulumi:"buildImageAutoUpgrade"`
 	// Most recent production deployment of the project.
 	CanonicalDeployment PagesProjectCanonicalDeploymentOutput `pulumi:"canonicalDeployment"`
 	// When the project was created.
@@ -342,6 +344,8 @@ type pagesProjectState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
+	// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+	BuildImageAutoUpgrade *PagesProjectBuildImageAutoUpgrade `pulumi:"buildImageAutoUpgrade"`
 	// Most recent production deployment of the project.
 	CanonicalDeployment *PagesProjectCanonicalDeployment `pulumi:"canonicalDeployment"`
 	// When the project was created.
@@ -377,6 +381,8 @@ type PagesProjectState struct {
 	AccountId pulumi.StringPtrInput
 	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigPtrInput
+	// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+	BuildImageAutoUpgrade PagesProjectBuildImageAutoUpgradePtrInput
 	// Most recent production deployment of the project.
 	CanonicalDeployment PagesProjectCanonicalDeploymentPtrInput
 	// When the project was created.
@@ -537,6 +543,11 @@ func (o PagesProjectOutput) AccountId() pulumi.StringOutput {
 // Configs for the project build process.
 func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigOutput {
 	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigOutput { return v.BuildConfig }).(PagesProjectBuildConfigOutput)
+}
+
+// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+func (o PagesProjectOutput) BuildImageAutoUpgrade() PagesProjectBuildImageAutoUpgradeOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectBuildImageAutoUpgradeOutput { return v.BuildImageAutoUpgrade }).(PagesProjectBuildImageAutoUpgradeOutput)
 }
 
 // Most recent production deployment of the project.

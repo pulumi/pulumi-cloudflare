@@ -78,6 +78,8 @@ type LookupZeroTrustGatewayCertificateResult struct {
 	IssuerOrg string `pulumi:"issuerOrg"`
 	// Provide the entire issuer field of the certificate (read-only).
 	IssuerRaw string `pulumi:"issuerRaw"`
+	// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+	Region string `pulumi:"region"`
 	// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
 	Type       string `pulumi:"type"`
@@ -169,6 +171,11 @@ func (o LookupZeroTrustGatewayCertificateResultOutput) IssuerOrg() pulumi.String
 // Provide the entire issuer field of the certificate (read-only).
 func (o LookupZeroTrustGatewayCertificateResultOutput) IssuerRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.IssuerRaw }).(pulumi.StringOutput)
+}
+
+// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+func (o LookupZeroTrustGatewayCertificateResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.

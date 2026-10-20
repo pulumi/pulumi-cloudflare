@@ -227,6 +227,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? QueueName { get; set; }
 
         /// <summary>
+        /// Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+        /// </summary>
+        [Input("retry")]
+        public Input<Inputs.WorkerScriptBindingRetryGetArgs>? Retry { get; set; }
+
+        /// <summary>
         /// The script where the Durable Object is defined, if it is external to this Worker.
         /// </summary>
         [Input("scriptName")]

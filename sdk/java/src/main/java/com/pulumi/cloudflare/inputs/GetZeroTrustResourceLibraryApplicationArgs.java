@@ -33,14 +33,14 @@ public final class GetZeroTrustResourceLibraryApplicationArgs extends com.pulumi
     }
 
     /**
-     * Returns the application ID.
+     * Numeric identifier for the application.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return Returns the application ID.
+     * @return Numeric identifier for the application.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -92,7 +92,7 @@ public final class GetZeroTrustResourceLibraryApplicationArgs extends com.pulumi
         }
 
         /**
-         * @param id Returns the application ID.
+         * @param id Numeric identifier for the application.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetZeroTrustResourceLibraryApplicationArgs extends com.pulumi
         }
 
         /**
-         * @param id Returns the application ID.
+         * @param id Numeric identifier for the application.
          * 
          * @return builder
          * 

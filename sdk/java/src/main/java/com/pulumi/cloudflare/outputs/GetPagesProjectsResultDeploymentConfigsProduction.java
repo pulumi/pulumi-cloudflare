@@ -50,7 +50,7 @@ public final class GetPagesProjectsResultDeploymentConfigsProduction {
      */
     private Map<String,GetPagesProjectsResultDeploymentConfigsProductionBrowsers> browsers;
     /**
-     * @return The major version of the build image to use for Pages Functions.
+     * @return The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project&#39;s builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
      * 
      */
     private Integer buildImageMajorVersion;
@@ -175,7 +175,7 @@ public final class GetPagesProjectsResultDeploymentConfigsProduction {
         return this.browsers;
     }
     /**
-     * @return The major version of the build image to use for Pages Functions.
+     * @return The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project&#39;s builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
      * 
      */
     public Integer buildImageMajorVersion() {

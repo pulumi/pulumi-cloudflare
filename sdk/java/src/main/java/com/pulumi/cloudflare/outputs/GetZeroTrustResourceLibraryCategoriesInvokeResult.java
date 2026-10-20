@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
     private String accountId;
     /**
-     * @return Limit of number of results to return.
+     * @return Number of results to return. Defaults to 25; values are clamped to 1–250.
      * 
      */
     private Integer limit;
@@ -27,7 +27,7 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Offset of results to return.
+     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0.
      * 
      */
     private Integer offset;
@@ -42,7 +42,7 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
         return this.accountId;
     }
     /**
-     * @return Limit of number of results to return.
+     * @return Number of results to return. Defaults to 25; values are clamped to 1–250.
      * 
      */
     public Integer limit() {
@@ -56,7 +56,7 @@ public final class GetZeroTrustResourceLibraryCategoriesInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Offset of results to return.
+     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0.
      * 
      */
     public Integer offset() {

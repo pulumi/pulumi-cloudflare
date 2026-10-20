@@ -94,14 +94,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      * 
      */
     @Import(name="mergeSubrequests")
     private @Nullable Output<Boolean> mergeSubrequests;
 
     /**
-     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      * 
      */
     public Optional<Output<Boolean>> mergeSubrequests() {
@@ -369,7 +369,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mergeSubrequests If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+         * @param mergeSubrequests If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mergeSubrequests If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+         * @param mergeSubrequests If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
          * 
          * @return builder
          * 

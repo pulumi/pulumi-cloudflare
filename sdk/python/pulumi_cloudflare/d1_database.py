@@ -587,7 +587,7 @@ class D1Database(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="readReplication")
-    def read_replication(self) -> pulumi.Output[Optional['outputs.D1DatabaseReadReplication']]:
+    def read_replication(self) -> pulumi.Output['outputs.D1DatabaseReadReplication']:
         """
         Configuration for D1 read replication.
         """

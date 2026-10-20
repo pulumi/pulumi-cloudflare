@@ -68,6 +68,11 @@ export interface GetWorkersKvNamespaceResult {
      */
     readonly jurisdiction: string;
     /**
+     * The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: "instant".
+     */
+    readonly mode: string;
+    /**
      * ID of the Workers KV namespace.
      */
     readonly namespaceId?: string;

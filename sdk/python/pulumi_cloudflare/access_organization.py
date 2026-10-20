@@ -32,8 +32,8 @@ class AccessOrganizationArgs:
                  login_design: pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']] = None,
                  mfa_config: pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']] = None,
                  mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_piv_key_requirements: pulumi.Input[Optional['AccessOrganizationMfaPivKeyRequirementsArgs']] = None,
                  mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_token_inactivity: pulumi.Input[Optional['AccessOrganizationServiceTokenInactivityArgs']] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -48,16 +48,16 @@ class AccessOrganizationArgs:
 
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-        :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
+        :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        :param pulumi.Input['AccessOrganizationMfaPivKeyRequirementsArgs'] mfa_piv_key_requirements: Configures PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-        :param pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs'] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
-        :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
         :param pulumi.Input['AccessOrganizationServiceTokenInactivityArgs'] service_token_inactivity: Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.bool] strict_service_token_auth: Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
@@ -89,10 +89,10 @@ class AccessOrganizationArgs:
             pulumi.set(__self__, "mfa_config", mfa_config)
         if mfa_configuration_allowed is not None:
             pulumi.set(__self__, "mfa_configuration_allowed", mfa_configuration_allowed)
+        if mfa_piv_key_requirements is not None:
+            pulumi.set(__self__, "mfa_piv_key_requirements", mfa_piv_key_requirements)
         if mfa_required_for_all_apps is not None:
             pulumi.set(__self__, "mfa_required_for_all_apps", mfa_required_for_all_apps)
-        if mfa_ssh_piv_key_requirements is not None:
-            pulumi.set(__self__, "mfa_ssh_piv_key_requirements", mfa_ssh_piv_key_requirements)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if service_token_inactivity is not None:
@@ -140,7 +140,7 @@ class AccessOrganizationArgs:
     @pulumi.getter(name="authDomain")
     def auth_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique subdomain assigned to your Zero Trust organization.
+        The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
         """
         return pulumi.get(self, "auth_domain")
 
@@ -239,6 +239,18 @@ class AccessOrganizationArgs:
         pulumi.set(self, "mfa_configuration_allowed", value)
 
     @_builtins.property
+    @pulumi.getter(name="mfaPivKeyRequirements")
+    def mfa_piv_key_requirements(self) -> pulumi.Input[Optional['AccessOrganizationMfaPivKeyRequirementsArgs']]:
+        """
+        Configures PIV key requirements for MFA using hardware security keys.
+        """
+        return pulumi.get(self, "mfa_piv_key_requirements")
+
+    @mfa_piv_key_requirements.setter
+    def mfa_piv_key_requirements(self, value: pulumi.Input[Optional['AccessOrganizationMfaPivKeyRequirementsArgs']]):
+        pulumi.set(self, "mfa_piv_key_requirements", value)
+
+    @_builtins.property
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -251,22 +263,10 @@ class AccessOrganizationArgs:
         pulumi.set(self, "mfa_required_for_all_apps", value)
 
     @_builtins.property
-    @pulumi.getter(name="mfaSshPivKeyRequirements")
-    def mfa_ssh_piv_key_requirements(self) -> pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']]:
-        """
-        Configures SSH PIV key requirements for MFA using hardware security keys.
-        """
-        return pulumi.get(self, "mfa_ssh_piv_key_requirements")
-
-    @mfa_ssh_piv_key_requirements.setter
-    def mfa_ssh_piv_key_requirements(self, value: pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']]):
-        pulumi.set(self, "mfa_ssh_piv_key_requirements", value)
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of your Zero Trust organization.
+        The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
         """
         return pulumi.get(self, "name")
 
@@ -385,8 +385,8 @@ class _AccessOrganizationState:
                  login_design: pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']] = None,
                  mfa_config: pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']] = None,
                  mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_piv_key_requirements: pulumi.Input[Optional['AccessOrganizationMfaPivKeyRequirementsArgs']] = None,
                  mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_token_inactivity: pulumi.Input[Optional['AccessOrganizationServiceTokenInactivityArgs']] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -402,16 +402,16 @@ class _AccessOrganizationState:
 
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-        :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
+        :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input['AccessOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        :param pulumi.Input['AccessOrganizationMfaPivKeyRequirementsArgs'] mfa_piv_key_requirements: Configures PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-        :param pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs'] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
-        :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
         :param pulumi.Input['AccessOrganizationServiceTokenInactivityArgs'] service_token_inactivity: Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.bool] strict_service_token_auth: Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
@@ -444,10 +444,10 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "mfa_config", mfa_config)
         if mfa_configuration_allowed is not None:
             pulumi.set(__self__, "mfa_configuration_allowed", mfa_configuration_allowed)
+        if mfa_piv_key_requirements is not None:
+            pulumi.set(__self__, "mfa_piv_key_requirements", mfa_piv_key_requirements)
         if mfa_required_for_all_apps is not None:
             pulumi.set(__self__, "mfa_required_for_all_apps", mfa_required_for_all_apps)
-        if mfa_ssh_piv_key_requirements is not None:
-            pulumi.set(__self__, "mfa_ssh_piv_key_requirements", mfa_ssh_piv_key_requirements)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if service_token_inactivity is not None:
@@ -497,7 +497,7 @@ class _AccessOrganizationState:
     @pulumi.getter(name="authDomain")
     def auth_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique subdomain assigned to your Zero Trust organization.
+        The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
         """
         return pulumi.get(self, "auth_domain")
 
@@ -596,6 +596,18 @@ class _AccessOrganizationState:
         pulumi.set(self, "mfa_configuration_allowed", value)
 
     @_builtins.property
+    @pulumi.getter(name="mfaPivKeyRequirements")
+    def mfa_piv_key_requirements(self) -> pulumi.Input[Optional['AccessOrganizationMfaPivKeyRequirementsArgs']]:
+        """
+        Configures PIV key requirements for MFA using hardware security keys.
+        """
+        return pulumi.get(self, "mfa_piv_key_requirements")
+
+    @mfa_piv_key_requirements.setter
+    def mfa_piv_key_requirements(self, value: pulumi.Input[Optional['AccessOrganizationMfaPivKeyRequirementsArgs']]):
+        pulumi.set(self, "mfa_piv_key_requirements", value)
+
+    @_builtins.property
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -608,22 +620,10 @@ class _AccessOrganizationState:
         pulumi.set(self, "mfa_required_for_all_apps", value)
 
     @_builtins.property
-    @pulumi.getter(name="mfaSshPivKeyRequirements")
-    def mfa_ssh_piv_key_requirements(self) -> pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']]:
-        """
-        Configures SSH PIV key requirements for MFA using hardware security keys.
-        """
-        return pulumi.get(self, "mfa_ssh_piv_key_requirements")
-
-    @mfa_ssh_piv_key_requirements.setter
-    def mfa_ssh_piv_key_requirements(self, value: pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']]):
-        pulumi.set(self, "mfa_ssh_piv_key_requirements", value)
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of your Zero Trust organization.
+        The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
         """
         return pulumi.get(self, "name")
 
@@ -762,8 +762,8 @@ class AccessOrganization(pulumi.CustomResource):
                  login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
                  mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
                  mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaPivKeyRequirementsArgs', 'AccessOrganizationMfaPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaPivKeyRequirements']]] = None,
                  mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_token_inactivity: pulumi.Input[Optional[Union['AccessOrganizationServiceTokenInactivityArgs', 'AccessOrganizationServiceTokenInactivityArgsDict', 'outputs.AccessOrganizationServiceTokenInactivity']]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -817,17 +817,17 @@ class AccessOrganization(pulumi.CustomResource):
                 "session_duration": "24h",
             },
             mfa_piv_key_requirements={
-                "pinPolicy": "always",
-                "requireFipsDevice": True,
-                "sshKeySize": [
+                "pin_policy": "always",
+                "require_fips_device": True,
+                "ssh_key_sizes": [
                     256,
                     2048,
                 ],
-                "sshKeyType": [
+                "ssh_key_types": [
                     "ecdsa",
                     "rsa",
                 ],
-                "touchPolicy": "always",
+                "touch_policy": "always",
             },
             mfa_required_for_all_apps=False,
             name="Widget Corps Internal Applications",
@@ -855,16 +855,16 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-        :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
+        :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        :param pulumi.Input[Union['AccessOrganizationMfaPivKeyRequirementsArgs', 'AccessOrganizationMfaPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaPivKeyRequirements']] mfa_piv_key_requirements: Configures PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-        :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
-        :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
         :param pulumi.Input[Union['AccessOrganizationServiceTokenInactivityArgs', 'AccessOrganizationServiceTokenInactivityArgsDict', 'outputs.AccessOrganizationServiceTokenInactivity']] service_token_inactivity: Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.bool] strict_service_token_auth: Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
@@ -923,17 +923,17 @@ class AccessOrganization(pulumi.CustomResource):
                 "session_duration": "24h",
             },
             mfa_piv_key_requirements={
-                "pinPolicy": "always",
-                "requireFipsDevice": True,
-                "sshKeySize": [
+                "pin_policy": "always",
+                "require_fips_device": True,
+                "ssh_key_sizes": [
                     256,
                     2048,
                 ],
-                "sshKeyType": [
+                "ssh_key_types": [
                     "ecdsa",
                     "rsa",
                 ],
-                "touchPolicy": "always",
+                "touch_policy": "always",
             },
             mfa_required_for_all_apps=False,
             name="Widget Corps Internal Applications",
@@ -983,8 +983,8 @@ class AccessOrganization(pulumi.CustomResource):
                  login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
                  mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
                  mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaPivKeyRequirementsArgs', 'AccessOrganizationMfaPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaPivKeyRequirements']]] = None,
                  mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_token_inactivity: pulumi.Input[Optional[Union['AccessOrganizationServiceTokenInactivityArgs', 'AccessOrganizationServiceTokenInactivityArgsDict', 'outputs.AccessOrganizationServiceTokenInactivity']]] = None,
                  session_duration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1015,8 +1015,8 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["login_design"] = login_design
             __props__.__dict__["mfa_config"] = mfa_config
             __props__.__dict__["mfa_configuration_allowed"] = mfa_configuration_allowed
+            __props__.__dict__["mfa_piv_key_requirements"] = mfa_piv_key_requirements
             __props__.__dict__["mfa_required_for_all_apps"] = mfa_required_for_all_apps
-            __props__.__dict__["mfa_ssh_piv_key_requirements"] = mfa_ssh_piv_key_requirements
             __props__.__dict__["name"] = name
             __props__.__dict__["service_token_inactivity"] = service_token_inactivity
             __props__.__dict__["session_duration"] = session_duration
@@ -1050,8 +1050,8 @@ class AccessOrganization(pulumi.CustomResource):
             login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict', 'outputs.AccessOrganizationLoginDesign']]] = None,
             mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']]] = None,
             mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaPivKeyRequirementsArgs', 'AccessOrganizationMfaPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaPivKeyRequirements']]] = None,
             mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
-            mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             service_token_inactivity: pulumi.Input[Optional[Union['AccessOrganizationServiceTokenInactivityArgs', 'AccessOrganizationServiceTokenInactivityArgsDict', 'outputs.AccessOrganizationServiceTokenInactivity']]] = None,
             session_duration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1071,16 +1071,16 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-        :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
+        :param pulumi.Input[_builtins.str] auth_domain: The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
         :param pulumi.Input[_builtins.bool] auto_redirect_to_identity: When set to `true`, users skip the identity provider selection step during login.
         :param pulumi.Input[_builtins.bool] deny_unmatched_requests: Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deny_unmatched_requests_exempted_zone_names: Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict', 'outputs.AccessOrganizationMfaConfig']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
+        :param pulumi.Input[Union['AccessOrganizationMfaPivKeyRequirementsArgs', 'AccessOrganizationMfaPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaPivKeyRequirements']] mfa_piv_key_requirements: Configures PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-        :param pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict', 'outputs.AccessOrganizationMfaSshPivKeyRequirements']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
-        :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
         :param pulumi.Input[Union['AccessOrganizationServiceTokenInactivityArgs', 'AccessOrganizationServiceTokenInactivityArgsDict', 'outputs.AccessOrganizationServiceTokenInactivity']] service_token_inactivity: Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         :param pulumi.Input[_builtins.bool] strict_service_token_auth: Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
@@ -1106,8 +1106,8 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["login_design"] = login_design
         __props__.__dict__["mfa_config"] = mfa_config
         __props__.__dict__["mfa_configuration_allowed"] = mfa_configuration_allowed
+        __props__.__dict__["mfa_piv_key_requirements"] = mfa_piv_key_requirements
         __props__.__dict__["mfa_required_for_all_apps"] = mfa_required_for_all_apps
-        __props__.__dict__["mfa_ssh_piv_key_requirements"] = mfa_ssh_piv_key_requirements
         __props__.__dict__["name"] = name
         __props__.__dict__["service_token_inactivity"] = service_token_inactivity
         __props__.__dict__["session_duration"] = session_duration
@@ -1140,7 +1140,7 @@ class AccessOrganization(pulumi.CustomResource):
     @pulumi.getter(name="authDomain")
     def auth_domain(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The unique subdomain assigned to your Zero Trust organization.
+        The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
         """
         return pulumi.get(self, "auth_domain")
 
@@ -1203,6 +1203,14 @@ class AccessOrganization(pulumi.CustomResource):
         return pulumi.get(self, "mfa_configuration_allowed")
 
     @_builtins.property
+    @pulumi.getter(name="mfaPivKeyRequirements")
+    def mfa_piv_key_requirements(self) -> pulumi.Output[Optional['outputs.AccessOrganizationMfaPivKeyRequirements']]:
+        """
+        Configures PIV key requirements for MFA using hardware security keys.
+        """
+        return pulumi.get(self, "mfa_piv_key_requirements")
+
+    @_builtins.property
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -1211,18 +1219,10 @@ class AccessOrganization(pulumi.CustomResource):
         return pulumi.get(self, "mfa_required_for_all_apps")
 
     @_builtins.property
-    @pulumi.getter(name="mfaSshPivKeyRequirements")
-    def mfa_ssh_piv_key_requirements(self) -> pulumi.Output[Optional['outputs.AccessOrganizationMfaSshPivKeyRequirements']]:
-        """
-        Configures SSH PIV key requirements for MFA using hardware security keys.
-        """
-        return pulumi.get(self, "mfa_ssh_piv_key_requirements")
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of your Zero Trust organization.
+        The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
         """
         return pulumi.get(self, "name")
 

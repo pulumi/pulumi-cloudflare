@@ -13,6 +13,2094 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetAiGatewayFilter struct {
+	// Search by id
+	Search *string `pulumi:"search"`
+}
+
+// GetAiGatewayFilterInput is an input type that accepts GetAiGatewayFilterArgs and GetAiGatewayFilterOutput values.
+// You can construct a concrete instance of `GetAiGatewayFilterInput` via:
+//
+//	GetAiGatewayFilterArgs{...}
+type GetAiGatewayFilterInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayFilterOutput() GetAiGatewayFilterOutput
+	ToGetAiGatewayFilterOutputWithContext(context.Context) GetAiGatewayFilterOutput
+}
+
+type GetAiGatewayFilterArgs struct {
+	// Search by id
+	Search pulumi.StringPtrInput `pulumi:"search"`
+}
+
+func (GetAiGatewayFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayFilter)(nil)).Elem()
+}
+
+func (i GetAiGatewayFilterArgs) ToGetAiGatewayFilterOutput() GetAiGatewayFilterOutput {
+	return i.ToGetAiGatewayFilterOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayFilterArgs) ToGetAiGatewayFilterOutputWithContext(ctx context.Context) GetAiGatewayFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayFilterOutput)
+}
+
+func (i GetAiGatewayFilterArgs) ToGetAiGatewayFilterPtrOutput() GetAiGatewayFilterPtrOutput {
+	return i.ToGetAiGatewayFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayFilterArgs) ToGetAiGatewayFilterPtrOutputWithContext(ctx context.Context) GetAiGatewayFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayFilterOutput).ToGetAiGatewayFilterPtrOutputWithContext(ctx)
+}
+
+// GetAiGatewayFilterPtrInput is an input type that accepts GetAiGatewayFilterArgs, GetAiGatewayFilterPtr and GetAiGatewayFilterPtrOutput values.
+// You can construct a concrete instance of `GetAiGatewayFilterPtrInput` via:
+//
+//	        GetAiGatewayFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAiGatewayFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayFilterPtrOutput() GetAiGatewayFilterPtrOutput
+	ToGetAiGatewayFilterPtrOutputWithContext(context.Context) GetAiGatewayFilterPtrOutput
+}
+
+type getAiGatewayFilterPtrType GetAiGatewayFilterArgs
+
+func GetAiGatewayFilterPtr(v *GetAiGatewayFilterArgs) GetAiGatewayFilterPtrInput {
+	return (*getAiGatewayFilterPtrType)(v)
+}
+
+func (*getAiGatewayFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAiGatewayFilter)(nil)).Elem()
+}
+
+func (i *getAiGatewayFilterPtrType) ToGetAiGatewayFilterPtrOutput() GetAiGatewayFilterPtrOutput {
+	return i.ToGetAiGatewayFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getAiGatewayFilterPtrType) ToGetAiGatewayFilterPtrOutputWithContext(ctx context.Context) GetAiGatewayFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayFilterPtrOutput)
+}
+
+type GetAiGatewayFilterOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayFilter)(nil)).Elem()
+}
+
+func (o GetAiGatewayFilterOutput) ToGetAiGatewayFilterOutput() GetAiGatewayFilterOutput {
+	return o
+}
+
+func (o GetAiGatewayFilterOutput) ToGetAiGatewayFilterOutputWithContext(ctx context.Context) GetAiGatewayFilterOutput {
+	return o
+}
+
+func (o GetAiGatewayFilterOutput) ToGetAiGatewayFilterPtrOutput() GetAiGatewayFilterPtrOutput {
+	return o.ToGetAiGatewayFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetAiGatewayFilterOutput) ToGetAiGatewayFilterPtrOutputWithContext(ctx context.Context) GetAiGatewayFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAiGatewayFilter) *GetAiGatewayFilter {
+		return &v
+	}).(GetAiGatewayFilterPtrOutput)
+}
+
+// Search by id
+func (o GetAiGatewayFilterOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAiGatewayFilter) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
+type GetAiGatewayFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAiGatewayFilter)(nil)).Elem()
+}
+
+func (o GetAiGatewayFilterPtrOutput) ToGetAiGatewayFilterPtrOutput() GetAiGatewayFilterPtrOutput {
+	return o
+}
+
+func (o GetAiGatewayFilterPtrOutput) ToGetAiGatewayFilterPtrOutputWithContext(ctx context.Context) GetAiGatewayFilterPtrOutput {
+	return o
+}
+
+func (o GetAiGatewayFilterPtrOutput) Elem() GetAiGatewayFilterOutput {
+	return o.ApplyT(func(v *GetAiGatewayFilter) GetAiGatewayFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetAiGatewayFilter
+		return ret
+	}).(GetAiGatewayFilterOutput)
+}
+
+// Search by id
+func (o GetAiGatewayFilterPtrOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAiGatewayFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Search
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAiGatewayGuardrails struct {
+	Prompt   GetAiGatewayGuardrailsPrompt   `pulumi:"prompt"`
+	Response GetAiGatewayGuardrailsResponse `pulumi:"response"`
+}
+
+// GetAiGatewayGuardrailsInput is an input type that accepts GetAiGatewayGuardrailsArgs and GetAiGatewayGuardrailsOutput values.
+// You can construct a concrete instance of `GetAiGatewayGuardrailsInput` via:
+//
+//	GetAiGatewayGuardrailsArgs{...}
+type GetAiGatewayGuardrailsInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayGuardrailsOutput() GetAiGatewayGuardrailsOutput
+	ToGetAiGatewayGuardrailsOutputWithContext(context.Context) GetAiGatewayGuardrailsOutput
+}
+
+type GetAiGatewayGuardrailsArgs struct {
+	Prompt   GetAiGatewayGuardrailsPromptInput   `pulumi:"prompt"`
+	Response GetAiGatewayGuardrailsResponseInput `pulumi:"response"`
+}
+
+func (GetAiGatewayGuardrailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayGuardrails)(nil)).Elem()
+}
+
+func (i GetAiGatewayGuardrailsArgs) ToGetAiGatewayGuardrailsOutput() GetAiGatewayGuardrailsOutput {
+	return i.ToGetAiGatewayGuardrailsOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayGuardrailsArgs) ToGetAiGatewayGuardrailsOutputWithContext(ctx context.Context) GetAiGatewayGuardrailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayGuardrailsOutput)
+}
+
+type GetAiGatewayGuardrailsOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayGuardrailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayGuardrails)(nil)).Elem()
+}
+
+func (o GetAiGatewayGuardrailsOutput) ToGetAiGatewayGuardrailsOutput() GetAiGatewayGuardrailsOutput {
+	return o
+}
+
+func (o GetAiGatewayGuardrailsOutput) ToGetAiGatewayGuardrailsOutputWithContext(ctx context.Context) GetAiGatewayGuardrailsOutput {
+	return o
+}
+
+func (o GetAiGatewayGuardrailsOutput) Prompt() GetAiGatewayGuardrailsPromptOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrails) GetAiGatewayGuardrailsPrompt { return v.Prompt }).(GetAiGatewayGuardrailsPromptOutput)
+}
+
+func (o GetAiGatewayGuardrailsOutput) Response() GetAiGatewayGuardrailsResponseOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrails) GetAiGatewayGuardrailsResponse { return v.Response }).(GetAiGatewayGuardrailsResponseOutput)
+}
+
+type GetAiGatewayGuardrailsPrompt struct {
+	// Available values: "FLAG", "BLOCK".
+	P1 string `pulumi:"p1"`
+	// Available values: "FLAG", "BLOCK".
+	S1 string `pulumi:"s1"`
+	// Available values: "FLAG", "BLOCK".
+	S10 string `pulumi:"s10"`
+	// Available values: "FLAG", "BLOCK".
+	S11 string `pulumi:"s11"`
+	// Available values: "FLAG", "BLOCK".
+	S12 string `pulumi:"s12"`
+	// Available values: "FLAG", "BLOCK".
+	S13 string `pulumi:"s13"`
+	// Available values: "FLAG", "BLOCK".
+	S2 string `pulumi:"s2"`
+	// Available values: "FLAG", "BLOCK".
+	S3 string `pulumi:"s3"`
+	// Available values: "FLAG", "BLOCK".
+	S4 string `pulumi:"s4"`
+	// Available values: "FLAG", "BLOCK".
+	S5 string `pulumi:"s5"`
+	// Available values: "FLAG", "BLOCK".
+	S6 string `pulumi:"s6"`
+	// Available values: "FLAG", "BLOCK".
+	S7 string `pulumi:"s7"`
+	// Available values: "FLAG", "BLOCK".
+	S8 string `pulumi:"s8"`
+	// Available values: "FLAG", "BLOCK".
+	S9 string `pulumi:"s9"`
+}
+
+// GetAiGatewayGuardrailsPromptInput is an input type that accepts GetAiGatewayGuardrailsPromptArgs and GetAiGatewayGuardrailsPromptOutput values.
+// You can construct a concrete instance of `GetAiGatewayGuardrailsPromptInput` via:
+//
+//	GetAiGatewayGuardrailsPromptArgs{...}
+type GetAiGatewayGuardrailsPromptInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayGuardrailsPromptOutput() GetAiGatewayGuardrailsPromptOutput
+	ToGetAiGatewayGuardrailsPromptOutputWithContext(context.Context) GetAiGatewayGuardrailsPromptOutput
+}
+
+type GetAiGatewayGuardrailsPromptArgs struct {
+	// Available values: "FLAG", "BLOCK".
+	P1 pulumi.StringInput `pulumi:"p1"`
+	// Available values: "FLAG", "BLOCK".
+	S1 pulumi.StringInput `pulumi:"s1"`
+	// Available values: "FLAG", "BLOCK".
+	S10 pulumi.StringInput `pulumi:"s10"`
+	// Available values: "FLAG", "BLOCK".
+	S11 pulumi.StringInput `pulumi:"s11"`
+	// Available values: "FLAG", "BLOCK".
+	S12 pulumi.StringInput `pulumi:"s12"`
+	// Available values: "FLAG", "BLOCK".
+	S13 pulumi.StringInput `pulumi:"s13"`
+	// Available values: "FLAG", "BLOCK".
+	S2 pulumi.StringInput `pulumi:"s2"`
+	// Available values: "FLAG", "BLOCK".
+	S3 pulumi.StringInput `pulumi:"s3"`
+	// Available values: "FLAG", "BLOCK".
+	S4 pulumi.StringInput `pulumi:"s4"`
+	// Available values: "FLAG", "BLOCK".
+	S5 pulumi.StringInput `pulumi:"s5"`
+	// Available values: "FLAG", "BLOCK".
+	S6 pulumi.StringInput `pulumi:"s6"`
+	// Available values: "FLAG", "BLOCK".
+	S7 pulumi.StringInput `pulumi:"s7"`
+	// Available values: "FLAG", "BLOCK".
+	S8 pulumi.StringInput `pulumi:"s8"`
+	// Available values: "FLAG", "BLOCK".
+	S9 pulumi.StringInput `pulumi:"s9"`
+}
+
+func (GetAiGatewayGuardrailsPromptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayGuardrailsPrompt)(nil)).Elem()
+}
+
+func (i GetAiGatewayGuardrailsPromptArgs) ToGetAiGatewayGuardrailsPromptOutput() GetAiGatewayGuardrailsPromptOutput {
+	return i.ToGetAiGatewayGuardrailsPromptOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayGuardrailsPromptArgs) ToGetAiGatewayGuardrailsPromptOutputWithContext(ctx context.Context) GetAiGatewayGuardrailsPromptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayGuardrailsPromptOutput)
+}
+
+type GetAiGatewayGuardrailsPromptOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayGuardrailsPromptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayGuardrailsPrompt)(nil)).Elem()
+}
+
+func (o GetAiGatewayGuardrailsPromptOutput) ToGetAiGatewayGuardrailsPromptOutput() GetAiGatewayGuardrailsPromptOutput {
+	return o
+}
+
+func (o GetAiGatewayGuardrailsPromptOutput) ToGetAiGatewayGuardrailsPromptOutputWithContext(ctx context.Context) GetAiGatewayGuardrailsPromptOutput {
+	return o
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) P1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.P1 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S1 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S10() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S10 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S11() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S11 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S12() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S12 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S13() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S13 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S2() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S2 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S3() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S3 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S4 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S5() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S5 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S6 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S7() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S7 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S8() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S8 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsPromptOutput) S9() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsPrompt) string { return v.S9 }).(pulumi.StringOutput)
+}
+
+type GetAiGatewayGuardrailsResponse struct {
+	// Available values: "FLAG", "BLOCK".
+	P1 string `pulumi:"p1"`
+	// Available values: "FLAG", "BLOCK".
+	S1 string `pulumi:"s1"`
+	// Available values: "FLAG", "BLOCK".
+	S10 string `pulumi:"s10"`
+	// Available values: "FLAG", "BLOCK".
+	S11 string `pulumi:"s11"`
+	// Available values: "FLAG", "BLOCK".
+	S12 string `pulumi:"s12"`
+	// Available values: "FLAG", "BLOCK".
+	S13 string `pulumi:"s13"`
+	// Available values: "FLAG", "BLOCK".
+	S2 string `pulumi:"s2"`
+	// Available values: "FLAG", "BLOCK".
+	S3 string `pulumi:"s3"`
+	// Available values: "FLAG", "BLOCK".
+	S4 string `pulumi:"s4"`
+	// Available values: "FLAG", "BLOCK".
+	S5 string `pulumi:"s5"`
+	// Available values: "FLAG", "BLOCK".
+	S6 string `pulumi:"s6"`
+	// Available values: "FLAG", "BLOCK".
+	S7 string `pulumi:"s7"`
+	// Available values: "FLAG", "BLOCK".
+	S8 string `pulumi:"s8"`
+	// Available values: "FLAG", "BLOCK".
+	S9 string `pulumi:"s9"`
+}
+
+// GetAiGatewayGuardrailsResponseInput is an input type that accepts GetAiGatewayGuardrailsResponseArgs and GetAiGatewayGuardrailsResponseOutput values.
+// You can construct a concrete instance of `GetAiGatewayGuardrailsResponseInput` via:
+//
+//	GetAiGatewayGuardrailsResponseArgs{...}
+type GetAiGatewayGuardrailsResponseInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayGuardrailsResponseOutput() GetAiGatewayGuardrailsResponseOutput
+	ToGetAiGatewayGuardrailsResponseOutputWithContext(context.Context) GetAiGatewayGuardrailsResponseOutput
+}
+
+type GetAiGatewayGuardrailsResponseArgs struct {
+	// Available values: "FLAG", "BLOCK".
+	P1 pulumi.StringInput `pulumi:"p1"`
+	// Available values: "FLAG", "BLOCK".
+	S1 pulumi.StringInput `pulumi:"s1"`
+	// Available values: "FLAG", "BLOCK".
+	S10 pulumi.StringInput `pulumi:"s10"`
+	// Available values: "FLAG", "BLOCK".
+	S11 pulumi.StringInput `pulumi:"s11"`
+	// Available values: "FLAG", "BLOCK".
+	S12 pulumi.StringInput `pulumi:"s12"`
+	// Available values: "FLAG", "BLOCK".
+	S13 pulumi.StringInput `pulumi:"s13"`
+	// Available values: "FLAG", "BLOCK".
+	S2 pulumi.StringInput `pulumi:"s2"`
+	// Available values: "FLAG", "BLOCK".
+	S3 pulumi.StringInput `pulumi:"s3"`
+	// Available values: "FLAG", "BLOCK".
+	S4 pulumi.StringInput `pulumi:"s4"`
+	// Available values: "FLAG", "BLOCK".
+	S5 pulumi.StringInput `pulumi:"s5"`
+	// Available values: "FLAG", "BLOCK".
+	S6 pulumi.StringInput `pulumi:"s6"`
+	// Available values: "FLAG", "BLOCK".
+	S7 pulumi.StringInput `pulumi:"s7"`
+	// Available values: "FLAG", "BLOCK".
+	S8 pulumi.StringInput `pulumi:"s8"`
+	// Available values: "FLAG", "BLOCK".
+	S9 pulumi.StringInput `pulumi:"s9"`
+}
+
+func (GetAiGatewayGuardrailsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayGuardrailsResponse)(nil)).Elem()
+}
+
+func (i GetAiGatewayGuardrailsResponseArgs) ToGetAiGatewayGuardrailsResponseOutput() GetAiGatewayGuardrailsResponseOutput {
+	return i.ToGetAiGatewayGuardrailsResponseOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayGuardrailsResponseArgs) ToGetAiGatewayGuardrailsResponseOutputWithContext(ctx context.Context) GetAiGatewayGuardrailsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayGuardrailsResponseOutput)
+}
+
+type GetAiGatewayGuardrailsResponseOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayGuardrailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayGuardrailsResponse)(nil)).Elem()
+}
+
+func (o GetAiGatewayGuardrailsResponseOutput) ToGetAiGatewayGuardrailsResponseOutput() GetAiGatewayGuardrailsResponseOutput {
+	return o
+}
+
+func (o GetAiGatewayGuardrailsResponseOutput) ToGetAiGatewayGuardrailsResponseOutputWithContext(ctx context.Context) GetAiGatewayGuardrailsResponseOutput {
+	return o
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) P1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.P1 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S1 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S10() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S10 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S11() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S11 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S12() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S12 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S13() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S13 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S2() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S2 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S3() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S3 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S4 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S5() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S5 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S6 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S7() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S7 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S8() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S8 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewayGuardrailsResponseOutput) S9() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayGuardrailsResponse) string { return v.S9 }).(pulumi.StringOutput)
+}
+
+type GetAiGatewayOtel struct {
+	Authorization string `pulumi:"authorization"`
+	// Available values: "json", "protobuf".
+	ContentType string            `pulumi:"contentType"`
+	Headers     map[string]string `pulumi:"headers"`
+	Url         string            `pulumi:"url"`
+}
+
+// GetAiGatewayOtelInput is an input type that accepts GetAiGatewayOtelArgs and GetAiGatewayOtelOutput values.
+// You can construct a concrete instance of `GetAiGatewayOtelInput` via:
+//
+//	GetAiGatewayOtelArgs{...}
+type GetAiGatewayOtelInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayOtelOutput() GetAiGatewayOtelOutput
+	ToGetAiGatewayOtelOutputWithContext(context.Context) GetAiGatewayOtelOutput
+}
+
+type GetAiGatewayOtelArgs struct {
+	Authorization pulumi.StringInput `pulumi:"authorization"`
+	// Available values: "json", "protobuf".
+	ContentType pulumi.StringInput    `pulumi:"contentType"`
+	Headers     pulumi.StringMapInput `pulumi:"headers"`
+	Url         pulumi.StringInput    `pulumi:"url"`
+}
+
+func (GetAiGatewayOtelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayOtel)(nil)).Elem()
+}
+
+func (i GetAiGatewayOtelArgs) ToGetAiGatewayOtelOutput() GetAiGatewayOtelOutput {
+	return i.ToGetAiGatewayOtelOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayOtelArgs) ToGetAiGatewayOtelOutputWithContext(ctx context.Context) GetAiGatewayOtelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayOtelOutput)
+}
+
+// GetAiGatewayOtelArrayInput is an input type that accepts GetAiGatewayOtelArray and GetAiGatewayOtelArrayOutput values.
+// You can construct a concrete instance of `GetAiGatewayOtelArrayInput` via:
+//
+//	GetAiGatewayOtelArray{ GetAiGatewayOtelArgs{...} }
+type GetAiGatewayOtelArrayInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayOtelArrayOutput() GetAiGatewayOtelArrayOutput
+	ToGetAiGatewayOtelArrayOutputWithContext(context.Context) GetAiGatewayOtelArrayOutput
+}
+
+type GetAiGatewayOtelArray []GetAiGatewayOtelInput
+
+func (GetAiGatewayOtelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewayOtel)(nil)).Elem()
+}
+
+func (i GetAiGatewayOtelArray) ToGetAiGatewayOtelArrayOutput() GetAiGatewayOtelArrayOutput {
+	return i.ToGetAiGatewayOtelArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayOtelArray) ToGetAiGatewayOtelArrayOutputWithContext(ctx context.Context) GetAiGatewayOtelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayOtelArrayOutput)
+}
+
+type GetAiGatewayOtelOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayOtelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayOtel)(nil)).Elem()
+}
+
+func (o GetAiGatewayOtelOutput) ToGetAiGatewayOtelOutput() GetAiGatewayOtelOutput {
+	return o
+}
+
+func (o GetAiGatewayOtelOutput) ToGetAiGatewayOtelOutputWithContext(ctx context.Context) GetAiGatewayOtelOutput {
+	return o
+}
+
+func (o GetAiGatewayOtelOutput) Authorization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayOtel) string { return v.Authorization }).(pulumi.StringOutput)
+}
+
+// Available values: "json", "protobuf".
+func (o GetAiGatewayOtelOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayOtel) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewayOtelOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAiGatewayOtel) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+func (o GetAiGatewayOtelOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayOtel) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetAiGatewayOtelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayOtelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewayOtel)(nil)).Elem()
+}
+
+func (o GetAiGatewayOtelArrayOutput) ToGetAiGatewayOtelArrayOutput() GetAiGatewayOtelArrayOutput {
+	return o
+}
+
+func (o GetAiGatewayOtelArrayOutput) ToGetAiGatewayOtelArrayOutputWithContext(ctx context.Context) GetAiGatewayOtelArrayOutput {
+	return o
+}
+
+func (o GetAiGatewayOtelArrayOutput) Index(i pulumi.IntInput) GetAiGatewayOtelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiGatewayOtel {
+		return vs[0].([]GetAiGatewayOtel)[vs[1].(int)]
+	}).(GetAiGatewayOtelOutput)
+}
+
+type GetAiGatewaySpendLimits struct {
+	Enabled bool                          `pulumi:"enabled"`
+	Rules   []GetAiGatewaySpendLimitsRule `pulumi:"rules"`
+}
+
+// GetAiGatewaySpendLimitsInput is an input type that accepts GetAiGatewaySpendLimitsArgs and GetAiGatewaySpendLimitsOutput values.
+// You can construct a concrete instance of `GetAiGatewaySpendLimitsInput` via:
+//
+//	GetAiGatewaySpendLimitsArgs{...}
+type GetAiGatewaySpendLimitsInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaySpendLimitsOutput() GetAiGatewaySpendLimitsOutput
+	ToGetAiGatewaySpendLimitsOutputWithContext(context.Context) GetAiGatewaySpendLimitsOutput
+}
+
+type GetAiGatewaySpendLimitsArgs struct {
+	Enabled pulumi.BoolInput                      `pulumi:"enabled"`
+	Rules   GetAiGatewaySpendLimitsRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetAiGatewaySpendLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimits)(nil)).Elem()
+}
+
+func (i GetAiGatewaySpendLimitsArgs) ToGetAiGatewaySpendLimitsOutput() GetAiGatewaySpendLimitsOutput {
+	return i.ToGetAiGatewaySpendLimitsOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaySpendLimitsArgs) ToGetAiGatewaySpendLimitsOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaySpendLimitsOutput)
+}
+
+type GetAiGatewaySpendLimitsOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaySpendLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimits)(nil)).Elem()
+}
+
+func (o GetAiGatewaySpendLimitsOutput) ToGetAiGatewaySpendLimitsOutput() GetAiGatewaySpendLimitsOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsOutput) ToGetAiGatewaySpendLimitsOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimits) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaySpendLimitsOutput) Rules() GetAiGatewaySpendLimitsRuleArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimits) []GetAiGatewaySpendLimitsRule { return v.Rules }).(GetAiGatewaySpendLimitsRuleArrayOutput)
+}
+
+type GetAiGatewaySpendLimitsRule struct {
+	AiGatewayProvider GetAiGatewaySpendLimitsRuleAiGatewayProvider `pulumi:"aiGatewayProvider"`
+	Enabled           bool                                         `pulumi:"enabled"`
+	Id                string                                       `pulumi:"id"`
+	Limit             float64                                      `pulumi:"limit"`
+	// Available values: "cost".
+	LimitType string                                         `pulumi:"limitType"`
+	Metadata  map[string]GetAiGatewaySpendLimitsRuleMetadata `pulumi:"metadata"`
+	Model     GetAiGatewaySpendLimitsRuleModel               `pulumi:"model"`
+	// Available values: "fixed", "sliding".
+	Technique string `pulumi:"technique"`
+	Window    int    `pulumi:"window"`
+}
+
+// GetAiGatewaySpendLimitsRuleInput is an input type that accepts GetAiGatewaySpendLimitsRuleArgs and GetAiGatewaySpendLimitsRuleOutput values.
+// You can construct a concrete instance of `GetAiGatewaySpendLimitsRuleInput` via:
+//
+//	GetAiGatewaySpendLimitsRuleArgs{...}
+type GetAiGatewaySpendLimitsRuleInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaySpendLimitsRuleOutput() GetAiGatewaySpendLimitsRuleOutput
+	ToGetAiGatewaySpendLimitsRuleOutputWithContext(context.Context) GetAiGatewaySpendLimitsRuleOutput
+}
+
+type GetAiGatewaySpendLimitsRuleArgs struct {
+	AiGatewayProvider GetAiGatewaySpendLimitsRuleAiGatewayProviderInput `pulumi:"aiGatewayProvider"`
+	Enabled           pulumi.BoolInput                                  `pulumi:"enabled"`
+	Id                pulumi.StringInput                                `pulumi:"id"`
+	Limit             pulumi.Float64Input                               `pulumi:"limit"`
+	// Available values: "cost".
+	LimitType pulumi.StringInput                          `pulumi:"limitType"`
+	Metadata  GetAiGatewaySpendLimitsRuleMetadataMapInput `pulumi:"metadata"`
+	Model     GetAiGatewaySpendLimitsRuleModelInput       `pulumi:"model"`
+	// Available values: "fixed", "sliding".
+	Technique pulumi.StringInput `pulumi:"technique"`
+	Window    pulumi.IntInput    `pulumi:"window"`
+}
+
+func (GetAiGatewaySpendLimitsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimitsRule)(nil)).Elem()
+}
+
+func (i GetAiGatewaySpendLimitsRuleArgs) ToGetAiGatewaySpendLimitsRuleOutput() GetAiGatewaySpendLimitsRuleOutput {
+	return i.ToGetAiGatewaySpendLimitsRuleOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaySpendLimitsRuleArgs) ToGetAiGatewaySpendLimitsRuleOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaySpendLimitsRuleOutput)
+}
+
+// GetAiGatewaySpendLimitsRuleArrayInput is an input type that accepts GetAiGatewaySpendLimitsRuleArray and GetAiGatewaySpendLimitsRuleArrayOutput values.
+// You can construct a concrete instance of `GetAiGatewaySpendLimitsRuleArrayInput` via:
+//
+//	GetAiGatewaySpendLimitsRuleArray{ GetAiGatewaySpendLimitsRuleArgs{...} }
+type GetAiGatewaySpendLimitsRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaySpendLimitsRuleArrayOutput() GetAiGatewaySpendLimitsRuleArrayOutput
+	ToGetAiGatewaySpendLimitsRuleArrayOutputWithContext(context.Context) GetAiGatewaySpendLimitsRuleArrayOutput
+}
+
+type GetAiGatewaySpendLimitsRuleArray []GetAiGatewaySpendLimitsRuleInput
+
+func (GetAiGatewaySpendLimitsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewaySpendLimitsRule)(nil)).Elem()
+}
+
+func (i GetAiGatewaySpendLimitsRuleArray) ToGetAiGatewaySpendLimitsRuleArrayOutput() GetAiGatewaySpendLimitsRuleArrayOutput {
+	return i.ToGetAiGatewaySpendLimitsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaySpendLimitsRuleArray) ToGetAiGatewaySpendLimitsRuleArrayOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaySpendLimitsRuleArrayOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaySpendLimitsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimitsRule)(nil)).Elem()
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) ToGetAiGatewaySpendLimitsRuleOutput() GetAiGatewaySpendLimitsRuleOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) ToGetAiGatewaySpendLimitsRuleOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) AiGatewayProvider() GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) GetAiGatewaySpendLimitsRuleAiGatewayProvider {
+		return v.AiGatewayProvider
+	}).(GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) Limit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) float64 { return v.Limit }).(pulumi.Float64Output)
+}
+
+// Available values: "cost".
+func (o GetAiGatewaySpendLimitsRuleOutput) LimitType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) string { return v.LimitType }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) Metadata() GetAiGatewaySpendLimitsRuleMetadataMapOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) map[string]GetAiGatewaySpendLimitsRuleMetadata { return v.Metadata }).(GetAiGatewaySpendLimitsRuleMetadataMapOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) Model() GetAiGatewaySpendLimitsRuleModelOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) GetAiGatewaySpendLimitsRuleModel { return v.Model }).(GetAiGatewaySpendLimitsRuleModelOutput)
+}
+
+// Available values: "fixed", "sliding".
+func (o GetAiGatewaySpendLimitsRuleOutput) Technique() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) string { return v.Technique }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleOutput) Window() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRule) int { return v.Window }).(pulumi.IntOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaySpendLimitsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewaySpendLimitsRule)(nil)).Elem()
+}
+
+func (o GetAiGatewaySpendLimitsRuleArrayOutput) ToGetAiGatewaySpendLimitsRuleArrayOutput() GetAiGatewaySpendLimitsRuleArrayOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleArrayOutput) ToGetAiGatewaySpendLimitsRuleArrayOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleArrayOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleArrayOutput) Index(i pulumi.IntInput) GetAiGatewaySpendLimitsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiGatewaySpendLimitsRule {
+		return vs[0].([]GetAiGatewaySpendLimitsRule)[vs[1].(int)]
+	}).(GetAiGatewaySpendLimitsRuleOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleAiGatewayProvider struct {
+	// Available values: "filter".
+	Mode   string   `pulumi:"mode"`
+	Values []string `pulumi:"values"`
+}
+
+// GetAiGatewaySpendLimitsRuleAiGatewayProviderInput is an input type that accepts GetAiGatewaySpendLimitsRuleAiGatewayProviderArgs and GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput values.
+// You can construct a concrete instance of `GetAiGatewaySpendLimitsRuleAiGatewayProviderInput` via:
+//
+//	GetAiGatewaySpendLimitsRuleAiGatewayProviderArgs{...}
+type GetAiGatewaySpendLimitsRuleAiGatewayProviderInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaySpendLimitsRuleAiGatewayProviderOutput() GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput
+	ToGetAiGatewaySpendLimitsRuleAiGatewayProviderOutputWithContext(context.Context) GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput
+}
+
+type GetAiGatewaySpendLimitsRuleAiGatewayProviderArgs struct {
+	// Available values: "filter".
+	Mode   pulumi.StringInput      `pulumi:"mode"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAiGatewaySpendLimitsRuleAiGatewayProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimitsRuleAiGatewayProvider)(nil)).Elem()
+}
+
+func (i GetAiGatewaySpendLimitsRuleAiGatewayProviderArgs) ToGetAiGatewaySpendLimitsRuleAiGatewayProviderOutput() GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput {
+	return i.ToGetAiGatewaySpendLimitsRuleAiGatewayProviderOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaySpendLimitsRuleAiGatewayProviderArgs) ToGetAiGatewaySpendLimitsRuleAiGatewayProviderOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimitsRuleAiGatewayProvider)(nil)).Elem()
+}
+
+func (o GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput) ToGetAiGatewaySpendLimitsRuleAiGatewayProviderOutput() GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput) ToGetAiGatewaySpendLimitsRuleAiGatewayProviderOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput {
+	return o
+}
+
+// Available values: "filter".
+func (o GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRuleAiGatewayProvider) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRuleAiGatewayProvider) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleMetadata struct {
+	// Available values: "partition", "filter".
+	Mode   string   `pulumi:"mode"`
+	Values []string `pulumi:"values"`
+}
+
+// GetAiGatewaySpendLimitsRuleMetadataInput is an input type that accepts GetAiGatewaySpendLimitsRuleMetadataArgs and GetAiGatewaySpendLimitsRuleMetadataOutput values.
+// You can construct a concrete instance of `GetAiGatewaySpendLimitsRuleMetadataInput` via:
+//
+//	GetAiGatewaySpendLimitsRuleMetadataArgs{...}
+type GetAiGatewaySpendLimitsRuleMetadataInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaySpendLimitsRuleMetadataOutput() GetAiGatewaySpendLimitsRuleMetadataOutput
+	ToGetAiGatewaySpendLimitsRuleMetadataOutputWithContext(context.Context) GetAiGatewaySpendLimitsRuleMetadataOutput
+}
+
+type GetAiGatewaySpendLimitsRuleMetadataArgs struct {
+	// Available values: "partition", "filter".
+	Mode   pulumi.StringInput      `pulumi:"mode"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAiGatewaySpendLimitsRuleMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimitsRuleMetadata)(nil)).Elem()
+}
+
+func (i GetAiGatewaySpendLimitsRuleMetadataArgs) ToGetAiGatewaySpendLimitsRuleMetadataOutput() GetAiGatewaySpendLimitsRuleMetadataOutput {
+	return i.ToGetAiGatewaySpendLimitsRuleMetadataOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaySpendLimitsRuleMetadataArgs) ToGetAiGatewaySpendLimitsRuleMetadataOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaySpendLimitsRuleMetadataOutput)
+}
+
+// GetAiGatewaySpendLimitsRuleMetadataMapInput is an input type that accepts GetAiGatewaySpendLimitsRuleMetadataMap and GetAiGatewaySpendLimitsRuleMetadataMapOutput values.
+// You can construct a concrete instance of `GetAiGatewaySpendLimitsRuleMetadataMapInput` via:
+//
+//	GetAiGatewaySpendLimitsRuleMetadataMap{ "key": GetAiGatewaySpendLimitsRuleMetadataArgs{...} }
+type GetAiGatewaySpendLimitsRuleMetadataMapInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaySpendLimitsRuleMetadataMapOutput() GetAiGatewaySpendLimitsRuleMetadataMapOutput
+	ToGetAiGatewaySpendLimitsRuleMetadataMapOutputWithContext(context.Context) GetAiGatewaySpendLimitsRuleMetadataMapOutput
+}
+
+type GetAiGatewaySpendLimitsRuleMetadataMap map[string]GetAiGatewaySpendLimitsRuleMetadataInput
+
+func (GetAiGatewaySpendLimitsRuleMetadataMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAiGatewaySpendLimitsRuleMetadata)(nil)).Elem()
+}
+
+func (i GetAiGatewaySpendLimitsRuleMetadataMap) ToGetAiGatewaySpendLimitsRuleMetadataMapOutput() GetAiGatewaySpendLimitsRuleMetadataMapOutput {
+	return i.ToGetAiGatewaySpendLimitsRuleMetadataMapOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaySpendLimitsRuleMetadataMap) ToGetAiGatewaySpendLimitsRuleMetadataMapOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleMetadataMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaySpendLimitsRuleMetadataMapOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaySpendLimitsRuleMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimitsRuleMetadata)(nil)).Elem()
+}
+
+func (o GetAiGatewaySpendLimitsRuleMetadataOutput) ToGetAiGatewaySpendLimitsRuleMetadataOutput() GetAiGatewaySpendLimitsRuleMetadataOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleMetadataOutput) ToGetAiGatewaySpendLimitsRuleMetadataOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleMetadataOutput {
+	return o
+}
+
+// Available values: "partition", "filter".
+func (o GetAiGatewaySpendLimitsRuleMetadataOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRuleMetadata) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleMetadataOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRuleMetadata) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleMetadataMapOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaySpendLimitsRuleMetadataMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAiGatewaySpendLimitsRuleMetadata)(nil)).Elem()
+}
+
+func (o GetAiGatewaySpendLimitsRuleMetadataMapOutput) ToGetAiGatewaySpendLimitsRuleMetadataMapOutput() GetAiGatewaySpendLimitsRuleMetadataMapOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleMetadataMapOutput) ToGetAiGatewaySpendLimitsRuleMetadataMapOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleMetadataMapOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleMetadataMapOutput) MapIndex(k pulumi.StringInput) GetAiGatewaySpendLimitsRuleMetadataOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetAiGatewaySpendLimitsRuleMetadata {
+		return vs[0].(map[string]GetAiGatewaySpendLimitsRuleMetadata)[vs[1].(string)]
+	}).(GetAiGatewaySpendLimitsRuleMetadataOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleModel struct {
+	// Available values: "filter".
+	Mode   string   `pulumi:"mode"`
+	Values []string `pulumi:"values"`
+}
+
+// GetAiGatewaySpendLimitsRuleModelInput is an input type that accepts GetAiGatewaySpendLimitsRuleModelArgs and GetAiGatewaySpendLimitsRuleModelOutput values.
+// You can construct a concrete instance of `GetAiGatewaySpendLimitsRuleModelInput` via:
+//
+//	GetAiGatewaySpendLimitsRuleModelArgs{...}
+type GetAiGatewaySpendLimitsRuleModelInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaySpendLimitsRuleModelOutput() GetAiGatewaySpendLimitsRuleModelOutput
+	ToGetAiGatewaySpendLimitsRuleModelOutputWithContext(context.Context) GetAiGatewaySpendLimitsRuleModelOutput
+}
+
+type GetAiGatewaySpendLimitsRuleModelArgs struct {
+	// Available values: "filter".
+	Mode   pulumi.StringInput      `pulumi:"mode"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAiGatewaySpendLimitsRuleModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimitsRuleModel)(nil)).Elem()
+}
+
+func (i GetAiGatewaySpendLimitsRuleModelArgs) ToGetAiGatewaySpendLimitsRuleModelOutput() GetAiGatewaySpendLimitsRuleModelOutput {
+	return i.ToGetAiGatewaySpendLimitsRuleModelOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaySpendLimitsRuleModelArgs) ToGetAiGatewaySpendLimitsRuleModelOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaySpendLimitsRuleModelOutput)
+}
+
+type GetAiGatewaySpendLimitsRuleModelOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaySpendLimitsRuleModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaySpendLimitsRuleModel)(nil)).Elem()
+}
+
+func (o GetAiGatewaySpendLimitsRuleModelOutput) ToGetAiGatewaySpendLimitsRuleModelOutput() GetAiGatewaySpendLimitsRuleModelOutput {
+	return o
+}
+
+func (o GetAiGatewaySpendLimitsRuleModelOutput) ToGetAiGatewaySpendLimitsRuleModelOutputWithContext(ctx context.Context) GetAiGatewaySpendLimitsRuleModelOutput {
+	return o
+}
+
+// Available values: "filter".
+func (o GetAiGatewaySpendLimitsRuleModelOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRuleModel) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaySpendLimitsRuleModelOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaySpendLimitsRuleModel) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAiGatewayStripe struct {
+	Authorization string                         `pulumi:"authorization"`
+	UsageEvents   []GetAiGatewayStripeUsageEvent `pulumi:"usageEvents"`
+}
+
+// GetAiGatewayStripeInput is an input type that accepts GetAiGatewayStripeArgs and GetAiGatewayStripeOutput values.
+// You can construct a concrete instance of `GetAiGatewayStripeInput` via:
+//
+//	GetAiGatewayStripeArgs{...}
+type GetAiGatewayStripeInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayStripeOutput() GetAiGatewayStripeOutput
+	ToGetAiGatewayStripeOutputWithContext(context.Context) GetAiGatewayStripeOutput
+}
+
+type GetAiGatewayStripeArgs struct {
+	Authorization pulumi.StringInput                     `pulumi:"authorization"`
+	UsageEvents   GetAiGatewayStripeUsageEventArrayInput `pulumi:"usageEvents"`
+}
+
+func (GetAiGatewayStripeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayStripe)(nil)).Elem()
+}
+
+func (i GetAiGatewayStripeArgs) ToGetAiGatewayStripeOutput() GetAiGatewayStripeOutput {
+	return i.ToGetAiGatewayStripeOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayStripeArgs) ToGetAiGatewayStripeOutputWithContext(ctx context.Context) GetAiGatewayStripeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayStripeOutput)
+}
+
+type GetAiGatewayStripeOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayStripeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayStripe)(nil)).Elem()
+}
+
+func (o GetAiGatewayStripeOutput) ToGetAiGatewayStripeOutput() GetAiGatewayStripeOutput {
+	return o
+}
+
+func (o GetAiGatewayStripeOutput) ToGetAiGatewayStripeOutputWithContext(ctx context.Context) GetAiGatewayStripeOutput {
+	return o
+}
+
+func (o GetAiGatewayStripeOutput) Authorization() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayStripe) string { return v.Authorization }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewayStripeOutput) UsageEvents() GetAiGatewayStripeUsageEventArrayOutput {
+	return o.ApplyT(func(v GetAiGatewayStripe) []GetAiGatewayStripeUsageEvent { return v.UsageEvents }).(GetAiGatewayStripeUsageEventArrayOutput)
+}
+
+type GetAiGatewayStripeUsageEvent struct {
+	Payload string `pulumi:"payload"`
+}
+
+// GetAiGatewayStripeUsageEventInput is an input type that accepts GetAiGatewayStripeUsageEventArgs and GetAiGatewayStripeUsageEventOutput values.
+// You can construct a concrete instance of `GetAiGatewayStripeUsageEventInput` via:
+//
+//	GetAiGatewayStripeUsageEventArgs{...}
+type GetAiGatewayStripeUsageEventInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayStripeUsageEventOutput() GetAiGatewayStripeUsageEventOutput
+	ToGetAiGatewayStripeUsageEventOutputWithContext(context.Context) GetAiGatewayStripeUsageEventOutput
+}
+
+type GetAiGatewayStripeUsageEventArgs struct {
+	Payload pulumi.StringInput `pulumi:"payload"`
+}
+
+func (GetAiGatewayStripeUsageEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayStripeUsageEvent)(nil)).Elem()
+}
+
+func (i GetAiGatewayStripeUsageEventArgs) ToGetAiGatewayStripeUsageEventOutput() GetAiGatewayStripeUsageEventOutput {
+	return i.ToGetAiGatewayStripeUsageEventOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayStripeUsageEventArgs) ToGetAiGatewayStripeUsageEventOutputWithContext(ctx context.Context) GetAiGatewayStripeUsageEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayStripeUsageEventOutput)
+}
+
+// GetAiGatewayStripeUsageEventArrayInput is an input type that accepts GetAiGatewayStripeUsageEventArray and GetAiGatewayStripeUsageEventArrayOutput values.
+// You can construct a concrete instance of `GetAiGatewayStripeUsageEventArrayInput` via:
+//
+//	GetAiGatewayStripeUsageEventArray{ GetAiGatewayStripeUsageEventArgs{...} }
+type GetAiGatewayStripeUsageEventArrayInput interface {
+	pulumi.Input
+
+	ToGetAiGatewayStripeUsageEventArrayOutput() GetAiGatewayStripeUsageEventArrayOutput
+	ToGetAiGatewayStripeUsageEventArrayOutputWithContext(context.Context) GetAiGatewayStripeUsageEventArrayOutput
+}
+
+type GetAiGatewayStripeUsageEventArray []GetAiGatewayStripeUsageEventInput
+
+func (GetAiGatewayStripeUsageEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewayStripeUsageEvent)(nil)).Elem()
+}
+
+func (i GetAiGatewayStripeUsageEventArray) ToGetAiGatewayStripeUsageEventArrayOutput() GetAiGatewayStripeUsageEventArrayOutput {
+	return i.ToGetAiGatewayStripeUsageEventArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewayStripeUsageEventArray) ToGetAiGatewayStripeUsageEventArrayOutputWithContext(ctx context.Context) GetAiGatewayStripeUsageEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewayStripeUsageEventArrayOutput)
+}
+
+type GetAiGatewayStripeUsageEventOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayStripeUsageEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewayStripeUsageEvent)(nil)).Elem()
+}
+
+func (o GetAiGatewayStripeUsageEventOutput) ToGetAiGatewayStripeUsageEventOutput() GetAiGatewayStripeUsageEventOutput {
+	return o
+}
+
+func (o GetAiGatewayStripeUsageEventOutput) ToGetAiGatewayStripeUsageEventOutputWithContext(ctx context.Context) GetAiGatewayStripeUsageEventOutput {
+	return o
+}
+
+func (o GetAiGatewayStripeUsageEventOutput) Payload() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewayStripeUsageEvent) string { return v.Payload }).(pulumi.StringOutput)
+}
+
+type GetAiGatewayStripeUsageEventArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewayStripeUsageEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewayStripeUsageEvent)(nil)).Elem()
+}
+
+func (o GetAiGatewayStripeUsageEventArrayOutput) ToGetAiGatewayStripeUsageEventArrayOutput() GetAiGatewayStripeUsageEventArrayOutput {
+	return o
+}
+
+func (o GetAiGatewayStripeUsageEventArrayOutput) ToGetAiGatewayStripeUsageEventArrayOutputWithContext(ctx context.Context) GetAiGatewayStripeUsageEventArrayOutput {
+	return o
+}
+
+func (o GetAiGatewayStripeUsageEventArrayOutput) Index(i pulumi.IntInput) GetAiGatewayStripeUsageEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiGatewayStripeUsageEvent {
+		return vs[0].([]GetAiGatewayStripeUsageEvent)[vs[1].(int)]
+	}).(GetAiGatewayStripeUsageEventOutput)
+}
+
+type GetAiGatewaysResult struct {
+	Authentication bool `pulumi:"authentication"`
+	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+	ByokOnly                bool                          `pulumi:"byokOnly"`
+	CacheInvalidateOnUpdate bool                          `pulumi:"cacheInvalidateOnUpdate"`
+	CacheTtl                int                           `pulumi:"cacheTtl"`
+	CollectLogs             bool                          `pulumi:"collectLogs"`
+	CreatedAt               string                        `pulumi:"createdAt"`
+	Dlp                     GetAiGatewaysResultDlp        `pulumi:"dlp"`
+	Guardrails              GetAiGatewaysResultGuardrails `pulumi:"guardrails"`
+	// Unique identifier of the AI Gateway within the account.
+	Id                string `pulumi:"id"`
+	IsDefault         bool   `pulumi:"isDefault"`
+	LogClassification bool   `pulumi:"logClassification"`
+	LogManagement     int    `pulumi:"logManagement"`
+	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
+	LogManagementStrategy string                    `pulumi:"logManagementStrategy"`
+	Logpush               bool                      `pulumi:"logpush"`
+	LogpushPublicKey      string                    `pulumi:"logpushPublicKey"`
+	ModifiedAt            string                    `pulumi:"modifiedAt"`
+	Otels                 []GetAiGatewaysResultOtel `pulumi:"otels"`
+	RateLimitingInterval  int                       `pulumi:"rateLimitingInterval"`
+	RateLimitingLimit     int                       `pulumi:"rateLimitingLimit"`
+	// Available values: "fixed", "sliding".
+	RateLimitingTechnique string `pulumi:"rateLimitingTechnique"`
+	// Backoff strategy for retry delays
+	// Available values: "constant", "linear", "exponential".
+	RetryBackoff string `pulumi:"retryBackoff"`
+	// Delay between retry attempts in milliseconds (0-60000)
+	RetryDelay int `pulumi:"retryDelay"`
+	// Maximum number of retry attempts for failed requests (1-5)
+	RetryMaxAttempts int                            `pulumi:"retryMaxAttempts"`
+	SpendLimits      GetAiGatewaysResultSpendLimits `pulumi:"spendLimits"`
+	StoreId          string                         `pulumi:"storeId"`
+	Stripe           GetAiGatewaysResultStripe      `pulumi:"stripe"`
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
+	WorkersAiBillingMode string `pulumi:"workersAiBillingMode"`
+	Zdr                  bool   `pulumi:"zdr"`
+}
+
+// GetAiGatewaysResultInput is an input type that accepts GetAiGatewaysResultArgs and GetAiGatewaysResultOutput values.
+// You can construct a concrete instance of `GetAiGatewaysResultInput` via:
+//
+//	GetAiGatewaysResultArgs{...}
+type GetAiGatewaysResultInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaysResultOutput() GetAiGatewaysResultOutput
+	ToGetAiGatewaysResultOutputWithContext(context.Context) GetAiGatewaysResultOutput
+}
+
+type GetAiGatewaysResultArgs struct {
+	Authentication pulumi.BoolInput `pulumi:"authentication"`
+	// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+	ByokOnly                pulumi.BoolInput                   `pulumi:"byokOnly"`
+	CacheInvalidateOnUpdate pulumi.BoolInput                   `pulumi:"cacheInvalidateOnUpdate"`
+	CacheTtl                pulumi.IntInput                    `pulumi:"cacheTtl"`
+	CollectLogs             pulumi.BoolInput                   `pulumi:"collectLogs"`
+	CreatedAt               pulumi.StringInput                 `pulumi:"createdAt"`
+	Dlp                     GetAiGatewaysResultDlpInput        `pulumi:"dlp"`
+	Guardrails              GetAiGatewaysResultGuardrailsInput `pulumi:"guardrails"`
+	// Unique identifier of the AI Gateway within the account.
+	Id                pulumi.StringInput `pulumi:"id"`
+	IsDefault         pulumi.BoolInput   `pulumi:"isDefault"`
+	LogClassification pulumi.BoolInput   `pulumi:"logClassification"`
+	LogManagement     pulumi.IntInput    `pulumi:"logManagement"`
+	// Available values: "STOP*INSERTING", "DELETE*OLDEST".
+	LogManagementStrategy pulumi.StringInput                `pulumi:"logManagementStrategy"`
+	Logpush               pulumi.BoolInput                  `pulumi:"logpush"`
+	LogpushPublicKey      pulumi.StringInput                `pulumi:"logpushPublicKey"`
+	ModifiedAt            pulumi.StringInput                `pulumi:"modifiedAt"`
+	Otels                 GetAiGatewaysResultOtelArrayInput `pulumi:"otels"`
+	RateLimitingInterval  pulumi.IntInput                   `pulumi:"rateLimitingInterval"`
+	RateLimitingLimit     pulumi.IntInput                   `pulumi:"rateLimitingLimit"`
+	// Available values: "fixed", "sliding".
+	RateLimitingTechnique pulumi.StringInput `pulumi:"rateLimitingTechnique"`
+	// Backoff strategy for retry delays
+	// Available values: "constant", "linear", "exponential".
+	RetryBackoff pulumi.StringInput `pulumi:"retryBackoff"`
+	// Delay between retry attempts in milliseconds (0-60000)
+	RetryDelay pulumi.IntInput `pulumi:"retryDelay"`
+	// Maximum number of retry attempts for failed requests (1-5)
+	RetryMaxAttempts pulumi.IntInput                     `pulumi:"retryMaxAttempts"`
+	SpendLimits      GetAiGatewaysResultSpendLimitsInput `pulumi:"spendLimits"`
+	StoreId          pulumi.StringInput                  `pulumi:"storeId"`
+	Stripe           GetAiGatewaysResultStripeInput      `pulumi:"stripe"`
+	// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+	// Available values: "postpaid", "unified".
+	WorkersAiBillingMode pulumi.StringInput `pulumi:"workersAiBillingMode"`
+	Zdr                  pulumi.BoolInput   `pulumi:"zdr"`
+}
+
+func (GetAiGatewaysResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResult)(nil)).Elem()
+}
+
+func (i GetAiGatewaysResultArgs) ToGetAiGatewaysResultOutput() GetAiGatewaysResultOutput {
+	return i.ToGetAiGatewaysResultOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaysResultArgs) ToGetAiGatewaysResultOutputWithContext(ctx context.Context) GetAiGatewaysResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaysResultOutput)
+}
+
+// GetAiGatewaysResultArrayInput is an input type that accepts GetAiGatewaysResultArray and GetAiGatewaysResultArrayOutput values.
+// You can construct a concrete instance of `GetAiGatewaysResultArrayInput` via:
+//
+//	GetAiGatewaysResultArray{ GetAiGatewaysResultArgs{...} }
+type GetAiGatewaysResultArrayInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaysResultArrayOutput() GetAiGatewaysResultArrayOutput
+	ToGetAiGatewaysResultArrayOutputWithContext(context.Context) GetAiGatewaysResultArrayOutput
+}
+
+type GetAiGatewaysResultArray []GetAiGatewaysResultInput
+
+func (GetAiGatewaysResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewaysResult)(nil)).Elem()
+}
+
+func (i GetAiGatewaysResultArray) ToGetAiGatewaysResultArrayOutput() GetAiGatewaysResultArrayOutput {
+	return i.ToGetAiGatewaysResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaysResultArray) ToGetAiGatewaysResultArrayOutputWithContext(ctx context.Context) GetAiGatewaysResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaysResultArrayOutput)
+}
+
+type GetAiGatewaysResultOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResult)(nil)).Elem()
+}
+
+func (o GetAiGatewaysResultOutput) ToGetAiGatewaysResultOutput() GetAiGatewaysResultOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultOutput) ToGetAiGatewaysResultOutputWithContext(ctx context.Context) GetAiGatewaysResultOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultOutput) Authentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.Authentication }).(pulumi.BoolOutput)
+}
+
+// Requires customer-provided provider credentials and prevents fallback to Unified Billing.
+func (o GetAiGatewaysResultOutput) ByokOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.ByokOnly }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaysResultOutput) CacheInvalidateOnUpdate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.CacheInvalidateOnUpdate }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaysResultOutput) CacheTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) int { return v.CacheTtl }).(pulumi.IntOutput)
+}
+
+func (o GetAiGatewaysResultOutput) CollectLogs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.CollectLogs }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaysResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultOutput) Dlp() GetAiGatewaysResultDlpOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) GetAiGatewaysResultDlp { return v.Dlp }).(GetAiGatewaysResultDlpOutput)
+}
+
+func (o GetAiGatewaysResultOutput) Guardrails() GetAiGatewaysResultGuardrailsOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) GetAiGatewaysResultGuardrails { return v.Guardrails }).(GetAiGatewaysResultGuardrailsOutput)
+}
+
+// Unique identifier of the AI Gateway within the account.
+func (o GetAiGatewaysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaysResultOutput) LogClassification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.LogClassification }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaysResultOutput) LogManagement() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) int { return v.LogManagement }).(pulumi.IntOutput)
+}
+
+// Available values: "STOP*INSERTING", "DELETE*OLDEST".
+func (o GetAiGatewaysResultOutput) LogManagementStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.LogManagementStrategy }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultOutput) Logpush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.Logpush }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaysResultOutput) LogpushPublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.LogpushPublicKey }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultOutput) Otels() GetAiGatewaysResultOtelArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) []GetAiGatewaysResultOtel { return v.Otels }).(GetAiGatewaysResultOtelArrayOutput)
+}
+
+func (o GetAiGatewaysResultOutput) RateLimitingInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) int { return v.RateLimitingInterval }).(pulumi.IntOutput)
+}
+
+func (o GetAiGatewaysResultOutput) RateLimitingLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) int { return v.RateLimitingLimit }).(pulumi.IntOutput)
+}
+
+// Available values: "fixed", "sliding".
+func (o GetAiGatewaysResultOutput) RateLimitingTechnique() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.RateLimitingTechnique }).(pulumi.StringOutput)
+}
+
+// Backoff strategy for retry delays
+// Available values: "constant", "linear", "exponential".
+func (o GetAiGatewaysResultOutput) RetryBackoff() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.RetryBackoff }).(pulumi.StringOutput)
+}
+
+// Delay between retry attempts in milliseconds (0-60000)
+func (o GetAiGatewaysResultOutput) RetryDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) int { return v.RetryDelay }).(pulumi.IntOutput)
+}
+
+// Maximum number of retry attempts for failed requests (1-5)
+func (o GetAiGatewaysResultOutput) RetryMaxAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) int { return v.RetryMaxAttempts }).(pulumi.IntOutput)
+}
+
+func (o GetAiGatewaysResultOutput) SpendLimits() GetAiGatewaysResultSpendLimitsOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) GetAiGatewaysResultSpendLimits { return v.SpendLimits }).(GetAiGatewaysResultSpendLimitsOutput)
+}
+
+func (o GetAiGatewaysResultOutput) StoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.StoreId }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultOutput) Stripe() GetAiGatewaysResultStripeOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) GetAiGatewaysResultStripe { return v.Stripe }).(GetAiGatewaysResultStripeOutput)
+}
+
+// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+// Available values: "postpaid", "unified".
+func (o GetAiGatewaysResultOutput) WorkersAiBillingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) string { return v.WorkersAiBillingMode }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultOutput) Zdr() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResult) bool { return v.Zdr }).(pulumi.BoolOutput)
+}
+
+type GetAiGatewaysResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaysResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewaysResult)(nil)).Elem()
+}
+
+func (o GetAiGatewaysResultArrayOutput) ToGetAiGatewaysResultArrayOutput() GetAiGatewaysResultArrayOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultArrayOutput) ToGetAiGatewaysResultArrayOutputWithContext(ctx context.Context) GetAiGatewaysResultArrayOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultArrayOutput) Index(i pulumi.IntInput) GetAiGatewaysResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiGatewaysResult {
+		return vs[0].([]GetAiGatewaysResult)[vs[1].(int)]
+	}).(GetAiGatewaysResultOutput)
+}
+
+type GetAiGatewaysResultDlp struct {
+	// Available values: "BLOCK", "FLAG".
+	Action   string                         `pulumi:"action"`
+	Enabled  bool                           `pulumi:"enabled"`
+	Policies []GetAiGatewaysResultDlpPolicy `pulumi:"policies"`
+	Profiles []string                       `pulumi:"profiles"`
+}
+
+// GetAiGatewaysResultDlpInput is an input type that accepts GetAiGatewaysResultDlpArgs and GetAiGatewaysResultDlpOutput values.
+// You can construct a concrete instance of `GetAiGatewaysResultDlpInput` via:
+//
+//	GetAiGatewaysResultDlpArgs{...}
+type GetAiGatewaysResultDlpInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaysResultDlpOutput() GetAiGatewaysResultDlpOutput
+	ToGetAiGatewaysResultDlpOutputWithContext(context.Context) GetAiGatewaysResultDlpOutput
+}
+
+type GetAiGatewaysResultDlpArgs struct {
+	// Available values: "BLOCK", "FLAG".
+	Action   pulumi.StringInput                     `pulumi:"action"`
+	Enabled  pulumi.BoolInput                       `pulumi:"enabled"`
+	Policies GetAiGatewaysResultDlpPolicyArrayInput `pulumi:"policies"`
+	Profiles pulumi.StringArrayInput                `pulumi:"profiles"`
+}
+
+func (GetAiGatewaysResultDlpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultDlp)(nil)).Elem()
+}
+
+func (i GetAiGatewaysResultDlpArgs) ToGetAiGatewaysResultDlpOutput() GetAiGatewaysResultDlpOutput {
+	return i.ToGetAiGatewaysResultDlpOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaysResultDlpArgs) ToGetAiGatewaysResultDlpOutputWithContext(ctx context.Context) GetAiGatewaysResultDlpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaysResultDlpOutput)
+}
+
+type GetAiGatewaysResultDlpOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaysResultDlpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultDlp)(nil)).Elem()
+}
+
+func (o GetAiGatewaysResultDlpOutput) ToGetAiGatewaysResultDlpOutput() GetAiGatewaysResultDlpOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultDlpOutput) ToGetAiGatewaysResultDlpOutputWithContext(ctx context.Context) GetAiGatewaysResultDlpOutput {
+	return o
+}
+
+// Available values: "BLOCK", "FLAG".
+func (o GetAiGatewaysResultDlpOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlp) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultDlpOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlp) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaysResultDlpOutput) Policies() GetAiGatewaysResultDlpPolicyArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlp) []GetAiGatewaysResultDlpPolicy { return v.Policies }).(GetAiGatewaysResultDlpPolicyArrayOutput)
+}
+
+func (o GetAiGatewaysResultDlpOutput) Profiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlp) []string { return v.Profiles }).(pulumi.StringArrayOutput)
+}
+
+type GetAiGatewaysResultDlpPolicy struct {
+	// Available values: "FLAG", "BLOCK".
+	Action   string   `pulumi:"action"`
+	Checks   []string `pulumi:"checks"`
+	Enabled  bool     `pulumi:"enabled"`
+	Id       string   `pulumi:"id"`
+	Profiles []string `pulumi:"profiles"`
+}
+
+// GetAiGatewaysResultDlpPolicyInput is an input type that accepts GetAiGatewaysResultDlpPolicyArgs and GetAiGatewaysResultDlpPolicyOutput values.
+// You can construct a concrete instance of `GetAiGatewaysResultDlpPolicyInput` via:
+//
+//	GetAiGatewaysResultDlpPolicyArgs{...}
+type GetAiGatewaysResultDlpPolicyInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaysResultDlpPolicyOutput() GetAiGatewaysResultDlpPolicyOutput
+	ToGetAiGatewaysResultDlpPolicyOutputWithContext(context.Context) GetAiGatewaysResultDlpPolicyOutput
+}
+
+type GetAiGatewaysResultDlpPolicyArgs struct {
+	// Available values: "FLAG", "BLOCK".
+	Action   pulumi.StringInput      `pulumi:"action"`
+	Checks   pulumi.StringArrayInput `pulumi:"checks"`
+	Enabled  pulumi.BoolInput        `pulumi:"enabled"`
+	Id       pulumi.StringInput      `pulumi:"id"`
+	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
+}
+
+func (GetAiGatewaysResultDlpPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultDlpPolicy)(nil)).Elem()
+}
+
+func (i GetAiGatewaysResultDlpPolicyArgs) ToGetAiGatewaysResultDlpPolicyOutput() GetAiGatewaysResultDlpPolicyOutput {
+	return i.ToGetAiGatewaysResultDlpPolicyOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaysResultDlpPolicyArgs) ToGetAiGatewaysResultDlpPolicyOutputWithContext(ctx context.Context) GetAiGatewaysResultDlpPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaysResultDlpPolicyOutput)
+}
+
+// GetAiGatewaysResultDlpPolicyArrayInput is an input type that accepts GetAiGatewaysResultDlpPolicyArray and GetAiGatewaysResultDlpPolicyArrayOutput values.
+// You can construct a concrete instance of `GetAiGatewaysResultDlpPolicyArrayInput` via:
+//
+//	GetAiGatewaysResultDlpPolicyArray{ GetAiGatewaysResultDlpPolicyArgs{...} }
+type GetAiGatewaysResultDlpPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaysResultDlpPolicyArrayOutput() GetAiGatewaysResultDlpPolicyArrayOutput
+	ToGetAiGatewaysResultDlpPolicyArrayOutputWithContext(context.Context) GetAiGatewaysResultDlpPolicyArrayOutput
+}
+
+type GetAiGatewaysResultDlpPolicyArray []GetAiGatewaysResultDlpPolicyInput
+
+func (GetAiGatewaysResultDlpPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewaysResultDlpPolicy)(nil)).Elem()
+}
+
+func (i GetAiGatewaysResultDlpPolicyArray) ToGetAiGatewaysResultDlpPolicyArrayOutput() GetAiGatewaysResultDlpPolicyArrayOutput {
+	return i.ToGetAiGatewaysResultDlpPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaysResultDlpPolicyArray) ToGetAiGatewaysResultDlpPolicyArrayOutputWithContext(ctx context.Context) GetAiGatewaysResultDlpPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaysResultDlpPolicyArrayOutput)
+}
+
+type GetAiGatewaysResultDlpPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaysResultDlpPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultDlpPolicy)(nil)).Elem()
+}
+
+func (o GetAiGatewaysResultDlpPolicyOutput) ToGetAiGatewaysResultDlpPolicyOutput() GetAiGatewaysResultDlpPolicyOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultDlpPolicyOutput) ToGetAiGatewaysResultDlpPolicyOutputWithContext(ctx context.Context) GetAiGatewaysResultDlpPolicyOutput {
+	return o
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultDlpPolicyOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlpPolicy) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultDlpPolicyOutput) Checks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlpPolicy) []string { return v.Checks }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAiGatewaysResultDlpPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlpPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetAiGatewaysResultDlpPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlpPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAiGatewaysResultDlpPolicyOutput) Profiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultDlpPolicy) []string { return v.Profiles }).(pulumi.StringArrayOutput)
+}
+
+type GetAiGatewaysResultDlpPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaysResultDlpPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiGatewaysResultDlpPolicy)(nil)).Elem()
+}
+
+func (o GetAiGatewaysResultDlpPolicyArrayOutput) ToGetAiGatewaysResultDlpPolicyArrayOutput() GetAiGatewaysResultDlpPolicyArrayOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultDlpPolicyArrayOutput) ToGetAiGatewaysResultDlpPolicyArrayOutputWithContext(ctx context.Context) GetAiGatewaysResultDlpPolicyArrayOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultDlpPolicyArrayOutput) Index(i pulumi.IntInput) GetAiGatewaysResultDlpPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiGatewaysResultDlpPolicy {
+		return vs[0].([]GetAiGatewaysResultDlpPolicy)[vs[1].(int)]
+	}).(GetAiGatewaysResultDlpPolicyOutput)
+}
+
+type GetAiGatewaysResultGuardrails struct {
+	Prompt   GetAiGatewaysResultGuardrailsPrompt   `pulumi:"prompt"`
+	Response GetAiGatewaysResultGuardrailsResponse `pulumi:"response"`
+}
+
+// GetAiGatewaysResultGuardrailsInput is an input type that accepts GetAiGatewaysResultGuardrailsArgs and GetAiGatewaysResultGuardrailsOutput values.
+// You can construct a concrete instance of `GetAiGatewaysResultGuardrailsInput` via:
+//
+//	GetAiGatewaysResultGuardrailsArgs{...}
+type GetAiGatewaysResultGuardrailsInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaysResultGuardrailsOutput() GetAiGatewaysResultGuardrailsOutput
+	ToGetAiGatewaysResultGuardrailsOutputWithContext(context.Context) GetAiGatewaysResultGuardrailsOutput
+}
+
+type GetAiGatewaysResultGuardrailsArgs struct {
+	Prompt   GetAiGatewaysResultGuardrailsPromptInput   `pulumi:"prompt"`
+	Response GetAiGatewaysResultGuardrailsResponseInput `pulumi:"response"`
+}
+
+func (GetAiGatewaysResultGuardrailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultGuardrails)(nil)).Elem()
+}
+
+func (i GetAiGatewaysResultGuardrailsArgs) ToGetAiGatewaysResultGuardrailsOutput() GetAiGatewaysResultGuardrailsOutput {
+	return i.ToGetAiGatewaysResultGuardrailsOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaysResultGuardrailsArgs) ToGetAiGatewaysResultGuardrailsOutputWithContext(ctx context.Context) GetAiGatewaysResultGuardrailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaysResultGuardrailsOutput)
+}
+
+type GetAiGatewaysResultGuardrailsOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaysResultGuardrailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultGuardrails)(nil)).Elem()
+}
+
+func (o GetAiGatewaysResultGuardrailsOutput) ToGetAiGatewaysResultGuardrailsOutput() GetAiGatewaysResultGuardrailsOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultGuardrailsOutput) ToGetAiGatewaysResultGuardrailsOutputWithContext(ctx context.Context) GetAiGatewaysResultGuardrailsOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultGuardrailsOutput) Prompt() GetAiGatewaysResultGuardrailsPromptOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrails) GetAiGatewaysResultGuardrailsPrompt { return v.Prompt }).(GetAiGatewaysResultGuardrailsPromptOutput)
+}
+
+func (o GetAiGatewaysResultGuardrailsOutput) Response() GetAiGatewaysResultGuardrailsResponseOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrails) GetAiGatewaysResultGuardrailsResponse { return v.Response }).(GetAiGatewaysResultGuardrailsResponseOutput)
+}
+
+type GetAiGatewaysResultGuardrailsPrompt struct {
+	// Available values: "FLAG", "BLOCK".
+	P1 string `pulumi:"p1"`
+	// Available values: "FLAG", "BLOCK".
+	S1 string `pulumi:"s1"`
+	// Available values: "FLAG", "BLOCK".
+	S10 string `pulumi:"s10"`
+	// Available values: "FLAG", "BLOCK".
+	S11 string `pulumi:"s11"`
+	// Available values: "FLAG", "BLOCK".
+	S12 string `pulumi:"s12"`
+	// Available values: "FLAG", "BLOCK".
+	S13 string `pulumi:"s13"`
+	// Available values: "FLAG", "BLOCK".
+	S2 string `pulumi:"s2"`
+	// Available values: "FLAG", "BLOCK".
+	S3 string `pulumi:"s3"`
+	// Available values: "FLAG", "BLOCK".
+	S4 string `pulumi:"s4"`
+	// Available values: "FLAG", "BLOCK".
+	S5 string `pulumi:"s5"`
+	// Available values: "FLAG", "BLOCK".
+	S6 string `pulumi:"s6"`
+	// Available values: "FLAG", "BLOCK".
+	S7 string `pulumi:"s7"`
+	// Available values: "FLAG", "BLOCK".
+	S8 string `pulumi:"s8"`
+	// Available values: "FLAG", "BLOCK".
+	S9 string `pulumi:"s9"`
+}
+
+// GetAiGatewaysResultGuardrailsPromptInput is an input type that accepts GetAiGatewaysResultGuardrailsPromptArgs and GetAiGatewaysResultGuardrailsPromptOutput values.
+// You can construct a concrete instance of `GetAiGatewaysResultGuardrailsPromptInput` via:
+//
+//	GetAiGatewaysResultGuardrailsPromptArgs{...}
+type GetAiGatewaysResultGuardrailsPromptInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaysResultGuardrailsPromptOutput() GetAiGatewaysResultGuardrailsPromptOutput
+	ToGetAiGatewaysResultGuardrailsPromptOutputWithContext(context.Context) GetAiGatewaysResultGuardrailsPromptOutput
+}
+
+type GetAiGatewaysResultGuardrailsPromptArgs struct {
+	// Available values: "FLAG", "BLOCK".
+	P1 pulumi.StringInput `pulumi:"p1"`
+	// Available values: "FLAG", "BLOCK".
+	S1 pulumi.StringInput `pulumi:"s1"`
+	// Available values: "FLAG", "BLOCK".
+	S10 pulumi.StringInput `pulumi:"s10"`
+	// Available values: "FLAG", "BLOCK".
+	S11 pulumi.StringInput `pulumi:"s11"`
+	// Available values: "FLAG", "BLOCK".
+	S12 pulumi.StringInput `pulumi:"s12"`
+	// Available values: "FLAG", "BLOCK".
+	S13 pulumi.StringInput `pulumi:"s13"`
+	// Available values: "FLAG", "BLOCK".
+	S2 pulumi.StringInput `pulumi:"s2"`
+	// Available values: "FLAG", "BLOCK".
+	S3 pulumi.StringInput `pulumi:"s3"`
+	// Available values: "FLAG", "BLOCK".
+	S4 pulumi.StringInput `pulumi:"s4"`
+	// Available values: "FLAG", "BLOCK".
+	S5 pulumi.StringInput `pulumi:"s5"`
+	// Available values: "FLAG", "BLOCK".
+	S6 pulumi.StringInput `pulumi:"s6"`
+	// Available values: "FLAG", "BLOCK".
+	S7 pulumi.StringInput `pulumi:"s7"`
+	// Available values: "FLAG", "BLOCK".
+	S8 pulumi.StringInput `pulumi:"s8"`
+	// Available values: "FLAG", "BLOCK".
+	S9 pulumi.StringInput `pulumi:"s9"`
+}
+
+func (GetAiGatewaysResultGuardrailsPromptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultGuardrailsPrompt)(nil)).Elem()
+}
+
+func (i GetAiGatewaysResultGuardrailsPromptArgs) ToGetAiGatewaysResultGuardrailsPromptOutput() GetAiGatewaysResultGuardrailsPromptOutput {
+	return i.ToGetAiGatewaysResultGuardrailsPromptOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaysResultGuardrailsPromptArgs) ToGetAiGatewaysResultGuardrailsPromptOutputWithContext(ctx context.Context) GetAiGatewaysResultGuardrailsPromptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaysResultGuardrailsPromptOutput)
+}
+
+type GetAiGatewaysResultGuardrailsPromptOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaysResultGuardrailsPromptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultGuardrailsPrompt)(nil)).Elem()
+}
+
+func (o GetAiGatewaysResultGuardrailsPromptOutput) ToGetAiGatewaysResultGuardrailsPromptOutput() GetAiGatewaysResultGuardrailsPromptOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultGuardrailsPromptOutput) ToGetAiGatewaysResultGuardrailsPromptOutputWithContext(ctx context.Context) GetAiGatewaysResultGuardrailsPromptOutput {
+	return o
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) P1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.P1 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S1 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S10() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S10 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S11() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S11 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S12() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S12 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S13() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S13 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S2() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S2 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S3() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S3 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S4 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S5() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S5 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S6 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S7() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S7 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S8() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S8 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsPromptOutput) S9() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsPrompt) string { return v.S9 }).(pulumi.StringOutput)
+}
+
+type GetAiGatewaysResultGuardrailsResponse struct {
+	// Available values: "FLAG", "BLOCK".
+	P1 string `pulumi:"p1"`
+	// Available values: "FLAG", "BLOCK".
+	S1 string `pulumi:"s1"`
+	// Available values: "FLAG", "BLOCK".
+	S10 string `pulumi:"s10"`
+	// Available values: "FLAG", "BLOCK".
+	S11 string `pulumi:"s11"`
+	// Available values: "FLAG", "BLOCK".
+	S12 string `pulumi:"s12"`
+	// Available values: "FLAG", "BLOCK".
+	S13 string `pulumi:"s13"`
+	// Available values: "FLAG", "BLOCK".
+	S2 string `pulumi:"s2"`
+	// Available values: "FLAG", "BLOCK".
+	S3 string `pulumi:"s3"`
+	// Available values: "FLAG", "BLOCK".
+	S4 string `pulumi:"s4"`
+	// Available values: "FLAG", "BLOCK".
+	S5 string `pulumi:"s5"`
+	// Available values: "FLAG", "BLOCK".
+	S6 string `pulumi:"s6"`
+	// Available values: "FLAG", "BLOCK".
+	S7 string `pulumi:"s7"`
+	// Available values: "FLAG", "BLOCK".
+	S8 string `pulumi:"s8"`
+	// Available values: "FLAG", "BLOCK".
+	S9 string `pulumi:"s9"`
+}
+
+// GetAiGatewaysResultGuardrailsResponseInput is an input type that accepts GetAiGatewaysResultGuardrailsResponseArgs and GetAiGatewaysResultGuardrailsResponseOutput values.
+// You can construct a concrete instance of `GetAiGatewaysResultGuardrailsResponseInput` via:
+//
+//	GetAiGatewaysResultGuardrailsResponseArgs{...}
+type GetAiGatewaysResultGuardrailsResponseInput interface {
+	pulumi.Input
+
+	ToGetAiGatewaysResultGuardrailsResponseOutput() GetAiGatewaysResultGuardrailsResponseOutput
+	ToGetAiGatewaysResultGuardrailsResponseOutputWithContext(context.Context) GetAiGatewaysResultGuardrailsResponseOutput
+}
+
+type GetAiGatewaysResultGuardrailsResponseArgs struct {
+	// Available values: "FLAG", "BLOCK".
+	P1 pulumi.StringInput `pulumi:"p1"`
+	// Available values: "FLAG", "BLOCK".
+	S1 pulumi.StringInput `pulumi:"s1"`
+	// Available values: "FLAG", "BLOCK".
+	S10 pulumi.StringInput `pulumi:"s10"`
+	// Available values: "FLAG", "BLOCK".
+	S11 pulumi.StringInput `pulumi:"s11"`
+	// Available values: "FLAG", "BLOCK".
+	S12 pulumi.StringInput `pulumi:"s12"`
+	// Available values: "FLAG", "BLOCK".
+	S13 pulumi.StringInput `pulumi:"s13"`
+	// Available values: "FLAG", "BLOCK".
+	S2 pulumi.StringInput `pulumi:"s2"`
+	// Available values: "FLAG", "BLOCK".
+	S3 pulumi.StringInput `pulumi:"s3"`
+	// Available values: "FLAG", "BLOCK".
+	S4 pulumi.StringInput `pulumi:"s4"`
+	// Available values: "FLAG", "BLOCK".
+	S5 pulumi.StringInput `pulumi:"s5"`
+	// Available values: "FLAG", "BLOCK".
+	S6 pulumi.StringInput `pulumi:"s6"`
+	// Available values: "FLAG", "BLOCK".
+	S7 pulumi.StringInput `pulumi:"s7"`
+	// Available values: "FLAG", "BLOCK".
+	S8 pulumi.StringInput `pulumi:"s8"`
+	// Available values: "FLAG", "BLOCK".
+	S9 pulumi.StringInput `pulumi:"s9"`
+}
+
+func (GetAiGatewaysResultGuardrailsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultGuardrailsResponse)(nil)).Elem()
+}
+
+func (i GetAiGatewaysResultGuardrailsResponseArgs) ToGetAiGatewaysResultGuardrailsResponseOutput() GetAiGatewaysResultGuardrailsResponseOutput {
+	return i.ToGetAiGatewaysResultGuardrailsResponseOutputWithContext(context.Background())
+}
+
+func (i GetAiGatewaysResultGuardrailsResponseArgs) ToGetAiGatewaysResultGuardrailsResponseOutputWithContext(ctx context.Context) GetAiGatewaysResultGuardrailsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiGatewaysResultGuardrailsResponseOutput)
+}
+
+type GetAiGatewaysResultGuardrailsResponseOutput struct{ *pulumi.OutputState }
+
+func (GetAiGatewaysResultGuardrailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiGatewaysResultGuardrailsResponse)(nil)).Elem()
+}
+
+func (o GetAiGatewaysResultGuardrailsResponseOutput) ToGetAiGatewaysResultGuardrailsResponseOutput() GetAiGatewaysResultGuardrailsResponseOutput {
+	return o
+}
+
+func (o GetAiGatewaysResultGuardrailsResponseOutput) ToGetAiGatewaysResultGuardrailsResponseOutputWithContext(ctx context.Context) GetAiGatewaysResultGuardrailsResponseOutput {
+	return o
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) P1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.P1 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S1 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S10() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S10 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S11() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S11 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S12() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S12 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S13() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S13 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S2() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S2 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S3() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S3 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S4 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S5() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S5 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S6 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S7() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S7 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S8() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S8 }).(pulumi.StringOutput)
+}
+
+// Available values: "FLAG", "BLOCK".
+func (o GetAiGatewaysResultGuardrailsResponseOutput) S9() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiGatewaysResultGuardrailsResponse) string { return v.S9 }).(pulumi.StringOutput)
+}
+
 type GetAiGatewaysResultOtel struct {
 	Authorization string `pulumi:"authorization"`
 	// Available values: "json", "protobuf".
@@ -1153,8 +3241,9 @@ func (o GetAiSearchInstanceIndexingOptionsOutput) UseOcr() pulumi.BoolOutput {
 }
 
 type GetAiSearchInstanceMetadata struct {
-	CreatedFromAisearchWizard bool   `pulumi:"createdFromAisearchWizard"`
-	WorkerDomain              string `pulumi:"workerDomain"`
+	CreatedFromAisearchWizard bool                                               `pulumi:"createdFromAisearchWizard"`
+	CreatedFromEmdashPlugin   GetAiSearchInstanceMetadataCreatedFromEmdashPlugin `pulumi:"createdFromEmdashPlugin"`
+	WorkerDomain              string                                             `pulumi:"workerDomain"`
 }
 
 // GetAiSearchInstanceMetadataInput is an input type that accepts GetAiSearchInstanceMetadataArgs and GetAiSearchInstanceMetadataOutput values.
@@ -1169,8 +3258,9 @@ type GetAiSearchInstanceMetadataInput interface {
 }
 
 type GetAiSearchInstanceMetadataArgs struct {
-	CreatedFromAisearchWizard pulumi.BoolInput   `pulumi:"createdFromAisearchWizard"`
-	WorkerDomain              pulumi.StringInput `pulumi:"workerDomain"`
+	CreatedFromAisearchWizard pulumi.BoolInput                                        `pulumi:"createdFromAisearchWizard"`
+	CreatedFromEmdashPlugin   GetAiSearchInstanceMetadataCreatedFromEmdashPluginInput `pulumi:"createdFromEmdashPlugin"`
+	WorkerDomain              pulumi.StringInput                                      `pulumi:"workerDomain"`
 }
 
 func (GetAiSearchInstanceMetadataArgs) ElementType() reflect.Type {
@@ -1203,8 +3293,72 @@ func (o GetAiSearchInstanceMetadataOutput) CreatedFromAisearchWizard() pulumi.Bo
 	return o.ApplyT(func(v GetAiSearchInstanceMetadata) bool { return v.CreatedFromAisearchWizard }).(pulumi.BoolOutput)
 }
 
+func (o GetAiSearchInstanceMetadataOutput) CreatedFromEmdashPlugin() GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return o.ApplyT(func(v GetAiSearchInstanceMetadata) GetAiSearchInstanceMetadataCreatedFromEmdashPlugin {
+		return v.CreatedFromEmdashPlugin
+	}).(GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput)
+}
+
 func (o GetAiSearchInstanceMetadataOutput) WorkerDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiSearchInstanceMetadata) string { return v.WorkerDomain }).(pulumi.StringOutput)
+}
+
+type GetAiSearchInstanceMetadataCreatedFromEmdashPlugin struct {
+	// Available values: "native", "rest".
+	Type    string `pulumi:"type"`
+	Version string `pulumi:"version"`
+}
+
+// GetAiSearchInstanceMetadataCreatedFromEmdashPluginInput is an input type that accepts GetAiSearchInstanceMetadataCreatedFromEmdashPluginArgs and GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput values.
+// You can construct a concrete instance of `GetAiSearchInstanceMetadataCreatedFromEmdashPluginInput` via:
+//
+//	GetAiSearchInstanceMetadataCreatedFromEmdashPluginArgs{...}
+type GetAiSearchInstanceMetadataCreatedFromEmdashPluginInput interface {
+	pulumi.Input
+
+	ToGetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput() GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput
+	ToGetAiSearchInstanceMetadataCreatedFromEmdashPluginOutputWithContext(context.Context) GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput
+}
+
+type GetAiSearchInstanceMetadataCreatedFromEmdashPluginArgs struct {
+	// Available values: "native", "rest".
+	Type    pulumi.StringInput `pulumi:"type"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetAiSearchInstanceMetadataCreatedFromEmdashPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchInstanceMetadataCreatedFromEmdashPlugin)(nil)).Elem()
+}
+
+func (i GetAiSearchInstanceMetadataCreatedFromEmdashPluginArgs) ToGetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput() GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return i.ToGetAiSearchInstanceMetadataCreatedFromEmdashPluginOutputWithContext(context.Background())
+}
+
+func (i GetAiSearchInstanceMetadataCreatedFromEmdashPluginArgs) ToGetAiSearchInstanceMetadataCreatedFromEmdashPluginOutputWithContext(ctx context.Context) GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput)
+}
+
+type GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput struct{ *pulumi.OutputState }
+
+func (GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchInstanceMetadataCreatedFromEmdashPlugin)(nil)).Elem()
+}
+
+func (o GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput) ToGetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput() GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return o
+}
+
+func (o GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput) ToGetAiSearchInstanceMetadataCreatedFromEmdashPluginOutputWithContext(ctx context.Context) GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput {
+	return o
+}
+
+// Available values: "native", "rest".
+func (o GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiSearchInstanceMetadataCreatedFromEmdashPlugin) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiSearchInstanceMetadataCreatedFromEmdashPlugin) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GetAiSearchInstancePublicEndpointParams struct {
@@ -2832,8 +4986,9 @@ func (o GetAiSearchInstancesResultIndexingOptionsOutput) UseOcr() pulumi.BoolOut
 }
 
 type GetAiSearchInstancesResultMetadata struct {
-	CreatedFromAisearchWizard bool   `pulumi:"createdFromAisearchWizard"`
-	WorkerDomain              string `pulumi:"workerDomain"`
+	CreatedFromAisearchWizard bool                                                      `pulumi:"createdFromAisearchWizard"`
+	CreatedFromEmdashPlugin   GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin `pulumi:"createdFromEmdashPlugin"`
+	WorkerDomain              string                                                    `pulumi:"workerDomain"`
 }
 
 // GetAiSearchInstancesResultMetadataInput is an input type that accepts GetAiSearchInstancesResultMetadataArgs and GetAiSearchInstancesResultMetadataOutput values.
@@ -2848,8 +5003,9 @@ type GetAiSearchInstancesResultMetadataInput interface {
 }
 
 type GetAiSearchInstancesResultMetadataArgs struct {
-	CreatedFromAisearchWizard pulumi.BoolInput   `pulumi:"createdFromAisearchWizard"`
-	WorkerDomain              pulumi.StringInput `pulumi:"workerDomain"`
+	CreatedFromAisearchWizard pulumi.BoolInput                                               `pulumi:"createdFromAisearchWizard"`
+	CreatedFromEmdashPlugin   GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginInput `pulumi:"createdFromEmdashPlugin"`
+	WorkerDomain              pulumi.StringInput                                             `pulumi:"workerDomain"`
 }
 
 func (GetAiSearchInstancesResultMetadataArgs) ElementType() reflect.Type {
@@ -2882,8 +5038,72 @@ func (o GetAiSearchInstancesResultMetadataOutput) CreatedFromAisearchWizard() pu
 	return o.ApplyT(func(v GetAiSearchInstancesResultMetadata) bool { return v.CreatedFromAisearchWizard }).(pulumi.BoolOutput)
 }
 
+func (o GetAiSearchInstancesResultMetadataOutput) CreatedFromEmdashPlugin() GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput {
+	return o.ApplyT(func(v GetAiSearchInstancesResultMetadata) GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin {
+		return v.CreatedFromEmdashPlugin
+	}).(GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput)
+}
+
 func (o GetAiSearchInstancesResultMetadataOutput) WorkerDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiSearchInstancesResultMetadata) string { return v.WorkerDomain }).(pulumi.StringOutput)
+}
+
+type GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin struct {
+	// Available values: "native", "rest".
+	Type    string `pulumi:"type"`
+	Version string `pulumi:"version"`
+}
+
+// GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginInput is an input type that accepts GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginArgs and GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput values.
+// You can construct a concrete instance of `GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginInput` via:
+//
+//	GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginArgs{...}
+type GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginInput interface {
+	pulumi.Input
+
+	ToGetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput() GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput
+	ToGetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutputWithContext(context.Context) GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput
+}
+
+type GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginArgs struct {
+	// Available values: "native", "rest".
+	Type    pulumi.StringInput `pulumi:"type"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin)(nil)).Elem()
+}
+
+func (i GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginArgs) ToGetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput() GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput {
+	return i.ToGetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutputWithContext(context.Background())
+}
+
+func (i GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginArgs) ToGetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutputWithContext(ctx context.Context) GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput)
+}
+
+type GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput struct{ *pulumi.OutputState }
+
+func (GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin)(nil)).Elem()
+}
+
+func (o GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput) ToGetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput() GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput {
+	return o
+}
+
+func (o GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput) ToGetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutputWithContext(ctx context.Context) GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput {
+	return o
+}
+
+// Available values: "native", "rest".
+func (o GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GetAiSearchInstancesResultPublicEndpointParams struct {
@@ -31422,7 +33642,7 @@ type GetHyperdriveConfigsResult struct {
 	CreatedOn string `pulumi:"createdOn"`
 	// Define configurations using a unique string identifier.
 	Id string `pulumi:"id"`
-	// Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+	// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 	Integration GetHyperdriveConfigsResultIntegration `pulumi:"integration"`
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -31455,7 +33675,7 @@ type GetHyperdriveConfigsResultArgs struct {
 	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
 	// Define configurations using a unique string identifier.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+	// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 	Integration GetHyperdriveConfigsResultIntegrationInput `pulumi:"integration"`
 	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
@@ -31536,7 +33756,7 @@ func (o GetHyperdriveConfigsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHyperdriveConfigsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+// Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
 func (o GetHyperdriveConfigsResultOutput) Integration() GetHyperdriveConfigsResultIntegrationOutput {
 	return o.ApplyT(func(v GetHyperdriveConfigsResult) GetHyperdriveConfigsResultIntegration { return v.Integration }).(GetHyperdriveConfigsResultIntegrationOutput)
 }
@@ -37905,7 +40125,7 @@ type GetLogpushDatasetJobOutputOptions struct {
 	FieldDelimiter string `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames []string `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 	MergeSubrequests bool `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -37947,7 +40167,7 @@ type GetLogpushDatasetJobOutputOptionsArgs struct {
 	FieldDelimiter pulumi.StringInput `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 	MergeSubrequests pulumi.BoolInput `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -38018,7 +40238,7 @@ func (o GetLogpushDatasetJobOutputOptionsOutput) FieldNames() pulumi.StringArray
 	return o.ApplyT(func(v GetLogpushDatasetJobOutputOptions) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
 }
 
-// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 func (o GetLogpushDatasetJobOutputOptionsOutput) MergeSubrequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobOutputOptions) bool { return v.MergeSubrequests }).(pulumi.BoolOutput)
 }
@@ -38071,7 +40291,7 @@ type GetLogpushJobOutputOptions struct {
 	FieldDelimiter string `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames []string `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 	MergeSubrequests bool `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -38113,7 +40333,7 @@ type GetLogpushJobOutputOptionsArgs struct {
 	FieldDelimiter pulumi.StringInput `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 	MergeSubrequests pulumi.BoolInput `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -38184,7 +40404,7 @@ func (o GetLogpushJobOutputOptionsOutput) FieldNames() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GetLogpushJobOutputOptions) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
 }
 
-// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 func (o GetLogpushJobOutputOptionsOutput) MergeSubrequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLogpushJobOutputOptions) bool { return v.MergeSubrequests }).(pulumi.BoolOutput)
 }
@@ -38490,7 +40710,7 @@ type GetLogpushJobsResultOutputOptions struct {
 	FieldDelimiter string `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames []string `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 	MergeSubrequests bool `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -38532,7 +40752,7 @@ type GetLogpushJobsResultOutputOptionsArgs struct {
 	FieldDelimiter pulumi.StringInput `pulumi:"fieldDelimiter"`
 	// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
 	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
-	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+	// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 	MergeSubrequests pulumi.BoolInput `pulumi:"mergeSubrequests"`
 	// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
 	// Available values: "ndjson", "csv".
@@ -38603,7 +40823,7 @@ func (o GetLogpushJobsResultOutputOptionsOutput) FieldNames() pulumi.StringArray
 	return o.ApplyT(func(v GetLogpushJobsResultOutputOptions) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
 }
 
-// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
 func (o GetLogpushJobsResultOutputOptionsOutput) MergeSubrequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLogpushJobsResultOutputOptions) bool { return v.MergeSubrequests }).(pulumi.BoolOutput)
 }
@@ -43932,6 +46152,154 @@ func (o GetManagedTransformsManagedResponseHeaderArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedTransformsManagedResponseHeader {
 		return vs[0].([]GetManagedTransformsManagedResponseHeader)[vs[1].(int)]
 	}).(GetManagedTransformsManagedResponseHeaderOutput)
+}
+
+type GetMonetizationRulesRule struct {
+	// 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+	Address     string `pulumi:"address"`
+	Description string `pulumi:"description"`
+	Enabled     bool   `pulumi:"enabled"`
+	// Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+	Expression string `pulumi:"expression"`
+	// The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.
+	Id string `pulumi:"id"`
+	// Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+	Price string `pulumi:"price"`
+	// X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+	// Available values: "exact", "upto", "originControlled".
+	Scheme string `pulumi:"scheme"`
+}
+
+// GetMonetizationRulesRuleInput is an input type that accepts GetMonetizationRulesRuleArgs and GetMonetizationRulesRuleOutput values.
+// You can construct a concrete instance of `GetMonetizationRulesRuleInput` via:
+//
+//	GetMonetizationRulesRuleArgs{...}
+type GetMonetizationRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetMonetizationRulesRuleOutput() GetMonetizationRulesRuleOutput
+	ToGetMonetizationRulesRuleOutputWithContext(context.Context) GetMonetizationRulesRuleOutput
+}
+
+type GetMonetizationRulesRuleArgs struct {
+	// 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+	Address     pulumi.StringInput `pulumi:"address"`
+	Description pulumi.StringInput `pulumi:"description"`
+	Enabled     pulumi.BoolInput   `pulumi:"enabled"`
+	// Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+	Price pulumi.StringInput `pulumi:"price"`
+	// X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+	// Available values: "exact", "upto", "originControlled".
+	Scheme pulumi.StringInput `pulumi:"scheme"`
+}
+
+func (GetMonetizationRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonetizationRulesRule)(nil)).Elem()
+}
+
+func (i GetMonetizationRulesRuleArgs) ToGetMonetizationRulesRuleOutput() GetMonetizationRulesRuleOutput {
+	return i.ToGetMonetizationRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetMonetizationRulesRuleArgs) ToGetMonetizationRulesRuleOutputWithContext(ctx context.Context) GetMonetizationRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonetizationRulesRuleOutput)
+}
+
+// GetMonetizationRulesRuleArrayInput is an input type that accepts GetMonetizationRulesRuleArray and GetMonetizationRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetMonetizationRulesRuleArrayInput` via:
+//
+//	GetMonetizationRulesRuleArray{ GetMonetizationRulesRuleArgs{...} }
+type GetMonetizationRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetMonetizationRulesRuleArrayOutput() GetMonetizationRulesRuleArrayOutput
+	ToGetMonetizationRulesRuleArrayOutputWithContext(context.Context) GetMonetizationRulesRuleArrayOutput
+}
+
+type GetMonetizationRulesRuleArray []GetMonetizationRulesRuleInput
+
+func (GetMonetizationRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonetizationRulesRule)(nil)).Elem()
+}
+
+func (i GetMonetizationRulesRuleArray) ToGetMonetizationRulesRuleArrayOutput() GetMonetizationRulesRuleArrayOutput {
+	return i.ToGetMonetizationRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonetizationRulesRuleArray) ToGetMonetizationRulesRuleArrayOutputWithContext(ctx context.Context) GetMonetizationRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonetizationRulesRuleArrayOutput)
+}
+
+type GetMonetizationRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetMonetizationRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonetizationRulesRule)(nil)).Elem()
+}
+
+func (o GetMonetizationRulesRuleOutput) ToGetMonetizationRulesRuleOutput() GetMonetizationRulesRuleOutput {
+	return o
+}
+
+func (o GetMonetizationRulesRuleOutput) ToGetMonetizationRulesRuleOutputWithContext(ctx context.Context) GetMonetizationRulesRuleOutput {
+	return o
+}
+
+// 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+func (o GetMonetizationRulesRuleOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonetizationRulesRule) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetMonetizationRulesRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonetizationRulesRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetMonetizationRulesRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMonetizationRulesRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+func (o GetMonetizationRulesRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonetizationRulesRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.
+func (o GetMonetizationRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonetizationRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+func (o GetMonetizationRulesRuleOutput) Price() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonetizationRulesRule) string { return v.Price }).(pulumi.StringOutput)
+}
+
+// X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+// Available values: "exact", "upto", "originControlled".
+func (o GetMonetizationRulesRuleOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonetizationRulesRule) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+type GetMonetizationRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonetizationRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonetizationRulesRule)(nil)).Elem()
+}
+
+func (o GetMonetizationRulesRuleArrayOutput) ToGetMonetizationRulesRuleArrayOutput() GetMonetizationRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetMonetizationRulesRuleArrayOutput) ToGetMonetizationRulesRuleArrayOutputWithContext(ctx context.Context) GetMonetizationRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetMonetizationRulesRuleArrayOutput) Index(i pulumi.IntInput) GetMonetizationRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonetizationRulesRule {
+		return vs[0].([]GetMonetizationRulesRule)[vs[1].(int)]
+	}).(GetMonetizationRulesRuleOutput)
 }
 
 type GetMoqRelayConfig struct {
@@ -51130,6 +53498,67 @@ func (o GetPagesProjectBuildConfigOutput) WebAnalyticsToken() pulumi.StringOutpu
 	return o.ApplyT(func(v GetPagesProjectBuildConfig) string { return v.WebAnalyticsToken }).(pulumi.StringOutput)
 }
 
+type GetPagesProjectBuildImageAutoUpgrade struct {
+	// The retired build image major version the project is set to.
+	FromVersion int `pulumi:"fromVersion"`
+	// The build image major version the project's builds run on.
+	ToVersion int `pulumi:"toVersion"`
+}
+
+// GetPagesProjectBuildImageAutoUpgradeInput is an input type that accepts GetPagesProjectBuildImageAutoUpgradeArgs and GetPagesProjectBuildImageAutoUpgradeOutput values.
+// You can construct a concrete instance of `GetPagesProjectBuildImageAutoUpgradeInput` via:
+//
+//	GetPagesProjectBuildImageAutoUpgradeArgs{...}
+type GetPagesProjectBuildImageAutoUpgradeInput interface {
+	pulumi.Input
+
+	ToGetPagesProjectBuildImageAutoUpgradeOutput() GetPagesProjectBuildImageAutoUpgradeOutput
+	ToGetPagesProjectBuildImageAutoUpgradeOutputWithContext(context.Context) GetPagesProjectBuildImageAutoUpgradeOutput
+}
+
+type GetPagesProjectBuildImageAutoUpgradeArgs struct {
+	// The retired build image major version the project is set to.
+	FromVersion pulumi.IntInput `pulumi:"fromVersion"`
+	// The build image major version the project's builds run on.
+	ToVersion pulumi.IntInput `pulumi:"toVersion"`
+}
+
+func (GetPagesProjectBuildImageAutoUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectBuildImageAutoUpgrade)(nil)).Elem()
+}
+
+func (i GetPagesProjectBuildImageAutoUpgradeArgs) ToGetPagesProjectBuildImageAutoUpgradeOutput() GetPagesProjectBuildImageAutoUpgradeOutput {
+	return i.ToGetPagesProjectBuildImageAutoUpgradeOutputWithContext(context.Background())
+}
+
+func (i GetPagesProjectBuildImageAutoUpgradeArgs) ToGetPagesProjectBuildImageAutoUpgradeOutputWithContext(ctx context.Context) GetPagesProjectBuildImageAutoUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectBuildImageAutoUpgradeOutput)
+}
+
+type GetPagesProjectBuildImageAutoUpgradeOutput struct{ *pulumi.OutputState }
+
+func (GetPagesProjectBuildImageAutoUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPagesProjectBuildImageAutoUpgrade)(nil)).Elem()
+}
+
+func (o GetPagesProjectBuildImageAutoUpgradeOutput) ToGetPagesProjectBuildImageAutoUpgradeOutput() GetPagesProjectBuildImageAutoUpgradeOutput {
+	return o
+}
+
+func (o GetPagesProjectBuildImageAutoUpgradeOutput) ToGetPagesProjectBuildImageAutoUpgradeOutputWithContext(ctx context.Context) GetPagesProjectBuildImageAutoUpgradeOutput {
+	return o
+}
+
+// The retired build image major version the project is set to.
+func (o GetPagesProjectBuildImageAutoUpgradeOutput) FromVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPagesProjectBuildImageAutoUpgrade) int { return v.FromVersion }).(pulumi.IntOutput)
+}
+
+// The build image major version the project's builds run on.
+func (o GetPagesProjectBuildImageAutoUpgradeOutput) ToVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPagesProjectBuildImageAutoUpgrade) int { return v.ToVersion }).(pulumi.IntOutput)
+}
+
 type GetPagesProjectCanonicalDeployment struct {
 	// A list of alias URLs pointing to this deployment.
 	Aliases []string `pulumi:"aliases"`
@@ -52219,7 +54648,7 @@ type GetPagesProjectDeploymentConfigsPreview struct {
 	AnalyticsEngineDatasets map[string]GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers map[string]GetPagesProjectDeploymentConfigsPreviewBrowsers `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 	BuildImageMajorVersion int `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate string `pulumi:"compatibilityDate"`
@@ -52280,7 +54709,7 @@ type GetPagesProjectDeploymentConfigsPreviewArgs struct {
 	AnalyticsEngineDatasets GetPagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers GetPagesProjectDeploymentConfigsPreviewBrowsersMapInput `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 	BuildImageMajorVersion pulumi.IntInput `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate pulumi.StringInput `pulumi:"compatibilityDate"`
@@ -52373,7 +54802,7 @@ func (o GetPagesProjectDeploymentConfigsPreviewOutput) Browsers() GetPagesProjec
 	}).(GetPagesProjectDeploymentConfigsPreviewBrowsersMapOutput)
 }
 
-// The major version of the build image to use for Pages Functions.
+// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 func (o GetPagesProjectDeploymentConfigsPreviewOutput) BuildImageMajorVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsPreview) int { return v.BuildImageMajorVersion }).(pulumi.IntOutput)
 }
@@ -53879,7 +56308,7 @@ type GetPagesProjectDeploymentConfigsProduction struct {
 	AnalyticsEngineDatasets map[string]GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers map[string]GetPagesProjectDeploymentConfigsProductionBrowsers `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 	BuildImageMajorVersion int `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate string `pulumi:"compatibilityDate"`
@@ -53940,7 +56369,7 @@ type GetPagesProjectDeploymentConfigsProductionArgs struct {
 	AnalyticsEngineDatasets GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
 	// Browser bindings used for Pages Functions.
 	Browsers GetPagesProjectDeploymentConfigsProductionBrowsersMapInput `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
+	// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 	BuildImageMajorVersion pulumi.IntInput `pulumi:"buildImageMajorVersion"`
 	// Compatibility date used for Pages Functions.
 	CompatibilityDate pulumi.StringInput `pulumi:"compatibilityDate"`
@@ -54033,7 +56462,7 @@ func (o GetPagesProjectDeploymentConfigsProductionOutput) Browsers() GetPagesPro
 	}).(GetPagesProjectDeploymentConfigsProductionBrowsersMapOutput)
 }
 
-// The major version of the build image to use for Pages Functions.
+// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
 func (o GetPagesProjectDeploymentConfigsProductionOutput) BuildImageMajorVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPagesProjectDeploymentConfigsProduction) int { return v.BuildImageMajorVersion }).(pulumi.IntOutput)
 }
@@ -55846,2642 +58275,32 @@ func (o GetPagesProjectLatestDeploymentBuildConfigOutput) WebAnalyticsToken() pu
 	return o.ApplyT(func(v GetPagesProjectLatestDeploymentBuildConfig) string { return v.WebAnalyticsToken }).(pulumi.StringOutput)
 }
 
-type GetPagesProjectLatestDeploymentDeploymentTrigger struct {
-	// Additional info about the trigger.
-	Metadata GetPagesProjectLatestDeploymentDeploymentTriggerMetadata `pulumi:"metadata"`
-	// What caused the deployment.
-	// Available values: "github:push", "ad*hoc", "deploy*hook".
-	Type string `pulumi:"type"`
-}
-
-// GetPagesProjectLatestDeploymentDeploymentTriggerInput is an input type that accepts GetPagesProjectLatestDeploymentDeploymentTriggerArgs and GetPagesProjectLatestDeploymentDeploymentTriggerOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentDeploymentTriggerInput` via:
-//
-//	GetPagesProjectLatestDeploymentDeploymentTriggerArgs{...}
-type GetPagesProjectLatestDeploymentDeploymentTriggerInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentDeploymentTriggerOutput() GetPagesProjectLatestDeploymentDeploymentTriggerOutput
-	ToGetPagesProjectLatestDeploymentDeploymentTriggerOutputWithContext(context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerOutput
-}
-
-type GetPagesProjectLatestDeploymentDeploymentTriggerArgs struct {
-	// Additional info about the trigger.
-	Metadata GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput `pulumi:"metadata"`
-	// What caused the deployment.
-	// Available values: "github:push", "ad*hoc", "deploy*hook".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetPagesProjectLatestDeploymentDeploymentTriggerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTrigger)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentDeploymentTriggerArgs) ToGetPagesProjectLatestDeploymentDeploymentTriggerOutput() GetPagesProjectLatestDeploymentDeploymentTriggerOutput {
-	return i.ToGetPagesProjectLatestDeploymentDeploymentTriggerOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentDeploymentTriggerArgs) ToGetPagesProjectLatestDeploymentDeploymentTriggerOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentDeploymentTriggerOutput)
-}
-
-type GetPagesProjectLatestDeploymentDeploymentTriggerOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentDeploymentTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTrigger)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerOutput) ToGetPagesProjectLatestDeploymentDeploymentTriggerOutput() GetPagesProjectLatestDeploymentDeploymentTriggerOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerOutput) ToGetPagesProjectLatestDeploymentDeploymentTriggerOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerOutput {
-	return o
-}
-
-// Additional info about the trigger.
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerOutput) Metadata() GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTrigger) GetPagesProjectLatestDeploymentDeploymentTriggerMetadata {
-		return v.Metadata
-	}).(GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput)
-}
-
-// What caused the deployment.
-// Available values: "github:push", "ad*hoc", "deploy*hook".
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTrigger) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectLatestDeploymentDeploymentTriggerMetadata struct {
-	// Where the trigger happened.
-	Branch string `pulumi:"branch"`
-	// Whether the deployment trigger commit was dirty.
-	CommitDirty bool `pulumi:"commitDirty"`
-	// Hash of the deployment trigger commit.
-	CommitHash string `pulumi:"commitHash"`
-	// Message of the deployment trigger commit.
-	CommitMessage string `pulumi:"commitMessage"`
-}
-
-// GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput is an input type that accepts GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs and GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput` via:
-//
-//	GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs{...}
-type GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput
-	ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutputWithContext(context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput
-}
-
-type GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs struct {
-	// Where the trigger happened.
-	Branch pulumi.StringInput `pulumi:"branch"`
-	// Whether the deployment trigger commit was dirty.
-	CommitDirty pulumi.BoolInput `pulumi:"commitDirty"`
-	// Hash of the deployment trigger commit.
-	CommitHash pulumi.StringInput `pulumi:"commitHash"`
-	// Message of the deployment trigger commit.
-	CommitMessage pulumi.StringInput `pulumi:"commitMessage"`
-}
-
-func (GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTriggerMetadata)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs) ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
-	return i.ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs) ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput)
-}
-
-type GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTriggerMetadata)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) ToGetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput {
-	return o
-}
-
-// Where the trigger happened.
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) Branch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTriggerMetadata) string { return v.Branch }).(pulumi.StringOutput)
-}
-
-// Whether the deployment trigger commit was dirty.
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) CommitDirty() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTriggerMetadata) bool { return v.CommitDirty }).(pulumi.BoolOutput)
-}
-
-// Hash of the deployment trigger commit.
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) CommitHash() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTriggerMetadata) string { return v.CommitHash }).(pulumi.StringOutput)
-}
-
-// Message of the deployment trigger commit.
-func (o GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput) CommitMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentDeploymentTriggerMetadata) string { return v.CommitMessage }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectLatestDeploymentEnvVars struct {
-	// Available values: "plain*text", "secret*text".
-	Type string `pulumi:"type"`
-	// Environment variable value.
-	Value string `pulumi:"value"`
-}
-
-// GetPagesProjectLatestDeploymentEnvVarsInput is an input type that accepts GetPagesProjectLatestDeploymentEnvVarsArgs and GetPagesProjectLatestDeploymentEnvVarsOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentEnvVarsInput` via:
-//
-//	GetPagesProjectLatestDeploymentEnvVarsArgs{...}
-type GetPagesProjectLatestDeploymentEnvVarsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentEnvVarsOutput() GetPagesProjectLatestDeploymentEnvVarsOutput
-	ToGetPagesProjectLatestDeploymentEnvVarsOutputWithContext(context.Context) GetPagesProjectLatestDeploymentEnvVarsOutput
-}
-
-type GetPagesProjectLatestDeploymentEnvVarsArgs struct {
-	// Available values: "plain*text", "secret*text".
-	Type pulumi.StringInput `pulumi:"type"`
-	// Environment variable value.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetPagesProjectLatestDeploymentEnvVarsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentEnvVarsArgs) ToGetPagesProjectLatestDeploymentEnvVarsOutput() GetPagesProjectLatestDeploymentEnvVarsOutput {
-	return i.ToGetPagesProjectLatestDeploymentEnvVarsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentEnvVarsArgs) ToGetPagesProjectLatestDeploymentEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentEnvVarsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentEnvVarsOutput)
-}
-
-// GetPagesProjectLatestDeploymentEnvVarsMapInput is an input type that accepts GetPagesProjectLatestDeploymentEnvVarsMap and GetPagesProjectLatestDeploymentEnvVarsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentEnvVarsMapInput` via:
-//
-//	GetPagesProjectLatestDeploymentEnvVarsMap{ "key": GetPagesProjectLatestDeploymentEnvVarsArgs{...} }
-type GetPagesProjectLatestDeploymentEnvVarsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentEnvVarsMapOutput() GetPagesProjectLatestDeploymentEnvVarsMapOutput
-	ToGetPagesProjectLatestDeploymentEnvVarsMapOutputWithContext(context.Context) GetPagesProjectLatestDeploymentEnvVarsMapOutput
-}
-
-type GetPagesProjectLatestDeploymentEnvVarsMap map[string]GetPagesProjectLatestDeploymentEnvVarsInput
-
-func (GetPagesProjectLatestDeploymentEnvVarsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectLatestDeploymentEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentEnvVarsMap) ToGetPagesProjectLatestDeploymentEnvVarsMapOutput() GetPagesProjectLatestDeploymentEnvVarsMapOutput {
-	return i.ToGetPagesProjectLatestDeploymentEnvVarsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentEnvVarsMap) ToGetPagesProjectLatestDeploymentEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentEnvVarsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentEnvVarsMapOutput)
-}
-
-type GetPagesProjectLatestDeploymentEnvVarsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentEnvVarsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentEnvVarsOutput) ToGetPagesProjectLatestDeploymentEnvVarsOutput() GetPagesProjectLatestDeploymentEnvVarsOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentEnvVarsOutput) ToGetPagesProjectLatestDeploymentEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentEnvVarsOutput {
-	return o
-}
-
-// Available values: "plain*text", "secret*text".
-func (o GetPagesProjectLatestDeploymentEnvVarsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentEnvVars) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Environment variable value.
-func (o GetPagesProjectLatestDeploymentEnvVarsOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentEnvVars) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectLatestDeploymentEnvVarsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentEnvVarsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectLatestDeploymentEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentEnvVarsMapOutput) ToGetPagesProjectLatestDeploymentEnvVarsMapOutput() GetPagesProjectLatestDeploymentEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentEnvVarsMapOutput) ToGetPagesProjectLatestDeploymentEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentEnvVarsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectLatestDeploymentEnvVarsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectLatestDeploymentEnvVars {
-		return vs[0].(map[string]GetPagesProjectLatestDeploymentEnvVars)[vs[1].(string)]
-	}).(GetPagesProjectLatestDeploymentEnvVarsOutput)
-}
-
-type GetPagesProjectLatestDeploymentLatestStage struct {
-	// When the stage ended.
-	EndedOn string `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name string `pulumi:"name"`
-	// When the stage started.
-	StartedOn string `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-	Status string `pulumi:"status"`
-}
-
-// GetPagesProjectLatestDeploymentLatestStageInput is an input type that accepts GetPagesProjectLatestDeploymentLatestStageArgs and GetPagesProjectLatestDeploymentLatestStageOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentLatestStageInput` via:
-//
-//	GetPagesProjectLatestDeploymentLatestStageArgs{...}
-type GetPagesProjectLatestDeploymentLatestStageInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentLatestStageOutput() GetPagesProjectLatestDeploymentLatestStageOutput
-	ToGetPagesProjectLatestDeploymentLatestStageOutputWithContext(context.Context) GetPagesProjectLatestDeploymentLatestStageOutput
-}
-
-type GetPagesProjectLatestDeploymentLatestStageArgs struct {
-	// When the stage ended.
-	EndedOn pulumi.StringInput `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name pulumi.StringInput `pulumi:"name"`
-	// When the stage started.
-	StartedOn pulumi.StringInput `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetPagesProjectLatestDeploymentLatestStageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentLatestStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentLatestStageArgs) ToGetPagesProjectLatestDeploymentLatestStageOutput() GetPagesProjectLatestDeploymentLatestStageOutput {
-	return i.ToGetPagesProjectLatestDeploymentLatestStageOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentLatestStageArgs) ToGetPagesProjectLatestDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentLatestStageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentLatestStageOutput)
-}
-
-type GetPagesProjectLatestDeploymentLatestStageOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentLatestStageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentLatestStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentLatestStageOutput) ToGetPagesProjectLatestDeploymentLatestStageOutput() GetPagesProjectLatestDeploymentLatestStageOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentLatestStageOutput) ToGetPagesProjectLatestDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentLatestStageOutput {
-	return o
-}
-
-// When the stage ended.
-func (o GetPagesProjectLatestDeploymentLatestStageOutput) EndedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentLatestStage) string { return v.EndedOn }).(pulumi.StringOutput)
-}
-
-// The current build stage.
-// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-func (o GetPagesProjectLatestDeploymentLatestStageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentLatestStage) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// When the stage started.
-func (o GetPagesProjectLatestDeploymentLatestStageOutput) StartedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentLatestStage) string { return v.StartedOn }).(pulumi.StringOutput)
-}
-
-// State of the current stage.
-// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-func (o GetPagesProjectLatestDeploymentLatestStageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentLatestStage) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectLatestDeploymentSource struct {
-	Config GetPagesProjectLatestDeploymentSourceConfig `pulumi:"config"`
-	// The source control management provider.
-	// Available values: "github", "gitlab".
-	Type string `pulumi:"type"`
-}
-
-// GetPagesProjectLatestDeploymentSourceInput is an input type that accepts GetPagesProjectLatestDeploymentSourceArgs and GetPagesProjectLatestDeploymentSourceOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentSourceInput` via:
-//
-//	GetPagesProjectLatestDeploymentSourceArgs{...}
-type GetPagesProjectLatestDeploymentSourceInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentSourceOutput() GetPagesProjectLatestDeploymentSourceOutput
-	ToGetPagesProjectLatestDeploymentSourceOutputWithContext(context.Context) GetPagesProjectLatestDeploymentSourceOutput
-}
-
-type GetPagesProjectLatestDeploymentSourceArgs struct {
-	Config GetPagesProjectLatestDeploymentSourceConfigInput `pulumi:"config"`
-	// The source control management provider.
-	// Available values: "github", "gitlab".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetPagesProjectLatestDeploymentSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentSource)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentSourceArgs) ToGetPagesProjectLatestDeploymentSourceOutput() GetPagesProjectLatestDeploymentSourceOutput {
-	return i.ToGetPagesProjectLatestDeploymentSourceOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentSourceArgs) ToGetPagesProjectLatestDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentSourceOutput)
-}
-
-type GetPagesProjectLatestDeploymentSourceOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentSource)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentSourceOutput) ToGetPagesProjectLatestDeploymentSourceOutput() GetPagesProjectLatestDeploymentSourceOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentSourceOutput) ToGetPagesProjectLatestDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentSourceOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentSourceOutput) Config() GetPagesProjectLatestDeploymentSourceConfigOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSource) GetPagesProjectLatestDeploymentSourceConfig {
-		return v.Config
-	}).(GetPagesProjectLatestDeploymentSourceConfigOutput)
-}
-
-// The source control management provider.
-// Available values: "github", "gitlab".
-func (o GetPagesProjectLatestDeploymentSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSource) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectLatestDeploymentSourceConfig struct {
-	// Whether to enable automatic deployments when pushing to the source repository.
-	// When disabled, no deployments (production or preview) will be triggered automatically.
-	//
-	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-	DeploymentsEnabled bool `pulumi:"deploymentsEnabled"`
-	// The owner of the repository.
-	Owner string `pulumi:"owner"`
-	// The owner ID of the repository.
-	OwnerId string `pulumi:"ownerId"`
-	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-	PathExcludes []string `pulumi:"pathExcludes"`
-	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-	PathIncludes []string `pulumi:"pathIncludes"`
-	// Whether to enable PR comments.
-	PrCommentsEnabled bool `pulumi:"prCommentsEnabled"`
-	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchExcludes []string `pulumi:"previewBranchExcludes"`
-	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchIncludes []string `pulumi:"previewBranchIncludes"`
-	// Controls whether commits to preview branches trigger a preview deployment.
-	// Available values: "all", "none", "custom".
-	PreviewDeploymentSetting string `pulumi:"previewDeploymentSetting"`
-	// The production branch of the repository.
-	ProductionBranch string `pulumi:"productionBranch"`
-	// Whether to trigger a production deployment on commits to the production branch.
-	ProductionDeploymentsEnabled bool `pulumi:"productionDeploymentsEnabled"`
-	// The ID of the repository.
-	RepoId string `pulumi:"repoId"`
-	// The name of the repository.
-	RepoName string `pulumi:"repoName"`
-}
-
-// GetPagesProjectLatestDeploymentSourceConfigInput is an input type that accepts GetPagesProjectLatestDeploymentSourceConfigArgs and GetPagesProjectLatestDeploymentSourceConfigOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentSourceConfigInput` via:
-//
-//	GetPagesProjectLatestDeploymentSourceConfigArgs{...}
-type GetPagesProjectLatestDeploymentSourceConfigInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentSourceConfigOutput() GetPagesProjectLatestDeploymentSourceConfigOutput
-	ToGetPagesProjectLatestDeploymentSourceConfigOutputWithContext(context.Context) GetPagesProjectLatestDeploymentSourceConfigOutput
-}
-
-type GetPagesProjectLatestDeploymentSourceConfigArgs struct {
-	// Whether to enable automatic deployments when pushing to the source repository.
-	// When disabled, no deployments (production or preview) will be triggered automatically.
-	//
-	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-	DeploymentsEnabled pulumi.BoolInput `pulumi:"deploymentsEnabled"`
-	// The owner of the repository.
-	Owner pulumi.StringInput `pulumi:"owner"`
-	// The owner ID of the repository.
-	OwnerId pulumi.StringInput `pulumi:"ownerId"`
-	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-	PathExcludes pulumi.StringArrayInput `pulumi:"pathExcludes"`
-	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-	PathIncludes pulumi.StringArrayInput `pulumi:"pathIncludes"`
-	// Whether to enable PR comments.
-	PrCommentsEnabled pulumi.BoolInput `pulumi:"prCommentsEnabled"`
-	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchExcludes pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
-	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchIncludes pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
-	// Controls whether commits to preview branches trigger a preview deployment.
-	// Available values: "all", "none", "custom".
-	PreviewDeploymentSetting pulumi.StringInput `pulumi:"previewDeploymentSetting"`
-	// The production branch of the repository.
-	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
-	// Whether to trigger a production deployment on commits to the production branch.
-	ProductionDeploymentsEnabled pulumi.BoolInput `pulumi:"productionDeploymentsEnabled"`
-	// The ID of the repository.
-	RepoId pulumi.StringInput `pulumi:"repoId"`
-	// The name of the repository.
-	RepoName pulumi.StringInput `pulumi:"repoName"`
-}
-
-func (GetPagesProjectLatestDeploymentSourceConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentSourceConfig)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentSourceConfigArgs) ToGetPagesProjectLatestDeploymentSourceConfigOutput() GetPagesProjectLatestDeploymentSourceConfigOutput {
-	return i.ToGetPagesProjectLatestDeploymentSourceConfigOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentSourceConfigArgs) ToGetPagesProjectLatestDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentSourceConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentSourceConfigOutput)
-}
-
-type GetPagesProjectLatestDeploymentSourceConfigOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentSourceConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentSourceConfig)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) ToGetPagesProjectLatestDeploymentSourceConfigOutput() GetPagesProjectLatestDeploymentSourceConfigOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) ToGetPagesProjectLatestDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentSourceConfigOutput {
-	return o
-}
-
-// Whether to enable automatic deployments when pushing to the source repository.
-// When disabled, no deployments (production or preview) will be triggered automatically.
-//
-// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) DeploymentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) bool { return v.DeploymentsEnabled }).(pulumi.BoolOutput)
-}
-
-// The owner of the repository.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.Owner }).(pulumi.StringOutput)
-}
-
-// The owner ID of the repository.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) OwnerId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.OwnerId }).(pulumi.StringOutput)
-}
-
-// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PathExcludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) []string { return v.PathExcludes }).(pulumi.StringArrayOutput)
-}
-
-// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PathIncludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) []string { return v.PathIncludes }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable PR comments.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PrCommentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) bool { return v.PrCommentsEnabled }).(pulumi.BoolOutput)
-}
-
-// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) []string { return v.PreviewBranchExcludes }).(pulumi.StringArrayOutput)
-}
-
-// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
-}
-
-// Controls whether commits to preview branches trigger a preview deployment.
-// Available values: "all", "none", "custom".
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.PreviewDeploymentSetting }).(pulumi.StringOutput)
-}
-
-// The production branch of the repository.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) ProductionBranch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.ProductionBranch }).(pulumi.StringOutput)
-}
-
-// Whether to trigger a production deployment on commits to the production branch.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) ProductionDeploymentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) bool { return v.ProductionDeploymentsEnabled }).(pulumi.BoolOutput)
-}
-
-// The ID of the repository.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) RepoId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.RepoId }).(pulumi.StringOutput)
-}
-
-// The name of the repository.
-func (o GetPagesProjectLatestDeploymentSourceConfigOutput) RepoName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentSourceConfig) string { return v.RepoName }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectLatestDeploymentStage struct {
-	// When the stage ended.
-	EndedOn string `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name string `pulumi:"name"`
-	// When the stage started.
-	StartedOn string `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-	Status string `pulumi:"status"`
-}
-
-// GetPagesProjectLatestDeploymentStageInput is an input type that accepts GetPagesProjectLatestDeploymentStageArgs and GetPagesProjectLatestDeploymentStageOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentStageInput` via:
-//
-//	GetPagesProjectLatestDeploymentStageArgs{...}
-type GetPagesProjectLatestDeploymentStageInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentStageOutput() GetPagesProjectLatestDeploymentStageOutput
-	ToGetPagesProjectLatestDeploymentStageOutputWithContext(context.Context) GetPagesProjectLatestDeploymentStageOutput
-}
-
-type GetPagesProjectLatestDeploymentStageArgs struct {
-	// When the stage ended.
-	EndedOn pulumi.StringInput `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name pulumi.StringInput `pulumi:"name"`
-	// When the stage started.
-	StartedOn pulumi.StringInput `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetPagesProjectLatestDeploymentStageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentStageArgs) ToGetPagesProjectLatestDeploymentStageOutput() GetPagesProjectLatestDeploymentStageOutput {
-	return i.ToGetPagesProjectLatestDeploymentStageOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentStageArgs) ToGetPagesProjectLatestDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentStageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentStageOutput)
-}
-
-// GetPagesProjectLatestDeploymentStageArrayInput is an input type that accepts GetPagesProjectLatestDeploymentStageArray and GetPagesProjectLatestDeploymentStageArrayOutput values.
-// You can construct a concrete instance of `GetPagesProjectLatestDeploymentStageArrayInput` via:
-//
-//	GetPagesProjectLatestDeploymentStageArray{ GetPagesProjectLatestDeploymentStageArgs{...} }
-type GetPagesProjectLatestDeploymentStageArrayInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectLatestDeploymentStageArrayOutput() GetPagesProjectLatestDeploymentStageArrayOutput
-	ToGetPagesProjectLatestDeploymentStageArrayOutputWithContext(context.Context) GetPagesProjectLatestDeploymentStageArrayOutput
-}
-
-type GetPagesProjectLatestDeploymentStageArray []GetPagesProjectLatestDeploymentStageInput
-
-func (GetPagesProjectLatestDeploymentStageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPagesProjectLatestDeploymentStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectLatestDeploymentStageArray) ToGetPagesProjectLatestDeploymentStageArrayOutput() GetPagesProjectLatestDeploymentStageArrayOutput {
-	return i.ToGetPagesProjectLatestDeploymentStageArrayOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectLatestDeploymentStageArray) ToGetPagesProjectLatestDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentStageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectLatestDeploymentStageArrayOutput)
-}
-
-type GetPagesProjectLatestDeploymentStageOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentStageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectLatestDeploymentStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentStageOutput) ToGetPagesProjectLatestDeploymentStageOutput() GetPagesProjectLatestDeploymentStageOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentStageOutput) ToGetPagesProjectLatestDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentStageOutput {
-	return o
-}
-
-// When the stage ended.
-func (o GetPagesProjectLatestDeploymentStageOutput) EndedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentStage) string { return v.EndedOn }).(pulumi.StringOutput)
-}
-
-// The current build stage.
-// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-func (o GetPagesProjectLatestDeploymentStageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentStage) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// When the stage started.
-func (o GetPagesProjectLatestDeploymentStageOutput) StartedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentStage) string { return v.StartedOn }).(pulumi.StringOutput)
-}
-
-// State of the current stage.
-// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-func (o GetPagesProjectLatestDeploymentStageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectLatestDeploymentStage) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectLatestDeploymentStageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectLatestDeploymentStageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPagesProjectLatestDeploymentStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectLatestDeploymentStageArrayOutput) ToGetPagesProjectLatestDeploymentStageArrayOutput() GetPagesProjectLatestDeploymentStageArrayOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentStageArrayOutput) ToGetPagesProjectLatestDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectLatestDeploymentStageArrayOutput {
-	return o
-}
-
-func (o GetPagesProjectLatestDeploymentStageArrayOutput) Index(i pulumi.IntInput) GetPagesProjectLatestDeploymentStageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesProjectLatestDeploymentStage {
-		return vs[0].([]GetPagesProjectLatestDeploymentStage)[vs[1].(int)]
-	}).(GetPagesProjectLatestDeploymentStageOutput)
-}
-
-type GetPagesProjectSource struct {
-	Config GetPagesProjectSourceConfig `pulumi:"config"`
-	// The source control management provider.
-	// Available values: "github", "gitlab".
-	Type string `pulumi:"type"`
-}
-
-// GetPagesProjectSourceInput is an input type that accepts GetPagesProjectSourceArgs and GetPagesProjectSourceOutput values.
-// You can construct a concrete instance of `GetPagesProjectSourceInput` via:
-//
-//	GetPagesProjectSourceArgs{...}
-type GetPagesProjectSourceInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectSourceOutput() GetPagesProjectSourceOutput
-	ToGetPagesProjectSourceOutputWithContext(context.Context) GetPagesProjectSourceOutput
-}
-
-type GetPagesProjectSourceArgs struct {
-	Config GetPagesProjectSourceConfigInput `pulumi:"config"`
-	// The source control management provider.
-	// Available values: "github", "gitlab".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetPagesProjectSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectSource)(nil)).Elem()
-}
-
-func (i GetPagesProjectSourceArgs) ToGetPagesProjectSourceOutput() GetPagesProjectSourceOutput {
-	return i.ToGetPagesProjectSourceOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectSourceArgs) ToGetPagesProjectSourceOutputWithContext(ctx context.Context) GetPagesProjectSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectSourceOutput)
-}
-
-type GetPagesProjectSourceOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectSource)(nil)).Elem()
-}
-
-func (o GetPagesProjectSourceOutput) ToGetPagesProjectSourceOutput() GetPagesProjectSourceOutput {
-	return o
-}
-
-func (o GetPagesProjectSourceOutput) ToGetPagesProjectSourceOutputWithContext(ctx context.Context) GetPagesProjectSourceOutput {
-	return o
-}
-
-func (o GetPagesProjectSourceOutput) Config() GetPagesProjectSourceConfigOutput {
-	return o.ApplyT(func(v GetPagesProjectSource) GetPagesProjectSourceConfig { return v.Config }).(GetPagesProjectSourceConfigOutput)
-}
-
-// The source control management provider.
-// Available values: "github", "gitlab".
-func (o GetPagesProjectSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectSource) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectSourceConfig struct {
-	// Whether to enable automatic deployments when pushing to the source repository.
-	// When disabled, no deployments (production or preview) will be triggered automatically.
-	//
-	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-	DeploymentsEnabled bool `pulumi:"deploymentsEnabled"`
-	// The owner of the repository.
-	Owner string `pulumi:"owner"`
-	// The owner ID of the repository.
-	OwnerId string `pulumi:"ownerId"`
-	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-	PathExcludes []string `pulumi:"pathExcludes"`
-	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-	PathIncludes []string `pulumi:"pathIncludes"`
-	// Whether to enable PR comments.
-	PrCommentsEnabled bool `pulumi:"prCommentsEnabled"`
-	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchExcludes []string `pulumi:"previewBranchExcludes"`
-	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchIncludes []string `pulumi:"previewBranchIncludes"`
-	// Controls whether commits to preview branches trigger a preview deployment.
-	// Available values: "all", "none", "custom".
-	PreviewDeploymentSetting string `pulumi:"previewDeploymentSetting"`
-	// The production branch of the repository.
-	ProductionBranch string `pulumi:"productionBranch"`
-	// Whether to trigger a production deployment on commits to the production branch.
-	ProductionDeploymentsEnabled bool `pulumi:"productionDeploymentsEnabled"`
-	// The ID of the repository.
-	RepoId string `pulumi:"repoId"`
-	// The name of the repository.
-	RepoName string `pulumi:"repoName"`
-}
-
-// GetPagesProjectSourceConfigInput is an input type that accepts GetPagesProjectSourceConfigArgs and GetPagesProjectSourceConfigOutput values.
-// You can construct a concrete instance of `GetPagesProjectSourceConfigInput` via:
-//
-//	GetPagesProjectSourceConfigArgs{...}
-type GetPagesProjectSourceConfigInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectSourceConfigOutput() GetPagesProjectSourceConfigOutput
-	ToGetPagesProjectSourceConfigOutputWithContext(context.Context) GetPagesProjectSourceConfigOutput
-}
-
-type GetPagesProjectSourceConfigArgs struct {
-	// Whether to enable automatic deployments when pushing to the source repository.
-	// When disabled, no deployments (production or preview) will be triggered automatically.
-	//
-	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-	DeploymentsEnabled pulumi.BoolInput `pulumi:"deploymentsEnabled"`
-	// The owner of the repository.
-	Owner pulumi.StringInput `pulumi:"owner"`
-	// The owner ID of the repository.
-	OwnerId pulumi.StringInput `pulumi:"ownerId"`
-	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-	PathExcludes pulumi.StringArrayInput `pulumi:"pathExcludes"`
-	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-	PathIncludes pulumi.StringArrayInput `pulumi:"pathIncludes"`
-	// Whether to enable PR comments.
-	PrCommentsEnabled pulumi.BoolInput `pulumi:"prCommentsEnabled"`
-	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchExcludes pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
-	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchIncludes pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
-	// Controls whether commits to preview branches trigger a preview deployment.
-	// Available values: "all", "none", "custom".
-	PreviewDeploymentSetting pulumi.StringInput `pulumi:"previewDeploymentSetting"`
-	// The production branch of the repository.
-	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
-	// Whether to trigger a production deployment on commits to the production branch.
-	ProductionDeploymentsEnabled pulumi.BoolInput `pulumi:"productionDeploymentsEnabled"`
-	// The ID of the repository.
-	RepoId pulumi.StringInput `pulumi:"repoId"`
-	// The name of the repository.
-	RepoName pulumi.StringInput `pulumi:"repoName"`
-}
-
-func (GetPagesProjectSourceConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectSourceConfig)(nil)).Elem()
-}
-
-func (i GetPagesProjectSourceConfigArgs) ToGetPagesProjectSourceConfigOutput() GetPagesProjectSourceConfigOutput {
-	return i.ToGetPagesProjectSourceConfigOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectSourceConfigArgs) ToGetPagesProjectSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectSourceConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectSourceConfigOutput)
-}
-
-type GetPagesProjectSourceConfigOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectSourceConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectSourceConfig)(nil)).Elem()
-}
-
-func (o GetPagesProjectSourceConfigOutput) ToGetPagesProjectSourceConfigOutput() GetPagesProjectSourceConfigOutput {
-	return o
-}
-
-func (o GetPagesProjectSourceConfigOutput) ToGetPagesProjectSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectSourceConfigOutput {
-	return o
-}
-
-// Whether to enable automatic deployments when pushing to the source repository.
-// When disabled, no deployments (production or preview) will be triggered automatically.
-//
-// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-func (o GetPagesProjectSourceConfigOutput) DeploymentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) bool { return v.DeploymentsEnabled }).(pulumi.BoolOutput)
-}
-
-// The owner of the repository.
-func (o GetPagesProjectSourceConfigOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.Owner }).(pulumi.StringOutput)
-}
-
-// The owner ID of the repository.
-func (o GetPagesProjectSourceConfigOutput) OwnerId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.OwnerId }).(pulumi.StringOutput)
-}
-
-// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-func (o GetPagesProjectSourceConfigOutput) PathExcludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) []string { return v.PathExcludes }).(pulumi.StringArrayOutput)
-}
-
-// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-func (o GetPagesProjectSourceConfigOutput) PathIncludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) []string { return v.PathIncludes }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable PR comments.
-func (o GetPagesProjectSourceConfigOutput) PrCommentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) bool { return v.PrCommentsEnabled }).(pulumi.BoolOutput)
-}
-
-// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-func (o GetPagesProjectSourceConfigOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) []string { return v.PreviewBranchExcludes }).(pulumi.StringArrayOutput)
-}
-
-// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-func (o GetPagesProjectSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
-}
-
-// Controls whether commits to preview branches trigger a preview deployment.
-// Available values: "all", "none", "custom".
-func (o GetPagesProjectSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.PreviewDeploymentSetting }).(pulumi.StringOutput)
-}
-
-// The production branch of the repository.
-func (o GetPagesProjectSourceConfigOutput) ProductionBranch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.ProductionBranch }).(pulumi.StringOutput)
-}
-
-// Whether to trigger a production deployment on commits to the production branch.
-func (o GetPagesProjectSourceConfigOutput) ProductionDeploymentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) bool { return v.ProductionDeploymentsEnabled }).(pulumi.BoolOutput)
-}
-
-// The ID of the repository.
-func (o GetPagesProjectSourceConfigOutput) RepoId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.RepoId }).(pulumi.StringOutput)
-}
-
-// The name of the repository.
-func (o GetPagesProjectSourceConfigOutput) RepoName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectSourceConfig) string { return v.RepoName }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResult struct {
-	// Configs for the project build process.
-	BuildConfig GetPagesProjectsResultBuildConfig `pulumi:"buildConfig"`
-	// Most recent production deployment of the project.
-	CanonicalDeployment GetPagesProjectsResultCanonicalDeployment `pulumi:"canonicalDeployment"`
-	// When the project was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// Configs for deployments in a project.
-	DeploymentConfigs GetPagesProjectsResultDeploymentConfigs `pulumi:"deploymentConfigs"`
-	// A list of associated custom domains for the project.
-	Domains []string `pulumi:"domains"`
-	// Framework the project is using.
-	Framework string `pulumi:"framework"`
-	// Version of the framework the project is using.
-	FrameworkVersion string `pulumi:"frameworkVersion"`
-	// ID of the project.
-	Id string `pulumi:"id"`
-	// Most recent deployment of the project.
-	LatestDeployment GetPagesProjectsResultLatestDeployment `pulumi:"latestDeployment"`
-	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
-	Name string `pulumi:"name"`
-	// Name of the preview script.
-	PreviewScriptName string `pulumi:"previewScriptName"`
-	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch string `pulumi:"productionBranch"`
-	// Name of the production script.
-	ProductionScriptName string `pulumi:"productionScriptName"`
-	// Configs for the project source control.
-	Source GetPagesProjectsResultSource `pulumi:"source"`
-	// The Cloudflare subdomain associated with the project.
-	Subdomain string `pulumi:"subdomain"`
-	// Whether the project uses functions.
-	UsesFunctions bool `pulumi:"usesFunctions"`
-}
-
-// GetPagesProjectsResultInput is an input type that accepts GetPagesProjectsResultArgs and GetPagesProjectsResultOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultInput` via:
-//
-//	GetPagesProjectsResultArgs{...}
-type GetPagesProjectsResultInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultOutput() GetPagesProjectsResultOutput
-	ToGetPagesProjectsResultOutputWithContext(context.Context) GetPagesProjectsResultOutput
-}
-
-type GetPagesProjectsResultArgs struct {
-	// Configs for the project build process.
-	BuildConfig GetPagesProjectsResultBuildConfigInput `pulumi:"buildConfig"`
-	// Most recent production deployment of the project.
-	CanonicalDeployment GetPagesProjectsResultCanonicalDeploymentInput `pulumi:"canonicalDeployment"`
-	// When the project was created.
-	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
-	// Configs for deployments in a project.
-	DeploymentConfigs GetPagesProjectsResultDeploymentConfigsInput `pulumi:"deploymentConfigs"`
-	// A list of associated custom domains for the project.
-	Domains pulumi.StringArrayInput `pulumi:"domains"`
-	// Framework the project is using.
-	Framework pulumi.StringInput `pulumi:"framework"`
-	// Version of the framework the project is using.
-	FrameworkVersion pulumi.StringInput `pulumi:"frameworkVersion"`
-	// ID of the project.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Most recent deployment of the project.
-	LatestDeployment GetPagesProjectsResultLatestDeploymentInput `pulumi:"latestDeployment"`
-	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the preview script.
-	PreviewScriptName pulumi.StringInput `pulumi:"previewScriptName"`
-	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
-	// Name of the production script.
-	ProductionScriptName pulumi.StringInput `pulumi:"productionScriptName"`
-	// Configs for the project source control.
-	Source GetPagesProjectsResultSourceInput `pulumi:"source"`
-	// The Cloudflare subdomain associated with the project.
-	Subdomain pulumi.StringInput `pulumi:"subdomain"`
-	// Whether the project uses functions.
-	UsesFunctions pulumi.BoolInput `pulumi:"usesFunctions"`
-}
-
-func (GetPagesProjectsResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResult)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultArgs) ToGetPagesProjectsResultOutput() GetPagesProjectsResultOutput {
-	return i.ToGetPagesProjectsResultOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultArgs) ToGetPagesProjectsResultOutputWithContext(ctx context.Context) GetPagesProjectsResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultOutput)
-}
-
-// GetPagesProjectsResultArrayInput is an input type that accepts GetPagesProjectsResultArray and GetPagesProjectsResultArrayOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultArrayInput` via:
-//
-//	GetPagesProjectsResultArray{ GetPagesProjectsResultArgs{...} }
-type GetPagesProjectsResultArrayInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultArrayOutput() GetPagesProjectsResultArrayOutput
-	ToGetPagesProjectsResultArrayOutputWithContext(context.Context) GetPagesProjectsResultArrayOutput
-}
-
-type GetPagesProjectsResultArray []GetPagesProjectsResultInput
-
-func (GetPagesProjectsResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPagesProjectsResult)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultArray) ToGetPagesProjectsResultArrayOutput() GetPagesProjectsResultArrayOutput {
-	return i.ToGetPagesProjectsResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultArray) ToGetPagesProjectsResultArrayOutputWithContext(ctx context.Context) GetPagesProjectsResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultArrayOutput)
-}
-
-type GetPagesProjectsResultOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResult)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultOutput) ToGetPagesProjectsResultOutput() GetPagesProjectsResultOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultOutput) ToGetPagesProjectsResultOutputWithContext(ctx context.Context) GetPagesProjectsResultOutput {
-	return o
-}
-
-// Configs for the project build process.
-func (o GetPagesProjectsResultOutput) BuildConfig() GetPagesProjectsResultBuildConfigOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultBuildConfig { return v.BuildConfig }).(GetPagesProjectsResultBuildConfigOutput)
-}
-
-// Most recent production deployment of the project.
-func (o GetPagesProjectsResultOutput) CanonicalDeployment() GetPagesProjectsResultCanonicalDeploymentOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultCanonicalDeployment { return v.CanonicalDeployment }).(GetPagesProjectsResultCanonicalDeploymentOutput)
-}
-
-// When the project was created.
-func (o GetPagesProjectsResultOutput) CreatedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.CreatedOn }).(pulumi.StringOutput)
-}
-
-// Configs for deployments in a project.
-func (o GetPagesProjectsResultOutput) DeploymentConfigs() GetPagesProjectsResultDeploymentConfigsOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultDeploymentConfigs { return v.DeploymentConfigs }).(GetPagesProjectsResultDeploymentConfigsOutput)
-}
-
-// A list of associated custom domains for the project.
-func (o GetPagesProjectsResultOutput) Domains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) []string { return v.Domains }).(pulumi.StringArrayOutput)
-}
-
-// Framework the project is using.
-func (o GetPagesProjectsResultOutput) Framework() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.Framework }).(pulumi.StringOutput)
-}
-
-// Version of the framework the project is using.
-func (o GetPagesProjectsResultOutput) FrameworkVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.FrameworkVersion }).(pulumi.StringOutput)
-}
-
-// ID of the project.
-func (o GetPagesProjectsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Most recent deployment of the project.
-func (o GetPagesProjectsResultOutput) LatestDeployment() GetPagesProjectsResultLatestDeploymentOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultLatestDeployment { return v.LatestDeployment }).(GetPagesProjectsResultLatestDeploymentOutput)
-}
-
-// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
-func (o GetPagesProjectsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Name of the preview script.
-func (o GetPagesProjectsResultOutput) PreviewScriptName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.PreviewScriptName }).(pulumi.StringOutput)
-}
-
-// Production branch of the project. Used to identify production deployments.
-func (o GetPagesProjectsResultOutput) ProductionBranch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.ProductionBranch }).(pulumi.StringOutput)
-}
-
-// Name of the production script.
-func (o GetPagesProjectsResultOutput) ProductionScriptName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.ProductionScriptName }).(pulumi.StringOutput)
-}
-
-// Configs for the project source control.
-func (o GetPagesProjectsResultOutput) Source() GetPagesProjectsResultSourceOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) GetPagesProjectsResultSource { return v.Source }).(GetPagesProjectsResultSourceOutput)
-}
-
-// The Cloudflare subdomain associated with the project.
-func (o GetPagesProjectsResultOutput) Subdomain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) string { return v.Subdomain }).(pulumi.StringOutput)
-}
-
-// Whether the project uses functions.
-func (o GetPagesProjectsResultOutput) UsesFunctions() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResult) bool { return v.UsesFunctions }).(pulumi.BoolOutput)
-}
-
-type GetPagesProjectsResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPagesProjectsResult)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultArrayOutput) ToGetPagesProjectsResultArrayOutput() GetPagesProjectsResultArrayOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultArrayOutput) ToGetPagesProjectsResultArrayOutputWithContext(ctx context.Context) GetPagesProjectsResultArrayOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultArrayOutput) Index(i pulumi.IntInput) GetPagesProjectsResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesProjectsResult {
-		return vs[0].([]GetPagesProjectsResult)[vs[1].(int)]
-	}).(GetPagesProjectsResultOutput)
-}
-
-type GetPagesProjectsResultBuildConfig struct {
-	// Enable build caching for the project.
-	BuildCaching bool `pulumi:"buildCaching"`
-	// Command used to build project.
-	BuildCommand string `pulumi:"buildCommand"`
-	// Assets output directory of the build.
-	DestinationDir string `pulumi:"destinationDir"`
-	// Directory to run the command.
-	RootDir string `pulumi:"rootDir"`
-	// The classifying tag for analytics.
-	WebAnalyticsTag string `pulumi:"webAnalyticsTag"`
-	// The auth token for analytics.
-	WebAnalyticsToken string `pulumi:"webAnalyticsToken"`
-}
-
-// GetPagesProjectsResultBuildConfigInput is an input type that accepts GetPagesProjectsResultBuildConfigArgs and GetPagesProjectsResultBuildConfigOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultBuildConfigInput` via:
-//
-//	GetPagesProjectsResultBuildConfigArgs{...}
-type GetPagesProjectsResultBuildConfigInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultBuildConfigOutput() GetPagesProjectsResultBuildConfigOutput
-	ToGetPagesProjectsResultBuildConfigOutputWithContext(context.Context) GetPagesProjectsResultBuildConfigOutput
-}
-
-type GetPagesProjectsResultBuildConfigArgs struct {
-	// Enable build caching for the project.
-	BuildCaching pulumi.BoolInput `pulumi:"buildCaching"`
-	// Command used to build project.
-	BuildCommand pulumi.StringInput `pulumi:"buildCommand"`
-	// Assets output directory of the build.
-	DestinationDir pulumi.StringInput `pulumi:"destinationDir"`
-	// Directory to run the command.
-	RootDir pulumi.StringInput `pulumi:"rootDir"`
-	// The classifying tag for analytics.
-	WebAnalyticsTag pulumi.StringInput `pulumi:"webAnalyticsTag"`
-	// The auth token for analytics.
-	WebAnalyticsToken pulumi.StringInput `pulumi:"webAnalyticsToken"`
-}
-
-func (GetPagesProjectsResultBuildConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultBuildConfig)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultBuildConfigArgs) ToGetPagesProjectsResultBuildConfigOutput() GetPagesProjectsResultBuildConfigOutput {
-	return i.ToGetPagesProjectsResultBuildConfigOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultBuildConfigArgs) ToGetPagesProjectsResultBuildConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultBuildConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultBuildConfigOutput)
-}
-
-type GetPagesProjectsResultBuildConfigOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultBuildConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultBuildConfig)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultBuildConfigOutput) ToGetPagesProjectsResultBuildConfigOutput() GetPagesProjectsResultBuildConfigOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultBuildConfigOutput) ToGetPagesProjectsResultBuildConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultBuildConfigOutput {
-	return o
-}
-
-// Enable build caching for the project.
-func (o GetPagesProjectsResultBuildConfigOutput) BuildCaching() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) bool { return v.BuildCaching }).(pulumi.BoolOutput)
-}
-
-// Command used to build project.
-func (o GetPagesProjectsResultBuildConfigOutput) BuildCommand() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.BuildCommand }).(pulumi.StringOutput)
-}
-
-// Assets output directory of the build.
-func (o GetPagesProjectsResultBuildConfigOutput) DestinationDir() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.DestinationDir }).(pulumi.StringOutput)
-}
-
-// Directory to run the command.
-func (o GetPagesProjectsResultBuildConfigOutput) RootDir() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.RootDir }).(pulumi.StringOutput)
-}
-
-// The classifying tag for analytics.
-func (o GetPagesProjectsResultBuildConfigOutput) WebAnalyticsTag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.WebAnalyticsTag }).(pulumi.StringOutput)
-}
-
-// The auth token for analytics.
-func (o GetPagesProjectsResultBuildConfigOutput) WebAnalyticsToken() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultBuildConfig) string { return v.WebAnalyticsToken }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeployment struct {
-	// A list of alias URLs pointing to this deployment.
-	Aliases []string `pulumi:"aliases"`
-	// Configs for the project build process.
-	BuildConfig GetPagesProjectsResultCanonicalDeploymentBuildConfig `pulumi:"buildConfig"`
-	// When the deployment was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// Info about what caused the deployment.
-	DeploymentTrigger GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger `pulumi:"deploymentTrigger"`
-	// Environment variables used for builds and Pages Functions.
-	EnvVars map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars `pulumi:"envVars"`
-	// Type of deploy.
-	// Available values: "preview", "production".
-	Environment string `pulumi:"environment"`
-	// Id of the deployment.
-	Id string `pulumi:"id"`
-	// Whether the deployment was skipped.
-	IsSkipped bool `pulumi:"isSkipped"`
-	// The status of the deployment.
-	LatestStage GetPagesProjectsResultCanonicalDeploymentLatestStage `pulumi:"latestStage"`
-	// When the deployment was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// Id of the project.
-	ProjectId string `pulumi:"projectId"`
-	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
-	ProjectName string `pulumi:"projectName"`
-	// Short Id (8 character) of the deployment.
-	ShortId string `pulumi:"shortId"`
-	// Why the deployment was skipped.
-	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
-	SkipReason string `pulumi:"skipReason"`
-	// Configs for the project source control.
-	Source GetPagesProjectsResultCanonicalDeploymentSource `pulumi:"source"`
-	// List of past stages.
-	Stages []GetPagesProjectsResultCanonicalDeploymentStage `pulumi:"stages"`
-	// The live URL to view this deployment.
-	Url string `pulumi:"url"`
-	// Whether the deployment uses functions.
-	UsesFunctions bool `pulumi:"usesFunctions"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentArgs and GetPagesProjectsResultCanonicalDeploymentOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentOutput() GetPagesProjectsResultCanonicalDeploymentOutput
-	ToGetPagesProjectsResultCanonicalDeploymentOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentArgs struct {
-	// A list of alias URLs pointing to this deployment.
-	Aliases pulumi.StringArrayInput `pulumi:"aliases"`
-	// Configs for the project build process.
-	BuildConfig GetPagesProjectsResultCanonicalDeploymentBuildConfigInput `pulumi:"buildConfig"`
-	// When the deployment was created.
-	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
-	// Info about what caused the deployment.
-	DeploymentTrigger GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput `pulumi:"deploymentTrigger"`
-	// Environment variables used for builds and Pages Functions.
-	EnvVars GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput `pulumi:"envVars"`
-	// Type of deploy.
-	// Available values: "preview", "production".
-	Environment pulumi.StringInput `pulumi:"environment"`
-	// Id of the deployment.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Whether the deployment was skipped.
-	IsSkipped pulumi.BoolInput `pulumi:"isSkipped"`
-	// The status of the deployment.
-	LatestStage GetPagesProjectsResultCanonicalDeploymentLatestStageInput `pulumi:"latestStage"`
-	// When the deployment was last modified.
-	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
-	// Id of the project.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
-	ProjectName pulumi.StringInput `pulumi:"projectName"`
-	// Short Id (8 character) of the deployment.
-	ShortId pulumi.StringInput `pulumi:"shortId"`
-	// Why the deployment was skipped.
-	// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
-	SkipReason pulumi.StringInput `pulumi:"skipReason"`
-	// Configs for the project source control.
-	Source GetPagesProjectsResultCanonicalDeploymentSourceInput `pulumi:"source"`
-	// List of past stages.
-	Stages GetPagesProjectsResultCanonicalDeploymentStageArrayInput `pulumi:"stages"`
-	// The live URL to view this deployment.
-	Url pulumi.StringInput `pulumi:"url"`
-	// Whether the deployment uses functions.
-	UsesFunctions pulumi.BoolInput `pulumi:"usesFunctions"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeployment)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentArgs) ToGetPagesProjectsResultCanonicalDeploymentOutput() GetPagesProjectsResultCanonicalDeploymentOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentArgs) ToGetPagesProjectsResultCanonicalDeploymentOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeployment)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) ToGetPagesProjectsResultCanonicalDeploymentOutput() GetPagesProjectsResultCanonicalDeploymentOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) ToGetPagesProjectsResultCanonicalDeploymentOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentOutput {
-	return o
-}
-
-// A list of alias URLs pointing to this deployment.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) Aliases() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) []string { return v.Aliases }).(pulumi.StringArrayOutput)
-}
-
-// Configs for the project build process.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) BuildConfig() GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) GetPagesProjectsResultCanonicalDeploymentBuildConfig {
-		return v.BuildConfig
-	}).(GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput)
-}
-
-// When the deployment was created.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) CreatedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.CreatedOn }).(pulumi.StringOutput)
-}
-
-// Info about what caused the deployment.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) DeploymentTrigger() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger {
-		return v.DeploymentTrigger
-	}).(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput)
-}
-
-// Environment variables used for builds and Pages Functions.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) EnvVars() GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars {
-		return v.EnvVars
-	}).(GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput)
-}
-
-// Type of deploy.
-// Available values: "preview", "production".
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) Environment() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.Environment }).(pulumi.StringOutput)
-}
-
-// Id of the deployment.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Whether the deployment was skipped.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) IsSkipped() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) bool { return v.IsSkipped }).(pulumi.BoolOutput)
-}
-
-// The status of the deployment.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) LatestStage() GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) GetPagesProjectsResultCanonicalDeploymentLatestStage {
-		return v.LatestStage
-	}).(GetPagesProjectsResultCanonicalDeploymentLatestStageOutput)
-}
-
-// When the deployment was last modified.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) ModifiedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ModifiedOn }).(pulumi.StringOutput)
-}
-
-// Id of the project.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) ProjectName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ProjectName }).(pulumi.StringOutput)
-}
-
-// Short Id (8 character) of the deployment.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) ShortId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.ShortId }).(pulumi.StringOutput)
-}
-
-// Why the deployment was skipped.
-// Available values: "commit*message", "preview*deployments*disabled", "production*deployments*disabled", "path*config", "branch*config", "pages*to*workers*conversion", "superseded*queued*build".
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) SkipReason() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.SkipReason }).(pulumi.StringOutput)
-}
-
-// Configs for the project source control.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) Source() GetPagesProjectsResultCanonicalDeploymentSourceOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) GetPagesProjectsResultCanonicalDeploymentSource {
-		return v.Source
-	}).(GetPagesProjectsResultCanonicalDeploymentSourceOutput)
-}
-
-// List of past stages.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) Stages() GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) []GetPagesProjectsResultCanonicalDeploymentStage {
-		return v.Stages
-	}).(GetPagesProjectsResultCanonicalDeploymentStageArrayOutput)
-}
-
-// The live URL to view this deployment.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) string { return v.Url }).(pulumi.StringOutput)
-}
-
-// Whether the deployment uses functions.
-func (o GetPagesProjectsResultCanonicalDeploymentOutput) UsesFunctions() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeployment) bool { return v.UsesFunctions }).(pulumi.BoolOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentBuildConfig struct {
-	// Enable build caching for the project.
-	BuildCaching bool `pulumi:"buildCaching"`
-	// Command used to build project.
-	BuildCommand string `pulumi:"buildCommand"`
-	// Assets output directory of the build.
-	DestinationDir string `pulumi:"destinationDir"`
-	// Directory to run the command.
-	RootDir string `pulumi:"rootDir"`
-	// The classifying tag for analytics.
-	WebAnalyticsTag string `pulumi:"webAnalyticsTag"`
-	// The auth token for analytics.
-	WebAnalyticsToken string `pulumi:"webAnalyticsToken"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentBuildConfigInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs and GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentBuildConfigInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentBuildConfigInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutput() GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput
-	ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs struct {
-	// Enable build caching for the project.
-	BuildCaching pulumi.BoolInput `pulumi:"buildCaching"`
-	// Command used to build project.
-	BuildCommand pulumi.StringInput `pulumi:"buildCommand"`
-	// Assets output directory of the build.
-	DestinationDir pulumi.StringInput `pulumi:"destinationDir"`
-	// Directory to run the command.
-	RootDir pulumi.StringInput `pulumi:"rootDir"`
-	// The classifying tag for analytics.
-	WebAnalyticsTag pulumi.StringInput `pulumi:"webAnalyticsTag"`
-	// The auth token for analytics.
-	WebAnalyticsToken pulumi.StringInput `pulumi:"webAnalyticsToken"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentBuildConfig)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs) ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutput() GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs) ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentBuildConfig)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutput() GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) ToGetPagesProjectsResultCanonicalDeploymentBuildConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput {
-	return o
-}
-
-// Enable build caching for the project.
-func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) BuildCaching() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) bool { return v.BuildCaching }).(pulumi.BoolOutput)
-}
-
-// Command used to build project.
-func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) BuildCommand() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.BuildCommand }).(pulumi.StringOutput)
-}
-
-// Assets output directory of the build.
-func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) DestinationDir() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.DestinationDir }).(pulumi.StringOutput)
-}
-
-// Directory to run the command.
-func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) RootDir() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.RootDir }).(pulumi.StringOutput)
-}
-
-// The classifying tag for analytics.
-func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) WebAnalyticsTag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.WebAnalyticsTag }).(pulumi.StringOutput)
-}
-
-// The auth token for analytics.
-func (o GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput) WebAnalyticsToken() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentBuildConfig) string { return v.WebAnalyticsToken }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger struct {
-	// Additional info about the trigger.
-	Metadata GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata `pulumi:"metadata"`
-	// What caused the deployment.
-	// Available values: "github:push", "ad*hoc", "deploy*hook".
-	Type string `pulumi:"type"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs and GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput
-	ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs struct {
-	// Additional info about the trigger.
-	Metadata GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput `pulumi:"metadata"`
-	// What caused the deployment.
-	// Available values: "github:push", "ad*hoc", "deploy*hook".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput {
-	return o
-}
-
-// Additional info about the trigger.
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) Metadata() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata {
-		return v.Metadata
-	}).(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput)
-}
-
-// What caused the deployment.
-// Available values: "github:push", "ad*hoc", "deploy*hook".
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTrigger) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata struct {
-	// Where the trigger happened.
-	Branch string `pulumi:"branch"`
-	// Whether the deployment trigger commit was dirty.
-	CommitDirty bool `pulumi:"commitDirty"`
-	// Hash of the deployment trigger commit.
-	CommitHash string `pulumi:"commitHash"`
-	// Message of the deployment trigger commit.
-	CommitMessage string `pulumi:"commitMessage"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs and GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput
-	ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs struct {
-	// Where the trigger happened.
-	Branch pulumi.StringInput `pulumi:"branch"`
-	// Whether the deployment trigger commit was dirty.
-	CommitDirty pulumi.BoolInput `pulumi:"commitDirty"`
-	// Hash of the deployment trigger commit.
-	CommitHash pulumi.StringInput `pulumi:"commitHash"`
-	// Message of the deployment trigger commit.
-	CommitMessage pulumi.StringInput `pulumi:"commitMessage"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput() GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) ToGetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput {
-	return o
-}
-
-// Where the trigger happened.
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) Branch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata) string { return v.Branch }).(pulumi.StringOutput)
-}
-
-// Whether the deployment trigger commit was dirty.
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) CommitDirty() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata) bool { return v.CommitDirty }).(pulumi.BoolOutput)
-}
-
-// Hash of the deployment trigger commit.
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) CommitHash() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata) string { return v.CommitHash }).(pulumi.StringOutput)
-}
-
-// Message of the deployment trigger commit.
-func (o GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput) CommitMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadata) string {
-		return v.CommitMessage
-	}).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentEnvVars struct {
-	// Available values: "plain*text", "secret*text".
-	Type string `pulumi:"type"`
-	// Environment variable value.
-	Value string `pulumi:"value"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentEnvVarsInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs and GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentEnvVarsInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentEnvVarsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput
-	ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs struct {
-	// Available values: "plain*text", "secret*text".
-	Type pulumi.StringInput `pulumi:"type"`
-	// Environment variable value.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput)
-}
-
-// GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentEnvVarsMap and GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentEnvVarsMap{ "key": GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs{...} }
-type GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput
-	ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentEnvVarsMap map[string]GetPagesProjectsResultCanonicalDeploymentEnvVarsInput
-
-func (GetPagesProjectsResultCanonicalDeploymentEnvVarsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentEnvVarsMap) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentEnvVarsMap) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
-	return o
-}
-
-// Available values: "plain*text", "secret*text".
-func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentEnvVars) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Environment variable value.
-func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentEnvVars) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput() GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput) ToGetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput) MapIndex(k pulumi.StringInput) GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetPagesProjectsResultCanonicalDeploymentEnvVars {
-		return vs[0].(map[string]GetPagesProjectsResultCanonicalDeploymentEnvVars)[vs[1].(string)]
-	}).(GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentLatestStage struct {
-	// When the stage ended.
-	EndedOn string `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name string `pulumi:"name"`
-	// When the stage started.
-	StartedOn string `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-	Status string `pulumi:"status"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentLatestStageInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentLatestStageArgs and GetPagesProjectsResultCanonicalDeploymentLatestStageOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentLatestStageInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentLatestStageArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentLatestStageInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutput() GetPagesProjectsResultCanonicalDeploymentLatestStageOutput
-	ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentLatestStageOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentLatestStageArgs struct {
-	// When the stage ended.
-	EndedOn pulumi.StringInput `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name pulumi.StringInput `pulumi:"name"`
-	// When the stage started.
-	StartedOn pulumi.StringInput `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentLatestStageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentLatestStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentLatestStageArgs) ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutput() GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentLatestStageArgs) ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentLatestStageOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentLatestStageOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentLatestStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutput() GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) ToGetPagesProjectsResultCanonicalDeploymentLatestStageOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentLatestStageOutput {
-	return o
-}
-
-// When the stage ended.
-func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) EndedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentLatestStage) string { return v.EndedOn }).(pulumi.StringOutput)
-}
-
-// The current build stage.
-// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentLatestStage) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// When the stage started.
-func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) StartedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentLatestStage) string { return v.StartedOn }).(pulumi.StringOutput)
-}
-
-// State of the current stage.
-// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-func (o GetPagesProjectsResultCanonicalDeploymentLatestStageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentLatestStage) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentSource struct {
-	Config GetPagesProjectsResultCanonicalDeploymentSourceConfig `pulumi:"config"`
-	// The source control management provider.
-	// Available values: "github", "gitlab".
-	Type string `pulumi:"type"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentSourceInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentSourceArgs and GetPagesProjectsResultCanonicalDeploymentSourceOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentSourceInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentSourceArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentSourceInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentSourceOutput() GetPagesProjectsResultCanonicalDeploymentSourceOutput
-	ToGetPagesProjectsResultCanonicalDeploymentSourceOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentSourceOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentSourceArgs struct {
-	Config GetPagesProjectsResultCanonicalDeploymentSourceConfigInput `pulumi:"config"`
-	// The source control management provider.
-	// Available values: "github", "gitlab".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSource)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentSourceArgs) ToGetPagesProjectsResultCanonicalDeploymentSourceOutput() GetPagesProjectsResultCanonicalDeploymentSourceOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentSourceOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentSourceArgs) ToGetPagesProjectsResultCanonicalDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentSourceOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentSourceOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSource)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentSourceOutput) ToGetPagesProjectsResultCanonicalDeploymentSourceOutput() GetPagesProjectsResultCanonicalDeploymentSourceOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentSourceOutput) ToGetPagesProjectsResultCanonicalDeploymentSourceOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentSourceOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentSourceOutput) Config() GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSource) GetPagesProjectsResultCanonicalDeploymentSourceConfig {
-		return v.Config
-	}).(GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput)
-}
-
-// The source control management provider.
-// Available values: "github", "gitlab".
-func (o GetPagesProjectsResultCanonicalDeploymentSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSource) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentSourceConfig struct {
-	// Whether to enable automatic deployments when pushing to the source repository.
-	// When disabled, no deployments (production or preview) will be triggered automatically.
-	//
-	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-	DeploymentsEnabled bool `pulumi:"deploymentsEnabled"`
-	// The owner of the repository.
-	Owner string `pulumi:"owner"`
-	// The owner ID of the repository.
-	OwnerId string `pulumi:"ownerId"`
-	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-	PathExcludes []string `pulumi:"pathExcludes"`
-	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-	PathIncludes []string `pulumi:"pathIncludes"`
-	// Whether to enable PR comments.
-	PrCommentsEnabled bool `pulumi:"prCommentsEnabled"`
-	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchExcludes []string `pulumi:"previewBranchExcludes"`
-	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchIncludes []string `pulumi:"previewBranchIncludes"`
-	// Controls whether commits to preview branches trigger a preview deployment.
-	// Available values: "all", "none", "custom".
-	PreviewDeploymentSetting string `pulumi:"previewDeploymentSetting"`
-	// The production branch of the repository.
-	ProductionBranch string `pulumi:"productionBranch"`
-	// Whether to trigger a production deployment on commits to the production branch.
-	ProductionDeploymentsEnabled bool `pulumi:"productionDeploymentsEnabled"`
-	// The ID of the repository.
-	RepoId string `pulumi:"repoId"`
-	// The name of the repository.
-	RepoName string `pulumi:"repoName"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentSourceConfigInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs and GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentSourceConfigInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentSourceConfigInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutput() GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput
-	ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs struct {
-	// Whether to enable automatic deployments when pushing to the source repository.
-	// When disabled, no deployments (production or preview) will be triggered automatically.
-	//
-	// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-	DeploymentsEnabled pulumi.BoolInput `pulumi:"deploymentsEnabled"`
-	// The owner of the repository.
-	Owner pulumi.StringInput `pulumi:"owner"`
-	// The owner ID of the repository.
-	OwnerId pulumi.StringInput `pulumi:"ownerId"`
-	// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-	PathExcludes pulumi.StringArrayInput `pulumi:"pathExcludes"`
-	// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-	PathIncludes pulumi.StringArrayInput `pulumi:"pathIncludes"`
-	// Whether to enable PR comments.
-	PrCommentsEnabled pulumi.BoolInput `pulumi:"prCommentsEnabled"`
-	// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchExcludes pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
-	// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-	PreviewBranchIncludes pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
-	// Controls whether commits to preview branches trigger a preview deployment.
-	// Available values: "all", "none", "custom".
-	PreviewDeploymentSetting pulumi.StringInput `pulumi:"previewDeploymentSetting"`
-	// The production branch of the repository.
-	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
-	// Whether to trigger a production deployment on commits to the production branch.
-	ProductionDeploymentsEnabled pulumi.BoolInput `pulumi:"productionDeploymentsEnabled"`
-	// The ID of the repository.
-	RepoId pulumi.StringInput `pulumi:"repoId"`
-	// The name of the repository.
-	RepoName pulumi.StringInput `pulumi:"repoName"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSourceConfig)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs) ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutput() GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs) ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSourceConfig)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutput() GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ToGetPagesProjectsResultCanonicalDeploymentSourceConfigOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput {
-	return o
-}
-
-// Whether to enable automatic deployments when pushing to the source repository.
-// When disabled, no deployments (production or preview) will be triggered automatically.
-//
-// Deprecated: Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) DeploymentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) bool { return v.DeploymentsEnabled }).(pulumi.BoolOutput)
-}
-
-// The owner of the repository.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.Owner }).(pulumi.StringOutput)
-}
-
-// The owner ID of the repository.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) OwnerId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.OwnerId }).(pulumi.StringOutput)
-}
-
-// A list of paths that should be excluded from triggering a preview deployment. Wildcard syntax (`*`) is supported.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PathExcludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) []string { return v.PathExcludes }).(pulumi.StringArrayOutput)
-}
-
-// A list of paths that should be watched to trigger a preview deployment. Wildcard syntax (`*`) is supported.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PathIncludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) []string { return v.PathIncludes }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable PR comments.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PrCommentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) bool { return v.PrCommentsEnabled }).(pulumi.BoolOutput)
-}
-
-// A list of branches that should not trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PreviewBranchExcludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) []string { return v.PreviewBranchExcludes }).(pulumi.StringArrayOutput)
-}
-
-// A list of branches that should trigger a preview deployment. Wildcard syntax (`*`) is supported. Must be used with `previewDeploymentSetting` set to `custom`.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
-}
-
-// Controls whether commits to preview branches trigger a preview deployment.
-// Available values: "all", "none", "custom".
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string {
-		return v.PreviewDeploymentSetting
-	}).(pulumi.StringOutput)
-}
-
-// The production branch of the repository.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ProductionBranch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.ProductionBranch }).(pulumi.StringOutput)
-}
-
-// Whether to trigger a production deployment on commits to the production branch.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) ProductionDeploymentsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) bool {
-		return v.ProductionDeploymentsEnabled
-	}).(pulumi.BoolOutput)
-}
-
-// The ID of the repository.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) RepoId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.RepoId }).(pulumi.StringOutput)
-}
-
-// The name of the repository.
-func (o GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput) RepoName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentSourceConfig) string { return v.RepoName }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentStage struct {
-	// When the stage ended.
-	EndedOn string `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name string `pulumi:"name"`
-	// When the stage started.
-	StartedOn string `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-	Status string `pulumi:"status"`
-}
-
-// GetPagesProjectsResultCanonicalDeploymentStageInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentStageArgs and GetPagesProjectsResultCanonicalDeploymentStageOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentStageInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentStageArgs{...}
-type GetPagesProjectsResultCanonicalDeploymentStageInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentStageOutput() GetPagesProjectsResultCanonicalDeploymentStageOutput
-	ToGetPagesProjectsResultCanonicalDeploymentStageOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentStageOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentStageArgs struct {
-	// When the stage ended.
-	EndedOn pulumi.StringInput `pulumi:"endedOn"`
-	// The current build stage.
-	// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-	Name pulumi.StringInput `pulumi:"name"`
-	// When the stage started.
-	StartedOn pulumi.StringInput `pulumi:"startedOn"`
-	// State of the current stage.
-	// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetPagesProjectsResultCanonicalDeploymentStageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentStageArgs) ToGetPagesProjectsResultCanonicalDeploymentStageOutput() GetPagesProjectsResultCanonicalDeploymentStageOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentStageOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentStageArgs) ToGetPagesProjectsResultCanonicalDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentStageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentStageOutput)
-}
-
-// GetPagesProjectsResultCanonicalDeploymentStageArrayInput is an input type that accepts GetPagesProjectsResultCanonicalDeploymentStageArray and GetPagesProjectsResultCanonicalDeploymentStageArrayOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultCanonicalDeploymentStageArrayInput` via:
-//
-//	GetPagesProjectsResultCanonicalDeploymentStageArray{ GetPagesProjectsResultCanonicalDeploymentStageArgs{...} }
-type GetPagesProjectsResultCanonicalDeploymentStageArrayInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutput() GetPagesProjectsResultCanonicalDeploymentStageArrayOutput
-	ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutputWithContext(context.Context) GetPagesProjectsResultCanonicalDeploymentStageArrayOutput
-}
-
-type GetPagesProjectsResultCanonicalDeploymentStageArray []GetPagesProjectsResultCanonicalDeploymentStageInput
-
-func (GetPagesProjectsResultCanonicalDeploymentStageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPagesProjectsResultCanonicalDeploymentStage)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentStageArray) ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutput() GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
-	return i.ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultCanonicalDeploymentStageArray) ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultCanonicalDeploymentStageArrayOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentStageOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentStageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) ToGetPagesProjectsResultCanonicalDeploymentStageOutput() GetPagesProjectsResultCanonicalDeploymentStageOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) ToGetPagesProjectsResultCanonicalDeploymentStageOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentStageOutput {
-	return o
-}
-
-// When the stage ended.
-func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) EndedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentStage) string { return v.EndedOn }).(pulumi.StringOutput)
-}
-
-// The current build stage.
-// Available values: "queued", "initialize", "cloneRepo", "build", "deploy".
-func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentStage) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// When the stage started.
-func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) StartedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentStage) string { return v.StartedOn }).(pulumi.StringOutput)
-}
-
-// State of the current stage.
-// Available values: "success", "idle", "active", "failure", "canceled", "skipped".
-func (o GetPagesProjectsResultCanonicalDeploymentStageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultCanonicalDeploymentStage) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetPagesProjectsResultCanonicalDeploymentStageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultCanonicalDeploymentStageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPagesProjectsResultCanonicalDeploymentStage)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentStageArrayOutput) ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutput() GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentStageArrayOutput) ToGetPagesProjectsResultCanonicalDeploymentStageArrayOutputWithContext(ctx context.Context) GetPagesProjectsResultCanonicalDeploymentStageArrayOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultCanonicalDeploymentStageArrayOutput) Index(i pulumi.IntInput) GetPagesProjectsResultCanonicalDeploymentStageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPagesProjectsResultCanonicalDeploymentStage {
-		return vs[0].([]GetPagesProjectsResultCanonicalDeploymentStage)[vs[1].(int)]
-	}).(GetPagesProjectsResultCanonicalDeploymentStageOutput)
-}
-
-type GetPagesProjectsResultDeploymentConfigs struct {
-	// Configs for preview deploys.
-	Preview GetPagesProjectsResultDeploymentConfigsPreview `pulumi:"preview"`
-	// Configs for production deploys.
-	Production GetPagesProjectsResultDeploymentConfigsProduction `pulumi:"production"`
-}
-
-// GetPagesProjectsResultDeploymentConfigsInput is an input type that accepts GetPagesProjectsResultDeploymentConfigsArgs and GetPagesProjectsResultDeploymentConfigsOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultDeploymentConfigsInput` via:
-//
-//	GetPagesProjectsResultDeploymentConfigsArgs{...}
-type GetPagesProjectsResultDeploymentConfigsInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultDeploymentConfigsOutput() GetPagesProjectsResultDeploymentConfigsOutput
-	ToGetPagesProjectsResultDeploymentConfigsOutputWithContext(context.Context) GetPagesProjectsResultDeploymentConfigsOutput
-}
-
-type GetPagesProjectsResultDeploymentConfigsArgs struct {
-	// Configs for preview deploys.
-	Preview GetPagesProjectsResultDeploymentConfigsPreviewInput `pulumi:"preview"`
-	// Configs for production deploys.
-	Production GetPagesProjectsResultDeploymentConfigsProductionInput `pulumi:"production"`
-}
-
-func (GetPagesProjectsResultDeploymentConfigsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigs)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultDeploymentConfigsArgs) ToGetPagesProjectsResultDeploymentConfigsOutput() GetPagesProjectsResultDeploymentConfigsOutput {
-	return i.ToGetPagesProjectsResultDeploymentConfigsOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultDeploymentConfigsArgs) ToGetPagesProjectsResultDeploymentConfigsOutputWithContext(ctx context.Context) GetPagesProjectsResultDeploymentConfigsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultDeploymentConfigsOutput)
-}
-
-type GetPagesProjectsResultDeploymentConfigsOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultDeploymentConfigsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigs)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultDeploymentConfigsOutput) ToGetPagesProjectsResultDeploymentConfigsOutput() GetPagesProjectsResultDeploymentConfigsOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultDeploymentConfigsOutput) ToGetPagesProjectsResultDeploymentConfigsOutputWithContext(ctx context.Context) GetPagesProjectsResultDeploymentConfigsOutput {
-	return o
-}
-
-// Configs for preview deploys.
-func (o GetPagesProjectsResultDeploymentConfigsOutput) Preview() GetPagesProjectsResultDeploymentConfigsPreviewOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigs) GetPagesProjectsResultDeploymentConfigsPreview {
-		return v.Preview
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewOutput)
-}
-
-// Configs for production deploys.
-func (o GetPagesProjectsResultDeploymentConfigsOutput) Production() GetPagesProjectsResultDeploymentConfigsProductionOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigs) GetPagesProjectsResultDeploymentConfigsProduction {
-		return v.Production
-	}).(GetPagesProjectsResultDeploymentConfigsProductionOutput)
-}
-
-type GetPagesProjectsResultDeploymentConfigsPreview struct {
-	// Constellation bindings used for Pages Functions.
-	AiBindings map[string]GetPagesProjectsResultDeploymentConfigsPreviewAiBindings `pulumi:"aiBindings"`
-	// Whether to always use the latest compatibility date for Pages Functions.
-	AlwaysUseLatestCompatibilityDate bool `pulumi:"alwaysUseLatestCompatibilityDate"`
-	// Analytics Engine bindings used for Pages Functions.
-	AnalyticsEngineDatasets map[string]GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasets `pulumi:"analyticsEngineDatasets"`
-	// Browser bindings used for Pages Functions.
-	Browsers map[string]GetPagesProjectsResultDeploymentConfigsPreviewBrowsers `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
-	BuildImageMajorVersion int `pulumi:"buildImageMajorVersion"`
-	// Compatibility date used for Pages Functions.
-	CompatibilityDate string `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Pages Functions.
-	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// D1 databases used for Pages Functions.
-	D1Databases map[string]GetPagesProjectsResultDeploymentConfigsPreviewD1Databases `pulumi:"d1Databases"`
-	// Durable Object namespaces used for Pages Functions.
-	DurableObjectNamespaces map[string]GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespaces `pulumi:"durableObjectNamespaces"`
-	// Environment variables used for builds and Pages Functions.
-	EnvVars map[string]GetPagesProjectsResultDeploymentConfigsPreviewEnvVars `pulumi:"envVars"`
-	// Whether to fail open when the deployment config cannot be applied.
-	FailOpen bool `pulumi:"failOpen"`
-	// Hyperdrive bindings used for Pages Functions.
-	HyperdriveBindings map[string]GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindings `pulumi:"hyperdriveBindings"`
-	// KV namespaces used for Pages Functions.
-	KvNamespaces map[string]GetPagesProjectsResultDeploymentConfigsPreviewKvNamespaces `pulumi:"kvNamespaces"`
-	// Limits for Pages Functions.
-	Limits GetPagesProjectsResultDeploymentConfigsPreviewLimits `pulumi:"limits"`
-	// mTLS bindings used for Pages Functions.
-	MtlsCertificates map[string]GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificates `pulumi:"mtlsCertificates"`
-	// Placement setting used for Pages Functions.
-	Placement GetPagesProjectsResultDeploymentConfigsPreviewPlacement `pulumi:"placement"`
-	// Queue Producer bindings used for Pages Functions.
-	QueueProducers map[string]GetPagesProjectsResultDeploymentConfigsPreviewQueueProducers `pulumi:"queueProducers"`
-	// R2 buckets used for Pages Functions.
-	R2Buckets map[string]GetPagesProjectsResultDeploymentConfigsPreviewR2Buckets `pulumi:"r2Buckets"`
-	// Services used for Pages Functions.
-	Services map[string]GetPagesProjectsResultDeploymentConfigsPreviewServices `pulumi:"services"`
-	// The usage model for Pages Functions.
-	// Available values: "standard", "bundled", "unbound".
-	//
-	// Deprecated: All new projects now use the Standard usage model.
-	UsageModel string `pulumi:"usageModel"`
-	// Vectorize bindings used for Pages Functions.
-	VectorizeBindings map[string]GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindings `pulumi:"vectorizeBindings"`
-	// Hash of the Wrangler configuration used for the deployment.
-	WranglerConfigHash string `pulumi:"wranglerConfigHash"`
-}
-
-// GetPagesProjectsResultDeploymentConfigsPreviewInput is an input type that accepts GetPagesProjectsResultDeploymentConfigsPreviewArgs and GetPagesProjectsResultDeploymentConfigsPreviewOutput values.
-// You can construct a concrete instance of `GetPagesProjectsResultDeploymentConfigsPreviewInput` via:
-//
-//	GetPagesProjectsResultDeploymentConfigsPreviewArgs{...}
-type GetPagesProjectsResultDeploymentConfigsPreviewInput interface {
-	pulumi.Input
-
-	ToGetPagesProjectsResultDeploymentConfigsPreviewOutput() GetPagesProjectsResultDeploymentConfigsPreviewOutput
-	ToGetPagesProjectsResultDeploymentConfigsPreviewOutputWithContext(context.Context) GetPagesProjectsResultDeploymentConfigsPreviewOutput
-}
-
-type GetPagesProjectsResultDeploymentConfigsPreviewArgs struct {
-	// Constellation bindings used for Pages Functions.
-	AiBindings GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMapInput `pulumi:"aiBindings"`
-	// Whether to always use the latest compatibility date for Pages Functions.
-	AlwaysUseLatestCompatibilityDate pulumi.BoolInput `pulumi:"alwaysUseLatestCompatibilityDate"`
-	// Analytics Engine bindings used for Pages Functions.
-	AnalyticsEngineDatasets GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsMapInput `pulumi:"analyticsEngineDatasets"`
-	// Browser bindings used for Pages Functions.
-	Browsers GetPagesProjectsResultDeploymentConfigsPreviewBrowsersMapInput `pulumi:"browsers"`
-	// The major version of the build image to use for Pages Functions.
-	BuildImageMajorVersion pulumi.IntInput `pulumi:"buildImageMajorVersion"`
-	// Compatibility date used for Pages Functions.
-	CompatibilityDate pulumi.StringInput `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Pages Functions.
-	CompatibilityFlags pulumi.StringArrayInput `pulumi:"compatibilityFlags"`
-	// D1 databases used for Pages Functions.
-	D1Databases GetPagesProjectsResultDeploymentConfigsPreviewD1DatabasesMapInput `pulumi:"d1Databases"`
-	// Durable Object namespaces used for Pages Functions.
-	DurableObjectNamespaces GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespacesMapInput `pulumi:"durableObjectNamespaces"`
-	// Environment variables used for builds and Pages Functions.
-	EnvVars GetPagesProjectsResultDeploymentConfigsPreviewEnvVarsMapInput `pulumi:"envVars"`
-	// Whether to fail open when the deployment config cannot be applied.
-	FailOpen pulumi.BoolInput `pulumi:"failOpen"`
-	// Hyperdrive bindings used for Pages Functions.
-	HyperdriveBindings GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindingsMapInput `pulumi:"hyperdriveBindings"`
-	// KV namespaces used for Pages Functions.
-	KvNamespaces GetPagesProjectsResultDeploymentConfigsPreviewKvNamespacesMapInput `pulumi:"kvNamespaces"`
-	// Limits for Pages Functions.
-	Limits GetPagesProjectsResultDeploymentConfigsPreviewLimitsInput `pulumi:"limits"`
-	// mTLS bindings used for Pages Functions.
-	MtlsCertificates GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificatesMapInput `pulumi:"mtlsCertificates"`
-	// Placement setting used for Pages Functions.
-	Placement GetPagesProjectsResultDeploymentConfigsPreviewPlacementInput `pulumi:"placement"`
-	// Queue Producer bindings used for Pages Functions.
-	QueueProducers GetPagesProjectsResultDeploymentConfigsPreviewQueueProducersMapInput `pulumi:"queueProducers"`
-	// R2 buckets used for Pages Functions.
-	R2Buckets GetPagesProjectsResultDeploymentConfigsPreviewR2BucketsMapInput `pulumi:"r2Buckets"`
-	// Services used for Pages Functions.
-	Services GetPagesProjectsResultDeploymentConfigsPreviewServicesMapInput `pulumi:"services"`
-	// The usage model for Pages Functions.
-	// Available values: "standard", "bundled", "unbound".
-	//
-	// Deprecated: All new projects now use the Standard usage model.
-	UsageModel pulumi.StringInput `pulumi:"usageModel"`
-	// Vectorize bindings used for Pages Functions.
-	VectorizeBindings GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindingsMapInput `pulumi:"vectorizeBindings"`
-	// Hash of the Wrangler configuration used for the deployment.
-	WranglerConfigHash pulumi.StringInput `pulumi:"wranglerConfigHash"`
-}
-
-func (GetPagesProjectsResultDeploymentConfigsPreviewArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreview)(nil)).Elem()
-}
-
-func (i GetPagesProjectsResultDeploymentConfigsPreviewArgs) ToGetPagesProjectsResultDeploymentConfigsPreviewOutput() GetPagesProjectsResultDeploymentConfigsPreviewOutput {
-	return i.ToGetPagesProjectsResultDeploymentConfigsPreviewOutputWithContext(context.Background())
-}
-
-func (i GetPagesProjectsResultDeploymentConfigsPreviewArgs) ToGetPagesProjectsResultDeploymentConfigsPreviewOutputWithContext(ctx context.Context) GetPagesProjectsResultDeploymentConfigsPreviewOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPagesProjectsResultDeploymentConfigsPreviewOutput)
-}
-
-type GetPagesProjectsResultDeploymentConfigsPreviewOutput struct{ *pulumi.OutputState }
-
-func (GetPagesProjectsResultDeploymentConfigsPreviewOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreview)(nil)).Elem()
-}
-
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) ToGetPagesProjectsResultDeploymentConfigsPreviewOutput() GetPagesProjectsResultDeploymentConfigsPreviewOutput {
-	return o
-}
-
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) ToGetPagesProjectsResultDeploymentConfigsPreviewOutputWithContext(ctx context.Context) GetPagesProjectsResultDeploymentConfigsPreviewOutput {
-	return o
-}
-
-// Constellation bindings used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) AiBindings() GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewAiBindings {
-		return v.AiBindings
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewAiBindingsMapOutput)
-}
-
-// Whether to always use the latest compatibility date for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) AlwaysUseLatestCompatibilityDate() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) bool { return v.AlwaysUseLatestCompatibilityDate }).(pulumi.BoolOutput)
-}
-
-// Analytics Engine bindings used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) AnalyticsEngineDatasets() GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasets {
-		return v.AnalyticsEngineDatasets
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewAnalyticsEngineDatasetsMapOutput)
-}
-
-// Browser bindings used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) Browsers() GetPagesProjectsResultDeploymentConfigsPreviewBrowsersMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewBrowsers {
-		return v.Browsers
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewBrowsersMapOutput)
-}
-
-// The major version of the build image to use for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) BuildImageMajorVersion() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) int { return v.BuildImageMajorVersion }).(pulumi.IntOutput)
-}
-
-// Compatibility date used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) CompatibilityDate() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) string { return v.CompatibilityDate }).(pulumi.StringOutput)
-}
-
-// Compatibility flags used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) CompatibilityFlags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) []string { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
-}
-
-// D1 databases used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) D1Databases() GetPagesProjectsResultDeploymentConfigsPreviewD1DatabasesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewD1Databases {
-		return v.D1Databases
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewD1DatabasesMapOutput)
-}
-
-// Durable Object namespaces used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) DurableObjectNamespaces() GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespacesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespaces {
-		return v.DurableObjectNamespaces
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewDurableObjectNamespacesMapOutput)
-}
-
-// Environment variables used for builds and Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) EnvVars() GetPagesProjectsResultDeploymentConfigsPreviewEnvVarsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewEnvVars {
-		return v.EnvVars
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewEnvVarsMapOutput)
-}
-
-// Whether to fail open when the deployment config cannot be applied.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) FailOpen() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) bool { return v.FailOpen }).(pulumi.BoolOutput)
-}
-
-// Hyperdrive bindings used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) HyperdriveBindings() GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindings {
-		return v.HyperdriveBindings
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewHyperdriveBindingsMapOutput)
-}
-
-// KV namespaces used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) KvNamespaces() GetPagesProjectsResultDeploymentConfigsPreviewKvNamespacesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewKvNamespaces {
-		return v.KvNamespaces
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewKvNamespacesMapOutput)
-}
-
-// Limits for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) Limits() GetPagesProjectsResultDeploymentConfigsPreviewLimitsOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) GetPagesProjectsResultDeploymentConfigsPreviewLimits {
-		return v.Limits
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewLimitsOutput)
-}
-
-// mTLS bindings used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) MtlsCertificates() GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificatesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificates {
-		return v.MtlsCertificates
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewMtlsCertificatesMapOutput)
-}
-
-// Placement setting used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) Placement() GetPagesProjectsResultDeploymentConfigsPreviewPlacementOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) GetPagesProjectsResultDeploymentConfigsPreviewPlacement {
-		return v.Placement
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewPlacementOutput)
-}
-
-// Queue Producer bindings used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) QueueProducers() GetPagesProjectsResultDeploymentConfigsPreviewQueueProducersMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewQueueProducers {
-		return v.QueueProducers
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewQueueProducersMapOutput)
-}
-
-// R2 buckets used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) R2Buckets() GetPagesProjectsResultDeploymentConfigsPreviewR2BucketsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewR2Buckets {
-		return v.R2Buckets
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewR2BucketsMapOutput)
-}
-
-// Services used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) Services() GetPagesProjectsResultDeploymentConfigsPreviewServicesMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewServices {
-		return v.Services
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewServicesMapOutput)
-}
-
-// The usage model for Pages Functions.
-// Available values: "standard", "bundled", "unbound".
-//
-// Deprecated: All new projects now use the Standard usage model.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) UsageModel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) string { return v.UsageModel }).(pulumi.StringOutput)
-}
-
-// Vectorize bindings used for Pages Functions.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) VectorizeBindings() GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindingsMapOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) map[string]GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindings {
-		return v.VectorizeBindings
-	}).(GetPagesProjectsResultDeploymentConfigsPreviewVectorizeBindingsMapOutput)
-}
-
-// Hash of the Wrangler configuration used for the deployment.
-func (o GetPagesProjectsResultDeploymentConfigsPreviewOutput) WranglerConfigHash() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPagesProjectsResultDeploymentConfigsPreview) string { return v.WranglerConfigHash }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayFilterInput)(nil)).Elem(), GetAiGatewayFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayFilterPtrInput)(nil)).Elem(), GetAiGatewayFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayGuardrailsInput)(nil)).Elem(), GetAiGatewayGuardrailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayGuardrailsPromptInput)(nil)).Elem(), GetAiGatewayGuardrailsPromptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayGuardrailsResponseInput)(nil)).Elem(), GetAiGatewayGuardrailsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayOtelInput)(nil)).Elem(), GetAiGatewayOtelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayOtelArrayInput)(nil)).Elem(), GetAiGatewayOtelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaySpendLimitsInput)(nil)).Elem(), GetAiGatewaySpendLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaySpendLimitsRuleInput)(nil)).Elem(), GetAiGatewaySpendLimitsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaySpendLimitsRuleArrayInput)(nil)).Elem(), GetAiGatewaySpendLimitsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaySpendLimitsRuleAiGatewayProviderInput)(nil)).Elem(), GetAiGatewaySpendLimitsRuleAiGatewayProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaySpendLimitsRuleMetadataInput)(nil)).Elem(), GetAiGatewaySpendLimitsRuleMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaySpendLimitsRuleMetadataMapInput)(nil)).Elem(), GetAiGatewaySpendLimitsRuleMetadataMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaySpendLimitsRuleModelInput)(nil)).Elem(), GetAiGatewaySpendLimitsRuleModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayStripeInput)(nil)).Elem(), GetAiGatewayStripeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayStripeUsageEventInput)(nil)).Elem(), GetAiGatewayStripeUsageEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewayStripeUsageEventArrayInput)(nil)).Elem(), GetAiGatewayStripeUsageEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultInput)(nil)).Elem(), GetAiGatewaysResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultArrayInput)(nil)).Elem(), GetAiGatewaysResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultDlpInput)(nil)).Elem(), GetAiGatewaysResultDlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultDlpPolicyInput)(nil)).Elem(), GetAiGatewaysResultDlpPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultDlpPolicyArrayInput)(nil)).Elem(), GetAiGatewaysResultDlpPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultGuardrailsInput)(nil)).Elem(), GetAiGatewaysResultGuardrailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultGuardrailsPromptInput)(nil)).Elem(), GetAiGatewaysResultGuardrailsPromptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultGuardrailsResponseInput)(nil)).Elem(), GetAiGatewaysResultGuardrailsResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultOtelInput)(nil)).Elem(), GetAiGatewaysResultOtelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultOtelArrayInput)(nil)).Elem(), GetAiGatewaysResultOtelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiGatewaysResultSpendLimitsInput)(nil)).Elem(), GetAiGatewaysResultSpendLimitsArgs{})
@@ -58501,6 +58320,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceIndexMethodInput)(nil)).Elem(), GetAiSearchInstanceIndexMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceIndexingOptionsInput)(nil)).Elem(), GetAiSearchInstanceIndexingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceMetadataInput)(nil)).Elem(), GetAiSearchInstanceMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstanceMetadataCreatedFromEmdashPluginInput)(nil)).Elem(), GetAiSearchInstanceMetadataCreatedFromEmdashPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancePublicEndpointParamsInput)(nil)).Elem(), GetAiSearchInstancePublicEndpointParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpointInput)(nil)).Elem(), GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancePublicEndpointParamsMcpInput)(nil)).Elem(), GetAiSearchInstancePublicEndpointParamsMcpArgs{})
@@ -58523,6 +58343,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultIndexMethodInput)(nil)).Elem(), GetAiSearchInstancesResultIndexMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultIndexingOptionsInput)(nil)).Elem(), GetAiSearchInstancesResultIndexingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultMetadataInput)(nil)).Elem(), GetAiSearchInstancesResultMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginInput)(nil)).Elem(), GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultPublicEndpointParamsInput)(nil)).Elem(), GetAiSearchInstancesResultPublicEndpointParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpointInput)(nil)).Elem(), GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiSearchInstancesResultPublicEndpointParamsMcpInput)(nil)).Elem(), GetAiSearchInstancesResultPublicEndpointParamsMcpArgs{})
@@ -59029,6 +58850,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedTransformsManagedRequestHeaderArrayInput)(nil)).Elem(), GetManagedTransformsManagedRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedTransformsManagedResponseHeaderInput)(nil)).Elem(), GetManagedTransformsManagedResponseHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedTransformsManagedResponseHeaderArrayInput)(nil)).Elem(), GetManagedTransformsManagedResponseHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonetizationRulesRuleInput)(nil)).Elem(), GetMonetizationRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonetizationRulesRuleArrayInput)(nil)).Elem(), GetMonetizationRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMoqRelayConfigInput)(nil)).Elem(), GetMoqRelayConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMoqRelayConfigLingeringSubscribeInput)(nil)).Elem(), GetMoqRelayConfigLingeringSubscribeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMoqRelayConfigUpstreamsInput)(nil)).Elem(), GetMoqRelayConfigUpstreamsArgs{})
@@ -59114,6 +58937,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesDomainsResultValidationDataInput)(nil)).Elem(), GetPagesDomainsResultValidationDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesDomainsResultVerificationDataInput)(nil)).Elem(), GetPagesDomainsResultVerificationDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectBuildConfigInput)(nil)).Elem(), GetPagesProjectBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectBuildImageAutoUpgradeInput)(nil)).Elem(), GetPagesProjectBuildImageAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentBuildConfigInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentBuildConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectCanonicalDeploymentDeploymentTriggerInput)(nil)).Elem(), GetPagesProjectCanonicalDeploymentDeploymentTriggerArgs{})
@@ -59186,33 +59010,31 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectDeploymentConfigsProductionVectorizeBindingsMapInput)(nil)).Elem(), GetPagesProjectDeploymentConfigsProductionVectorizeBindingsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentInput)(nil)).Elem(), GetPagesProjectLatestDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentBuildConfigInput)(nil)).Elem(), GetPagesProjectLatestDeploymentBuildConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTriggerInput)(nil)).Elem(), GetPagesProjectLatestDeploymentDeploymentTriggerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentDeploymentTriggerMetadataInput)(nil)).Elem(), GetPagesProjectLatestDeploymentDeploymentTriggerMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentEnvVarsInput)(nil)).Elem(), GetPagesProjectLatestDeploymentEnvVarsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentEnvVarsMapInput)(nil)).Elem(), GetPagesProjectLatestDeploymentEnvVarsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentLatestStageInput)(nil)).Elem(), GetPagesProjectLatestDeploymentLatestStageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentSourceInput)(nil)).Elem(), GetPagesProjectLatestDeploymentSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentSourceConfigInput)(nil)).Elem(), GetPagesProjectLatestDeploymentSourceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentStageInput)(nil)).Elem(), GetPagesProjectLatestDeploymentStageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectLatestDeploymentStageArrayInput)(nil)).Elem(), GetPagesProjectLatestDeploymentStageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectSourceInput)(nil)).Elem(), GetPagesProjectSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectSourceConfigInput)(nil)).Elem(), GetPagesProjectSourceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultInput)(nil)).Elem(), GetPagesProjectsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultArrayInput)(nil)).Elem(), GetPagesProjectsResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultBuildConfigInput)(nil)).Elem(), GetPagesProjectsResultBuildConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentBuildConfigInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentBuildConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentEnvVarsInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentEnvVarsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentEnvVarsMapInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentEnvVarsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentLatestStageInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentLatestStageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSourceInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentSourceConfigInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentSourceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentStageInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentStageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultCanonicalDeploymentStageArrayInput)(nil)).Elem(), GetPagesProjectsResultCanonicalDeploymentStageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsInput)(nil)).Elem(), GetPagesProjectsResultDeploymentConfigsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesProjectsResultDeploymentConfigsPreviewInput)(nil)).Elem(), GetPagesProjectsResultDeploymentConfigsPreviewArgs{})
+	pulumi.RegisterOutputType(GetAiGatewayFilterOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayGuardrailsOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayGuardrailsPromptOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayGuardrailsResponseOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayOtelOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayOtelArrayOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaySpendLimitsOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaySpendLimitsRuleOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaySpendLimitsRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaySpendLimitsRuleAiGatewayProviderOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaySpendLimitsRuleMetadataOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaySpendLimitsRuleMetadataMapOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaySpendLimitsRuleModelOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayStripeOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayStripeUsageEventOutput{})
+	pulumi.RegisterOutputType(GetAiGatewayStripeUsageEventArrayOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaysResultOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaysResultArrayOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaysResultDlpOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaysResultDlpPolicyOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaysResultDlpPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaysResultGuardrailsOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaysResultGuardrailsPromptOutput{})
+	pulumi.RegisterOutputType(GetAiGatewaysResultGuardrailsResponseOutput{})
 	pulumi.RegisterOutputType(GetAiGatewaysResultOtelOutput{})
 	pulumi.RegisterOutputType(GetAiGatewaysResultOtelArrayOutput{})
 	pulumi.RegisterOutputType(GetAiGatewaysResultSpendLimitsOutput{})
@@ -59232,6 +59054,7 @@ func init() {
 	pulumi.RegisterOutputType(GetAiSearchInstanceIndexMethodOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstanceIndexingOptionsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstanceMetadataOutput{})
+	pulumi.RegisterOutputType(GetAiSearchInstanceMetadataCreatedFromEmdashPluginOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancePublicEndpointParamsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancePublicEndpointParamsChatCompletionsEndpointOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancePublicEndpointParamsMcpOutput{})
@@ -59254,6 +59077,7 @@ func init() {
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultIndexMethodOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultIndexingOptionsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultMetadataOutput{})
+	pulumi.RegisterOutputType(GetAiSearchInstancesResultMetadataCreatedFromEmdashPluginOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultPublicEndpointParamsOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultPublicEndpointParamsChatCompletionsEndpointOutput{})
 	pulumi.RegisterOutputType(GetAiSearchInstancesResultPublicEndpointParamsMcpOutput{})
@@ -59760,6 +59584,8 @@ func init() {
 	pulumi.RegisterOutputType(GetManagedTransformsManagedRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetManagedTransformsManagedResponseHeaderOutput{})
 	pulumi.RegisterOutputType(GetManagedTransformsManagedResponseHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetMonetizationRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetMonetizationRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetMoqRelayConfigOutput{})
 	pulumi.RegisterOutputType(GetMoqRelayConfigLingeringSubscribeOutput{})
 	pulumi.RegisterOutputType(GetMoqRelayConfigUpstreamsOutput{})
@@ -59845,6 +59671,7 @@ func init() {
 	pulumi.RegisterOutputType(GetPagesDomainsResultValidationDataOutput{})
 	pulumi.RegisterOutputType(GetPagesDomainsResultVerificationDataOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectBuildConfigOutput{})
+	pulumi.RegisterOutputType(GetPagesProjectBuildImageAutoUpgradeOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentBuildConfigOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectCanonicalDeploymentDeploymentTriggerOutput{})
@@ -59917,31 +59744,4 @@ func init() {
 	pulumi.RegisterOutputType(GetPagesProjectDeploymentConfigsProductionVectorizeBindingsMapOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentOutput{})
 	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentBuildConfigOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentDeploymentTriggerOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentDeploymentTriggerMetadataOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentEnvVarsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentEnvVarsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentLatestStageOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentSourceOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentSourceConfigOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentStageOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectLatestDeploymentStageArrayOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectSourceOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectSourceConfigOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultArrayOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultBuildConfigOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentBuildConfigOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentDeploymentTriggerMetadataOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentEnvVarsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentEnvVarsMapOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentLatestStageOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentSourceOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentSourceConfigOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentStageOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultCanonicalDeploymentStageArrayOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultDeploymentConfigsOutput{})
-	pulumi.RegisterOutputType(GetPagesProjectsResultDeploymentConfigsPreviewOutput{})
 }

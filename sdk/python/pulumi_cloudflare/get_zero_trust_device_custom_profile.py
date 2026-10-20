@@ -295,7 +295,7 @@ class GetZeroTrustDeviceCustomProfileResult:
     @pulumi.getter
     def match(self) -> _builtins.str:
         """
-        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
         """
         return pulumi.get(self, "match")
 
@@ -368,6 +368,7 @@ class GetZeroTrustDeviceCustomProfileResult:
 
     @_builtins.property
     @pulumi.getter(name="targetTests")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def target_tests(self) -> Sequence['outputs.GetZeroTrustDeviceCustomProfileTargetTestResult']:
         return pulumi.get(self, "target_tests")
 

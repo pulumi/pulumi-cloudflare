@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBindingOutbound;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBindingRetry;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBindingSimple;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -171,6 +172,11 @@ public final class GetWorkerVersionsResultBinding {
      * 
      */
     private String queueName;
+    /**
+     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * 
+     */
+    private GetWorkerVersionsResultBindingRetry retry;
     /**
      * @return The script where the Durable Object is defined, if it is external to this Worker.
      * 
@@ -460,6 +466,13 @@ public final class GetWorkerVersionsResultBinding {
         return this.queueName;
     }
     /**
+     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * 
+     */
+    public GetWorkerVersionsResultBindingRetry retry() {
+        return this.retry;
+    }
+    /**
      * @return The script where the Durable Object is defined, if it is external to this Worker.
      * 
      */
@@ -592,6 +605,7 @@ public final class GetWorkerVersionsResultBinding {
         private String part;
         private String pipeline;
         private String queueName;
+        private GetWorkerVersionsResultBindingRetry retry;
         private String scriptName;
         private String secretName;
         private String service;
@@ -639,6 +653,7 @@ public final class GetWorkerVersionsResultBinding {
     	      this.part = defaults.part;
     	      this.pipeline = defaults.pipeline;
     	      this.queueName = defaults.queueName;
+    	      this.retry = defaults.retry;
     	      this.scriptName = defaults.scriptName;
     	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
@@ -909,6 +924,14 @@ public final class GetWorkerVersionsResultBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder retry(GetWorkerVersionsResultBindingRetry retry) {
+            if (retry == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResultBinding", "retry");
+            }
+            this.retry = retry;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scriptName(String scriptName) {
             if (scriptName == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResultBinding", "scriptName");
@@ -1048,6 +1071,7 @@ public final class GetWorkerVersionsResultBinding {
             _resultValue.part = part;
             _resultValue.pipeline = pipeline;
             _resultValue.queueName = queueName;
+            _resultValue.retry = retry;
             _resultValue.scriptName = scriptName;
             _resultValue.secretName = secretName;
             _resultValue.service = service;

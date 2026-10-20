@@ -26,6 +26,7 @@ class WorkerScriptArgs:
                  annotations: pulumi.Input[Optional['WorkerScriptAnnotationsArgs']] = None,
                  assets: pulumi.Input[Optional['WorkerScriptAssetsArgs']] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]] = None,
+                 bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
                  cache_options: pulumi.Input[Optional['WorkerScriptCacheOptionsArgs']] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
@@ -56,6 +57,8 @@ class WorkerScriptArgs:
         :param pulumi.Input['WorkerScriptAnnotationsArgs'] annotations: Annotations for the version created by this upload.
         :param pulumi.Input['WorkerScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+               Available values: "strict".
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         :param pulumi.Input['WorkerScriptCacheOptionsArgs'] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
@@ -91,6 +94,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "assets", assets)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
+        if bindings_inherit is not None:
+            pulumi.set(__self__, "bindings_inherit", bindings_inherit)
         if body_part is not None:
             pulumi.set(__self__, "body_part", body_part)
         if cache_options is not None:
@@ -195,6 +200,19 @@ class WorkerScriptArgs:
     @bindings.setter
     def bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]):
         pulumi.set(self, "bindings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bindingsInherit")
+    def bindings_inherit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        Available values: "strict".
+        """
+        return pulumi.get(self, "bindings_inherit")
+
+    @bindings_inherit.setter
+    def bindings_inherit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bindings_inherit", value)
 
     @_builtins.property
     @pulumi.getter(name="bodyPart")
@@ -472,6 +490,7 @@ class _WorkerScriptState:
                  annotations: pulumi.Input[Optional['WorkerScriptAnnotationsArgs']] = None,
                  assets: pulumi.Input[Optional['WorkerScriptAssetsArgs']] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]] = None,
+                 bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
                  cache_options: pulumi.Input[Optional['WorkerScriptCacheOptionsArgs']] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
@@ -514,6 +533,8 @@ class _WorkerScriptState:
         :param pulumi.Input['WorkerScriptAnnotationsArgs'] annotations: Annotations for the version created by this upload.
         :param pulumi.Input['WorkerScriptAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+               Available values: "strict".
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         :param pulumi.Input['WorkerScriptCacheOptionsArgs'] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
@@ -561,6 +582,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "assets", assets)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
+        if bindings_inherit is not None:
+            pulumi.set(__self__, "bindings_inherit", bindings_inherit)
         if body_part is not None:
             pulumi.set(__self__, "body_part", body_part)
         if cache_options is not None:
@@ -685,6 +708,19 @@ class _WorkerScriptState:
     @bindings.setter
     def bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]):
         pulumi.set(self, "bindings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bindingsInherit")
+    def bindings_inherit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        Available values: "strict".
+        """
+        return pulumi.get(self, "bindings_inherit")
+
+    @bindings_inherit.setter
+    def bindings_inherit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bindings_inherit", value)
 
     @_builtins.property
     @pulumi.getter(name="bodyPart")
@@ -1125,6 +1161,7 @@ class WorkerScript(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']]] = None,
                  assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']]] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]]] = None,
+                 bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
                  cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1302,6 +1339,8 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']] annotations: Annotations for the version created by this upload.
         :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+               Available values: "strict".
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         :param pulumi.Input[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
@@ -1502,6 +1541,7 @@ class WorkerScript(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']]] = None,
                  assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']]] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]]] = None,
+                 bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
                  body_part: pulumi.Input[Optional[_builtins.str]] = None,
                  cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
                  compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1541,6 +1581,7 @@ class WorkerScript(pulumi.CustomResource):
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["assets"] = assets
             __props__.__dict__["bindings"] = bindings
+            __props__.__dict__["bindings_inherit"] = bindings_inherit
             __props__.__dict__["body_part"] = body_part
             __props__.__dict__["cache_options"] = cache_options
             __props__.__dict__["compatibility_date"] = compatibility_date
@@ -1594,6 +1635,7 @@ class WorkerScript(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']]] = None,
             assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']]] = None,
             bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]]] = None,
+            bindings_inherit: pulumi.Input[Optional[_builtins.str]] = None,
             body_part: pulumi.Input[Optional[_builtins.str]] = None,
             cache_options: pulumi.Input[Optional[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']]] = None,
             compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1640,6 +1682,8 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict', 'outputs.WorkerScriptAnnotations']] annotations: Annotations for the version created by this upload.
         :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict', 'outputs.WorkerScriptAssets']] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict', 'outputs.WorkerScriptBinding']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[_builtins.str] bindings_inherit: When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+               Available values: "strict".
         :param pulumi.Input[_builtins.str] body_part: Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         :param pulumi.Input[Union['WorkerScriptCacheOptionsArgs', 'WorkerScriptCacheOptionsArgsDict', 'outputs.WorkerScriptCacheOptions']] cache_options: Global CacheW configuration for the Worker. When caching is on,
                the platform provisions a `cloudflare.app` zone for the Worker.
@@ -1687,6 +1731,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["assets"] = assets
         __props__.__dict__["bindings"] = bindings
+        __props__.__dict__["bindings_inherit"] = bindings_inherit
         __props__.__dict__["body_part"] = body_part
         __props__.__dict__["cache_options"] = cache_options
         __props__.__dict__["compatibility_date"] = compatibility_date
@@ -1755,6 +1800,15 @@ class WorkerScript(pulumi.CustomResource):
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
+
+    @_builtins.property
+    @pulumi.getter(name="bindingsInherit")
+    def bindings_inherit(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        Available values: "strict".
+        """
+        return pulumi.get(self, "bindings_inherit")
 
     @_builtins.property
     @pulumi.getter(name="bodyPart")

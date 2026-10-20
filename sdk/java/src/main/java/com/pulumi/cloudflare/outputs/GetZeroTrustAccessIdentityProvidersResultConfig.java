@@ -111,6 +111,11 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
      */
     private String issuerUrl;
     /**
+     * @return When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     * 
+     */
+    private Boolean loginPageAutoPrompt;
+    /**
      * @return The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
      * is stored server-side and a short nonce is passed to the IdP instead.
@@ -317,6 +322,13 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
         return this.issuerUrl;
     }
     /**
+     * @return When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     * 
+     */
+    public Boolean loginPageAutoPrompt() {
+        return this.loginPageAutoPrompt;
+    }
+    /**
      * @return The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
      * is stored server-side and a short nonce is passed to the IdP instead.
@@ -443,6 +455,7 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
         private List<GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute> headerAttributes;
         private List<String> idpPublicCerts;
         private String issuerUrl;
+        private Boolean loginPageAutoPrompt;
         private Integer maxSsoUrlLength;
         private String oktaAccount;
         private String oneloginAccount;
@@ -479,6 +492,7 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
     	      this.headerAttributes = defaults.headerAttributes;
     	      this.idpPublicCerts = defaults.idpPublicCerts;
     	      this.issuerUrl = defaults.issuerUrl;
+    	      this.loginPageAutoPrompt = defaults.loginPageAutoPrompt;
     	      this.maxSsoUrlLength = defaults.maxSsoUrlLength;
     	      this.oktaAccount = defaults.oktaAccount;
     	      this.oneloginAccount = defaults.oneloginAccount;
@@ -660,6 +674,14 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder loginPageAutoPrompt(Boolean loginPageAutoPrompt) {
+            if (loginPageAutoPrompt == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResultConfig", "loginPageAutoPrompt");
+            }
+            this.loginPageAutoPrompt = loginPageAutoPrompt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxSsoUrlLength(Integer maxSsoUrlLength) {
             if (maxSsoUrlLength == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResultConfig", "maxSsoUrlLength");
@@ -795,6 +817,7 @@ public final class GetZeroTrustAccessIdentityProvidersResultConfig {
             _resultValue.headerAttributes = headerAttributes;
             _resultValue.idpPublicCerts = idpPublicCerts;
             _resultValue.issuerUrl = issuerUrl;
+            _resultValue.loginPageAutoPrompt = loginPageAutoPrompt;
             _resultValue.maxSsoUrlLength = maxSsoUrlLength;
             _resultValue.oktaAccount = oktaAccount;
             _resultValue.oneloginAccount = oneloginAccount;

@@ -66,6 +66,8 @@ type LookupPagesProjectResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig GetPagesProjectBuildConfig `pulumi:"buildConfig"`
+	// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+	BuildImageAutoUpgrade GetPagesProjectBuildImageAutoUpgrade `pulumi:"buildImageAutoUpgrade"`
 	// Most recent production deployment of the project.
 	CanonicalDeployment GetPagesProjectCanonicalDeployment `pulumi:"canonicalDeployment"`
 	// When the project was created.
@@ -140,6 +142,11 @@ func (o LookupPagesProjectResultOutput) AccountId() pulumi.StringPtrOutput {
 // Configs for the project build process.
 func (o LookupPagesProjectResultOutput) BuildConfig() GetPagesProjectBuildConfigOutput {
 	return o.ApplyT(func(v LookupPagesProjectResult) GetPagesProjectBuildConfig { return v.BuildConfig }).(GetPagesProjectBuildConfigOutput)
+}
+
+// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+func (o LookupPagesProjectResultOutput) BuildImageAutoUpgrade() GetPagesProjectBuildImageAutoUpgradeOutput {
+	return o.ApplyT(func(v LookupPagesProjectResult) GetPagesProjectBuildImageAutoUpgrade { return v.BuildImageAutoUpgrade }).(GetPagesProjectBuildImageAutoUpgradeOutput)
 }
 
 // Most recent production deployment of the project.

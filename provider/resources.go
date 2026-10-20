@@ -123,6 +123,10 @@ func Provider() info.Provider {
 				ComputeID: delegateID("aiSearchInstanceId"),
 			},
 
+			"cloudflare_api_shield_discovery_operation": {
+				ComputeID: delegateID("discoveryId"),
+			},
+
 			"cloudflare_image": {
 				Fields: map[string]*info.Schema{
 					"id": {
@@ -677,7 +681,6 @@ func Provider() info.Provider {
 		"cloudflare_magic_wan_gre_tunnel",
 		"cloudflare_calls_sfu_app",
 		"cloudflare_r2_managed_domain",
-		"cloudflare_registrar_domain",
 		"cloudflare_stream_caption_language",
 		"cloudflare_r2_bucket_cors",
 		"cloudflare_snippet_rules",

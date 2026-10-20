@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Limit of number of results to return.
+        /// Number of results to return. Defaults to 25; values are clamped to 1–250.
         /// </summary>
         [Input("limit")]
         public int? Limit { get; set; }
@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Offset of results to return.
+        /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
         /// </summary>
         [Input("offset")]
         public int? Offset { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Limit of number of results to return.
+        /// Number of results to return. Defaults to 25; values are clamped to 1–250.
         /// </summary>
         [Input("limit")]
         public Input<int>? Limit { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Offset of results to return.
+        /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
         /// </summary>
         [Input("offset")]
         public Input<int>? Offset { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         /// <summary>
-        /// Limit of number of results to return.
+        /// Number of results to return. Defaults to 25; values are clamped to 1–250.
         /// </summary>
         public readonly int Limit;
         /// <summary>
@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// Offset of results to return.
+        /// Number of results to skip. Defaults to 0; negative values are clamped to 0.
         /// </summary>
         public readonly int Offset;
         /// <summary>

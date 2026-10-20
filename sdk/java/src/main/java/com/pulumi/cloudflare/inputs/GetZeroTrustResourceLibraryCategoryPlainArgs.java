@@ -22,14 +22,14 @@ public final class GetZeroTrustResourceLibraryCategoryPlainArgs extends com.pulu
     }
 
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      * 
      */
     @Import(name="id", required=true)
     private Integer id;
 
     /**
-     * @return Returns the category ID.
+     * @return Numeric identifier for an application category.
      * 
      */
     public Integer id() {
@@ -67,7 +67,7 @@ public final class GetZeroTrustResourceLibraryCategoryPlainArgs extends com.pulu
         }
 
         /**
-         * @param id Returns the category ID.
+         * @param id Numeric identifier for an application category.
          * 
          * @return builder
          * 

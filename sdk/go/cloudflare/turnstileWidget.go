@@ -88,7 +88,8 @@ type TurnstileWidget struct {
 	Domains   pulumi.StringArrayOutput `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolOutput `pulumi:"ephemeralId"`
-	// Filter widgets by field using case-insensitive substring matching.
+	// Filter widgets by field. The `name` field uses case-insensitive
+	// substring matching; `sitekey` uses exact matching.
 	// Format: `field:value`
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// Origin of the most recent mutation (create, update, delete, or
@@ -192,7 +193,8 @@ type turnstileWidgetState struct {
 	Domains   []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId *bool `pulumi:"ephemeralId"`
-	// Filter widgets by field using case-insensitive substring matching.
+	// Filter widgets by field. The `name` field uses case-insensitive
+	// substring matching; `sitekey` uses exact matching.
 	// Format: `field:value`
 	Filter *string `pulumi:"filter"`
 	// Origin of the most recent mutation (create, update, delete, or
@@ -251,7 +253,8 @@ type TurnstileWidgetState struct {
 	Domains   pulumi.StringArrayInput
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolPtrInput
-	// Filter widgets by field using case-insensitive substring matching.
+	// Filter widgets by field. The `name` field uses case-insensitive
+	// substring matching; `sitekey` uses exact matching.
 	// Format: `field:value`
 	Filter pulumi.StringPtrInput
 	// Origin of the most recent mutation (create, update, delete, or
@@ -306,7 +309,8 @@ type turnstileWidgetArgs struct {
 	Domains   []string `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId *bool `pulumi:"ephemeralId"`
-	// Filter widgets by field using case-insensitive substring matching.
+	// Filter widgets by field. The `name` field uses case-insensitive
+	// substring matching; `sitekey` uses exact matching.
 	// Format: `field:value`
 	Filter *string `pulumi:"filter"`
 	// Widget Mode
@@ -347,7 +351,8 @@ type TurnstileWidgetArgs struct {
 	Domains   pulumi.StringArrayInput
 	// Return the Ephemeral ID in /siteverify (ENT only).
 	EphemeralId pulumi.BoolPtrInput
-	// Filter widgets by field using case-insensitive substring matching.
+	// Filter widgets by field. The `name` field uses case-insensitive
+	// substring matching; `sitekey` uses exact matching.
 	// Format: `field:value`
 	Filter pulumi.StringPtrInput
 	// Widget Mode
@@ -505,7 +510,8 @@ func (o TurnstileWidgetOutput) EphemeralId() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.EphemeralId }).(pulumi.BoolOutput)
 }
 
-// Filter widgets by field using case-insensitive substring matching.
+// Filter widgets by field. The `name` field uses case-insensitive
+// substring matching; `sitekey` uses exact matching.
 // Format: `field:value`
 func (o TurnstileWidgetOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)

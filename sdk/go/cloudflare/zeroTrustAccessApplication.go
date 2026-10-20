@@ -95,14 +95,15 @@ type ZeroTrustAccessApplication struct {
 	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
 	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage pulumi.BoolOutput `pulumi:"skipAppLauncherLoginPage"`
 	// Enables automatic authentication through cloudflared.
 	SkipInterstitial pulumi.BoolPtrOutput `pulumi:"skipInterstitial"`
 	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
-	Tags            pulumi.StringArrayOutput                            `pulumi:"tags"`
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayOutput `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
@@ -221,14 +222,15 @@ type zeroTrustAccessApplicationState struct {
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage *bool `pulumi:"skipAppLauncherLoginPage"`
 	// Enables automatic authentication through cloudflared.
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
-	Tags            []string                                   `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
 	TargetCriterias []ZeroTrustAccessApplicationTargetCriteria `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
@@ -312,14 +314,15 @@ type ZeroTrustAccessApplicationState struct {
 	SelfHostedDomains pulumi.StringArrayInput
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
 	SessionDuration pulumi.StringPtrInput
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage pulumi.BoolPtrInput
 	// Enables automatic authentication through cloudflared.
 	SkipInterstitial pulumi.BoolPtrInput
 	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
-	Tags            pulumi.StringArrayInput
+	Tags pulumi.StringArrayInput
+	// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayInput
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
@@ -405,14 +408,15 @@ type zeroTrustAccessApplicationArgs struct {
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage *bool `pulumi:"skipAppLauncherLoginPage"`
 	// Enables automatic authentication through cloudflared.
 	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
-	Tags            []string                                   `pulumi:"tags"`
+	Tags []string `pulumi:"tags"`
+	// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
 	TargetCriterias []ZeroTrustAccessApplicationTargetCriteria `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
@@ -495,14 +499,15 @@ type ZeroTrustAccessApplicationArgs struct {
 	SelfHostedDomains pulumi.StringArrayInput
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
 	SessionDuration pulumi.StringPtrInput
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage pulumi.BoolPtrInput
 	// Enables automatic authentication through cloudflared.
 	SkipInterstitial pulumi.BoolPtrInput
 	// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
-	Tags            pulumi.StringArrayInput
+	Tags pulumi.StringArrayInput
+	// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayInput
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
@@ -784,7 +789,7 @@ func (o ZeroTrustAccessApplicationOutput) ServiceAuth401Redirect() pulumi.BoolPt
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.BoolPtrOutput { return v.ServiceAuth401Redirect }).(pulumi.BoolPtrOutput)
 }
 
-// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
 func (o ZeroTrustAccessApplicationOutput) SessionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringOutput { return v.SessionDuration }).(pulumi.StringOutput)
 }
@@ -804,6 +809,7 @@ func (o ZeroTrustAccessApplicationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
 func (o ZeroTrustAccessApplicationOutput) TargetCriterias() ZeroTrustAccessApplicationTargetCriteriaArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationTargetCriteriaArrayOutput {
 		return v.TargetCriterias

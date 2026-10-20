@@ -68,7 +68,7 @@ export class WorkersKv extends pulumi.CustomResource {
      */
     declare public readonly expiration: pulumi.Output<number | undefined>;
     /**
-     * Expires the key after a number of seconds. Must be at least 60.
+     * Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
      */
     declare public readonly expirationTtl: pulumi.Output<number | undefined>;
     /**
@@ -148,7 +148,7 @@ export interface WorkersKvState {
      */
     expiration?: pulumi.Input<number | undefined>;
     /**
-     * Expires the key after a number of seconds. Must be at least 60.
+     * Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
      */
     expirationTtl?: pulumi.Input<number | undefined>;
     /**
@@ -182,7 +182,7 @@ export interface WorkersKvArgs {
      */
     expiration?: pulumi.Input<number | undefined>;
     /**
-     * Expires the key after a number of seconds. Must be at least 60.
+     * Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
      */
     expirationTtl?: pulumi.Input<number | undefined>;
     /**

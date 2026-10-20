@@ -1261,6 +1261,14 @@ export interface AccessApplicationScimConfigMappingOperations {
 
 export interface AccessApplicationTargetCriteria {
     /**
+     * Target is excluded when any selector in this rule matches.
+     */
+    exclude?: outputs.AccessApplicationTargetCriteriaExclude;
+    /**
+     * Target matches when any selector in this rule matches.
+     */
+    include?: outputs.AccessApplicationTargetCriteriaInclude;
+    /**
      * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      */
     port: number;
@@ -1270,9 +1278,58 @@ export interface AccessApplicationTargetCriteria {
      */
     protocol: string;
     /**
-     * Contains a map of target attribute keys to target attribute values.
+     * Target matches only when every selector in this rule matches.
      */
-    targetAttributes: {[key: string]: string[]};
+    require?: outputs.AccessApplicationTargetCriteriaRequire;
+    /**
+     * Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+     */
+    targetAttributes?: {[key: string]: string[]};
+}
+
+export interface AccessApplicationTargetCriteriaExclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: outputs.AccessApplicationTargetCriteriaExcludeTargetAttributes;
+}
+
+export interface AccessApplicationTargetCriteriaExcludeTargetAttributes {
+    hostnames: string[];
+}
+
+export interface AccessApplicationTargetCriteriaInclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: outputs.AccessApplicationTargetCriteriaIncludeTargetAttributes;
+}
+
+export interface AccessApplicationTargetCriteriaIncludeTargetAttributes {
+    hostnames: string[];
+}
+
+export interface AccessApplicationTargetCriteriaRequire {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: outputs.AccessApplicationTargetCriteriaRequireTargetAttributes;
+}
+
+export interface AccessApplicationTargetCriteriaRequireTargetAttributes {
+    hostnames: string[];
 }
 
 export interface AccessCustomPageWarning {
@@ -2140,6 +2197,10 @@ export interface AccessIdentityProviderConfig {
      */
     issuerUrl?: string;
     /**
+     * When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     */
+    loginPageAutoPrompt: boolean;
+    /**
      * The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
      * is stored server-side and a short nonce is passed to the IdP instead.
@@ -2348,14 +2409,14 @@ export interface AccessOrganizationMfaConfig {
     sessionDuration?: string;
 }
 
-export interface AccessOrganizationMfaSshPivKeyRequirements {
+export interface AccessOrganizationMfaPivKeyRequirements {
     /**
      * Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
      * Available values: "never", "once", "always".
      */
     pinPolicy?: string;
     /**
-     * Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+     * Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
      */
     requireFipsDevice?: boolean;
     /**
@@ -3886,7 +3947,16 @@ export interface AiSearchInstanceIndexingOptions {
 
 export interface AiSearchInstanceMetadata {
     createdFromAisearchWizard?: boolean;
+    createdFromEmdashPlugin?: outputs.AiSearchInstanceMetadataCreatedFromEmdashPlugin;
     workerDomain?: string;
+}
+
+export interface AiSearchInstanceMetadataCreatedFromEmdashPlugin {
+    /**
+     * Available values: "native", "rest".
+     */
+    type: string;
+    version: string;
 }
 
 export interface AiSearchInstancePublicEndpointParams {
@@ -7722,7 +7792,16 @@ export interface GetAiSearchInstanceIndexingOptions {
 
 export interface GetAiSearchInstanceMetadata {
     createdFromAisearchWizard: boolean;
+    createdFromEmdashPlugin: outputs.GetAiSearchInstanceMetadataCreatedFromEmdashPlugin;
     workerDomain: string;
+}
+
+export interface GetAiSearchInstanceMetadataCreatedFromEmdashPlugin {
+    /**
+     * Available values: "native", "rest".
+     */
+    type: string;
+    version: string;
 }
 
 export interface GetAiSearchInstancePublicEndpointParams {
@@ -8002,7 +8081,16 @@ export interface GetAiSearchInstancesResultIndexingOptions {
 
 export interface GetAiSearchInstancesResultMetadata {
     createdFromAisearchWizard: boolean;
+    createdFromEmdashPlugin: outputs.GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin;
     workerDomain: string;
+}
+
+export interface GetAiSearchInstancesResultMetadataCreatedFromEmdashPlugin {
+    /**
+     * Available values: "native", "rest".
+     */
+    type: string;
+    version: string;
 }
 
 export interface GetAiSearchInstancesResultPublicEndpointParams {
@@ -13037,7 +13125,7 @@ export interface GetHyperdriveConfigsResult {
      */
     id: string;
     /**
-     * Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+     * Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
      */
     integration: outputs.GetHyperdriveConfigsResultIntegration;
     /**
@@ -14447,7 +14535,7 @@ export interface GetLogpushDatasetJobOutputOptions {
      */
     fieldNames: string[];
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      */
     mergeSubrequests: boolean;
     /**
@@ -14504,7 +14592,7 @@ export interface GetLogpushJobOutputOptions {
      */
     fieldNames: string[];
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      */
     mergeSubrequests: boolean;
     /**
@@ -14635,7 +14723,7 @@ export interface GetLogpushJobsResultOutputOptions {
      */
     fieldNames: string[];
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      */
     mergeSubrequests: boolean;
     /**
@@ -15660,6 +15748,32 @@ export interface GetManagedTransformsManagedResponseHeader {
      * The human-readable identifier of the Managed Transform.
      */
     id: string;
+}
+
+export interface GetMonetizationRulesRule {
+    /**
+     * 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+     */
+    address: string;
+    description: string;
+    enabled: boolean;
+    /**
+     * Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+     */
+    expression: string;
+    /**
+     * The server-assigned unique ID of the payment rule. Stable across full-ruleset replacements.
+     */
+    id: string;
+    /**
+     * Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+     */
+    price: string;
+    /**
+     * X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+     * Available values: "exact", "upto", "originControlled".
+     */
+    scheme: string;
 }
 
 export interface GetMoqRelayConfig {
@@ -16922,6 +17036,17 @@ export interface GetPagesProjectBuildConfig {
     webAnalyticsToken: string;
 }
 
+export interface GetPagesProjectBuildImageAutoUpgrade {
+    /**
+     * The retired build image major version the project is set to.
+     */
+    fromVersion: number;
+    /**
+     * The build image major version the project's builds run on.
+     */
+    toVersion: number;
+}
+
 export interface GetPagesProjectCanonicalDeployment {
     /**
      * A list of alias URLs pointing to this deployment.
@@ -17207,7 +17332,7 @@ export interface GetPagesProjectDeploymentConfigsPreview {
      */
     browsers: {[key: string]: outputs.GetPagesProjectDeploymentConfigsPreviewBrowsers};
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
      */
     buildImageMajorVersion: number;
     /**
@@ -17406,7 +17531,7 @@ export interface GetPagesProjectDeploymentConfigsProduction {
      */
     browsers: {[key: string]: outputs.GetPagesProjectDeploymentConfigsProductionBrowsers};
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
      */
     buildImageMajorVersion: number;
     /**
@@ -17917,6 +18042,10 @@ export interface GetPagesProjectsResult {
      */
     buildConfig: outputs.GetPagesProjectsResultBuildConfig;
     /**
+     * Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     */
+    buildImageAutoUpgrade: outputs.GetPagesProjectsResultBuildImageAutoUpgrade;
+    /**
      * Most recent production deployment of the project.
      */
     canonicalDeployment: outputs.GetPagesProjectsResultCanonicalDeployment;
@@ -18003,6 +18132,17 @@ export interface GetPagesProjectsResultBuildConfig {
      * The auth token for analytics.
      */
     webAnalyticsToken: string;
+}
+
+export interface GetPagesProjectsResultBuildImageAutoUpgrade {
+    /**
+     * The retired build image major version the project is set to.
+     */
+    fromVersion: number;
+    /**
+     * The build image major version the project's builds run on.
+     */
+    toVersion: number;
 }
 
 export interface GetPagesProjectsResultCanonicalDeployment {
@@ -18290,7 +18430,7 @@ export interface GetPagesProjectsResultDeploymentConfigsPreview {
      */
     browsers: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsPreviewBrowsers};
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
      */
     buildImageMajorVersion: number;
     /**
@@ -18489,7 +18629,7 @@ export interface GetPagesProjectsResultDeploymentConfigsProduction {
      */
     browsers: {[key: string]: outputs.GetPagesProjectsResultDeploymentConfigsProductionBrowsers};
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `buildImageAutoUpgrade` is set on the project.
      */
     buildImageMajorVersion: number;
     /**
@@ -20087,144 +20227,6 @@ export interface GetRegionalHostnamesResult {
      * Configure which routing method to use for the regional hostname
      */
     routing: string;
-}
-
-export interface GetRegistrarDomainsResult {
-    /**
-     * Shows if a domain is available for transferring into Cloudflare Registrar.
-     */
-    available: boolean;
-    /**
-     * Indicates eligibility to register the domain as a new domain.
-     */
-    canRegister: boolean;
-    /**
-     * Shows time of creation.
-     */
-    createdAt: string;
-    /**
-     * Shows name of current registrar.
-     */
-    currentRegistrar: string;
-    /**
-     * Shows when domain name registration expires.
-     */
-    expiresAt: string;
-    /**
-     * Domain identifier.
-     */
-    id: string;
-    /**
-     * Shows whether a registrar lock is in place for a domain.
-     */
-    locked: boolean;
-    /**
-     * Shows contact information for domain registrant.
-     */
-    registrantContact: outputs.GetRegistrarDomainsResultRegistrantContact;
-    /**
-     * A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
-     */
-    registryStatuses: string;
-    /**
-     * Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
-     */
-    supportedTld: boolean;
-    /**
-     * Statuses for domain transfers into Cloudflare Registrar.
-     */
-    transferIn: outputs.GetRegistrarDomainsResultTransferIn;
-    /**
-     * Last updated.
-     */
-    updatedAt: string;
-}
-
-export interface GetRegistrarDomainsResultRegistrantContact {
-    /**
-     * Address.
-     */
-    address: string;
-    /**
-     * Optional address line for unit, floor, suite, etc.
-     */
-    address2: string;
-    /**
-     * City.
-     */
-    city: string;
-    /**
-     * The country in which the user lives.
-     */
-    country: string;
-    /**
-     * The contact email address of the user.
-     */
-    email: string;
-    /**
-     * Contact fax number.
-     */
-    fax: string;
-    /**
-     * User's first name.
-     */
-    firstName: string;
-    /**
-     * Contact Identifier.
-     */
-    id: string;
-    /**
-     * User's last name.
-     */
-    lastName: string;
-    /**
-     * Name of organization.
-     */
-    organization: string;
-    /**
-     * User's telephone number.
-     */
-    phone: string;
-    /**
-     * State.
-     */
-    state: string;
-    /**
-     * The zipcode or postal code where the user lives.
-     */
-    zip: string;
-}
-
-export interface GetRegistrarDomainsResultTransferIn {
-    /**
-     * Status of the registrant authorization step.
-     * Available values: "needed", "ok".
-     */
-    acceptFoa: string;
-    /**
-     * Status of the registry transfer-approval step.
-     * Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
-     */
-    approveTransfer: string;
-    /**
-     * Indicates if cancellation is still possible.
-     */
-    canCancelTransfer: boolean;
-    /**
-     * Status of the privacy-guard disabling step at the foreign registrar.
-     * Available values: "needed", "ok", "unknown".
-     */
-    disablePrivacy: string;
-    /**
-     * Status of the auth-code entry and verification step.
-     * Available values: "needed", "ok", "pending", "trying", "rejected".
-     */
-    enterAuthCode: string;
-    /**
-     * Status of the domain-unlock step at the foreign registrar.
-     * Available values: "needed", "ok", "pending", "trying", "unknown".
-     */
-    unlockDomain: string;
 }
 
 export interface GetResourceGroupMeta {
@@ -24502,6 +24504,10 @@ export interface GetWorkerVersionBinding {
      */
     queueName: string;
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     */
+    retry: outputs.GetWorkerVersionBindingRetry;
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
     scriptName: string;
@@ -24587,6 +24593,17 @@ export interface GetWorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service: string;
+}
+
+export interface GetWorkerVersionBindingRetry {
+    /**
+     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+     */
+    maxAttempts: number;
+    /**
+     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+     */
+    timeoutMs: number;
 }
 
 export interface GetWorkerVersionBindingSimple {
@@ -25135,6 +25152,10 @@ export interface GetWorkerVersionsResultBinding {
      */
     queueName: string;
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     */
+    retry: outputs.GetWorkerVersionsResultBindingRetry;
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
     scriptName: string;
@@ -25220,6 +25241,17 @@ export interface GetWorkerVersionsResultBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service: string;
+}
+
+export interface GetWorkerVersionsResultBindingRetry {
+    /**
+     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+     */
+    maxAttempts: number;
+    /**
+     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+     */
+    timeoutMs: number;
 }
 
 export interface GetWorkerVersionsResultBindingSimple {
@@ -25656,6 +25688,11 @@ export interface GetWorkersKvNamespacesResult {
      * Available values: "eu", "fedramp", "us".
      */
     jurisdiction: string;
+    /**
+     * The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: "instant".
+     */
+    mode: string;
     /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
@@ -28347,6 +28384,14 @@ export interface GetZeroTrustAccessApplicationScimConfigMappingOperations {
 
 export interface GetZeroTrustAccessApplicationTargetCriteria {
     /**
+     * Target is excluded when any selector in this rule matches.
+     */
+    exclude: outputs.GetZeroTrustAccessApplicationTargetCriteriaExclude;
+    /**
+     * Target matches when any selector in this rule matches.
+     */
+    include: outputs.GetZeroTrustAccessApplicationTargetCriteriaInclude;
+    /**
      * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      */
     port: number;
@@ -28356,9 +28401,58 @@ export interface GetZeroTrustAccessApplicationTargetCriteria {
      */
     protocol: string;
     /**
-     * Contains a map of target attribute keys to target attribute values.
+     * Target matches only when every selector in this rule matches.
+     */
+    require: outputs.GetZeroTrustAccessApplicationTargetCriteriaRequire;
+    /**
+     * Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
      */
     targetAttributes: {[key: string]: string[]};
+}
+
+export interface GetZeroTrustAccessApplicationTargetCriteriaExclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes: outputs.GetZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributes;
+}
+
+export interface GetZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributes {
+    hostnames: string[];
+}
+
+export interface GetZeroTrustAccessApplicationTargetCriteriaInclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes: outputs.GetZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributes;
+}
+
+export interface GetZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributes {
+    hostnames: string[];
+}
+
+export interface GetZeroTrustAccessApplicationTargetCriteriaRequire {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes: outputs.GetZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributes;
+}
+
+export interface GetZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributes {
+    hostnames: string[];
 }
 
 export interface GetZeroTrustAccessApplicationsResult {
@@ -28494,7 +28588,7 @@ export interface GetZeroTrustAccessApplicationsResult {
      */
     serviceAuth401Redirect: boolean;
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
      */
     sessionDuration: string;
     /**
@@ -29754,6 +29848,14 @@ export interface GetZeroTrustAccessApplicationsResultScimConfigMappingOperations
 
 export interface GetZeroTrustAccessApplicationsResultTargetCriteria {
     /**
+     * Target is excluded when any selector in this rule matches.
+     */
+    exclude: outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaExclude;
+    /**
+     * Target matches when any selector in this rule matches.
+     */
+    include: outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaInclude;
+    /**
      * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      */
     port: number;
@@ -29763,9 +29865,58 @@ export interface GetZeroTrustAccessApplicationsResultTargetCriteria {
      */
     protocol: string;
     /**
-     * Contains a map of target attribute keys to target attribute values.
+     * Target matches only when every selector in this rule matches.
+     */
+    require: outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaRequire;
+    /**
+     * Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
      */
     targetAttributes: {[key: string]: string[]};
+}
+
+export interface GetZeroTrustAccessApplicationsResultTargetCriteriaExclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes: outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaExcludeTargetAttributes;
+}
+
+export interface GetZeroTrustAccessApplicationsResultTargetCriteriaExcludeTargetAttributes {
+    hostnames: string[];
+}
+
+export interface GetZeroTrustAccessApplicationsResultTargetCriteriaInclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes: outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaIncludeTargetAttributes;
+}
+
+export interface GetZeroTrustAccessApplicationsResultTargetCriteriaIncludeTargetAttributes {
+    hostnames: string[];
+}
+
+export interface GetZeroTrustAccessApplicationsResultTargetCriteriaRequire {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes: outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaRequireTargetAttributes;
+}
+
+export interface GetZeroTrustAccessApplicationsResultTargetCriteriaRequireTargetAttributes {
+    hostnames: string[];
 }
 
 export interface GetZeroTrustAccessCustomPagesResult {
@@ -31984,6 +32135,10 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
      */
     issuerUrl: string;
     /**
+     * When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     */
+    loginPageAutoPrompt: boolean;
+    /**
      * The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
      * is stored server-side and a short nonce is passed to the IdP instead.
@@ -32165,7 +32320,7 @@ export interface GetZeroTrustAccessIdentityProvidersResult {
     scimConfig: outputs.GetZeroTrustAccessIdentityProvidersResultScimConfig;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
      */
     type: string;
 }
@@ -32248,6 +32403,10 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
      * IdP Entity ID or Issuer URL
      */
     issuerUrl: string;
+    /**
+     * When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     */
+    loginPageAutoPrompt: boolean;
     /**
      * The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
@@ -34469,7 +34628,7 @@ export interface GetZeroTrustCasbPoliciesResult {
      */
     enabled: boolean;
     /**
-     * The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+     * The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
      */
     findingTypeId: string;
     /**
@@ -34808,7 +34967,7 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      */
     lanAllowSubnetSize: number;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
      */
     match: string;
     /**
@@ -34842,6 +35001,9 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      */
     switchLocked: boolean;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     targetTests: outputs.GetZeroTrustDeviceCustomProfilesResultTargetTest[];
     /**
      * Determines which tunnel protocol to use.
@@ -35907,7 +36069,7 @@ export interface GetZeroTrustDlpCustomEntriesResult {
      * A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpCustomEntriesResultVariant;
-    wordList: string;
+    wordLists: string[];
 }
 
 export interface GetZeroTrustDlpCustomEntriesResultConfidence {
@@ -36035,7 +36197,7 @@ export interface GetZeroTrustDlpCustomProfileEntry {
      * A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpCustomProfileEntryVariant;
-    wordList: string;
+    wordLists: string[];
 }
 
 export interface GetZeroTrustDlpCustomProfileEntryConfidence {
@@ -36109,7 +36271,7 @@ export interface GetZeroTrustDlpCustomProfileSharedEntry {
      * A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpCustomProfileSharedEntryVariant;
-    wordList: string;
+    wordLists: string[];
 }
 
 export interface GetZeroTrustDlpCustomProfileSharedEntryConfidence {
@@ -36316,7 +36478,7 @@ export interface GetZeroTrustDlpEntriesResult {
      * A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpEntriesResultVariant;
-    wordList: string;
+    wordLists: string[];
 }
 
 export interface GetZeroTrustDlpEntriesResultConfidence {
@@ -36430,7 +36592,7 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
      * A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpIntegrationEntriesResultVariant;
-    wordList: string;
+    wordLists: string[];
 }
 
 export interface GetZeroTrustDlpIntegrationEntriesResultConfidence {
@@ -36544,7 +36706,7 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
      * A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpPredefinedEntriesResultVariant;
-    wordList: string;
+    wordLists: string[];
 }
 
 export interface GetZeroTrustDlpPredefinedEntriesResultConfidence {
@@ -36654,7 +36816,7 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
      * A Predefined AI prompt classification topic entry.
      */
     variant: outputs.GetZeroTrustDlpPredefinedProfileEntryVariant;
-    wordList: string;
+    wordLists: string[];
 }
 
 export interface GetZeroTrustDlpPredefinedProfileEntryConfidence {
@@ -37122,6 +37284,10 @@ export interface GetZeroTrustGatewayCertificatesResult {
      * Provide the entire issuer field of the certificate (read-only).
      */
     issuerRaw: string;
+    /**
+     * Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+     */
+    region: string;
     /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".
@@ -38681,14 +38847,14 @@ export interface GetZeroTrustOrganizationMfaConfig {
     sessionDuration: string;
 }
 
-export interface GetZeroTrustOrganizationMfaSshPivKeyRequirements {
+export interface GetZeroTrustOrganizationMfaPivKeyRequirements {
     /**
      * Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
      * Available values: "never", "once", "always".
      */
     pinPolicy: string;
     /**
-     * Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+     * Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
      */
     requireFipsDevice: boolean;
     /**
@@ -38725,39 +38891,46 @@ export interface GetZeroTrustOrganizationServiceTokenInactivity {
 export interface GetZeroTrustResourceLibraryApplicationFilter {
     /**
      * Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      */
     fields?: string;
     /**
-     * Filter applications using key:value format. Supported filter keys:
-     * - name: Filter by application name (e.g., name:HR)
-     * - id: Filter by application ID (e.g., id:498)
-     * - human_id: Filter by human-readable ID (e.g., human_id:HR)
-     * - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-     * - source: Filter by application source name (e.g., source:cloudflare)
-     * - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-     * - category_id: Filter by category ID (e.g., category_id:12).
-     * - category_name: Filter by category name (e.g., category_name:HR).
-     * - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-     * - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-     *   .
+     * Filter applications using `key:value` format. Supported filter keys:
+     * - `name`: application name (for example, `name:HR`).
+     * - `id`: application ID (for example, `id:498`).
+     * - `humanId`: human-readable ID (for example, `human_id:HR`).
+     * - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+     * - `source`: application source name (for example, `source:cloudflare`).
+     * - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+     * - `categoryId`: category ID (for example, `category_id:12`).
+     * - `categoryName`: category name (for example, `category_name:HR`).
+     * - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+     * - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
      */
     filter?: string;
     /**
-     * Limit of number of results to return (max 250).
+     * Number of results to return. Defaults to 25; values are clamped to 1–250.
      */
     limit: number;
     /**
-     * Offset of results to return.
+     * Find complete, case-insensitive application name mentions in a phrase or
+     * rule sentence. Misspelled names do not match. Returns matching applications
+     * ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+     * filters, fields, and pagination as listing. `search` cannot be combined
+     * with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+     */
+    lookup?: string;
+    /**
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
      */
     offset: number;
     /**
      * Order results using field:direction format. Supported fields are name, id, human_id,
      * category_id, application_type, application_confidence_score, and gen_ai_score.
      * Supported directions are asc and desc. Ignored when search is provided; results are
-     * ranked by relevance instead.
+     * ranked by relevance instead. Also ignored when lookup is provided.
      */
     orderBy?: string;
     /**
@@ -38788,7 +38961,7 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
      */
     applicationTypeDescription: string;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     categoryId: number;
     /**
@@ -38804,11 +38977,11 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
      */
     hostnames: string[];
     /**
-     * Returns the human readable ID.
+     * Human-readable identifier for the application.
      */
     humanId: string;
     /**
-     * Returns the application ID.
+     * Numeric identifier for the application.
      */
     id: number;
     /**
@@ -38816,11 +38989,11 @@ export interface GetZeroTrustResourceLibraryApplicationsResult {
      */
     ipSubnets: string[];
     /**
-     * Returns the application name.
+     * Application name.
      */
     name: string;
     /**
-     * Port and protocol pairs matched by the application.
+     * Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      */
     portProtocols: string[];
     /**
@@ -38856,7 +39029,7 @@ export interface GetZeroTrustResourceLibraryCategoriesResult {
      */
     description: string;
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      */
     id: number;
     /**
@@ -40799,7 +40972,7 @@ export interface LogpushJobOutputOptions {
      */
     fieldNames?: string[];
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      */
     mergeSubrequests?: boolean;
     /**
@@ -41286,6 +41459,32 @@ export interface ManagedTransformsManagedResponseHeader {
      * The human-readable identifier of the Managed Transform.
      */
     id: string;
+}
+
+export interface MonetizationRulesRule {
+    /**
+     * 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+     */
+    address: string;
+    description?: string;
+    enabled: boolean;
+    /**
+     * Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+     */
+    expression: string;
+    /**
+     * Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+     */
+    id?: string;
+    /**
+     * Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+     */
+    price?: string;
+    /**
+     * X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+     * Available values: "exact", "upto", "originControlled".
+     */
+    scheme: string;
 }
 
 export interface MoqRelayConfig {
@@ -41902,6 +42101,17 @@ export interface PagesProjectBuildConfig {
     webAnalyticsToken: string;
 }
 
+export interface PagesProjectBuildImageAutoUpgrade {
+    /**
+     * The retired build image major version the project is set to.
+     */
+    fromVersion: number;
+    /**
+     * The build image major version the project's builds run on.
+     */
+    toVersion: number;
+}
+
 export interface PagesProjectCanonicalDeployment {
     /**
      * A list of alias URLs pointing to this deployment.
@@ -42182,7 +42392,7 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     browsers?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewBrowsers};
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
      */
     buildImageMajorVersion: number;
     /**
@@ -42381,7 +42591,7 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     browsers?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionBrowsers};
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
      */
     buildImageMajorVersion: number;
     /**
@@ -47132,6 +47342,10 @@ export interface WorkerScriptBinding {
      */
     queueName?: string;
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     */
+    retry?: outputs.WorkerScriptBindingRetry;
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
     scriptName?: string;
@@ -47206,6 +47420,17 @@ export interface WorkerScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkerScriptBindingRetry {
+    /**
+     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+     */
+    maxAttempts?: number;
+    /**
+     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+     */
+    timeoutMs?: number;
 }
 
 export interface WorkerScriptBindingSimple {
@@ -47741,6 +47966,10 @@ export interface WorkerVersionBinding {
      */
     queueName?: string;
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     */
+    retry?: outputs.WorkerVersionBindingRetry;
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
     scriptName: string;
@@ -47826,6 +48055,17 @@ export interface WorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkerVersionBindingRetry {
+    /**
+     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+     */
+    maxAttempts?: number;
+    /**
+     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+     */
+    timeoutMs?: number;
 }
 
 export interface WorkerVersionBindingSimple {
@@ -48425,6 +48665,10 @@ export interface WorkersScriptBinding {
      */
     queueName?: string;
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     */
+    retry?: outputs.WorkersScriptBindingRetry;
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
     scriptName?: string;
@@ -48499,6 +48743,17 @@ export interface WorkersScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkersScriptBindingRetry {
+    /**
+     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+     */
+    maxAttempts?: number;
+    /**
+     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+     */
+    timeoutMs?: number;
 }
 
 export interface WorkersScriptBindingSimple {
@@ -50254,6 +50509,14 @@ export interface ZeroTrustAccessApplicationScimConfigMappingOperations {
 
 export interface ZeroTrustAccessApplicationTargetCriteria {
     /**
+     * Target is excluded when any selector in this rule matches.
+     */
+    exclude?: outputs.ZeroTrustAccessApplicationTargetCriteriaExclude;
+    /**
+     * Target matches when any selector in this rule matches.
+     */
+    include?: outputs.ZeroTrustAccessApplicationTargetCriteriaInclude;
+    /**
      * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      */
     port: number;
@@ -50263,9 +50526,58 @@ export interface ZeroTrustAccessApplicationTargetCriteria {
      */
     protocol: string;
     /**
-     * Contains a map of target attribute keys to target attribute values.
+     * Target matches only when every selector in this rule matches.
      */
-    targetAttributes: {[key: string]: string[]};
+    require?: outputs.ZeroTrustAccessApplicationTargetCriteriaRequire;
+    /**
+     * Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+     */
+    targetAttributes?: {[key: string]: string[]};
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaExclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: outputs.ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributes;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributes {
+    hostnames: string[];
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaInclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: outputs.ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributes;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributes {
+    hostnames: string[];
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaRequire {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: {[key: string]: string[]};
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: outputs.ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributes;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributes {
+    hostnames: string[];
 }
 
 export interface ZeroTrustAccessCustomPageWarning {
@@ -51132,6 +51444,10 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      * IdP Entity ID or Issuer URL
      */
     issuerUrl?: string;
+    /**
+     * When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     */
+    loginPageAutoPrompt: boolean;
     /**
      * The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
@@ -54151,14 +54467,14 @@ export interface ZeroTrustOrganizationMfaConfig {
     sessionDuration?: string;
 }
 
-export interface ZeroTrustOrganizationMfaSshPivKeyRequirements {
+export interface ZeroTrustOrganizationMfaPivKeyRequirements {
     /**
      * Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
      * Available values: "never", "once", "always".
      */
     pinPolicy?: string;
     /**
-     * Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+     * Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
      */
     requireFipsDevice?: boolean;
     /**

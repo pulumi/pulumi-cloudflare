@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         public Output<double?> Expiration { get; private set; } = null!;
 
         /// <summary>
-        /// Expires the key after a number of seconds. Must be at least 60.
+        /// Number of seconds until the key expires. Must be at least 60. Takes precedence over `Expiration` when both are specified.
         /// </summary>
         [Output("expirationTtl")]
         public Output<double?> ExpirationTtl { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? Expiration { get; set; }
 
         /// <summary>
-        /// Expires the key after a number of seconds. Must be at least 60.
+        /// Number of seconds until the key expires. Must be at least 60. Takes precedence over `Expiration` when both are specified.
         /// </summary>
         [Input("expirationTtl")]
         public Input<double>? ExpirationTtl { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? Expiration { get; set; }
 
         /// <summary>
-        /// Expires the key after a number of seconds. Must be at least 60.
+        /// Number of seconds until the key expires. Must be at least 60. Takes precedence over `Expiration` when both are specified.
         /// </summary>
         [Input("expirationTtl")]
         public Input<double>? ExpirationTtl { get; set; }

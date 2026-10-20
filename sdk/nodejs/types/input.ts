@@ -1261,6 +1261,14 @@ export interface AccessApplicationScimConfigMappingOperations {
 
 export interface AccessApplicationTargetCriteria {
     /**
+     * Target is excluded when any selector in this rule matches.
+     */
+    exclude?: pulumi.Input<inputs.AccessApplicationTargetCriteriaExclude | undefined>;
+    /**
+     * Target matches when any selector in this rule matches.
+     */
+    include?: pulumi.Input<inputs.AccessApplicationTargetCriteriaInclude | undefined>;
+    /**
      * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      */
     port: pulumi.Input<number>;
@@ -1270,9 +1278,58 @@ export interface AccessApplicationTargetCriteria {
      */
     protocol: pulumi.Input<string>;
     /**
-     * Contains a map of target attribute keys to target attribute values.
+     * Target matches only when every selector in this rule matches.
      */
-    targetAttributes: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    require?: pulumi.Input<inputs.AccessApplicationTargetCriteriaRequire | undefined>;
+    /**
+     * Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+     */
+    targetAttributes?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+}
+
+export interface AccessApplicationTargetCriteriaExclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: pulumi.Input<inputs.AccessApplicationTargetCriteriaExcludeTargetAttributes | undefined>;
+}
+
+export interface AccessApplicationTargetCriteriaExcludeTargetAttributes {
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessApplicationTargetCriteriaInclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: pulumi.Input<inputs.AccessApplicationTargetCriteriaIncludeTargetAttributes | undefined>;
+}
+
+export interface AccessApplicationTargetCriteriaIncludeTargetAttributes {
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessApplicationTargetCriteriaRequire {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: pulumi.Input<inputs.AccessApplicationTargetCriteriaRequireTargetAttributes | undefined>;
+}
+
+export interface AccessApplicationTargetCriteriaRequireTargetAttributes {
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessCustomPageWarning {
@@ -2140,6 +2197,10 @@ export interface AccessIdentityProviderConfig {
      */
     issuerUrl?: pulumi.Input<string | undefined>;
     /**
+     * When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     */
+    loginPageAutoPrompt?: pulumi.Input<boolean | undefined>;
+    /**
      * The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
      * is stored server-side and a short nonce is passed to the IdP instead.
@@ -2348,14 +2409,14 @@ export interface AccessOrganizationMfaConfig {
     sessionDuration?: pulumi.Input<string | undefined>;
 }
 
-export interface AccessOrganizationMfaSshPivKeyRequirements {
+export interface AccessOrganizationMfaPivKeyRequirements {
     /**
      * Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
      * Available values: "never", "once", "always".
      */
     pinPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+     * Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
      */
     requireFipsDevice?: pulumi.Input<boolean | undefined>;
     /**
@@ -3886,7 +3947,16 @@ export interface AiSearchInstanceIndexingOptions {
 
 export interface AiSearchInstanceMetadata {
     createdFromAisearchWizard?: pulumi.Input<boolean | undefined>;
+    createdFromEmdashPlugin?: pulumi.Input<inputs.AiSearchInstanceMetadataCreatedFromEmdashPlugin | undefined>;
     workerDomain?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchInstanceMetadataCreatedFromEmdashPlugin {
+    /**
+     * Available values: "native", "rest".
+     */
+    type: pulumi.Input<string>;
+    version: pulumi.Input<string>;
 }
 
 export interface AiSearchInstancePublicEndpointParams {
@@ -9070,39 +9140,46 @@ export interface GetZeroTrustNetworkHostnameRouteFilterArgs {
 export interface GetZeroTrustResourceLibraryApplicationFilter {
     /**
      * Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      */
     fields?: string;
     /**
-     * Filter applications using key:value format. Supported filter keys:
-     * - name: Filter by application name (e.g., name:HR)
-     * - id: Filter by application ID (e.g., id:498)
-     * - human_id: Filter by human-readable ID (e.g., human_id:HR)
-     * - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-     * - source: Filter by application source name (e.g., source:cloudflare)
-     * - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-     * - category_id: Filter by category ID (e.g., category_id:12).
-     * - category_name: Filter by category name (e.g., category_name:HR).
-     * - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-     * - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-     *   .
+     * Filter applications using `key:value` format. Supported filter keys:
+     * - `name`: application name (for example, `name:HR`).
+     * - `id`: application ID (for example, `id:498`).
+     * - `humanId`: human-readable ID (for example, `human_id:HR`).
+     * - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+     * - `source`: application source name (for example, `source:cloudflare`).
+     * - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+     * - `categoryId`: category ID (for example, `category_id:12`).
+     * - `categoryName`: category name (for example, `category_name:HR`).
+     * - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+     * - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
      */
     filter?: string;
     /**
-     * Limit of number of results to return (max 250).
+     * Number of results to return. Defaults to 25; values are clamped to 1–250.
      */
     limit?: number;
     /**
-     * Offset of results to return.
+     * Find complete, case-insensitive application name mentions in a phrase or
+     * rule sentence. Misspelled names do not match. Returns matching applications
+     * ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+     * filters, fields, and pagination as listing. `search` cannot be combined
+     * with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+     */
+    lookup?: string;
+    /**
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
      */
     offset?: number;
     /**
      * Order results using field:direction format. Supported fields are name, id, human_id,
      * category_id, application_type, application_confidence_score, and gen_ai_score.
      * Supported directions are asc and desc. Ignored when search is provided; results are
-     * ranked by relevance instead.
+     * ranked by relevance instead. Also ignored when lookup is provided.
      */
     orderBy?: string;
     /**
@@ -9114,39 +9191,46 @@ export interface GetZeroTrustResourceLibraryApplicationFilter {
 export interface GetZeroTrustResourceLibraryApplicationFilterArgs {
     /**
      * Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      */
     fields?: pulumi.Input<string | undefined>;
     /**
-     * Filter applications using key:value format. Supported filter keys:
-     * - name: Filter by application name (e.g., name:HR)
-     * - id: Filter by application ID (e.g., id:498)
-     * - human_id: Filter by human-readable ID (e.g., human_id:HR)
-     * - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-     * - source: Filter by application source name (e.g., source:cloudflare)
-     * - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-     * - category_id: Filter by category ID (e.g., category_id:12).
-     * - category_name: Filter by category name (e.g., category_name:HR).
-     * - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-     * - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-     *   .
+     * Filter applications using `key:value` format. Supported filter keys:
+     * - `name`: application name (for example, `name:HR`).
+     * - `id`: application ID (for example, `id:498`).
+     * - `humanId`: human-readable ID (for example, `human_id:HR`).
+     * - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+     * - `source`: application source name (for example, `source:cloudflare`).
+     * - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+     * - `categoryId`: category ID (for example, `category_id:12`).
+     * - `categoryName`: category name (for example, `category_name:HR`).
+     * - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+     * - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
      */
     filter?: pulumi.Input<string | undefined>;
     /**
-     * Limit of number of results to return (max 250).
+     * Number of results to return. Defaults to 25; values are clamped to 1–250.
      */
     limit?: pulumi.Input<number | undefined>;
     /**
-     * Offset of results to return.
+     * Find complete, case-insensitive application name mentions in a phrase or
+     * rule sentence. Misspelled names do not match. Returns matching applications
+     * ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+     * filters, fields, and pagination as listing. `search` cannot be combined
+     * with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+     */
+    lookup?: pulumi.Input<string | undefined>;
+    /**
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
      */
     offset?: pulumi.Input<number | undefined>;
     /**
      * Order results using field:direction format. Supported fields are name, id, human_id,
      * category_id, application_type, application_confidence_score, and gen_ai_score.
      * Supported directions are asc and desc. Ignored when search is provided; results are
-     * ranked by relevance instead.
+     * ranked by relevance instead. Also ignored when lookup is provided.
      */
     orderBy?: pulumi.Input<string | undefined>;
     /**
@@ -10182,7 +10266,7 @@ export interface LogpushJobOutputOptions {
      */
     fieldNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
+     * If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
      */
     mergeSubrequests?: pulumi.Input<boolean | undefined>;
     /**
@@ -10669,6 +10753,32 @@ export interface ManagedTransformsManagedResponseHeader {
      * The human-readable identifier of the Managed Transform.
      */
     id: pulumi.Input<string>;
+}
+
+export interface MonetizationRulesRule {
+    /**
+     * 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+     */
+    address: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+     */
+    price?: pulumi.Input<string | undefined>;
+    /**
+     * X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+     * Available values: "exact", "upto", "originControlled".
+     */
+    scheme: pulumi.Input<string>;
 }
 
 export interface MoqRelayConfig {
@@ -11285,6 +11395,17 @@ export interface PagesProjectBuildConfig {
     webAnalyticsToken?: pulumi.Input<string | undefined>;
 }
 
+export interface PagesProjectBuildImageAutoUpgrade {
+    /**
+     * The retired build image major version the project is set to.
+     */
+    fromVersion?: pulumi.Input<number | undefined>;
+    /**
+     * The build image major version the project's builds run on.
+     */
+    toVersion?: pulumi.Input<number | undefined>;
+}
+
 export interface PagesProjectCanonicalDeployment {
     /**
      * A list of alias URLs pointing to this deployment.
@@ -11565,7 +11686,7 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     browsers?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewBrowsers>} | undefined>;
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
      */
     buildImageMajorVersion?: pulumi.Input<number | undefined>;
     /**
@@ -11764,7 +11885,7 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     browsers?: pulumi.Input<{[key: string]: pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionBrowsers>} | undefined>;
     /**
-     * The major version of the build image to use for Pages Functions.
+     * The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
      */
     buildImageMajorVersion?: pulumi.Input<number | undefined>;
     /**
@@ -16515,6 +16636,10 @@ export interface WorkerScriptBinding {
      */
     queueName?: pulumi.Input<string | undefined>;
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     */
+    retry?: pulumi.Input<inputs.WorkerScriptBindingRetry | undefined>;
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
     scriptName?: pulumi.Input<string | undefined>;
@@ -16589,6 +16714,17 @@ export interface WorkerScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkerScriptBindingRetry {
+    /**
+     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+     */
+    maxAttempts?: pulumi.Input<number | undefined>;
+    /**
+     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+     */
+    timeoutMs?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkerScriptBindingSimple {
@@ -17124,6 +17260,10 @@ export interface WorkerVersionBinding {
      */
     queueName?: pulumi.Input<string | undefined>;
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     */
+    retry?: pulumi.Input<inputs.WorkerVersionBindingRetry | undefined>;
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
     scriptName?: pulumi.Input<string | undefined>;
@@ -17209,6 +17349,17 @@ export interface WorkerVersionBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkerVersionBindingRetry {
+    /**
+     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+     */
+    maxAttempts?: pulumi.Input<number | undefined>;
+    /**
+     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+     */
+    timeoutMs?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkerVersionBindingSimple {
@@ -17808,6 +17959,10 @@ export interface WorkersScriptBinding {
      */
     queueName?: pulumi.Input<string | undefined>;
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     */
+    retry?: pulumi.Input<inputs.WorkersScriptBindingRetry | undefined>;
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      */
     scriptName?: pulumi.Input<string | undefined>;
@@ -17882,6 +18037,17 @@ export interface WorkersScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkersScriptBindingRetry {
+    /**
+     * Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+     */
+    maxAttempts?: pulumi.Input<number | undefined>;
+    /**
+     * Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+     */
+    timeoutMs?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkersScriptBindingSimple {
@@ -19637,6 +19803,14 @@ export interface ZeroTrustAccessApplicationScimConfigMappingOperations {
 
 export interface ZeroTrustAccessApplicationTargetCriteria {
     /**
+     * Target is excluded when any selector in this rule matches.
+     */
+    exclude?: pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteriaExclude | undefined>;
+    /**
+     * Target matches when any selector in this rule matches.
+     */
+    include?: pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteriaInclude | undefined>;
+    /**
      * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
      */
     port: pulumi.Input<number>;
@@ -19646,9 +19820,58 @@ export interface ZeroTrustAccessApplicationTargetCriteria {
      */
     protocol: pulumi.Input<string>;
     /**
-     * Contains a map of target attribute keys to target attribute values.
+     * Target matches only when every selector in this rule matches.
      */
-    targetAttributes: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    require?: pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteriaRequire | undefined>;
+    /**
+     * Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+     */
+    targetAttributes?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaExclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributes | undefined>;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributes {
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaInclude {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributes | undefined>;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributes {
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaRequire {
+    /**
+     * Map of target tag keys to values. Values within a key are OR'd.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+    /**
+     * Hostname selector map. Only the hostname key is supported.
+     */
+    targetAttributes?: pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributes | undefined>;
+}
+
+export interface ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributes {
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustAccessCustomPageWarning {
@@ -20515,6 +20738,10 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      * IdP Entity ID or Issuer URL
      */
     issuerUrl?: pulumi.Input<string | undefined>;
+    /**
+     * When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     */
+    loginPageAutoPrompt?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
@@ -23534,14 +23761,14 @@ export interface ZeroTrustOrganizationMfaConfig {
     sessionDuration?: pulumi.Input<string | undefined>;
 }
 
-export interface ZeroTrustOrganizationMfaSshPivKeyRequirements {
+export interface ZeroTrustOrganizationMfaPivKeyRequirements {
     /**
      * Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
      * Available values: "never", "once", "always".
      */
     pinPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+     * Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
      */
     requireFipsDevice?: pulumi.Input<boolean | undefined>;
     /**

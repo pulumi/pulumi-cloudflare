@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  *                 "2001:db8::/48")
  *             .name("HR")
  *             .portProtocols(            
- *                 "tcp/80",
- *                 "tcp/443")
+ *                 "tcp/443",
+ *                 "udp/10000-20000")
  *             .supportDomains(            
  *                 "example.com",
  *                 "foo.com")
@@ -152,14 +152,14 @@ public class ZeroTrustResourceLibraryApplication extends com.pulumi.resources.Cu
         return this.applicationTypeDescription;
     }
     /**
-     * Returns the category ID.
+     * Numeric identifier for an application category.
      * 
      */
     @Export(name="categoryId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> categoryId;
 
     /**
-     * @return Returns the category ID.
+     * @return Numeric identifier for an application category.
      * 
      */
     public Output<Optional<Integer>> categoryId() {
@@ -208,14 +208,14 @@ public class ZeroTrustResourceLibraryApplication extends com.pulumi.resources.Cu
         return Codegen.optional(this.hostnames);
     }
     /**
-     * Returns the human readable ID.
+     * Human-readable identifier for the application.
      * 
      */
     @Export(name="humanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> humanId;
 
     /**
-     * @return Returns the human readable ID.
+     * @return Human-readable identifier for the application.
      * 
      */
     public Output<Optional<String>> humanId() {
@@ -236,28 +236,28 @@ public class ZeroTrustResourceLibraryApplication extends com.pulumi.resources.Cu
         return Codegen.optional(this.ipSubnets);
     }
     /**
-     * Returns the application name.
+     * Application name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
-     * @return Returns the application name.
+     * @return Application name.
      * 
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
     }
     /**
-     * Port and protocol pairs matched by the application.
+     * Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      * 
      */
     @Export(name="portProtocols", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> portProtocols;
 
     /**
-     * @return Port and protocol pairs matched by the application.
+     * @return Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      * 
      */
     public Output<Optional<List<String>>> portProtocols() {

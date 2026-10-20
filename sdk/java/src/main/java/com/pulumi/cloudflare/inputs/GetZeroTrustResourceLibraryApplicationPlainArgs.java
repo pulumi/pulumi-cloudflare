@@ -32,14 +32,14 @@ public final class GetZeroTrustResourceLibraryApplicationPlainArgs extends com.p
     }
 
     /**
-     * Returns the application ID.
+     * Numeric identifier for the application.
      * 
      */
     @Import(name="id")
     private @Nullable Integer id;
 
     /**
-     * @return Returns the application ID.
+     * @return Numeric identifier for the application.
      * 
      */
     public Optional<Integer> id() {
@@ -83,7 +83,7 @@ public final class GetZeroTrustResourceLibraryApplicationPlainArgs extends com.p
         }
 
         /**
-         * @param id Returns the application ID.
+         * @param id Numeric identifier for the application.
          * 
          * @return builder
          * 

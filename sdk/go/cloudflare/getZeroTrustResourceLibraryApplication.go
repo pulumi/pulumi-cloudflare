@@ -51,7 +51,7 @@ func LookupZeroTrustResourceLibraryApplication(ctx *pulumi.Context, args *Lookup
 type LookupZeroTrustResourceLibraryApplicationArgs struct {
 	AccountId string                                        `pulumi:"accountId"`
 	Filter    *GetZeroTrustResourceLibraryApplicationFilter `pulumi:"filter"`
-	// Returns the application ID.
+	// Numeric identifier for the application.
 	Id *int `pulumi:"id"`
 }
 
@@ -68,7 +68,7 @@ type LookupZeroTrustResourceLibraryApplicationResult struct {
 	ApplicationType string `pulumi:"applicationType"`
 	// Returns the application type description.
 	ApplicationTypeDescription string `pulumi:"applicationTypeDescription"`
-	// Returns the category ID.
+	// Numeric identifier for an application category.
 	CategoryId int `pulumi:"categoryId"`
 	// Returns the application creation time.
 	CreatedAt string                                        `pulumi:"createdAt"`
@@ -77,15 +77,15 @@ type LookupZeroTrustResourceLibraryApplicationResult struct {
 	GenAiScore float64 `pulumi:"genAiScore"`
 	// Hostnames matched by the application.
 	Hostnames []string `pulumi:"hostnames"`
-	// Returns the human readable ID.
+	// Human-readable identifier for the application.
 	HumanId string `pulumi:"humanId"`
-	// Returns the application ID.
+	// Numeric identifier for the application.
 	Id int `pulumi:"id"`
 	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets []string `pulumi:"ipSubnets"`
-	// Returns the application name.
+	// Application name.
 	Name string `pulumi:"name"`
-	// Port and protocol pairs matched by the application.
+	// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
 	PortProtocols []string `pulumi:"portProtocols"`
 	// Support domains matched by the application.
 	SupportDomains []string `pulumi:"supportDomains"`
@@ -106,7 +106,7 @@ func LookupZeroTrustResourceLibraryApplicationOutput(ctx *pulumi.Context, args L
 type LookupZeroTrustResourceLibraryApplicationOutputArgs struct {
 	AccountId pulumi.StringInput                                   `pulumi:"accountId"`
 	Filter    GetZeroTrustResourceLibraryApplicationFilterPtrInput `pulumi:"filter"`
-	// Returns the application ID.
+	// Numeric identifier for the application.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 }
 
@@ -158,7 +158,7 @@ func (o LookupZeroTrustResourceLibraryApplicationResultOutput) ApplicationTypeDe
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.ApplicationTypeDescription }).(pulumi.StringOutput)
 }
 
-// Returns the category ID.
+// Numeric identifier for an application category.
 func (o LookupZeroTrustResourceLibraryApplicationResultOutput) CategoryId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) int { return v.CategoryId }).(pulumi.IntOutput)
 }
@@ -184,12 +184,12 @@ func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Hostnames() pulum
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-// Returns the human readable ID.
+// Human-readable identifier for the application.
 func (o LookupZeroTrustResourceLibraryApplicationResultOutput) HumanId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.HumanId }).(pulumi.StringOutput)
 }
 
-// Returns the application ID.
+// Numeric identifier for the application.
 func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -199,12 +199,12 @@ func (o LookupZeroTrustResourceLibraryApplicationResultOutput) IpSubnets() pulum
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.IpSubnets }).(pulumi.StringArrayOutput)
 }
 
-// Returns the application name.
+// Application name.
 func (o LookupZeroTrustResourceLibraryApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Port and protocol pairs matched by the application.
+// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
 func (o LookupZeroTrustResourceLibraryApplicationResultOutput) PortProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryApplicationResult) []string { return v.PortProtocols }).(pulumi.StringArrayOutput)
 }

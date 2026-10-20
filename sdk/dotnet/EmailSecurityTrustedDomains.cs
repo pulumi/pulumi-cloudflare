@@ -63,19 +63,19 @@ namespace Pulumi.Cloudflare
         /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
         [Output("isRecent")]
-        public Output<bool?> IsRecent { get; private set; } = null!;
+        public Output<bool> IsRecent { get; private set; } = null!;
 
         /// <summary>
         /// Whether `Pattern` is a regular expression instead of a literal domain.
         /// </summary>
         [Output("isRegex")]
-        public Output<bool?> IsRegex { get; private set; } = null!;
+        public Output<bool> IsRegex { get; private set; } = null!;
 
         /// <summary>
         /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         /// </summary>
         [Output("isSimilarity")]
-        public Output<bool?> IsSimilarity { get; private set; } = null!;
+        public Output<bool> IsSimilarity { get; private set; } = null!;
 
         /// <summary>
         /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
@@ -150,20 +150,20 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
-        [Input("isRecent")]
-        public Input<bool>? IsRecent { get; set; }
+        [Input("isRecent", required: true)]
+        public Input<bool> IsRecent { get; set; } = null!;
 
         /// <summary>
         /// Whether `Pattern` is a regular expression instead of a literal domain.
         /// </summary>
-        [Input("isRegex")]
-        public Input<bool>? IsRegex { get; set; }
+        [Input("isRegex", required: true)]
+        public Input<bool> IsRegex { get; set; } = null!;
 
         /// <summary>
         /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         /// </summary>
-        [Input("isSimilarity")]
-        public Input<bool>? IsSimilarity { get; set; }
+        [Input("isSimilarity", required: true)]
+        public Input<bool> IsSimilarity { get; set; } = null!;
 
         /// <summary>
         /// The domain pattern to trust, e.g. `example.com`.

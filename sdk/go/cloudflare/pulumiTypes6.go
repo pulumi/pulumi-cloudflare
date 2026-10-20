@@ -13,6 +13,2191 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetZeroTrustAccessPoliciesResultRequireOkta struct {
+	// The ID of your Okta identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+	// The name of the Okta group.
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustAccessPoliciesResultRequireOktaInput is an input type that accepts GetZeroTrustAccessPoliciesResultRequireOktaArgs and GetZeroTrustAccessPoliciesResultRequireOktaOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultRequireOktaInput` via:
+//
+//	GetZeroTrustAccessPoliciesResultRequireOktaArgs{...}
+type GetZeroTrustAccessPoliciesResultRequireOktaInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPoliciesResultRequireOktaOutput() GetZeroTrustAccessPoliciesResultRequireOktaOutput
+	ToGetZeroTrustAccessPoliciesResultRequireOktaOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultRequireOktaOutput
+}
+
+type GetZeroTrustAccessPoliciesResultRequireOktaArgs struct {
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+	// The name of the Okta group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustAccessPoliciesResultRequireOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireOkta)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPoliciesResultRequireOktaArgs) ToGetZeroTrustAccessPoliciesResultRequireOktaOutput() GetZeroTrustAccessPoliciesResultRequireOktaOutput {
+	return i.ToGetZeroTrustAccessPoliciesResultRequireOktaOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPoliciesResultRequireOktaArgs) ToGetZeroTrustAccessPoliciesResultRequireOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultRequireOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultRequireOktaOutput)
+}
+
+type GetZeroTrustAccessPoliciesResultRequireOktaOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPoliciesResultRequireOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireOkta)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPoliciesResultRequireOktaOutput) ToGetZeroTrustAccessPoliciesResultRequireOktaOutput() GetZeroTrustAccessPoliciesResultRequireOktaOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPoliciesResultRequireOktaOutput) ToGetZeroTrustAccessPoliciesResultRequireOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultRequireOktaOutput {
+	return o
+}
+
+// The ID of your Okta identity provider.
+func (o GetZeroTrustAccessPoliciesResultRequireOktaOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultRequireOkta) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+// The name of the Okta group.
+func (o GetZeroTrustAccessPoliciesResultRequireOktaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultRequireOkta) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPoliciesResultRequireSaml struct {
+	// The name of the SAML attribute.
+	AttributeName string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessPoliciesResultRequireSamlInput is an input type that accepts GetZeroTrustAccessPoliciesResultRequireSamlArgs and GetZeroTrustAccessPoliciesResultRequireSamlOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultRequireSamlInput` via:
+//
+//	GetZeroTrustAccessPoliciesResultRequireSamlArgs{...}
+type GetZeroTrustAccessPoliciesResultRequireSamlInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPoliciesResultRequireSamlOutput() GetZeroTrustAccessPoliciesResultRequireSamlOutput
+	ToGetZeroTrustAccessPoliciesResultRequireSamlOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultRequireSamlOutput
+}
+
+type GetZeroTrustAccessPoliciesResultRequireSamlArgs struct {
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessPoliciesResultRequireSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireSaml)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPoliciesResultRequireSamlArgs) ToGetZeroTrustAccessPoliciesResultRequireSamlOutput() GetZeroTrustAccessPoliciesResultRequireSamlOutput {
+	return i.ToGetZeroTrustAccessPoliciesResultRequireSamlOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPoliciesResultRequireSamlArgs) ToGetZeroTrustAccessPoliciesResultRequireSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultRequireSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultRequireSamlOutput)
+}
+
+type GetZeroTrustAccessPoliciesResultRequireSamlOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPoliciesResultRequireSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireSaml)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPoliciesResultRequireSamlOutput) ToGetZeroTrustAccessPoliciesResultRequireSamlOutput() GetZeroTrustAccessPoliciesResultRequireSamlOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPoliciesResultRequireSamlOutput) ToGetZeroTrustAccessPoliciesResultRequireSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultRequireSamlOutput {
+	return o
+}
+
+// The name of the SAML attribute.
+func (o GetZeroTrustAccessPoliciesResultRequireSamlOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultRequireSaml) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// The SAML attribute value to look for.
+func (o GetZeroTrustAccessPoliciesResultRequireSamlOutput) AttributeValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultRequireSaml) string { return v.AttributeValue }).(pulumi.StringOutput)
+}
+
+// The ID of your SAML identity provider.
+func (o GetZeroTrustAccessPoliciesResultRequireSamlOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultRequireSaml) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPoliciesResultRequireServiceToken struct {
+	// The ID of a Service Token.
+	TokenId string `pulumi:"tokenId"`
+}
+
+// GetZeroTrustAccessPoliciesResultRequireServiceTokenInput is an input type that accepts GetZeroTrustAccessPoliciesResultRequireServiceTokenArgs and GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultRequireServiceTokenInput` via:
+//
+//	GetZeroTrustAccessPoliciesResultRequireServiceTokenArgs{...}
+type GetZeroTrustAccessPoliciesResultRequireServiceTokenInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPoliciesResultRequireServiceTokenOutput() GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput
+	ToGetZeroTrustAccessPoliciesResultRequireServiceTokenOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput
+}
+
+type GetZeroTrustAccessPoliciesResultRequireServiceTokenArgs struct {
+	// The ID of a Service Token.
+	TokenId pulumi.StringInput `pulumi:"tokenId"`
+}
+
+func (GetZeroTrustAccessPoliciesResultRequireServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireServiceToken)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPoliciesResultRequireServiceTokenArgs) ToGetZeroTrustAccessPoliciesResultRequireServiceTokenOutput() GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput {
+	return i.ToGetZeroTrustAccessPoliciesResultRequireServiceTokenOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPoliciesResultRequireServiceTokenArgs) ToGetZeroTrustAccessPoliciesResultRequireServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput)
+}
+
+type GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireServiceToken)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput) ToGetZeroTrustAccessPoliciesResultRequireServiceTokenOutput() GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput) ToGetZeroTrustAccessPoliciesResultRequireServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput {
+	return o
+}
+
+// The ID of a Service Token.
+func (o GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultRequireServiceToken) string { return v.TokenId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPoliciesResultRequireUserRiskScore struct {
+	// A list of risk score levels to match. Values can be low, medium, high, or unscored.
+	UserRiskScores []string `pulumi:"userRiskScores"`
+}
+
+// GetZeroTrustAccessPoliciesResultRequireUserRiskScoreInput is an input type that accepts GetZeroTrustAccessPoliciesResultRequireUserRiskScoreArgs and GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultRequireUserRiskScoreInput` via:
+//
+//	GetZeroTrustAccessPoliciesResultRequireUserRiskScoreArgs{...}
+type GetZeroTrustAccessPoliciesResultRequireUserRiskScoreInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput() GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput
+	ToGetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput
+}
+
+type GetZeroTrustAccessPoliciesResultRequireUserRiskScoreArgs struct {
+	// A list of risk score levels to match. Values can be low, medium, high, or unscored.
+	UserRiskScores pulumi.StringArrayInput `pulumi:"userRiskScores"`
+}
+
+func (GetZeroTrustAccessPoliciesResultRequireUserRiskScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireUserRiskScore)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPoliciesResultRequireUserRiskScoreArgs) ToGetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput() GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput {
+	return i.ToGetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPoliciesResultRequireUserRiskScoreArgs) ToGetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput)
+}
+
+type GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireUserRiskScore)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput) ToGetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput() GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput) ToGetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput {
+	return o
+}
+
+// A list of risk score levels to match. Values can be low, medium, high, or unscored.
+func (o GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput) UserRiskScores() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultRequireUserRiskScore) []string { return v.UserRiskScores }).(pulumi.StringArrayOutput)
+}
+
+type GetZeroTrustAccessPolicyApprovalGroup struct {
+	// The number of approvals needed to obtain access.
+	ApprovalsNeeded float64 `pulumi:"approvalsNeeded"`
+	// A list of emails that can approve the access request.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// The UUID of an re-usable email list.
+	EmailListUuid string `pulumi:"emailListUuid"`
+}
+
+// GetZeroTrustAccessPolicyApprovalGroupInput is an input type that accepts GetZeroTrustAccessPolicyApprovalGroupArgs and GetZeroTrustAccessPolicyApprovalGroupOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyApprovalGroupInput` via:
+//
+//	GetZeroTrustAccessPolicyApprovalGroupArgs{...}
+type GetZeroTrustAccessPolicyApprovalGroupInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyApprovalGroupOutput() GetZeroTrustAccessPolicyApprovalGroupOutput
+	ToGetZeroTrustAccessPolicyApprovalGroupOutputWithContext(context.Context) GetZeroTrustAccessPolicyApprovalGroupOutput
+}
+
+type GetZeroTrustAccessPolicyApprovalGroupArgs struct {
+	// The number of approvals needed to obtain access.
+	ApprovalsNeeded pulumi.Float64Input `pulumi:"approvalsNeeded"`
+	// A list of emails that can approve the access request.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// The UUID of an re-usable email list.
+	EmailListUuid pulumi.StringInput `pulumi:"emailListUuid"`
+}
+
+func (GetZeroTrustAccessPolicyApprovalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyApprovalGroup)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyApprovalGroupArgs) ToGetZeroTrustAccessPolicyApprovalGroupOutput() GetZeroTrustAccessPolicyApprovalGroupOutput {
+	return i.ToGetZeroTrustAccessPolicyApprovalGroupOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyApprovalGroupArgs) ToGetZeroTrustAccessPolicyApprovalGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyApprovalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyApprovalGroupOutput)
+}
+
+// GetZeroTrustAccessPolicyApprovalGroupArrayInput is an input type that accepts GetZeroTrustAccessPolicyApprovalGroupArray and GetZeroTrustAccessPolicyApprovalGroupArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyApprovalGroupArrayInput` via:
+//
+//	GetZeroTrustAccessPolicyApprovalGroupArray{ GetZeroTrustAccessPolicyApprovalGroupArgs{...} }
+type GetZeroTrustAccessPolicyApprovalGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyApprovalGroupArrayOutput() GetZeroTrustAccessPolicyApprovalGroupArrayOutput
+	ToGetZeroTrustAccessPolicyApprovalGroupArrayOutputWithContext(context.Context) GetZeroTrustAccessPolicyApprovalGroupArrayOutput
+}
+
+type GetZeroTrustAccessPolicyApprovalGroupArray []GetZeroTrustAccessPolicyApprovalGroupInput
+
+func (GetZeroTrustAccessPolicyApprovalGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustAccessPolicyApprovalGroup)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyApprovalGroupArray) ToGetZeroTrustAccessPolicyApprovalGroupArrayOutput() GetZeroTrustAccessPolicyApprovalGroupArrayOutput {
+	return i.ToGetZeroTrustAccessPolicyApprovalGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyApprovalGroupArray) ToGetZeroTrustAccessPolicyApprovalGroupArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyApprovalGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyApprovalGroupArrayOutput)
+}
+
+type GetZeroTrustAccessPolicyApprovalGroupOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyApprovalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyApprovalGroup)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyApprovalGroupOutput) ToGetZeroTrustAccessPolicyApprovalGroupOutput() GetZeroTrustAccessPolicyApprovalGroupOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyApprovalGroupOutput) ToGetZeroTrustAccessPolicyApprovalGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyApprovalGroupOutput {
+	return o
+}
+
+// The number of approvals needed to obtain access.
+func (o GetZeroTrustAccessPolicyApprovalGroupOutput) ApprovalsNeeded() pulumi.Float64Output {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyApprovalGroup) float64 { return v.ApprovalsNeeded }).(pulumi.Float64Output)
+}
+
+// A list of emails that can approve the access request.
+func (o GetZeroTrustAccessPolicyApprovalGroupOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyApprovalGroup) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The UUID of an re-usable email list.
+func (o GetZeroTrustAccessPolicyApprovalGroupOutput) EmailListUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyApprovalGroup) string { return v.EmailListUuid }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyApprovalGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyApprovalGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustAccessPolicyApprovalGroup)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyApprovalGroupArrayOutput) ToGetZeroTrustAccessPolicyApprovalGroupArrayOutput() GetZeroTrustAccessPolicyApprovalGroupArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyApprovalGroupArrayOutput) ToGetZeroTrustAccessPolicyApprovalGroupArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyApprovalGroupArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) GetZeroTrustAccessPolicyApprovalGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustAccessPolicyApprovalGroup {
+		return vs[0].([]GetZeroTrustAccessPolicyApprovalGroup)[vs[1].(int)]
+	}).(GetZeroTrustAccessPolicyApprovalGroupOutput)
+}
+
+type GetZeroTrustAccessPolicyConnectionRules struct {
+	// The RDP-specific rules that define clipboard behavior for RDP connections.
+	Rdp GetZeroTrustAccessPolicyConnectionRulesRdp `pulumi:"rdp"`
+}
+
+// GetZeroTrustAccessPolicyConnectionRulesInput is an input type that accepts GetZeroTrustAccessPolicyConnectionRulesArgs and GetZeroTrustAccessPolicyConnectionRulesOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyConnectionRulesInput` via:
+//
+//	GetZeroTrustAccessPolicyConnectionRulesArgs{...}
+type GetZeroTrustAccessPolicyConnectionRulesInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyConnectionRulesOutput() GetZeroTrustAccessPolicyConnectionRulesOutput
+	ToGetZeroTrustAccessPolicyConnectionRulesOutputWithContext(context.Context) GetZeroTrustAccessPolicyConnectionRulesOutput
+}
+
+type GetZeroTrustAccessPolicyConnectionRulesArgs struct {
+	// The RDP-specific rules that define clipboard behavior for RDP connections.
+	Rdp GetZeroTrustAccessPolicyConnectionRulesRdpInput `pulumi:"rdp"`
+}
+
+func (GetZeroTrustAccessPolicyConnectionRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyConnectionRulesArgs) ToGetZeroTrustAccessPolicyConnectionRulesOutput() GetZeroTrustAccessPolicyConnectionRulesOutput {
+	return i.ToGetZeroTrustAccessPolicyConnectionRulesOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyConnectionRulesArgs) ToGetZeroTrustAccessPolicyConnectionRulesOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyConnectionRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyConnectionRulesOutput)
+}
+
+type GetZeroTrustAccessPolicyConnectionRulesOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyConnectionRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyConnectionRules)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyConnectionRulesOutput) ToGetZeroTrustAccessPolicyConnectionRulesOutput() GetZeroTrustAccessPolicyConnectionRulesOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyConnectionRulesOutput) ToGetZeroTrustAccessPolicyConnectionRulesOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyConnectionRulesOutput {
+	return o
+}
+
+// The RDP-specific rules that define clipboard behavior for RDP connections.
+func (o GetZeroTrustAccessPolicyConnectionRulesOutput) Rdp() GetZeroTrustAccessPolicyConnectionRulesRdpOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyConnectionRules) GetZeroTrustAccessPolicyConnectionRulesRdp {
+		return v.Rdp
+	}).(GetZeroTrustAccessPolicyConnectionRulesRdpOutput)
+}
+
+type GetZeroTrustAccessPolicyConnectionRulesRdp struct {
+	// Clipboard formats allowed when copying from local machine to remote RDP session.
+	AllowedClipboardLocalToRemoteFormats []string `pulumi:"allowedClipboardLocalToRemoteFormats"`
+	// Clipboard formats allowed when copying from remote RDP session to local machine.
+	AllowedClipboardRemoteToLocalFormats []string `pulumi:"allowedClipboardRemoteToLocalFormats"`
+}
+
+// GetZeroTrustAccessPolicyConnectionRulesRdpInput is an input type that accepts GetZeroTrustAccessPolicyConnectionRulesRdpArgs and GetZeroTrustAccessPolicyConnectionRulesRdpOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyConnectionRulesRdpInput` via:
+//
+//	GetZeroTrustAccessPolicyConnectionRulesRdpArgs{...}
+type GetZeroTrustAccessPolicyConnectionRulesRdpInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyConnectionRulesRdpOutput() GetZeroTrustAccessPolicyConnectionRulesRdpOutput
+	ToGetZeroTrustAccessPolicyConnectionRulesRdpOutputWithContext(context.Context) GetZeroTrustAccessPolicyConnectionRulesRdpOutput
+}
+
+type GetZeroTrustAccessPolicyConnectionRulesRdpArgs struct {
+	// Clipboard formats allowed when copying from local machine to remote RDP session.
+	AllowedClipboardLocalToRemoteFormats pulumi.StringArrayInput `pulumi:"allowedClipboardLocalToRemoteFormats"`
+	// Clipboard formats allowed when copying from remote RDP session to local machine.
+	AllowedClipboardRemoteToLocalFormats pulumi.StringArrayInput `pulumi:"allowedClipboardRemoteToLocalFormats"`
+}
+
+func (GetZeroTrustAccessPolicyConnectionRulesRdpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyConnectionRulesRdp)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyConnectionRulesRdpArgs) ToGetZeroTrustAccessPolicyConnectionRulesRdpOutput() GetZeroTrustAccessPolicyConnectionRulesRdpOutput {
+	return i.ToGetZeroTrustAccessPolicyConnectionRulesRdpOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyConnectionRulesRdpArgs) ToGetZeroTrustAccessPolicyConnectionRulesRdpOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyConnectionRulesRdpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyConnectionRulesRdpOutput)
+}
+
+type GetZeroTrustAccessPolicyConnectionRulesRdpOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyConnectionRulesRdpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyConnectionRulesRdp)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyConnectionRulesRdpOutput) ToGetZeroTrustAccessPolicyConnectionRulesRdpOutput() GetZeroTrustAccessPolicyConnectionRulesRdpOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyConnectionRulesRdpOutput) ToGetZeroTrustAccessPolicyConnectionRulesRdpOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyConnectionRulesRdpOutput {
+	return o
+}
+
+// Clipboard formats allowed when copying from local machine to remote RDP session.
+func (o GetZeroTrustAccessPolicyConnectionRulesRdpOutput) AllowedClipboardLocalToRemoteFormats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyConnectionRulesRdp) []string {
+		return v.AllowedClipboardLocalToRemoteFormats
+	}).(pulumi.StringArrayOutput)
+}
+
+// Clipboard formats allowed when copying from remote RDP session to local machine.
+func (o GetZeroTrustAccessPolicyConnectionRulesRdpOutput) AllowedClipboardRemoteToLocalFormats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyConnectionRulesRdp) []string {
+		return v.AllowedClipboardRemoteToLocalFormats
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetZeroTrustAccessPolicyExclude struct {
+	// An empty object which matches on all service tokens.
+	AnyValidServiceToken    GetZeroTrustAccessPolicyExcludeAnyValidServiceToken    `pulumi:"anyValidServiceToken"`
+	AuthContext             GetZeroTrustAccessPolicyExcludeAuthContext             `pulumi:"authContext"`
+	AuthMethod              GetZeroTrustAccessPolicyExcludeAuthMethod              `pulumi:"authMethod"`
+	AzureAd                 GetZeroTrustAccessPolicyExcludeAzureAd                 `pulumi:"azureAd"`
+	Certificate             GetZeroTrustAccessPolicyExcludeCertificate             `pulumi:"certificate"`
+	CloudflareAccountMember GetZeroTrustAccessPolicyExcludeCloudflareAccountMember `pulumi:"cloudflareAccountMember"`
+	CommonName              GetZeroTrustAccessPolicyExcludeCommonName              `pulumi:"commonName"`
+	DevicePosture           GetZeroTrustAccessPolicyExcludeDevicePosture           `pulumi:"devicePosture"`
+	Email                   GetZeroTrustAccessPolicyExcludeEmail                   `pulumi:"email"`
+	EmailDomain             GetZeroTrustAccessPolicyExcludeEmailDomain             `pulumi:"emailDomain"`
+	EmailList               GetZeroTrustAccessPolicyExcludeEmailList               `pulumi:"emailList"`
+	// An empty object which matches on all users.
+	Everyone           GetZeroTrustAccessPolicyExcludeEveryone           `pulumi:"everyone"`
+	ExternalEvaluation GetZeroTrustAccessPolicyExcludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geo                GetZeroTrustAccessPolicyExcludeGeo                `pulumi:"geo"`
+	GithubOrganization GetZeroTrustAccessPolicyExcludeGithubOrganization `pulumi:"githubOrganization"`
+	Group              GetZeroTrustAccessPolicyExcludeGroup              `pulumi:"group"`
+	Gsuite             GetZeroTrustAccessPolicyExcludeGsuite             `pulumi:"gsuite"`
+	Ip                 GetZeroTrustAccessPolicyExcludeIp                 `pulumi:"ip"`
+	IpList             GetZeroTrustAccessPolicyExcludeIpList             `pulumi:"ipList"`
+	LinkedAppToken     GetZeroTrustAccessPolicyExcludeLinkedAppToken     `pulumi:"linkedAppToken"`
+	LoginMethod        GetZeroTrustAccessPolicyExcludeLoginMethod        `pulumi:"loginMethod"`
+	Oidc               GetZeroTrustAccessPolicyExcludeOidc               `pulumi:"oidc"`
+	Okta               GetZeroTrustAccessPolicyExcludeOkta               `pulumi:"okta"`
+	Saml               GetZeroTrustAccessPolicyExcludeSaml               `pulumi:"saml"`
+	ServiceToken       GetZeroTrustAccessPolicyExcludeServiceToken       `pulumi:"serviceToken"`
+	UserRiskScore      GetZeroTrustAccessPolicyExcludeUserRiskScore      `pulumi:"userRiskScore"`
+}
+
+// GetZeroTrustAccessPolicyExcludeInput is an input type that accepts GetZeroTrustAccessPolicyExcludeArgs and GetZeroTrustAccessPolicyExcludeOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeArgs{...}
+type GetZeroTrustAccessPolicyExcludeInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeOutput() GetZeroTrustAccessPolicyExcludeOutput
+	ToGetZeroTrustAccessPolicyExcludeOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeArgs struct {
+	// An empty object which matches on all service tokens.
+	AnyValidServiceToken    GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenInput    `pulumi:"anyValidServiceToken"`
+	AuthContext             GetZeroTrustAccessPolicyExcludeAuthContextInput             `pulumi:"authContext"`
+	AuthMethod              GetZeroTrustAccessPolicyExcludeAuthMethodInput              `pulumi:"authMethod"`
+	AzureAd                 GetZeroTrustAccessPolicyExcludeAzureAdInput                 `pulumi:"azureAd"`
+	Certificate             GetZeroTrustAccessPolicyExcludeCertificateInput             `pulumi:"certificate"`
+	CloudflareAccountMember GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberInput `pulumi:"cloudflareAccountMember"`
+	CommonName              GetZeroTrustAccessPolicyExcludeCommonNameInput              `pulumi:"commonName"`
+	DevicePosture           GetZeroTrustAccessPolicyExcludeDevicePostureInput           `pulumi:"devicePosture"`
+	Email                   GetZeroTrustAccessPolicyExcludeEmailInput                   `pulumi:"email"`
+	EmailDomain             GetZeroTrustAccessPolicyExcludeEmailDomainInput             `pulumi:"emailDomain"`
+	EmailList               GetZeroTrustAccessPolicyExcludeEmailListInput               `pulumi:"emailList"`
+	// An empty object which matches on all users.
+	Everyone           GetZeroTrustAccessPolicyExcludeEveryoneInput           `pulumi:"everyone"`
+	ExternalEvaluation GetZeroTrustAccessPolicyExcludeExternalEvaluationInput `pulumi:"externalEvaluation"`
+	Geo                GetZeroTrustAccessPolicyExcludeGeoInput                `pulumi:"geo"`
+	GithubOrganization GetZeroTrustAccessPolicyExcludeGithubOrganizationInput `pulumi:"githubOrganization"`
+	Group              GetZeroTrustAccessPolicyExcludeGroupInput              `pulumi:"group"`
+	Gsuite             GetZeroTrustAccessPolicyExcludeGsuiteInput             `pulumi:"gsuite"`
+	Ip                 GetZeroTrustAccessPolicyExcludeIpInput                 `pulumi:"ip"`
+	IpList             GetZeroTrustAccessPolicyExcludeIpListInput             `pulumi:"ipList"`
+	LinkedAppToken     GetZeroTrustAccessPolicyExcludeLinkedAppTokenInput     `pulumi:"linkedAppToken"`
+	LoginMethod        GetZeroTrustAccessPolicyExcludeLoginMethodInput        `pulumi:"loginMethod"`
+	Oidc               GetZeroTrustAccessPolicyExcludeOidcInput               `pulumi:"oidc"`
+	Okta               GetZeroTrustAccessPolicyExcludeOktaInput               `pulumi:"okta"`
+	Saml               GetZeroTrustAccessPolicyExcludeSamlInput               `pulumi:"saml"`
+	ServiceToken       GetZeroTrustAccessPolicyExcludeServiceTokenInput       `pulumi:"serviceToken"`
+	UserRiskScore      GetZeroTrustAccessPolicyExcludeUserRiskScoreInput      `pulumi:"userRiskScore"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExclude)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeArgs) ToGetZeroTrustAccessPolicyExcludeOutput() GetZeroTrustAccessPolicyExcludeOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeArgs) ToGetZeroTrustAccessPolicyExcludeOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeOutput)
+}
+
+// GetZeroTrustAccessPolicyExcludeArrayInput is an input type that accepts GetZeroTrustAccessPolicyExcludeArray and GetZeroTrustAccessPolicyExcludeArrayOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeArrayInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeArray{ GetZeroTrustAccessPolicyExcludeArgs{...} }
+type GetZeroTrustAccessPolicyExcludeArrayInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeArrayOutput() GetZeroTrustAccessPolicyExcludeArrayOutput
+	ToGetZeroTrustAccessPolicyExcludeArrayOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeArrayOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeArray []GetZeroTrustAccessPolicyExcludeInput
+
+func (GetZeroTrustAccessPolicyExcludeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustAccessPolicyExclude)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeArray) ToGetZeroTrustAccessPolicyExcludeArrayOutput() GetZeroTrustAccessPolicyExcludeArrayOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeArrayOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeArray) ToGetZeroTrustAccessPolicyExcludeArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeArrayOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExclude)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) ToGetZeroTrustAccessPolicyExcludeOutput() GetZeroTrustAccessPolicyExcludeOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) ToGetZeroTrustAccessPolicyExcludeOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeOutput {
+	return o
+}
+
+// An empty object which matches on all service tokens.
+func (o GetZeroTrustAccessPolicyExcludeOutput) AnyValidServiceToken() GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeAnyValidServiceToken {
+		return v.AnyValidServiceToken
+	}).(GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) AuthContext() GetZeroTrustAccessPolicyExcludeAuthContextOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeAuthContext {
+		return v.AuthContext
+	}).(GetZeroTrustAccessPolicyExcludeAuthContextOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) AuthMethod() GetZeroTrustAccessPolicyExcludeAuthMethodOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeAuthMethod { return v.AuthMethod }).(GetZeroTrustAccessPolicyExcludeAuthMethodOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) AzureAd() GetZeroTrustAccessPolicyExcludeAzureAdOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeAzureAd { return v.AzureAd }).(GetZeroTrustAccessPolicyExcludeAzureAdOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Certificate() GetZeroTrustAccessPolicyExcludeCertificateOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeCertificate {
+		return v.Certificate
+	}).(GetZeroTrustAccessPolicyExcludeCertificateOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) CloudflareAccountMember() GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeCloudflareAccountMember {
+		return v.CloudflareAccountMember
+	}).(GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) CommonName() GetZeroTrustAccessPolicyExcludeCommonNameOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeCommonName { return v.CommonName }).(GetZeroTrustAccessPolicyExcludeCommonNameOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) DevicePosture() GetZeroTrustAccessPolicyExcludeDevicePostureOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeDevicePosture {
+		return v.DevicePosture
+	}).(GetZeroTrustAccessPolicyExcludeDevicePostureOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Email() GetZeroTrustAccessPolicyExcludeEmailOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeEmail { return v.Email }).(GetZeroTrustAccessPolicyExcludeEmailOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) EmailDomain() GetZeroTrustAccessPolicyExcludeEmailDomainOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeEmailDomain {
+		return v.EmailDomain
+	}).(GetZeroTrustAccessPolicyExcludeEmailDomainOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) EmailList() GetZeroTrustAccessPolicyExcludeEmailListOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeEmailList { return v.EmailList }).(GetZeroTrustAccessPolicyExcludeEmailListOutput)
+}
+
+// An empty object which matches on all users.
+func (o GetZeroTrustAccessPolicyExcludeOutput) Everyone() GetZeroTrustAccessPolicyExcludeEveryoneOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeEveryone { return v.Everyone }).(GetZeroTrustAccessPolicyExcludeEveryoneOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) ExternalEvaluation() GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeExternalEvaluation {
+		return v.ExternalEvaluation
+	}).(GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Geo() GetZeroTrustAccessPolicyExcludeGeoOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeGeo { return v.Geo }).(GetZeroTrustAccessPolicyExcludeGeoOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) GithubOrganization() GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeGithubOrganization {
+		return v.GithubOrganization
+	}).(GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Group() GetZeroTrustAccessPolicyExcludeGroupOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeGroup { return v.Group }).(GetZeroTrustAccessPolicyExcludeGroupOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Gsuite() GetZeroTrustAccessPolicyExcludeGsuiteOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeGsuite { return v.Gsuite }).(GetZeroTrustAccessPolicyExcludeGsuiteOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Ip() GetZeroTrustAccessPolicyExcludeIpOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeIp { return v.Ip }).(GetZeroTrustAccessPolicyExcludeIpOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) IpList() GetZeroTrustAccessPolicyExcludeIpListOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeIpList { return v.IpList }).(GetZeroTrustAccessPolicyExcludeIpListOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) LinkedAppToken() GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeLinkedAppToken {
+		return v.LinkedAppToken
+	}).(GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) LoginMethod() GetZeroTrustAccessPolicyExcludeLoginMethodOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeLoginMethod {
+		return v.LoginMethod
+	}).(GetZeroTrustAccessPolicyExcludeLoginMethodOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Oidc() GetZeroTrustAccessPolicyExcludeOidcOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeOidc { return v.Oidc }).(GetZeroTrustAccessPolicyExcludeOidcOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Okta() GetZeroTrustAccessPolicyExcludeOktaOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeOkta { return v.Okta }).(GetZeroTrustAccessPolicyExcludeOktaOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) Saml() GetZeroTrustAccessPolicyExcludeSamlOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeSaml { return v.Saml }).(GetZeroTrustAccessPolicyExcludeSamlOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) ServiceToken() GetZeroTrustAccessPolicyExcludeServiceTokenOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeServiceToken {
+		return v.ServiceToken
+	}).(GetZeroTrustAccessPolicyExcludeServiceTokenOutput)
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOutput) UserRiskScore() GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExclude) GetZeroTrustAccessPolicyExcludeUserRiskScore {
+		return v.UserRiskScore
+	}).(GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZeroTrustAccessPolicyExclude)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeArrayOutput) ToGetZeroTrustAccessPolicyExcludeArrayOutput() GetZeroTrustAccessPolicyExcludeArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeArrayOutput) ToGetZeroTrustAccessPolicyExcludeArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeArrayOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeArrayOutput) Index(i pulumi.IntInput) GetZeroTrustAccessPolicyExcludeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustAccessPolicyExclude {
+		return vs[0].([]GetZeroTrustAccessPolicyExclude)[vs[1].(int)]
+	}).(GetZeroTrustAccessPolicyExcludeOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeAnyValidServiceToken struct {
+}
+
+// GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenInput is an input type that accepts GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgs and GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgs{...}
+type GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput() GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput
+	ToGetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgs struct {
+}
+
+func (GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAnyValidServiceToken)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgs) ToGetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput() GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgs) ToGetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAnyValidServiceToken)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput) ToGetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput() GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput) ToGetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput {
+	return o
+}
+
+type GetZeroTrustAccessPolicyExcludeAuthContext struct {
+	// The ACID of an Authentication context.
+	AcId string `pulumi:"acId"`
+	// The ID of an Authentication context.
+	Id string `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessPolicyExcludeAuthContextInput is an input type that accepts GetZeroTrustAccessPolicyExcludeAuthContextArgs and GetZeroTrustAccessPolicyExcludeAuthContextOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeAuthContextInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeAuthContextArgs{...}
+type GetZeroTrustAccessPolicyExcludeAuthContextInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeAuthContextOutput() GetZeroTrustAccessPolicyExcludeAuthContextOutput
+	ToGetZeroTrustAccessPolicyExcludeAuthContextOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeAuthContextOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeAuthContextArgs struct {
+	// The ACID of an Authentication context.
+	AcId pulumi.StringInput `pulumi:"acId"`
+	// The ID of an Authentication context.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeAuthContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAuthContext)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeAuthContextArgs) ToGetZeroTrustAccessPolicyExcludeAuthContextOutput() GetZeroTrustAccessPolicyExcludeAuthContextOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeAuthContextOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeAuthContextArgs) ToGetZeroTrustAccessPolicyExcludeAuthContextOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeAuthContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeAuthContextOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeAuthContextOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeAuthContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAuthContext)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeAuthContextOutput) ToGetZeroTrustAccessPolicyExcludeAuthContextOutput() GetZeroTrustAccessPolicyExcludeAuthContextOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeAuthContextOutput) ToGetZeroTrustAccessPolicyExcludeAuthContextOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeAuthContextOutput {
+	return o
+}
+
+// The ACID of an Authentication context.
+func (o GetZeroTrustAccessPolicyExcludeAuthContextOutput) AcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeAuthContext) string { return v.AcId }).(pulumi.StringOutput)
+}
+
+// The ID of an Authentication context.
+func (o GetZeroTrustAccessPolicyExcludeAuthContextOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of your Azure identity provider.
+func (o GetZeroTrustAccessPolicyExcludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeAuthMethod struct {
+	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+	AuthMethod string `pulumi:"authMethod"`
+}
+
+// GetZeroTrustAccessPolicyExcludeAuthMethodInput is an input type that accepts GetZeroTrustAccessPolicyExcludeAuthMethodArgs and GetZeroTrustAccessPolicyExcludeAuthMethodOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeAuthMethodInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeAuthMethodArgs{...}
+type GetZeroTrustAccessPolicyExcludeAuthMethodInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeAuthMethodOutput() GetZeroTrustAccessPolicyExcludeAuthMethodOutput
+	ToGetZeroTrustAccessPolicyExcludeAuthMethodOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeAuthMethodOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeAuthMethodArgs struct {
+	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+	AuthMethod pulumi.StringInput `pulumi:"authMethod"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeAuthMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAuthMethod)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeAuthMethodArgs) ToGetZeroTrustAccessPolicyExcludeAuthMethodOutput() GetZeroTrustAccessPolicyExcludeAuthMethodOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeAuthMethodOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeAuthMethodArgs) ToGetZeroTrustAccessPolicyExcludeAuthMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeAuthMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeAuthMethodOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeAuthMethodOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeAuthMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAuthMethod)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeAuthMethodOutput) ToGetZeroTrustAccessPolicyExcludeAuthMethodOutput() GetZeroTrustAccessPolicyExcludeAuthMethodOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeAuthMethodOutput) ToGetZeroTrustAccessPolicyExcludeAuthMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeAuthMethodOutput {
+	return o
+}
+
+// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
+func (o GetZeroTrustAccessPolicyExcludeAuthMethodOutput) AuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeAuthMethod) string { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeAzureAd struct {
+	// The ID of an Azure group.
+	Id string `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessPolicyExcludeAzureAdInput is an input type that accepts GetZeroTrustAccessPolicyExcludeAzureAdArgs and GetZeroTrustAccessPolicyExcludeAzureAdOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeAzureAdInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeAzureAdArgs{...}
+type GetZeroTrustAccessPolicyExcludeAzureAdInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeAzureAdOutput() GetZeroTrustAccessPolicyExcludeAzureAdOutput
+	ToGetZeroTrustAccessPolicyExcludeAzureAdOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeAzureAdOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeAzureAdArgs struct {
+	// The ID of an Azure group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeAzureAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAzureAd)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeAzureAdArgs) ToGetZeroTrustAccessPolicyExcludeAzureAdOutput() GetZeroTrustAccessPolicyExcludeAzureAdOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeAzureAdOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeAzureAdArgs) ToGetZeroTrustAccessPolicyExcludeAzureAdOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeAzureAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeAzureAdOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeAzureAdOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeAzureAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAzureAd)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeAzureAdOutput) ToGetZeroTrustAccessPolicyExcludeAzureAdOutput() GetZeroTrustAccessPolicyExcludeAzureAdOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeAzureAdOutput) ToGetZeroTrustAccessPolicyExcludeAzureAdOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeAzureAdOutput {
+	return o
+}
+
+// The ID of an Azure group.
+func (o GetZeroTrustAccessPolicyExcludeAzureAdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeAzureAd) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of your Azure identity provider.
+func (o GetZeroTrustAccessPolicyExcludeAzureAdOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeCertificate struct {
+}
+
+// GetZeroTrustAccessPolicyExcludeCertificateInput is an input type that accepts GetZeroTrustAccessPolicyExcludeCertificateArgs and GetZeroTrustAccessPolicyExcludeCertificateOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeCertificateInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeCertificateArgs{...}
+type GetZeroTrustAccessPolicyExcludeCertificateInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeCertificateOutput() GetZeroTrustAccessPolicyExcludeCertificateOutput
+	ToGetZeroTrustAccessPolicyExcludeCertificateOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeCertificateOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeCertificateArgs struct {
+}
+
+func (GetZeroTrustAccessPolicyExcludeCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCertificate)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeCertificateArgs) ToGetZeroTrustAccessPolicyExcludeCertificateOutput() GetZeroTrustAccessPolicyExcludeCertificateOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeCertificateOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeCertificateArgs) ToGetZeroTrustAccessPolicyExcludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeCertificateOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCertificate)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeCertificateOutput) ToGetZeroTrustAccessPolicyExcludeCertificateOutput() GetZeroTrustAccessPolicyExcludeCertificateOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeCertificateOutput) ToGetZeroTrustAccessPolicyExcludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeCertificateOutput {
+	return o
+}
+
+type GetZeroTrustAccessPolicyExcludeCloudflareAccountMember struct {
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+}
+
+// GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberInput is an input type that accepts GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberArgs and GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberArgs{...}
+type GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput() GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput
+	ToGetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberArgs struct {
+	// Identifier.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberArgs) ToGetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput() GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberArgs) ToGetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCloudflareAccountMember)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput) ToGetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput() GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput) ToGetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput {
+	return o
+}
+
+// Identifier.
+func (o GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeCloudflareAccountMember) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeCommonName struct {
+	// The common name to match.
+	CommonName string `pulumi:"commonName"`
+}
+
+// GetZeroTrustAccessPolicyExcludeCommonNameInput is an input type that accepts GetZeroTrustAccessPolicyExcludeCommonNameArgs and GetZeroTrustAccessPolicyExcludeCommonNameOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeCommonNameInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeCommonNameArgs{...}
+type GetZeroTrustAccessPolicyExcludeCommonNameInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeCommonNameOutput() GetZeroTrustAccessPolicyExcludeCommonNameOutput
+	ToGetZeroTrustAccessPolicyExcludeCommonNameOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeCommonNameOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeCommonNameArgs struct {
+	// The common name to match.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeCommonNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCommonName)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeCommonNameArgs) ToGetZeroTrustAccessPolicyExcludeCommonNameOutput() GetZeroTrustAccessPolicyExcludeCommonNameOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeCommonNameOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeCommonNameArgs) ToGetZeroTrustAccessPolicyExcludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeCommonNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeCommonNameOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeCommonNameOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeCommonNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCommonName)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeCommonNameOutput) ToGetZeroTrustAccessPolicyExcludeCommonNameOutput() GetZeroTrustAccessPolicyExcludeCommonNameOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeCommonNameOutput) ToGetZeroTrustAccessPolicyExcludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeCommonNameOutput {
+	return o
+}
+
+// The common name to match.
+func (o GetZeroTrustAccessPolicyExcludeCommonNameOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeCommonName) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeDevicePosture struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId string `pulumi:"accountId"`
+	// The ID of a device posture integration.
+	IntegrationUid string `pulumi:"integrationUid"`
+}
+
+// GetZeroTrustAccessPolicyExcludeDevicePostureInput is an input type that accepts GetZeroTrustAccessPolicyExcludeDevicePostureArgs and GetZeroTrustAccessPolicyExcludeDevicePostureOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeDevicePostureInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeDevicePostureArgs{...}
+type GetZeroTrustAccessPolicyExcludeDevicePostureInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeDevicePostureOutput() GetZeroTrustAccessPolicyExcludeDevicePostureOutput
+	ToGetZeroTrustAccessPolicyExcludeDevicePostureOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeDevicePostureOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeDevicePostureArgs struct {
+	// The ID of the account that owns the device posture integration.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The ID of a device posture integration.
+	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeDevicePostureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeDevicePosture)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeDevicePostureArgs) ToGetZeroTrustAccessPolicyExcludeDevicePostureOutput() GetZeroTrustAccessPolicyExcludeDevicePostureOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeDevicePostureOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeDevicePostureArgs) ToGetZeroTrustAccessPolicyExcludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeDevicePostureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeDevicePostureOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeDevicePostureOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeDevicePostureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeDevicePosture)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeDevicePostureOutput) ToGetZeroTrustAccessPolicyExcludeDevicePostureOutput() GetZeroTrustAccessPolicyExcludeDevicePostureOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeDevicePostureOutput) ToGetZeroTrustAccessPolicyExcludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeDevicePostureOutput {
+	return o
+}
+
+// The ID of the account that owns the device posture integration.
+func (o GetZeroTrustAccessPolicyExcludeDevicePostureOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeDevicePosture) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The ID of a device posture integration.
+func (o GetZeroTrustAccessPolicyExcludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeEmail struct {
+	// The email of the user.
+	Email string `pulumi:"email"`
+}
+
+// GetZeroTrustAccessPolicyExcludeEmailInput is an input type that accepts GetZeroTrustAccessPolicyExcludeEmailArgs and GetZeroTrustAccessPolicyExcludeEmailOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeEmailInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeEmailArgs{...}
+type GetZeroTrustAccessPolicyExcludeEmailInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeEmailOutput() GetZeroTrustAccessPolicyExcludeEmailOutput
+	ToGetZeroTrustAccessPolicyExcludeEmailOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeEmailOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeEmailArgs struct {
+	// The email of the user.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmail)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeEmailArgs) ToGetZeroTrustAccessPolicyExcludeEmailOutput() GetZeroTrustAccessPolicyExcludeEmailOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeEmailOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeEmailArgs) ToGetZeroTrustAccessPolicyExcludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeEmailOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeEmailOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmail)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeEmailOutput) ToGetZeroTrustAccessPolicyExcludeEmailOutput() GetZeroTrustAccessPolicyExcludeEmailOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeEmailOutput) ToGetZeroTrustAccessPolicyExcludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeEmailOutput {
+	return o
+}
+
+// The email of the user.
+func (o GetZeroTrustAccessPolicyExcludeEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeEmailDomain struct {
+	// The email domain to match.
+	Domain string `pulumi:"domain"`
+}
+
+// GetZeroTrustAccessPolicyExcludeEmailDomainInput is an input type that accepts GetZeroTrustAccessPolicyExcludeEmailDomainArgs and GetZeroTrustAccessPolicyExcludeEmailDomainOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeEmailDomainInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeEmailDomainArgs{...}
+type GetZeroTrustAccessPolicyExcludeEmailDomainInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeEmailDomainOutput() GetZeroTrustAccessPolicyExcludeEmailDomainOutput
+	ToGetZeroTrustAccessPolicyExcludeEmailDomainOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeEmailDomainOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeEmailDomainArgs struct {
+	// The email domain to match.
+	Domain pulumi.StringInput `pulumi:"domain"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeEmailDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmailDomain)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeEmailDomainArgs) ToGetZeroTrustAccessPolicyExcludeEmailDomainOutput() GetZeroTrustAccessPolicyExcludeEmailDomainOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeEmailDomainOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeEmailDomainArgs) ToGetZeroTrustAccessPolicyExcludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeEmailDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeEmailDomainOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeEmailDomainOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeEmailDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmailDomain)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeEmailDomainOutput) ToGetZeroTrustAccessPolicyExcludeEmailDomainOutput() GetZeroTrustAccessPolicyExcludeEmailDomainOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeEmailDomainOutput) ToGetZeroTrustAccessPolicyExcludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeEmailDomainOutput {
+	return o
+}
+
+// The email domain to match.
+func (o GetZeroTrustAccessPolicyExcludeEmailDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeEmailDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeEmailList struct {
+	// The ID of a previously created email list.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessPolicyExcludeEmailListInput is an input type that accepts GetZeroTrustAccessPolicyExcludeEmailListArgs and GetZeroTrustAccessPolicyExcludeEmailListOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeEmailListInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeEmailListArgs{...}
+type GetZeroTrustAccessPolicyExcludeEmailListInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeEmailListOutput() GetZeroTrustAccessPolicyExcludeEmailListOutput
+	ToGetZeroTrustAccessPolicyExcludeEmailListOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeEmailListOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeEmailListArgs struct {
+	// The ID of a previously created email list.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeEmailListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmailList)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeEmailListArgs) ToGetZeroTrustAccessPolicyExcludeEmailListOutput() GetZeroTrustAccessPolicyExcludeEmailListOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeEmailListOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeEmailListArgs) ToGetZeroTrustAccessPolicyExcludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeEmailListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeEmailListOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeEmailListOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeEmailListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmailList)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeEmailListOutput) ToGetZeroTrustAccessPolicyExcludeEmailListOutput() GetZeroTrustAccessPolicyExcludeEmailListOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeEmailListOutput) ToGetZeroTrustAccessPolicyExcludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeEmailListOutput {
+	return o
+}
+
+// The ID of a previously created email list.
+func (o GetZeroTrustAccessPolicyExcludeEmailListOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeEmailList) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeEveryone struct {
+}
+
+// GetZeroTrustAccessPolicyExcludeEveryoneInput is an input type that accepts GetZeroTrustAccessPolicyExcludeEveryoneArgs and GetZeroTrustAccessPolicyExcludeEveryoneOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeEveryoneInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeEveryoneArgs{...}
+type GetZeroTrustAccessPolicyExcludeEveryoneInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeEveryoneOutput() GetZeroTrustAccessPolicyExcludeEveryoneOutput
+	ToGetZeroTrustAccessPolicyExcludeEveryoneOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeEveryoneOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeEveryoneArgs struct {
+}
+
+func (GetZeroTrustAccessPolicyExcludeEveryoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEveryone)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeEveryoneArgs) ToGetZeroTrustAccessPolicyExcludeEveryoneOutput() GetZeroTrustAccessPolicyExcludeEveryoneOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeEveryoneOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeEveryoneArgs) ToGetZeroTrustAccessPolicyExcludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeEveryoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeEveryoneOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeEveryoneOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeEveryoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEveryone)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeEveryoneOutput) ToGetZeroTrustAccessPolicyExcludeEveryoneOutput() GetZeroTrustAccessPolicyExcludeEveryoneOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeEveryoneOutput) ToGetZeroTrustAccessPolicyExcludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeEveryoneOutput {
+	return o
+}
+
+type GetZeroTrustAccessPolicyExcludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
+	EvaluateUrl string `pulumi:"evaluateUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl string `pulumi:"keysUrl"`
+}
+
+// GetZeroTrustAccessPolicyExcludeExternalEvaluationInput is an input type that accepts GetZeroTrustAccessPolicyExcludeExternalEvaluationArgs and GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeExternalEvaluationInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeExternalEvaluationArgs{...}
+type GetZeroTrustAccessPolicyExcludeExternalEvaluationInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeExternalEvaluationOutput() GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput
+	ToGetZeroTrustAccessPolicyExcludeExternalEvaluationOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
+	EvaluateUrl pulumi.StringInput `pulumi:"evaluateUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringInput `pulumi:"keysUrl"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeExternalEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeExternalEvaluationArgs) ToGetZeroTrustAccessPolicyExcludeExternalEvaluationOutput() GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeExternalEvaluationOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeExternalEvaluationArgs) ToGetZeroTrustAccessPolicyExcludeExternalEvaluationOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput) ToGetZeroTrustAccessPolicyExcludeExternalEvaluationOutput() GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput) ToGetZeroTrustAccessPolicyExcludeExternalEvaluationOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput {
+	return o
+}
+
+// The API endpoint containing your business logic.
+func (o GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeExternalEvaluation) string { return v.EvaluateUrl }).(pulumi.StringOutput)
+}
+
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
+func (o GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeExternalEvaluation) string { return v.KeysUrl }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeGeo struct {
+	// The country code that should be matched.
+	CountryCode string `pulumi:"countryCode"`
+}
+
+// GetZeroTrustAccessPolicyExcludeGeoInput is an input type that accepts GetZeroTrustAccessPolicyExcludeGeoArgs and GetZeroTrustAccessPolicyExcludeGeoOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeGeoInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeGeoArgs{...}
+type GetZeroTrustAccessPolicyExcludeGeoInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeGeoOutput() GetZeroTrustAccessPolicyExcludeGeoOutput
+	ToGetZeroTrustAccessPolicyExcludeGeoOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeGeoOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeGeoArgs struct {
+	// The country code that should be matched.
+	CountryCode pulumi.StringInput `pulumi:"countryCode"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeGeoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGeo)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeGeoArgs) ToGetZeroTrustAccessPolicyExcludeGeoOutput() GetZeroTrustAccessPolicyExcludeGeoOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeGeoOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeGeoArgs) ToGetZeroTrustAccessPolicyExcludeGeoOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeGeoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeGeoOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeGeoOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeGeoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGeo)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeGeoOutput) ToGetZeroTrustAccessPolicyExcludeGeoOutput() GetZeroTrustAccessPolicyExcludeGeoOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeGeoOutput) ToGetZeroTrustAccessPolicyExcludeGeoOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeGeoOutput {
+	return o
+}
+
+// The country code that should be matched.
+func (o GetZeroTrustAccessPolicyExcludeGeoOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeGeo) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeGithubOrganization struct {
+	// The ID of your Github identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name string `pulumi:"name"`
+	// The name of the team
+	Team string `pulumi:"team"`
+}
+
+// GetZeroTrustAccessPolicyExcludeGithubOrganizationInput is an input type that accepts GetZeroTrustAccessPolicyExcludeGithubOrganizationArgs and GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeGithubOrganizationInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeGithubOrganizationArgs{...}
+type GetZeroTrustAccessPolicyExcludeGithubOrganizationInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeGithubOrganizationOutput() GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput
+	ToGetZeroTrustAccessPolicyExcludeGithubOrganizationOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeGithubOrganizationArgs struct {
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the team
+	Team pulumi.StringInput `pulumi:"team"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeGithubOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGithubOrganization)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeGithubOrganizationArgs) ToGetZeroTrustAccessPolicyExcludeGithubOrganizationOutput() GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeGithubOrganizationOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeGithubOrganizationArgs) ToGetZeroTrustAccessPolicyExcludeGithubOrganizationOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGithubOrganization)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput) ToGetZeroTrustAccessPolicyExcludeGithubOrganizationOutput() GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput) ToGetZeroTrustAccessPolicyExcludeGithubOrganizationOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput {
+	return o
+}
+
+// The ID of your Github identity provider.
+func (o GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeGithubOrganization) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+// The name of the organization.
+func (o GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeGithubOrganization) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the team
+func (o GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput) Team() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeGithubOrganization) string { return v.Team }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeGroup struct {
+	// The ID of a previously created Access group.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessPolicyExcludeGroupInput is an input type that accepts GetZeroTrustAccessPolicyExcludeGroupArgs and GetZeroTrustAccessPolicyExcludeGroupOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeGroupInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeGroupArgs{...}
+type GetZeroTrustAccessPolicyExcludeGroupInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeGroupOutput() GetZeroTrustAccessPolicyExcludeGroupOutput
+	ToGetZeroTrustAccessPolicyExcludeGroupOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeGroupOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeGroupArgs struct {
+	// The ID of a previously created Access group.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGroup)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeGroupArgs) ToGetZeroTrustAccessPolicyExcludeGroupOutput() GetZeroTrustAccessPolicyExcludeGroupOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeGroupOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeGroupArgs) ToGetZeroTrustAccessPolicyExcludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeGroupOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeGroupOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGroup)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeGroupOutput) ToGetZeroTrustAccessPolicyExcludeGroupOutput() GetZeroTrustAccessPolicyExcludeGroupOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeGroupOutput) ToGetZeroTrustAccessPolicyExcludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeGroupOutput {
+	return o
+}
+
+// The ID of a previously created Access group.
+func (o GetZeroTrustAccessPolicyExcludeGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeGsuite struct {
+	// The email of the Google Workspace group.
+	Email string `pulumi:"email"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessPolicyExcludeGsuiteInput is an input type that accepts GetZeroTrustAccessPolicyExcludeGsuiteArgs and GetZeroTrustAccessPolicyExcludeGsuiteOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeGsuiteInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeGsuiteArgs{...}
+type GetZeroTrustAccessPolicyExcludeGsuiteInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeGsuiteOutput() GetZeroTrustAccessPolicyExcludeGsuiteOutput
+	ToGetZeroTrustAccessPolicyExcludeGsuiteOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeGsuiteOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeGsuiteArgs struct {
+	// The email of the Google Workspace group.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGsuite)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeGsuiteArgs) ToGetZeroTrustAccessPolicyExcludeGsuiteOutput() GetZeroTrustAccessPolicyExcludeGsuiteOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeGsuiteOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeGsuiteArgs) ToGetZeroTrustAccessPolicyExcludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeGsuiteOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeGsuiteOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGsuite)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeGsuiteOutput) ToGetZeroTrustAccessPolicyExcludeGsuiteOutput() GetZeroTrustAccessPolicyExcludeGsuiteOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeGsuiteOutput) ToGetZeroTrustAccessPolicyExcludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeGsuiteOutput {
+	return o
+}
+
+// The email of the Google Workspace group.
+func (o GetZeroTrustAccessPolicyExcludeGsuiteOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeGsuite) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The ID of your Google Workspace identity provider.
+func (o GetZeroTrustAccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeIp struct {
+	// An IPv4 or IPv6 CIDR block.
+	Ip string `pulumi:"ip"`
+}
+
+// GetZeroTrustAccessPolicyExcludeIpInput is an input type that accepts GetZeroTrustAccessPolicyExcludeIpArgs and GetZeroTrustAccessPolicyExcludeIpOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeIpInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeIpArgs{...}
+type GetZeroTrustAccessPolicyExcludeIpInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeIpOutput() GetZeroTrustAccessPolicyExcludeIpOutput
+	ToGetZeroTrustAccessPolicyExcludeIpOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeIpOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeIpArgs struct {
+	// An IPv4 or IPv6 CIDR block.
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeIp)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeIpArgs) ToGetZeroTrustAccessPolicyExcludeIpOutput() GetZeroTrustAccessPolicyExcludeIpOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeIpOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeIpArgs) ToGetZeroTrustAccessPolicyExcludeIpOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeIpOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeIpOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeIp)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeIpOutput) ToGetZeroTrustAccessPolicyExcludeIpOutput() GetZeroTrustAccessPolicyExcludeIpOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeIpOutput) ToGetZeroTrustAccessPolicyExcludeIpOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeIpOutput {
+	return o
+}
+
+// An IPv4 or IPv6 CIDR block.
+func (o GetZeroTrustAccessPolicyExcludeIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeIpList struct {
+	// The ID of a previously created IP list.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessPolicyExcludeIpListInput is an input type that accepts GetZeroTrustAccessPolicyExcludeIpListArgs and GetZeroTrustAccessPolicyExcludeIpListOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeIpListInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeIpListArgs{...}
+type GetZeroTrustAccessPolicyExcludeIpListInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeIpListOutput() GetZeroTrustAccessPolicyExcludeIpListOutput
+	ToGetZeroTrustAccessPolicyExcludeIpListOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeIpListOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeIpListArgs struct {
+	// The ID of a previously created IP list.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeIpListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeIpList)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeIpListArgs) ToGetZeroTrustAccessPolicyExcludeIpListOutput() GetZeroTrustAccessPolicyExcludeIpListOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeIpListOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeIpListArgs) ToGetZeroTrustAccessPolicyExcludeIpListOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeIpListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeIpListOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeIpListOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeIpListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeIpList)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeIpListOutput) ToGetZeroTrustAccessPolicyExcludeIpListOutput() GetZeroTrustAccessPolicyExcludeIpListOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeIpListOutput) ToGetZeroTrustAccessPolicyExcludeIpListOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeIpListOutput {
+	return o
+}
+
+// The ID of a previously created IP list.
+func (o GetZeroTrustAccessPolicyExcludeIpListOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeIpList) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// GetZeroTrustAccessPolicyExcludeLinkedAppTokenInput is an input type that accepts GetZeroTrustAccessPolicyExcludeLinkedAppTokenArgs and GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeLinkedAppTokenInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeLinkedAppTokenArgs{...}
+type GetZeroTrustAccessPolicyExcludeLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput() GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput
+	ToGetZeroTrustAccessPolicyExcludeLinkedAppTokenOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeLinkedAppTokenArgs) ToGetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput() GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeLinkedAppTokenArgs) ToGetZeroTrustAccessPolicyExcludeLinkedAppTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput) ToGetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput() GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput) ToGetZeroTrustAccessPolicyExcludeLinkedAppTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput {
+	return o
+}
+
+// The ID of an Access OIDC SaaS application
+func (o GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeLoginMethod struct {
+	// The ID of an identity provider.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessPolicyExcludeLoginMethodInput is an input type that accepts GetZeroTrustAccessPolicyExcludeLoginMethodArgs and GetZeroTrustAccessPolicyExcludeLoginMethodOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeLoginMethodInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeLoginMethodArgs{...}
+type GetZeroTrustAccessPolicyExcludeLoginMethodInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeLoginMethodOutput() GetZeroTrustAccessPolicyExcludeLoginMethodOutput
+	ToGetZeroTrustAccessPolicyExcludeLoginMethodOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeLoginMethodOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeLoginMethodArgs struct {
+	// The ID of an identity provider.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeLoginMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeLoginMethod)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeLoginMethodArgs) ToGetZeroTrustAccessPolicyExcludeLoginMethodOutput() GetZeroTrustAccessPolicyExcludeLoginMethodOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeLoginMethodOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeLoginMethodArgs) ToGetZeroTrustAccessPolicyExcludeLoginMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeLoginMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeLoginMethodOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeLoginMethodOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeLoginMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeLoginMethod)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeLoginMethodOutput) ToGetZeroTrustAccessPolicyExcludeLoginMethodOutput() GetZeroTrustAccessPolicyExcludeLoginMethodOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeLoginMethodOutput) ToGetZeroTrustAccessPolicyExcludeLoginMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeLoginMethodOutput {
+	return o
+}
+
+// The ID of an identity provider.
+func (o GetZeroTrustAccessPolicyExcludeLoginMethodOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeLoginMethod) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessPolicyExcludeOidcInput is an input type that accepts GetZeroTrustAccessPolicyExcludeOidcArgs and GetZeroTrustAccessPolicyExcludeOidcOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeOidcInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeOidcArgs{...}
+type GetZeroTrustAccessPolicyExcludeOidcInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeOidcOutput() GetZeroTrustAccessPolicyExcludeOidcOutput
+	ToGetZeroTrustAccessPolicyExcludeOidcOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeOidcOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeOidcArgs) ToGetZeroTrustAccessPolicyExcludeOidcOutput() GetZeroTrustAccessPolicyExcludeOidcOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeOidcOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeOidcArgs) ToGetZeroTrustAccessPolicyExcludeOidcOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeOidcOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeOidcOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOidcOutput) ToGetZeroTrustAccessPolicyExcludeOidcOutput() GetZeroTrustAccessPolicyExcludeOidcOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOidcOutput) ToGetZeroTrustAccessPolicyExcludeOidcOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeOidcOutput {
+	return o
+}
+
+// The name of the OIDC claim.
+func (o GetZeroTrustAccessPolicyExcludeOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o GetZeroTrustAccessPolicyExcludeOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o GetZeroTrustAccessPolicyExcludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeOkta struct {
+	// The ID of your Okta identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+	// The name of the Okta group.
+	Name string `pulumi:"name"`
+}
+
+// GetZeroTrustAccessPolicyExcludeOktaInput is an input type that accepts GetZeroTrustAccessPolicyExcludeOktaArgs and GetZeroTrustAccessPolicyExcludeOktaOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeOktaInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeOktaArgs{...}
+type GetZeroTrustAccessPolicyExcludeOktaInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeOktaOutput() GetZeroTrustAccessPolicyExcludeOktaOutput
+	ToGetZeroTrustAccessPolicyExcludeOktaOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeOktaOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeOktaArgs struct {
+	// The ID of your Okta identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+	// The name of the Okta group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeOkta)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeOktaArgs) ToGetZeroTrustAccessPolicyExcludeOktaOutput() GetZeroTrustAccessPolicyExcludeOktaOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeOktaOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeOktaArgs) ToGetZeroTrustAccessPolicyExcludeOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeOktaOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeOktaOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeOkta)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOktaOutput) ToGetZeroTrustAccessPolicyExcludeOktaOutput() GetZeroTrustAccessPolicyExcludeOktaOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeOktaOutput) ToGetZeroTrustAccessPolicyExcludeOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeOktaOutput {
+	return o
+}
+
+// The ID of your Okta identity provider.
+func (o GetZeroTrustAccessPolicyExcludeOktaOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeOkta) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+// The name of the Okta group.
+func (o GetZeroTrustAccessPolicyExcludeOktaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeOkta) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeSaml struct {
+	// The name of the SAML attribute.
+	AttributeName string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessPolicyExcludeSamlInput is an input type that accepts GetZeroTrustAccessPolicyExcludeSamlArgs and GetZeroTrustAccessPolicyExcludeSamlOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeSamlInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeSamlArgs{...}
+type GetZeroTrustAccessPolicyExcludeSamlInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeSamlOutput() GetZeroTrustAccessPolicyExcludeSamlOutput
+	ToGetZeroTrustAccessPolicyExcludeSamlOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeSamlOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeSamlArgs struct {
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeSaml)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeSamlArgs) ToGetZeroTrustAccessPolicyExcludeSamlOutput() GetZeroTrustAccessPolicyExcludeSamlOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeSamlOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeSamlArgs) ToGetZeroTrustAccessPolicyExcludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeSamlOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeSamlOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeSaml)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeSamlOutput) ToGetZeroTrustAccessPolicyExcludeSamlOutput() GetZeroTrustAccessPolicyExcludeSamlOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeSamlOutput) ToGetZeroTrustAccessPolicyExcludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeSamlOutput {
+	return o
+}
+
+// The name of the SAML attribute.
+func (o GetZeroTrustAccessPolicyExcludeSamlOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeSaml) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// The SAML attribute value to look for.
+func (o GetZeroTrustAccessPolicyExcludeSamlOutput) AttributeValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeSaml) string { return v.AttributeValue }).(pulumi.StringOutput)
+}
+
+// The ID of your SAML identity provider.
+func (o GetZeroTrustAccessPolicyExcludeSamlOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeSaml) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeServiceToken struct {
+	// The ID of a Service Token.
+	TokenId string `pulumi:"tokenId"`
+}
+
+// GetZeroTrustAccessPolicyExcludeServiceTokenInput is an input type that accepts GetZeroTrustAccessPolicyExcludeServiceTokenArgs and GetZeroTrustAccessPolicyExcludeServiceTokenOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeServiceTokenInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeServiceTokenArgs{...}
+type GetZeroTrustAccessPolicyExcludeServiceTokenInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeServiceTokenOutput() GetZeroTrustAccessPolicyExcludeServiceTokenOutput
+	ToGetZeroTrustAccessPolicyExcludeServiceTokenOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeServiceTokenOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeServiceTokenArgs struct {
+	// The ID of a Service Token.
+	TokenId pulumi.StringInput `pulumi:"tokenId"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeServiceToken)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeServiceTokenArgs) ToGetZeroTrustAccessPolicyExcludeServiceTokenOutput() GetZeroTrustAccessPolicyExcludeServiceTokenOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeServiceTokenOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeServiceTokenArgs) ToGetZeroTrustAccessPolicyExcludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeServiceTokenOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeServiceToken)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeServiceTokenOutput) ToGetZeroTrustAccessPolicyExcludeServiceTokenOutput() GetZeroTrustAccessPolicyExcludeServiceTokenOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeServiceTokenOutput) ToGetZeroTrustAccessPolicyExcludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeServiceTokenOutput {
+	return o
+}
+
+// The ID of a Service Token.
+func (o GetZeroTrustAccessPolicyExcludeServiceTokenOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeServiceToken) string { return v.TokenId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeUserRiskScore struct {
+	// A list of risk score levels to match. Values can be low, medium, high, or unscored.
+	UserRiskScores []string `pulumi:"userRiskScores"`
+}
+
+// GetZeroTrustAccessPolicyExcludeUserRiskScoreInput is an input type that accepts GetZeroTrustAccessPolicyExcludeUserRiskScoreArgs and GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPolicyExcludeUserRiskScoreInput` via:
+//
+//	GetZeroTrustAccessPolicyExcludeUserRiskScoreArgs{...}
+type GetZeroTrustAccessPolicyExcludeUserRiskScoreInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPolicyExcludeUserRiskScoreOutput() GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput
+	ToGetZeroTrustAccessPolicyExcludeUserRiskScoreOutputWithContext(context.Context) GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput
+}
+
+type GetZeroTrustAccessPolicyExcludeUserRiskScoreArgs struct {
+	// A list of risk score levels to match. Values can be low, medium, high, or unscored.
+	UserRiskScores pulumi.StringArrayInput `pulumi:"userRiskScores"`
+}
+
+func (GetZeroTrustAccessPolicyExcludeUserRiskScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeUserRiskScore)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPolicyExcludeUserRiskScoreArgs) ToGetZeroTrustAccessPolicyExcludeUserRiskScoreOutput() GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput {
+	return i.ToGetZeroTrustAccessPolicyExcludeUserRiskScoreOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPolicyExcludeUserRiskScoreArgs) ToGetZeroTrustAccessPolicyExcludeUserRiskScoreOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput)
+}
+
+type GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeUserRiskScore)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput) ToGetZeroTrustAccessPolicyExcludeUserRiskScoreOutput() GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput) ToGetZeroTrustAccessPolicyExcludeUserRiskScoreOutputWithContext(ctx context.Context) GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput {
+	return o
+}
+
+// A list of risk score levels to match. Values can be low, medium, high, or unscored.
+func (o GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput) UserRiskScores() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPolicyExcludeUserRiskScore) []string { return v.UserRiskScores }).(pulumi.StringArrayOutput)
+}
+
 type GetZeroTrustAccessPolicyInclude struct {
 	// An empty object which matches on all service tokens.
 	AnyValidServiceToken    GetZeroTrustAccessPolicyIncludeAnyValidServiceToken    `pulumi:"anyValidServiceToken"`
@@ -4551,7 +6736,7 @@ type GetZeroTrustCasbPoliciesResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Whether the policy is enabled. Derived from disabled*at (enabled when disabled*at is unset).
 	Enabled bool `pulumi:"enabled"`
-	// The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+	// The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
 	FindingTypeId string `pulumi:"findingTypeId"`
 	// Unique identifier for the policy configuration.
 	Id string `pulumi:"id"`
@@ -4593,7 +6778,7 @@ type GetZeroTrustCasbPoliciesResultArgs struct {
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Whether the policy is enabled. Derived from disabled*at (enabled when disabled*at is unset).
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+	// The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
 	FindingTypeId pulumi.StringInput `pulumi:"findingTypeId"`
 	// Unique identifier for the policy configuration.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -4695,7 +6880,7 @@ func (o GetZeroTrustCasbPoliciesResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetZeroTrustCasbPoliciesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+// The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
 func (o GetZeroTrustCasbPoliciesResultOutput) FindingTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustCasbPoliciesResult) string { return v.FindingTypeId }).(pulumi.StringOutput)
 }
@@ -6622,7 +8807,7 @@ type GetZeroTrustDeviceCustomProfilesResult struct {
 	LanAllowMinutes float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize float64 `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 	Match string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     string `pulumi:"name"`
@@ -6640,8 +8825,9 @@ type GetZeroTrustDeviceCustomProfilesResult struct {
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl string `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
-	SwitchLocked bool                                               `pulumi:"switchLocked"`
-	TargetTests  []GetZeroTrustDeviceCustomProfilesResultTargetTest `pulumi:"targetTests"`
+	SwitchLocked bool `pulumi:"switchLocked"`
+	// Deprecated: This attribute is deprecated.
+	TargetTests []GetZeroTrustDeviceCustomProfilesResultTargetTest `pulumi:"targetTests"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol string `pulumi:"tunnelProtocol"`
 	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
@@ -6697,7 +8883,7 @@ type GetZeroTrustDeviceCustomProfilesResultArgs struct {
 	LanAllowMinutes pulumi.Float64Input `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64Input `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 	Match pulumi.StringInput `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     pulumi.StringInput `pulumi:"name"`
@@ -6715,8 +8901,9 @@ type GetZeroTrustDeviceCustomProfilesResultArgs struct {
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl pulumi.StringInput `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
-	SwitchLocked pulumi.BoolInput                                           `pulumi:"switchLocked"`
-	TargetTests  GetZeroTrustDeviceCustomProfilesResultTargetTestArrayInput `pulumi:"targetTests"`
+	SwitchLocked pulumi.BoolInput `pulumi:"switchLocked"`
+	// Deprecated: This attribute is deprecated.
+	TargetTests GetZeroTrustDeviceCustomProfilesResultTargetTestArrayInput `pulumi:"targetTests"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringInput `pulumi:"tunnelProtocol"`
 	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
@@ -6878,7 +9065,7 @@ func (o GetZeroTrustDeviceCustomProfilesResultOutput) LanAllowSubnetSize() pulum
 	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResult) float64 { return v.LanAllowSubnetSize }).(pulumi.Float64Output)
 }
 
-// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 func (o GetZeroTrustDeviceCustomProfilesResultOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResult) string { return v.Match }).(pulumi.StringOutput)
 }
@@ -6929,6 +9116,7 @@ func (o GetZeroTrustDeviceCustomProfilesResultOutput) SwitchLocked() pulumi.Bool
 	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResult) bool { return v.SwitchLocked }).(pulumi.BoolOutput)
 }
 
+// Deprecated: This attribute is deprecated.
 func (o GetZeroTrustDeviceCustomProfilesResultOutput) TargetTests() GetZeroTrustDeviceCustomProfilesResultTargetTestArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustDeviceCustomProfilesResult) []GetZeroTrustDeviceCustomProfilesResultTargetTest {
 		return v.TargetTests
@@ -12321,8 +14509,8 @@ type GetZeroTrustDlpCustomEntriesResult struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus string `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpCustomEntriesResultVariant `pulumi:"variant"`
-	WordList string                                    `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpCustomEntriesResultVariant `pulumi:"variant"`
+	WordLists []string                                  `pulumi:"wordLists"`
 }
 
 // GetZeroTrustDlpCustomEntriesResultInput is an input type that accepts GetZeroTrustDlpCustomEntriesResultArgs and GetZeroTrustDlpCustomEntriesResultOutput values.
@@ -12359,8 +14547,8 @@ type GetZeroTrustDlpCustomEntriesResultArgs struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus pulumi.StringInput `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpCustomEntriesResultVariantInput `pulumi:"variant"`
-	WordList pulumi.StringInput                             `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpCustomEntriesResultVariantInput `pulumi:"variant"`
+	WordLists pulumi.StringArrayInput                        `pulumi:"wordLists"`
 }
 
 func (GetZeroTrustDlpCustomEntriesResultArgs) ElementType() reflect.Type {
@@ -12484,8 +14672,8 @@ func (o GetZeroTrustDlpCustomEntriesResultOutput) Variant() GetZeroTrustDlpCusto
 	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) GetZeroTrustDlpCustomEntriesResultVariant { return v.Variant }).(GetZeroTrustDlpCustomEntriesResultVariantOutput)
 }
 
-func (o GetZeroTrustDlpCustomEntriesResultOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) string { return v.WordList }).(pulumi.StringOutput)
+func (o GetZeroTrustDlpCustomEntriesResultOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomEntriesResult) []string { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 type GetZeroTrustDlpCustomEntriesResultArrayOutput struct{ *pulumi.OutputState }
@@ -13134,8 +15322,8 @@ type GetZeroTrustDlpCustomProfileEntry struct {
 	Type      string `pulumi:"type"`
 	UpdatedAt string `pulumi:"updatedAt"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpCustomProfileEntryVariant `pulumi:"variant"`
-	WordList string                                   `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpCustomProfileEntryVariant `pulumi:"variant"`
+	WordLists []string                                 `pulumi:"wordLists"`
 }
 
 // GetZeroTrustDlpCustomProfileEntryInput is an input type that accepts GetZeroTrustDlpCustomProfileEntryArgs and GetZeroTrustDlpCustomProfileEntryOutput values.
@@ -13170,8 +15358,8 @@ type GetZeroTrustDlpCustomProfileEntryArgs struct {
 	Type      pulumi.StringInput `pulumi:"type"`
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpCustomProfileEntryVariantInput `pulumi:"variant"`
-	WordList pulumi.StringInput                            `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpCustomProfileEntryVariantInput `pulumi:"variant"`
+	WordLists pulumi.StringArrayInput                       `pulumi:"wordLists"`
 }
 
 func (GetZeroTrustDlpCustomProfileEntryArgs) ElementType() reflect.Type {
@@ -13290,8 +15478,8 @@ func (o GetZeroTrustDlpCustomProfileEntryOutput) Variant() GetZeroTrustDlpCustom
 	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) GetZeroTrustDlpCustomProfileEntryVariant { return v.Variant }).(GetZeroTrustDlpCustomProfileEntryVariantOutput)
 }
 
-func (o GetZeroTrustDlpCustomProfileEntryOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) string { return v.WordList }).(pulumi.StringOutput)
+func (o GetZeroTrustDlpCustomProfileEntryOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileEntry) []string { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 type GetZeroTrustDlpCustomProfileEntryArrayOutput struct{ *pulumi.OutputState }
@@ -13630,8 +15818,8 @@ type GetZeroTrustDlpCustomProfileSharedEntry struct {
 	Type      string `pulumi:"type"`
 	UpdatedAt string `pulumi:"updatedAt"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpCustomProfileSharedEntryVariant `pulumi:"variant"`
-	WordList string                                         `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpCustomProfileSharedEntryVariant `pulumi:"variant"`
+	WordLists []string                                       `pulumi:"wordLists"`
 }
 
 // GetZeroTrustDlpCustomProfileSharedEntryInput is an input type that accepts GetZeroTrustDlpCustomProfileSharedEntryArgs and GetZeroTrustDlpCustomProfileSharedEntryOutput values.
@@ -13666,8 +15854,8 @@ type GetZeroTrustDlpCustomProfileSharedEntryArgs struct {
 	Type      pulumi.StringInput `pulumi:"type"`
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpCustomProfileSharedEntryVariantInput `pulumi:"variant"`
-	WordList pulumi.StringInput                                  `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpCustomProfileSharedEntryVariantInput `pulumi:"variant"`
+	WordLists pulumi.StringArrayInput                             `pulumi:"wordLists"`
 }
 
 func (GetZeroTrustDlpCustomProfileSharedEntryArgs) ElementType() reflect.Type {
@@ -13790,8 +15978,8 @@ func (o GetZeroTrustDlpCustomProfileSharedEntryOutput) Variant() GetZeroTrustDlp
 	}).(GetZeroTrustDlpCustomProfileSharedEntryVariantOutput)
 }
 
-func (o GetZeroTrustDlpCustomProfileSharedEntryOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileSharedEntry) string { return v.WordList }).(pulumi.StringOutput)
+func (o GetZeroTrustDlpCustomProfileSharedEntryOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpCustomProfileSharedEntry) []string { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 type GetZeroTrustDlpCustomProfileSharedEntryArrayOutput struct{ *pulumi.OutputState }
@@ -15615,8 +17803,8 @@ type GetZeroTrustDlpEntriesResult struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus string `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpEntriesResultVariant `pulumi:"variant"`
-	WordList string                              `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpEntriesResultVariant `pulumi:"variant"`
+	WordLists []string                            `pulumi:"wordLists"`
 }
 
 // GetZeroTrustDlpEntriesResultInput is an input type that accepts GetZeroTrustDlpEntriesResultArgs and GetZeroTrustDlpEntriesResultOutput values.
@@ -15653,8 +17841,8 @@ type GetZeroTrustDlpEntriesResultArgs struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus pulumi.StringInput `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpEntriesResultVariantInput `pulumi:"variant"`
-	WordList pulumi.StringInput                       `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpEntriesResultVariantInput `pulumi:"variant"`
+	WordLists pulumi.StringArrayInput                  `pulumi:"wordLists"`
 }
 
 func (GetZeroTrustDlpEntriesResultArgs) ElementType() reflect.Type {
@@ -15776,8 +17964,8 @@ func (o GetZeroTrustDlpEntriesResultOutput) Variant() GetZeroTrustDlpEntriesResu
 	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) GetZeroTrustDlpEntriesResultVariant { return v.Variant }).(GetZeroTrustDlpEntriesResultVariantOutput)
 }
 
-func (o GetZeroTrustDlpEntriesResultOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) string { return v.WordList }).(pulumi.StringOutput)
+func (o GetZeroTrustDlpEntriesResultOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpEntriesResult) []string { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 type GetZeroTrustDlpEntriesResultArrayOutput struct{ *pulumi.OutputState }
@@ -16313,8 +18501,8 @@ type GetZeroTrustDlpIntegrationEntriesResult struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus string `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpIntegrationEntriesResultVariant `pulumi:"variant"`
-	WordList string                                         `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpIntegrationEntriesResultVariant `pulumi:"variant"`
+	WordLists []string                                       `pulumi:"wordLists"`
 }
 
 // GetZeroTrustDlpIntegrationEntriesResultInput is an input type that accepts GetZeroTrustDlpIntegrationEntriesResultArgs and GetZeroTrustDlpIntegrationEntriesResultOutput values.
@@ -16351,8 +18539,8 @@ type GetZeroTrustDlpIntegrationEntriesResultArgs struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus pulumi.StringInput `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpIntegrationEntriesResultVariantInput `pulumi:"variant"`
-	WordList pulumi.StringInput                                  `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpIntegrationEntriesResultVariantInput `pulumi:"variant"`
+	WordLists pulumi.StringArrayInput                             `pulumi:"wordLists"`
 }
 
 func (GetZeroTrustDlpIntegrationEntriesResultArgs) ElementType() reflect.Type {
@@ -16480,8 +18668,8 @@ func (o GetZeroTrustDlpIntegrationEntriesResultOutput) Variant() GetZeroTrustDlp
 	}).(GetZeroTrustDlpIntegrationEntriesResultVariantOutput)
 }
 
-func (o GetZeroTrustDlpIntegrationEntriesResultOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) string { return v.WordList }).(pulumi.StringOutput)
+func (o GetZeroTrustDlpIntegrationEntriesResultOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpIntegrationEntriesResult) []string { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 type GetZeroTrustDlpIntegrationEntriesResultArrayOutput struct{ *pulumi.OutputState }
@@ -17017,8 +19205,8 @@ type GetZeroTrustDlpPredefinedEntriesResult struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus string `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpPredefinedEntriesResultVariant `pulumi:"variant"`
-	WordList string                                        `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpPredefinedEntriesResultVariant `pulumi:"variant"`
+	WordLists []string                                      `pulumi:"wordLists"`
 }
 
 // GetZeroTrustDlpPredefinedEntriesResultInput is an input type that accepts GetZeroTrustDlpPredefinedEntriesResultArgs and GetZeroTrustDlpPredefinedEntriesResultOutput values.
@@ -17055,8 +19243,8 @@ type GetZeroTrustDlpPredefinedEntriesResultArgs struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus pulumi.StringInput `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpPredefinedEntriesResultVariantInput `pulumi:"variant"`
-	WordList pulumi.StringInput                                 `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpPredefinedEntriesResultVariantInput `pulumi:"variant"`
+	WordLists pulumi.StringArrayInput                            `pulumi:"wordLists"`
 }
 
 func (GetZeroTrustDlpPredefinedEntriesResultArgs) ElementType() reflect.Type {
@@ -17184,8 +19372,8 @@ func (o GetZeroTrustDlpPredefinedEntriesResultOutput) Variant() GetZeroTrustDlpP
 	}).(GetZeroTrustDlpPredefinedEntriesResultVariantOutput)
 }
 
-func (o GetZeroTrustDlpPredefinedEntriesResultOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) string { return v.WordList }).(pulumi.StringOutput)
+func (o GetZeroTrustDlpPredefinedEntriesResultOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedEntriesResult) []string { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 type GetZeroTrustDlpPredefinedEntriesResultArrayOutput struct{ *pulumi.OutputState }
@@ -17719,8 +19907,8 @@ type GetZeroTrustDlpPredefinedProfileEntry struct {
 	Type      string `pulumi:"type"`
 	UpdatedAt string `pulumi:"updatedAt"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpPredefinedProfileEntryVariant `pulumi:"variant"`
-	WordList string                                       `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpPredefinedProfileEntryVariant `pulumi:"variant"`
+	WordLists []string                                     `pulumi:"wordLists"`
 }
 
 // GetZeroTrustDlpPredefinedProfileEntryInput is an input type that accepts GetZeroTrustDlpPredefinedProfileEntryArgs and GetZeroTrustDlpPredefinedProfileEntryOutput values.
@@ -17755,8 +19943,8 @@ type GetZeroTrustDlpPredefinedProfileEntryArgs struct {
 	Type      pulumi.StringInput `pulumi:"type"`
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  GetZeroTrustDlpPredefinedProfileEntryVariantInput `pulumi:"variant"`
-	WordList pulumi.StringInput                                `pulumi:"wordList"`
+	Variant   GetZeroTrustDlpPredefinedProfileEntryVariantInput `pulumi:"variant"`
+	WordLists pulumi.StringArrayInput                           `pulumi:"wordLists"`
 }
 
 func (GetZeroTrustDlpPredefinedProfileEntryArgs) ElementType() reflect.Type {
@@ -17879,8 +20067,8 @@ func (o GetZeroTrustDlpPredefinedProfileEntryOutput) Variant() GetZeroTrustDlpPr
 	}).(GetZeroTrustDlpPredefinedProfileEntryVariantOutput)
 }
 
-func (o GetZeroTrustDlpPredefinedProfileEntryOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) string { return v.WordList }).(pulumi.StringOutput)
+func (o GetZeroTrustDlpPredefinedProfileEntryOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustDlpPredefinedProfileEntry) []string { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 type GetZeroTrustDlpPredefinedProfileEntryArrayOutput struct{ *pulumi.OutputState }
@@ -21132,6 +23320,8 @@ type GetZeroTrustGatewayCertificatesResult struct {
 	IssuerOrg string `pulumi:"issuerOrg"`
 	// Provide the entire issuer field of the certificate (read-only).
 	IssuerRaw string `pulumi:"issuerRaw"`
+	// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+	Region string `pulumi:"region"`
 	// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
 	Type       string `pulumi:"type"`
@@ -21168,6 +23358,8 @@ type GetZeroTrustGatewayCertificatesResultArgs struct {
 	IssuerOrg pulumi.StringInput `pulumi:"issuerOrg"`
 	// Provide the entire issuer field of the certificate (read-only).
 	IssuerRaw pulumi.StringInput `pulumi:"issuerRaw"`
+	// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+	Region pulumi.StringInput `pulumi:"region"`
 	// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
 	Type       pulumi.StringInput `pulumi:"type"`
@@ -21268,6 +23460,11 @@ func (o GetZeroTrustGatewayCertificatesResultOutput) IssuerOrg() pulumi.StringOu
 // Provide the entire issuer field of the certificate (read-only).
 func (o GetZeroTrustGatewayCertificatesResultOutput) IssuerRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustGatewayCertificatesResult) string { return v.IssuerRaw }).(pulumi.StringOutput)
+}
+
+// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+func (o GetZeroTrustGatewayCertificatesResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustGatewayCertificatesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
@@ -28690,11 +30887,11 @@ func (o GetZeroTrustOrganizationMfaConfigOutput) SessionDuration() pulumi.String
 	return o.ApplyT(func(v GetZeroTrustOrganizationMfaConfig) string { return v.SessionDuration }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustOrganizationMfaSshPivKeyRequirements struct {
+type GetZeroTrustOrganizationMfaPivKeyRequirements struct {
 	// Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
 	// Available values: "never", "once", "always".
 	PinPolicy string `pulumi:"pinPolicy"`
-	// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+	// Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 	RequireFipsDevice bool `pulumi:"requireFipsDevice"`
 	// Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
 	SshKeySizes []int `pulumi:"sshKeySizes"`
@@ -28705,22 +30902,22 @@ type GetZeroTrustOrganizationMfaSshPivKeyRequirements struct {
 	TouchPolicy string `pulumi:"touchPolicy"`
 }
 
-// GetZeroTrustOrganizationMfaSshPivKeyRequirementsInput is an input type that accepts GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs and GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput values.
-// You can construct a concrete instance of `GetZeroTrustOrganizationMfaSshPivKeyRequirementsInput` via:
+// GetZeroTrustOrganizationMfaPivKeyRequirementsInput is an input type that accepts GetZeroTrustOrganizationMfaPivKeyRequirementsArgs and GetZeroTrustOrganizationMfaPivKeyRequirementsOutput values.
+// You can construct a concrete instance of `GetZeroTrustOrganizationMfaPivKeyRequirementsInput` via:
 //
-//	GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs{...}
-type GetZeroTrustOrganizationMfaSshPivKeyRequirementsInput interface {
+//	GetZeroTrustOrganizationMfaPivKeyRequirementsArgs{...}
+type GetZeroTrustOrganizationMfaPivKeyRequirementsInput interface {
 	pulumi.Input
 
-	ToGetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput() GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput
-	ToGetZeroTrustOrganizationMfaSshPivKeyRequirementsOutputWithContext(context.Context) GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput
+	ToGetZeroTrustOrganizationMfaPivKeyRequirementsOutput() GetZeroTrustOrganizationMfaPivKeyRequirementsOutput
+	ToGetZeroTrustOrganizationMfaPivKeyRequirementsOutputWithContext(context.Context) GetZeroTrustOrganizationMfaPivKeyRequirementsOutput
 }
 
-type GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs struct {
+type GetZeroTrustOrganizationMfaPivKeyRequirementsArgs struct {
 	// Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
 	// Available values: "never", "once", "always".
 	PinPolicy pulumi.StringInput `pulumi:"pinPolicy"`
-	// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+	// Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 	RequireFipsDevice pulumi.BoolInput `pulumi:"requireFipsDevice"`
 	// Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
 	SshKeySizes pulumi.IntArrayInput `pulumi:"sshKeySizes"`
@@ -28731,57 +30928,57 @@ type GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs struct {
 	TouchPolicy pulumi.StringInput `pulumi:"touchPolicy"`
 }
 
-func (GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustOrganizationMfaSshPivKeyRequirements)(nil)).Elem()
+func (GetZeroTrustOrganizationMfaPivKeyRequirementsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustOrganizationMfaPivKeyRequirements)(nil)).Elem()
 }
 
-func (i GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs) ToGetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput() GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput {
-	return i.ToGetZeroTrustOrganizationMfaSshPivKeyRequirementsOutputWithContext(context.Background())
+func (i GetZeroTrustOrganizationMfaPivKeyRequirementsArgs) ToGetZeroTrustOrganizationMfaPivKeyRequirementsOutput() GetZeroTrustOrganizationMfaPivKeyRequirementsOutput {
+	return i.ToGetZeroTrustOrganizationMfaPivKeyRequirementsOutputWithContext(context.Background())
 }
 
-func (i GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs) ToGetZeroTrustOrganizationMfaSshPivKeyRequirementsOutputWithContext(ctx context.Context) GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput)
+func (i GetZeroTrustOrganizationMfaPivKeyRequirementsArgs) ToGetZeroTrustOrganizationMfaPivKeyRequirementsOutputWithContext(ctx context.Context) GetZeroTrustOrganizationMfaPivKeyRequirementsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustOrganizationMfaPivKeyRequirementsOutput)
 }
 
-type GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput struct{ *pulumi.OutputState }
+type GetZeroTrustOrganizationMfaPivKeyRequirementsOutput struct{ *pulumi.OutputState }
 
-func (GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustOrganizationMfaSshPivKeyRequirements)(nil)).Elem()
+func (GetZeroTrustOrganizationMfaPivKeyRequirementsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustOrganizationMfaPivKeyRequirements)(nil)).Elem()
 }
 
-func (o GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) ToGetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput() GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput {
+func (o GetZeroTrustOrganizationMfaPivKeyRequirementsOutput) ToGetZeroTrustOrganizationMfaPivKeyRequirementsOutput() GetZeroTrustOrganizationMfaPivKeyRequirementsOutput {
 	return o
 }
 
-func (o GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) ToGetZeroTrustOrganizationMfaSshPivKeyRequirementsOutputWithContext(ctx context.Context) GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput {
+func (o GetZeroTrustOrganizationMfaPivKeyRequirementsOutput) ToGetZeroTrustOrganizationMfaPivKeyRequirementsOutputWithContext(ctx context.Context) GetZeroTrustOrganizationMfaPivKeyRequirementsOutput {
 	return o
 }
 
 // Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
 // Available values: "never", "once", "always".
-func (o GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) PinPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustOrganizationMfaSshPivKeyRequirements) string { return v.PinPolicy }).(pulumi.StringOutput)
+func (o GetZeroTrustOrganizationMfaPivKeyRequirementsOutput) PinPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustOrganizationMfaPivKeyRequirements) string { return v.PinPolicy }).(pulumi.StringOutput)
 }
 
-// Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
-func (o GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) RequireFipsDevice() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustOrganizationMfaSshPivKeyRequirements) bool { return v.RequireFipsDevice }).(pulumi.BoolOutput)
+// Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+func (o GetZeroTrustOrganizationMfaPivKeyRequirementsOutput) RequireFipsDevice() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustOrganizationMfaPivKeyRequirements) bool { return v.RequireFipsDevice }).(pulumi.BoolOutput)
 }
 
 // Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
-func (o GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) SshKeySizes() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustOrganizationMfaSshPivKeyRequirements) []int { return v.SshKeySizes }).(pulumi.IntArrayOutput)
+func (o GetZeroTrustOrganizationMfaPivKeyRequirementsOutput) SshKeySizes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustOrganizationMfaPivKeyRequirements) []int { return v.SshKeySizes }).(pulumi.IntArrayOutput)
 }
 
 // Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.
-func (o GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) SshKeyTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustOrganizationMfaSshPivKeyRequirements) []string { return v.SshKeyTypes }).(pulumi.StringArrayOutput)
+func (o GetZeroTrustOrganizationMfaPivKeyRequirementsOutput) SshKeyTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZeroTrustOrganizationMfaPivKeyRequirements) []string { return v.SshKeyTypes }).(pulumi.StringArrayOutput)
 }
 
 // Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).
 // Available values: "never", "always", "cached".
-func (o GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput) TouchPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustOrganizationMfaSshPivKeyRequirements) string { return v.TouchPolicy }).(pulumi.StringOutput)
+func (o GetZeroTrustOrganizationMfaPivKeyRequirementsOutput) TouchPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustOrganizationMfaPivKeyRequirements) string { return v.TouchPolicy }).(pulumi.StringOutput)
 }
 
 type GetZeroTrustOrganizationServiceTokenInactivity struct {
@@ -28859,31 +31056,36 @@ func (o GetZeroTrustOrganizationServiceTokenInactivityOutput) InactivityThreshol
 
 type GetZeroTrustResourceLibraryApplicationFilter struct {
 	// Return only the listed properties on each application, as a comma-separated list.
-	// Use this to keep responses small when you only need part of each application — for
+	// Use this to keep responses small when you only need part of each application, for
 	// example populating a picker with `fields=id,name` instead of downloading every
 	// hostname and IP subnet.
 	Fields *string `pulumi:"fields"`
-	// Filter applications using key:value format. Supported filter keys:
-	// - name: Filter by application name (e.g., name:HR)
-	// - id: Filter by application ID (e.g., id:498)
-	// - human_id: Filter by human-readable ID (e.g., human_id:HR)
-	// - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-	// - source: Filter by application source name (e.g., source:cloudflare)
-	// - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-	// - category_id: Filter by category ID (e.g., category_id:12).
-	// - category_name: Filter by category name (e.g., category_name:HR).
-	// - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-	// - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-	//   .
+	// Filter applications using `key:value` format. Supported filter keys:
+	// - `name`: application name (for example, `name:HR`).
+	// - `id`: application ID (for example, `id:498`).
+	// - `humanId`: human-readable ID (for example, `human_id:HR`).
+	// - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+	// - `source`: application source name (for example, `source:cloudflare`).
+	// - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+	// - `categoryId`: category ID (for example, `category_id:12`).
+	// - `categoryName`: category name (for example, `category_name:HR`).
+	// - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+	// - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
 	Filter *string `pulumi:"filter"`
-	// Limit of number of results to return (max 250).
+	// Number of results to return. Defaults to 25; values are clamped to 1–250.
 	Limit int `pulumi:"limit"`
-	// Offset of results to return.
+	// Find complete, case-insensitive application name mentions in a phrase or
+	// rule sentence. Misspelled names do not match. Returns matching applications
+	// ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+	// filters, fields, and pagination as listing. `search` cannot be combined
+	// with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+	Lookup *string `pulumi:"lookup"`
+	// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 	Offset int `pulumi:"offset"`
 	// Order results using field:direction format. Supported fields are name, id, human_id,
 	// category_id, application_type, application_confidence_score, and gen_ai_score.
 	// Supported directions are asc and desc. Ignored when search is provided; results are
-	// ranked by relevance instead.
+	// ranked by relevance instead. Also ignored when lookup is provided.
 	OrderBy *string `pulumi:"orderBy"`
 	// Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
 	Search *string `pulumi:"search"`
@@ -28902,31 +31104,36 @@ type GetZeroTrustResourceLibraryApplicationFilterInput interface {
 
 type GetZeroTrustResourceLibraryApplicationFilterArgs struct {
 	// Return only the listed properties on each application, as a comma-separated list.
-	// Use this to keep responses small when you only need part of each application — for
+	// Use this to keep responses small when you only need part of each application, for
 	// example populating a picker with `fields=id,name` instead of downloading every
 	// hostname and IP subnet.
 	Fields pulumi.StringPtrInput `pulumi:"fields"`
-	// Filter applications using key:value format. Supported filter keys:
-	// - name: Filter by application name (e.g., name:HR)
-	// - id: Filter by application ID (e.g., id:498)
-	// - human_id: Filter by human-readable ID (e.g., human_id:HR)
-	// - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-	// - source: Filter by application source name (e.g., source:cloudflare)
-	// - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-	// - category_id: Filter by category ID (e.g., category_id:12).
-	// - category_name: Filter by category name (e.g., category_name:HR).
-	// - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-	// - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-	//   .
+	// Filter applications using `key:value` format. Supported filter keys:
+	// - `name`: application name (for example, `name:HR`).
+	// - `id`: application ID (for example, `id:498`).
+	// - `humanId`: human-readable ID (for example, `human_id:HR`).
+	// - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+	// - `source`: application source name (for example, `source:cloudflare`).
+	// - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+	// - `categoryId`: category ID (for example, `category_id:12`).
+	// - `categoryName`: category name (for example, `category_name:HR`).
+	// - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+	// - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// Limit of number of results to return (max 250).
+	// Number of results to return. Defaults to 25; values are clamped to 1–250.
 	Limit pulumi.IntInput `pulumi:"limit"`
-	// Offset of results to return.
+	// Find complete, case-insensitive application name mentions in a phrase or
+	// rule sentence. Misspelled names do not match. Returns matching applications
+	// ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+	// filters, fields, and pagination as listing. `search` cannot be combined
+	// with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+	Lookup pulumi.StringPtrInput `pulumi:"lookup"`
+	// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 	Offset pulumi.IntInput `pulumi:"offset"`
 	// Order results using field:direction format. Supported fields are name, id, human_id,
 	// category_id, application_type, application_confidence_score, and gen_ai_score.
 	// Supported directions are asc and desc. Ignored when search is provided; results are
-	// ranked by relevance instead.
+	// ranked by relevance instead. Also ignored when lookup is provided.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
 	Search pulumi.StringPtrInput `pulumi:"search"`
@@ -29010,35 +31217,43 @@ func (o GetZeroTrustResourceLibraryApplicationFilterOutput) ToGetZeroTrustResour
 }
 
 // Return only the listed properties on each application, as a comma-separated list.
-// Use this to keep responses small when you only need part of each application — for
+// Use this to keep responses small when you only need part of each application, for
 // example populating a picker with `fields=id,name` instead of downloading every
 // hostname and IP subnet.
 func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Fields() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) *string { return v.Fields }).(pulumi.StringPtrOutput)
 }
 
-// Filter applications using key:value format. Supported filter keys:
-//   - name: Filter by application name (e.g., name:HR)
-//   - id: Filter by application ID (e.g., id:498)
-//   - human_id: Filter by human-readable ID (e.g., human_id:HR)
-//   - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-//   - source: Filter by application source name (e.g., source:cloudflare)
-//   - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-//   - category_id: Filter by category ID (e.g., category_id:12).
-//   - category_name: Filter by category name (e.g., category_name:HR).
-//   - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-//   - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-//     .
+// Filter applications using `key:value` format. Supported filter keys:
+// - `name`: application name (for example, `name:HR`).
+// - `id`: application ID (for example, `id:498`).
+// - `humanId`: human-readable ID (for example, `human_id:HR`).
+// - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+// - `source`: application source name (for example, `source:cloudflare`).
+// - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+// - `categoryId`: category ID (for example, `category_id:12`).
+// - `categoryName`: category name (for example, `category_name:HR`).
+// - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+// - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
 func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// Limit of number of results to return (max 250).
+// Number of results to return. Defaults to 25; values are clamped to 1–250.
 func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Limit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) int { return v.Limit }).(pulumi.IntOutput)
 }
 
-// Offset of results to return.
+// Find complete, case-insensitive application name mentions in a phrase or
+// rule sentence. Misspelled names do not match. Returns matching applications
+// ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+// filters, fields, and pagination as listing. `search` cannot be combined
+// with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Lookup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) *string { return v.Lookup }).(pulumi.StringPtrOutput)
+}
+
+// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Offset() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) int { return v.Offset }).(pulumi.IntOutput)
 }
@@ -29046,7 +31261,7 @@ func (o GetZeroTrustResourceLibraryApplicationFilterOutput) Offset() pulumi.IntO
 // Order results using field:direction format. Supported fields are name, id, human_id,
 // category_id, application_type, application_confidence_score, and gen_ai_score.
 // Supported directions are asc and desc. Ignored when search is provided; results are
-// ranked by relevance instead.
+// ranked by relevance instead. Also ignored when lookup is provided.
 func (o GetZeroTrustResourceLibraryApplicationFilterOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationFilter) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
@@ -29081,7 +31296,7 @@ func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Elem() GetZeroTru
 }
 
 // Return only the listed properties on each application, as a comma-separated list.
-// Use this to keep responses small when you only need part of each application — for
+// Use this to keep responses small when you only need part of each application, for
 // example populating a picker with `fields=id,name` instead of downloading every
 // hostname and IP subnet.
 func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Fields() pulumi.StringPtrOutput {
@@ -29093,18 +31308,17 @@ func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Fields() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Filter applications using key:value format. Supported filter keys:
-//   - name: Filter by application name (e.g., name:HR)
-//   - id: Filter by application ID (e.g., id:498)
-//   - human_id: Filter by human-readable ID (e.g., human_id:HR)
-//   - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-//   - source: Filter by application source name (e.g., source:cloudflare)
-//   - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-//   - category_id: Filter by category ID (e.g., category_id:12).
-//   - category_name: Filter by category name (e.g., category_name:HR).
-//   - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-//   - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-//     .
+// Filter applications using `key:value` format. Supported filter keys:
+// - `name`: application name (for example, `name:HR`).
+// - `id`: application ID (for example, `id:498`).
+// - `humanId`: human-readable ID (for example, `human_id:HR`).
+// - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+// - `source`: application source name (for example, `source:cloudflare`).
+// - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+// - `categoryId`: category ID (for example, `category_id:12`).
+// - `categoryName`: category name (for example, `category_name:HR`).
+// - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+// - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
 func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *string {
 		if v == nil {
@@ -29114,7 +31328,7 @@ func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Filter() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Limit of number of results to return (max 250).
+// Number of results to return. Defaults to 25; values are clamped to 1–250.
 func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Limit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *int {
 		if v == nil {
@@ -29124,7 +31338,21 @@ func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Limit() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
-// Offset of results to return.
+// Find complete, case-insensitive application name mentions in a phrase or
+// rule sentence. Misspelled names do not match. Returns matching applications
+// ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+// filters, fields, and pagination as listing. `search` cannot be combined
+// with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Lookup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Lookup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Offset() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *int {
 		if v == nil {
@@ -29137,7 +31365,7 @@ func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) Offset() pulumi.I
 // Order results using field:direction format. Supported fields are name, id, human_id,
 // category_id, application_type, application_confidence_score, and gen_ai_score.
 // Supported directions are asc and desc. Ignored when search is provided; results are
-// ranked by relevance instead.
+// ranked by relevance instead. Also ignored when lookup is provided.
 func (o GetZeroTrustResourceLibraryApplicationFilterPtrOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetZeroTrustResourceLibraryApplicationFilter) *string {
 		if v == nil {
@@ -29168,7 +31396,7 @@ type GetZeroTrustResourceLibraryApplicationsResult struct {
 	ApplicationType string `pulumi:"applicationType"`
 	// Returns the application type description.
 	ApplicationTypeDescription string `pulumi:"applicationTypeDescription"`
-	// Returns the category ID.
+	// Numeric identifier for an application category.
 	CategoryId int `pulumi:"categoryId"`
 	// Returns the application creation time.
 	CreatedAt string `pulumi:"createdAt"`
@@ -29176,15 +31404,15 @@ type GetZeroTrustResourceLibraryApplicationsResult struct {
 	GenAiScore float64 `pulumi:"genAiScore"`
 	// Hostnames matched by the application.
 	Hostnames []string `pulumi:"hostnames"`
-	// Returns the human readable ID.
+	// Human-readable identifier for the application.
 	HumanId string `pulumi:"humanId"`
-	// Returns the application ID.
+	// Numeric identifier for the application.
 	Id int `pulumi:"id"`
 	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets []string `pulumi:"ipSubnets"`
-	// Returns the application name.
+	// Application name.
 	Name string `pulumi:"name"`
-	// Port and protocol pairs matched by the application.
+	// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
 	PortProtocols []string `pulumi:"portProtocols"`
 	// The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
 	// Available values: "approved", "unapproved", "inReview", "unreviewed".
@@ -29221,7 +31449,7 @@ type GetZeroTrustResourceLibraryApplicationsResultArgs struct {
 	ApplicationType pulumi.StringInput `pulumi:"applicationType"`
 	// Returns the application type description.
 	ApplicationTypeDescription pulumi.StringInput `pulumi:"applicationTypeDescription"`
-	// Returns the category ID.
+	// Numeric identifier for an application category.
 	CategoryId pulumi.IntInput `pulumi:"categoryId"`
 	// Returns the application creation time.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
@@ -29229,15 +31457,15 @@ type GetZeroTrustResourceLibraryApplicationsResultArgs struct {
 	GenAiScore pulumi.Float64Input `pulumi:"genAiScore"`
 	// Hostnames matched by the application.
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
-	// Returns the human readable ID.
+	// Human-readable identifier for the application.
 	HumanId pulumi.StringInput `pulumi:"humanId"`
-	// Returns the application ID.
+	// Numeric identifier for the application.
 	Id pulumi.IntInput `pulumi:"id"`
 	// IP subnets for this application. Custom application create and update requests accept IPv4 prefix lengths /8 through /32 and IPv6 prefix lengths /32 through /128.
 	IpSubnets pulumi.StringArrayInput `pulumi:"ipSubnets"`
-	// Returns the application name.
+	// Application name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Port and protocol pairs matched by the application.
+	// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
 	PortProtocols pulumi.StringArrayInput `pulumi:"portProtocols"`
 	// The account-specific Gateway review status. Applications with no assigned review status are returned as `unreviewed`.
 	// Available values: "approved", "unapproved", "inReview", "unreviewed".
@@ -29328,7 +31556,7 @@ func (o GetZeroTrustResourceLibraryApplicationsResultOutput) ApplicationTypeDesc
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) string { return v.ApplicationTypeDescription }).(pulumi.StringOutput)
 }
 
-// Returns the category ID.
+// Numeric identifier for an application category.
 func (o GetZeroTrustResourceLibraryApplicationsResultOutput) CategoryId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) int { return v.CategoryId }).(pulumi.IntOutput)
 }
@@ -29348,12 +31576,12 @@ func (o GetZeroTrustResourceLibraryApplicationsResultOutput) Hostnames() pulumi.
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-// Returns the human readable ID.
+// Human-readable identifier for the application.
 func (o GetZeroTrustResourceLibraryApplicationsResultOutput) HumanId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) string { return v.HumanId }).(pulumi.StringOutput)
 }
 
-// Returns the application ID.
+// Numeric identifier for the application.
 func (o GetZeroTrustResourceLibraryApplicationsResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -29363,12 +31591,12 @@ func (o GetZeroTrustResourceLibraryApplicationsResultOutput) IpSubnets() pulumi.
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) []string { return v.IpSubnets }).(pulumi.StringArrayOutput)
 }
 
-// Returns the application name.
+// Application name.
 func (o GetZeroTrustResourceLibraryApplicationsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Port and protocol pairs matched by the application.
+// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
 func (o GetZeroTrustResourceLibraryApplicationsResultOutput) PortProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryApplicationsResult) []string { return v.PortProtocols }).(pulumi.StringArrayOutput)
 }
@@ -29424,7 +31652,7 @@ type GetZeroTrustResourceLibraryCategoriesResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Returns the category description.
 	Description string `pulumi:"description"`
-	// Returns the category ID.
+	// Numeric identifier for an application category.
 	Id int `pulumi:"id"`
 	// Returns the category name.
 	Name string `pulumi:"name"`
@@ -29446,7 +31674,7 @@ type GetZeroTrustResourceLibraryCategoriesResultArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Returns the category description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Returns the category ID.
+	// Numeric identifier for an application category.
 	Id pulumi.IntInput `pulumi:"id"`
 	// Returns the category name.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -29513,7 +31741,7 @@ func (o GetZeroTrustResourceLibraryCategoriesResultOutput) Description() pulumi.
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryCategoriesResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Returns the category ID.
+// Numeric identifier for an application category.
 func (o GetZeroTrustResourceLibraryCategoriesResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetZeroTrustResourceLibraryCategoriesResult) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -36527,6 +38755,42 @@ func (o GetZonesResultTenantUnitOutput) Id() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireOktaInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultRequireOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireSamlInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultRequireSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultRequireServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultRequireUserRiskScoreInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultRequireUserRiskScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyApprovalGroupInput)(nil)).Elem(), GetZeroTrustAccessPolicyApprovalGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyApprovalGroupArrayInput)(nil)).Elem(), GetZeroTrustAccessPolicyApprovalGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyConnectionRulesInput)(nil)).Elem(), GetZeroTrustAccessPolicyConnectionRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyConnectionRulesRdpInput)(nil)).Elem(), GetZeroTrustAccessPolicyConnectionRulesRdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeArrayInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAuthContextInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeAuthContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAuthMethodInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeAuthMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeAzureAdInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeAzureAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCertificateInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeCommonNameInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeCommonNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeDevicePostureInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeDevicePostureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmailInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmailDomainInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeEmailDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEmailListInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeEmailListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeEveryoneInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeEveryoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeExternalEvaluationInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeExternalEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGeoInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeGeoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGithubOrganizationInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeGithubOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGroupInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeGsuiteInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeIpInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeIpListInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeLinkedAppTokenInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeLoginMethodInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeOidcInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeOktaInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeSamlInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyExcludeUserRiskScoreInput)(nil)).Elem(), GetZeroTrustAccessPolicyExcludeUserRiskScoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyIncludeInput)(nil)).Elem(), GetZeroTrustAccessPolicyIncludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyIncludeArrayInput)(nil)).Elem(), GetZeroTrustAccessPolicyIncludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPolicyIncludeAnyValidServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessPolicyIncludeAnyValidServiceTokenArgs{})
@@ -36925,7 +39189,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationCustomPagesInput)(nil)).Elem(), GetZeroTrustOrganizationCustomPagesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationLoginDesignInput)(nil)).Elem(), GetZeroTrustOrganizationLoginDesignArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationMfaConfigInput)(nil)).Elem(), GetZeroTrustOrganizationMfaConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationMfaSshPivKeyRequirementsInput)(nil)).Elem(), GetZeroTrustOrganizationMfaSshPivKeyRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationMfaPivKeyRequirementsInput)(nil)).Elem(), GetZeroTrustOrganizationMfaPivKeyRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustOrganizationServiceTokenInactivityInput)(nil)).Elem(), GetZeroTrustOrganizationServiceTokenInactivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationFilterInput)(nil)).Elem(), GetZeroTrustResourceLibraryApplicationFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustResourceLibraryApplicationFilterPtrInput)(nil)).Elem(), GetZeroTrustResourceLibraryApplicationFilterArgs{})
@@ -37009,6 +39273,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultPlanInput)(nil)).Elem(), GetZonesResultPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantInput)(nil)).Elem(), GetZonesResultTenantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantUnitInput)(nil)).Elem(), GetZonesResultTenantUnitArgs{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultRequireOktaOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultRequireSamlOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultRequireServiceTokenOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultRequireUserRiskScoreOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyApprovalGroupOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyApprovalGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyConnectionRulesOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyConnectionRulesRdpOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeArrayOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeAnyValidServiceTokenOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeAuthContextOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeAuthMethodOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeAzureAdOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeCertificateOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeCloudflareAccountMemberOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeCommonNameOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeDevicePostureOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeEmailOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeEmailDomainOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeEmailListOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeEveryoneOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeExternalEvaluationOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeGeoOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeGithubOrganizationOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeGroupOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeGsuiteOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeIpOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeIpListOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeLoginMethodOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeOidcOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeOktaOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeSamlOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeServiceTokenOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyExcludeUserRiskScoreOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyIncludeOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyIncludeArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPolicyIncludeAnyValidServiceTokenOutput{})
@@ -37407,7 +39707,7 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustOrganizationCustomPagesOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustOrganizationLoginDesignOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustOrganizationMfaConfigOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustOrganizationMfaPivKeyRequirementsOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustOrganizationServiceTokenInactivityOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustResourceLibraryApplicationFilterOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustResourceLibraryApplicationFilterPtrOutput{})

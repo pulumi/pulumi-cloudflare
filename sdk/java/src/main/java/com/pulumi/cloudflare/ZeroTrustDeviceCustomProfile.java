@@ -390,14 +390,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.lanAllowSubnetSize);
     }
     /**
-     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
+     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;, &#34;device.tags&#34;.
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
-     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;, &#34;device.tags&#34;.
      * 
      */
     public Output<Optional<String>> match() {
@@ -515,6 +515,12 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
     public Output<Boolean> switchLocked() {
         return this.switchLocked;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="targetTests", refs={List.class,ZeroTrustDeviceCustomProfileTargetTest.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceCustomProfileTargetTest>> targetTests;
 

@@ -542,14 +542,14 @@ public final class ZeroTrustAccessApplicationState extends com.pulumi.resources.
     }
 
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
@@ -601,9 +601,17 @@ public final class ZeroTrustAccessApplicationState extends com.pulumi.resources.
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+     * 
+     */
     @Import(name="targetCriterias")
     private @Nullable Output<List<ZeroTrustAccessApplicationTargetCriteriaArgs>> targetCriterias;
 
+    /**
+     * @return Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+     * 
+     */
     public Optional<Output<List<ZeroTrustAccessApplicationTargetCriteriaArgs>>> targetCriterias() {
         return Optional.ofNullable(this.targetCriterias);
     }
@@ -1479,7 +1487,7 @@ public final class ZeroTrustAccessApplicationState extends com.pulumi.resources.
         }
 
         /**
-         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
          * 
          * @return builder
          * 
@@ -1490,7 +1498,7 @@ public final class ZeroTrustAccessApplicationState extends com.pulumi.resources.
         }
 
         /**
-         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
          * 
          * @return builder
          * 
@@ -1572,15 +1580,33 @@ public final class ZeroTrustAccessApplicationState extends com.pulumi.resources.
             return tags(List.of(tags));
         }
 
+        /**
+         * @param targetCriterias Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCriterias(@Nullable Output<List<ZeroTrustAccessApplicationTargetCriteriaArgs>> targetCriterias) {
             $.targetCriterias = targetCriterias;
             return this;
         }
 
+        /**
+         * @param targetCriterias Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCriterias(List<ZeroTrustAccessApplicationTargetCriteriaArgs> targetCriterias) {
             return targetCriterias(Output.of(targetCriterias));
         }
 
+        /**
+         * @param targetCriterias Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCriterias(ZeroTrustAccessApplicationTargetCriteriaArgs... targetCriterias) {
             return targetCriterias(List.of(targetCriterias));
         }

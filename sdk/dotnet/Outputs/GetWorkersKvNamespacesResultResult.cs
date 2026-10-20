@@ -23,6 +23,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Jurisdiction;
         /// <summary>
+        /// The mode of the Workers KV namespace. Specify `Instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `Instant` is the only supported explicit value.
+        /// Available values: "instant".
+        /// </summary>
+        public readonly string Mode;
+        /// <summary>
         /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         /// </summary>
         public readonly bool SupportsUrlEncoding;
@@ -37,12 +42,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string jurisdiction,
 
+            string mode,
+
             bool supportsUrlEncoding,
 
             string title)
         {
             Id = id;
             Jurisdiction = jurisdiction;
+            Mode = mode;
             SupportsUrlEncoding = supportsUrlEncoding;
             Title = title;
         }

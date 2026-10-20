@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AiSearchInstanceMetadataCreatedFromEmdashPluginArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -23,6 +24,13 @@ public final class AiSearchInstanceMetadataArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.createdFromAisearchWizard);
     }
 
+    @Import(name="createdFromEmdashPlugin")
+    private @Nullable Output<AiSearchInstanceMetadataCreatedFromEmdashPluginArgs> createdFromEmdashPlugin;
+
+    public Optional<Output<AiSearchInstanceMetadataCreatedFromEmdashPluginArgs>> createdFromEmdashPlugin() {
+        return Optional.ofNullable(this.createdFromEmdashPlugin);
+    }
+
     @Import(name="workerDomain")
     private @Nullable Output<String> workerDomain;
 
@@ -34,6 +42,7 @@ public final class AiSearchInstanceMetadataArgs extends com.pulumi.resources.Res
 
     private AiSearchInstanceMetadataArgs(AiSearchInstanceMetadataArgs $) {
         this.createdFromAisearchWizard = $.createdFromAisearchWizard;
+        this.createdFromEmdashPlugin = $.createdFromEmdashPlugin;
         this.workerDomain = $.workerDomain;
     }
 
@@ -62,6 +71,15 @@ public final class AiSearchInstanceMetadataArgs extends com.pulumi.resources.Res
 
         public Builder createdFromAisearchWizard(Boolean createdFromAisearchWizard) {
             return createdFromAisearchWizard(Output.of(createdFromAisearchWizard));
+        }
+
+        public Builder createdFromEmdashPlugin(@Nullable Output<AiSearchInstanceMetadataCreatedFromEmdashPluginArgs> createdFromEmdashPlugin) {
+            $.createdFromEmdashPlugin = createdFromEmdashPlugin;
+            return this;
+        }
+
+        public Builder createdFromEmdashPlugin(AiSearchInstanceMetadataCreatedFromEmdashPluginArgs createdFromEmdashPlugin) {
+            return createdFromEmdashPlugin(Output.of(createdFromEmdashPlugin));
         }
 
         public Builder workerDomain(@Nullable Output<String> workerDomain) {

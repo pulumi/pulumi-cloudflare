@@ -304,14 +304,14 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
     }
 
     /**
-     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
+     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;, &#34;device.tags&#34;.
      * 
      */
     @Import(name="match")
     private @Nullable Output<String> match;
 
     /**
-     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;, &#34;device.tags&#34;.
      * 
      */
     public Optional<Output<String>> match() {
@@ -439,9 +439,21 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
         return Optional.ofNullable(this.switchLocked);
     }
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="targetTests")
     private @Nullable Output<List<ZeroTrustDeviceCustomProfileTargetTestArgs>> targetTests;
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<List<ZeroTrustDeviceCustomProfileTargetTestArgs>>> targetTests() {
         return Optional.ofNullable(this.targetTests);
     }
@@ -967,7 +979,7 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
         }
 
         /**
-         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
+         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;, &#34;device.tags&#34;.
          * 
          * @return builder
          * 
@@ -978,7 +990,7 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
         }
 
         /**
-         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
+         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;, &#34;device.tags&#34;.
          * 
          * @return builder
          * 
@@ -1154,15 +1166,39 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
             return switchLocked(Output.of(switchLocked));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder targetTests(@Nullable Output<List<ZeroTrustDeviceCustomProfileTargetTestArgs>> targetTests) {
             $.targetTests = targetTests;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder targetTests(List<ZeroTrustDeviceCustomProfileTargetTestArgs> targetTests) {
             return targetTests(Output.of(targetTests));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder targetTests(ZeroTrustDeviceCustomProfileTargetTestArgs... targetTests) {
             return targetTests(List.of(targetTests));
         }

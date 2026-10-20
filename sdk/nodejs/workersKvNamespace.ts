@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     title: "My Own Namespace",
  *     jurisdiction: "eu",
+ *     mode: "instant",
  * });
  * ```
  *
@@ -67,6 +68,11 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
      */
     declare public readonly jurisdiction: pulumi.Output<string | undefined>;
     /**
+     * The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: "instant".
+     */
+    declare public readonly mode: pulumi.Output<string | undefined>;
+    /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
     declare public /*out*/ readonly supportsUrlEncoding: pulumi.Output<boolean>;
@@ -90,6 +96,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
             const state = argsOrState as WorkersKvNamespaceState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["jurisdiction"] = state?.jurisdiction;
+            resourceInputs["mode"] = state?.mode;
             resourceInputs["supportsUrlEncoding"] = state?.supportsUrlEncoding;
             resourceInputs["title"] = state?.title;
         } else {
@@ -102,6 +109,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["jurisdiction"] = args?.jurisdiction;
+            resourceInputs["mode"] = args?.mode;
             resourceInputs["title"] = args?.title;
             resourceInputs["supportsUrlEncoding"] = undefined /*out*/;
         }
@@ -123,6 +131,11 @@ export interface WorkersKvNamespaceState {
      * Available values: "eu", "fedramp", "us".
      */
     jurisdiction?: pulumi.Input<string | undefined>;
+    /**
+     * The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: "instant".
+     */
+    mode?: pulumi.Input<string | undefined>;
     /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
@@ -146,6 +159,11 @@ export interface WorkersKvNamespaceArgs {
      * Available values: "eu", "fedramp", "us".
      */
     jurisdiction?: pulumi.Input<string | undefined>;
+    /**
+     * The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: "instant".
+     */
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Human-readable string name for a Workers KV namespace.
      */

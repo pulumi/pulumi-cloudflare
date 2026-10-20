@@ -92,6 +92,23 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * Available values: &#34;strict&#34;.
+     * 
+     */
+    @Import(name="bindingsInherit")
+    private @Nullable Output<String> bindingsInherit;
+
+    /**
+     * @return When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * Available values: &#34;strict&#34;.
+     * 
+     */
+    public Optional<Output<String>> bindingsInherit() {
+        return Optional.ofNullable(this.bindingsInherit);
+    }
+
+    /**
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      * 
      */
@@ -451,6 +468,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.assets = $.assets;
         this.bindings = $.bindings;
+        this.bindingsInherit = $.bindingsInherit;
         this.bodyPart = $.bodyPart;
         this.cacheOptions = $.cacheOptions;
         this.compatibilityDate = $.compatibilityDate;
@@ -586,6 +604,29 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bindings(WorkerScriptBindingArgs... bindings) {
             return bindings(List.of(bindings));
+        }
+
+        /**
+         * @param bindingsInherit When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+         * Available values: &#34;strict&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindingsInherit(@Nullable Output<String> bindingsInherit) {
+            $.bindingsInherit = bindingsInherit;
+            return this;
+        }
+
+        /**
+         * @param bindingsInherit When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+         * Available values: &#34;strict&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindingsInherit(String bindingsInherit) {
+            return bindingsInherit(Output.of(bindingsInherit));
         }
 
         /**

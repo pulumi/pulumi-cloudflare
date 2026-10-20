@@ -32,6 +32,12 @@ public final class GetWorkersKvNamespaceResult {
      */
     private String jurisdiction;
     /**
+     * @return The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: &#34;instant&#34;.
+     * 
+     */
+    private String mode;
+    /**
      * @return ID of the Workers KV namespace.
      * 
      */
@@ -74,6 +80,14 @@ public final class GetWorkersKvNamespaceResult {
         return this.jurisdiction;
     }
     /**
+     * @return The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: &#34;instant&#34;.
+     * 
+     */
+    public String mode() {
+        return this.mode;
+    }
+    /**
      * @return ID of the Workers KV namespace.
      * 
      */
@@ -108,6 +122,7 @@ public final class GetWorkersKvNamespaceResult {
         private @Nullable GetWorkersKvNamespaceFilter filter;
         private String id;
         private String jurisdiction;
+        private String mode;
         private @Nullable String namespaceId;
         private Boolean supportsUrlEncoding;
         private String title;
@@ -118,6 +133,7 @@ public final class GetWorkersKvNamespaceResult {
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.jurisdiction = defaults.jurisdiction;
+    	      this.mode = defaults.mode;
     	      this.namespaceId = defaults.namespaceId;
     	      this.supportsUrlEncoding = defaults.supportsUrlEncoding;
     	      this.title = defaults.title;
@@ -152,6 +168,14 @@ public final class GetWorkersKvNamespaceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mode(String mode) {
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetWorkersKvNamespaceResult", "mode");
+            }
+            this.mode = mode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder namespaceId(@Nullable String namespaceId) {
 
             this.namespaceId = namespaceId;
@@ -179,6 +203,7 @@ public final class GetWorkersKvNamespaceResult {
             _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.jurisdiction = jurisdiction;
+            _resultValue.mode = mode;
             _resultValue.namespaceId = namespaceId;
             _resultValue.supportsUrlEncoding = supportsUrlEncoding;
             _resultValue.title = title;

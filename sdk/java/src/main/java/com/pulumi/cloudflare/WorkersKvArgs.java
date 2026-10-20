@@ -48,14 +48,14 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Expires the key after a number of seconds. Must be at least 60.
+     * Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
      * 
      */
     @Import(name="expirationTtl")
     private @Nullable Output<Double> expirationTtl;
 
     /**
-     * @return Expires the key after a number of seconds. Must be at least 60.
+     * @return Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
      * 
      */
     public Optional<Output<Double>> expirationTtl() {
@@ -195,7 +195,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expirationTtl Expires the key after a number of seconds. Must be at least 60.
+         * @param expirationTtl Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expirationTtl Expires the key after a number of seconds. Must be at least 60.
+         * @param expirationTtl Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
          * 
          * @return builder
          * 

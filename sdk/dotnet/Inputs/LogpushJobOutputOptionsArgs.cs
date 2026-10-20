@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// If set to true, subrequests will be merged into the parent request. Only supported for the `HttpRequests` dataset. Not supported for account-scoped jobs.
+        /// If set to true, subrequests will be merged into the parent request. Only supported for the `HttpRequests` dataset.
         /// </summary>
         [Input("mergeSubrequests")]
         public Input<bool>? MergeSubrequests { get; set; }

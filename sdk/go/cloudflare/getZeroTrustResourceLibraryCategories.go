@@ -49,22 +49,22 @@ func LookupZeroTrustResourceLibraryCategories(ctx *pulumi.Context, args *LookupZ
 // A collection of arguments for invoking getZeroTrustResourceLibraryCategories.
 type LookupZeroTrustResourceLibraryCategoriesArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// Limit of number of results to return.
+	// Number of results to return. Defaults to 25; values are clamped to 1–250.
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Offset of results to return.
+	// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 	Offset *int `pulumi:"offset"`
 }
 
 // A collection of values returned by getZeroTrustResourceLibraryCategories.
 type LookupZeroTrustResourceLibraryCategoriesResult struct {
 	AccountId string `pulumi:"accountId"`
-	// Limit of number of results to return.
+	// Number of results to return. Defaults to 25; values are clamped to 1–250.
 	Limit int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Offset of results to return.
+	// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 	Offset int `pulumi:"offset"`
 	// The items returned by the data source
 	Results []GetZeroTrustResourceLibraryCategoriesResult `pulumi:"results"`
@@ -78,11 +78,11 @@ func LookupZeroTrustResourceLibraryCategoriesOutput(ctx *pulumi.Context, args Lo
 // A collection of arguments for invoking getZeroTrustResourceLibraryCategories.
 type LookupZeroTrustResourceLibraryCategoriesOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Limit of number of results to return.
+	// Number of results to return. Defaults to 25; values are clamped to 1–250.
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Offset of results to return.
+	// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 	Offset pulumi.IntPtrInput `pulumi:"offset"`
 }
 
@@ -109,7 +109,7 @@ func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) AccountId() pulumi
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryCategoriesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Limit of number of results to return.
+// Number of results to return. Defaults to 25; values are clamped to 1–250.
 func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) Limit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryCategoriesResult) int { return v.Limit }).(pulumi.IntOutput)
 }
@@ -119,7 +119,7 @@ func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) MaxItems() pulumi.
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryCategoriesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Offset of results to return.
+// Number of results to skip. Defaults to 0; negative values are clamped to 0.
 func (o LookupZeroTrustResourceLibraryCategoriesResultOutput) Offset() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustResourceLibraryCategoriesResult) int { return v.Offset }).(pulumi.IntOutput)
 }

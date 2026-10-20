@@ -1271,6 +1271,15 @@
                     }
                 }
             },
+            "cloudflare_monetization_rules": {
+                "current": "cloudflare:index/monetizationRules:MonetizationRules",
+                "majorVersion": 6,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_moq_relay": {
                 "current": "cloudflare:index/moqRelay:MoqRelay",
                 "majorVersion": 6,
@@ -1897,10 +1906,6 @@
             },
             "cloudflare_regional_tiered_cache": {
                 "current": "cloudflare:index/regionalTieredCache:RegionalTieredCache",
-                "majorVersion": 6
-            },
-            "cloudflare_registrar_domain": {
-                "current": "cloudflare:index/registrarDomain:RegistrarDomain",
                 "majorVersion": 6
             },
             "cloudflare_ruleset": {
@@ -3016,6 +3021,54 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "exclude": {
+                                    "fields": {
+                                        "tags": {
+                                            "elem": {
+                                                "maxItemsOne": false
+                                            }
+                                        },
+                                        "target_attributes": {
+                                            "fields": {
+                                                "hostname": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "include": {
+                                    "fields": {
+                                        "tags": {
+                                            "elem": {
+                                                "maxItemsOne": false
+                                            }
+                                        },
+                                        "target_attributes": {
+                                            "fields": {
+                                                "hostname": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "require": {
+                                    "fields": {
+                                        "tags": {
+                                            "elem": {
+                                                "maxItemsOne": false
+                                            }
+                                        },
+                                        "target_attributes": {
+                                            "fields": {
+                                                "hostname": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "target_attributes": {
                                     "elem": {
                                         "maxItemsOne": false
@@ -3595,6 +3648,9 @@
                 "fields": {
                     "profiles": {
                         "maxItemsOne": false
+                    },
+                    "word_list": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3679,6 +3735,9 @@
                 "fields": {
                     "profiles": {
                         "maxItemsOne": false
+                    },
+                    "word_list": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3688,6 +3747,9 @@
                 "fields": {
                     "profiles": {
                         "maxItemsOne": false
+                    },
+                    "word_list": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3696,6 +3758,9 @@
                 "majorVersion": 6,
                 "fields": {
                     "profiles": {
+                        "maxItemsOne": false
+                    },
+                    "word_list": {
                         "maxItemsOne": false
                     }
                 }
@@ -3919,7 +3984,7 @@
                             }
                         }
                     },
-                    "mfa_ssh_piv_key_requirements": {
+                    "mfa_piv_key_requirements": {
                         "fields": {
                             "ssh_key_size": {
                                 "maxItemsOne": false
@@ -6997,6 +7062,15 @@
                     }
                 }
             },
+            "cloudflare_monetization_rules": {
+                "current": "cloudflare:index/getMonetizationRules:getMonetizationRules",
+                "majorVersion": 6,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_moq_relay": {
                 "current": "cloudflare:index/getMoqRelay:getMoqRelay",
                 "majorVersion": 6,
@@ -8185,19 +8259,6 @@
             "cloudflare_regional_tiered_cache": {
                 "current": "cloudflare:index/getRegionalTieredCache:getRegionalTieredCache",
                 "majorVersion": 6
-            },
-            "cloudflare_registrar_domain": {
-                "current": "cloudflare:index/getRegistrarDomain:getRegistrarDomain",
-                "majorVersion": 6
-            },
-            "cloudflare_registrar_domains": {
-                "current": "cloudflare:index/getRegistrarDomains:getRegistrarDomains",
-                "majorVersion": 6,
-                "fields": {
-                    "result": {
-                        "maxItemsOne": false
-                    }
-                }
             },
             "cloudflare_resource_group": {
                 "current": "cloudflare:index/getResourceGroup:getResourceGroup",
@@ -10023,6 +10084,54 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "exclude": {
+                                    "fields": {
+                                        "tags": {
+                                            "elem": {
+                                                "maxItemsOne": false
+                                            }
+                                        },
+                                        "target_attributes": {
+                                            "fields": {
+                                                "hostname": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "include": {
+                                    "fields": {
+                                        "tags": {
+                                            "elem": {
+                                                "maxItemsOne": false
+                                            }
+                                        },
+                                        "target_attributes": {
+                                            "fields": {
+                                                "hostname": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "require": {
+                                    "fields": {
+                                        "tags": {
+                                            "elem": {
+                                                "maxItemsOne": false
+                                            }
+                                        },
+                                        "target_attributes": {
+                                            "fields": {
+                                                "hostname": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "target_attributes": {
                                     "elem": {
                                         "maxItemsOne": false
@@ -10171,6 +10280,54 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "exclude": {
+                                                "fields": {
+                                                    "tags": {
+                                                        "elem": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    },
+                                                    "target_attributes": {
+                                                        "fields": {
+                                                            "hostname": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "include": {
+                                                "fields": {
+                                                    "tags": {
+                                                        "elem": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    },
+                                                    "target_attributes": {
+                                                        "fields": {
+                                                            "hostname": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "require": {
+                                                "fields": {
+                                                    "tags": {
+                                                        "elem": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    },
+                                                    "target_attributes": {
+                                                        "fields": {
+                                                            "hostname": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "target_attributes": {
                                                 "elem": {
                                                     "maxItemsOne": false
@@ -11112,7 +11269,14 @@
                 "majorVersion": 6,
                 "fields": {
                     "result": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "word_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -11121,6 +11285,9 @@
                 "majorVersion": 6,
                 "fields": {
                     "profiles": {
+                        "maxItemsOne": false
+                    },
+                    "word_list": {
                         "maxItemsOne": false
                     }
                 }
@@ -11136,13 +11303,27 @@
                         "maxItemsOne": false
                     },
                     "entries": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "word_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "sensitivity_levels": {
                         "maxItemsOne": false
                     },
                     "shared_entries": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "word_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -11264,7 +11445,14 @@
                 "majorVersion": 6,
                 "fields": {
                     "result": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "word_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -11274,6 +11462,9 @@
                 "fields": {
                     "profiles": {
                         "maxItemsOne": false
+                    },
+                    "word_list": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -11282,7 +11473,14 @@
                 "majorVersion": 6,
                 "fields": {
                     "result": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "word_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -11292,6 +11490,9 @@
                 "fields": {
                     "profiles": {
                         "maxItemsOne": false
+                    },
+                    "word_list": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -11300,7 +11501,14 @@
                 "majorVersion": 6,
                 "fields": {
                     "result": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "word_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -11309,6 +11517,9 @@
                 "majorVersion": 6,
                 "fields": {
                     "profiles": {
+                        "maxItemsOne": false
+                    },
+                    "word_list": {
                         "maxItemsOne": false
                     }
                 }
@@ -11321,7 +11532,14 @@
                         "maxItemsOne": false
                     },
                     "entries": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "word_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -11726,7 +11944,7 @@
                             }
                         }
                     },
-                    "mfa_ssh_piv_key_requirements": {
+                    "mfa_piv_key_requirements": {
                         "fields": {
                             "ssh_key_size": {
                                 "maxItemsOne": false
@@ -12520,6 +12738,7 @@
             "cloudflare_magic_wan_ipsec_tunnel": {},
             "cloudflare_magic_wan_static_route": {},
             "cloudflare_managed_transforms": {},
+            "cloudflare_monetization_rules": {},
             "cloudflare_moq_relay": {},
             "cloudflare_mtls_certificate": {},
             "cloudflare_nel_setting": {},
@@ -12598,11 +12817,6 @@
             },
             "cloudflare_regional_hostname": {},
             "cloudflare_regional_tiered_cache": {},
-            "cloudflare_registrar_domain": {
-                "computeID": {
-                    "kind": "missing"
-                }
-            },
             "cloudflare_ruleset": {},
             "cloudflare_schema_validation_operation_settings": {},
             "cloudflare_schema_validation_schemas": {},

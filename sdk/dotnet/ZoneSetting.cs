@@ -88,6 +88,7 @@ namespace Pulumi.Cloudflare
     /// | `TrueClientIpHeader` | `"on"` / `"off"` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
     /// | `Waf` | `"on"` / `"off"` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
     /// | `WebmcpEnabled` | `"on"` / `"off"` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+    /// | `WebmcpMcpUrl` | String | Optional per-zone path of the site's own MCP server, used by the WebMCP mcp-s... |
     /// | `WebmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
     /// | `Webp` | `"on"` / `"off"` | When the client requesting the image supports the WebP image codec, and WebP ... |
     /// | `Websockets` | `"on"` / `"off"` | WebSockets are open connections sustained between the client and the origin s... |

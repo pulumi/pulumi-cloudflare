@@ -26,7 +26,7 @@ class GetZeroTrustGatewayCertificateResult:
     """
     A collection of values returned by getZeroTrustGatewayCertificate.
     """
-    def __init__(__self__, account_id=None, binding_status=None, certificate=None, certificate_id=None, created_at=None, expires_on=None, fingerprint=None, id=None, in_use=None, issuer_org=None, issuer_raw=None, type=None, updated_at=None, uploaded_on=None):
+    def __init__(__self__, account_id=None, binding_status=None, certificate=None, certificate_id=None, created_at=None, expires_on=None, fingerprint=None, id=None, in_use=None, issuer_org=None, issuer_raw=None, region=None, type=None, updated_at=None, uploaded_on=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -60,6 +60,9 @@ class GetZeroTrustGatewayCertificateResult:
         if issuer_raw and not isinstance(issuer_raw, str):
             raise TypeError("Expected argument 'issuer_raw' to be a str")
         pulumi.set(__self__, "issuer_raw", issuer_raw)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -155,6 +158,14 @@ class GetZeroTrustGatewayCertificateResult:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> _builtins.str:
         """
         Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
@@ -190,6 +201,7 @@ class AwaitableGetZeroTrustGatewayCertificateResult(GetZeroTrustGatewayCertifica
             in_use=self.in_use,
             issuer_org=self.issuer_org,
             issuer_raw=self.issuer_raw,
+            region=self.region,
             type=self.type,
             updated_at=self.updated_at,
             uploaded_on=self.uploaded_on)
@@ -231,6 +243,7 @@ def get_zero_trust_gateway_certificate(account_id: Optional[_builtins.str] = Non
         in_use=pulumi.get(__ret__, 'in_use'),
         issuer_org=pulumi.get(__ret__, 'issuer_org'),
         issuer_raw=pulumi.get(__ret__, 'issuer_raw'),
+        region=pulumi.get(__ret__, 'region'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'))
@@ -269,6 +282,7 @@ def get_zero_trust_gateway_certificate_output(account_id: pulumi.Input[Optional[
         in_use=pulumi.get(__response__, 'in_use'),
         issuer_org=pulumi.get(__response__, 'issuer_org'),
         issuer_raw=pulumi.get(__response__, 'issuer_raw'),
+        region=pulumi.get(__response__, 'region'),
         type=pulumi.get(__response__, 'type'),
         updated_at=pulumi.get(__response__, 'updated_at'),
         uploaded_on=pulumi.get(__response__, 'uploaded_on')))

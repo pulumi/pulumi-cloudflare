@@ -99,7 +99,7 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
      * A Predefined AI prompt classification topic entry.
      */
     declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryVariant>;
-    declare public /*out*/ readonly wordList: pulumi.Output<string>;
+    declare public /*out*/ readonly wordLists: pulumi.Output<string[]>;
 
     /**
      * Create a ZeroTrustDlpIntegrationEntry resource with the given unique name, arguments, and options.
@@ -131,7 +131,7 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["uploadStatus"] = state?.uploadStatus;
             resourceInputs["variant"] = state?.variant;
-            resourceInputs["wordList"] = state?.wordList;
+            resourceInputs["wordLists"] = state?.wordLists;
         } else {
             const args = argsOrState as ZeroTrustDlpIntegrationEntryArgs | undefined;
             if (args?.accountId === undefined && !opts.urn) {
@@ -160,7 +160,7 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["uploadStatus"] = undefined /*out*/;
             resourceInputs["variant"] = undefined /*out*/;
-            resourceInputs["wordList"] = undefined /*out*/;
+            resourceInputs["wordLists"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDlpIntegrationEntry.__pulumiType, name, resourceInputs, opts);
@@ -210,7 +210,7 @@ export interface ZeroTrustDlpIntegrationEntryState {
      * A Predefined AI prompt classification topic entry.
      */
     variant?: pulumi.Input<inputs.ZeroTrustDlpIntegrationEntryVariant | undefined>;
-    wordList?: pulumi.Input<string | undefined>;
+    wordLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

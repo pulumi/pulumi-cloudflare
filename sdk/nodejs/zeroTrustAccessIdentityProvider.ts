@@ -113,7 +113,7 @@ export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
     declare public readonly scimConfig: pulumi.Output<outputs.ZeroTrustAccessIdentityProviderScimConfig>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -208,7 +208,7 @@ export interface ZeroTrustAccessIdentityProviderState {
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessIdentityProviderScimConfig | undefined>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -249,7 +249,7 @@ export interface ZeroTrustAccessIdentityProviderArgs {
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessIdentityProviderScimConfig | undefined>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare", "passkeys".
      */
     type: pulumi.Input<string>;
     /**

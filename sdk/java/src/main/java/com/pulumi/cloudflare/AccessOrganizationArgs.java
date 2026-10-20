@@ -6,7 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.AccessOrganizationCustomPagesArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationLoginDesignArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationMfaConfigArgs;
-import com.pulumi.cloudflare.inputs.AccessOrganizationMfaSshPivKeyRequirementsArgs;
+import com.pulumi.cloudflare.inputs.AccessOrganizationMfaPivKeyRequirementsArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationServiceTokenInactivityArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -53,14 +53,14 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The unique subdomain assigned to your Zero Trust organization.
+     * The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      * 
      */
     @Import(name="authDomain")
     private @Nullable Output<String> authDomain;
 
     /**
-     * @return The unique subdomain assigned to your Zero Trust organization.
+     * @return The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      * 
      */
     public Optional<Output<String>> authDomain() {
@@ -172,6 +172,21 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configures PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    @Import(name="mfaPivKeyRequirements")
+    private @Nullable Output<AccessOrganizationMfaPivKeyRequirementsArgs> mfaPivKeyRequirements;
+
+    /**
+     * @return Configures PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    public Optional<Output<AccessOrganizationMfaPivKeyRequirementsArgs>> mfaPivKeyRequirements() {
+        return Optional.ofNullable(this.mfaPivKeyRequirements);
+    }
+
+    /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
@@ -187,29 +202,14 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configures SSH PIV key requirements for MFA using hardware security keys.
-     * 
-     */
-    @Import(name="mfaSshPivKeyRequirements")
-    private @Nullable Output<AccessOrganizationMfaSshPivKeyRequirementsArgs> mfaSshPivKeyRequirements;
-
-    /**
-     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
-     * 
-     */
-    public Optional<Output<AccessOrganizationMfaSshPivKeyRequirementsArgs>> mfaSshPivKeyRequirements() {
-        return Optional.ofNullable(this.mfaSshPivKeyRequirements);
-    }
-
-    /**
-     * The name of your Zero Trust organization.
+     * The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of your Zero Trust organization.
+     * @return The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      * 
      */
     public Optional<Output<String>> name() {
@@ -350,8 +350,8 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         this.loginDesign = $.loginDesign;
         this.mfaConfig = $.mfaConfig;
         this.mfaConfigurationAllowed = $.mfaConfigurationAllowed;
+        this.mfaPivKeyRequirements = $.mfaPivKeyRequirements;
         this.mfaRequiredForAllApps = $.mfaRequiredForAllApps;
-        this.mfaSshPivKeyRequirements = $.mfaSshPivKeyRequirements;
         this.name = $.name;
         this.serviceTokenInactivity = $.serviceTokenInactivity;
         this.sessionDuration = $.sessionDuration;
@@ -424,7 +424,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authDomain The unique subdomain assigned to your Zero Trust organization.
+         * @param authDomain The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authDomain The unique subdomain assigned to your Zero Trust organization.
+         * @param authDomain The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
          * 
          * @return builder
          * 
@@ -599,6 +599,27 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param mfaPivKeyRequirements Configures PIV key requirements for MFA using hardware security keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaPivKeyRequirements(@Nullable Output<AccessOrganizationMfaPivKeyRequirementsArgs> mfaPivKeyRequirements) {
+            $.mfaPivKeyRequirements = mfaPivKeyRequirements;
+            return this;
+        }
+
+        /**
+         * @param mfaPivKeyRequirements Configures PIV key requirements for MFA using hardware security keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaPivKeyRequirements(AccessOrganizationMfaPivKeyRequirementsArgs mfaPivKeyRequirements) {
+            return mfaPivKeyRequirements(Output.of(mfaPivKeyRequirements));
+        }
+
+        /**
          * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
          * 
          * @return builder
@@ -620,28 +641,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mfaSshPivKeyRequirements Configures SSH PIV key requirements for MFA using hardware security keys.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mfaSshPivKeyRequirements(@Nullable Output<AccessOrganizationMfaSshPivKeyRequirementsArgs> mfaSshPivKeyRequirements) {
-            $.mfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
-            return this;
-        }
-
-        /**
-         * @param mfaSshPivKeyRequirements Configures SSH PIV key requirements for MFA using hardware security keys.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mfaSshPivKeyRequirements(AccessOrganizationMfaSshPivKeyRequirementsArgs mfaSshPivKeyRequirements) {
-            return mfaSshPivKeyRequirements(Output.of(mfaSshPivKeyRequirements));
-        }
-
-        /**
-         * @param name The name of your Zero Trust organization.
+         * @param name The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of your Zero Trust organization.
+         * @param name The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
          * 
          * @return builder
          * 

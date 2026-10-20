@@ -281,6 +281,7 @@ from .get_magic_wan_gre_tunnel import *
 from .get_magic_wan_ipsec_tunnel import *
 from .get_magic_wan_static_route import *
 from .get_managed_transforms import *
+from .get_monetization_rules import *
 from .get_moq_relay import *
 from .get_moq_relays import *
 from .get_mtls_certificate import *
@@ -338,8 +339,6 @@ from .get_rate_limit import *
 from .get_regional_hostname import *
 from .get_regional_hostnames import *
 from .get_regional_tiered_cache import *
-from .get_registrar_domain import *
-from .get_registrar_domains import *
 from .get_resource_group import *
 from .get_resource_groups import *
 from .get_ruleset import *
@@ -598,6 +597,7 @@ from .magic_wan_ipsec_tunnel import *
 from .magic_wan_static_route import *
 from .managed_headers import *
 from .managed_transforms import *
+from .monetization_rules import *
 from .moq_relay import *
 from .mtls_certificate import *
 from .nel_setting import *
@@ -634,7 +634,6 @@ from .rate_limit import *
 from .record import *
 from .regional_hostname import *
 from .regional_tiered_cache import *
-from .registrar_domain import *
 from .risk_behavior import *
 from .ruleset import *
 from .schema_validation_operation_settings import *
@@ -1782,6 +1781,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/monetizationRules",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/monetizationRules:MonetizationRules": "MonetizationRules"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/moqRelay",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -2058,14 +2065,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/regionalTieredCache:RegionalTieredCache": "RegionalTieredCache"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/registrarDomain",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/registrarDomain:RegistrarDomain": "RegistrarDomain"
   }
  },
  {

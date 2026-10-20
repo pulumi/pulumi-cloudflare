@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.PagesProjectBuildConfigArgs;
+import com.pulumi.cloudflare.inputs.PagesProjectBuildImageAutoUpgradeArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectCanonicalDeploymentArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectLatestDeploymentArgs;
@@ -50,6 +51,21 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<PagesProjectBuildConfigArgs>> buildConfig() {
         return Optional.ofNullable(this.buildConfig);
+    }
+
+    /**
+     * Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     * 
+     */
+    @Import(name="buildImageAutoUpgrade")
+    private @Nullable Output<PagesProjectBuildImageAutoUpgradeArgs> buildImageAutoUpgrade;
+
+    /**
+     * @return Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     * 
+     */
+    public Optional<Output<PagesProjectBuildImageAutoUpgradeArgs>> buildImageAutoUpgrade() {
+        return Optional.ofNullable(this.buildImageAutoUpgrade);
     }
 
     /**
@@ -267,6 +283,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     private PagesProjectState(PagesProjectState $) {
         this.accountId = $.accountId;
         this.buildConfig = $.buildConfig;
+        this.buildImageAutoUpgrade = $.buildImageAutoUpgrade;
         this.canonicalDeployment = $.canonicalDeployment;
         this.createdOn = $.createdOn;
         this.deploymentConfigs = $.deploymentConfigs;
@@ -341,6 +358,27 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder buildConfig(PagesProjectBuildConfigArgs buildConfig) {
             return buildConfig(Output.of(buildConfig));
+        }
+
+        /**
+         * @param buildImageAutoUpgrade Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildImageAutoUpgrade(@Nullable Output<PagesProjectBuildImageAutoUpgradeArgs> buildImageAutoUpgrade) {
+            $.buildImageAutoUpgrade = buildImageAutoUpgrade;
+            return this;
+        }
+
+        /**
+         * @param buildImageAutoUpgrade Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildImageAutoUpgrade(PagesProjectBuildImageAutoUpgradeArgs buildImageAutoUpgrade) {
+            return buildImageAutoUpgrade(Output.of(buildImageAutoUpgrade));
         }
 
         /**

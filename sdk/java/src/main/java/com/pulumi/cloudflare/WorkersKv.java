@@ -100,14 +100,14 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiration);
     }
     /**
-     * Expires the key after a number of seconds. Must be at least 60.
+     * Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
      * 
      */
     @Export(name="expirationTtl", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> expirationTtl;
 
     /**
-     * @return Expires the key after a number of seconds. Must be at least 60.
+     * @return Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
      * 
      */
     public Output<Optional<Double>> expirationTtl() {

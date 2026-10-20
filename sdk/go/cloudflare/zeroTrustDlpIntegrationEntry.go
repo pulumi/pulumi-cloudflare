@@ -80,8 +80,8 @@ type ZeroTrustDlpIntegrationEntry struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus pulumi.StringOutput `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  ZeroTrustDlpIntegrationEntryVariantOutput `pulumi:"variant"`
-	WordList pulumi.StringOutput                       `pulumi:"wordList"`
+	Variant   ZeroTrustDlpIntegrationEntryVariantOutput `pulumi:"variant"`
+	WordLists pulumi.StringArrayOutput                  `pulumi:"wordLists"`
 }
 
 // NewZeroTrustDlpIntegrationEntry registers a new resource with the given unique name, arguments, and options.
@@ -149,8 +149,8 @@ type zeroTrustDlpIntegrationEntryState struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus *string `pulumi:"uploadStatus"`
 	// A Predefined AI prompt classification topic entry.
-	Variant  *ZeroTrustDlpIntegrationEntryVariant `pulumi:"variant"`
-	WordList *string                              `pulumi:"wordList"`
+	Variant   *ZeroTrustDlpIntegrationEntryVariant `pulumi:"variant"`
+	WordLists []string                             `pulumi:"wordLists"`
 }
 
 type ZeroTrustDlpIntegrationEntryState struct {
@@ -180,8 +180,8 @@ type ZeroTrustDlpIntegrationEntryState struct {
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus pulumi.StringPtrInput
 	// A Predefined AI prompt classification topic entry.
-	Variant  ZeroTrustDlpIntegrationEntryVariantPtrInput
-	WordList pulumi.StringPtrInput
+	Variant   ZeroTrustDlpIntegrationEntryVariantPtrInput
+	WordLists pulumi.StringArrayInput
 }
 
 func (ZeroTrustDlpIntegrationEntryState) ElementType() reflect.Type {
@@ -376,8 +376,8 @@ func (o ZeroTrustDlpIntegrationEntryOutput) Variant() ZeroTrustDlpIntegrationEnt
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) ZeroTrustDlpIntegrationEntryVariantOutput { return v.Variant }).(ZeroTrustDlpIntegrationEntryVariantOutput)
 }
 
-func (o ZeroTrustDlpIntegrationEntryOutput) WordList() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.WordList }).(pulumi.StringOutput)
+func (o ZeroTrustDlpIntegrationEntryOutput) WordLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringArrayOutput { return v.WordLists }).(pulumi.StringArrayOutput)
 }
 
 type ZeroTrustDlpIntegrationEntryArrayOutput struct{ *pulumi.OutputState }

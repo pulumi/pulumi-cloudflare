@@ -23,7 +23,7 @@ public final class GetZeroTrustResourceLibraryCategoryResult {
      */
     private String description;
     /**
-     * @return Returns the category ID.
+     * @return Numeric identifier for an application category.
      * 
      */
     private Integer id;
@@ -52,7 +52,7 @@ public final class GetZeroTrustResourceLibraryCategoryResult {
         return this.description;
     }
     /**
-     * @return Returns the category ID.
+     * @return Numeric identifier for an application category.
      * 
      */
     public Integer id() {

@@ -43,7 +43,7 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
      */
     private String applicationTypeDescription;
     /**
-     * @return Returns the category ID.
+     * @return Numeric identifier for an application category.
      * 
      */
     private Integer categoryId;
@@ -64,12 +64,12 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
      */
     private List<String> hostnames;
     /**
-     * @return Returns the human readable ID.
+     * @return Human-readable identifier for the application.
      * 
      */
     private String humanId;
     /**
-     * @return Returns the application ID.
+     * @return Numeric identifier for the application.
      * 
      */
     private Integer id;
@@ -79,12 +79,12 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
      */
     private List<String> ipSubnets;
     /**
-     * @return Returns the application name.
+     * @return Application name.
      * 
      */
     private String name;
     /**
-     * @return Port and protocol pairs matched by the application.
+     * @return Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      * 
      */
     private List<String> portProtocols;
@@ -149,7 +149,7 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
         return this.applicationTypeDescription;
     }
     /**
-     * @return Returns the category ID.
+     * @return Numeric identifier for an application category.
      * 
      */
     public Integer categoryId() {
@@ -180,14 +180,14 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
         return this.hostnames;
     }
     /**
-     * @return Returns the human readable ID.
+     * @return Human-readable identifier for the application.
      * 
      */
     public String humanId() {
         return this.humanId;
     }
     /**
-     * @return Returns the application ID.
+     * @return Numeric identifier for the application.
      * 
      */
     public Integer id() {
@@ -201,14 +201,14 @@ public final class GetZeroTrustResourceLibraryApplicationResult {
         return this.ipSubnets;
     }
     /**
-     * @return Returns the application name.
+     * @return Application name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Port and protocol pairs matched by the application.
+     * @return Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
      * 
      */
     public List<String> portProtocols() {

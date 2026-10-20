@@ -107,7 +107,8 @@ export class TurnstileWidget extends pulumi.CustomResource {
      */
     declare public readonly ephemeralId: pulumi.Output<boolean>;
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      */
     declare public readonly filter: pulumi.Output<string | undefined>;
@@ -281,7 +282,8 @@ export interface TurnstileWidgetState {
      */
     ephemeralId?: pulumi.Input<boolean | undefined>;
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      */
     filter?: pulumi.Input<string | undefined>;
@@ -369,7 +371,8 @@ export interface TurnstileWidgetArgs {
      */
     ephemeralId?: pulumi.Input<boolean | undefined>;
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      */
     filter?: pulumi.Input<string | undefined>;

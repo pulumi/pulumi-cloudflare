@@ -164,7 +164,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// High-availability mode for the WARP Connector tunnel. `None` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `Disabled` means HA is explicitly turned off. `Aws` uses AWS ENI move for failover. `Local` uses virtual IPs (VIPs) on the local interface.
+        /// High-availability mode for the Mesh node. `None` means HA is enabled but no provider is configured yet (newly created nodes default to this). `Disabled` means HA is explicitly turned off. `Aws` uses AWS ENI move for failover. `Local` uses virtual IPs (VIPs) on the local interface.
         /// Available values: "none", "disabled", "aws", "local".
         /// </summary>
         public readonly string HaMode;

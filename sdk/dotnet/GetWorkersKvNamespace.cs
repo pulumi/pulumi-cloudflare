@@ -162,6 +162,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Jurisdiction;
         /// <summary>
+        /// The mode of the Workers KV namespace. Specify `Instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `Instant` is the only supported explicit value.
+        /// Available values: "instant".
+        /// </summary>
+        public readonly string Mode;
+        /// <summary>
         /// ID of the Workers KV namespace.
         /// </summary>
         public readonly string? NamespaceId;
@@ -184,6 +189,8 @@ namespace Pulumi.Cloudflare
 
             string jurisdiction,
 
+            string mode,
+
             string? namespaceId,
 
             bool supportsUrlEncoding,
@@ -194,6 +201,7 @@ namespace Pulumi.Cloudflare
             Filter = filter;
             Id = id;
             Jurisdiction = jurisdiction;
+            Mode = mode;
             NamespaceId = namespaceId;
             SupportsUrlEncoding = supportsUrlEncoding;
             Title = title;

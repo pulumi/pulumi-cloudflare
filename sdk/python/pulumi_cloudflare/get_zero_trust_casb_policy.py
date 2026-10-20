@@ -137,7 +137,7 @@ class GetZeroTrustCasbPolicyResult:
     @pulumi.getter(name="findingTypeId")
     def finding_type_id(self) -> _builtins.str:
         """
-        The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+        The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
         """
         return pulumi.get(self, "finding_type_id")
 

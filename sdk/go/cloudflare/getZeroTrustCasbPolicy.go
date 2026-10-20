@@ -76,7 +76,7 @@ type LookupZeroTrustCasbPolicyResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Whether the policy is enabled. Derived from disabled*at (enabled when disabled*at is unset).
 	Enabled bool `pulumi:"enabled"`
-	// The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+	// The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
 	FindingTypeId string `pulumi:"findingTypeId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
@@ -162,7 +162,7 @@ func (o LookupZeroTrustCasbPolicyResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustCasbPolicyResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+// The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
 func (o LookupZeroTrustCasbPolicyResultOutput) FindingTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustCasbPolicyResult) string { return v.FindingTypeId }).(pulumi.StringOutput)
 }

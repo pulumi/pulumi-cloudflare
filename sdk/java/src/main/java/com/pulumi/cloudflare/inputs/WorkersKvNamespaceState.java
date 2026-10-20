@@ -49,6 +49,23 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: &#34;instant&#34;.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: &#34;instant&#34;.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
      * 
      */
@@ -83,6 +100,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     private WorkersKvNamespaceState(WorkersKvNamespaceState $) {
         this.accountId = $.accountId;
         this.jurisdiction = $.jurisdiction;
+        this.mode = $.mode;
         this.supportsUrlEncoding = $.supportsUrlEncoding;
         this.title = $.title;
     }
@@ -147,6 +165,29 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
          */
         public Builder jurisdiction(String jurisdiction) {
             return jurisdiction(Output.of(jurisdiction));
+        }
+
+        /**
+         * @param mode The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+         * Available values: &#34;instant&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+         * Available values: &#34;instant&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

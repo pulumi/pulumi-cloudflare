@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double LanAllowSubnetSize;
         /// <summary>
-        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
         /// </summary>
         public readonly string Match;
         /// <summary>

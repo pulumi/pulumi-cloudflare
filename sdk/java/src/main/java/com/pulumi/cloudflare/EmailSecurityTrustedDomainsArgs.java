@@ -43,45 +43,45 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
      * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
-    @Import(name="isRecent")
-    private @Nullable Output<Boolean> isRecent;
+    @Import(name="isRecent", required=true)
+    private Output<Boolean> isRecent;
 
     /**
      * @return Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
-    public Optional<Output<Boolean>> isRecent() {
-        return Optional.ofNullable(this.isRecent);
+    public Output<Boolean> isRecent() {
+        return this.isRecent;
     }
 
     /**
      * Whether `pattern` is a regular expression instead of a literal domain.
      * 
      */
-    @Import(name="isRegex")
-    private @Nullable Output<Boolean> isRegex;
+    @Import(name="isRegex", required=true)
+    private Output<Boolean> isRegex;
 
     /**
      * @return Whether `pattern` is a regular expression instead of a literal domain.
      * 
      */
-    public Optional<Output<Boolean>> isRegex() {
-        return Optional.ofNullable(this.isRegex);
+    public Output<Boolean> isRegex() {
+        return this.isRegex;
     }
 
     /**
      * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
-    @Import(name="isSimilarity")
-    private @Nullable Output<Boolean> isSimilarity;
+    @Import(name="isSimilarity", required=true)
+    private Output<Boolean> isSimilarity;
 
     /**
      * @return Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
-    public Optional<Output<Boolean>> isSimilarity() {
-        return Optional.ofNullable(this.isSimilarity);
+    public Output<Boolean> isSimilarity() {
+        return this.isSimilarity;
     }
 
     /**
@@ -164,7 +164,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder isRecent(@Nullable Output<Boolean> isRecent) {
+        public Builder isRecent(Output<Boolean> isRecent) {
             $.isRecent = isRecent;
             return this;
         }
@@ -185,7 +185,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder isRegex(@Nullable Output<Boolean> isRegex) {
+        public Builder isRegex(Output<Boolean> isRegex) {
             $.isRegex = isRegex;
             return this;
         }
@@ -206,7 +206,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder isSimilarity(@Nullable Output<Boolean> isSimilarity) {
+        public Builder isSimilarity(Output<Boolean> isSimilarity) {
             $.isSimilarity = isSimilarity;
             return this;
         }
@@ -245,6 +245,15 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         public EmailSecurityTrustedDomainsArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("EmailSecurityTrustedDomainsArgs", "accountId");
+            }
+            if ($.isRecent == null) {
+                throw new MissingRequiredPropertyException("EmailSecurityTrustedDomainsArgs", "isRecent");
+            }
+            if ($.isRegex == null) {
+                throw new MissingRequiredPropertyException("EmailSecurityTrustedDomainsArgs", "isRegex");
+            }
+            if ($.isSimilarity == null) {
+                throw new MissingRequiredPropertyException("EmailSecurityTrustedDomainsArgs", "isSimilarity");
             }
             if ($.pattern == null) {
                 throw new MissingRequiredPropertyException("EmailSecurityTrustedDomainsArgs", "pattern");

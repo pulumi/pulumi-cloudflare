@@ -71,6 +71,9 @@ type LookupWorkersKvNamespaceResult struct {
 	// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
 	// Available values: "eu", "fedramp", "us".
 	Jurisdiction string `pulumi:"jurisdiction"`
+	// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+	// Available values: "instant".
+	Mode string `pulumi:"mode"`
 	// ID of the Workers KV namespace.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -130,6 +133,12 @@ func (o LookupWorkersKvNamespaceResultOutput) Id() pulumi.StringOutput {
 // Available values: "eu", "fedramp", "us".
 func (o LookupWorkersKvNamespaceResultOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
+}
+
+// The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+// Available values: "instant".
+func (o LookupWorkersKvNamespaceResultOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // ID of the Workers KV namespace.

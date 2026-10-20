@@ -20,15 +20,15 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
      * UUID.
      * 
      */
-    @Import(name="operationId", required=true)
-    private Output<String> operationId;
+    @Import(name="discoveryId", required=true)
+    private Output<String> discoveryId;
 
     /**
      * @return UUID.
      * 
      */
-    public Output<String> operationId() {
-        return this.operationId;
+    public Output<String> discoveryId() {
+        return this.discoveryId;
     }
 
     /**
@@ -56,21 +56,21 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private ApiShieldDiscoveryOperationArgs() {}
 
     private ApiShieldDiscoveryOperationArgs(ApiShieldDiscoveryOperationArgs $) {
-        this.operationId = $.operationId;
+        this.discoveryId = $.discoveryId;
         this.state = $.state;
         this.zoneId = $.zoneId;
     }
@@ -94,24 +94,24 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param operationId UUID.
+         * @param discoveryId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder operationId(Output<String> operationId) {
-            $.operationId = operationId;
+        public Builder discoveryId(Output<String> discoveryId) {
+            $.discoveryId = discoveryId;
             return this;
         }
 
         /**
-         * @param operationId UUID.
+         * @param discoveryId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder operationId(String operationId) {
-            return operationId(Output.of(operationId));
+        public Builder discoveryId(String discoveryId) {
+            return discoveryId(Output.of(discoveryId));
         }
 
         /**
@@ -147,7 +147,7 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -163,8 +163,11 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
         }
 
         public ApiShieldDiscoveryOperationArgs build() {
-            if ($.operationId == null) {
-                throw new MissingRequiredPropertyException("ApiShieldDiscoveryOperationArgs", "operationId");
+            if ($.discoveryId == null) {
+                throw new MissingRequiredPropertyException("ApiShieldDiscoveryOperationArgs", "discoveryId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ApiShieldDiscoveryOperationArgs", "zoneId");
             }
             return $;
         }

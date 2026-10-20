@@ -28,7 +28,7 @@ class GetWorkersKvNamespaceResult:
     """
     A collection of values returned by getWorkersKvNamespace.
     """
-    def __init__(__self__, account_id=None, filter=None, id=None, jurisdiction=None, namespace_id=None, supports_url_encoding=None, title=None):
+    def __init__(__self__, account_id=None, filter=None, id=None, jurisdiction=None, mode=None, namespace_id=None, supports_url_encoding=None, title=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -41,6 +41,9 @@ class GetWorkersKvNamespaceResult:
         if jurisdiction and not isinstance(jurisdiction, str):
             raise TypeError("Expected argument 'jurisdiction' to be a str")
         pulumi.set(__self__, "jurisdiction", jurisdiction)
+        if mode and not isinstance(mode, str):
+            raise TypeError("Expected argument 'mode' to be a str")
+        pulumi.set(__self__, "mode", mode)
         if namespace_id and not isinstance(namespace_id, str):
             raise TypeError("Expected argument 'namespace_id' to be a str")
         pulumi.set(__self__, "namespace_id", namespace_id)
@@ -82,6 +85,15 @@ class GetWorkersKvNamespaceResult:
         return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+        Available values: "instant".
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> Optional[_builtins.str]:
         """
@@ -116,6 +128,7 @@ class AwaitableGetWorkersKvNamespaceResult(GetWorkersKvNamespaceResult):
             filter=self.filter,
             id=self.id,
             jurisdiction=self.jurisdiction,
+            mode=self.mode,
             namespace_id=self.namespace_id,
             supports_url_encoding=self.supports_url_encoding,
             title=self.title)
@@ -157,6 +170,7 @@ def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         jurisdiction=pulumi.get(__ret__, 'jurisdiction'),
+        mode=pulumi.get(__ret__, 'mode'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         supports_url_encoding=pulumi.get(__ret__, 'supports_url_encoding'),
         title=pulumi.get(__ret__, 'title'))
@@ -195,6 +209,7 @@ def get_workers_kv_namespace_output(account_id: pulumi.Input[Optional[Optional[_
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         jurisdiction=pulumi.get(__response__, 'jurisdiction'),
+        mode=pulumi.get(__response__, 'mode'),
         namespace_id=pulumi.get(__response__, 'namespace_id'),
         supports_url_encoding=pulumi.get(__response__, 'supports_url_encoding'),
         title=pulumi.get(__response__, 'title')))

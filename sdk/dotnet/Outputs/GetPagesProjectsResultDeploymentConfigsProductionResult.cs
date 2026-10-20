@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetPagesProjectsResultDeploymentConfigsProductionBrowsersResult> Browsers;
         /// <summary>
-        /// The major version of the build image to use for Pages Functions.
+        /// The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `BuildImageAutoUpgrade` is set on the project.
         /// </summary>
         public readonly int BuildImageMajorVersion;
         /// <summary>

@@ -154,6 +154,21 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
+     * Indicate the read-only region the certificate authority&#39;s key material is pinned to. Omitted for certificates that were created without a region.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return Indicate the read-only region the certificate authority&#39;s key material is pinned to. Omitted for certificates that were created without a region.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
@@ -212,6 +227,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         this.inUse = $.inUse;
         this.issuerOrg = $.issuerOrg;
         this.issuerRaw = $.issuerRaw;
+        this.region = $.region;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
         this.uploadedOn = $.uploadedOn;
@@ -422,6 +438,27 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
          */
         public Builder issuerRaw(String issuerRaw) {
             return issuerRaw(Output.of(issuerRaw));
+        }
+
+        /**
+         * @param region Indicate the read-only region the certificate authority&#39;s key material is pinned to. Omitted for certificates that were created without a region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region Indicate the read-only region the certificate authority&#39;s key material is pinned to. Omitted for certificates that were created without a region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

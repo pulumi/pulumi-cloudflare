@@ -67,7 +67,7 @@ type LookupZeroTrustOrganizationResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	AllowAuthenticateViaWarp bool `pulumi:"allowAuthenticateViaWarp"`
-	// The unique subdomain assigned to your Zero Trust organization.
+	// The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
 	AuthDomain string `pulumi:"authDomain"`
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity bool                                `pulumi:"autoRedirectToIdentity"`
@@ -81,11 +81,11 @@ type LookupZeroTrustOrganizationResult struct {
 	LoginDesign  GetZeroTrustOrganizationLoginDesign `pulumi:"loginDesign"`
 	// Configures multi-factor authentication (MFA) settings for an organization.
 	MfaConfig GetZeroTrustOrganizationMfaConfig `pulumi:"mfaConfig"`
+	// Configures PIV key requirements for MFA using hardware security keys.
+	MfaPivKeyRequirements GetZeroTrustOrganizationMfaPivKeyRequirements `pulumi:"mfaPivKeyRequirements"`
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
 	MfaRequiredForAllApps bool `pulumi:"mfaRequiredForAllApps"`
-	// Configures SSH PIV key requirements for MFA using hardware security keys.
-	MfaSshPivKeyRequirements GetZeroTrustOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
-	// The name of your Zero Trust organization.
+	// The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
 	Name string `pulumi:"name"`
 	// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
 	ServiceTokenInactivity GetZeroTrustOrganizationServiceTokenInactivity `pulumi:"serviceTokenInactivity"`
@@ -149,7 +149,7 @@ func (o LookupZeroTrustOrganizationResultOutput) AllowAuthenticateViaWarp() pulu
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.AllowAuthenticateViaWarp }).(pulumi.BoolOutput)
 }
 
-// The unique subdomain assigned to your Zero Trust organization.
+// The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
 func (o LookupZeroTrustOrganizationResultOutput) AuthDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.AuthDomain }).(pulumi.StringOutput)
 }
@@ -187,19 +187,19 @@ func (o LookupZeroTrustOrganizationResultOutput) MfaConfig() GetZeroTrustOrganiz
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaConfig { return v.MfaConfig }).(GetZeroTrustOrganizationMfaConfigOutput)
 }
 
+// Configures PIV key requirements for MFA using hardware security keys.
+func (o LookupZeroTrustOrganizationResultOutput) MfaPivKeyRequirements() GetZeroTrustOrganizationMfaPivKeyRequirementsOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaPivKeyRequirements {
+		return v.MfaPivKeyRequirements
+	}).(GetZeroTrustOrganizationMfaPivKeyRequirementsOutput)
+}
+
 // Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
 func (o LookupZeroTrustOrganizationResultOutput) MfaRequiredForAllApps() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.MfaRequiredForAllApps }).(pulumi.BoolOutput)
 }
 
-// Configures SSH PIV key requirements for MFA using hardware security keys.
-func (o LookupZeroTrustOrganizationResultOutput) MfaSshPivKeyRequirements() GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput {
-	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaSshPivKeyRequirements {
-		return v.MfaSshPivKeyRequirements
-	}).(GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput)
-}
-
-// The name of your Zero Trust organization.
+// The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
 func (o LookupZeroTrustOrganizationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.Name }).(pulumi.StringOutput)
 }

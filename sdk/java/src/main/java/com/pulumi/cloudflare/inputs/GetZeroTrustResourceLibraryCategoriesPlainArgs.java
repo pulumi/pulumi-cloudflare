@@ -24,14 +24,14 @@ public final class GetZeroTrustResourceLibraryCategoriesPlainArgs extends com.pu
     }
 
     /**
-     * Limit of number of results to return.
+     * Number of results to return. Defaults to 25; values are clamped to 1–250.
      * 
      */
     @Import(name="limit")
     private @Nullable Integer limit;
 
     /**
-     * @return Limit of number of results to return.
+     * @return Number of results to return. Defaults to 25; values are clamped to 1–250.
      * 
      */
     public Optional<Integer> limit() {
@@ -54,14 +54,14 @@ public final class GetZeroTrustResourceLibraryCategoriesPlainArgs extends com.pu
     }
 
     /**
-     * Offset of results to return.
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
      * 
      */
     @Import(name="offset")
     private @Nullable Integer offset;
 
     /**
-     * @return Offset of results to return.
+     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0.
      * 
      */
     public Optional<Integer> offset() {
@@ -101,7 +101,7 @@ public final class GetZeroTrustResourceLibraryCategoriesPlainArgs extends com.pu
         }
 
         /**
-         * @param limit Limit of number of results to return.
+         * @param limit Number of results to return. Defaults to 25; values are clamped to 1–250.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class GetZeroTrustResourceLibraryCategoriesPlainArgs extends com.pu
         }
 
         /**
-         * @param offset Offset of results to return.
+         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0.
          * 
          * @return builder
          * 

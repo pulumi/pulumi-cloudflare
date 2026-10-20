@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Returns the category ID.
+        /// Numeric identifier for an application category.
         /// </summary>
         public readonly int Id;
         /// <summary>

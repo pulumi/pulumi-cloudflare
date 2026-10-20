@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerScriptBindingOutboundArgs;
+import com.pulumi.cloudflare.inputs.WorkerScriptBindingRetryArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptBindingSimpleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -474,6 +475,21 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * 
+     */
+    @Import(name="retry")
+    private @Nullable Output<WorkerScriptBindingRetryArgs> retry;
+
+    /**
+     * @return Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+     * 
+     */
+    public Optional<Output<WorkerScriptBindingRetryArgs>> retry() {
+        return Optional.ofNullable(this.retry);
+    }
+
+    /**
      * The script where the Durable Object is defined, if it is external to this Worker.
      * 
      */
@@ -703,6 +719,7 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
         this.part = $.part;
         this.pipeline = $.pipeline;
         this.queueName = $.queueName;
+        this.retry = $.retry;
         this.scriptName = $.scriptName;
         this.secretName = $.secretName;
         this.service = $.service;
@@ -1388,6 +1405,27 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
          */
         public Builder queueName(String queueName) {
             return queueName(Output.of(queueName));
+        }
+
+        /**
+         * @param retry Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retry(@Nullable Output<WorkerScriptBindingRetryArgs> retry) {
+            $.retry = retry;
+            return this;
+        }
+
+        /**
+         * @param retry Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retry(WorkerScriptBindingRetryArgs retry) {
+            return retry(Output.of(retry));
         }
 
         /**

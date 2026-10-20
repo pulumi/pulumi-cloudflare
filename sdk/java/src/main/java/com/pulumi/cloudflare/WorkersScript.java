@@ -279,6 +279,22 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.bindings;
     }
     /**
+     * When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * Available values: &#34;strict&#34;.
+     * 
+     */
+    @Export(name="bindingsInherit", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bindingsInherit;
+
+    /**
+     * @return When set to &#34;strict&#34;, the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+     * Available values: &#34;strict&#34;.
+     * 
+     */
+    public Output<Optional<String>> bindingsInherit() {
+        return Codegen.optional(this.bindingsInherit);
+    }
+    /**
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      * 
      */

@@ -372,6 +372,8 @@ import com.pulumi.cloudflare.inputs.GetMagicWanStaticRouteArgs;
 import com.pulumi.cloudflare.inputs.GetMagicWanStaticRoutePlainArgs;
 import com.pulumi.cloudflare.inputs.GetManagedTransformsArgs;
 import com.pulumi.cloudflare.inputs.GetManagedTransformsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetMonetizationRulesArgs;
+import com.pulumi.cloudflare.inputs.GetMonetizationRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetMoqRelayArgs;
 import com.pulumi.cloudflare.inputs.GetMoqRelayPlainArgs;
 import com.pulumi.cloudflare.inputs.GetMoqRelaysArgs;
@@ -486,10 +488,6 @@ import com.pulumi.cloudflare.inputs.GetRegionalHostnamesArgs;
 import com.pulumi.cloudflare.inputs.GetRegionalHostnamesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetRegionalTieredCacheArgs;
 import com.pulumi.cloudflare.inputs.GetRegionalTieredCachePlainArgs;
-import com.pulumi.cloudflare.inputs.GetRegistrarDomainArgs;
-import com.pulumi.cloudflare.inputs.GetRegistrarDomainPlainArgs;
-import com.pulumi.cloudflare.inputs.GetRegistrarDomainsArgs;
-import com.pulumi.cloudflare.inputs.GetRegistrarDomainsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetResourceGroupArgs;
 import com.pulumi.cloudflare.inputs.GetResourceGroupPlainArgs;
 import com.pulumi.cloudflare.inputs.GetResourceGroupsArgs;
@@ -1124,6 +1122,7 @@ import com.pulumi.cloudflare.outputs.GetMagicWanGreTunnelResult;
 import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelResult;
 import com.pulumi.cloudflare.outputs.GetMagicWanStaticRouteResult;
 import com.pulumi.cloudflare.outputs.GetManagedTransformsResult;
+import com.pulumi.cloudflare.outputs.GetMonetizationRulesResult;
 import com.pulumi.cloudflare.outputs.GetMoqRelayResult;
 import com.pulumi.cloudflare.outputs.GetMoqRelaysInvokeResult;
 import com.pulumi.cloudflare.outputs.GetMtlsCertificateAssociationsResult;
@@ -1181,8 +1180,6 @@ import com.pulumi.cloudflare.outputs.GetRateLimitResult;
 import com.pulumi.cloudflare.outputs.GetRegionalHostnameResult;
 import com.pulumi.cloudflare.outputs.GetRegionalHostnamesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetRegionalTieredCacheResult;
-import com.pulumi.cloudflare.outputs.GetRegistrarDomainResult;
-import com.pulumi.cloudflare.outputs.GetRegistrarDomainsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetResourceGroupResult;
 import com.pulumi.cloudflare.outputs.GetResourceGroupsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetRulesetResult;
@@ -50615,6 +50612,196 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMonetizationRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMonetizationRules = CloudflareFunctions.getMonetizationRules(GetMonetizationRulesArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonetizationRulesResult> getMonetizationRules(GetMonetizationRulesArgs args) {
+        return getMonetizationRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMonetizationRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMonetizationRules = CloudflareFunctions.getMonetizationRules(GetMonetizationRulesArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonetizationRulesResult> getMonetizationRulesPlain(GetMonetizationRulesPlainArgs args) {
+        return getMonetizationRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMonetizationRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMonetizationRules = CloudflareFunctions.getMonetizationRules(GetMonetizationRulesArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonetizationRulesResult> getMonetizationRules(GetMonetizationRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getMonetizationRules:getMonetizationRules", TypeShape.of(GetMonetizationRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMonetizationRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMonetizationRules = CloudflareFunctions.getMonetizationRules(GetMonetizationRulesArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonetizationRulesResult> getMonetizationRules(GetMonetizationRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getMonetizationRules:getMonetizationRules", TypeShape.of(GetMonetizationRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetMonetizationRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleMonetizationRules = CloudflareFunctions.getMonetizationRules(GetMonetizationRulesArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonetizationRulesResult> getMonetizationRulesPlain(GetMonetizationRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getMonetizationRules:getMonetizationRules", TypeShape.of(GetMonetizationRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.cloudflare.inputs.GetMoqRelayArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
@@ -64888,391 +65075,6 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetRegionalTieredCacheResult> getRegionalTieredCachePlain(GetRegionalTieredCachePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", TypeShape.of(GetRegionalTieredCacheResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomain = CloudflareFunctions.getRegistrarDomain(GetRegistrarDomainArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .domainName("example.com")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetRegistrarDomainResult> getRegistrarDomain(GetRegistrarDomainArgs args) {
-        return getRegistrarDomain(args, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomain = CloudflareFunctions.getRegistrarDomain(GetRegistrarDomainArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .domainName("example.com")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetRegistrarDomainResult> getRegistrarDomainPlain(GetRegistrarDomainPlainArgs args) {
-        return getRegistrarDomainPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomain = CloudflareFunctions.getRegistrarDomain(GetRegistrarDomainArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .domainName("example.com")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetRegistrarDomainResult> getRegistrarDomain(GetRegistrarDomainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getRegistrarDomain:getRegistrarDomain", TypeShape.of(GetRegistrarDomainResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomain = CloudflareFunctions.getRegistrarDomain(GetRegistrarDomainArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .domainName("example.com")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetRegistrarDomainResult> getRegistrarDomain(GetRegistrarDomainArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getRegistrarDomain:getRegistrarDomain", TypeShape.of(GetRegistrarDomainResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomain = CloudflareFunctions.getRegistrarDomain(GetRegistrarDomainArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .domainName("example.com")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetRegistrarDomainResult> getRegistrarDomainPlain(GetRegistrarDomainPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("cloudflare:index/getRegistrarDomain:getRegistrarDomain", TypeShape.of(GetRegistrarDomainResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomains = CloudflareFunctions.getRegistrarDomains(GetRegistrarDomainsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetRegistrarDomainsInvokeResult> getRegistrarDomains(GetRegistrarDomainsArgs args) {
-        return getRegistrarDomains(args, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomains = CloudflareFunctions.getRegistrarDomains(GetRegistrarDomainsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetRegistrarDomainsInvokeResult> getRegistrarDomainsPlain(GetRegistrarDomainsPlainArgs args) {
-        return getRegistrarDomainsPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomains = CloudflareFunctions.getRegistrarDomains(GetRegistrarDomainsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetRegistrarDomainsInvokeResult> getRegistrarDomains(GetRegistrarDomainsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getRegistrarDomains:getRegistrarDomains", TypeShape.of(GetRegistrarDomainsInvokeResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomains = CloudflareFunctions.getRegistrarDomains(GetRegistrarDomainsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetRegistrarDomainsInvokeResult> getRegistrarDomains(GetRegistrarDomainsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getRegistrarDomains:getRegistrarDomains", TypeShape.of(GetRegistrarDomainsInvokeResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetRegistrarDomainsArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleRegistrarDomains = CloudflareFunctions.getRegistrarDomains(GetRegistrarDomainsArgs.builder()
-     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetRegistrarDomainsInvokeResult> getRegistrarDomainsPlain(GetRegistrarDomainsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("cloudflare:index/getRegistrarDomains:getRegistrarDomains", TypeShape.of(GetRegistrarDomainsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Accepted Permissions
@@ -116106,6 +115908,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .fields("fields")
      *             .filter("filter")
+     *             .lookup("xx")
      *             .orderBy("order_by")
      *             .search("xx")
      *             .build());
@@ -116148,6 +115951,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .fields("fields")
      *             .filter("filter")
+     *             .lookup("xx")
      *             .orderBy("order_by")
      *             .search("xx")
      *             .build());
@@ -116190,6 +115994,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .fields("fields")
      *             .filter("filter")
+     *             .lookup("xx")
      *             .orderBy("order_by")
      *             .search("xx")
      *             .build());
@@ -116232,6 +116037,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .fields("fields")
      *             .filter("filter")
+     *             .lookup("xx")
      *             .orderBy("order_by")
      *             .search("xx")
      *             .build());
@@ -116274,6 +116080,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .fields("fields")
      *             .filter("filter")
+     *             .lookup("xx")
      *             .orderBy("order_by")
      *             .search("xx")
      *             .build());
@@ -124477,6 +124284,7 @@ public final class CloudflareFunctions {
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
      * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpMcpUrl` | String | Optional per-zone path of the site&#39;s own MCP server, used by the WebMCP mcp-s... |
      * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
@@ -124598,6 +124406,7 @@ public final class CloudflareFunctions {
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
      * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpMcpUrl` | String | Optional per-zone path of the site&#39;s own MCP server, used by the WebMCP mcp-s... |
      * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
@@ -124719,6 +124528,7 @@ public final class CloudflareFunctions {
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
      * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpMcpUrl` | String | Optional per-zone path of the site&#39;s own MCP server, used by the WebMCP mcp-s... |
      * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
@@ -124840,6 +124650,7 @@ public final class CloudflareFunctions {
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
      * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpMcpUrl` | String | Optional per-zone path of the site&#39;s own MCP server, used by the WebMCP mcp-s... |
      * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |
@@ -124961,6 +124772,7 @@ public final class CloudflareFunctions {
      * | `trueClientIpHeader` | `&#34;on&#34;` / `&#34;off&#34;` | Allows customer to continue to use True Client IP (Akamai feature) in the hea... |
      * | `waf` | `&#34;on&#34;` / `&#34;off&#34;` | The WAF examines HTTP requests to your website.  It inspects both GET and POS... |
      * | `webmcpEnabled` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare injects the WebMCP bridge (bridge.js) into HTML resp... |
+     * | `webmcpMcpUrl` | String | Optional per-zone path of the site&#39;s own MCP server, used by the WebMCP mcp-s... |
      * | `webmcpPacks` | String | Optional per-zone override of which bundled WebMCP tool packs the injected br... |
      * | `webp` | `&#34;on&#34;` / `&#34;off&#34;` | When the client requesting the image supports the WebP image codec, and WebP ... |
      * | `websockets` | `&#34;on&#34;` / `&#34;off&#34;` | WebSockets are open connections sustained between the client and the origin s... |

@@ -253,6 +253,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptBinding>> Bindings { get; private set; } = null!;
 
         /// <summary>
+        /// When set to "strict", the upload will fail if any `Inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        /// Available values: "strict".
+        /// </summary>
+        [Output("bindingsInherit")]
+        public Output<string?> BindingsInherit { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `Fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Output("bodyPart")]
@@ -544,6 +551,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// When set to "strict", the upload will fail if any `Inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        /// Available values: "strict".
+        /// </summary>
+        [Input("bindingsInherit")]
+        public Input<string>? BindingsInherit { get; set; }
+
+        /// <summary>
         /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `Fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Input("bodyPart")]
@@ -758,6 +772,13 @@ namespace Pulumi.Cloudflare
             get => _bindings ?? (_bindings = new InputList<Inputs.WorkerScriptBindingGetArgs>());
             set => _bindings = value;
         }
+
+        /// <summary>
+        /// When set to "strict", the upload will fail if any `Inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.
+        /// Available values: "strict".
+        /// </summary>
+        [Input("bindingsInherit")]
+        public Input<string>? BindingsInherit { get; set; }
 
         /// <summary>
         /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `Fetch` event). Indicates a `service worker syntax` Worker.

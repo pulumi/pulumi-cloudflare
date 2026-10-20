@@ -182,7 +182,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      */
     declare public readonly serviceAuth401Redirect: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
      */
     declare public readonly sessionDuration: pulumi.Output<string>;
     /**
@@ -197,6 +197,9 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
+    /**
+     * Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+     */
     declare public readonly targetCriterias: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
@@ -456,7 +459,7 @@ export interface ZeroTrustAccessApplicationState {
      */
     serviceAuth401Redirect?: pulumi.Input<boolean | undefined>;
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
      */
     sessionDuration?: pulumi.Input<string | undefined>;
     /**
@@ -471,6 +474,9 @@ export interface ZeroTrustAccessApplicationState {
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+     */
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[] | undefined>;
     /**
      * The application type.
@@ -622,7 +628,7 @@ export interface ZeroTrustAccessApplicationArgs {
      */
     serviceAuth401Redirect?: pulumi.Input<boolean | undefined>;
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
      */
     sessionDuration?: pulumi.Input<string | undefined>;
     /**
@@ -637,6 +643,9 @@ export interface ZeroTrustAccessApplicationArgs {
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+     */
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[] | undefined>;
     /**
      * The application type.

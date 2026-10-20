@@ -45,6 +45,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string IssuerRaw;
         /// <summary>
+        /// Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
         /// Available values: "custom", "GatewayManaged".
         /// </summary>
@@ -72,6 +76,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string issuerRaw,
 
+            string region,
+
             string type,
 
             string updatedAt,
@@ -87,6 +93,7 @@ namespace Pulumi.Cloudflare.Outputs
             InUse = inUse;
             IssuerOrg = issuerOrg;
             IssuerRaw = issuerRaw;
+            Region = region;
             Type = type;
             UpdatedAt = updatedAt;
             UploadedOn = uploadedOn;

@@ -162,6 +162,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? IssuerUrl { get; set; }
 
         /// <summary>
+        /// When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+        /// </summary>
+        [Input("loginPageAutoPrompt")]
+        public Input<bool>? LoginPageAutoPrompt { get; set; }
+
+        /// <summary>
         /// The maximum URL length the IdP accepts for the SSO redirect URL.
         /// When the constructed SSO URL would exceed this length, the RelayState
         /// is stored server-side and a short nonce is passed to the IdP instead.

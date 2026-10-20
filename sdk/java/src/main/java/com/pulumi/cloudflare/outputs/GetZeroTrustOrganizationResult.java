@@ -6,7 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationLoginDesign;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationMfaConfig;
-import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirements;
+import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationMfaPivKeyRequirements;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationServiceTokenInactivity;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -30,7 +30,7 @@ public final class GetZeroTrustOrganizationResult {
      */
     private Boolean allowAuthenticateViaWarp;
     /**
-     * @return The unique subdomain assigned to your Zero Trust organization.
+     * @return The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      * 
      */
     private String authDomain;
@@ -62,17 +62,17 @@ public final class GetZeroTrustOrganizationResult {
      */
     private GetZeroTrustOrganizationMfaConfig mfaConfig;
     /**
+     * @return Configures PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    private GetZeroTrustOrganizationMfaPivKeyRequirements mfaPivKeyRequirements;
+    /**
      * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
     private Boolean mfaRequiredForAllApps;
     /**
-     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
-     * 
-     */
-    private GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements;
-    /**
-     * @return The name of your Zero Trust organization.
+     * @return The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      * 
      */
     private String name;
@@ -138,7 +138,7 @@ public final class GetZeroTrustOrganizationResult {
         return this.allowAuthenticateViaWarp;
     }
     /**
-     * @return The unique subdomain assigned to your Zero Trust organization.
+     * @return The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).
      * 
      */
     public String authDomain() {
@@ -186,6 +186,13 @@ public final class GetZeroTrustOrganizationResult {
         return this.mfaConfig;
     }
     /**
+     * @return Configures PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    public GetZeroTrustOrganizationMfaPivKeyRequirements mfaPivKeyRequirements() {
+        return this.mfaPivKeyRequirements;
+    }
+    /**
      * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot contain only the infrastructure SSH authenticators (&#39;piv*key&#39; and &#39;ssh*fido2*key&#39;) if the organization has any non-infrastructure applications.
      * 
      */
@@ -193,14 +200,7 @@ public final class GetZeroTrustOrganizationResult {
         return this.mfaRequiredForAllApps;
     }
     /**
-     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
-     * 
-     */
-    public GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements() {
-        return this.mfaSshPivKeyRequirements;
-    }
-    /**
-     * @return The name of your Zero Trust organization.
+     * @return The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).
      * 
      */
     public String name() {
@@ -289,8 +289,8 @@ public final class GetZeroTrustOrganizationResult {
         private Boolean isUiReadOnly;
         private GetZeroTrustOrganizationLoginDesign loginDesign;
         private GetZeroTrustOrganizationMfaConfig mfaConfig;
+        private GetZeroTrustOrganizationMfaPivKeyRequirements mfaPivKeyRequirements;
         private Boolean mfaRequiredForAllApps;
-        private GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements;
         private String name;
         private GetZeroTrustOrganizationServiceTokenInactivity serviceTokenInactivity;
         private String sessionDuration;
@@ -314,8 +314,8 @@ public final class GetZeroTrustOrganizationResult {
     	      this.isUiReadOnly = defaults.isUiReadOnly;
     	      this.loginDesign = defaults.loginDesign;
     	      this.mfaConfig = defaults.mfaConfig;
+    	      this.mfaPivKeyRequirements = defaults.mfaPivKeyRequirements;
     	      this.mfaRequiredForAllApps = defaults.mfaRequiredForAllApps;
-    	      this.mfaSshPivKeyRequirements = defaults.mfaSshPivKeyRequirements;
     	      this.name = defaults.name;
     	      this.serviceTokenInactivity = defaults.serviceTokenInactivity;
     	      this.sessionDuration = defaults.sessionDuration;
@@ -410,19 +410,19 @@ public final class GetZeroTrustOrganizationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mfaPivKeyRequirements(GetZeroTrustOrganizationMfaPivKeyRequirements mfaPivKeyRequirements) {
+            if (mfaPivKeyRequirements == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaPivKeyRequirements");
+            }
+            this.mfaPivKeyRequirements = mfaPivKeyRequirements;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mfaRequiredForAllApps(Boolean mfaRequiredForAllApps) {
             if (mfaRequiredForAllApps == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaRequiredForAllApps");
             }
             this.mfaRequiredForAllApps = mfaRequiredForAllApps;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder mfaSshPivKeyRequirements(GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements) {
-            if (mfaSshPivKeyRequirements == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaSshPivKeyRequirements");
-            }
-            this.mfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
             return this;
         }
         @CustomType.Setter
@@ -518,8 +518,8 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.isUiReadOnly = isUiReadOnly;
             _resultValue.loginDesign = loginDesign;
             _resultValue.mfaConfig = mfaConfig;
+            _resultValue.mfaPivKeyRequirements = mfaPivKeyRequirements;
             _resultValue.mfaRequiredForAllApps = mfaRequiredForAllApps;
-            _resultValue.mfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
             _resultValue.name = name;
             _resultValue.serviceTokenInactivity = serviceTokenInactivity;
             _resultValue.sessionDuration = sessionDuration;

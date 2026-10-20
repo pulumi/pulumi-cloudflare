@@ -20,19 +20,13 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustCasbWebhook = new cloudflare.ZeroTrustCasbWebhook("example_zero_trust_casb_webhook", {
  *     accountId: "46148281d8a93d002ef242d8b0d5f9f6",
- *     authenticationType: "Bearer Auth",
+ *     authenticationType: "HMAC-Signing",
  *     destinationUrl: "https://example.com/webhook",
  *     label: "Send to Slack",
- *     headers: [
- *         {
- *             key: "Authorization",
- *             value: "Bearer token123",
- *         },
- *         {
- *             key: "X-Custom-Header",
- *             value: "value",
- *         },
- *     ],
+ *     headers: [{
+ *         key: "X-Custom-Header",
+ *         value: "value",
+ *     }],
  *     signingSecret: "my-secret-key",
  *     status: "enabled",
  * });

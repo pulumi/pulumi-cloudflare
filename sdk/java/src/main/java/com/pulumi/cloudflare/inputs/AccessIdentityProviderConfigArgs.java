@@ -307,6 +307,21 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
     }
 
     /**
+     * When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     * 
+     */
+    @Import(name="loginPageAutoPrompt")
+    private @Nullable Output<Boolean> loginPageAutoPrompt;
+
+    /**
+     * @return When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+     * 
+     */
+    public Optional<Output<Boolean>> loginPageAutoPrompt() {
+        return Optional.ofNullable(this.loginPageAutoPrompt);
+    }
+
+    /**
      * The maximum URL length the IdP accepts for the SSO redirect URL.
      * When the constructed SSO URL would exceed this length, the RelayState
      * is stored server-side and a short nonce is passed to the IdP instead.
@@ -538,6 +553,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         this.headerAttributes = $.headerAttributes;
         this.idpPublicCerts = $.idpPublicCerts;
         this.issuerUrl = $.issuerUrl;
+        this.loginPageAutoPrompt = $.loginPageAutoPrompt;
         this.maxSsoUrlLength = $.maxSsoUrlLength;
         this.oktaAccount = $.oktaAccount;
         this.oneloginAccount = $.oneloginAccount;
@@ -1011,6 +1027,27 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
          */
         public Builder issuerUrl(String issuerUrl) {
             return issuerUrl(Output.of(issuerUrl));
+        }
+
+        /**
+         * @param loginPageAutoPrompt When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPageAutoPrompt(@Nullable Output<Boolean> loginPageAutoPrompt) {
+            $.loginPageAutoPrompt = loginPageAutoPrompt;
+            return this;
+        }
+
+        /**
+         * @param loginPageAutoPrompt When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPageAutoPrompt(Boolean loginPageAutoPrompt) {
+            return loginPageAutoPrompt(Output.of(loginPageAutoPrompt));
         }
 
         /**

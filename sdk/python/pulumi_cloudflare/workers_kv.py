@@ -34,7 +34,7 @@ class WorkersKvArgs:
         :param pulumi.Input[_builtins.str] namespace_id: ID of the Workers KV namespace.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         :param pulumi.Input[_builtins.float] expiration: Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
-        :param pulumi.Input[_builtins.float] expiration_ttl: Expires the key after a number of seconds. Must be at least 60.
+        :param pulumi.Input[_builtins.float] expiration_ttl: Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -112,7 +112,7 @@ class WorkersKvArgs:
     @pulumi.getter(name="expirationTtl")
     def expiration_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Expires the key after a number of seconds. Must be at least 60.
+        Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
         """
         return pulumi.get(self, "expiration_ttl")
 
@@ -148,7 +148,7 @@ class _WorkersKvState:
 
         :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
         :param pulumi.Input[_builtins.float] expiration: Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
-        :param pulumi.Input[_builtins.float] expiration_ttl: Expires the key after a number of seconds. Must be at least 60.
+        :param pulumi.Input[_builtins.float] expiration_ttl: Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
         :param pulumi.Input[_builtins.str] namespace_id: ID of the Workers KV namespace.
@@ -197,7 +197,7 @@ class _WorkersKvState:
     @pulumi.getter(name="expirationTtl")
     def expiration_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Expires the key after a number of seconds. Must be at least 60.
+        Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
         """
         return pulumi.get(self, "expiration_ttl")
 
@@ -300,7 +300,7 @@ class WorkersKv(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
         :param pulumi.Input[_builtins.float] expiration: Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
-        :param pulumi.Input[_builtins.float] expiration_ttl: Expires the key after a number of seconds. Must be at least 60.
+        :param pulumi.Input[_builtins.float] expiration_ttl: Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
         :param pulumi.Input[_builtins.str] namespace_id: ID of the Workers KV namespace.
@@ -412,7 +412,7 @@ class WorkersKv(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
         :param pulumi.Input[_builtins.float] expiration: Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
-        :param pulumi.Input[_builtins.float] expiration_ttl: Expires the key after a number of seconds. Must be at least 60.
+        :param pulumi.Input[_builtins.float] expiration_ttl: Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
         :param pulumi.Input[_builtins.str] namespace_id: ID of the Workers KV namespace.
@@ -451,7 +451,7 @@ class WorkersKv(pulumi.CustomResource):
     @pulumi.getter(name="expirationTtl")
     def expiration_ttl(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        Expires the key after a number of seconds. Must be at least 60.
+        Number of seconds until the key expires. Must be at least 60. Takes precedence over `expiration` when both are specified.
         """
         return pulumi.get(self, "expiration_ttl")
 

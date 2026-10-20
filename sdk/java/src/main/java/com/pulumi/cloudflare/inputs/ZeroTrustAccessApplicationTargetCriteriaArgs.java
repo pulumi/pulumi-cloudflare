@@ -3,6 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationTargetCriteriaExcludeArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationTargetCriteriaIncludeArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationTargetCriteriaRequireArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -11,11 +14,43 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustAccessApplicationTargetCriteriaArgs Empty = new ZeroTrustAccessApplicationTargetCriteriaArgs();
+
+    /**
+     * Target is excluded when any selector in this rule matches.
+     * 
+     */
+    @Import(name="exclude")
+    private @Nullable Output<ZeroTrustAccessApplicationTargetCriteriaExcludeArgs> exclude;
+
+    /**
+     * @return Target is excluded when any selector in this rule matches.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessApplicationTargetCriteriaExcludeArgs>> exclude() {
+        return Optional.ofNullable(this.exclude);
+    }
+
+    /**
+     * Target matches when any selector in this rule matches.
+     * 
+     */
+    @Import(name="include")
+    private @Nullable Output<ZeroTrustAccessApplicationTargetCriteriaIncludeArgs> include;
+
+    /**
+     * @return Target matches when any selector in this rule matches.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessApplicationTargetCriteriaIncludeArgs>> include() {
+        return Optional.ofNullable(this.include);
+    }
 
     /**
      * The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
@@ -50,25 +85,43 @@ public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulu
     }
 
     /**
-     * Contains a map of target attribute keys to target attribute values.
+     * Target matches only when every selector in this rule matches.
      * 
      */
-    @Import(name="targetAttributes", required=true)
-    private Output<Map<String,List<String>>> targetAttributes;
+    @Import(name="require")
+    private @Nullable Output<ZeroTrustAccessApplicationTargetCriteriaRequireArgs> require;
 
     /**
-     * @return Contains a map of target attribute keys to target attribute values.
+     * @return Target matches only when every selector in this rule matches.
      * 
      */
-    public Output<Map<String,List<String>>> targetAttributes() {
-        return this.targetAttributes;
+    public Optional<Output<ZeroTrustAccessApplicationTargetCriteriaRequireArgs>> require() {
+        return Optional.ofNullable(this.require);
+    }
+
+    /**
+     * Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+     * 
+     */
+    @Import(name="targetAttributes")
+    private @Nullable Output<Map<String,List<String>>> targetAttributes;
+
+    /**
+     * @return Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+     * 
+     */
+    public Optional<Output<Map<String,List<String>>>> targetAttributes() {
+        return Optional.ofNullable(this.targetAttributes);
     }
 
     private ZeroTrustAccessApplicationTargetCriteriaArgs() {}
 
     private ZeroTrustAccessApplicationTargetCriteriaArgs(ZeroTrustAccessApplicationTargetCriteriaArgs $) {
+        this.exclude = $.exclude;
+        this.include = $.include;
         this.port = $.port;
         this.protocol = $.protocol;
+        this.require = $.require;
         this.targetAttributes = $.targetAttributes;
     }
 
@@ -88,6 +141,48 @@ public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulu
 
         public Builder(ZeroTrustAccessApplicationTargetCriteriaArgs defaults) {
             $ = new ZeroTrustAccessApplicationTargetCriteriaArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param exclude Target is excluded when any selector in this rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exclude(@Nullable Output<ZeroTrustAccessApplicationTargetCriteriaExcludeArgs> exclude) {
+            $.exclude = exclude;
+            return this;
+        }
+
+        /**
+         * @param exclude Target is excluded when any selector in this rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exclude(ZeroTrustAccessApplicationTargetCriteriaExcludeArgs exclude) {
+            return exclude(Output.of(exclude));
+        }
+
+        /**
+         * @param include Target matches when any selector in this rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder include(@Nullable Output<ZeroTrustAccessApplicationTargetCriteriaIncludeArgs> include) {
+            $.include = include;
+            return this;
+        }
+
+        /**
+         * @param include Target matches when any selector in this rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder include(ZeroTrustAccessApplicationTargetCriteriaIncludeArgs include) {
+            return include(Output.of(include));
         }
 
         /**
@@ -135,18 +230,39 @@ public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulu
         }
 
         /**
-         * @param targetAttributes Contains a map of target attribute keys to target attribute values.
+         * @param require Target matches only when every selector in this rule matches.
          * 
          * @return builder
          * 
          */
-        public Builder targetAttributes(Output<Map<String,List<String>>> targetAttributes) {
+        public Builder require(@Nullable Output<ZeroTrustAccessApplicationTargetCriteriaRequireArgs> require) {
+            $.require = require;
+            return this;
+        }
+
+        /**
+         * @param require Target matches only when every selector in this rule matches.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder require(ZeroTrustAccessApplicationTargetCriteriaRequireArgs require) {
+            return require(Output.of(require));
+        }
+
+        /**
+         * @param targetAttributes Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetAttributes(@Nullable Output<Map<String,List<String>>> targetAttributes) {
             $.targetAttributes = targetAttributes;
             return this;
         }
 
         /**
-         * @param targetAttributes Contains a map of target attribute keys to target attribute values.
+         * @param targetAttributes Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
          * 
          * @return builder
          * 
@@ -161,9 +277,6 @@ public final class ZeroTrustAccessApplicationTargetCriteriaArgs extends com.pulu
             }
             if ($.protocol == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationTargetCriteriaArgs", "protocol");
-            }
-            if ($.targetAttributes == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationTargetCriteriaArgs", "targetAttributes");
             }
             return $;
         }

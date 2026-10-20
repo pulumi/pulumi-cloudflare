@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .title("My Own Namespace")
  *             .jurisdiction("eu")
+ *             .mode("instant")
  *             .build());
  * 
  *     }
@@ -94,6 +95,22 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> jurisdiction() {
         return Codegen.optional(this.jurisdiction);
+    }
+    /**
+     * The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: &#34;instant&#34;.
+     * 
+     */
+    @Export(name="mode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> mode;
+
+    /**
+     * @return The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+     * Available values: &#34;instant&#34;.
+     * 
+     */
+    public Output<Optional<String>> mode() {
+        return Codegen.optional(this.mode);
     }
     /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.

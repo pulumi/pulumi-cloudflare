@@ -75,7 +75,7 @@ export interface GetZeroTrustCasbPolicyResult {
      */
     readonly enabled: boolean;
     /**
-     * The finding type this policy is associated with. Immutable after creation; changing it replaces the policy.
+     * The finding type this policy is associated with. Immutable after creation; attempts to change it via update are rejected.
      */
     readonly findingTypeId: string;
     /**

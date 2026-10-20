@@ -226,7 +226,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ServiceAuth401Redirect { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string> SessionDuration { get; private set; } = null!;
@@ -249,6 +249,9 @@ namespace Pulumi.Cloudflare
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+        /// </summary>
         [Output("targetCriterias")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessApplicationTargetCriteria>> TargetCriterias { get; private set; } = null!;
 
@@ -551,7 +554,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
-        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
@@ -582,6 +585,10 @@ namespace Pulumi.Cloudflare
 
         [Input("targetCriterias")]
         private InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaArgs>? _targetCriterias;
+
+        /// <summary>
+        /// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaArgs> TargetCriterias
         {
             get => _targetCriterias ?? (_targetCriterias = new InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaArgs>());
@@ -851,7 +858,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
-        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. For infrastructure applications, this is the maximum connection duration; connections are terminated once it elapses. Infrastructure durations must use s, m, or h and resolve to whole seconds. Defaults to `24h` for supported application types.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
@@ -882,6 +889,10 @@ namespace Pulumi.Cloudflare
 
         [Input("targetCriterias")]
         private InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaGetArgs>? _targetCriterias;
+
+        /// <summary>
+        /// Defines targets covered by the application. Use either the legacy top-level target*attributes format or the rule format, but not both. The rule format requires include; require and exclude are optional. Each rule must contain a non-empty target*attributes or tags selector. Hostname selectors accept 1-5000 non-empty strings. Tag maps accept 1-50 non-empty keys, each with 1-50 non-empty values.
+        /// </summary>
         public InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaGetArgs> TargetCriterias
         {
             get => _targetCriterias ?? (_targetCriterias = new InputList<Inputs.ZeroTrustAccessApplicationTargetCriteriaGetArgs>());

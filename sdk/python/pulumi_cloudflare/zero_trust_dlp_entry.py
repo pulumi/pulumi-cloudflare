@@ -130,7 +130,7 @@ class _ZeroTrustDlpEntryState:
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  upload_status: pulumi.Input[Optional[_builtins.str]] = None,
                  variant: pulumi.Input[Optional['ZeroTrustDlpEntryVariantArgs']] = None,
-                 word_list: pulumi.Input[Optional[_builtins.str]] = None):
+                 word_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpEntry resources.
 
@@ -175,8 +175,8 @@ class _ZeroTrustDlpEntryState:
             pulumi.set(__self__, "upload_status", upload_status)
         if variant is not None:
             pulumi.set(__self__, "variant", variant)
-        if word_list is not None:
-            pulumi.set(__self__, "word_list", word_list)
+        if word_lists is not None:
+            pulumi.set(__self__, "word_lists", word_lists)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -341,13 +341,13 @@ class _ZeroTrustDlpEntryState:
         pulumi.set(self, "variant", value)
 
     @_builtins.property
-    @pulumi.getter(name="wordList")
-    def word_list(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "word_list")
+    @pulumi.getter(name="wordLists")
+    def word_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "word_lists")
 
-    @word_list.setter
-    def word_list(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "word_list", value)
+    @word_lists.setter
+    def word_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "word_lists", value)
 
 
 @pulumi.type_token("cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry")
@@ -491,7 +491,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["upload_status"] = None
             __props__.__dict__["variant"] = None
-            __props__.__dict__["word_list"] = None
+            __props__.__dict__["word_lists"] = None
         super(ZeroTrustDlpEntry, __self__).__init__(
             'cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry',
             resource_name,
@@ -518,7 +518,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             upload_status: pulumi.Input[Optional[_builtins.str]] = None,
             variant: pulumi.Input[Optional[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict', 'outputs.ZeroTrustDlpEntryVariant']]] = None,
-            word_list: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDlpEntry':
+            word_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ZeroTrustDlpEntry':
         """
         Get an existing ZeroTrustDlpEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -555,7 +555,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["upload_status"] = upload_status
         __props__.__dict__["variant"] = variant
-        __props__.__dict__["word_list"] = word_list
+        __props__.__dict__["word_lists"] = word_lists
         return ZeroTrustDlpEntry(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -657,7 +657,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         return pulumi.get(self, "variant")
 
     @_builtins.property
-    @pulumi.getter(name="wordList")
-    def word_list(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "word_list")
+    @pulumi.getter(name="wordLists")
+    def word_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        return pulumi.get(self, "word_lists")
 

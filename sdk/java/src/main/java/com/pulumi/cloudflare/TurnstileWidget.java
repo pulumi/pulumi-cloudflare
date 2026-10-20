@@ -199,7 +199,8 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
         return this.ephemeralId;
     }
     /**
-     * Filter widgets by field using case-insensitive substring matching.
+     * Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      * 
      */
@@ -207,7 +208,8 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> filter;
 
     /**
-     * @return Filter widgets by field using case-insensitive substring matching.
+     * @return Filter widgets by field. The `name` field uses case-insensitive
+     * substring matching; `sitekey` uses exact matching.
      * Format: `field:value`
      * 
      */

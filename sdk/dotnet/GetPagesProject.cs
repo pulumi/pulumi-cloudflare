@@ -150,6 +150,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetPagesProjectBuildConfigResult BuildConfig;
         /// <summary>
+        /// Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `BuildImageMajorVersion` in `DeploymentConfigs` then reports the version the builds run on.
+        /// </summary>
+        public readonly Outputs.GetPagesProjectBuildImageAutoUpgradeResult BuildImageAutoUpgrade;
+        /// <summary>
         /// Most recent production deployment of the project.
         /// </summary>
         public readonly Outputs.GetPagesProjectCanonicalDeploymentResult CanonicalDeployment;
@@ -220,6 +224,8 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetPagesProjectBuildConfigResult buildConfig,
 
+            Outputs.GetPagesProjectBuildImageAutoUpgradeResult buildImageAutoUpgrade,
+
             Outputs.GetPagesProjectCanonicalDeploymentResult canonicalDeployment,
 
             string createdOn,
@@ -254,6 +260,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             BuildConfig = buildConfig;
+            BuildImageAutoUpgrade = buildImageAutoUpgrade;
             CanonicalDeployment = canonicalDeployment;
             CreatedOn = createdOn;
             DeploymentConfigs = deploymentConfigs;

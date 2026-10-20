@@ -28,16 +28,11 @@ namespace Pulumi.Cloudflare
     ///     var exampleZeroTrustCasbWebhook = new Cloudflare.ZeroTrustCasbWebhook("example_zero_trust_casb_webhook", new()
     ///     {
     ///         AccountId = "46148281d8a93d002ef242d8b0d5f9f6",
-    ///         AuthenticationType = "Bearer Auth",
+    ///         AuthenticationType = "HMAC-Signing",
     ///         DestinationUrl = "https://example.com/webhook",
     ///         Label = "Send to Slack",
     ///         Headers = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustCasbWebhookHeaderArgs
-    ///             {
-    ///                 Key = "Authorization",
-    ///                 Value = "Bearer token123",
-    ///             },
     ///             new Cloudflare.Inputs.ZeroTrustCasbWebhookHeaderArgs
     ///             {
     ///                 Key = "X-Custom-Header",

@@ -106,7 +106,7 @@ class GetHyperdriveConfigResult:
     @pulumi.getter
     def integration(self) -> 'outputs.GetHyperdriveConfigIntegrationResult':
         """
-        Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard.
+        Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations.
         """
         return pulumi.get(self, "integration")
 

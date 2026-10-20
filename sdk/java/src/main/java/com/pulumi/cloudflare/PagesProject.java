@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.PagesProjectArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.PagesProjectState;
 import com.pulumi.cloudflare.outputs.PagesProjectBuildConfig;
+import com.pulumi.cloudflare.outputs.PagesProjectBuildImageAutoUpgrade;
 import com.pulumi.cloudflare.outputs.PagesProjectCanonicalDeployment;
 import com.pulumi.cloudflare.outputs.PagesProjectDeploymentConfigs;
 import com.pulumi.cloudflare.outputs.PagesProjectLatestDeployment;
@@ -283,6 +284,20 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      */
     public Output<PagesProjectBuildConfig> buildConfig() {
         return this.buildConfig;
+    }
+    /**
+     * Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     * 
+     */
+    @Export(name="buildImageAutoUpgrade", refs={PagesProjectBuildImageAutoUpgrade.class}, tree="[0]")
+    private Output<PagesProjectBuildImageAutoUpgrade> buildImageAutoUpgrade;
+
+    /**
+     * @return Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `buildImageMajorVersion` in `deploymentConfigs` then reports the version the builds run on.
+     * 
+     */
+    public Output<PagesProjectBuildImageAutoUpgrade> buildImageAutoUpgrade() {
+        return this.buildImageAutoUpgrade;
     }
     /**
      * Most recent production deployment of the project.

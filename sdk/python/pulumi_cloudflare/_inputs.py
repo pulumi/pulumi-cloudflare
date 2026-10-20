@@ -217,6 +217,18 @@ __all__ = [
     'AccessApplicationScimConfigMappingOperationsArgsDict',
     'AccessApplicationTargetCriteriaArgs',
     'AccessApplicationTargetCriteriaArgsDict',
+    'AccessApplicationTargetCriteriaExcludeArgs',
+    'AccessApplicationTargetCriteriaExcludeArgsDict',
+    'AccessApplicationTargetCriteriaExcludeTargetAttributesArgs',
+    'AccessApplicationTargetCriteriaExcludeTargetAttributesArgsDict',
+    'AccessApplicationTargetCriteriaIncludeArgs',
+    'AccessApplicationTargetCriteriaIncludeArgsDict',
+    'AccessApplicationTargetCriteriaIncludeTargetAttributesArgs',
+    'AccessApplicationTargetCriteriaIncludeTargetAttributesArgsDict',
+    'AccessApplicationTargetCriteriaRequireArgs',
+    'AccessApplicationTargetCriteriaRequireArgsDict',
+    'AccessApplicationTargetCriteriaRequireTargetAttributesArgs',
+    'AccessApplicationTargetCriteriaRequireTargetAttributesArgsDict',
     'AccessCustomPageWarningArgs',
     'AccessCustomPageWarningArgsDict',
     'AccessGroupExcludeArgs',
@@ -399,8 +411,8 @@ __all__ = [
     'AccessOrganizationLoginDesignArgsDict',
     'AccessOrganizationMfaConfigArgs',
     'AccessOrganizationMfaConfigArgsDict',
-    'AccessOrganizationMfaSshPivKeyRequirementsArgs',
-    'AccessOrganizationMfaSshPivKeyRequirementsArgsDict',
+    'AccessOrganizationMfaPivKeyRequirementsArgs',
+    'AccessOrganizationMfaPivKeyRequirementsArgsDict',
     'AccessOrganizationServiceTokenInactivityArgs',
     'AccessOrganizationServiceTokenInactivityArgsDict',
     'AccessPolicyApprovalGroupArgs',
@@ -687,6 +699,8 @@ __all__ = [
     'AiSearchInstanceIndexingOptionsArgsDict',
     'AiSearchInstanceMetadataArgs',
     'AiSearchInstanceMetadataArgsDict',
+    'AiSearchInstanceMetadataCreatedFromEmdashPluginArgs',
+    'AiSearchInstanceMetadataCreatedFromEmdashPluginArgsDict',
     'AiSearchInstancePublicEndpointParamsArgs',
     'AiSearchInstancePublicEndpointParamsArgsDict',
     'AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs',
@@ -1011,6 +1025,8 @@ __all__ = [
     'ManagedTransformsManagedRequestHeaderArgsDict',
     'ManagedTransformsManagedResponseHeaderArgs',
     'ManagedTransformsManagedResponseHeaderArgsDict',
+    'MonetizationRulesRuleArgs',
+    'MonetizationRulesRuleArgsDict',
     'MoqRelayConfigArgs',
     'MoqRelayConfigArgsDict',
     'MoqRelayConfigLingeringSubscribeArgs',
@@ -1077,6 +1093,8 @@ __all__ = [
     'PagesDomainVerificationDataArgsDict',
     'PagesProjectBuildConfigArgs',
     'PagesProjectBuildConfigArgsDict',
+    'PagesProjectBuildImageAutoUpgradeArgs',
+    'PagesProjectBuildImageAutoUpgradeArgsDict',
     'PagesProjectCanonicalDeploymentArgs',
     'PagesProjectCanonicalDeploymentArgsDict',
     'PagesProjectCanonicalDeploymentBuildConfigArgs',
@@ -1655,6 +1673,8 @@ __all__ = [
     'WorkerScriptBindingOutboundArgsDict',
     'WorkerScriptBindingOutboundWorkerArgs',
     'WorkerScriptBindingOutboundWorkerArgsDict',
+    'WorkerScriptBindingRetryArgs',
+    'WorkerScriptBindingRetryArgsDict',
     'WorkerScriptBindingSimpleArgs',
     'WorkerScriptBindingSimpleArgsDict',
     'WorkerScriptCacheOptionsArgs',
@@ -1715,6 +1735,8 @@ __all__ = [
     'WorkerVersionBindingOutboundParamArgsDict',
     'WorkerVersionBindingOutboundWorkerArgs',
     'WorkerVersionBindingOutboundWorkerArgsDict',
+    'WorkerVersionBindingRetryArgs',
+    'WorkerVersionBindingRetryArgsDict',
     'WorkerVersionBindingSimpleArgs',
     'WorkerVersionBindingSimpleArgsDict',
     'WorkerVersionCacheOptionsArgs',
@@ -1777,6 +1799,8 @@ __all__ = [
     'WorkersScriptBindingOutboundArgsDict',
     'WorkersScriptBindingOutboundWorkerArgs',
     'WorkersScriptBindingOutboundWorkerArgsDict',
+    'WorkersScriptBindingRetryArgs',
+    'WorkersScriptBindingRetryArgsDict',
     'WorkersScriptBindingSimpleArgs',
     'WorkersScriptBindingSimpleArgsDict',
     'WorkersScriptCacheOptionsArgs',
@@ -2047,6 +2071,18 @@ __all__ = [
     'ZeroTrustAccessApplicationScimConfigMappingOperationsArgsDict',
     'ZeroTrustAccessApplicationTargetCriteriaArgs',
     'ZeroTrustAccessApplicationTargetCriteriaArgsDict',
+    'ZeroTrustAccessApplicationTargetCriteriaExcludeArgs',
+    'ZeroTrustAccessApplicationTargetCriteriaExcludeArgsDict',
+    'ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgs',
+    'ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgsDict',
+    'ZeroTrustAccessApplicationTargetCriteriaIncludeArgs',
+    'ZeroTrustAccessApplicationTargetCriteriaIncludeArgsDict',
+    'ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgs',
+    'ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgsDict',
+    'ZeroTrustAccessApplicationTargetCriteriaRequireArgs',
+    'ZeroTrustAccessApplicationTargetCriteriaRequireArgsDict',
+    'ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgs',
+    'ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgsDict',
     'ZeroTrustAccessCustomPageWarningArgs',
     'ZeroTrustAccessCustomPageWarningArgsDict',
     'ZeroTrustAccessGroupExcludeArgs',
@@ -2667,8 +2703,8 @@ __all__ = [
     'ZeroTrustOrganizationLoginDesignArgsDict',
     'ZeroTrustOrganizationMfaConfigArgs',
     'ZeroTrustOrganizationMfaConfigArgsDict',
-    'ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs',
-    'ZeroTrustOrganizationMfaSshPivKeyRequirementsArgsDict',
+    'ZeroTrustOrganizationMfaPivKeyRequirementsArgs',
+    'ZeroTrustOrganizationMfaPivKeyRequirementsArgsDict',
     'ZeroTrustOrganizationServiceTokenInactivityArgs',
     'ZeroTrustOrganizationServiceTokenInactivityArgsDict',
     'ZeroTrustRiskBehaviorBehaviorsArgs',
@@ -9056,9 +9092,21 @@ class AccessApplicationTargetCriteriaArgsDict(TypedDict):
     The communication protocol your application secures.
     Available values: "SSH", "RDP".
     """
-    target_attributes: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]
+    exclude: NotRequired[pulumi.Input[Optional['AccessApplicationTargetCriteriaExcludeArgsDict']]]
     """
-    Contains a map of target attribute keys to target attribute values.
+    Target is excluded when any selector in this rule matches.
+    """
+    include: NotRequired[pulumi.Input[Optional['AccessApplicationTargetCriteriaIncludeArgsDict']]]
+    """
+    Target matches when any selector in this rule matches.
+    """
+    require: NotRequired[pulumi.Input[Optional['AccessApplicationTargetCriteriaRequireArgsDict']]]
+    """
+    Target matches only when every selector in this rule matches.
+    """
+    target_attributes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]]
+    """
+    Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
     """
 
 @pulumi.input_type
@@ -9066,16 +9114,29 @@ class AccessApplicationTargetCriteriaArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
                  protocol: pulumi.Input[_builtins.str],
-                 target_attributes: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]):
+                 exclude: pulumi.Input[Optional['AccessApplicationTargetCriteriaExcludeArgs']] = None,
+                 include: pulumi.Input[Optional['AccessApplicationTargetCriteriaIncludeArgs']] = None,
+                 require: pulumi.Input[Optional['AccessApplicationTargetCriteriaRequireArgs']] = None,
+                 target_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
         :param pulumi.Input[_builtins.str] protocol: The communication protocol your application secures.
                Available values: "SSH", "RDP".
-        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] target_attributes: Contains a map of target attribute keys to target attribute values.
+        :param pulumi.Input['AccessApplicationTargetCriteriaExcludeArgs'] exclude: Target is excluded when any selector in this rule matches.
+        :param pulumi.Input['AccessApplicationTargetCriteriaIncludeArgs'] include: Target matches when any selector in this rule matches.
+        :param pulumi.Input['AccessApplicationTargetCriteriaRequireArgs'] require: Target matches only when every selector in this rule matches.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] target_attributes: Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "target_attributes", target_attributes)
+        if exclude is not None:
+            pulumi.set(__self__, "exclude", exclude)
+        if include is not None:
+            pulumi.set(__self__, "include", include)
+        if require is not None:
+            pulumi.set(__self__, "require", require)
+        if target_attributes is not None:
+            pulumi.set(__self__, "target_attributes", target_attributes)
 
     @_builtins.property
     @pulumi.getter
@@ -9103,16 +9164,256 @@ class AccessApplicationTargetCriteriaArgs:
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
-    @pulumi.getter(name="targetAttributes")
-    def target_attributes(self) -> pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]:
+    @pulumi.getter
+    def exclude(self) -> pulumi.Input[Optional['AccessApplicationTargetCriteriaExcludeArgs']]:
         """
-        Contains a map of target attribute keys to target attribute values.
+        Target is excluded when any selector in this rule matches.
+        """
+        return pulumi.get(self, "exclude")
+
+    @exclude.setter
+    def exclude(self, value: pulumi.Input[Optional['AccessApplicationTargetCriteriaExcludeArgs']]):
+        pulumi.set(self, "exclude", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def include(self) -> pulumi.Input[Optional['AccessApplicationTargetCriteriaIncludeArgs']]:
+        """
+        Target matches when any selector in this rule matches.
+        """
+        return pulumi.get(self, "include")
+
+    @include.setter
+    def include(self, value: pulumi.Input[Optional['AccessApplicationTargetCriteriaIncludeArgs']]):
+        pulumi.set(self, "include", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def require(self) -> pulumi.Input[Optional['AccessApplicationTargetCriteriaRequireArgs']]:
+        """
+        Target matches only when every selector in this rule matches.
+        """
+        return pulumi.get(self, "require")
+
+    @require.setter
+    def require(self, value: pulumi.Input[Optional['AccessApplicationTargetCriteriaRequireArgs']]):
+        pulumi.set(self, "require", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
         """
         return pulumi.get(self, "target_attributes")
 
     @target_attributes.setter
-    def target_attributes(self, value: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]):
+    def target_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "target_attributes", value)
+
+
+class AccessApplicationTargetCriteriaExcludeArgsDict(TypedDict):
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]]
+    """
+    Map of target tag keys to values. Values within a key are OR'd.
+    """
+    target_attributes: NotRequired[pulumi.Input[Optional['AccessApplicationTargetCriteriaExcludeTargetAttributesArgsDict']]]
+    """
+    Hostname selector map. Only the hostname key is supported.
+    """
+
+@pulumi.input_type
+class AccessApplicationTargetCriteriaExcludeArgs:
+    def __init__(__self__, *,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 target_attributes: pulumi.Input[Optional['AccessApplicationTargetCriteriaExcludeTargetAttributesArgs']] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] tags: Map of target tag keys to values. Values within a key are OR'd.
+        :param pulumi.Input['AccessApplicationTargetCriteriaExcludeTargetAttributesArgs'] target_attributes: Hostname selector map. Only the hostname key is supported.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if target_attributes is not None:
+            pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Map of target tag keys to values. Values within a key are OR'd.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Optional['AccessApplicationTargetCriteriaExcludeTargetAttributesArgs']]:
+        """
+        Hostname selector map. Only the hostname key is supported.
+        """
+        return pulumi.get(self, "target_attributes")
+
+    @target_attributes.setter
+    def target_attributes(self, value: pulumi.Input[Optional['AccessApplicationTargetCriteriaExcludeTargetAttributesArgs']]):
+        pulumi.set(self, "target_attributes", value)
+
+
+class AccessApplicationTargetCriteriaExcludeTargetAttributesArgsDict(TypedDict):
+    hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+
+@pulumi.input_type
+class AccessApplicationTargetCriteriaExcludeTargetAttributesArgs:
+    def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(__self__, "hostnames", hostnames)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "hostnames", value)
+
+
+class AccessApplicationTargetCriteriaIncludeArgsDict(TypedDict):
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]]
+    """
+    Map of target tag keys to values. Values within a key are OR'd.
+    """
+    target_attributes: NotRequired[pulumi.Input[Optional['AccessApplicationTargetCriteriaIncludeTargetAttributesArgsDict']]]
+    """
+    Hostname selector map. Only the hostname key is supported.
+    """
+
+@pulumi.input_type
+class AccessApplicationTargetCriteriaIncludeArgs:
+    def __init__(__self__, *,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 target_attributes: pulumi.Input[Optional['AccessApplicationTargetCriteriaIncludeTargetAttributesArgs']] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] tags: Map of target tag keys to values. Values within a key are OR'd.
+        :param pulumi.Input['AccessApplicationTargetCriteriaIncludeTargetAttributesArgs'] target_attributes: Hostname selector map. Only the hostname key is supported.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if target_attributes is not None:
+            pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Map of target tag keys to values. Values within a key are OR'd.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Optional['AccessApplicationTargetCriteriaIncludeTargetAttributesArgs']]:
+        """
+        Hostname selector map. Only the hostname key is supported.
+        """
+        return pulumi.get(self, "target_attributes")
+
+    @target_attributes.setter
+    def target_attributes(self, value: pulumi.Input[Optional['AccessApplicationTargetCriteriaIncludeTargetAttributesArgs']]):
+        pulumi.set(self, "target_attributes", value)
+
+
+class AccessApplicationTargetCriteriaIncludeTargetAttributesArgsDict(TypedDict):
+    hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+
+@pulumi.input_type
+class AccessApplicationTargetCriteriaIncludeTargetAttributesArgs:
+    def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(__self__, "hostnames", hostnames)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "hostnames", value)
+
+
+class AccessApplicationTargetCriteriaRequireArgsDict(TypedDict):
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]]
+    """
+    Map of target tag keys to values. Values within a key are OR'd.
+    """
+    target_attributes: NotRequired[pulumi.Input[Optional['AccessApplicationTargetCriteriaRequireTargetAttributesArgsDict']]]
+    """
+    Hostname selector map. Only the hostname key is supported.
+    """
+
+@pulumi.input_type
+class AccessApplicationTargetCriteriaRequireArgs:
+    def __init__(__self__, *,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 target_attributes: pulumi.Input[Optional['AccessApplicationTargetCriteriaRequireTargetAttributesArgs']] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] tags: Map of target tag keys to values. Values within a key are OR'd.
+        :param pulumi.Input['AccessApplicationTargetCriteriaRequireTargetAttributesArgs'] target_attributes: Hostname selector map. Only the hostname key is supported.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if target_attributes is not None:
+            pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Map of target tag keys to values. Values within a key are OR'd.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Optional['AccessApplicationTargetCriteriaRequireTargetAttributesArgs']]:
+        """
+        Hostname selector map. Only the hostname key is supported.
+        """
+        return pulumi.get(self, "target_attributes")
+
+    @target_attributes.setter
+    def target_attributes(self, value: pulumi.Input[Optional['AccessApplicationTargetCriteriaRequireTargetAttributesArgs']]):
+        pulumi.set(self, "target_attributes", value)
+
+
+class AccessApplicationTargetCriteriaRequireTargetAttributesArgsDict(TypedDict):
+    hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+
+@pulumi.input_type
+class AccessApplicationTargetCriteriaRequireTargetAttributesArgs:
+    def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(__self__, "hostnames", hostnames)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "hostnames", value)
 
 
 class AccessCustomPageWarningArgsDict(TypedDict):
@@ -13108,6 +13409,10 @@ class AccessIdentityProviderConfigArgsDict(TypedDict):
     """
     IdP Entity ID or Issuer URL
     """
+    login_page_auto_prompt: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+    """
     max_sso_url_length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum URL length the IdP accepts for the SSO redirect URL.
@@ -13188,6 +13493,7 @@ class AccessIdentityProviderConfigArgs:
                  header_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgs']]]] = None,
                  idp_public_certs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_page_auto_prompt: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_sso_url_length: pulumi.Input[Optional[_builtins.int]] = None,
                  okta_account: pulumi.Input[Optional[_builtins.str]] = None,
                  onelogin_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -13223,6 +13529,7 @@ class AccessIdentityProviderConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgs']]] header_attributes: Add a list of attribute names that will be returned in the response header from the Access callback.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] idp_public_certs: X509 certificate to verify the signature in the SAML authentication response
         :param pulumi.Input[_builtins.str] issuer_url: IdP Entity ID or Issuer URL
+        :param pulumi.Input[_builtins.bool] login_page_auto_prompt: When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
         :param pulumi.Input[_builtins.int] max_sso_url_length: The maximum URL length the IdP accepts for the SSO redirect URL.
                When the constructed SSO URL would exceed this length, the RelayState
                is stored server-side and a short nonce is passed to the IdP instead.
@@ -13279,6 +13586,8 @@ class AccessIdentityProviderConfigArgs:
             pulumi.set(__self__, "idp_public_certs", idp_public_certs)
         if issuer_url is not None:
             pulumi.set(__self__, "issuer_url", issuer_url)
+        if login_page_auto_prompt is not None:
+            pulumi.set(__self__, "login_page_auto_prompt", login_page_auto_prompt)
         if max_sso_url_length is not None:
             pulumi.set(__self__, "max_sso_url_length", max_sso_url_length)
         if okta_account is not None:
@@ -13536,6 +13845,18 @@ class AccessIdentityProviderConfigArgs:
     @issuer_url.setter
     def issuer_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loginPageAutoPrompt")
+    def login_page_auto_prompt(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+        """
+        return pulumi.get(self, "login_page_auto_prompt")
+
+    @login_page_auto_prompt.setter
+    def login_page_auto_prompt(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "login_page_auto_prompt", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSsoUrlLength")
@@ -14402,7 +14723,7 @@ class AccessOrganizationMfaConfigArgs:
         pulumi.set(self, "session_duration", value)
 
 
-class AccessOrganizationMfaSshPivKeyRequirementsArgsDict(TypedDict):
+class AccessOrganizationMfaPivKeyRequirementsArgsDict(TypedDict):
     pin_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
@@ -14410,7 +14731,7 @@ class AccessOrganizationMfaSshPivKeyRequirementsArgsDict(TypedDict):
     """
     require_fips_device: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+    Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
     """
     ssh_key_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
@@ -14427,7 +14748,7 @@ class AccessOrganizationMfaSshPivKeyRequirementsArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class AccessOrganizationMfaSshPivKeyRequirementsArgs:
+class AccessOrganizationMfaPivKeyRequirementsArgs:
     def __init__(__self__, *,
                  pin_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  require_fips_device: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -14437,7 +14758,7 @@ class AccessOrganizationMfaSshPivKeyRequirementsArgs:
         """
         :param pulumi.Input[_builtins.str] pin_policy: Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
                Available values: "never", "once", "always".
-        :param pulumi.Input[_builtins.bool] require_fips_device: Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+        :param pulumi.Input[_builtins.bool] require_fips_device: Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ssh_key_sizes: Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_key_types: Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.
         :param pulumi.Input[_builtins.str] touch_policy: Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).
@@ -14471,7 +14792,7 @@ class AccessOrganizationMfaSshPivKeyRequirementsArgs:
     @pulumi.getter(name="requireFipsDevice")
     def require_fips_device(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+        Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
         """
         return pulumi.get(self, "require_fips_device")
 
@@ -22355,15 +22676,19 @@ class AiSearchInstanceIndexingOptionsArgs:
 
 class AiSearchInstanceMetadataArgsDict(TypedDict):
     created_from_aisearch_wizard: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    created_from_emdash_plugin: NotRequired[pulumi.Input[Optional['AiSearchInstanceMetadataCreatedFromEmdashPluginArgsDict']]]
     worker_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiSearchInstanceMetadataArgs:
     def __init__(__self__, *,
                  created_from_aisearch_wizard: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_from_emdash_plugin: pulumi.Input[Optional['AiSearchInstanceMetadataCreatedFromEmdashPluginArgs']] = None,
                  worker_domain: pulumi.Input[Optional[_builtins.str]] = None):
         if created_from_aisearch_wizard is not None:
             pulumi.set(__self__, "created_from_aisearch_wizard", created_from_aisearch_wizard)
+        if created_from_emdash_plugin is not None:
+            pulumi.set(__self__, "created_from_emdash_plugin", created_from_emdash_plugin)
         if worker_domain is not None:
             pulumi.set(__self__, "worker_domain", worker_domain)
 
@@ -22377,6 +22702,15 @@ class AiSearchInstanceMetadataArgs:
         pulumi.set(self, "created_from_aisearch_wizard", value)
 
     @_builtins.property
+    @pulumi.getter(name="createdFromEmdashPlugin")
+    def created_from_emdash_plugin(self) -> pulumi.Input[Optional['AiSearchInstanceMetadataCreatedFromEmdashPluginArgs']]:
+        return pulumi.get(self, "created_from_emdash_plugin")
+
+    @created_from_emdash_plugin.setter
+    def created_from_emdash_plugin(self, value: pulumi.Input[Optional['AiSearchInstanceMetadataCreatedFromEmdashPluginArgs']]):
+        pulumi.set(self, "created_from_emdash_plugin", value)
+
+    @_builtins.property
     @pulumi.getter(name="workerDomain")
     def worker_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "worker_domain")
@@ -22384,6 +22718,46 @@ class AiSearchInstanceMetadataArgs:
     @worker_domain.setter
     def worker_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "worker_domain", value)
+
+
+class AiSearchInstanceMetadataCreatedFromEmdashPluginArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Available values: "native", "rest".
+    """
+    version: pulumi.Input[_builtins.str]
+
+@pulumi.input_type
+class AiSearchInstanceMetadataCreatedFromEmdashPluginArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 version: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] type: Available values: "native", "rest".
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Available values: "native", "rest".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "version", value)
 
 
 class AiSearchInstancePublicEndpointParamsArgsDict(TypedDict):
@@ -33369,7 +33743,7 @@ class LogpushJobOutputOptionsArgsDict(TypedDict):
     """
     merge_subrequests: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
+    If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
     """
     output_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -33424,7 +33798,7 @@ class LogpushJobOutputOptionsArgs:
         :param pulumi.Input[_builtins.bool] cve202144228: If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
         :param pulumi.Input[_builtins.str] field_delimiter: String to join fields. This field be ignored when `record_template` is set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] field_names: List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
-        :param pulumi.Input[_builtins.bool] merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
+        :param pulumi.Input[_builtins.bool] merge_subrequests: If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
         :param pulumi.Input[_builtins.str] output_type: Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
                Available values: "ndjson", "csv".
         :param pulumi.Input[_builtins.str] record_delimiter: String to be inserted in-between the records as separator.
@@ -33526,7 +33900,7 @@ class LogpushJobOutputOptionsArgs:
     @pulumi.getter(name="mergeSubrequests")
     def merge_subrequests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs.
+        If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset.
         """
         return pulumi.get(self, "merge_subrequests")
 
@@ -35841,6 +36215,141 @@ class ManagedTransformsManagedResponseHeaderArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+class MonetizationRulesRuleArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+    """
+    expression: pulumi.Input[_builtins.str]
+    """
+    Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+    """
+    scheme: pulumi.Input[_builtins.str]
+    """
+    X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+    Available values: "exact", "upto", "origin_controlled".
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+    """
+    price: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+    """
+
+@pulumi.input_type
+class MonetizationRulesRuleArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 expression: pulumi.Input[_builtins.str],
+                 scheme: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 price: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: 0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+        :param pulumi.Input[_builtins.str] expression: Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+        :param pulumi.Input[_builtins.str] scheme: X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+               Available values: "exact", "upto", "origin_controlled".
+        :param pulumi.Input[_builtins.str] id: Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+        :param pulumi.Input[_builtins.str] price: Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "scheme", scheme)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if price is not None:
+            pulumi.set(__self__, "price", price)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        0x-prefixed 20-byte hexadecimal Ethereum address. Mixed-case addresses must carry a valid EIP-55 checksum; all-lowercase or all-uppercase addresses are also accepted. The address must pass wallet screening whenever its rule is deployed or patched.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Wirefilter expression identifying the requests that require payment. Forwarded verbatim to the Rulesets API, which validates its syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scheme(self) -> pulumi.Input[_builtins.str]:
+        """
+        X402 payment scheme. "exact" requires the specified payment amount; "upto" permits a payment up to the specified amount. Both fixed-price schemes require the price field.
+        Available values: "exact", "upto", "origin_controlled".
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "scheme", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional on input. Include the ID of an existing payment rule to update it in place, preserving its stable identity across the full-ruleset replacement; omit it to create a new rule. An ID that does not match an existing payment rule in the zone is rejected. Rules omitted from the request are deleted.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def price(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Price in the smallest indivisible unit of the configured payment token, encoded as a decimal string. Must be a canonical decimal integer in [1000, 100000000]: no leading zeros, and a bare JSON number is rejected. The price is required for the fixed-price schemes ("exact" and "upto") and must be at least 1000, the smallest amount the payment facilitator can settle ($0.001 for a 6-decimal token such as USDC), and at most 100000000 ($100 for a 6-decimal token). When the scheme is "origin*controlled" the origin server sets pricing dynamically and the rule carries no price: the field must be omitted — any provided value, including "0", is rejected because it would not be enforced. Responses always encode this as a string and omit it for "origin*controlled" rules; the pattern matches exactly the set of values the server accepts.
+        """
+        return pulumi.get(self, "price")
+
+    @price.setter
+    def price(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "price", value)
 
 
 class MoqRelayConfigArgsDict(TypedDict):
@@ -39296,6 +39805,55 @@ class PagesProjectBuildConfigArgs:
         pulumi.set(self, "web_analytics_token", value)
 
 
+class PagesProjectBuildImageAutoUpgradeArgsDict(TypedDict):
+    from_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The retired build image major version the project is set to.
+    """
+    to_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The build image major version the project's builds run on.
+    """
+
+@pulumi.input_type
+class PagesProjectBuildImageAutoUpgradeArgs:
+    def __init__(__self__, *,
+                 from_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 to_version: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] from_version: The retired build image major version the project is set to.
+        :param pulumi.Input[_builtins.int] to_version: The build image major version the project's builds run on.
+        """
+        if from_version is not None:
+            pulumi.set(__self__, "from_version", from_version)
+        if to_version is not None:
+            pulumi.set(__self__, "to_version", to_version)
+
+    @_builtins.property
+    @pulumi.getter(name="fromVersion")
+    def from_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retired build image major version the project is set to.
+        """
+        return pulumi.get(self, "from_version")
+
+    @from_version.setter
+    def from_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "from_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toVersion")
+    def to_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The build image major version the project's builds run on.
+        """
+        return pulumi.get(self, "to_version")
+
+    @to_version.setter
+    def to_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "to_version", value)
+
+
 class PagesProjectCanonicalDeploymentArgsDict(TypedDict):
     aliases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -40549,7 +41107,7 @@ class PagesProjectDeploymentConfigsPreviewArgsDict(TypedDict):
     """
     build_image_major_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The major version of the build image to use for Pages Functions.
+    The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
     """
     compatibility_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -40651,7 +41209,7 @@ class PagesProjectDeploymentConfigsPreviewArgs:
         :param pulumi.Input[_builtins.bool] always_use_latest_compatibility_date: Whether to always use the latest compatibility date for Pages Functions.
         :param pulumi.Input[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs']]] analytics_engine_datasets: Analytics Engine bindings used for Pages Functions.
         :param pulumi.Input[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewBrowsersArgs']]] browsers: Browser bindings used for Pages Functions.
-        :param pulumi.Input[_builtins.int] build_image_major_version: The major version of the build image to use for Pages Functions.
+        :param pulumi.Input[_builtins.int] build_image_major_version: The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
         :param pulumi.Input[_builtins.str] compatibility_date: Compatibility date used for Pages Functions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Compatibility flags used for Pages Functions.
         :param pulumi.Input[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewD1DatabasesArgs']]] d1_databases: D1 databases used for Pages Functions.
@@ -40771,7 +41329,7 @@ class PagesProjectDeploymentConfigsPreviewArgs:
     @pulumi.getter(name="buildImageMajorVersion")
     def build_image_major_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The major version of the build image to use for Pages Functions.
+        The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
         """
         return pulumi.get(self, "build_image_major_version")
 
@@ -41450,7 +42008,7 @@ class PagesProjectDeploymentConfigsProductionArgsDict(TypedDict):
     """
     build_image_major_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The major version of the build image to use for Pages Functions.
+    The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
     """
     compatibility_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -41552,7 +42110,7 @@ class PagesProjectDeploymentConfigsProductionArgs:
         :param pulumi.Input[_builtins.bool] always_use_latest_compatibility_date: Whether to always use the latest compatibility date for Pages Functions.
         :param pulumi.Input[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs']]] analytics_engine_datasets: Analytics Engine bindings used for Pages Functions.
         :param pulumi.Input[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionBrowsersArgs']]] browsers: Browser bindings used for Pages Functions.
-        :param pulumi.Input[_builtins.int] build_image_major_version: The major version of the build image to use for Pages Functions.
+        :param pulumi.Input[_builtins.int] build_image_major_version: The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
         :param pulumi.Input[_builtins.str] compatibility_date: Compatibility date used for Pages Functions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Compatibility flags used for Pages Functions.
         :param pulumi.Input[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionD1DatabasesArgs']]] d1_databases: D1 databases used for Pages Functions.
@@ -41672,7 +42230,7 @@ class PagesProjectDeploymentConfigsProductionArgs:
     @pulumi.getter(name="buildImageMajorVersion")
     def build_image_major_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The major version of the build image to use for Pages Functions.
+        The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected.
         """
         return pulumi.get(self, "build_image_major_version")
 
@@ -63295,6 +63853,10 @@ class WorkerScriptBindingArgsDict(TypedDict):
     """
     Name of the Queue to bind to.
     """
+    retry: NotRequired[pulumi.Input[Optional['WorkerScriptBindingRetryArgsDict']]]
+    """
+    Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+    """
     script_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script where the Durable Object is defined, if it is external to this Worker.
@@ -63378,6 +63940,7 @@ class WorkerScriptBindingArgs:
                  part: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry: pulumi.Input[Optional['WorkerScriptBindingRetryArgs']] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -63425,6 +63988,7 @@ class WorkerScriptBindingArgs:
         :param pulumi.Input[_builtins.str] part: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
         :param pulumi.Input[_builtins.str] pipeline: Name of the Pipeline to bind to.
         :param pulumi.Input[_builtins.str] queue_name: Name of the Queue to bind to.
+        :param pulumi.Input['WorkerScriptBindingRetryArgs'] retry: Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
         :param pulumi.Input[_builtins.str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
         :param pulumi.Input[_builtins.str] secret_name: Name of the secret in the store.
         :param pulumi.Input[_builtins.str] service: Name of Worker to bind to.
@@ -63498,6 +64062,8 @@ class WorkerScriptBindingArgs:
             pulumi.set(__self__, "pipeline", pipeline)
         if queue_name is not None:
             pulumi.set(__self__, "queue_name", queue_name)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
         if secret_name is not None:
@@ -63899,6 +64465,18 @@ class WorkerScriptBindingArgs:
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def retry(self) -> pulumi.Input[Optional['WorkerScriptBindingRetryArgs']]:
+        """
+        Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+        """
+        return pulumi.get(self, "retry")
+
+    @retry.setter
+    def retry(self, value: pulumi.Input[Optional['WorkerScriptBindingRetryArgs']]):
+        pulumi.set(self, "retry", value)
+
+    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -64139,6 +64717,55 @@ class WorkerScriptBindingOutboundWorkerArgs:
     @service.setter
     def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
+
+
+class WorkerScriptBindingRetryArgsDict(TypedDict):
+    max_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+    """
+    timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+    """
+
+@pulumi.input_type
+class WorkerScriptBindingRetryArgs:
+    def __init__(__self__, *,
+                 max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_ms: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_attempts: Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+        :param pulumi.Input[_builtins.int] timeout_ms: Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if timeout_ms is not None:
+            pulumi.set(__self__, "timeout_ms", timeout_ms)
+
+    @_builtins.property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @max_attempts.setter
+    def max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_attempts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMs")
+    def timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+        """
+        return pulumi.get(self, "timeout_ms")
+
+    @timeout_ms.setter
+    def timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout_ms", value)
 
 
 class WorkerScriptBindingSimpleArgsDict(TypedDict):
@@ -66181,6 +66808,10 @@ class WorkerVersionBindingArgsDict(TypedDict):
     """
     Name of the Queue to bind to.
     """
+    retry: NotRequired[pulumi.Input[Optional['WorkerVersionBindingRetryArgsDict']]]
+    """
+    Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+    """
     script_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script where the Durable Object is defined, if it is external to this Worker.
@@ -66265,6 +66896,7 @@ class WorkerVersionBindingArgs:
                  part: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry: pulumi.Input[Optional['WorkerVersionBindingRetryArgs']] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -66314,6 +66946,7 @@ class WorkerVersionBindingArgs:
         :param pulumi.Input[_builtins.str] part: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
         :param pulumi.Input[_builtins.str] pipeline: Name of the Pipeline to bind to.
         :param pulumi.Input[_builtins.str] queue_name: Name of the Queue to bind to.
+        :param pulumi.Input['WorkerVersionBindingRetryArgs'] retry: Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
         :param pulumi.Input[_builtins.str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
         :param pulumi.Input[_builtins.str] secret_name: Name of the secret in the store.
         :param pulumi.Input[_builtins.str] service: Name of Worker to bind to.
@@ -66389,6 +67022,8 @@ class WorkerVersionBindingArgs:
             pulumi.set(__self__, "pipeline", pipeline)
         if queue_name is not None:
             pulumi.set(__self__, "queue_name", queue_name)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
         if secret_name is not None:
@@ -66803,6 +67438,18 @@ class WorkerVersionBindingArgs:
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def retry(self) -> pulumi.Input[Optional['WorkerVersionBindingRetryArgs']]:
+        """
+        Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+        """
+        return pulumi.get(self, "retry")
+
+    @retry.setter
+    def retry(self, value: pulumi.Input[Optional['WorkerVersionBindingRetryArgs']]):
+        pulumi.set(self, "retry", value)
+
+    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -67091,6 +67738,55 @@ class WorkerVersionBindingOutboundWorkerArgs:
     @service.setter
     def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
+
+
+class WorkerVersionBindingRetryArgsDict(TypedDict):
+    max_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+    """
+    timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+    """
+
+@pulumi.input_type
+class WorkerVersionBindingRetryArgs:
+    def __init__(__self__, *,
+                 max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_ms: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_attempts: Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+        :param pulumi.Input[_builtins.int] timeout_ms: Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if timeout_ms is not None:
+            pulumi.set(__self__, "timeout_ms", timeout_ms)
+
+    @_builtins.property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @max_attempts.setter
+    def max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_attempts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMs")
+    def timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+        """
+        return pulumi.get(self, "timeout_ms")
+
+    @timeout_ms.setter
+    def timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout_ms", value)
 
 
 class WorkerVersionBindingSimpleArgsDict(TypedDict):
@@ -69449,6 +70145,10 @@ class WorkersScriptBindingArgsDict(TypedDict):
     """
     Name of the Queue to bind to.
     """
+    retry: NotRequired[pulumi.Input[Optional['WorkersScriptBindingRetryArgsDict']]]
+    """
+    Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+    """
     script_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The script where the Durable Object is defined, if it is external to this Worker.
@@ -69532,6 +70232,7 @@ class WorkersScriptBindingArgs:
                  part: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry: pulumi.Input[Optional['WorkersScriptBindingRetryArgs']] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -69579,6 +70280,7 @@ class WorkersScriptBindingArgs:
         :param pulumi.Input[_builtins.str] part: The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
         :param pulumi.Input[_builtins.str] pipeline: Name of the Pipeline to bind to.
         :param pulumi.Input[_builtins.str] queue_name: Name of the Queue to bind to.
+        :param pulumi.Input['WorkersScriptBindingRetryArgs'] retry: Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
         :param pulumi.Input[_builtins.str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
         :param pulumi.Input[_builtins.str] secret_name: Name of the secret in the store.
         :param pulumi.Input[_builtins.str] service: Name of Worker to bind to.
@@ -69652,6 +70354,8 @@ class WorkersScriptBindingArgs:
             pulumi.set(__self__, "pipeline", pipeline)
         if queue_name is not None:
             pulumi.set(__self__, "queue_name", queue_name)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
         if secret_name is not None:
@@ -70053,6 +70757,18 @@ class WorkersScriptBindingArgs:
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def retry(self) -> pulumi.Input[Optional['WorkersScriptBindingRetryArgs']]:
+        """
+        Retry policy for calls made to the Durable Object through this binding. Omitted or null properties use the runtime defaults. These limits are upper bounds and do not enable retries for otherwise ineligible calls.
+        """
+        return pulumi.get(self, "retry")
+
+    @retry.setter
+    def retry(self, value: pulumi.Input[Optional['WorkersScriptBindingRetryArgs']]):
+        pulumi.set(self, "retry", value)
+
+    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -70293,6 +71009,55 @@ class WorkersScriptBindingOutboundWorkerArgs:
     @service.setter
     def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
+
+
+class WorkersScriptBindingRetryArgsDict(TypedDict):
+    max_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+    """
+    timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+    """
+
+@pulumi.input_type
+class WorkersScriptBindingRetryArgs:
+    def __init__(__self__, *,
+                 max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_ms: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_attempts: Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+        :param pulumi.Input[_builtins.int] timeout_ms: Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+        if timeout_ms is not None:
+            pulumi.set(__self__, "timeout_ms", timeout_ms)
+
+    @_builtins.property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of retries after the initial request, not the total number of attempts. Defaults to 4. Zero disables retries.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @max_attempts.setter
+    def max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_attempts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMs")
+    def timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Retry timeout in milliseconds, measured from the start of the call. No retry starts after it expires, and a retry still running when it expires is cancelled. This is not a request timeout; it does not limit the initial request, which is still subject to any timeouts set by your Worker. Defaults to 10000.
+        """
+        return pulumi.get(self, "timeout_ms")
+
+    @timeout_ms.setter
+    def timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout_ms", value)
 
 
 class WorkersScriptBindingSimpleArgsDict(TypedDict):
@@ -78863,9 +79628,21 @@ class ZeroTrustAccessApplicationTargetCriteriaArgsDict(TypedDict):
     The communication protocol your application secures.
     Available values: "SSH", "RDP".
     """
-    target_attributes: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]
+    exclude: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaExcludeArgsDict']]]
     """
-    Contains a map of target attribute keys to target attribute values.
+    Target is excluded when any selector in this rule matches.
+    """
+    include: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaIncludeArgsDict']]]
+    """
+    Target matches when any selector in this rule matches.
+    """
+    require: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaRequireArgsDict']]]
+    """
+    Target matches only when every selector in this rule matches.
+    """
+    target_attributes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]]
+    """
+    Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
     """
 
 @pulumi.input_type
@@ -78873,16 +79650,29 @@ class ZeroTrustAccessApplicationTargetCriteriaArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
                  protocol: pulumi.Input[_builtins.str],
-                 target_attributes: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]):
+                 exclude: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaExcludeArgs']] = None,
+                 include: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaIncludeArgs']] = None,
+                 require: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaRequireArgs']] = None,
+                 target_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
         :param pulumi.Input[_builtins.str] protocol: The communication protocol your application secures.
                Available values: "SSH", "RDP".
-        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] target_attributes: Contains a map of target attribute keys to target attribute values.
+        :param pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaExcludeArgs'] exclude: Target is excluded when any selector in this rule matches.
+        :param pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaIncludeArgs'] include: Target matches when any selector in this rule matches.
+        :param pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaRequireArgs'] require: Target matches only when every selector in this rule matches.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] target_attributes: Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "target_attributes", target_attributes)
+        if exclude is not None:
+            pulumi.set(__self__, "exclude", exclude)
+        if include is not None:
+            pulumi.set(__self__, "include", include)
+        if require is not None:
+            pulumi.set(__self__, "require", require)
+        if target_attributes is not None:
+            pulumi.set(__self__, "target_attributes", target_attributes)
 
     @_builtins.property
     @pulumi.getter
@@ -78910,16 +79700,256 @@ class ZeroTrustAccessApplicationTargetCriteriaArgs:
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
-    @pulumi.getter(name="targetAttributes")
-    def target_attributes(self) -> pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]:
+    @pulumi.getter
+    def exclude(self) -> pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaExcludeArgs']]:
         """
-        Contains a map of target attribute keys to target attribute values.
+        Target is excluded when any selector in this rule matches.
+        """
+        return pulumi.get(self, "exclude")
+
+    @exclude.setter
+    def exclude(self, value: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaExcludeArgs']]):
+        pulumi.set(self, "exclude", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def include(self) -> pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaIncludeArgs']]:
+        """
+        Target matches when any selector in this rule matches.
+        """
+        return pulumi.get(self, "include")
+
+    @include.setter
+    def include(self, value: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaIncludeArgs']]):
+        pulumi.set(self, "include", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def require(self) -> pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaRequireArgs']]:
+        """
+        Target matches only when every selector in this rule matches.
+        """
+        return pulumi.get(self, "require")
+
+    @require.setter
+    def require(self, value: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaRequireArgs']]):
+        pulumi.set(self, "require", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Deprecated: use include.target_attributes for hostname selectors and rule tags for tag-based matching. New or changed maps may contain only hostname. The API accepts unchanged legacy maps on update, including non-hostname keys.
         """
         return pulumi.get(self, "target_attributes")
 
     @target_attributes.setter
-    def target_attributes(self, value: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]):
+    def target_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "target_attributes", value)
+
+
+class ZeroTrustAccessApplicationTargetCriteriaExcludeArgsDict(TypedDict):
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]]
+    """
+    Map of target tag keys to values. Values within a key are OR'd.
+    """
+    target_attributes: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgsDict']]]
+    """
+    Hostname selector map. Only the hostname key is supported.
+    """
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationTargetCriteriaExcludeArgs:
+    def __init__(__self__, *,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 target_attributes: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgs']] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] tags: Map of target tag keys to values. Values within a key are OR'd.
+        :param pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgs'] target_attributes: Hostname selector map. Only the hostname key is supported.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if target_attributes is not None:
+            pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Map of target tag keys to values. Values within a key are OR'd.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgs']]:
+        """
+        Hostname selector map. Only the hostname key is supported.
+        """
+        return pulumi.get(self, "target_attributes")
+
+    @target_attributes.setter
+    def target_attributes(self, value: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgs']]):
+        pulumi.set(self, "target_attributes", value)
+
+
+class ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgsDict(TypedDict):
+    hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationTargetCriteriaExcludeTargetAttributesArgs:
+    def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(__self__, "hostnames", hostnames)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "hostnames", value)
+
+
+class ZeroTrustAccessApplicationTargetCriteriaIncludeArgsDict(TypedDict):
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]]
+    """
+    Map of target tag keys to values. Values within a key are OR'd.
+    """
+    target_attributes: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgsDict']]]
+    """
+    Hostname selector map. Only the hostname key is supported.
+    """
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationTargetCriteriaIncludeArgs:
+    def __init__(__self__, *,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 target_attributes: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgs']] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] tags: Map of target tag keys to values. Values within a key are OR'd.
+        :param pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgs'] target_attributes: Hostname selector map. Only the hostname key is supported.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if target_attributes is not None:
+            pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Map of target tag keys to values. Values within a key are OR'd.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgs']]:
+        """
+        Hostname selector map. Only the hostname key is supported.
+        """
+        return pulumi.get(self, "target_attributes")
+
+    @target_attributes.setter
+    def target_attributes(self, value: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgs']]):
+        pulumi.set(self, "target_attributes", value)
+
+
+class ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgsDict(TypedDict):
+    hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationTargetCriteriaIncludeTargetAttributesArgs:
+    def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(__self__, "hostnames", hostnames)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "hostnames", value)
+
+
+class ZeroTrustAccessApplicationTargetCriteriaRequireArgsDict(TypedDict):
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]]
+    """
+    Map of target tag keys to values. Values within a key are OR'd.
+    """
+    target_attributes: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgsDict']]]
+    """
+    Hostname selector map. Only the hostname key is supported.
+    """
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationTargetCriteriaRequireArgs:
+    def __init__(__self__, *,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 target_attributes: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgs']] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] tags: Map of target tag keys to values. Values within a key are OR'd.
+        :param pulumi.Input['ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgs'] target_attributes: Hostname selector map. Only the hostname key is supported.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if target_attributes is not None:
+            pulumi.set(__self__, "target_attributes", target_attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        Map of target tag keys to values. Values within a key are OR'd.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetAttributes")
+    def target_attributes(self) -> pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgs']]:
+        """
+        Hostname selector map. Only the hostname key is supported.
+        """
+        return pulumi.get(self, "target_attributes")
+
+    @target_attributes.setter
+    def target_attributes(self, value: pulumi.Input[Optional['ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgs']]):
+        pulumi.set(self, "target_attributes", value)
+
+
+class ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgsDict(TypedDict):
+    hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationTargetCriteriaRequireTargetAttributesArgs:
+    def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(__self__, "hostnames", hostnames)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "hostnames", value)
 
 
 class ZeroTrustAccessCustomPageWarningArgsDict(TypedDict):
@@ -82915,6 +83945,10 @@ class ZeroTrustAccessIdentityProviderConfigArgsDict(TypedDict):
     """
     IdP Entity ID or Issuer URL
     """
+    login_page_auto_prompt: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+    """
     max_sso_url_length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum URL length the IdP accepts for the SSO redirect URL.
@@ -82995,6 +84029,7 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
                  header_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs']]]] = None,
                  idp_public_certs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_page_auto_prompt: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_sso_url_length: pulumi.Input[Optional[_builtins.int]] = None,
                  okta_account: pulumi.Input[Optional[_builtins.str]] = None,
                  onelogin_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -83030,6 +84065,7 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs']]] header_attributes: Add a list of attribute names that will be returned in the response header from the Access callback.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] idp_public_certs: X509 certificate to verify the signature in the SAML authentication response
         :param pulumi.Input[_builtins.str] issuer_url: IdP Entity ID or Issuer URL
+        :param pulumi.Input[_builtins.bool] login_page_auto_prompt: When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
         :param pulumi.Input[_builtins.int] max_sso_url_length: The maximum URL length the IdP accepts for the SSO redirect URL.
                When the constructed SSO URL would exceed this length, the RelayState
                is stored server-side and a short nonce is passed to the IdP instead.
@@ -83086,6 +84122,8 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
             pulumi.set(__self__, "idp_public_certs", idp_public_certs)
         if issuer_url is not None:
             pulumi.set(__self__, "issuer_url", issuer_url)
+        if login_page_auto_prompt is not None:
+            pulumi.set(__self__, "login_page_auto_prompt", login_page_auto_prompt)
         if max_sso_url_length is not None:
             pulumi.set(__self__, "max_sso_url_length", max_sso_url_length)
         if okta_account is not None:
@@ -83343,6 +84381,18 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
     @issuer_url.setter
     def issuer_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loginPageAutoPrompt")
+    def login_page_auto_prompt(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When enabled, the Access login page automatically prompts the user to authenticate with a passkey.
+        """
+        return pulumi.get(self, "login_page_auto_prompt")
+
+    @login_page_auto_prompt.setter
+    def login_page_auto_prompt(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "login_page_auto_prompt", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSsoUrlLength")
@@ -97722,7 +98772,7 @@ class ZeroTrustOrganizationMfaConfigArgs:
         pulumi.set(self, "session_duration", value)
 
 
-class ZeroTrustOrganizationMfaSshPivKeyRequirementsArgsDict(TypedDict):
+class ZeroTrustOrganizationMfaPivKeyRequirementsArgsDict(TypedDict):
     pin_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
@@ -97730,7 +98780,7 @@ class ZeroTrustOrganizationMfaSshPivKeyRequirementsArgsDict(TypedDict):
     """
     require_fips_device: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+    Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
     """
     ssh_key_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
@@ -97747,7 +98797,7 @@ class ZeroTrustOrganizationMfaSshPivKeyRequirementsArgsDict(TypedDict):
     """
 
 @pulumi.input_type
-class ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs:
+class ZeroTrustOrganizationMfaPivKeyRequirementsArgs:
     def __init__(__self__, *,
                  pin_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  require_fips_device: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -97757,7 +98807,7 @@ class ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs:
         """
         :param pulumi.Input[_builtins.str] pin_policy: Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).
                Available values: "never", "once", "always".
-        :param pulumi.Input[_builtins.bool] require_fips_device: Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+        :param pulumi.Input[_builtins.bool] require_fips_device: Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ssh_key_sizes: Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_key_types: Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.
         :param pulumi.Input[_builtins.str] touch_policy: Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).
@@ -97791,7 +98841,7 @@ class ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs:
     @pulumi.getter(name="requireFipsDevice")
     def require_fips_device(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+        Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
         """
         return pulumi.get(self, "require_fips_device")
 
@@ -108432,40 +109482,47 @@ class GetZeroTrustNetworkHostnameRouteFilterArgs:
 class GetZeroTrustResourceLibraryApplicationFilterArgsDict(TypedDict):
     limit: _builtins.int
     """
-    Limit of number of results to return (max 250).
+    Number of results to return. Defaults to 25; values are clamped to 1–250.
     """
     offset: _builtins.int
     """
-    Offset of results to return.
+    Number of results to skip. Defaults to 0; negative values are clamped to 0.
     """
     fields: NotRequired[_builtins.str]
     """
     Return only the listed properties on each application, as a comma-separated list.
-    Use this to keep responses small when you only need part of each application — for
+    Use this to keep responses small when you only need part of each application, for
     example populating a picker with `fields=id,name` instead of downloading every
     hostname and IP subnet.
     """
     filter: NotRequired[_builtins.str]
     """
-    Filter applications using key:value format. Supported filter keys:
-    - name: Filter by application name (e.g., name:HR)
-    - id: Filter by application ID (e.g., id:498)
-    - human_id: Filter by human-readable ID (e.g., human_id:HR)
-    - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-    - source: Filter by application source name (e.g., source:cloudflare)
-    - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-    - category_id: Filter by category ID (e.g., category_id:12).
-    - category_name: Filter by category name (e.g., category_name:HR).
-    - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-    - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-      .
+    Filter applications using `key:value` format. Supported filter keys:
+    - `name`: application name (for example, `name:HR`).
+    - `id`: application ID (for example, `id:498`).
+    - `human_id`: human-readable ID (for example, `human_id:HR`).
+    - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+    - `source`: application source name (for example, `source:cloudflare`).
+    - `ip_subnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+    - `category_id`: category ID (for example, `category_id:12`).
+    - `category_name`: category name (for example, `category_name:HR`).
+    - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+    - `review_status`: account-specific Gateway review status. Values: `approved`, `unapproved`, `in_review`, `unreviewed`.
+    """
+    lookup: NotRequired[_builtins.str]
+    """
+    Find complete, case-insensitive application name mentions in a phrase or
+    rule sentence. Misspelled names do not match. Returns matching applications
+    ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+    filters, fields, and pagination as listing. `search` cannot be combined
+    with lookup. Results are ranked by relevance, so `order_by` is ignored.
     """
     order_by: NotRequired[_builtins.str]
     """
     Order results using field:direction format. Supported fields are name, id, human_id,
     category_id, application_type, application_confidence_score, and gen_ai_score.
     Supported directions are asc and desc. Ignored when search is provided; results are
-    ranked by relevance instead.
+    ranked by relevance instead. Also ignored when lookup is provided.
     """
     search: NotRequired[_builtins.str]
     """
@@ -108479,31 +109536,36 @@ class GetZeroTrustResourceLibraryApplicationFilterArgs:
                  offset: _builtins.int,
                  fields: Optional[_builtins.str] = None,
                  filter: Optional[_builtins.str] = None,
+                 lookup: Optional[_builtins.str] = None,
                  order_by: Optional[_builtins.str] = None,
                  search: Optional[_builtins.str] = None):
         """
-        :param _builtins.int limit: Limit of number of results to return (max 250).
-        :param _builtins.int offset: Offset of results to return.
+        :param _builtins.int limit: Number of results to return. Defaults to 25; values are clamped to 1–250.
+        :param _builtins.int offset: Number of results to skip. Defaults to 0; negative values are clamped to 0.
         :param _builtins.str fields: Return only the listed properties on each application, as a comma-separated list.
-               Use this to keep responses small when you only need part of each application — for
+               Use this to keep responses small when you only need part of each application, for
                example populating a picker with `fields=id,name` instead of downloading every
                hostname and IP subnet.
-        :param _builtins.str filter: Filter applications using key:value format. Supported filter keys:
-               - name: Filter by application name (e.g., name:HR)
-               - id: Filter by application ID (e.g., id:498)
-               - human_id: Filter by human-readable ID (e.g., human_id:HR)
-               - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-               - source: Filter by application source name (e.g., source:cloudflare)
-               - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-               - category_id: Filter by category ID (e.g., category_id:12).
-               - category_name: Filter by category name (e.g., category_name:HR).
-               - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-               - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-                 .
+        :param _builtins.str filter: Filter applications using `key:value` format. Supported filter keys:
+               - `name`: application name (for example, `name:HR`).
+               - `id`: application ID (for example, `id:498`).
+               - `human_id`: human-readable ID (for example, `human_id:HR`).
+               - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+               - `source`: application source name (for example, `source:cloudflare`).
+               - `ip_subnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+               - `category_id`: category ID (for example, `category_id:12`).
+               - `category_name`: category name (for example, `category_name:HR`).
+               - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+               - `review_status`: account-specific Gateway review status. Values: `approved`, `unapproved`, `in_review`, `unreviewed`.
+        :param _builtins.str lookup: Find complete, case-insensitive application name mentions in a phrase or
+               rule sentence. Misspelled names do not match. Returns matching applications
+               ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+               filters, fields, and pagination as listing. `search` cannot be combined
+               with lookup. Results are ranked by relevance, so `order_by` is ignored.
         :param _builtins.str order_by: Order results using field:direction format. Supported fields are name, id, human_id,
                category_id, application_type, application_confidence_score, and gen_ai_score.
                Supported directions are asc and desc. Ignored when search is provided; results are
-               ranked by relevance instead.
+               ranked by relevance instead. Also ignored when lookup is provided.
         :param _builtins.str search: Fuzzy search across application name and hostnames. Results are ranked by relevance. Must be between 2 and 200 characters. Can be combined with filter parameters.
         """
         pulumi.set(__self__, "limit", limit)
@@ -108512,6 +109574,8 @@ class GetZeroTrustResourceLibraryApplicationFilterArgs:
             pulumi.set(__self__, "fields", fields)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if lookup is not None:
+            pulumi.set(__self__, "lookup", lookup)
         if order_by is not None:
             pulumi.set(__self__, "order_by", order_by)
         if search is not None:
@@ -108521,7 +109585,7 @@ class GetZeroTrustResourceLibraryApplicationFilterArgs:
     @pulumi.getter
     def limit(self) -> _builtins.int:
         """
-        Limit of number of results to return (max 250).
+        Number of results to return. Defaults to 25; values are clamped to 1–250.
         """
         return pulumi.get(self, "limit")
 
@@ -108533,7 +109597,7 @@ class GetZeroTrustResourceLibraryApplicationFilterArgs:
     @pulumi.getter
     def offset(self) -> _builtins.int:
         """
-        Offset of results to return.
+        Number of results to skip. Defaults to 0; negative values are clamped to 0.
         """
         return pulumi.get(self, "offset")
 
@@ -108546,7 +109610,7 @@ class GetZeroTrustResourceLibraryApplicationFilterArgs:
     def fields(self) -> Optional[_builtins.str]:
         """
         Return only the listed properties on each application, as a comma-separated list.
-        Use this to keep responses small when you only need part of each application — for
+        Use this to keep responses small when you only need part of each application, for
         example populating a picker with `fields=id,name` instead of downloading every
         hostname and IP subnet.
         """
@@ -108560,18 +109624,17 @@ class GetZeroTrustResourceLibraryApplicationFilterArgs:
     @pulumi.getter
     def filter(self) -> Optional[_builtins.str]:
         """
-        Filter applications using key:value format. Supported filter keys:
-        - name: Filter by application name (e.g., name:HR)
-        - id: Filter by application ID (e.g., id:498)
-        - human_id: Filter by human-readable ID (e.g., human_id:HR)
-        - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-        - source: Filter by application source name (e.g., source:cloudflare)
-        - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-        - category_id: Filter by category ID (e.g., category_id:12).
-        - category_name: Filter by category name (e.g., category_name:HR).
-        - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-        - review_status: Filter by the account's Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-          .
+        Filter applications using `key:value` format. Supported filter keys:
+        - `name`: application name (for example, `name:HR`).
+        - `id`: application ID (for example, `id:498`).
+        - `human_id`: human-readable ID (for example, `human_id:HR`).
+        - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+        - `source`: application source name (for example, `source:cloudflare`).
+        - `ip_subnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+        - `category_id`: category ID (for example, `category_id:12`).
+        - `category_name`: category name (for example, `category_name:HR`).
+        - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+        - `review_status`: account-specific Gateway review status. Values: `approved`, `unapproved`, `in_review`, `unreviewed`.
         """
         return pulumi.get(self, "filter")
 
@@ -108580,13 +109643,29 @@ class GetZeroTrustResourceLibraryApplicationFilterArgs:
         pulumi.set(self, "filter", value)
 
     @_builtins.property
+    @pulumi.getter
+    def lookup(self) -> Optional[_builtins.str]:
+        """
+        Find complete, case-insensitive application name mentions in a phrase or
+        rule sentence. Misspelled names do not match. Returns matching applications
+        ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+        filters, fields, and pagination as listing. `search` cannot be combined
+        with lookup. Results are ranked by relevance, so `order_by` is ignored.
+        """
+        return pulumi.get(self, "lookup")
+
+    @lookup.setter
+    def lookup(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "lookup", value)
+
+    @_builtins.property
     @pulumi.getter(name="orderBy")
     def order_by(self) -> Optional[_builtins.str]:
         """
         Order results using field:direction format. Supported fields are name, id, human_id,
         category_id, application_type, application_confidence_score, and gen_ai_score.
         Supported directions are asc and desc. Ignored when search is provided; results are
-        ranked by relevance instead.
+        ranked by relevance instead. Also ignored when lookup is provided.
         """
         return pulumi.get(self, "order_by")
 

@@ -153,7 +153,7 @@ type ZeroTrustDeviceCustomProfile struct {
 	LanAllowMinutes pulumi.Float64PtrOutput `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrOutput `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 	Match pulumi.StringPtrOutput `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     pulumi.StringOutput `pulumi:"name"`
@@ -171,8 +171,9 @@ type ZeroTrustDeviceCustomProfile struct {
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl pulumi.StringOutput `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
-	SwitchLocked pulumi.BoolOutput                                 `pulumi:"switchLocked"`
-	TargetTests  ZeroTrustDeviceCustomProfileTargetTestArrayOutput `pulumi:"targetTests"`
+	SwitchLocked pulumi.BoolOutput `pulumi:"switchLocked"`
+	// Deprecated: This attribute is deprecated.
+	TargetTests ZeroTrustDeviceCustomProfileTargetTestArrayOutput `pulumi:"targetTests"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringOutput `pulumi:"tunnelProtocol"`
 	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
@@ -263,7 +264,7 @@ type zeroTrustDeviceCustomProfileState struct {
 	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 	Match *string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     *string `pulumi:"name"`
@@ -281,8 +282,9 @@ type zeroTrustDeviceCustomProfileState struct {
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
-	SwitchLocked *bool                                    `pulumi:"switchLocked"`
-	TargetTests  []ZeroTrustDeviceCustomProfileTargetTest `pulumi:"targetTests"`
+	SwitchLocked *bool `pulumi:"switchLocked"`
+	// Deprecated: This attribute is deprecated.
+	TargetTests []ZeroTrustDeviceCustomProfileTargetTest `pulumi:"targetTests"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
 	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
@@ -329,7 +331,7 @@ type ZeroTrustDeviceCustomProfileState struct {
 	LanAllowMinutes pulumi.Float64PtrInput
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 	Match pulumi.StringPtrInput
 	// The name of the device settings profile.
 	Name     pulumi.StringPtrInput
@@ -348,7 +350,8 @@ type ZeroTrustDeviceCustomProfileState struct {
 	SupportUrl pulumi.StringPtrInput
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
 	SwitchLocked pulumi.BoolPtrInput
-	TargetTests  ZeroTrustDeviceCustomProfileTargetTestArrayInput
+	// Deprecated: This attribute is deprecated.
+	TargetTests ZeroTrustDeviceCustomProfileTargetTestArrayInput
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringPtrInput
 	// Determines whether uninstalling the WARP client requires an override code. (Windows only).
@@ -395,7 +398,7 @@ type zeroTrustDeviceCustomProfileArgs struct {
 	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 	Match *string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name string `pulumi:"name"`
@@ -456,7 +459,7 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	LanAllowMinutes pulumi.Float64PtrInput
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 	Match pulumi.StringPtrInput
 	// The name of the device settings profile.
 	Name pulumi.StringInput
@@ -678,7 +681,7 @@ func (o ZeroTrustDeviceCustomProfileOutput) LanAllowSubnetSize() pulumi.Float64P
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64PtrOutput { return v.LanAllowSubnetSize }).(pulumi.Float64PtrOutput)
 }
 
-// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
+// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version", "device.tags".
 func (o ZeroTrustDeviceCustomProfileOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringPtrOutput { return v.Match }).(pulumi.StringPtrOutput)
 }
@@ -729,6 +732,7 @@ func (o ZeroTrustDeviceCustomProfileOutput) SwitchLocked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.SwitchLocked }).(pulumi.BoolOutput)
 }
 
+// Deprecated: This attribute is deprecated.
 func (o ZeroTrustDeviceCustomProfileOutput) TargetTests() ZeroTrustDeviceCustomProfileTargetTestArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) ZeroTrustDeviceCustomProfileTargetTestArrayOutput {
 		return v.TargetTests

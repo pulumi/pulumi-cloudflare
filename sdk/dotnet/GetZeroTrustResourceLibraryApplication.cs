@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetZeroTrustResourceLibraryApplicationFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Returns the application ID.
+        /// Numeric identifier for the application.
         /// </summary>
         [Input("id")]
         public int? Id { get; set; }
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetZeroTrustResourceLibraryApplicationFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Returns the application ID.
+        /// Numeric identifier for the application.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ApplicationTypeDescription;
         /// <summary>
-        /// Returns the category ID.
+        /// Numeric identifier for an application category.
         /// </summary>
         public readonly int CategoryId;
         /// <summary>
@@ -165,11 +165,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
-        /// Returns the human readable ID.
+        /// Human-readable identifier for the application.
         /// </summary>
         public readonly string HumanId;
         /// <summary>
-        /// Returns the application ID.
+        /// Numeric identifier for the application.
         /// </summary>
         public readonly int Id;
         /// <summary>
@@ -177,11 +177,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> IpSubnets;
         /// <summary>
-        /// Returns the application name.
+        /// Application name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Port and protocol pairs matched by the application.
+        /// Ports matched by the application, in `protocol/port` or inclusive `protocol/start-end` format (for example, `tcp/443` or `udp/10000-20000`). TCP and UDP ports must be between 0 and 65535.
         /// </summary>
         public readonly ImmutableArray<string> PortProtocols;
         /// <summary>

@@ -219,11 +219,11 @@ public class ZeroTrustDlpCustomEntry extends com.pulumi.resources.CustomResource
     public Output<ZeroTrustDlpCustomEntryVariant> variant() {
         return this.variant;
     }
-    @Export(name="wordList", refs={String.class}, tree="[0]")
-    private Output<String> wordList;
+    @Export(name="wordLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> wordLists;
 
-    public Output<String> wordList() {
-        return this.wordList;
+    public Output<List<String>> wordLists() {
+        return this.wordLists;
     }
 
     /**

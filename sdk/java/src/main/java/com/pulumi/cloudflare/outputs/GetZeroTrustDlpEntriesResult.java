@@ -10,6 +10,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -52,7 +53,7 @@ public final class GetZeroTrustDlpEntriesResult {
      * 
      */
     private GetZeroTrustDlpEntriesResultVariant variant;
-    private String wordList;
+    private List<String> wordLists;
 
     private GetZeroTrustDlpEntriesResult() {}
     /**
@@ -123,8 +124,8 @@ public final class GetZeroTrustDlpEntriesResult {
     public GetZeroTrustDlpEntriesResultVariant variant() {
         return this.variant;
     }
-    public String wordList() {
-        return this.wordList;
+    public List<String> wordLists() {
+        return this.wordLists;
     }
 
     public static Builder builder() {
@@ -151,7 +152,7 @@ public final class GetZeroTrustDlpEntriesResult {
         private String updatedAt;
         private String uploadStatus;
         private GetZeroTrustDlpEntriesResultVariant variant;
-        private String wordList;
+        private List<String> wordLists;
         public Builder() {}
         public Builder(GetZeroTrustDlpEntriesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -170,7 +171,7 @@ public final class GetZeroTrustDlpEntriesResult {
     	      this.updatedAt = defaults.updatedAt;
     	      this.uploadStatus = defaults.uploadStatus;
     	      this.variant = defaults.variant;
-    	      this.wordList = defaults.wordList;
+    	      this.wordLists = defaults.wordLists;
         }
 
         @CustomType.Setter
@@ -294,12 +295,15 @@ public final class GetZeroTrustDlpEntriesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder wordList(String wordList) {
-            if (wordList == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpEntriesResult", "wordList");
+        public Builder wordLists(List<String> wordLists) {
+            if (wordLists == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpEntriesResult", "wordLists");
             }
-            this.wordList = wordList;
+            this.wordLists = wordLists;
             return this;
+        }
+        public Builder wordLists(String... wordLists) {
+            return wordLists(List.of(wordLists));
         }
         public GetZeroTrustDlpEntriesResult build() {
             final var _resultValue = new GetZeroTrustDlpEntriesResult();
@@ -318,7 +322,7 @@ public final class GetZeroTrustDlpEntriesResult {
             _resultValue.updatedAt = updatedAt;
             _resultValue.uploadStatus = uploadStatus;
             _resultValue.variant = variant;
-            _resultValue.wordList = wordList;
+            _resultValue.wordLists = wordLists;
             return _resultValue;
         }
     }

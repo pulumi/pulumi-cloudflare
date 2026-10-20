@@ -19,7 +19,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
 
     /**
      * Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      * 
@@ -29,7 +29,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
 
     /**
      * @return Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      * 
@@ -39,36 +39,34 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
     }
 
     /**
-     * Filter applications using key:value format. Supported filter keys:
-     * - name: Filter by application name (e.g., name:HR)
-     * - id: Filter by application ID (e.g., id:498)
-     * - human_id: Filter by human-readable ID (e.g., human_id:HR)
-     * - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-     * - source: Filter by application source name (e.g., source:cloudflare)
-     * - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-     * - category_id: Filter by category ID (e.g., category_id:12).
-     * - category_name: Filter by category name (e.g., category_name:HR).
-     * - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-     * - review_status: Filter by the account&#39;s Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-     *   .
+     * Filter applications using `key:value` format. Supported filter keys:
+     * - `name`: application name (for example, `name:HR`).
+     * - `id`: application ID (for example, `id:498`).
+     * - `humanId`: human-readable ID (for example, `human_id:HR`).
+     * - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+     * - `source`: application source name (for example, `source:cloudflare`).
+     * - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+     * - `categoryId`: category ID (for example, `category_id:12`).
+     * - `categoryName`: category name (for example, `category_name:HR`).
+     * - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+     * - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
      * 
      */
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
     /**
-     * @return Filter applications using key:value format. Supported filter keys:
-     * - name: Filter by application name (e.g., name:HR)
-     * - id: Filter by application ID (e.g., id:498)
-     * - human_id: Filter by human-readable ID (e.g., human_id:HR)
-     * - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-     * - source: Filter by application source name (e.g., source:cloudflare)
-     * - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-     * - category_id: Filter by category ID (e.g., category_id:12).
-     * - category_name: Filter by category name (e.g., category_name:HR).
-     * - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-     * - review_status: Filter by the account&#39;s Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-     *   .
+     * @return Filter applications using `key:value` format. Supported filter keys:
+     * - `name`: application name (for example, `name:HR`).
+     * - `id`: application ID (for example, `id:498`).
+     * - `humanId`: human-readable ID (for example, `human_id:HR`).
+     * - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+     * - `source`: application source name (for example, `source:cloudflare`).
+     * - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+     * - `categoryId`: category ID (for example, `category_id:12`).
+     * - `categoryName`: category name (for example, `category_name:HR`).
+     * - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+     * - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
      * 
      */
     public Optional<Output<String>> filter() {
@@ -76,14 +74,14 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
     }
 
     /**
-     * Limit of number of results to return (max 250).
+     * Number of results to return. Defaults to 25; values are clamped to 1–250.
      * 
      */
     @Import(name="limit", required=true)
     private Output<Integer> limit;
 
     /**
-     * @return Limit of number of results to return (max 250).
+     * @return Number of results to return. Defaults to 25; values are clamped to 1–250.
      * 
      */
     public Output<Integer> limit() {
@@ -91,14 +89,37 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
     }
 
     /**
-     * Offset of results to return.
+     * Find complete, case-insensitive application name mentions in a phrase or
+     * rule sentence. Misspelled names do not match. Returns matching applications
+     * ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+     * filters, fields, and pagination as listing. `search` cannot be combined
+     * with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+     * 
+     */
+    @Import(name="lookup")
+    private @Nullable Output<String> lookup;
+
+    /**
+     * @return Find complete, case-insensitive application name mentions in a phrase or
+     * rule sentence. Misspelled names do not match. Returns matching applications
+     * ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+     * filters, fields, and pagination as listing. `search` cannot be combined
+     * with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+     * 
+     */
+    public Optional<Output<String>> lookup() {
+        return Optional.ofNullable(this.lookup);
+    }
+
+    /**
+     * Number of results to skip. Defaults to 0; negative values are clamped to 0.
      * 
      */
     @Import(name="offset", required=true)
     private Output<Integer> offset;
 
     /**
-     * @return Offset of results to return.
+     * @return Number of results to skip. Defaults to 0; negative values are clamped to 0.
      * 
      */
     public Output<Integer> offset() {
@@ -109,7 +130,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
      * Order results using field:direction format. Supported fields are name, id, human_id,
      * category_id, application_type, application_confidence_score, and gen_ai_score.
      * Supported directions are asc and desc. Ignored when search is provided; results are
-     * ranked by relevance instead.
+     * ranked by relevance instead. Also ignored when lookup is provided.
      * 
      */
     @Import(name="orderBy")
@@ -119,7 +140,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
      * @return Order results using field:direction format. Supported fields are name, id, human_id,
      * category_id, application_type, application_confidence_score, and gen_ai_score.
      * Supported directions are asc and desc. Ignored when search is provided; results are
-     * ranked by relevance instead.
+     * ranked by relevance instead. Also ignored when lookup is provided.
      * 
      */
     public Optional<Output<String>> orderBy() {
@@ -147,6 +168,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
         this.fields = $.fields;
         this.filter = $.filter;
         this.limit = $.limit;
+        this.lookup = $.lookup;
         this.offset = $.offset;
         this.orderBy = $.orderBy;
         this.search = $.search;
@@ -172,7 +194,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
 
         /**
          * @param fields Return only the listed properties on each application, as a comma-separated list.
-         * Use this to keep responses small when you only need part of each application — for
+         * Use this to keep responses small when you only need part of each application, for
          * example populating a picker with `fields=id,name` instead of downloading every
          * hostname and IP subnet.
          * 
@@ -186,7 +208,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
 
         /**
          * @param fields Return only the listed properties on each application, as a comma-separated list.
-         * Use this to keep responses small when you only need part of each application — for
+         * Use this to keep responses small when you only need part of each application, for
          * example populating a picker with `fields=id,name` instead of downloading every
          * hostname and IP subnet.
          * 
@@ -198,18 +220,17 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
         }
 
         /**
-         * @param filter Filter applications using key:value format. Supported filter keys:
-         * - name: Filter by application name (e.g., name:HR)
-         * - id: Filter by application ID (e.g., id:498)
-         * - human_id: Filter by human-readable ID (e.g., human_id:HR)
-         * - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-         * - source: Filter by application source name (e.g., source:cloudflare)
-         * - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-         * - category_id: Filter by category ID (e.g., category_id:12).
-         * - category_name: Filter by category name (e.g., category_name:HR).
-         * - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-         * - review_status: Filter by the account&#39;s Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-         *   .
+         * @param filter Filter applications using `key:value` format. Supported filter keys:
+         * - `name`: application name (for example, `name:HR`).
+         * - `id`: application ID (for example, `id:498`).
+         * - `humanId`: human-readable ID (for example, `human_id:HR`).
+         * - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+         * - `source`: application source name (for example, `source:cloudflare`).
+         * - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+         * - `categoryId`: category ID (for example, `category_id:12`).
+         * - `categoryName`: category name (for example, `category_name:HR`).
+         * - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+         * - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
          * 
          * @return builder
          * 
@@ -220,18 +241,17 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
         }
 
         /**
-         * @param filter Filter applications using key:value format. Supported filter keys:
-         * - name: Filter by application name (e.g., name:HR)
-         * - id: Filter by application ID (e.g., id:498)
-         * - human_id: Filter by human-readable ID (e.g., human_id:HR)
-         * - hostname: Filter by hostname or support domain (e.g., hostname:portal.example.com)
-         * - source: Filter by application source name (e.g., source:cloudflare)
-         * - ip_subnet: Filter by IP subnet using CIDR containment — returns applications where any stored subnet contains the search value (e.g., ip_subnet:10.0.1.5/32 matches apps with 10.0.0.0/16)
-         * - category_id: Filter by category ID (e.g., category_id:12).
-         * - category_name: Filter by category name (e.g., category_name:HR).
-         * - supported: Filter by supported Cloudflare product (e.g., supported:ACCESS). Values: GATEWAY, ACCESS, CASB.
-         * - review_status: Filter by the account&#39;s Gateway review status. Values: approved, unapproved, in_review, unreviewed.
-         *   .
+         * @param filter Filter applications using `key:value` format. Supported filter keys:
+         * - `name`: application name (for example, `name:HR`).
+         * - `id`: application ID (for example, `id:498`).
+         * - `humanId`: human-readable ID (for example, `human_id:HR`).
+         * - `hostname`: hostname or support domain (for example, `hostname:portal.example.com`).
+         * - `source`: application source name (for example, `source:cloudflare`).
+         * - `ipSubnet`: CIDR containment; returns applications where a stored subnet contains the search value (for example, `ip_subnet:10.0.1.5/32` matches `10.0.0.0/16`).
+         * - `categoryId`: category ID (for example, `category_id:12`).
+         * - `categoryName`: category name (for example, `category_name:HR`).
+         * - `supported`: supported Cloudflare product. Values: `GATEWAY`, `ACCESS`, `CASB`.
+         * - `reviewStatus`: account-specific Gateway review status. Values: `approved`, `unapproved`, `inReview`, `unreviewed`.
          * 
          * @return builder
          * 
@@ -241,7 +261,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
         }
 
         /**
-         * @param limit Limit of number of results to return (max 250).
+         * @param limit Number of results to return. Defaults to 25; values are clamped to 1–250.
          * 
          * @return builder
          * 
@@ -252,7 +272,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
         }
 
         /**
-         * @param limit Limit of number of results to return (max 250).
+         * @param limit Number of results to return. Defaults to 25; values are clamped to 1–250.
          * 
          * @return builder
          * 
@@ -262,7 +282,36 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
         }
 
         /**
-         * @param offset Offset of results to return.
+         * @param lookup Find complete, case-insensitive application name mentions in a phrase or
+         * rule sentence. Misspelled names do not match. Returns matching applications
+         * ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+         * filters, fields, and pagination as listing. `search` cannot be combined
+         * with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lookup(@Nullable Output<String> lookup) {
+            $.lookup = lookup;
+            return this;
+        }
+
+        /**
+         * @param lookup Find complete, case-insensitive application name mentions in a phrase or
+         * rule sentence. Misspelled names do not match. Returns matching applications
+         * ranked by relevance. Must be between 2 and 1000 characters. Uses the same
+         * filters, fields, and pagination as listing. `search` cannot be combined
+         * with lookup. Results are ranked by relevance, so `orderBy` is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lookup(String lookup) {
+            return lookup(Output.of(lookup));
+        }
+
+        /**
+         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0.
          * 
          * @return builder
          * 
@@ -273,7 +322,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
         }
 
         /**
-         * @param offset Offset of results to return.
+         * @param offset Number of results to skip. Defaults to 0; negative values are clamped to 0.
          * 
          * @return builder
          * 
@@ -286,7 +335,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
          * @param orderBy Order results using field:direction format. Supported fields are name, id, human_id,
          * category_id, application_type, application_confidence_score, and gen_ai_score.
          * Supported directions are asc and desc. Ignored when search is provided; results are
-         * ranked by relevance instead.
+         * ranked by relevance instead. Also ignored when lookup is provided.
          * 
          * @return builder
          * 
@@ -300,7 +349,7 @@ public final class GetZeroTrustResourceLibraryApplicationFilterArgs extends com.
          * @param orderBy Order results using field:direction format. Supported fields are name, id, human_id,
          * category_id, application_type, application_confidence_score, and gen_ai_score.
          * Supported directions are asc and desc. Ignored when search is provided; results are
-         * ranked by relevance instead.
+         * ranked by relevance instead. Also ignored when lookup is provided.
          * 
          * @return builder
          * 

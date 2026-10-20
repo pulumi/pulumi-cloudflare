@@ -21,7 +21,8 @@ class WorkersKvNamespaceArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None):
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersKvNamespace resource.
 
@@ -29,11 +30,15 @@ class WorkersKvNamespaceArgs:
         :param pulumi.Input[_builtins.str] title: Human-readable string name for a Workers KV namespace.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
                Available values: "eu", "fedramp", "us".
+        :param pulumi.Input[_builtins.str] mode: The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+               Available values: "instant".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "title", title)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -72,12 +77,26 @@ class WorkersKvNamespaceArgs:
     def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jurisdiction", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+        Available values: "instant".
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
 
 @pulumi.input_type
 class _WorkersKvNamespaceState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
                  supports_url_encoding: pulumi.Input[Optional[_builtins.bool]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -86,6 +105,8 @@ class _WorkersKvNamespaceState:
         :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
                Available values: "eu", "fedramp", "us".
+        :param pulumi.Input[_builtins.str] mode: The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+               Available values: "instant".
         :param pulumi.Input[_builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[_builtins.str] title: Human-readable string name for a Workers KV namespace.
         """
@@ -93,6 +114,8 @@ class _WorkersKvNamespaceState:
             pulumi.set(__self__, "account_id", account_id)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if supports_url_encoding is not None:
             pulumi.set(__self__, "supports_url_encoding", supports_url_encoding)
         if title is not None:
@@ -122,6 +145,19 @@ class _WorkersKvNamespaceState:
     @jurisdiction.setter
     def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jurisdiction", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+        Available values: "instant".
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="supportsUrlEncoding")
@@ -156,6 +192,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -173,7 +210,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
         example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             title="My Own Namespace",
-            jurisdiction="eu")
+            jurisdiction="eu",
+            mode="instant")
         ```
 
         ## Import
@@ -188,6 +226,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
                Available values: "eu", "fedramp", "us".
+        :param pulumi.Input[_builtins.str] mode: The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+               Available values: "instant".
         :param pulumi.Input[_builtins.str] title: Human-readable string name for a Workers KV namespace.
         """
         ...
@@ -211,7 +251,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
         example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             title="My Own Namespace",
-            jurisdiction="eu")
+            jurisdiction="eu",
+            mode="instant")
         ```
 
         ## Import
@@ -238,6 +279,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -252,6 +294,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["jurisdiction"] = jurisdiction
+            __props__.__dict__["mode"] = mode
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
@@ -268,6 +311,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
             supports_url_encoding: pulumi.Input[Optional[_builtins.bool]] = None,
             title: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkersKvNamespace':
         """
@@ -280,6 +324,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: ID of the Cloudflare account that owns the Workers KV namespaces.
         :param pulumi.Input[_builtins.str] jurisdiction: Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
                Available values: "eu", "fedramp", "us".
+        :param pulumi.Input[_builtins.str] mode: The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+               Available values: "instant".
         :param pulumi.Input[_builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[_builtins.str] title: Human-readable string name for a Workers KV namespace.
         """
@@ -289,6 +335,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["jurisdiction"] = jurisdiction
+        __props__.__dict__["mode"] = mode
         __props__.__dict__["supports_url_encoding"] = supports_url_encoding
         __props__.__dict__["title"] = title
         return WorkersKvNamespace(resource_name, opts=opts, __props__=__props__)
@@ -309,6 +356,15 @@ class WorkersKvNamespace(pulumi.CustomResource):
         Available values: "eu", "fedramp", "us".
         """
         return pulumi.get(self, "jurisdiction")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value.
+        Available values: "instant".
+        """
+        return pulumi.get(self, "mode")
 
     @_builtins.property
     @pulumi.getter(name="supportsUrlEncoding")

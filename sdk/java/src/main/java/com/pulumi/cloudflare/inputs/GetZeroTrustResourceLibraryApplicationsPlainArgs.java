@@ -25,7 +25,7 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
 
     /**
      * Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      * 
@@ -35,7 +35,7 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
 
     /**
      * @return Return only the listed properties on each application, as a comma-separated list.
-     * Use this to keep responses small when you only need part of each application — for
+     * Use this to keep responses small when you only need part of each application, for
      * example populating a picker with `fields=id,name` instead of downloading every
      * hostname and IP subnet.
      * 
@@ -56,6 +56,13 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
 
     public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
+    }
+
+    @Import(name="lookup")
+    private @Nullable String lookup;
+
+    public Optional<String> lookup() {
+        return Optional.ofNullable(this.lookup);
     }
 
     @Import(name="maxItems")
@@ -93,6 +100,7 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
         this.fields = $.fields;
         this.filter = $.filter;
         this.limit = $.limit;
+        this.lookup = $.lookup;
         this.maxItems = $.maxItems;
         this.offset = $.offset;
         this.orderBy = $.orderBy;
@@ -124,7 +132,7 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
 
         /**
          * @param fields Return only the listed properties on each application, as a comma-separated list.
-         * Use this to keep responses small when you only need part of each application — for
+         * Use this to keep responses small when you only need part of each application, for
          * example populating a picker with `fields=id,name` instead of downloading every
          * hostname and IP subnet.
          * 
@@ -143,6 +151,11 @@ public final class GetZeroTrustResourceLibraryApplicationsPlainArgs extends com.
 
         public Builder limit(@Nullable Integer limit) {
             $.limit = limit;
+            return this;
+        }
+
+        public Builder lookup(@Nullable String lookup) {
+            $.lookup = lookup;
             return this;
         }
 
