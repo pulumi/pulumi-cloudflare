@@ -134,11 +134,11 @@ import (
 //			// Before creating a Box integration, add the Cloudflare CASB application to
 //			// your Box account:
 //			//
-//			//  1. Sign in to the Box Admin Console with Admin permission.
-//			//  2. Open Integrations > Platform Apps Manager and select Server Authentication Apps.
-//			//  3. Click Add Platform App and enter the Cloudflare CASB client ID:
-//			//     puaghckpy0578r8p6f3g0rf860unup4r
-//			//  4. In Accounts & Billing, copy the Enterprise ID and use it below.
+//			// 1. Sign in to the Box Admin Console with Admin permission.
+//			// 2. Open Integrations > Platform Apps Manager and select Server Authentication Apps.
+//			// 3. Click Add Platform App and enter the Cloudflare CASB client ID:
+//			//    puaghckpy0578r8p6f3g0rf860unup4r
+//			// 4. In Accounts & Billing, copy the Enterprise ID and use it below.
 //			//
 //			// For details, refer to:
 //			// https://developer.box.com/guides/authorization/platform-app-approval/#as-an-admin
