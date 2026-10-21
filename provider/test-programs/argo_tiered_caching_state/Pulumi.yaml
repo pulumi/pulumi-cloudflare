@@ -1,9 +1,0 @@
-name: argo-tiered-caching-state
-runtime: yaml
-
-resources:
-  argo:
-    type: cloudflare:ArgoTieredCaching
-    properties:
-      zoneId: 00000000000000000000000000000000
-      value: "on"
