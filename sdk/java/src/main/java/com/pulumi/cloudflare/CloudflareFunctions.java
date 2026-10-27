@@ -9620,6 +9620,40 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .features(Arrays.asList("thresholds"))
+     *             .withSchemas(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetApiShieldOperationResult> getApiShieldOperation() {
         return getApiShieldOperation(GetApiShieldOperationArgs.Empty, InvokeOptions.Empty);
@@ -9633,6 +9667,40 @@ public final class CloudflareFunctions {
      * - `Domain API Gateway Read`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .features(Arrays.asList("thresholds"))
+     *             .withSchemas(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetApiShieldOperationResult> getApiShieldOperationPlain() {
@@ -9648,6 +9716,40 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .features(Arrays.asList("thresholds"))
+     *             .withSchemas(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetApiShieldOperationResult> getApiShieldOperation(GetApiShieldOperationArgs args) {
         return getApiShieldOperation(args, InvokeOptions.Empty);
@@ -9661,6 +9763,40 @@ public final class CloudflareFunctions {
      * - `Domain API Gateway Read`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .features(Arrays.asList("thresholds"))
+     *             .withSchemas(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetApiShieldOperationResult> getApiShieldOperationPlain(GetApiShieldOperationPlainArgs args) {
@@ -9676,6 +9812,40 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .features(Arrays.asList("thresholds"))
+     *             .withSchemas(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetApiShieldOperationResult> getApiShieldOperation(GetApiShieldOperationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getApiShieldOperation:getApiShieldOperation", TypeShape.of(GetApiShieldOperationResult.class), args, Utilities.withVersion(options));
@@ -9690,6 +9860,40 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .features(Arrays.asList("thresholds"))
+     *             .withSchemas(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetApiShieldOperationResult> getApiShieldOperation(GetApiShieldOperationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getApiShieldOperation:getApiShieldOperation", TypeShape.of(GetApiShieldOperationResult.class), args, Utilities.withVersion(options));
@@ -9703,6 +9907,40 @@ public final class CloudflareFunctions {
      * - `Domain API Gateway Read`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetApiShieldOperationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleApiShieldOperation = CloudflareFunctions.getApiShieldOperation(GetApiShieldOperationArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .features(Arrays.asList("thresholds"))
+     *             .withSchemas(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetApiShieldOperationResult> getApiShieldOperationPlain(GetApiShieldOperationPlainArgs args, InvokeOptions options) {
@@ -42088,6 +42326,39 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args) {
         return getLoadBalancer(args, InvokeOptions.Empty);
@@ -42099,6 +42370,39 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args) {
@@ -42112,6 +42416,39 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
@@ -42124,6 +42461,39 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetLoadBalancerResult> getLoadBalancer(GetLoadBalancerArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
@@ -42135,6 +42505,39 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancer = CloudflareFunctions.getLoadBalancer(GetLoadBalancerArgs.builder()
+     *             .loadBalancerId("699d98642c564d2e855e9661899b7252")
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
@@ -43670,6 +44073,38 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetLoadBalancersInvokeResult> getLoadBalancers() {
         return getLoadBalancers(GetLoadBalancersArgs.Empty, InvokeOptions.Empty);
@@ -43681,6 +44116,38 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancersInvokeResult> getLoadBalancersPlain() {
@@ -43694,6 +44161,38 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetLoadBalancersInvokeResult> getLoadBalancers(GetLoadBalancersArgs args) {
         return getLoadBalancers(args, InvokeOptions.Empty);
@@ -43705,6 +44204,38 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancersInvokeResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args) {
@@ -43718,6 +44249,38 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetLoadBalancersInvokeResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersInvokeResult.class), args, Utilities.withVersion(options));
@@ -43730,6 +44293,38 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetLoadBalancersInvokeResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersInvokeResult.class), args, Utilities.withVersion(options));
@@ -43741,6 +44336,38 @@ public final class CloudflareFunctions {
      * - `Load Balancers Write`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetLoadBalancersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLoadBalancers = CloudflareFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .accountId("account_id")
+     *             .zoneId("zone_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetLoadBalancersInvokeResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args, InvokeOptions options) {
@@ -61770,6 +62397,39 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetQueueConsumerResult> getQueueConsumer(GetQueueConsumerArgs args) {
         return getQueueConsumer(args, InvokeOptions.Empty);
@@ -61783,6 +62443,39 @@ public final class CloudflareFunctions {
      * - `Workers Scripts Write`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetQueueConsumerResult> getQueueConsumerPlain(GetQueueConsumerPlainArgs args) {
@@ -61798,6 +62491,39 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetQueueConsumerResult> getQueueConsumer(GetQueueConsumerArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getQueueConsumer:getQueueConsumer", TypeShape.of(GetQueueConsumerResult.class), args, Utilities.withVersion(options));
@@ -61812,6 +62538,39 @@ public final class CloudflareFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetQueueConsumerResult> getQueueConsumer(GetQueueConsumerArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getQueueConsumer:getQueueConsumer", TypeShape.of(GetQueueConsumerResult.class), args, Utilities.withVersion(options));
@@ -61825,6 +62584,39 @@ public final class CloudflareFunctions {
      * - `Workers Scripts Write`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumerArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetQueueConsumerResult> getQueueConsumerPlain(GetQueueConsumerPlainArgs args, InvokeOptions options) {

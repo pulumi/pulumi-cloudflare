@@ -19,6 +19,35 @@ import (
 // - `Domain API Gateway Read`
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetApiShieldOperation(ctx, &cloudflare.LookupApiShieldOperationArgs{
+//				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				OperationId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				Features: []string{
+//					"thresholds",
+//				},
+//				WithSchemas: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupApiShieldOperation(ctx *pulumi.Context, args *LookupApiShieldOperationArgs, opts ...pulumi.InvokeOption) (*LookupApiShieldOperationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiShieldOperationResult

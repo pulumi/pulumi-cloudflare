@@ -82,6 +82,14 @@ def get_load_balancers(max_items: Optional[_builtins.int] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_load_balancers = cloudflare.get_load_balancers(account_id="account_id",
+        zone_id="zone_id")
+    ```
+
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
@@ -105,6 +113,14 @@ def get_load_balancers_output(max_items: pulumi.Input[Optional[Optional[_builtin
     - `Load Balancers Write`
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_load_balancers = cloudflare.get_load_balancers(account_id="account_id",
+        zone_id="zone_id")
+    ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000

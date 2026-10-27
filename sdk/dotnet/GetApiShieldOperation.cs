@@ -20,6 +20,28 @@ namespace Pulumi.Cloudflare
         /// - `Domain API Gateway Read`
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleApiShieldOperation = Cloudflare.GetApiShieldOperation.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         Features = new[]
+        ///         {
+        ///             "thresholds",
+        ///         },
+        ///         WithSchemas = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetApiShieldOperationResult> InvokeAsync(GetApiShieldOperationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiShieldOperationResult>("cloudflare:index/getApiShieldOperation:getApiShieldOperation", args ?? new GetApiShieldOperationArgs(), options.WithDefaults());
@@ -33,6 +55,28 @@ namespace Pulumi.Cloudflare
         /// - `Domain API Gateway Read`
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleApiShieldOperation = Cloudflare.GetApiShieldOperation.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         Features = new[]
+        ///         {
+        ///             "thresholds",
+        ///         },
+        ///         WithSchemas = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetApiShieldOperationResult> Invoke(GetApiShieldOperationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldOperationResult>("cloudflare:index/getApiShieldOperation:getApiShieldOperation", args ?? new GetApiShieldOperationInvokeArgs(), options.WithDefaults());
@@ -46,6 +90,28 @@ namespace Pulumi.Cloudflare
         /// - `Domain API Gateway Read`
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleApiShieldOperation = Cloudflare.GetApiShieldOperation.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         Features = new[]
+        ///         {
+        ///             "thresholds",
+        ///         },
+        ///         WithSchemas = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetApiShieldOperationResult> Invoke(GetApiShieldOperationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldOperationResult>("cloudflare:index/getApiShieldOperation:getApiShieldOperation", args ?? new GetApiShieldOperationInvokeArgs(), options.WithDefaults());
