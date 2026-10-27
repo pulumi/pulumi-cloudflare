@@ -15,6 +15,18 @@ import * as utilities from "./utilities";
  * - `Domain API Gateway Read`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleApiShieldOperation = cloudflare.getApiShieldOperation({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     features: ["thresholds"],
+ *     withSchemas: true,
+ * });
+ * ```
  */
 export function getApiShieldOperation(args?: GetApiShieldOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldOperationResult> {
     args = args || {};
@@ -105,6 +117,18 @@ export interface GetApiShieldOperationResult {
  * - `Domain API Gateway Read`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleApiShieldOperation = cloudflare.getApiShieldOperation({
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     features: ["thresholds"],
+ *     withSchemas: true,
+ * });
+ * ```
  */
 export function getApiShieldOperationOutput(args?: GetApiShieldOperationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldOperationResult> {
     args = args || {};

@@ -191,6 +191,16 @@ def get_api_shield_operation(feature: Optional[Sequence[_builtins.str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_api_shield_operation = cloudflare.get_api_shield_operation(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        features=["thresholds"],
+        with_schemas=True)
+    ```
+
 
     :param Sequence[_builtins.str] feature: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
     :param _builtins.str operation_id: UUID.
@@ -234,6 +244,16 @@ def get_api_shield_operation_output(feature: pulumi.Input[Optional[Optional[Sequ
     - `Domain API Gateway Read`
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_api_shield_operation = cloudflare.get_api_shield_operation(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+        operation_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        features=["thresholds"],
+        with_schemas=True)
+    ```
 
 
     :param Sequence[_builtins.str] feature: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.

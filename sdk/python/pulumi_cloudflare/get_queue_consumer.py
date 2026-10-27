@@ -150,6 +150,15 @@ def get_queue_consumer(account_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_queue_consumer = cloudflare.get_queue_consumer(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        queue_id="023e105f4ecef8ad9ca31a8372d0c353",
+        consumer_id="023e105f4ecef8ad9ca31a8372d0c353")
+    ```
+
 
     :param _builtins.str account_id: A Resource identifier.
     :param _builtins.str queue_id: A Resource identifier.
@@ -182,6 +191,15 @@ def get_queue_consumer_output(account_id: pulumi.Input[Optional[_builtins.str]] 
     - `Workers Scripts Write`
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example_queue_consumer = cloudflare.get_queue_consumer(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        queue_id="023e105f4ecef8ad9ca31a8372d0c353",
+        consumer_id="023e105f4ecef8ad9ca31a8372d0c353")
+    ```
 
 
     :param _builtins.str account_id: A Resource identifier.

@@ -15,6 +15,17 @@ import * as utilities from "./utilities";
  * - `Workers Scripts Write`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleQueueConsumer = cloudflare.getQueueConsumer({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     consumerId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
 export function getQueueConsumer(args: GetQueueConsumerArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueConsumerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,6 +90,17 @@ export interface GetQueueConsumerResult {
  * - `Workers Scripts Write`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleQueueConsumer = cloudflare.getQueueConsumer({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     consumerId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
  */
 export function getQueueConsumerOutput(args: GetQueueConsumerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueConsumerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

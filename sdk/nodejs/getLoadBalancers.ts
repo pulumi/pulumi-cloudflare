@@ -13,6 +13,16 @@ import * as utilities from "./utilities";
  * - `Load Balancers Write`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleLoadBalancers = cloudflare.getLoadBalancers({
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
+ * });
+ * ```
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
@@ -55,6 +65,16 @@ export interface GetLoadBalancersResult {
  * - `Load Balancers Write`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleLoadBalancers = cloudflare.getLoadBalancers({
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
+ * });
+ * ```
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancersResult> {
     args = args || {};
