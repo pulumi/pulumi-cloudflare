@@ -125,6 +125,12 @@ func (ApiShieldDiscoveryOperationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiShieldDiscoveryOperationState)(nil)).Elem()
 }
 
+// ApiShieldDiscoveryOperationExists checks whether an existing ApiShieldDiscoveryOperation resource with the given ID exists.
+func ApiShieldDiscoveryOperationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiShieldDiscoveryOperationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation", id, state, "", opts...)
+}
+
 type apiShieldDiscoveryOperationArgs struct {
 	// UUID.
 	DiscoveryId string `pulumi:"discoveryId"`

@@ -216,6 +216,12 @@ func (CustomCsrState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customCsrState)(nil)).Elem()
 }
 
+// CustomCsrExists checks whether an existing CustomCsr resource with the given ID exists.
+func CustomCsrExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomCsrState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/customCsr:CustomCsr", id, state, "", opts...)
+}
+
 type customCsrArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

@@ -491,6 +491,30 @@ class ZeroTrustDexTest(pulumi.CustomResource):
         __props__.__dict__["test_id"] = test_id
         return ZeroTrustDexTest(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Union['ZeroTrustDexTestDataArgs', 'ZeroTrustDexTestDataArgsDict', 'outputs.ZeroTrustDexTestData']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            interval: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDexTestTargetPolicyArgs', 'ZeroTrustDexTestTargetPolicyArgsDict', 'outputs.ZeroTrustDexTestTargetPolicy']]]]] = None,
+            targeted: pulumi.Input[Optional[_builtins.bool]] = None,
+            test_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["data"] = data
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["interval"] = interval
+        __props__["name"] = name
+        __props__["targetPolicies"] = target_policies
+        __props__["targeted"] = targeted
+        __props__["testId"] = test_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

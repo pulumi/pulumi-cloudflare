@@ -555,6 +555,32 @@ class TokenValidationRules(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return TokenValidationRules(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expression: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated: pulumi.Input[Optional[_builtins.str]] = None,
+            position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict', 'outputs.TokenValidationRulesPosition']]] = None,
+            selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict', 'outputs.TokenValidationRulesSelector']]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["expression"] = expression
+        __props__["lastUpdated"] = last_updated
+        __props__["position"] = position
+        __props__["selector"] = selector
+        __props__["title"] = title
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/tokenValidationRules:TokenValidationRules', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

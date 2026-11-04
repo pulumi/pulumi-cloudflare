@@ -106,6 +106,12 @@ func (ZeroTrustDeviceDefaultProfileCertificatesState) ElementType() reflect.Type
 	return reflect.TypeOf((*zeroTrustDeviceDefaultProfileCertificatesState)(nil)).Elem()
 }
 
+// ZeroTrustDeviceDefaultProfileCertificatesExists checks whether an existing ZeroTrustDeviceDefaultProfileCertificates resource with the given ID exists.
+func ZeroTrustDeviceDefaultProfileCertificatesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDeviceDefaultProfileCertificatesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates", id, state, "", opts...)
+}
+
 type zeroTrustDeviceDefaultProfileCertificatesArgs struct {
 	// The current status of the device policy certificate provisioning feature for WARP clients.
 	Enabled bool   `pulumi:"enabled"`

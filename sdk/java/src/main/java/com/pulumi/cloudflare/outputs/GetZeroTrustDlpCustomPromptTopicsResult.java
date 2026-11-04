@@ -14,20 +14,18 @@ public final class GetZeroTrustDlpCustomPromptTopicsResult {
     private String createdAt;
     private String description;
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private Boolean enabled;
     private String id;
     private String name;
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String profileId;
     private String topic;
     private String updatedAt;
@@ -40,11 +38,10 @@ public final class GetZeroTrustDlpCustomPromptTopicsResult {
         return this.description;
     }
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Boolean enabled() {
         return this.enabled;
     }
@@ -55,11 +52,10 @@ public final class GetZeroTrustDlpCustomPromptTopicsResult {
         return this.name;
     }
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String profileId() {
         return this.profileId;
     }

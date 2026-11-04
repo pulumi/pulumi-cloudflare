@@ -147,6 +147,12 @@ func (ZeroTrustGatewayPacfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustGatewayPacfileState)(nil)).Elem()
 }
 
+// ZeroTrustGatewayPacfileExists checks whether an existing ZeroTrustGatewayPacfile resource with the given ID exists.
+func ZeroTrustGatewayPacfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustGatewayPacfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile", id, state, "", opts...)
+}
+
 type zeroTrustGatewayPacfileArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

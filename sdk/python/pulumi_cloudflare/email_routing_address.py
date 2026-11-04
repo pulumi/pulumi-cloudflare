@@ -355,6 +355,26 @@ class EmailRoutingAddress(pulumi.CustomResource):
         __props__.__dict__["verified"] = verified
         return EmailRoutingAddress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            verified: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["created"] = created
+        __props__["email"] = email
+        __props__["modified"] = modified
+        __props__["status"] = status
+        __props__["tag"] = tag
+        __props__["verified"] = verified
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/emailRoutingAddress:EmailRoutingAddress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

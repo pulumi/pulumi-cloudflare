@@ -158,6 +158,12 @@ func (TunnelVirtualNetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelVirtualNetworkState)(nil)).Elem()
 }
 
+// TunnelVirtualNetworkExists checks whether an existing TunnelVirtualNetwork resource with the given ID exists.
+func TunnelVirtualNetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TunnelVirtualNetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", id, state, "", opts...)
+}
+
 type tunnelVirtualNetworkArgs struct {
 	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`

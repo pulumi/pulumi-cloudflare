@@ -75,7 +75,7 @@ public final class GetWaitingRoomsResult {
      * 8. `queueIsFull`: Boolean indicating if the waiting room&#39;s queue is currently full and not accepting new users at the moment.
      * 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website.
      * 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the user&#39;s last attempt to leave the waiting room and be let into the origin website. The user is able to make another attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and `lastUpdated` will not change.
-     * 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**.
+     * 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time —&#92;_it will always be **zero**.
      * 12. `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**, **passthrough**, or **reject**.
      * 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO (First-In-First-Out) queue.
      * 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users gain access randomly.
@@ -93,7 +93,7 @@ public final class GetWaitingRoomsResult {
      * 
      * An example cURL to a waiting room could be:
      * 
-     *     curl -X GET &#34;https://example.com/waitingroom&#34; \
+     *     curl -X GET &#34;https://example.com/waitingroom&#34; &#92;
      *         -H &#34;Accept: application/json&#34;
      * 
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:
@@ -324,7 +324,7 @@ public final class GetWaitingRoomsResult {
      * 8. `queueIsFull`: Boolean indicating if the waiting room&#39;s queue is currently full and not accepting new users at the moment.
      * 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website.
      * 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the user&#39;s last attempt to leave the waiting room and be let into the origin website. The user is able to make another attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and `lastUpdated` will not change.
-     * 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**.
+     * 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time —&#92;_it will always be **zero**.
      * 12. `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**, **passthrough**, or **reject**.
      * 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO (First-In-First-Out) queue.
      * 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users gain access randomly.
@@ -342,7 +342,7 @@ public final class GetWaitingRoomsResult {
      * 
      * An example cURL to a waiting room could be:
      * 
-     *     curl -X GET &#34;https://example.com/waitingroom&#34; \
+     *     curl -X GET &#34;https://example.com/waitingroom&#34; &#92;
      *         -H &#34;Accept: application/json&#34;
      * 
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:

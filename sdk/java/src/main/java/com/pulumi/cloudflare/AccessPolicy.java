@@ -131,11 +131,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy
+ * @deprecated cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy
  * 
  */
-@Deprecated /* cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessPolicy:AccessPolicy")
 public class AccessPolicy extends com.pulumi.resources.CustomResource {
     /**

@@ -375,6 +375,26 @@ class MagicTransitCf1Site(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return MagicTransitCf1Site(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitCf1SiteBodyArgs', 'MagicTransitCf1SiteBodyArgsDict', 'outputs.MagicTransitCf1SiteBody']]]]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[Union['MagicTransitCf1SiteLocationArgs', 'MagicTransitCf1SiteLocationArgsDict', 'outputs.MagicTransitCf1SiteLocation']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["bodies"] = bodies
+        __props__["createdOn"] = created_on
+        __props__["description"] = description
+        __props__["location"] = location
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

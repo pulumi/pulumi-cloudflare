@@ -59,11 +59,10 @@ public final class GetRulesetResult {
     /**
      * @return The unique ID of the ruleset.
      * 
-     * @deprecated
-     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     private @Nullable String rulesetId;
     /**
      * @return The version of the ruleset.
@@ -138,11 +137,10 @@ public final class GetRulesetResult {
     /**
      * @return The unique ID of the ruleset.
      * 
-     * @deprecated
-     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public Optional<String> rulesetId() {
         return Optional.ofNullable(this.rulesetId);
     }

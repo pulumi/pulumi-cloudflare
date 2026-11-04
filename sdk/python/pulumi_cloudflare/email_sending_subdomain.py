@@ -426,6 +426,32 @@ class EmailSendingSubdomain(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return EmailSendingSubdomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            dkim_selector: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_suppressed_recipients: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            return_path_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["dkimSelector"] = dkim_selector
+        __props__["dropSuppressedRecipients"] = drop_suppressed_recipients
+        __props__["enabled"] = enabled
+        __props__["modified"] = modified
+        __props__["name"] = name
+        __props__["previewEnabled"] = preview_enabled
+        __props__["returnPathDomain"] = return_path_domain
+        __props__["tag"] = tag
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/emailSendingSubdomain:EmailSendingSubdomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:

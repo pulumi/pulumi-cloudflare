@@ -173,6 +173,12 @@ func (MtlsCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mtlsCertificateState)(nil)).Elem()
 }
 
+// MtlsCertificateExists checks whether an existing MtlsCertificate resource with the given ID exists.
+func MtlsCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MtlsCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/mtlsCertificate:MtlsCertificate", id, state, "", opts...)
+}
+
 type mtlsCertificateArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

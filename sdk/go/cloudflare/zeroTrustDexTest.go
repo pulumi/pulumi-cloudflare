@@ -176,6 +176,12 @@ func (ZeroTrustDexTestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDexTestState)(nil)).Elem()
 }
 
+// ZeroTrustDexTestExists checks whether an existing ZeroTrustDexTest resource with the given ID exists.
+func ZeroTrustDexTestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDexTestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest", id, state, "", opts...)
+}
+
 type zeroTrustDexTestArgs struct {
 	// Unique identifier linked to an account.
 	AccountId string `pulumi:"accountId"`

@@ -235,6 +235,12 @@ func (ApiTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiTokenState)(nil)).Elem()
 }
 
+// ApiTokenExists checks whether an existing ApiToken resource with the given ID exists.
+func ApiTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/apiToken:ApiToken", id, state, "", opts...)
+}
+
 type apiTokenArgs struct {
 	Condition *ApiTokenCondition `pulumi:"condition"`
 	// The expiration time on or after which the JWT MUST NOT be accepted for processing.

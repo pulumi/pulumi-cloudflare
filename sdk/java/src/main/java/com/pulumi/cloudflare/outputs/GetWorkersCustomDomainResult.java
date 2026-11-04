@@ -31,11 +31,10 @@ public final class GetWorkersCustomDomainResult {
     /**
      * @return Worker environment associated with the domain.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String environment;
     private @Nullable GetWorkersCustomDomainFilter filter;
     /**
@@ -89,11 +88,10 @@ public final class GetWorkersCustomDomainResult {
     /**
      * @return Worker environment associated with the domain.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String environment() {
         return this.environment;
     }

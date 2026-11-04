@@ -132,6 +132,12 @@ func (SecretsStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretsStoreState)(nil)).Elem()
 }
 
+// SecretsStoreExists checks whether an existing SecretsStore resource with the given ID exists.
+func SecretsStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretsStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/secretsStore:SecretsStore", id, state, "", opts...)
+}
+
 type secretsStoreArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// When true, cascade-deletes all secrets in the store before deleting the store itself.

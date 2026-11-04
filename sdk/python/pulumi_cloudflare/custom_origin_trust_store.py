@@ -357,6 +357,28 @@ class CustomOriginTrustStore(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return CustomOriginTrustStore(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            signature: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificate"] = certificate
+        __props__["expiresOn"] = expires_on
+        __props__["issuer"] = issuer
+        __props__["signature"] = signature
+        __props__["status"] = status
+        __props__["updatedAt"] = updated_at
+        __props__["uploadedOn"] = uploaded_on
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/customOriginTrustStore:CustomOriginTrustStore', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:

@@ -316,11 +316,10 @@ public class Zone extends com.pulumi.resources.CustomResource {
     /**
      * Legacy permissions based on legacy user membership information.
      * 
-     * @deprecated
-     * This has been replaced by Account memberships.
+     * @deprecated This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This has been replaced by Account memberships. */
+    @Deprecated
     @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> permissions;
 
@@ -334,17 +333,13 @@ public class Zone extends com.pulumi.resources.CustomResource {
     /**
      * A Zones subscription information.
      * 
-     * @deprecated
-     * Please use the `/zones/{zone_id}/subscription` API
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
      * to update a zone&#39;s plan. Changing this value will create/cancel
      * associated subscriptions. To view available plans for this zone,
      * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
-to update a zone's plan. Changing this value will create/cancel
-associated subscriptions. To view available plans for this zone,
-see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
+    @Deprecated
     @Export(name="plan", refs={ZonePlan.class}, tree="[0]")
     private Output<ZonePlan> plan;
 

@@ -423,6 +423,30 @@ class ShareRecipient(pulumi.CustomResource):
         __props__.__dict__["share_id"] = share_id
         return ShareRecipient(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            association_status: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            recipient_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientResourceArgs', 'ShareRecipientResourceArgsDict', 'outputs.ShareRecipientResource']]]]] = None,
+            share_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["associationStatus"] = association_status
+        __props__["created"] = created
+        __props__["includeResources"] = include_resources
+        __props__["modified"] = modified
+        __props__["organizationId"] = organization_id
+        __props__["recipientAccountId"] = recipient_account_id
+        __props__["resources"] = resources
+        __props__["shareId"] = share_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/shareRecipient:ShareRecipient', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

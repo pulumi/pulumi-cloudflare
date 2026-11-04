@@ -38,22 +38,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleZeroTrustGatewayPacfile = new ZeroTrustGatewayPacfile("exampleZeroTrustGatewayPacfile", ZeroTrustGatewayPacfileArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .contents("function FindProxyForURL(url, host) { return \"DIRECT\"; }")
+ *             .contents("function FindProxyForURL(url, host) }{{@code  return }&#92;{@code "DIRECT}&#92;{@code "; }}{@code ")
  *             .name("Devops team")
  *             .description("PAC file for Devops team")
  *             .slug("pac_devops")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

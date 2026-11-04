@@ -339,6 +339,12 @@ func (AiGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiGatewayState)(nil)).Elem()
 }
 
+// AiGatewayExists checks whether an existing AiGateway resource with the given ID exists.
+func AiGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/aiGateway:AiGateway", id, state, "", opts...)
+}
+
 type aiGatewayArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Unique identifier of the AI Gateway within the account.

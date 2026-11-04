@@ -1238,6 +1238,70 @@ class AiGateway(pulumi.CustomResource):
         __props__.__dict__["zdr"] = zdr
         return AiGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+            byok_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict', 'outputs.AiGatewayDlp']]] = None,
+            guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict', 'outputs.AiGatewayGuardrails']]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_classification: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_management: pulumi.Input[Optional[_builtins.int]] = None,
+            log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+            logpush_public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            otels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayOtelArgs', 'AiGatewayOtelArgsDict', 'outputs.AiGatewayOtel']]]]] = None,
+            rate_limiting_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            rate_limiting_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            rate_limiting_technique: pulumi.Input[Optional[_builtins.str]] = None,
+            retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+            retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            spend_limits: pulumi.Input[Optional[Union['AiGatewaySpendLimitsArgs', 'AiGatewaySpendLimitsArgsDict', 'outputs.AiGatewaySpendLimits']]] = None,
+            store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stripe: pulumi.Input[Optional[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict', 'outputs.AiGatewayStripe']]] = None,
+            workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            zdr: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["aiGatewayId"] = ai_gateway_id
+        __props__["authentication"] = authentication
+        __props__["byokOnly"] = byok_only
+        __props__["cacheInvalidateOnUpdate"] = cache_invalidate_on_update
+        __props__["cacheTtl"] = cache_ttl
+        __props__["collectLogs"] = collect_logs
+        __props__["createdAt"] = created_at
+        __props__["dlp"] = dlp
+        __props__["guardrails"] = guardrails
+        __props__["isDefault"] = is_default
+        __props__["logClassification"] = log_classification
+        __props__["logManagement"] = log_management
+        __props__["logManagementStrategy"] = log_management_strategy
+        __props__["logpush"] = logpush
+        __props__["logpushPublicKey"] = logpush_public_key
+        __props__["modifiedAt"] = modified_at
+        __props__["otels"] = otels
+        __props__["rateLimitingInterval"] = rate_limiting_interval
+        __props__["rateLimitingLimit"] = rate_limiting_limit
+        __props__["rateLimitingTechnique"] = rate_limiting_technique
+        __props__["retryBackoff"] = retry_backoff
+        __props__["retryDelay"] = retry_delay
+        __props__["retryMaxAttempts"] = retry_max_attempts
+        __props__["spendLimits"] = spend_limits
+        __props__["storeId"] = store_id
+        __props__["stripe"] = stripe
+        __props__["workersAiBillingMode"] = workers_ai_billing_mode
+        __props__["zdr"] = zdr
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/aiGateway:AiGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

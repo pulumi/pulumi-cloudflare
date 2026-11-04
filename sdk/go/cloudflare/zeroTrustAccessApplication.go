@@ -335,6 +335,12 @@ func (ZeroTrustAccessApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessApplicationState)(nil)).Elem()
 }
 
+// ZeroTrustAccessApplicationExists checks whether an existing ZeroTrustAccessApplication resource with the given ID exists.
+func ZeroTrustAccessApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication", id, state, "", opts...)
+}
+
 type zeroTrustAccessApplicationArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

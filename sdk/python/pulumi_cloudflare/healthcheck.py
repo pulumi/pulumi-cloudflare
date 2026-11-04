@@ -836,6 +836,48 @@ class Healthcheck(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Healthcheck(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            consecutive_fails: pulumi.Input[Optional[_builtins.int]] = None,
+            consecutive_successes: pulumi.Input[Optional[_builtins.int]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict', 'outputs.HealthcheckHttpConfig']]] = None,
+            interval: pulumi.Input[Optional[_builtins.int]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            retries: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict', 'outputs.HealthcheckTcpConfig']]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["checkRegions"] = check_regions
+        __props__["consecutiveFails"] = consecutive_fails
+        __props__["consecutiveSuccesses"] = consecutive_successes
+        __props__["createdOn"] = created_on
+        __props__["description"] = description
+        __props__["failureReason"] = failure_reason
+        __props__["httpConfig"] = http_config
+        __props__["interval"] = interval
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["retries"] = retries
+        __props__["status"] = status
+        __props__["suspended"] = suspended
+        __props__["tcpConfig"] = tcp_config
+        __props__["timeout"] = timeout
+        __props__["type"] = type
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/healthcheck:Healthcheck', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

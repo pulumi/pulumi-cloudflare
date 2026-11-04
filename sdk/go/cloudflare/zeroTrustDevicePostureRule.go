@@ -174,6 +174,12 @@ func (ZeroTrustDevicePostureRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDevicePostureRuleState)(nil)).Elem()
 }
 
+// ZeroTrustDevicePostureRuleExists checks whether an existing ZeroTrustDevicePostureRule resource with the given ID exists.
+func ZeroTrustDevicePostureRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDevicePostureRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule", id, state, "", opts...)
+}
+
 type zeroTrustDevicePostureRuleArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The description of the device posture rule.

@@ -875,6 +875,62 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         __props__.__dict__["zero_trust_access_ai_controls_mcp_server_id"] = zero_trust_access_ai_controls_mcp_server_id
         return ZeroTrustAccessAiControlsMcpServer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_config_summary: pulumi.Input[Optional[Union['ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgs', 'ZeroTrustAccessAiControlsMcpServerAuthConfigSummaryArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerAuthConfigSummary']]] = None,
+            auth_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            error: pulumi.Input[Optional[_builtins.str]] = None,
+            error_details: pulumi.Input[Optional[Union['ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs', 'ZeroTrustAccessAiControlsMcpServerErrorDetailsArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerErrorDetails']]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            is_shared_oauth_callback_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_successful_sync: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synced: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tools: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]]] = None,
+            updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool']]]]] = None,
+            zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["authConfigSummary"] = auth_config_summary
+        __props__["authCredentials"] = auth_credentials
+        __props__["authType"] = auth_type
+        __props__["authenticationStatus"] = authentication_status
+        __props__["clientSecret"] = client_secret
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["error"] = error
+        __props__["errorDetails"] = error_details
+        __props__["hostname"] = hostname
+        __props__["isSharedOauthCallbackEnabled"] = is_shared_oauth_callback_enabled
+        __props__["lastSuccessfulSync"] = last_successful_sync
+        __props__["lastSynced"] = last_synced
+        __props__["modifiedAt"] = modified_at
+        __props__["modifiedBy"] = modified_by
+        __props__["name"] = name
+        __props__["prompts"] = prompts
+        __props__["secureWebGateway"] = secure_web_gateway
+        __props__["status"] = status
+        __props__["tools"] = tools
+        __props__["updatedPrompts"] = updated_prompts
+        __props__["updatedTools"] = updated_tools
+        __props__["zeroTrustAccessAiControlsMcpServerId"] = zero_trust_access_ai_controls_mcp_server_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

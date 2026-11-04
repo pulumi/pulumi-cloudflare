@@ -191,6 +191,12 @@ func (ZeroTrustDlpDatasetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDlpDatasetState)(nil)).Elem()
 }
 
+// ZeroTrustDlpDatasetExists checks whether an existing ZeroTrustDlpDataset resource with the given ID exists.
+func ZeroTrustDlpDatasetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDlpDatasetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset", id, state, "", opts...)
+}
+
 type zeroTrustDlpDatasetArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Only applies to custom word lists.

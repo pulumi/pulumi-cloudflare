@@ -167,6 +167,12 @@ func (ZeroTrustAccessServiceTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessServiceTokenState)(nil)).Elem()
 }
 
+// ZeroTrustAccessServiceTokenExists checks whether an existing ZeroTrustAccessServiceToken resource with the given ID exists.
+func ZeroTrustAccessServiceTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessServiceTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken", id, state, "", opts...)
+}
+
 type zeroTrustAccessServiceTokenArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

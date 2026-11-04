@@ -395,6 +395,24 @@ class GoogleTagGateway(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return GoogleTagGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            hide_original_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            measurement_id: pulumi.Input[Optional[_builtins.str]] = None,
+            set_up_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["endpoint"] = endpoint
+        __props__["hideOriginalIp"] = hide_original_ip
+        __props__["measurementId"] = measurement_id
+        __props__["setUpTag"] = set_up_tag
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/googleTagGateway:GoogleTagGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:

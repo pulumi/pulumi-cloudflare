@@ -313,6 +313,18 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ApiShieldOperationSchemaValidationSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["mitigationAction"] = mitigation_action
+        __props__["operationId"] = operation_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
     def mitigation_action(self) -> pulumi.Output[Optional[_builtins.str]]:

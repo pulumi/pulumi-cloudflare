@@ -440,20 +440,18 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
     }
 
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="targetTests")
     private @Nullable Output<List<ZeroTrustDeviceCustomProfileTargetTestArgs>> targetTests;
 
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<List<ZeroTrustDeviceCustomProfileTargetTestArgs>>> targetTests() {
         return Optional.ofNullable(this.targetTests);
     }
@@ -1169,11 +1167,10 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder targetTests(@Nullable Output<List<ZeroTrustDeviceCustomProfileTargetTestArgs>> targetTests) {
             $.targetTests = targetTests;
             return this;
@@ -1182,11 +1179,10 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder targetTests(List<ZeroTrustDeviceCustomProfileTargetTestArgs> targetTests) {
             return targetTests(Output.of(targetTests));
         }
@@ -1194,11 +1190,10 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder targetTests(ZeroTrustDeviceCustomProfileTargetTestArgs... targetTests) {
             return targetTests(List.of(targetTests));
         }

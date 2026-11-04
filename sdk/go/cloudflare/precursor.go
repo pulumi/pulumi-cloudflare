@@ -135,6 +135,12 @@ func (PrecursorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*precursorState)(nil)).Elem()
 }
 
+// PrecursorExists checks whether an existing Precursor resource with the given ID exists.
+func PrecursorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrecursorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/precursor:Precursor", id, state, "", opts...)
+}
+
 type precursorArgs struct {
 	// The zone-level Precursor enforcement mode applied to requests that do
 	// not match a more specific enforcement rule.

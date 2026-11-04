@@ -129,11 +129,10 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
      * Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag&#39;s variations.
      * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="type")
     private @Nullable Output<String> type;
 
@@ -141,11 +140,10 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
      * @return Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag&#39;s variations.
      * Available values: &#34;boolean&#34;, &#34;string&#34;, &#34;number&#34;, &#34;json&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -360,11 +358,10 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
@@ -376,11 +373,10 @@ public final class FlagshipFlagArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder type(String type) {
             return type(Output.of(type));
         }

@@ -46,6 +46,17 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
         return new ZeroTrustDlpPredefinedEntry(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ZeroTrustDlpPredefinedEntry resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ZeroTrustDlpPredefinedEntryState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry';
 

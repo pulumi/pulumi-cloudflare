@@ -1062,6 +1062,54 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         __props__.__dict__["warning_status"] = warning_status
         return ZeroTrustGatewayPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            device_posture: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expiration: pulumi.Input[Optional[Union['ZeroTrustGatewayPolicyExpirationArgs', 'ZeroTrustGatewayPolicyExpirationArgsDict', 'outputs.ZeroTrustGatewayPolicyExpiration']]] = None,
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            precedence: pulumi.Input[Optional[_builtins.int]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            rule_settings: pulumi.Input[Optional[Union['ZeroTrustGatewayPolicyRuleSettingsArgs', 'ZeroTrustGatewayPolicyRuleSettingsArgsDict', 'outputs.ZeroTrustGatewayPolicyRuleSettings']]] = None,
+            schedule: pulumi.Input[Optional[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict', 'outputs.ZeroTrustGatewayPolicySchedule']]] = None,
+            sharable: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_account: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None,
+            warning_status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["action"] = action
+        __props__["createdAt"] = created_at
+        __props__["deletedAt"] = deleted_at
+        __props__["description"] = description
+        __props__["devicePosture"] = device_posture
+        __props__["enabled"] = enabled
+        __props__["expiration"] = expiration
+        __props__["filters"] = filters
+        __props__["identity"] = identity
+        __props__["name"] = name
+        __props__["precedence"] = precedence
+        __props__["readOnly"] = read_only
+        __props__["ruleSettings"] = rule_settings
+        __props__["schedule"] = schedule
+        __props__["sharable"] = sharable
+        __props__["sourceAccount"] = source_account
+        __props__["traffic"] = traffic
+        __props__["updatedAt"] = updated_at
+        __props__["version"] = version
+        __props__["warningStatus"] = warning_status
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

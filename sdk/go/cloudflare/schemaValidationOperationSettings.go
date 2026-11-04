@@ -139,6 +139,12 @@ func (SchemaValidationOperationSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*schemaValidationOperationSettingsState)(nil)).Elem()
 }
 
+// SchemaValidationOperationSettingsExists checks whether an existing SchemaValidationOperationSettings resource with the given ID exists.
+func SchemaValidationOperationSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SchemaValidationOperationSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings", id, state, "", opts...)
+}
+
 type schemaValidationOperationSettingsArgs struct {
 	// When set, this applies a mitigation action to this operation
 	//

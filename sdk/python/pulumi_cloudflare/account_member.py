@@ -383,6 +383,24 @@ class AccountMember(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return AccountMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountMemberPolicyArgs', 'AccountMemberPolicyArgsDict', 'outputs.AccountMemberPolicy']]]]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[Union['AccountMemberUserArgs', 'AccountMemberUserArgsDict', 'outputs.AccountMemberUser']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["email"] = email
+        __props__["policies"] = policies
+        __props__["roles"] = roles
+        __props__["status"] = status
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/accountMember:AccountMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

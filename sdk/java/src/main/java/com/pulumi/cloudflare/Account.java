@@ -171,11 +171,10 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
-     * @deprecated
-     * The &#39;type&#39; field should no longer be set through the API.
+     * @deprecated The &#39;type&#39; field should no longer be set through the API.
      * 
      */
-    @Deprecated /* The 'type' field should no longer be set through the API. */
+    @Deprecated
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 

@@ -234,6 +234,12 @@ func (WaitingRoomEventState) ElementType() reflect.Type {
 	return reflect.TypeOf((*waitingRoomEventState)(nil)).Elem()
 }
 
+// WaitingRoomEventExists checks whether an existing WaitingRoomEvent resource with the given ID exists.
+func WaitingRoomEventExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WaitingRoomEventState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/waitingRoomEvent:WaitingRoomEvent", id, state, "", opts...)
+}
+
 type waitingRoomEventArgs struct {
 	// If set, the event will override the waiting room's `customPageHtml` property while it is active. If null, the event will inherit it.
 	CustomPageHtml *string `pulumi:"customPageHtml"`

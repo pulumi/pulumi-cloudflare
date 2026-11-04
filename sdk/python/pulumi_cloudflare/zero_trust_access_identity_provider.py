@@ -550,6 +550,30 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZeroTrustAccessIdentityProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['ZeroTrustAccessIdentityProviderConfigArgs', 'ZeroTrustAccessIdentityProviderConfigArgsDict', 'outputs.ZeroTrustAccessIdentityProviderConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            saml_certificate_set: pulumi.Input[Optional[Union['ZeroTrustAccessIdentityProviderSamlCertificateSetArgs', 'ZeroTrustAccessIdentityProviderSamlCertificateSetArgsDict', 'outputs.ZeroTrustAccessIdentityProviderSamlCertificateSet']]] = None,
+            saml_certificate_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_config: pulumi.Input[Optional[Union['ZeroTrustAccessIdentityProviderScimConfigArgs', 'ZeroTrustAccessIdentityProviderScimConfigArgsDict', 'outputs.ZeroTrustAccessIdentityProviderScimConfig']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["config"] = config
+        __props__["name"] = name
+        __props__["readOnly"] = read_only
+        __props__["samlCertificateSet"] = saml_certificate_set
+        __props__["samlCertificateSetId"] = saml_certificate_set_id
+        __props__["scimConfig"] = scim_config
+        __props__["type"] = type
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustAccessIdentityProvider:ZeroTrustAccessIdentityProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

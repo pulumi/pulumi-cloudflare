@@ -150,6 +150,12 @@ func (EmailRoutingAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailRoutingAddressState)(nil)).Elem()
 }
 
+// EmailRoutingAddressExists checks whether an existing EmailRoutingAddress resource with the given ID exists.
+func EmailRoutingAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailRoutingAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailRoutingAddress:EmailRoutingAddress", id, state, "", opts...)
+}
+
 type emailRoutingAddressArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

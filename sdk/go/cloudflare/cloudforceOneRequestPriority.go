@@ -201,6 +201,12 @@ func (CloudforceOneRequestPriorityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudforceOneRequestPriorityState)(nil)).Elem()
 }
 
+// CloudforceOneRequestPriorityExists checks whether an existing CloudforceOneRequestPriority resource with the given ID exists.
+func CloudforceOneRequestPriorityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudforceOneRequestPriorityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority", id, state, "", opts...)
+}
+
 type cloudforceOneRequestPriorityArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

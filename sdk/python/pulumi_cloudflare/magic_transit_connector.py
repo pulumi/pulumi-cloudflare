@@ -397,6 +397,28 @@ class MagicTransitConnector(pulumi.CustomResource):
         __props__.__dict__["timezone"] = timezone
         return MagicTransitConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            activated: pulumi.Input[Optional[_builtins.bool]] = None,
+            device: pulumi.Input[Optional[Union['MagicTransitConnectorDeviceArgs', 'MagicTransitConnectorDeviceArgsDict', 'outputs.MagicTransitConnectorDevice']]] = None,
+            interrupt_window_duration_hours: pulumi.Input[Optional[_builtins.float]] = None,
+            interrupt_window_hour_of_day: pulumi.Input[Optional[_builtins.float]] = None,
+            license_key: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["activated"] = activated
+        __props__["device"] = device
+        __props__["interruptWindowDurationHours"] = interrupt_window_duration_hours
+        __props__["interruptWindowHourOfDay"] = interrupt_window_hour_of_day
+        __props__["licenseKey"] = license_key
+        __props__["notes"] = notes
+        __props__["timezone"] = timezone
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicTransitConnector:MagicTransitConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

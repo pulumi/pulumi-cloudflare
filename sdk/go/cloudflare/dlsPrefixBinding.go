@@ -132,6 +132,12 @@ func (DlsPrefixBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dlsPrefixBindingState)(nil)).Elem()
 }
 
+// DlsPrefixBindingExists checks whether an existing DlsPrefixBinding resource with the given ID exists.
+func DlsPrefixBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DlsPrefixBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/dlsPrefixBinding:DlsPrefixBinding", id, state, "", opts...)
+}
+
 type dlsPrefixBindingArgs struct {
 	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`

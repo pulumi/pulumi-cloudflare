@@ -161,6 +161,12 @@ func (ZoneLockdownState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneLockdownState)(nil)).Elem()
 }
 
+// ZoneLockdownExists checks whether an existing ZoneLockdown resource with the given ID exists.
+func ZoneLockdownExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneLockdownState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneLockdown:ZoneLockdown", id, state, "", opts...)
+}
+
 type zoneLockdownArgs struct {
 	// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 	Configurations []ZoneLockdownConfiguration `pulumi:"configurations"`

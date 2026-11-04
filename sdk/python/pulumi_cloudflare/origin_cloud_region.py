@@ -326,6 +326,22 @@ class OriginCloudRegion(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return OriginCloudRegion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            vendor: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["modifiedOn"] = modified_on
+        __props__["originIp"] = origin_ip
+        __props__["region"] = region
+        __props__["vendor"] = vendor
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/originCloudRegion:OriginCloudRegion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[_builtins.str]:

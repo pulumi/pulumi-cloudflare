@@ -182,11 +182,10 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
     /**
      * Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="hybridSearchEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hybridSearchEnabled;
 

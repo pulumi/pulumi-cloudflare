@@ -342,6 +342,26 @@ class CallsSfuApp(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         return CallsSfuApp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["appId"] = app_id
+        __props__["created"] = created
+        __props__["modified"] = modified
+        __props__["name"] = name
+        __props__["secret"] = secret
+        __props__["uid"] = uid
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/callsSfuApp:CallsSfuApp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

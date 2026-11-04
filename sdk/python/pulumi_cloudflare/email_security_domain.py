@@ -833,6 +833,56 @@ class EmailSecurityDomain(pulumi.CustomResource):
         __props__.__dict__["transport"] = transport
         return EmailSecurityDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_delivery_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorization: pulumi.Input[Optional[Union['EmailSecurityDomainAuthorizationArgs', 'EmailSecurityDomainAuthorizationArgsDict', 'outputs.EmailSecurityDomainAuthorization']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dmarc_status: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_dispositions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            emails_processed: pulumi.Input[Optional[Union['EmailSecurityDomainEmailsProcessedArgs', 'EmailSecurityDomainEmailsProcessedArgsDict', 'outputs.EmailSecurityDomainEmailsProcessed']]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            inbox_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_restrictions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            lookback_hops: pulumi.Input[Optional[_builtins.int]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            o365_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            require_tls_inbound: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_tls_outbound: pulumi.Input[Optional[_builtins.bool]] = None,
+            spf_status: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transport: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowedDeliveryModes"] = allowed_delivery_modes
+        __props__["authorization"] = authorization
+        __props__["createdAt"] = created_at
+        __props__["dmarcStatus"] = dmarc_status
+        __props__["domain"] = domain
+        __props__["dropDispositions"] = drop_dispositions
+        __props__["emailsProcessed"] = emails_processed
+        __props__["folder"] = folder
+        __props__["inboxProvider"] = inbox_provider
+        __props__["integrationId"] = integration_id
+        __props__["ipRestrictions"] = ip_restrictions
+        __props__["lastModified"] = last_modified
+        __props__["lookbackHops"] = lookback_hops
+        __props__["modifiedAt"] = modified_at
+        __props__["o365TenantId"] = o365_tenant_id
+        __props__["regions"] = regions
+        __props__["requireTlsInbound"] = require_tls_inbound
+        __props__["requireTlsOutbound"] = require_tls_outbound
+        __props__["spfStatus"] = spf_status
+        __props__["status"] = status
+        __props__["transport"] = transport
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/emailSecurityDomain:EmailSecurityDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

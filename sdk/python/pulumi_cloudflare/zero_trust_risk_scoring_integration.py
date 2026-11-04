@@ -404,6 +404,28 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         __props__.__dict__["well_known_url"] = well_known_url
         return ZeroTrustRiskScoringIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            account_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_url: pulumi.Input[Optional[_builtins.str]] = None,
+            well_known_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["accountTag"] = account_tag
+        __props__["active"] = active
+        __props__["createdAt"] = created_at
+        __props__["integrationType"] = integration_type
+        __props__["referenceId"] = reference_id
+        __props__["tenantUrl"] = tenant_url
+        __props__["wellKnownUrl"] = well_known_url
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

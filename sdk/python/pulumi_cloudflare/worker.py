@@ -739,6 +739,38 @@ class Worker(pulumi.CustomResource):
         __props__.__dict__["updated_on"] = updated_on
         return Worker(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            deployed_on: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict', 'outputs.WorkerObservability']]] = None,
+            previews_base_config: pulumi.Input[Optional[Union['WorkerPreviewsBaseConfigArgs', 'WorkerPreviewsBaseConfigArgsDict', 'outputs.WorkerPreviewsBaseConfig']]] = None,
+            references: pulumi.Input[Optional[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict', 'outputs.WorkerReferences']]] = None,
+            subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict', 'outputs.WorkerSubdomain']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict', 'outputs.WorkerTailConsumer']]]]] = None,
+            updated_on: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdOn"] = created_on
+        __props__["deployedOn"] = deployed_on
+        __props__["force"] = force
+        __props__["logpush"] = logpush
+        __props__["name"] = name
+        __props__["observability"] = observability
+        __props__["previewsBaseConfig"] = previews_base_config
+        __props__["references"] = references
+        __props__["subdomain"] = subdomain
+        __props__["tags"] = tags
+        __props__["tailConsumers"] = tail_consumers
+        __props__["updatedOn"] = updated_on
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/worker:Worker', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -264,6 +264,20 @@ class StreamDownload(pulumi.CustomResource):
         __props__.__dict__["identifier"] = identifier
         return StreamDownload(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            audio: pulumi.Input[Optional[Union['StreamDownloadAudioArgs', 'StreamDownloadAudioArgsDict', 'outputs.StreamDownloadAudio']]] = None,
+            default: pulumi.Input[Optional[Union['StreamDownloadDefaultArgs', 'StreamDownloadDefaultArgsDict', 'outputs.StreamDownloadDefault']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["audio"] = audio
+        __props__["default"] = default
+        __props__["identifier"] = identifier
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/streamDownload:StreamDownload', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

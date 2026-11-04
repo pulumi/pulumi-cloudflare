@@ -114,6 +114,12 @@ func (ZeroTrustRiskBehaviorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustRiskBehaviorState)(nil)).Elem()
 }
 
+// ZeroTrustRiskBehaviorExists checks whether an existing ZeroTrustRiskBehavior resource with the given ID exists.
+func ZeroTrustRiskBehaviorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustRiskBehaviorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior", id, state, "", opts...)
+}
+
 type zeroTrustRiskBehaviorArgs struct {
 	AccountId string                                    `pulumi:"accountId"`
 	Behaviors map[string]ZeroTrustRiskBehaviorBehaviors `pulumi:"behaviors"`

@@ -395,6 +395,12 @@ func (LoadBalancerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerState)(nil)).Elem()
 }
 
+// LoadBalancerExists checks whether an existing LoadBalancer resource with the given ID exists.
+func LoadBalancerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/loadBalancer:LoadBalancer", id, state, "", opts...)
+}
+
 type loadBalancerArgs struct {
 	// Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
 	AdaptiveRouting *LoadBalancerAdaptiveRouting `pulumi:"adaptiveRouting"`

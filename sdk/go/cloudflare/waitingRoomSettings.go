@@ -114,6 +114,12 @@ func (WaitingRoomSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*waitingRoomSettingsState)(nil)).Elem()
 }
 
+// WaitingRoomSettingsExists checks whether an existing WaitingRoomSettings resource with the given ID exists.
+func WaitingRoomSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WaitingRoomSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/waitingRoomSettings:WaitingRoomSettings", id, state, "", opts...)
+}
+
 type waitingRoomSettingsArgs struct {
 	// Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,

@@ -129,6 +129,12 @@ func (ZeroTrustAccessKeyConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessKeyConfigurationState)(nil)).Elem()
 }
 
+// ZeroTrustAccessKeyConfigurationExists checks whether an existing ZeroTrustAccessKeyConfiguration resource with the given ID exists.
+func ZeroTrustAccessKeyConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessKeyConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration", id, state, "", opts...)
+}
+
 type zeroTrustAccessKeyConfigurationArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

@@ -426,6 +426,26 @@ class ZoneTracing(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZoneTracing(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            forward_context: pulumi.Input[Optional[_builtins.bool]] = None,
+            persist: pulumi.Input[Optional[_builtins.bool]] = None,
+            propagation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sampling_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["destinations"] = destinations
+        __props__["enabled"] = enabled
+        __props__["forwardContext"] = forward_context
+        __props__["persist"] = persist
+        __props__["propagationPolicy"] = propagation_policy
+        __props__["samplingRatio"] = sampling_ratio
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zoneTracing:ZoneTracing', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def destinations(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

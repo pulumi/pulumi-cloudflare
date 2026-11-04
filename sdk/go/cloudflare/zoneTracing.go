@@ -143,6 +143,12 @@ func (ZoneTracingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneTracingState)(nil)).Elem()
 }
 
+// ZoneTracingExists checks whether an existing ZoneTracing resource with the given ID exists.
+func ZoneTracingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneTracingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneTracing:ZoneTracing", id, state, "", opts...)
+}
+
 type zoneTracingArgs struct {
 	// Up to 100 OpenTelemetry destination identifiers that receive traces.
 	Destinations []string `pulumi:"destinations"`

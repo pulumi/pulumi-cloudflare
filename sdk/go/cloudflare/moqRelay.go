@@ -150,6 +150,12 @@ func (MoqRelayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*moqRelayState)(nil)).Elem()
 }
 
+// MoqRelayExists checks whether an existing MoqRelay resource with the given ID exists.
+func MoqRelayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MoqRelayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/moqRelay:MoqRelay", id, state, "", opts...)
+}
+
 type moqRelayArgs struct {
 	// Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

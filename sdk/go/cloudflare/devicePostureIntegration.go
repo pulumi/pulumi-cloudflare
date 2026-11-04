@@ -153,6 +153,12 @@ func (DevicePostureIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*devicePostureIntegrationState)(nil)).Elem()
 }
 
+// DevicePostureIntegrationExists checks whether an existing DevicePostureIntegration resource with the given ID exists.
+func DevicePostureIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DevicePostureIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/devicePostureIntegration:DevicePostureIntegration", id, state, "", opts...)
+}
+
 type devicePostureIntegrationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The configuration object containing third-party integration information.

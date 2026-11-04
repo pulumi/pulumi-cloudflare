@@ -585,6 +585,40 @@ class StreamWatermark(pulumi.CustomResource):
         __props__.__dict__["width"] = width
         return StreamWatermark(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            downloaded_from: pulumi.Input[Optional[_builtins.str]] = None,
+            height: pulumi.Input[Optional[_builtins.int]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            opacity: pulumi.Input[Optional[_builtins.float]] = None,
+            padding: pulumi.Input[Optional[_builtins.float]] = None,
+            position: pulumi.Input[Optional[_builtins.str]] = None,
+            scale: pulumi.Input[Optional[_builtins.float]] = None,
+            size: pulumi.Input[Optional[_builtins.float]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            width: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["created"] = created
+        __props__["downloadedFrom"] = downloaded_from
+        __props__["height"] = height
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["opacity"] = opacity
+        __props__["padding"] = padding
+        __props__["position"] = position
+        __props__["scale"] = scale
+        __props__["size"] = size
+        __props__["uid"] = uid
+        __props__["url"] = url
+        __props__["width"] = width
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/streamWatermark:StreamWatermark', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -160,6 +160,12 @@ func (ZeroTrustDlpPredefinedProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDlpPredefinedProfileState)(nil)).Elem()
 }
 
+// ZeroTrustDlpPredefinedProfileExists checks whether an existing ZeroTrustDlpPredefinedProfile resource with the given ID exists.
+func ZeroTrustDlpPredefinedProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDlpPredefinedProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile", id, state, "", opts...)
+}
+
 type zeroTrustDlpPredefinedProfileArgs struct {
 	AccountId           string   `pulumi:"accountId"`
 	AiContextEnabled    *bool    `pulumi:"aiContextEnabled"`

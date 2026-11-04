@@ -487,6 +487,32 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZeroTrustAccessServiceToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret_version: pulumi.Input[Optional[_builtins.float]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            previous_client_secret_expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["clientId"] = client_id
+        __props__["clientSecret"] = client_secret
+        __props__["clientSecretVersion"] = client_secret_version
+        __props__["duration"] = duration
+        __props__["enabled"] = enabled
+        __props__["expiresAt"] = expires_at
+        __props__["name"] = name
+        __props__["previousClientSecretExpiresAt"] = previous_client_secret_expires_at
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

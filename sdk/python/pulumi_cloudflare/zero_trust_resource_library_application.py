@@ -675,6 +675,48 @@ class ZeroTrustResourceLibraryApplication(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return ZeroTrustResourceLibraryApplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_confidence_score: pulumi.Input[Optional[_builtins.float]] = None,
+            application_score_composition: pulumi.Input[Optional[_builtins.str]] = None,
+            application_source: pulumi.Input[Optional[_builtins.str]] = None,
+            application_type: pulumi.Input[Optional[_builtins.str]] = None,
+            application_type_description: pulumi.Input[Optional[_builtins.str]] = None,
+            category_id: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            gen_ai_score: pulumi.Input[Optional[_builtins.float]] = None,
+            hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            human_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            support_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supporteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["applicationConfidenceScore"] = application_confidence_score
+        __props__["applicationScoreComposition"] = application_score_composition
+        __props__["applicationSource"] = application_source
+        __props__["applicationType"] = application_type
+        __props__["applicationTypeDescription"] = application_type_description
+        __props__["categoryId"] = category_id
+        __props__["createdAt"] = created_at
+        __props__["genAiScore"] = gen_ai_score
+        __props__["hostnames"] = hostnames
+        __props__["humanId"] = human_id
+        __props__["ipSubnets"] = ip_subnets
+        __props__["name"] = name
+        __props__["portProtocols"] = port_protocols
+        __props__["supportDomains"] = support_domains
+        __props__["supporteds"] = supporteds
+        __props__["updatedAt"] = updated_at
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustResourceLibraryApplication:ZeroTrustResourceLibraryApplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -130,6 +130,12 @@ func (StreamKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamKeyState)(nil)).Elem()
 }
 
+// StreamKeyExists checks whether an existing StreamKey resource with the given ID exists.
+func StreamKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/streamKey:StreamKey", id, state, "", opts...)
+}
+
 type streamKeyArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

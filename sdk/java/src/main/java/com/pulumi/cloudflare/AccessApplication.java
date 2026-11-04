@@ -36,11 +36,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessApplication:AccessApplication example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;app_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accessapplication.AccessApplication has been deprecated in favor of cloudflare.index/zerotrustaccessapplication.ZeroTrustAccessApplication
+ * @deprecated cloudflare.index/accessapplication.AccessApplication has been deprecated in favor of cloudflare.index/zerotrustaccessapplication.ZeroTrustAccessApplication
  * 
  */
-@Deprecated /* cloudflare.index/accessapplication.AccessApplication has been deprecated in favor of cloudflare.index/zerotrustaccessapplication.ZeroTrustAccessApplication */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessApplication:AccessApplication")
 public class AccessApplication extends com.pulumi.resources.CustomResource {
     /**
@@ -490,11 +489,10 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> selfHostedDomains;
 

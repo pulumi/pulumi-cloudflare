@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var exampleZeroTrustDeviceIpProfile = new ZeroTrustDeviceIpProfile("exampleZeroTrustDeviceIpProfile", ZeroTrustDeviceIpProfileArgs.builder()
  *             .accountId("account_id")
- *             .match("identity.email == \"test}{@literal @}{@code cloudflare.com\"")
+ *             .match("identity.email == }&#92;{@code "test}{@literal @}{@code cloudflare.com}&#92;{@code "")
  *             .name("IPv4 Cloudflare Source IPs")
  *             .precedence(100)
  *             .subnetId("b70ff985-a4ef-4643-bbbc-4a0ed4fc8415")

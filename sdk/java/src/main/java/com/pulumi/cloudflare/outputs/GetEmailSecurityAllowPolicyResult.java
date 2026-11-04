@@ -22,34 +22,30 @@ public final class GetEmailSecurityAllowPolicyResult {
     private Boolean isAcceptableSender;
     private Boolean isExemptRecipient;
     /**
-     * @deprecated
-     * Use `isExemptRecipient` instead.
+     * @deprecated Use `isExemptRecipient` instead.
      * 
      */
-    @Deprecated /* Use `isExemptRecipient` instead. */
+    @Deprecated
     private Boolean isRecipient;
     private Boolean isRegex;
     /**
-     * @deprecated
-     * Use `isTrustedSender` instead.
+     * @deprecated Use `isTrustedSender` instead.
      * 
      */
-    @Deprecated /* Use `isTrustedSender` instead. */
+    @Deprecated
     private Boolean isSender;
     /**
-     * @deprecated
-     * Use `isAcceptableSender` instead.
+     * @deprecated Use `isAcceptableSender` instead.
      * 
      */
-    @Deprecated /* Use `isAcceptableSender` instead. */
+    @Deprecated
     private Boolean isSpoof;
     private Boolean isTrustedSender;
     /**
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     private String lastModified;
     private String modifiedAt;
     private String pattern;
@@ -80,11 +76,10 @@ public final class GetEmailSecurityAllowPolicyResult {
         return this.isExemptRecipient;
     }
     /**
-     * @deprecated
-     * Use `isExemptRecipient` instead.
+     * @deprecated Use `isExemptRecipient` instead.
      * 
      */
-    @Deprecated /* Use `isExemptRecipient` instead. */
+    @Deprecated
     public Boolean isRecipient() {
         return this.isRecipient;
     }
@@ -92,20 +87,18 @@ public final class GetEmailSecurityAllowPolicyResult {
         return this.isRegex;
     }
     /**
-     * @deprecated
-     * Use `isTrustedSender` instead.
+     * @deprecated Use `isTrustedSender` instead.
      * 
      */
-    @Deprecated /* Use `isTrustedSender` instead. */
+    @Deprecated
     public Boolean isSender() {
         return this.isSender;
     }
     /**
-     * @deprecated
-     * Use `isAcceptableSender` instead.
+     * @deprecated Use `isAcceptableSender` instead.
      * 
      */
-    @Deprecated /* Use `isAcceptableSender` instead. */
+    @Deprecated
     public Boolean isSpoof() {
         return this.isSpoof;
     }
@@ -113,11 +106,10 @@ public final class GetEmailSecurityAllowPolicyResult {
         return this.isTrustedSender;
     }
     /**
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     public String lastModified() {
         return this.lastModified;
     }

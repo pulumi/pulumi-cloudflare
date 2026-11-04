@@ -320,6 +320,12 @@ func (NotificationPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationPolicyState)(nil)).Elem()
 }
 
+// NotificationPolicyExists checks whether an existing NotificationPolicy resource with the given ID exists.
+func NotificationPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotificationPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/notificationPolicy:NotificationPolicy", id, state, "", opts...)
+}
+
 type notificationPolicyArgs struct {
 	// The account id
 	AccountId string `pulumi:"accountId"`

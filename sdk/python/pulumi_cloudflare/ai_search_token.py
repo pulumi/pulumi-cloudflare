@@ -338,6 +338,32 @@ class AiSearchToken(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return AiSearchToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_api_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            legacy: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["cfApiId"] = cf_api_id
+        __props__["cfApiKey"] = cf_api_key
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["enabled"] = enabled
+        __props__["legacy"] = legacy
+        __props__["modifiedAt"] = modified_at
+        __props__["modifiedBy"] = modified_by
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/aiSearchToken:AiSearchToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

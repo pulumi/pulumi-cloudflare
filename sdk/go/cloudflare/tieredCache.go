@@ -128,6 +128,12 @@ func (TieredCacheState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tieredCacheState)(nil)).Elem()
 }
 
+// TieredCacheExists checks whether an existing TieredCache resource with the given ID exists.
+func TieredCacheExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TieredCacheState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/tieredCache:TieredCache", id, state, "", opts...)
+}
+
 type tieredCacheArgs struct {
 	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".

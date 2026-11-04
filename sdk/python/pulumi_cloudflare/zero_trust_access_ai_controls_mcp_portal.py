@@ -613,6 +613,38 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         __props__.__dict__["zero_trust_access_ai_controls_mcp_portal_id"] = zero_trust_access_ai_controls_mcp_portal_id
         return ZeroTrustAccessAiControlsMcpPortal(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            code_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict', 'outputs.ZeroTrustAccessAiControlsMcpPortalServer']]]]] = None,
+            zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowCodeMode"] = allow_code_mode
+        __props__["codeMode"] = code_mode
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["hostname"] = hostname
+        __props__["modifiedAt"] = modified_at
+        __props__["modifiedBy"] = modified_by
+        __props__["name"] = name
+        __props__["secureWebGateway"] = secure_web_gateway
+        __props__["servers"] = servers
+        __props__["zeroTrustAccessAiControlsMcpPortalId"] = zero_trust_access_ai_controls_mcp_portal_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -195,6 +195,12 @@ func (PageRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pageRuleState)(nil)).Elem()
 }
 
+// PageRuleExists checks whether an existing PageRule resource with the given ID exists.
+func PageRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PageRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/pageRule:PageRule", id, state, "", opts...)
+}
+
 type pageRuleArgs struct {
 	Actions PageRuleActions `pulumi:"actions"`
 	// The priority of the rule, used to define which Page Rule is processed

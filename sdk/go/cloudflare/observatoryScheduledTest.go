@@ -138,6 +138,12 @@ func (ObservatoryScheduledTestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*observatoryScheduledTestState)(nil)).Elem()
 }
 
+// ObservatoryScheduledTestExists checks whether an existing ObservatoryScheduledTest resource with the given ID exists.
+func ObservatoryScheduledTestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObservatoryScheduledTestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest", id, state, "", opts...)
+}
+
 type observatoryScheduledTestArgs struct {
 	// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
 	// Available values: "DAILY", "WEEKLY".

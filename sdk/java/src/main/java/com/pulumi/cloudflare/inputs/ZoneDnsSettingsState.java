@@ -38,24 +38,20 @@ public final class ZoneDnsSettingsState extends com.pulumi.resources.ResourceArg
     /**
      * Deprecated. Use nameservers.type to configure Advanced Nameservers.
      * 
-     * @deprecated
-     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
-    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
- */
+    @Deprecated
     @Import(name="foundationDns")
     private @Nullable Output<Boolean> foundationDns;
 
     /**
      * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
      * 
-     * @deprecated
-     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
-    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
- */
+    @Deprecated
     public Optional<Output<Boolean>> foundationDns() {
         return Optional.ofNullable(this.foundationDns);
     }
@@ -241,12 +237,10 @@ public final class ZoneDnsSettingsState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+         * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
          * 
          */
-        @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
- */
+        @Deprecated
         public Builder foundationDns(@Nullable Output<Boolean> foundationDns) {
             $.foundationDns = foundationDns;
             return this;
@@ -257,12 +251,10 @@ public final class ZoneDnsSettingsState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+         * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
          * 
          */
-        @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
- */
+        @Deprecated
         public Builder foundationDns(Boolean foundationDns) {
             return foundationDns(Output.of(foundationDns));
         }

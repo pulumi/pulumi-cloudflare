@@ -436,6 +436,28 @@ class SchemaValidationSchemas(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return SchemaValidationSchemas(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            omit_source: pulumi.Input[Optional[_builtins.bool]] = None,
+            schema_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["kind"] = kind
+        __props__["name"] = name
+        __props__["omitSource"] = omit_source
+        __props__["schemaId"] = schema_id
+        __props__["source"] = source
+        __props__["validationEnabled"] = validation_enabled
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

@@ -368,6 +368,12 @@ func (TeamsRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*teamsRuleState)(nil)).Elem()
 }
 
+// TeamsRuleExists checks whether an existing TeamsRule resource with the given ID exists.
+func TeamsRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TeamsRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/teamsRule:TeamsRule", id, state, "", opts...)
+}
+
 type teamsRuleArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

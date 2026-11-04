@@ -730,6 +730,42 @@ class EmailSecurityAllowPolicy(pulumi.CustomResource):
         __props__.__dict__["verify_sender"] = verify_sender
         return EmailSecurityAllowPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            is_acceptable_sender: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_exempt_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_recipient: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_sender: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_spoof: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_trusted_sender: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_sender: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["comments"] = comments
+        __props__["createdAt"] = created_at
+        __props__["isAcceptableSender"] = is_acceptable_sender
+        __props__["isExemptRecipient"] = is_exempt_recipient
+        __props__["isRecipient"] = is_recipient
+        __props__["isRegex"] = is_regex
+        __props__["isSender"] = is_sender
+        __props__["isSpoof"] = is_spoof
+        __props__["isTrustedSender"] = is_trusted_sender
+        __props__["lastModified"] = last_modified
+        __props__["modifiedAt"] = modified_at
+        __props__["pattern"] = pattern
+        __props__["patternType"] = pattern_type
+        __props__["verifySender"] = verify_sender
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/emailSecurityAllowPolicy:EmailSecurityAllowPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

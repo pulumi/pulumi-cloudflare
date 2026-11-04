@@ -239,6 +239,12 @@ func (StreamLiveInputState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamLiveInputState)(nil)).Elem()
 }
 
+// StreamLiveInputExists checks whether an existing StreamLiveInput resource with the given ID exists.
+func StreamLiveInputExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamLiveInputState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/streamLiveInput:StreamLiveInput", id, state, "", opts...)
+}
+
 type streamLiveInputArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

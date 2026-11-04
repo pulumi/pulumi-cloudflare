@@ -256,6 +256,12 @@ func (EmailSecurityDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailSecurityDomainState)(nil)).Elem()
 }
 
+// EmailSecurityDomainExists checks whether an existing EmailSecurityDomain resource with the given ID exists.
+func EmailSecurityDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailSecurityDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailSecurityDomain:EmailSecurityDomain", id, state, "", opts...)
+}
+
 type emailSecurityDomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

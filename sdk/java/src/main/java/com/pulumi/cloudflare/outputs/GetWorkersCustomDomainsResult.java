@@ -18,11 +18,10 @@ public final class GetWorkersCustomDomainsResult {
     /**
      * @return Worker environment associated with the domain.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String environment;
     /**
      * @return Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
@@ -61,11 +60,10 @@ public final class GetWorkersCustomDomainsResult {
     /**
      * @return Worker environment associated with the domain.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String environment() {
         return this.environment;
     }

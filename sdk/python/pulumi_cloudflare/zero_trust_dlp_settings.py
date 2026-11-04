@@ -317,6 +317,20 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
         __props__.__dict__["payload_logging"] = payload_logging
         return ZeroTrustDlpSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
+            ocr: pulumi.Input[Optional[_builtins.bool]] = None,
+            payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict', 'outputs.ZeroTrustDlpSettingsPayloadLogging']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["aiContextAnalysis"] = ai_context_analysis
+        __props__["ocr"] = ocr
+        __props__["payloadLogging"] = payload_logging
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

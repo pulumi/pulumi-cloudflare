@@ -85,11 +85,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessGroup:AccessGroup example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;group_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup
+ * @deprecated cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup
  * 
  */
-@Deprecated /* cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessGroup:AccessGroup")
 public class AccessGroup extends com.pulumi.resources.CustomResource {
     /**

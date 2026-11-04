@@ -153,6 +153,12 @@ func (Web3HostnameState) ElementType() reflect.Type {
 	return reflect.TypeOf((*web3HostnameState)(nil)).Elem()
 }
 
+// Web3HostnameExists checks whether an existing Web3Hostname resource with the given ID exists.
+func Web3HostnameExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Web3HostnameState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/web3Hostname:Web3Hostname", id, state, "", opts...)
+}
+
 type web3HostnameArgs struct {
 	// Specify an optional description of the hostname.
 	Description *string `pulumi:"description"`

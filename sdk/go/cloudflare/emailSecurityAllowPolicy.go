@@ -244,6 +244,12 @@ func (EmailSecurityAllowPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailSecurityAllowPolicyState)(nil)).Elem()
 }
 
+// EmailSecurityAllowPolicyExists checks whether an existing EmailSecurityAllowPolicy resource with the given ID exists.
+func EmailSecurityAllowPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailSecurityAllowPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailSecurityAllowPolicy:EmailSecurityAllowPolicy", id, state, "", opts...)
+}
+
 type emailSecurityAllowPolicyArgs struct {
 	// Identifier.
 	AccountId string  `pulumi:"accountId"`

@@ -238,6 +238,16 @@ class SnippetRules(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return SnippetRules(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict', 'outputs.SnippetRulesRule']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["rules"] = rules
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/snippetRules:SnippetRules', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.SnippetRulesRule']]:

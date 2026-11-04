@@ -108,12 +108,10 @@ public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {
     /**
      * Deprecated. Use nameservers.type to configure Advanced Nameservers.
      * 
-     * @deprecated
-     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
-    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
- */
+    @Deprecated
     @Export(name="foundationDns", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> foundationDns;
 

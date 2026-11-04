@@ -114,11 +114,10 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.enabledEntries);
     }
     /**
-     * @deprecated
-     * This attribute is deprecated. Use enabledEntries instead.
+     * @deprecated This attribute is deprecated. Use enabledEntries instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
+    @Deprecated
     @Export(name="entries", refs={List.class,ZeroTrustDlpPredefinedProfileEntry.class}, tree="[0,1]")
     private Output<List<ZeroTrustDlpPredefinedProfileEntry>> entries;
 

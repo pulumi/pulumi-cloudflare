@@ -34,11 +34,10 @@ public final class GetZeroTrustDlpCustomProfileResult {
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private GetZeroTrustDlpCustomProfileContextAwareness contextAwareness;
     /**
      * @return When the profile was created.
@@ -61,11 +60,10 @@ public final class GetZeroTrustDlpCustomProfileResult {
      */
     private String description;
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private List<GetZeroTrustDlpCustomProfileEntry> entries;
     /**
      * @return The ID of this resource.
@@ -126,11 +124,10 @@ public final class GetZeroTrustDlpCustomProfileResult {
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public GetZeroTrustDlpCustomProfileContextAwareness contextAwareness() {
         return this.contextAwareness;
     }
@@ -163,11 +160,10 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.description;
     }
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public List<GetZeroTrustDlpCustomProfileEntry> entries() {
         return this.entries;
     }

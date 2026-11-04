@@ -497,6 +497,36 @@ class WebAnalyticsSite(pulumi.CustomResource):
         __props__.__dict__["zone_tag"] = zone_tag
         return WebAnalyticsSite(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_install: pulumi.Input[Optional[_builtins.bool]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            lite: pulumi.Input[Optional[_builtins.bool]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict', 'outputs.WebAnalyticsSiteRule']]]]] = None,
+            ruleset: pulumi.Input[Optional[Union['WebAnalyticsSiteRulesetArgs', 'WebAnalyticsSiteRulesetArgsDict', 'outputs.WebAnalyticsSiteRuleset']]] = None,
+            site_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            site_token: pulumi.Input[Optional[_builtins.str]] = None,
+            snippet: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_tag: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["autoInstall"] = auto_install
+        __props__["created"] = created
+        __props__["enabled"] = enabled
+        __props__["host"] = host
+        __props__["lite"] = lite
+        __props__["rules"] = rules
+        __props__["ruleset"] = ruleset
+        __props__["siteTag"] = site_tag
+        __props__["siteToken"] = site_token
+        __props__["snippet"] = snippet
+        __props__["zoneTag"] = zone_tag
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/webAnalyticsSite:WebAnalyticsSite', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

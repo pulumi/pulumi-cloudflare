@@ -151,6 +151,12 @@ func (ZeroTrustDevicePostureIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDevicePostureIntegrationState)(nil)).Elem()
 }
 
+// ZeroTrustDevicePostureIntegrationExists checks whether an existing ZeroTrustDevicePostureIntegration resource with the given ID exists.
+func ZeroTrustDevicePostureIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDevicePostureIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration", id, state, "", opts...)
+}
+
 type zeroTrustDevicePostureIntegrationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The configuration object containing third-party integration information.

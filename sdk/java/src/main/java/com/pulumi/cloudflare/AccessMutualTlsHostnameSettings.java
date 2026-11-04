@@ -69,11 +69,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
+ * @deprecated cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
  * 
  */
-@Deprecated /* cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings")
 public class AccessMutualTlsHostnameSettings extends com.pulumi.resources.CustomResource {
     /**

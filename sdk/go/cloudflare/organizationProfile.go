@@ -126,6 +126,12 @@ func (OrganizationProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationProfileState)(nil)).Elem()
 }
 
+// OrganizationProfileExists checks whether an existing OrganizationProfile resource with the given ID exists.
+func OrganizationProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/organizationProfile:OrganizationProfile", id, state, "", opts...)
+}
+
 type organizationProfileArgs struct {
 	BusinessAddress  string `pulumi:"businessAddress"`
 	BusinessEmail    string `pulumi:"businessEmail"`

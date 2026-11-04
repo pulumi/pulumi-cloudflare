@@ -232,6 +232,12 @@ func (ZeroTrustDnsLocationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDnsLocationState)(nil)).Elem()
 }
 
+// ZeroTrustDnsLocationExists checks whether an existing ZeroTrustDnsLocation resource with the given ID exists.
+func ZeroTrustDnsLocationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDnsLocationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation", id, state, "", opts...)
+}
+
 type zeroTrustDnsLocationArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

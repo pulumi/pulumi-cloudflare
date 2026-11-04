@@ -35,17 +35,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleMonetizationRules = new MonetizationRules("exampleMonetizationRules", MonetizationRulesArgs.builder()
  *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
  *             .rules(MonetizationRulesRuleArgs.builder()
  *                 .address("0x1234567890abcdef1234567890abcdef12345678===")
- *                 .expression("(http.request.uri.path eq \"/premium\" and http.request.method in {\"GET\" \"POST\"})")
+ *                 .expression("(http.request.uri.path eq }&#92;{@code "/premium}&#92;{@code " and http.request.method in }{&#92;{@code "GET}&#92;{@code " }&#92;{@code "POST}&#92;{@code "}}{@code )")
  *                 .price("250000")
  *                 .scheme("exact")
  *                 .id("023e105f4ecef8ad9ca31a8372d0c353")
@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

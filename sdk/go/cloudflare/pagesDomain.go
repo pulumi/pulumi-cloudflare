@@ -152,6 +152,12 @@ func (PagesDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pagesDomainState)(nil)).Elem()
 }
 
+// PagesDomainExists checks whether an existing PagesDomain resource with the given ID exists.
+func PagesDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PagesDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/pagesDomain:PagesDomain", id, state, "", opts...)
+}
+
 type pagesDomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

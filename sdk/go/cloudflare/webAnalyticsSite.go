@@ -164,6 +164,12 @@ func (WebAnalyticsSiteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAnalyticsSiteState)(nil)).Elem()
 }
 
+// WebAnalyticsSiteExists checks whether an existing WebAnalyticsSite resource with the given ID exists.
+func WebAnalyticsSiteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebAnalyticsSiteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", id, state, "", opts...)
+}
+
 type webAnalyticsSiteArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

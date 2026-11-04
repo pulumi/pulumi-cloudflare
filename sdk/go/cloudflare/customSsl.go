@@ -299,6 +299,12 @@ func (CustomSslState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customSslState)(nil)).Elem()
 }
 
+// CustomSslExists checks whether an existing CustomSsl resource with the given ID exists.
+func CustomSslExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomSslState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/customSsl:CustomSsl", id, state, "", opts...)
+}
+
 type customSslArgs struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".

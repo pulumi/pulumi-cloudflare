@@ -552,6 +552,42 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         __props__.__dict__["updated"] = updated
         return CloudforceOneRequestPriority(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            completed: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            message_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            readable_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request: pulumi.Input[Optional[_builtins.str]] = None,
+            requirement: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            summary: pulumi.Input[Optional[_builtins.str]] = None,
+            tlp: pulumi.Input[Optional[_builtins.str]] = None,
+            tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["completed"] = completed
+        __props__["content"] = content
+        __props__["created"] = created
+        __props__["labels"] = labels
+        __props__["messageTokens"] = message_tokens
+        __props__["priority"] = priority
+        __props__["readableId"] = readable_id
+        __props__["request"] = request
+        __props__["requirement"] = requirement
+        __props__["status"] = status
+        __props__["summary"] = summary
+        __props__["tlp"] = tlp
+        __props__["tokens"] = tokens
+        __props__["updated"] = updated
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

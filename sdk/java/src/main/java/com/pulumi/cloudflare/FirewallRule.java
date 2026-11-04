@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleFirewallRule = new FirewallRule("exampleFirewallRule", FirewallRuleArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .action(FirewallRuleActionArgs.builder()
@@ -69,14 +69,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .filter(FirewallRuleFilterArgs.builder()
  *                 .description("Restrict access from these browsers on this address range.")
- *                 .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155")
+ *                 .expression("(http.request.uri.path ~ }&#92;{@code ".*wp-login.php}&#92;{@code " or http.request.uri.path ~ }&#92;{@code ".*xmlrpc.php}&#92;{@code ") and ip.addr ne 172.16.22.155")
  *                 .paused(false)
  *                 .ref("FIL-100")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

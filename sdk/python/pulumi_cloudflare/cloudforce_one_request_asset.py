@@ -429,6 +429,30 @@ class CloudforceOneRequestAsset(pulumi.CustomResource):
         __props__.__dict__["source"] = source
         return CloudforceOneRequestAsset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            page: pulumi.Input[Optional[_builtins.int]] = None,
+            per_page: pulumi.Input[Optional[_builtins.int]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["created"] = created
+        __props__["description"] = description
+        __props__["fileType"] = file_type
+        __props__["name"] = name
+        __props__["page"] = page
+        __props__["perPage"] = per_page
+        __props__["requestId"] = request_id
+        __props__["source"] = source
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

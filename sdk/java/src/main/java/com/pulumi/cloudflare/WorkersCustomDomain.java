@@ -98,11 +98,10 @@ public class WorkersCustomDomain extends com.pulumi.resources.CustomResource {
     /**
      * Worker environment associated with the domain.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 

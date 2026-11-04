@@ -111,11 +111,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/managedHeaders:ManagedHeaders example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms
+ * @deprecated cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms
  * 
  */
-@Deprecated /* cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms */
+@Deprecated
 @ResourceType(type="cloudflare:index/managedHeaders:ManagedHeaders")
 public class ManagedHeaders extends com.pulumi.resources.CustomResource {
     /**

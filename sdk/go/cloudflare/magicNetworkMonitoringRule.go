@@ -195,6 +195,12 @@ func (MagicNetworkMonitoringRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicNetworkMonitoringRuleState)(nil)).Elem()
 }
 
+// MagicNetworkMonitoringRuleExists checks whether an existing MagicNetworkMonitoringRule resource with the given ID exists.
+func MagicNetworkMonitoringRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicNetworkMonitoringRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule", id, state, "", opts...)
+}
+
 type magicNetworkMonitoringRuleArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.

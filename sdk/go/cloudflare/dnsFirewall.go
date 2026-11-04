@@ -257,6 +257,12 @@ func (DnsFirewallState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsFirewallState)(nil)).Elem()
 }
 
+// DnsFirewallExists checks whether an existing DnsFirewall resource with the given ID exists.
+func DnsFirewallExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsFirewallState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/dnsFirewall:DnsFirewall", id, state, "", opts...)
+}
+
 type dnsFirewallArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

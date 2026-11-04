@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleLoadBalancer = new LoadBalancer("exampleLoadBalancer", LoadBalancerArgs.builder()
  *             .defaultPools(            
  *                 "17b5962d775c646f3f9725cbc7a53df4",
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *                     "9290f38c5d07c2e2f4df57b1f61d4196"))
  *             ))
  *             .rules(LoadBalancerRuleArgs.builder()
- *                 .condition("http.request.uri.path contains \"/testing\"")
+ *                 .condition("http.request.uri.path contains }&#92;{@code "/testing}&#92;{@code "")
  *                 .disabled(true)
  *                 .fixedResponse(LoadBalancerRuleFixedResponseArgs.builder()
  *                     .contentType("application/json")
@@ -197,8 +197,8 @@ import javax.annotation.Nullable;
  *             .ttl(30.0)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

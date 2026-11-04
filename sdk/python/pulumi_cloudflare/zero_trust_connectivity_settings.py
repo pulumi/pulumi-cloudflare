@@ -268,6 +268,18 @@ class ZeroTrustConnectivitySettings(pulumi.CustomResource):
         __props__.__dict__["offramp_warp_enabled"] = offramp_warp_enabled
         return ZeroTrustConnectivitySettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            icmp_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            offramp_warp_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["icmpProxyEnabled"] = icmp_proxy_enabled
+        __props__["offrampWarpEnabled"] = offramp_warp_enabled
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustConnectivitySettings:ZeroTrustConnectivitySettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

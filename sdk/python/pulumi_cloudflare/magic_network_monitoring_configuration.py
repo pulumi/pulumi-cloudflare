@@ -283,6 +283,22 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
         __props__.__dict__["warp_devices"] = warp_devices
         return MagicNetworkMonitoringConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict', 'outputs.MagicNetworkMonitoringConfigurationWarpDevice']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["defaultSampling"] = default_sampling
+        __props__["name"] = name
+        __props__["routerIps"] = router_ips
+        __props__["warpDevices"] = warp_devices
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

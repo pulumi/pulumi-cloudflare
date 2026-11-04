@@ -1775,6 +1775,64 @@ class WaitingRoom(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return WaitingRoom(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict', 'outputs.WaitingRoomAdditionalRoute']]]]] = None,
+            cookie_attributes: pulumi.Input[Optional[Union['WaitingRoomCookieAttributesArgs', 'WaitingRoomCookieAttributesArgsDict', 'outputs.WaitingRoomCookieAttributes']]] = None,
+            cookie_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+            default_template_language: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_origin_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            json_response_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+            next_event_prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            next_event_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_all: pulumi.Input[Optional[_builtins.bool]] = None,
+            queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+            queueing_status_code: pulumi.Input[Optional[_builtins.int]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+            turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+            turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalRoutes"] = additional_routes
+        __props__["cookieAttributes"] = cookie_attributes
+        __props__["cookieSuffix"] = cookie_suffix
+        __props__["createdOn"] = created_on
+        __props__["customPageHtml"] = custom_page_html
+        __props__["defaultTemplateLanguage"] = default_template_language
+        __props__["description"] = description
+        __props__["disableSessionRenewal"] = disable_session_renewal
+        __props__["enabledOriginCommands"] = enabled_origin_commands
+        __props__["host"] = host
+        __props__["jsonResponseEnabled"] = json_response_enabled
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["newUsersPerMinute"] = new_users_per_minute
+        __props__["nextEventPrequeueStartTime"] = next_event_prequeue_start_time
+        __props__["nextEventStartTime"] = next_event_start_time
+        __props__["path"] = path
+        __props__["queueAll"] = queue_all
+        __props__["queueingMethod"] = queueing_method
+        __props__["queueingStatusCode"] = queueing_status_code
+        __props__["sessionDuration"] = session_duration
+        __props__["suspended"] = suspended
+        __props__["totalActiveUsers"] = total_active_users
+        __props__["turnstileAction"] = turnstile_action
+        __props__["turnstileMode"] = turnstile_mode
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/waitingRoom:WaitingRoom', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalRoutes")
     def additional_routes(self) -> pulumi.Output[Sequence['outputs.WaitingRoomAdditionalRoute']]:

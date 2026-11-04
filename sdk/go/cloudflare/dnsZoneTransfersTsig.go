@@ -135,6 +135,12 @@ func (DnsZoneTransfersTsigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsZoneTransfersTsigState)(nil)).Elem()
 }
 
+// DnsZoneTransfersTsigExists checks whether an existing DnsZoneTransfersTsig resource with the given ID exists.
+func DnsZoneTransfersTsigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsZoneTransfersTsigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig", id, state, "", opts...)
+}
+
 type dnsZoneTransfersTsigArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// TSIG algorithm.

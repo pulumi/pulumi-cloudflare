@@ -165,6 +165,12 @@ func (WorkersForPlatformsNamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersForPlatformsNamespaceState)(nil)).Elem()
 }
 
+// WorkersForPlatformsNamespaceExists checks whether an existing WorkersForPlatformsNamespace resource with the given ID exists.
+func WorkersForPlatformsNamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkersForPlatformsNamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", id, state, "", opts...)
+}
+
 type workersForPlatformsNamespaceArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

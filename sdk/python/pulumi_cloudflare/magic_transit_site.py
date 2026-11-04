@@ -433,6 +433,26 @@ class MagicTransitSite(pulumi.CustomResource):
         __props__.__dict__["secondary_connector_id"] = secondary_connector_id
         return MagicTransitSite(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict', 'outputs.MagicTransitSiteLocation']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["connectorId"] = connector_id
+        __props__["description"] = description
+        __props__["haMode"] = ha_mode
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["secondaryConnectorId"] = secondary_connector_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/magicTransitSite:MagicTransitSite', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -493,6 +493,34 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["variants"] = variants
         return Image(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            filename: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+            uploaded: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            variants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["creator"] = creator
+        __props__["file"] = file
+        __props__["filename"] = filename
+        __props__["imageId"] = image_id
+        __props__["meta"] = meta
+        __props__["metadata"] = metadata
+        __props__["requireSignedUrls"] = require_signed_urls
+        __props__["uploaded"] = uploaded
+        __props__["url"] = url
+        __props__["variants"] = variants
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/image:Image', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

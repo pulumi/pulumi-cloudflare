@@ -161,6 +161,12 @@ func (SchemaValidationSchemasState) ElementType() reflect.Type {
 	return reflect.TypeOf((*schemaValidationSchemasState)(nil)).Elem()
 }
 
+// SchemaValidationSchemasExists checks whether an existing SchemaValidationSchemas resource with the given ID exists.
+func SchemaValidationSchemasExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SchemaValidationSchemasState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas", id, state, "", opts...)
+}
+
 type schemaValidationSchemasArgs struct {
 	// The kind of the schema
 	// Available values: "openapiV3".

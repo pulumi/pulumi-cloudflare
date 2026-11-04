@@ -504,6 +504,38 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         __props__.__dict__["tunnel_secret"] = tunnel_secret
         return ZeroTrustTunnelWarpConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            account_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConnectionArgs', 'ZeroTrustTunnelWarpConnectorConnectionArgsDict', 'outputs.ZeroTrustTunnelWarpConnectorConnection']]]]] = None,
+            conns_active_at: pulumi.Input[Optional[_builtins.str]] = None,
+            conns_inactive_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            ha: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tun_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["accountTag"] = account_tag
+        __props__["connections"] = connections
+        __props__["connsActiveAt"] = conns_active_at
+        __props__["connsInactiveAt"] = conns_inactive_at
+        __props__["createdAt"] = created_at
+        __props__["deletedAt"] = deleted_at
+        __props__["ha"] = ha
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["status"] = status
+        __props__["tunType"] = tun_type
+        __props__["tunnelSecret"] = tunnel_secret
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

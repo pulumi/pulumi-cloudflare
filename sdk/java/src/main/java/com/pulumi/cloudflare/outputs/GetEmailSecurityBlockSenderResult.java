@@ -21,11 +21,10 @@ public final class GetEmailSecurityBlockSenderResult {
     private String id;
     private Boolean isRegex;
     /**
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     private String lastModified;
     private String modifiedAt;
     private String pattern;
@@ -52,11 +51,10 @@ public final class GetEmailSecurityBlockSenderResult {
         return this.isRegex;
     }
     /**
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     public String lastModified() {
         return this.lastModified;
     }

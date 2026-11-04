@@ -181,6 +181,12 @@ func (CloudforceOneRequestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudforceOneRequestState)(nil)).Elem()
 }
 
+// CloudforceOneRequestExists checks whether an existing CloudforceOneRequest resource with the given ID exists.
+func CloudforceOneRequestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudforceOneRequestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/cloudforceOneRequest:CloudforceOneRequest", id, state, "", opts...)
+}
+
 type cloudforceOneRequestArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

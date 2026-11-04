@@ -140,6 +140,12 @@ func (CallsSfuAppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*callsSfuAppState)(nil)).Elem()
 }
 
+// CallsSfuAppExists checks whether an existing CallsSfuApp resource with the given ID exists.
+func CallsSfuAppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CallsSfuAppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/callsSfuApp:CallsSfuApp", id, state, "", opts...)
+}
+
 type callsSfuAppArgs struct {
 	// The account identifier tag.
 	AccountId string `pulumi:"accountId"`

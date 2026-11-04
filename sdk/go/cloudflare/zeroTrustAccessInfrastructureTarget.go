@@ -158,6 +158,12 @@ func (ZeroTrustAccessInfrastructureTargetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessInfrastructureTargetState)(nil)).Elem()
 }
 
+// ZeroTrustAccessInfrastructureTargetExists checks whether an existing ZeroTrustAccessInfrastructureTarget resource with the given ID exists.
+func ZeroTrustAccessInfrastructureTargetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessInfrastructureTargetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget", id, state, "", opts...)
+}
+
 type zeroTrustAccessInfrastructureTargetArgs struct {
 	// Account identifier
 	AccountId string `pulumi:"accountId"`

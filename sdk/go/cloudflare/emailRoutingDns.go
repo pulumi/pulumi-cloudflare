@@ -165,6 +165,12 @@ func (EmailRoutingDnsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailRoutingDnsState)(nil)).Elem()
 }
 
+// EmailRoutingDnsExists checks whether an existing EmailRoutingDns resource with the given ID exists.
+func EmailRoutingDnsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailRoutingDnsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailRoutingDns:EmailRoutingDns", id, state, "", opts...)
+}
+
 type emailRoutingDnsArgs struct {
 	// Domain of your zone.
 	Name *string `pulumi:"name"`

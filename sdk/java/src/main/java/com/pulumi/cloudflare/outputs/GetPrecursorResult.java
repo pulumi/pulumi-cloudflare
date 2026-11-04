@@ -17,20 +17,18 @@ public final class GetPrecursorResult {
      * not match a more specific enforcement rule.
      * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String defaultMode;
     /**
      * @return The ordered list of enforcement rules for the zone.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private List<GetPrecursorEnforcementRule> enforcementRules;
     /**
      * @return Identifier.
@@ -49,22 +47,20 @@ public final class GetPrecursorResult {
      * not match a more specific enforcement rule.
      * Available values: &#34;off&#34;, &#34;min-friction&#34;, &#34;max-security&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String defaultMode() {
         return this.defaultMode;
     }
     /**
      * @return The ordered list of enforcement rules for the zone.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public List<GetPrecursorEnforcementRule> enforcementRules() {
         return this.enforcementRules;
     }

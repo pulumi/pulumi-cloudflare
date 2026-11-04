@@ -52,11 +52,10 @@ public final class GetEmailRoutingSettingsResult {
     /**
      * @return Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String tag;
     /**
      * @return Identifier.
@@ -118,11 +117,10 @@ public final class GetEmailRoutingSettingsResult {
     /**
      * @return Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String tag() {
         return this.tag;
     }

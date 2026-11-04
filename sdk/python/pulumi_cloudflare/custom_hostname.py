@@ -631,6 +631,34 @@ class CustomHostname(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return CustomHostname(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            ownership_verification: pulumi.Input[Optional[Union['CustomHostnameOwnershipVerificationArgs', 'CustomHostnameOwnershipVerificationArgsDict', 'outputs.CustomHostnameOwnershipVerification']]] = None,
+            ownership_verification_http: pulumi.Input[Optional[Union['CustomHostnameOwnershipVerificationHttpArgs', 'CustomHostnameOwnershipVerificationHttpArgsDict', 'outputs.CustomHostnameOwnershipVerificationHttp']]] = None,
+            ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict', 'outputs.CustomHostnameSsl']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            verification_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["customMetadata"] = custom_metadata
+        __props__["customOriginServer"] = custom_origin_server
+        __props__["customOriginSni"] = custom_origin_sni
+        __props__["hostname"] = hostname
+        __props__["ownershipVerification"] = ownership_verification
+        __props__["ownershipVerificationHttp"] = ownership_verification_http
+        __props__["ssl"] = ssl
+        __props__["status"] = status
+        __props__["verificationErrors"] = verification_errors
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/customHostname:CustomHostname', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

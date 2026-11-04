@@ -229,6 +229,12 @@ func (LoadBalancerMonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerMonitorState)(nil)).Elem()
 }
 
+// LoadBalancerMonitorExists checks whether an existing LoadBalancerMonitor resource with the given ID exists.
+func LoadBalancerMonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerMonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", id, state, "", opts...)
+}
+
 type loadBalancerMonitorArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

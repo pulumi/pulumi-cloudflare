@@ -154,6 +154,12 @@ func (ApiShieldOperationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiShieldOperationState)(nil)).Elem()
 }
 
+// ApiShieldOperationExists checks whether an existing ApiShieldOperation resource with the given ID exists.
+func ApiShieldOperationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiShieldOperationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/apiShieldOperation:ApiShieldOperation", id, state, "", opts...)
+}
+
 type apiShieldOperationArgs struct {
 	// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
 	Endpoint string `pulumi:"endpoint"`

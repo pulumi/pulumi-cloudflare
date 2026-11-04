@@ -1175,6 +1175,68 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__.__dict__["virtual_networks"] = virtual_networks
         return ZeroTrustDeviceDefaultProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_mode_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_updates: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_to_leave: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
+            captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_search_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs', 'ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffix']]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileExclude']]]]] = None,
+            fallback_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileFallbackDomainArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileFallbackDomain']]]]] = None,
+            gateway_unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+            global_acceleration: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileGlobalAccelerationArgs', 'ZeroTrustDeviceDefaultProfileGlobalAccelerationArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileGlobalAcceleration']]] = None,
+            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileInclude']]]]] = None,
+            lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
+            lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_type: pulumi.Input[Optional[_builtins.str]] = None,
+            register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+            sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileServiceModeV2']]] = None,
+            support_url: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            uninstall_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            virtual_networks: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileVirtualNetworksArgs', 'ZeroTrustDeviceDefaultProfileVirtualNetworksArgsDict', 'outputs.ZeroTrustDeviceDefaultProfileVirtualNetworks']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowModeSwitch"] = allow_mode_switch
+        __props__["allowUpdates"] = allow_updates
+        __props__["allowedToLeave"] = allowed_to_leave
+        __props__["autoConnect"] = auto_connect
+        __props__["captivePortal"] = captive_portal
+        __props__["default"] = default
+        __props__["disableAutoFallback"] = disable_auto_fallback
+        __props__["dnsSearchSuffixes"] = dns_search_suffixes
+        __props__["enabled"] = enabled
+        __props__["excludeOfficeIps"] = exclude_office_ips
+        __props__["excludes"] = excludes
+        __props__["fallbackDomains"] = fallback_domains
+        __props__["gatewayUniqueId"] = gateway_unique_id
+        __props__["globalAcceleration"] = global_acceleration
+        __props__["includes"] = includes
+        __props__["lanAllowMinutes"] = lan_allow_minutes
+        __props__["lanAllowSubnetSize"] = lan_allow_subnet_size
+        __props__["policyId"] = policy_id
+        __props__["profileType"] = profile_type
+        __props__["registerInterfaceIpWithDns"] = register_interface_ip_with_dns
+        __props__["sccmVpnBoundarySupport"] = sccm_vpn_boundary_support
+        __props__["serviceModeV2"] = service_mode_v2
+        __props__["supportUrl"] = support_url
+        __props__["switchLocked"] = switch_locked
+        __props__["tunnelProtocol"] = tunnel_protocol
+        __props__["uninstallProtection"] = uninstall_protection
+        __props__["virtualNetworks"] = virtual_networks
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDeviceDefaultProfile:ZeroTrustDeviceDefaultProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

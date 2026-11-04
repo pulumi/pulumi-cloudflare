@@ -214,6 +214,12 @@ func (ZeroTrustResourceLibraryApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustResourceLibraryApplicationState)(nil)).Elem()
 }
 
+// ZeroTrustResourceLibraryApplicationExists checks whether an existing ZeroTrustResourceLibraryApplication resource with the given ID exists.
+func ZeroTrustResourceLibraryApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustResourceLibraryApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustResourceLibraryApplication:ZeroTrustResourceLibraryApplication", id, state, "", opts...)
+}
+
 type zeroTrustResourceLibraryApplicationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Numeric identifier for an application category.

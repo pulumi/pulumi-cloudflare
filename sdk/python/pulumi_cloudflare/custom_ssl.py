@@ -850,6 +850,50 @@ class CustomSsl(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return CustomSsl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bundle_method: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_csr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            geo_restrictions: pulumi.Input[Optional[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict', 'outputs.CustomSslGeoRestrictions']]] = None,
+            hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            keyless_server: pulumi.Input[Optional[Union['CustomSslKeylessServerArgs', 'CustomSslKeylessServerArgsDict', 'outputs.CustomSslKeylessServer']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_restrictions: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            signature: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bundleMethod"] = bundle_method
+        __props__["certificate"] = certificate
+        __props__["customCsrId"] = custom_csr_id
+        __props__["deploy"] = deploy
+        __props__["expiresOn"] = expires_on
+        __props__["geoRestrictions"] = geo_restrictions
+        __props__["hosts"] = hosts
+        __props__["issuer"] = issuer
+        __props__["keylessServer"] = keyless_server
+        __props__["modifiedOn"] = modified_on
+        __props__["policy"] = policy
+        __props__["policyRestrictions"] = policy_restrictions
+        __props__["priority"] = priority
+        __props__["privateKey"] = private_key
+        __props__["signature"] = signature
+        __props__["status"] = status
+        __props__["type"] = type
+        __props__["uploadedOn"] = uploaded_on
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/customSsl:CustomSsl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bundleMethod")
     def bundle_method(self) -> pulumi.Output[_builtins.str]:

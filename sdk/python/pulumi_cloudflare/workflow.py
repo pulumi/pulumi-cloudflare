@@ -566,6 +566,46 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["workflow_name"] = workflow_name
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            class_name: pulumi.Input[Optional[_builtins.str]] = None,
+            concurrency: pulumi.Input[Optional[Union['WorkflowConcurrencyArgs', 'WorkflowConcurrencyArgsDict', 'outputs.WorkflowConcurrency']]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            default_retention: pulumi.Input[Optional[Union['WorkflowDefaultRetentionArgs', 'WorkflowDefaultRetentionArgsDict', 'outputs.WorkflowDefaultRetention']]] = None,
+            instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None,
+            is_deleted: pulumi.Input[Optional[_builtins.float]] = None,
+            limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict', 'outputs.WorkflowLimits']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict', 'outputs.WorkflowSchedule']]]]] = None,
+            script_deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            terminator_running: pulumi.Input[Optional[_builtins.float]] = None,
+            triggered_on: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workflow_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["className"] = class_name
+        __props__["concurrency"] = concurrency
+        __props__["createdOn"] = created_on
+        __props__["defaultRetention"] = default_retention
+        __props__["instances"] = instances
+        __props__["isDeleted"] = is_deleted
+        __props__["limits"] = limits
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["schedules"] = schedules
+        __props__["scriptDeleted"] = script_deleted
+        __props__["scriptName"] = script_name
+        __props__["terminatorRunning"] = terminator_running
+        __props__["triggeredOn"] = triggered_on
+        __props__["versionId"] = version_id
+        __props__["workflowName"] = workflow_name
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/workflow:Workflow', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

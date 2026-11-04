@@ -399,6 +399,28 @@ class ZoneSubscription(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZoneSubscription(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            currency: pulumi.Input[Optional[_builtins.str]] = None,
+            current_period_end: pulumi.Input[Optional[_builtins.str]] = None,
+            current_period_start: pulumi.Input[Optional[_builtins.str]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            price: pulumi.Input[Optional[_builtins.float]] = None,
+            rate_plan: pulumi.Input[Optional[Union['ZoneSubscriptionRatePlanArgs', 'ZoneSubscriptionRatePlanArgsDict', 'outputs.ZoneSubscriptionRatePlan']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["currency"] = currency
+        __props__["currentPeriodEnd"] = current_period_end
+        __props__["currentPeriodStart"] = current_period_start
+        __props__["frequency"] = frequency
+        __props__["price"] = price
+        __props__["ratePlan"] = rate_plan
+        __props__["state"] = state
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zoneSubscription:ZoneSubscription', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def currency(self) -> pulumi.Output[_builtins.str]:

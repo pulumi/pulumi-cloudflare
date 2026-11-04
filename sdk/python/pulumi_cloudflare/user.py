@@ -520,6 +520,40 @@ class User(pulumi.CustomResource):
         __props__.__dict__["zipcode"] = zipcode
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            betas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            country: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            first_name: pulumi.Input[Optional[_builtins.str]] = None,
+            has_business_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+            has_enterprise_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+            has_pro_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserOrganizationArgs', 'UserOrganizationArgsDict', 'outputs.UserOrganization']]]]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            telephone: pulumi.Input[Optional[_builtins.str]] = None,
+            two_factor_authentication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            two_factor_authentication_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            zipcode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["betas"] = betas
+        __props__["country"] = country
+        __props__["email"] = email
+        __props__["firstName"] = first_name
+        __props__["hasBusinessZones"] = has_business_zones
+        __props__["hasEnterpriseZones"] = has_enterprise_zones
+        __props__["hasProZones"] = has_pro_zones
+        __props__["lastName"] = last_name
+        __props__["organizations"] = organizations
+        __props__["suspended"] = suspended
+        __props__["telephone"] = telephone
+        __props__["twoFactorAuthenticationEnabled"] = two_factor_authentication_enabled
+        __props__["twoFactorAuthenticationLocked"] = two_factor_authentication_locked
+        __props__["zipcode"] = zipcode
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def betas(self) -> pulumi.Output[Sequence[_builtins.str]]:

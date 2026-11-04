@@ -598,6 +598,46 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["target_type"] = target_type
         return Share(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            associated_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+            associating_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            disassociated_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+            disassociating_recipient_count: pulumi.Input[Optional[_builtins.int]] = None,
+            include_recipient_counts: pulumi.Input[Optional[_builtins.bool]] = None,
+            include_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            recipients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareRecipientArgs', 'ShareRecipientArgsDict', 'outputs.ShareRecipient']]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareResourceArgs', 'ShareResourceArgsDict', 'outputs.ShareResource']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["accountName"] = account_name
+        __props__["associatedRecipientCount"] = associated_recipient_count
+        __props__["associatingRecipientCount"] = associating_recipient_count
+        __props__["created"] = created
+        __props__["disassociatedRecipientCount"] = disassociated_recipient_count
+        __props__["disassociatingRecipientCount"] = disassociating_recipient_count
+        __props__["includeRecipientCounts"] = include_recipient_counts
+        __props__["includeResources"] = include_resources
+        __props__["kind"] = kind
+        __props__["modified"] = modified
+        __props__["name"] = name
+        __props__["organizationId"] = organization_id
+        __props__["recipients"] = recipients
+        __props__["resources"] = resources
+        __props__["status"] = status
+        __props__["targetType"] = target_type
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/share:Share', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -17,11 +17,10 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
      * @return Whether to enable automatic deployments when pushing to the source repository.
      * When disabled, no deployments (production or preview) will be triggered automatically.
      * 
-     * @deprecated
-     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
      * 
      */
-    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
+    @Deprecated
     private @Nullable Boolean deploymentsEnabled;
     /**
      * @return The owner of the repository.
@@ -90,11 +89,10 @@ public final class PagesProjectCanonicalDeploymentSourceConfig {
      * @return Whether to enable automatic deployments when pushing to the source repository.
      * When disabled, no deployments (production or preview) will be triggered automatically.
      * 
-     * @deprecated
-     * Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
+     * @deprecated Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control.
      * 
      */
-    @Deprecated /* Use `productionDeploymentsEnabled` and `previewDeploymentSetting` for more granular control. */
+    @Deprecated
     public Optional<Boolean> deploymentsEnabled() {
         return Optional.ofNullable(this.deploymentsEnabled);
     }

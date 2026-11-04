@@ -66,22 +66,20 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com
     /**
      * A valid IPv4 address.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="dnsServer")
     private @Nullable Output<String> dnsServer;
 
     /**
      * @return A valid IPv4 address.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<String>> dnsServer() {
         return Optional.ofNullable(this.dnsServer);
     }
@@ -215,11 +213,10 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder dnsServer(@Nullable Output<String> dnsServer) {
             $.dnsServer = dnsServer;
             return this;
@@ -230,11 +227,10 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder dnsServer(String dnsServer) {
             return dnsServer(Output.of(dnsServer));
         }

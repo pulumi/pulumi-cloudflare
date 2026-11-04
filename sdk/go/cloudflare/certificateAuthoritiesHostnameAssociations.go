@@ -114,6 +114,12 @@ func (CertificateAuthoritiesHostnameAssociationsState) ElementType() reflect.Typ
 	return reflect.TypeOf((*certificateAuthoritiesHostnameAssociationsState)(nil)).Elem()
 }
 
+// CertificateAuthoritiesHostnameAssociationsExists checks whether an existing CertificateAuthoritiesHostnameAssociations resource with the given ID exists.
+func CertificateAuthoritiesHostnameAssociationsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertificateAuthoritiesHostnameAssociationsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations", id, state, "", opts...)
+}
+
 type certificateAuthoritiesHostnameAssociationsArgs struct {
 	Hostnames []string `pulumi:"hostnames"`
 	// The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.

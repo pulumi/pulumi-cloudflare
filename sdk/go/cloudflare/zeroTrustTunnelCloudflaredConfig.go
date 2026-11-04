@@ -200,6 +200,12 @@ func (ZeroTrustTunnelCloudflaredConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustTunnelCloudflaredConfigState)(nil)).Elem()
 }
 
+// ZeroTrustTunnelCloudflaredConfigExists checks whether an existing ZeroTrustTunnelCloudflaredConfig resource with the given ID exists.
+func ZeroTrustTunnelCloudflaredConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustTunnelCloudflaredConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig", id, state, "", opts...)
+}
+
 type zeroTrustTunnelCloudflaredConfigArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

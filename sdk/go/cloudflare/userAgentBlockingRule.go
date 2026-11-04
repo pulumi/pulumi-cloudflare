@@ -138,6 +138,12 @@ func (UserAgentBlockingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userAgentBlockingRuleState)(nil)).Elem()
 }
 
+// UserAgentBlockingRuleExists checks whether an existing UserAgentBlockingRule resource with the given ID exists.
+func UserAgentBlockingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserAgentBlockingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule", id, state, "", opts...)
+}
+
 type userAgentBlockingRuleArgs struct {
 	Configuration UserAgentBlockingRuleConfiguration `pulumi:"configuration"`
 	// An informative summary of the rule. This value is sanitized and any tags will be removed.

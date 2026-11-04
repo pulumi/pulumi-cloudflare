@@ -39,24 +39,19 @@ public final class GetZoneResult {
     private GetZoneOwner owner;
     private Boolean paused;
     /**
-     * @deprecated
-     * This has been replaced by Account memberships.
+     * @deprecated This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This has been replaced by Account memberships. */
+    @Deprecated
     private List<String> permissions;
     /**
-     * @deprecated
-     * Please use the `/zones/{zone_id}/subscription` API
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
      * to update a zone&#39;s plan. Changing this value will create/cancel
      * associated subscriptions. To view available plans for this zone,
      * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
-to update a zone's plan. Changing this value will create/cancel
-associated subscriptions. To view available plans for this zone,
-see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
+    @Deprecated
     private GetZonePlan plan;
     private String status;
     private GetZoneTenant tenant;
@@ -116,26 +111,21 @@ see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresour
         return this.paused;
     }
     /**
-     * @deprecated
-     * This has been replaced by Account memberships.
+     * @deprecated This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This has been replaced by Account memberships. */
+    @Deprecated
     public List<String> permissions() {
         return this.permissions;
     }
     /**
-     * @deprecated
-     * Please use the `/zones/{zone_id}/subscription` API
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
      * to update a zone&#39;s plan. Changing this value will create/cancel
      * associated subscriptions. To view available plans for this zone,
      * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
-to update a zone's plan. Changing this value will create/cancel
-associated subscriptions. To view available plans for this zone,
-see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
+    @Deprecated
     public GetZonePlan plan() {
         return this.plan;
     }

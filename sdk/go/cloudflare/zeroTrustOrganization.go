@@ -285,6 +285,12 @@ func (ZeroTrustOrganizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustOrganizationState)(nil)).Elem()
 }
 
+// ZeroTrustOrganizationExists checks whether an existing ZeroTrustOrganization resource with the given ID exists.
+func ZeroTrustOrganizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustOrganizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization", id, state, "", opts...)
+}
+
 type zeroTrustOrganizationArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

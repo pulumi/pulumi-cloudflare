@@ -58,11 +58,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example &#39;&lt;account_id&gt;/&lt;proxy_endpoint_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint
+ * @deprecated cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint
  * 
  */
-@Deprecated /* cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint */
+@Deprecated
 @ResourceType(type="cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint")
 public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
     /**

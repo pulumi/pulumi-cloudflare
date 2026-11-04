@@ -86,6 +86,12 @@ func (AiSearchNamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiSearchNamespaceState)(nil)).Elem()
 }
 
+// AiSearchNamespaceExists checks whether an existing AiSearchNamespace resource with the given ID exists.
+func AiSearchNamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiSearchNamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/aiSearchNamespace:AiSearchNamespace", id, state, "", opts...)
+}
+
 type aiSearchNamespaceArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Optional description for the namespace. Max 256 characters.

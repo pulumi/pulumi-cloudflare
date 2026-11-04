@@ -66,11 +66,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger
+ * @deprecated cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger
  * 
  */
-@Deprecated /* cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger */
+@Deprecated
 @ResourceType(type="cloudflare:index/workerCronTrigger:WorkerCronTrigger")
 public class WorkerCronTrigger extends com.pulumi.resources.CustomResource {
     /**

@@ -117,6 +117,12 @@ func (LeakedCredentialCheckRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*leakedCredentialCheckRuleState)(nil)).Elem()
 }
 
+// LeakedCredentialCheckRuleExists checks whether an existing LeakedCredentialCheckRule resource with the given ID exists.
+func LeakedCredentialCheckRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LeakedCredentialCheckRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule", id, state, "", opts...)
+}
+
 type leakedCredentialCheckRuleArgs struct {
 	// Defines ehe ruleset expression to use in matching the password in a request.
 	Password *string `pulumi:"password"`

@@ -399,6 +399,24 @@ class OriginCaCertificate(pulumi.CustomResource):
         __props__.__dict__["requested_validity"] = requested_validity
         return OriginCaCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_type: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_validity: pulumi.Input[Optional[_builtins.float]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificate"] = certificate
+        __props__["csr"] = csr
+        __props__["expiresOn"] = expires_on
+        __props__["hostnames"] = hostnames
+        __props__["requestType"] = request_type
+        __props__["requestedValidity"] = requested_validity
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/originCaCertificate:OriginCaCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:

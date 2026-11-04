@@ -243,6 +243,12 @@ func (RecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordState)(nil)).Elem()
 }
 
+// RecordExists checks whether an existing Record resource with the given ID exists.
+func RecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/record:Record", id, state, "", opts...)
+}
+
 type recordArgs struct {
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `pulumi:"comment"`

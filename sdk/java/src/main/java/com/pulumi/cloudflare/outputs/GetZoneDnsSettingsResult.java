@@ -25,12 +25,10 @@ public final class GetZoneDnsSettingsResult {
     /**
      * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
      * 
-     * @deprecated
-     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
-    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
- */
+    @Deprecated
     private Boolean foundationDns;
     /**
      * @return Settings for this internal zone.
@@ -85,12 +83,10 @@ public final class GetZoneDnsSettingsResult {
     /**
      * @return Deprecated. Use nameservers.type to configure Advanced Nameservers.
      * 
-     * @deprecated
-     * foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
+     * @deprecated foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
      * 
      */
-    @Deprecated /* foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.
- */
+    @Deprecated
     public Boolean foundationDns() {
         return this.foundationDns;
     }

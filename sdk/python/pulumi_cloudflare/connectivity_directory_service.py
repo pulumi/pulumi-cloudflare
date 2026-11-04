@@ -512,6 +512,36 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ConnectivityDirectoryService(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict', 'outputs.ConnectivityDirectoryServiceHost']]] = None,
+            http_port: pulumi.Input[Optional[_builtins.int]] = None,
+            https_port: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
+            tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict', 'outputs.ConnectivityDirectoryServiceTlsSettings']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["appProtocol"] = app_protocol
+        __props__["createdAt"] = created_at
+        __props__["host"] = host
+        __props__["httpPort"] = http_port
+        __props__["httpsPort"] = https_port
+        __props__["name"] = name
+        __props__["serviceId"] = service_id
+        __props__["tcpPort"] = tcp_port
+        __props__["tlsSettings"] = tls_settings
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/connectivityDirectoryService:ConnectivityDirectoryService', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

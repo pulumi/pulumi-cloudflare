@@ -131,11 +131,10 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="contextAwareness", refs={ZeroTrustDlpCustomProfileContextAwareness.class}, tree="[0]")
     private Output<ZeroTrustDlpCustomProfileContextAwareness> contextAwareness;
 
@@ -206,11 +205,10 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
      * Custom entries from this profile.
      * If this field is omitted, entries owned by this profile will not be changed.
      * 
-     * @deprecated
-     * This attribute will be sunset on 01/01/2026
+     * @deprecated This attribute will be sunset on 01/01/2026
      * 
      */
-    @Deprecated /* This attribute will be sunset on 01/01/2026 */
+    @Deprecated
     @Export(name="entries", refs={List.class,ZeroTrustDlpCustomProfileEntry.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ZeroTrustDlpCustomProfileEntry>> entries;
 

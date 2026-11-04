@@ -141,6 +141,12 @@ func (QueueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*queueState)(nil)).Elem()
 }
 
+// QueueExists checks whether an existing Queue resource with the given ID exists.
+func QueueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QueueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/queue:Queue", id, state, "", opts...)
+}
+
 type queueArgs struct {
 	// A Resource identifier.
 	AccountId string `pulumi:"accountId"`

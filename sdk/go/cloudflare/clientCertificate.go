@@ -217,6 +217,12 @@ func (ClientCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientCertificateState)(nil)).Elem()
 }
 
+// ClientCertificateExists checks whether an existing ClientCertificate resource with the given ID exists.
+func ClientCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/clientCertificate:ClientCertificate", id, state, "", opts...)
+}
+
 type clientCertificateArgs struct {
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	Csr        string `pulumi:"csr"`

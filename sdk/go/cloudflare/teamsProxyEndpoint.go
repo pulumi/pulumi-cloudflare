@@ -142,6 +142,12 @@ func (TeamsProxyEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*teamsProxyEndpointState)(nil)).Elem()
 }
 
+// TeamsProxyEndpointExists checks whether an existing TeamsProxyEndpoint resource with the given ID exists.
+func TeamsProxyEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TeamsProxyEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", id, state, "", opts...)
+}
+
 type teamsProxyEndpointArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

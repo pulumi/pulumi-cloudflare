@@ -163,6 +163,12 @@ func (ZeroTrustAccessGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessGroupState)(nil)).Elem()
 }
 
+// ZeroTrustAccessGroupExists checks whether an existing ZeroTrustAccessGroup resource with the given ID exists.
+func ZeroTrustAccessGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup", id, state, "", opts...)
+}
+
 type zeroTrustAccessGroupArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

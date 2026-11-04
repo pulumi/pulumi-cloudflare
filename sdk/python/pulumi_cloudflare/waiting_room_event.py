@@ -876,6 +876,50 @@ class WaitingRoomEvent(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return WaitingRoomEvent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+            event_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            event_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+            prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            shuffle_at_event_start: pulumi.Input[Optional[_builtins.bool]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+            turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+            turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdOn"] = created_on
+        __props__["customPageHtml"] = custom_page_html
+        __props__["description"] = description
+        __props__["disableSessionRenewal"] = disable_session_renewal
+        __props__["eventEndTime"] = event_end_time
+        __props__["eventStartTime"] = event_start_time
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["newUsersPerMinute"] = new_users_per_minute
+        __props__["prequeueStartTime"] = prequeue_start_time
+        __props__["queueingMethod"] = queueing_method
+        __props__["sessionDuration"] = session_duration
+        __props__["shuffleAtEventStart"] = shuffle_at_event_start
+        __props__["suspended"] = suspended
+        __props__["totalActiveUsers"] = total_active_users
+        __props__["turnstileAction"] = turnstile_action
+        __props__["turnstileMode"] = turnstile_mode
+        __props__["waitingRoomId"] = waiting_room_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/waitingRoomEvent:WaitingRoomEvent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[_builtins.str]:

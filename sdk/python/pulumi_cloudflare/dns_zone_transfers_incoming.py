@@ -397,6 +397,28 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DnsZoneTransfersIncoming(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_refresh_seconds: pulumi.Input[Optional[_builtins.float]] = None,
+            checked_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            soa_serial: pulumi.Input[Optional[_builtins.float]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRefreshSeconds"] = auto_refresh_seconds
+        __props__["checkedTime"] = checked_time
+        __props__["createdTime"] = created_time
+        __props__["modifiedTime"] = modified_time
+        __props__["name"] = name
+        __props__["peers"] = peers
+        __props__["soaSerial"] = soa_serial
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoRefreshSeconds")
     def auto_refresh_seconds(self) -> pulumi.Output[_builtins.float]:

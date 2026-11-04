@@ -79,22 +79,20 @@ public final class ZeroTrustTunnelWarpConnectorConnectionArgs extends com.pulumi
     /**
      * Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
      * 
-     * @deprecated
-     * This functionality has been removed. The isPendingReconnect field will now always report false.
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
      * 
      */
-    @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+    @Deprecated
     @Import(name="isPendingReconnect")
     private @Nullable Output<Boolean> isPendingReconnect;
 
     /**
      * @return Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
      * 
-     * @deprecated
-     * This functionality has been removed. The isPendingReconnect field will now always report false.
+     * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
      * 
      */
-    @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+    @Deprecated
     public Optional<Output<Boolean>> isPendingReconnect() {
         return Optional.ofNullable(this.isPendingReconnect);
     }
@@ -264,11 +262,10 @@ public final class ZeroTrustTunnelWarpConnectorConnectionArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * This functionality has been removed. The isPendingReconnect field will now always report false.
+         * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
          * 
          */
-        @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+        @Deprecated
         public Builder isPendingReconnect(@Nullable Output<Boolean> isPendingReconnect) {
             $.isPendingReconnect = isPendingReconnect;
             return this;
@@ -279,11 +276,10 @@ public final class ZeroTrustTunnelWarpConnectorConnectionArgs extends com.pulumi
          * 
          * @return builder
          * 
-         * @deprecated
-         * This functionality has been removed. The isPendingReconnect field will now always report false.
+         * @deprecated This functionality has been removed. The isPendingReconnect field will now always report false.
          * 
          */
-        @Deprecated /* This functionality has been removed. The isPendingReconnect field will now always report false. */
+        @Deprecated
         public Builder isPendingReconnect(Boolean isPendingReconnect) {
             return isPendingReconnect(Output.of(isPendingReconnect));
         }

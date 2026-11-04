@@ -157,11 +157,10 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      */
     private Boolean switchLocked;
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private List<GetZeroTrustDeviceCustomProfileTargetTest> targetTests;
     /**
      * @return Determines which tunnel protocol to use.
@@ -375,11 +374,10 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         return this.switchLocked;
     }
     /**
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public List<GetZeroTrustDeviceCustomProfileTargetTest> targetTests() {
         return this.targetTests;
     }

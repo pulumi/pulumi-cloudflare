@@ -122,22 +122,20 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     /**
      * Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="customCertificate")
     private @Nullable Output<TeamsAccountSettingsCustomCertificateArgs> customCertificate;
 
     /**
      * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<TeamsAccountSettingsCustomCertificateArgs>> customCertificate() {
         return Optional.ofNullable(this.customCertificate);
     }
@@ -431,11 +429,10 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder customCertificate(@Nullable Output<TeamsAccountSettingsCustomCertificateArgs> customCertificate) {
             $.customCertificate = customCertificate;
             return this;
@@ -446,11 +443,10 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder customCertificate(TeamsAccountSettingsCustomCertificateArgs customCertificate) {
             return customCertificate(Output.of(customCertificate));
         }

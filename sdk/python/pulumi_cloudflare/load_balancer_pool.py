@@ -923,6 +923,52 @@ class LoadBalancerPool(pulumi.CustomResource):
         __props__.__dict__["origins"] = origins
         return LoadBalancerPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_at: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            latitude: pulumi.Input[Optional[_builtins.float]] = None,
+            load_shedding: pulumi.Input[Optional[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict', 'outputs.LoadBalancerPoolLoadShedding']]] = None,
+            longitude: pulumi.Input[Optional[_builtins.float]] = None,
+            minimum_origins: pulumi.Input[Optional[_builtins.int]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_group: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_filter: pulumi.Input[Optional[Union['LoadBalancerPoolNotificationFilterArgs', 'LoadBalancerPoolNotificationFilterArgsDict', 'outputs.LoadBalancerPoolNotificationFilter']]] = None,
+            origin_steering: pulumi.Input[Optional[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict', 'outputs.LoadBalancerPoolOriginSteering']]] = None,
+            origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict', 'outputs.LoadBalancerPoolOrigin']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["checkRegions"] = check_regions
+        __props__["createdOn"] = created_on
+        __props__["description"] = description
+        __props__["disabledAt"] = disabled_at
+        __props__["enabled"] = enabled
+        __props__["healthSources"] = health_sources
+        __props__["latitude"] = latitude
+        __props__["loadShedding"] = load_shedding
+        __props__["longitude"] = longitude
+        __props__["minimumOrigins"] = minimum_origins
+        __props__["modifiedOn"] = modified_on
+        __props__["monitor"] = monitor
+        __props__["monitorGroup"] = monitor_group
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["notificationEmail"] = notification_email
+        __props__["notificationFilter"] = notification_filter
+        __props__["originSteering"] = origin_steering
+        __props__["origins"] = origins
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/loadBalancerPool:LoadBalancerPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

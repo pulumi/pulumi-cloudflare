@@ -1251,6 +1251,58 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["zone_name"] = zone_name
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict', 'outputs.LoadBalancerAdaptiveRouting']]] = None,
+            country_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            location_strategy: pulumi.Input[Optional[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict', 'outputs.LoadBalancerLocationStrategy']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+            random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict', 'outputs.LoadBalancerRandomSteering']]] = None,
+            region_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict', 'outputs.LoadBalancerRule']]]]] = None,
+            session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            session_affinity_attributes: pulumi.Input[Optional[Union['LoadBalancerSessionAffinityAttributesArgs', 'LoadBalancerSessionAffinityAttributesArgsDict', 'outputs.LoadBalancerSessionAffinityAttributes']]] = None,
+            session_affinity_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adaptiveRouting"] = adaptive_routing
+        __props__["countryPools"] = country_pools
+        __props__["createdOn"] = created_on
+        __props__["defaultPools"] = default_pools
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["fallbackPool"] = fallback_pool
+        __props__["locationStrategy"] = location_strategy
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["popPools"] = pop_pools
+        __props__["proxied"] = proxied
+        __props__["randomSteering"] = random_steering
+        __props__["regionPools"] = region_pools
+        __props__["rules"] = rules
+        __props__["sessionAffinity"] = session_affinity
+        __props__["sessionAffinityAttributes"] = session_affinity_attributes
+        __props__["sessionAffinityTtl"] = session_affinity_ttl
+        __props__["steeringPolicy"] = steering_policy
+        __props__["ttl"] = ttl
+        __props__["zoneId"] = zone_id
+        __props__["zoneName"] = zone_name
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/loadBalancer:LoadBalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adaptiveRouting")
     def adaptive_routing(self) -> pulumi.Output['outputs.LoadBalancerAdaptiveRouting']:

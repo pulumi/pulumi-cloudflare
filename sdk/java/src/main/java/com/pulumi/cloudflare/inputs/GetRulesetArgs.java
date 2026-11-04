@@ -48,22 +48,20 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The unique ID of the ruleset.
      * 
-     * @deprecated
-     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     @Import(name="rulesetId")
     private @Nullable Output<String> rulesetId;
 
     /**
      * @return The unique ID of the ruleset.
      * 
-     * @deprecated
-     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public Optional<Output<String>> rulesetId() {
         return Optional.ofNullable(this.rulesetId);
     }
@@ -157,11 +155,10 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Configure id instead. This attribute will be removed in the next major version of the provider.
+         * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
          * 
          */
-        @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+        @Deprecated
         public Builder rulesetId(@Nullable Output<String> rulesetId) {
             $.rulesetId = rulesetId;
             return this;
@@ -172,11 +169,10 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Configure id instead. This attribute will be removed in the next major version of the provider.
+         * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
          * 
          */
-        @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
+        @Deprecated
         public Builder rulesetId(String rulesetId) {
             return rulesetId(Output.of(rulesetId));
         }

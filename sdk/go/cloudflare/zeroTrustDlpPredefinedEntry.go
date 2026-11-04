@@ -188,6 +188,12 @@ func (ZeroTrustDlpPredefinedEntryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDlpPredefinedEntryState)(nil)).Elem()
 }
 
+// ZeroTrustDlpPredefinedEntryExists checks whether an existing ZeroTrustDlpPredefinedEntry resource with the given ID exists.
+func ZeroTrustDlpPredefinedEntryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDlpPredefinedEntryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry", id, state, "", opts...)
+}
+
 type zeroTrustDlpPredefinedEntryArgs struct {
 	AccountId string `pulumi:"accountId"`
 	Enabled   bool   `pulumi:"enabled"`

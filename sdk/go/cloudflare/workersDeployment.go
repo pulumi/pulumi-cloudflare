@@ -158,6 +158,12 @@ func (WorkersDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersDeploymentState)(nil)).Elem()
 }
 
+// WorkersDeploymentExists checks whether an existing WorkersDeployment resource with the given ID exists.
+func WorkersDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkersDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workersDeployment:WorkersDeployment", id, state, "", opts...)
+}
+
 type workersDeploymentArgs struct {
 	// Identifier.
 	AccountId   string                        `pulumi:"accountId"`

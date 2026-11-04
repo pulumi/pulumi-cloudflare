@@ -128,11 +128,10 @@ public class ZeroTrustTunnelCloudflaredVirtualNetwork extends com.pulumi.resourc
     /**
      * If `true`, this virtual network is the default for the account.
      * 
-     * @deprecated
-     * Use the isDefaultNetwork property instead.
+     * @deprecated Use the isDefaultNetwork property instead.
      * 
      */
-    @Deprecated /* Use the isDefaultNetwork property instead. */
+    @Deprecated
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 

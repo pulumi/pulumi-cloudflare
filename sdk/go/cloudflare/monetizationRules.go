@@ -116,6 +116,12 @@ func (MonetizationRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monetizationRulesState)(nil)).Elem()
 }
 
+// MonetizationRulesExists checks whether an existing MonetizationRules resource with the given ID exists.
+func MonetizationRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonetizationRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/monetizationRules:MonetizationRules", id, state, "", opts...)
+}
+
 type monetizationRulesArgs struct {
 	// Full desired Payment Required ruleset. An empty array clears all payment rules. The ruleset may contain at most 40 unique wallet addresses; address comparison is case-insensitive. Every address must pass wallet screening before deployment.
 	Rules []MonetizationRulesRule `pulumi:"rules"`

@@ -391,6 +391,28 @@ class FirewallRule(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict', 'outputs.FirewallRuleAction']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict', 'outputs.FirewallRuleFilter']]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["description"] = description
+        __props__["filter"] = filter
+        __props__["paused"] = paused
+        __props__["priority"] = priority
+        __props__["products"] = products
+        __props__["ref"] = ref
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/firewallRule:FirewallRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output['outputs.FirewallRuleAction']:

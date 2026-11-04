@@ -173,6 +173,12 @@ func (R2CustomDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*r2customDomainState)(nil)).Elem()
 }
 
+// R2CustomDomainExists checks whether an existing R2CustomDomain resource with the given ID exists.
+func R2CustomDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *R2CustomDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/r2CustomDomain:R2CustomDomain", id, state, "", opts...)
+}
+
 type r2customDomainArgs struct {
 	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`

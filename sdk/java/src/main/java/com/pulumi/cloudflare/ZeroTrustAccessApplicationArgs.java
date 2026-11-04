@@ -491,22 +491,20 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="selfHostedDomains")
     private @Nullable Output<List<String>> selfHostedDomains;
 
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<List<String>>> selfHostedDomains() {
         return Optional.ofNullable(this.selfHostedDomains);
     }
@@ -1390,11 +1388,10 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder selfHostedDomains(@Nullable Output<List<String>> selfHostedDomains) {
             $.selfHostedDomains = selfHostedDomains;
             return this;
@@ -1405,11 +1402,10 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder selfHostedDomains(List<String> selfHostedDomains) {
             return selfHostedDomains(Output.of(selfHostedDomains));
         }
@@ -1419,11 +1415,10 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder selfHostedDomains(String... selfHostedDomains) {
             return selfHostedDomains(List.of(selfHostedDomains));
         }

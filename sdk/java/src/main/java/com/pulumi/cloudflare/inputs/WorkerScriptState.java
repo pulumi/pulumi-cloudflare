@@ -553,22 +553,20 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     /**
      * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="placementMode")
     private @Nullable Output<String> placementMode;
 
     /**
      * @return Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<String>> placementMode() {
         return Optional.ofNullable(this.placementMode);
     }
@@ -576,22 +574,20 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     /**
      * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="placementStatus")
     private @Nullable Output<String> placementStatus;
 
     /**
      * @return Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<String>> placementStatus() {
         return Optional.ofNullable(this.placementStatus);
     }
@@ -1500,11 +1496,10 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder placementMode(@Nullable Output<String> placementMode) {
             $.placementMode = placementMode;
             return this;
@@ -1515,11 +1510,10 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder placementMode(String placementMode) {
             return placementMode(Output.of(placementMode));
         }
@@ -1529,11 +1523,10 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder placementStatus(@Nullable Output<String> placementStatus) {
             $.placementStatus = placementStatus;
             return this;
@@ -1544,11 +1537,10 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder placementStatus(String placementStatus) {
             return placementStatus(Output.of(placementStatus));
         }

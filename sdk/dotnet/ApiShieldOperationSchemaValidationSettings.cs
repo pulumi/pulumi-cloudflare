@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         ///   - `Block` deny access to the site when request does not conform to schema for this operation
         ///   - `None` will skip mitigation for this operation
         ///   - `Null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
-        /// Available values: "log", "block", "none".
+        ///     Available values: "log", "block", "none".
         /// </summary>
         [Output("mitigationAction")]
         public Output<string?> MitigationAction { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         ///   - `Block` deny access to the site when request does not conform to schema for this operation
         ///   - `None` will skip mitigation for this operation
         ///   - `Null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
-        /// Available values: "log", "block", "none".
+        ///     Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
         ///   - `Block` deny access to the site when request does not conform to schema for this operation
         ///   - `None` will skip mitigation for this operation
         ///   - `Null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
-        /// Available values: "log", "block", "none".
+        ///     Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }

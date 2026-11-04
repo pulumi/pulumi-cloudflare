@@ -188,6 +188,12 @@ func (MagicTransitSiteAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicTransitSiteAclState)(nil)).Elem()
 }
 
+// MagicTransitSiteAclExists checks whether an existing MagicTransitSiteAcl resource with the given ID exists.
+func MagicTransitSiteAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicTransitSiteAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl", id, state, "", opts...)
+}
+
 type magicTransitSiteAclArgs struct {
 	// Identifier
 	AccountId string `pulumi:"accountId"`

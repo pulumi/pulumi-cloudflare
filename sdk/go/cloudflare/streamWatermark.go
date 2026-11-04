@@ -183,6 +183,12 @@ func (StreamWatermarkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamWatermarkState)(nil)).Elem()
 }
 
+// StreamWatermarkExists checks whether an existing StreamWatermark resource with the given ID exists.
+func StreamWatermarkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamWatermarkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/streamWatermark:StreamWatermark", id, state, "", opts...)
+}
+
 type streamWatermarkArgs struct {
 	// The account identifier tag.
 	AccountId string `pulumi:"accountId"`

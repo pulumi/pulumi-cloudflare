@@ -46,18 +46,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleTokenValidationRules = new TokenValidationRules("exampleTokenValidationRules", TokenValidationRulesArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .action("log")
  *             .description("Long description for Token Validation Rule")
  *             .enabled(true)
- *             .expression("is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")")
+ *             .expression("is_jwt_valid(}&#92;{@code "52973293-cb04-4a97-8f55-e7d2ad1107dd}&#92;{@code ") or is_jwt_valid(}&#92;{@code "46eab8d1-6376-45e3-968f-2c649d77d423}&#92;{@code ")")
  *             .selector(TokenValidationRulesSelectorArgs.builder()
  *                 .excludes(TokenValidationRulesSelectorExcludeArgs.builder()
  *                     .operationIds(                    
@@ -73,8 +73,8 @@ import javax.annotation.Nullable;
  *             .title("Example Token Validation Rule")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

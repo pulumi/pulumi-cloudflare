@@ -64,11 +64,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workerDomain:WorkerDomain example &#39;&lt;account_id&gt;/&lt;domain_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain
+ * @deprecated cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain
  * 
  */
-@Deprecated /* cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain */
+@Deprecated
 @ResourceType(type="cloudflare:index/workerDomain:WorkerDomain")
 public class WorkerDomain extends com.pulumi.resources.CustomResource {
     /**
@@ -102,11 +101,10 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
     /**
      * Worker environment associated with the domain.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 

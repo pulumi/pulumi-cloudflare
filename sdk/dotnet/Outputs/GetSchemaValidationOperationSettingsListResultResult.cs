@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         ///   - `"log"` - log request when request does not conform to schema for this operation
         ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
         ///   - `"none"` - will skip mitigation for this operation
-        /// Available values: "log", "block", "none".
+        ///     Available values: "log", "block", "none".
         /// </summary>
         public readonly string MitigationAction;
         /// <summary>

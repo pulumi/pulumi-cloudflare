@@ -385,6 +385,20 @@ class ZoneHold(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZoneHold(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            hold: pulumi.Input[Optional[_builtins.bool]] = None,
+            hold_after: pulumi.Input[Optional[_builtins.str]] = None,
+            include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["hold"] = hold
+        __props__["holdAfter"] = hold_after
+        __props__["includeSubdomains"] = include_subdomains
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zoneHold:ZoneHold', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def hold(self) -> pulumi.Output[_builtins.bool]:

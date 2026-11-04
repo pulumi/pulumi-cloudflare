@@ -609,6 +609,38 @@ class CertificatePack(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return CertificatePack(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict', 'outputs.CertificatePackCertificate']]]]] = None,
+            cloudflare_branding: pulumi.Input[Optional[_builtins.bool]] = None,
+            dcv_delegation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackDcvDelegationRecordArgs', 'CertificatePackDcvDelegationRecordArgsDict', 'outputs.CertificatePackDcvDelegationRecord']]]]] = None,
+            hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            primary_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict', 'outputs.CertificatePackValidationError']]]]] = None,
+            validation_method: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict', 'outputs.CertificatePackValidationRecord']]]]] = None,
+            validity_days: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateAuthority"] = certificate_authority
+        __props__["certificates"] = certificates
+        __props__["cloudflareBranding"] = cloudflare_branding
+        __props__["dcvDelegationRecords"] = dcv_delegation_records
+        __props__["hosts"] = hosts
+        __props__["primaryCertificate"] = primary_certificate
+        __props__["status"] = status
+        __props__["type"] = type
+        __props__["validationErrors"] = validation_errors
+        __props__["validationMethod"] = validation_method
+        __props__["validationRecords"] = validation_records
+        __props__["validityDays"] = validity_days
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/certificatePack:CertificatePack', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[_builtins.str]:

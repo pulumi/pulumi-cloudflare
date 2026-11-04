@@ -459,6 +459,24 @@ class RateLimit(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return RateLimit(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict', 'outputs.RateLimitAction']]] = None,
+            match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict', 'outputs.RateLimitMatch']]] = None,
+            period: pulumi.Input[Optional[_builtins.float]] = None,
+            rate_limit_id: pulumi.Input[Optional[_builtins.str]] = None,
+            threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["match"] = match
+        __props__["period"] = period
+        __props__["rateLimitId"] = rate_limit_id
+        __props__["threshold"] = threshold
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/rateLimit:RateLimit', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output['outputs.RateLimitAction']:

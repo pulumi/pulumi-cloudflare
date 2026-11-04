@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
         ///   - `"none"` - will skip mitigation for this operation
         ///   - `Null` - clears any mitigation action
-        /// Available values: "log", "block", "none".
+        ///     Available values: "log", "block", "none".
         /// </summary>
         [Output("mitigationAction")]
         public Output<string> MitigationAction { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Cloudflare
         ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
         ///   - `"none"` - will skip mitigation for this operation
         ///   - `Null` - clears any mitigation action
-        /// Available values: "log", "block", "none".
+        ///     Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction", required: true)]
         public Input<string> MitigationAction { get; set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
         ///   - `"none"` - will skip mitigation for this operation
         ///   - `Null` - clears any mitigation action
-        /// Available values: "log", "block", "none".
+        ///     Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }

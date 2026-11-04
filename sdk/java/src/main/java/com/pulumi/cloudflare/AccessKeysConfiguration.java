@@ -62,11 +62,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration
+ * @deprecated cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration
  * 
  */
-@Deprecated /* cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")
 public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource {
     /**

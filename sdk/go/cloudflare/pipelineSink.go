@@ -190,6 +190,12 @@ func (PipelineSinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineSinkState)(nil)).Elem()
 }
 
+// PipelineSinkExists checks whether an existing PipelineSink resource with the given ID exists.
+func PipelineSinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineSinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/pipelineSink:PipelineSink", id, state, "", opts...)
+}
+
 type pipelineSinkArgs struct {
 	// Specifies the public ID of the account.
 	AccountId string `pulumi:"accountId"`

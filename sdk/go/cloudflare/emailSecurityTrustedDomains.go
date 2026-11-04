@@ -163,6 +163,12 @@ func (EmailSecurityTrustedDomainsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailSecurityTrustedDomainsState)(nil)).Elem()
 }
 
+// EmailSecurityTrustedDomainsExists checks whether an existing EmailSecurityTrustedDomains resource with the given ID exists.
+func EmailSecurityTrustedDomainsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailSecurityTrustedDomainsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", id, state, "", opts...)
+}
+
 type emailSecurityTrustedDomainsArgs struct {
 	// Identifier.
 	AccountId string  `pulumi:"accountId"`

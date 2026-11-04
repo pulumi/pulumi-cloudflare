@@ -395,6 +395,32 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         __props__.__dict__["trusted_workers"] = trusted_workers
         return WorkersForPlatformsNamespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            script_count: pulumi.Input[Optional[_builtins.int]] = None,
+            trusted_workers: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdBy"] = created_by
+        __props__["createdOn"] = created_on
+        __props__["modifiedBy"] = modified_by
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["namespaceId"] = namespace_id
+        __props__["namespaceName"] = namespace_name
+        __props__["scriptCount"] = script_count
+        __props__["trustedWorkers"] = trusted_workers
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

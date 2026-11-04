@@ -90,11 +90,10 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
     /**
      * Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
      * 
-     * @deprecated
-     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      * 
      */
-    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
+    @Deprecated
     @Export(name="advertised", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> advertised;
 
@@ -108,11 +107,10 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
     /**
      * Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
      * 
-     * @deprecated
-     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      * 
      */
-    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
+    @Deprecated
     @Export(name="advertisedModifiedAt", refs={String.class}, tree="[0]")
     private Output<String> advertisedModifiedAt;
 
@@ -236,11 +234,10 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
     /**
      * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
      * 
-     * @deprecated
-     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      * 
      */
-    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
+    @Deprecated
     @Export(name="onDemandEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> onDemandEnabled;
 
@@ -254,11 +251,10 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
     /**
      * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
      * 
-     * @deprecated
-     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      * 
      */
-    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
+    @Deprecated
     @Export(name="onDemandLocked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> onDemandLocked;
 

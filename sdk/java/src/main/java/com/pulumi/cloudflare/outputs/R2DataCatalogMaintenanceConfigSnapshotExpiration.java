@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class R2DataCatalogMaintenanceConfigSnapshotExpiration {
     /**
      * @return Specifies the maximum age for snapshots. The system deletes snapshots older than this age.
-     * Format: \n\n\n\n where unit is d (days), h (hours), m (minutes), or s (seconds).
+     * Format: &#92;n&#92;n&#92;n&#92;n where unit is d (days), h (hours), m (minutes), or s (seconds).
      * Examples: &#34;7d&#34; (7 days), &#34;48h&#34; (48 hours), &#34;2880m&#34; (2,880 minutes).
      * Defaults to &#34;7d&#34;.
      * 
@@ -35,7 +35,7 @@ public final class R2DataCatalogMaintenanceConfigSnapshotExpiration {
     private R2DataCatalogMaintenanceConfigSnapshotExpiration() {}
     /**
      * @return Specifies the maximum age for snapshots. The system deletes snapshots older than this age.
-     * Format: \n\n\n\n where unit is d (days), h (hours), m (minutes), or s (seconds).
+     * Format: &#92;n&#92;n&#92;n&#92;n where unit is d (days), h (hours), m (minutes), or s (seconds).
      * Examples: &#34;7d&#34; (7 days), &#34;48h&#34; (48 hours), &#34;2880m&#34; (2,880 minutes).
      * Defaults to &#34;7d&#34;.
      * 

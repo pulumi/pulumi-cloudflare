@@ -101,11 +101,10 @@ public class ZeroTrustAccessAiControlsMcpPortal extends com.pulumi.resources.Cus
     /**
      * Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="allowCodeMode", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowCodeMode;
 

@@ -234,6 +234,12 @@ func (ZoneDnssecState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneDnssecState)(nil)).Elem()
 }
 
+// ZoneDnssecExists checks whether an existing ZoneDnssec resource with the given ID exists.
+func ZoneDnssecExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneDnssecState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneDnssec:ZoneDnssec", id, state, "", opts...)
+}
+
 type zoneDnssecArgs struct {
 	// If true, multi-signer DNSSEC is enabled on the zone, allowing multiple
 	// providers to serve a DNSSEC-signed zone at the same time.

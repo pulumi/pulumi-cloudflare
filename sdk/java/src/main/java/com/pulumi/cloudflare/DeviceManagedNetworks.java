@@ -67,11 +67,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks example &#39;&lt;account_id&gt;/&lt;network_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/devicemanagednetworks.DeviceManagedNetworks has been deprecated in favor of cloudflare.index/zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks
+ * @deprecated cloudflare.index/devicemanagednetworks.DeviceManagedNetworks has been deprecated in favor of cloudflare.index/zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks
  * 
  */
-@Deprecated /* cloudflare.index/devicemanagednetworks.DeviceManagedNetworks has been deprecated in favor of cloudflare.index/zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks */
+@Deprecated
 @ResourceType(type="cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks")
 public class DeviceManagedNetworks extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")

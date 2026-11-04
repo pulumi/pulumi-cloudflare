@@ -164,6 +164,12 @@ func (ZeroTrustDeviceIpProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDeviceIpProfileState)(nil)).Elem()
 }
 
+// ZeroTrustDeviceIpProfileExists checks whether an existing ZeroTrustDeviceIpProfile resource with the given ID exists.
+func ZeroTrustDeviceIpProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDeviceIpProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile", id, state, "", opts...)
+}
+
 type zeroTrustDeviceIpProfileArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// An optional description of the Device IP profile.

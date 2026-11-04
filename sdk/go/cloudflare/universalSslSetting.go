@@ -108,6 +108,12 @@ func (UniversalSslSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*universalSslSettingState)(nil)).Elem()
 }
 
+// UniversalSslSettingExists checks whether an existing UniversalSslSetting resource with the given ID exists.
+func UniversalSslSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UniversalSslSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/universalSslSetting:UniversalSslSetting", id, state, "", opts...)
+}
+
 type universalSslSettingArgs struct {
 	// Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no advanced certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS.
 	Enabled *bool `pulumi:"enabled"`

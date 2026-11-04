@@ -133,6 +133,12 @@ func (ImageVariantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageVariantState)(nil)).Elem()
 }
 
+// ImageVariantExists checks whether an existing ImageVariant resource with the given ID exists.
+func ImageVariantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageVariantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/imageVariant:ImageVariant", id, state, "", opts...)
+}
+
 type imageVariantArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`

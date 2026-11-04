@@ -96,22 +96,20 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
     /**
      * Deprecated. External identifier of the directory node.
      * 
-     * @deprecated
-     * This field is deprecated.
+     * @deprecated This field is deprecated.
      * 
      */
-    @Deprecated /* This field is deprecated. */
+    @Deprecated
     @Import(name="externalDirectoryNodeId")
     private @Nullable Output<String> externalDirectoryNodeId;
 
     /**
      * @return Deprecated. External identifier of the directory node.
      * 
-     * @deprecated
-     * This field is deprecated.
+     * @deprecated This field is deprecated.
      * 
      */
-    @Deprecated /* This field is deprecated. */
+    @Deprecated
     public Optional<Output<String>> externalDirectoryNodeId() {
         return Optional.ofNullable(this.externalDirectoryNodeId);
     }
@@ -305,11 +303,10 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated.
+         * @deprecated This field is deprecated.
          * 
          */
-        @Deprecated /* This field is deprecated. */
+        @Deprecated
         public Builder externalDirectoryNodeId(@Nullable Output<String> externalDirectoryNodeId) {
             $.externalDirectoryNodeId = externalDirectoryNodeId;
             return this;
@@ -320,11 +317,10 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated.
+         * @deprecated This field is deprecated.
          * 
          */
-        @Deprecated /* This field is deprecated. */
+        @Deprecated
         public Builder externalDirectoryNodeId(String externalDirectoryNodeId) {
             return externalDirectoryNodeId(Output.of(externalDirectoryNodeId));
         }

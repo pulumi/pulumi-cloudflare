@@ -1738,6 +1738,94 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_iframe: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_idps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_launcher_logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+            app_launcher_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+            aud: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+            bg_color: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_headers: pulumi.Input[Optional[Union['AccessApplicationCorsHeadersArgs', 'AccessApplicationCorsHeadersArgsDict', 'outputs.AccessApplicationCorsHeaders']]] = None,
+            custom_deny_message: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_deny_url: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_non_identity_deny_url: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_pages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationDestinationArgs', 'AccessApplicationDestinationArgsDict', 'outputs.AccessApplicationDestination']]]]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_binding_cookie: pulumi.Input[Optional[_builtins.bool]] = None,
+            footer_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict', 'outputs.AccessApplicationFooterLink']]]]] = None,
+            header_bg_color: pulumi.Input[Optional[_builtins.str]] = None,
+            http_only_cookie_attribute: pulumi.Input[Optional[_builtins.bool]] = None,
+            landing_page_design: pulumi.Input[Optional[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict', 'outputs.AccessApplicationLandingPageDesign']]] = None,
+            logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+            mfa_config: pulumi.Input[Optional[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict', 'outputs.AccessApplicationMfaConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_configuration: pulumi.Input[Optional[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict', 'outputs.AccessApplicationOauthConfiguration']]] = None,
+            options_preflight_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
+            path_cookie_attribute: pulumi.Input[Optional[_builtins.bool]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict', 'outputs.AccessApplicationPolicy']]]]] = None,
+            read_service_tokens_from_header: pulumi.Input[Optional[_builtins.str]] = None,
+            saas_app: pulumi.Input[Optional[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict', 'outputs.AccessApplicationSaasApp']]] = None,
+            same_site_cookie_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_config: pulumi.Input[Optional[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict', 'outputs.AccessApplicationScimConfig']]] = None,
+            self_hosted_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_auth401_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_app_launcher_login_page: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_interstitial: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict', 'outputs.AccessApplicationTargetCriteria']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowAuthenticateViaWarp"] = allow_authenticate_via_warp
+        __props__["allowIframe"] = allow_iframe
+        __props__["allowedIdps"] = allowed_idps
+        __props__["appLauncherLogoUrl"] = app_launcher_logo_url
+        __props__["appLauncherVisible"] = app_launcher_visible
+        __props__["aud"] = aud
+        __props__["autoRedirectToIdentity"] = auto_redirect_to_identity
+        __props__["bgColor"] = bg_color
+        __props__["corsHeaders"] = cors_headers
+        __props__["customDenyMessage"] = custom_deny_message
+        __props__["customDenyUrl"] = custom_deny_url
+        __props__["customNonIdentityDenyUrl"] = custom_non_identity_deny_url
+        __props__["customPages"] = custom_pages
+        __props__["destinations"] = destinations
+        __props__["domain"] = domain
+        __props__["enableBindingCookie"] = enable_binding_cookie
+        __props__["footerLinks"] = footer_links
+        __props__["headerBgColor"] = header_bg_color
+        __props__["httpOnlyCookieAttribute"] = http_only_cookie_attribute
+        __props__["landingPageDesign"] = landing_page_design
+        __props__["logoUrl"] = logo_url
+        __props__["mfaConfig"] = mfa_config
+        __props__["name"] = name
+        __props__["oauthConfiguration"] = oauth_configuration
+        __props__["optionsPreflightBypass"] = options_preflight_bypass
+        __props__["pathCookieAttribute"] = path_cookie_attribute
+        __props__["policies"] = policies
+        __props__["readServiceTokensFromHeader"] = read_service_tokens_from_header
+        __props__["saasApp"] = saas_app
+        __props__["sameSiteCookieAttribute"] = same_site_cookie_attribute
+        __props__["scimConfig"] = scim_config
+        __props__["selfHostedDomains"] = self_hosted_domains
+        __props__["serviceAuth401Redirect"] = service_auth401_redirect
+        __props__["sessionDuration"] = session_duration
+        __props__["skipAppLauncherLoginPage"] = skip_app_launcher_login_page
+        __props__["skipInterstitial"] = skip_interstitial
+        __props__["tags"] = tags
+        __props__["targetCriterias"] = target_criterias
+        __props__["type"] = type
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/accessApplication:AccessApplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

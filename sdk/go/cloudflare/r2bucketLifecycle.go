@@ -143,6 +143,12 @@ func (R2BucketLifecycleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*r2bucketLifecycleState)(nil)).Elem()
 }
 
+// R2BucketLifecycleExists checks whether an existing R2BucketLifecycle resource with the given ID exists.
+func R2BucketLifecycleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *R2BucketLifecycleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/r2BucketLifecycle:R2BucketLifecycle", id, state, "", opts...)
+}
+
 type r2bucketLifecycleArgs struct {
 	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`

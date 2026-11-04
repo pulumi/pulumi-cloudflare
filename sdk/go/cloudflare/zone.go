@@ -320,6 +320,12 @@ func (ZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneState)(nil)).Elem()
 }
 
+// ZoneExists checks whether an existing Zone resource with the given ID exists.
+func ZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zone:Zone", id, state, "", opts...)
+}
+
 type zoneArgs struct {
 	Account ZoneAccount `pulumi:"account"`
 	// The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters.

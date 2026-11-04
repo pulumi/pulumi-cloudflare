@@ -116,6 +116,12 @@ func (ZoneTracingRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneTracingRulesState)(nil)).Elem()
 }
 
+// ZoneTracingRulesExists checks whether an existing ZoneTracingRules resource with the given ID exists.
+func ZoneTracingRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneTracingRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneTracingRules:ZoneTracingRules", id, state, "", opts...)
+}
+
 type zoneTracingRulesArgs struct {
 	// Trace rules in evaluation order.
 	Rules []ZoneTracingRulesRule `pulumi:"rules"`

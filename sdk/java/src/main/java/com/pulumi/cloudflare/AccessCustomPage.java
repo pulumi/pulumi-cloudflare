@@ -66,11 +66,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessCustomPage:AccessCustomPage example &#39;&lt;account_id&gt;/&lt;custom_page_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage
+ * @deprecated cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage
  * 
  */
-@Deprecated /* cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage */
+@Deprecated
 @ResourceType(type="cloudflare:index/accessCustomPage:AccessCustomPage")
 public class AccessCustomPage extends com.pulumi.resources.CustomResource {
     /**

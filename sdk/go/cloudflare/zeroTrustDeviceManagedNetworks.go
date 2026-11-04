@@ -145,6 +145,12 @@ func (ZeroTrustDeviceManagedNetworksState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustDeviceManagedNetworksState)(nil)).Elem()
 }
 
+// ZeroTrustDeviceManagedNetworksExists checks whether an existing ZeroTrustDeviceManagedNetworks resource with the given ID exists.
+func ZeroTrustDeviceManagedNetworksExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustDeviceManagedNetworksState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks", id, state, "", opts...)
+}
+
 type zeroTrustDeviceManagedNetworksArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The configuration object containing information for the WARP client to detect the managed network.

@@ -439,6 +439,28 @@ class ZoneLockdown(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZoneLockdown(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict', 'outputs.ZoneLockdownConfiguration']]]]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configurations"] = configurations
+        __props__["createdOn"] = created_on
+        __props__["description"] = description
+        __props__["modifiedOn"] = modified_on
+        __props__["paused"] = paused
+        __props__["priority"] = priority
+        __props__["urls"] = urls
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zoneLockdown:ZoneLockdown', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> pulumi.Output[Sequence['outputs.ZoneLockdownConfiguration']]:

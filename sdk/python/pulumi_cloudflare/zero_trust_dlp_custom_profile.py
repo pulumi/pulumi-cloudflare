@@ -768,6 +768,48 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustDlpCustomProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_context_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
+            confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            context_awareness: pulumi.Input[Optional[Union['ZeroTrustDlpCustomProfileContextAwarenessArgs', 'ZeroTrustDlpCustomProfileContextAwarenessArgsDict', 'outputs.ZeroTrustDlpCustomProfileContextAwareness']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            data_classes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            data_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileEntryArgs', 'ZeroTrustDlpCustomProfileEntryArgsDict', 'outputs.ZeroTrustDlpCustomProfileEntry']]]]] = None,
+            integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            open_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            sensitivity_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileSensitivityLevelArgs', 'ZeroTrustDlpCustomProfileSensitivityLevelArgsDict', 'outputs.ZeroTrustDlpCustomProfileSensitivityLevel']]]]] = None,
+            shared_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileSharedEntryArgs', 'ZeroTrustDlpCustomProfileSharedEntryArgsDict', 'outputs.ZeroTrustDlpCustomProfileSharedEntry']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["aiContextEnabled"] = ai_context_enabled
+        __props__["allowedMatchCount"] = allowed_match_count
+        __props__["confidenceThreshold"] = confidence_threshold
+        __props__["contextAwareness"] = context_awareness
+        __props__["createdAt"] = created_at
+        __props__["dataClasses"] = data_classes
+        __props__["dataTags"] = data_tags
+        __props__["description"] = description
+        __props__["entries"] = entries
+        __props__["integrationId"] = integration_id
+        __props__["name"] = name
+        __props__["ocrEnabled"] = ocr_enabled
+        __props__["openAccess"] = open_access
+        __props__["sensitivityLevels"] = sensitivity_levels
+        __props__["sharedEntries"] = shared_entries
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

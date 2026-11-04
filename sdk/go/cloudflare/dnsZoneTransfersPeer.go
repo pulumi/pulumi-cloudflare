@@ -132,6 +132,12 @@ func (DnsZoneTransfersPeerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsZoneTransfersPeerState)(nil)).Elem()
 }
 
+// DnsZoneTransfersPeerExists checks whether an existing DnsZoneTransfersPeer resource with the given ID exists.
+func DnsZoneTransfersPeerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsZoneTransfersPeerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer", id, state, "", opts...)
+}
+
 type dnsZoneTransfersPeerArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.

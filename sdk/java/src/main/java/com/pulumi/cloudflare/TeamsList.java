@@ -66,11 +66,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/teamsList:TeamsList example &#39;&lt;account_id&gt;/&lt;list_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/teamslist.TeamsList has been deprecated in favor of cloudflare.index/zerotrustlist.ZeroTrustList
+ * @deprecated cloudflare.index/teamslist.TeamsList has been deprecated in favor of cloudflare.index/zerotrustlist.ZeroTrustList
  * 
  */
-@Deprecated /* cloudflare.index/teamslist.TeamsList has been deprecated in favor of cloudflare.index/zerotrustlist.ZeroTrustList */
+@Deprecated
 @ResourceType(type="cloudflare:index/teamsList:TeamsList")
 public class TeamsList extends com.pulumi.resources.CustomResource {
     /**

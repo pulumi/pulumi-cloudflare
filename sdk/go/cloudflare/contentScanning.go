@@ -120,6 +120,12 @@ func (ContentScanningState) ElementType() reflect.Type {
 	return reflect.TypeOf((*contentScanningState)(nil)).Elem()
 }
 
+// ContentScanningExists checks whether an existing ContentScanning resource with the given ID exists.
+func ContentScanningExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContentScanningState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/contentScanning:ContentScanning", id, state, "", opts...)
+}
+
 type contentScanningArgs struct {
 	// The status value for Content Scanning.
 	// Available values: "enabled", "disabled".

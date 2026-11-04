@@ -125,6 +125,12 @@ func (NelSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nelSettingState)(nil)).Elem()
 }
 
+// NelSettingExists checks whether an existing NelSetting resource with the given ID exists.
+func NelSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NelSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/nelSetting:NelSetting", id, state, "", opts...)
+}
+
 type nelSettingArgs struct {
 	// The NEL configuration value.
 	Value NelSettingValue `pulumi:"value"`

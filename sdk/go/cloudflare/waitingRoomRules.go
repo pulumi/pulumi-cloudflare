@@ -122,6 +122,12 @@ func (WaitingRoomRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*waitingRoomRulesState)(nil)).Elem()
 }
 
+// WaitingRoomRulesExists checks whether an existing WaitingRoomRules resource with the given ID exists.
+func WaitingRoomRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WaitingRoomRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/waitingRoomRules:WaitingRoomRules", id, state, "", opts...)
+}
+
 type waitingRoomRulesArgs struct {
 	Rules         []WaitingRoomRulesRule `pulumi:"rules"`
 	WaitingRoomId string                 `pulumi:"waitingRoomId"`

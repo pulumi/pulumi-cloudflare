@@ -537,6 +537,30 @@ class EmailRoutingRule(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return EmailRoutingRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict', 'outputs.EmailRoutingRuleAction']]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict', 'outputs.EmailRoutingRuleMatcher']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_worker_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actions"] = actions
+        __props__["enabled"] = enabled
+        __props__["matchers"] = matchers
+        __props__["name"] = name
+        __props__["ownerWorkerTag"] = owner_worker_tag
+        __props__["priority"] = priority
+        __props__["source"] = source
+        __props__["tag"] = tag
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/emailRoutingRule:EmailRoutingRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def actions(self) -> pulumi.Output[Sequence['outputs.EmailRoutingRuleAction']]:

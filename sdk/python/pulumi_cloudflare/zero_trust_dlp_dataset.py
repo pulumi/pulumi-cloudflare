@@ -583,6 +583,44 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return ZeroTrustDlpDataset(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetColumnArgs', 'ZeroTrustDlpDatasetColumnArgsDict', 'outputs.ZeroTrustDlpDatasetColumn']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset: pulumi.Input[Optional[Union['ZeroTrustDlpDatasetDatasetArgs', 'ZeroTrustDlpDatasetDatasetArgsDict', 'outputs.ZeroTrustDlpDatasetDataset']]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encoding_version: pulumi.Input[Optional[_builtins.int]] = None,
+            max_cells: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            num_cells: pulumi.Input[Optional[_builtins.int]] = None,
+            secret: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uploads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetUploadArgs', 'ZeroTrustDlpDatasetUploadArgsDict', 'outputs.ZeroTrustDlpDatasetUpload']]]]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["caseSensitive"] = case_sensitive
+        __props__["columns"] = columns
+        __props__["createdAt"] = created_at
+        __props__["dataset"] = dataset
+        __props__["datasetId"] = dataset_id
+        __props__["description"] = description
+        __props__["encodingVersion"] = encoding_version
+        __props__["maxCells"] = max_cells
+        __props__["name"] = name
+        __props__["numCells"] = num_cells
+        __props__["secret"] = secret
+        __props__["status"] = status
+        __props__["updatedAt"] = updated_at
+        __props__["uploads"] = uploads
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

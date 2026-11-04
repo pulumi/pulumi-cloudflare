@@ -116,6 +116,12 @@ func (RiskBehaviorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*riskBehaviorState)(nil)).Elem()
 }
 
+// RiskBehaviorExists checks whether an existing RiskBehavior resource with the given ID exists.
+func RiskBehaviorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RiskBehaviorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/riskBehavior:RiskBehavior", id, state, "", opts...)
+}
+
 type riskBehaviorArgs struct {
 	AccountId string                           `pulumi:"accountId"`
 	Behaviors map[string]RiskBehaviorBehaviors `pulumi:"behaviors"`

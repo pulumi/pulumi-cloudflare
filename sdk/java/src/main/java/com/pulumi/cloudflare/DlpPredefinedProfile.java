@@ -80,11 +80,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile example &#39;&lt;account_id&gt;/&lt;profile_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/dlppredefinedprofile.DlpPredefinedProfile has been deprecated in favor of cloudflare.index/zerotrustdlppredefinedprofile.ZeroTrustDlpPredefinedProfile
+ * @deprecated cloudflare.index/dlppredefinedprofile.DlpPredefinedProfile has been deprecated in favor of cloudflare.index/zerotrustdlppredefinedprofile.ZeroTrustDlpPredefinedProfile
  * 
  */
-@Deprecated /* cloudflare.index/dlppredefinedprofile.DlpPredefinedProfile has been deprecated in favor of cloudflare.index/zerotrustdlppredefinedprofile.ZeroTrustDlpPredefinedProfile */
+@Deprecated
 @ResourceType(type="cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile")
 public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
@@ -118,11 +117,10 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabledEntries);
     }
     /**
-     * @deprecated
-     * This attribute is deprecated. Use enabledEntries instead.
+     * @deprecated This attribute is deprecated. Use enabledEntries instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
+    @Deprecated
     @Export(name="entries", refs={List.class,DlpPredefinedProfileEntry.class}, tree="[0,1]")
     private Output<List<DlpPredefinedProfileEntry>> entries;
 

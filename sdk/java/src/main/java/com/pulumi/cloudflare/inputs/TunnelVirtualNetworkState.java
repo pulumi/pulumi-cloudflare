@@ -79,22 +79,20 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
     /**
      * If `true`, this virtual network is the default for the account.
      * 
-     * @deprecated
-     * Use the isDefaultNetwork property instead.
+     * @deprecated Use the isDefaultNetwork property instead.
      * 
      */
-    @Deprecated /* Use the isDefaultNetwork property instead. */
+    @Deprecated
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
     /**
      * @return If `true`, this virtual network is the default for the account.
      * 
-     * @deprecated
-     * Use the isDefaultNetwork property instead.
+     * @deprecated Use the isDefaultNetwork property instead.
      * 
      */
-    @Deprecated /* Use the isDefaultNetwork property instead. */
+    @Deprecated
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
@@ -248,11 +246,10 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use the isDefaultNetwork property instead.
+         * @deprecated Use the isDefaultNetwork property instead.
          * 
          */
-        @Deprecated /* Use the isDefaultNetwork property instead. */
+        @Deprecated
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
@@ -263,11 +260,10 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use the isDefaultNetwork property instead.
+         * @deprecated Use the isDefaultNetwork property instead.
          * 
          */
-        @Deprecated /* Use the isDefaultNetwork property instead. */
+        @Deprecated
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }

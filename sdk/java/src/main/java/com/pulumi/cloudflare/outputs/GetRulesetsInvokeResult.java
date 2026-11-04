@@ -29,11 +29,10 @@ public final class GetRulesetsInvokeResult {
     /**
      * @return A list of rulesets. The returned information will not include the rules in each ruleset.
      * 
-     * @deprecated
-     * Use rulesets instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     private List<GetRulesetsResult> results;
     /**
      * @return A list of rulesets. The returned information will not include the rules in each ruleset.
@@ -64,11 +63,10 @@ public final class GetRulesetsInvokeResult {
     /**
      * @return A list of rulesets. The returned information will not include the rules in each ruleset.
      * 
-     * @deprecated
-     * Use rulesets instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public List<GetRulesetsResult> results() {
         return this.results;
     }

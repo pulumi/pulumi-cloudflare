@@ -237,6 +237,16 @@ class WaitingRoomSettings(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return WaitingRoomSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            search_engine_crawler_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["searchEngineCrawlerBypass"] = search_engine_crawler_bypass
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/waitingRoomSettings:WaitingRoomSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="searchEngineCrawlerBypass")
     def search_engine_crawler_bypass(self) -> pulumi.Output[_builtins.bool]:

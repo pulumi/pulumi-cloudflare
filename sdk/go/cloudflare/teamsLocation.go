@@ -234,6 +234,12 @@ func (TeamsLocationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*teamsLocationState)(nil)).Elem()
 }
 
+// TeamsLocationExists checks whether an existing TeamsLocation resource with the given ID exists.
+func TeamsLocationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TeamsLocationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/teamsLocation:TeamsLocation", id, state, "", opts...)
+}
+
 type teamsLocationArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

@@ -44,11 +44,10 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     /**
      * @return Deprecated. External identifier of the directory node.
      * 
-     * @deprecated
-     * This field is deprecated.
+     * @deprecated This field is deprecated.
      * 
      */
-    @Deprecated /* This field is deprecated. */
+    @Deprecated
     private String externalDirectoryNodeId;
     private @Nullable GetEmailSecurityImpersonationRegistryFilter filter;
     /**
@@ -69,11 +68,10 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     private String lastModified;
     private String modifiedAt;
     /**
@@ -130,11 +128,10 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     /**
      * @return Deprecated. External identifier of the directory node.
      * 
-     * @deprecated
-     * This field is deprecated.
+     * @deprecated This field is deprecated.
      * 
      */
-    @Deprecated /* This field is deprecated. */
+    @Deprecated
     public String externalDirectoryNodeId() {
         return this.externalDirectoryNodeId;
     }
@@ -165,11 +162,10 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     public String lastModified() {
         return this.lastModified;
     }

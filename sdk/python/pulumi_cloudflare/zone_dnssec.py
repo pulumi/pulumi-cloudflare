@@ -638,6 +638,42 @@ class ZoneDnssec(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZoneDnssec(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dnssec_multi_signer: pulumi.Input[Optional[_builtins.bool]] = None,
+            dnssec_presigned: pulumi.Input[Optional[_builtins.bool]] = None,
+            dnssec_use_nsec3: pulumi.Input[Optional[_builtins.bool]] = None,
+            ds: pulumi.Input[Optional[_builtins.str]] = None,
+            flags: pulumi.Input[Optional[_builtins.float]] = None,
+            key_tag: pulumi.Input[Optional[_builtins.float]] = None,
+            key_type: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["algorithm"] = algorithm
+        __props__["digest"] = digest
+        __props__["digestAlgorithm"] = digest_algorithm
+        __props__["digestType"] = digest_type
+        __props__["dnssecMultiSigner"] = dnssec_multi_signer
+        __props__["dnssecPresigned"] = dnssec_presigned
+        __props__["dnssecUseNsec3"] = dnssec_use_nsec3
+        __props__["ds"] = ds
+        __props__["flags"] = flags
+        __props__["keyTag"] = key_tag
+        __props__["keyType"] = key_type
+        __props__["modifiedOn"] = modified_on
+        __props__["publicKey"] = public_key
+        __props__["status"] = status
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zoneDnssec:ZoneDnssec', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[_builtins.str]:

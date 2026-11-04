@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// - `Partial`: Only partial payload content is masked.
         /// - `Clear`: No masking is applied to the payload content.
         /// - `Default`: DLP uses its default masking behavior.
-        /// Available values: "full", "partial", "clear", "default".
+        ///   Available values: "full", "partial", "clear", "default".
         /// </summary>
         public readonly string? MaskingLevel;
         /// <summary>

@@ -151,11 +151,10 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     /**
      * Deprecated. External identifier of the directory node.
      * 
-     * @deprecated
-     * This field is deprecated.
+     * @deprecated This field is deprecated.
      * 
      */
-    @Deprecated /* This field is deprecated. */
+    @Deprecated
     @Export(name="externalDirectoryNodeId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalDirectoryNodeId;
 
@@ -183,11 +182,10 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 

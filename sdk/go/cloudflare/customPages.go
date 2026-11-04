@@ -155,6 +155,12 @@ func (CustomPagesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customPagesState)(nil)).Elem()
 }
 
+// CustomPagesExists checks whether an existing CustomPages resource with the given ID exists.
+func CustomPagesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomPagesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/customPages:CustomPages", id, state, "", opts...)
+}
+
 type customPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

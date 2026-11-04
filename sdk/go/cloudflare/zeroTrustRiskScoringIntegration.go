@@ -152,6 +152,12 @@ func (ZeroTrustRiskScoringIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustRiskScoringIntegrationState)(nil)).Elem()
 }
 
+// ZeroTrustRiskScoringIntegrationExists checks whether an existing ZeroTrustRiskScoringIntegration resource with the given ID exists.
+func ZeroTrustRiskScoringIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustRiskScoringIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration", id, state, "", opts...)
+}
+
 type zeroTrustRiskScoringIntegrationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.

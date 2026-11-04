@@ -160,6 +160,12 @@ func (ListItemState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listItemState)(nil)).Elem()
 }
 
+// ListItemExists checks whether an existing ListItem resource with the given ID exists.
+func ListItemExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListItemState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/listItem:ListItem", id, state, "", opts...)
+}
+
 type listItemArgs struct {
 	// The Account ID for this resource.
 	AccountId string `pulumi:"accountId"`

@@ -157,6 +157,12 @@ func (WorkersKvState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersKvState)(nil)).Elem()
 }
 
+// WorkersKvExists checks whether an existing WorkersKv resource with the given ID exists.
+func WorkersKvExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkersKvState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workersKv:WorkersKv", id, state, "", opts...)
+}
+
 type workersKvArgs struct {
 	// ID of the Cloudflare account that owns the Workers KV namespaces.
 	AccountId string `pulumi:"accountId"`

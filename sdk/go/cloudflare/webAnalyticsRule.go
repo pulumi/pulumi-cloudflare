@@ -134,6 +134,12 @@ func (WebAnalyticsRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAnalyticsRuleState)(nil)).Elem()
 }
 
+// WebAnalyticsRuleExists checks whether an existing WebAnalyticsRule resource with the given ID exists.
+func WebAnalyticsRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebAnalyticsRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/webAnalyticsRule:WebAnalyticsRule", id, state, "", opts...)
+}
+
 type webAnalyticsRuleArgs struct {
 	// Identifier.
 	AccountId string  `pulumi:"accountId"`

@@ -201,6 +201,12 @@ func (TokenValidationRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenValidationRulesState)(nil)).Elem()
 }
 
+// TokenValidationRulesExists checks whether an existing TokenValidationRules resource with the given ID exists.
+func TokenValidationRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TokenValidationRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/tokenValidationRules:TokenValidationRules", id, state, "", opts...)
+}
+
 type tokenValidationRulesArgs struct {
 	// Action to take on requests that match operations included in `selector` and fail `expression`.
 	// Available values: "log", "block".

@@ -264,6 +264,18 @@ class FieldExtractor(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         return FieldExtractor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            extractor: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FieldExtractorRuleArgs', 'FieldExtractorRuleArgsDict', 'outputs.FieldExtractorRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["extractor"] = extractor
+        __props__["rules"] = rules
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/fieldExtractor:FieldExtractor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

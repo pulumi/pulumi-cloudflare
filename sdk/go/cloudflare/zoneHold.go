@@ -171,6 +171,12 @@ func (ZoneHoldState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneHoldState)(nil)).Elem()
 }
 
+// ZoneHoldExists checks whether an existing ZoneHold resource with the given ID exists.
+func ZoneHoldExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneHoldState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zoneHold:ZoneHold", id, state, "", opts...)
+}
+
 type zoneHoldArgs struct {
 	// If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
 	// then automatically re-enabled by the system at the time specified

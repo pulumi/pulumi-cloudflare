@@ -399,6 +399,26 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return ZeroTrustTunnelCloudflaredVirtualNetwork(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_default_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["deletedAt"] = deleted_at
+        __props__["isDefault"] = is_default
+        __props__["isDefaultNetwork"] = is_default_network
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

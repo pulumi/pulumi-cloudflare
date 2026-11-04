@@ -150,6 +150,12 @@ func (CustomOriginTrustStoreState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customOriginTrustStoreState)(nil)).Elem()
 }
 
+// CustomOriginTrustStoreExists checks whether an existing CustomOriginTrustStore resource with the given ID exists.
+func CustomOriginTrustStoreExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomOriginTrustStoreState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/customOriginTrustStore:CustomOriginTrustStore", id, state, "", opts...)
+}
+
 type customOriginTrustStoreArgs struct {
 	// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 	Certificate string `pulumi:"certificate"`

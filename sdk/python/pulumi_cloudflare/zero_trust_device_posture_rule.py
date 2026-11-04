@@ -506,6 +506,30 @@ class ZeroTrustDevicePostureRule(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return ZeroTrustDevicePostureRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expiration: pulumi.Input[Optional[_builtins.str]] = None,
+            input: pulumi.Input[Optional[Union['ZeroTrustDevicePostureRuleInputArgs', 'ZeroTrustDevicePostureRuleInputArgsDict', 'outputs.ZeroTrustDevicePostureRuleInput']]] = None,
+            matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDevicePostureRuleMatchArgs', 'ZeroTrustDevicePostureRuleMatchArgsDict', 'outputs.ZeroTrustDevicePostureRuleMatch']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["expiration"] = expiration
+        __props__["input"] = input
+        __props__["matches"] = matches
+        __props__["name"] = name
+        __props__["schedule"] = schedule
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

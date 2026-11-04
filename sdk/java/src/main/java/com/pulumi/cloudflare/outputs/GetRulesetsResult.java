@@ -13,30 +13,27 @@ public final class GetRulesetsResult {
     /**
      * @return An informative description of the ruleset.
      * 
-     * @deprecated
-     * Use rulesets.description instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.description instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.description instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     private String description;
     /**
      * @return The unique ID of the ruleset.
      * 
-     * @deprecated
-     * Use rulesets.id instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.id instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.id instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     private String id;
     /**
      * @return The kind of the ruleset.
      * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
-     * @deprecated
-     * Use rulesets.kind instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.kind instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.kind instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     private String kind;
     /**
      * @return The timestamp of when the ruleset was last modified.
@@ -46,21 +43,19 @@ public final class GetRulesetsResult {
     /**
      * @return The human-readable name of the ruleset.
      * 
-     * @deprecated
-     * Use rulesets.name instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.name instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.name instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     private String name;
     /**
      * @return The phase of the ruleset.
      * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
-     * @deprecated
-     * Use rulesets.phase instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.phase instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.phase instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     private String phase;
     /**
      * @return The version of the ruleset.
@@ -72,22 +67,20 @@ public final class GetRulesetsResult {
     /**
      * @return An informative description of the ruleset.
      * 
-     * @deprecated
-     * Use rulesets.description instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.description instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.description instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public String description() {
         return this.description;
     }
     /**
      * @return The unique ID of the ruleset.
      * 
-     * @deprecated
-     * Use rulesets.id instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.id instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.id instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public String id() {
         return this.id;
     }
@@ -95,11 +88,10 @@ public final class GetRulesetsResult {
      * @return The kind of the ruleset.
      * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
-     * @deprecated
-     * Use rulesets.kind instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.kind instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.kind instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public String kind() {
         return this.kind;
     }
@@ -113,11 +105,10 @@ public final class GetRulesetsResult {
     /**
      * @return The human-readable name of the ruleset.
      * 
-     * @deprecated
-     * Use rulesets.name instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.name instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.name instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public String name() {
         return this.name;
     }
@@ -125,11 +116,10 @@ public final class GetRulesetsResult {
      * @return The phase of the ruleset.
      * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
-     * @deprecated
-     * Use rulesets.phase instead. This attribute will be removed in the next major version of the provider.
+     * @deprecated Use rulesets.phase instead. This attribute will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* Use rulesets.phase instead. This attribute will be removed in the next major version of the provider. */
+    @Deprecated
     public String phase() {
         return this.phase;
     }

@@ -312,6 +312,24 @@ class Snippets(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Snippets(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Union['SnippetsMetadataArgs', 'SnippetsMetadataArgsDict', 'outputs.SnippetsMetadata']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdOn"] = created_on
+        __props__["files"] = files
+        __props__["metadata"] = metadata
+        __props__["modifiedOn"] = modified_on
+        __props__["snippetName"] = snippet_name
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/snippets:Snippets', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[_builtins.str]:

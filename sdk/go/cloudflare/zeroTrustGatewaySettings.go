@@ -181,6 +181,12 @@ func (ZeroTrustGatewaySettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustGatewaySettingsState)(nil)).Elem()
 }
 
+// ZeroTrustGatewaySettingsExists checks whether an existing ZeroTrustGatewaySettings resource with the given ID exists.
+func ZeroTrustGatewaySettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustGatewaySettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings", id, state, "", opts...)
+}
+
 type zeroTrustGatewaySettingsArgs struct {
 	// Specify the Cloudflare account identifier.
 	AccountId string `pulumi:"accountId"`

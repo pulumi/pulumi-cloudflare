@@ -158,6 +158,12 @@ func (DnsZoneTransfersIncomingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsZoneTransfersIncomingState)(nil)).Elem()
 }
 
+// DnsZoneTransfersIncomingExists checks whether an existing DnsZoneTransfersIncoming resource with the given ID exists.
+func DnsZoneTransfersIncomingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsZoneTransfersIncomingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming", id, state, "", opts...)
+}
+
 type dnsZoneTransfersIncomingArgs struct {
 	// How often should a secondary zone auto refresh regardless of DNS NOTIFY.
 	// Not applicable for primary zones.

@@ -664,6 +664,42 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustDnsLocation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_destination_ipv6_block_id: pulumi.Input[Optional[_builtins.str]] = None,
+            doh_subdomain: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoints: pulumi.Input[Optional[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict', 'outputs.ZeroTrustDnsLocationEndpoints']]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_destination: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_destination_backup: pulumi.Input[Optional[_builtins.str]] = None,
+            max_ttl: pulumi.Input[Optional[Union['ZeroTrustDnsLocationMaxTtlArgs', 'ZeroTrustDnsLocationMaxTtlArgsDict', 'outputs.ZeroTrustDnsLocationMaxTtl']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict', 'outputs.ZeroTrustDnsLocationNetwork']]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["clientDefault"] = client_default
+        __props__["createdAt"] = created_at
+        __props__["dnsDestinationIpsId"] = dns_destination_ips_id
+        __props__["dnsDestinationIpv6BlockId"] = dns_destination_ipv6_block_id
+        __props__["dohSubdomain"] = doh_subdomain
+        __props__["ecsSupport"] = ecs_support
+        __props__["endpoints"] = endpoints
+        __props__["ip"] = ip
+        __props__["ipv4Destination"] = ipv4_destination
+        __props__["ipv4DestinationBackup"] = ipv4_destination_backup
+        __props__["maxTtl"] = max_ttl
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

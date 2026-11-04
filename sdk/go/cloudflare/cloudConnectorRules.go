@@ -119,6 +119,12 @@ func (CloudConnectorRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudConnectorRulesState)(nil)).Elem()
 }
 
+// CloudConnectorRulesExists checks whether an existing CloudConnectorRules resource with the given ID exists.
+func CloudConnectorRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudConnectorRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/cloudConnectorRules:CloudConnectorRules", id, state, "", opts...)
+}
+
 type cloudConnectorRulesArgs struct {
 	Rules []CloudConnectorRulesRule `pulumi:"rules"`
 	// Identifier.

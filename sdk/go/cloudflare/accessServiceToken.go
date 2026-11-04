@@ -169,6 +169,12 @@ func (AccessServiceTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessServiceTokenState)(nil)).Elem()
 }
 
+// AccessServiceTokenExists checks whether an existing AccessServiceToken resource with the given ID exists.
+func AccessServiceTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessServiceTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessServiceToken:AccessServiceToken", id, state, "", opts...)
+}
+
 type accessServiceTokenArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

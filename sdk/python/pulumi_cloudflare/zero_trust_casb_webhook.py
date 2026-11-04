@@ -505,6 +505,32 @@ class ZeroTrustCasbWebhook(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return ZeroTrustCasbWebhook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_url: pulumi.Input[Optional[_builtins.str]] = None,
+            headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustCasbWebhookHeaderArgs', 'ZeroTrustCasbWebhookHeaderArgsDict', 'outputs.ZeroTrustCasbWebhookHeader']]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["authenticationType"] = authentication_type
+        __props__["createdAt"] = created_at
+        __props__["destinationUrl"] = destination_url
+        __props__["headers"] = headers
+        __props__["label"] = label
+        __props__["signingSecret"] = signing_secret
+        __props__["status"] = status
+        __props__["updatedAt"] = updated_at
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustCasbWebhook:ZeroTrustCasbWebhook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -118,6 +118,12 @@ func (SnippetRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snippetRulesState)(nil)).Elem()
 }
 
+// SnippetRulesExists checks whether an existing SnippetRules resource with the given ID exists.
+func SnippetRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnippetRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/snippetRules:SnippetRules", id, state, "", opts...)
+}
+
 type snippetRulesArgs struct {
 	// Lists snippet rules.
 	Rules []SnippetRulesRule `pulumi:"rules"`

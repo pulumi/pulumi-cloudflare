@@ -157,6 +157,12 @@ func (SnippetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snippetState)(nil)).Elem()
 }
 
+// SnippetExists checks whether an existing Snippet resource with the given ID exists.
+func SnippetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnippetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/snippet:Snippet", id, state, "", opts...)
+}
+
 type snippetArgs struct {
 	// The list of files belonging to the snippet.
 	Files []SnippetFile `pulumi:"files"`

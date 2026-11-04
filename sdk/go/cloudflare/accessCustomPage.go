@@ -161,6 +161,12 @@ func (AccessCustomPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessCustomPageState)(nil)).Elem()
 }
 
+// AccessCustomPageExists checks whether an existing AccessCustomPage resource with the given ID exists.
+func AccessCustomPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessCustomPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessCustomPage:AccessCustomPage", id, state, "", opts...)
+}
+
 type accessCustomPageArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

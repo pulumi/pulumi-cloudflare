@@ -184,6 +184,12 @@ func (EmailRoutingCatchAllState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailRoutingCatchAllState)(nil)).Elem()
 }
 
+// EmailRoutingCatchAllExists checks whether an existing EmailRoutingCatchAll resource with the given ID exists.
+func EmailRoutingCatchAllExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailRoutingCatchAllState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll", id, state, "", opts...)
+}
+
 type emailRoutingCatchAllArgs struct {
 	// List actions for the catch-all routing rule.
 	Actions []EmailRoutingCatchAllAction `pulumi:"actions"`

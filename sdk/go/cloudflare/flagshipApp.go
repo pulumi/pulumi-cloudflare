@@ -123,6 +123,12 @@ func (FlagshipAppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flagshipAppState)(nil)).Elem()
 }
 
+// FlagshipAppExists checks whether an existing FlagshipApp resource with the given ID exists.
+func FlagshipAppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlagshipAppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/flagshipApp:FlagshipApp", id, state, "", opts...)
+}
+
 type flagshipAppArgs struct {
 	// Cloudflare account ID that owns the Flagship app.
 	AccountId string `pulumi:"accountId"`

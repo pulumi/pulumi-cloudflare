@@ -353,6 +353,24 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ObservatoryScheduledTest(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict', 'outputs.ObservatoryScheduledTestSchedule']]] = None,
+            test: pulumi.Input[Optional[Union['ObservatoryScheduledTestTestArgs', 'ObservatoryScheduledTestTestArgsDict', 'outputs.ObservatoryScheduledTestTest']]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["frequency"] = frequency
+        __props__["region"] = region
+        __props__["schedule"] = schedule
+        __props__["test"] = test
+        __props__["url"] = url
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def frequency(self) -> pulumi.Output[_builtins.str]:

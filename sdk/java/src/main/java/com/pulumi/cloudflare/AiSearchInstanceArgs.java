@@ -163,22 +163,20 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     /**
      * Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="hybridSearchEnabled")
     private @Nullable Output<Boolean> hybridSearchEnabled;
 
     /**
      * @return Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<Boolean>> hybridSearchEnabled() {
         return Optional.ofNullable(this.hybridSearchEnabled);
     }
@@ -620,11 +618,10 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder hybridSearchEnabled(@Nullable Output<Boolean> hybridSearchEnabled) {
             $.hybridSearchEnabled = hybridSearchEnabled;
             return this;
@@ -635,11 +632,10 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder hybridSearchEnabled(Boolean hybridSearchEnabled) {
             return hybridSearchEnabled(Output.of(hybridSearchEnabled));
         }

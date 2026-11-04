@@ -876,6 +876,26 @@ class ZoneSetting(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return ZoneSetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            editable: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+            time_remaining: pulumi.Input[Optional[_builtins.float]] = None,
+            value: Optional[Any] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["editable"] = editable
+        __props__["enabled"] = enabled
+        __props__["modifiedOn"] = modified_on
+        __props__["settingId"] = setting_id
+        __props__["timeRemaining"] = time_remaining
+        __props__["value"] = value
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zoneSetting:ZoneSetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def editable(self) -> pulumi.Output[_builtins.bool]:

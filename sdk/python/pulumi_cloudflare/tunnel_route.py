@@ -398,6 +398,26 @@ class TunnelRoute(pulumi.CustomResource):
         __props__.__dict__["virtual_network_id"] = virtual_network_id
         return TunnelRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_network_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["comment"] = comment
+        __props__["createdAt"] = created_at
+        __props__["deletedAt"] = deleted_at
+        __props__["network"] = network
+        __props__["tunnelId"] = tunnel_id
+        __props__["virtualNetworkId"] = virtual_network_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/tunnelRoute:TunnelRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

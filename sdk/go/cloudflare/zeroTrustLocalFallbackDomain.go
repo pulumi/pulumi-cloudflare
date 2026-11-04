@@ -130,6 +130,12 @@ func (ZeroTrustLocalFallbackDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustLocalFallbackDomainState)(nil)).Elem()
 }
 
+// ZeroTrustLocalFallbackDomainExists checks whether an existing ZeroTrustLocalFallbackDomain resource with the given ID exists.
+func ZeroTrustLocalFallbackDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustLocalFallbackDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain", id, state, "", opts...)
+}
+
 type zeroTrustLocalFallbackDomainArgs struct {
 	AccountId string                               `pulumi:"accountId"`
 	Domains   []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`

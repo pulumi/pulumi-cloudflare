@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         ///   - `"log"` - log request when request does not conform to schema
         ///   - `"block"` - deny access to the site when request does not conform to schema
         ///   - `"none"` - skip running schema validation
-        /// Available values: "none", "log", "block".
+        ///     Available values: "none", "log", "block".
         /// </summary>
         [Output("validationDefaultMitigationAction")]
         public Output<string> ValidationDefaultMitigationAction { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// 
         ///   - `"none"` - skip running schema validation entirely for the request
         ///   - `Null` - clears any existing override
-        /// Available values: "none".
+        ///     Available values: "none".
         /// </summary>
         [Output("validationOverrideMitigationAction")]
         public Output<string?> ValidationOverrideMitigationAction { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.Cloudflare
         ///   - `"log"` - log request when request does not conform to schema
         ///   - `"block"` - deny access to the site when request does not conform to schema
         ///   - `"none"` - skip running schema validation
-        /// Available values: "none", "log", "block".
+        ///     Available values: "none", "log", "block".
         /// </summary>
         [Input("validationDefaultMitigationAction", required: true)]
         public Input<string> ValidationDefaultMitigationAction { get; set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         /// 
         ///   - `"none"` - skip running schema validation entirely for the request
         ///   - `Null` - clears any existing override
-        /// Available values: "none".
+        ///     Available values: "none".
         /// </summary>
         [Input("validationOverrideMitigationAction")]
         public Input<string>? ValidationOverrideMitigationAction { get; set; }
@@ -161,7 +161,7 @@ namespace Pulumi.Cloudflare
         ///   - `"log"` - log request when request does not conform to schema
         ///   - `"block"` - deny access to the site when request does not conform to schema
         ///   - `"none"` - skip running schema validation
-        /// Available values: "none", "log", "block".
+        ///     Available values: "none", "log", "block".
         /// </summary>
         [Input("validationDefaultMitigationAction")]
         public Input<string>? ValidationDefaultMitigationAction { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.Cloudflare
         /// 
         ///   - `"none"` - skip running schema validation entirely for the request
         ///   - `Null` - clears any existing override
-        /// Available values: "none".
+        ///     Available values: "none".
         /// </summary>
         [Input("validationOverrideMitigationAction")]
         public Input<string>? ValidationOverrideMitigationAction { get; set; }

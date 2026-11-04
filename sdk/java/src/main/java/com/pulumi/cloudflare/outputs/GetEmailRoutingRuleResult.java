@@ -65,11 +65,10 @@ public final class GetEmailRoutingRuleResult {
     /**
      * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String tag;
     /**
      * @return Identifier.
@@ -143,11 +142,10 @@ public final class GetEmailRoutingRuleResult {
     /**
      * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String tag() {
         return this.tag;
     }

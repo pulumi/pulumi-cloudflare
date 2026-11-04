@@ -219,11 +219,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workerScript:WorkerScript example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript
+ * @deprecated cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript
  * 
  */
-@Deprecated /* cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript */
+@Deprecated
 @ResourceType(type="cloudflare:index/workerScript:WorkerScript")
 public class WorkerScript extends com.pulumi.resources.CustomResource {
     /**
@@ -713,11 +712,10 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     /**
      * Available values: &#34;smart&#34;, &#34;targeted&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="placementMode", refs={String.class}, tree="[0]")
     private Output<String> placementMode;
 
@@ -731,11 +729,10 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     /**
      * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Export(name="placementStatus", refs={String.class}, tree="[0]")
     private Output<String> placementStatus;
 

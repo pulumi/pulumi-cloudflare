@@ -142,6 +142,12 @@ func (CallsTurnAppState) ElementType() reflect.Type {
 	return reflect.TypeOf((*callsTurnAppState)(nil)).Elem()
 }
 
+// CallsTurnAppExists checks whether an existing CallsTurnApp resource with the given ID exists.
+func CallsTurnAppExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CallsTurnAppState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/callsTurnApp:CallsTurnApp", id, state, "", opts...)
+}
+
 type callsTurnAppArgs struct {
 	// The account identifier tag.
 	AccountId string `pulumi:"accountId"`

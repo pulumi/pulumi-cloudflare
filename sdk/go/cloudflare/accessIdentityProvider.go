@@ -198,6 +198,12 @@ func (AccessIdentityProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessIdentityProviderState)(nil)).Elem()
 }
 
+// AccessIdentityProviderExists checks whether an existing AccessIdentityProvider resource with the given ID exists.
+func AccessIdentityProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessIdentityProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", id, state, "", opts...)
+}
+
 type accessIdentityProviderArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

@@ -147,6 +147,12 @@ func (AiGatewayDynamicRoutingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiGatewayDynamicRoutingState)(nil)).Elem()
 }
 
+// AiGatewayDynamicRoutingExists checks whether an existing AiGatewayDynamicRouting resource with the given ID exists.
+func AiGatewayDynamicRoutingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiGatewayDynamicRoutingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting", id, state, "", opts...)
+}
+
 type aiGatewayDynamicRoutingArgs struct {
 	AccountId string                           `pulumi:"accountId"`
 	Elements  []AiGatewayDynamicRoutingElement `pulumi:"elements"`

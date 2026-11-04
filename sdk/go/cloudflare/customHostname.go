@@ -236,6 +236,12 @@ func (CustomHostnameState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customHostnameState)(nil)).Elem()
 }
 
+// CustomHostnameExists checks whether an existing CustomHostname resource with the given ID exists.
+func CustomHostnameExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomHostnameState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/customHostname:CustomHostname", id, state, "", opts...)
+}
+
 type customHostnameArgs struct {
 	// Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
 	CustomMetadata map[string]string `pulumi:"customMetadata"`

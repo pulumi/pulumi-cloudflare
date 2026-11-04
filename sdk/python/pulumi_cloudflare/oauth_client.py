@@ -959,6 +959,58 @@ class OauthClient(pulumi.CustomResource):
         __props__.__dict__["visibility"] = visibility
         return OauthClient(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_cors_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_name: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            client_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            client_uri_verification: pulumi.Input[Optional[Union['OauthClientClientUriVerificationArgs', 'OauthClientClientUriVerificationArgsDict', 'outputs.OauthClientClientUriVerification']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            has_rotated_secret: pulumi.Input[Optional[_builtins.bool]] = None,
+            logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            optional_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            policy_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            post_logout_redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            promoted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            response_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token_endpoint_auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+            tos_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowedCorsOrigins"] = allowed_cors_origins
+        __props__["clientId"] = client_id
+        __props__["clientName"] = client_name
+        __props__["clientSecret"] = client_secret
+        __props__["clientUri"] = client_uri
+        __props__["clientUriVerification"] = client_uri_verification
+        __props__["createdAt"] = created_at
+        __props__["grantTypes"] = grant_types
+        __props__["hasRotatedSecret"] = has_rotated_secret
+        __props__["logoUri"] = logo_uri
+        __props__["oauthClientId"] = oauth_client_id
+        __props__["optionalScopes"] = optional_scopes
+        __props__["policyUri"] = policy_uri
+        __props__["postLogoutRedirectUris"] = post_logout_redirect_uris
+        __props__["promotedAt"] = promoted_at
+        __props__["redirectUris"] = redirect_uris
+        __props__["responseTypes"] = response_types
+        __props__["scopes"] = scopes
+        __props__["tokenEndpointAuthMethod"] = token_endpoint_auth_method
+        __props__["tosUri"] = tos_uri
+        __props__["updatedAt"] = updated_at
+        __props__["visibility"] = visibility
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/oauthClient:OauthClient', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

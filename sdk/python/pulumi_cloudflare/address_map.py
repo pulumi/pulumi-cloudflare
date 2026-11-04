@@ -455,6 +455,32 @@ class AddressMap(pulumi.CustomResource):
         __props__.__dict__["modified_at"] = modified_at
         return AddressMap(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            can_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            can_modify_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            default_sni: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict', 'outputs.AddressMapMembership']]]]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["canDelete"] = can_delete
+        __props__["canModifyIps"] = can_modify_ips
+        __props__["createdAt"] = created_at
+        __props__["defaultSni"] = default_sni
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["ips"] = ips
+        __props__["memberships"] = memberships
+        __props__["modifiedAt"] = modified_at
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/addressMap:AddressMap', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

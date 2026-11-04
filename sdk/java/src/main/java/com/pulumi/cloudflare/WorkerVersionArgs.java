@@ -319,11 +319,10 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
      * Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     @Import(name="usageModel")
     private @Nullable Output<String> usageModel;
 
@@ -331,11 +330,10 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
      * @return Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Optional<Output<String>> usageModel() {
         return Optional.ofNullable(this.usageModel);
     }
@@ -846,11 +844,10 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder usageModel(@Nullable Output<String> usageModel) {
             $.usageModel = usageModel;
             return this;
@@ -862,11 +859,10 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated.
+         * @deprecated This attribute is deprecated.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated
         public Builder usageModel(String usageModel) {
             return usageModel(Output.of(usageModel));
         }

@@ -151,6 +151,12 @@ func (StreamAudioTrackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*streamAudioTrackState)(nil)).Elem()
 }
 
+// StreamAudioTrackExists checks whether an existing StreamAudioTrack resource with the given ID exists.
+func StreamAudioTrackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StreamAudioTrackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/streamAudioTrack:StreamAudioTrack", id, state, "", opts...)
+}
+
 type streamAudioTrackArgs struct {
 	// The account identifier tag.
 	AccountId string `pulumi:"accountId"`

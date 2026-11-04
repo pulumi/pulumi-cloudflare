@@ -185,6 +185,12 @@ func (ZeroTrustCasbWebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustCasbWebhookState)(nil)).Elem()
 }
 
+// ZeroTrustCasbWebhookExists checks whether an existing ZeroTrustCasbWebhook resource with the given ID exists.
+func ZeroTrustCasbWebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustCasbWebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustCasbWebhook:ZeroTrustCasbWebhook", id, state, "", opts...)
+}
+
 type zeroTrustCasbWebhookArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Type of authentication used for the webhook.

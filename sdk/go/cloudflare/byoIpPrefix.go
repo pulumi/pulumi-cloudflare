@@ -230,6 +230,12 @@ func (ByoIpPrefixState) ElementType() reflect.Type {
 	return reflect.TypeOf((*byoIpPrefixState)(nil)).Elem()
 }
 
+// ByoIpPrefixExists checks whether an existing ByoIpPrefix resource with the given ID exists.
+func ByoIpPrefixExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ByoIpPrefixState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/byoIpPrefix:ByoIpPrefix", id, state, "", opts...)
+}
+
 type byoIpPrefixArgs struct {
 	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`

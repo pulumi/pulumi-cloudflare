@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// Mark state of operation in API Discovery
         ///   * `Review` - Mark operation as for review
         ///   * `Ignored` - Mark operation as ignored
-        /// Available values: "review", "ignored".
+        ///     Available values: "review", "ignored".
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.Cloudflare
         /// Mark state of operation in API Discovery
         ///   * `Review` - Mark operation as for review
         ///   * `Ignored` - Mark operation as ignored
-        /// Available values: "review", "ignored".
+        ///     Available values: "review", "ignored".
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         /// Mark state of operation in API Discovery
         ///   * `Review` - Mark operation as for review
         ///   * `Ignored` - Mark operation as ignored
-        /// Available values: "review", "ignored".
+        ///     Available values: "review", "ignored".
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

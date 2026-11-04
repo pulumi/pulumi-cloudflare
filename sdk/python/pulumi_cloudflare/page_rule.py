@@ -480,6 +480,26 @@ class PageRule(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return PageRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actions: pulumi.Input[Optional[Union['PageRuleActionsArgs', 'PageRuleActionsArgsDict', 'outputs.PageRuleActions']]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actions"] = actions
+        __props__["createdOn"] = created_on
+        __props__["modifiedOn"] = modified_on
+        __props__["priority"] = priority
+        __props__["status"] = status
+        __props__["target"] = target
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/pageRule:PageRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def actions(self) -> pulumi.Output['outputs.PageRuleActions']:

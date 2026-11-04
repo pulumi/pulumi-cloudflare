@@ -135,6 +135,12 @@ func (AccountDnsSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountDnsSettingsState)(nil)).Elem()
 }
 
+// AccountDnsSettingsExists checks whether an existing AccountDnsSettings resource with the given ID exists.
+func AccountDnsSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountDnsSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accountDnsSettings:AccountDnsSettings", id, state, "", opts...)
+}
+
 type accountDnsSettingsArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

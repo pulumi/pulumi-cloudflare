@@ -162,11 +162,10 @@ public final class GetWorkerVersionsResult {
      * @return Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private String usageModel;
 
     private GetWorkerVersionsResult() {}
@@ -356,11 +355,10 @@ public final class GetWorkerVersionsResult {
      * @return Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public String usageModel() {
         return this.usageModel;
     }

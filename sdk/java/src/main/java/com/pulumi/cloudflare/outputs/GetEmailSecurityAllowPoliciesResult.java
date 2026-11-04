@@ -31,30 +31,27 @@ public final class GetEmailSecurityAllowPoliciesResult {
     /**
      * @return Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isExemptRecipient` instead.
+     * @deprecated Use `isExemptRecipient` instead.
      * 
      */
-    @Deprecated /* Use `isExemptRecipient` instead. */
+    @Deprecated
     private Boolean isRecipient;
     private Boolean isRegex;
     /**
      * @return Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isTrustedSender` instead.
+     * @deprecated Use `isTrustedSender` instead.
      * 
      */
-    @Deprecated /* Use `isTrustedSender` instead. */
+    @Deprecated
     private Boolean isSender;
     /**
      * @return Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isAcceptableSender` instead.
+     * @deprecated Use `isAcceptableSender` instead.
      * 
      */
-    @Deprecated /* Use `isAcceptableSender` instead. */
+    @Deprecated
     private Boolean isSpoof;
     /**
      * @return Bypasses all detections and link following for messages from this sender.
@@ -64,11 +61,10 @@ public final class GetEmailSecurityAllowPoliciesResult {
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     private String lastModified;
     private String modifiedAt;
     /**
@@ -123,11 +119,10 @@ public final class GetEmailSecurityAllowPoliciesResult {
     /**
      * @return Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isExemptRecipient` instead.
+     * @deprecated Use `isExemptRecipient` instead.
      * 
      */
-    @Deprecated /* Use `isExemptRecipient` instead. */
+    @Deprecated
     public Boolean isRecipient() {
         return this.isRecipient;
     }
@@ -137,22 +132,20 @@ public final class GetEmailSecurityAllowPoliciesResult {
     /**
      * @return Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isTrustedSender` instead.
+     * @deprecated Use `isTrustedSender` instead.
      * 
      */
-    @Deprecated /* Use `isTrustedSender` instead. */
+    @Deprecated
     public Boolean isSender() {
         return this.isSender;
     }
     /**
      * @return Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isAcceptableSender` instead.
+     * @deprecated Use `isAcceptableSender` instead.
      * 
      */
-    @Deprecated /* Use `isAcceptableSender` instead. */
+    @Deprecated
     public Boolean isSpoof() {
         return this.isSpoof;
     }
@@ -166,11 +159,10 @@ public final class GetEmailSecurityAllowPoliciesResult {
     /**
      * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     public String lastModified() {
         return this.lastModified;
     }

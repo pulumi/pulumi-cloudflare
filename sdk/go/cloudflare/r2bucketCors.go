@@ -133,6 +133,12 @@ func (R2BucketCorsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*r2bucketCorsState)(nil)).Elem()
 }
 
+// R2BucketCorsExists checks whether an existing R2BucketCors resource with the given ID exists.
+func R2BucketCorsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *R2BucketCorsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/r2BucketCors:R2BucketCors", id, state, "", opts...)
+}
+
 type r2bucketCorsArgs struct {
 	// Cloudflare account ID that owns the R2 resource.
 	AccountId string `pulumi:"accountId"`

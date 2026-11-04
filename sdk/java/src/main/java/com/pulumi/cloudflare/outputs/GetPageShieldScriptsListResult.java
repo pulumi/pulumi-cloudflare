@@ -22,11 +22,10 @@ public final class GetPageShieldScriptsListResult {
     /**
      * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private Integer dataflowScore;
     private Boolean domainReportedMalicious;
     /**
@@ -68,11 +67,10 @@ public final class GetPageShieldScriptsListResult {
     /**
      * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     private Integer obfuscationScore;
     private List<String> pageUrls;
     private String url;
@@ -93,11 +91,10 @@ public final class GetPageShieldScriptsListResult {
     /**
      * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Integer dataflowScore() {
         return this.dataflowScore;
     }
@@ -167,11 +164,10 @@ public final class GetPageShieldScriptsListResult {
     /**
      * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
      * 
-     * @deprecated
-     * This attribute is deprecated.
+     * @deprecated This attribute is deprecated.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated
     public Integer obfuscationScore() {
         return this.obfuscationScore;
     }

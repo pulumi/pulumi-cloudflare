@@ -596,6 +596,38 @@ class ApiToken(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return ApiToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition: pulumi.Input[Optional[Union['ApiTokenConditionArgs', 'ApiTokenConditionArgsDict', 'outputs.ApiTokenCondition']]] = None,
+            creator_email_at_creation: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            issued_on: pulumi.Input[Optional[_builtins.str]] = None,
+            last_used_on: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            not_before: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiTokenPolicyArgs', 'ApiTokenPolicyArgsDict', 'outputs.ApiTokenPolicy']]]]] = None,
+            provisioner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["condition"] = condition
+        __props__["creatorEmailAtCreation"] = creator_email_at_creation
+        __props__["expiresOn"] = expires_on
+        __props__["issuedOn"] = issued_on
+        __props__["lastUsedOn"] = last_used_on
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["notBefore"] = not_before
+        __props__["policies"] = policies
+        __props__["provisionerId"] = provisioner_id
+        __props__["provisionerType"] = provisioner_type
+        __props__["status"] = status
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/apiToken:ApiToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.ApiTokenCondition']]:

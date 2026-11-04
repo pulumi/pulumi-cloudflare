@@ -135,6 +135,12 @@ func (AccountDnsSettingsInternalViewState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountDnsSettingsInternalViewState)(nil)).Elem()
 }
 
+// AccountDnsSettingsInternalViewExists checks whether an existing AccountDnsSettingsInternalView resource with the given ID exists.
+func AccountDnsSettingsInternalViewExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountDnsSettingsInternalViewState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView", id, state, "", opts...)
+}
+
 type accountDnsSettingsInternalViewArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

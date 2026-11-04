@@ -88,6 +88,12 @@ func (MagicNetworkMonitoringConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*magicNetworkMonitoringConfigurationState)(nil)).Elem()
 }
 
+// MagicNetworkMonitoringConfigurationExists checks whether an existing MagicNetworkMonitoringConfiguration resource with the given ID exists.
+func MagicNetworkMonitoringConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MagicNetworkMonitoringConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration", id, state, "", opts...)
+}
+
 type magicNetworkMonitoringConfigurationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.

@@ -159,6 +159,12 @@ func (WorkersCustomDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersCustomDomainState)(nil)).Elem()
 }
 
+// WorkersCustomDomainExists checks whether an existing WorkersCustomDomain resource with the given ID exists.
+func WorkersCustomDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkersCustomDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/workersCustomDomain:WorkersCustomDomain", id, state, "", opts...)
+}
+
 type workersCustomDomainArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

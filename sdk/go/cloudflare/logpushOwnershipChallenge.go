@@ -127,6 +127,12 @@ func (LogpushOwnershipChallengeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logpushOwnershipChallengeState)(nil)).Elem()
 }
 
+// LogpushOwnershipChallengeExists checks whether an existing LogpushOwnershipChallenge resource with the given ID exists.
+func LogpushOwnershipChallengeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogpushOwnershipChallengeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge", id, state, "", opts...)
+}
+
 type logpushOwnershipChallengeArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`

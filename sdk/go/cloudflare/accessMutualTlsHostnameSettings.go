@@ -143,6 +143,12 @@ func (AccessMutualTlsHostnameSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessMutualTlsHostnameSettingsState)(nil)).Elem()
 }
 
+// AccessMutualTlsHostnameSettingsExists checks whether an existing AccessMutualTlsHostnameSettings resource with the given ID exists.
+func AccessMutualTlsHostnameSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessMutualTlsHostnameSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", id, state, "", opts...)
+}
+
 type accessMutualTlsHostnameSettingsArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string                                  `pulumi:"accountId"`

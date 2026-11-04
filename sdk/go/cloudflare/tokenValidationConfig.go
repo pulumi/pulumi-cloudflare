@@ -163,6 +163,12 @@ func (TokenValidationConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenValidationConfigState)(nil)).Elem()
 }
 
+// TokenValidationConfigExists checks whether an existing TokenValidationConfig resource with the given ID exists.
+func TokenValidationConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TokenValidationConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/tokenValidationConfig:TokenValidationConfig", id, state, "", opts...)
+}
+
 type tokenValidationConfigArgs struct {
 	// Request payload for create and PUT credentials operations. Provided keys define the complete stored key set. Key identities (`{alg,kid}`) must be unique.
 	Credentials  TokenValidationConfigCredentials `pulumi:"credentials"`

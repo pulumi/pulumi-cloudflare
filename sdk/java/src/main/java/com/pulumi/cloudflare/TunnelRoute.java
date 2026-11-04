@@ -64,11 +64,10 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &#39;&lt;account_id&gt;/&lt;route_id&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute
+ * @deprecated cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute
  * 
  */
-@Deprecated /* cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute */
+@Deprecated
 @ResourceType(type="cloudflare:index/tunnelRoute:TunnelRoute")
 public class TunnelRoute extends com.pulumi.resources.CustomResource {
     /**

@@ -817,6 +817,44 @@ class SpectrumApplication(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return SpectrumApplication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict', 'outputs.SpectrumApplicationDns']]] = None,
+            edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict', 'outputs.SpectrumApplicationEdgeIps']]] = None,
+            ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict', 'outputs.SpectrumApplicationOriginDns']]] = None,
+            origin_port: Optional[Any] = None,
+            origin_worker_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            tls: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["argoSmartRouting"] = argo_smart_routing
+        __props__["createdOn"] = created_on
+        __props__["dns"] = dns
+        __props__["edgeIps"] = edge_ips
+        __props__["ipFirewall"] = ip_firewall
+        __props__["modifiedOn"] = modified_on
+        __props__["originDirects"] = origin_directs
+        __props__["originDns"] = origin_dns
+        __props__["originPort"] = origin_port
+        __props__["originWorkerId"] = origin_worker_id
+        __props__["protocol"] = protocol
+        __props__["proxyProtocol"] = proxy_protocol
+        __props__["tls"] = tls
+        __props__["trafficType"] = traffic_type
+        __props__["virtualNetworkId"] = virtual_network_id
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/spectrumApplication:SpectrumApplication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="argoSmartRouting")
     def argo_smart_routing(self) -> pulumi.Output[_builtins.bool]:

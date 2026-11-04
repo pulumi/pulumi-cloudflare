@@ -252,6 +252,12 @@ func (KeylessCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keylessCertificateState)(nil)).Elem()
 }
 
+// KeylessCertificateExists checks whether an existing KeylessCertificate resource with the given ID exists.
+func KeylessCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeylessCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/keylessCertificate:KeylessCertificate", id, state, "", opts...)
+}
+
 type keylessCertificateArgs struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".

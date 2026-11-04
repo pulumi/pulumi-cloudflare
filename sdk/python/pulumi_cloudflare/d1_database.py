@@ -517,6 +517,34 @@ class D1Database(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return D1Database(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            file_size: pulumi.Input[Optional[_builtins.float]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            num_tables: pulumi.Input[Optional[_builtins.float]] = None,
+            primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
+            read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict', 'outputs.D1DatabaseReadReplication']]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createdAt"] = created_at
+        __props__["fields"] = fields
+        __props__["fileSize"] = file_size
+        __props__["jurisdiction"] = jurisdiction
+        __props__["name"] = name
+        __props__["numTables"] = num_tables
+        __props__["primaryLocationHint"] = primary_location_hint
+        __props__["readReplication"] = read_replication
+        __props__["uuid"] = uuid
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/d1Database:D1Database', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

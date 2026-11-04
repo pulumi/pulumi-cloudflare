@@ -157,6 +157,12 @@ func (HostnameTlsSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostnameTlsSettingState)(nil)).Elem()
 }
 
+// HostnameTlsSettingExists checks whether an existing HostnameTlsSetting resource with the given ID exists.
+func HostnameTlsSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostnameTlsSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/hostnameTlsSetting:HostnameTlsSetting", id, state, "", opts...)
+}
+
 type hostnameTlsSettingArgs struct {
 	// The hostname for which the tls settings are set.
 	Hostname string `pulumi:"hostname"`

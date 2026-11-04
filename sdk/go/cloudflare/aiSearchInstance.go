@@ -250,6 +250,12 @@ func (AiSearchInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aiSearchInstanceState)(nil)).Elem()
 }
 
+// AiSearchInstanceExists checks whether an existing AiSearchInstance resource with the given ID exists.
+func AiSearchInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AiSearchInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/aiSearchInstance:AiSearchInstance", id, state, "", opts...)
+}
+
 type aiSearchInstanceArgs struct {
 	AccountId   string  `pulumi:"accountId"`
 	AiGatewayId *string `pulumi:"aiGatewayId"`

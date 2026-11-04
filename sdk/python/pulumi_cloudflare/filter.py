@@ -396,6 +396,24 @@ class Filter(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return Filter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FilterBodyArgs', 'FilterBodyArgsDict', 'outputs.FilterBody']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expression: pulumi.Input[Optional[_builtins.str]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bodies"] = bodies
+        __props__["description"] = description
+        __props__["expression"] = expression
+        __props__["paused"] = paused
+        __props__["ref"] = ref
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/filter:Filter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bodies(self) -> pulumi.Output[Sequence['outputs.FilterBody']]:

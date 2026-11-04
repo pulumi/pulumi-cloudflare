@@ -112,6 +112,12 @@ func (ZeroTrustAccessTagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zeroTrustAccessTagState)(nil)).Elem()
 }
 
+// ZeroTrustAccessTagExists checks whether an existing ZeroTrustAccessTag resource with the given ID exists.
+func ZeroTrustAccessTagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZeroTrustAccessTagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag", id, state, "", opts...)
+}
+
 type zeroTrustAccessTagArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`

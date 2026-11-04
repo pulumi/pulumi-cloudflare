@@ -284,6 +284,18 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
         __props__.__dict__["settings_by_rule_type"] = settings_by_rule_type
         return ZeroTrustGatewayLogging(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
+            settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict', 'outputs.ZeroTrustGatewayLoggingSettingsByRuleType']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["redactPii"] = redact_pii
+        __props__["settingsByRuleType"] = settings_by_rule_type
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

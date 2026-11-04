@@ -131,11 +131,10 @@ public class EmailSecurityAllowPolicy extends com.pulumi.resources.CustomResourc
     /**
      * Deprecated as of July 1, 2025. Use `isExemptRecipient` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isExemptRecipient` instead.
+     * @deprecated Use `isExemptRecipient` instead.
      * 
      */
-    @Deprecated /* Use `isExemptRecipient` instead. */
+    @Deprecated
     @Export(name="isRecipient", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isRecipient;
 
@@ -155,11 +154,10 @@ public class EmailSecurityAllowPolicy extends com.pulumi.resources.CustomResourc
     /**
      * Deprecated as of July 1, 2025. Use `isTrustedSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isTrustedSender` instead.
+     * @deprecated Use `isTrustedSender` instead.
      * 
      */
-    @Deprecated /* Use `isTrustedSender` instead. */
+    @Deprecated
     @Export(name="isSender", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isSender;
 
@@ -173,11 +171,10 @@ public class EmailSecurityAllowPolicy extends com.pulumi.resources.CustomResourc
     /**
      * Deprecated as of July 1, 2025. Use `isAcceptableSender` instead. End of life: July 1, 2026.
      * 
-     * @deprecated
-     * Use `isAcceptableSender` instead.
+     * @deprecated Use `isAcceptableSender` instead.
      * 
      */
-    @Deprecated /* Use `isAcceptableSender` instead. */
+    @Deprecated
     @Export(name="isSpoof", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isSpoof;
 
@@ -205,11 +202,10 @@ public class EmailSecurityAllowPolicy extends com.pulumi.resources.CustomResourc
     /**
      * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
      * 
-     * @deprecated
-     * Use `modifiedAt` instead.
+     * @deprecated Use `modifiedAt` instead.
      * 
      */
-    @Deprecated /* Use `modifiedAt` instead. */
+    @Deprecated
     @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 

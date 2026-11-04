@@ -819,6 +819,56 @@ class Zone(pulumi.CustomResource):
         __props__.__dict__["verification_key"] = verification_key
         return Zone(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account: pulumi.Input[Optional[Union['ZoneAccountArgs', 'ZoneAccountArgsDict', 'outputs.ZoneAccount']]] = None,
+            activated_on: pulumi.Input[Optional[_builtins.str]] = None,
+            cname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            development_mode: pulumi.Input[Optional[_builtins.float]] = None,
+            meta: pulumi.Input[Optional[Union['ZoneMetaArgs', 'ZoneMetaArgsDict', 'outputs.ZoneMeta']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            original_dnshost: pulumi.Input[Optional[_builtins.str]] = None,
+            original_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            original_registrar: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[Union['ZoneOwnerArgs', 'ZoneOwnerArgsDict', 'outputs.ZoneOwner']]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            plan: pulumi.Input[Optional[Union['ZonePlanArgs', 'ZonePlanArgsDict', 'outputs.ZonePlan']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[Union['ZoneTenantArgs', 'ZoneTenantArgsDict', 'outputs.ZoneTenant']]] = None,
+            tenant_unit: pulumi.Input[Optional[Union['ZoneTenantUnitArgs', 'ZoneTenantUnitArgsDict', 'outputs.ZoneTenantUnit']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vanity_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            verification_key: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["account"] = account
+        __props__["activatedOn"] = activated_on
+        __props__["cnameSuffix"] = cname_suffix
+        __props__["createdOn"] = created_on
+        __props__["developmentMode"] = development_mode
+        __props__["meta"] = meta
+        __props__["modifiedOn"] = modified_on
+        __props__["name"] = name
+        __props__["nameServers"] = name_servers
+        __props__["originalDnshost"] = original_dnshost
+        __props__["originalNameServers"] = original_name_servers
+        __props__["originalRegistrar"] = original_registrar
+        __props__["owner"] = owner
+        __props__["paused"] = paused
+        __props__["permissions"] = permissions
+        __props__["plan"] = plan
+        __props__["status"] = status
+        __props__["tenant"] = tenant
+        __props__["tenantUnit"] = tenant_unit
+        __props__["type"] = type
+        __props__["vanityNameServers"] = vanity_name_servers
+        __props__["verificationKey"] = verification_key
+        return pulumi.runtime.exists_resource(None, 'cloudflare:index/zone:Zone', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def account(self) -> pulumi.Output['outputs.ZoneAccount']:
